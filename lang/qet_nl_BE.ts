@@ -8781,49 +8781,49 @@ Tkest en cijfers zijn ook beschikbaar
         <translation>Gebruik de systeem kleuren</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="854"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="856"/>
         <source>User Collection Path</source>
         <translation>Pad naar gebruikers collectie</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="882"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="884"/>
         <source>User Title blocks Path</source>
         <translation>Pad naar gebruikers etiket</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="826"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="828"/>
         <source>Path of the Common Collection</source>
         <translation>Pad naar de algemene collectie</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="803"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="817"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="855"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="883"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="897"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="918"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="813"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="827"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="865"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="893"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="907"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="928"/>
         <source>By default</source>
         <translation>Standaard</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="808"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="822"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="860"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="888"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="902"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="923"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="960"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1001"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="818"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="832"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="870"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="898"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="912"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="933"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="970"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1011"/>
         <source>Browse...</source>
         <translation>Bladeren ...</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="931"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="941"/>
         <source>(Reload the elements collections to apply the changes)</source>
         <translation>(Herlaad elementverzamelingen om wijzigingen toe te passen)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="581"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="591"/>
         <source>Projects</source>
         <translation>Projecten</translation>
     </message>
@@ -8833,41 +8833,41 @@ Tkest en cijfers zijn ook beschikbaar
         <translation>Gebruik de gebaren voor touchpad</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="587"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="597"/>
         <source>Use sheet numbers instead of their position in the project</source>
         <translation>Gebruik folionummers volgens hun posite in het project</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="769"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="779"/>
         <source>Number the title block columns from 0 (1 otherwise)</source>
         <extracomment>Choix de l&apos;increment de depart 1 ou 0</extracomment>
         <translation>Nummer de kolomen op de schema bladzijde vanaf 0 (inien niet vanaf 1)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="604"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="614"/>
         <source>Disabled</source>
         <translation>Uitgeschakeld</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="610"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="620"/>
         <source> min</source>
         <comment>minute</comment>
         <translatorcomment>minuut</translatorcomment>
         <translation> min</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1032"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1042"/>
         <source>Highlight freshly integrated elements in the panel</source>
         <translation>Laat nieuw ingevoerde waarden van een  elementen oplichten in het paneel</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1039"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1049"/>
         <source>Element may include information about its authors, license, or other useful information. Specify the default value of this textfield for new elements below:</source>
         <translation>Elk element bevat informatie over de auteurs, licentie of andere informatie die u nuttig acht in een vrij veld.
 Hier kunt u de standaardwaarde voor dit veld opgeven voor de items die u gaat maken:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1075"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1085"/>
         <source>Applied to the next launch of QElectroTech</source>
         <translation>Wordt geactiveerd bij de volgende opstart van QElectroTech</translation>
     </message>
@@ -8877,77 +8877,77 @@ Hier kunt u de standaardwaarde voor dit veld opgeven voor de items die u gaat ma
         <translation>Formulier</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="594"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="604"/>
         <source>Automatic backup of projects (applied at the next launch of QElectroTech)</source>
         <translation>Automatische back-up van projecten (toegepast bij de volgende opstart van QElectroTech)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="777"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="787"/>
         <source>Collections</source>
         <translation>Collectie</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="783"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="793"/>
         <source>Access the collections</source>
         <translation>Toegang tot de collecties</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="840"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="850"/>
         <source>Common collection directory</source>
         <translation>Map voor  de gemeenschappelijke collectie</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="868"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="878"/>
         <source>User collection directory</source>
         <translation>Map voor de gebruikers collectie</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="910"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="920"/>
         <source>User title blocks directory</source>
         <translation>Map voor de gebruikers etiketten</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1023"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1033"/>
         <source>Elements management</source>
         <translation>Beheer de elementen</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1115"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1125"/>
         <source>Here you can define the default appearance of the different texts of QElectroTech</source>
         <translation>Hier kant u de standaardweergave van de verschillende teksten van QElectroTech definiëren</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1290"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1300"/>
         <source>Designation, type, plant, location, length:</source>
         <translation>Aanduiding, type, installatie, locatie, lengte:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1323"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1333"/>
         <source>Core colors (all of them):</source>
         <translation>Aderkleuren (allemaal):</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1356"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1366"/>
         <source>Text alignment:</source>
         <translation>Tekstuitlijning:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1405"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1415"/>
         <source>Grid + Keyboard</source>
         <translation>Raster + toetsenbord</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1411"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1421"/>
         <source>Grid: 1 - 30</source>
         <translation>Raster : 1 - 30</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1478"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1488"/>
         <source>DiagramEditor xGrid</source>
         <translation>Schema X raster</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1445"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1455"/>
         <source>DiagramEditor yGrid</source>
         <translation>Schema Y raster</translation>
     </message>
@@ -9043,357 +9043,367 @@ Hier kunt u de standaardwaarde voor dit veld opgeven voor de items die u gaat ma
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="214"/>
+        <source>Used when the automatic assignment makes a terminal strip and by &quot;Automatic position&quot; in the terminal manager. Unchecked: the way the plan is drawn, folio by folio then left to right, which keeps N and PE where they are drawn. Checked: by label, X1:2 before X1:10. A strip already made keeps its order until it is sorted again.</source>
+        <translation>Gebruikt wanneer de automatische toewijzing een klemmenstrook maakt en door &quot;Automatisch positie&quot; in de klemmenbeheerder. Niet aangevinkt: in de volgorde van het plan, blad per blad en dan van links naar rechts, waardoor N en PE blijven waar ze getekend zijn. Aangevinkt: op label, X1:2 vóór X1:10. Een al gemaakte strook behoudt haar volgorde tot ze opnieuw gesorteerd wordt.</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="217"/>
+        <source>Sort the terminal strips by label instead of the plan order</source>
+        <translation>Klemmenstroken op label sorteren in plaats van in de volgorde van het plan</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="224"/>
         <source>A new folio takes the group and sub-group of the folio before it</source>
         <translation>Een nieuw blad neemt de groep en subgroep van het vorige blad over</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="217"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="227"/>
         <source>Only a group or sub-group typed on that folio is taken. Unchecked, a new folio has none and is in its plant and location.</source>
         <translation>Alleen een groep of subgroep die op dat blad ingevuld is, wordt overgenomen. Indien niet aangevinkt, heeft een nieuw blad er geen en hoort het bij zijn installatie en locatie.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="224"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="234"/>
         <source>Ask for the device labels when placing a macro</source>
         <translation>Naar de apparaatlabels vragen bij het plaatsen van een macro</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="227"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="237"/>
         <source>Proposes the next free labels, which Accept All takes. Unchecked, a macro keeps its saved labels.</source>
         <translation>Stelt de volgende vrije labels voor, die Alles aanvaarden overneemt. Indien niet aangevinkt, behoudt een macro zijn opgeslagen labels.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="234"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="244"/>
         <source>When unticked, no conductors-per-terminal rule applies, whatever the projects&apos; settings.</source>
         <translation>Indien uitgevinkt, geldt geen enkele regel voor geleiders per klem, ongeacht de instellingen van de projecten.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="237"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="247"/>
         <source>Apply the projects&apos; conductors-per-terminal rules</source>
         <translation>De regels voor geleiders per klem van de projecten toepassen</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="252"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="262"/>
         <source>Maximum conductors per terminal:</source>
         <translation>Maximaal aantal geleiders per klem:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="265"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="275"/>
         <source>For every project except those with their own settings. A new conductor that would take a terminal past this number is refused; conductors already drawn are not changed. 4 means two twin ferrules, one on each side of the screw.</source>
         <translation>Voor elk project behalve die met eigen instellingen. Een nieuwe geleider die een klem boven dit aantal zou brengen, wordt geweigerd; reeds getekende geleiders worden niet gewijzigd. 4 betekent twee dubbele adereindhulzen, één aan elke kant van de schroef.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="268"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="278"/>
         <source>No limit</source>
         <translation>Geen limiet</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="292"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="302"/>
         <source>A sheet reference is a virtual point: it takes only one conductor, the one that continues on the other sheet.</source>
         <translation>Een bladverwijzing is een virtueel punt: ze neemt slechts één geleider, die welke op het andere blad verdergaat.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="295"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="305"/>
         <source>Only one conductor per sheet reference</source>
         <translation>Slechts één geleider per bladverwijzing</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="311"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="321"/>
         <source>Show the default grid (applied the next time the programme is launched)</source>
         <translation>Toon het standaardraster (toegepast bij de volgende keer opstarten)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="330"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="340"/>
         <source>Zoomed out further, the dots of any grid step are left out; the zoom shown in the status bar tells where. In pixels as the system scales them, so the same value suits a HiDPI screen</source>
         <translation>Verder uitgezoomd worden de punten van elke rasterstap weggelaten; de zoom in de statusbalk geeft aan waar. In pixels zoals het systeem ze schaalt, zodat dezelfde waarde past bij een HiDPI-scherm</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="370"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="380"/>
         <source>By default, a double-click inserts the element on the sheet; editing remains accessible from the context menu.</source>
         <translation>Standaard voegt een dubbelklik het element in op het blad; bewerken blijft beschikbaar via het contextmenu.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="373"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="383"/>
         <source>Double-clicking in the collection opens the element editor instead of inserting it</source>
         <translation>Dubbelklikken in de collectie opent de elementeditor in plaats van het element in te voegen</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="380"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="390"/>
         <source>Ticked: a single list, best match first. Unticked: the collection tree, filtered by the search.</source>
         <translation>Aangevinkt: één enkele lijst, beste overeenkomst eerst. Uitgevinkt: de collectieboom, gefilterd door de zoekopdracht.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="383"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="393"/>
         <source>Show search results as a sorted list</source>
         <translation>Zoekresultaten als gesorteerde lijst tonen</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="390"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="400"/>
         <source>After a click that selects an element or a conductor, the shortcut bar commands appear near the cursor and fade away when the mouse moves away.</source>
         <translation>Na een klik die een element of een geleider selecteert, verschijnen de opdrachten van de sneltoetsbalk bij de cursor en vervagen ze wanneer de muis zich verwijdert.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="393"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="403"/>
         <source>Show commands near the selection</source>
         <translation>Opdrachten bij de selectie tonen</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="400"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="410"/>
         <source>Holding the right button and dragging in a direction launches a shortcut bar command. A simple right-click still opens the context menu, on button release.</source>
         <translation>De rechtermuisknop ingedrukt houden en in een richting slepen start een opdracht van de sneltoetsbalk. Een eenvoudige rechterklik opent nog steeds het contextmenu, bij het loslaten van de knop.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="403"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="413"/>
         <source>Right-button mouse gestures</source>
         <translation>Muisgebaren met de rechterknop</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="410"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="420"/>
         <source>A four-way arrow over what a drag moves; with the crosshair, the pointer jumps with it from grid point to grid point, and a handle within 12 pixels catches it and the click. Unticked: the system pointer, and handles are grabbed under the mouse only.</source>
         <translation>Een vierwegpijl boven wat een sleepbeweging verplaatst; met het dradenkruis springt de aanwijzer mee van rasterpunt naar rasterpunt, en een greep binnen 12 pixels vangt hem en de klik. Niet aangevinkt: de systeemaanwijzer, en grepen worden alleen onder de muis vastgenomen.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="413"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="423"/>
         <source>Four-way arrow and handle catching with the crosshair</source>
         <translation>Vierwegpijl en vangen van grepen met het dradenkruis</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="420"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="430"/>
         <source>A symbol&apos;s text that reads from top to bottom once its symbol is turned is drawn the other way round, in the same place, so that upright texts all read from bottom to top, like the wires&apos; texts. Unticked by default: texts turn with their symbol.</source>
         <translation>Een tekst van een symbool die van boven naar onder leest zodra zijn symbool gedraaid is, wordt omgekeerd getekend, op dezelfde plaats, zodat staande teksten allemaal van onder naar boven lezen, zoals de teksten van de draden. Standaard niet aangevinkt: teksten draaien mee met hun symbool.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="423"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="433"/>
         <source>Upright symbol texts read from bottom to top</source>
         <translation>Staande symboolteksten lezen van onder naar boven</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="430"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="440"/>
         <source>Dragging a symbol&apos;s text moves the text alone, and Shift+drag moves the symbol, as before version 0.100. Unticked by default: dragging a text moves its symbol, Shift+drag moves the text.</source>
         <translation>Een tekst van een symbool slepen verplaatst alleen de tekst, en Shift+slepen verplaatst het symbool, zoals vóór versie 0.100. Standaard niet aangevinkt: een tekst slepen verplaatst zijn symbool, Shift+slepen verplaatst de tekst.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="433"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="443"/>
         <source>Drag symbol texts without holding Shift</source>
         <translation>Symboolteksten slepen zonder Shift ingedrukt te houden</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="440"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="450"/>
         <source>While a symbol is placed or dragged, a shaded line runs from each of its terminals to the terminal in line with it. Ticked by default.</source>
         <translation>Terwijl een symbool geplaatst of gesleept wordt, loopt er een gearceerde lijn van elk van zijn klemmen naar de klem die ermee in lijn ligt. Standaard aangevinkt.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="443"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="453"/>
         <source>Help lines from the terminals of a dragged symbol</source>
         <translation>Hulplijnen vanaf de klemmen van een gesleept symbool</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="450"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="460"/>
         <source>A bar at each side of the drawing folds the panels of that side away, as in LibreOffice&apos;s sidebar, and a second click shows them again as they were. Unticked by default; the Display menu does the same with or without the bars.</source>
         <translation>Een balk aan elke kant van de tekening klapt de panelen van die kant in, zoals de zijbalk van LibreOffice, en een tweede klik toont ze opnieuw zoals ze waren. Standaard niet aangevinkt; het menu Weergave doet hetzelfde met of zonder de balken.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="453"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="463"/>
         <source>Bars beside the drawing to fold the side panels away</source>
         <translation>Balken naast de tekening om de zijpanelen in te klappen</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="460"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="470"/>
         <source>The docked panels can be made as narrow as one wants: their texts wrap and what cannot wrap scrolls sideways. Unticked: the panels keep the width their texts and fields need.</source>
         <translation>De gekoppelde panelen kunnen zo smal gemaakt worden als men wil: hun teksten lopen door en wat niet kan doorlopen, schuift zijwaarts. Niet aangevinkt: de panelen behouden de breedte die hun teksten en velden nodig hebben.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="463"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="473"/>
         <source>Narrow docks: wrap texts and scroll (applied the next time the programme is launched)</source>
         <translation>Smalle panelen: teksten laten doorlopen en schuiven (toegepast bij de volgende start van het programma)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="470"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="480"/>
         <source>A corner or T-junction placed where one already stands takes its place, and its wires go to the new one. Unticked by default: both stay.</source>
         <translation>Een hoek of T-aftakking die geplaatst wordt waar er al een staat, neemt haar plaats in, en haar draden gaan naar de nieuwe. Standaard niet aangevinkt: beide blijven.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="473"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="483"/>
         <source>A new corner or T-junction replaces the one under it</source>
         <translation>Een nieuwe hoek of T-aftakking vervangt die eronder</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="480"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="490"/>
         <source>Printing and exporting ask first when symbols, texts, shapes, pictures or tables lie outside the sheet, as they are cut off or left out; saving says so in the status bar.</source>
         <translation>Afdrukken en exporteren vragen eerst bevestiging als symbolen, teksten, vormen, afbeeldingen of tabellen buiten het blad liggen, omdat ze afgesneden of weggelaten worden; bij het opslaan wordt het in de statusbalk gemeld.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="483"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="493"/>
         <source>Warn about items outside the sheet</source>
         <translation>Waarschuwen voor items buiten het blad</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="490"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="500"/>
         <source>Show default guides (applies from the next time the programme is launched)</source>
         <translation>Standaardrichtlijnen weergeven (worden toegepast bij de volgende keer opstarten)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="504"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="514"/>
         <source>Use &amp;Windows (applied at the next launch of QElectroTech)</source>
         <translation>Gebruik ven&amp;sters (toegepast bij de volgende lancering van QElectroTech)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="511"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="521"/>
         <source>Use &amp;tabs (applied at the next launch of QElectroTech)</source>
         <translation>Gebruik tabbladen (toegepast bij de volgende lancering van QElectroTech)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="550"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="560"/>
         <source>High pixel density (hdpi) displays scaling method (applied to the next launch of QElectroTech) :</source>
         <translation>High Pixel Density (HDPI) Display Scaling Method (toegepast op de volgende lancering van QElectroTech):</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="623"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="633"/>
         <source>Automatically number pasted or duplicated elements that follow a numbering</source>
         <translation>Geplakte of gedupliceerde elementen die een nummering volgen automatisch nummeren</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="626"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="636"/>
         <source>A pasted element receives the next number of its numbering instead of the copied element&apos;s name, and the numbering advances.</source>
         <translation>Een geplakt element krijgt het volgende nummer van zijn nummering in plaats van de naam van het gekopieerde element, en de nummering schuift op.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="633"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="643"/>
         <source>A small hidden file beside the project says who has it open. Someone else opening it is told, and can open it read-only. Turn this off if your shared drive does not cope with it.</source>
         <translation>Een klein verborgen bestand naast het project toont wie het open heeft. Iemand anders die het opent, wordt gewaarschuwd en kan het alleen-lezen openen. Schakel dit uit als uw gedeelde schijf er niet mee overweg kan.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="636"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="646"/>
         <source>Tell others who has a project open (lock file beside the project)</source>
         <translation>Anderen laten weten wie een project open heeft (vergrendelingsbestand naast het project)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="650"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="660"/>
         <source>Allow running JavaScript scripts (Project &gt; Run a script, and --run)</source>
         <translation>Het uitvoeren van JavaScript-scripts toestaan (Project &gt; Een script uitvoeren, en --run)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="653"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="663"/>
         <source>A script runs with your permissions: it can read and modify the open project and write files. Disabled by default; only run scripts whose origin you know.</source>
         <translation>Een script draait met uw rechten: het kan het geopende project lezen en wijzigen en bestanden schrijven. Standaard uitgeschakeld; voer alleen scripts uit waarvan u de herkomst kent.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="660"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="670"/>
         <source>Allow an AI assistant to act on the open project (live mode)</source>
         <translation>Een AI-assistent toestaan op het geopende project te handelen (live-modus)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="663"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="673"/>
         <source>An assistant connected through the MCP server can then run scripts on the open project, as you watch. A warning is shown at every start while this setting is on. Takes effect at the next start; unticking it closes the connection at once.</source>
         <translation>Een assistent die via de MCP-server verbonden is, kan dan scripts uitvoeren op het geopende project, terwijl u meekijkt. Bij elke start wordt een waarschuwing getoond zolang deze instelling aan staat. Wordt van kracht bij de volgende start; uitvinken sluit de verbinding onmiddellijk.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="670"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="680"/>
         <source>Enable chained folio reports for report elements</source>
         <translation>Geketende bladverwijzingen inschakelen voor verwijzingselementen</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="673"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="683"/>
         <source>When enabled, report elements (cross-references) across folios with matching labels are automatically chained together. Newly created projects will have this enabled automatically.</source>
         <translation>Indien ingeschakeld, worden verwijzingselementen (kruisverwijzingen) over bladen heen met overeenkomende labels automatisch aan elkaar geketend. Nieuw gemaakte projecten hebben dit automatisch ingeschakeld.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="680"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="690"/>
         <source>Previous versions kept when saving a project</source>
         <translation>Vorige versies die bewaard worden bij het opslaan van een project</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="683"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="690"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="693"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="700"/>
         <source>Before a project is saved, the file as it was is copied to a folder beside it, named after the project with &quot;-backups&quot;. Only the newest are kept.</source>
         <translation>Voordat een project bewaard wordt, wordt het bestand zoals het was gekopieerd naar een map ernaast, genoemd naar het project met “-backups”. Alleen de nieuwste worden bewaard.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="693"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="703"/>
         <source>None</source>
         <translation>Geen</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="703"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="713"/>
         <source>Reopen the projects of the last session at start</source>
         <translation>De projecten van de laatste sessie heropenen bij het starten</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="706"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="716"/>
         <source>The projects open when QElectroTech was last left are opened again, unless it is started with a file to open.</source>
         <translation>De projecten die open waren toen QElectroTech laatst afgesloten werd, worden opnieuw geopend, tenzij het gestart wordt met een te openen bestand.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="713"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="723"/>
         <source>Offer to restore automatic backups at start</source>
         <translation>Aanbieden om automatische back-ups te herstellen bij het starten</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="716"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="726"/>
         <source>After a crash, the automatic backups (made every few minutes, see &quot;Automatic backup of projects&quot; above) are offered at the next start. Unticked, they are kept but not offered, the status bar says how many there are, and they are offered again once this is ticked. Not the same as the option below, which keeps a copy after every edit.</source>
         <translation>Na een crash worden de automatische back-ups (om de paar minuten gemaakt, zie &quot;Automatische back-up van projecten&quot; hierboven) bij de volgende start aangeboden. Indien niet aangevinkt, worden ze bewaard maar niet aangeboden, meldt de statusbalk hoeveel er zijn, en worden ze opnieuw aangeboden zodra dit aangevinkt wordt. Niet hetzelfde als de optie hieronder, die na elke bewerking een kopie bewaart.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="723"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="733"/>
         <source>After a crash, offer projects as they were after their last edit (experimental)</source>
         <translation>Na een crash projecten aanbieden zoals ze waren na hun laatste bewerking (experimenteel)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="726"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="736"/>
         <source>While a project is open, QElectroTech keeps a copy of it in its data folder, saved after every edit. If QElectroTech does not close normally, the next start offers that copy with the recovery files.</source>
         <translation>Terwijl een project open is, bewaart QElectroTech er een kopie van in zijn gegevensmap, opgeslagen na elke bewerking. Als QElectroTech niet normaal afsluit, biedt de volgende start die kopie aan met de herstelbestanden.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="733"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="743"/>
         <source>Offer saving a project as one database file, .qetdb (experimental)</source>
         <translation>Aanbieden om een project op te slaan als één databasebestand, .qetdb (experimenteel)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="736"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="746"/>
         <source>Save As then offers .qetdb: the whole project in one SQLite file. The format may still change; keep a .qet or .qetz copy of projects that matter.</source>
         <translation>Opslaan als biedt dan .qetdb aan: het hele project in één SQLite-bestand. Het formaat kan nog veranderen; bewaar een .qet- of .qetz-kopie van belangrijke projecten.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="795"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="805"/>
         <source>Company collection directory</source>
         <translatorcomment>Bedrijfs elementen collectie map</translatorcomment>
         <translation>Bedrijfs elementen collectie map</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="830"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="840"/>
         <source>Create or change the prefix of the user collection&apos;s folders (qet_labels.xml file)</source>
         <extracomment>tooltip of the button opening the prefix configuration dialog of the user collection</extracomment>
         <translation>De prefix van de mappen van de gebruikerscollectie aanmaken of wijzigen (bestand qet_labels.xml)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="833"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="843"/>
         <source>Configure prefixes…</source>
         <extracomment>button opening the dialog where the folder prefixes of the user collection are configured</extracomment>
         <translation>Prefixen instellen…</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="847"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="857"/>
         <source>Company title-block directory</source>
         <translation>Bedrijfs etikettten collectie map</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="875"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="885"/>
         <source>User Macro Directory</source>
         <translation>Gebruikers macro bestands map</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="938"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="948"/>
         <source>Materials list file</source>
         <translation>Materiaallijstbestand</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="947"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="957"/>
         <source>Materials list used to fill in a symbol&apos;s items</source>
         <extracomment>tooltip of the material file path field</extracomment>
         <translation>Materiaallijst die gebruikt wordt om de items van een symbool in te vullen</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="953"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="994"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="963"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1004"/>
         <source>Not set</source>
         <extracomment>hint shown when no material file is configured yet
 ----------
@@ -9401,85 +9411,85 @@ hint shown when no cable type file is configured yet</extracomment>
         <translation>Niet ingesteld</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="967"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="977"/>
         <source>Create the list file with its headers</source>
         <extracomment>tooltip of the button creating the material file with its header line</extracomment>
         <translation>Het lijstbestand met zijn kopregels aanmaken</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="970"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1011"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="980"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1021"/>
         <source>Create...</source>
         <translation>Aanmaken...</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="979"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="989"/>
         <source>Cable type list file</source>
         <translation>Bestand met kabeltypes</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="988"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="998"/>
         <source>Directory of the cable types used to define a cable (number of cores, colors, cross-section)</source>
         <extracomment>tooltip of the cable type file path field</extracomment>
         <translation>Lijst van de kabeltypes die gebruikt worden om een kabel te definiëren (aantal aders, kleuren, doorsnede)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1008"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1018"/>
         <source>Create the cable type list file with its header line</source>
         <extracomment>tooltip of the button creating the cable type file with its header line</extracomment>
         <translation>Het bestand met kabeltypes aanmaken met zijn kopregel</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1066"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1076"/>
         <source>Languages</source>
         <translation>Talen</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1109"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1119"/>
         <source>texts</source>
         <translation>Teksten</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1129"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1139"/>
         <source>Elements texts</source>
         <translation>Tekst elementen</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1142"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1208"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1254"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1152"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1218"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1264"/>
         <source>Font:</source>
         <translation>Lettertype :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1152"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1215"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1162"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1225"/>
         <source>°</source>
         <translation>°</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1162"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1172"/>
         <source>Length :</source>
         <translation>Text grootte:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1172"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1201"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1182"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1211"/>
         <source>Rotation :</source>
         <translation>Hoek :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1195"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1205"/>
         <source>Independent texts</source>
         <translation>Losse tekst</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1248"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1258"/>
         <source>Other texts</source>
         <translation>Andere teksten</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1284"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1294"/>
         <source>Cable texts</source>
         <translation>Kabelteksten</translation>
     </message>
@@ -9488,7 +9498,7 @@ hint shown when no cable type file is configured yet</extracomment>
         <translation type="vanished">Benaming, type, installatie, locatie, lengte :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1313"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1323"/>
         <source>Font of the texts written along the cable line; a cable which has its own keeps it.</source>
         <translation>Lettertype van de teksten die langs de kabellijn geschreven worden; een kabel met een eigen lettertype behoudt het.</translation>
     </message>
@@ -9497,7 +9507,7 @@ hint shown when no cable type file is configured yet</extracomment>
         <translation type="vanished">Aderkleuren (allemaal) :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1346"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1356"/>
         <source>Font of the core colors written along the line; a cable which has its own keeps it.</source>
         <translation>Lettertype van de aderkleuren die langs de lijn geschreven worden; een kabel met een eigen lettertype behoudt het.</translation>
     </message>
@@ -9506,53 +9516,53 @@ hint shown when no cable type file is configured yet</extracomment>
         <translation type="vanished">Tekstuitlijning :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1366"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1376"/>
         <source>Where the texts of a cable stop relative to the start of its line; a cable which has its own keeps it.</source>
         <translation>Waar de teksten van een kabel stoppen ten opzichte van het begin van zijn lijn; een kabel met een eigen instelling behoudt die.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1370"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1380"/>
         <source>Right aligned</source>
         <translation>Rechts uitgelijnd</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1375"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1385"/>
         <source>Centred</source>
         <translation>Gecentreerd</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1380"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1390"/>
         <source>Left aligned</source>
         <translation>Links uitgelijnd</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1452"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1462"/>
         <source>The Grid must be active to see the changes.</source>
         <translation>Het raster moet actief zijn om wijziginge te kunne uitvoeren.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1498"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1508"/>
         <source>Grid for texts moved with the mouse</source>
         <translation>Raster voor teksten die met de muis verplaatst worden</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1501"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1511"/>
         <source>Fraction of the sheet grid. Hold Ctrl while moving to place freely.</source>
         <translation>Fractie van het raster van het blad. Houd Ctrl ingedrukt tijdens het verplaatsen om vrij te plaatsen.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1521"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1531"/>
         <source>Keyboard movement: 1 - 30</source>
         <translation>Toetsenbordbeweging: 1 - 30</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1571"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1581"/>
         <source>DiagramEditor (key: left / right) xGrid</source>
         <comment>fr: DiagramEditor (touche :   gauche / droite)  xGrid</comment>
         <translation>Schema (sleutel: links / rechts) x raster</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1578"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1588"/>
         <source>DiagramEditor (key: up / down) yGrid</source>
         <translation>Schema (sleutel: omhoog / omlaag) y raster</translation>
     </message>
@@ -9561,75 +9571,75 @@ hint shown when no cable type file is configured yet</extracomment>
         <translation type="vanished">Totsenbord beweging met ALT : 1-9</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1614"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1624"/>
         <source>DiagramEditor (key: left / right) xGrid</source>
         <translation>Schema (sleutel: links / rechts) x raster</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1643"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1653"/>
         <source>DiagramEditor (key: up / down) yGrid</source>
         <comment>fr: DiagramEditor (touche :  haut / bas)  yGrid</comment>
         <translation>Schema (sleutel: omhoog / omlaag) y raster</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1688"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1698"/>
         <source>View grid</source>
         <translation>Raster</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1785"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1792"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1795"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1802"/>
         <source>max:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1873"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1883"/>
         <source>When saving a symbol: refuse two terminals with the same name, and report terminals without a name (IEC 61666).</source>
         <translation>Bij het opslaan van een symbool: twee klemmen met dezelfde naam weigeren en klemmen zonder naam melden (IEC 61666).</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1876"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1886"/>
         <source>Check terminal names when saving</source>
         <translation>Klemnamen controleren bij het opslaan</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1746"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1756"/>
         <source>Point-size in diagram-editor: 1 - 5</source>
         <translation>Diagram-Editor rasterpuntgrootte: 1 - 5</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1585"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1595"/>
         <source>Move by the grid step instead (Display &gt; Grid step)</source>
         <translation>In plaats daarvan verplaatsen met de rasterstap (Weergave &gt; Rasterstap)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1608"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1618"/>
         <source>Keyboard movement with the Ctrl key: 1 - 9</source>
         <translation>Verplaatsen met het toetsenbord met de Ctrl-toets: 1 - 9</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1694"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1799"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1704"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1809"/>
         <source>min:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1806"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1816"/>
         <source>Point-size in element-editor: 1 - 5</source>
         <translation>Element-Editor rasterpuntgrootte: 1 - 5</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1830"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1840"/>
         <source>Editor</source>
         <translation>Editor</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1838"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1848"/>
         <source>Max. parts in Element Editor List</source>
         <translation>Max. aantal element onderdelen ijn editor lijst</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="643"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="653"/>
         <source>Do not store the labels of items in the copy paste</source>
         <translation>Bewaar niet de labels van de element bij copy-paste</translation>
     </message>
@@ -9690,220 +9700,220 @@ hint shown when no cable type file is configured yet</extracomment>
         <translation>Uitgeschakeld</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="213"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="214"/>
         <source>Enabled by the QET_ENABLE_SCRIPTING environment variable; this setting has no effect while it is set.</source>
         <translation>Ingeschakeld door de omgevingsvariabele QET_ENABLE_SCRIPTING; deze instelling heeft geen effect zolang die is ingesteld.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="357"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="358"/>
         <source>Not set (default: %1)</source>
         <comment>hint shown in the material file field when no file is configured yet</comment>
         <translation>Niet ingesteld (standaard: %1)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="368"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="369"/>
         <source>Not set (default: %1)</source>
         <comment>hint shown in the cable type file field when no file is configured yet</comment>
         <translation>Niet ingesteld (standaard: %1)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="665"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="667"/>
         <source>General</source>
         <comment>configuration page title</comment>
         <translation>Algemeen</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="683"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="685"/>
         <source>System</source>
         <translation>Systeem</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="687"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="689"/>
         <source>Arabic</source>
         <translation>Arabisch</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="688"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="690"/>
         <source>Brazilian</source>
         <translation>Brasiliaans</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="689"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="691"/>
         <source>Catalan</source>
         <translation>Catalaans</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="690"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="692"/>
         <source>Czech</source>
         <translation>Tsjechisch</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="691"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="693"/>
         <source>German</source>
         <translation>Duits</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="692"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="694"/>
         <source>Danish</source>
         <translation>Deens</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="693"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="695"/>
         <source>Greek</source>
         <translation>Grieks</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="694"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="696"/>
         <source>English</source>
         <translation>Engels</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="695"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="697"/>
         <source>Spanish</source>
         <translation>Spaans</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="696"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="698"/>
         <source>French</source>
         <translation>Frans</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="697"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="699"/>
         <source>Croatian</source>
         <translation>Croatisch</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="698"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="700"/>
         <source>Italian</source>
         <translation>Italiaans</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="699"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="701"/>
         <source>Japanese</source>
         <translation>Japans</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="700"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="702"/>
         <source>Korean</source>
         <translation>Koreaans</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="701"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="703"/>
         <source>Latvian</source>
         <translation>Lets</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="702"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="704"/>
         <source>Polish</source>
         <translation>Pools</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="703"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="705"/>
         <source>Portuguese</source>
         <translation>Portugees</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="704"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="706"/>
         <source>Romanian</source>
         <translation>Roemeens</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="705"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="707"/>
         <source>Russian</source>
         <translation>Russisch</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="706"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="708"/>
         <source>Slovak</source>
         <translation>Slowaaks</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="707"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="709"/>
         <source>Slovenian</source>
         <translation>Sloveens</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="708"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="710"/>
         <source>Dutch</source>
         <translation>Nederlands</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="709"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="711"/>
         <source>Norwegian</source>
         <translation>Noors</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="710"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="712"/>
         <source>Belgium-Flemish</source>
         <translation>Belgisch nederlands</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="711"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="713"/>
         <source>Turkish</source>
         <translation>Turks</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="712"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="714"/>
         <source>Hungarian</source>
         <translation>Hongaars</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="713"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="715"/>
         <source>Mongolian</source>
         <translation>Mongools</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="714"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="716"/>
         <source>Ukrainian</source>
         <translation>Oekraïens</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="715"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="717"/>
         <source>Chinese</source>
         <translation>Chinees</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="716"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="718"/>
         <source>Chinese (Traditional)</source>
         <translation>Chinees (traditioneel)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="717"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="719"/>
         <source>Swedish</source>
         <translation>Zweeds</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="793"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="795"/>
         <source>Cable text font</source>
         <translation>Lettertype van de kabelteksten</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="811"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="813"/>
         <source>Core colors font</source>
         <translation>Lettertype van de aderkleuren</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="840"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="842"/>
         <source>Company collection path</source>
         <translation>Bedrijfs elementen collectie pad</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="868"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="870"/>
         <source>Company title-blocks</source>
         <translation>Bedrijfs etiketten collectie pad</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="896"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="898"/>
         <source>User macro path</source>
         <translation>Gebruikers makro map</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="938"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="940"/>
         <source>Folder not found</source>
         <translation>Map niet gevonden</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="939"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="941"/>
         <source>The user collection folder:
 %1
 does not exist and could not be created.</source>
@@ -9912,12 +9922,12 @@ does not exist and could not be created.</source>
 bestaat niet en kon niet worden aangemaakt.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="947"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="949"/>
         <source>No subfolder</source>
         <translation>Geen submap</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="948"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="950"/>
         <source>The user collection:
 %1
 has no subfolder, so there is no prefix to configure.</source>
@@ -9926,34 +9936,34 @@ has no subfolder, so there is no prefix to configure.</source>
 heeft geen submap, dus er is geen prefix in te stellen.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="956"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="958"/>
         <source>Prefix file cannot be read</source>
         <translation>Prefixbestand kan niet worden gelezen</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="965"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="967"/>
         <source>Prefix file damaged</source>
         <translation>Prefixbestand beschadigd</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="966"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="968"/>
         <source>The file %1 is not a valid XML file:
 %2</source>
         <translation>Het bestand %1 is geen geldig XML-bestand:
 %2</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="970"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="972"/>
         <source>Fix the file</source>
         <translation>Het bestand herstellen</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="971"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="973"/>
         <source>Rebuild</source>
         <translation>Opnieuw opbouwen</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="972"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="974"/>
         <source>Nothing has been changed yet.
 
 “Fix the file”: this window closes without changing anything. Open the file in a text editor at the place shown, fix it, then run this command again.
@@ -9966,36 +9976,36 @@ heeft geen submap, dus er is geen prefix in te stellen.</translation>
 “Opnieuw opbouwen”: de mappenboom wordt opnieuw opgebouwd, maar alle huidige prefixen gaan verloren. Het huidige bestand wordt bewaard als qet_labels.xml.bak voordat het vervangen wordt.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="981"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="983"/>
         <source>File: %1</source>
         <translation>Bestand: %1</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1005"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1007"/>
         <source>Select the materials list file</source>
         <translation>Selecteer het materiaallijstbestand</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1007"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1030"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1071"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1094"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1009"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1032"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1073"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1096"/>
         <source>CSV files (*.csv)</source>
         <translation>CSV-bestanden (*.csv)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1028"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1030"/>
         <source>Create the materials list file</source>
         <translation>Het materiaallijstbestand aanmaken</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1046"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1048"/>
         <source>Cannot create</source>
         <translation>Kan niet aanmaken</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1047"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1111"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1049"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1113"/>
         <source>Cannot create the file:
 %1
 %2</source>
@@ -10004,32 +10014,32 @@ heeft geen submap, dus er is geen prefix in te stellen.</translation>
 %2</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1069"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1071"/>
         <source>Select the cable types file</source>
         <translation>Selecteer het bestand met kabeltypes</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1092"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1094"/>
         <source>Create the cable types file</source>
         <translation>Het bestand met kabeltypes aanmaken</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1110"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1112"/>
         <source>Cannot be created</source>
         <translation>Kan niet worden aangemaakt</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1141"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1143"/>
         <source>Values that are too high might cause the application to crash</source>
         <translation>Hoge waarden kunnen leiden tot crashes van de applicatie.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1176"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1178"/>
         <source>Experimental feature</source>
         <translation>Experimentele functionaliteit</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1177"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1179"/>
         <source>WARNING:
 Any setting other than “No rounding” may cause rendering errors in the project, depending on:
 
@@ -10044,7 +10054,7 @@ Alle andere waarden dan &apos;Geen afronding&apos; kunnen projectweergavefouten 
 3 - Wijzig het project op een andere computer en/of scherm die niet dezelfde parameters heeft als punt 1 en 2.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="320"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="330"/>
         <source>Hide the grid when its dots are closer on screen than</source>
         <translation>Raster verbergen als de punten op het scherm dichter bij elkaar staan dan</translation>
     </message>
@@ -10053,7 +10063,7 @@ Alle andere waarden dan &apos;Geen afronding&apos; kunnen projectweergavefouten 
         <translation type="vanished">Verder uitgezoomd vallen de punten van elke rasterstap weg; de zoom in de statusbalk toont waar</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="333"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="343"/>
         <source> px</source>
         <translation> px</translation>
     </message>
@@ -21281,7 +21291,7 @@ Wilt u deze vervangen?</translation>
         <translation>De eigenschappen van een klemmen groep bewerken</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/UndoCommand/sortterminalstripcommand.cpp" line="34"/>
+        <location filename="../sources/TerminalStrip/UndoCommand/sortterminalstripcommand.cpp" line="35"/>
         <source>Sort terminal block %1</source>
         <translation>Sorteer terminal %1</translation>
     </message>
@@ -27291,12 +27301,12 @@ De overige velden worden niet gebruikt.</translation>
 <context>
     <name>TerminalStripAutoImport</name>
     <message>
-        <location filename="../sources/TerminalStrip/terminalstripautoimport.cpp" line="250"/>
+        <location filename="../sources/TerminalStrip/terminalstripautoimport.cpp" line="256"/>
         <source>Re-group all terminals</source>
         <translation>Alle klemmen hergroeperen</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/terminalstripautoimport.cpp" line="252"/>
+        <location filename="../sources/TerminalStrip/terminalstripautoimport.cpp" line="258"/>
         <source>Assign free terminals</source>
         <translation>Vrije klemmen toewijzen</translation>
     </message>
@@ -27548,32 +27558,99 @@ De overige velden worden niet gebruikt.</translation>
         <translation>Functie :</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="70"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="75"/>
         <source>All manufacturers</source>
         <translation>Alle fabrikanten</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="87"/>
         <source>Sort the terminals the way the drawing is laid out, and bring the bridges drawn there in with them. What the drawing brought is read-only here: it is changed in the drawing or not at all.</source>
-        <translation>Sorteert de klemmen zoals de tekening ingedeeld is, en neemt de daar getekende bruggen mee. Wat de tekening aanbrengt, is hier alleen-lezen: het wordt in de tekening gewijzigd of helemaal niet.</translation>
+        <translation type="vanished">Sorteert de klemmen zoals de tekening ingedeeld is, en neemt de daar getekende bruggen mee. Wat de tekening aanbrengt, is hier alleen-lezen: het wordt in de tekening gewijzigd of helemaal niet.</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="233"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="95"/>
+        <source>Sort the terminals the way the drawing is laid out, or by label when the general settings ask for it, and bring the bridges drawn there in with them. What the drawing brought is read-only here: it is changed in the drawing or not at all.</source>
+        <translation>Sorteert de klemmen zoals de tekening ingedeeld is, of op label als de algemene instellingen dat vragen, en neemt de daar getekende bruggen mee. Wat de tekening aanbrengt, is hier alleen-lezen: het wordt in de tekening gewijzigd of helemaal niet.</translation>
+    </message>
+    <message>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="242"/>
         <source>Independent terminals</source>
         <translation>Afzonderlijke klemmen</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="315"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="328"/>
         <source>Modify terminal strip properties</source>
         <translation>Wijzig de klem eigenschappen</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1076"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="612"/>
+        <source>Column searched by the filter</source>
+        <translation>Kolom waarin de filter zoekt</translation>
+    </message>
+    <message>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="616"/>
+        <source>Filter, for example 24V or K1*</source>
+        <translation>Filter, bijvoorbeeld 24V of K1*</translation>
+    </message>
+    <message>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="617"/>
+        <source>Text searched in the column, whatever the case and the spaces: &quot;24 v&quot; finds 24V. * stands for any text and ? for one character. Return selects the terminals found.</source>
+        <translation>Tekst die in de kolom gezocht wordt, ongeacht hoofdletters en spaties: &quot;24 v&quot; vindt 24V. * staat voor eender welke tekst en ? voor één teken. Enter selecteert de gevonden klemmen.</translation>
+    </message>
+    <message>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="622"/>
+        <source>Hide the others</source>
+        <translation>De andere verbergen</translation>
+    </message>
+    <message>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="624"/>
+        <source>Show only the terminals found. A terminal of several levels stays whole when one of its levels is found.</source>
+        <translation>Alleen de gevonden klemmen tonen. Een klem met meerdere niveaus blijft geheel zichtbaar als een van zijn niveaus gevonden wordt.</translation>
+    </message>
+    <message>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="629"/>
+        <source>Whole rows</source>
+        <translation>Hele rijen</translation>
+    </message>
+    <message>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="631"/>
+        <source>Bridge, level %1</source>
+        <translation>Brug, niveau %1</translation>
+    </message>
+    <message>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="634"/>
+        <source>What is selected: whole rows for the type, the function, the LED, the cable or the move, or the cells of one level to bridge them.</source>
+        <translation>Wat geselecteerd wordt: hele rijen voor het type, de functie, de led, de kabel of de verplaatsing, of de cellen van één niveau om ze te overbruggen.</translation>
+    </message>
+    <message>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="638"/>
+        <source>Select</source>
+        <translation>Selecteren</translation>
+    </message>
+    <message>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="639"/>
+        <source>Select the terminals found</source>
+        <translation>De gevonden klemmen selecteren</translation>
+    </message>
+    <message>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="680"/>
+        <source>All columns</source>
+        <translation>Alle kolommen</translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="816"/>
+        <source>%n found</source>
+        <translation>
+            <numerusform>%n gevonden</numerusform>
+            <numerusform>%n gevonden</numerusform>
+        </translation>
+    </message>
+    <message>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1386"/>
         <source>A bridge of your own</source>
         <translation>Een eigen brug</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1077"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1387"/>
         <source>This bridge is set here only: it is not added to the drawing, where bridges belong.
 
 Set it here anyway?</source>
@@ -27582,37 +27659,37 @@ Set it here anyway?</source>
 Toch hier instellen?</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1288"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1598"/>
         <source>Add spare terminals</source>
         <translation>Reserveklemmen toevoegen</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1294"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1604"/>
         <source>Number of terminals :</source>
         <translation>Aantal klemmen:</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1296"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1606"/>
         <source>Number the terminals</source>
         <translation>De klemmen nummeren</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1301"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1611"/>
         <source>Prefix :</source>
         <translation>Prefix:</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1306"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1616"/>
         <source>First number :</source>
         <translation>Eerste nummer:</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1311"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1621"/>
         <source>Same terminal as %1 (type, section, width, color, manufacturer...)</source>
         <translation>Dezelfde klem als %1 (type, doorsnede, breedte, kleur, fabrikant...)</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1313"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1623"/>
         <source>the selected terminal</source>
         <translation>de geselecteerde klem</translation>
     </message>

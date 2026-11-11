@@ -8827,49 +8827,49 @@ aj textové a číselné vstupy.</translation>
         <translation>Používať systémové farby</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="854"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="856"/>
         <source>User Collection Path</source>
         <translation>Cesta k vlastnej zbierke</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="882"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="884"/>
         <source>User Title blocks Path</source>
         <translation>Cesta k vlastným záhlaviam výkresov</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="826"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="828"/>
         <source>Path of the Common Collection</source>
         <translation>Cesta k spoločnej zbierke</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="803"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="817"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="855"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="883"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="897"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="918"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="813"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="827"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="865"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="893"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="907"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="928"/>
         <source>By default</source>
         <translation>Východzie nastavenie</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="808"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="822"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="860"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="888"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="902"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="923"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="960"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1001"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="818"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="832"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="870"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="898"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="912"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="933"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="970"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1011"/>
         <source>Browse...</source>
         <translation>Prechádzať...</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="931"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="941"/>
         <source>(Reload the elements collections to apply the changes)</source>
         <translation>Aby sa zmeny použili je potrebné zbierky prvkov nahrať opäť</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="581"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="591"/>
         <source>Projects</source>
         <translation>Projekty</translation>
     </message>
@@ -8879,39 +8879,39 @@ aj textové a číselné vstupy.</translation>
         <translation>Používať posunky pre dotykovú plochu</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="587"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="597"/>
         <source>Use sheet numbers instead of their position in the project</source>
         <translation>Použiť čísla listov namiesto ich polohy v projektu</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="769"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="779"/>
         <source>Number the title block columns from 0 (1 otherwise)</source>
         <extracomment>Choix de l&apos;increment de depart 1 ou 0</extracomment>
         <translation>Číslovať stĺpce záhlavia výkresu od 0 (inak 1)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="604"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="614"/>
         <source>Disabled</source>
         <translation>Zakázané</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="610"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="620"/>
         <source> min</source>
         <comment>minute</comment>
         <translation> min</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1032"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1042"/>
         <source>Highlight freshly integrated elements in the panel</source>
         <translation>Zvýrazniť čerstvo integrované prvky na paneli</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1039"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1049"/>
         <source>Element may include information about its authors, license, or other useful information. Specify the default value of this textfield for new elements below:</source>
         <translation>Prvok môže obsahovať informácie o svojich autoroch, licencii alebo iné užitočné informácie. Nižšie zadajte predvolenú hodnotu tohto textového poľa pre nové prvky:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1075"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1085"/>
         <source>Applied to the next launch of QElectroTech</source>
         <translation>Aplikované pri ďalšom spustení QElectroTech</translation>
     </message>
@@ -8921,77 +8921,77 @@ aj textové a číselné vstupy.</translation>
         <translation>Formulár</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="594"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="604"/>
         <source>Automatic backup of projects (applied at the next launch of QElectroTech)</source>
         <translation>Automatické zálohovanie projektov (aplikované pri ďalšom spustení QElectroTech)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="777"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="787"/>
         <source>Collections</source>
         <translation>Zbierky</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="783"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="793"/>
         <source>Access the collections</source>
         <translation>Prístup k zbierkach</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="840"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="850"/>
         <source>Common collection directory</source>
         <translation>Adresár so spoločnou zbierkou</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="868"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="878"/>
         <source>User collection directory</source>
         <translation>Adresár s vlastnou zbierkou</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="910"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="920"/>
         <source>User title blocks directory</source>
         <translation>Adresár s vlastnými záhlaviami výkresov</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1023"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1033"/>
         <source>Elements management</source>
         <translation>Správa prvkov</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1115"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1125"/>
         <source>Here you can define the default appearance of the different texts of QElectroTech</source>
         <translation>Tu môžete definovať východzí vzhľad rôznych textov v QElectroTechu</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1290"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1300"/>
         <source>Designation, type, plant, location, length:</source>
         <translation>Označenie, typ, inštalácia, umiestnenie, dĺžka:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1323"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1333"/>
         <source>Core colors (all of them):</source>
         <translation>Farby žíl (všetky):</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1356"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1366"/>
         <source>Text alignment:</source>
         <translation>Zarovnanie textu:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1405"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1415"/>
         <source>Grid + Keyboard</source>
         <translation>Mriežka a klávesnica</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1411"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1421"/>
         <source>Grid: 1 - 30</source>
         <translation>Mriežka: 1 - 30</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1478"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1488"/>
         <source>DiagramEditor xGrid</source>
         <translation>Súradnice x mriežky editora výkresu</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1445"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1455"/>
         <source>DiagramEditor yGrid</source>
         <translation>Súradnice y mriežky editora výkresu</translation>
     </message>
@@ -9087,356 +9087,366 @@ aj textové a číselné vstupy.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="214"/>
-        <source>A new folio takes the group and sub-group of the folio before it</source>
+        <source>Used when the automatic assignment makes a terminal strip and by &quot;Automatic position&quot; in the terminal manager. Unchecked: the way the plan is drawn, folio by folio then left to right, which keeps N and PE where they are drawn. Checked: by label, X1:2 before X1:10. A strip already made keeps its order until it is sorted again.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="217"/>
-        <source>Only a group or sub-group typed on that folio is taken. Unchecked, a new folio has none and is in its plant and location.</source>
+        <source>Sort the terminal strips by label instead of the plan order</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="224"/>
-        <source>Ask for the device labels when placing a macro</source>
+        <source>A new folio takes the group and sub-group of the folio before it</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="227"/>
-        <source>Proposes the next free labels, which Accept All takes. Unchecked, a macro keeps its saved labels.</source>
+        <source>Only a group or sub-group typed on that folio is taken. Unchecked, a new folio has none and is in its plant and location.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="234"/>
+        <source>Ask for the device labels when placing a macro</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="237"/>
+        <source>Proposes the next free labels, which Accept All takes. Unchecked, a macro keeps its saved labels.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="244"/>
         <source>When unticked, no conductors-per-terminal rule applies, whatever the projects&apos; settings.</source>
         <translation>Ak toto políčko nie je začiarknuté, pravidlo týkajúce sa počtu vodičov na svorku sa neuplatňuje bez ohľadu na nastavenia projektu.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="237"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="247"/>
         <source>Apply the projects&apos; conductors-per-terminal rules</source>
         <translation>Aplikovať pravidlá projektu týkajúce sa počtu vodičov na svorku</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="252"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="262"/>
         <source>Maximum conductors per terminal:</source>
         <translation>Maximálny počet vodičov na svorku:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="265"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="275"/>
         <source>For every project except those with their own settings. A new conductor that would take a terminal past this number is refused; conductors already drawn are not changed. 4 means two twin ferrules, one on each side of the screw.</source>
         <translation>Platí pre všetky projekty okrem tých, ktoré majú vlastné nastavenia. Nový vodič, ktorý by pri pripojení na svorku prekročil tento limit, sa neprijme; už zapojené vodiče sa nemenia. Hodnota 4 znamená dve dvojité dutinky, jednu na každej strane skrutky.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="268"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="278"/>
         <source>No limit</source>
         <translation>Bez limitu</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="292"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="302"/>
         <source>A sheet reference is a virtual point: it takes only one conductor, the one that continues on the other sheet.</source>
         <translation>Odkaz na list je virtuálny bod: zahŕňa len jeden vodič – ten, ktorý pokračuje na druhom liste.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="295"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="305"/>
         <source>Only one conductor per sheet reference</source>
         <translation>Len jeden vodič na odkaz na liste</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="311"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="321"/>
         <source>Show the default grid (applied the next time the programme is launched)</source>
         <translation>Zobraziť predvolenú mriežku (použije sa pri ďalšom spustení programu)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="330"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="340"/>
         <source>Zoomed out further, the dots of any grid step are left out; the zoom shown in the status bar tells where. In pixels as the system scales them, so the same value suits a HiDPI screen</source>
         <translation>Pri väčšom oddialení sa body mriežky nezobrazujú; informáciu o tom, kde k tomu dochádza, nájdete na stavovom riadku. Hodnoty sú uvedené v pixeloch tak, ako ich systém škáluje, takže rovnaké údaje platia aj pre obrazovky s vysokou hustotou pixelov (HiDPI)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="370"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="380"/>
         <source>By default, a double-click inserts the element on the sheet; editing remains accessible from the context menu.</source>
         <translation>Štandardne sa prvok do výkresu vloží dvojitým kliknutím; úprava zostáva dostupná v kontextovej ponuke.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="373"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="383"/>
         <source>Double-clicking in the collection opens the element editor instead of inserting it</source>
         <translation>Dvojité kliknutie v kolekcii otvorí editor prvku namiesto jeho vloženia</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="380"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="390"/>
         <source>Ticked: a single list, best match first. Unticked: the collection tree, filtered by the search.</source>
         <translation>Zaškrtnuté: jednoduchý zoznam, najprv najlepšia zhoda. Nezaškrtnuté: strom kolekcií filtrovaný podľa vyhľadávania.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="383"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="393"/>
         <source>Show search results as a sorted list</source>
         <translation>Zobraziť výsledky vyhľadávania ako zoradený zoznam</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="390"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="400"/>
         <source>After a click that selects an element or a conductor, the shortcut bar commands appear near the cursor and fade away when the mouse moves away.</source>
         <translation>Po kliknutí, ktorým vyberiete prvok alebo vodič, sa v blízkosti kurzora zobrazia príkazy panela skratiek, ktoré po oddialení myši zmiznú.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="393"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="403"/>
         <source>Show commands near the selection</source>
         <translation>Zobraziť príkazy v blízkosti výberu</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="400"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="410"/>
         <source>Holding the right button and dragging in a direction launches a shortcut bar command. A simple right-click still opens the context menu, on button release.</source>
         <translation>Podržanie pravého tlačidla a potiahnutie určitým smerom aktivuje príkaz z panela skratiek. Bežné kliknutie pravým tlačidlom (po jeho uvoľnení) naďalej otvára kontextovú ponuku.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="403"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="413"/>
         <source>Right-button mouse gestures</source>
         <translation>Gestá myšou s pravým tlačidlom</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="410"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="420"/>
         <source>A four-way arrow over what a drag moves; with the crosshair, the pointer jumps with it from grid point to grid point, and a handle within 12 pixels catches it and the click. Unticked: the system pointer, and handles are grabbed under the mouse only.</source>
         <translation>Šípka smerujúca na štyri strany označuje, čo sa pri ťahaní presúva; v režime krížika kurzor pri pohybe preskakuje z jedného bodu mriežky na druhý, pričom úchyt umiestnený v okruhu 12 pixelov tento pohyb (a kliknutie) zachytí. Ak táto možnosť nie je zaškrtnutá, systémový kurzor a úchyty reagujú iba vtedy, keď sa nad nimi nachádza ukazovateľ myši.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="413"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="423"/>
         <source>Four-way arrow and handle catching with the crosshair</source>
         <translation>Štvorsmerná šípka a uchopenie za rukoväť pomocou zameriavacieho kríža</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="420"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="430"/>
         <source>A symbol&apos;s text that reads from top to bottom once its symbol is turned is drawn the other way round, in the same place, so that upright texts all read from bottom to top, like the wires&apos; texts. Unticked by default: texts turn with their symbol.</source>
         <translation>Text symbolu, ktorý sa po otočení symbolu číta zhora nadol, sa vykresľuje opačne – na tom istom mieste, ale tak, aby sa všetky texty v správnej polohe čítali zdola nahor (podobne ako texty pri vodičoch). V predvolenom nastavení nie je táto možnosť zaškrtnutá: texty sa otáčajú spolu so symbolom.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="423"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="433"/>
         <source>Upright symbol texts read from bottom to top</source>
         <translation>Texty symbolov v zvislej polohe sa čítajú zdola nahor.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="430"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="440"/>
         <source>Dragging a symbol&apos;s text moves the text alone, and Shift+drag moves the symbol, as before version 0.100. Unticked by default: dragging a text moves its symbol, Shift+drag moves the text.</source>
         <translation>Ťahanie textu symbolu presunie iba samotný text, zatiaľ čo ťahanie s podržaním klávesu Shift presunie symbol – tak, ako to bolo pred verziou 0.100. V predvolenom nastavení je táto možnosť vypnutá: ťahanie textu presunie jeho symbol, ťahanie s klávesom Shift presunie text.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="433"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="443"/>
         <source>Drag symbol texts without holding Shift</source>
         <translation>Presúvajte texty symbolov bez držania klávesu Shift</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="440"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="450"/>
         <source>While a symbol is placed or dragged, a shaded line runs from each of its terminals to the terminal in line with it. Ticked by default.</source>
         <translation>Počas umiestňovania alebo presúvania symbolu vedie tieňovaná čiara od každého z jeho vývodov k vývodu, ktorý je s ním v jednej línii. V predvolenom nastavení je táto možnosť zaškrtnutá.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="443"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="453"/>
         <source>Help lines from the terminals of a dragged symbol</source>
         <translation>Pomocné čiary vychádzajúce z koncových bodov presúvaného symbolu</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="450"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="460"/>
         <source>A bar at each side of the drawing folds the panels of that side away, as in LibreOffice&apos;s sidebar, and a second click shows them again as they were. Unticked by default; the Display menu does the same with or without the bars.</source>
         <translation>Lišta na každej strane kresby umožňuje odsunúť panely na danej strane – podobne ako bočný panel v balíku LibreOffice – pričom po opätovnom kliknutí sa panely vrátia do pôvodného stavu. V predvolenom nastavení je táto možnosť nezaškrtnutá; ponuka Zobraziť (Display) umožňuje dosiahnuť rovnaký výsledok, a to aj bez použitia týchto líšt.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="453"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="463"/>
         <source>Bars beside the drawing to fold the side panels away</source>
         <translation>Šípky vedľa nákresu na odklopenie bočných panelov</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="460"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="470"/>
         <source>The docked panels can be made as narrow as one wants: their texts wrap and what cannot wrap scrolls sideways. Unticked: the panels keep the width their texts and fields need.</source>
         <translation>Ukotvené panely možno zúžiť podľa potreby: text v nich sa zalamuje, a to, čo sa zalomiť nedá, sa posúva do strán. Ak možnosť nie je zaškrtnutá, panely si zachovávajú šírku potrebnú pre svoj text a polia.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="463"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="473"/>
         <source>Narrow docks: wrap texts and scroll (applied the next time the programme is launched)</source>
         <translation>Úzke dokovacie panely: zalamovanie textu a posúvanie (prejaví sa pri ďalšom spustení programu)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="470"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="480"/>
         <source>A corner or T-junction placed where one already stands takes its place, and its wires go to the new one. Unticked by default: both stay.</source>
         <translation>Roh alebo T-spojenie umiestnená tam, kde už stojí jedna, zaberie jej miesto a jej vodiče idú do novej. Predvolene nezaškrtnuté: obe zostanú.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="473"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="483"/>
         <source>A new corner or T-junction replaces the one under it</source>
         <translation>Nový roh alebo T-spoj nahrádza ten, ktorý sa nachádza pod ním.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="480"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="490"/>
         <source>Printing and exporting ask first when symbols, texts, shapes, pictures or tables lie outside the sheet, as they are cut off or left out; saving says so in the status bar.</source>
         <translation>Pri tlači a exportovaní sa zobrazí otázka v prípade, že sa symboly, texty, tvary, obrázky alebo tabuľky nachádzajú mimo plochy strany – v takom prípade by boli orezané alebo vynechané; pri ukladaní sa táto informácia zobrazuje v stavovom riadku.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="483"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="493"/>
         <source>Warn about items outside the sheet</source>
         <translation>Upozorniť na položky mimo listu</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="490"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="500"/>
         <source>Show default guides (applies from the next time the programme is launched)</source>
         <translation>Zobraziť predvolené vodiace čiary (platí od nasledujúceho spustenia programu)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="504"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="514"/>
         <source>Use &amp;Windows (applied at the next launch of QElectroTech)</source>
         <translation>Použiť &amp;okná (použije sa pri budúcom spustení QElectroTechu)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="511"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="521"/>
         <source>Use &amp;tabs (applied at the next launch of QElectroTech)</source>
         <translation>Použiť &amp;karty (použije sa pri budúcom spustení QElectroTechu)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="550"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="560"/>
         <source>High pixel density (hdpi) displays scaling method (applied to the next launch of QElectroTech) :</source>
         <translation>Spôsob zmeny veľkosti obrazovky s vysokou hustotou pixelov (HDPI) (použije sa pri budúcom spustení QElectroTechu):</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="623"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="633"/>
         <source>Automatically number pasted or duplicated elements that follow a numbering</source>
         <translation>Automaticky číslovať vložené alebo duplikované prvky, ktoré nasledujú po číslovaní.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="626"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="636"/>
         <source>A pasted element receives the next number of its numbering instead of the copied element&apos;s name, and the numbering advances.</source>
         <translation>Vložený prvok preberá nasledujúce číslo zo svojho číslovania namiesto názvu skopírovaného prvku a číslovanie sa posúva ďalej.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="633"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="643"/>
         <source>A small hidden file beside the project says who has it open. Someone else opening it is told, and can open it read-only. Turn this off if your shared drive does not cope with it.</source>
         <translation>Malý skrytý súbor vedľa projektu ukazuje, kto ho má otvorený. Ďalší človek, ktorý ho otvorí, dostane upozornenie a môže ho otvoriť len na čítanie. Vypnite to, ak to váš zdieľaný disk nezvláda.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="636"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="646"/>
         <source>Tell others who has a project open (lock file beside the project)</source>
         <translation>Oznamovať ostatným, kto má projekt otvorený (súbor zámku vedľa projektu)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="650"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="660"/>
         <source>Allow running JavaScript scripts (Project &gt; Run a script, and --run)</source>
         <translation>Povoliť spúšťanie skriptov JavaScript (Project &gt; Run a script a --run)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="653"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="663"/>
         <source>A script runs with your permissions: it can read and modify the open project and write files. Disabled by default; only run scripts whose origin you know.</source>
         <translation>Skript sa spúšťa s vašimi oprávneniami: môže čítať a upravovať otvorený projekt a zapisovať súbory. Štandardne je zakázaný; spúšťajte len skripty, ktorých pôvod poznáte.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="660"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="670"/>
         <source>Allow an AI assistant to act on the open project (live mode)</source>
         <translation>Umožniť asistentovi s umelou inteligenciou pracovať na otvorenom projekte (režim naživo)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="663"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="673"/>
         <source>An assistant connected through the MCP server can then run scripts on the open project, as you watch. A warning is shown at every start while this setting is on. Takes effect at the next start; unticking it closes the connection at once.</source>
         <translation>Asistent pripojený cez server MCP potom môže v otvorenom projekte spúšťať skripty, zatiaľ čo vy to sledujete. Pri každom spustení sa zobrazí upozornenie, pokiaľ je toto nastavenie aktívne. Zmena sa prejaví pri nasledujúcom spustení; zrušenie zaškrtnutia okamžite ukončí pripojenie.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="670"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="680"/>
         <source>Enable chained folio reports for report elements</source>
         <translation>Povoliť reťazené zostavy pre prvky zostavy</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="673"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="683"/>
         <source>When enabled, report elements (cross-references) across folios with matching labels are automatically chained together. Newly created projects will have this enabled automatically.</source>
         <translation>Po aktivácii sa prvky výkazu (krížové odkazy) naprieč listami, ktoré majú zhodné označenia, automaticky vzájomne prepoja. V novo vytvorených projektoch bude táto funkcia aktivovaná automaticky.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="680"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="690"/>
         <source>Previous versions kept when saving a project</source>
         <translation>Predchádzajúce verzie uchovávané pri ukladaní projektu</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="683"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="690"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="693"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="700"/>
         <source>Before a project is saved, the file as it was is copied to a folder beside it, named after the project with &quot;-backups&quot;. Only the newest are kept.</source>
         <translation>Pred uložením projektu sa súbor v pôvodnom stave skopíruje do priečinka vedľa neho, pomenovaného podľa projektu s príponou „-backups“. Uchovávajú sa len najnovšie.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="693"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="703"/>
         <source>None</source>
         <translation>Žiadne</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="703"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="713"/>
         <source>Reopen the projects of the last session at start</source>
         <translation>Pri spustení znova otvoriť projekty z poslednej relácie</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="706"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="716"/>
         <source>The projects open when QElectroTech was last left are opened again, unless it is started with a file to open.</source>
         <translation>Projekty, ktoré boli otvorené pri poslednom ukončení programu QElectroTech, sa znova otvoria – pokiaľ však program nebol spustený s požiadavkou na otvorenie konkrétneho súboru.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="713"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="723"/>
         <source>Offer to restore automatic backups at start</source>
         <translation>Ponúknuť obnovenie automatických záloh pri spustení</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="716"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="726"/>
         <source>After a crash, the automatic backups (made every few minutes, see &quot;Automatic backup of projects&quot; above) are offered at the next start. Unticked, they are kept but not offered, the status bar says how many there are, and they are offered again once this is ticked. Not the same as the option below, which keeps a copy after every edit.</source>
         <translation>Po páde programu sa pri jeho ďalšom spustení ponúknu automatické zálohy (vytvárané každých pár minút; pozri časť „Automatické zálohovanie projektov“ vyššie). Ak túto možnosť nezaškrtnete, zálohy sa síce zachovajú, ale nebudú sa ponúkať; v stavovom riadku sa zobrazí informácia o ich počte a po zaškrtnutí tejto voľby sa opäť ponúknu. Nejde o to isté ako v prípade nižšie uvedenej možnosti, ktorá vytvára kópiu po každej úprave.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="723"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="733"/>
         <source>After a crash, offer projects as they were after their last edit (experimental)</source>
         <translation>Po páde aplikácie ponúknuť projekty v stave, v akom boli po poslednej úprave (experimentálne)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="726"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="736"/>
         <source>While a project is open, QElectroTech keeps a copy of it in its data folder, saved after every edit. If QElectroTech does not close normally, the next start offers that copy with the recovery files.</source>
         <translation>Kým je projekt otvorený, QElectroTech uchováva jeho kópiu vo svojom dátovom priečinku, pričom táto kópia sa aktualizuje po každej úprave. Ak sa program QElectroTech neukončí štandardným spôsobom, pri nasledujúcom spustení sa táto kópia ponúkne v rámci súborov na obnovenie.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="733"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="743"/>
         <source>Offer saving a project as one database file, .qetdb (experimental)</source>
         <translation>Ponúknuť uloženie projektu ako jedného databázového súboru, .qetdb (experimentálne)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="736"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="746"/>
         <source>Save As then offers .qetdb: the whole project in one SQLite file. The format may still change; keep a .qet or .qetz copy of projects that matter.</source>
         <translation>Možnosť „Uložiť ako“ následne ponúka formát .qetdb: celý projekt v jednom súbore SQLite. Tento formát sa ešte môže zmeniť; preto si pre dôležité projekty ponechajte kópiu vo formáte .qet alebo .qetz.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="795"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="805"/>
         <source>Company collection directory</source>
         <translation>Adresár s podnikovou zbierkou</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="830"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="840"/>
         <source>Create or change the prefix of the user collection&apos;s folders (qet_labels.xml file)</source>
         <extracomment>tooltip of the button opening the prefix configuration dialog of the user collection</extracomment>
         <translation>Vytvorte alebo zmeňte predponu priečinkov používateľskej kolekcie (súbor qet_labels.xml)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="833"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="843"/>
         <source>Configure prefixes…</source>
         <extracomment>button opening the dialog where the folder prefixes of the user collection are configured</extracomment>
         <translation>Konfigurovať predpony…</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="847"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="857"/>
         <source>Company title-block directory</source>
         <translation>Adresár s podnikovými záhlaviami výkresov</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="875"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="885"/>
         <source>User Macro Directory</source>
         <translation>Adresár používateľských makier</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="938"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="948"/>
         <source>Materials list file</source>
         <translation>Súbor so zoznamom materiálov</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="947"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="957"/>
         <source>Materials list used to fill in a symbol&apos;s items</source>
         <extracomment>tooltip of the material file path field</extracomment>
         <translation>Zoznam materiálov použitý na vyplnenie položiek symbolu</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="953"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="994"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="963"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1004"/>
         <source>Not set</source>
         <extracomment>hint shown when no material file is configured yet
 ----------
@@ -9444,85 +9454,85 @@ hint shown when no cable type file is configured yet</extracomment>
         <translation>Nenastavené</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="967"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="977"/>
         <source>Create the list file with its headers</source>
         <extracomment>tooltip of the button creating the material file with its header line</extracomment>
         <translation>Vytvorte súbor zoznamu vrátane hlavičiek</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="970"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1011"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="980"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1021"/>
         <source>Create...</source>
         <translation>Vytvoriť...</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="979"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="989"/>
         <source>Cable type list file</source>
         <translation>Súbor so zoznamom typov káblov</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="988"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="998"/>
         <source>Directory of the cable types used to define a cable (number of cores, colors, cross-section)</source>
         <extracomment>tooltip of the cable type file path field</extracomment>
         <translation>Zoznam typov káblov používaných na definovanie kábla (počet žíl, farby, prierez)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1008"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1018"/>
         <source>Create the cable type list file with its header line</source>
         <extracomment>tooltip of the button creating the cable type file with its header line</extracomment>
         <translation>Vytvorte súbor so zoznamom typov káblov vrátane riadku so záhlavím.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1066"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1076"/>
         <source>Languages</source>
         <translation>Jazyky</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1109"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1119"/>
         <source>texts</source>
         <translation>Texty</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1129"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1139"/>
         <source>Elements texts</source>
         <translation>Texty prvkov</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1142"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1208"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1254"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1152"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1218"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1264"/>
         <source>Font:</source>
         <translation>Písmo:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1152"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1215"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1162"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1225"/>
         <source>°</source>
         <translation>°</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1162"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1172"/>
         <source>Length :</source>
         <translation>Dĺžka:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1172"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1201"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1182"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1211"/>
         <source>Rotation :</source>
         <translation>Otočenie:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1195"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1205"/>
         <source>Independent texts</source>
         <translation>Nezávislé texty</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1248"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1258"/>
         <source>Other texts</source>
         <translation>Iné texty</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1284"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1294"/>
         <source>Cable texts</source>
         <translation>Texty káblov</translation>
     </message>
@@ -9531,7 +9541,7 @@ hint shown when no cable type file is configured yet</extracomment>
         <translation type="vanished">Označenie, typ, závod, lokalita, dĺžka:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1313"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1323"/>
         <source>Font of the texts written along the cable line; a cable which has its own keeps it.</source>
         <translation>Typ písma textov vedených pozdĺž línie kábla; kábel, ktorý má svoj vlastný, si ho aj zachováva.</translation>
     </message>
@@ -9540,7 +9550,7 @@ hint shown when no cable type file is configured yet</extracomment>
         <translation type="vanished">Farby žíl (všetky):</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1346"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1356"/>
         <source>Font of the core colors written along the line; a cable which has its own keeps it.</source>
         <translation>Označenie základných farieb je uvedené pozdĺž vedenia; kábel, ktorý má vlastné označenie, si ho zachováva.</translation>
     </message>
@@ -9549,53 +9559,53 @@ hint shown when no cable type file is configured yet</extracomment>
         <translation type="vanished">Zarovnanie textu:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1366"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1376"/>
         <source>Where the texts of a cable stop relative to the start of its line; a cable which has its own keeps it.</source>
         <translation>Kde sa texty kábla končia vzhľadom na začiatok jeho riadku; kábel, ktorý má vlastné texty, si ich ponecháva.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1370"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1380"/>
         <source>Right aligned</source>
         <translation>Zarovnané vpravo</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1375"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1385"/>
         <source>Centred</source>
         <translation>Na stred</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1380"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1390"/>
         <source>Left aligned</source>
         <translation>Zarovnané vľavo</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1452"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1462"/>
         <source>The Grid must be active to see the changes.</source>
         <translation>Aby boli zmeny viditeľné, mriežka musí byť zapnutá.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1498"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1508"/>
         <source>Grid for texts moved with the mouse</source>
         <translation>Mriežka pre texty posúvané myšou</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1501"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1511"/>
         <source>Fraction of the sheet grid. Hold Ctrl while moving to place freely.</source>
         <translation>Časť mriežky listu. Pri presúvaní podržte kláves Ctrl pre voľné umiestnenie.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1521"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1531"/>
         <source>Keyboard movement: 1 - 30</source>
         <translation>Posunutie predmetu v mriežke pomocou klávesnice: 1 - 30</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1571"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1581"/>
         <source>DiagramEditor (key: left / right) xGrid</source>
         <comment>fr: DiagramEditor (touche :   gauche / droite)  xGrid</comment>
         <translation>Posun v mriežke editora výkresu, súradnica x: klávesa šípky vľavo/vpravo</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1578"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1588"/>
         <source>DiagramEditor (key: up / down) yGrid</source>
         <translation>Posun v mriežke editora výkresu, súradnica y: klávesa šípky hore/dole</translation>
     </message>
@@ -9604,75 +9614,75 @@ hint shown when no cable type file is configured yet</extracomment>
         <translation type="vanished">Posunutie predmetu v mriežke pomocou klávesnice pri stlačení klávesy Alt: 1 - 9</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1614"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1624"/>
         <source>DiagramEditor (key: left / right) xGrid</source>
         <translation>Posun v mriežke editora výkresu, súradnica x: klávesa šípky vľavo/vpravo</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1643"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1653"/>
         <source>DiagramEditor (key: up / down) yGrid</source>
         <comment>fr: DiagramEditor (touche :  haut / bas)  yGrid</comment>
         <translation>Posun v mriežke editora výkresu, súradnica y: klávesa šípky hore/dole</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1688"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1698"/>
         <source>View grid</source>
         <translation>Zobraziť mriežku</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1785"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1792"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1795"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1802"/>
         <source>max:</source>
         <translation>max:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1873"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1883"/>
         <source>When saving a symbol: refuse two terminals with the same name, and report terminals without a name (IEC 61666).</source>
         <translation>Pri ukladaní symbolu: odmietnuť dva vývody s rovnakým názvom a nahlásiť vývody bez názvu (IEC 61666).</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1876"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1886"/>
         <source>Check terminal names when saving</source>
         <translation>Pri ukladaní skontrolovať názvy svoriek</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1746"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1756"/>
         <source>Point-size in diagram-editor: 1 - 5</source>
         <translation>Veľkosť bodu v editore schém: 1–5</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1585"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1595"/>
         <source>Move by the grid step instead (Display &gt; Grid step)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1608"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1618"/>
         <source>Keyboard movement with the Ctrl key: 1 - 9</source>
         <translation>Posun klávesnicou s klávesom Ctrl: 1 - 9</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1694"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1799"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1704"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1809"/>
         <source>min:</source>
         <translation>min:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1806"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1816"/>
         <source>Point-size in element-editor: 1 - 5</source>
         <translation>Veľkosť bodu v editore prvkov: 1–5</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1830"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1840"/>
         <source>Editor</source>
         <translation>Editor</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1838"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1848"/>
         <source>Max. parts in Element Editor List</source>
         <translation>Max. počet dielov v zozname editora prvkov</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="643"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="653"/>
         <source>Do not store the labels of items in the copy paste</source>
         <translation>Neukládať označenia položiek do schránky (pri kopírovaní a vkladaní).</translation>
     </message>
@@ -9733,220 +9743,220 @@ hint shown when no cable type file is configured yet</extracomment>
         <translation>Zakázané</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="213"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="214"/>
         <source>Enabled by the QET_ENABLE_SCRIPTING environment variable; this setting has no effect while it is set.</source>
         <translation>Aktivuje sa pomocou premennej prostredia QET_ENABLE_SCRIPTING; toto nastavenie nemá žiadny účinok, kým je nastavené.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="357"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="358"/>
         <source>Not set (default: %1)</source>
         <comment>hint shown in the material file field when no file is configured yet</comment>
         <translation>Nenastavené (predvolené: %1)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="368"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="369"/>
         <source>Not set (default: %1)</source>
         <comment>hint shown in the cable type file field when no file is configured yet</comment>
         <translation>Nenastavené (predvolené: %1)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="665"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="667"/>
         <source>General</source>
         <comment>configuration page title</comment>
         <translation>Obecné</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="683"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="685"/>
         <source>System</source>
         <translation>Systém</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="687"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="689"/>
         <source>Arabic</source>
         <translation>Arabčina</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="688"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="690"/>
         <source>Brazilian</source>
         <translation>Brazílčina</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="689"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="691"/>
         <source>Catalan</source>
         <translation>Katalánčina</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="690"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="692"/>
         <source>Czech</source>
         <translation>Čeština</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="691"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="693"/>
         <source>German</source>
         <translation>Nemčina</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="692"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="694"/>
         <source>Danish</source>
         <translation>Dánčina</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="693"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="695"/>
         <source>Greek</source>
         <translation>Grétčina</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="694"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="696"/>
         <source>English</source>
         <translation>Angličtina</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="695"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="697"/>
         <source>Spanish</source>
         <translation>Španielčina</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="696"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="698"/>
         <source>French</source>
         <translation>Francúzčina</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="697"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="699"/>
         <source>Croatian</source>
         <translation>Chorvatčina</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="698"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="700"/>
         <source>Italian</source>
         <translation>Taliančina</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="699"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="701"/>
         <source>Japanese</source>
         <translation>Japončina</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="700"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="702"/>
         <source>Korean</source>
         <translation>Kórejčina</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="701"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="703"/>
         <source>Latvian</source>
         <translation>Lotyščina</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="702"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="704"/>
         <source>Polish</source>
         <translation>Poľština</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="703"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="705"/>
         <source>Portuguese</source>
         <translation>Portugalčina</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="704"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="706"/>
         <source>Romanian</source>
         <translation>Rumunčina</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="705"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="707"/>
         <source>Russian</source>
         <translation>Ruština</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="706"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="708"/>
         <source>Slovak</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="707"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="709"/>
         <source>Slovenian</source>
         <translation>Slovinčina</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="708"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="710"/>
         <source>Dutch</source>
         <translation>Holandčina</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="709"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="711"/>
         <source>Norwegian</source>
         <translation>Nórčina</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="710"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="712"/>
         <source>Belgium-Flemish</source>
         <translation>Belgičtina flámčtina</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="711"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="713"/>
         <source>Turkish</source>
         <translation>Turečtina</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="712"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="714"/>
         <source>Hungarian</source>
         <translation>Maďarčina</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="713"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="715"/>
         <source>Mongolian</source>
         <translation>Mongolčina</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="714"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="716"/>
         <source>Ukrainian</source>
         <translation>Ukrajinčina</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="715"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="717"/>
         <source>Chinese</source>
         <translation>Čínština</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="716"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="718"/>
         <source>Chinese (Traditional)</source>
         <translation>Čínština (tradičná)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="717"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="719"/>
         <source>Swedish</source>
         <translation>Švédčina</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="793"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="795"/>
         <source>Cable text font</source>
         <translation>Písmo textu kábla</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="811"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="813"/>
         <source>Core colors font</source>
         <translation>Písmo farieb žíl</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="840"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="842"/>
         <source>Company collection path</source>
         <translation>Cesta k podnikovej zbierke</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="868"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="870"/>
         <source>Company title-blocks</source>
         <translation>Cesta k podnikovým záhlaviam výkresov</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="896"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="898"/>
         <source>User macro path</source>
         <translation>Cesta k používateľským makrám</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="938"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="940"/>
         <source>Folder not found</source>
         <translation>Priečinok sa nenašiel</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="939"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="941"/>
         <source>The user collection folder:
 %1
 does not exist and could not be created.</source>
@@ -9955,12 +9965,12 @@ does not exist and could not be created.</source>
 neexistuje a nepodarilo sa ho vytvoriť.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="947"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="949"/>
         <source>No subfolder</source>
         <translation>Žiadny podpriečinok</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="948"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="950"/>
         <source>The user collection:
 %1
 has no subfolder, so there is no prefix to configure.</source>
@@ -9969,34 +9979,34 @@ has no subfolder, so there is no prefix to configure.</source>
 nemá žiadny podpriečinok, takže nie je potrebné konfigurovať žiadnu predponu.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="956"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="958"/>
         <source>Prefix file cannot be read</source>
         <translation>Súbor predpony sa nedá prečítať</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="965"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="967"/>
         <source>Prefix file damaged</source>
         <translation>Súbor predpony je poškodený</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="966"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="968"/>
         <source>The file %1 is not a valid XML file:
 %2</source>
         <translation>Súbor %1 nie je platný súbor XML:
 %2</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="970"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="972"/>
         <source>Fix the file</source>
         <translation>Opravte súbor</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="971"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="973"/>
         <source>Rebuild</source>
         <translation>Prestavba</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="972"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="974"/>
         <source>Nothing has been changed yet.
 
 “Fix the file”: this window closes without changing anything. Open the file in a text editor at the place shown, fix it, then run this command again.
@@ -10009,36 +10019,36 @@ nemá žiadny podpriečinok, takže nie je potrebné konfigurovať žiadnu predp
 „Znovu zostaviť“: strom priečinkov sa vytvorí nanovo, ale všetky aktuálne predpony sa stratia. Pôvodný súbor sa pred nahradením uchová pod názvom qet_labels.xml.bak.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="981"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="983"/>
         <source>File: %1</source>
         <translation>Súbor: %1</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1005"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1007"/>
         <source>Select the materials list file</source>
         <translation>Vyberte súbor so zoznamom materiálov</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1007"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1030"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1071"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1094"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1009"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1032"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1073"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1096"/>
         <source>CSV files (*.csv)</source>
         <translation>Súbory csv (*.csv)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1028"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1030"/>
         <source>Create the materials list file</source>
         <translation>Vytvorte súbor so zoznamom materiálov</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1046"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1048"/>
         <source>Cannot create</source>
         <translation>Nie je možné vytvoriť</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1047"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1111"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1049"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1113"/>
         <source>Cannot create the file:
 %1
 %2</source>
@@ -10047,32 +10057,32 @@ nemá žiadny podpriečinok, takže nie je potrebné konfigurovať žiadnu predp
 %2</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1069"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1071"/>
         <source>Select the cable types file</source>
         <translation>Vyberte súbor typov káblov</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1092"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1094"/>
         <source>Create the cable types file</source>
         <translation>Vytvorte súbor typov káblov</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1110"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1112"/>
         <source>Cannot be created</source>
         <translation>Nedá sa vytvoriť</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1141"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1143"/>
         <source>Values that are too high might cause the application to crash</source>
         <translation>Príliš vysoké hodnoty môžu spôsobiť pád aplikácie</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1176"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1178"/>
         <source>Experimental feature</source>
         <translation>Experimentálna funkcia</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1177"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1179"/>
         <source>WARNING:
 Any setting other than “No rounding” may cause rendering errors in the project, depending on:
 
@@ -10087,7 +10097,7 @@ Akékoľvek nastavenie okrem „Bez zaokrúhľovania“ (No rounding) môže sp�
 3 – úpravy projektu na inom počítači a/alebo obrazovke, ktoré nemajú rovnaké nastavenia ako v bodoch 1 a 2.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="320"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="330"/>
         <source>Hide the grid when its dots are closer on screen than</source>
         <translation>Skryť mriežku, keď sú jej body na obrazovke bližšie ako</translation>
     </message>
@@ -10096,7 +10106,7 @@ Akékoľvek nastavenie okrem „Bez zaokrúhľovania“ (No rounding) môže sp�
         <translation type="vanished">Pri ďalšom oddialení sa body mriežky ľubovoľného kroku vynechajú; kde, ukazuje zväčšenie v stavovom riadku</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="333"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="343"/>
         <source> px</source>
         <translation> px</translation>
     </message>
@@ -21118,7 +21128,7 @@ Chcete ho nahradiť?</translation>
         <translation>Upraviť vlastnosti skupiny svoriek</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/UndoCommand/sortterminalstripcommand.cpp" line="34"/>
+        <location filename="../sources/TerminalStrip/UndoCommand/sortterminalstripcommand.cpp" line="35"/>
         <source>Sort terminal block %1</source>
         <translation>Triediť svorkovnicu %1</translation>
     </message>
@@ -27385,12 +27395,12 @@ Ostatné polia sa nepoužívajú.</translation>
 <context>
     <name>TerminalStripAutoImport</name>
     <message>
-        <location filename="../sources/TerminalStrip/terminalstripautoimport.cpp" line="250"/>
+        <location filename="../sources/TerminalStrip/terminalstripautoimport.cpp" line="256"/>
         <source>Re-group all terminals</source>
         <translation>Preskupiť všetky svorky</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/terminalstripautoimport.cpp" line="252"/>
+        <location filename="../sources/TerminalStrip/terminalstripautoimport.cpp" line="258"/>
         <source>Assign free terminals</source>
         <translation>Priradiť voľné svorky</translation>
     </message>
@@ -27642,32 +27652,100 @@ Ostatné polia sa nepoužívajú.</translation>
         <translation>LED:</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="70"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="75"/>
         <source>All manufacturers</source>
         <translation>Všetci výrobcovia</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="87"/>
         <source>Sort the terminals the way the drawing is laid out, and bring the bridges drawn there in with them. What the drawing brought is read-only here: it is changed in the drawing or not at all.</source>
-        <translation>Usporiadajte svorky podľa rozloženia na výkrese a doplňte ich o prepojky, ktoré sú na ňom znázornené. Prvky prevzaté z výkresu sú tu určené len na čítanie – možno ich upraviť buď priamo vo výkrese, alebo vôbec.</translation>
+        <translation type="vanished">Usporiadajte svorky podľa rozloženia na výkrese a doplňte ich o prepojky, ktoré sú na ňom znázornené. Prvky prevzaté z výkresu sú tu určené len na čítanie – možno ich upraviť buď priamo vo výkrese, alebo vôbec.</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="233"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="95"/>
+        <source>Sort the terminals the way the drawing is laid out, or by label when the general settings ask for it, and bring the bridges drawn there in with them. What the drawing brought is read-only here: it is changed in the drawing or not at all.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="242"/>
         <source>Independent terminals</source>
         <translation>Nezávislé svorky</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="315"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="328"/>
         <source>Modify terminal strip properties</source>
         <translation>Upraviť vlastnosti svorkovnic</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1076"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="612"/>
+        <source>Column searched by the filter</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="616"/>
+        <source>Filter, for example 24V or K1*</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="617"/>
+        <source>Text searched in the column, whatever the case and the spaces: &quot;24 v&quot; finds 24V. * stands for any text and ? for one character. Return selects the terminals found.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="622"/>
+        <source>Hide the others</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="624"/>
+        <source>Show only the terminals found. A terminal of several levels stays whole when one of its levels is found.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="629"/>
+        <source>Whole rows</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="631"/>
+        <source>Bridge, level %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="634"/>
+        <source>What is selected: whole rows for the type, the function, the LED, the cable or the move, or the cells of one level to bridge them.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="638"/>
+        <source>Select</source>
+        <translation type="unfinished">Výberový režim</translation>
+    </message>
+    <message>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="639"/>
+        <source>Select the terminals found</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="680"/>
+        <source>All columns</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="816"/>
+        <source>%n found</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1386"/>
         <source>A bridge of your own</source>
         <translation>Vlastný mostík</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1077"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1387"/>
         <source>This bridge is set here only: it is not added to the drawing, where bridges belong.
 
 Set it here anyway?</source>
@@ -27676,37 +27754,37 @@ Set it here anyway?</source>
 Napriek tomu ho umiestniť sem?</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1288"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1598"/>
         <source>Add spare terminals</source>
         <translation>Pridať rezervné svorky</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1294"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1604"/>
         <source>Number of terminals :</source>
         <translation>Počet svoriek:</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1296"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1606"/>
         <source>Number the terminals</source>
         <translation>Očíslovať svorky</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1301"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1611"/>
         <source>Prefix :</source>
         <translation>Predpona:</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1306"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1616"/>
         <source>First number :</source>
         <translation>Prvé číslo:</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1311"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1621"/>
         <source>Same terminal as %1 (type, section, width, color, manufacturer...)</source>
         <translation>Rovnaká svorka ako %1 (typ, prierez, šírka, farba, výrobca...)</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1313"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1623"/>
         <source>the selected terminal</source>
         <translation>vybraná svorka</translation>
     </message>

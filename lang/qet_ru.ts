@@ -8834,49 +8834,49 @@ that you create. Text and number inputs are
         <translation>Использовать системные цвета</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="854"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="856"/>
         <source>User Collection Path</source>
         <translation>Путь к коллекции пользователя</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="882"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="884"/>
         <source>User Title blocks Path</source>
         <translation>Путь к штампам пользователя</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="826"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="828"/>
         <source>Path of the Common Collection</source>
         <translation>Путь к общей коллекции</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="803"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="817"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="855"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="883"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="897"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="918"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="813"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="827"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="865"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="893"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="907"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="928"/>
         <source>By default</source>
         <translation>По умолчанию</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="808"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="822"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="860"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="888"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="902"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="923"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="960"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1001"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="818"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="832"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="870"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="898"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="912"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="933"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="970"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1011"/>
         <source>Browse...</source>
         <translation>Выбрать...</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="931"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="941"/>
         <source>(Reload the elements collections to apply the changes)</source>
         <translation>(Обновите коллекции элементов, чтобы применить изменения)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="581"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="591"/>
         <source>Projects</source>
         <translation>Проекты</translation>
     </message>
@@ -8886,41 +8886,41 @@ that you create. Text and number inputs are
         <translation>Использовать жесты сенсорной панели</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="587"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="597"/>
         <source>Use sheet numbers instead of their position in the project</source>
         <translation>Использовать номера листов вместо их положения в проекте</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="769"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="779"/>
         <source>Number the title block columns from 0 (1 otherwise)</source>
         <extracomment>Choix de l&apos;increment de depart 1 ou 0</extracomment>
         <translatorcomment>Выбор начального шага 1 или 0</translatorcomment>
         <translation>Нумеровать столбцы расположения элементов с 0 (в противном случае — 1)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="604"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="614"/>
         <source>Disabled</source>
         <translation>Отключено</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="610"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="620"/>
         <source> min</source>
         <comment>minute</comment>
         <translation> мин</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1032"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1042"/>
         <source>Highlight freshly integrated elements in the panel</source>
         <translation>Выделять недавно добавленные элементы в панели</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1039"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1049"/>
         <source>Element may include information about its authors, license, or other useful information. Specify the default value of this textfield for new elements below:</source>
         <translation>Каждый элемент содержит информацию о его авторах, его лицензии или любую другую информацию, которую вы сочтете полезной в свободном доступе.
 Здесь вы можете указать значение этого поля по умолчанию для создаваемых вами элементов:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1075"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1085"/>
         <source>Applied to the next launch of QElectroTech</source>
         <translation>Применится при следующем запуске QElectroTech</translation>
     </message>
@@ -8930,77 +8930,77 @@ that you create. Text and number inputs are
         <translation>Форма</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="594"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="604"/>
         <source>Automatic backup of projects (applied at the next launch of QElectroTech)</source>
         <translation>Автоматическое сохранение проектов (применится при следующем запуске QElectroTech)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="777"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="787"/>
         <source>Collections</source>
         <translation>Коллекции</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="783"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="793"/>
         <source>Access the collections</source>
         <translation>Расположение коллекций</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="840"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="850"/>
         <source>Common collection directory</source>
         <translation>Каталог общей коллекции</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="868"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="878"/>
         <source>User collection directory</source>
         <translation>Каталог коллекции пользователя</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="910"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="920"/>
         <source>User title blocks directory</source>
         <translation>Каталог штампов пользователя</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1023"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1033"/>
         <source>Elements management</source>
         <translation>Управление элементами</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1115"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1125"/>
         <source>Here you can define the default appearance of the different texts of QElectroTech</source>
         <translation>Определение установок по умолчанию для различных текстов QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1290"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1300"/>
         <source>Designation, type, plant, location, length:</source>
         <translation>Обозначение, тип, установка, расположение, длина:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1323"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1333"/>
         <source>Core colors (all of them):</source>
         <translation>Цвета жил (все):</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1356"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1366"/>
         <source>Text alignment:</source>
         <translation>Выравнивание текста:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1405"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1415"/>
         <source>Grid + Keyboard</source>
         <translation>Сетка и клавиатура</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1411"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1421"/>
         <source>Grid: 1 - 30</source>
         <translation>Сетка: 1-30</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1478"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1488"/>
         <source>DiagramEditor xGrid</source>
         <translation>Линии по горизонтали (X-линии)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1445"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1455"/>
         <source>DiagramEditor yGrid</source>
         <translation>Линии по вертикали (Y-линии)</translation>
     </message>
@@ -9096,356 +9096,366 @@ that you create. Text and number inputs are
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="214"/>
+        <source>Used when the automatic assignment makes a terminal strip and by &quot;Automatic position&quot; in the terminal manager. Unchecked: the way the plan is drawn, folio by folio then left to right, which keeps N and PE where they are drawn. Checked: by label, X1:2 before X1:10. A strip already made keeps its order until it is sorted again.</source>
+        <translation>Используется, когда автоматическое распределение создаёт клеммную колодку, и кнопкой «Автоматическое положение» в менеджере клеммных колодок. Не отмечено: в порядке чертежа, лист за листом, затем слева направо, что оставляет N и PE там, где они нарисованы. Отмечено: по метке, X1:2 перед X1:10. Уже созданная колодка сохраняет свой порядок, пока её не отсортируют снова.</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="217"/>
+        <source>Sort the terminal strips by label instead of the plan order</source>
+        <translation>Сортировать клеммные колодки по метке вместо порядка чертежа</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="224"/>
         <source>A new folio takes the group and sub-group of the folio before it</source>
         <translation>Новый лист получает группу и подгруппу предыдущего листа</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="217"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="227"/>
         <source>Only a group or sub-group typed on that folio is taken. Unchecked, a new folio has none and is in its plant and location.</source>
         <translation>Берётся только группа или подгруппа, введённая на этом листе. Если не отмечено, у нового листа их нет, и он относится к своей установке и расположению.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="224"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="234"/>
         <source>Ask for the device labels when placing a macro</source>
         <translation>Запрашивать обозначения устройств при вставке макроса</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="227"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="237"/>
         <source>Proposes the next free labels, which Accept All takes. Unchecked, a macro keeps its saved labels.</source>
         <translation>Предлагает следующие свободные обозначения, которые принимает «Принять всё». Если не отмечено, макрос сохраняет свои сохранённые обозначения.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="234"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="244"/>
         <source>When unticked, no conductors-per-terminal rule applies, whatever the projects&apos; settings.</source>
         <translation>Если снять флажок, никакое правило количества проводников на вывод не применяется, независимо от настроек проектов.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="237"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="247"/>
         <source>Apply the projects&apos; conductors-per-terminal rules</source>
         <translation>Применять правила проектов о количестве проводников на вывод</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="252"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="262"/>
         <source>Maximum conductors per terminal:</source>
         <translation>Максимум проводников на вывод:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="265"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="275"/>
         <source>For every project except those with their own settings. A new conductor that would take a terminal past this number is refused; conductors already drawn are not changed. 4 means two twin ferrules, one on each side of the screw.</source>
         <translation>Для всех проектов, кроме имеющих собственные настройки. Новый проводник, из-за которого количество на выводе превысило бы это число, отклоняется; уже нарисованные проводники не изменяются. 4 означает два сдвоенных наконечника, по одному с каждой стороны винта.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="268"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="278"/>
         <source>No limit</source>
         <translation>Без ограничений</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="292"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="302"/>
         <source>A sheet reference is a virtual point: it takes only one conductor, the one that continues on the other sheet.</source>
         <translation>Ссылка на лист — это виртуальная точка: к ней подключается только один проводник, тот, что продолжается на другом листе.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="295"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="305"/>
         <source>Only one conductor per sheet reference</source>
         <translation>Только один проводник на ссылку на лист</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="311"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="321"/>
         <source>Show the default grid (applied the next time the programme is launched)</source>
         <translation>Показать сетку по умолчанию (будет применено при следующем запуске)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="330"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="340"/>
         <source>Zoomed out further, the dots of any grid step are left out; the zoom shown in the status bar tells where. In pixels as the system scales them, so the same value suits a HiDPI screen</source>
         <translation>При большем отдалении точки каждого шага сетки пропускаются; масштаб в строке состояния показывает, где именно. В пикселях с учётом системного масштабирования, поэтому то же значение подходит для экрана HiDPI</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="370"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="380"/>
         <source>By default, a double-click inserts the element on the sheet; editing remains accessible from the context menu.</source>
         <translation>По умолчанию двойной щелчок вставляет элемент на страницу; доступ к редактированию по-прежнему можно получить через контекстное меню.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="373"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="383"/>
         <source>Double-clicking in the collection opens the element editor instead of inserting it</source>
         <translation>Двойной щелчок в коллекции открывает редактор элемента, а не вставляет его</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="380"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="390"/>
         <source>Ticked: a single list, best match first. Unticked: the collection tree, filtered by the search.</source>
         <translation>Отмечено: один список, с наилучшим совпадением вверху. Не отмечено: дерево коллекции, отфильтрованное по результатам поиска.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="383"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="393"/>
         <source>Show search results as a sorted list</source>
         <translation>Показывать результаты поиска в виде отсортированного списка</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="390"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="400"/>
         <source>After a click that selects an element or a conductor, the shortcut bar commands appear near the cursor and fade away when the mouse moves away.</source>
         <translation>После щелчка, выделяющего элемент или проводник, команды панели быстрого доступа появляются рядом с курсором и исчезают, когда курсор удаляется.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="393"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="403"/>
         <source>Show commands near the selection</source>
         <translation>Показать команды рядом с выделенным элементом</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="400"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="410"/>
         <source>Holding the right button and dragging in a direction launches a shortcut bar command. A simple right-click still opens the context menu, on button release.</source>
         <translation>Если удерживать правую кнопку мыши и перетащить курсор в каком-либо направлении, запускается команда из панели быстрого доступа. Обычный щелчок правой кнопкой мыши всегда открывает контекстное меню после отпускания кнопки.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="403"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="413"/>
         <source>Right-button mouse gestures</source>
         <translation>Действия правой кнопки мыши</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="410"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="420"/>
         <source>A four-way arrow over what a drag moves; with the crosshair, the pointer jumps with it from grid point to grid point, and a handle within 12 pixels catches it and the click. Unticked: the system pointer, and handles are grabbed under the mouse only.</source>
         <translation>Четырёхнаправленная стрелка над тем, что перемещает перетаскивание; с перекрестием указатель прыгает вместе с ним от точки сетки к точке сетки, а маркер в пределах 12 пикселей перехватывает его вместе со щелчком. Не отмечено: системный указатель, а маркеры захватываются только под мышью.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="413"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="423"/>
         <source>Four-way arrow and handle catching with the crosshair</source>
         <translation>Четырёхнаправленная стрелка и захват маркеров перекрестием</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="420"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="430"/>
         <source>A symbol&apos;s text that reads from top to bottom once its symbol is turned is drawn the other way round, in the same place, so that upright texts all read from bottom to top, like the wires&apos; texts. Unticked by default: texts turn with their symbol.</source>
         <translation>Текст символа, который после поворота символа читается сверху вниз, рисуется в обратном направлении на том же месте, чтобы все вертикальные тексты читались снизу вверх, как тексты проводов. По умолчанию не отмечено: тексты поворачиваются вместе с символом.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="423"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="433"/>
         <source>Upright symbol texts read from bottom to top</source>
         <translation>Вертикальные тексты символов читаются снизу вверх</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="430"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="440"/>
         <source>Dragging a symbol&apos;s text moves the text alone, and Shift+drag moves the symbol, as before version 0.100. Unticked by default: dragging a text moves its symbol, Shift+drag moves the text.</source>
         <translation>Перетаскивание текста символа перемещает только текст, а Shift+перетаскивание перемещает символ, как до версии 0.100. По умолчанию не отмечено: перетаскивание текста перемещает его символ, Shift+перетаскивание перемещает текст.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="433"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="443"/>
         <source>Drag symbol texts without holding Shift</source>
         <translation>Перетаскивать тексты символов без удержания Shift</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="440"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="450"/>
         <source>While a symbol is placed or dragged, a shaded line runs from each of its terminals to the terminal in line with it. Ticked by default.</source>
         <translation>При размещении или перетаскивании символа от каждой его клеммы к клемме на одной линии с ней тянется затенённая линия. По умолчанию отмечено.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="443"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="453"/>
         <source>Help lines from the terminals of a dragged symbol</source>
         <translation>Вспомогательные линии от клемм перетаскиваемого символа</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="450"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="460"/>
         <source>A bar at each side of the drawing folds the panels of that side away, as in LibreOffice&apos;s sidebar, and a second click shows them again as they were. Unticked by default; the Display menu does the same with or without the bars.</source>
         <translation>Полоса с каждой стороны чертежа сворачивает панели этой стороны, как боковая панель LibreOffice, а второй щелчок снова показывает их такими, как были. По умолчанию не отмечено; меню «Вид» делает то же самое с полосами или без них.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="453"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="463"/>
         <source>Bars beside the drawing to fold the side panels away</source>
         <translation>Полосы рядом с чертежом для сворачивания боковых панелей</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="460"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="470"/>
         <source>The docked panels can be made as narrow as one wants: their texts wrap and what cannot wrap scrolls sideways. Unticked: the panels keep the width their texts and fields need.</source>
         <translation>Закреплённые панели можно делать сколь угодно узкими: их тексты переносятся, а то, что не переносится, прокручивается вбок. Не отмечено: панели сохраняют ширину, нужную их текстам и полям.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="463"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="473"/>
         <source>Narrow docks: wrap texts and scroll (applied the next time the programme is launched)</source>
         <translation>Узкие панели: переносить тексты и прокручивать (применяется при следующем запуске программы)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="470"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="480"/>
         <source>A corner or T-junction placed where one already stands takes its place, and its wires go to the new one. Unticked by default: both stay.</source>
         <translation>Угол или Т-образное соединение, размещённое там, где уже есть одно, занимает его место, а его провода переходят к новому. По умолчанию не отмечено: остаются оба.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="473"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="483"/>
         <source>A new corner or T-junction replaces the one under it</source>
         <translation>Новый угол или Т-образное соединение заменяет то, что под ним</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="480"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="490"/>
         <source>Printing and exporting ask first when symbols, texts, shapes, pictures or tables lie outside the sheet, as they are cut off or left out; saving says so in the status bar.</source>
         <translation>Печать и экспорт сначала спрашивают, если символы, тексты, фигуры, изображения или таблицы находятся за пределами листа, так как они обрезаются или пропускаются; при сохранении это сообщается в строке состояния.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="483"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="493"/>
         <source>Warn about items outside the sheet</source>
         <translation>Предупреждать об объектах за пределами листа</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="490"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="500"/>
         <source>Show default guides (applies from the next time the programme is launched)</source>
         <translation>Показать подсказки по умолчанию (будет применено при следующем запуске)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="504"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="514"/>
         <source>Use &amp;Windows (applied at the next launch of QElectroTech)</source>
         <translation>Использовать &amp;окна (применится при следующем запуске QElectroTech)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="511"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="521"/>
         <source>Use &amp;tabs (applied at the next launch of QElectroTech)</source>
         <translation>Использовать &amp;вкладки (применится при следующем запуске QElectroTech)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="550"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="560"/>
         <source>High pixel density (hdpi) displays scaling method (applied to the next launch of QElectroTech) :</source>
         <translation>Способ масштабирования экранов с высокой плотностью пикселей (hdpi) (применится при следующем запуске QElectroTech):</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="623"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="633"/>
         <source>Automatically number pasted or duplicated elements that follow a numbering</source>
         <translation>Автоматически нумеровать вставленные или дублированные элементы, следующие нумерации</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="626"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="636"/>
         <source>A pasted element receives the next number of its numbering instead of the copied element&apos;s name, and the numbering advances.</source>
         <translation>Вставленный элемент получает следующий номер своей нумерации вместо имени скопированного элемента, и нумерация продвигается.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="633"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="643"/>
         <source>A small hidden file beside the project says who has it open. Someone else opening it is told, and can open it read-only. Turn this off if your shared drive does not cope with it.</source>
         <translation>Небольшой скрытый файл рядом с проектом показывает, кто его открыл. Другой человек, открывающий проект, получит предупреждение и сможет открыть его только для чтения. Отключите это, если ваш общий диск с этим не справляется.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="636"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="646"/>
         <source>Tell others who has a project open (lock file beside the project)</source>
         <translation>Сообщать другим, кто открыл проект (файл блокировки рядом с проектом)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="650"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="660"/>
         <source>Allow running JavaScript scripts (Project &gt; Run a script, and --run)</source>
         <translation>Разрешить выполнение скриптов JavaScript (Проект &gt; Запустить скрипт и --run)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="653"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="663"/>
         <source>A script runs with your permissions: it can read and modify the open project and write files. Disabled by default; only run scripts whose origin you know.</source>
         <translation>Скрипт запускается с вашими правами: он может читать и изменять открытый проект, а также записывать файлы. По умолчанию эта функция отключена; запускайте только те скрипты, источник которых вам известен.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="660"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="670"/>
         <source>Allow an AI assistant to act on the open project (live mode)</source>
         <translation>Разрешить ИИ-помощнику действовать в открытом проекте (живой режим)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="663"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="673"/>
         <source>An assistant connected through the MCP server can then run scripts on the open project, as you watch. A warning is shown at every start while this setting is on. Takes effect at the next start; unticking it closes the connection at once.</source>
         <translation>После этого помощник, подключённый через сервер MCP, сможет запускать скрипты в открытом проекте у вас на глазах. Пока этот параметр включён, при каждом запуске показывается предупреждение. Вступает в силу при следующем запуске; снятие флажка сразу закрывает соединение.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="670"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="680"/>
         <source>Enable chained folio reports for report elements</source>
         <translation>Включить цепочки ссылок на листы для элементов ссылок</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="673"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="683"/>
         <source>When enabled, report elements (cross-references) across folios with matching labels are automatically chained together. Newly created projects will have this enabled automatically.</source>
         <translation>Если включено, элементы ссылок (перекрёстные ссылки) на разных листах с одинаковыми метками автоматически объединяются в цепочку. В новых проектах это будет включено автоматически.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="680"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="690"/>
         <source>Previous versions kept when saving a project</source>
         <translation>Предыдущие версии, сохраняемые при сохранении проекта</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="683"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="690"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="693"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="700"/>
         <source>Before a project is saved, the file as it was is copied to a folder beside it, named after the project with &quot;-backups&quot;. Only the newest are kept.</source>
         <translation>Перед сохранением проекта файл в прежнем виде копируется в папку рядом с ним, названную по имени проекта с «-backups». Хранятся только самые новые.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="693"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="703"/>
         <source>None</source>
         <translation>Нет</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="703"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="713"/>
         <source>Reopen the projects of the last session at start</source>
         <translation>При запуске снова открывать проекты последнего сеанса</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="706"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="716"/>
         <source>The projects open when QElectroTech was last left are opened again, unless it is started with a file to open.</source>
         <translation>Проекты, открытые при последнем выходе из QElectroTech, открываются снова, если программа не запущена с файлом для открытия.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="713"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="723"/>
         <source>Offer to restore automatic backups at start</source>
         <translation>Предлагать при запуске восстановить автоматические резервные копии</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="716"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="726"/>
         <source>After a crash, the automatic backups (made every few minutes, see &quot;Automatic backup of projects&quot; above) are offered at the next start. Unticked, they are kept but not offered, the status bar says how many there are, and they are offered again once this is ticked. Not the same as the option below, which keeps a copy after every edit.</source>
         <translation>После сбоя автоматические резервные копии (создаваемые каждые несколько минут, см. «Автоматическое резервное копирование проектов» выше) предлагаются при следующем запуске. Если не отмечено, они сохраняются, но не предлагаются, строка состояния показывает, сколько их, и они снова будут предложены, как только вы это отметите. Это не то же самое, что параметр ниже, который сохраняет копию после каждого изменения.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="723"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="733"/>
         <source>After a crash, offer projects as they were after their last edit (experimental)</source>
         <translation>После сбоя предлагать проекты в состоянии после их последнего изменения (экспериментально)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="726"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="736"/>
         <source>While a project is open, QElectroTech keeps a copy of it in its data folder, saved after every edit. If QElectroTech does not close normally, the next start offers that copy with the recovery files.</source>
         <translation>Пока проект открыт, QElectroTech хранит его копию в своей папке данных, сохраняя её после каждого изменения. Если QElectroTech закроется нештатно, при следующем запуске эта копия будет предложена вместе с файлами восстановления.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="733"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="743"/>
         <source>Offer saving a project as one database file, .qetdb (experimental)</source>
         <translation>Предлагать сохранение проекта в виде одного файла базы данных .qetdb (экспериментально)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="736"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="746"/>
         <source>Save As then offers .qetdb: the whole project in one SQLite file. The format may still change; keep a .qet or .qetz copy of projects that matter.</source>
         <translation>Тогда «Сохранить как» предлагает .qetdb: весь проект в одном файле SQLite. Формат ещё может измениться; храните копию важных проектов в .qet или .qetz.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="795"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="805"/>
         <source>Company collection directory</source>
         <translation>Каталог коллекции компании</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="830"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="840"/>
         <source>Create or change the prefix of the user collection&apos;s folders (qet_labels.xml file)</source>
         <extracomment>tooltip of the button opening the prefix configuration dialog of the user collection</extracomment>
         <translation>Создать или изменить префикс папок пользовательской коллекции (файл qet_labels.xml)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="833"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="843"/>
         <source>Configure prefixes…</source>
         <extracomment>button opening the dialog where the folder prefixes of the user collection are configured</extracomment>
         <translation>Настроить префиксы…</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="847"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="857"/>
         <source>Company title-block directory</source>
         <translation>Каталог штампов компании</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="875"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="885"/>
         <source>User Macro Directory</source>
         <translation>Каталог пользовательских шаблонов</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="938"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="948"/>
         <source>Materials list file</source>
         <translation>Файл со списком материалов</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="947"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="957"/>
         <source>Materials list used to fill in a symbol&apos;s items</source>
         <extracomment>tooltip of the material file path field</extracomment>
         <translation>Список материалов для заполнения полей символа</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="953"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="994"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="963"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1004"/>
         <source>Not set</source>
         <extracomment>hint shown when no material file is configured yet
 ----------
@@ -9453,86 +9463,86 @@ hint shown when no cable type file is configured yet</extracomment>
         <translation>Не настроено</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="967"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="977"/>
         <source>Create the list file with its headers</source>
         <extracomment>tooltip of the button creating the material file with its header line</extracomment>
         <translatorcomment>всплывающая подсказка к кнопке, создающей файл материала с его заголовочной строкой</translatorcomment>
         <translation>Создать файл со списком и заголовками</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="970"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1011"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="980"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1021"/>
         <source>Create...</source>
         <translation>Создать...</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="979"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="989"/>
         <source>Cable type list file</source>
         <translation>Файл списка типов кабелей</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="988"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="998"/>
         <source>Directory of the cable types used to define a cable (number of cores, colors, cross-section)</source>
         <extracomment>tooltip of the cable type file path field</extracomment>
         <translation>Справочник типов кабелей, используемых для определения кабеля (число жил, цвета, сечение)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1008"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1018"/>
         <source>Create the cable type list file with its header line</source>
         <extracomment>tooltip of the button creating the cable type file with its header line</extracomment>
         <translation>Создать файл списка типов кабелей со строкой заголовков</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1066"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1076"/>
         <source>Languages</source>
         <translation>Языки</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1109"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1119"/>
         <source>texts</source>
         <translation>Тексты</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1129"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1139"/>
         <source>Elements texts</source>
         <translation>Текст элементов</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1142"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1208"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1254"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1152"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1218"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1264"/>
         <source>Font:</source>
         <translation>Шрифт:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1152"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1215"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1162"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1225"/>
         <source>°</source>
         <translation>°</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1162"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1172"/>
         <source>Length :</source>
         <translation>Длина:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1172"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1201"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1182"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1211"/>
         <source>Rotation :</source>
         <translation>Вращение:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1195"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1205"/>
         <source>Independent texts</source>
         <translation>Независимый текст</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1248"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1258"/>
         <source>Other texts</source>
         <translation>Другой текст</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1284"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1294"/>
         <source>Cable texts</source>
         <translation>Тексты кабелей</translation>
     </message>
@@ -9541,7 +9551,7 @@ hint shown when no cable type file is configured yet</extracomment>
         <translation type="vanished">Обозначение, тип, установка, расположение, длина :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1313"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1323"/>
         <source>Font of the texts written along the cable line; a cable which has its own keeps it.</source>
         <translation>Шрифт текстов, написанных вдоль линии кабеля; кабель с собственным шрифтом сохраняет его.</translation>
     </message>
@@ -9550,7 +9560,7 @@ hint shown when no cable type file is configured yet</extracomment>
         <translation type="vanished">Цвета жил (все) :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1346"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1356"/>
         <source>Font of the core colors written along the line; a cable which has its own keeps it.</source>
         <translation>Шрифт цветов жил, написанных вдоль линии; кабель с собственным шрифтом сохраняет его.</translation>
     </message>
@@ -9559,53 +9569,53 @@ hint shown when no cable type file is configured yet</extracomment>
         <translation type="vanished">Выравнивание текста :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1366"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1376"/>
         <source>Where the texts of a cable stop relative to the start of its line; a cable which has its own keeps it.</source>
         <translation>Где заканчиваются тексты кабеля относительно начала его линии; кабель с собственной настройкой сохраняет её.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1370"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1380"/>
         <source>Right aligned</source>
         <translation>Выравнивание по правому краю</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1375"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1385"/>
         <source>Centred</source>
         <translation>По центру</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1380"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1390"/>
         <source>Left aligned</source>
         <translation>Выравнивание по левому краю</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1452"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1462"/>
         <source>The Grid must be active to see the changes.</source>
         <translation>Чтобы видеть изменения, сетка должна быть активной.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1498"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1508"/>
         <source>Grid for texts moved with the mouse</source>
         <translation>Сетка текстов, перемещаемых с помощью мыши</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1501"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1511"/>
         <source>Fraction of the sheet grid. Hold Ctrl while moving to place freely.</source>
         <translation>Привязка к сетки листа. Удерживайте клавишу Ctrl во время перемещения, чтобы разместить элементы в произвольном порядке.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1521"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1531"/>
         <source>Keyboard movement: 1 - 30</source>
         <translation>Перемещение с клавиатуры: 1-30</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1571"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1581"/>
         <source>DiagramEditor (key: left / right) xGrid</source>
         <comment>fr: DiagramEditor (touche :   gauche / droite)  xGrid</comment>
         <translation>Клавиша влево/вправо — по горизонтали (по X-линии)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1578"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1588"/>
         <source>DiagramEditor (key: up / down) yGrid</source>
         <translation>Клавиша вверх/вниз — по вертикали (по Y-линии)</translation>
     </message>
@@ -9614,75 +9624,75 @@ hint shown when no cable type file is configured yet</extracomment>
         <translation type="vanished">Перемещение с клавиатуры с помощью клавиши ALT: 1-9</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1614"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1624"/>
         <source>DiagramEditor (key: left / right) xGrid</source>
         <translation>Клавиша влево/вправо — по горизонтали (по X-линии)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1643"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1653"/>
         <source>DiagramEditor (key: up / down) yGrid</source>
         <comment>fr: DiagramEditor (touche :  haut / bas)  yGrid</comment>
         <translation>Клавиша вверх/вниз — по вертикали (по Y-линии)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1688"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1698"/>
         <source>View grid</source>
         <translation>Показывать в виде таблицы</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1785"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1792"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1795"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1802"/>
         <source>max:</source>
         <translation>max:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1873"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1883"/>
         <source>When saving a symbol: refuse two terminals with the same name, and report terminals without a name (IEC 61666).</source>
         <translation>При сохранении символа: отклонять два вывода с одинаковым именем и сообщать о выводах без имени (IEC 61666).</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1876"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1886"/>
         <source>Check terminal names when saving</source>
         <translation>Проверять имена выводов при сохранении</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1746"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1756"/>
         <source>Point-size in diagram-editor: 1 - 5</source>
         <translation>Размер точек сетки в Diagram-Editor: 1–5</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1585"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1595"/>
         <source>Move by the grid step instead (Display &gt; Grid step)</source>
         <translation>Вместо этого перемещать на шаг сетки (Вид &gt; Шаг сетки)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1608"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1618"/>
         <source>Keyboard movement with the Ctrl key: 1 - 9</source>
         <translation>Перемещение с клавиатуры с клавишей Ctrl: 1 - 9</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1694"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1799"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1704"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1809"/>
         <source>min:</source>
         <translation>min:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1806"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1816"/>
         <source>Point-size in element-editor: 1 - 5</source>
         <translation>Размер точек сетки в редакторе элементов: 1–5</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1830"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1840"/>
         <source>Editor</source>
         <translation>Редактор</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1838"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1848"/>
         <source>Max. parts in Element Editor List</source>
         <translation>Максимальное количество элементов в списке редактора элементов</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="643"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="653"/>
         <source>Do not store the labels of items in the copy paste</source>
         <translation>Не сохранять метки элементов при копировании и вставке</translation>
     </message>
@@ -9743,223 +9753,223 @@ hint shown when no cable type file is configured yet</extracomment>
         <translation>Отключено</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="213"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="214"/>
         <source>Enabled by the QET_ENABLE_SCRIPTING environment variable; this setting has no effect while it is set.</source>
         <translation>Включается с помощью переменной среды QET_ENABLE_SCRIPTING; этот параметр не действует, пока она определена.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="357"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="358"/>
         <source>Not set (default: %1)</source>
         <comment>hint shown in the material file field when no file is configured yet</comment>
         <translatorcomment>подсказка, отображаемая в поле «Файл материала», если файл ещё не настроен</translatorcomment>
         <translation>Не настроено (по умолчанию: %1)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="368"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="369"/>
         <source>Not set (default: %1)</source>
         <comment>hint shown in the cable type file field when no file is configured yet</comment>
         <translation>Не настроено (по умолчанию: %1)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="665"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="667"/>
         <source>General</source>
         <comment>configuration page title</comment>
         <translation>Общее</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="683"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="685"/>
         <source>System</source>
         <translatorcomment>Система?</translatorcomment>
         <translation>Системный</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="687"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="689"/>
         <source>Arabic</source>
         <translation>Арабский</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="688"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="690"/>
         <source>Brazilian</source>
         <translation>Бразильский</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="689"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="691"/>
         <source>Catalan</source>
         <translation>Каталонский</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="690"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="692"/>
         <source>Czech</source>
         <translation>Чешский</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="691"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="693"/>
         <source>German</source>
         <translation>Немецкий</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="692"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="694"/>
         <source>Danish</source>
         <translation>Датский</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="693"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="695"/>
         <source>Greek</source>
         <translation>Греческий</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="694"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="696"/>
         <source>English</source>
         <translation>Английский</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="695"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="697"/>
         <source>Spanish</source>
         <translation>Испанский</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="696"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="698"/>
         <source>French</source>
         <translation>Французский</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="697"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="699"/>
         <source>Croatian</source>
         <translation>Хорватский</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="698"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="700"/>
         <source>Italian</source>
         <translation>Итальянский</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="699"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="701"/>
         <source>Japanese</source>
         <translation>Японский</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="700"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="702"/>
         <source>Korean</source>
         <translation>Корейский</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="701"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="703"/>
         <source>Latvian</source>
         <translation>Латышский</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="702"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="704"/>
         <source>Polish</source>
         <translation>Польский</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="703"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="705"/>
         <source>Portuguese</source>
         <translation>Португальский</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="704"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="706"/>
         <source>Romanian</source>
         <translation>Румынский</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="705"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="707"/>
         <source>Russian</source>
         <translation>Русский</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="706"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="708"/>
         <source>Slovak</source>
         <translation>Словацкий</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="707"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="709"/>
         <source>Slovenian</source>
         <translation>Словенский</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="708"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="710"/>
         <source>Dutch</source>
         <translatorcomment>Немецкий/Нидерландский</translatorcomment>
         <translation>Голландский</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="709"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="711"/>
         <source>Norwegian</source>
         <translation>Норвежский</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="710"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="712"/>
         <source>Belgium-Flemish</source>
         <translation>Бельгийский</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="711"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="713"/>
         <source>Turkish</source>
         <translation>Турецкий</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="712"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="714"/>
         <source>Hungarian</source>
         <translation>Венгерский</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="713"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="715"/>
         <source>Mongolian</source>
         <translation>Монгольский</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="714"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="716"/>
         <source>Ukrainian</source>
         <translation>Украинский</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="715"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="717"/>
         <source>Chinese</source>
         <translation>Китайский</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="716"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="718"/>
         <source>Chinese (Traditional)</source>
         <translation>Китайский (традиционный)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="717"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="719"/>
         <source>Swedish</source>
         <translation>Шведский</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="793"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="795"/>
         <source>Cable text font</source>
         <translation>Шрифт текста кабелей</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="811"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="813"/>
         <source>Core colors font</source>
         <translation>Шрифт цветов жил</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="840"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="842"/>
         <source>Company collection path</source>
         <translation>Путь к коллекции компании</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="868"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="870"/>
         <source>Company title-blocks</source>
         <translation>Путь к штампам компании</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="896"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="898"/>
         <source>User macro path</source>
         <translation>Путь к пользовательским шаблонам</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="938"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="940"/>
         <source>Folder not found</source>
         <translation>Папка не найдена</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="939"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="941"/>
         <source>The user collection folder:
 %1
 does not exist and could not be created.</source>
@@ -9968,12 +9978,12 @@ does not exist and could not be created.</source>
 не существует, и её не удалось создать.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="947"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="949"/>
         <source>No subfolder</source>
         <translation>Подпапок нет</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="948"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="950"/>
         <source>The user collection:
 %1
 has no subfolder, so there is no prefix to configure.</source>
@@ -9982,34 +9992,34 @@ has no subfolder, so there is no prefix to configure.</source>
 не содержит подпапок, поэтому настраивать префикс нечего.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="956"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="958"/>
         <source>Prefix file cannot be read</source>
         <translation>Не удалось прочитать файл префиксов</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="965"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="967"/>
         <source>Prefix file damaged</source>
         <translation>Файл префиксов повреждён</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="966"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="968"/>
         <source>The file %1 is not a valid XML file:
 %2</source>
         <translation>Файл %1 не является допустимым XML-файлом:
 %2</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="970"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="972"/>
         <source>Fix the file</source>
         <translation>Исправить файл</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="971"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="973"/>
         <source>Rebuild</source>
         <translation>Перестроить</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="972"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="974"/>
         <source>Nothing has been changed yet.
 
 “Fix the file”: this window closes without changing anything. Open the file in a text editor at the place shown, fix it, then run this command again.
@@ -10022,36 +10032,36 @@ has no subfolder, so there is no prefix to configure.</source>
 «Перестроить»: дерево папок воссоздаётся, но все текущие префиксы теряются. Текущий файл сохраняется под именем qet_labels.xml.bak перед заменой.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="981"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="983"/>
         <source>File: %1</source>
         <translation>Файл: %1</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1005"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1007"/>
         <source>Select the materials list file</source>
         <translation>Выбрать файл списка материалов</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1007"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1030"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1071"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1094"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1009"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1032"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1073"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1096"/>
         <source>CSV files (*.csv)</source>
         <translation>Файлы CSV (*.csv)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1028"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1030"/>
         <source>Create the materials list file</source>
         <translation>Создать файл со списком материалов</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1046"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1048"/>
         <source>Cannot create</source>
         <translation>Невозможно создать</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1047"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1111"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1049"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1113"/>
         <source>Cannot create the file:
 %1
 %2</source>
@@ -10060,32 +10070,32 @@ has no subfolder, so there is no prefix to configure.</source>
 %2</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1069"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1071"/>
         <source>Select the cable types file</source>
         <translation>Выбрать файл типов кабелей</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1092"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1094"/>
         <source>Create the cable types file</source>
         <translation>Создать файл типов кабелей</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1110"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1112"/>
         <source>Cannot be created</source>
         <translation>Невозможно создать</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1141"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1143"/>
         <source>Values that are too high might cause the application to crash</source>
         <translation>Слишком высокие значения могут привести к сбоям в работе приложения.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1176"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1178"/>
         <source>Experimental feature</source>
         <translation>Экспериментальная функция</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1177"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1179"/>
         <source>WARNING:
 Any setting other than “No rounding” may cause rendering errors in the project, depending on:
 
@@ -10100,7 +10110,7 @@ Any setting other than “No rounding” may cause rendering errors in the proje
 3 — редактирования проекта на другом компьютере и/или экране, параметры которых отличаются от указанных в пунктах 1 и 2.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="320"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="330"/>
         <source>Hide the grid when its dots are closer on screen than</source>
         <translation>Скрывать сетку, когда её точки на экране ближе чем</translation>
     </message>
@@ -10109,7 +10119,7 @@ Any setting other than “No rounding” may cause rendering errors in the proje
         <translation type="vanished">При большем отдалении точки любой сетки не рисуются; где именно, показывает масштаб в строке состояния</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="333"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="343"/>
         <source> px</source>
         <translation> px</translation>
     </message>
@@ -21332,7 +21342,7 @@ Do you want to replace it ?</source>
         <translation>Изменить свойства группы выводов</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/UndoCommand/sortterminalstripcommand.cpp" line="34"/>
+        <location filename="../sources/TerminalStrip/UndoCommand/sortterminalstripcommand.cpp" line="35"/>
         <source>Sort terminal block %1</source>
         <translation>Выбор клеммной колодки %1</translation>
     </message>
@@ -27514,12 +27524,12 @@ The other fields are not used.</source>
 <context>
     <name>TerminalStripAutoImport</name>
     <message>
-        <location filename="../sources/TerminalStrip/terminalstripautoimport.cpp" line="250"/>
+        <location filename="../sources/TerminalStrip/terminalstripautoimport.cpp" line="256"/>
         <source>Re-group all terminals</source>
         <translation>Перегруппировать все клеммы</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/terminalstripautoimport.cpp" line="252"/>
+        <location filename="../sources/TerminalStrip/terminalstripautoimport.cpp" line="258"/>
         <source>Assign free terminals</source>
         <translation>Распределить свободные клеммы</translation>
     </message>
@@ -27771,32 +27781,100 @@ The other fields are not used.</source>
         <translation>Индикатор:</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="70"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="75"/>
         <source>All manufacturers</source>
         <translation>Все производители</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="87"/>
         <source>Sort the terminals the way the drawing is laid out, and bring the bridges drawn there in with them. What the drawing brought is read-only here: it is changed in the drawing or not at all.</source>
-        <translation>Сортировать клеммы в соответствии с расположением на чертеже и добавить вместе с ними нарисованные там перемычки. То, что пришло с чертежа, здесь только для чтения: оно меняется на чертеже или никак.</translation>
+        <translation type="vanished">Сортировать клеммы в соответствии с расположением на чертеже и добавить вместе с ними нарисованные там перемычки. То, что пришло с чертежа, здесь только для чтения: оно меняется на чертеже или никак.</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="233"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="95"/>
+        <source>Sort the terminals the way the drawing is laid out, or by label when the general settings ask for it, and bring the bridges drawn there in with them. What the drawing brought is read-only here: it is changed in the drawing or not at all.</source>
+        <translation>Сортирует клеммы так, как расположен чертёж, или по метке, если этого требуют общие настройки, и переносит нарисованные там перемычки. То, что пришло с чертежа, здесь только для чтения: это меняется на чертеже или не меняется вовсе.</translation>
+    </message>
+    <message>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="242"/>
         <source>Independent terminals</source>
         <translation>Независимые выводы</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="315"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="328"/>
         <source>Modify terminal strip properties</source>
         <translation>Изменить свойства клеммных колодок</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1076"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="612"/>
+        <source>Column searched by the filter</source>
+        <translation>Столбец, в котором ищет фильтр</translation>
+    </message>
+    <message>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="616"/>
+        <source>Filter, for example 24V or K1*</source>
+        <translation>Фильтр, например 24V или K1*</translation>
+    </message>
+    <message>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="617"/>
+        <source>Text searched in the column, whatever the case and the spaces: &quot;24 v&quot; finds 24V. * stands for any text and ? for one character. Return selects the terminals found.</source>
+        <translation>Текст, искомый в столбце, без учёта регистра и пробелов: «24 v» находит 24V. * означает любой текст, а ? — один символ. Enter выделяет найденные клеммы.</translation>
+    </message>
+    <message>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="622"/>
+        <source>Hide the others</source>
+        <translation>Скрыть остальные</translation>
+    </message>
+    <message>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="624"/>
+        <source>Show only the terminals found. A terminal of several levels stays whole when one of its levels is found.</source>
+        <translation>Показывать только найденные клеммы. Многоуровневая клемма остаётся целой, если найден один из её уровней.</translation>
+    </message>
+    <message>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="629"/>
+        <source>Whole rows</source>
+        <translation>Строки целиком</translation>
+    </message>
+    <message>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="631"/>
+        <source>Bridge, level %1</source>
+        <translation>Перемычка, уровень %1</translation>
+    </message>
+    <message>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="634"/>
+        <source>What is selected: whole rows for the type, the function, the LED, the cable or the move, or the cells of one level to bridge them.</source>
+        <translation>Что выделяется: строки целиком для типа, функции, светодиода, кабеля или перемещения, или ячейки одного уровня, чтобы соединить их перемычкой.</translation>
+    </message>
+    <message>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="638"/>
+        <source>Select</source>
+        <translation>Выделить</translation>
+    </message>
+    <message>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="639"/>
+        <source>Select the terminals found</source>
+        <translation>Выделить найденные клеммы</translation>
+    </message>
+    <message>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="680"/>
+        <source>All columns</source>
+        <translation>Все столбцы</translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="816"/>
+        <source>%n found</source>
+        <translation>
+            <numerusform>Найдена %n</numerusform>
+            <numerusform>Найдено %n</numerusform>
+            <numerusform>Найдено %n</numerusform>
+        </translation>
+    </message>
+    <message>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1386"/>
         <source>A bridge of your own</source>
         <translation>Собственная перемычка</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1077"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1387"/>
         <source>This bridge is set here only: it is not added to the drawing, where bridges belong.
 
 Set it here anyway?</source>
@@ -27805,37 +27883,37 @@ Set it here anyway?</source>
 Всё равно задать её здесь?</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1288"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1598"/>
         <source>Add spare terminals</source>
         <translation>Добавить резервные клеммы</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1294"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1604"/>
         <source>Number of terminals :</source>
         <translation>Количество клемм:</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1296"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1606"/>
         <source>Number the terminals</source>
         <translation>Пронумеровать клеммы</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1301"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1611"/>
         <source>Prefix :</source>
         <translation>Префикс:</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1306"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1616"/>
         <source>First number :</source>
         <translation>Первый номер:</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1311"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1621"/>
         <source>Same terminal as %1 (type, section, width, color, manufacturer...)</source>
         <translation>Такая же клемма, как %1 (тип, сечение, ширина, цвет, производитель...)</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1313"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1623"/>
         <source>the selected terminal</source>
         <translation>выбранная клемма</translation>
     </message>
