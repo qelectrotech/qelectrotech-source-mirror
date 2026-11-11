@@ -8982,7 +8982,7 @@ that you create. Text and number inputs are
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1451"/>
         <source>Grid and guides</source>
-        <translation type="unfinished"></translation>
+        <translation>Grid and guides</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1526"/>
@@ -9297,12 +9297,12 @@ that you create. Text and number inputs are
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="30"/>
         <source>Theme</source>
-        <translation type="unfinished"></translation>
+        <translation>Theme</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="70"/>
         <source>Main window</source>
-        <translation type="unfinished"></translation>
+        <translation>Main window</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="76"/>
@@ -9317,27 +9317,27 @@ that you create. Text and number inputs are
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="178"/>
         <source>Drawing on the sheet</source>
-        <translation type="unfinished"></translation>
+        <translation>Drawing on the sheet</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="266"/>
         <source>Mouse and input</source>
-        <translation type="unfinished"></translation>
+        <translation>Mouse and input</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="272"/>
         <source>Zoom and navigation</source>
-        <translation type="unfinished"></translation>
+        <translation>Zoom and navigation</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="348"/>
         <source>Selection</source>
-        <translation type="unfinished">Selection</translation>
+        <translation>Selection</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="410"/>
         <source>Drawing and moving</source>
-        <translation type="unfinished"></translation>
+        <translation>Drawing and moving</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="515"/>
@@ -9438,12 +9438,12 @@ that you create. Text and number inputs are
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="655"/>
         <source>Folios and macros</source>
-        <translation type="unfinished"></translation>
+        <translation>Folios and macros</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="684"/>
         <source>Terminal strips and conductors</source>
-        <translation type="unfinished"></translation>
+        <translation>Terminal strips and conductors</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="805"/>

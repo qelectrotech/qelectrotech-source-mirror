@@ -8945,7 +8945,7 @@ Aquí puede especificar el valor predeterminado de este campo para los elementos
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1451"/>
         <source>Grid and guides</source>
-        <translation type="unfinished"></translation>
+        <translation>Cuadrícula y guías</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1526"/>
@@ -9260,12 +9260,12 @@ Aquí puede especificar el valor predeterminado de este campo para los elementos
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="30"/>
         <source>Theme</source>
-        <translation type="unfinished"></translation>
+        <translation>Tema</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="70"/>
         <source>Main window</source>
-        <translation type="unfinished"></translation>
+        <translation>Ventana principal</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="76"/>
@@ -9281,27 +9281,27 @@ Método para escalar pantallas con alta densidad de píxeles (hdpi) (aplicado al
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="178"/>
         <source>Drawing on the sheet</source>
-        <translation type="unfinished"></translation>
+        <translation>Dibujo en el folio</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="266"/>
         <source>Mouse and input</source>
-        <translation type="unfinished"></translation>
+        <translation>Ratón y entrada</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="272"/>
         <source>Zoom and navigation</source>
-        <translation type="unfinished"></translation>
+        <translation>Zoom y navegación</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="348"/>
         <source>Selection</source>
-        <translation type="unfinished">Selección</translation>
+        <translation>Selección</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="410"/>
         <source>Drawing and moving</source>
-        <translation type="unfinished"></translation>
+        <translation>Trazado y desplazamiento</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="515"/>
@@ -9412,12 +9412,12 @@ Método para escalar pantallas con alta densidad de píxeles (hdpi) (aplicado al
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="655"/>
         <source>Folios and macros</source>
-        <translation type="unfinished"></translation>
+        <translation>Folios y macros</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="684"/>
         <source>Terminal strips and conductors</source>
-        <translation type="unfinished"></translation>
+        <translation>Borneros y conductores</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="805"/>

@@ -8904,7 +8904,7 @@ atayabilirsiz. Metin ve sayı girişleri ayrıca mevcut.</translation>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1451"/>
         <source>Grid and guides</source>
-        <translation type="unfinished"></translation>
+        <translation>Izgara ve kılavuzlar</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1526"/>
@@ -9219,12 +9219,12 @@ atayabilirsiz. Metin ve sayı girişleri ayrıca mevcut.</translation>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="30"/>
         <source>Theme</source>
-        <translation type="unfinished"></translation>
+        <translation>Tema</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="70"/>
         <source>Main window</source>
-        <translation type="unfinished"></translation>
+        <translation>Ana pencere</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="76"/>
@@ -9239,27 +9239,27 @@ atayabilirsiz. Metin ve sayı girişleri ayrıca mevcut.</translation>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="178"/>
         <source>Drawing on the sheet</source>
-        <translation type="unfinished"></translation>
+        <translation>Sayfa üzerinde çizim</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="266"/>
         <source>Mouse and input</source>
-        <translation type="unfinished"></translation>
+        <translation>Fare ve giriş</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="272"/>
         <source>Zoom and navigation</source>
-        <translation type="unfinished"></translation>
+        <translation>Yakınlaştırma ve gezinme</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="348"/>
         <source>Selection</source>
-        <translation type="unfinished">Seçim</translation>
+        <translation>Seçim</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="410"/>
         <source>Drawing and moving</source>
-        <translation type="unfinished"></translation>
+        <translation>Çizim ve taşıma</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="515"/>
@@ -9370,12 +9370,12 @@ atayabilirsiz. Metin ve sayı girişleri ayrıca mevcut.</translation>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="655"/>
         <source>Folios and macros</source>
-        <translation type="unfinished"></translation>
+        <translation>Sayfalar ve makrolar</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="684"/>
         <source>Terminal strips and conductors</source>
-        <translation type="unfinished"></translation>
+        <translation>Klemens blokları ve iletkenler</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="805"/>

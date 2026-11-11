@@ -9138,37 +9138,37 @@ that you create. Text and number inputs are
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="30"/>
         <source>Theme</source>
-        <translation type="unfinished"></translation>
+        <translation>テーマ</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="70"/>
         <source>Main window</source>
-        <translation type="unfinished"></translation>
+        <translation>メインウィンドウ</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="178"/>
         <source>Drawing on the sheet</source>
-        <translation type="unfinished"></translation>
+        <translation>フォリオ上の描画</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="266"/>
         <source>Mouse and input</source>
-        <translation type="unfinished"></translation>
+        <translation>マウスと入力</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="272"/>
         <source>Zoom and navigation</source>
-        <translation type="unfinished"></translation>
+        <translation>ズームとナビゲーション</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="348"/>
         <source>Selection</source>
-        <translation type="unfinished">選択</translation>
+        <translation>選択</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="410"/>
         <source>Drawing and moving</source>
-        <translation type="unfinished"></translation>
+        <translation>描画と移動</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="518"/>
@@ -9274,12 +9274,12 @@ that you create. Text and number inputs are
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="655"/>
         <source>Folios and macros</source>
-        <translation type="unfinished"></translation>
+        <translation>フォリオとマクロ</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="684"/>
         <source>Terminal strips and conductors</source>
-        <translation type="unfinished"></translation>
+        <translation>端子台と導体</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="805"/>
@@ -9487,7 +9487,7 @@ hint shown when no cable type file is configured yet</extracomment>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1451"/>
         <source>Grid and guides</source>
-        <translation type="unfinished"></translation>
+        <translation>グリッドとガイド</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1526"/>
