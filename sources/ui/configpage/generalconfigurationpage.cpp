@@ -180,6 +180,7 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	ui->m_selection_frame_radius_sb->setValue(QGIUtility::selectionFrameRadius());
 	ui->m_zoom_out_beyond_folio->setChecked(settings.value("diagrameditor/zoom-out-beyond-of-folio", false).toBool());
 	ui->m_zoom_step_sb->setValue(DiagramView::zoomStep());
+	ui->m_jump_zoom_sb->setValue(DiagramView::jumpZoom());
 	ui->m_terminal_conductor_color->setChecked(Terminal::takesConductorColor());
 	ui->m_strip_wires->setChecked(QetSettings::stripWiresShown());
 	ui->m_strip_sort_by_label->setChecked(QetSettings::stripSortedByLabel());
@@ -455,6 +456,7 @@ void GeneralConfigurationPage::applyConf()
 	QGIUtility::setSelectionFrameRadius(ui->m_selection_frame_radius_sb->value());
 	settings.setValue("diagrameditor/zoom-out-beyond-of-folio", ui->m_zoom_out_beyond_folio->isChecked());
 	DiagramView::setZoomStep(ui->m_zoom_step_sb->value());
+	DiagramView::setJumpZoom(ui->m_jump_zoom_sb->value());
 	settings.setValue("diagrameditor/conductor_properties_panel", ui->m_conductor_properties_panel->isChecked());
 	QetSettings::setNewFolioTakesPreviousGroup(ui->m_new_folio_group_cb->isChecked());
 	QetSettings::setAskLabelsPlacingMacro(ui->m_macro_ask_labels_cb->isChecked());

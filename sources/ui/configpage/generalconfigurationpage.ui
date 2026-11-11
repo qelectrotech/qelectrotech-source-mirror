@@ -316,6 +316,52 @@
            </layout>
           </item>
           <item>
+           <layout class="QHBoxLayout" name="m_jump_zoom_layout">
+            <item>
+             <widget class="QLabel" name="m_jump_zoom_label">
+              <property name="text">
+               <string>Zoom when following a cross reference:</string>
+              </property>
+              <property name="buddy">
+               <cstring>m_jump_zoom_sb</cstring>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QSpinBox" name="m_jump_zoom_sb">
+              <property name="minimumSize">
+               <size>
+                <width>120</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="toolTip">
+               <string>A jump along a cross reference or a folio report shows its target in the middle of the view, at this zoom at least; closer views stay as they are.</string>
+              </property>
+              <property name="specialValueText">
+               <string>Whole folio</string>
+              </property>
+              <property name="suffix">
+               <string> %</string>
+              </property>
+              <property name="maximum">
+               <number>400</number>
+              </property>
+              <property name="singleStep">
+               <number>5</number>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="m_jump_zoom_spacer">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </item>
+          <item>
            <widget class="QCheckBox" name="m_zoom_out_beyond_folio">
             <property name="text">
              <string>Allow unzoom beyond the sheet</string>

@@ -683,6 +683,32 @@ void DiagramView::zoomReset()
 	adjustGridToZoom();
 }
 
+int DiagramView::jumpZoom() {
+	return qBound(0, QSettings().value(QStringLiteral("diagrameditor/jump_zoom"), 125).toInt(), 400);
+}
+
+void DiagramView::setJumpZoom(int percent) {
+	QSettings().setValue(QStringLiteral("diagrameditor/jump_zoom"), qBound(0, percent, 400));
+}
+
+void DiagramView::showJumpTarget(const QRectF &target)
+{
+	const int percent = jumpZoom();
+	if (!percent) {
+		zoomFit();
+		return;
+	}
+		//Closer if needed, never farther than shown already
+	const qreal factor = qMax(transform().m11(), percent / 100.0);
+	adjustSceneRect();
+	setTransform(QTransform::fromScale(factor, factor));
+	centerOn(target.center());
+	QMetaObject::invokeMethod(this, [this, target]() {
+		centerOn(target.center());
+	}, Qt::QueuedConnection);
+	adjustGridToZoom();
+}
+
 /**
 	@brief DiagramView::zoomToRect
 	Adjust zoom to fit \a rect, in scene coordinate, in the view.
