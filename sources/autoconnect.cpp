@@ -130,6 +130,31 @@ bool blocked(const State &s, const Terminal *a, const Terminal *b)
 	return bodyAcross(s.diagram, a->dockConductor(), b->dockConductor(), ignore);
 }
 
+/**
+	@return true when a terminal of a symbol other than the two ends lies
+	on the line from @a a to @a b, between them, and faces @a a: the line
+	would end there, so it may not run on through it to @a b. A terminal
+	turned across the line, beside it on its edge, leaves it free.
+*/
+bool facingBetween(const State &s, const Terminal *a, const Terminal *b)
+{
+	const qreal length = ahead(a, b->dockConductor());
+	for (Element *e : s.diagram->elements())
+	{
+		if (e == a->parentElement() || e == b->parentElement() || s.leaving.contains(e))
+			continue;
+		for (Terminal *t : e->terminals())
+		{
+			if (!Qet::isOpposed(a->orientation(), t->orientation()))
+				continue;
+			const qreal d = ahead(a, t->dockConductor());
+			if (d > kTolerance && d < length - kTolerance)
+				return true;
+		}
+	}
+	return false;
+}
+
 Terminal *findPartner(const State &s, const Terminal *from)
 {
 	const Element *own = from->parentElement();
@@ -150,14 +175,18 @@ Terminal *findPartner(const State &s, const Terminal *from)
 	std::sort(found.begin(), found.end(),
 			  [](const auto &a, const auto &b) { return a.first < b.first; });
 
-	for (const auto &pair : std::as_const(found))
-	{
-		if (blocked(s, from, pair.second))
-			return nullptr;
-		if (isFree(s, pair.second))
-			return pair.second;
-	}
-	return nullptr;
+		//The nearest terminal facing it ends the line: when it is not free,
+		//the line does not run on through it to one beyond
+	if (found.isEmpty())
+		return nullptr;
+	Terminal *nearest = found.first().second;
+	if (blocked(s, from, nearest) || !isFree(s, nearest))
+		return nullptr;
+		//Nor may it run past a terminal that faces the other end: seen from
+		//there, that one comes first
+	if (facingBetween(s, nearest, from))
+		return nullptr;
+	return nearest;
 }
 
 bool stillValid(const State &s, const Conductor *c)
@@ -170,7 +199,7 @@ bool stillValid(const State &s, const Conductor *c)
 		return false;
 	if (ahead(a, b->dockConductor()) < 0)
 		return false;
-	return !blocked(s, a, b);
+	return !blocked(s, a, b) && !facingBetween(s, a, b) && !facingBetween(s, b, a);
 }
 
 /// @return true when the line @a t looks along crosses @a rect
