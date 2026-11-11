@@ -51,6 +51,7 @@
 #include "qetgraphicsitem/independenttextitem.h"
 #include "qetgraphicsitem/qetshapeitem.h"
 #include "qetgraphicsitem/dimensionitem.h"
+#include "qetgraphicsitem/structureboxitem.h"
 #include "qetgraphicsitem/terminal.h"
 #include "qetxml.h"
 #include "undocommand/addelementtextcommand.h"
@@ -349,6 +350,7 @@ QStringList Diagram::itemsOutsideSheet() const
 			}
 			case IndependentTextItem::Type: names << tr("a text"); break;
 			case QetShapeItem::Type:        names << tr("a shape"); break;
+			case StructureBoxItem::Type:    names << tr("a structure box"); break;
 			case DiagramImageItem::Type:    names << tr("a picture"); break;
 			case QetGraphicsTableItem::Type: names << tr("a table"); break;
 			case TerminalStripItem::Type:   names << tr("a terminal strip"); break;
@@ -1667,6 +1669,12 @@ QDomDocument Diagram::toXml(bool whole_content, bool is_copy_command) {
 					list_shapes << shape;
 				break;
 			}
+			case StructureBoxItem::Type: {
+				auto box = static_cast<StructureBoxItem *>(qgi);
+				if (whole_content || box->isSelected())
+					list_shapes << box;	//saved as a shape, see StructureBoxItem
+				break;
+			}
 			case QetGraphicsTableItem::Type: {
 				auto table = static_cast<QetGraphicsTableItem *>(qgi);
 				if (whole_content || table->isSelected())
@@ -2657,7 +2665,9 @@ bool Diagram::fromXml(QDomElement &document,
 	for (auto shape_xml : QET::findInDomElement(root,
 												QStringLiteral("shapes"),
 												QStringLiteral("shape"))) {
-		QetShapeItem *dii = new QetShapeItem (QPointF(0,0));
+		QetShapeItem *dii = StructureBoxItem::isStructureBoxXml(shape_xml)
+				? new StructureBoxItem(QPointF(0,0))
+				: new QetShapeItem (QPointF(0,0));
 		dii -> fromXml(shape_xml);
 		settle_uuid(dii, shape_xml, QStringLiteral("shape"), added_shapes.size());
 		ItemGroups::setGroup(dii, ItemGroups::read(shape_xml));
@@ -3058,6 +3068,7 @@ void Diagram::addItem(QGraphicsItem *item)
 			break;
 		}
 		case QetShapeItem::Type:
+		case StructureBoxItem::Type:
 		case DimensionItem::Type:
 		case IndependentTextItem::Type:
 		case DiagramImageItem::Type:
@@ -3103,6 +3114,7 @@ void Diagram::removeItem(QGraphicsItem *item)
 			break;
 		}
 		case QetShapeItem::Type:
+		case StructureBoxItem::Type:
 		case DimensionItem::Type:
 		case IndependentTextItem::Type:
 		case DiagramImageItem::Type:

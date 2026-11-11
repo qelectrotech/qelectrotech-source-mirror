@@ -23,10 +23,13 @@
 #include "factory/elementfactory.h"
 #include "qetapptest.h"
 #include "qetgraphicsitem/element.h"
+#include "qetgraphicsitem/structureboxitem.h"
 #include "qetproject.h"
 #include "titleblockproperties.h"
+#include "ui/structureboxpropertieswidget.h"
 
 #include <QDomDocument>
+#include <QLineEdit>
 #include <QSqlQuery>
 #include <QTemporaryDir>
 #include <QUuid>
@@ -37,7 +40,9 @@
 	element that has no plant or location of its own takes the one of its
 	folio's title block, and every part that is empty is left out.
 	%{structure_id} is the same, without the =plant or +location part that
-	equals the folio's own. %{plant} and %{location} are not affected: they
+	equals the folio's own. A symbol inside a structure box takes the box's
+	plant and location instead (the next box's, then the folio's, where the
+	box leaves one empty), for both tokens. %{plant} and %{location} are not affected: they
 	show the element's own value only.
 */
 class tst_structureid : public QObject
@@ -92,6 +97,16 @@ class tst_structureid : public QObject
 		if (!plant.isEmpty())    dc.addValue(QStringLiteral("plant"), plant);
 		if (!location.isEmpty()) dc.addValue(QStringLiteral("location"), location);
 		return dc;
+	}
+
+	static StructureBoxItem *box(Diagram *diagram, const QRectF &rect,
+								 const QString &plant, const QString &location)
+	{
+		auto *b = new StructureBoxItem(rect.topLeft(), rect.bottomRight());
+		b->setPlant(plant);
+		b->setLocation(location);
+		diagram->addItem(b);
+		return b;
 	}
 
 	static void setInfo(Element *element, const DiagramContext &values)
@@ -277,6 +292,256 @@ private slots:
 					 ? QStringLiteral("=FACTORY+CP1-X1")
 					 : QStringLiteral("=FACTORY+FIELD-S5"));
 		}
+	}
+
+	void symbolInsideABoxTakesTheBox()
+	{
+		QETProject project;
+		Diagram *diagram = project.addNewDiagram();
+		setFolio(diagram, QStringLiteral("FACTORY"), QStringLiteral("CP1"));
+		box(diagram, QRectF(0, 0, 400, 400), {}, QStringLiteral("FIELD"));
+		Element *inside = symbol(diagram);
+		Element *outside = symbol(diagram);
+		QVERIFY(inside && outside);
+			//In the middle of the box, far from its outline
+		inside->setPos(200, 200);
+		outside->setPos(800, 800);
+
+			//The box gives +FIELD only: the =plant stays the folio's
+		QCOMPARE(text(QStringLiteral("%{structure_id_full}"), info("S5"), inside),
+				 QStringLiteral("=FACTORY+FIELD-S5"));
+		QCOMPARE(text(QStringLiteral("%{structure_id_full}"), info("K1"), outside),
+				 QStringLiteral("=FACTORY+CP1-K1"));
+	}
+
+	void smallestBoxWins()
+	{
+		QETProject project;
+		Diagram *diagram = project.addNewDiagram();
+		setFolio(diagram, QStringLiteral("FACTORY"), QStringLiteral("CP1"));
+		box(diagram, QRectF(0, 0, 800, 800), QStringLiteral("SILO"), QStringLiteral("CP1000"));
+		box(diagram, QRectF(100, 100, 200, 200), QStringLiteral("SILO"), QStringLiteral("J3"));
+		Element *element = symbol(diagram);
+		QVERIFY(element);
+		element->setPos(200, 200);
+
+		QCOMPARE(text(QStringLiteral("%{structure_id_full}"), info("M1"), element),
+				 QStringLiteral("=SILO+J3-M1"));
+	}
+
+	void anEmptyFieldOfABoxIsTheNextOnes()
+	{
+		QETProject project;
+		Diagram *diagram = project.addNewDiagram();
+		setFolio(diagram, QStringLiteral("FACTORY"), QStringLiteral("CP1"));
+		box(diagram, QRectF(0, 0, 800, 800), QStringLiteral("SILO"), QStringLiteral("CP1000"));
+		box(diagram, QRectF(100, 100, 200, 200), {}, QStringLiteral("J3"));
+		Element *element = symbol(diagram);
+		QVERIFY(element);
+		element->setPos(200, 200);
+
+			//+J3 from the inner box, =SILO from the outer one
+		QCOMPARE(text(QStringLiteral("%{structure_id_full}"), info("M1"), element),
+				 QStringLiteral("=SILO+J3-M1"));
+	}
+
+		//The public rule other features use (terminal strip manager, checks):
+		//the boxes a symbol is in, the place they give it, and its own place
+	void thePublicRuleSaysWhereASymbolIs()
+	{
+		QETProject project;
+		Diagram *diagram = project.addNewDiagram();
+		setFolio(diagram, QStringLiteral("FACTORY"), QStringLiteral("CP1"));
+		const StructureBoxItem *outer = box(diagram, QRectF(0, 0, 800, 800), QStringLiteral("SILO"), QString());
+		const StructureBoxItem *inner = box(diagram, QRectF(100, 100, 200, 200), QString(), QStringLiteral("J3"));
+		Element *in_both = symbol(diagram);
+		Element *own = symbol(diagram);
+		Element *outside = symbol(diagram);
+		QVERIFY(in_both && own && outside);
+		in_both->setPos(200, 200);
+		own->setPos(210, 210);
+		setInfo(own, info("X1", {}, QStringLiteral("DB50")));
+		outside->setPos(1200, 1200);
+
+		QCOMPARE(StructureBoxItem::enclosing(in_both),
+				 (QList<const StructureBoxItem *>{inner, outer}));
+		QVERIFY(StructureBoxItem::enclosing(outside).isEmpty());
+		QVERIFY(StructureBoxItem::enclosing(nullptr).isEmpty());
+
+		const StructureBoxItem::Place reference = StructureBoxItem::referencePlace(in_both);
+		QCOMPARE(reference.plant, QStringLiteral("SILO"));
+		QCOMPARE(reference.location, QStringLiteral("J3"));
+
+			//Its own location wins, the empty plant comes from the boxes
+		const StructureBoxItem::Place place = StructureBoxItem::placeOf(own);
+		QCOMPARE(place.plant, QStringLiteral("SILO"));
+		QCOMPARE(place.location, QStringLiteral("DB50"));
+
+			//Outside every box: the folio
+		const StructureBoxItem::Place folio = StructureBoxItem::placeOf(outside);
+		QCOMPARE(folio.plant, QStringLiteral("FACTORY"));
+		QCOMPARE(folio.location, QStringLiteral("CP1"));
+	}
+
+	void ownValueBeatsTheBox()
+	{
+		QETProject project;
+		Diagram *diagram = project.addNewDiagram();
+		box(diagram, QRectF(0, 0, 400, 400), QStringLiteral("FACTORY"), QStringLiteral("FIELD"));
+		Element *element = symbol(diagram);
+		QVERIFY(element);
+		element->setPos(200, 200);
+
+		QCOMPARE(text(QStringLiteral("%{structure_id_full}"),
+					  info("S5", {}, QStringLiteral("DB50")), element),
+				 QStringLiteral("=FACTORY+DB50-S5"));
+	}
+
+	void plantAndLocationStayTheElementsOwnInsideABox()
+	{
+		QETProject project;
+		Diagram *diagram = project.addNewDiagram();
+		box(diagram, QRectF(0, 0, 400, 400), QStringLiteral("FACTORY"), QStringLiteral("FIELD"));
+		Element *element = symbol(diagram);
+		QVERIFY(element);
+		element->setPos(200, 200);
+
+		QCOMPARE(text(QStringLiteral("%{plant}|%{location}"), info("S5"), element),
+				 QStringLiteral("|"));
+	}
+
+	void shortFormLeavesOutWhatTheBoxSays()
+	{
+		QETProject project;
+		Diagram *diagram = project.addNewDiagram();
+		setFolio(diagram, QStringLiteral("FACTORY"), QStringLiteral("CP1"));
+		box(diagram, QRectF(0, 0, 400, 400), QStringLiteral("SILO"), QStringLiteral("FIELD"));
+		Element *inside = symbol(diagram);
+		Element *outside = symbol(diagram);
+		QVERIFY(inside && outside);
+		inside->setPos(200, 200);
+		outside->setPos(800, 800);
+
+			//Inside the box, the box's =SILO+FIELD is implied
+		QCOMPARE(text(QStringLiteral("%{structure_id}"), info("S5"), inside),
+				 QStringLiteral("-S5"));
+		QCOMPARE(text(QStringLiteral("%{structure_id}"),
+					  info("S5", {}, QStringLiteral("DB50")), inside),
+				 QStringLiteral("+DB50-S5"));
+			//Outside it, the folio's =FACTORY+CP1 is
+		QCOMPARE(text(QStringLiteral("%{structure_id}"), info("K1"), outside),
+				 QStringLiteral("-K1"));
+		QCOMPARE(text(QStringLiteral("%{structure_id}"),
+					  info("K1", QStringLiteral("SILO")), outside),
+				 QStringLiteral("=SILO-K1"));
+	}
+
+	void boxSurvivesSaveAndReload()
+	{
+		QETProject project;
+		Diagram *diagram = project.addNewDiagram();
+		box(diagram, QRectF(10, 20, 300, 200), QStringLiteral("SILO"), QStringLiteral("J3"));
+		diagram->addItem(new QetShapeItem(QPointF(0, 0), QPointF(50, 50), QetShapeItem::Rectangle));
+		QDomDocument saved = diagram->toXml();
+
+		QETProject other;
+		Diagram *reloaded = other.addNewDiagram();
+		QVERIFY(reloaded->fromXml(saved));
+		int boxes = 0, shapes = 0;
+		for (QGraphicsItem *item : reloaded->items()) {
+			if (item->type() == StructureBoxItem::Type) {
+				auto *b = static_cast<StructureBoxItem *>(item);
+				QCOMPARE(b->plant(), QStringLiteral("SILO"));
+				QCOMPARE(b->location(), QStringLiteral("J3"));
+				QCOMPARE(b->mapRectToScene(b->rect().normalized()), QRectF(10, 20, 300, 200));
+				++boxes;
+			}
+			else if (item->type() == QetShapeItem::Type)
+				++shapes;
+		}
+		QCOMPARE(boxes, 1);
+		QCOMPARE(shapes, 1);	//a plain rectangle stays a plain rectangle
+	}
+
+		//A new box is drawn dash-dot, a location boundary (IEC 60617);
+		//its line is saved with it, and a plain rectangle stays solid
+	void aNewBoxIsDashDot()
+	{
+		QETProject project;
+		Diagram *diagram = project.addNewDiagram();
+		StructureBoxItem *b = box(diagram, QRectF(10, 20, 300, 200), QStringLiteral("SILO"), QString());
+		QCOMPARE(b->pen().style(), Qt::DashDotLine);
+		QCOMPARE(QetShapeItem(QPointF(0, 0), QPointF(50, 50), QetShapeItem::Rectangle).pen().style(),
+				 Qt::SolidLine);
+
+		QPen solid = b->pen();
+		solid.setStyle(Qt::SolidLine);
+		b->setPen(solid);
+		QDomDocument saved = diagram->toXml();
+		QETProject other;
+		Diagram *reloaded = other.addNewDiagram();
+		QVERIFY(reloaded->fromXml(saved));
+		for (QGraphicsItem *item : reloaded->items())
+			if (item->type() == StructureBoxItem::Type)
+				QCOMPARE(static_cast<StructureBoxItem *>(item)->pen().style(), Qt::SolidLine);
+	}
+
+	void boxIdentityIsInTheDatabase()
+	{
+			//Its row is what a .qetdb saves: it must carry the identity
+		QETProject project;
+		Diagram *diagram = project.addNewDiagram();
+		StructureBoxItem *b = box(diagram, QRectF(0, 0, 100, 100),
+								  QStringLiteral("SILO"), QStringLiteral("J3"));
+		b->setLocation(QStringLiteral("J4"));	//a change after it was added
+
+		QString error;
+		QSqlQuery query = project.dataBase()->newQuery(QStringLiteral(
+			"SELECT name, value FROM drawing_item WHERE item_uuid = '%1' "
+			"AND name IN ('structure_box', 'plant', 'location')").arg(b->uuid().toString()), &error);
+		QVERIFY2(error.isEmpty(), qPrintable(error));
+		QHash<QString, QString> values;
+		while (query.next()) values.insert(query.value(0).toString(), query.value(1).toString());
+		QCOMPARE(values.value(QStringLiteral("structure_box")), QStringLiteral("true"));
+		QCOMPARE(values.value(QStringLiteral("plant")), QStringLiteral("SILO"));
+		QCOMPARE(values.value(QStringLiteral("location")), QStringLiteral("J4"));
+	}
+
+	void theSidePanelAppliesALeftField()
+	{
+			//In the Selection properties panel there is no Apply button:
+			//leaving a field applies it
+		QETProject project;
+		Diagram *diagram = project.addNewDiagram();
+		StructureBoxItem *b = box(diagram, QRectF(0, 0, 100, 100), {}, QStringLiteral("J3"));
+		StructureBoxPropertiesWidget editor(b);
+		QVERIFY(editor.setLiveEdit(true));
+		for (QLineEdit *edit : editor.findChildren<QLineEdit *>()) {
+			if (edit->text() == QLatin1String("J3")) {
+				edit->setText(QStringLiteral("F1"));
+				emit edit->editingFinished();
+			}
+		}
+		QCOMPARE(b->location(), QStringLiteral("F1"));
+		diagram->undoStack().undo();
+		QCOMPARE(b->location(), QStringLiteral("J3"));
+	}
+
+	void editingABoxCanBeUndone()
+	{
+		QETProject project;
+		Diagram *diagram = project.addNewDiagram();
+		StructureBoxItem *b = box(diagram, QRectF(0, 0, 100, 100),
+								  QStringLiteral("SILO"), QStringLiteral("J3"));
+		StructureBoxPropertiesWidget editor(b);
+		for (QLineEdit *edit : editor.findChildren<QLineEdit *>()) {
+			if (edit->text() == QLatin1String("J3")) edit->setText(QStringLiteral("CP1000"));
+		}
+		editor.apply();
+		QCOMPARE(b->location(), QStringLiteral("CP1000"));
+		diagram->undoStack().undo();
+		QCOMPARE(b->location(), QStringLiteral("J3"));
+		QCOMPARE(b->plant(), QStringLiteral("SILO"));
 	}
 
 	void withoutAnElementOnlyItsOwnValuesCount()

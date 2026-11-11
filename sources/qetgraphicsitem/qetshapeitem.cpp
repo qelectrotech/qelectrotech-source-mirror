@@ -32,6 +32,7 @@
 #include <ui/shapegraphicsitempropertieswidget.h>
 #include <utils/qetutils.h>
 #include <undocommand/promoteshapecommand.h>
+#include <qetgraphicsitem/structureboxitem.h>
 
 #include <QActionGroup>
 #include <algorithm>
@@ -647,7 +648,8 @@ void QetShapeItem::setPos(const QPointF &p)
 {
 	const auto selection = scene() ? scene()->selectedItems() : QList<QGraphicsItem *>();
 	const bool shapes_only = std::all_of(selection.cbegin(), selection.cend(),
-		[](const QGraphicsItem *item) { return item->type() == QetShapeItem::Type; });
+		[](const QGraphicsItem *item) {
+			return item->type() == QetShapeItem::Type || item->type() == StructureBoxItem::Type; });
 	if (!shapes_only || !isMovable()) {
 		QetGraphicsItem::setPos(p);
 		return;
