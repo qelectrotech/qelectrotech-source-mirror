@@ -954,12 +954,12 @@
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="318"/>
         <source>Renumber conductors…</source>
-        <translation type="unfinished"></translation>
+        <translation>Numrera om förbindningar…</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="321"/>
         <source>Give the conductors of the chosen sheets new numbers with a conductor numbering, one number per potential, in sheet and position order. Frozen conductors keep theirs.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ge förbindningarna på de valda bladen nya nummer enligt en förbindningsnumrering, ett nummer per potential, i blad- och positionsordning. Låsta förbindningar behåller sina nummer.</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="358"/>
@@ -1042,69 +1042,69 @@
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="224"/>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="249"/>
         <source>Renumber conductors</source>
-        <translation type="unfinished"></translation>
+        <translation>Numrera om förbindningar</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="188"/>
         <source>The project has no conductor numbering.</source>
-        <translation type="unfinished"></translation>
+        <translation>Projektet har ingen förbindningsnumrering.</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="200"/>
         <source>Numbering:</source>
-        <translation type="unfinished"></translation>
+        <translation>Numrering:</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="205"/>
         <source>%1 - %2</source>
-        <translation type="unfinished">%1 - %2</translation>
+        <translation>%1 - %2</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="209"/>
         <source>Sheets:</source>
-        <translation type="unfinished"></translation>
+        <translation>Blad:</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="225"/>
         <source>No conductor of the chosen sheets can be renumbered.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ingen förbindning på de valda bladen kan numreras om.</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="234"/>
         <source>Sheet %1: %2 → %3</source>
-        <translation type="unfinished"></translation>
+        <translation>Blad %1: %2 → %3</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="236"/>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="248"/>
         <source>(none)</source>
-        <translation type="unfinished"></translation>
+        <translation>(ingen)</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="246"/>
         <source>Sheet %1: %2 kept (%3)</source>
-        <translation type="unfinished"></translation>
+        <translation>Blad %1: %2 behålls (%3)</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="250"/>
         <source>%n potentials will be numbered again with &quot;%1&quot;, in sheet and position order.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n potential numreras om med ”%1”, i blad- och positionsordning.</numerusform>
+            <numerusform>%n potentialer numreras om med ”%1”, i blad- och positionsordning.</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="253"/>
         <source>%n potentials are kept as they are.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n potential behålls som den är.</numerusform>
+            <numerusform>%n potentialer behålls som de är.</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="260"/>
         <source>Renumber conductors (%1)</source>
-        <translation type="unfinished"></translation>
+        <translation>Numrera om förbindningar (%1)</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="372"/>
@@ -1137,7 +1137,7 @@ Obs! Dessa alternativ TILLÅTER ELLER BLOCKERAR INTE automatisk numrering, de st
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="14"/>
         <source>Export the bill of materials as CSV</source>
-        <translation type="unfinished"></translation>
+        <translation>Exportera stycklistan som CSV</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="20"/>
@@ -1444,8 +1444,8 @@ Obs! Dessa alternativ TILLÅTER ELLER BLOCKERAR INTE automatisk numrering, de st
 <context>
     <name>BridgeCopy</name>
     <message>
-        <location filename="../sources/diagramview.cpp" line="838"/>
         <location filename="../sources/diagramevent/diagrameventaddpaste.cpp" line="466"/>
+        <location filename="../sources/diagramview.cpp" line="838"/>
         <source>Paste a bridge</source>
         <translation>Klistra in en bygel</translation>
     </message>
@@ -1690,8 +1690,8 @@ Obs! Dessa alternativ TILLÅTER ELLER BLOCKERAR INTE automatisk numrering, de st
 <context>
     <name>CableCopy</name>
     <message>
-        <location filename="../sources/diagramview.cpp" line="823"/>
         <location filename="../sources/diagramevent/diagrameventaddpaste.cpp" line="453"/>
+        <location filename="../sources/diagramview.cpp" line="823"/>
         <source>Paste a cable</source>
         <translation>Klistra in en kabel</translation>
     </message>
@@ -2791,17 +2791,17 @@ Vill du numrera om dem också?</numerusform>
     <message>
         <location filename="../sources/ui/compositetexteditdialog.cpp" line="91"/>
         <source>Prefix (-)</source>
-        <translation type="unfinished"></translation>
+        <translation>Prefix (-)</translation>
     </message>
     <message>
         <location filename="../sources/ui/compositetexteditdialog.cpp" line="92"/>
         <source>Reference designation, IEC 81346 (=+-), short on its own page</source>
-        <translation type="unfinished"></translation>
+        <translation>Referensbeteckning, IEC 81346 (=+-), förkortad på eget blad</translation>
     </message>
     <message>
         <location filename="../sources/ui/compositetexteditdialog.cpp" line="93"/>
         <source>Full reference designation, IEC 81346 (=+-)</source>
-        <translation type="unfinished"></translation>
+        <translation>Fullständig referensbeteckning, IEC 81346 (=+-)</translation>
     </message>
 </context>
 <context>
@@ -2995,7 +2995,7 @@ Vill du numrera om dem också?</numerusform>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="58"/>
         <source>Potential type :</source>
-        <translation type="unfinished"></translation>
+        <translation>Potentialtyp:</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="68"/>
@@ -3037,14 +3037,14 @@ Vill du numrera om dem också?</numerusform>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="148"/>
         <source>Conductor type :</source>
-        <translation type="unfinished"></translation>
+        <translation>Förbindningstyp:</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="158"/>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="168"/>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="178"/>
         <source>❗</source>
-        <translation type="unfinished"></translation>
+        <translation>❗</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="188"/>
@@ -3302,17 +3302,17 @@ Vill du numrera om dem också?</numerusform>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.cpp" line="143"/>
         <source>This wire is a core of a cable: section, colour and type come from the cable.</source>
-        <translation type="unfinished"></translation>
+        <translation>Denna förbindning är en ledare i en kabel: area, färg och typ kommer från kabeln.</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.cpp" line="144"/>
         <source>This wire is core of cable %1: section, colour and type come from the cable.</source>
-        <translation type="unfinished"></translation>
+        <translation>Denna förbindning är en ledare i kabel %1: area, färg och typ kommer från kabeln.</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.cpp" line="259"/>
         <source>None</source>
-        <translation type="unfinished">Ingen</translation>
+        <translation>Ingen</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.cpp" line="319"/>
@@ -3577,12 +3577,12 @@ Fortsätta?</translation>
     <message>
         <location filename="../sources/ui/customelementinfopartwidget.cpp" line="45"/>
         <source>Lower-case letters, numbers, hyphens and underscores only. Capitals and spaces are converted as you type.</source>
-        <translation type="unfinished"></translation>
+        <translation>Endast gemener, siffror, bindestreck och understreck. Versaler och mellanslag omvandlas medan du skriver.</translation>
     </message>
     <message>
         <location filename="../sources/ui/customelementinfopartwidget.cpp" line="142"/>
         <source>Defined by the symbol</source>
-        <translation type="unfinished"></translation>
+        <translation>Definierad av symbolen</translation>
     </message>
     <message>
         <source>Lower-case letters, numbers, hyphens and underscores only</source>
@@ -3609,171 +3609,171 @@ Fortsätta?</translation>
         <location filename="../sources/ui/devicenavigatordockwidget.ui" line="6"/>
         <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="68"/>
         <source>Device Navigator</source>
-        <translation type="unfinished"></translation>
+        <translation>Apparatnavigator</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatordockwidget.ui" line="33"/>
         <source>Filter:</source>
-        <translation type="unfinished"></translation>
+        <translation>Filter:</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatordockwidget.ui" line="50"/>
         <source>...</source>
-        <translation type="unfinished">...</translation>
+        <translation>...</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatordockwidget.ui" line="53"/>
         <source>Configure filters...</source>
-        <translation type="unfinished"></translation>
+        <translation>Konfigurera filter...</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatordockwidget.ui" line="67"/>
         <source>Value:</source>
-        <translation type="unfinished">Värde:</translation>
+        <translation>Värde:</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatordockwidget.ui" line="109"/>
         <source>Devices / Plant Structure</source>
-        <translation type="unfinished"></translation>
+        <translation>Apparater/anläggningsstruktur</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatordockwidget.ui" line="175"/>
         <source>Refresh device list</source>
-        <translation type="unfinished"></translation>
+        <translation>Uppdatera apparatlistan</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="75"/>
         <source>Tree</source>
-        <translation type="unfinished"></translation>
+        <translation>Träd</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="76"/>
         <source>List</source>
-        <translation type="unfinished"></translation>
+        <translation>Lista</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="84"/>
         <source>Search device, function, folio...</source>
-        <translation type="unfinished"></translation>
+        <translation>Sök apparat, funktion, blad...</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="94"/>
         <source>Device tag</source>
-        <translation type="unfinished"></translation>
+        <translation>Beteckning</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="95"/>
         <source>Function / Description</source>
-        <translation type="unfinished"></translation>
+        <translation>Funktion/beskrivning</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="96"/>
         <source>Terminals</source>
-        <translation type="unfinished">Anslutningar</translation>
+        <translation>Anslutningar</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="97"/>
         <source>Structure (Plant / Location)</source>
-        <translation type="unfinished"></translation>
+        <translation>Struktur (anläggning/placering)</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="98"/>
         <source>Folio</source>
-        <translation type="unfinished">Blad</translation>
+        <translation>Blad</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="99"/>
         <source>Position</source>
-        <translation type="unfinished">Position</translation>
+        <translation>Position</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="100"/>
         <source>Type</source>
-        <translation type="unfinished"></translation>
+        <translation>Typ</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="286"/>
         <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="587"/>
         <source>Coil</source>
-        <translation type="unfinished">Spole</translation>
+        <translation>Spole</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="287"/>
         <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="588"/>
         <source>Protection</source>
-        <translation type="unfinished"></translation>
+        <translation>Skyddsanordning</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="288"/>
         <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="589"/>
         <source>Commutator</source>
-        <translation type="unfinished"></translation>
+        <translation>Knapp/brytare</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="289"/>
         <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="590"/>
         <source>PLC</source>
-        <translation type="unfinished"></translation>
+        <translation>PLC</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="290"/>
         <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="591"/>
         <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="1082"/>
         <source>Master</source>
-        <translation type="unfinished"></translation>
+        <translation>Huvudsymbol</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="294"/>
         <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="593"/>
         <source>Power contacts</source>
-        <translation type="unfinished"></translation>
+        <translation>Kraftkontakter</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="296"/>
         <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="594"/>
         <source>NO contact</source>
-        <translation type="unfinished"></translation>
+        <translation>Slutande kontakt (NO)</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="298"/>
         <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="595"/>
         <source>NC contact</source>
-        <translation type="unfinished"></translation>
+        <translation>Brytande kontakt (NC)</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="300"/>
         <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="596"/>
         <source>Changeover contact</source>
-        <translation type="unfinished"></translation>
+        <translation>Växlande kontakt</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="302"/>
         <source>Delay ON</source>
-        <translation type="unfinished"></translation>
+        <translation>Tillslagsfördröjd</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="304"/>
         <source>Delay OFF</source>
-        <translation type="unfinished"></translation>
+        <translation>Frånslagsfördröjd</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="306"/>
         <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="597"/>
         <source>Contact</source>
-        <translation type="unfinished">Kontakt</translation>
+        <translation>Kontakt</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="309"/>
         <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="599"/>
         <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="1084"/>
         <source>Terminal</source>
-        <translation type="unfinished"></translation>
+        <translation>Plint</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="311"/>
         <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="601"/>
         <source>Part placement, general device</source>
-        <translation type="unfinished"></translation>
+        <translation>Komponentplacering, allmän apparat</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="318"/>
@@ -3781,7 +3781,7 @@ Fortsätta?</translation>
         <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="605"/>
         <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="611"/>
         <source>Device</source>
-        <translation type="unfinished"></translation>
+        <translation>Apparat</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="407"/>
@@ -3789,62 +3789,62 @@ Fortsätta?</translation>
         <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="650"/>
         <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="926"/>
         <source>No structure identifier</source>
-        <translation type="unfinished"></translation>
+        <translation>Ingen strukturbeteckning</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="428"/>
         <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="577"/>
         <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="633"/>
         <source>&lt;unnamed&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;namnlös&gt;</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="664"/>
         <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="682"/>
         <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="1085"/>
         <source>Cable</source>
-        <translation type="unfinished">Kabel</translation>
+        <translation>Kabel</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="665"/>
         <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="683"/>
         <source>%1 cores</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 ledare</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="911"/>
         <source>Unnamed Project</source>
-        <translation type="unfinished"></translation>
+        <translation>Namnlöst projekt</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="1083"/>
         <source>Slave</source>
-        <translation type="unfinished"></translation>
+        <translation>Slavsymbol</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="1086"/>
         <source>Cabinet Layout</source>
-        <translation type="unfinished"></translation>
+        <translation>Apparatskåpslayout</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="1087"/>
         <source>Symbol</source>
-        <translation type="unfinished">Symbol</translation>
+        <translation>Symbol</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="1408"/>
         <source>Show in diagram</source>
-        <translation type="unfinished"></translation>
+        <translation>Visa på blad</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="1411"/>
         <source>Edit properties...</source>
-        <translation type="unfinished"></translation>
+        <translation>Redigera egenskaper...</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="1416"/>
         <source>Refresh</source>
-        <translation type="unfinished">Uppdatera</translation>
+        <translation>Uppdatera</translation>
     </message>
 </context>
 <context>
@@ -3852,202 +3852,202 @@ Fortsätta?</translation>
     <message>
         <location filename="../sources/ui/devicenavigatorfilterdialog.ui" line="14"/>
         <source>Configure Filters</source>
-        <translation type="unfinished"></translation>
+        <translation>Konfigurera filter</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatorfilterdialog.ui" line="22"/>
         <source>Scheme:</source>
-        <translation type="unfinished">Blad:</translation>
+        <translation>Uppsättning:</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatorfilterdialog.ui" line="39"/>
         <source>New...</source>
-        <translation type="unfinished"></translation>
+        <translation>Ny...</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatorfilterdialog.ui" line="46"/>
         <source>Delete</source>
-        <translation type="unfinished">Ta bort</translation>
+        <translation>Ta bort</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatorfilterdialog.ui" line="59"/>
         <source>Device tag</source>
-        <translation type="unfinished"></translation>
+        <translation>Beteckning</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatorfilterdialog.ui" line="65"/>
         <source>Device tag prefixes (comma-separated, e.g. K, Q, F, X, W):</source>
-        <translation type="unfinished"></translation>
+        <translation>Prefix i beteckningen (kommaseparerade, t.ex. K, Q, F, X, W):</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatorfilterdialog.ui" line="79"/>
         <source>Quick Selection (DIN EN 81346)</source>
-        <translation type="unfinished"></translation>
+        <translation>Snabbval (SS-EN 81346)</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatorfilterdialog.ui" line="85"/>
         <source>-K (Relays, Contactors)</source>
-        <translation type="unfinished"></translation>
+        <translation>-K (reläer, kontaktorer)</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatorfilterdialog.ui" line="92"/>
         <source>-F (Protection, Fuses)</source>
-        <translation type="unfinished"></translation>
+        <translation>-F (skydd, säkringar)</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatorfilterdialog.ui" line="99"/>
         <source>-Q (Power Switches)</source>
-        <translation type="unfinished"></translation>
+        <translation>-Q (effektbrytare)</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatorfilterdialog.ui" line="106"/>
         <source>-X (Terminals)</source>
-        <translation type="unfinished"></translation>
+        <translation>-X (plintar)</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatorfilterdialog.ui" line="113"/>
         <source>-W (Cables)</source>
-        <translation type="unfinished"></translation>
+        <translation>-W (kablar)</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatorfilterdialog.ui" line="120"/>
         <source>-M (Motors, Drives)</source>
-        <translation type="unfinished"></translation>
+        <translation>-M (motorer, drivdon)</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatorfilterdialog.ui" line="127"/>
         <source>-B (Sensors, Transducers)</source>
-        <translation type="unfinished"></translation>
+        <translation>-B (givare, omvandlare)</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatorfilterdialog.ui" line="134"/>
         <source>-P, -H (Signaling, Indicators)</source>
-        <translation type="unfinished"></translation>
+        <translation>-P, -H (signalering, indikatorer)</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatorfilterdialog.ui" line="144"/>
         <source>Custom pattern / Wildcard (e.g. *Pump* or -K[1-9]):</source>
-        <translation type="unfinished"></translation>
+        <translation>Eget mönster/jokertecken (t.ex. *Pump* eller -K[1-9]):</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatorfilterdialog.ui" line="172"/>
         <source>Element Types</source>
-        <translation type="unfinished"></translation>
+        <translation>Symboltyper</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatorfilterdialog.ui" line="178"/>
         <source>Master symbols / Coils / Main functions</source>
-        <translation type="unfinished"></translation>
+        <translation>Huvudsymboler/spolar/huvudfunktioner</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatorfilterdialog.ui" line="185"/>
         <source>Slave symbols / Contacts / Auxiliary functions</source>
-        <translation type="unfinished"></translation>
+        <translation>Slavsymboler/kontakter/hjälpfunktioner</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatorfilterdialog.ui" line="192"/>
         <source>Terminals</source>
-        <translation type="unfinished">Anslutningar</translation>
+        <translation>Plintar</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatorfilterdialog.ui" line="199"/>
         <source>Cables</source>
-        <translation type="unfinished">Kablar</translation>
+        <translation>Kablar</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatorfilterdialog.ui" line="206"/>
         <source>Folio reports / Cross-references (Folienverweise)</source>
-        <translation type="unfinished"></translation>
+        <translation>Bladhänvisningar/korsreferenser</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatorfilterdialog.ui" line="213"/>
         <source>Conductor definitions / Connections (Leitungsdefinitionen)</source>
-        <translation type="unfinished"></translation>
+        <translation>Förbindningsdefinitioner/anslutningar</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatorfilterdialog.ui" line="220"/>
         <source>Cabinet layout / Thumbnail placements</source>
-        <translation type="unfinished"></translation>
+        <translation>Apparatskåpslayout/miniatyrbildsplaceringar</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatorfilterdialog.ui" line="227"/>
         <source>Other devices / Symbols</source>
-        <translation type="unfinished"></translation>
+        <translation>Övriga apparater/symboler</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatorfilterdialog.ui" line="248"/>
         <source>Structure</source>
-        <translation type="unfinished"></translation>
+        <translation>Struktur</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatorfilterdialog.ui" line="254"/>
         <source>Structure grouping:</source>
-        <translation type="unfinished"></translation>
+        <translation>Strukturgruppering:</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatorfilterdialog.ui" line="264"/>
         <source>Structure contains text (e.g. 010 or A1):</source>
-        <translation type="unfinished"></translation>
+        <translation>Strukturen innehåller texten (t.ex. 010 eller A1):</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatorfilterdialog.cpp" line="340"/>
         <source>All structures</source>
-        <translation type="unfinished"></translation>
+        <translation>Alla strukturer</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatorfilterdialog.cpp" line="341"/>
         <source>With structure identifier only</source>
-        <translation type="unfinished"></translation>
+        <translation>Endast med strukturbeteckning</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatorfilterdialog.cpp" line="342"/>
         <source>Without structure identifier only</source>
-        <translation type="unfinished"></translation>
+        <translation>Endast utan strukturbeteckning</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatorfilterdialog.cpp" line="478"/>
         <source>New Scheme</source>
-        <translation type="unfinished"></translation>
+        <translation>Ny uppsättning</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatorfilterdialog.cpp" line="479"/>
         <source>Enter name for new filter scheme:</source>
-        <translation type="unfinished"></translation>
+        <translation>Ange ett namn på den nya filteruppsättningen:</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatorfilterdialog.cpp" line="502"/>
         <source>Cannot Delete</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan inte ta bort</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatorfilterdialog.cpp" line="503"/>
         <source>At least one filter scheme must remain.</source>
-        <translation type="unfinished"></translation>
+        <translation>Minst en filteruppsättning måste finnas kvar.</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatorfilterdialog.cpp" line="509"/>
         <source>Delete Scheme</source>
-        <translation type="unfinished"></translation>
+        <translation>Ta bort uppsättning</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatorfilterdialog.cpp" line="510"/>
         <source>Are you sure you want to delete scheme &apos;%1&apos;?</source>
-        <translation type="unfinished"></translation>
+        <translation>Vill du ta bort uppsättningen ”%1”?</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatorfilterdialog.cpp" line="533"/>
         <source>Reset Schemes</source>
-        <translation type="unfinished"></translation>
+        <translation>Återställ uppsättningar</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatorfilterdialog.cpp" line="534"/>
         <source>Reset all filter schemes to defaults?</source>
-        <translation type="unfinished"></translation>
+        <translation>Vill du återställa alla filteruppsättningar till standard?</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatorfilterdialog.cpp" line="586"/>
         <source>Custom</source>
-        <translation type="unfinished">Anpassad</translation>
+        <translation>Anpassad</translation>
     </message>
 </context>
 <context>
@@ -5306,22 +5306,22 @@ Håll ned Skift och dra för att flytta enbart denna text</translation>
     <message>
         <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="80"/>
         <source>One designation is one device; report different part numbers</source>
-        <translation type="unfinished"></translation>
+        <translation>En beteckning är en apparat; rapportera olika artikelnummer</translation>
     </message>
     <message>
         <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="82"/>
         <source>When checked, symbols with the same label in the same place, such as a socket drawn on two sheets, are one device and are reported only when their part numbers differ. When unchecked, only linked symbols (a coil and its contacts) are one device.</source>
-        <translation type="unfinished"></translation>
+        <translation>Om rutan är markerad är symboler med samma beteckning på samma plats, till exempel ett uttag som ritats på två blad, en och samma apparat och rapporteras bara när deras artikelnummer skiljer sig. Om rutan inte är markerad är bara länkade symboler (en spole och dess kontakter) en och samma apparat.</translation>
     </message>
     <message>
         <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="99"/>
         <source>A wire number is unique within its plant (=)</source>
-        <translation type="unfinished"></translation>
+        <translation>Ett förbindningsnummer är unikt inom sin anläggning (=)</translation>
     </message>
     <message>
         <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="101"/>
         <source>When checked, the same wire number in two plants, such as 101 on a =FACTORY sheet and 101 on a =SILO sheet, is not a duplicate: a wire takes the plant of its sheet. When unchecked, a wire number names one potential in the whole project.</source>
-        <translation type="unfinished"></translation>
+        <translation>Om rutan är markerad är samma förbindningsnummer i två anläggningar, till exempel 101 på ett =FABRIK-blad och 101 på ett =SILO-blad, inte en dubblett: en förbindning tillhör bladets anläggning. Om rutan inte är markerad anger ett förbindningsnummer en potential i hela projektet.</translation>
     </message>
     <message>
         <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="118"/>
@@ -5362,7 +5362,7 @@ Håll ned Skift och dra för att flytta enbart denna text</translation>
         <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="215"/>
         <source>Duplicate signal: %1 in %2</source>
         <extracomment>%2 is the plant, such as &quot;=SILO&quot;.</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Dubblett av signal: %1 i %2</translation>
     </message>
     <message>
         <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="217"/>
@@ -5379,7 +5379,7 @@ Håll ned Skift och dra för att flytta enbart denna text</translation>
         <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="228"/>
         <source>%1 — different part numbers: %2</source>
         <extracomment>%1 is the error above, %2 the part numbers, &quot;A9, B1&quot;.</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>%1 — olika artikelnummer: %2</translation>
     </message>
     <message>
         <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="245"/>
@@ -5475,12 +5475,12 @@ Håll ned Skift och dra för att flytta enbart denna text</translation>
     <message>
         <location filename="../sources/ui/duplicateoffsetdialog.cpp" line="77"/>
         <source>Repeat the move of the copy</source>
-        <translation type="unfinished"></translation>
+        <translation>Upprepa förflyttningen av kopian</translation>
     </message>
     <message>
         <location filename="../sources/ui/duplicateoffsetdialog.cpp" line="78"/>
         <source>The first copy lands 4 grid steps right and down; move it, and the next Duplicate repeats that move. The spacing above is then not used.</source>
-        <translation type="unfinished"></translation>
+        <translation>Den första kopian hamnar 4 rutnätssteg åt höger och nedåt; flytta den, så upprepar nästa Duplicera den förflyttningen. Avståndet ovan används då inte.</translation>
     </message>
 </context>
 <context>
@@ -6323,7 +6323,7 @@ Symbolens visningsnamn ändras separat i symbolens egenskaper.</translation>
     <message>
         <location filename="../sources/ui/elementinfopartwidget.ui" line="71"/>
         <source>Edit on several lines</source>
-        <translation type="unfinished"></translation>
+        <translation>Redigera på flera rader</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfopartwidget.ui" line="81"/>
@@ -6372,7 +6372,7 @@ Symbolens visningsnamn ändras separat i symbolens egenskaper.</translation>
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="352"/>
         <source>Exclude from the bill of materials</source>
-        <translation>Undanta från förteckningen</translation>
+        <translation>Undanta från stycklistan</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="500"/>
@@ -6616,7 +6616,7 @@ Fortsätta?</translation>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="63"/>
         <source>Exclude from the bill of materials</source>
-        <translation>Undanta från förteckningen</translation>
+        <translation>Undanta från stycklistan</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="70"/>
@@ -6906,32 +6906,32 @@ Fortsätta?</translation>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="505"/>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="515"/>
         <source>Add a custom property</source>
-        <translation type="unfinished">Lägg till en anpassad egenskap</translation>
+        <translation>Lägg till en anpassad egenskap</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="450"/>
         <source>Remove the custom property</source>
-        <translation type="unfinished"></translation>
+        <translation>Ta bort den anpassade egenskapen</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="483"/>
         <source>Custom property: every placed copy of this symbol has it</source>
-        <translation type="unfinished"></translation>
+        <translation>Anpassad egenskap: varje placerad kopia av denna symbol har den</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="499"/>
         <source>Name of the property:</source>
-        <translation type="unfinished"></translation>
+        <translation>Egenskapens namn:</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="506"/>
         <source>Use letters, numbers, &quot;-&quot; or &quot;_&quot; in the name.</source>
-        <translation type="unfinished"></translation>
+        <translation>Använd bokstäver, siffror, ”-” eller ”_” i namnet.</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="516"/>
         <source>This symbol already has a property &quot;%1&quot;.</source>
-        <translation type="unfinished"></translation>
+        <translation>Denna symbol har redan en egenskap ”%1”.</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="624"/>
@@ -7251,7 +7251,7 @@ Fortsätta?</translation>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.h" line="45"/>
         <source>Element properties</source>
-        <translation type="unfinished"></translation>
+        <translation>Symbolegenskaper</translation>
     </message>
 </context>
 <context>
@@ -7561,7 +7561,7 @@ Fortsätta?</translation>
         <location filename="../sources/editor/elementscene.cpp" line="328"/>
         <source>move</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">Flytta delar</translation>
+        <translation>flytta</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="979"/>
@@ -8911,42 +8911,42 @@ som du skapar. Text- och nummerinmatningar är
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1988"/>
         <source>Symbol editor: draw like the folio, frame on the grid around the insertion point</source>
-        <translation type="unfinished"></translation>
+        <translation>Symbolredigerare: rita som på bladet, med ramen på rutnätet runt insättningspunkten</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1069"/>
         <source>Find and edit a placed element in the collection it was taken from</source>
-        <translation type="unfinished"></translation>
+        <translation>Sök upp och redigera en placerad symbol i biblioteket den hämtades från</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1072"/>
         <source>Saving it there updates the open projects that use it. Otherwise the project&apos;s own copy is edited.</source>
-        <translation type="unfinished"></translation>
+        <translation>När den sparas där uppdateras de öppna projekt som använder den. Annars redigeras projektets egen kopia.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="186"/>
         <source>Corner radius of the selection frame (0: square)</source>
-        <translation type="unfinished"></translation>
+        <translation>Hörnradie för markeringsramen (0: rät)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="280"/>
         <source>Zoom step:</source>
-        <translation type="unfinished"></translation>
+        <translation>Zoomsteg:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="296"/>
         <source>How far the mouse wheel, Ctrl++ / Ctrl+- and the zoom buttons zoom at a time, in percent of the zoom shown, rounded to whole fives: with 10 %, 100 % goes to 110 %, 120 %, 130 % and 400 % to 440 %. Alt with the mouse wheel zooms four steps at a time.</source>
-        <translation type="unfinished"></translation>
+        <translation>Hur mycket mushjulet, Ctrl++/Ctrl+- och zoomknapparna zoomar åt gången, i procent av den visade zoomen, avrundat till hela femtal: med 10 % går 100 % till 110 %, 120 %, 130 % och 400 % till 440 %. Alt med mushjulet zoomar fyra steg åt gången.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="299"/>
         <source>Factor 1.15 (as before)</source>
-        <translation type="unfinished"></translation>
+        <translation>Faktor 1,15 (som tidigare)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="302"/>
         <source> %</source>
-        <translation type="unfinished"> %</translation>
+        <translation> %</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="400"/>
@@ -8966,42 +8966,42 @@ som du skapar. Text- och nummerinmatningar är
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="229"/>
         <source>One stub per terminal which has a wire of its own, going up from the strip: what the wire is made of at its foot, where it lands at its top (12K1:A1). Cores of a cable are left out -- the cable is drawn below the strip.</source>
-        <translation type="unfinished"></translation>
+        <translation>En stump per plint som har en egen förbindning, uppåt från plintraden: vad förbindningen består av vid foten, vart den går vid toppen (12K1:A1). Ledare i en kabel utelämnas -- kabeln ritas under plintraden.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="232"/>
         <source>Draw the wires of a terminal strip above it, like its cables below it</source>
-        <translation type="unfinished"></translation>
+        <translation>Rita förbindningarna till en plintrad ovanför den, liksom dess kablar under den</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="690"/>
         <source>Used when the automatic assignment makes a terminal strip and by &quot;Automatic position&quot; in the terminal manager. Unchecked: the way the plan is drawn, folio by folio then left to right, which keeps N and PE where they are drawn. Checked: by label, X1:2 before X1:10. A strip already made keeps its order until it is sorted again.</source>
-        <translation type="unfinished"></translation>
+        <translation>Används när den automatiska tilldelningen skapar en plintrad och av ”Automatisk position” i plintradshanteraren. Inte markerad: så som ritningen är upplagd, blad för blad och sedan från vänster till höger, vilket behåller N och PE där de är ritade. Markerad: efter beteckning, X1:2 före X1:10. En plintrad som redan finns behåller sin ordning tills den sorteras igen.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="693"/>
         <source>Sort the terminal strips by label instead of the plan order</source>
-        <translation type="unfinished"></translation>
+        <translation>Sortera plintraderna efter beteckning i stället för ritningens ordning</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="661"/>
         <source>A new folio takes the group and sub-group of the folio before it</source>
-        <translation type="unfinished"></translation>
+        <translation>Ett nytt blad får gruppen och undergruppen från bladet före det</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="664"/>
         <source>Only a group or sub-group typed on that folio is taken. Unchecked, a new folio has none and is in its plant and location.</source>
-        <translation type="unfinished"></translation>
+        <translation>Bara en grupp eller undergrupp som skrivits in på det bladet tas med. Om rutan inte är markerad har ett nytt blad ingen och hör till sin anläggning och placering.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="671"/>
         <source>Ask for the device labels when placing a macro</source>
-        <translation type="unfinished"></translation>
+        <translation>Fråga efter apparaternas beteckningar när ett makro placeras</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="674"/>
         <source>Proposes the next free labels, which Accept All takes. Unchecked, a macro keeps its saved labels.</source>
-        <translation type="unfinished"></translation>
+        <translation>Föreslår nästa lediga beteckningar, som Godta alla använder. Om rutan inte är markerad behåller ett makro sina sparade beteckningar.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="700"/>
@@ -9181,37 +9181,37 @@ som du skapar. Text- och nummerinmatningar är
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="30"/>
         <source>Theme</source>
-        <translation type="unfinished"></translation>
+        <translation>Tema</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="70"/>
         <source>Main window</source>
-        <translation type="unfinished"></translation>
+        <translation>Huvudfönster</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="178"/>
         <source>Drawing on the sheet</source>
-        <translation type="unfinished"></translation>
+        <translation>Ritning på bladet</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="266"/>
         <source>Mouse and input</source>
-        <translation type="unfinished"></translation>
+        <translation>Mus och inmatning</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="272"/>
         <source>Zoom and navigation</source>
-        <translation type="unfinished"></translation>
+        <translation>Zoom och navigering</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="348"/>
         <source>Selection</source>
-        <translation type="unfinished">Markering</translation>
+        <translation>Markering</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="410"/>
         <source>Drawing and moving</source>
-        <translation type="unfinished"></translation>
+        <translation>Rita och flytta</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="518"/>
@@ -9317,12 +9317,12 @@ som du skapar. Text- och nummerinmatningar är
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="655"/>
         <source>Folios and macros</source>
-        <translation type="unfinished"></translation>
+        <translation>Blad och makron</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="684"/>
         <source>Terminal strips and conductors</source>
-        <translation type="unfinished"></translation>
+        <translation>Plintrader och förbindningar</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="805"/>
@@ -9530,7 +9530,7 @@ Här kan du ange standardvärdet för detta fält för de symboler du skapar:</t
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1451"/>
         <source>Grid and guides</source>
-        <translation type="unfinished"></translation>
+        <translation>Rutnät och guider</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1526"/>
@@ -9637,7 +9637,7 @@ Här kan du ange standardvärdet för detta fält för de symboler du skapar:</t
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1700"/>
         <source>Move by the grid step instead (Display &gt; Grid step)</source>
-        <translation type="unfinished"></translation>
+        <translation>Flytta i stället med rutnätssteget (Visning &gt; Rutnätssteg)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1723"/>
@@ -9842,7 +9842,7 @@ Här kan du ange standardvärdet för detta fält för de symboler du skapar:</t
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="708"/>
         <source>Slovak</source>
-        <translation type="unfinished"></translation>
+        <translation>Slovakiska</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="709"/>
@@ -10566,105 +10566,135 @@ Alla värden andra än ”Ingen avrundning” kan orsaka renderingsfel i projekt
 <context>
     <name>GraphicsTablePropertiesEditor</name>
     <message>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="14"/>
         <source>Table properties</source>
-        <translation type="vanished">Formulär</translation>
+        <translation>Formulär</translation>
     </message>
     <message>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="24"/>
         <source>Display</source>
-        <translation type="vanished">Visning</translation>
+        <translation>Visning</translation>
     </message>
     <message>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="33"/>
         <source>Table name</source>
-        <translation type="vanished">Namn på tabell</translation>
+        <translation>Namn på tabell</translation>
     </message>
     <message>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="40"/>
         <source>Geometry and lines</source>
-        <translation type="vanished">Geometri och linjer</translation>
+        <translation>Geometri och linjer</translation>
     </message>
     <message>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="46"/>
         <source>All</source>
-        <translation type="vanished">Allt</translation>
+        <translation>Allt</translation>
     </message>
     <message>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="59"/>
         <source>Next table</source>
-        <translation type="vanished">Nästa tabell</translation>
+        <translation>Nästa tabell</translation>
     </message>
     <message>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="79"/>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.cpp" line="330"/>
         <source>None</source>
         <translation>Ingen</translation>
     </message>
     <message>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="100"/>
         <source>Fit table to sheet</source>
-        <translation type="vanished">Anpassa tabell till blad</translation>
+        <translation>Anpassa tabell till blad</translation>
     </message>
     <message>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="126"/>
         <source>Y :</source>
-        <translation type="vanished">Y:</translation>
+        <translation>Y:</translation>
     </message>
     <message>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="136"/>
         <source>X :</source>
-        <translation type="vanished">X:</translation>
+        <translation>X:</translation>
     </message>
     <message>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="174"/>
         <source>Previous table</source>
-        <translation type="vanished">Föregående tabell</translation>
+        <translation>Föregående tabell</translation>
     </message>
     <message>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="197"/>
         <source>Apply geometry to all tables linked to this one</source>
-        <translation type="vanished">Tillämpa geometri på alla relaterade tabeller</translation>
+        <translation>Tillämpa geometri på alla relaterade tabeller</translation>
     </message>
     <message>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="210"/>
         <source>Previous table :</source>
-        <translation type="vanished">Föregående tabell:</translation>
+        <translation>Föregående tabell:</translation>
     </message>
     <message>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="220"/>
         <source>Lines to display :</source>
-        <translation type="vanished">Rader att visa:</translation>
+        <translation>Rader att visa:</translation>
     </message>
     <message>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="230"/>
         <source>TextLabel</source>
-        <translation type="vanished">TextEtikett</translation>
+        <translation>TextEtikett</translation>
     </message>
     <message>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="246"/>
         <source>Header</source>
-        <translation type="vanished">Rubrik</translation>
+        <translation>Rubrik</translation>
     </message>
     <message>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="270"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="429"/>
         <source>Margin</source>
-        <translation type="vanished">Marginaler</translation>
+        <translation>Marginaler</translation>
     </message>
     <message>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="339"/>
         <source>Alignment :</source>
-        <translation type="vanished">Justering:</translation>
+        <translation>Justering:</translation>
     </message>
     <message>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="346"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="489"/>
         <source>Left</source>
-        <translation type="vanished">Vänster</translation>
+        <translation>Vänster</translation>
     </message>
     <message>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="353"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="496"/>
         <source>Center</source>
-        <translation type="vanished">Centrerad</translation>
+        <translation>Centrerad</translation>
     </message>
     <message>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="360"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="503"/>
         <source>Right</source>
-        <translation type="vanished">Höger</translation>
+        <translation>Höger</translation>
     </message>
     <message>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="383"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="526"/>
         <source>Font</source>
-        <translation type="vanished">Typsnitt</translation>
+        <translation>Typsnitt</translation>
     </message>
     <message>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="396"/>
         <source>Table</source>
-        <translation type="vanished">Tabell</translation>
+        <translation>Tabell</translation>
     </message>
     <message>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="482"/>
         <source>Alignment:</source>
-        <translation type="vanished">Justering:</translation>
+        <translation>Justering:</translation>
     </message>
     <message>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="553"/>
         <source>Content</source>
-        <translation type="vanished">Innehåll</translation>
+        <translation>Innehåll</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.cpp" line="140"/>
@@ -10925,7 +10955,7 @@ Alla värden andra än ”Ingen avrundning” kan orsaka renderingsfel i projekt
     <message>
         <location filename="../sources/ui/imagepropertieswidget.h" line="46"/>
         <source>Picture properties</source>
-        <translation type="unfinished"></translation>
+        <translation>Bildegenskaper</translation>
     </message>
 </context>
 <context>
@@ -11025,64 +11055,81 @@ Alla värden andra än ”Ingen avrundning” kan orsaka renderingsfel i projekt
 <context>
     <name>IndiTextPropertiesWidget</name>
     <message>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="vanished">Formulär</translation>
+        <translation>Formulär</translation>
     </message>
     <message>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="20"/>
         <source>X :</source>
-        <translation type="vanished">X:</translation>
+        <translation>X:</translation>
     </message>
     <message>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="30"/>
         <source>Advanced Editor</source>
-        <translation type="vanished">Avancerad redigering</translation>
+        <translation>Avancerad redigering</translation>
     </message>
     <message>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="37"/>
         <source>Size :</source>
-        <translation type="vanished">Storlek:</translation>
+        <translation>Storlek:</translation>
     </message>
     <message>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="47"/>
         <source>Angle:</source>
-        <translation type="vanished">Vinkel:</translation>
+        <translation>Vinkel:</translation>
     </message>
     <message>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="57"/>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="93"/>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="148"/>
         <source>px</source>
-        <translation type="vanished">px</translation>
+        <translation>px</translation>
     </message>
     <message>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="109"/>
         <source>°</source>
-        <translation type="vanished">°</translation>
+        <translation>°</translation>
     </message>
     <message>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="122"/>
         <source>Y :</source>
-        <translation type="vanished">Y:</translation>
+        <translation>Y:</translation>
     </message>
     <message>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="132"/>
         <source>Width:</source>
-        <translation type="vanished">Bredd:</translation>
+        <translation>Bredd:</translation>
     </message>
     <message>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="142"/>
         <source>Text width; the text wraps at this width. Auto: no automatic line wrap</source>
-        <translation type="vanished">Textbredd; texten radbryts vid denna bredd. Auto: ingen automatisk radbrytning</translation>
+        <translation>Textbredd; texten radbryts vid denna bredd. Auto: ingen automatisk radbrytning</translation>
     </message>
     <message>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="145"/>
         <source>Auto</source>
-        <translation type="vanished">Auto</translation>
+        <translation>Auto</translation>
     </message>
     <message>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="164"/>
         <source>The contents, the size and the font of the text can not be modified because formatted in html.
 Please use the advanced editor for this.</source>
-        <translation type="vanished">Textens innehåll, storlek och typsnitt kan inte ändras eftersom den är formaterad i html.
+        <translation>Textens innehåll, storlek och typsnitt kan inte ändras eftersom den är formaterad i html.
 Använd den avancerade redigeraren för detta.</translation>
     </message>
     <message>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="178"/>
         <source>Click here to cancel html formatting</source>
-        <translation type="vanished">Klicka här för att ta bort html-formateringen</translation>
+        <translation>Klicka här för att ta bort html-formateringen</translation>
     </message>
     <message>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="185"/>
         <source>Text</source>
-        <translation type="vanished">Text</translation>
+        <translation>Text</translation>
     </message>
     <message>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="192"/>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="421"/>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="460"/>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="510"/>
@@ -11736,42 +11783,42 @@ Inställningen finns under Konfigurera QElectroTech &gt; Allmänt &gt; Projekt.<
     <message>
         <location filename="../sources/ui/macrolabelsdialog.cpp" line="32"/>
         <source>Place the macro</source>
-        <translation type="unfinished"></translation>
+        <translation>Placera makrot</translation>
     </message>
     <message>
         <location filename="../sources/ui/macrolabelsdialog.cpp" line="35"/>
         <source>Enter the labels and texts of this macro. Accept All takes the labels proposed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ange beteckningar och texter för detta makro. Godta alla använder de föreslagna beteckningarna.</translation>
     </message>
     <message>
         <location filename="../sources/ui/macrolabelsdialog.cpp" line="41"/>
         <source>Kind</source>
-        <translation type="unfinished">Typ</translation>
+        <translation>Typ</translation>
     </message>
     <message>
         <location filename="../sources/ui/macrolabelsdialog.cpp" line="41"/>
         <source>In the macro</source>
-        <translation type="unfinished"></translation>
+        <translation>I makrot</translation>
     </message>
     <message>
         <location filename="../sources/ui/macrolabelsdialog.cpp" line="41"/>
         <source>To place</source>
-        <translation type="unfinished"></translation>
+        <translation>Att placera</translation>
     </message>
     <message>
         <location filename="../sources/ui/macrolabelsdialog.cpp" line="46"/>
         <source>Label</source>
-        <translation type="unfinished"></translation>
+        <translation>Beteckning</translation>
     </message>
     <message>
         <location filename="../sources/ui/macrolabelsdialog.cpp" line="46"/>
         <source>Text</source>
-        <translation type="unfinished">Text</translation>
+        <translation>Text</translation>
     </message>
     <message>
         <location filename="../sources/ui/macrolabelsdialog.cpp" line="57"/>
         <source>Accept All</source>
-        <translation type="unfinished"></translation>
+        <translation>Godta alla</translation>
     </message>
 </context>
 <context>
@@ -12130,7 +12177,7 @@ Vill du ändå länka denna slavkontakt?</translation>
     <message>
         <location filename="../sources/ui/multielementinfowidget.cpp" line="457"/>
         <source>Exclude from the bill of materials</source>
-        <translation>Undanta från förteckningen</translation>
+        <translation>Undanta från stycklistan</translation>
     </message>
     <message>
         <location filename="../sources/ui/multielementinfowidget.cpp" line="458"/>
@@ -12351,7 +12398,7 @@ Vill du ändå länka denna slavkontakt?</translation>
     <message>
         <location filename="../sources/ui/configpage/configpages.cpp" line="232"/>
         <source>Potential types</source>
-        <translation type="unfinished"></translation>
+        <translation>Potentialtyper</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/configpages.cpp" line="239"/>
@@ -12586,7 +12633,7 @@ Vill du ändå länka denna slavkontakt?</translation>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="308"/>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="503"/>
         <source>number format 1 - Plant</source>
-        <translation type="unfinished"></translation>
+        <translation>Siffra 1 - Anläggning</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="161"/>
@@ -12981,50 +13028,50 @@ Vill du importera dem? Symbolerna får då nästa nummer, med start från 1. Ann
     <message>
         <location filename="../sources/ui/potentialcheckdialog.cpp" line="43"/>
         <source>Check potential types</source>
-        <translation type="unfinished"></translation>
+        <translation>Kontrollera potentialtyper</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialcheckdialog.cpp" line="50"/>
         <source>Each row is a potential whose wires have different types. Click a row to select its wires. Types joined on purpose can be declared in the project properties and are not listed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Varje rad är en potential vars förbindningar har olika typer. Klicka på en rad för att markera dess förbindningar. Typer som avsiktligt sammankopplats kan anges i projektets egenskaper och listas inte.</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialcheckdialog.cpp" line="58"/>
         <source>Types on the potential</source>
-        <translation type="unfinished"></translation>
+        <translation>Typer på potentialen</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialcheckdialog.cpp" line="58"/>
         <source>Typed wires</source>
-        <translation type="unfinished"></translation>
+        <translation>Förbindningar med typ</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialcheckdialog.cpp" line="69"/>
         <source>Refresh</source>
-        <translation type="unfinished">Uppdatera</translation>
+        <translation>Uppdatera</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialcheckdialog.cpp" line="96"/>
         <source>No potential carries wires of different types.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ingen potential har förbindningar av olika typer.</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialcheckdialog.cpp" line="97"/>
         <source>Potential types are off for this project, so there is nothing to check.</source>
-        <translation type="unfinished"></translation>
+        <translation>Potentialtyper är avstängda för detta projekt, så det finns inget att kontrollera.</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/potentialcheckdialog.cpp" line="100"/>
         <source>%n potential(s) carry wires of different types.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n potential har förbindningar av olika typer.</numerusform>
+            <numerusform>%n potentialer har förbindningar av olika typer.</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialcheckdialog.cpp" line="142"/>
         <source>These wires no longer exist. Refresh the results.</source>
-        <translation type="unfinished"></translation>
+        <translation>Dessa förbindningar finns inte längre. Uppdatera resultaten.</translation>
     </message>
 </context>
 <context>
@@ -13135,37 +13182,37 @@ Följande variabler är inkompatibla:
     <message>
         <location filename="../sources/ui/potentialsourceswidget.cpp" line="37"/>
         <source>A type set on a terminal reaches every conductor at its potential that has no type of its own, through terminal blocks and folio reports.</source>
-        <translation type="unfinished"></translation>
+        <translation>En typ som anges på en anslutning når alla förbindningar med samma potential som saknar egen typ, via plintar och bladhänvisningar.</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialsourceswidget.cpp" line="43"/>
         <source>Terminal</source>
-        <translation type="unfinished"></translation>
+        <translation>Anslutning</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialsourceswidget.cpp" line="43"/>
         <source>Potential type</source>
-        <translation type="unfinished"></translation>
+        <translation>Potentialtyp</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialsourceswidget.cpp" line="74"/>
         <source>Potential sources</source>
-        <translation type="unfinished"></translation>
+        <translation>Potentialkällor</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialsourceswidget.cpp" line="101"/>
         <source>Terminal %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Anslutning %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialsourceswidget.cpp" line="107"/>
         <source>None</source>
-        <translation type="unfinished">Ingen</translation>
+        <translation>Ingen</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialsourceswidget.cpp" line="172"/>
         <source>Set the potential sources</source>
-        <translation type="unfinished"></translation>
+        <translation>Ange potentialkällorna</translation>
     </message>
 </context>
 <context>
@@ -13173,117 +13220,117 @@ Följande variabler är inkompatibla:
     <message>
         <location filename="../sources/ui/potentialtypeswidget.cpp" line="51"/>
         <source>Draw conductors from their own style</source>
-        <translation type="unfinished"></translation>
+        <translation>Rita förbindningar med deras egen stil</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialtypeswidget.cpp" line="52"/>
         <source>Draw conductors from their potential type, chosen on each conductor</source>
-        <translation type="unfinished"></translation>
+        <translation>Rita förbindningar efter potentialtyp, vald på varje förbindning</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialtypeswidget.cpp" line="54"/>
         <source>Draw conductors from their potential type, set on the source terminal</source>
-        <translation type="unfinished"></translation>
+        <translation>Rita förbindningar efter potentialtyp, angiven på källanslutningen</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialtypeswidget.cpp" line="56"/>
         <source>When a type is used, a conductor whose potential has a type is drawn in that type&apos;s colour, line style and width. The style stored on the conductor is kept, and used again when this is off or the conductor has no type.</source>
-        <translation type="unfinished"></translation>
+        <translation>När en typ används ritas en förbindning vars potential har en typ med typens färg, linjestil och bredd. Stilen som är sparad på förbindningen behålls och används igen när detta är avstängt eller förbindningen saknar typ.</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialtypeswidget.cpp" line="61"/>
         <source>Choose a conductor&apos;s type in its properties. The type applies to every conductor on the same potential. With the source terminal, set the type on a terminal of a symbol (the output of a power supply, for example) in the symbol&apos;s properties: it reaches the conductors through terminal blocks and folio reports, not through other devices. A type chosen on a conductor still wins.</source>
-        <translation type="unfinished"></translation>
+        <translation>Välj en förbindnings typ i dess egenskaper. Typen gäller alla förbindningar med samma potential. Med källanslutningen anger du typen på en anslutning till en symbol (till exempel utgången på ett nätaggregat) i symbolens egenskaper: den når förbindningarna via plintar och bladhänvisningar, inte via andra apparater. En typ som valts på en förbindning gäller ändå före.</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialtypeswidget.cpp" line="71"/>
         <source>Name</source>
-        <translation type="unfinished">Namn</translation>
+        <translation>Namn</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialtypeswidget.cpp" line="71"/>
         <source>Colour</source>
-        <translation type="unfinished"></translation>
+        <translation>Färg</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialtypeswidget.cpp" line="71"/>
         <source>Line style</source>
-        <translation type="unfinished"></translation>
+        <translation>Linjestil</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialtypeswidget.cpp" line="71"/>
         <source>Width</source>
-        <translation type="unfinished"></translation>
+        <translation>Bredd</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialtypeswidget.cpp" line="82"/>
         <source>Add</source>
-        <translation type="unfinished"></translation>
+        <translation>Lägg till</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialtypeswidget.cpp" line="83"/>
         <location filename="../sources/ui/potentialtypeswidget.cpp" line="100"/>
         <source>Remove</source>
-        <translation type="unfinished"></translation>
+        <translation>Ta bort</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialtypeswidget.cpp" line="84"/>
         <source>Restore the default types</source>
-        <translation type="unfinished"></translation>
+        <translation>Återställ standardtyperna</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialtypeswidget.cpp" line="93"/>
         <source>Types joined on purpose, for example 0V and PE at a power supply. A potential with only these types is not reported as mixed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Typer som avsiktligt sammankopplats, till exempel 0V och PE vid ett nätaggregat. En potential med bara dessa typer rapporteras inte som blandad.</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialtypeswidget.cpp" line="99"/>
         <source>Join</source>
-        <translation type="unfinished"></translation>
+        <translation>Koppla samman</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialtypeswidget.cpp" line="103"/>
         <source>and</source>
-        <translation type="unfinished"></translation>
+        <translation>och</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialtypeswidget.cpp" line="123"/>
         <source>New type</source>
-        <translation type="unfinished"></translation>
+        <translation>Ny typ</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialtypeswidget.cpp" line="172"/>
         <source>%1 and %2</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 och %2</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialtypeswidget.cpp" line="214"/>
         <source>Solid line</source>
         <comment>conductor style: solid line</comment>
-        <translation type="unfinished"></translation>
+        <translation>Heldragen linje</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialtypeswidget.cpp" line="215"/>
         <source>Dashed line</source>
         <comment>conductor style: dashed line</comment>
-        <translation type="unfinished">Streckad linje</translation>
+        <translation>Streckad linje</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialtypeswidget.cpp" line="216"/>
         <source>Dots and dashes</source>
         <comment>conductor style: dashed and dotted line</comment>
-        <translation type="unfinished"></translation>
+        <translation>Streckprickad linje</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialtypeswidget.cpp" line="217"/>
         <source>Dotted line</source>
         <comment>conductor style: dotted line</comment>
-        <translation type="unfinished"></translation>
+        <translation>Prickad linje</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialtypeswidget.cpp" line="234"/>
         <source>Choose a colour</source>
-        <translation type="unfinished"></translation>
+        <translation>Välj en färg</translation>
     </message>
 </context>
 <context>
@@ -13759,16 +13806,19 @@ Ge dem en annan numrering först.</numerusform>
 <context>
     <name>ProjectDBModelPropertiesWidget</name>
     <message>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/projectdbmodelpropertieswidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="vanished">Form</translation>
+        <translation>Form</translation>
     </message>
     <message>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/projectdbmodelpropertieswidget.ui" line="20"/>
         <source>Request</source>
-        <translation type="vanished">Begäran</translation>
+        <translation>Begäran</translation>
     </message>
     <message>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/projectdbmodelpropertieswidget.ui" line="30"/>
         <source>Reload</source>
-        <translation type="vanished">Ladda om</translation>
+        <translation>Ladda om</translation>
     </message>
 </context>
 <context>
@@ -14114,13 +14164,13 @@ Ge dem en annan numrering först.</numerusform>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="344"/>
         <source>Cell numbering starts from:</source>
-        <translation type="unfinished"></translation>
+        <translation>Cellnumreringen börjar från:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="354"/>
         <source>From which corner to start numbering the cells: Top - Left corner(default), Top - Right, Bottom - Left, Bottom - Right.</source>
         <comment>tooltip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Från vilket hörn cellnumreringen börjar: övre vänstra hörnet (standard), övre högra, nedre vänstra, nedre högra.</translation>
     </message>
     <message>
         <source>Origin (of a coordinate system):</source>
@@ -14351,7 +14401,7 @@ Ge dem en annan numrering först.</numerusform>
         <location filename="../sources/print/projectprintwindow.cpp" line="134"/>
         <source>Print preview</source>
         <comment>window title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Förhandsgranska utskrift</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="135"/>
@@ -14362,7 +14412,7 @@ Ge dem en annan numrering först.</numerusform>
         <location filename="../sources/print/projectprintwindow.cpp" line="141"/>
         <source>Export to PDF</source>
         <comment>window title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Exportera till PDF</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="142"/>
@@ -15391,13 +15441,13 @@ Tillgängliga alternativ:
         <location filename="../sources/qetdiagrameditor.cpp" line="759"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="6186"/>
         <source>Show as a dot</source>
-        <translation type="unfinished"></translation>
+        <translation>Visa som en punkt</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="761"/>
         <source>Draws the selected T-junctions as their lines and a dot where they meet</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Visar de markerade T-förgreningarna som sina linjer och en punkt där de möts</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="765"/>
@@ -15627,42 +15677,42 @@ Håll ned Ctrl under flytten för att placera fritt.</translation>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1086"/>
         <source>Selection filter</source>
-        <translation type="unfinished"></translation>
+        <translation>Markeringsfilter</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1089"/>
         <source>Everything</source>
-        <translation type="unfinished"></translation>
+        <translation>Allt</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1090"/>
         <source>Automatic: symbols with their texts</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatiskt: symboler med sina texter</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1091"/>
         <source>Symbols</source>
-        <translation type="unfinished"></translation>
+        <translation>Symboler</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1092"/>
         <source>Conductors</source>
-        <translation type="unfinished">Förbindningar</translation>
+        <translation>Förbindningar</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1093"/>
         <source>Free texts</source>
-        <translation type="unfinished"></translation>
+        <translation>Fria texter</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1094"/>
         <source>Symbol texts</source>
-        <translation type="unfinished"></translation>
+        <translation>Symboltexter</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1110"/>
         <source>What a click, a selection rectangle and Select All pick</source>
-        <translation type="unfinished"></translation>
+        <translation>Vad ett klick, en markeringsrektangel och Markera allt väljer</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1137"/>
@@ -15698,7 +15748,7 @@ Håll ned Ctrl under flytten för att placera fritt.</translation>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1202"/>
         <source>Check potential types...</source>
-        <translation type="unfinished"></translation>
+        <translation>Kontrollera potentialtyper...</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1213"/>
@@ -15822,23 +15872,23 @@ Håll ned Ctrl under flytten för att placera fritt.</translation>
         <location filename="../sources/qetdiagrameditor.cpp" line="1378"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="5610"/>
         <source>Update elements from the collections</source>
-        <translation type="unfinished"></translation>
+        <translation>Uppdatera symboler från biblioteken</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1381"/>
         <source>Replaces each element of the project that changed in its collection since it was placed, and redraws it (action cannot be undone)</source>
-        <translation type="unfinished"></translation>
+        <translation>Ersätter varje symbol i projektet som har ändrats i sitt bibliotek sedan den placerades, och ritar om den (åtgärden kan inte ångras)</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1384"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="5578"/>
         <source>Lay out the symbol texts as in the symbol</source>
-        <translation type="unfinished"></translation>
+        <translation>Placera symboltexterna som i symbolen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1387"/>
         <source>Puts the texts of the selected symbols, or of every symbol of the project, where their symbol places them: a placed symbol keeps its own copy of the texts otherwise</source>
-        <translation type="unfinished"></translation>
+        <translation>Placerar texterna för de markerade symbolerna, eller för alla symboler i projektet, där symbolen placerar dem: annars behåller en placerad symbol sin egen kopia av texterna</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1392"/>
@@ -16395,7 +16445,7 @@ Håll ned Ctrl under flytten för att placera fritt.</translation>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1816"/>
         <source>Select the same symbols</source>
-        <translation type="unfinished"></translation>
+        <translation>Markera samma symboler</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1827"/>
@@ -16431,7 +16481,7 @@ Håll ned Ctrl under flytten för att placera fritt.</translation>
         <location filename="../sources/qetdiagrameditor.cpp" line="1832"/>
         <source>Selects every symbol on the sheet of the same kind as a selected one, deselects the rest</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Markerar alla symboler på bladet av samma slag som en markerad symbol och avmarkerar resten</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1844"/>
@@ -16676,8 +16726,8 @@ Håll ned Ctrl under flytten för att placera fritt.</translation>
         <translation>Söker och markerar snabbt en symbol på bladet</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2026"/>
         <location filename="../sources/diagramtoolbarsettings.cpp" line="76"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2026"/>
         <source>Connections</source>
         <comment>toolbar title</comment>
         <translation>Förbindningar</translation>
@@ -16700,7 +16750,7 @@ Håll ned Ctrl under flytten för att placera fritt.</translation>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2325"/>
         <source>Show or hide the device navigator</source>
-        <translation type="unfinished"></translation>
+        <translation>Visa eller dölj apparatnavigatorn</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2532"/>
@@ -17017,48 +17067,48 @@ Du kan också numrera kablarna automatiskt senare: regeln kan när som helst ang
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="5582"/>
         <source>Every symbol text already lies where its symbol places it.</source>
-        <translation type="unfinished"></translation>
+        <translation>Alla symboltexter ligger redan där symbolen placerar dem.</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/qetdiagrameditor.cpp" line="5586"/>
         <source>%n texts of the project&apos;s symbols lie elsewhere than their symbol places them. Lay them out as in the symbol?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n text till projektets symboler ligger någon annanstans än där symbolen placerar den. Vill du placera den som i symbolen?</numerusform>
+            <numerusform>%n texter till projektets symboler ligger någon annanstans än där symbolen placerar dem. Vill du placera dem som i symbolen?</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="5616"/>
         <source>Every element of the project matches the collection it was taken from.</source>
-        <translation type="unfinished"></translation>
+        <translation>Alla symboler i projektet stämmer med biblioteket de hämtades från.</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/qetdiagrameditor.cpp" line="5625"/>
         <source>%n elements of the project differ from the collection they were taken from. Replace them with the version of the collection?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n symbol i projektet skiljer sig från biblioteket den hämtades från. Vill du ersätta den med bibliotekets version?</numerusform>
+            <numerusform>%n symboler i projektet skiljer sig från biblioteket de hämtades från. Vill du ersätta dem med bibliotekets version?</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="5629"/>
         <source>Placed elements are redrawn and keep their conductors, as long as their terminals have not moved. This action cannot be undone.</source>
-        <translation type="unfinished"></translation>
+        <translation>Placerade symboler ritas om och behåller sina förbindningar, så länge deras anslutningar inte har flyttats. Denna åtgärd kan inte ångras.</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/qetdiagrameditor.cpp" line="5641"/>
         <source>%n elements updated.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n symbol uppdaterad.</numerusform>
+            <numerusform>%n symboler uppdaterade.</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/qetdiagrameditor.cpp" line="5718"/>
         <source>%n elements not redrawn: their terminals have changed (a terminal was added, removed or moved).</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n symbol ritades inte om: dess anslutningar har ändrats (en anslutning har lagts till, tagits bort eller flyttats).</numerusform>
+            <numerusform>%n symboler ritades inte om: deras anslutningar har ändrats (en anslutning har lagts till, tagits bort eller flyttats).</numerusform>
         </translation>
     </message>
     <message>
@@ -17069,7 +17119,7 @@ Du kan också numrera kablarna automatiskt senare: regeln kan när som helst ang
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="6117"/>
         <source>Select: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Markera: %1</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="6162"/>
@@ -17084,7 +17134,7 @@ Du kan också numrera kablarna automatiskt senare: regeln kan när som helst ang
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="6186"/>
         <source>Show the T-junction symbol</source>
-        <translation type="unfinished"></translation>
+        <translation>Visa T-förgreningssymbolen</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/qetdiagrameditor.cpp" line="6238"/>
@@ -17377,32 +17427,32 @@ Vill du fortsätta ändå?</translation>
         </translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2011"/>
         <location filename="../sources/diagramtoolbarsettings.cpp" line="68"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2011"/>
         <source>Tools</source>
         <translation>Verktyg</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2014"/>
         <location filename="../sources/diagramtoolbarsettings.cpp" line="70"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2014"/>
         <source>Display</source>
         <translation>Visning</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2017"/>
         <location filename="../sources/diagramtoolbarsettings.cpp" line="72"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2017"/>
         <source>Diagram</source>
         <translation>Schema</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2020"/>
         <location filename="../sources/diagramtoolbarsettings.cpp" line="74"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2020"/>
         <source>Add</source>
         <translation>Lägg till</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2023"/>
         <location filename="../sources/diagramtoolbarsettings.cpp" line="78"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2023"/>
         <source>Depth</source>
         <comment>toolbar title</comment>
         <translation>Djup</translation>
@@ -18563,12 +18613,12 @@ Be din AI-assistent att göra ett skript av det: knappen nedan kopierar begäran
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1261"/>
         <source>Set the insertion point</source>
-        <translation type="unfinished"></translation>
+        <translation>Ange insättningspunkten</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1263"/>
         <source>Click a terminal or a corner: it becomes the point the symbol is placed by</source>
-        <translation type="unfinished"></translation>
+        <translation>Klicka på en anslutning eller ett hörn: det blir punkten som symbolen placeras efter</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1276"/>
@@ -18631,32 +18681,32 @@ Be din AI-assistent att göra ett skript av det: knappen nedan kopierar begäran
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1357"/>
         <source>Selection frame...</source>
-        <translation type="unfinished"></translation>
+        <translation>Markeringsram...</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1358"/>
         <source>The frame a click on the placed symbol hits: worked out from the drawing, or set by hand</source>
-        <translation type="unfinished"></translation>
+        <translation>Ramen som ett klick på den placerade symbolen träffar: beräknad från ritningen eller angiven för hand</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1361"/>
         <source>Selection frame</source>
-        <translation type="unfinished"></translation>
+        <translation>Markeringsram</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1363"/>
         <source>Set by hand</source>
-        <translation type="unfinished"></translation>
+        <translation>Angiven för hand</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1377"/>
         <source>Left</source>
-        <translation type="unfinished">Vänster</translation>
+        <translation>Vänsterkant</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1378"/>
         <source>Top</source>
-        <translation type="unfinished"></translation>
+        <translation>Överkant</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1559"/>
@@ -18666,88 +18716,88 @@ Be din AI-assistent att göra ett skript av det: knappen nedan kopierar begäran
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1569"/>
         <source>What a click, a selection rectangle and Select All pick</source>
-        <translation type="unfinished"></translation>
+        <translation>Vad ett klick, en markeringsrektangel och Markera allt väljer</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1573"/>
         <source>Everything</source>
-        <translation type="unfinished"></translation>
+        <translation>Allt</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1574"/>
         <source>Drawing</source>
-        <translation type="unfinished">Ritning</translation>
+        <translation>Ritning</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1575"/>
         <source>Texts</source>
-        <translation type="unfinished"></translation>
+        <translation>Texter</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1576"/>
         <source>Terminals</source>
-        <translation type="unfinished">Anslutningar</translation>
+        <translation>Anslutningar</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1580"/>
         <source>Select: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Markera: %1</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1601"/>
         <source>The step parts snap to; crosses mark the grid of 10, the folio&apos;s</source>
-        <translation type="unfinished"></translation>
+        <translation>Steget som delarna fäster mot; kryss markerar rutnätet på 10, bladets</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1605"/>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1636"/>
         <source>Grid %1</source>
-        <translation type="unfinished">Rutnät %1</translation>
+        <translation>Rutnät %1</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1606"/>
         <source>Grid following the zoom</source>
-        <translation type="unfinished"></translation>
+        <translation>Rutnät som följer zoomen</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1622"/>
         <source>Zoom of the symbol on screen; a click offers fixed ones</source>
-        <translation type="unfinished"></translation>
+        <translation>Symbolens zoom på skärmen; ett klick erbjuder fasta nivåer</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1625"/>
         <source>%1 %</source>
-        <translation type="unfinished">%1 %</translation>
+        <translation>%1 %</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1630"/>
         <source>Whole symbol</source>
-        <translation type="unfinished"></translation>
+        <translation>Hela symbolen</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1637"/>
         <source>Grid %1 (zoom)</source>
-        <translation type="unfinished"></translation>
+        <translation>Rutnät %1 (zoom)</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1638"/>
         <source>Zoom %1 %</source>
-        <translation type="unfinished">Zoom %1 %</translation>
+        <translation>Zoom %1 %</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1656"/>
         <source>Collections</source>
-        <translation type="unfinished"></translation>
+        <translation>Bibliotek</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1674"/>
         <source>The collections panel</source>
-        <translation type="unfinished"></translation>
+        <translation>Bibliotekspanelen</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1675"/>
         <source>Shows the collections: double-click an element, or drag it onto the drawing, to paste its parts</source>
-        <translation type="unfinished"></translation>
+        <translation>Visar biblioteken: dubbelklicka på en symbol, eller dra den till ritningen, för att klistra in dess delar</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1899"/>
@@ -19641,9 +19691,9 @@ Vad vill du göra?</translation>
     </message>
     <message>
         <location filename="../sources/conductorproperties.cpp" line="1105"/>
-        <location filename="../sources/qetapp.cpp" line="3203"/>
         <location filename="../sources/ElementsCollection/elementslocation.cpp" line="405"/>
         <location filename="../sources/factory/elementpicturefactory.cpp" line="809"/>
+        <location filename="../sources/qetapp.cpp" line="3203"/>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="406"/>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="529"/>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="564"/>
@@ -19981,7 +20031,7 @@ det översatta namnet på denna mapp kunde inte läsas, så mappnamnet visas i s
         <location filename="../sources/editor/editorcommands.cpp" line="886"/>
         <source>frame</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>ram</translation>
     </message>
     <message>
         <location filename="../sources/editor/esevent/eseventaddarc.cpp" line="72"/>
@@ -20020,7 +20070,7 @@ det översatta namnet på denna mapp kunde inte läsas, så mappnamnet visas i s
         <translation>Anslutning</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="406"/>
+        <location filename="../sources/editor/esevent/eseventaddtext.cpp" line="65"/>
         <location filename="../sources/formulabuilder.cpp" line="102"/>
         <location filename="../sources/formulabuilder.cpp" line="103"/>
         <location filename="../sources/formulabuilder.cpp" line="104"/>
@@ -20028,7 +20078,7 @@ det översatta namnet på denna mapp kunde inte läsas, så mappnamnet visas i s
         <location filename="../sources/formulabuilder.cpp" line="112"/>
         <location filename="../sources/formulabuilder.cpp" line="113"/>
         <location filename="../sources/formulabuilder.cpp" line="114"/>
-        <location filename="../sources/editor/esevent/eseventaddtext.cpp" line="65"/>
+        <location filename="../sources/qetinformation.cpp" line="406"/>
         <location filename="../sources/titleblock/titleblockbulkformat.cpp" line="187"/>
         <source>Text</source>
         <translation>Text</translation>
@@ -20658,42 +20708,42 @@ Vill du ersätta den?</translation>
         <translation>Adress</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="387"/>
         <location filename="../sources/editor/graphicspart/partplctable.cpp" line="212"/>
         <location filename="../sources/factory/elementpicturefactory.cpp" line="1456"/>
         <location filename="../sources/qetgraphicsitem/crossrefitem.cpp" line="1849"/>
         <location filename="../sources/qetgraphicsitem/element.cpp" line="3784"/>
+        <location filename="../sources/qetinformation.cpp" line="387"/>
         <source>Annotation</source>
         <translation>Kommentar</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="449"/>
         <location filename="../sources/editor/graphicspart/partplctable.cpp" line="213"/>
         <location filename="../sources/factory/elementpicturefactory.cpp" line="1457"/>
         <location filename="../sources/qetgraphicsitem/crossrefitem.cpp" line="1850"/>
         <location filename="../sources/qetgraphicsitem/element.cpp" line="3785"/>
+        <location filename="../sources/qetinformation.cpp" line="449"/>
         <source>Cross-reference</source>
         <translation>Korsreferens</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="388"/>
-        <location filename="../sources/qetinformation.cpp" line="401"/>
         <location filename="../sources/editor/graphicspart/partplctable.cpp" line="211"/>
         <location filename="../sources/factory/elementpicturefactory.cpp" line="1455"/>
         <location filename="../sources/qetgraphicsitem/crossrefitem.cpp" line="1848"/>
         <location filename="../sources/qetgraphicsitem/element.cpp" line="3783"/>
+        <location filename="../sources/qetinformation.cpp" line="388"/>
+        <location filename="../sources/qetinformation.cpp" line="401"/>
         <source>Function</source>
         <translation>Funktion</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="365"/>
         <source>Folio group</source>
-        <translation type="unfinished"></translation>
+        <translation>Bladgrupp</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="366"/>
         <source>Folio sub-group</source>
-        <translation type="unfinished"></translation>
+        <translation>Bladundergrupp</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="386"/>
@@ -20718,7 +20768,7 @@ Vill du ersätta den?</translation>
     <message>
         <location filename="../sources/qetinformation.cpp" line="405"/>
         <source>Conductor type</source>
-        <translation type="unfinished"></translation>
+        <translation>Förbindningstyp</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="408"/>
@@ -20928,17 +20978,17 @@ Vill du ersätta den?</translation>
     <message>
         <location filename="../sources/qetinformation.cpp" line="450"/>
         <source>Exclude from the bill of materials</source>
-        <translation type="unfinished">Undanta från förteckningen</translation>
+        <translation>Undanta från stycklistan</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="451"/>
         <source>Wire number</source>
-        <translation type="unfinished"></translation>
+        <translation>Förbindningsnummer</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="456"/>
         <source>%1, connection point %2</source>
-        <translation type="unfinished"></translation>
+        <translation>%1, anslutningspunkt %2</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="389"/>
@@ -20976,8 +21026,8 @@ Vill du ersätta den?</translation>
         <translation>Artikelnummer</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="391"/>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="138"/>
+        <location filename="../sources/qetinformation.cpp" line="391"/>
         <source>Manufacturer</source>
         <translation>Tillverkare</translation>
     </message>
@@ -21120,7 +21170,7 @@ Vill du ersätta den?</translation>
         <location filename="../sources/titleblock/templatecommands.cpp" line="1196"/>
         <source>Edit Preview</source>
         <comment>undo preview</comment>
-        <translation type="unfinished"></translation>
+        <translation>Ändra förhandsgranskning</translation>
     </message>
     <message>
         <location filename="../sources/titleblockcell.cpp" line="131"/>
@@ -21325,8 +21375,8 @@ Vill du ersätta den?</translation>
         </translation>
     </message>
     <message>
-        <location filename="../sources/undocommand/rotatetextscommand.cpp" line="111"/>
         <location filename="../sources/scripting/qetscriptapi.cpp" line="955"/>
+        <location filename="../sources/undocommand/rotatetextscommand.cpp" line="111"/>
         <source>Rotate %1</source>
         <translation>Rotera %1</translation>
     </message>
@@ -22043,7 +22093,6 @@ Så här aktiverar du den: Konfigurera QElectroTech &gt; Allmänt &gt; Projekt, 
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="93"/>
-        <location filename="../sources/formulabuilder.cpp" line="93"/>
         <source>Equals</source>
         <translation>Lika med</translation>
     </message>
@@ -22062,7 +22111,6 @@ Så här aktiverar du den: Konfigurera QElectroTech &gt; Allmänt &gt; Projekt, 
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="94"/>
-        <location filename="../sources/formulabuilder.cpp" line="94"/>
         <source>Differs from</source>
         <translation>Skiljer sig från</translation>
     </message>
@@ -22072,7 +22120,6 @@ Så här aktiverar du den: Konfigurera QElectroTech &gt; Allmänt &gt; Projekt, 
         <translation>Sant när de två värdena skiljer sig åt.</translation>
     </message>
     <message>
-        <location filename="../sources/formulabuilder.cpp" line="95"/>
         <location filename="../sources/formulabuilder.cpp" line="95"/>
         <source>Greater than</source>
         <translation>Större än</translation>
@@ -22099,7 +22146,6 @@ Så här aktiverar du den: Konfigurera QElectroTech &gt; Allmänt &gt; Projekt, 
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="96"/>
-        <location filename="../sources/formulabuilder.cpp" line="96"/>
         <source>At least</source>
         <translation>Minst</translation>
     </message>
@@ -22111,12 +22157,10 @@ Så här aktiverar du den: Konfigurera QElectroTech &gt; Allmänt &gt; Projekt, 
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="97"/>
-        <location filename="../sources/formulabuilder.cpp" line="97"/>
         <source>Smaller than</source>
         <translation>Mindre än</translation>
     </message>
     <message>
-        <location filename="../sources/formulabuilder.cpp" line="98"/>
         <location filename="../sources/formulabuilder.cpp" line="98"/>
         <source>At most</source>
         <translation>Högst</translation>
@@ -22163,7 +22207,6 @@ Så här aktiverar du den: Konfigurera QElectroTech &gt; Allmänt &gt; Projekt, 
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="102"/>
-        <location filename="../sources/formulabuilder.cpp" line="102"/>
         <source>Contains</source>
         <translation>Innehåller</translation>
     </message>
@@ -22174,7 +22217,6 @@ Så här aktiverar du den: Konfigurera QElectroTech &gt; Allmänt &gt; Projekt, 
     </message>
     <message>
         <location filename="../sources/formulabuilder.cpp" line="103"/>
-        <location filename="../sources/formulabuilder.cpp" line="103"/>
         <source>Starts with</source>
         <translation>Börjar med</translation>
     </message>
@@ -22184,7 +22226,6 @@ Så här aktiverar du den: Konfigurera QElectroTech &gt; Allmänt &gt; Projekt, 
         <translation>Sant när texten börjar med den andra texten, oavsett skiftläge.</translation>
     </message>
     <message>
-        <location filename="../sources/formulabuilder.cpp" line="104"/>
         <location filename="../sources/formulabuilder.cpp" line="104"/>
         <source>Ends with</source>
         <translation>Slutar med</translation>
@@ -22680,65 +22721,66 @@ Så här aktiverar du den: Konfigurera QElectroTech &gt; Allmänt &gt; Projekt, 
         <translation>Ta bort en linje av en bygel</translation>
     </message>
     <message>
+        <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="49"/>
         <source>(No action)</source>
         <comment>spacemouse config: unbound button</comment>
-        <translation type="vanished">(Ingen åtgärd)</translation>
+        <translation>(Ingen åtgärd)</translation>
     </message>
     <message>
         <location filename="../sources/editor/esevent/eseventsetorigin.cpp" line="73"/>
         <source>set the insertion point</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>ange insättningspunkten</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatorfilterdialog.cpp" line="35"/>
         <source>- Not active -</source>
-        <translation type="unfinished"></translation>
+        <translation>- Inte aktiv -</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatorfilterdialog.cpp" line="39"/>
         <source>Contactors / Relays (-K)</source>
-        <translation type="unfinished"></translation>
+        <translation>Kontaktorer/reläer (-K)</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatorfilterdialog.cpp" line="43"/>
         <source>Protection / Fuses (-F)</source>
-        <translation type="unfinished"></translation>
+        <translation>Skydd/säkringar (-F)</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatorfilterdialog.cpp" line="47"/>
         <source>Power Switches (-Q)</source>
-        <translation type="unfinished"></translation>
+        <translation>Effektbrytare (-Q)</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatorfilterdialog.cpp" line="51"/>
         <source>Terminals (-X)</source>
-        <translation type="unfinished"></translation>
+        <translation>Plintar (-X)</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatorfilterdialog.cpp" line="55"/>
         <source>Cables (-W)</source>
-        <translation type="unfinished"></translation>
+        <translation>Kablar (-W)</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatorfilterdialog.cpp" line="59"/>
         <source>Motors / Drives (-M)</source>
-        <translation type="unfinished"></translation>
+        <translation>Motorer/drivdon (-M)</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatorfilterdialog.cpp" line="63"/>
         <source>Sensors / Transducers (-B)</source>
-        <translation type="unfinished"></translation>
+        <translation>Givare/omvandlare (-B)</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatorfilterdialog.cpp" line="67"/>
         <source>No structure identifier</source>
-        <translation type="unfinished"></translation>
+        <translation>Ingen strukturbeteckning</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/resetsymboltextscommand.cpp" line="42"/>
         <source>lay out the symbol texts as in the symbol</source>
-        <translation type="unfinished"></translation>
+        <translation>placera symboltexterna som i symbolen</translation>
     </message>
 </context>
 <context>
@@ -23302,12 +23344,12 @@ inget har ändrats.</translation>
     <message>
         <location filename="../sources/autoNum/renumberconductorscommand.cpp" line="127"/>
         <source>frozen</source>
-        <translation type="unfinished">låst</translation>
+        <translation>låst</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/renumberconductorscommand.cpp" line="131"/>
         <source>reaches a folio not chosen</source>
-        <translation type="unfinished"></translation>
+        <translation>når ett blad som inte valts</translation>
     </message>
 </context>
 <context>
@@ -23607,7 +23649,7 @@ inget har ändrats.</translation>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.cpp" line="41"/>
         <source>Replace conductor properties</source>
-        <translation type="unfinished"></translation>
+        <translation>Ersätt förbindningsegenskaper</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.cpp" line="207"/>
@@ -23633,7 +23675,7 @@ inget har ändrats.</translation>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceelementdialog.cpp" line="35"/>
         <source>Replace element properties</source>
-        <translation type="unfinished"></translation>
+        <translation>Ersätt symbolegenskaper</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceelementdialog.cpp" line="84"/>
@@ -23646,7 +23688,7 @@ inget har ändrats.</translation>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.cpp" line="122"/>
         <source>Replace sheet properties</source>
-        <translation type="unfinished"></translation>
+        <translation>Ersätt bladegenskaper</translation>
     </message>
 </context>
 <context>
@@ -24991,78 +25033,96 @@ De andra fälten används inte.</translation>
 <context>
     <name>SpaceMouseConfigPage</name>
     <message>
+        <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="71"/>
         <source>Link a button number on your 3D mouse (SpaceMouse, SpacePilot...) to a QElectroTech action. The button number depends on your device and its driver -- see its documentation, or try the values one by one starting from 0.</source>
         <comment>spacemouse config page intro</comment>
-        <translation type="vanished">Koppla ett knappnummer på din 3D-mus (SpaceMouse, SpacePilot...) till en åtgärd i QElectroTech. Knappnumret beror på enheten och dess drivrutin -- se dess dokumentation, eller prova värdena ett i taget från 0.</translation>
+        <translation>Koppla ett knappnummer på din 3D-mus (SpaceMouse, SpacePilot...) till en åtgärd i QElectroTech. Knappnumret beror på enheten och dess drivrutin -- se dess dokumentation, eller prova värdena ett i taget från 0.</translation>
     </message>
     <message>
+        <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="81"/>
         <source>Button no.</source>
-        <translation type="vanished">Knapp nr.</translation>
+        <translation>Knapp nr.</translation>
     </message>
     <message>
+        <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="81"/>
         <source>Action</source>
-        <translation type="vanished">Åtgärd</translation>
+        <translation>Åtgärd</translation>
     </message>
     <message>
+        <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="90"/>
         <source>Add a link</source>
-        <translation type="vanished">Lägg till en koppling</translation>
+        <translation>Lägg till en koppling</translation>
     </message>
     <message>
+        <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="98"/>
         <source>Buttons</source>
-        <translation type="vanished">Knappar</translation>
+        <translation>Knappar</translation>
     </message>
     <message>
+        <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="134"/>
         <source>Small movements below this threshold are ignored. Raise it if the view drifts when you are not touching the mouse.</source>
-        <translation type="vanished">Små rörelser under denna tröskel ignoreras. Höj den om vyn glider när du inte rör musen.</translation>
+        <translation>Små rörelser under denna tröskel ignoreras. Höj den om vyn glider när du inte rör musen.</translation>
     </message>
     <message>
+        <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="138"/>
         <source>Push / pull the cap</source>
-        <translation type="vanished">Tryck / dra i kåpan</translation>
+        <translation>Tryck / dra i kåpan</translation>
     </message>
     <message>
+        <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="140"/>
         <source>Twist the cap</source>
-        <translation type="vanished">Vrid kåpan</translation>
+        <translation>Vrid kåpan</translation>
     </message>
     <message>
+        <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="145"/>
         <source>Reverse horizontal movement</source>
-        <translation type="vanished">Omvänd horisontell rörelse</translation>
+        <translation>Omvänd horisontell rörelse</translation>
     </message>
     <message>
+        <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="147"/>
         <source>Reverse vertical movement</source>
-        <translation type="vanished">Omvänd vertikal rörelse</translation>
+        <translation>Omvänd vertikal rörelse</translation>
     </message>
     <message>
+        <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="149"/>
         <source>Reverse zoom</source>
-        <translation type="vanished">Omvänd zoom</translation>
+        <translation>Omvänd zoom</translation>
     </message>
     <message>
+        <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="153"/>
         <source>Pan speed:</source>
-        <translation type="vanished">Panoreringshastighet:</translation>
+        <translation>Panoreringshastighet:</translation>
     </message>
     <message>
+        <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="154"/>
         <source>Zoom speed:</source>
-        <translation type="vanished">Zoomhastighet:</translation>
+        <translation>Zoomhastighet:</translation>
     </message>
     <message>
+        <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="155"/>
         <source>Zoom by:</source>
-        <translation type="vanished">Zooma med:</translation>
+        <translation>Zooma med:</translation>
     </message>
     <message>
+        <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="156"/>
         <source>Dead zone:</source>
-        <translation type="vanished">Dödzon:</translation>
+        <translation>Dödzon:</translation>
     </message>
     <message>
+        <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="161"/>
         <source>Movement</source>
-        <translation type="vanished">Rörelse</translation>
+        <translation>Rörelse</translation>
     </message>
     <message>
+        <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="219"/>
         <source>Remove this link</source>
-        <translation type="vanished">Ta bort denna koppling</translation>
+        <translation>Ta bort denna koppling</translation>
     </message>
     <message>
+        <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="295"/>
         <source>3D mouse</source>
         <comment>configuration page title</comment>
-        <translation type="vanished">3D-mus</translation>
+        <translation>3D-mus</translation>
     </message>
 </context>
 <context>
@@ -27686,7 +27746,7 @@ De andra fälten används inte.</translation>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="95"/>
         <source>Sort the terminals the way the drawing is laid out, or by label when the general settings ask for it, and bring the bridges drawn there in with them. What the drawing brought is read-only here: it is changed in the drawing or not at all.</source>
-        <translation type="unfinished"></translation>
+        <translation>Sortera plintarna så som ritningen är upplagd, eller efter beteckning när de allmänna inställningarna anger det, och ta in byglarna som ritats där tillsammans med dem. Det som kommer från ritningen är skrivskyddat här: det ändras i ritningen eller inte alls.</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="242"/>
@@ -27701,64 +27761,64 @@ De andra fälten används inte.</translation>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="612"/>
         <source>Column searched by the filter</source>
-        <translation type="unfinished"></translation>
+        <translation>Kolumn som filtret söker i</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="616"/>
         <source>Filter, for example 24V or K1*</source>
-        <translation type="unfinished"></translation>
+        <translation>Filter, till exempel 24V eller K1*</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="617"/>
         <source>Text searched in the column, whatever the case and the spaces: &quot;24 v&quot; finds 24V. * stands for any text and ? for one character. Return selects the terminals found.</source>
-        <translation type="unfinished"></translation>
+        <translation>Text som söks i kolumnen, oavsett skiftläge och mellanslag: ”24 v” hittar 24V. * står för valfri text och ? för ett tecken. Retur markerar de plintar som hittats.</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="622"/>
         <source>Hide the others</source>
-        <translation type="unfinished"></translation>
+        <translation>Dölj de övriga</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="624"/>
         <source>Show only the terminals found. A terminal of several levels stays whole when one of its levels is found.</source>
-        <translation type="unfinished"></translation>
+        <translation>Visa bara de plintar som hittats. En plint med flera våningar visas hel när en av dess våningar hittas.</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="629"/>
         <source>Whole rows</source>
-        <translation type="unfinished"></translation>
+        <translation>Hela rader</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="631"/>
         <source>Bridge, level %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Bygel, våning %1</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="634"/>
         <source>What is selected: whole rows for the type, the function, the LED, the cable or the move, or the cells of one level to bridge them.</source>
-        <translation type="unfinished"></translation>
+        <translation>Vad som markeras: hela rader för typen, funktionen, LED:en, kabeln eller flytten, eller cellerna på en våning för att bygla dem.</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="638"/>
         <source>Select</source>
-        <translation type="unfinished">Markeringsläge</translation>
+        <translation>Markera</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="639"/>
         <source>Select the terminals found</source>
-        <translation type="unfinished"></translation>
+        <translation>Markera de plintar som hittats</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="680"/>
         <source>All columns</source>
-        <translation type="unfinished"></translation>
+        <translation>Alla kolumner</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="816"/>
         <source>%n found</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n hittad</numerusform>
+            <numerusform>%n hittade</numerusform>
         </translation>
     </message>
     <message>
@@ -28607,61 +28667,61 @@ Ctrl+Retur bekräftar cellen, Esc förkastar texten.</translation>
         <location filename="../sources/titleblock/dimensionwidget.cpp" line="160"/>
         <source>Alignment:</source>
         <comment>default dialog label</comment>
-        <translation type="unfinished">Justering:</translation>
+        <translation>Justering:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/dimensionwidget.cpp" line="162"/>
         <source>Top</source>
         <comment>default dialog label</comment>
-        <translation type="unfinished"></translation>
+        <translation>Upptill</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/dimensionwidget.cpp" line="163"/>
         <source>Top Left</source>
         <comment>default dialog label</comment>
-        <translation type="unfinished"></translation>
+        <translation>Upptill vänster</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/dimensionwidget.cpp" line="164"/>
         <source>Top Center</source>
         <comment>default dialog label</comment>
-        <translation type="unfinished"></translation>
+        <translation>Upptill centrerad</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/dimensionwidget.cpp" line="165"/>
         <source>Top Right</source>
         <comment>default dialog label</comment>
-        <translation type="unfinished"></translation>
+        <translation>Upptill höger</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/dimensionwidget.cpp" line="166"/>
         <source>Bottom</source>
         <comment>default dialog label</comment>
-        <translation type="unfinished"></translation>
+        <translation>Nedtill</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/dimensionwidget.cpp" line="167"/>
         <source>Bottom Left</source>
         <comment>default dialog label</comment>
-        <translation type="unfinished"></translation>
+        <translation>Nedtill vänster</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/dimensionwidget.cpp" line="168"/>
         <source>Bottom Center</source>
         <comment>default dialog label</comment>
-        <translation type="unfinished"></translation>
+        <translation>Nedtill centrerad</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/dimensionwidget.cpp" line="169"/>
         <source>Bottom Right</source>
         <comment>default dialog label</comment>
-        <translation type="unfinished"></translation>
+        <translation>Nedtill höger</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/dimensionwidget.cpp" line="170"/>
         <source>Indicate which side of the title border template should be aligned with the edge of the workspace</source>
         <comment>default dialog label</comment>
-        <translation type="unfinished"></translation>
+        <translation>Ange vilken sida av ritningshuvudmallen som ska justeras mot arbetsytans kant</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/dimensionwidget.cpp" line="211"/>
@@ -28726,22 +28786,22 @@ Ctrl+Retur bekräftar cellen, Esc förkastar texten.</translation>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="240"/>
         <source>Folio group:</source>
-        <translation type="unfinished"></translation>
+        <translation>Bladgrupp:</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="247"/>
         <source>The group this folio belongs to. Left empty, it is the plant. Available as variable %{folio_group} for title blocks</source>
-        <translation type="unfinished"></translation>
+        <translation>Gruppen som detta blad hör till. Lämnas den tom är det anläggningen. Tillgänglig som variabel %{folio_group} för ritningshuvuden</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="254"/>
         <source>Folio sub-group:</source>
-        <translation type="unfinished"></translation>
+        <translation>Bladundergrupp:</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="261"/>
         <source>The sub-group of this folio within its group. Left empty, it is the location. Available as variable %{folio_subgroup} for title blocks</source>
-        <translation type="unfinished"></translation>
+        <translation>Undergruppen för detta blad inom dess grupp. Lämnas den tom är det placeringen. Tillgänglig som variabel %{folio_subgroup} för ritningshuvuden</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="268"/>
@@ -30131,17 +30191,17 @@ Följande variabler kan användas:
         <location filename="../sources/richtext/richtexteditor.cpp" line="425"/>
         <location filename="../sources/richtext/richtexteditor.cpp" line="500"/>
         <source>Text Background Color</source>
-        <translation type="unfinished"></translation>
+        <translation>Textens bakgrundsfärg</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="429"/>
         <source>No background color</source>
-        <translation type="unfinished"></translation>
+        <translation>Ingen bakgrundsfärg</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="457"/>
         <source>More colors...</source>
-        <translation type="unfinished"></translation>
+        <translation>Fler färger...</translation>
     </message>
 </context>
 <context>
@@ -30185,18 +30245,18 @@ Följande variabler kan användas:
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="624"/>
         <source>Font family</source>
-        <translation type="unfinished">Typsnittsfamilj</translation>
+        <translation>Typsnittsfamilj</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="631"/>
         <source>Font size</source>
-        <translation type="unfinished">Teckenstorlek</translation>
+        <translation>Teckenstorlek</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="643"/>
         <location filename="../sources/richtext/richtexteditor.cpp" line="644"/>
         <source>Default project font</source>
-        <translation type="unfinished"></translation>
+        <translation>Projektets standardtypsnitt</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="656"/>
