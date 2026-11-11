@@ -37,6 +37,7 @@
 #include <qetinformation.h>
 #include <qetgraphicsitem/conductor.h>
 #include <qetgraphicsitem/terminal.h>
+#include <ui/elementarticleswidget.h>
 #include <ui/elementpropertieswidget.h>
 #include <undocommand/changeelementinformationcommand.h>
 #include <undocommand/setautonumcontextcommand.h>
@@ -280,6 +281,16 @@ void Element::editProperty()
 			if (QScreen *screen = QApplication::primaryScreen())
 				width = qMin(width, screen->availableGeometry().width());
 			dialog.resize(width, natural.height());
+		}
+		if (epw->findChild<ElementArticlesWidget *>()) {
+			const QRect avail = QApplication::primaryScreen()
+				? QApplication::primaryScreen()->availableGeometry()
+				: QRect(0, 0, 1024, 768);
+			const int target_w = qMin(qMax(dialog.width(), 920), avail.width());
+			const int target_h = qMin(qMax(dialog.height(), 640), avail.height());
+			if (target_w != dialog.width() || target_h != dialog.height()) {
+				dialog.resize(target_w, target_h);
+			}
 		}
 
 		dialog.exec();
