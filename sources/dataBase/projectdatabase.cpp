@@ -5108,7 +5108,8 @@ void projectDataBase::createDrawingItemView()
 QStringList projectDataBase::publicViews()
 {
 	return {QStringLiteral("qet_folios"), QStringLiteral("qet_devices"),
-			QStringLiteral("qet_wires"), QStringLiteral("qet_links")};
+			QStringLiteral("qet_wires"), QStringLiteral("qet_links"),
+			QStringLiteral("qet_device_list")};
 }
 
 /**
@@ -5127,6 +5128,16 @@ QStringList projectDataBase::publicViews()
 	end of a wire has its own (from_structure_id, to_structure_id). The
 	links are kept once each: coil to contact, going arrow to coming
 	arrow.
+
+	qet_device_list is the project's devices, one row each: a device is
+	what one reference designation (=plant+location-label, IEC 81346)
+	names, so every symbol with the same structure_id is part of it, and
+	a contact is part of its coil's whatever it shows. Derived, never kept
+	by hand: symbols, folios showing it, part numbers (articles) of its
+	symbols, and where it is drawn -- its coil, else its first symbol by
+	folio and position (head_uuid). Folio reports are left out, and so
+	are symbols without a label. model is the head symbol's (qet_devices
+	has each symbol's); it was added last to both.
 
 	No view of terminals: the terminal table lists only the terminals a
 	wire ends on, so one would leave out every free terminal without
@@ -5187,7 +5198,7 @@ QStringList projectDataBase::publicViewStatements()
 			+ structureIdSql(effectiveStructureSql(QStringLiteral("ei.plant"), QStringLiteral("di.plant")),
 							 effectiveStructureSql(QStringLiteral("ei.location"), QStringLiteral("di.locmach")),
 							 QStringLiteral("ei.label"))
-			+ QStringLiteral(" AS structure_id "
+			+ QStringLiteral(" AS structure_id, ei.model AS model "
 			"FROM element e LEFT JOIN element_info ei ON ei.element_uuid = e.uuid")
 			+ folio_of.arg(QStringLiteral("e.diagram_uuid")),
 		QStringLiteral(
@@ -5231,7 +5242,28 @@ QStringList projectDataBase::publicViewStatements()
 			"LEFT JOIN diagram_info di1 ON di1.diagram_uuid = e1.diagram_uuid "
 			"LEFT JOIN diagram d2 ON d2.uuid = e2.diagram_uuid "
 			"LEFT JOIN diagram_info di2 ON di2.diagram_uuid = e2.diagram_uuid "
-			"WHERE e1.type IN ('master', 'next_report')")
+			"WHERE e1.type IN ('master', 'next_report')"),
+			//After qet_devices, which it reads
+		QStringLiteral(
+			"CREATE VIEW qet_device_list AS "
+			"WITH symbol AS (SELECT d.*, "
+				"(SELECT l.linked_uuid FROM link l JOIN element m ON m.uuid = l.linked_uuid "
+				"WHERE l.element_uuid = d.device_uuid AND m.type = 'master' LIMIT 1) AS master_uuid "
+				"FROM qet_devices d "
+				"WHERE COALESCE(d.kind, '') NOT IN ('next_report', 'previous_report')), "
+			"member AS (SELECT s.*, COALESCE(m.structure_id, s.structure_id) AS device, "
+				"CASE WHEN s.kind = 'master' THEN 0 WHEN s.master_uuid IS NULL THEN 1 ELSE 2 END AS rank "
+				"FROM symbol s LEFT JOIN qet_devices m ON m.device_uuid = s.master_uuid "
+				"WHERE COALESCE(NULLIF(m.label, ''), s.label, '') <> ''), "
+			"totals AS (SELECT device, COUNT(*) AS symbols, COUNT(DISTINCT folio_uuid) AS folios, "
+				"GROUP_CONCAT(DISTINCT NULLIF(article, '')) AS articles FROM member GROUP BY device), "
+			"head AS (SELECT device, plant, location, label, folio_number, folio, position, "
+				"designation, description, model, device_uuid, ROW_NUMBER() OVER (PARTITION BY device "
+				"ORDER BY rank, folio_number, position, device_uuid) AS n FROM member) "
+			"SELECT h.device AS structure_id, h.plant, h.location, h.label, t.symbols, t.folios, "
+			"h.folio_number, h.folio, h.position, t.articles, h.designation, h.description, "
+			"h.device_uuid AS head_uuid, h.model AS model "
+			"FROM head h JOIN totals t ON t.device = h.device WHERE h.n = 1 ORDER BY h.device")
 	};
 	return views;
 }

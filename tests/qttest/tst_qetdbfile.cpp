@@ -150,7 +150,7 @@ private slots:
 		QCOMPARE(pragma(path, QStringLiteral("SELECT value FROM qet_format WHERE key = 'views'")).toString(),
 				 QStringLiteral("1"));
 		QCOMPARE(pragma(path, QStringLiteral("SELECT count(*) FROM sqlite_master WHERE type = 'view' "
-											 "AND name IN ('qet_folios', 'qet_devices', 'qet_wires', 'qet_links')")).toInt(), 4);
+											 "AND name IN ('qet_folios', 'qet_devices', 'qet_wires', 'qet_links', 'qet_device_list')")).toInt(), 5);
 			//The indexes stay: speed matters more than size
 		QVERIFY(pragma(path, QStringLiteral("SELECT count(*) FROM sqlite_master WHERE name = 'idx_conductor_diagram'")).toInt() == 1);
 		QCOMPARE(pragma(path, QStringLiteral("SELECT count(*) FROM sqlite_master WHERE name = 'working_copy'")).toInt(), 0);
