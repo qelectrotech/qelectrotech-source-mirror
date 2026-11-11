@@ -8766,79 +8766,79 @@ que criar. Também estão disponíveis entradas de
         <translation>Aparência</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="32"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="38"/>
         <source>Use system colors</source>
         <translation>Usar cores de sistema</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="55"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="328"/>
         <source>Use gestures touchpad</source>
         <translation>Usar os gestos do touchpad</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="137"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="321"/>
         <source>Allow unzoom beyond the sheet</source>
         <translation>Permitir reduzir o zoom para além da folha</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="514"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="83"/>
         <source>Use &amp;Windows (applied at the next launch of QElectroTech)</source>
         <translation>Usar &amp;janelas (aplicado no próximo arranque do QElectroTech)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="521"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="76"/>
         <source>Use &amp;tabs (applied at the next launch of QElectroTech)</source>
         <translation>Usar &amp;separadores (aplicado no próximo arranque do QElectroTech)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="560"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="115"/>
         <source>High pixel density (hdpi) displays scaling method (applied to the next launch of QElectroTech) :</source>
         <translation>Método de escala para ecrãs de alta densidade de píxeis (hdpi) (aplicado no próximo arranque do QElectroTech) :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="591"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="473"/>
         <source>Projects</source>
         <translation>Projectos</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="604"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="486"/>
         <source>Automatic backup of projects (applied at the next launch of QElectroTech)</source>
         <translation>Cópia de segurança automática dos projetos (aplicada no próximo arranque do QElectroTech)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="653"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="535"/>
         <source>Do not store the labels of items in the copy paste</source>
         <translation>Não guardar as etiquetas dos itens ao copiar e colar</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="779"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="648"/>
         <source>Number the title block columns from 0 (1 otherwise)</source>
         <extracomment>Choix de l&apos;increment de depart 1 ou 0</extracomment>
         <translation>Numerar as colunas da moldura a partir de 0 (caso contrário 1)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="614"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="496"/>
         <source>Disabled</source>
         <translation>Desativado</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="620"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="502"/>
         <source> min</source>
         <comment>minute</comment>
         <translation> min</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="597"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="479"/>
         <source>Use sheet numbers instead of their position in the project</source>
         <translation>Usar os números das folhas em vez da sua posição no projeto</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="321"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1457"/>
         <source>Show the default grid (applied the next time the programme is launched)</source>
         <translation>Mostrar a grelha por predefinição (aplicado no próximo arranque do programa)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="500"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1516"/>
         <source>Show default guides (applies from the next time the programme is launched)</source>
         <translation>Mostrar as guias por predefinição (aplicado a partir do próximo arranque do programa)</translation>
     </message>
@@ -8910,390 +8910,435 @@ que criar. Também estão disponíveis entradas de
         <translation>Diretório de macros do utilizador</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="39"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="45"/>
         <source>Application color</source>
         <translation>Cor da aplicação</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="64"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="356"/>
         <source>Selection rectangle selects:</source>
         <translation>O retângulo de seleção seleciona:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="75"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="367"/>
         <source>Everything it overlaps (as before)</source>
         <translation>Tudo o que toca (como antes)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="80"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="372"/>
         <source>What lies wholly within it</source>
         <translation>O que fica inteiramente dentro dele</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="85"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="377"/>
         <source>By direction: wholly within to the right, overlapped to the left</source>
         <translation>Pela direção: inteiramente dentro para a direita, tocado para a esquerda</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="95"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1988"/>
         <source>Symbol editor: draw like the folio, frame on the grid around the insertion point</source>
         <translation>Editor de símbolos: desenhar como na folha, moldura na grelha à volta do ponto de inserção</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="102"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1069"/>
         <source>Find and edit a placed element in the collection it was taken from</source>
         <translation>Encontrar e editar um elemento colocado na coleção de onde foi retirado</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="105"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1072"/>
         <source>Saving it there updates the open projects that use it. Otherwise the project&apos;s own copy is edited.</source>
         <translation>Guardá-lo lá atualiza os projetos abertos que o utilizam. Caso contrário, é editada a cópia própria do projeto.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="114"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="186"/>
         <source>Corner radius of the selection frame (0: square)</source>
         <translation>Raio dos cantos da moldura de seleção (0: quadrado)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="146"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="280"/>
         <source>Zoom step:</source>
         <translation>Passo do zoom:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="162"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="296"/>
         <source>How far the mouse wheel, Ctrl++ / Ctrl+- and the zoom buttons zoom at a time, in percent of the zoom shown, rounded to whole fives: with 10 %, 100 % goes to 110 %, 120 %, 130 % and 400 % to 440 %. Alt with the mouse wheel zooms four steps at a time.</source>
         <translation>Quanto a roda do rato, Ctrl++ / Ctrl+- e os botões de zoom ampliam de cada vez, em percentagem do zoom apresentado, arredondado a múltiplos de cinco: com 10 %, 100 % passa a 110 %, 120 %, 130 % e 400 % a 440 %. Alt com a roda do rato amplia quatro passos de cada vez.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="165"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="299"/>
         <source>Factor 1.15 (as before)</source>
         <translation>Fator 1,15 (como antes)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="168"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="302"/>
         <source> %</source>
         <translation> %</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="187"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="400"/>
         <source>Show the properties of a selected conductor in the Selection properties panel</source>
         <translation>Mostrar as propriedades de um condutor selecionado no painel Propriedades da seleção</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="194"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="219"/>
         <source>Draw a connected terminal in the color of its conductor</source>
         <translation>Desenhar um terminal ligado na cor do seu condutor</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="197"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="222"/>
         <source>Unchecked, every terminal is drawn in red. Terminals are never printed or exported.</source>
         <translation>Se não assinalado, todos os terminais são desenhados a vermelho. Os terminais nunca são impressos nem exportados.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="204"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="229"/>
         <source>One stub per terminal which has a wire of its own, going up from the strip: what the wire is made of at its foot, where it lands at its top (12K1:A1). Cores of a cable are left out -- the cable is drawn below the strip.</source>
         <translation>Um troço por terminal que tem um fio próprio, a subir a partir da régua: em baixo, de que é feito o fio, em cima, onde chega (12K1:A1). Os condutores de um cabo são omitidos -- o cabo é desenhado por baixo da régua.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="207"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="232"/>
         <source>Draw the wires of a terminal strip above it, like its cables below it</source>
         <translation>Desenhar os fios de uma régua de terminais por cima dela, tal como os seus cabos por baixo</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="214"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="690"/>
         <source>Used when the automatic assignment makes a terminal strip and by &quot;Automatic position&quot; in the terminal manager. Unchecked: the way the plan is drawn, folio by folio then left to right, which keeps N and PE where they are drawn. Checked: by label, X1:2 before X1:10. A strip already made keeps its order until it is sorted again.</source>
         <translation>Usado quando a atribuição automática cria uma régua de terminais e por «Posição automática» no gestor de réguas. Não assinalado: pela ordem do plano, folha a folha e depois da esquerda para a direita, o que mantém N e PE onde estão desenhados. Assinalado: por etiqueta, X1:2 antes de X1:10. Uma régua já criada mantém a sua ordem até voltar a ser ordenada.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="217"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="693"/>
         <source>Sort the terminal strips by label instead of the plan order</source>
         <translation>Ordenar as réguas de terminais por etiqueta em vez da ordem do plano</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="224"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="661"/>
         <source>A new folio takes the group and sub-group of the folio before it</source>
         <translation>Uma nova folha assume o grupo e o subgrupo da folha anterior</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="227"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="664"/>
         <source>Only a group or sub-group typed on that folio is taken. Unchecked, a new folio has none and is in its plant and location.</source>
         <translation>Só é assumido um grupo ou subgrupo escrito nessa folha. Se não assinalado, uma nova folha não tem nenhum e pertence à sua instalação e localização.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="234"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="671"/>
         <source>Ask for the device labels when placing a macro</source>
         <translation>Pedir as identificações dos aparelhos ao colocar uma macro</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="237"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="674"/>
         <source>Proposes the next free labels, which Accept All takes. Unchecked, a macro keeps its saved labels.</source>
         <translation>Propõe as próximas identificações livres, que Aceitar tudo assume. Se não assinalado, uma macro mantém as identificações guardadas.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="244"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="700"/>
         <source>When unticked, no conductors-per-terminal rule applies, whatever the projects&apos; settings.</source>
         <translation>Se não estiver marcado, não se aplica nenhuma regra de condutores por terminal, sejam quais forem as definições dos projetos.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="247"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="703"/>
         <source>Apply the projects&apos; conductors-per-terminal rules</source>
         <translation>Aplicar as regras de condutores por terminal dos projetos</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="262"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="718"/>
         <source>Maximum conductors per terminal:</source>
         <translation>Máximo de condutores por terminal:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="275"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="731"/>
         <source>For every project except those with their own settings. A new conductor that would take a terminal past this number is refused; conductors already drawn are not changed. 4 means two twin ferrules, one on each side of the screw.</source>
         <translation>Para todos os projetos exceto os que têm definições próprias. Um novo condutor que faria um terminal ultrapassar este número é recusado; os condutores já desenhados não são alterados. 4 significa dois terminais de ponteira duplos, um de cada lado do parafuso.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="278"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="734"/>
         <source>No limit</source>
         <translation>Sem limite</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="302"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="758"/>
         <source>A sheet reference is a virtual point: it takes only one conductor, the one that continues on the other sheet.</source>
         <translation>Uma referência de folha é um ponto virtual: só admite um condutor, o que continua na outra folha.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="305"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="761"/>
         <source>Only one conductor per sheet reference</source>
         <translation>Apenas um condutor por referência de folha</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="340"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1476"/>
         <source>Zoomed out further, the dots of any grid step are left out; the zoom shown in the status bar tells where. In pixels as the system scales them, so the same value suits a HiDPI screen</source>
         <translation>Com menos zoom, os pontos de cada passo da grelha são omitidos; o zoom mostrado na barra de estado indica onde. Em píxeis tal como o sistema os dimensiona, pelo que o mesmo valor serve para um ecrã HiDPI</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="380"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1049"/>
         <source>By default, a double-click inserts the element on the sheet; editing remains accessible from the context menu.</source>
         <translation>Por predefinição, um duplo clique insere o elemento na folha; a edição continua acessível a partir do menu de contexto.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="383"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1052"/>
         <source>Double-clicking in the collection opens the element editor instead of inserting it</source>
         <translation>Um duplo clique na coleção abre o editor de elementos em vez de o inserir</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="390"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1059"/>
         <source>Ticked: a single list, best match first. Unticked: the collection tree, filtered by the search.</source>
         <translation>Marcado: uma única lista, com a melhor correspondência primeiro. Desmarcado: a árvore da coleção, filtrada pela pesquisa.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="393"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1062"/>
         <source>Show search results as a sorted list</source>
         <translation>Mostrar os resultados da pesquisa como uma lista ordenada</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="400"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="165"/>
         <source>After a click that selects an element or a conductor, the shortcut bar commands appear near the cursor and fade away when the mouse moves away.</source>
         <translation>Depois de um clique que seleciona um elemento ou um condutor, os comandos da barra de atalhos aparecem perto do cursor e desvanecem quando o rato se afasta.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="403"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="168"/>
         <source>Show commands near the selection</source>
         <translation>Mostrar os comandos perto da seleção</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="410"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="335"/>
         <source>Holding the right button and dragging in a direction launches a shortcut bar command. A simple right-click still opens the context menu, on button release.</source>
         <translation>Manter o botão direito premido e arrastar numa direção executa um comando da barra de atalhos. Um simples clique direito continua a abrir o menu de contexto, ao largar o botão.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="413"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="338"/>
         <source>Right-button mouse gestures</source>
         <translation>Gestos do rato com o botão direito</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="420"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="416"/>
         <source>A four-way arrow over what a drag moves; with the crosshair, the pointer jumps with it from grid point to grid point, and a handle within 12 pixels catches it and the click. Unticked: the system pointer, and handles are grabbed under the mouse only.</source>
         <translation>Uma seta de quatro direções sobre aquilo que um arrasto move; com a mira, o ponteiro salta com ele de ponto em ponto da grelha, e uma pega a menos de 12 píxeis apanha-o juntamente com o clique. Desmarcado: o ponteiro do sistema, e as pegas só são agarradas sob o rato.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="423"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="419"/>
         <source>Four-way arrow and handle catching with the crosshair</source>
         <translation>Seta de quatro direções e captura de pegas com a mira</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="430"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="209"/>
         <source>A symbol&apos;s text that reads from top to bottom once its symbol is turned is drawn the other way round, in the same place, so that upright texts all read from bottom to top, like the wires&apos; texts. Unticked by default: texts turn with their symbol.</source>
         <translation>Um texto de símbolo que se lê de cima para baixo depois de o símbolo rodar é desenhado ao contrário, no mesmo lugar, para que todos os textos verticais se leiam de baixo para cima, como os textos dos fios. Desmarcado por predefinição: os textos rodam com o seu símbolo.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="433"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="212"/>
         <source>Upright symbol texts read from bottom to top</source>
         <translation>Os textos verticais dos símbolos leem-se de baixo para cima</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="440"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="426"/>
         <source>Dragging a symbol&apos;s text moves the text alone, and Shift+drag moves the symbol, as before version 0.100. Unticked by default: dragging a text moves its symbol, Shift+drag moves the text.</source>
         <translation>Arrastar um texto de um símbolo move apenas o texto, e Shift+arrastar move o símbolo, como antes da versão 0.100. Desassinalado por predefinição: arrastar um texto move o seu símbolo, Shift+arrastar move o texto.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="443"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="429"/>
         <source>Drag symbol texts without holding Shift</source>
         <translation>Arrastar os textos dos símbolos sem manter Shift premido</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="450"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="436"/>
         <source>While a symbol is placed or dragged, a shaded line runs from each of its terminals to the terminal in line with it. Ticked by default.</source>
         <translation>Enquanto um símbolo é colocado ou arrastado, uma linha sombreada liga cada um dos seus terminais ao terminal alinhado com ele. Marcado por predefinição.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="453"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="439"/>
         <source>Help lines from the terminals of a dragged symbol</source>
         <translation>Linhas de ajuda a partir dos terminais de um símbolo arrastado</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="460"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="145"/>
         <source>A bar at each side of the drawing folds the panels of that side away, as in LibreOffice&apos;s sidebar, and a second click shows them again as they were. Unticked by default; the Display menu does the same with or without the bars.</source>
         <translation>Uma barra de cada lado do desenho recolhe os painéis desse lado, como na barra lateral do LibreOffice, e um segundo clique mostra-os novamente como estavam. Desmarcado por predefinição; o menu Visualização faz o mesmo com ou sem as barras.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="463"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="148"/>
         <source>Bars beside the drawing to fold the side panels away</source>
         <translation>Barras ao lado do desenho para recolher os painéis laterais</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="470"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="155"/>
         <source>The docked panels can be made as narrow as one wants: their texts wrap and what cannot wrap scrolls sideways. Unticked: the panels keep the width their texts and fields need.</source>
         <translation>Os painéis ancorados podem ficar tão estreitos quanto se queira: os seus textos mudam de linha e o que não pode mudar de linha desliza na horizontal. Desmarcado: os painéis mantêm a largura de que os seus textos e campos precisam.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="473"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="158"/>
         <source>Narrow docks: wrap texts and scroll (applied the next time the programme is launched)</source>
         <translation>Painéis estreitos: quebrar textos e deslizar (aplicado no próximo arranque do programa)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="480"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="446"/>
         <source>A corner or T-junction placed where one already stands takes its place, and its wires go to the new one. Unticked by default: both stay.</source>
         <translation>Um canto ou derivação em T colocado onde já existe um toma o seu lugar, e os seus fios passam para o novo. Desmarcado por predefinição: ambos ficam.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="483"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="449"/>
         <source>A new corner or T-junction replaces the one under it</source>
         <translation>Um novo canto ou derivação em T substitui o que está por baixo</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="490"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="239"/>
         <source>Printing and exporting ask first when symbols, texts, shapes, pictures or tables lie outside the sheet, as they are cut off or left out; saving says so in the status bar.</source>
         <translation>A impressão e a exportação perguntam primeiro quando há símbolos, textos, formas, imagens ou tabelas fora da folha, pois são cortados ou omitidos; ao guardar, isso é indicado na barra de estado.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="493"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="30"/>
+        <source>Theme</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="70"/>
+        <source>Main window</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="178"/>
+        <source>Drawing on the sheet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="242"/>
         <source>Warn about items outside the sheet</source>
         <translation>Avisar sobre itens fora da folha</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="633"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="266"/>
+        <source>Mouse and input</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="272"/>
+        <source>Zoom and navigation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="348"/>
+        <source>Selection</source>
+        <translation type="unfinished">Seleção</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="410"/>
+        <source>Drawing and moving</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="515"/>
         <source>Automatically number pasted or duplicated elements that follow a numbering</source>
         <translation>Numerar automaticamente os elementos colados ou duplicados que seguem uma numeração</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="636"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="518"/>
         <source>A pasted element receives the next number of its numbering instead of the copied element&apos;s name, and the numbering advances.</source>
         <translation>Um elemento colado recebe o número seguinte da sua numeração em vez do nome do elemento copiado, e a numeração avança.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="643"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="525"/>
         <source>A small hidden file beside the project says who has it open. Someone else opening it is told, and can open it read-only. Turn this off if your shared drive does not cope with it.</source>
         <translation>Um pequeno ficheiro oculto ao lado do projeto indica quem o tem aberto. Quem mais o abrir é avisado e pode abri-lo só de leitura. Desative esta opção se a sua unidade partilhada não lidar bem com ele.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="646"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="528"/>
         <source>Tell others who has a project open (lock file beside the project)</source>
         <translation>Informar os outros de quem tem um projeto aberto (ficheiro de bloqueio ao lado do projeto)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="660"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="542"/>
         <source>Allow running JavaScript scripts (Project &gt; Run a script, and --run)</source>
         <translation>Permitir executar scripts JavaScript (Projeto &gt; Executar um script, e --run)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="663"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="545"/>
         <source>A script runs with your permissions: it can read and modify the open project and write files. Disabled by default; only run scripts whose origin you know.</source>
         <translation>Um script é executado com as suas permissões: pode ler e modificar o projeto aberto e escrever ficheiros. Desativado por predefinição; execute apenas scripts de origem conhecida.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="670"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="552"/>
         <source>Allow an AI assistant to act on the open project (live mode)</source>
         <translation>Permitir que um assistente de IA atue sobre o projeto aberto (modo em direto)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="673"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="555"/>
         <source>An assistant connected through the MCP server can then run scripts on the open project, as you watch. A warning is shown at every start while this setting is on. Takes effect at the next start; unticking it closes the connection at once.</source>
         <translation>Um assistente ligado através do servidor MCP pode então executar scripts sobre o projeto aberto, enquanto observa. É mostrado um aviso em cada arranque enquanto esta definição estiver ativa. Tem efeito no próximo arranque; desmarcá-la fecha a ligação de imediato.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="680"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="562"/>
         <source>Enable chained folio reports for report elements</source>
         <translation>Ativar referências de folha encadeadas para elementos de referência de folha</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="683"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="565"/>
         <source>When enabled, report elements (cross-references) across folios with matching labels are automatically chained together. Newly created projects will have this enabled automatically.</source>
         <translation>Quando ativado, os elementos de referência de folha (referências cruzadas) em várias folhas com etiquetas iguais são automaticamente encadeados. Os projetos novos terão esta opção ativada automaticamente.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="690"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="572"/>
         <source>Previous versions kept when saving a project</source>
         <translation>Versões anteriores mantidas ao guardar um projeto</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="693"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="700"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="575"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="582"/>
         <source>Before a project is saved, the file as it was is copied to a folder beside it, named after the project with &quot;-backups&quot;. Only the newest are kept.</source>
         <translation>Antes de guardar um projeto, o ficheiro tal como estava é copiado para uma pasta ao lado dele, com o nome do projeto seguido de «-backups». Só as mais recentes são mantidas.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="703"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="585"/>
         <source>None</source>
         <translation>Nenhuma</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="713"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="595"/>
         <source>Reopen the projects of the last session at start</source>
         <translation>Reabrir no arranque os projetos da última sessão</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="716"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="598"/>
         <source>The projects open when QElectroTech was last left are opened again, unless it is started with a file to open.</source>
         <translation>Os projetos abertos quando o QElectroTech foi fechado da última vez são abertos novamente, a não ser que seja iniciado com um ficheiro para abrir.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="723"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="605"/>
         <source>Offer to restore automatic backups at start</source>
         <translation>Propor no arranque o restauro das cópias de segurança automáticas</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="726"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="608"/>
         <source>After a crash, the automatic backups (made every few minutes, see &quot;Automatic backup of projects&quot; above) are offered at the next start. Unticked, they are kept but not offered, the status bar says how many there are, and they are offered again once this is ticked. Not the same as the option below, which keeps a copy after every edit.</source>
         <translation>Após uma falha, as cópias de segurança automáticas (feitas a cada poucos minutos, ver «Cópia de segurança automática dos projetos» acima) são propostas no arranque seguinte. Desmarcado, são mantidas mas não propostas, a barra de estado indica quantas existem, e são novamente propostas assim que esta opção for marcada. Não é o mesmo que a opção abaixo, que mantém uma cópia após cada edição.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="733"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="615"/>
         <source>After a crash, offer projects as they were after their last edit (experimental)</source>
         <translation>Após uma falha, propor os projetos tal como estavam após a última edição (experimental)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="736"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="618"/>
         <source>While a project is open, QElectroTech keeps a copy of it in its data folder, saved after every edit. If QElectroTech does not close normally, the next start offers that copy with the recovery files.</source>
         <translation>Enquanto um projeto está aberto, o QElectroTech mantém uma cópia dele na sua pasta de dados, guardada após cada edição. Se o QElectroTech não fechar normalmente, o arranque seguinte propõe essa cópia com os ficheiros de recuperação.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="743"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="625"/>
         <source>Offer saving a project as one database file, .qetdb (experimental)</source>
         <translation>Propor guardar um projeto como um único ficheiro de base de dados, .qetdb (experimental)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="746"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="628"/>
         <source>Save As then offers .qetdb: the whole project in one SQLite file. The format may still change; keep a .qet or .qetz copy of projects that matter.</source>
         <translation>«Guardar como» propõe então .qetdb: todo o projeto num único ficheiro SQLite. O formato ainda pode mudar; mantenha uma cópia .qet ou .qetz dos projetos importantes.</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="655"/>
+        <source>Folios and macros</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="684"/>
+        <source>Terminal strips and conductors</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="840"/>
@@ -9362,34 +9407,34 @@ hint shown when no cable type file is configured yet</extracomment>
         <translation>Destacar no painel os elementos recém-integrados</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1162"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1225"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1192"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1255"/>
         <source>°</source>
         <translation>°</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1172"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1202"/>
         <source>Length :</source>
         <translation>Comprimento :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1182"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1211"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1212"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1241"/>
         <source>Rotation :</source>
         <translation>Rotação :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1205"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1235"/>
         <source>Independent texts</source>
         <translation>Textos independentes</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1258"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1288"/>
         <source>Other texts</source>
         <translation>Outros textos</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1294"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1324"/>
         <source>Cable texts</source>
         <translation>Textos dos cabos</translation>
     </message>
@@ -9398,7 +9443,7 @@ hint shown when no cable type file is configured yet</extracomment>
         <translation type="vanished">Designação, tipo, instalação, localização, comprimento :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1323"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1353"/>
         <source>Font of the texts written along the cable line; a cable which has its own keeps it.</source>
         <translation>Tipo de letra dos textos escritos ao longo da linha do cabo; um cabo que tem o seu próprio mantém-no.</translation>
     </message>
@@ -9407,7 +9452,7 @@ hint shown when no cable type file is configured yet</extracomment>
         <translation type="vanished">Cores dos fios (todas) :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1356"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1386"/>
         <source>Font of the core colors written along the line; a cable which has its own keeps it.</source>
         <translation>Tipo de letra das cores dos fios escritas ao longo da linha; um cabo que tem o seu próprio mantém-no.</translation>
     </message>
@@ -9416,73 +9461,78 @@ hint shown when no cable type file is configured yet</extracomment>
         <translation type="vanished">Alinhamento do texto :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1376"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1406"/>
         <source>Where the texts of a cable stop relative to the start of its line; a cable which has its own keeps it.</source>
         <translation>Onde terminam os textos de um cabo em relação ao início da sua linha; um cabo que tem o seu próprio mantém-no.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1380"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1410"/>
         <source>Right aligned</source>
         <translation>Alinhado à direita</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1385"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1415"/>
         <source>Centred</source>
         <translation>Centrado</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1390"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1420"/>
         <source>Left aligned</source>
         <translation>Alinhado à esquerda</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1415"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1445"/>
         <source>Grid + Keyboard</source>
         <translation>Grelha + teclado</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1421"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1451"/>
+        <source>Grid and guides</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1526"/>
         <source>Grid: 1 - 30</source>
         <translation>Grelha: 1 - 30</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1455"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1560"/>
         <source>DiagramEditor yGrid</source>
         <translation>DiagramEditor yGrid</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1462"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1567"/>
         <source>The Grid must be active to see the changes.</source>
         <translation>A grelha tem de estar ativa para ver as alterações.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1488"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1593"/>
         <source>DiagramEditor xGrid</source>
         <translation>DiagramEditor xGrid</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1508"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1613"/>
         <source>Grid for texts moved with the mouse</source>
         <translation>Grelha para os textos movidos com o rato</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1511"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1616"/>
         <source>Fraction of the sheet grid. Hold Ctrl while moving to place freely.</source>
         <translation>Fração da grelha da folha. Mantenha Ctrl premido ao mover para colocar livremente.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1531"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1636"/>
         <source>Keyboard movement: 1 - 30</source>
         <translation>Movimento pelo teclado: 1 - 30</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1581"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1686"/>
         <source>DiagramEditor (key: left / right) xGrid</source>
         <comment>fr: DiagramEditor (touche :   gauche / droite)  xGrid</comment>
         <translation>DiagramEditor (tecla: esquerda / direita) xGrid</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1588"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1693"/>
         <source>DiagramEditor (key: up / down) yGrid</source>
         <translation>DiagramEditor (tecla: cima / baixo) yGrid</translation>
     </message>
@@ -9491,85 +9541,85 @@ hint shown when no cable type file is configured yet</extracomment>
         <translation type="vanished">Movimento pelo teclado com a tecla ALT: 1 - 9</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1624"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1729"/>
         <source>DiagramEditor (key: left / right) xGrid</source>
         <translation>DiagramEditor (tecla: esquerda / direita) xGrid</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1653"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1758"/>
         <source>DiagramEditor (key: up / down) yGrid</source>
         <comment>fr: DiagramEditor (touche :  haut / bas)  yGrid</comment>
         <translation>DiagramEditor (tecla: cima / baixo) yGrid</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1698"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1803"/>
         <source>View grid</source>
         <translation>Ver a grelha</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1795"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1802"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1900"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1907"/>
         <source>max:</source>
         <translation>máx.:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1883"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1995"/>
         <source>When saving a symbol: refuse two terminals with the same name, and report terminals without a name (IEC 61666).</source>
         <translation>Ao guardar um símbolo: recusar dois terminais com o mesmo nome e assinalar os terminais sem nome (IEC 61666).</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1886"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1998"/>
         <source>Check terminal names when saving</source>
         <translation>Verificar os nomes dos terminais ao guardar</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1756"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1861"/>
         <source>Point-size in diagram-editor: 1 - 5</source>
         <translation>Tamanho dos pontos no editor de esquemas: 1 - 5</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1300"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1330"/>
         <source>Designation, type, plant, location, length:</source>
         <translation>Designação, tipo, instalação, localização, comprimento:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1333"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1363"/>
         <source>Core colors (all of them):</source>
         <translation>Cores dos núcleos (todas):</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1366"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1396"/>
         <source>Text alignment:</source>
         <translation>Alinhamento do texto:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1595"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1700"/>
         <source>Move by the grid step instead (Display &gt; Grid step)</source>
         <translation>Mover antes pelo passo da grelha (Visualização &gt; Passo da grelha)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1618"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1723"/>
         <source>Keyboard movement with the Ctrl key: 1 - 9</source>
         <translation>Movimento pelo teclado com a tecla Ctrl: 1 - 9</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1704"/>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1809"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1914"/>
         <source>min:</source>
         <translation>mín.:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1816"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1921"/>
         <source>Point-size in element-editor: 1 - 5</source>
         <translation>Tamanho dos pontos no editor de elementos: 1 - 5</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1840"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1945"/>
         <source>Editor</source>
         <translation>Editor</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1848"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1953"/>
         <source>Max. parts in Element Editor List</source>
         <translation>Máx. de partes na lista do editor de elementos</translation>
     </message>
@@ -9584,39 +9634,39 @@ hint shown when no cable type file is configured yet</extracomment>
         <translation>Gestão de elementos</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1049"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1079"/>
         <source>Element may include information about its authors, license, or other useful information. Specify the default value of this textfield for new elements below:</source>
         <translation>Um elemento pode incluir informação sobre os seus autores, a sua licença ou outra informação útil. Indique abaixo o valor predefinido deste campo de texto para os novos elementos:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1076"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1106"/>
         <source>Languages</source>
         <translation>Idiomas</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1085"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1115"/>
         <source>Applied to the next launch of QElectroTech</source>
         <translation>Aplicado no próximo arranque do QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1119"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1149"/>
         <source>texts</source>
         <translation>textos</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1125"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1155"/>
         <source>Here you can define the default appearance of the different texts of QElectroTech</source>
         <translation>Aqui pode definir a aparência predefinida dos diferentes textos do QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1139"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1169"/>
         <source>Elements texts</source>
         <translation>Textos dos elementos</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1152"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1218"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1264"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1182"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1248"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1294"/>
         <source>Font:</source>
         <translation>Fonte :</translation>
     </message>
@@ -10041,7 +10091,7 @@ Qualquer definição diferente de «Sem arredondamento» pode provocar erros de 
 3 - a edição do projeto noutro computador e/ou ecrã que não tenha as mesmas definições dos pontos 1 e 2.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="330"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1466"/>
         <source>Hide the grid when its dots are closer on screen than</source>
         <translation>Ocultar a grelha quando os seus pontos estão no ecrã a menos de</translation>
     </message>
@@ -10050,7 +10100,7 @@ Qualquer definição diferente de «Sem arredondamento» pode provocar erros de 
         <translation type="vanished">Com menos zoom, os pontos de qualquer passo de grelha são omitidos; o zoom na barra de estado indica onde</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="343"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1479"/>
         <source> px</source>
         <translation> px</translation>
     </message>
@@ -21712,92 +21762,92 @@ Para a ativar: Configurar o QElectroTech &gt; Geral &gt; Projetos, ou defina a v
         <translation>Espelho vertical</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="332"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="334"/>
         <source>the file is damaged</source>
         <translation>o ficheiro está danificado</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="337"/>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="342"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="339"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="344"/>
         <source>the file is not a QElectroTech project</source>
         <translation>o ficheiro não é um projeto QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="350"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="352"/>
         <source>it was saved by a newer QElectroTech (%1)</source>
         <translation>foi guardado por um QElectroTech mais recente (%1)</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="360"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="362"/>
         <source>the file holds SQL that QElectroTech does not expect (%1)</source>
         <translation>o ficheiro contém SQL que o QElectroTech não espera (%1)</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="366"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="368"/>
         <source>the file is damaged: an item refers to one that is not there</source>
         <translation>o ficheiro está danificado: um item refere-se a outro que não existe</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="399"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="401"/>
         <source>the file could not be replaced (error %1)</source>
         <translation>não foi possível substituir o ficheiro (erro %1)</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="442"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="444"/>
         <source>the file could not be opened</source>
         <translation>não foi possível abrir o ficheiro</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="815"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="817"/>
         <source>the file could not be read back</source>
         <translation>não foi possível reler o ficheiro</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1217"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1219"/>
         <source>the file could not be written</source>
         <translation>não foi possível escrever o ficheiro</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1239"/>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1755"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1241"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1757"/>
         <source>it keeps no revision %1</source>
         <translation>não mantém nenhuma revisão %1</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1248"/>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1773"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1250"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1775"/>
         <source>this build of QElectroTech has no SQLite session support</source>
         <translation>esta compilação do QElectroTech não suporta sessões SQLite</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1255"/>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1763"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1257"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1765"/>
         <source>the changes of revision %1 were not recorded</source>
         <translation>as alterações da revisão %1 não foram registadas</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1260"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1262"/>
         <source>revision %1 cannot be undone</source>
         <translation>a revisão %1 não pode ser anulada</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1270"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1272"/>
         <source>revision %1 does not undo cleanly</source>
         <translation>a revisão %1 não se anula de forma limpa</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1364"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1366"/>
         <source>the file could not be written to disk</source>
         <translation>não foi possível escrever o ficheiro no disco</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1429"/>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1545"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1431"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1547"/>
         <source>the file could not be read</source>
         <translation>não foi possível ler o ficheiro</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1457"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1459"/>
         <source>it has %n damaged page(s), more than the repair data it keeps can rebuild</source>
         <translation>
             <numerusform>tem %n página danificada, mais do que os dados de reparação que mantém podem reconstruir</numerusform>
@@ -21805,31 +21855,31 @@ Para a ativar: Configurar o QElectroTech &gt; Geral &gt; Projetos, ou defina a v
         </translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1522"/>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1562"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1524"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1564"/>
         <source>its content is not what QElectroTech saved: it is damaged, or another program changed it</source>
         <translation>o seu conteúdo não é o que o QElectroTech guardou: está danificado, ou outro programa alterou-o</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1633"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1635"/>
         <source>keep at least 2 saves, or 0 for all</source>
         <translation>mantenha pelo menos 2 gravações, ou 0 para todas</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1639"/>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1712"/>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1746"/>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1806"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1641"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1714"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1748"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1808"/>
         <source>it keeps no history</source>
         <translation>não mantém histórico</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1750"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1752"/>
         <source>revision %1 does not come before revision %2</source>
         <translation>a revisão %1 não vem antes da revisão %2</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1781"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1783"/>
         <source>the changes of revision %1 do not follow on</source>
         <translation>as alterações da revisão %1 não têm continuidade</translation>
     </message>
@@ -29899,12 +29949,12 @@ Podem ser usadas as seguintes variáveis:
         <translation>Só são permitidas consultas de leitura (SELECT ou WITH ... SELECT).</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/projectdatabase.cpp" line="8769"/>
+        <location filename="../sources/dataBase/projectdatabase.cpp" line="8843"/>
         <source>Export the internal project database</source>
         <translation>Exportar a base de dados interna do projeto</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/projectdatabase.cpp" line="8776"/>
+        <location filename="../sources/dataBase/projectdatabase.cpp" line="8850"/>
         <source>untitled</source>
         <translation>sem título</translation>
     </message>

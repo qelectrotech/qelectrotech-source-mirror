@@ -8722,69 +8722,69 @@ that you create. Text and number inputs are
         <translation>外観</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="32"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="38"/>
         <source>Use system colors</source>
         <translation>システムの色を使用</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="55"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="328"/>
         <source>Use gestures touchpad</source>
         <translation>タッチパッドのジェスチャーを使用</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="137"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="321"/>
         <source>Allow unzoom beyond the sheet</source>
         <translation>フォリオの領域を越えた縮小が可能</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="514"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="83"/>
         <source>Use &amp;Windows (applied at the next launch of QElectroTech)</source>
         <translation>ウィンドウ (&amp;W) を使用 (QElectroTech の次回起動時に適用)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="521"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="76"/>
         <source>Use &amp;tabs (applied at the next launch of QElectroTech)</source>
         <translation>タブ (&amp;T) を使用 (QElectroTech の次回起動時に適用)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="560"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="115"/>
         <source>High pixel density (hdpi) displays scaling method (applied to the next launch of QElectroTech) :</source>
         <translation>高ピクセル密度 (hdpi) ディスプレイのスケーリング方式 (QElectroTech の次回起動時に適用) :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="591"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="473"/>
         <source>Projects</source>
         <translation>プロジェクト</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="604"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="486"/>
         <source>Automatic backup of projects (applied at the next launch of QElectroTech)</source>
         <translation>プロジェクトの自動保存 (QElectroTech の次回起動時に適用)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="653"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="535"/>
         <source>Do not store the labels of items in the copy paste</source>
         <translation>コピーと貼り付けで項目のラベルを保持しない</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="779"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="648"/>
         <source>Number the title block columns from 0 (1 otherwise)</source>
         <extracomment>Choix de l&apos;increment de depart 1 ou 0</extracomment>
         <translation>表題欄の列番号は 0 から (そうでなければ 1 から)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="614"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="496"/>
         <source>Disabled</source>
         <translation>無効</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="620"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="502"/>
         <source> min</source>
         <comment>minute</comment>
         <translation> 分</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="597"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="479"/>
         <source>Use sheet numbers instead of their position in the project</source>
         <translation>フォリオ番号をプロジェクトでの位置の代わりに使用</translation>
     </message>
@@ -8841,400 +8841,445 @@ that you create. Text and number inputs are
         <translation>ユーザ表題欄のディレクトリ</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="39"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="45"/>
         <source>Application color</source>
         <translation>アプリケーションの色</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="64"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="356"/>
         <source>Selection rectangle selects:</source>
         <translation>選択矩形で選択するもの:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="75"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="367"/>
         <source>Everything it overlaps (as before)</source>
         <translation>重なるものすべて (従来どおり)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="80"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="372"/>
         <source>What lies wholly within it</source>
         <translation>完全に内側にあるもの</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="85"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="377"/>
         <source>By direction: wholly within to the right, overlapped to the left</source>
         <translation>方向による: 右方向は完全に内側、左方向は重なるもの</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="95"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1988"/>
         <source>Symbol editor: draw like the folio, frame on the grid around the insertion point</source>
         <translation>シンボルエディター: フォリオと同じように描画し、挿入点の周囲でグリッドに枠を合わせる</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="102"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1069"/>
         <source>Find and edit a placed element in the collection it was taken from</source>
         <translation>配置した要素を取得元のコレクション内で探して編集する</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="105"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1072"/>
         <source>Saving it there updates the open projects that use it. Otherwise the project&apos;s own copy is edited.</source>
         <translation>そこで保存すると、それを使用している開いたプロジェクトが更新されます。そうでない場合は、プロジェクト独自のコピーが編集されます。</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="114"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="186"/>
         <source>Corner radius of the selection frame (0: square)</source>
         <translation>選択枠の角の半径 (0: 四角)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="146"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="280"/>
         <source>Zoom step:</source>
         <translation>ズームの刻み:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="162"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="296"/>
         <source>How far the mouse wheel, Ctrl++ / Ctrl+- and the zoom buttons zoom at a time, in percent of the zoom shown, rounded to whole fives: with 10 %, 100 % goes to 110 %, 120 %, 130 % and 400 % to 440 %. Alt with the mouse wheel zooms four steps at a time.</source>
         <translation>マウスホイール、Ctrl++ / Ctrl+-、ズームボタンで 1 回にズームする量。表示中のズームに対する割合で、5 の倍数に丸められます: 10 % の場合、100 % は 110 %、120 %、130 % になり、400 % は 440 % になります。Alt を押しながらマウスホイールを回すと一度に 4 段階ズームします。</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="165"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="299"/>
         <source>Factor 1.15 (as before)</source>
         <translation>係数 1.15 (従来どおり)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="168"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="302"/>
         <source> %</source>
         <translation> %</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="187"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="400"/>
         <source>Show the properties of a selected conductor in the Selection properties panel</source>
         <translation>選択した導体のプロパティを [選択のプロパティ] パネルに表示</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="194"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="219"/>
         <source>Draw a connected terminal in the color of its conductor</source>
         <translation>接続された端子を導体の色で描画する</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="197"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="222"/>
         <source>Unchecked, every terminal is drawn in red. Terminals are never printed or exported.</source>
         <translation>オフにすると、すべての端子が赤で描画されます。端子は印刷もエクスポートもされません。</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="204"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="229"/>
         <source>One stub per terminal which has a wire of its own, going up from the strip: what the wire is made of at its foot, where it lands at its top (12K1:A1). Cores of a cable are left out -- the cable is drawn below the strip.</source>
         <translation>独自の電線を持つ端子ごとに、端子台から上に伸びる引き出し線を 1 本描きます: 根元には電線の仕様、先端には接続先 (12K1:A1)。ケーブルの心線は省略されます -- ケーブルは端子台の下に描かれます。</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="207"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="232"/>
         <source>Draw the wires of a terminal strip above it, like its cables below it</source>
         <translation>端子台の電線を、下のケーブルと同様に端子台の上に描画する</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="214"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="690"/>
         <source>Used when the automatic assignment makes a terminal strip and by &quot;Automatic position&quot; in the terminal manager. Unchecked: the way the plan is drawn, folio by folio then left to right, which keeps N and PE where they are drawn. Checked: by label, X1:2 before X1:10. A strip already made keeps its order until it is sorted again.</source>
         <translation>自動割り当てで端子台を作成するときと、端子台マネージャーの「自動配置」で使用します。オフ: 図面の順序 (フォリオごと、次に左から右) で、N と PE は描かれた位置のままです。オン: ラベル順で、X1:2 は X1:10 より前です。作成済みの端子台は、再度並べ替えるまで順序を保持します。</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="217"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="693"/>
         <source>Sort the terminal strips by label instead of the plan order</source>
         <translation>端子台を図面の順序ではなくラベル順に並べ替える</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="224"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="661"/>
         <source>A new folio takes the group and sub-group of the folio before it</source>
         <translation>新しいフォリオは直前のフォリオのグループとサブグループを引き継ぐ</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="227"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="664"/>
         <source>Only a group or sub-group typed on that folio is taken. Unchecked, a new folio has none and is in its plant and location.</source>
         <translation>そのフォリオで入力されたグループまたはサブグループだけが引き継がれます。オフにすると、新しいフォリオにはグループがなく、その設備と場所に属します。</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="234"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="671"/>
         <source>Ask for the device labels when placing a macro</source>
         <translation>マクロ配置時に機器記号を尋ねる</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="237"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="674"/>
         <source>Proposes the next free labels, which Accept All takes. Unchecked, a macro keeps its saved labels.</source>
         <translation>次に空いている記号を提案し、「すべて受け入れ」でそれを使用します。オフにすると、マクロは保存された記号を保持します。</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="244"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="700"/>
         <source>When unticked, no conductors-per-terminal rule applies, whatever the projects&apos; settings.</source>
         <translation>チェックを外すと、プロジェクトの設定に関係なく、端子あたりの導体数ルールは適用されません。</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="247"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="703"/>
         <source>Apply the projects&apos; conductors-per-terminal rules</source>
         <translation>プロジェクトの端子あたり導体数ルールを適用</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="262"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="718"/>
         <source>Maximum conductors per terminal:</source>
         <translation>端子あたりの最大導体数:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="275"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="731"/>
         <source>For every project except those with their own settings. A new conductor that would take a terminal past this number is refused; conductors already drawn are not changed. 4 means two twin ferrules, one on each side of the screw.</source>
         <translation>独自の設定を持つプロジェクトを除くすべてのプロジェクトが対象です。端子がこの数を超えることになる新しい導体は拒否されます。既に描かれた導体は変更されません。4 はねじの両側にツインフェルールが 1 つずつあることを意味します。</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="278"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="734"/>
         <source>No limit</source>
         <translation>制限なし</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="302"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="758"/>
         <source>A sheet reference is a virtual point: it takes only one conductor, the one that continues on the other sheet.</source>
         <translation>フォリオ参照は仮想的な点です: 接続できる導体は 1 本だけで、それが別のフォリオに続く導体です。</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="305"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="761"/>
         <source>Only one conductor per sheet reference</source>
         <translation>フォリオ参照ごとに導体は 1 本のみ</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="321"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1457"/>
         <source>Show the default grid (applied the next time the programme is launched)</source>
         <translation>既定でグリッドを表示 (プログラムの次回起動時に適用)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="340"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1476"/>
         <source>Zoomed out further, the dots of any grid step are left out; the zoom shown in the status bar tells where. In pixels as the system scales them, so the same value suits a HiDPI screen</source>
         <translation>これ以上縮小すると、各グリッドピッチの点は省略されます。どこからかはステータスバーのズーム表示でわかります。システムが拡大縮小した後のピクセル単位なので、同じ値が HiDPI 画面にも合います</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="380"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1049"/>
         <source>By default, a double-click inserts the element on the sheet; editing remains accessible from the context menu.</source>
         <translation>既定では、ダブルクリックで要素をフォリオに挿入します。編集はコンテキストメニューから行えます。</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="383"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1052"/>
         <source>Double-clicking in the collection opens the element editor instead of inserting it</source>
         <translation>コレクションでダブルクリックすると、挿入する代わりに要素エディターを開く</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="390"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1059"/>
         <source>Ticked: a single list, best match first. Unticked: the collection tree, filtered by the search.</source>
         <translation>チェックあり: 一致度の高い順に 1 つのリストで表示。チェックなし: 検索で絞り込んだコレクションツリー。</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="393"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1062"/>
         <source>Show search results as a sorted list</source>
         <translation>検索結果を並べ替えたリストで表示</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="400"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="165"/>
         <source>After a click that selects an element or a conductor, the shortcut bar commands appear near the cursor and fade away when the mouse moves away.</source>
         <translation>要素または導体を選択するクリックの後、ショートカットバーのコマンドがカーソルの近くに表示され、マウスを離すと消えます。</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="403"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="168"/>
         <source>Show commands near the selection</source>
         <translation>選択範囲の近くにコマンドを表示</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="410"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="335"/>
         <source>Holding the right button and dragging in a direction launches a shortcut bar command. A simple right-click still opens the context menu, on button release.</source>
         <translation>右ボタンを押したまま一方向にドラッグすると、ショートカットバーのコマンドが実行されます。単純な右クリックでは、ボタンを離したときに従来どおりコンテキストメニューが開きます。</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="413"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="338"/>
         <source>Right-button mouse gestures</source>
         <translation>右ボタンのマウスジェスチャー</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="420"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="416"/>
         <source>A four-way arrow over what a drag moves; with the crosshair, the pointer jumps with it from grid point to grid point, and a handle within 12 pixels catches it and the click. Unticked: the system pointer, and handles are grabbed under the mouse only.</source>
         <translation>ドラッグで動くものの上に 4 方向の矢印を表示します。十字カーソルでは、ポインタがグリッド点からグリッド点へ一緒に移動し、12 ピクセル以内のハンドルがクリックごと捕捉します。オフ: システムのポインタを使い、ハンドルはマウスの真下にあるときだけつかめます。</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="423"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="419"/>
         <source>Four-way arrow and handle catching with the crosshair</source>
         <translation>4 方向の矢印と十字カーソルによるハンドル捕捉</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="430"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="209"/>
         <source>A symbol&apos;s text that reads from top to bottom once its symbol is turned is drawn the other way round, in the same place, so that upright texts all read from bottom to top, like the wires&apos; texts. Unticked by default: texts turn with their symbol.</source>
         <translation>シンボルを回転した後に上から下へ読むことになるシンボルのテキストを、同じ場所で逆向きに描き、縦書きのテキストがすべて電線のテキストと同じく下から上へ読めるようにします。既定ではオフ: テキストはシンボルと一緒に回転します。</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="433"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="212"/>
         <source>Upright symbol texts read from bottom to top</source>
         <translation>縦向きのシンボルテキストを下から上へ読む</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="440"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="426"/>
         <source>Dragging a symbol&apos;s text moves the text alone, and Shift+drag moves the symbol, as before version 0.100. Unticked by default: dragging a text moves its symbol, Shift+drag moves the text.</source>
         <translation>シンボルのテキストをドラッグするとテキストだけが移動し、Shift+ドラッグでシンボルが移動します (バージョン 0.100 より前と同じ)。既定ではオフ: テキストをドラッグするとそのシンボルが移動し、Shift+ドラッグでテキストが移動します。</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="443"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="429"/>
         <source>Drag symbol texts without holding Shift</source>
         <translation>Shift を押さずにシンボルのテキストをドラッグする</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="450"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="436"/>
         <source>While a symbol is placed or dragged, a shaded line runs from each of its terminals to the terminal in line with it. Ticked by default.</source>
         <translation>シンボルを配置またはドラッグしている間、各端子から一直線上にある端子へ影付きの線を表示します。既定ではオン。</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="453"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="439"/>
         <source>Help lines from the terminals of a dragged symbol</source>
         <translation>ドラッグ中のシンボルの端子から補助線を表示</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="460"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="145"/>
         <source>A bar at each side of the drawing folds the panels of that side away, as in LibreOffice&apos;s sidebar, and a second click shows them again as they were. Unticked by default; the Display menu does the same with or without the bars.</source>
         <translation>図面の両側にあるバーでその側のパネルを折りたたみます (LibreOffice のサイドバーのように)。もう一度クリックすると元どおりに表示されます。既定ではオフ。表示メニューでもバーの有無にかかわらず同じ操作ができます。</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="463"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="148"/>
         <source>Bars beside the drawing to fold the side panels away</source>
         <translation>サイドパネルを折りたたむための図面横のバー</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="470"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="155"/>
         <source>The docked panels can be made as narrow as one wants: their texts wrap and what cannot wrap scrolls sideways. Unticked: the panels keep the width their texts and fields need.</source>
         <translation>ドッキングしたパネルを好きなだけ狭くできます: テキストは折り返され、折り返せないものは横にスクロールします。オフ: パネルはテキストとフィールドに必要な幅を保ちます。</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="473"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="158"/>
         <source>Narrow docks: wrap texts and scroll (applied the next time the programme is launched)</source>
         <translation>狭いドック: テキストを折り返してスクロール (次回のプログラム起動時に適用)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="480"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="446"/>
         <source>A corner or T-junction placed where one already stands takes its place, and its wires go to the new one. Unticked by default: both stay.</source>
         <translation>既にコーナーまたは T 分岐がある場所に新しく置くと、それに置き換わり、電線は新しいものに移ります。既定ではオフ: 両方残ります。</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="483"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="449"/>
         <source>A new corner or T-junction replaces the one under it</source>
         <translation>新しいコーナーまたは T 分岐で下にあるものを置き換える</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="490"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="239"/>
         <source>Printing and exporting ask first when symbols, texts, shapes, pictures or tables lie outside the sheet, as they are cut off or left out; saving says so in the status bar.</source>
         <translation>シンボル、テキスト、図形、画像、表がフォリオの外にある場合、切り取られたり省略されたりするため、印刷とエクスポートの前に確認します。保存時はステータスバーに表示されます。</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="493"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="242"/>
         <source>Warn about items outside the sheet</source>
         <translation>フォリオ外のアイテムを警告する</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="500"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1516"/>
         <source>Show default guides (applies from the next time the programme is launched)</source>
         <translation>既定でガイドを表示 (プログラムの次回起動時から適用)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="633"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="515"/>
         <source>Automatically number pasted or duplicated elements that follow a numbering</source>
         <translation>採番に従う要素を貼り付けまたは複製したときに自動で番号を付ける</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="636"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="30"/>
+        <source>Theme</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="70"/>
+        <source>Main window</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="178"/>
+        <source>Drawing on the sheet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="266"/>
+        <source>Mouse and input</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="272"/>
+        <source>Zoom and navigation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="348"/>
+        <source>Selection</source>
+        <translation type="unfinished">選択</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="410"/>
+        <source>Drawing and moving</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="518"/>
         <source>A pasted element receives the next number of its numbering instead of the copied element&apos;s name, and the numbering advances.</source>
         <translation>貼り付けた要素は、コピー元の要素の名前ではなく採番の次の番号を受け取り、採番が進みます。</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="643"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="525"/>
         <source>A small hidden file beside the project says who has it open. Someone else opening it is told, and can open it read-only. Turn this off if your shared drive does not cope with it.</source>
         <translation>プロジェクトの横に置かれる小さな隠しファイルで、誰が開いているかを示します。後から開いた人には通知され、読み取り専用で開くことができます。共有ドライブがこれに対応していない場合はオフにしてください。</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="646"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="528"/>
         <source>Tell others who has a project open (lock file beside the project)</source>
         <translation>プロジェクトを開いている人を他の人に知らせる (プロジェクトの横のロックファイル)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="660"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="542"/>
         <source>Allow running JavaScript scripts (Project &gt; Run a script, and --run)</source>
         <translation>JavaScript スクリプトの実行を許可 (プロジェクト &gt; スクリプトを実行、および --run)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="663"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="545"/>
         <source>A script runs with your permissions: it can read and modify the open project and write files. Disabled by default; only run scripts whose origin you know.</source>
         <translation>スクリプトはあなたの権限で実行されます: 開いているプロジェクトの読み取りと変更、ファイルの書き込みが可能です。既定では無効です。出所がわかっているスクリプトだけを実行してください。</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="670"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="552"/>
         <source>Allow an AI assistant to act on the open project (live mode)</source>
         <translation>AI アシスタントによる開いているプロジェクトの操作を許可 (ライブモード)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="673"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="555"/>
         <source>An assistant connected through the MCP server can then run scripts on the open project, as you watch. A warning is shown at every start while this setting is on. Takes effect at the next start; unticking it closes the connection at once.</source>
         <translation>MCP サーバー経由で接続したアシスタントが、あなたの目の前で開いているプロジェクトに対してスクリプトを実行できるようになります。この設定が有効な間は、起動のたびに警告が表示されます。次回起動時から有効になり、チェックを外すと接続はすぐに切断されます。</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="680"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="562"/>
         <source>Enable chained folio reports for report elements</source>
         <translation>フォリオ参照要素の連鎖フォリオ参照を有効にする</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="683"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="565"/>
         <source>When enabled, report elements (cross-references) across folios with matching labels are automatically chained together. Newly created projects will have this enabled automatically.</source>
         <translation>有効にすると、複数のフォリオにまたがる同じラベルのフォリオ参照要素 (相互参照) が自動的に連鎖します。新しく作成するプロジェクトでは自動的に有効になります。</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="690"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="572"/>
         <source>Previous versions kept when saving a project</source>
         <translation>プロジェクトの保存時に保持する以前のバージョン</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="693"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="700"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="575"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="582"/>
         <source>Before a project is saved, the file as it was is copied to a folder beside it, named after the project with &quot;-backups&quot;. Only the newest are kept.</source>
         <translation>プロジェクトを保存する前に、保存前のファイルが、プロジェクト名に「-backups」を付けた隣のフォルダーにコピーされます。最新のものだけが保持されます。</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="703"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="585"/>
         <source>None</source>
         <translation>なし</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="713"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="595"/>
         <source>Reopen the projects of the last session at start</source>
         <translation>起動時に前回のセッションのプロジェクトを再度開く</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="716"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="598"/>
         <source>The projects open when QElectroTech was last left are opened again, unless it is started with a file to open.</source>
         <translation>QElectroTech を最後に終了したときに開いていたプロジェクトを再度開きます。ただし、開くファイルを指定して起動した場合は除きます。</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="723"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="605"/>
         <source>Offer to restore automatic backups at start</source>
         <translation>起動時に自動バックアップの復元を提案する</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="726"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="608"/>
         <source>After a crash, the automatic backups (made every few minutes, see &quot;Automatic backup of projects&quot; above) are offered at the next start. Unticked, they are kept but not offered, the status bar says how many there are, and they are offered again once this is ticked. Not the same as the option below, which keeps a copy after every edit.</source>
         <translation>クラッシュの後、自動バックアップ (数分ごとに作成。上の「プロジェクトの自動バックアップ」を参照) を次回起動時に提案します。オフにすると、バックアップは保持されますが提案されず、その数がステータスバーに表示され、オンに戻すと再び提案されます。編集ごとにコピーを残す下のオプションとは別物です。</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="733"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="615"/>
         <source>After a crash, offer projects as they were after their last edit (experimental)</source>
         <translation>クラッシュの後、最後の編集後の状態のプロジェクトを提案する (実験的)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="736"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="618"/>
         <source>While a project is open, QElectroTech keeps a copy of it in its data folder, saved after every edit. If QElectroTech does not close normally, the next start offers that copy with the recovery files.</source>
         <translation>プロジェクトを開いている間、QElectroTech は編集のたびにそのコピーをデータフォルダに保存します。QElectroTech が正常に終了しなかった場合、次回起動時に復旧ファイルと一緒にそのコピーを提案します。</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="743"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="625"/>
         <source>Offer saving a project as one database file, .qetdb (experimental)</source>
         <translation>プロジェクトを 1 つのデータベースファイル .qetdb として保存できるようにする (実験的)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="746"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="628"/>
         <source>Save As then offers .qetdb: the whole project in one SQLite file. The format may still change; keep a .qet or .qetz copy of projects that matter.</source>
         <translation>「名前を付けて保存」で .qetdb を選べるようになります: プロジェクト全体が 1 つの SQLite ファイルに入ります。形式はまだ変わる可能性があります。大切なプロジェクトは .qet または .qetz のコピーも残してください。</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="655"/>
+        <source>Folios and macros</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="684"/>
+        <source>Terminal strips and conductors</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="805"/>
@@ -9323,72 +9368,72 @@ hint shown when no cable type file is configured yet</extracomment>
         <translation>新たに加えられた要素をパネルで強調</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1049"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1079"/>
         <source>Element may include information about its authors, license, or other useful information. Specify the default value of this textfield for new elements below:</source>
         <translation>各要素には作成者やライセンス、他の有用な情報を自由欄に含めることができます。
 この欄の既定値を以下で指定できます :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1076"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1106"/>
         <source>Languages</source>
         <translation>言語</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1085"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1115"/>
         <source>Applied to the next launch of QElectroTech</source>
         <translation>QElectroTech の次回起動時に適用</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1119"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1149"/>
         <source>texts</source>
         <translation>テキスト</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1125"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1155"/>
         <source>Here you can define the default appearance of the different texts of QElectroTech</source>
         <translation>ここで QElectroTech のテキストの外観の既定値を設定できます</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1139"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1169"/>
         <source>Elements texts</source>
         <translation>要素テキスト</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1152"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1218"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1264"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1182"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1248"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1294"/>
         <source>Font:</source>
         <translation>フォント :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1162"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1225"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1192"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1255"/>
         <source>°</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1172"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1202"/>
         <source>Length :</source>
         <translation>長さ :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1182"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1211"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1212"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1241"/>
         <source>Rotation :</source>
         <translation>回転 :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1205"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1235"/>
         <source>Independent texts</source>
         <translation>独立テキスト</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1258"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1288"/>
         <source>Other texts</source>
         <translation>他のテキスト</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1294"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1324"/>
         <source>Cable texts</source>
         <translation>ケーブルのテキスト</translation>
     </message>
@@ -9397,7 +9442,7 @@ hint shown when no cable type file is configured yet</extracomment>
         <translation type="vanished">名称、種類、設備、場所、長さ :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1323"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1353"/>
         <source>Font of the texts written along the cable line; a cable which has its own keeps it.</source>
         <translation>ケーブルの線に沿って表示されるテキストのフォント。独自の設定を持つケーブルはそれを保持します。</translation>
     </message>
@@ -9406,7 +9451,7 @@ hint shown when no cable type file is configured yet</extracomment>
         <translation type="vanished">心線の色 (すべて) :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1356"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1386"/>
         <source>Font of the core colors written along the line; a cable which has its own keeps it.</source>
         <translation>線に沿って表示される心線の色のフォント。独自の設定を持つケーブルはそれを保持します。</translation>
     </message>
@@ -9415,73 +9460,78 @@ hint shown when no cable type file is configured yet</extracomment>
         <translation type="vanished">テキストの配置 :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1376"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1406"/>
         <source>Where the texts of a cable stop relative to the start of its line; a cable which has its own keeps it.</source>
         <translation>ケーブルのテキストが線の始点に対してどこで終わるか。独自の設定を持つケーブルはそれを保持します。</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1380"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1410"/>
         <source>Right aligned</source>
         <translation>右揃え</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1385"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1415"/>
         <source>Centred</source>
         <translation>中央揃え</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1390"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1420"/>
         <source>Left aligned</source>
         <translation>左揃え</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1415"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1445"/>
         <source>Grid + Keyboard</source>
         <translation>グリッド + キーボード</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1421"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1451"/>
+        <source>Grid and guides</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1526"/>
         <source>Grid: 1 - 30</source>
         <translation>グリッド : 1 - 30</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1455"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1560"/>
         <source>DiagramEditor yGrid</source>
         <translation>回路図エディタ yGrid</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1462"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1567"/>
         <source>The Grid must be active to see the changes.</source>
         <translation>変更を確認するにはグリッドが有効でなければいけません。</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1488"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1593"/>
         <source>DiagramEditor xGrid</source>
         <translation>回路図エディタ xGrid</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1508"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1613"/>
         <source>Grid for texts moved with the mouse</source>
         <translation>マウスで移動するテキスト用のグリッド</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1511"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1616"/>
         <source>Fraction of the sheet grid. Hold Ctrl while moving to place freely.</source>
         <translation>フォリオのグリッドの分数。移動中に Ctrl を押すと自由に配置できます。</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1531"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1636"/>
         <source>Keyboard movement: 1 - 30</source>
         <translation>キーボードによる移動量 : 1 - 30</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1581"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1686"/>
         <source>DiagramEditor (key: left / right) xGrid</source>
         <comment>fr: DiagramEditor (touche :   gauche / droite)  xGrid</comment>
         <translation>回路図エディタ (キー : 左 / 右)  xGrid</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1588"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1693"/>
         <source>DiagramEditor (key: up / down) yGrid</source>
         <translation>回路図エディタ (キー : 上 / 下)  yGrid</translation>
     </message>
@@ -9490,85 +9540,85 @@ hint shown when no cable type file is configured yet</extracomment>
         <translation type="vanished">キーボードによる移動量（ALT キー併用）: 1 - 9</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1624"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1729"/>
         <source>DiagramEditor (key: left / right) xGrid</source>
         <translation>回路図エディタ (キー : 左 / 右)  xGrid</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1653"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1758"/>
         <source>DiagramEditor (key: up / down) yGrid</source>
         <comment>fr: DiagramEditor (touche :  haut / bas)  yGrid</comment>
         <translation>回路図エディタ (キー : 上 / 下)  yGrid</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1698"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1803"/>
         <source>View grid</source>
         <translation>グリッドの表示</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1795"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1802"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1900"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1907"/>
         <source>max:</source>
         <translation>最大:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1883"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1995"/>
         <source>When saving a symbol: refuse two terminals with the same name, and report terminals without a name (IEC 61666).</source>
         <translation>シンボルの保存時: 同じ名前の端子が 2 つあれば拒否し、名前のない端子を報告します (IEC 61666)。</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1886"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1998"/>
         <source>Check terminal names when saving</source>
         <translation>保存時に端子名を確認</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1756"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1861"/>
         <source>Point-size in diagram-editor: 1 - 5</source>
         <translation>図面エディターの点のサイズ: 1 - 5</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1300"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1330"/>
         <source>Designation, type, plant, location, length:</source>
         <translation>名称、型式、設備、場所、長さ:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1333"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1363"/>
         <source>Core colors (all of them):</source>
         <translation>心線の色 (すべて):</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1366"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1396"/>
         <source>Text alignment:</source>
         <translation>テキストの配置:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1595"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1700"/>
         <source>Move by the grid step instead (Display &gt; Grid step)</source>
         <translation>代わりにグリッド間隔で移動する (表示 &gt; グリッド間隔)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1618"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1723"/>
         <source>Keyboard movement with the Ctrl key: 1 - 9</source>
         <translation>Ctrl キーを使ったキーボード移動: 1 - 9</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1704"/>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1809"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1914"/>
         <source>min:</source>
         <translation>最小:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1816"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1921"/>
         <source>Point-size in element-editor: 1 - 5</source>
         <translation>要素エディターの点のサイズ: 1 - 5</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1840"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1945"/>
         <source>Editor</source>
         <translation>エディター</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1848"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1953"/>
         <source>Max. parts in Element Editor List</source>
         <translation>要素エディターのリストに表示する部品の最大数</translation>
     </message>
@@ -9993,7 +10043,7 @@ Any setting other than “No rounding” may cause rendering errors in the proje
 3 - 1 と 2 の設定が異なる別のコンピューターや画面でプロジェクトを編集すること。</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="330"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1466"/>
         <source>Hide the grid when its dots are closer on screen than</source>
         <translation>画面上のグリッド点の間隔がこれより狭いときにグリッドを隠す</translation>
     </message>
@@ -10002,7 +10052,7 @@ Any setting other than “No rounding” may cause rendering errors in the proje
         <translation type="vanished">さらに縮小すると、どのグリッド間隔でも点を省きます。どこからかはステータスバーのズームで分かります</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="343"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1479"/>
         <source> px</source>
         <translation> px</translation>
     </message>
@@ -21653,123 +21703,123 @@ To enable it: Configure QElectroTech &gt; General &gt; Projects, or set the QET_
         <translation>上下反転</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="332"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="334"/>
         <source>the file is damaged</source>
         <translation>ファイルが破損しています</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="337"/>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="342"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="339"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="344"/>
         <source>the file is not a QElectroTech project</source>
         <translation>このファイルは QElectroTech のプロジェクトではありません</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="350"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="352"/>
         <source>it was saved by a newer QElectroTech (%1)</source>
         <translation>新しいバージョンの QElectroTech (%1) で保存されています</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="360"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="362"/>
         <source>the file holds SQL that QElectroTech does not expect (%1)</source>
         <translation>ファイルに QElectroTech が想定していない SQL が含まれています (%1)</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="366"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="368"/>
         <source>the file is damaged: an item refers to one that is not there</source>
         <translation>ファイルが破損しています: 存在しない項目を参照している項目があります</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="399"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="401"/>
         <source>the file could not be replaced (error %1)</source>
         <translation>ファイルを置き換えられませんでした (エラー %1)</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="442"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="444"/>
         <source>the file could not be opened</source>
         <translation>ファイルを開けませんでした</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="815"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="817"/>
         <source>the file could not be read back</source>
         <translation>ファイルを読み戻せませんでした</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1217"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1219"/>
         <source>the file could not be written</source>
         <translation>ファイルに書き込めませんでした</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1239"/>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1755"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1241"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1757"/>
         <source>it keeps no revision %1</source>
         <translation>リビジョン %1 は残っていません</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1248"/>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1773"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1250"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1775"/>
         <source>this build of QElectroTech has no SQLite session support</source>
         <translation>このビルドの QElectroTech は SQLite セッションに対応していません</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1255"/>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1763"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1257"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1765"/>
         <source>the changes of revision %1 were not recorded</source>
         <translation>リビジョン %1 の変更は記録されていません</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1260"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1262"/>
         <source>revision %1 cannot be undone</source>
         <translation>リビジョン %1 は元に戻せません</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1270"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1272"/>
         <source>revision %1 does not undo cleanly</source>
         <translation>リビジョン %1 はきれいに元に戻せません</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1364"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1366"/>
         <source>the file could not be written to disk</source>
         <translation>ファイルをディスクに書き込めませんでした</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1429"/>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1545"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1431"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1547"/>
         <source>the file could not be read</source>
         <translation>ファイルを読み込めませんでした</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1457"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1459"/>
         <source>it has %n damaged page(s), more than the repair data it keeps can rebuild</source>
         <translation>
             <numerusform>破損したページが %n 個あり、保持している修復データで再構築できる範囲を超えています</numerusform>
         </translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1522"/>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1562"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1524"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1564"/>
         <source>its content is not what QElectroTech saved: it is damaged, or another program changed it</source>
         <translation>内容が QElectroTech の保存したものと異なります: 破損しているか、別のプログラムが変更しました</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1633"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1635"/>
         <source>keep at least 2 saves, or 0 for all</source>
         <translation>保存は 2 つ以上残すか、すべて残すなら 0 にしてください</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1639"/>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1712"/>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1746"/>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1806"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1641"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1714"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1748"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1808"/>
         <source>it keeps no history</source>
         <translation>履歴が残っていません</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1750"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1752"/>
         <source>revision %1 does not come before revision %2</source>
         <translation>リビジョン %1 はリビジョン %2 より前ではありません</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1781"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1783"/>
         <source>the changes of revision %1 do not follow on</source>
         <translation>リビジョン %1 の変更が連続していません</translation>
     </message>
@@ -29827,12 +29877,12 @@ The following variables can be used:
         <translation>読み取り専用のクエリ (SELECT または WITH ... SELECT) のみ許可されています。</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/projectdatabase.cpp" line="8769"/>
+        <location filename="../sources/dataBase/projectdatabase.cpp" line="8843"/>
         <source>Export the internal project database</source>
         <translation>内部のプロジェクト・データベースをエクスポート</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/projectdatabase.cpp" line="8776"/>
+        <location filename="../sources/dataBase/projectdatabase.cpp" line="8850"/>
         <source>untitled</source>
         <translation>無題</translation>
     </message>

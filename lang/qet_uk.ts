@@ -8809,69 +8809,69 @@ that you create. Text and number inputs are
         <translation>Зовнішній вигляд</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="32"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="38"/>
         <source>Use system colors</source>
         <translation>Використовувати ситемні кольори</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="55"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="328"/>
         <source>Use gestures touchpad</source>
         <translation>Викоритовувати жести сенсорної панелі</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="137"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="321"/>
         <source>Allow unzoom beyond the sheet</source>
         <translation>Дозволити маштаб менше розміру аркуша</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="514"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="83"/>
         <source>Use &amp;Windows (applied at the next launch of QElectroTech)</source>
         <translation>Використовувати &amp;вікна (застосується при наступному запуску QElectroTech)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="521"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="76"/>
         <source>Use &amp;tabs (applied at the next launch of QElectroTech)</source>
         <translation>Використовувати &amp;вкладки (застосується при наступному запуску QElectroTech)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="560"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="115"/>
         <source>High pixel density (hdpi) displays scaling method (applied to the next launch of QElectroTech) :</source>
         <translation>Метод масштабування дисплеїв з високою щільністю пікселів (hdpi) (застосується при наступному запуску QElectroTech):</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="591"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="473"/>
         <source>Projects</source>
         <translation>Проєкти</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="604"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="486"/>
         <source>Automatic backup of projects (applied at the next launch of QElectroTech)</source>
         <translation>Автоматичне збереження проєктів (застосується при наступному запуску QElectroTech)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="653"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="535"/>
         <source>Do not store the labels of items in the copy paste</source>
         <translation>Не зберігати мітки елементів під час копіювання та вставлення</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="779"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="648"/>
         <source>Number the title block columns from 0 (1 otherwise)</source>
         <extracomment>Choix de l&apos;increment de depart 1 ou 0</extracomment>
         <translation>Нумерувати стовпці положення елементів, починаючи з 0 (в іншому випадку з 1)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="614"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="496"/>
         <source>Disabled</source>
         <translation>Вимкнено</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="620"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="502"/>
         <source> min</source>
         <comment>minute</comment>
         <translation>мин</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="597"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="479"/>
         <source>Use sheet numbers instead of their position in the project</source>
         <translation>Використовувати номери аркушів замість положення в пректі</translation>
     </message>
@@ -8928,400 +8928,445 @@ that you create. Text and number inputs are
         <translation>Каталог штампів користувача</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="39"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="45"/>
         <source>Application color</source>
         <translation>Колір застосунку</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="64"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="356"/>
         <source>Selection rectangle selects:</source>
         <translation>Прямокутник виділення виділяє:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="75"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="367"/>
         <source>Everything it overlaps (as before)</source>
         <translation>Усе, що він перетинає (як раніше)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="80"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="372"/>
         <source>What lies wholly within it</source>
         <translation>Те, що повністю всередині нього</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="85"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="377"/>
         <source>By direction: wholly within to the right, overlapped to the left</source>
         <translation>За напрямком: праворуч — повністю всередині, ліворуч — те, що перетинає</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="95"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1988"/>
         <source>Symbol editor: draw like the folio, frame on the grid around the insertion point</source>
         <translation>Редактор символів: малювати як на аркуші, рамка по сітці навколо точки вставлення</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="102"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1069"/>
         <source>Find and edit a placed element in the collection it was taken from</source>
         <translation>Знаходити й редагувати розміщений елемент у колекції, з якої його взято</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="105"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1072"/>
         <source>Saving it there updates the open projects that use it. Otherwise the project&apos;s own copy is edited.</source>
         <translation>Збереження там оновлює відкриті проєкти, які його використовують. Інакше редагується власна копія проєкту.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="114"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="186"/>
         <source>Corner radius of the selection frame (0: square)</source>
         <translation>Радіус кутів рамки виділення (0: прямокутна)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="146"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="280"/>
         <source>Zoom step:</source>
         <translation>Крок масштабу:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="162"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="296"/>
         <source>How far the mouse wheel, Ctrl++ / Ctrl+- and the zoom buttons zoom at a time, in percent of the zoom shown, rounded to whole fives: with 10 %, 100 % goes to 110 %, 120 %, 130 % and 400 % to 440 %. Alt with the mouse wheel zooms four steps at a time.</source>
         <translation>Наскільки за раз масштабують коліщатко миші, Ctrl++ / Ctrl+- та кнопки масштабу, у відсотках від показаного масштабу, з округленням до кратного п&apos;яти: при 10 % 100 % переходить у 110 %, 120 %, 130 %, а 400 % у 440 %. Alt з коліщатком миші масштабує одразу на чотири кроки.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="165"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="299"/>
         <source>Factor 1.15 (as before)</source>
         <translation>Коефіцієнт 1,15 (як раніше)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="168"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="302"/>
         <source> %</source>
         <translation> %</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="187"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="400"/>
         <source>Show the properties of a selected conductor in the Selection properties panel</source>
         <translation>Показувати властивості вибраного провідника на панелі «Властивості вибраного»</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="194"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="219"/>
         <source>Draw a connected terminal in the color of its conductor</source>
         <translation>Малювати під&apos;єднаний вивід кольором його провідника</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="197"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="222"/>
         <source>Unchecked, every terminal is drawn in red. Terminals are never printed or exported.</source>
         <translation>Якщо не позначено, кожен вивід малюється червоним. Виводи ніколи не друкуються і не експортуються.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="204"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="229"/>
         <source>One stub per terminal which has a wire of its own, going up from the strip: what the wire is made of at its foot, where it lands at its top (12K1:A1). Cores of a cable are left out -- the cable is drawn below the strip.</source>
         <translation>Один відвід на кожну клему, яка має власний провід, що йде вгору від колодки: унизу — з чого зроблено провід, угорі — куди він приходить (12K1:A1). Жили кабелю не показуються -- кабель малюється під колодкою.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="207"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="232"/>
         <source>Draw the wires of a terminal strip above it, like its cables below it</source>
         <translation>Малювати проводи клемної колодки над нею, як її кабелі під нею</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="214"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="690"/>
         <source>Used when the automatic assignment makes a terminal strip and by &quot;Automatic position&quot; in the terminal manager. Unchecked: the way the plan is drawn, folio by folio then left to right, which keeps N and PE where they are drawn. Checked: by label, X1:2 before X1:10. A strip already made keeps its order until it is sorted again.</source>
         <translation>Використовується, коли автоматичний розподіл створює клемну колодку, і кнопкою «Автоматичне положення» в менеджері клемних колодок. Не позначено: у порядку креслення, аркуш за аркушем, потім зліва направо, що залишає N і PE там, де їх намальовано. Позначено: за міткою, X1:2 перед X1:10. Уже створена колодка зберігає свій порядок, доки її не відсортують знову.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="217"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="693"/>
         <source>Sort the terminal strips by label instead of the plan order</source>
         <translation>Сортувати клемні колодки за міткою замість порядку креслення</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="224"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="661"/>
         <source>A new folio takes the group and sub-group of the folio before it</source>
         <translation>Новий аркуш отримує групу й підгрупу попереднього аркуша</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="227"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="664"/>
         <source>Only a group or sub-group typed on that folio is taken. Unchecked, a new folio has none and is in its plant and location.</source>
         <translation>Береться лише група чи підгрупа, введена на цьому аркуші. Якщо не позначено, новий аркуш їх не має і належить до своєї установки та розташування.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="234"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="671"/>
         <source>Ask for the device labels when placing a macro</source>
         <translation>Запитувати позначення пристроїв під час вставлення макросу</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="237"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="674"/>
         <source>Proposes the next free labels, which Accept All takes. Unchecked, a macro keeps its saved labels.</source>
         <translation>Пропонує наступні вільні позначення, які приймає «Прийняти все». Якщо не позначено, макрос зберігає свої збережені позначення.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="244"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="700"/>
         <source>When unticked, no conductors-per-terminal rule applies, whatever the projects&apos; settings.</source>
         <translation>Якщо зняти позначку, жодне правило щодо кількості провідників на вивід не застосовується, незалежно від налаштувань проєктів.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="247"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="703"/>
         <source>Apply the projects&apos; conductors-per-terminal rules</source>
         <translation>Застосовувати правила проєктів щодо кількості провідників на вивід</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="262"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="718"/>
         <source>Maximum conductors per terminal:</source>
         <translation>Максимум провідників на вивід:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="275"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="731"/>
         <source>For every project except those with their own settings. A new conductor that would take a terminal past this number is refused; conductors already drawn are not changed. 4 means two twin ferrules, one on each side of the screw.</source>
         <translation>Для всіх проєктів, крім тих, що мають власні налаштування. Новий провідник, через який кількість на виводі перевищила б це число, відхиляється; уже намальовані провідники не змінюються. 4 означає два подвійні наконечники, по одному з кожного боку гвинта.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="278"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="734"/>
         <source>No limit</source>
         <translation>Без обмежень</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="302"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="758"/>
         <source>A sheet reference is a virtual point: it takes only one conductor, the one that continues on the other sheet.</source>
         <translation>Посилання на аркуш — це віртуальна точка: до неї під’єднується лише один провідник, той, що продовжується на іншому аркуші.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="305"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="761"/>
         <source>Only one conductor per sheet reference</source>
         <translation>Лише один провідник на посилання на аркуш</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="321"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1457"/>
         <source>Show the default grid (applied the next time the programme is launched)</source>
         <translation>Показувати сітку за замовчуванням (застосовується під час наступного запуску програми)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="340"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1476"/>
         <source>Zoomed out further, the dots of any grid step are left out; the zoom shown in the status bar tells where. In pixels as the system scales them, so the same value suits a HiDPI screen</source>
         <translation>При дальшому віддаленні точки кожного кроку сітки пропускаються; масштаб у рядку стану показує, де саме. У пікселях з урахуванням системного масштабування, тож те саме значення підходить для екрана HiDPI</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="380"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1049"/>
         <source>By default, a double-click inserts the element on the sheet; editing remains accessible from the context menu.</source>
         <translation>За замовчуванням подвійне клацання вставляє елемент на аркуш; редагування доступне з контекстного меню.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="383"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1052"/>
         <source>Double-clicking in the collection opens the element editor instead of inserting it</source>
         <translation>Подвійне клацання в колекції відкриває редактор елементів замість вставлення</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="390"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1059"/>
         <source>Ticked: a single list, best match first. Unticked: the collection tree, filtered by the search.</source>
         <translation>Позначено: один список, найкращий збіг першим. Не позначено: дерево колекції, відфільтроване пошуком.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="393"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1062"/>
         <source>Show search results as a sorted list</source>
         <translation>Показувати результати пошуку як відсортований список</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="400"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="165"/>
         <source>After a click that selects an element or a conductor, the shortcut bar commands appear near the cursor and fade away when the mouse moves away.</source>
         <translation>Після клацання, що вибирає елемент або провідник, команди панелі швидкого доступу з’являються біля курсора й зникають, коли миша віддаляється.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="403"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="168"/>
         <source>Show commands near the selection</source>
         <translation>Показувати команди біля виділення</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="410"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="335"/>
         <source>Holding the right button and dragging in a direction launches a shortcut bar command. A simple right-click still opens the context menu, on button release.</source>
         <translation>Утримування правої кнопки й перетягування в певному напрямку запускає команду панелі швидкого доступу. Просте праве клацання, як і раніше, відкриває контекстне меню після відпускання кнопки.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="413"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="338"/>
         <source>Right-button mouse gestures</source>
         <translation>Жести правою кнопкою миші</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="420"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="416"/>
         <source>A four-way arrow over what a drag moves; with the crosshair, the pointer jumps with it from grid point to grid point, and a handle within 12 pixels catches it and the click. Unticked: the system pointer, and handles are grabbed under the mouse only.</source>
         <translation>Чотиринапрямна стрілка над тим, що переміщує перетягування; з перехрестям вказівник стрибає разом із ним від точки сітки до точки сітки, а маркер у межах 12 пікселів перехоплює його разом із клацанням. Не позначено: системний вказівник, а маркери захоплюються лише під мишею.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="423"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="419"/>
         <source>Four-way arrow and handle catching with the crosshair</source>
         <translation>Чотиринапрямна стрілка й перехоплення маркерів перехрестям</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="430"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="209"/>
         <source>A symbol&apos;s text that reads from top to bottom once its symbol is turned is drawn the other way round, in the same place, so that upright texts all read from bottom to top, like the wires&apos; texts. Unticked by default: texts turn with their symbol.</source>
         <translation>Текст символу, який після повороту символу читається згори вниз, малюється у зворотному напрямку на тому ж місці, щоб усі вертикальні тексти читалися знизу вгору, як тексти проводів. Типово не позначено: тексти повертаються разом із символом.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="433"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="212"/>
         <source>Upright symbol texts read from bottom to top</source>
         <translation>Вертикальні тексти символів читаються знизу вгору</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="440"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="426"/>
         <source>Dragging a symbol&apos;s text moves the text alone, and Shift+drag moves the symbol, as before version 0.100. Unticked by default: dragging a text moves its symbol, Shift+drag moves the text.</source>
         <translation>Перетягування тексту символу переміщує лише текст, а Shift+перетягування переміщує символ, як до версії 0.100. Типово не позначено: перетягування тексту переміщує його символ, Shift+перетягування переміщує текст.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="443"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="429"/>
         <source>Drag symbol texts without holding Shift</source>
         <translation>Перетягувати тексти символів без утримання Shift</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="450"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="436"/>
         <source>While a symbol is placed or dragged, a shaded line runs from each of its terminals to the terminal in line with it. Ticked by default.</source>
         <translation>Під час розміщення або перетягування символу від кожної його клеми до клеми на одній лінії з ним тягнеться затінена лінія. Типово позначено.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="453"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="439"/>
         <source>Help lines from the terminals of a dragged symbol</source>
         <translation>Допоміжні лінії від клем перетягуваного символу</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="460"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="145"/>
         <source>A bar at each side of the drawing folds the panels of that side away, as in LibreOffice&apos;s sidebar, and a second click shows them again as they were. Unticked by default; the Display menu does the same with or without the bars.</source>
         <translation>Смуга з кожного боку креслення згортає панелі цього боку, як бічна панель LibreOffice, а друге клацання знову показує їх такими, як були. Типово не позначено; меню «Вигляд» робить те саме зі смугами чи без них.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="463"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="148"/>
         <source>Bars beside the drawing to fold the side panels away</source>
         <translation>Смуги біля креслення для згортання бічних панелей</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="470"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="155"/>
         <source>The docked panels can be made as narrow as one wants: their texts wrap and what cannot wrap scrolls sideways. Unticked: the panels keep the width their texts and fields need.</source>
         <translation>Закріплені панелі можна робити як завгодно вузькими: їхні тексти переносяться, а те, що не переноситься, прокручується вбік. Не позначено: панелі зберігають ширину, потрібну їхнім текстам і полям.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="473"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="158"/>
         <source>Narrow docks: wrap texts and scroll (applied the next time the programme is launched)</source>
         <translation>Вузькі панелі: переносити тексти й прокручувати (застосовується під час наступного запуску програми)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="480"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="446"/>
         <source>A corner or T-junction placed where one already stands takes its place, and its wires go to the new one. Unticked by default: both stay.</source>
         <translation>Кут або Т-подібне з&apos;єднання, розміщене там, де вже є одне, займає його місце, а його проводи переходять до нового. Типово не позначено: залишаються обидва.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="483"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="449"/>
         <source>A new corner or T-junction replaces the one under it</source>
         <translation>Новий кут або Т-подібне з&apos;єднання замінює те, що під ним</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="490"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="239"/>
         <source>Printing and exporting ask first when symbols, texts, shapes, pictures or tables lie outside the sheet, as they are cut off or left out; saving says so in the status bar.</source>
         <translation>Друк і експорт спершу запитують, якщо символи, тексти, фігури, зображення або таблиці лежать поза аркушем, бо вони обрізаються або пропускаються; під час збереження про це повідомляється в рядку стану.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="493"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="242"/>
         <source>Warn about items outside the sheet</source>
         <translation>Попереджати про об&apos;єкти поза аркушем</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="500"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1516"/>
         <source>Show default guides (applies from the next time the programme is launched)</source>
         <translation>Показувати напрямні за замовчуванням (застосовується з наступного запуску програми)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="633"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="515"/>
         <source>Automatically number pasted or duplicated elements that follow a numbering</source>
         <translation>Автоматично нумерувати вставлені або дубльовані елементи, що мають нумерацію</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="636"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="30"/>
+        <source>Theme</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="70"/>
+        <source>Main window</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="178"/>
+        <source>Drawing on the sheet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="266"/>
+        <source>Mouse and input</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="272"/>
+        <source>Zoom and navigation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="348"/>
+        <source>Selection</source>
+        <translation type="unfinished">Виділення</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="410"/>
+        <source>Drawing and moving</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="518"/>
         <source>A pasted element receives the next number of its numbering instead of the copied element&apos;s name, and the numbering advances.</source>
         <translation>Вставлений елемент отримує наступний номер своєї нумерації замість назви скопійованого елемента, і нумерація просувається.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="643"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="525"/>
         <source>A small hidden file beside the project says who has it open. Someone else opening it is told, and can open it read-only. Turn this off if your shared drive does not cope with it.</source>
         <translation>Невеликий прихований файл поруч із проєктом показує, хто його відкрив. Інша людина, яка його відкриває, отримує попередження і може відкрити його лише для читання. Вимкніть це, якщо ваш спільний диск із цим не справляється.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="646"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="528"/>
         <source>Tell others who has a project open (lock file beside the project)</source>
         <translation>Повідомляти іншим, хто відкрив проєкт (файл блокування поруч із проєктом)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="660"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="542"/>
         <source>Allow running JavaScript scripts (Project &gt; Run a script, and --run)</source>
         <translation>Дозволити виконання скриптів JavaScript (Проєкт &gt; Виконати скрипт і --run)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="663"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="545"/>
         <source>A script runs with your permissions: it can read and modify the open project and write files. Disabled by default; only run scripts whose origin you know.</source>
         <translation>Скрипт виконується з вашими правами: він може читати й змінювати відкритий проєкт і записувати файли. За замовчуванням вимкнено; запускайте лише скрипти, походження яких вам відоме.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="670"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="552"/>
         <source>Allow an AI assistant to act on the open project (live mode)</source>
         <translation>Дозволити ШІ-помічнику діяти у відкритому проєкті (живий режим)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="673"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="555"/>
         <source>An assistant connected through the MCP server can then run scripts on the open project, as you watch. A warning is shown at every start while this setting is on. Takes effect at the next start; unticking it closes the connection at once.</source>
         <translation>Тоді помічник, під’єднаний через сервер MCP, зможе запускати скрипти у відкритому проєкті у вас на очах. Поки цей параметр увімкнено, під час кожного запуску показується попередження. Набуває чинності під час наступного запуску; зняття позначки одразу закриває з’єднання.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="680"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="562"/>
         <source>Enable chained folio reports for report elements</source>
         <translation>Увімкнути ланцюгові посилання на аркуші для елементів посилань</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="683"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="565"/>
         <source>When enabled, report elements (cross-references) across folios with matching labels are automatically chained together. Newly created projects will have this enabled automatically.</source>
         <translation>Якщо ввімкнено, елементи посилань (перехресні посилання) на різних аркушах з однаковими мітками автоматично об&apos;єднуються в ланцюг. У новостворених проєктах це буде ввімкнено автоматично.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="690"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="572"/>
         <source>Previous versions kept when saving a project</source>
         <translation>Попередні версії, що зберігаються під час збереження проєкту</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="693"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="700"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="575"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="582"/>
         <source>Before a project is saved, the file as it was is copied to a folder beside it, named after the project with &quot;-backups&quot;. Only the newest are kept.</source>
         <translation>Перед збереженням проєкту файл у попередньому стані копіюється до теки поруч із ним, названої за проєктом із «-backups». Зберігаються лише найновіші.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="703"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="585"/>
         <source>None</source>
         <translation>Немає</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="713"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="595"/>
         <source>Reopen the projects of the last session at start</source>
         <translation>Під час запуску знову відкривати проєкти останнього сеансу</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="716"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="598"/>
         <source>The projects open when QElectroTech was last left are opened again, unless it is started with a file to open.</source>
         <translation>Проєкти, відкриті під час останнього виходу з QElectroTech, відкриваються знову, якщо його не запущено з файлом для відкриття.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="723"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="605"/>
         <source>Offer to restore automatic backups at start</source>
         <translation>Пропонувати під час запуску відновити автоматичні резервні копії</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="726"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="608"/>
         <source>After a crash, the automatic backups (made every few minutes, see &quot;Automatic backup of projects&quot; above) are offered at the next start. Unticked, they are kept but not offered, the status bar says how many there are, and they are offered again once this is ticked. Not the same as the option below, which keeps a copy after every edit.</source>
         <translation>Після збою автоматичні резервні копії (створювані кожні кілька хвилин, див. «Автоматичне резервне копіювання проєктів» вище) пропонуються під час наступного запуску. Якщо не позначено, вони зберігаються, але не пропонуються, рядок стану показує, скільки їх, і їх знову буде запропоновано, щойно це позначите. Це не те саме, що параметр нижче, який зберігає копію після кожного редагування.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="733"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="615"/>
         <source>After a crash, offer projects as they were after their last edit (experimental)</source>
         <translation>Після збою пропонувати проєкти в стані після їхнього останнього редагування (експериментально)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="736"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="618"/>
         <source>While a project is open, QElectroTech keeps a copy of it in its data folder, saved after every edit. If QElectroTech does not close normally, the next start offers that copy with the recovery files.</source>
         <translation>Поки проєкт відкрито, QElectroTech зберігає його копію у своїй теці даних після кожного редагування. Якщо QElectroTech закриється нештатно, під час наступного запуску цю копію буде запропоновано разом із файлами відновлення.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="743"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="625"/>
         <source>Offer saving a project as one database file, .qetdb (experimental)</source>
         <translation>Пропонувати збереження проєкту як одного файлу бази даних .qetdb (експериментально)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="746"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="628"/>
         <source>Save As then offers .qetdb: the whole project in one SQLite file. The format may still change; keep a .qet or .qetz copy of projects that matter.</source>
         <translation>Тоді «Зберегти як» пропонує .qetdb: увесь проєкт в одному файлі SQLite. Формат ще може змінитися; зберігайте копію важливих проєктів у .qet або .qetz.</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="655"/>
+        <source>Folios and macros</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="684"/>
+        <source>Terminal strips and conductors</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="805"/>
@@ -9410,72 +9455,72 @@ hint shown when no cable type file is configured yet</extracomment>
         <translation>Виділити нещодавно додані елементи в панелі</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1049"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1079"/>
         <source>Element may include information about its authors, license, or other useful information. Specify the default value of this textfield for new elements below:</source>
         <translation>Кожний елемент включає інформацію про його авторів, його ліцензії чи буль-яку іншу інформацію, котру ви вважаєте корисною для вільног доступу.
 Тут ви можете вказати значення цього поля по замовчуванню для створюваних вами елемемнтів:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1076"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1106"/>
         <source>Languages</source>
         <translation>Мови</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1085"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1115"/>
         <source>Applied to the next launch of QElectroTech</source>
         <translation>Застосується з наступним запуском QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1119"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1149"/>
         <source>texts</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1125"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1155"/>
         <source>Here you can define the default appearance of the different texts of QElectroTech</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1139"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1169"/>
         <source>Elements texts</source>
         <translation>Тексти</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1152"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1218"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1264"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1182"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1248"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1294"/>
         <source>Font:</source>
         <translation>Шрифт: </translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1162"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1225"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1192"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1255"/>
         <source>°</source>
         <translation>°</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1172"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1202"/>
         <source>Length :</source>
         <translation>Довжина: </translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1182"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1211"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1212"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1241"/>
         <source>Rotation :</source>
         <translation>Обертання: </translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1205"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1235"/>
         <source>Independent texts</source>
         <translation>Незалежний текст</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1258"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1288"/>
         <source>Other texts</source>
         <translation>Інший текст</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1294"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1324"/>
         <source>Cable texts</source>
         <translation>Тексти кабелів</translation>
     </message>
@@ -9484,7 +9529,7 @@ hint shown when no cable type file is configured yet</extracomment>
         <translation type="vanished">Позначення, тип, установка, розташування, довжина :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1323"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1353"/>
         <source>Font of the texts written along the cable line; a cable which has its own keeps it.</source>
         <translation>Шрифт текстів, що пишуться вздовж лінії кабелю; кабель із власним шрифтом зберігає його.</translation>
     </message>
@@ -9493,7 +9538,7 @@ hint shown when no cable type file is configured yet</extracomment>
         <translation type="vanished">Кольори жил (усі) :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1356"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1386"/>
         <source>Font of the core colors written along the line; a cable which has its own keeps it.</source>
         <translation>Шрифт кольорів жил, що пишуться вздовж лінії; кабель із власним шрифтом зберігає його.</translation>
     </message>
@@ -9502,73 +9547,78 @@ hint shown when no cable type file is configured yet</extracomment>
         <translation type="vanished">Вирівнювання тексту :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1376"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1406"/>
         <source>Where the texts of a cable stop relative to the start of its line; a cable which has its own keeps it.</source>
         <translation>Де закінчуються тексти кабелю відносно початку його лінії; кабель із власним налаштуванням зберігає його.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1380"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1410"/>
         <source>Right aligned</source>
         <translation>Вирівнювання праворуч</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1385"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1415"/>
         <source>Centred</source>
         <translation>По центру</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1390"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1420"/>
         <source>Left aligned</source>
         <translation>Вирівнювання ліворуч</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1415"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1445"/>
         <source>Grid + Keyboard</source>
         <translation>Сітка та клавіатура</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1421"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1451"/>
+        <source>Grid and guides</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1526"/>
         <source>Grid: 1 - 30</source>
         <translation>Сітка :1 - 30</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1455"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1560"/>
         <source>DiagramEditor yGrid</source>
         <translation>Вертикальні лінії (yGrid)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1462"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1567"/>
         <source>The Grid must be active to see the changes.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1488"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1593"/>
         <source>DiagramEditor xGrid</source>
         <translation>Горизонтальні лінії (xGrid)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1508"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1613"/>
         <source>Grid for texts moved with the mouse</source>
         <translation>Сітка для тексту, що переміщується мишею</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1511"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1616"/>
         <source>Fraction of the sheet grid. Hold Ctrl while moving to place freely.</source>
         <translation>Частка сітки аркуша. Утримуйте Ctrl під час переміщення, щоб розміщувати вільно.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1531"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1636"/>
         <source>Keyboard movement: 1 - 30</source>
         <translation>Переміщення з клавіатури :1 - 30</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1581"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1686"/>
         <source>DiagramEditor (key: left / right) xGrid</source>
         <comment>fr: DiagramEditor (touche :   gauche / droite)  xGrid</comment>
         <translation>Клавіша вліво/вправо - по горизонталі (xGrid)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1588"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1693"/>
         <source>DiagramEditor (key: up / down) yGrid</source>
         <translation>Клавіша вгору/вниз - по вертикалі (yGrid)</translation>
     </message>
@@ -9577,85 +9627,85 @@ hint shown when no cable type file is configured yet</extracomment>
         <translation type="vanished">Переміщення з клавіатури за допомогою клавіш ALT : 1 - 9</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1624"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1729"/>
         <source>DiagramEditor (key: left / right) xGrid</source>
         <translation>Клавіша вліво/вправо - по горизонталі (xGrid)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1653"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1758"/>
         <source>DiagramEditor (key: up / down) yGrid</source>
         <comment>fr: DiagramEditor (touche :  haut / bas)  yGrid</comment>
         <translation>Клавіша вгору/вниз - по вертикалі (yGrid)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1698"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1803"/>
         <source>View grid</source>
         <translation>Відображення сітки</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1795"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1802"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1900"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1907"/>
         <source>max:</source>
         <translation>макс.:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1883"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1995"/>
         <source>When saving a symbol: refuse two terminals with the same name, and report terminals without a name (IEC 61666).</source>
         <translation>Під час збереження символу: відхиляти два виводи з однаковою назвою та повідомляти про виводи без назви (IEC 61666).</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1886"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1998"/>
         <source>Check terminal names when saving</source>
         <translation>Перевіряти назви виводів під час збереження</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1756"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1861"/>
         <source>Point-size in diagram-editor: 1 - 5</source>
         <translation>Розмір точок у редакторі схем: 1 - 5</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1300"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1330"/>
         <source>Designation, type, plant, location, length:</source>
         <translation>Позначення, тип, установка, розташування, довжина:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1333"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1363"/>
         <source>Core colors (all of them):</source>
         <translation>Кольори жил (усі):</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1366"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1396"/>
         <source>Text alignment:</source>
         <translation>Вирівнювання тексту:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1595"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1700"/>
         <source>Move by the grid step instead (Display &gt; Grid step)</source>
         <translation>Натомість переміщувати на крок сітки (Вигляд &gt; Крок сітки)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1618"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1723"/>
         <source>Keyboard movement with the Ctrl key: 1 - 9</source>
         <translation>Переміщення клавіатурою з клавішею Ctrl: 1 - 9</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1704"/>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1809"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1914"/>
         <source>min:</source>
         <translation>мін.:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1816"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1921"/>
         <source>Point-size in element-editor: 1 - 5</source>
         <translation>Розмір точок у редакторі елементів: 1 - 5</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1840"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1945"/>
         <source>Editor</source>
         <translation>Редактор</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1848"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1953"/>
         <source>Max. parts in Element Editor List</source>
         <translation>Макс. кількість частин у списку редактора елементів</translation>
     </message>
@@ -10080,7 +10130,7 @@ Any setting other than “No rounding” may cause rendering errors in the proje
 3 - редагування проєкту на іншому комп’ютері та/або екрані з налаштуваннями, відмінними від пунктів 1 і 2.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="330"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1466"/>
         <source>Hide the grid when its dots are closer on screen than</source>
         <translation>Приховувати сітку, коли її точки на екрані ближче ніж</translation>
     </message>
@@ -10089,7 +10139,7 @@ Any setting other than “No rounding” may cause rendering errors in the proje
         <translation type="vanished">При більшому віддаленні точки будь-якої сітки не малюються; де саме, показує масштаб у рядку стану</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="343"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1479"/>
         <source> px</source>
         <translation> px</translation>
     </message>
@@ -21967,92 +22017,92 @@ To enable it: Configure QElectroTech &gt; General &gt; Projects, or set the QET_
         <translation>Вертикальне віддзеркалення</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="332"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="334"/>
         <source>the file is damaged</source>
         <translation>файл пошкоджено</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="337"/>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="342"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="339"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="344"/>
         <source>the file is not a QElectroTech project</source>
         <translation>файл не є проєктом QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="350"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="352"/>
         <source>it was saved by a newer QElectroTech (%1)</source>
         <translation>його збережено новішою версією QElectroTech (%1)</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="360"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="362"/>
         <source>the file holds SQL that QElectroTech does not expect (%1)</source>
         <translation>файл містить SQL, якого QElectroTech не очікує (%1)</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="366"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="368"/>
         <source>the file is damaged: an item refers to one that is not there</source>
         <translation>файл пошкоджено: об&apos;єкт посилається на інший, якого немає</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="399"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="401"/>
         <source>the file could not be replaced (error %1)</source>
         <translation>не вдалося замінити файл (помилка %1)</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="442"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="444"/>
         <source>the file could not be opened</source>
         <translation>не вдалося відкрити файл</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="815"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="817"/>
         <source>the file could not be read back</source>
         <translation>не вдалося прочитати файл повторно</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1217"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1219"/>
         <source>the file could not be written</source>
         <translation>не вдалося записати файл</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1239"/>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1755"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1241"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1757"/>
         <source>it keeps no revision %1</source>
         <translation>у ньому немає ревізії %1</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1248"/>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1773"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1250"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1775"/>
         <source>this build of QElectroTech has no SQLite session support</source>
         <translation>ця збірка QElectroTech не підтримує сеанси SQLite</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1255"/>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1763"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1257"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1765"/>
         <source>the changes of revision %1 were not recorded</source>
         <translation>зміни ревізії %1 не було записано</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1260"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1262"/>
         <source>revision %1 cannot be undone</source>
         <translation>ревізію %1 неможливо скасувати</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1270"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1272"/>
         <source>revision %1 does not undo cleanly</source>
         <translation>ревізія %1 не скасовується чисто</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1364"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1366"/>
         <source>the file could not be written to disk</source>
         <translation>не вдалося записати файл на диск</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1429"/>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1545"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1431"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1547"/>
         <source>the file could not be read</source>
         <translation>не вдалося прочитати файл</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1457"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1459"/>
         <source>it has %n damaged page(s), more than the repair data it keeps can rebuild</source>
         <translation>
             <numerusform>у ньому %n пошкоджена сторінка, більше, ніж можуть відбудувати його дані відновлення</numerusform>
@@ -22061,31 +22111,31 @@ To enable it: Configure QElectroTech &gt; General &gt; Projects, or set the QET_
         </translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1522"/>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1562"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1524"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1564"/>
         <source>its content is not what QElectroTech saved: it is damaged, or another program changed it</source>
         <translation>його вміст не той, що зберіг QElectroTech: він пошкоджений або його змінила інша програма</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1633"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1635"/>
         <source>keep at least 2 saves, or 0 for all</source>
         <translation>зберігайте щонайменше 2 збереження або 0 для всіх</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1639"/>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1712"/>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1746"/>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1806"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1641"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1714"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1748"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1808"/>
         <source>it keeps no history</source>
         <translation>у ньому немає історії</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1750"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1752"/>
         <source>revision %1 does not come before revision %2</source>
         <translation>ревізія %1 не передує ревізії %2</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1781"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1783"/>
         <source>the changes of revision %1 do not follow on</source>
         <translation>зміни ревізії %1 не йдуть одна за одною</translation>
     </message>
@@ -30168,12 +30218,12 @@ The following variables can be used:
         <translation>Дозволено лише запити на читання (SELECT або WITH ... SELECT).</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/projectdatabase.cpp" line="8769"/>
+        <location filename="../sources/dataBase/projectdatabase.cpp" line="8843"/>
         <source>Export the internal project database</source>
         <translation>Експортувати внутрішню базу даних проєкту</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/projectdatabase.cpp" line="8776"/>
+        <location filename="../sources/dataBase/projectdatabase.cpp" line="8850"/>
         <source>untitled</source>
         <translation>без імені</translation>
     </message>

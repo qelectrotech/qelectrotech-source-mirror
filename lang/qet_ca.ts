@@ -8778,17 +8778,17 @@ Les entrades de text i nombres també
         <translation>Aparença</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="32"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="38"/>
         <source>Use system colors</source>
         <translation>Utilitza els colors del sistema</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="591"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="473"/>
         <source>Projects</source>
         <translation>Projectes</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="55"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="328"/>
         <source>Use gestures touchpad</source>
         <translation>Utilitza els gestos del ratolí tàctil</translation>
     </message>
@@ -8803,54 +8803,54 @@ Les entrades de text i nombres també
         <translation>Formulari</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="514"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="83"/>
         <source>Use &amp;Windows (applied at the next launch of QElectroTech)</source>
         <translation>Utilitza fine&amp;stres (s&apos;aplicarà al proper llançament de QElectroTech)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="521"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="76"/>
         <source>Use &amp;tabs (applied at the next launch of QElectroTech)</source>
         <translation>Utilitza pestanyes (s&apos;aplicarà al proper llança&amp;ment de QElectroTech)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="560"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="115"/>
         <source>High pixel density (hdpi) displays scaling method (applied to the next launch of QElectroTech) :</source>
         <translation>Mètode d&apos;escalat de pantalla d&apos;alta densitat de píxels (HDPI) (s&apos;aplicarà al proper llançament de QElectroTech):</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="604"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="486"/>
         <source>Automatic backup of projects (applied at the next launch of QElectroTech)</source>
         <translation>Desament automàtic del projecte (s&apos;aplicarà al proper llançament de QElectroTech)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="779"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="648"/>
         <source>Number the title block columns from 0 (1 otherwise)</source>
         <extracomment>Choix de l&apos;increment de depart 1 ou 0</extracomment>
         <translation>Numera les columnes dels caixetins començant per 0 (1 altrament)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="614"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="496"/>
         <source>Disabled</source>
         <translation>Inhabilitat</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="620"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="502"/>
         <source> min</source>
         <comment>minute</comment>
         <translation> min</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="597"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="479"/>
         <source>Use sheet numbers instead of their position in the project</source>
         <translation>Utilitza els números de full en lloc de la seva posició en el projecte</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="321"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1457"/>
         <source>Show the default grid (applied the next time the programme is launched)</source>
         <translation>Mostra la quadrícula per defecte (s&apos;aplicarà en la propera execució)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="500"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1516"/>
         <source>Show default guides (applies from the next time the programme is launched)</source>
         <translation>Mostra les guies per defecte (s&apos;aplicaran en la propera execució)</translation>
     </message>
@@ -8922,390 +8922,435 @@ Les entrades de text i nombres també
         <translation>Directori de macros d&apos;usuari</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="39"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="45"/>
         <source>Application color</source>
         <translation>Color de l&apos;aplicació</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="64"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="356"/>
         <source>Selection rectangle selects:</source>
         <translation>El rectangle de selecció selecciona:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="75"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="367"/>
         <source>Everything it overlaps (as before)</source>
         <translation>Tot el que toca (com abans)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="80"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="372"/>
         <source>What lies wholly within it</source>
         <translation>El que queda completament a dins</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="85"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="377"/>
         <source>By direction: wholly within to the right, overlapped to the left</source>
         <translation>Segons la direcció: completament a dins cap a la dreta, el que toca cap a l&apos;esquerra</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="95"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1988"/>
         <source>Symbol editor: draw like the folio, frame on the grid around the insertion point</source>
         <translation>Editor de símbols: dibuixa com al full, marc a la graella al voltant del punt d&apos;inserció</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="102"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1069"/>
         <source>Find and edit a placed element in the collection it was taken from</source>
         <translation>Cerca i edita un element col·locat a la col·lecció d&apos;on es va prendre</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="105"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1072"/>
         <source>Saving it there updates the open projects that use it. Otherwise the project&apos;s own copy is edited.</source>
         <translation>Desar-lo allà actualitza els projectes oberts que l&apos;utilitzen. Si no, s&apos;edita la còpia pròpia del projecte.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="114"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="186"/>
         <source>Corner radius of the selection frame (0: square)</source>
         <translation>Radi de les cantonades del marc de selecció (0: quadrat)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="146"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="280"/>
         <source>Zoom step:</source>
         <translation>Pas del zoom:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="162"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="296"/>
         <source>How far the mouse wheel, Ctrl++ / Ctrl+- and the zoom buttons zoom at a time, in percent of the zoom shown, rounded to whole fives: with 10 %, 100 % goes to 110 %, 120 %, 130 % and 400 % to 440 %. Alt with the mouse wheel zooms four steps at a time.</source>
         <translation>Quant amplien cada vegada la roda del ratolí, Ctrl++ / Ctrl+- i els botons de zoom, en percentatge del zoom mostrat, arrodonit a múltiples de cinc: amb un 10 %, 100 % passa a 110 %, 120 %, 130 % i 400 % a 440 %. Alt amb la roda del ratolí amplia quatre passos de cop.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="165"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="299"/>
         <source>Factor 1.15 (as before)</source>
         <translation>Factor 1,15 (com abans)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="168"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="302"/>
         <source> %</source>
         <translation> %</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="187"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="400"/>
         <source>Show the properties of a selected conductor in the Selection properties panel</source>
         <translation>Mostra les propietats d&apos;un conductor seleccionat al panell Propietats de la selecció</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="194"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="219"/>
         <source>Draw a connected terminal in the color of its conductor</source>
         <translation>Dibuixa un born connectat del color del seu conductor</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="197"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="222"/>
         <source>Unchecked, every terminal is drawn in red. Terminals are never printed or exported.</source>
         <translation>Si no està marcat, tots els borns es dibuixen en vermell. Els borns mai no s&apos;imprimeixen ni s&apos;exporten.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="204"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="229"/>
         <source>One stub per terminal which has a wire of its own, going up from the strip: what the wire is made of at its foot, where it lands at its top (12K1:A1). Cores of a cable are left out -- the cable is drawn below the strip.</source>
         <translation>Un tram per cada born que té un fil propi, que puja des del bloc de borns: a la base de què està fet el fil, a dalt on arriba (12K1:A1). Els fils d&apos;un cable s&apos;ometen -- el cable es dibuixa sota el bloc de borns.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="207"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="232"/>
         <source>Draw the wires of a terminal strip above it, like its cables below it</source>
         <translation>Dibuixa els fils d&apos;un bloc de borns a sobre seu, com els seus cables a sota</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="214"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="690"/>
         <source>Used when the automatic assignment makes a terminal strip and by &quot;Automatic position&quot; in the terminal manager. Unchecked: the way the plan is drawn, folio by folio then left to right, which keeps N and PE where they are drawn. Checked: by label, X1:2 before X1:10. A strip already made keeps its order until it is sorted again.</source>
         <translation>S&apos;utilitza quan l&apos;assignació automàtica crea un bloc de borns i a «Posició automàtica» del gestor de blocs de borns. Desmarcat: en l&apos;ordre del plànol, full a full i després d&apos;esquerra a dreta, cosa que deixa N i PE on estan dibuixats. Marcat: per etiqueta, X1:2 abans de X1:10. Un bloc de borns ja creat conserva el seu ordre fins que es torna a ordenar.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="217"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="693"/>
         <source>Sort the terminal strips by label instead of the plan order</source>
         <translation>Ordena els blocs de borns per etiqueta en lloc de l&apos;ordre del plànol</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="224"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="661"/>
         <source>A new folio takes the group and sub-group of the folio before it</source>
         <translation>Un full nou pren el grup i el subgrup del full anterior</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="227"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="664"/>
         <source>Only a group or sub-group typed on that folio is taken. Unchecked, a new folio has none and is in its plant and location.</source>
         <translation>Només es pren un grup o subgrup escrit en aquell full. Si no està marcat, un full nou no en té cap i pertany a la seva instal·lació i localització.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="234"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="671"/>
         <source>Ask for the device labels when placing a macro</source>
         <translation>Demana les marques dels aparells en col·locar una macro</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="237"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="674"/>
         <source>Proposes the next free labels, which Accept All takes. Unchecked, a macro keeps its saved labels.</source>
         <translation>Proposa les marques lliures següents, que «Accepta-ho tot» pren. Si no està marcat, una macro conserva les marques desades.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="244"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="700"/>
         <source>When unticked, no conductors-per-terminal rule applies, whatever the projects&apos; settings.</source>
         <translation>Si no està marcat, no s&apos;aplica cap regla de conductors per born, siguin quins siguin els paràmetres dels projectes.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="247"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="703"/>
         <source>Apply the projects&apos; conductors-per-terminal rules</source>
         <translation>Aplica les regles de conductors per born dels projectes</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="262"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="718"/>
         <source>Maximum conductors per terminal:</source>
         <translation>Nombre màxim de conductors per born:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="275"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="731"/>
         <source>For every project except those with their own settings. A new conductor that would take a terminal past this number is refused; conductors already drawn are not changed. 4 means two twin ferrules, one on each side of the screw.</source>
         <translation>Per a tots els projectes excepte els que tenen paràmetres propis. Es rebutja un conductor nou que faria passar un born per sobre d&apos;aquest nombre; els conductors ja dibuixats no es modifiquen. 4 vol dir dues puntes dobles, una a cada costat del cargol.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="278"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="734"/>
         <source>No limit</source>
         <translation>Sense límit</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="302"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="758"/>
         <source>A sheet reference is a virtual point: it takes only one conductor, the one that continues on the other sheet.</source>
         <translation>Una referència de full és un punt virtual: només admet un conductor, el que continua a l&apos;altre full.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="305"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="761"/>
         <source>Only one conductor per sheet reference</source>
         <translation>Només un conductor per referència de full</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="340"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1476"/>
         <source>Zoomed out further, the dots of any grid step are left out; the zoom shown in the status bar tells where. In pixels as the system scales them, so the same value suits a HiDPI screen</source>
         <translation>En allunyar més el zoom, s&apos;ometen els punts de cada pas de la graella; el zoom que es mostra a la barra d&apos;estat indica on. En píxels tal com els escala el sistema, de manera que el mateix valor serveix per a una pantalla HiDPI</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="380"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1049"/>
         <source>By default, a double-click inserts the element on the sheet; editing remains accessible from the context menu.</source>
         <translation>Per defecte, un doble clic insereix l&apos;element al full; l&apos;edició continua sent accessible des del menú contextual.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="383"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1052"/>
         <source>Double-clicking in the collection opens the element editor instead of inserting it</source>
         <translation>Un doble clic a la col·lecció obre l&apos;editor d&apos;elements en lloc d&apos;inserir-lo</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="390"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1059"/>
         <source>Ticked: a single list, best match first. Unticked: the collection tree, filtered by the search.</source>
         <translation>Marcat: una sola llista, amb la millor coincidència primer. Desmarcat: l&apos;arbre de la col·lecció, filtrat per la cerca.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="393"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1062"/>
         <source>Show search results as a sorted list</source>
         <translation>Mostra els resultats de la cerca com una llista ordenada</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="400"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="165"/>
         <source>After a click that selects an element or a conductor, the shortcut bar commands appear near the cursor and fade away when the mouse moves away.</source>
         <translation>Després d&apos;un clic que selecciona un element o un conductor, les ordres de la barra de dreceres apareixen a prop del cursor i s&apos;esvaeixen quan el ratolí s&apos;allunya.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="403"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="168"/>
         <source>Show commands near the selection</source>
         <translation>Mostra les ordres a prop de la selecció</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="410"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="335"/>
         <source>Holding the right button and dragging in a direction launches a shortcut bar command. A simple right-click still opens the context menu, on button release.</source>
         <translation>Mantenir premut el botó dret i arrossegar en una direcció executa una ordre de la barra de dreceres. Un simple clic dret continua obrint el menú contextual, en deixar anar el botó.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="413"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="338"/>
         <source>Right-button mouse gestures</source>
         <translation>Gestos del ratolí amb el botó dret</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="420"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="416"/>
         <source>A four-way arrow over what a drag moves; with the crosshair, the pointer jumps with it from grid point to grid point, and a handle within 12 pixels catches it and the click. Unticked: the system pointer, and handles are grabbed under the mouse only.</source>
         <translation>Una fletxa de quatre direccions sobre allò que mou un arrossegament; amb el punt de mira, el punter salta amb ell de punt en punt de la graella, i una nansa a menys de 12 píxels l&apos;atrapa juntament amb el clic. Desmarcat: el punter del sistema, i les nanses només s&apos;agafen sota el ratolí.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="423"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="419"/>
         <source>Four-way arrow and handle catching with the crosshair</source>
         <translation>Fletxa de quatre direccions i captura de nanses amb el punt de mira</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="430"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="209"/>
         <source>A symbol&apos;s text that reads from top to bottom once its symbol is turned is drawn the other way round, in the same place, so that upright texts all read from bottom to top, like the wires&apos; texts. Unticked by default: texts turn with their symbol.</source>
         <translation>Un text de símbol que, un cop girat el símbol, es llegeix de dalt a baix es dibuixa al revés, al mateix lloc, perquè tots els textos verticals es llegeixin de baix a dalt, com els textos dels fils. Desmarcat per defecte: els textos giren amb el seu símbol.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="433"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="212"/>
         <source>Upright symbol texts read from bottom to top</source>
         <translation>Els textos verticals dels símbols es llegeixen de baix a dalt</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="440"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="426"/>
         <source>Dragging a symbol&apos;s text moves the text alone, and Shift+drag moves the symbol, as before version 0.100. Unticked by default: dragging a text moves its symbol, Shift+drag moves the text.</source>
         <translation>Arrossegar un text d&apos;un símbol mou només el text, i Maj+arrossegar mou el símbol, com abans de la versió 0.100. Desmarcat per defecte: arrossegar un text mou el seu símbol, Maj+arrossegar mou el text.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="443"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="429"/>
         <source>Drag symbol texts without holding Shift</source>
         <translation>Arrossega els textos dels símbols sense mantenir Maj</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="450"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="436"/>
         <source>While a symbol is placed or dragged, a shaded line runs from each of its terminals to the terminal in line with it. Ticked by default.</source>
         <translation>Mentre es col·loca o s&apos;arrossega un símbol, una línia ombrejada va de cadascun dels seus borns fins al born alineat amb ell. Marcat per defecte.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="453"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="439"/>
         <source>Help lines from the terminals of a dragged symbol</source>
         <translation>Línies d&apos;ajuda des dels borns d&apos;un símbol arrossegat</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="460"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="145"/>
         <source>A bar at each side of the drawing folds the panels of that side away, as in LibreOffice&apos;s sidebar, and a second click shows them again as they were. Unticked by default; the Display menu does the same with or without the bars.</source>
         <translation>Una barra a cada costat del dibuix plega els plafons d&apos;aquell costat, com la barra lateral del LibreOffice, i un segon clic els torna a mostrar com eren. Desmarcat per defecte; el menú Visualització fa el mateix amb barres o sense.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="463"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="148"/>
         <source>Bars beside the drawing to fold the side panels away</source>
         <translation>Barres al costat del dibuix per plegar els plafons laterals</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="470"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="155"/>
         <source>The docked panels can be made as narrow as one wants: their texts wrap and what cannot wrap scrolls sideways. Unticked: the panels keep the width their texts and fields need.</source>
         <translation>Els plafons acoblats es poden fer tan estrets com es vulgui: els seus textos s&apos;ajusten a la línia i el que no es pot ajustar es desplaça lateralment. Desmarcat: els plafons conserven l&apos;amplada que necessiten els seus textos i camps.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="473"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="158"/>
         <source>Narrow docks: wrap texts and scroll (applied the next time the programme is launched)</source>
         <translation>Plafons estrets: ajusta els textos i desplaça (s&apos;aplica en el proper inici del programa)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="480"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="446"/>
         <source>A corner or T-junction placed where one already stands takes its place, and its wires go to the new one. Unticked by default: both stay.</source>
         <translation>Una cantonada o derivació en T col·locada on ja n&apos;hi ha una en pren el lloc, i els seus fils passen a la nova. Desmarcat per defecte: es queden totes dues.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="483"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="449"/>
         <source>A new corner or T-junction replaces the one under it</source>
         <translation>Una cantonada o derivació en T nova substitueix la que hi ha a sota</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="490"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="239"/>
         <source>Printing and exporting ask first when symbols, texts, shapes, pictures or tables lie outside the sheet, as they are cut off or left out; saving says so in the status bar.</source>
         <translation>La impressió i l&apos;exportació pregunten abans quan hi ha símbols, textos, formes, imatges o taules fora del full, ja que es retallen o s&apos;ometen; en desar, s&apos;indica a la barra d&apos;estat.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="493"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="30"/>
+        <source>Theme</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="70"/>
+        <source>Main window</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="178"/>
+        <source>Drawing on the sheet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="242"/>
         <source>Warn about items outside the sheet</source>
         <translation>Avisa dels elements fora del full</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="633"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="266"/>
+        <source>Mouse and input</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="272"/>
+        <source>Zoom and navigation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="348"/>
+        <source>Selection</source>
+        <translation type="unfinished">Selecció</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="410"/>
+        <source>Drawing and moving</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="515"/>
         <source>Automatically number pasted or duplicated elements that follow a numbering</source>
         <translation>Numera automàticament els elements enganxats o duplicats que segueixen una numeració</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="636"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="518"/>
         <source>A pasted element receives the next number of its numbering instead of the copied element&apos;s name, and the numbering advances.</source>
         <translation>Un element enganxat rep el número següent de la seva numeració en lloc del nom de l&apos;element copiat, i la numeració avança.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="643"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="525"/>
         <source>A small hidden file beside the project says who has it open. Someone else opening it is told, and can open it read-only. Turn this off if your shared drive does not cope with it.</source>
         <translation>Un petit fitxer ocult al costat del projecte indica qui l&apos;té obert. Si algú altre l&apos;obre, n&apos;és avisat i el pot obrir només de lectura. Desactiveu-ho si la vostra unitat compartida no ho admet.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="646"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="528"/>
         <source>Tell others who has a project open (lock file beside the project)</source>
         <translation>Indica als altres qui té un projecte obert (fitxer de bloqueig al costat del projecte)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="660"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="542"/>
         <source>Allow running JavaScript scripts (Project &gt; Run a script, and --run)</source>
         <translation>Permet executar scripts JavaScript (Projecte &gt; Executa un script, i --run)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="663"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="545"/>
         <source>A script runs with your permissions: it can read and modify the open project and write files. Disabled by default; only run scripts whose origin you know.</source>
         <translation>Un script s&apos;executa amb els vostres permisos: pot llegir i modificar el projecte obert i escriure fitxers. Desactivat per defecte; executeu només scripts d&apos;origen conegut.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="670"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="552"/>
         <source>Allow an AI assistant to act on the open project (live mode)</source>
         <translation>Permet que un assistent d&apos;IA actuï sobre el projecte obert (mode en directe)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="673"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="555"/>
         <source>An assistant connected through the MCP server can then run scripts on the open project, as you watch. A warning is shown at every start while this setting is on. Takes effect at the next start; unticking it closes the connection at once.</source>
         <translation>Un assistent connectat mitjançant el servidor MCP pot llavors executar scripts sobre el projecte obert, mentre ho mireu. Es mostra un avís a cada inici mentre aquest paràmetre està activat. Té efecte al proper inici; desmarcar-lo tanca la connexió immediatament.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="680"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="562"/>
         <source>Enable chained folio reports for report elements</source>
         <translation>Activa les referències de full encadenades per als elements de referència</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="683"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="565"/>
         <source>When enabled, report elements (cross-references) across folios with matching labels are automatically chained together. Newly created projects will have this enabled automatically.</source>
         <translation>Si està activat, els elements de referència (referències creuades) de diversos fulls amb etiquetes coincidents s&apos;encadenen automàticament. Els projectes nous el tindran activat automàticament.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="690"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="572"/>
         <source>Previous versions kept when saving a project</source>
         <translation>Versions anteriors conservades en desar un projecte</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="693"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="700"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="575"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="582"/>
         <source>Before a project is saved, the file as it was is copied to a folder beside it, named after the project with &quot;-backups&quot;. Only the newest are kept.</source>
         <translation>Abans de desar un projecte, el fitxer tal com era es copia a una carpeta al costat seu, anomenada com el projecte amb «-backups». Només es conserven les més recents.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="703"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="585"/>
         <source>None</source>
         <translation>Cap</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="713"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="595"/>
         <source>Reopen the projects of the last session at start</source>
         <translation>Torna a obrir en iniciar els projectes de l&apos;última sessió</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="716"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="598"/>
         <source>The projects open when QElectroTech was last left are opened again, unless it is started with a file to open.</source>
         <translation>Els projectes oberts l&apos;última vegada que es va tancar QElectroTech es tornen a obrir, llevat que s&apos;iniciï amb un fitxer per obrir.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="723"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="605"/>
         <source>Offer to restore automatic backups at start</source>
         <translation>Ofereix en iniciar restaurar les còpies de seguretat automàtiques</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="726"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="608"/>
         <source>After a crash, the automatic backups (made every few minutes, see &quot;Automatic backup of projects&quot; above) are offered at the next start. Unticked, they are kept but not offered, the status bar says how many there are, and they are offered again once this is ticked. Not the same as the option below, which keeps a copy after every edit.</source>
         <translation>Després d&apos;una fallada, les còpies de seguretat automàtiques (fetes cada pocs minuts, vegeu «Còpia de seguretat automàtica dels projectes» a dalt) s&apos;ofereixen en l&apos;inici següent. Si està desmarcat, es conserven però no s&apos;ofereixen, la barra d&apos;estat indica quantes n&apos;hi ha, i es tornen a oferir quan es marca l&apos;opció. No és el mateix que l&apos;opció de sota, que conserva una còpia després de cada edició.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="733"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="615"/>
         <source>After a crash, offer projects as they were after their last edit (experimental)</source>
         <translation>Després d&apos;una fallada, ofereix els projectes tal com eren després de l&apos;última edició (experimental)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="736"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="618"/>
         <source>While a project is open, QElectroTech keeps a copy of it in its data folder, saved after every edit. If QElectroTech does not close normally, the next start offers that copy with the recovery files.</source>
         <translation>Mentre un projecte està obert, QElectroTech en conserva una còpia a la seva carpeta de dades, desada després de cada edició. Si QElectroTech no es tanca normalment, l&apos;inici següent ofereix aquesta còpia amb els fitxers de recuperació.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="743"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="625"/>
         <source>Offer saving a project as one database file, .qetdb (experimental)</source>
         <translation>Ofereix desar un projecte com un sol fitxer de base de dades, .qetdb (experimental)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="746"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="628"/>
         <source>Save As then offers .qetdb: the whole project in one SQLite file. The format may still change; keep a .qet or .qetz copy of projects that matter.</source>
         <translation>Llavors «Desa com a» ofereix .qetdb: tot el projecte en un sol fitxer SQLite. El format encara pot canviar; conserveu una còpia .qet o .qetz dels projectes importants.</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="655"/>
+        <source>Folios and macros</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="684"/>
+        <source>Terminal strips and conductors</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="840"/>
@@ -9374,72 +9419,72 @@ hint shown when no cable type file is configured yet</extracomment>
         <translation>Gestió dels elements</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1049"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1079"/>
         <source>Element may include information about its authors, license, or other useful information. Specify the default value of this textfield for new elements below:</source>
         <translation>Cada element conté informació sobre els seus autors, la llicència i qualsevol altra informació que considereu útil en un camp lliure.
 Podeu especificar el valor per defecte d&apos;aquest camp per als elements que creeu aquí:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1076"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1106"/>
         <source>Languages</source>
         <translation>Llengües</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1085"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1115"/>
         <source>Applied to the next launch of QElectroTech</source>
         <translation>S&apos;aplicarà al proper llançament de QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1119"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1149"/>
         <source>texts</source>
         <translation>Textos</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1125"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1155"/>
         <source>Here you can define the default appearance of the different texts of QElectroTech</source>
         <translation>Aquí podeu definir l&apos;aspecte per defecte dels diferents textos de QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1139"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1169"/>
         <source>Elements texts</source>
         <translation>Textos d&apos;elements</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1152"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1218"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1264"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1182"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1248"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1294"/>
         <source>Font:</source>
         <translation>Tipus de lletra :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1162"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1225"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1192"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1255"/>
         <source>°</source>
         <translation>°</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1172"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1202"/>
         <source>Length :</source>
         <translation>Longitud :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1182"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1211"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1212"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1241"/>
         <source>Rotation :</source>
         <translation>Rotació :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1205"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1235"/>
         <source>Independent texts</source>
         <translation>Textos independents</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1258"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1288"/>
         <source>Other texts</source>
         <translation>Altres textos</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1294"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1324"/>
         <source>Cable texts</source>
         <translation>Textos dels cables</translation>
     </message>
@@ -9448,7 +9493,7 @@ Podeu especificar el valor per defecte d&apos;aquest camp per als elements que c
         <translation type="vanished">Designació, tipus, instal·lació, localització, longitud :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1323"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1353"/>
         <source>Font of the texts written along the cable line; a cable which has its own keeps it.</source>
         <translation>Tipus de lletra dels textos escrits al llarg de la línia del cable; un cable que en té un de propi el conserva.</translation>
     </message>
@@ -9457,7 +9502,7 @@ Podeu especificar el valor per defecte d&apos;aquest camp per als elements que c
         <translation type="vanished">Colors dels fils (tots) :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1356"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1386"/>
         <source>Font of the core colors written along the line; a cable which has its own keeps it.</source>
         <translation>Tipus de lletra dels colors dels fils escrits al llarg de la línia; un cable que en té un de propi el conserva.</translation>
     </message>
@@ -9466,73 +9511,78 @@ Podeu especificar el valor per defecte d&apos;aquest camp per als elements que c
         <translation type="vanished">Alineació del text :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1376"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1406"/>
         <source>Where the texts of a cable stop relative to the start of its line; a cable which has its own keeps it.</source>
         <translation>On s&apos;aturen els textos d&apos;un cable respecte a l&apos;inici de la seva línia; un cable que en té una de pròpia la conserva.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1380"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1410"/>
         <source>Right aligned</source>
         <translation>Alineat a la dreta</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1385"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1415"/>
         <source>Centred</source>
         <translation>Centrat</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1390"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1420"/>
         <source>Left aligned</source>
         <translation>Alineat a l&apos;esquerra</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1415"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1445"/>
         <source>Grid + Keyboard</source>
         <translation>Graella i teclat</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1421"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1451"/>
+        <source>Grid and guides</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1526"/>
         <source>Grid: 1 - 30</source>
         <translation>Graella de l&apos;editor d&apos;esquemes</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1455"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1560"/>
         <source>DiagramEditor yGrid</source>
         <translation>Distància entre punts en vertical : 1-30</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1462"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1567"/>
         <source>The Grid must be active to see the changes.</source>
         <translation>La quadrícula ha d&apos;estar activa per veure els canvis.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1488"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1593"/>
         <source>DiagramEditor xGrid</source>
         <translation>Distància entre punts en horitzontal :  1-30</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1508"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1613"/>
         <source>Grid for texts moved with the mouse</source>
         <translation>Graella per als textos moguts amb el ratolí</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1511"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1616"/>
         <source>Fraction of the sheet grid. Hold Ctrl while moving to place freely.</source>
         <translation>Fracció de la graella del full. Manteniu premuda la tecla Ctrl mentre moveu per col·locar lliurement.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1531"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1636"/>
         <source>Keyboard movement: 1 - 30</source>
         <translation>Desplaçament per la graella de l&apos;editor d&apos;esquemes utilitzant el teclat</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1581"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1686"/>
         <source>DiagramEditor (key: left / right) xGrid</source>
         <comment>fr: DiagramEditor (touche :   gauche / droite)  xGrid</comment>
         <translation>Distància desplaçada amb les tecles esquerra i dreta en horitzontal : 1-30</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1588"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1693"/>
         <source>DiagramEditor (key: up / down) yGrid</source>
         <translation>Distància desplaçada amb les tecles amunt i avall en vertical : 1-30</translation>
     </message>
@@ -9541,95 +9591,95 @@ Podeu especificar el valor per defecte d&apos;aquest camp per als elements que c
         <translation type="vanished">Desplaçament per la graella de l&apos;editor d&apos;esquemes utilitzant el teclat amb la tecla ALT</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1624"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1729"/>
         <source>DiagramEditor (key: left / right) xGrid</source>
         <translation>Distància desplaçada amb les tecles esquerra i dreta en horitzontal : 1-9</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1653"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1758"/>
         <source>DiagramEditor (key: up / down) yGrid</source>
         <comment>fr: DiagramEditor (touche :  haut / bas)  yGrid</comment>
         <translation>Distància desplaçada amb les tecles amunt i avall en vertical : 1-9</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1698"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1803"/>
         <source>View grid</source>
         <translation>Vista de quadrícula</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1795"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1802"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1900"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1907"/>
         <source>max:</source>
         <translation>max:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1883"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1995"/>
         <source>When saving a symbol: refuse two terminals with the same name, and report terminals without a name (IEC 61666).</source>
         <translation>En desar un símbol: rebutja dos borns amb el mateix nom i informa dels borns sense nom (IEC 61666).</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1886"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1998"/>
         <source>Check terminal names when saving</source>
         <translation>Comprova els noms dels borns en desar</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1756"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1861"/>
         <source>Point-size in diagram-editor: 1 - 5</source>
         <translation>Mida del punt de la quadrícula de l&apos;editor de diagrames: 1 - 5</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1300"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1330"/>
         <source>Designation, type, plant, location, length:</source>
         <translation>Designació, tipus, instal·lació, localització, longitud:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1333"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1363"/>
         <source>Core colors (all of them):</source>
         <translation>Colors de les ànimes (totes):</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1366"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1396"/>
         <source>Text alignment:</source>
         <translation>Alineació del text:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1595"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1700"/>
         <source>Move by the grid step instead (Display &gt; Grid step)</source>
         <translation>Mou en canvi segons el pas de la graella (Visualització &gt; Pas de la graella)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1618"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1723"/>
         <source>Keyboard movement with the Ctrl key: 1 - 9</source>
         <translation>Desplaçament amb el teclat amb la tecla Ctrl: 1 - 9</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1704"/>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1809"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1914"/>
         <source>min:</source>
         <translation>min:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1816"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1921"/>
         <source>Point-size in element-editor: 1 - 5</source>
         <translation>Mida del punt de la quadrícula de l&apos;editor d&apos;elements: 1 - 5</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1840"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1945"/>
         <source>Editor</source>
         <translation>Editor</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1848"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1953"/>
         <source>Max. parts in Element Editor List</source>
         <translation>Màxim de peces a la llista de l&apos;editor d&apos;elements</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="653"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="535"/>
         <source>Do not store the labels of items in the copy paste</source>
         <translation>No conservis les etiquetes dels elements després de copia i enganxa</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="137"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="321"/>
         <source>Allow unzoom beyond the sheet</source>
         <translation>Permet allunyar més enllà de la mida del full</translation>
     </message>
@@ -10054,7 +10104,7 @@ Qualsevol configuració que no sigui «Sense arrodoniment» pot provocar errors 
 3 - L&apos;edició del projecte en un altre ordinador i/o pantalla que no tingui la mateixa configuració per als punts 1 i 2.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="330"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1466"/>
         <source>Hide the grid when its dots are closer on screen than</source>
         <translation>Amaga la graella quan els seus punts són a la pantalla més a prop de</translation>
     </message>
@@ -10063,7 +10113,7 @@ Qualsevol configuració que no sigui «Sense arrodoniment» pot provocar errors 
         <translation type="vanished">Amb menys zoom, els punts de qualsevol pas de graella s&apos;ometen; el zoom de la barra d&apos;estat indica on</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="343"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1479"/>
         <source> px</source>
         <translation> px</translation>
     </message>
@@ -21837,92 +21887,92 @@ Per activar-la: Configura QElectroTech &gt; General &gt; Projectes, o definiu la
         <translation>Mirall vertical</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="332"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="334"/>
         <source>the file is damaged</source>
         <translation>el fitxer està malmès</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="337"/>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="342"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="339"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="344"/>
         <source>the file is not a QElectroTech project</source>
         <translation>el fitxer no és un projecte de QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="350"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="352"/>
         <source>it was saved by a newer QElectroTech (%1)</source>
         <translation>l&apos;ha desat una versió més nova de QElectroTech (%1)</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="360"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="362"/>
         <source>the file holds SQL that QElectroTech does not expect (%1)</source>
         <translation>el fitxer conté SQL que QElectroTech no espera (%1)</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="366"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="368"/>
         <source>the file is damaged: an item refers to one that is not there</source>
         <translation>el fitxer està malmès: un element fa referència a un altre que no hi és</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="399"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="401"/>
         <source>the file could not be replaced (error %1)</source>
         <translation>no s&apos;ha pogut substituir el fitxer (error %1)</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="442"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="444"/>
         <source>the file could not be opened</source>
         <translation>no s&apos;ha pogut obrir el fitxer</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="815"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="817"/>
         <source>the file could not be read back</source>
         <translation>no s&apos;ha pogut tornar a llegir el fitxer</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1217"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1219"/>
         <source>the file could not be written</source>
         <translation>no s&apos;ha pogut escriure el fitxer</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1239"/>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1755"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1241"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1757"/>
         <source>it keeps no revision %1</source>
         <translation>no conserva cap revisió %1</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1248"/>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1773"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1250"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1775"/>
         <source>this build of QElectroTech has no SQLite session support</source>
         <translation>aquesta compilació de QElectroTech no admet sessions SQLite</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1255"/>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1763"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1257"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1765"/>
         <source>the changes of revision %1 were not recorded</source>
         <translation>no s&apos;han registrat els canvis de la revisió %1</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1260"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1262"/>
         <source>revision %1 cannot be undone</source>
         <translation>no es pot desfer la revisió %1</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1270"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1272"/>
         <source>revision %1 does not undo cleanly</source>
         <translation>la revisió %1 no es desfà netament</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1364"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1366"/>
         <source>the file could not be written to disk</source>
         <translation>no s&apos;ha pogut escriure el fitxer al disc</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1429"/>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1545"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1431"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1547"/>
         <source>the file could not be read</source>
         <translation>no s&apos;ha pogut llegir el fitxer</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1457"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1459"/>
         <source>it has %n damaged page(s), more than the repair data it keeps can rebuild</source>
         <translation>
             <numerusform>té %n pàgina malmesa, més del que poden reconstruir les dades de reparació que conserva</numerusform>
@@ -21930,31 +21980,31 @@ Per activar-la: Configura QElectroTech &gt; General &gt; Projectes, o definiu la
         </translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1522"/>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1562"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1524"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1564"/>
         <source>its content is not what QElectroTech saved: it is damaged, or another program changed it</source>
         <translation>el seu contingut no és el que va desar QElectroTech: està malmès, o un altre programa l&apos;ha modificat</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1633"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1635"/>
         <source>keep at least 2 saves, or 0 for all</source>
         <translation>conserveu com a mínim 2 desaments, o 0 per a tots</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1639"/>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1712"/>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1746"/>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1806"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1641"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1714"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1748"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1808"/>
         <source>it keeps no history</source>
         <translation>no conserva cap historial</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1750"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1752"/>
         <source>revision %1 does not come before revision %2</source>
         <translation>la revisió %1 no va abans de la revisió %2</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1781"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1783"/>
         <source>the changes of revision %1 do not follow on</source>
         <translation>els canvis de la revisió %1 no són consecutius</translation>
     </message>
@@ -30033,12 +30083,12 @@ associar el nom &quot;volta&quot; amb el valor &quot;1745&quot; substituirà %{v
         <translation>Només es permeten consultes de lectura (SELECT o WITH ... SELECT).</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/projectdatabase.cpp" line="8769"/>
+        <location filename="../sources/dataBase/projectdatabase.cpp" line="8843"/>
         <source>Export the internal project database</source>
         <translation>Exporta la base de dades interna del projecte</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/projectdatabase.cpp" line="8776"/>
+        <location filename="../sources/dataBase/projectdatabase.cpp" line="8850"/>
         <source>untitled</source>
         <translation>sense_nom</translation>
     </message>

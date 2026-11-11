@@ -8717,7 +8717,7 @@ that you create. Text and number inputs are
         <translation>모양</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="32"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="38"/>
         <source>Use system colors</source>
         <translation>시스템 색상 사용</translation>
     </message>
@@ -8764,33 +8764,33 @@ that you create. Text and number inputs are
         <translation>(변경 사항을 적용하려면 요소 컬렉션을 다시 불러오세요)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="591"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="473"/>
         <source>Projects</source>
         <translation>프로젝트</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="55"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="328"/>
         <source>Use gestures touchpad</source>
         <translation>터치패드 제스처 사용</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="597"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="479"/>
         <source>Use sheet numbers instead of their position in the project</source>
         <translation>프로젝트 내 위치 대신 시트 번호 사용</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="779"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="648"/>
         <source>Number the title block columns from 0 (1 otherwise)</source>
         <extracomment>Choix de l&apos;increment de depart 1 ou 0</extracomment>
         <translation>표제란 열 번호를 0부터 시작(그 외에는 1)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="614"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="496"/>
         <source>Disabled</source>
         <translation>비활성화</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="620"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="502"/>
         <source> min</source>
         <comment>minute</comment>
         <translation> 분</translation>
@@ -8801,13 +8801,13 @@ that you create. Text and number inputs are
         <translation>패널에서 새로 추가된 요소 강조 표시</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1049"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1079"/>
         <source>Element may include information about its authors, license, or other useful information. Specify the default value of this textfield for new elements below:</source>
         <translation>각 요소에는 작성자, 라이선스 또는 기타 유용한 정보를 자유 입력란에 포함할 수 있습니다.
 여기에서 새로 만드는 요소에 대해 이 입력란의 기본값을 지정할 수 있습니다 :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1085"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1115"/>
         <source>Applied to the next launch of QElectroTech</source>
         <translation>다음 QElectroTech 실행 시 적용</translation>
     </message>
@@ -8817,7 +8817,7 @@ that you create. Text and number inputs are
         <translation>양식</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="604"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="486"/>
         <source>Automatic backup of projects (applied at the next launch of QElectroTech)</source>
         <translation>프로젝트 자동 백업(다음 QElectroTech 실행 시 적용)</translation>
     </message>
@@ -8852,455 +8852,505 @@ that you create. Text and number inputs are
         <translation>요소 관리</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1125"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1155"/>
         <source>Here you can define the default appearance of the different texts of QElectroTech</source>
         <translation>여기에서 QElectroTech의 다양한 텍스트에 대한 기본 모양을 설정할 수 있습니다</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1300"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1330"/>
         <source>Designation, type, plant, location, length:</source>
         <translation>명칭, 유형, 설비, 위치, 길이:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1333"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1363"/>
         <source>Core colors (all of them):</source>
         <translation>심선 색 (전체):</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1366"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1396"/>
         <source>Text alignment:</source>
         <translation>텍스트 정렬:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1415"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1445"/>
         <source>Grid + Keyboard</source>
         <translation>격자 + 키보드</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1421"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1451"/>
+        <source>Grid and guides</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1526"/>
         <source>Grid: 1 - 30</source>
         <translation>격자 : 1 - 30</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1488"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1593"/>
         <source>DiagramEditor xGrid</source>
         <translation>도면 편집기 x격자</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1455"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1560"/>
         <source>DiagramEditor yGrid</source>
         <translation>도면 편집기 y격자</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="39"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="45"/>
         <source>Application color</source>
         <translation>응용 프로그램 색상</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="64"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="356"/>
         <source>Selection rectangle selects:</source>
         <translation>선택 사각형이 선택하는 대상:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="75"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="367"/>
         <source>Everything it overlaps (as before)</source>
         <translation>겹치는 모든 것 (이전과 같음)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="80"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="372"/>
         <source>What lies wholly within it</source>
         <translation>완전히 안에 들어 있는 것</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="85"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="377"/>
         <source>By direction: wholly within to the right, overlapped to the left</source>
         <translation>방향에 따라: 오른쪽으로는 완전히 안에 있는 것, 왼쪽으로는 겹치는 것</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="95"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1988"/>
         <source>Symbol editor: draw like the folio, frame on the grid around the insertion point</source>
         <translation>기호 편집기: 도면처럼 그리고, 삽입점 주변 격자에 프레임 맞춤</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="102"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1069"/>
         <source>Find and edit a placed element in the collection it was taken from</source>
         <translation>배치된 요소를 가져온 컬렉션에서 찾아 편집</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="105"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1072"/>
         <source>Saving it there updates the open projects that use it. Otherwise the project&apos;s own copy is edited.</source>
         <translation>그곳에 저장하면 이를 사용하는 열린 프로젝트가 업데이트됩니다. 그렇지 않으면 프로젝트 자체의 복사본이 편집됩니다.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="114"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="186"/>
         <source>Corner radius of the selection frame (0: square)</source>
         <translation>선택 프레임의 모서리 반지름 (0: 직각)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="146"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="280"/>
         <source>Zoom step:</source>
         <translation>확대/축소 단계:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="162"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="296"/>
         <source>How far the mouse wheel, Ctrl++ / Ctrl+- and the zoom buttons zoom at a time, in percent of the zoom shown, rounded to whole fives: with 10 %, 100 % goes to 110 %, 120 %, 130 % and 400 % to 440 %. Alt with the mouse wheel zooms four steps at a time.</source>
         <translation>마우스 휠, Ctrl++ / Ctrl+-, 확대/축소 버튼이 한 번에 확대/축소하는 정도로, 표시된 배율에 대한 백분율이며 5 단위로 반올림됩니다: 10 %일 때 100 %는 110 %, 120 %, 130 %가 되고 400 %는 440 %가 됩니다. Alt를 누른 채 마우스 휠을 돌리면 한 번에 4단계씩 확대/축소합니다.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="165"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="299"/>
         <source>Factor 1.15 (as before)</source>
         <translation>계수 1.15 (이전과 같음)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="168"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="302"/>
         <source> %</source>
         <translation> %</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="187"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="400"/>
         <source>Show the properties of a selected conductor in the Selection properties panel</source>
         <translation>선택한 도선의 속성을 선택 항목 속성 패널에 표시</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="194"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="219"/>
         <source>Draw a connected terminal in the color of its conductor</source>
         <translation>연결된 단자를 도체 색상으로 그리기</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="197"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="222"/>
         <source>Unchecked, every terminal is drawn in red. Terminals are never printed or exported.</source>
         <translation>선택하지 않으면 모든 단자가 빨간색으로 그려집니다. 단자는 인쇄되거나 내보내지지 않습니다.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="204"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="229"/>
         <source>One stub per terminal which has a wire of its own, going up from the strip: what the wire is made of at its foot, where it lands at its top (12K1:A1). Cores of a cable are left out -- the cable is drawn below the strip.</source>
         <translation>자체 전선이 있는 단자마다 단자대에서 위로 올라가는 인출선을 하나씩 그립니다: 아래쪽에는 전선의 사양, 위쪽에는 연결 대상(12K1:A1). 케이블의 심선은 생략됩니다 -- 케이블은 단자대 아래에 그려집니다.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="207"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="232"/>
         <source>Draw the wires of a terminal strip above it, like its cables below it</source>
         <translation>단자대의 전선을 아래쪽 케이블처럼 단자대 위에 그리기</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="214"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="690"/>
         <source>Used when the automatic assignment makes a terminal strip and by &quot;Automatic position&quot; in the terminal manager. Unchecked: the way the plan is drawn, folio by folio then left to right, which keeps N and PE where they are drawn. Checked: by label, X1:2 before X1:10. A strip already made keeps its order until it is sorted again.</source>
         <translation>자동 할당으로 단자대를 만들 때와 단자대 관리자의 &quot;자동 위치&quot;에서 사용됩니다. 선택 해제: 도면 순서(도면별, 그다음 왼쪽에서 오른쪽)로, N과 PE는 그려진 위치에 그대로 둡니다. 선택: 라벨 순서로, X1:2가 X1:10보다 앞입니다. 이미 만든 단자대는 다시 정렬할 때까지 순서를 유지합니다.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="217"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="693"/>
         <source>Sort the terminal strips by label instead of the plan order</source>
         <translation>도면 순서 대신 라벨 순서로 단자대 정렬</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="224"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="661"/>
         <source>A new folio takes the group and sub-group of the folio before it</source>
         <translation>새 도면은 바로 앞 도면의 그룹과 하위 그룹을 이어받음</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="227"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="664"/>
         <source>Only a group or sub-group typed on that folio is taken. Unchecked, a new folio has none and is in its plant and location.</source>
         <translation>해당 도면에 입력된 그룹 또는 하위 그룹만 이어받습니다. 선택하지 않으면 새 도면에는 그룹이 없으며 해당 설비와 위치에 속합니다.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="234"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="671"/>
         <source>Ask for the device labels when placing a macro</source>
         <translation>매크로를 배치할 때 장치 기호 묻기</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="237"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="674"/>
         <source>Proposes the next free labels, which Accept All takes. Unchecked, a macro keeps its saved labels.</source>
         <translation>다음 사용 가능한 기호를 제안하며, 모두 수락을 누르면 이를 사용합니다. 선택하지 않으면 매크로는 저장된 기호를 유지합니다.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="244"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="700"/>
         <source>When unticked, no conductors-per-terminal rule applies, whatever the projects&apos; settings.</source>
         <translation>선택하지 않으면 프로젝트 설정과 관계없이 단자당 도선 수 규칙이 적용되지 않습니다.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="247"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="703"/>
         <source>Apply the projects&apos; conductors-per-terminal rules</source>
         <translation>프로젝트의 단자당 도선 수 규칙 적용</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="262"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="718"/>
         <source>Maximum conductors per terminal:</source>
         <translation>단자당 최대 도선 수:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="275"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="731"/>
         <source>For every project except those with their own settings. A new conductor that would take a terminal past this number is refused; conductors already drawn are not changed. 4 means two twin ferrules, one on each side of the screw.</source>
         <translation>자체 설정이 있는 프로젝트를 제외한 모든 프로젝트에 적용됩니다. 단자가 이 수를 넘게 되는 새 도선은 거부되며, 이미 그려진 도선은 바뀌지 않습니다. 4는 나사 양쪽에 하나씩, 트윈 페룰 두 개를 뜻합니다.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="278"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="734"/>
         <source>No limit</source>
         <translation>제한 없음</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="302"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="758"/>
         <source>A sheet reference is a virtual point: it takes only one conductor, the one that continues on the other sheet.</source>
         <translation>시트 참조는 가상 점입니다: 다른 시트로 이어지는 도선 하나만 받습니다.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="305"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="761"/>
         <source>Only one conductor per sheet reference</source>
         <translation>시트 참조당 도선 하나만</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="321"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1457"/>
         <source>Show the default grid (applied the next time the programme is launched)</source>
         <translation>기본 격자 표시 (다음에 프로그램을 시작할 때 적용)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="340"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1476"/>
         <source>Zoomed out further, the dots of any grid step are left out; the zoom shown in the status bar tells where. In pixels as the system scales them, so the same value suits a HiDPI screen</source>
         <translation>더 축소하면 각 그리드 간격의 점이 생략됩니다. 어디서부터인지는 상태 표시줄의 확대/축소 값으로 알 수 있습니다. 시스템이 배율을 적용한 픽셀 단위이므로 같은 값이 HiDPI 화면에도 맞습니다</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="380"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1049"/>
         <source>By default, a double-click inserts the element on the sheet; editing remains accessible from the context menu.</source>
         <translation>기본적으로 두 번 클릭하면 요소가 시트에 삽입됩니다. 편집은 상황 메뉴에서 할 수 있습니다.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="383"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1052"/>
         <source>Double-clicking in the collection opens the element editor instead of inserting it</source>
         <translation>컬렉션에서 두 번 클릭하면 삽입하는 대신 요소 편집기를 엽니다</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="390"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1059"/>
         <source>Ticked: a single list, best match first. Unticked: the collection tree, filtered by the search.</source>
         <translation>선택: 가장 잘 일치하는 항목이 먼저 오는 단일 목록. 선택 해제: 검색으로 필터링된 컬렉션 트리.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="393"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1062"/>
         <source>Show search results as a sorted list</source>
         <translation>검색 결과를 정렬된 목록으로 표시</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="400"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="165"/>
         <source>After a click that selects an element or a conductor, the shortcut bar commands appear near the cursor and fade away when the mouse moves away.</source>
         <translation>요소나 도선을 선택하는 클릭 후 바로 가기 막대 명령이 커서 근처에 나타나고, 마우스가 멀어지면 사라집니다.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="403"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="168"/>
         <source>Show commands near the selection</source>
         <translation>선택 항목 근처에 명령 표시</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="410"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="335"/>
         <source>Holding the right button and dragging in a direction launches a shortcut bar command. A simple right-click still opens the context menu, on button release.</source>
         <translation>오른쪽 버튼을 누른 채 한 방향으로 끌면 바로 가기 막대 명령이 실행됩니다. 단순히 오른쪽 클릭하면 버튼을 놓을 때 여전히 상황 메뉴가 열립니다.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="413"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="338"/>
         <source>Right-button mouse gestures</source>
         <translation>오른쪽 버튼 마우스 제스처</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="420"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="416"/>
         <source>A four-way arrow over what a drag moves; with the crosshair, the pointer jumps with it from grid point to grid point, and a handle within 12 pixels catches it and the click. Unticked: the system pointer, and handles are grabbed under the mouse only.</source>
         <translation>끌기로 움직이는 대상 위에 4방향 화살표를 표시합니다. 십자선을 사용하면 포인터가 그리드 점에서 그리드 점으로 함께 이동하고, 12픽셀 안의 핸들이 클릭과 함께 포인터를 잡습니다. 선택 해제: 시스템 포인터를 사용하며, 핸들은 마우스 바로 아래에 있을 때만 잡힙니다.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="423"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="419"/>
         <source>Four-way arrow and handle catching with the crosshair</source>
         <translation>4방향 화살표와 십자선 핸들 잡기</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="430"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="209"/>
         <source>A symbol&apos;s text that reads from top to bottom once its symbol is turned is drawn the other way round, in the same place, so that upright texts all read from bottom to top, like the wires&apos; texts. Unticked by default: texts turn with their symbol.</source>
         <translation>기호를 회전한 뒤 위에서 아래로 읽히는 기호 텍스트를 같은 자리에서 반대 방향으로 그려, 세로 텍스트가 모두 전선 텍스트처럼 아래에서 위로 읽히게 합니다. 기본값은 해제: 텍스트가 기호와 함께 회전합니다.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="433"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="212"/>
         <source>Upright symbol texts read from bottom to top</source>
         <translation>세로 기호 텍스트를 아래에서 위로 읽기</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="440"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="426"/>
         <source>Dragging a symbol&apos;s text moves the text alone, and Shift+drag moves the symbol, as before version 0.100. Unticked by default: dragging a text moves its symbol, Shift+drag moves the text.</source>
         <translation>기호의 텍스트를 드래그하면 텍스트만 이동하고 Shift+드래그하면 기호가 이동합니다(버전 0.100 이전과 같음). 기본값은 선택 해제: 텍스트를 드래그하면 해당 기호가 이동하고, Shift+드래그하면 텍스트가 이동합니다.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="443"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="429"/>
         <source>Drag symbol texts without holding Shift</source>
         <translation>Shift를 누르지 않고 기호 텍스트 드래그</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="450"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="436"/>
         <source>While a symbol is placed or dragged, a shaded line runs from each of its terminals to the terminal in line with it. Ticked by default.</source>
         <translation>기호를 놓거나 끄는 동안 각 단자에서 일직선상의 단자까지 음영 선이 그려집니다. 기본값은 선택.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="453"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="439"/>
         <source>Help lines from the terminals of a dragged symbol</source>
         <translation>끄는 기호의 단자에서 보조선 표시</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="460"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="145"/>
         <source>A bar at each side of the drawing folds the panels of that side away, as in LibreOffice&apos;s sidebar, and a second click shows them again as they were. Unticked by default; the Display menu does the same with or without the bars.</source>
         <translation>도면 양쪽의 막대가 그쪽 패널을 접습니다 (LibreOffice 사이드바처럼). 다시 클릭하면 원래대로 표시됩니다. 기본값은 해제. 보기 메뉴로도 막대 유무와 관계없이 같은 작업을 할 수 있습니다.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="463"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="148"/>
         <source>Bars beside the drawing to fold the side panels away</source>
         <translation>측면 패널을 접는 도면 옆 막대</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="470"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="155"/>
         <source>The docked panels can be made as narrow as one wants: their texts wrap and what cannot wrap scrolls sideways. Unticked: the panels keep the width their texts and fields need.</source>
         <translation>도킹된 패널을 원하는 만큼 좁힐 수 있습니다: 텍스트는 줄 바꿈되고, 줄 바꿈할 수 없는 것은 옆으로 스크롤됩니다. 선택 해제: 패널은 텍스트와 필드에 필요한 너비를 유지합니다.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="473"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="158"/>
         <source>Narrow docks: wrap texts and scroll (applied the next time the programme is launched)</source>
         <translation>좁은 도크: 텍스트 줄 바꿈 및 스크롤 (다음 프로그램 시작 시 적용)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="480"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="446"/>
         <source>A corner or T-junction placed where one already stands takes its place, and its wires go to the new one. Unticked by default: both stay.</source>
         <translation>이미 코너나 T 분기가 있는 곳에 새로 놓으면 기존 것을 대신하고, 전선은 새것으로 옮겨집니다. 기본값은 해제: 둘 다 남습니다.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="483"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="449"/>
         <source>A new corner or T-junction replaces the one under it</source>
         <translation>새 코너나 T 분기가 그 아래의 것을 대체</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="490"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="239"/>
         <source>Printing and exporting ask first when symbols, texts, shapes, pictures or tables lie outside the sheet, as they are cut off or left out; saving says so in the status bar.</source>
         <translation>기호, 텍스트, 도형, 그림 또는 표가 도면 밖에 있으면 잘리거나 생략되므로 인쇄 및 내보내기 전에 먼저 확인합니다. 저장할 때는 상태 표시줄에 표시됩니다.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="493"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="242"/>
         <source>Warn about items outside the sheet</source>
         <translation>도면 밖의 항목 경고</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="500"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1516"/>
         <source>Show default guides (applies from the next time the programme is launched)</source>
         <translation>기본 안내선 표시 (다음에 프로그램을 시작할 때부터 적용)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="514"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="83"/>
         <source>Use &amp;Windows (applied at the next launch of QElectroTech)</source>
         <translation>창 모드 사용(&amp;W) (다음 QElectroTech 실행 시 적용)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="521"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="30"/>
+        <source>Theme</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="70"/>
+        <source>Main window</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="76"/>
         <source>Use &amp;tabs (applied at the next launch of QElectroTech)</source>
         <translation>탭 모드 사용(&amp;T) (다음 QElectroTech 실행 시 적용)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="560"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="115"/>
         <source>High pixel density (hdpi) displays scaling method (applied to the next launch of QElectroTech) :</source>
         <translation>고해상도(HDPI) 디스플레이 배율 방식(다음 QElectroTech 실행 시 적용) :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="633"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="178"/>
+        <source>Drawing on the sheet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="266"/>
+        <source>Mouse and input</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="272"/>
+        <source>Zoom and navigation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="348"/>
+        <source>Selection</source>
+        <translation type="unfinished">선택</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="410"/>
+        <source>Drawing and moving</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="515"/>
         <source>Automatically number pasted or duplicated elements that follow a numbering</source>
         <translation>번호 매기기를 따르는 붙여넣거나 복제한 요소에 자동으로 번호 매기기</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="636"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="518"/>
         <source>A pasted element receives the next number of its numbering instead of the copied element&apos;s name, and the numbering advances.</source>
         <translation>붙여넣은 요소는 복사한 요소의 이름 대신 번호 매기기의 다음 번호를 받고, 번호 매기기가 진행됩니다.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="643"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="525"/>
         <source>A small hidden file beside the project says who has it open. Someone else opening it is told, and can open it read-only. Turn this off if your shared drive does not cope with it.</source>
         <translation>프로젝트 옆의 작은 숨김 파일이 누가 프로젝트를 열었는지 알려 줍니다. 다른 사람이 열면 알림을 받고 읽기 전용으로 열 수 있습니다. 공유 드라이브가 이를 처리하지 못하면 끄세요.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="646"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="528"/>
         <source>Tell others who has a project open (lock file beside the project)</source>
         <translation>누가 프로젝트를 열었는지 다른 사람에게 알리기 (프로젝트 옆의 잠금 파일)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="660"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="542"/>
         <source>Allow running JavaScript scripts (Project &gt; Run a script, and --run)</source>
         <translation>JavaScript 스크립트 실행 허용 (프로젝트 &gt; 스크립트 실행, 및 --run)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="663"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="545"/>
         <source>A script runs with your permissions: it can read and modify the open project and write files. Disabled by default; only run scripts whose origin you know.</source>
         <translation>스크립트는 사용자 권한으로 실행됩니다: 열린 프로젝트를 읽고 수정하며 파일을 쓸 수 있습니다. 기본적으로 꺼져 있습니다. 출처를 아는 스크립트만 실행하세요.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="670"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="552"/>
         <source>Allow an AI assistant to act on the open project (live mode)</source>
         <translation>AI 어시스턴트가 열린 프로젝트에서 작업하도록 허용 (실시간 모드)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="673"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="555"/>
         <source>An assistant connected through the MCP server can then run scripts on the open project, as you watch. A warning is shown at every start while this setting is on. Takes effect at the next start; unticking it closes the connection at once.</source>
         <translation>그러면 MCP 서버로 연결된 어시스턴트가 사용자가 지켜보는 동안 열린 프로젝트에서 스크립트를 실행할 수 있습니다. 이 설정이 켜져 있으면 시작할 때마다 경고가 표시됩니다. 다음 시작 시 적용되며, 선택을 해제하면 연결이 즉시 끊깁니다.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="680"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="562"/>
         <source>Enable chained folio reports for report elements</source>
         <translation>도면 시트 참조 요소에 연결 도면 시트 참조 사용</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="683"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="565"/>
         <source>When enabled, report elements (cross-references) across folios with matching labels are automatically chained together. Newly created projects will have this enabled automatically.</source>
         <translation>사용하면 여러 도면 시트에 걸쳐 라벨이 같은 도면 시트 참조 요소 (상호 참조)가 자동으로 연결됩니다. 새로 만드는 프로젝트에서는 자동으로 사용됩니다.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="690"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="572"/>
         <source>Previous versions kept when saving a project</source>
         <translation>프로젝트를 저장할 때 보관하는 이전 버전</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="693"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="700"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="575"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="582"/>
         <source>Before a project is saved, the file as it was is copied to a folder beside it, named after the project with &quot;-backups&quot;. Only the newest are kept.</source>
         <translation>프로젝트를 저장하기 전에 기존 파일을 프로젝트 이름에 “-backups”를 붙인 옆 폴더로 복사합니다. 가장 최근 것만 보관됩니다.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="703"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="585"/>
         <source>None</source>
         <translation>없음</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="713"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="595"/>
         <source>Reopen the projects of the last session at start</source>
         <translation>시작할 때 지난 세션의 프로젝트 다시 열기</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="716"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="598"/>
         <source>The projects open when QElectroTech was last left are opened again, unless it is started with a file to open.</source>
         <translation>QElectroTech를 마지막으로 종료할 때 열려 있던 프로젝트를 다시 엽니다. 단, 열 파일을 지정해 시작한 경우는 제외합니다.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="723"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="605"/>
         <source>Offer to restore automatic backups at start</source>
         <translation>시작할 때 자동 백업 복원 제안</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="726"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="608"/>
         <source>After a crash, the automatic backups (made every few minutes, see &quot;Automatic backup of projects&quot; above) are offered at the next start. Unticked, they are kept but not offered, the status bar says how many there are, and they are offered again once this is ticked. Not the same as the option below, which keeps a copy after every edit.</source>
         <translation>충돌 후 다음 시작 시 자동 백업 (몇 분마다 생성, 위의 &quot;프로젝트 자동 백업&quot; 참조)을 제안합니다. 선택 해제하면 백업은 유지되지만 제안되지 않고, 상태 표시줄에 개수가 표시되며, 다시 선택하면 다시 제안됩니다. 편집할 때마다 사본을 남기는 아래 옵션과는 다릅니다.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="733"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="615"/>
         <source>After a crash, offer projects as they were after their last edit (experimental)</source>
         <translation>충돌 후 마지막 편집 이후 상태의 프로젝트 제안 (실험적)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="736"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="618"/>
         <source>While a project is open, QElectroTech keeps a copy of it in its data folder, saved after every edit. If QElectroTech does not close normally, the next start offers that copy with the recovery files.</source>
         <translation>프로젝트가 열려 있는 동안 QElectroTech는 편집할 때마다 그 사본을 데이터 폴더에 저장합니다. QElectroTech가 정상적으로 종료되지 않으면 다음 시작 시 복구 파일과 함께 이 사본을 제안합니다.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="743"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="625"/>
         <source>Offer saving a project as one database file, .qetdb (experimental)</source>
         <translation>프로젝트를 하나의 데이터베이스 파일 .qetdb로 저장하는 옵션 제공 (실험적)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="746"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="628"/>
         <source>Save As then offers .qetdb: the whole project in one SQLite file. The format may still change; keep a .qet or .qetz copy of projects that matter.</source>
         <translation>그러면 &quot;다른 이름으로 저장&quot;에서 .qetdb를 선택할 수 있습니다: 프로젝트 전체가 하나의 SQLite 파일에 들어갑니다. 형식은 아직 바뀔 수 있으니, 중요한 프로젝트는 .qet 또는 .qetz 사본을 보관하세요.</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="655"/>
+        <source>Folios and macros</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="684"/>
+        <source>Terminal strips and conductors</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="805"/>
@@ -9379,56 +9429,56 @@ hint shown when no cable type file is configured yet</extracomment>
         <translation>머리글 행이 있는 케이블 유형 목록 파일 만들기</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1076"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1106"/>
         <source>Languages</source>
         <translation>언어</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1119"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1149"/>
         <source>texts</source>
         <translation>텍스트</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1139"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1169"/>
         <source>Elements texts</source>
         <translation>요소 텍스트</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1152"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1218"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1264"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1182"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1248"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1294"/>
         <source>Font:</source>
         <translation>글꼴 :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1162"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1225"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1192"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1255"/>
         <source>°</source>
         <translation>°</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1172"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1202"/>
         <source>Length :</source>
         <translation>길이 :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1182"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1211"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1212"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1241"/>
         <source>Rotation :</source>
         <translation>회전 :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1205"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1235"/>
         <source>Independent texts</source>
         <translation>독립 텍스트</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1258"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1288"/>
         <source>Other texts</source>
         <translation>기타 텍스트</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1294"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1324"/>
         <source>Cable texts</source>
         <translation>케이블 텍스트</translation>
     </message>
@@ -9437,7 +9487,7 @@ hint shown when no cable type file is configured yet</extracomment>
         <translation type="vanished">품명, 유형, 설비, 위치, 길이:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1323"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1353"/>
         <source>Font of the texts written along the cable line; a cable which has its own keeps it.</source>
         <translation>케이블 선을 따라 표시되는 텍스트의 글꼴입니다. 자체 글꼴이 있는 케이블은 그것을 유지합니다.</translation>
     </message>
@@ -9446,7 +9496,7 @@ hint shown when no cable type file is configured yet</extracomment>
         <translation type="vanished">심선 색상 (전체):</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1356"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1386"/>
         <source>Font of the core colors written along the line; a cable which has its own keeps it.</source>
         <translation>선을 따라 표시되는 심선 색상의 글꼴입니다. 자체 글꼴이 있는 케이블은 그것을 유지합니다.</translation>
     </message>
@@ -9455,53 +9505,53 @@ hint shown when no cable type file is configured yet</extracomment>
         <translation type="vanished">텍스트 정렬:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1376"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1406"/>
         <source>Where the texts of a cable stop relative to the start of its line; a cable which has its own keeps it.</source>
         <translation>케이블 텍스트가 선의 시작점을 기준으로 끝나는 위치입니다. 자체 설정이 있는 케이블은 그것을 유지합니다.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1380"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1410"/>
         <source>Right aligned</source>
         <translation>오른쪽 정렬</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1385"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1415"/>
         <source>Centred</source>
         <translation>가운데</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1390"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1420"/>
         <source>Left aligned</source>
         <translation>왼쪽 정렬</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1462"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1567"/>
         <source>The Grid must be active to see the changes.</source>
         <translation>변경 사항을 보려면 격자가 활성화되어야 합니다.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1508"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1613"/>
         <source>Grid for texts moved with the mouse</source>
         <translation>마우스로 이동하는 텍스트의 격자</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1511"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1616"/>
         <source>Fraction of the sheet grid. Hold Ctrl while moving to place freely.</source>
         <translation>시트 격자의 분수입니다. 자유롭게 배치하려면 이동하는 동안 Ctrl을 누르세요.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1531"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1636"/>
         <source>Keyboard movement: 1 - 30</source>
         <translation>키보드 이동 : 1 - 30</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1581"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1686"/>
         <source>DiagramEditor (key: left / right) xGrid</source>
         <comment>fr: DiagramEditor (touche :   gauche / droite)  xGrid</comment>
         <translation>도면 편집기(키: 왼쪽/오른쪽) x격자</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1588"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1693"/>
         <source>DiagramEditor (key: up / down) yGrid</source>
         <translation>도면 편집기(키: 위/아래) y격자</translation>
     </message>
@@ -9510,80 +9560,80 @@ hint shown when no cable type file is configured yet</extracomment>
         <translation type="vanished">ALT 키로 키보드 이동 : 1 - 9</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1624"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1729"/>
         <source>DiagramEditor (key: left / right) xGrid</source>
         <translation>도면 편집기(키: 왼쪽/오른쪽) x격자</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1653"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1758"/>
         <source>DiagramEditor (key: up / down) yGrid</source>
         <comment>fr: DiagramEditor (touche :  haut / bas)  yGrid</comment>
         <translation>도면 편집기(키: 위/아래) y격자</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1698"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1803"/>
         <source>View grid</source>
         <translation>격자 표시</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1795"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1802"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1900"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1907"/>
         <source>max:</source>
         <translation>최대:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1883"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1995"/>
         <source>When saving a symbol: refuse two terminals with the same name, and report terminals without a name (IEC 61666).</source>
         <translation>기호 저장 시: 이름이 같은 단자 두 개를 거부하고, 이름 없는 단자를 보고합니다 (IEC 61666).</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1886"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1998"/>
         <source>Check terminal names when saving</source>
         <translation>저장 시 단자 이름 확인</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1756"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1861"/>
         <source>Point-size in diagram-editor: 1 - 5</source>
         <translation>도면 편집기 격자 점 크기 : 1 - 5</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1595"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1700"/>
         <source>Move by the grid step instead (Display &gt; Grid step)</source>
         <translation>대신 격자 간격으로 이동 (보기 &gt; 격자 간격)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1618"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1723"/>
         <source>Keyboard movement with the Ctrl key: 1 - 9</source>
         <translation>Ctrl 키를 사용한 키보드 이동: 1 - 9</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1704"/>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1809"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1914"/>
         <source>min:</source>
         <translation>최소:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1816"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1921"/>
         <source>Point-size in element-editor: 1 - 5</source>
         <translation>요소 편집기 격자 점 크기 : 1 - 5</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1840"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1945"/>
         <source>Editor</source>
         <translation>편집기</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1848"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1953"/>
         <source>Max. parts in Element Editor List</source>
         <translation>요소 편집기 목록의 최대 부품 수</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="653"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="535"/>
         <source>Do not store the labels of items in the copy paste</source>
         <translation>복사/붙여넣기 시 요소 라벨을 유지하지 않음</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="137"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="321"/>
         <source>Allow unzoom beyond the sheet</source>
         <translation>시트 범위를 넘어 축소 허용</translation>
     </message>
@@ -9993,7 +10043,7 @@ Any setting other than “No rounding” may cause rendering errors in the proje
 3 - 1, 2번과 설정이 다른 컴퓨터 및/또는 화면에서 프로젝트를 편집하는 경우.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="330"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1466"/>
         <source>Hide the grid when its dots are closer on screen than</source>
         <translation>화면에서 격자 점 간격이 다음보다 좁으면 격자 숨기기</translation>
     </message>
@@ -10002,7 +10052,7 @@ Any setting other than “No rounding” may cause rendering errors in the proje
         <translation type="vanished">더 축소하면 어떤 격자 간격이든 점을 생략합니다. 기준은 상태 표시줄의 확대 비율로 알 수 있습니다</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="343"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1479"/>
         <source> px</source>
         <translation> px</translation>
     </message>
@@ -21643,123 +21693,123 @@ To enable it: Configure QElectroTech &gt; General &gt; Projects, or set the QET_
         <translation>세로 대칭</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="332"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="334"/>
         <source>the file is damaged</source>
         <translation>파일이 손상되었습니다</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="337"/>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="342"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="339"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="344"/>
         <source>the file is not a QElectroTech project</source>
         <translation>이 파일은 QElectroTech 프로젝트가 아닙니다</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="350"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="352"/>
         <source>it was saved by a newer QElectroTech (%1)</source>
         <translation>더 새로운 QElectroTech (%1)로 저장되었습니다</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="360"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="362"/>
         <source>the file holds SQL that QElectroTech does not expect (%1)</source>
         <translation>파일에 QElectroTech가 예상하지 않은 SQL이 있습니다 (%1)</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="366"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="368"/>
         <source>the file is damaged: an item refers to one that is not there</source>
         <translation>파일이 손상되었습니다: 없는 항목을 참조하는 항목이 있습니다</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="399"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="401"/>
         <source>the file could not be replaced (error %1)</source>
         <translation>파일을 바꿀 수 없습니다 (오류 %1)</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="442"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="444"/>
         <source>the file could not be opened</source>
         <translation>파일을 열 수 없습니다</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="815"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="817"/>
         <source>the file could not be read back</source>
         <translation>파일을 다시 읽을 수 없습니다</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1217"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1219"/>
         <source>the file could not be written</source>
         <translation>파일을 쓸 수 없습니다</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1239"/>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1755"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1241"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1757"/>
         <source>it keeps no revision %1</source>
         <translation>리비전 %1이(가) 없습니다</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1248"/>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1773"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1250"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1775"/>
         <source>this build of QElectroTech has no SQLite session support</source>
         <translation>이 QElectroTech 빌드는 SQLite 세션을 지원하지 않습니다</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1255"/>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1763"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1257"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1765"/>
         <source>the changes of revision %1 were not recorded</source>
         <translation>리비전 %1의 변경이 기록되지 않았습니다</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1260"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1262"/>
         <source>revision %1 cannot be undone</source>
         <translation>리비전 %1은(는) 되돌릴 수 없습니다</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1270"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1272"/>
         <source>revision %1 does not undo cleanly</source>
         <translation>리비전 %1이(가) 깔끔하게 되돌려지지 않습니다</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1364"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1366"/>
         <source>the file could not be written to disk</source>
         <translation>파일을 디스크에 쓸 수 없습니다</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1429"/>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1545"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1431"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1547"/>
         <source>the file could not be read</source>
         <translation>파일을 읽을 수 없습니다</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1457"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1459"/>
         <source>it has %n damaged page(s), more than the repair data it keeps can rebuild</source>
         <translation>
             <numerusform>손상된 페이지가 %n개 있어, 보관한 복구 데이터로 다시 만들 수 있는 범위를 넘습니다</numerusform>
         </translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1522"/>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1562"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1524"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1564"/>
         <source>its content is not what QElectroTech saved: it is damaged, or another program changed it</source>
         <translation>내용이 QElectroTech가 저장한 것과 다릅니다: 손상되었거나 다른 프로그램이 변경했습니다</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1633"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1635"/>
         <source>keep at least 2 saves, or 0 for all</source>
         <translation>저장을 2개 이상 남기거나, 전부 남기려면 0으로 하세요</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1639"/>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1712"/>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1746"/>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1806"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1641"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1714"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1748"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1808"/>
         <source>it keeps no history</source>
         <translation>기록이 없습니다</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1750"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1752"/>
         <source>revision %1 does not come before revision %2</source>
         <translation>리비전 %1이(가) 리비전 %2보다 앞서지 않습니다</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1781"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1783"/>
         <source>the changes of revision %1 do not follow on</source>
         <translation>리비전 %1의 변경이 이어지지 않습니다</translation>
     </message>
@@ -29777,12 +29827,12 @@ The following variables can be used:
         <translation>읽기 전용 쿼리(SELECT 또는 WITH ... SELECT)만 허용됩니다.</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/projectdatabase.cpp" line="8769"/>
+        <location filename="../sources/dataBase/projectdatabase.cpp" line="8843"/>
         <source>Export the internal project database</source>
         <translation>프로젝트 내부 데이터베이스 내보내기</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/projectdatabase.cpp" line="8776"/>
+        <location filename="../sources/dataBase/projectdatabase.cpp" line="8850"/>
         <source>untitled</source>
         <translation>이름 없음</translation>
     </message>
