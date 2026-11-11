@@ -4836,7 +4836,11 @@ static QString structureIdSql(const QString &plant, const QString &location,
 							  const QString &label)
 {
 	const auto part = [](const QString &sign, const QString &value) {
-		return QStringLiteral("CASE WHEN COALESCE(%2, '') <> '' THEN '%1' || %2 ELSE '' END")
+			//A value typed with its sign ("-K1") keeps one sign, as
+			//AssignVariables::replaceVariable() does
+		return QStringLiteral("CASE WHEN COALESCE(%2, '') = '' THEN '' "
+							  "WHEN substr(%2, 1, 1) = '%1' THEN %2 "
+							  "ELSE '%1' || %2 END")
 				.arg(sign, value);
 	};
 	return QStringLiteral("(%1 || %2 || %3)")
