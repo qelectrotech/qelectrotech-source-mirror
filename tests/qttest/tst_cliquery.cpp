@@ -138,7 +138,7 @@ private slots:
 		QTest::newRow("qet_devices") << QStringLiteral("qet_devices")
 			<< QStringLiteral("folio_number,folio,position,label,plant,location,kind,sub_kind,function,"
 							  "description,designation,manufacturer,article,supplier,quantity,comment,"
-							  "symbol,device_uuid,folio_uuid,structure_id");
+							  "symbol,device_uuid,folio_uuid,structure_id,model");
 		QTest::newRow("qet_wires") << QStringLiteral("qet_wires")
 			<< QStringLiteral("folio_number,folio,wire_number,from_device,from_terminal,to_device,"
 							  "to_terminal,colour,section,cable,bus,function,voltage,wire_uuid,"
@@ -146,6 +146,9 @@ private slots:
 		QTest::newRow("qet_links") << QStringLiteral("qet_links")
 			<< QStringLiteral("link_kind,device,folio_number,folio,position,linked_device,"
 							  "linked_folio_number,linked_folio,linked_position,device_uuid,linked_uuid");
+		QTest::newRow("qet_device_list") << QStringLiteral("qet_device_list")
+			<< QStringLiteral("structure_id,plant,location,label,symbols,folios,folio_number,folio,"
+							  "position,articles,designation,description,head_uuid,model");
 		QTest::newRow("qet_cables") << QStringLiteral("qet_cables")
 			<< QStringLiteral("structure_id,plant,location,designation,type,cores,drawn_cores,"
 							  "wired_cores,length,folios,folio_number,folio,cable_uuid");
@@ -248,7 +251,7 @@ private slots:
 			db.setDatabaseName(path);
 			QVERIFY(db.open());
 			QSqlQuery query(db);
-			for (const char *view : {"qet_folios", "qet_devices", "qet_wires", "qet_links", "qet_cables"})
+			for (const char *view : {"qet_folios", "qet_devices", "qet_wires", "qet_links", "qet_device_list", "qet_cables"})
 				QVERIFY(query.exec(QStringLiteral("DROP VIEW IF EXISTS %1").arg(QLatin1String(view))));
 			db.close();
 		}

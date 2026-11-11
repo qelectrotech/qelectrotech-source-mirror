@@ -40,13 +40,18 @@
 #include <QApplication>
 #include <QCheckBox>
 #include <QClipboard>
+#include <QComboBox>
 #include <QDialog>
 #include <QDialogButtonBox>
 #include <QFormLayout>
+#include <QHBoxLayout>
 #include <QKeyEvent>
+#include <QLabel>
 #include <QLineEdit>
 #include <QRegularExpression>
+#include <QPushButton>
 #include <QSpinBox>
+#include <QVBoxLayout>
 
 #include <algorithm>
 #include <limits>
@@ -79,13 +84,17 @@ TerminalStripEditor::TerminalStripEditor(QETProject *project, QWidget *parent) :
 		//Copy, paste and delete of the cells with the keyboard
 	ui->m_table_widget->installEventFilter(this);
 
+		//Filter bar above the table
+	setUpFilterBar();
+
 		//Setup the bridge color
 	ui->m_bridge_color_cb->setColors(TerminalStripBridge::bridgeColor().toList());
 
 		//What the button really does is more than its label says: it
 		//brings the bridges of the drawing in with the sorting
 	ui->m_auto_ordering_pb->setToolTip(tr(
-		"Sort the terminals the way the drawing is laid out, and bring "
+		"Sort the terminals the way the drawing is laid out, or by label "
+		"when the general settings ask for it, and bring "
 		"the bridges drawn there in with them. What the drawing brought "
 		"is read-only here: it is changed in the drawing or not at all."));
 
@@ -270,9 +279,12 @@ void TerminalStripEditor::setCurrentStrip(TerminalStrip *strip_)
 			v_header_->setSectionResizeMode(QHeaderView::ResizeToContents);
 			m_model->buildBridgePixmap(setUpBridgeCellWidth());
 			connect(ui->m_table_widget->selectionModel(), &QItemSelectionModel::selectionChanged, this, &TerminalStripEditor::selectionChanged);
+			connect(ui->m_table_widget->selectionModel(), &QItemSelectionModel::selectionChanged, this, &TerminalStripEditor::dropHiddenRowsFromSelection);
+			fillFilterColumns();
 		}
 
 		spanMultiLevelTerminals();
+		applyRowFilter();
 		selectionChanged();	//Used to update child widgets
 
 		connect(m_current_strip, &TerminalStrip::orderChanged, this, &TerminalStripEditor::reload);
@@ -300,6 +312,7 @@ void TerminalStripEditor::reload()
 	{
 		m_model->reload();
 		spanMultiLevelTerminals();
+		applyRowFilter();
 	}
 }
 
@@ -406,6 +419,7 @@ void TerminalStripEditor::clear()
         m_model = nullptr;
     }
     setManufacturerFilter(QString());
+    applyRowFilter();	//Only clears the count of the filter bar
 }
 
 /**
@@ -576,6 +590,302 @@ QSize TerminalStripEditor::setUpBridgeCellWidth()
 	}
 
 	return QSize(0,0);
+}
+
+/**
+ * @brief TerminalStripEditor::setUpFilterBar
+ * Put a filter bar above the table : the terminals whose text matches
+ * (for example every terminal of the potential 24V) can be shown alone
+ * and selected in one go, to apply a type, a function, a cable or a
+ * bridge to all of them.
+ */
+void TerminalStripEditor::setUpFilterBar()
+{
+	auto table_ = ui->m_table_widget;
+	auto container_ = new QWidget(ui->m_layout_tab);
+	auto v_layout_ = new QVBoxLayout(container_);
+	v_layout_->setContentsMargins(0, 0, 0, 0);
+
+	auto bar_ = new QHBoxLayout;
+
+	m_filter_column_cb = new QComboBox(container_);
+	m_filter_column_cb->setToolTip(tr("Column searched by the filter"));
+
+	m_filter_le = new QLineEdit(container_);
+	m_filter_le->setClearButtonEnabled(true);
+	m_filter_le->setPlaceholderText(tr("Filter, for example 24V or K1*"));
+	m_filter_le->setToolTip(tr(
+		"Text searched in the column, whatever the case and the spaces: "
+		"\"24 v\" finds 24V. * stands for any text and ? for one character. "
+		"Return selects the terminals found."));
+
+	m_filter_hide_cb = new QCheckBox(tr("Hide the others"), container_);
+	m_filter_hide_cb->setChecked(true);
+	m_filter_hide_cb->setToolTip(tr(
+		"Show only the terminals found. A terminal of several levels "
+		"stays whole when one of its levels is found."));
+
+	m_filter_target_cb = new QComboBox(container_);
+	m_filter_target_cb->addItem(tr("Whole rows"), -1);
+	for (int level_ = 0 ; level_ < 4 ; ++level_) {
+		m_filter_target_cb->addItem(tr("Bridge, level %1").arg(level_),
+									TerminalStripModel::Level0 + level_);
+	}
+	m_filter_target_cb->setToolTip(tr(
+		"What is selected: whole rows for the type, the function, the LED, "
+		"the cable or the move, or the cells of one level to bridge them."));
+
+	auto select_pb_ = new QPushButton(tr("Select"), container_);
+	select_pb_->setToolTip(tr("Select the terminals found"));
+
+	m_filter_count_label = new QLabel(container_);
+
+	bar_->addWidget(m_filter_column_cb);
+	bar_->addWidget(m_filter_le, 1);
+	bar_->addWidget(m_filter_hide_cb);
+	bar_->addWidget(m_filter_target_cb);
+	bar_->addWidget(select_pb_);
+	bar_->addWidget(m_filter_count_label);
+
+	const int index_ = ui->horizontalLayout_2->indexOf(table_);
+	ui->horizontalLayout_2->removeWidget(table_);
+	v_layout_->addLayout(bar_);
+	v_layout_->addWidget(table_);
+	ui->horizontalLayout_2->insertWidget(index_, container_);
+
+	fillFilterColumns();
+
+	connect(m_filter_le, &QLineEdit::textChanged, this, &TerminalStripEditor::applyRowFilter);
+	connect(m_filter_le, &QLineEdit::returnPressed, this, &TerminalStripEditor::selectFilteredRows);
+	connect(m_filter_hide_cb, &QCheckBox::toggled, this, &TerminalStripEditor::applyRowFilter);
+	connect(m_filter_column_cb, QOverload<int>::of(&QComboBox::currentIndexChanged),
+			this, &TerminalStripEditor::applyRowFilter);
+	connect(select_pb_, &QPushButton::clicked, this, &TerminalStripEditor::selectFilteredRows);
+}
+
+/**
+ * @brief TerminalStripEditor::fillFilterColumns
+ * Fill the column combo box of the filter bar with the titles
+ * of the columns of the model, so that they read as in the table.
+ */
+void TerminalStripEditor::fillFilterColumns()
+{
+	if (!m_filter_column_cb) {
+		return;
+	}
+
+	const auto current_ = m_filter_column_cb->currentData();
+	m_filter_column_cb->blockSignals(true);
+	m_filter_column_cb->clear();
+	m_filter_column_cb->addItem(tr("All columns"), -1);
+	if (m_model)
+	{
+		const QVector<TerminalStripModel::Column> columns_ {
+			TerminalStripModel::Label,
+			TerminalStripModel::Conductor,
+			TerminalStripModel::XRef,
+			TerminalStripModel::Cable,
+			TerminalStripModel::CableWire,
+			TerminalStripModel::CableTarget,
+			TerminalStripModel::Type,
+			TerminalStripModel::Function,
+			TerminalStripModel::Led,
+			TerminalStripModel::Color,
+			TerminalStripModel::Section,
+			TerminalStripModel::Width};
+		for (const auto column_ : columns_)
+		{
+			const auto title_ = m_model->headerData(column_, Qt::Horizontal).toString();
+			m_filter_column_cb->addItem(title_.isEmpty() ? QString::number(column_) : title_,
+										static_cast<int>(column_));
+		}
+	}
+	const auto index_ = m_filter_column_cb->findData(current_);
+	m_filter_column_cb->setCurrentIndex(index_ > 0 ? index_ : 0);
+	m_filter_column_cb->blockSignals(false);
+}
+
+/**
+ * @brief TerminalStripEditor::filterExpression
+ * @return the expression of the text of the filter bar, or an invalid
+ * expression when the filter is empty. The spaces are left out, the
+ * case is ignored, * stands for any text and ? for one character.
+ */
+QRegularExpression TerminalStripEditor::filterExpression() const
+{
+	QString text_ = m_filter_le ? m_filter_le->text() : QString();
+	text_.remove(QRegularExpression(QStringLiteral("\\s")));
+	if (text_.isEmpty()) {
+		return QRegularExpression(QStringLiteral("("));	//invalid on purpose
+	}
+
+	QString pattern_;
+	for (const auto &char_ : text_)
+	{
+		if (char_ == QLatin1Char('*')) {
+			pattern_ += QStringLiteral(".*");
+		} else if (char_ == QLatin1Char('?')) {
+			pattern_ += QLatin1Char('.');
+		} else {
+			pattern_ += QRegularExpression::escape(QString(char_));
+		}
+	}
+	return QRegularExpression(pattern_, QRegularExpression::CaseInsensitiveOption);
+}
+
+/**
+ * @brief TerminalStripEditor::rowMatchesFilter
+ * @param row
+ * @param expression
+ * @return true if the text of @a row, in the column chosen in the
+ * filter bar (or in any column), matches @a expression
+ */
+bool TerminalStripEditor::rowMatchesFilter(int row, const QRegularExpression &expression) const
+{
+	if (!m_model) {
+		return false;
+	}
+
+	QVector<int> columns_;
+	const int chosen_ = m_filter_column_cb ? m_filter_column_cb->currentData().toInt() : -1;
+	if (chosen_ >= 0) {
+		columns_.append(chosen_);
+	} else {
+		for (int i = 1 ; i < m_filter_column_cb->count() ; ++i) {
+			columns_.append(m_filter_column_cb->itemData(i).toInt());
+		}
+	}
+
+	static const QRegularExpression spaces_(QStringLiteral("\\s"));
+	for (const auto column_ : columns_)
+	{
+		auto text_ = m_model->data(m_model->index(row, column_), Qt::DisplayRole).toString();
+		text_.remove(spaces_);
+		if (!text_.isEmpty() && expression.match(text_).hasMatch()) {
+			return true;
+		}
+	}
+	return false;
+}
+
+/**
+ * @brief TerminalStripEditor::applyRowFilter
+ * Show only the terminals found by the filter bar when "Hide the others"
+ * is checked, and tell how many were found. A physical terminal of
+ * several levels is shown or hidden whole, so that its spanned
+ * position cell is never cut.
+ */
+void TerminalStripEditor::applyRowFilter()
+{
+	if (!m_model || !m_current_strip)
+	{
+		if (m_filter_count_label) {
+			m_filter_count_label->clear();
+		}
+		return;
+	}
+
+	const auto expression_ = filterExpression();
+	const bool filtering_ = expression_.isValid();
+	const bool hide_ = filtering_ && m_filter_hide_cb && m_filter_hide_cb->isChecked();
+
+	int found_ = 0;
+	int row_ = 0;
+	for (int i = 0 ; i < m_current_strip->physicalTerminalCount() ; ++i)
+	{
+		const int level_count_ = qMax(1, m_current_strip->physicalTerminal(i)->realTerminalCount());
+		bool physical_found_ = false;
+		for (int level_ = 0 ; level_ < level_count_ ; ++level_)
+		{
+			if (filtering_ && rowMatchesFilter(row_ + level_, expression_)) {
+				physical_found_ = true;
+				++found_;
+			}
+		}
+		for (int level_ = 0 ; level_ < level_count_ ; ++level_) {
+			ui->m_table_widget->setRowHidden(row_ + level_, hide_ && !physical_found_);
+		}
+		row_ += level_count_;
+	}
+		//Rows the strip does not know, if any, are never hidden
+	for ( ; row_ < m_model->rowCount() ; ++row_) {
+		ui->m_table_widget->setRowHidden(row_, false);
+	}
+
+	if (m_filter_count_label) {
+		m_filter_count_label->setText(filtering_ ? tr("%n found", "", found_) : QString());
+	}
+
+	dropHiddenRowsFromSelection();
+}
+
+/**
+ * @brief TerminalStripEditor::selectFilteredRows
+ * Select the terminals found by the filter bar: their whole rows, or
+ * their cell of the bridge level chosen in the filter bar.
+ */
+void TerminalStripEditor::selectFilteredRows()
+{
+	if (!m_model || !ui->m_table_widget->selectionModel()) {
+		return;
+	}
+
+	const auto expression_ = filterExpression();
+	if (!expression_.isValid()) {
+		return;
+	}
+
+	const int target_ = m_filter_target_cb ? m_filter_target_cb->currentData().toInt() : -1;
+	const int first_column_ = target_ >= 0 ? target_ : 0;
+	const int last_column_  = target_ >= 0 ? target_ : m_model->columnCount() - 1;
+
+	QItemSelection selection_;
+	int first_row_ = -1;
+	for (int row_ = 0 ; row_ < m_model->rowCount() ; ++row_)
+	{
+		if (ui->m_table_widget->isRowHidden(row_) ||
+			!rowMatchesFilter(row_, expression_)) {
+			continue;
+		}
+		selection_.select(m_model->index(row_, first_column_),
+						  m_model->index(row_, last_column_));
+		if (first_row_ < 0) {
+			first_row_ = row_;
+		}
+	}
+
+	ui->m_table_widget->selectionModel()->select(selection_, QItemSelectionModel::ClearAndSelect);
+	if (first_row_ >= 0) {
+		ui->m_table_widget->scrollTo(m_model->index(first_row_, first_column_));
+	}
+	ui->m_table_widget->setFocus();
+}
+
+/**
+ * @brief TerminalStripEditor::dropHiddenRowsFromSelection
+ * A hidden row must never be changed by the buttons of the editor:
+ * remove the hidden rows from the selection (Ctrl+A selects them too).
+ */
+void TerminalStripEditor::dropHiddenRowsFromSelection()
+{
+	if (m_dropping_hidden_rows || !m_model || !ui->m_table_widget->selectionModel()) {
+		return;
+	}
+
+	QItemSelection hidden_;
+	for (const auto &index_ : ui->m_table_widget->selectionModel()->selectedIndexes())
+	{
+		if (ui->m_table_widget->isRowHidden(index_.row())) {
+			hidden_.select(index_, index_);
+		}
+	}
+	if (hidden_.isEmpty()) {
+		return;
+	}
+
+	m_dropping_hidden_rows = true;
+	ui->m_table_widget->selectionModel()->select(hidden_, QItemSelectionModel::Deselect);
+	m_dropping_hidden_rows = false;
 }
 
 /**
