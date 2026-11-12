@@ -23,6 +23,7 @@
 #include "factory/elementfactory.h"
 #include "qetapptest.h"
 #include "qetgraphicsitem/element.h"
+#include "qetgraphicsitem/dynamicelementtextitem.h"
 #include "qetgraphicsitem/structureboxitem.h"
 #include "qetproject.h"
 #include "titleblockproperties.h"
@@ -484,6 +485,52 @@ private slots:
 		for (QGraphicsItem *item : reloaded->items())
 			if (item->type() == StructureBoxItem::Type)
 				QCOMPARE(static_cast<StructureBoxItem *>(item)->pen().style(), Qt::SolidLine);
+	}
+
+		//A text showing the reference designation follows the boxes: drawn
+		//around the symbol, given a location, moved away, deleted, and a
+		//project read back with the box (boxes load after the symbols)
+	void aSymbolTextFollowsTheBox()
+	{
+		QETProject project;
+		Diagram *diagram = project.addNewDiagram();
+		setFolio(diagram, QStringLiteral("FACTORY"), QStringLiteral("CP1"));
+		Element *element = symbol(diagram);
+		QVERIFY(element);
+		element->setPos(200, 200);
+		setInfo(element, info("K1"));
+		auto *text = new DynamicElementTextItem(element);
+		text->setTextFrom(DynamicElementTextItem::CompositeText);
+		text->setCompositeText(QStringLiteral("%{structure_id_full}"));
+		element->addDynamicTextItem(text);
+		QCOMPARE(text->toPlainText(), QStringLiteral("=FACTORY+CP1-K1"));
+
+		StructureBoxItem *b = box(diagram, QRectF(0, 0, 400, 400), QString(), QString());
+		QCOMPARE(text->toPlainText(), QStringLiteral("=FACTORY+CP1-K1"));
+		b->setLocation(QStringLiteral("F1"));
+		QCOMPARE(text->toPlainText(), QStringLiteral("=FACTORY+F1-K1"));
+		b->setPos(1000, 1000);
+		QCOMPARE(text->toPlainText(), QStringLiteral("=FACTORY+CP1-K1"));
+		b->setPos(0, 0);
+		QCOMPARE(text->toPlainText(), QStringLiteral("=FACTORY+F1-K1"));
+
+			//Read back (into the same project, which holds the symbol's
+			//definition): the symbol is built before the box
+		QDomDocument saved = diagram->toXml();
+		Diagram *reloaded = project.addNewDiagram();
+		QVERIFY(reloaded->fromXml(saved));
+		bool found = false;
+		for (Element *e : reloaded->elements())
+			for (DynamicElementTextItem *t : e->dynamicTextItems())
+				if (t->textFrom() == DynamicElementTextItem::CompositeText) {
+					QCOMPARE(t->toPlainText(), QStringLiteral("=FACTORY+F1-K1"));
+					found = true;
+				}
+		QVERIFY(found);
+
+		diagram->removeItem(b);
+		QCOMPARE(text->toPlainText(), QStringLiteral("=FACTORY+CP1-K1"));
+		delete b;
 	}
 
 	void boxIdentityIsInTheDatabase()

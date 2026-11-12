@@ -21,6 +21,8 @@
 #include "../autoNum/assignvariables.h"
 #include "../diagram.h"
 #include "element.h"
+#include "dynamicelementtextitem.h"
+#include "elementtextitemgroup.h"
 #include "../qetxml.h"
 #include "../ui/structureboxpropertieswidget.h"
 
@@ -38,6 +40,57 @@ StructureBoxItem::StructureBoxItem(QPointF p1, QPointF p2, QGraphicsItem *parent
 	QPen dash_dot = pen();
 	dash_dot.setStyle(Qt::DashDotLine);
 	setPen(dash_dot);
+		//What the symbols inside take from it changed
+	connect(this, &StructureBoxItem::identityChanged, this, [this]() { refreshSymbolTexts(diagram()); });
+	connect(this, &QetShapeItem::geometryChanged, this, [this]() { refreshSymbolTexts(diagram()); });
+}
+
+/**
+	@brief StructureBoxItem::itemChange
+	A box put on a folio (drawn, pasted, loaded), taken off it (deleted,
+	undone) or moved changes the place of the symbols it holds or held:
+	their texts are worked out again. Loaded, a box comes after the symbols
+	of its folio, which first worked out their texts without it.
+*/
+QVariant StructureBoxItem::itemChange(GraphicsItemChange change, const QVariant &value)
+{
+	const QVariant result = QetShapeItem::itemChange(change, value);
+	if (change == ItemSceneHasChanged) {
+		if (m_folio && m_folio != diagram()) {
+			refreshSymbolTexts(m_folio);
+		}
+		m_folio = diagram();
+		refreshSymbolTexts(m_folio);
+	} else if (change == ItemPositionHasChanged) {
+		refreshSymbolTexts(diagram());
+	}
+	return result;
+}
+
+/**
+	@brief StructureBoxItem::refreshSymbolTexts
+	Work out again every text of the symbols of @p diagram that shows a
+	reference designation: %{structure_id} and %{structure_id_full} read
+	the boxes around a symbol (enclosing()), which a symbol does not watch.
+*/
+void StructureBoxItem::refreshSymbolTexts(Diagram *diagram)
+{
+	if (!diagram) {
+		return;
+	}
+	const auto refresh = [](DynamicElementTextItem *text) {
+		if (text->textFrom() == DynamicElementTextItem::CompositeText
+				&& text->compositeText().contains(QLatin1String("%{structure_id"))) {
+			text->refreshConductorText();
+		}
+	};
+	for (Element *element : diagram->elements()) {
+		for (DynamicElementTextItem *text : element->dynamicTextItems())
+			refresh(text);
+		for (ElementTextItemGroup *group : element->textGroups())
+			for (DynamicElementTextItem *text : group->texts())
+				refresh(text);
+	}
 }
 
 void StructureBoxItem::setPlant(const QString &plant)

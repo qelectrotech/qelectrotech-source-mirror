@@ -20,6 +20,8 @@
 
 #include "qetshapeitem.h"
 
+#include <QPointer>
+
 class Element;
 
 /**
@@ -90,19 +92,28 @@ class StructureBoxItem : public QetShapeItem
 			/// Where @p element is: its own plant and location, each one
 			/// taken from referencePlace() when it is empty.
 		static Place placeOf(const Element *element);
+			/// Work out again the texts of the symbols of @p diagram which
+			/// show a reference designation (%{structure_id...}): what a
+			/// box gives them changed, or the boxes were loaded after them
+		static void refreshSymbolTexts(Diagram *diagram);
 
 	signals:
 			/// Its plant, location or prefix changed
 		void identityChanged();
+
 
 	protected:
 		void paint(
 				QPainter *painter,
 				const QStyleOptionGraphicsItem *option,
 				QWidget *widget) override;
+		QVariant itemChange(GraphicsItemChange change, const QVariant &value) override;
 
 	private:
 		QString m_plant, m_location, m_prefix;
+			/// The folio it was last on: the symbols it leaves are
+			/// refreshed once it is gone
+		QPointer<Diagram> m_folio;
 };
 
 #endif // STRUCTUREBOXITEM_H
