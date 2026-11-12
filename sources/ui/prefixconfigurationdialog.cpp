@@ -18,8 +18,13 @@
 #include "prefixconfigurationdialog.h"
 
 #include <ElementsCollection/qetlabelsfile.h>
+#include <NameList/nameslist.h>
 
 #include <QDialogButtonBox>
+#include <QDir>
+#include <QDomDocument>
+#include <QFile>
+#include <QFileInfo>
 #include <QHash>
 #include <QHBoxLayout>
 #include <QHeaderView>
@@ -31,6 +36,34 @@
 #include <QTreeWidget>
 #include <QTreeWidgetItem>
 #include <QTreeWidgetItemIterator>
+
+namespace {
+	/**
+		@brief folderTitle
+		@param dir_path : a directory of the collection
+		@return the name its qet_directory file gives it in the current
+		language, the title the collection panel shows for it, or an
+		empty string when the file is missing, unreadable or has no name
+	*/
+	QString folderTitle(const QString &dir_path)
+	{
+		QFile file(QDir(dir_path).filePath(QStringLiteral("qet_directory")));
+		if (!file.open(QIODevice::ReadOnly)) {
+			return QString();
+		}
+		QDomDocument document;
+		if (!document.setContent(&file)) {
+			return QString();
+		}
+		const QDomElement root = document.documentElement();
+		if (root.tagName() != QLatin1String("qet-directory")) {
+			return QString();
+		}
+		NamesList names;
+		names.fromXml(root);
+		return names.name();
+	}
+}
 
 /**
 	@brief PrefixConfigurationDialog::PrefixConfigurationDialog
@@ -126,13 +159,15 @@ void PrefixConfigurationDialog::askWhatToDoWithOrphans()
 /**
 	@brief PrefixConfigurationDialog::buildTree
 	One item per directory of the collection, nested the way the
-	directories are, each with a line edit holding the prefix already
-	stored for that directory.
+	directories are and named the way the collection panel names them,
+	each with a line edit holding the prefix already stored for that
+	directory.
 */
 void PrefixConfigurationDialog::buildTree()
 {
 	m_tree->setUpdatesEnabled(false);
 
+	const QDir collection_dir = QFileInfo(m_labels.filePath()).absoluteDir();
 	QHash<QString, QTreeWidgetItem *> known;
 	for (const QStringList &folder : m_folders) {
 		QTreeWidgetItem *parent_item = nullptr;
@@ -145,7 +180,11 @@ void PrefixConfigurationDialog::buildTree()
 				item = parent_item == nullptr
 						? new QTreeWidgetItem(m_tree)
 						: new QTreeWidgetItem(parent_item);
-				item->setText(0, name);
+					//The title the collection panel shows, so the two can
+					//be matched; the folder name stays as the tooltip
+				const QString title = folderTitle(collection_dir.filePath(built));
+				item->setText(0, title.isEmpty() ? name : title);
+				item->setToolTip(0, name);
 				item->setFlags(item->flags() & ~Qt::ItemIsEditable);
 				known.insert(built, item);
 			}
