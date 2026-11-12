@@ -6228,6 +6228,21 @@ def _check_binary(arguments: dict) -> None:
     arguments["binary"] = str(given)
 
 
+def _collection_roots() -> list:
+    """The element collections a call may read outside the workspace:
+    those listed in QET_MCP_ELEMENTS and the one of the install."""
+    extra = _env_paths("QET_MCP_ELEMENTS")
+    default = default_elements_dir()
+    if default is not None:
+        extra.append(default)
+    return extra
+
+
+# Data paths that name an element collection, not a project: read-only, and
+# allowed in the collections elements_dir may name as well as the workspace.
+_COLLECTION_READS = {("qet_element_search", "directory")}
+
+
 def _check_elements_dir(arguments: dict, roots: list) -> None:
     """Fill in "elements_dir" from the install, or confine a given one."""
     raw = arguments.get("elements_dir")
@@ -6239,10 +6254,7 @@ def _check_elements_dir(arguments: dict, roots: list) -> None:
     if not isinstance(raw, str):
         raise ValueError("'elements_dir' must be a path")
     given = Path(raw).expanduser().resolve()
-    extra = _env_paths("QET_MCP_ELEMENTS")
-    default = default_elements_dir()
-    if default is not None:
-        extra.append(default)
+    extra = _collection_roots()
     if roots and not _within_workspace(given, roots + extra):
         raise ValueError(
             f"'elements_dir' is outside the workspace: {given}. Leave it out "
@@ -6289,7 +6301,10 @@ def enforce_path_policy(tool_name: str, arguments: dict) -> None:
 
     for arg in spec.get("read", ()):
         if arg in arguments:
-            _check_path(arguments[arg], arg, "read", roots)
+            allowed = roots
+            if roots and (tool_name, arg) in _COLLECTION_READS:
+                allowed = roots + _collection_roots()
+            _check_path(arguments[arg], arg, "read", allowed)
 
     for arg in spec.get("write", ()):
         if arg not in arguments:

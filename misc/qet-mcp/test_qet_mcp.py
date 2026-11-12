@@ -3060,6 +3060,24 @@ class BinaryPolicy(unittest.TestCase):
         os.environ["QET_MCP_ELEMENTS"] = str(coll)
         self.call(elements_dir=str(coll / "10_electric"))
 
+    def test_symbol_search_may_read_a_listed_collection(self):
+        """qet_element_search reads a collection, as elements_dir names one:
+        the collections listed in QET_MCP_ELEMENTS are open to it as well
+        as the workspace, for reading only."""
+        coll = Path(self.tmp.name) / "collection"
+        coll.mkdir()
+        with self.assertRaisesRegex(ValueError, "outside the workspace"):
+            m.enforce_path_policy("qet_element_search", {"directory": str(coll)})
+        os.environ["QET_MCP_ELEMENTS"] = str(coll)
+        m.enforce_path_policy("qet_element_search", {"directory": str(coll)})
+        other = Path(self.tmp.name) / "not-listed"
+        other.mkdir()
+        with self.assertRaisesRegex(ValueError, "outside the workspace"):
+            m.enforce_path_policy("qet_element_search", {"directory": str(other)})
+        with self.assertRaisesRegex(ValueError, "outside the workspace"):
+            m.enforce_path_policy("qet_project_info",
+                                  {"path": str(coll / "x.qet")})
+
     def test_an_install_finds_its_own_qet_and_collection(self):
         """Installed as <prefix>/share/qelectrotech/mcp/qet_mcp.py, the
         server needs no configuration at all."""
