@@ -617,6 +617,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/NameList/ui/namelistwidget.cpp
   ${QET_DIR}/sources/NameList/ui/namelistwidget.h
 
+  ${QET_DIR}/sources/print/pdfpagesetupdialog.cpp
+  ${QET_DIR}/sources/print/pdfpagesetupdialog.h
   ${QET_DIR}/sources/print/projectprintwindow.cpp
   ${QET_DIR}/sources/print/projectprintwindow.h
   ${QET_DIR}/sources/print/printdrawing.h
