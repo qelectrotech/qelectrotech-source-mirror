@@ -15,6 +15,7 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
+#include "qet.h"
 #include "elementsmover.h"
 #include "qetproject.h"
 #include "autobreakconductor.h"
@@ -227,7 +228,8 @@ void ElementsMover::applyMovement(const QPointF &movement)
 	{
 		if (qgi == m_movement_driver)
 			continue;
-		qgi->setPos(qgi->pos() + movement);
+			//The movement is on the folio, whichever way a parent is turned
+		qgi->setPos(qgi->pos() + QET::sceneStepInParent(qgi, movement));
 	}
 
 	QVector<Conductor *>list_conductors;
