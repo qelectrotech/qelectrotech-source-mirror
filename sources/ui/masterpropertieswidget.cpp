@@ -643,17 +643,21 @@ void MasterPropertiesWidget::updateUi()
 		if (m_plc_widget)
 			m_plc_widget->setVisible(false);
 
-		// Restore normal widget size policies
-		for (QWidget *w : {static_cast<QWidget*>(ui->m_free_tree_widget),
-				   static_cast<QWidget*>(ui->m_link_tree_widget),
-				   static_cast<QWidget*>(ui->label),
-				   static_cast<QWidget*>(ui->label_2),
-				   static_cast<QWidget*>(ui->link_button),
-				   static_cast<QWidget*>(ui->unlink_button)}) {
-			w->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+		// Restore the size policy each widget has in the .ui file: only
+		// the two lists take the free height. Making every widget
+		// Expanding made the label and button rows as tall as the lists,
+		// with two huge arrow buttons in the middle of the dialog.
+		auto restore = [](QWidget *w, QSizePolicy::Policy h, QSizePolicy::Policy v) {
+			w->setSizePolicy(h, v);
 			w->setMinimumSize(0, 0);
 			w->setMaximumSize(QWIDGETSIZE_MAX, QWIDGETSIZE_MAX);
-		}
+		};
+		restore(ui->m_free_tree_widget, QSizePolicy::Expanding, QSizePolicy::Expanding);
+		restore(ui->m_link_tree_widget, QSizePolicy::Expanding, QSizePolicy::Expanding);
+		restore(ui->label,              QSizePolicy::Preferred, QSizePolicy::Preferred);
+		restore(ui->label_2,            QSizePolicy::Preferred, QSizePolicy::Preferred);
+		restore(ui->link_button,        QSizePolicy::Minimum,   QSizePolicy::Fixed);
+		restore(ui->unlink_button,      QSizePolicy::Minimum,   QSizePolicy::Fixed);
 		for (int col = 0; col < ui->gridLayout->columnCount(); ++col)
 			ui->gridLayout->setColumnStretch(col, 0);
 
