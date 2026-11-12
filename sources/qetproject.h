@@ -154,6 +154,9 @@ class QETProject : public QObject
 		void buildFolioToShow(Diagram *folio);
 		void buildPartnerSymbols(const QList<Diagram *> &folios, const QSet<QUuid> &partners);
 		void buildFoliosHolding(ElementData::Types kinds, bool free_only);
+		QList<projectDataBase::FolioSymbol> unbuiltSymbols(ElementData::Types kinds,
+														   bool free_only) const;
+		Element *buildSymbol(const QUuid &symbol);
 		void buildFoliosHoldingSymbols(const QSet<QUuid> &symbols);
 		void buildFoliosHoldingTables();
 		QSet<QUuid> symbolsOnUnbuiltFolios() const;

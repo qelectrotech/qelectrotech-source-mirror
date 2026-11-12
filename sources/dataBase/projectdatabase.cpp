@@ -1749,6 +1749,49 @@ QList<projectDataBase::FolioSymbol> projectDataBase::symbolsOnFolios(const QList
 }
 
 /**
+	@brief projectDataBase::linkRows
+	@return what a list of symbols to link shows of each symbol of
+	@p elements, read from qet_devices and qet_wires, so that a symbol on
+	a folio not built yet (lazy folios) is listed without building it. A
+	symbol with no wire has empty wire fields; one the database does not
+	know has no entry.
+*/
+QHash<QUuid, projectDataBase::LinkRow> projectDataBase::linkRows(const QList<QUuid> &elements) const
+{
+	QHash<QUuid, LinkRow> rows;
+	QSqlQuery device(m_data_base);
+	device.prepare(QStringLiteral("SELECT label, comment, sub_kind, position FROM qet_devices "
+								  "WHERE device_uuid = :uuid"));
+		//The first wire on it, as Element::conductors().first() finds
+		//the first one on a built folio report
+	QSqlQuery wire(m_data_base);
+	wire.prepare(QStringLiteral("SELECT wire_number, function, voltage, colour, section "
+								"FROM qet_wires WHERE from_device_uuid = :uuid "
+								"OR to_device_uuid = :uuid LIMIT 1"));
+	for (const QUuid &element : elements) {
+		device.bindValue(QStringLiteral(":uuid"), element.toString());
+		if (!device.exec() || !device.next()) {
+			continue;
+		}
+		LinkRow row;
+		row.label = device.value(0).toString();
+		row.comment = device.value(1).toString();
+		row.sub_kind = device.value(2).toString();
+		row.position = device.value(3).toString();
+		wire.bindValue(QStringLiteral(":uuid"), element.toString());
+		if (wire.exec() && wire.next()) {
+			row.wire_number = wire.value(0).toString();
+			row.wire_function = wire.value(1).toString();
+			row.wire_voltage = wire.value(2).toString();
+			row.wire_colour = wire.value(3).toString();
+			row.wire_section = wire.value(4).toString();
+		}
+		rows.insert(element, row);
+	}
+	return rows;
+}
+
+/**
 	@brief projectDataBase::wiresOnFolios
 	@return the wires on the folios @p folios, folio by folio in that order,
 	read from the conductor table as it is (see elementTypesOnFolios())
