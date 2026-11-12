@@ -741,6 +741,11 @@ qet_add_app_test(tst_terminalstriporder tst_terminalstriporder.cpp)
 qet_add_app_test(tst_cabletarget tst_cabletarget.cpp)
 qet_add_app_test(tst_cablelist tst_cablelist.cpp)
 
+# What a junction's chain says: how a stub beside the strip names the wire
+# which ends on the junction, and where a cable list says each cable starts
+# and ends, neither of them naming the junction itself (#1500).
+qet_add_app_test(tst_junctionchain tst_junctionchain.cpp)
+
 # What lies outside the sheet: named per folio, for the warning before
 # printing and exporting; off with the setting.
 qet_add_app_test(tst_outsidesheet tst_outsidesheet.cpp)
