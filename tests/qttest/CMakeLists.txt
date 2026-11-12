@@ -737,6 +737,9 @@ qet_add_app_test(tst_terminalstriporder tst_terminalstriporder.cpp)
 qet_add_app_test(tst_cabletarget tst_cabletarget.cpp)
 qet_add_app_test(tst_cablelist tst_cablelist.cpp)
 
+# Copying a cable leaves the cable it was copied from whole.
+qet_add_app_test(tst_cablecopy tst_cablecopy.cpp)
+
 # What lies outside the sheet: named per folio, for the warning before
 # printing and exporting; off with the setting.
 qet_add_app_test(tst_outsidesheet tst_outsidesheet.cpp)
