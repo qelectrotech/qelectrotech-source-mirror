@@ -25,7 +25,10 @@ class QETProject;
 /**
 	@brief The WiringListDialog class
 	Read-only view of the project's from-to wiring list, read from the
-	wiring_list_view of projectDataBase.
+	wiring_list_view of projectDataBase. A wire which ends on a junction
+	names where the junction's chain leads rather than the junction
+	itself, the way the CSV export names it (#1500), and a junction with
+	no source connection set is counted in the summary above the table.
 
 	Deliberately not an exporter: QET already ships a wiring-list CSV export
 	(Projet > Exporter le plan de câblage, and --export-cables), which walks
