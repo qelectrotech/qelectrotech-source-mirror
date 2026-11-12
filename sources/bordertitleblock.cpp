@@ -620,6 +620,7 @@ Qt::Alignment BorderTitleBlock::titleBlockTemplateAlign() const
 */
 void BorderTitleBlock::titleBlockTemplateChanged(const QString &template_name) {
 	if (titleBlockTemplateName() != template_name) return;
+	m_titleblock_template_renderer -> invalidateCache();
 }
 
 /**

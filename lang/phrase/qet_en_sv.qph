@@ -68,6 +68,11 @@
 </phrase>
 <phrase>
     <source>Wire</source>
+    <target>Förbindning</target>
+    <definition>Ritad förbindning i schemat, samma som conductor</definition>
+</phrase>
+<phrase>
+    <source>Wire</source>
     <target>Ledare</target>
     <definition>Fysisk ledare, t.ex. i kopplingslistor och kablar</definition>
 </phrase>
@@ -2657,5 +2662,15 @@ Här är de senaste meddelandena som loggades före avslutningen – du kan spar
     <source>Wire number</source>
     <target>Förbindningsnummer</target>
     <definition>number marked on a wire</definition>
+</phrase>
+<phrase>
+    <source>Auto numbering</source>
+    <target>Automatisk numrering</target>
+    <definition>automatic numbering of labels, conductors or folios</definition>
+</phrase>
+<phrase>
+    <source>Conductor section</source>
+    <target>Ledararea</target>
+    <definition>tvärsnittsarea i mm²</definition>
 </phrase>
 </QPH>

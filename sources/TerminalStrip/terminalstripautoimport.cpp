@@ -172,7 +172,7 @@ TerminalStripAutoImport::ImportResult TerminalStripAutoImport::importFreeTermina
 	};
 
 	const ElementProvider provider(project);
-	for (auto terminal_ : provider.freeTerminal()) {
+	for (auto terminal_ : provider.freeTerminalBlocks()) {
 		if (terminal_) {
 			collect_(terminal_->realTerminal(), nullptr);
 		}
