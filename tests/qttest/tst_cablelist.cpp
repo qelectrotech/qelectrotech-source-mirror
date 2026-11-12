@@ -21,25 +21,49 @@
 #include "ElementsCollection/elementslocation.h"
 #include "ElementsCollection/xmlelementcollection.h"
 #include "conductorproperties.h"
-#include "diagram.h"
 #include "factory/elementfactory.h"
-#include "qetapptest.h"
 #include "qetgraphicsitem/conductor.h"
 #include "qetgraphicsitem/element.h"
 #include "qetgraphicsitem/terminal.h"
 #include "qetinformation.h"
+#include "dataBase/projectdatabase.h"
+#include "diagram.h"
+#include "qetapptest.h"
 #include "qetproject.h"
 
 #include <QDomDocument>
+#include <QSqlQuery>
 #include <QtTest>
 
 /**
-	The rows of the cable list (Lists > cable list): where each cable
-	starts and ends.
+	qet_cables: the project's cables, one row each, read from the cables
+	themselves. A cable's plant and location are its own, else those of
+	the first folio it is drawn on; structure_id composes them with its
+	designation like a device's. Also the rows of the cable list
+	(Lists > cable list): where each cable starts and ends.
 */
 class tst_cablelist : public QObject
 {
 	Q_OBJECT
+
+	static void setPlace(Diagram *diagram, const QString &plant, const QString &location)
+	{
+		auto block = diagram->border_and_titleblock.exportTitleBlock();
+		block.plant = plant;
+		block.locmach = location;
+		diagram->border_and_titleblock.importTitleBlock(block);
+	}
+
+	static QUuid drawOn(Cable *cable, Diagram *diagram)
+	{
+		CablePartData part;
+		part.uuid = QUuid::createUuid();
+		part.diagram = diagram->uuid();
+		part.p1 = QPointF(100, 100);
+		part.p2 = QPointF(100, 200);
+		cable->addPart(part);
+		return part.uuid;
+	}
 
 	/// A symbol with two terminals, top and bottom, of the given link type
 	static Element *symbol(Diagram *diagram, const QString &link_type, const QString &label,
@@ -95,6 +119,60 @@ class tst_cablelist : public QObject
 
   private slots:
 	void initTestCase() { QETProject::setBackupEnabled(false); }
+
+	void oneRowPerCable()
+	{
+		QETProject project;
+		Diagram *first = project.addNewDiagram();
+		Diagram *second = project.addNewDiagram();
+		setPlace(first, QStringLiteral("FACTORY"), QStringLiteral("CP1"));
+		setPlace(second, QStringLiteral("FACTORY"), QStringLiteral("CP2"));
+
+			//Drawn on both folios: in the place of the first; two cores
+			//drawn, one of them on a wire
+		Cable *w1 = cable(project, QStringLiteral("W1"));
+		w1->setType(QStringLiteral("CONTROL 6C+E"));
+		w1->setCoreCount(7);
+		drawOn(w1, second);
+		const QUuid part = drawOn(w1, first);
+		CableCore wired;
+		wired.core = 0;
+		wired.part = part;
+		wired.conductor = QUuid::createUuid();
+		w1->setCore(wired);
+		CableCore free;
+		free.core = 6;
+		free.part = part;
+		w1->setCore(free);
+			//Its own place, drawn nowhere
+		Cable *w2 = cable(project, QStringLiteral("W2"));
+		w2->setInstallation(QStringLiteral("SILO"));
+		w2->setLocation(QStringLiteral("P1"));
+		w2->setCoreCount(3);
+			//Drawn on the second folio only
+		drawOn(cable(project, QStringLiteral("W3")), second);
+
+		project.dataBase()->updateDB();
+		QString error;
+		QSqlQuery query = project.dataBase()->newQuery(QStringLiteral(
+			"SELECT structure_id, designation, type, cores, drawn_cores, wired_cores, "
+			"folios, folio_number, cable_uuid FROM qet_cables"), &error);
+		QVERIFY2(error.isEmpty(), qPrintable(error));
+		QStringList rows;
+		QString w1_uuid;
+		while (query.next()) {
+			QStringList row;
+			for (int i = 0 ; i < 8 ; ++i) row << query.value(i).toString();
+			rows << row.join(QLatin1Char('|'));
+			if (query.value(1).toString() == QLatin1String("W1"))
+				w1_uuid = query.value(8).toString();
+		}
+		QCOMPARE(rows, QStringList({
+			QStringLiteral("=FACTORY+CP1-W1|W1|CONTROL 6C+E|7|2|1|2|1"),
+			QStringLiteral("=FACTORY+CP2-W3|W3||0|0|0|1|2"),
+			QStringLiteral("=SILO+P1-W2|W2||3|0|0|0|")}));
+		QCOMPARE(w1_uuid, w1->uuid().toString());
+	}
 
 		//A cable whose cores land on the terminals of one strip ends at the
 		//strip, not at its first two terminals
