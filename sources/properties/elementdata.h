@@ -256,6 +256,8 @@ class ElementData : public PropertiesInterface
 		QDomElement toXml(QDomDocument &xml_element) const override;
 		bool fromXml(const QDomElement &xml_element) override;
 		QDomElement kindInfoToXml(QDomDocument &document);
+		QDomElement customInfoToXml(QDomDocument &document) const;
+		DiagramContext withCustomInfo(DiagramContext informations) const;
 	QDomElement plcMasterDataToXml(QDomDocument &document) const;
 	void plcMasterDataFromXml(const QDomElement &xml_plc);
 		QDomElement xrefDisplayToXml(QDomDocument &document) const;
@@ -337,6 +339,9 @@ class ElementData : public PropertiesInterface
 
 		int m_contact_count{1};
 		DiagramContext m_informations;
+			/// Custom properties this symbol defines (discussion #561):
+			/// every placed copy shows them, filled in or not
+		QStringList m_custom_info_keys;
 		NamesList m_names_list;
 		QString m_drawing_information;
 

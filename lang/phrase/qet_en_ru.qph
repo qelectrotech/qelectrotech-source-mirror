@@ -2724,4 +2724,124 @@ additional information about %1 import / scaling</source>
     <source>Are you sure you want to delete the selected %1 sheets ?</source>
     <target>Вы уверены, что хотите удалить выбранные листы (%1)?</target>
 </phrase>
+<phrase>
+    <source>Folio</source>
+    <target>Лист</target>
+    <definition>same as Sheet: a page of a project</definition>
+</phrase>
+<phrase>
+    <source>Conductor</source>
+    <target>Проводник</target>
+    <definition>a drawn connection between two terminals on a folio</definition>
+</phrase>
+<phrase>
+    <source>Terminal</source>
+    <target>Вывод</target>
+    <definition>connection point of a symbol (or a terminal of a terminal strip)</definition>
+</phrase>
+<phrase>
+    <source>Terminal strip</source>
+    <target>Клеммная колодка</target>
+    <definition>row of terminals in a cabinet (X1, X2…)</definition>
+</phrase>
+<phrase>
+    <source>Element</source>
+    <target>Элемент</target>
+    <definition>a symbol placed on a folio or stored in a collection</definition>
+</phrase>
+<phrase>
+    <source>Symbol</source>
+    <target>Символ</target>
+    <definition>graphic symbol of a device</definition>
+</phrase>
+<phrase>
+    <source>Macro</source>
+    <target>Макрос</target>
+    <definition>a saved group of symbols and conductors placed in one go</definition>
+</phrase>
+<phrase>
+    <source>Cable</source>
+    <target>Кабель</target>
+    <definition>multi-core cable</definition>
+</phrase>
+<phrase>
+    <source>Core</source>
+    <target>Жила</target>
+    <definition>one conductor inside a cable</definition>
+</phrase>
+<phrase>
+    <source>Folio report</source>
+    <target>Ссылка на лист</target>
+    <definition>symbol that continues a conductor on another folio</definition>
+</phrase>
+<phrase>
+    <source>Title block</source>
+    <target>Штамп</target>
+    <definition>the frame box with project, folio and author data</definition>
+</phrase>
+<phrase>
+    <source>Bill of materials</source>
+    <target>Спецификация</target>
+    <definition>list of the devices and parts of a project</definition>
+</phrase>
+<phrase>
+    <source>Grid</source>
+    <target>Сетка</target>
+    <definition>the dot grid of the drawing area</definition>
+</phrase>
+<phrase>
+    <source>Potential</source>
+    <target>Потенциал</target>
+    <definition>electric potential shared by connected conductors</definition>
+</phrase>
+<phrase>
+    <source>Bridge</source>
+    <target>Перемычка</target>
+    <definition>jumper linking terminals of a terminal strip</definition>
+</phrase>
+<phrase>
+    <source>Collection</source>
+    <target>Коллекция</target>
+    <definition>library of elements</definition>
+</phrase>
+<phrase>
+    <source>Plant</source>
+    <target>Установка</target>
+    <definition>IEC 81346 plant designation (=)</definition>
+</phrase>
+<phrase>
+    <source>Location</source>
+    <target>Расположение</target>
+    <definition>IEC 81346 location designation (+)</definition>
+</phrase>
+<phrase>
+    <source>Device</source>
+    <target>Устройство</target>
+    <definition>physical piece of equipment, e.g. a contactor</definition>
+</phrase>
+<phrase>
+    <source>Master</source>
+    <target>Главный</target>
+    <definition>master symbol of a cross-reference (e.g. a coil)</definition>
+</phrase>
+<phrase>
+    <source>Slave</source>
+    <target>Подчинённый</target>
+    <definition>slave symbol of a cross-reference (e.g. a contact)</definition>
+</phrase>
+<phrase>
+    <source>Coil</source>
+    <target>Катушка</target>
+    <definition>relay or contactor coil</definition>
+</phrase>
+<phrase>
+    <source>Shield</source>
+    <target>Экран</target>
+    <definition>cable shield (screen)</definition>
+</phrase>
+<phrase>
+    <source>Wire number</source>
+    <target>Номер провода</target>
+    <definition>number marked on a wire</definition>
+</phrase>
 </QPH>

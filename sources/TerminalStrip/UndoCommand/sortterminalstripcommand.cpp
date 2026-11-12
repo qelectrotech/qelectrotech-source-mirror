@@ -26,6 +26,7 @@
 #include <positionorder.h>
 #include <qetgraphicsitem/element.h>
 #include <utils/qetutils.h>
+#include <utils/qetsettings.h>
 
 SortTerminalStripCommand::SortTerminalStripCommand(TerminalStrip *strip, QUndoCommand *parent) :
 	QUndoCommand(parent),
@@ -95,11 +96,14 @@ void SortTerminalStripCommand::sort()
 									   : QSharedPointer<RealTerminal>();
 	};
 
+		//The rule is read once, not for every comparison
+	const bool by_label_ = QetSettings::stripSortedByLabel();
 	std::stable_sort(m_new_order.begin(), m_new_order.end(),
-			[&position_of](const QSharedPointer<PhysicalTerminal> &arg1,
+			[&position_of, by_label_](const QSharedPointer<PhysicalTerminal> &arg1,
 						const QSharedPointer<PhysicalTerminal> &arg2)
 	{
-		return planOrderLessThan(position_of(arg1), position_of(arg2));
+		return by_label_ ? labelOrderLessThan(position_of(arg1), position_of(arg2))
+						 : planOrderLessThan(position_of(arg1), position_of(arg2));
 	});
 }
 
@@ -148,3 +152,33 @@ bool SortTerminalStripCommand::planOrderLessThan(
 	}
 	return QETUtils::naturalLessThan(a_->label(), b_->label());
 }
+
+/**
+	@brief SortTerminalStripCommand::labelOrderLessThan
+	Order two real terminals by label, in natural order ("X1:2" before
+	"X1:10", whatever the case). Two terminals of the same label, as the
+	top and bottom of one terminal drawn twice, keep the plan order, so
+	the result stays stable. A missing terminal goes last.
+	@a a_ terminal to compare
+	@a b_ other terminal to compare
+	@return true if @a a_ comes before @a b_
+*/
+bool SortTerminalStripCommand::labelOrderLessThan(
+		const QSharedPointer<RealTerminal> &a_,
+		const QSharedPointer<RealTerminal> &b_)
+{
+	if (!a_ || !b_) {
+		return a_ && !b_;		//a missing terminal goes last
+	}
+
+	const auto label_a = a_->label();
+	const auto label_b = b_->label();
+	if (QETUtils::naturalLessThan(label_a, label_b)) {
+		return true;
+	}
+	if (QETUtils::naturalLessThan(label_b, label_a)) {
+		return false;
+	}
+	return planOrderLessThan(a_, b_);
+}
+

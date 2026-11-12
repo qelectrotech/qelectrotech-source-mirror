@@ -1803,6 +1803,7 @@ void Conductor::updateDefinitionMark()
 	}
 }
 
+
 /**
 	Sauvegarde le profil courant du conducteur pour l'utiliser ulterieurement
 	dans priv_modifieConductor.
@@ -2009,6 +2010,9 @@ void Conductor::setProperties(const ConductorProperties &property)
 		if (c != this)
 			c->updateDefinitionMark();
 	update();
+		//What a strip above this wire draws of it changed with the
+		//three fields
+	if (diagram()) diagram()->refreshTerminalStrips();
 	if (Terminal::takesConductorColor()) {
 		if (terminal1) terminal1->update();
 		if (terminal2) terminal2->update();
@@ -2187,6 +2191,9 @@ void Conductor::setCableReference(const QString &label,
 		m_properties.m_conductor_type.clear();
 	}
 	storeProperties();
+		//Becoming a core of a cable, or ceasing to be one, changes what
+		//the terminal strip above this wire draws of it
+	if (diagram()) diagram()->refreshTerminalStrips();
 	emit propertiesChange();
 }
 

@@ -55,6 +55,17 @@ namespace DuplicateLabels
 		SameDesignation
 	};
 
+	// Where a wire number must be unique.
+	enum class SignalScope
+	{
+		// In the whole project: two potentials with one number clash.
+		Project,
+		// In each installation (=plant of the wire's folio), as
+		// plant-structured projects number: one number may name a
+		// potential in =FACTORY and another in =SILO.
+		Plant
+	};
+
 	struct Occurrence
 	{
 		QPointer<QGraphicsObject> item;
@@ -63,7 +74,8 @@ namespace DuplicateLabels
 		QString label;
 		// Wires on one potential, or symbols representing one linked device.
 		int entity = 0;
-		// A component's place(); empty for signals.
+		// A component's place(); for a signal, its folio's plant ("=SILO")
+		// with SignalScope::Plant, else empty.
 		QString place;
 		// A component's part number (manufacturer_reference); empty when it
 		// has none, which agrees with any.
@@ -120,11 +132,13 @@ namespace DuplicateLabels
 	// only clash within one place; a linked device is at its master's.
 	// With ComponentRule::SameDesignation, symbols of one label in one place
 	// which nothing links are one component unless their part numbers
-	// differ; terminal blocks still follow their potentials.
+	// differ; terminal blocks still follow their potentials. With
+	// SignalScope::Plant, signals only clash within one plant.
 	QVector<Group> find(
 		QETProject*			project,
 		Qt::CaseSensitivity sensitivity = Qt::CaseSensitive,
-		ComponentRule		rule		= ComponentRule::LinkedOnly);
+		ComponentRule		rule		= ComponentRule::LinkedOnly,
+		SignalScope			scope		= SignalScope::Project);
 
 } // namespace DuplicateLabels
 

@@ -70,7 +70,6 @@ class ElementInfoWidget : public AbstractElementPropertiesEditorWidget
 	private:
 		void buildInterface();
 		ElementInfoPartWidget *infoPartWidgetForKey(const QString &key) const;
-		QStringList predefinedKeys() const;
 		void updateSuggestions();
 		void setupSchemeRow();
 		void setupFreezeRow();

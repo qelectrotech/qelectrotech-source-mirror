@@ -18,6 +18,7 @@
 #include "customelementinfopartwidget.h"
 
 #include <diagramcontext.h>
+#include <qetinformation.h>
 #include <qeticons.h>
 
 #include <QGridLayout>
@@ -41,7 +42,7 @@ CustomElementInfoPartWidget::CustomElementInfoPartWidget(
 	m_remove_button(new QToolButton(this))
 {
 	m_key_edit->setPlaceholderText(tr("name_of_the_property"));
-	m_key_edit->setToolTip(tr("Lower-case letters, numbers, hyphens and underscores only"));
+	m_key_edit->setToolTip(tr("Lower-case letters, numbers, hyphens and underscores only. Capitals and spaces are converted as you type."));
 	m_value_edit->setClearButtonEnabled(true);
 
 	m_remove_button->setIcon(QET::Icons::Remove);
@@ -56,6 +57,7 @@ CustomElementInfoPartWidget::CustomElementInfoPartWidget(
 	layout->addWidget(m_value_edit, 1, 0);
 	layout->addWidget(m_remove_button, 0, 1, 2, 1);
 
+	connect(m_key_edit, &QLineEdit::textEdited, this, &CustomElementInfoPartWidget::convertKey);
 	connect(m_key_edit, &QLineEdit::textChanged, this, &CustomElementInfoPartWidget::validateKey);
 	connect(m_key_edit, &QLineEdit::textChanged, this, &CustomElementInfoPartWidget::changed);
 	connect(m_value_edit, &QLineEdit::textChanged, this, &CustomElementInfoPartWidget::changed);
@@ -110,4 +112,34 @@ void CustomElementInfoPartWidget::validateKey()
 	} else {
 		m_key_edit->setStyleSheet(QStringLiteral("border: 1px solid red;"));
 	}
+}
+
+/**
+	@brief CustomElementInfoPartWidget::convertKey
+	Turn what is typed into a key every version can open,
+	"Address A" into "address_a" (@sa QETInformation::toInfoKey)
+*/
+void CustomElementInfoPartWidget::convertKey(const QString &typed)
+{
+	const QString key = QETInformation::toInfoKey(typed);
+	if (key == typed) {
+		return;
+	}
+	const int cursor = m_key_edit->cursorPosition() - (typed.size() - key.size());
+	m_key_edit->setText(key);
+	m_key_edit->setCursorPosition(qMax(0, cursor));
+}
+
+/**
+	@brief CustomElementInfoPartWidget::setDefinedBySymbol
+	A property the symbol defines is on every copy: its name cannot be
+	changed or the row removed here, only its value filled in.
+*/
+void CustomElementInfoPartWidget::setDefinedBySymbol(bool defined)
+{
+	m_key_edit->setReadOnly(defined);
+	if (defined) {
+		m_key_edit->setToolTip(tr("Defined by the symbol"));
+	}
+	m_remove_button->setVisible(!defined);
 }

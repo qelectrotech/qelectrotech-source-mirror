@@ -913,21 +913,21 @@
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="186"/>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="272"/>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="355"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="365"/>
         <source>Only New</source>
         <translation>신규만</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="176"/>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="256"/>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="375"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="385"/>
         <source>Both</source>
         <translation>모두</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="206"/>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="304"/>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="385"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="395"/>
         <source>Disable</source>
         <translation>사용 안 함</translation>
     </message>
@@ -948,84 +948,162 @@
         <translation>요소 번호 다시 매기기…</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="348"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="318"/>
+        <source>Renumber conductors…</source>
+        <translation>도체 번호 다시 매기기…</translation>
+    </message>
+    <message>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="321"/>
+        <source>Give the conductors of the chosen sheets new numbers with a conductor numbering, one number per potential, in sheet and position order. Frozen conductors keep theirs.</source>
+        <translation>선택한 도면의 도체에 도체 번호 매기기 규칙에 따라 새 번호를 부여합니다. 전위마다 번호 하나씩, 도면과 위치 순서대로 매깁니다. 고정된 도체는 번호를 유지합니다.</translation>
+    </message>
+    <message>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="358"/>
         <source>Sheet</source>
         <translation>시트</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="365"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="375"/>
         <source>Existent</source>
         <translation>기존</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="75"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="82"/>
         <source>Under Development</source>
         <translation>개발 중</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="76"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="83"/>
         <source>Installing</source>
         <translation>설치 중</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="77"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="84"/>
         <source>Built</source>
         <translation>구성됨</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="132"/>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="137"/>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="148"/>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="163"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="142"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="147"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="158"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="173"/>
         <source>Renumber elements</source>
         <translation>요소 번호 다시 매기기</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="133"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="143"/>
         <source>Renumber elements (%1)</source>
         <translation>요소 번호 다시 매기기 (%1)</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="139"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="149"/>
         <source>No element follows this numbering.</source>
         <translation>이 번호 매기기를 따르는 요소가 없습니다.</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="140"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="150"/>
         <source>The %n elements following this numbering have a frozen name: nothing is renumbered.</source>
         <translation>
             <numerusform>이 번호 매기기를 따르는 %n개 요소의 이름이 고정되어 있습니다: 다시 번호를 매기지 않습니다.</numerusform>
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="149"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="159"/>
         <source>%n elements will be renumbered, starting from the first number, in sheet and position order.</source>
         <translation>
             <numerusform>%n개 요소의 번호를 첫 번호부터 시트 및 위치 순서대로 다시 매깁니다.</numerusform>
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="157"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="167"/>
         <source>%n elements renumbered, %1 of them with a new name.</source>
         <translation>
             <numerusform>%n개 요소의 번호를 다시 매겼으며, 그중 %1개는 새 이름입니다.</numerusform>
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="160"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="170"/>
         <source>%n elements with a frozen name were not touched, and their numbers were not given out again.</source>
         <translation>
             <numerusform>이름이 고정된 %n개 요소는 변경되지 않았으며, 그 번호는 다시 부여되지 않았습니다.</numerusform>
         </translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="275"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="187"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="194"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="224"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="249"/>
+        <source>Renumber conductors</source>
+        <translation>도체 번호 다시 매기기</translation>
+    </message>
+    <message>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="188"/>
+        <source>The project has no conductor numbering.</source>
+        <translation>프로젝트에 도체 번호 매기기 규칙이 없습니다.</translation>
+    </message>
+    <message>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="200"/>
+        <source>Numbering:</source>
+        <translation>번호 매기기:</translation>
+    </message>
+    <message>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="205"/>
+        <source>%1 - %2</source>
+        <translation>%1 - %2</translation>
+    </message>
+    <message>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="209"/>
+        <source>Sheets:</source>
+        <translation>도면:</translation>
+    </message>
+    <message>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="225"/>
+        <source>No conductor of the chosen sheets can be renumbered.</source>
+        <translation>선택한 도면에서 번호를 다시 매길 수 있는 도체가 없습니다.</translation>
+    </message>
+    <message>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="234"/>
+        <source>Sheet %1: %2 → %3</source>
+        <translation>도면 %1: %2 → %3</translation>
+    </message>
+    <message>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="236"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="248"/>
+        <source>(none)</source>
+        <translation>(없음)</translation>
+    </message>
+    <message>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="246"/>
+        <source>Sheet %1: %2 kept (%3)</source>
+        <translation>도면 %1: %2 유지 (%3)</translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="250"/>
+        <source>%n potentials will be numbered again with &quot;%1&quot;, in sheet and position order.</source>
+        <translation>
+            <numerusform>전위 %n개가 &quot;%1&quot;(으)로 도면과 위치 순서대로 번호가 다시 매겨집니다.</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="253"/>
+        <source>%n potentials are kept as they are.</source>
+        <translation>
+            <numerusform>전위 %n개는 그대로 유지됩니다.</numerusform>
+        </translation>
+    </message>
+    <message>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="260"/>
+        <source>Renumber conductors (%1)</source>
+        <translation>도체 번호 다시 매기기 (%1)</translation>
+    </message>
+    <message>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="372"/>
         <source>Auto Numbering Management</source>
         <comment>title window</comment>
         <translation>자동 번호 매기기 관리</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="276"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="373"/>
         <source>In this menu you can set whether you want the auto numberings to be updated or not. For element auto numbering you have 4 options of update policy:
 -Both: both new and existent element labels will be updated. This is the default option.
 -Update only new: only new created elements will be updated. Existent element labels will be frozen.
@@ -1049,7 +1127,7 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="14"/>
         <source>Export the bill of materials as CSV</source>
-        <translation type="unfinished"></translation>
+        <translation>부품 목록을 CSV로 내보내기</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="20"/>
@@ -1327,27 +1405,27 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
         <translation>세로</translation>
     </message>
     <message>
-        <location filename="../sources/ui/borderpropertieswidget.cpp" line="349"/>
+        <location filename="../sources/ui/borderpropertieswidget.cpp" line="351"/>
         <source>Folio size: %1 × %2 mm</source>
         <translation>도면 시트 크기: %1 × %2 mm</translation>
     </message>
     <message>
-        <location filename="../sources/ui/borderpropertieswidget.cpp" line="372"/>
+        <location filename="../sources/ui/borderpropertieswidget.cpp" line="374"/>
         <source>. Smallest paper that holds it: %1 %2, %3 mm free across and %4 mm free down</source>
         <translation>. 들어가는 가장 작은 용지: %1 %2, 가로 여백 %3 mm, 세로 여백 %4 mm</translation>
     </message>
     <message>
-        <location filename="../sources/ui/borderpropertieswidget.cpp" line="374"/>
+        <location filename="../sources/ui/borderpropertieswidget.cpp" line="376"/>
         <source>landscape</source>
         <translation>가로</translation>
     </message>
     <message>
-        <location filename="../sources/ui/borderpropertieswidget.cpp" line="374"/>
+        <location filename="../sources/ui/borderpropertieswidget.cpp" line="376"/>
         <source>portrait</source>
         <translation>세로</translation>
     </message>
     <message>
-        <location filename="../sources/ui/borderpropertieswidget.cpp" line="378"/>
+        <location filename="../sources/ui/borderpropertieswidget.cpp" line="380"/>
         <source>. It is larger than A0</source>
         <translation>. A0보다 큽니다</translation>
     </message>
@@ -1355,13 +1433,13 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
 <context>
     <name>BridgeCopy</name>
     <message>
-        <location filename="../sources/diagramview.cpp" line="825"/>
+        <location filename="../sources/diagramview.cpp" line="838"/>
         <location filename="../sources/diagramevent/diagrameventaddpaste.cpp" line="466"/>
         <source>Paste a bridge</source>
         <translation>브리지 붙여넣기</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="966"/>
+        <location filename="../sources/diagramview.cpp" line="1065"/>
         <source>Duplicate a bridge</source>
         <translation>브리지 복제</translation>
     </message>
@@ -1596,13 +1674,13 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
 <context>
     <name>CableCopy</name>
     <message>
-        <location filename="../sources/diagramview.cpp" line="810"/>
+        <location filename="../sources/diagramview.cpp" line="823"/>
         <location filename="../sources/diagramevent/diagrameventaddpaste.cpp" line="453"/>
         <source>Paste a cable</source>
         <translation>케이블 붙여넣기</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="961"/>
+        <location filename="../sources/diagramview.cpp" line="1060"/>
         <source>Duplicate a cable</source>
         <translation>케이블 복제</translation>
     </message>
@@ -2675,22 +2753,37 @@ Do you want to renumber them too?</source>
         <translation>변수 추가:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/compositetexteditdialog.cpp" line="22"/>
-        <location filename="../sources/ui/compositetexteditdialog.cpp" line="42"/>
+        <location filename="../sources/ui/compositetexteditdialog.cpp" line="23"/>
+        <location filename="../sources/ui/compositetexteditdialog.cpp" line="46"/>
         <source>Enter your composite text here, using the available variables</source>
         <translation>사용 가능한 변수를 이용하여 여기에 조합 텍스트를 입력하십시오</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/compositetexteditdialog.cpp" line="91"/>
+        <source>Prefix (-)</source>
+        <translation>접두사 (-)</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/compositetexteditdialog.cpp" line="92"/>
+        <source>Reference designation, IEC 81346 (=+-), short on its own page</source>
+        <translation>참조 지정, IEC 81346 (=+-), 전용 페이지에서는 짧게</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/compositetexteditdialog.cpp" line="93"/>
+        <source>Full reference designation, IEC 81346 (=+-)</source>
+        <translation>전체 참조 지정, IEC 81346 (=+-)</translation>
     </message>
 </context>
 <context>
     <name>Conductor</name>
     <message>
-        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="2224"/>
+        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="2231"/>
         <source>Edit conductor properties</source>
         <comment>undo caption</comment>
         <translation>도체 속성 수정</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="2229"/>
+        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="2236"/>
         <source>Edit the properties of several conductors</source>
         <comment>undo caption</comment>
         <translation>다중 도체 속성 수정</translation>
@@ -2942,17 +3035,17 @@ Do you want to renumber them too?</source>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.cpp" line="143"/>
         <source>This wire is a core of a cable: section, colour and type come from the cable.</source>
-        <translation type="unfinished"></translation>
+        <translation>이 전선은 케이블의 심선입니다: 단면적, 색상, 유형은 케이블에서 가져옵니다.</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.cpp" line="144"/>
         <source>This wire is core of cable %1: section, colour and type come from the cable.</source>
-        <translation type="unfinished"></translation>
+        <translation>이 전선은 케이블 %1의 심선입니다: 단면적, 색상, 유형은 케이블에서 가져옵니다.</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.cpp" line="259"/>
         <source>None</source>
-        <translation type="unfinished">없음</translation>
+        <translation>없음</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.cpp" line="319"/>
@@ -3039,19 +3132,19 @@ Locked by this sheet&apos;s “Show one potential text per sheet” option, in S
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="58"/>
         <source>Potential type :</source>
-        <translation type="unfinished"></translation>
+        <translation>전위 유형:</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="148"/>
         <source>Conductor type :</source>
-        <translation type="unfinished"></translation>
+        <translation>도체 유형:</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="158"/>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="168"/>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="178"/>
         <source>❗</source>
-        <translation type="unfinished"></translation>
+        <translation>❗</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="218"/>
@@ -3444,17 +3537,26 @@ Continue?</source>
 <context>
     <name>CustomElementInfoPartWidget</name>
     <message>
-        <location filename="../sources/ui/customelementinfopartwidget.cpp" line="43"/>
+        <location filename="../sources/ui/customelementinfopartwidget.cpp" line="44"/>
         <source>name_of_the_property</source>
         <translation>속성_이름</translation>
     </message>
     <message>
-        <location filename="../sources/ui/customelementinfopartwidget.cpp" line="44"/>
-        <source>Lower-case letters, numbers, hyphens and underscores only</source>
-        <translation>소문자, 숫자, 하이픈, 밑줄만 사용</translation>
+        <location filename="../sources/ui/customelementinfopartwidget.cpp" line="45"/>
+        <source>Lower-case letters, numbers, hyphens and underscores only. Capitals and spaces are converted as you type.</source>
+        <translation>영문 소문자, 숫자, 하이픈, 밑줄만 사용할 수 있습니다. 대문자와 공백은 입력할 때 변환됩니다.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/customelementinfopartwidget.cpp" line="48"/>
+        <location filename="../sources/ui/customelementinfopartwidget.cpp" line="142"/>
+        <source>Defined by the symbol</source>
+        <translation>기호에서 정의</translation>
+    </message>
+    <message>
+        <source>Lower-case letters, numbers, hyphens and underscores only</source>
+        <translation type="vanished">소문자, 숫자, 하이픈, 밑줄만 사용</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/customelementinfopartwidget.cpp" line="49"/>
         <source>Delete this property</source>
         <translation>이 속성 삭제</translation>
     </message>
@@ -3465,6 +3567,453 @@ Continue?</source>
         <location filename="../sources/ui/customizedialog.cpp" line="30"/>
         <source>Customize</source>
         <comment>window title</comment>
+        <translation>사용자 지정</translation>
+    </message>
+</context>
+<context>
+    <name>DeviceNavigatorDockWidget</name>
+    <message>
+        <location filename="../sources/ui/devicenavigatordockwidget.ui" line="6"/>
+        <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="68"/>
+        <source>Device Navigator</source>
+        <translation>장치 탐색기</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/devicenavigatordockwidget.ui" line="33"/>
+        <source>Filter:</source>
+        <translation>필터:</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/devicenavigatordockwidget.ui" line="50"/>
+        <source>...</source>
+        <translation>...</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/devicenavigatordockwidget.ui" line="53"/>
+        <source>Configure filters...</source>
+        <translation>필터 설정...</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/devicenavigatordockwidget.ui" line="67"/>
+        <source>Value:</source>
+        <translation>값:</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/devicenavigatordockwidget.ui" line="109"/>
+        <source>Devices / Plant Structure</source>
+        <translation>장치 / 설비 구조</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/devicenavigatordockwidget.ui" line="175"/>
+        <source>Refresh device list</source>
+        <translation>장치 목록 새로 고침</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="75"/>
+        <source>Tree</source>
+        <translation>트리</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="76"/>
+        <source>List</source>
+        <translation>목록</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="84"/>
+        <source>Search device, function, folio...</source>
+        <translation>장치, 기능, 도면 검색...</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="94"/>
+        <source>Device tag</source>
+        <translation>장치 기호</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="95"/>
+        <source>Function / Description</source>
+        <translation>기능 / 설명</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="96"/>
+        <source>Terminals</source>
+        <translation>단자</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="97"/>
+        <source>Structure (Plant / Location)</source>
+        <translation>구조 (설비 / 위치)</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="98"/>
+        <source>Folio</source>
+        <translation>도면</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="99"/>
+        <source>Position</source>
+        <translation>위치</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="100"/>
+        <source>Type</source>
+        <translation>유형</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="286"/>
+        <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="587"/>
+        <source>Coil</source>
+        <translation>코일</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="287"/>
+        <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="588"/>
+        <source>Protection</source>
+        <translation>보호</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="288"/>
+        <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="589"/>
+        <source>Commutator</source>
+        <translation>전환기</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="289"/>
+        <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="590"/>
+        <source>PLC</source>
+        <translation>PLC</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="290"/>
+        <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="591"/>
+        <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="1082"/>
+        <source>Master</source>
+        <translation>마스터</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="294"/>
+        <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="593"/>
+        <source>Power contacts</source>
+        <translation>주 접점</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="296"/>
+        <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="594"/>
+        <source>NO contact</source>
+        <translation>NO 접점</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="298"/>
+        <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="595"/>
+        <source>NC contact</source>
+        <translation>NC 접점</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="300"/>
+        <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="596"/>
+        <source>Changeover contact</source>
+        <translation>전환 접점</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="302"/>
+        <source>Delay ON</source>
+        <translation>온 딜레이</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="304"/>
+        <source>Delay OFF</source>
+        <translation>오프 딜레이</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="306"/>
+        <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="597"/>
+        <source>Contact</source>
+        <translation>접점</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="309"/>
+        <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="599"/>
+        <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="1084"/>
+        <source>Terminal</source>
+        <translation>단자</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="311"/>
+        <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="601"/>
+        <source>Part placement, general device</source>
+        <translation>부품 배치, 일반 장치</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="318"/>
+        <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="328"/>
+        <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="605"/>
+        <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="611"/>
+        <source>Device</source>
+        <translation>장치</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="407"/>
+        <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="559"/>
+        <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="650"/>
+        <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="926"/>
+        <source>No structure identifier</source>
+        <translation>구조 식별자 없음</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="428"/>
+        <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="577"/>
+        <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="633"/>
+        <source>&lt;unnamed&gt;</source>
+        <translation>&lt;이름 없음&gt;</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="664"/>
+        <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="682"/>
+        <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="1085"/>
+        <source>Cable</source>
+        <translation>케이블</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="665"/>
+        <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="683"/>
+        <source>%1 cores</source>
+        <translation>%1심</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="911"/>
+        <source>Unnamed Project</source>
+        <translation>이름 없는 프로젝트</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="1083"/>
+        <source>Slave</source>
+        <translation>슬레이브</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="1086"/>
+        <source>Cabinet Layout</source>
+        <translation>캐비닛 배치</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="1087"/>
+        <source>Symbol</source>
+        <translation>기호</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="1408"/>
+        <source>Show in diagram</source>
+        <translation>도면에서 보기</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="1411"/>
+        <source>Edit properties...</source>
+        <translation>속성 편집...</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="1416"/>
+        <source>Refresh</source>
+        <translation>새로 고침</translation>
+    </message>
+</context>
+<context>
+    <name>DeviceNavigatorFilterDialog</name>
+    <message>
+        <location filename="../sources/ui/devicenavigatorfilterdialog.ui" line="14"/>
+        <source>Configure Filters</source>
+        <translation>필터 설정</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/devicenavigatorfilterdialog.ui" line="22"/>
+        <source>Scheme:</source>
+        <translation>필터 구성:</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/devicenavigatorfilterdialog.ui" line="39"/>
+        <source>New...</source>
+        <translation>새로 만들기...</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/devicenavigatorfilterdialog.ui" line="46"/>
+        <source>Delete</source>
+        <translation>삭제</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/devicenavigatorfilterdialog.ui" line="59"/>
+        <source>Device tag</source>
+        <translation>장치 기호</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/devicenavigatorfilterdialog.ui" line="65"/>
+        <source>Device tag prefixes (comma-separated, e.g. K, Q, F, X, W):</source>
+        <translation>장치 기호 접두사 (쉼표로 구분, 예: K, Q, F, X, W):</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/devicenavigatorfilterdialog.ui" line="79"/>
+        <source>Quick Selection (DIN EN 81346)</source>
+        <translation>빠른 선택 (DIN EN 81346)</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/devicenavigatorfilterdialog.ui" line="85"/>
+        <source>-K (Relays, Contactors)</source>
+        <translation>-K (릴레이, 접촉기)</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/devicenavigatorfilterdialog.ui" line="92"/>
+        <source>-F (Protection, Fuses)</source>
+        <translation>-F (보호, 퓨즈)</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/devicenavigatorfilterdialog.ui" line="99"/>
+        <source>-Q (Power Switches)</source>
+        <translation>-Q (전력 스위치)</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/devicenavigatorfilterdialog.ui" line="106"/>
+        <source>-X (Terminals)</source>
+        <translation>-X (단자)</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/devicenavigatorfilterdialog.ui" line="113"/>
+        <source>-W (Cables)</source>
+        <translation>-W (케이블)</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/devicenavigatorfilterdialog.ui" line="120"/>
+        <source>-M (Motors, Drives)</source>
+        <translation>-M (모터, 드라이브)</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/devicenavigatorfilterdialog.ui" line="127"/>
+        <source>-B (Sensors, Transducers)</source>
+        <translation>-B (센서, 변환기)</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/devicenavigatorfilterdialog.ui" line="134"/>
+        <source>-P, -H (Signaling, Indicators)</source>
+        <translation>-P, -H (신호, 표시기)</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/devicenavigatorfilterdialog.ui" line="144"/>
+        <source>Custom pattern / Wildcard (e.g. *Pump* or -K[1-9]):</source>
+        <translation>사용자 지정 패턴 / 와일드카드 (예: *Pump* 또는 -K[1-9]):</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/devicenavigatorfilterdialog.ui" line="172"/>
+        <source>Element Types</source>
+        <translation>요소 유형</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/devicenavigatorfilterdialog.ui" line="178"/>
+        <source>Master symbols / Coils / Main functions</source>
+        <translation>마스터 기호 / 코일 / 주 기능</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/devicenavigatorfilterdialog.ui" line="185"/>
+        <source>Slave symbols / Contacts / Auxiliary functions</source>
+        <translation>슬레이브 기호 / 접점 / 보조 기능</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/devicenavigatorfilterdialog.ui" line="192"/>
+        <source>Terminals</source>
+        <translation>단자</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/devicenavigatorfilterdialog.ui" line="199"/>
+        <source>Cables</source>
+        <translation>케이블</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/devicenavigatorfilterdialog.ui" line="206"/>
+        <source>Folio reports / Cross-references (Folienverweise)</source>
+        <translation>도면 시트 참조 / 교차 참조</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/devicenavigatorfilterdialog.ui" line="213"/>
+        <source>Conductor definitions / Connections (Leitungsdefinitionen)</source>
+        <translation>도체 정의 / 연결</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/devicenavigatorfilterdialog.ui" line="220"/>
+        <source>Cabinet layout / Thumbnail placements</source>
+        <translation>캐비닛 배치 / 썸네일 배치</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/devicenavigatorfilterdialog.ui" line="227"/>
+        <source>Other devices / Symbols</source>
+        <translation>기타 장치 / 기호</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/devicenavigatorfilterdialog.ui" line="248"/>
+        <source>Structure</source>
+        <translation>구조</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/devicenavigatorfilterdialog.ui" line="254"/>
+        <source>Structure grouping:</source>
+        <translation>구조별 그룹화:</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/devicenavigatorfilterdialog.ui" line="264"/>
+        <source>Structure contains text (e.g. 010 or A1):</source>
+        <translation>구조에 포함된 텍스트 (예: 010 또는 A1):</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/devicenavigatorfilterdialog.cpp" line="340"/>
+        <source>All structures</source>
+        <translation>모든 구조</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/devicenavigatorfilterdialog.cpp" line="341"/>
+        <source>With structure identifier only</source>
+        <translation>구조 식별자가 있는 것만</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/devicenavigatorfilterdialog.cpp" line="342"/>
+        <source>Without structure identifier only</source>
+        <translation>구조 식별자가 없는 것만</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/devicenavigatorfilterdialog.cpp" line="478"/>
+        <source>New Scheme</source>
+        <translation>새 필터 구성</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/devicenavigatorfilterdialog.cpp" line="479"/>
+        <source>Enter name for new filter scheme:</source>
+        <translation>새 필터 구성의 이름을 입력하십시오:</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/devicenavigatorfilterdialog.cpp" line="502"/>
+        <source>Cannot Delete</source>
+        <translation>삭제할 수 없음</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/devicenavigatorfilterdialog.cpp" line="503"/>
+        <source>At least one filter scheme must remain.</source>
+        <translation>필터 구성이 최소 하나는 남아 있어야 합니다.</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/devicenavigatorfilterdialog.cpp" line="509"/>
+        <source>Delete Scheme</source>
+        <translation>필터 구성 삭제</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/devicenavigatorfilterdialog.cpp" line="510"/>
+        <source>Are you sure you want to delete scheme &apos;%1&apos;?</source>
+        <translation>필터 구성 &apos;%1&apos;을(를) 삭제하시겠습니까?</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/devicenavigatorfilterdialog.cpp" line="533"/>
+        <source>Reset Schemes</source>
+        <translation>필터 구성 초기화</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/devicenavigatorfilterdialog.cpp" line="534"/>
+        <source>Reset all filter schemes to defaults?</source>
+        <translation>모든 필터 구성을 기본값으로 초기화하시겠습니까?</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/devicenavigatorfilterdialog.cpp" line="586"/>
+        <source>Custom</source>
         <translation>사용자 지정</translation>
     </message>
 </context>
@@ -3499,37 +4048,37 @@ Continue?</source>
 <context>
     <name>Diagram</name>
     <message>
-        <location filename="../sources/diagram.cpp" line="347"/>
-        <source>a text</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/diagram.cpp" line="348"/>
-        <source>a shape</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/diagram.cpp" line="349"/>
-        <source>a picture</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../sources/diagram.cpp" line="350"/>
-        <source>a table</source>
-        <translation type="unfinished"></translation>
+        <source>a text</source>
+        <translation>텍스트</translation>
     </message>
     <message>
         <location filename="../sources/diagram.cpp" line="351"/>
-        <source>a terminal strip</source>
-        <translation type="unfinished"></translation>
+        <source>a shape</source>
+        <translation>도형</translation>
     </message>
     <message>
         <location filename="../sources/diagram.cpp" line="352"/>
-        <source>a cable</source>
-        <translation type="unfinished"></translation>
+        <source>a picture</source>
+        <translation>그림</translation>
     </message>
     <message>
-        <location filename="../sources/diagram.cpp" line="3421"/>
+        <location filename="../sources/diagram.cpp" line="353"/>
+        <source>a table</source>
+        <translation>표</translation>
+    </message>
+    <message>
+        <location filename="../sources/diagram.cpp" line="354"/>
+        <source>a terminal strip</source>
+        <translation>단자대</translation>
+    </message>
+    <message>
+        <location filename="../sources/diagram.cpp" line="355"/>
+        <source>a cable</source>
+        <translation>케이블</translation>
+    </message>
+    <message>
+        <location filename="../sources/diagram.cpp" line="3529"/>
         <source>Change the depth</source>
         <translation>앞뒤 순서 변경</translation>
     </message>
@@ -4200,13 +4749,14 @@ Continue?</source>
         <translation>Ctrl 키를 누른 채 자유 이동</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/diagramtextitem.cpp" line="798"/>
+        <location filename="../sources/qetgraphicsitem/diagramtextitem.cpp" line="811"/>
         <source>
 Hold Shift and drag to move the symbol</source>
-        <translation type="unfinished"></translation>
+        <translation>
+Shift 키를 누른 채 드래그하면 기호가 이동합니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/diagramtextitem.cpp" line="799"/>
+        <location filename="../sources/qetgraphicsitem/diagramtextitem.cpp" line="812"/>
         <source>
 Hold Shift and drag to move this text on its own</source>
         <translation>
@@ -4244,116 +4794,116 @@ Shift를 누른 채 끌면 이 텍스트만 이동합니다</translation>
 <context>
     <name>DiagramView</name>
     <message>
-        <location filename="../sources/diagramview.cpp" line="148"/>
+        <location filename="../sources/diagramview.cpp" line="150"/>
         <source>Paste Here</source>
         <comment>context menu action</comment>
         <translation>여기에 붙여넣기</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="123"/>
+        <location filename="../sources/diagramview.cpp" line="125"/>
         <source>In this area you conceive your diagrams by adding elements and conductors between their terminals. You may also add independent texts.</source>
         <comment>&quot;What&apos;s this?&quot; tip</comment>
         <translation>이 영역에서 요소를 추가하고 단자 사이에 도선을 연결하여 회로도를 작성합니다. 또한 독립 텍스트를 추가할 수도 있습니다.</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="151"/>
+        <location filename="../sources/diagramview.cpp" line="153"/>
         <source>Multiple paste</source>
         <translation>여러 항목 붙여넣기</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="158"/>
+        <location filename="../sources/diagramview.cpp" line="160"/>
         <source>Create a template</source>
         <comment>context menu action</comment>
         <translation>템플릿 만들기</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="162"/>
+        <location filename="../sources/diagramview.cpp" line="164"/>
         <source>Make a cabinet thumbnail</source>
         <comment>context menu action</comment>
         <translation>캐비닛 썸네일 만들기</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="166"/>
+        <location filename="../sources/diagramview.cpp" line="168"/>
         <source>Sheet reference</source>
         <translation>도면 시트 참조</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="498"/>
+        <location filename="../sources/diagramview.cpp" line="511"/>
         <source>%1: %2</source>
         <translation>%1: %2</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="539"/>
+        <location filename="../sources/diagramview.cpp" line="552"/>
         <source>Add an image</source>
         <translation>이미지 추가</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/diagramview.cpp" line="540"/>
+        <location filename="../sources/diagramview.cpp" line="553"/>
         <source>Add %n image(s)</source>
         <translation>
             <numerusform>이미지 %n개 추가</numerusform>
         </translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="547"/>
+        <location filename="../sources/diagramview.cpp" line="560"/>
         <source>Images not added</source>
         <translation>추가되지 않은 이미지</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="548"/>
+        <location filename="../sources/diagramview.cpp" line="561"/>
         <source>These files could not be added:</source>
         <translation>다음 파일을 추가할 수 없습니다:</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1211"/>
+        <location filename="../sources/diagramview.cpp" line="1342"/>
         <source>X: %1 Y: %2</source>
         <translation>X: %1 Y: %2</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1535"/>
+        <location filename="../sources/diagramview.cpp" line="1682"/>
         <source>Connect the selected terminals</source>
         <translation>선택한 단자 연결</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1983"/>
+        <location filename="../sources/diagramview.cpp" line="2130"/>
         <source>Untitled</source>
         <comment>what to display for untitled diagrams</comment>
         <translation>제목 없음</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="3055"/>
+        <location filename="../sources/diagramview.cpp" line="3241"/>
         <source>Remove this core from the line</source>
         <translation>선에서 이 심선 제거</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="3340"/>
+        <location filename="../sources/diagramview.cpp" line="3526"/>
         <source>Registered template</source>
         <translation>템플릿 저장됨</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="3341"/>
+        <location filename="../sources/diagramview.cpp" line="3527"/>
         <source>The template has been successfully saved as :
 %1</source>
         <translation>템플릿이 다음 이름으로 저장되었습니다:
 %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="3344"/>
+        <location filename="../sources/diagramview.cpp" line="3530"/>
         <source>Error</source>
         <translation>오류</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="3344"/>
+        <location filename="../sources/diagramview.cpp" line="3530"/>
         <source>The file could not be written.</source>
         <translation>파일을 쓸 수 없습니다.</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="222"/>
+        <location filename="../sources/diagramview.cpp" line="235"/>
         <source>Choose the new color for this conductor</source>
         <translation>이 도선의 새 색상 선택</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="245"/>
+        <location filename="../sources/diagramview.cpp" line="258"/>
         <source>Edit conductor properties</source>
         <comment>undo caption</comment>
         <translation>도선 속성 수정</translation>
@@ -4695,106 +5245,138 @@ Shift를 누른 채 끌면 이 텍스트만 이동합니다</translation>
 <context>
     <name>DuplicateLabelsDialog</name>
     <message>
-        <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="48"/>
+        <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="50"/>
         <source>Duplicate signals and components</source>
         <translation>중복된 신호와 부품</translation>
     </message>
     <message>
-        <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="55"/>
+        <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="57"/>
         <source>Click an occurrence to select and show it on its sheet. Refresh after editing the project.</source>
         <translation>항목을 클릭하면 선택되고 해당 도면 시트에 표시됩니다. 프로젝트를 편집한 뒤에는 새로 고치세요.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="61"/>
+        <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="63"/>
         <source>Case-sensitive comparison</source>
         <translation>대소문자 구분 비교</translation>
     </message>
     <message>
-        <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="63"/>
+        <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="65"/>
         <source>When unchecked, labels differing only in letter case, such as K1 and k1, are duplicates.</source>
         <translation>선택하지 않으면 K1과 k1처럼 대소문자만 다른 라벨도 중복으로 봅니다.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="78"/>
+        <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="80"/>
+        <source>One designation is one device; report different part numbers</source>
+        <translation>지정 하나는 장치 하나; 다른 부품 번호 보고</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="82"/>
+        <source>When checked, symbols with the same label in the same place, such as a socket drawn on two sheets, are one device and are reported only when their part numbers differ. When unchecked, only linked symbols (a coil and its contacts) are one device.</source>
+        <translation>선택하면 같은 위치에 같은 라벨을 가진 기호(두 도면에 그려진 콘센트 등)는 하나의 장치로 간주되며, 부품 번호가 다를 때만 보고됩니다. 선택하지 않으면 연결된 기호(코일과 그 접점)만 하나의 장치로 간주됩니다.</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="99"/>
+        <source>A wire number is unique within its plant (=)</source>
+        <translation>전선 번호는 해당 설비(=) 안에서 고유함</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="101"/>
+        <source>When checked, the same wire number in two plants, such as 101 on a =FACTORY sheet and 101 on a =SILO sheet, is not a duplicate: a wire takes the plant of its sheet. When unchecked, a wire number names one potential in the whole project.</source>
+        <translation>선택하면 두 설비에 있는 같은 전선 번호(=FACTORY 도면의 101과 =SILO 도면의 101 등)는 중복이 아닙니다: 전선은 해당 도면의 설비를 따릅니다. 선택하지 않으면 전선 번호는 프로젝트 전체에서 하나의 전위를 가리킵니다.</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="118"/>
         <source>Error / occurrence</source>
         <translation>오류 / 항목</translation>
     </message>
     <message>
-        <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="78"/>
+        <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="118"/>
         <source>Sheet</source>
         <translation>도면 시트</translation>
     </message>
     <message>
-        <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="78"/>
+        <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="118"/>
         <source>Position</source>
         <translation>위치</translation>
     </message>
     <message>
-        <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="99"/>
+        <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="139"/>
         <source>Refresh</source>
         <translation>새로 고침</translation>
     </message>
     <message>
-        <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="120"/>
+        <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="160"/>
         <source>Reading the folios...</source>
         <translation>도면 시트를 읽는 중...</translation>
     </message>
     <message>
-        <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="143"/>
+        <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="183"/>
         <source>Reading folio %1 of %2...</source>
         <translation>시트 %1/%2 읽는 중...</translation>
     </message>
     <message>
-        <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="164"/>
+        <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="210"/>
         <source>Duplicate signal: %1</source>
         <translation>중복된 신호: %1</translation>
     </message>
     <message>
-        <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="166"/>
+        <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="215"/>
+        <source>Duplicate signal: %1 in %2</source>
+        <extracomment>%2 is the plant, such as &quot;=SILO&quot;.</extracomment>
+        <translation>중복된 신호: %2의 %1</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="217"/>
         <source>Duplicate component: %1</source>
         <translation>중복된 부품: %1</translation>
     </message>
     <message>
-        <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="171"/>
+        <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="222"/>
         <source>Duplicate component: %1 in %2</source>
         <extracomment>%2 is the plant and location, such as &quot;=P1+UV1&quot;.</extracomment>
         <translation>중복된 부품: %2 안의 %1</translation>
     </message>
     <message>
-        <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="188"/>
+        <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="228"/>
+        <source>%1 — different part numbers: %2</source>
+        <extracomment>%1 is the error above, %2 the part numbers, &quot;A9, B1&quot;.</extracomment>
+        <translation>%1 — 다른 부품 번호: %2</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="245"/>
         <source>Group %1</source>
         <extracomment>%1 numbers one electrical signal or one linked device among those sharing a label.</extracomment>
         <translation>그룹 %1</translation>
     </message>
     <message>
-        <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="191"/>
+        <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="248"/>
         <source>Occurrences in the same group belong to one signal or linked device.</source>
         <translation>같은 그룹의 항목은 하나의 신호 또는 연결된 장치에 속합니다.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="203"/>
+        <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="260"/>
         <source>%1 — %2</source>
         <translation>%1 — %2</translation>
     </message>
     <message>
-        <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="208"/>
+        <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="265"/>
         <source>x: %1, y: %2</source>
         <translation>x: %1, y: %2</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="218"/>
+        <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="275"/>
         <source>%n occurrences</source>
         <translation>
             <numerusform>%n개 항목</numerusform>
         </translation>
     </message>
     <message>
-        <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="224"/>
+        <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="281"/>
         <source>No duplicate signals or components found.</source>
         <translation>중복된 신호나 부품이 없습니다.</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="230"/>
+        <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="287"/>
         <source>%n duplicate labels found.</source>
         <extracomment>%n counts conflicting identifiers, not wire segments or symbols.</extracomment>
         <translation>
@@ -4802,7 +5384,7 @@ Shift를 누른 채 끌면 이 텍스트만 이동합니다</translation>
         </translation>
     </message>
     <message>
-        <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="242"/>
+        <location filename="../sources/ui/duplicatelabelsdialog.cpp" line="299"/>
         <source>This occurrence no longer exists. Refresh the results.</source>
         <translation>이 항목은 더 이상 존재하지 않습니다. 결과를 새로 고치세요.</translation>
     </message>
@@ -4810,44 +5392,54 @@ Shift를 누른 채 끌면 이 텍스트만 이동합니다</translation>
 <context>
     <name>DuplicateOffsetDialog</name>
     <message>
-        <location filename="../sources/ui/duplicateoffsetdialog.cpp" line="38"/>
+        <location filename="../sources/ui/duplicateoffsetdialog.cpp" line="43"/>
         <source>Duplicate</source>
         <translation>복제</translation>
     </message>
     <message>
-        <location filename="../sources/ui/duplicateoffsetdialog.cpp" line="44"/>
+        <location filename="../sources/ui/duplicateoffsetdialog.cpp" line="49"/>
         <source> no grid</source>
         <translation> 격자 없음</translation>
     </message>
     <message>
-        <location filename="../sources/ui/duplicateoffsetdialog.cpp" line="45"/>
+        <location filename="../sources/ui/duplicateoffsetdialog.cpp" line="50"/>
         <source>Spacing:</source>
         <translation>간격:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/duplicateoffsetdialog.cpp" line="50"/>
+        <location filename="../sources/ui/duplicateoffsetdialog.cpp" line="55"/>
         <source>Top</source>
         <translation>위</translation>
     </message>
     <message>
-        <location filename="../sources/ui/duplicateoffsetdialog.cpp" line="51"/>
+        <location filename="../sources/ui/duplicateoffsetdialog.cpp" line="56"/>
         <source>Bottom</source>
         <translation>아래</translation>
     </message>
     <message>
-        <location filename="../sources/ui/duplicateoffsetdialog.cpp" line="52"/>
+        <location filename="../sources/ui/duplicateoffsetdialog.cpp" line="57"/>
         <source>Left</source>
         <translation>왼쪽</translation>
     </message>
     <message>
-        <location filename="../sources/ui/duplicateoffsetdialog.cpp" line="53"/>
+        <location filename="../sources/ui/duplicateoffsetdialog.cpp" line="58"/>
         <source>Right</source>
         <translation>오른쪽</translation>
     </message>
     <message>
-        <location filename="../sources/ui/duplicateoffsetdialog.cpp" line="54"/>
+        <location filename="../sources/ui/duplicateoffsetdialog.cpp" line="59"/>
         <source>Direction:</source>
         <translation>방향:</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/duplicateoffsetdialog.cpp" line="77"/>
+        <source>Repeat the move of the copy</source>
+        <translation>복사본의 이동 반복</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/duplicateoffsetdialog.cpp" line="78"/>
+        <source>The first copy lands 4 grid steps right and down; move it, and the next Duplicate repeats that move. The spacing above is then not used.</source>
+        <translation>첫 번째 복사본은 격자 4칸만큼 오른쪽 아래에 놓입니다. 이를 이동하면 다음 복제 시 같은 이동이 반복됩니다. 이 경우 위의 간격은 사용되지 않습니다.</translation>
     </message>
 </context>
 <context>
@@ -4863,7 +5455,7 @@ Shift를 누른 채 끌면 이 텍스트만 이동합니다</translation>
         <translation>요소 텍스트 편집</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/dynamicelementtextitem.cpp" line="1363"/>
+        <location filename="../sources/qetgraphicsitem/dynamicelementtextitem.cpp" line="1446"/>
         <source>Resize an element text</source>
         <translation>요소 텍스트 크기 조정</translation>
     </message>
@@ -4943,240 +5535,240 @@ Shift를 누른 채 끌면 이 텍스트만 이동합니다</translation>
 <context>
     <name>DynamicElementTextModel</name>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="330"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="343"/>
         <source>Height</source>
         <translation>높이</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="327"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="340"/>
         <source>Width fixed</source>
         <translation>너비 고정</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="330"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="343"/>
         <source>Height fixed</source>
         <translation>높이 고정</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="328"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="341"/>
         <source>Ticked, the text field keeps the width above and the text wraps inside it. Not ticked, it is as wide as the text.</source>
         <translation>선택하면 텍스트 필드가 위의 너비를 유지하고 텍스트가 그 안에서 줄 바꿈됩니다. 선택하지 않으면 텍스트 너비와 같습니다.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="331"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="344"/>
         <source>Ticked, the text field keeps the height above and the lines that do not fit are cut off. Not ticked, it is as high as the text.</source>
         <translation>선택하면 텍스트 필드가 위의 높이를 유지하고 들어가지 않는 줄은 잘립니다. 선택하지 않으면 텍스트 높이와 같습니다.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="665"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="678"/>
         <source>Change the height of an element text</source>
         <translation>요소 텍스트의 높이 변경</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="73"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="86"/>
         <source>Property</source>
         <translation>속성</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="74"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="87"/>
         <source>Value</source>
         <translation>값</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="181"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="194"/>
         <source>Source of text</source>
         <translation>텍스트 원본</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="186"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="595"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="602"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1388"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1543"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="199"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="608"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="615"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1401"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1556"/>
         <source>User text</source>
         <translation>사용자 텍스트</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="188"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="597"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="608"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1393"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1544"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="201"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="610"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="621"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1406"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1557"/>
         <source>Element information</source>
         <translation>요소 정보</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="189"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="234"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="599"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="614"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1545"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="202"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="247"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="612"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="627"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1558"/>
         <source>Composite text</source>
         <translation>조합 텍스트</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="200"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="213"/>
         <source>Text</source>
         <translation>텍스트</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="214"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="227"/>
         <source>Information</source>
         <translation>정보</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="241"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="254"/>
         <source>My composite text</source>
         <translation>내 조합 텍스트</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="258"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="271"/>
         <source>Size</source>
         <translation>크기</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="273"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="286"/>
         <source>Font</source>
         <translation>글꼴</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="327"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="340"/>
         <source>Width</source>
         <translation>너비</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="409"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="422"/>
         <source>Maintain visual rotation</source>
         <translation>시각적 회전 유지</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="426"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="439"/>
         <source>Edit</source>
         <translation>편집</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="634"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="647"/>
         <source>Change the font of an element text</source>
         <translation>요소 텍스트 글꼴 변경</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="699"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="712"/>
         <source>Change the way item text stays rotated</source>
         <translation>요소 텍스트 회전 유지 방식 변경</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="710"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="723"/>
         <source>Modify the alignment of an element text</source>
         <translation>요소 텍스트 정렬 변경</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="627"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="640"/>
         <source>Change the size of an element text</source>
         <translation>요소 텍스트 크기 변경</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="641"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="654"/>
         <source>Change the color of an element text</source>
         <translation>요소 텍스트 색상 변경</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="648"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="661"/>
         <source>Modify the frame of an element text</source>
         <translation>요소 텍스트 테두리 변경</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="657"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="670"/>
         <source>Change the width of an element text</source>
         <translation>요소 텍스트 너비 변경</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="677"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="690"/>
         <source>Move an item text</source>
         <translation>요소 텍스트 이동</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="689"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="702"/>
         <source>Rotate element text</source>
         <translation>요소 텍스트 회전</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="734"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="747"/>
         <source>Edit a group of texts</source>
         <translation>텍스트 그룹 편집</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="742"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="820"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1646"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="755"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="833"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1659"/>
         <source>Left</source>
         <translation>왼쪽</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="744"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="821"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1647"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="757"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="834"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1660"/>
         <source>Right</source>
         <translation>오른쪽</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="746"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="822"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1648"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="759"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="835"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1661"/>
         <source>Middle</source>
         <translation>가운데</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="423"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="815"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="436"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="828"/>
         <source>Alignment</source>
         <translation>정렬</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="880"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="893"/>
         <source>Vertical adjustment</source>
         <translation>세로 맞춤</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="910"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="923"/>
         <source>Keep at the bottom of the page</source>
         <translation>페이지 하단에 고정</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1216"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1229"/>
         <source>Move a text to another group</source>
         <translation>텍스트를 다른 그룹으로 이동</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="287"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="300"/>
         <source>Color</source>
         <translation>색상</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="305"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="894"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="318"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="907"/>
         <source>Frame</source>
         <translation>테두리</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="363"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="836"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="376"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="849"/>
         <source>Position X</source>
         <translation>X 위치</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="378"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="851"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="391"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="864"/>
         <source>Position Y</source>
         <translation>Y 위치</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="393"/>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="866"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="406"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="879"/>
         <source>Rotation</source>
         <translation>회전</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="587"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="600"/>
         <source>Edit an element text</source>
         <translation>요소 텍스트 편집</translation>
     </message>
@@ -5270,64 +5862,64 @@ Shift를 누른 채 끌면 이 텍스트만 이동합니다</translation>
         <translation>회전</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="315"/>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="327"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="319"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="331"/>
         <source>Move a text field</source>
         <translation>텍스트 필드 이동</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="338"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="342"/>
         <source>Rotate a text field</source>
         <translation>텍스트 필드 회전</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="349"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="353"/>
         <source>Edit the text of a text field</source>
         <translation>텍스트 필드 텍스트 수정</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="360"/>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="507"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="364"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="515"/>
         <source>Change the font of a text field</source>
         <translation>텍스트 필드 글꼴 변경</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="521"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="529"/>
         <source>Change the color of a text field</source>
         <translation>텍스트 필드 색상 변경</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="534"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="542"/>
         <source>Modify the conservation of the angle</source>
         <translation>각도 유지 설정 변경</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="547"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="555"/>
         <source>Change the rotation point of a text field</source>
         <translation>텍스트 필드의 회전점 변경</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="372"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="376"/>
         <source>Modify the frame of a text field</source>
         <translation>텍스트 필드 테두리 변경</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="387"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="391"/>
         <source>Change the width of a text</source>
         <translation>텍스트 너비 변경</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="400"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="404"/>
         <source>Edit text information</source>
         <translation>텍스트 정보 수정</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="450"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="454"/>
         <source>Change text source, text</source>
         <translation>텍스트 원본 변경</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="490"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="498"/>
         <source>Modify the alignment of a text field</source>
         <translation>텍스트 필드 정렬 변경</translation>
     </message>
@@ -5335,32 +5927,32 @@ Shift를 누른 채 끌면 이 텍스트만 이동합니다</translation>
 <context>
     <name>DynamicTextItemDelegate</name>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1713"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1726"/>
         <source>User text</source>
         <translation>사용자 텍스트</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1714"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1727"/>
         <source>Element information</source>
         <translation>요소 정보</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1715"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1728"/>
         <source>Composite text</source>
         <translation>조합 텍스트</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1864"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1877"/>
         <source>Left</source>
         <translation>왼쪽</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1865"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1878"/>
         <source>Middle</source>
         <translation>가운데</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1866"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1879"/>
         <source>Right</source>
         <translation>오른쪽</translation>
     </message>
@@ -5398,12 +5990,12 @@ Shift를 누른 채 끌면 이 텍스트만 이동합니다</translation>
 <context>
     <name>EditorDelegate</name>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="71"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="74"/>
         <source>e.g. 80.5</source>
         <translation>예: 80.5</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="72"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="75"/>
         <source>Decimal number with a dot as separator (e.g. 80.5)</source>
         <translation>점을 구분 기호로 쓰는 소수 (예: 80.5)</translation>
     </message>
@@ -5444,7 +6036,7 @@ Shift를 누른 채 끌면 이 텍스트만 이동합니다</translation>
 <context>
     <name>Element</name>
     <message>
-        <location filename="../sources/qetgraphicsitem/element.cpp" line="3055"/>
+        <location filename="../sources/qetgraphicsitem/element.cpp" line="3212"/>
         <source>Automatically number an element</source>
         <comment>undo caption</comment>
         <translation>요소에 자동으로 번호 매기기</translation>
@@ -5690,7 +6282,7 @@ The element&apos;s display name is edited separately in the element properties.<
     <message>
         <location filename="../sources/ui/elementinfopartwidget.ui" line="71"/>
         <source>Edit on several lines</source>
-        <translation type="unfinished"></translation>
+        <translation>여러 줄로 편집</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfopartwidget.ui" line="81"/>
@@ -5742,12 +6334,12 @@ The element&apos;s display name is edited separately in the element properties.<
         <translation>부품 목록에서 제외</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementinfowidget.cpp" line="518"/>
+        <location filename="../sources/ui/elementinfowidget.cpp" line="500"/>
         <source>No materials list</source>
         <translation>자재 목록 없음</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementinfowidget.cpp" line="519"/>
+        <location filename="../sources/ui/elementinfowidget.cpp" line="501"/>
         <source>There is no materials list file at this location:
 %1
 
@@ -5759,12 +6351,12 @@ Create it?</source>
 만드시겠습니까?</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementinfowidget.cpp" line="534"/>
+        <location filename="../sources/ui/elementinfowidget.cpp" line="516"/>
         <source>Cannot create</source>
         <translation>만들 수 없음</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementinfowidget.cpp" line="535"/>
+        <location filename="../sources/ui/elementinfowidget.cpp" line="517"/>
         <source>Cannot create the file:
 %1
 %2</source>
@@ -5773,93 +6365,93 @@ Create it?</source>
 %2</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementinfowidget.cpp" line="816"/>
+        <location filename="../sources/ui/elementinfowidget.cpp" line="799"/>
         <source>Automatic numbering</source>
         <translation>자동 번호 매기기</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementinfowidget.cpp" line="823"/>
+        <location filename="../sources/ui/elementinfowidget.cpp" line="806"/>
         <source>…</source>
         <translation>…</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementinfowidget.cpp" line="824"/>
+        <location filename="../sources/ui/elementinfowidget.cpp" line="807"/>
         <source>Open the project&apos;s element numberings</source>
         <translation>프로젝트의 요소 번호 매기기 열기</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementinfowidget.cpp" line="852"/>
+        <location filename="../sources/ui/elementinfowidget.cpp" line="835"/>
         <source>Freeze name</source>
         <translation>이름 고정</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementinfowidget.cpp" line="853"/>
+        <location filename="../sources/ui/elementinfowidget.cpp" line="836"/>
         <source>A frozen name is not changed by automatic numbering, and its number is not given to another element.</source>
         <translation>고정된 이름은 자동 번호 매기기로 바뀌지 않으며, 그 번호는 다른 요소에 주어지지 않습니다.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementinfowidget.cpp" line="890"/>
+        <location filename="../sources/ui/elementinfowidget.cpp" line="873"/>
         <source>Show name</source>
         <translation>이름 표시</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementinfowidget.cpp" line="892"/>
+        <location filename="../sources/ui/elementinfowidget.cpp" line="875"/>
         <source>Untick to not draw the name of this element on the sheet: its data is kept, and a terminal keeps its number.</source>
         <translation>선택을 해제하면 이 요소의 이름을 도면 시트에 그리지 않습니다: 데이터는 유지되고 단자는 번호를 유지합니다.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementinfowidget.cpp" line="921"/>
+        <location filename="../sources/ui/elementinfowidget.cpp" line="904"/>
         <source>Number</source>
         <translation>번호</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementinfowidget.cpp" line="925"/>
-        <location filename="../sources/ui/elementinfowidget.cpp" line="989"/>
+        <location filename="../sources/ui/elementinfowidget.cpp" line="908"/>
+        <location filename="../sources/ui/elementinfowidget.cpp" line="972"/>
         <source>Only free numbers are offered: an element that must keep its real number can get it back if nobody else has it.</source>
         <translation>빈 번호만 제공됩니다: 실제 번호를 유지해야 하는 요소는 다른 요소가 그 번호를 쓰지 않으면 되찾을 수 있습니다.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementinfowidget.cpp" line="959"/>
+        <location filename="../sources/ui/elementinfowidget.cpp" line="942"/>
         <source>%1  (current)</source>
         <translation>%1  (현재)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementinfowidget.cpp" line="961"/>
+        <location filename="../sources/ui/elementinfowidget.cpp" line="944"/>
         <source>— (unknown number)</source>
         <translation>— (알 수 없는 번호)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementinfowidget.cpp" line="965"/>
+        <location filename="../sources/ui/elementinfowidget.cpp" line="948"/>
         <source>%1  →  %2</source>
         <translation>%1  →  %2</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementinfowidget.cpp" line="987"/>
+        <location filename="../sources/ui/elementinfowidget.cpp" line="970"/>
         <source>The name is frozen: unfreeze it to change its number.</source>
         <translation>이름이 고정되어 있습니다: 번호를 바꾸려면 고정을 해제하세요.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementinfowidget.cpp" line="988"/>
+        <location filename="../sources/ui/elementinfowidget.cpp" line="971"/>
         <source>The number can be chosen when the element keeps its numbering.</source>
         <translation>요소가 번호 매기기를 유지할 때 번호를 선택할 수 있습니다.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementinfowidget.cpp" line="1053"/>
+        <location filename="../sources/ui/elementinfowidget.cpp" line="1036"/>
         <source>None (name entered by hand)</source>
         <translation>없음 (직접 입력한 이름)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementinfowidget.cpp" line="1072"/>
+        <location filename="../sources/ui/elementinfowidget.cpp" line="1055"/>
         <source>Custom formula: %1</source>
         <translation>사용자 수식: %1</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementinfowidget.cpp" line="1112"/>
+        <location filename="../sources/ui/elementinfowidget.cpp" line="1095"/>
         <source>Frozen name</source>
         <translation>고정된 이름</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementinfowidget.cpp" line="1113"/>
+        <location filename="../sources/ui/elementinfowidget.cpp" line="1096"/>
         <source>This element&apos;s name is frozen.
 Changing its numbering will replace or erase it.
 
@@ -5963,8 +6555,8 @@ Continue?</source>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="27"/>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="193"/>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="225"/>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1053"/>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1190"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1162"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1299"/>
         <source>Type</source>
         <translation>유형</translation>
     </message>
@@ -6047,8 +6639,8 @@ Continue?</source>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="232"/>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1053"/>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1190"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1162"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1299"/>
         <source>Function</source>
         <translation>기능</translation>
     </message>
@@ -6093,357 +6685,390 @@ Continue?</source>
         <translation>값</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="343"/>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="358"/>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="880"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="346"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="361"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="989"/>
         <source>Simple</source>
         <translation>단순</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="344"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="347"/>
         <source>Master</source>
         <translation>마스터</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="345"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="348"/>
         <source>Slave</source>
         <translation>슬레이브</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="346"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="349"/>
         <source>Next sheet reference</source>
         <translation>다음 시트 참조</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="347"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="350"/>
         <source>Previous sheet reference</source>
         <translation>이전 시트 참조</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="348"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="351"/>
         <source>Terminal block</source>
         <translation>단자대</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="349"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="352"/>
         <source>Thumbnail</source>
         <translation>미리보기</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="350"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="353"/>
         <source>Conductor definition</source>
         <translation>도선 정의</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="353"/>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="871"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="356"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="980"/>
         <source>Switch normally open</source>
         <translation>통상 개방</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="354"/>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="872"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="357"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="981"/>
         <source>Switch normally closed</source>
         <translation>통상 폐쇄</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="355"/>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="873"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="358"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="982"/>
         <source>switch</source>
         <translation>전환 접점</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="356"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="359"/>
         <source>Other</source>
         <translation>기타</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="357"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="360"/>
         <source>PLC slave</source>
         <translation>PLC 슬레이브</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="359"/>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="881"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="362"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="990"/>
         <source>Power switch</source>
         <translation>전력용</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="360"/>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="882"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="363"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="991"/>
         <source>Switch-on delayed</source>
         <translation>투입 지연</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="361"/>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="883"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="364"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="992"/>
         <source>Switch-off delayed</source>
         <translation>차단 지연</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="362"/>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="884"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="365"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="993"/>
         <source>Switch-on  and off delayed</source>
         <translation>투입/차단 지연</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="365"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="368"/>
         <source>coil</source>
         <translation>코일</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="366"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="369"/>
         <source>Organ of protection</source>
         <translation>보호기기</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="367"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="370"/>
         <source>Switch / button</source>
         <translation>스위치 / 버튼</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="368"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="371"/>
         <source>PLC module</source>
         <translation>PLC 모듈</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="372"/>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="383"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="375"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="386"/>
         <source>Generic</source>
         <translation>일반</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="373"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="376"/>
         <source>Fuse</source>
         <translation>퓨즈</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="374"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="377"/>
         <source>Sectionable</source>
         <translation>단로기</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="375"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="378"/>
         <source>Diode</source>
         <translation>다이오드</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="377"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="380"/>
         <source>Anti-parallel diodes</source>
         <translation>역병렬 다이오드</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="378"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="381"/>
         <source>Resistor</source>
         <translation>저항</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="379"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="382"/>
         <source>Varistor</source>
         <translation>배리스터</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="380"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="383"/>
         <source>Test socket</source>
         <translation>시험 소켓</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="381"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="384"/>
         <source>Diode (reversed)</source>
         <translation>다이오드 (역방향)</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="384"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="387"/>
         <source>Phase</source>
         <translation>상(Phase)</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="385"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="388"/>
         <source>Neutral</source>
         <translation>중성선(N)</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="526"/>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="576"/>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="638"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="449"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="498"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="505"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="515"/>
+        <source>Add a custom property</source>
+        <translation>사용자 지정 속성 추가</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="450"/>
+        <source>Remove the custom property</source>
+        <translation>사용자 지정 속성 제거</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="483"/>
+        <source>Custom property: every placed copy of this symbol has it</source>
+        <translation>사용자 지정 속성: 이 기호를 배치한 모든 복사본이 가집니다</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="499"/>
+        <source>Name of the property:</source>
+        <translation>속성 이름:</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="506"/>
+        <source>Use letters, numbers, &quot;-&quot; or &quot;_&quot; in the name.</source>
+        <translation>이름에는 문자, 숫자, &quot;-&quot; 또는 &quot;_&quot;를 사용하십시오.</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="516"/>
+        <source>This symbol already has a property &quot;%1&quot;.</source>
+        <translation>이 기호에는 이미 &quot;%1&quot; 속성이 있습니다.</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="624"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="674"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="736"/>
         <source>None (default)</source>
         <translation>없음 (기본값)</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="529"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="627"/>
         <source>%1 mm²</source>
         <translation>%1 mm²</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="532"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="630"/>
         <source> mm²</source>
         <translation> mm²</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="545"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="643"/>
         <source>All manufacturers</source>
         <translation>모든 제조사</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="615"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="713"/>
         <source>%1 mm</source>
         <translation>%1 mm</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="853"/>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="938"/>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1007"/>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1010"/>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1553"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="962"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1047"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1116"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1119"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1662"/>
         <source>T%1</source>
         <translation>T%1</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="874"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="983"/>
         <source>Other</source>
         <comment>fr: Autre</comment>
         <translation>기타</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1025"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1134"/>
         <source>PLC Configuration</source>
         <translation>PLC 구성</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1030"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1139"/>
         <source>+</source>
         <translation>+</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1031"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1140"/>
         <source>-</source>
         <translation>-</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1053"/>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1190"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1162"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1299"/>
         <source>Address</source>
         <translation>주소</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1054"/>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1191"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1163"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1300"/>
         <source>Annotation</source>
         <translation>주석</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1054"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1163"/>
         <source>Cross-reference</source>
         <translation>교차 참조</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1073"/>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1551"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1182"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1660"/>
         <source>Nb.</source>
         <translation>수</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1073"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1182"/>
         <source>T1</source>
         <translation>T1</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1140"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1249"/>
         <source>Header font</source>
         <translation>머리글 글꼴</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1141"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1250"/>
         <source>Set the font for column headers</source>
         <translation>열 머리글 글꼴 설정</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1145"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1254"/>
         <source>Text font</source>
         <translation>텍스트 글꼴</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1146"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1255"/>
         <source>Set the text font in the cells</source>
         <translation>셀 텍스트 글꼴 설정</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1150"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1259"/>
         <source>Show headers on the sheet</source>
         <translation>시트에 머리글 표시</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1151"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1260"/>
         <source>Show or hide the column headings of the PLC table on the sheet</source>
         <translation>시트에서 PLC 표의 열 머리글 표시 또는 숨기기</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1163"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1272"/>
         <source>Jump to %1 after:</source>
         <translation>다음 후 %1(으)로 이동:</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1169"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1278"/>
         <source>None</source>
         <translation>없음</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1177"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1286"/>
         <source>Line H:</source>
         <translation>행 H:</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="561"/>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="648"/>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1182"/>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1211"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="659"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="746"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1291"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1320"/>
         <source> mm</source>
         <translation> mm</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1191"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1300"/>
         <source>Ref.</source>
         <translation>참조</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1198"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1307"/>
         <source>Custom column name (blank = default)</source>
         <translation>사용자 열 이름 (비우면 기본값)</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1202"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1311"/>
         <source>Visible</source>
         <translation>표시</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1235"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1344"/>
         <source>Paste from the clipboard</source>
         <translation>클립보드에서 붙여넣기</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1327"/>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1704"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1436"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1813"/>
         <source>Heading font size: %1 %2pt</source>
         <translation>머리글 글꼴 크기: %1 %2pt</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1329"/>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1720"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1438"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1829"/>
         <source>Font size: %1 %2pt</source>
         <translation>글꼴 크기: %1 %2pt</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1701"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1810"/>
         <source>Column header formatting</source>
         <translation>열 머리글 서식</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1717"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1826"/>
         <source>Cell text font</source>
         <translation>셀 텍스트 글꼴</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="376"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="379"/>
         <source>Ground</source>
         <translation>접지(PE)</translation>
     </message>
@@ -6451,141 +7076,141 @@ Continue?</source>
 <context>
     <name>ElementPropertiesWidget</name>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="413"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="418"/>
         <source>General</source>
         <translation>일반</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="423"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="428"/>
         <source>Element
 </source>
         <translation>요소
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="426"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="431"/>
         <source>Name : %1
 </source>
         <translation>이름 : %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="429"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="434"/>
         <source>Sheet : %1
 </source>
         <translation>시트 : %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="431"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="436"/>
         <source>Type: %1
 </source>
         <translation>유형: %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="432"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="437"/>
         <source>Sub-type : %1
 </source>
         <translation>하위 종류 : %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="433"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="438"/>
         <source>Position : %1
 </source>
         <translation>위치 : %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="434"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="439"/>
         <source>Rotation : %1°
 </source>
         <translation>회전 : %1°
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="435"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="440"/>
         <source>Dimensions : %1 × %2
 </source>
         <translation>크기 : %1 × %2
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="436"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="441"/>
         <source>Terminals : %1
 </source>
         <translation>단자 : %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="443"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="448"/>
         <source>Maximum number of slave contacts defined:  not defined
 </source>
         <translation>정의된 최대 슬레이브 접점 수:  정의되지 않음
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="444"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="449"/>
         <source>Maximum number of slave contacts defined:  %1
 </source>
         <translation>정의된 최대 슬레이브 접점 수:  %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="449"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="454"/>
         <source>Number of slave contacts used : %1
 </source>
         <translation>사용된 슬레이브 접점 수: %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="464"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="469"/>
         <source>    Contacts : NO : %1/%2, NC : %3/%4, changeover : %5/%6, other : %7/%8
 </source>
         <translation>    접점: NO: %1/%2, NC: %3/%4, 전환: %5/%6, 기타: %7/%8
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="473"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="478"/>
         <source>    Contacts : NO : %1, NC : %2, changeover : %3, other : %4
 </source>
         <translation>    접점: NO: %1, NC: %2, 전환: %3, 기타: %4
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="489"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="494"/>
         <source>Last changed: save %1, %2, by %3
 </source>
         <translation>마지막 변경: 저장 %1, %2, %3
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="501"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="506"/>
         <source>Location : %1
 </source>
         <translation>설치 위치 : %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="525"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="530"/>
         <source>Lock Position</source>
         <translation>위치 잠금</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="541"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="546"/>
         <source>Find in the panel</source>
         <translation>패널에서 찾기</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="543"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="548"/>
         <source>Edit element</source>
         <translation>요소 편집</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.h" line="45"/>
         <source>Element properties</source>
-        <translation type="unfinished"></translation>
+        <translation>요소 속성</translation>
     </message>
 </context>
 <context>
@@ -6887,28 +7512,34 @@ Continue?</source>
 <context>
     <name>ElementScene</name>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="334"/>
+        <location filename="../sources/editor/elementscene.cpp" line="328"/>
         <source>Move a primitive</source>
         <translation>도형 이동</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="943"/>
+        <location filename="../sources/editor/elementscene.cpp" line="328"/>
+        <source>move</source>
+        <comment>undo caption</comment>
+        <translation>이동</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/elementscene.cpp" line="979"/>
         <source>Edit author information</source>
         <comment>window title</comment>
         <translation>작성자 정보 편집</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="948"/>
+        <location filename="../sources/editor/elementscene.cpp" line="984"/>
         <source>You can use this field to specify the authors of this element, its license, or any other information you may find useful.</source>
         <translation>이 입력란에 요소의 작성자, 라이선스 또는 기타 필요한 정보를 입력할 수 있습니다.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="1046"/>
+        <location filename="../sources/editor/elementscene.cpp" line="1082"/>
         <source>You may enter the element name in several languages.</source>
         <translation>요소 이름을 여러 언어로 지정할 수 있습니다.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="1044"/>
+        <location filename="../sources/editor/elementscene.cpp" line="1080"/>
         <source>Edit names</source>
         <comment>window title</comment>
         <translation>이름 편집</translation>
@@ -7020,108 +7651,108 @@ Continue?</source>
 <context>
     <name>ElementsCollectionWidget</name>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="218"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="226"/>
         <source>Open the underlying folder</source>
         <translation>해당 폴더 열기</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="220"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="228"/>
         <source>Edit element</source>
         <translation>요소 편집</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="222"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="230"/>
         <source>Delete element</source>
         <translation>요소 삭제</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="224"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="232"/>
         <source>Delete folder</source>
         <translation>폴더 삭제</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="226"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="234"/>
         <source>Reload collections</source>
         <translation>컬렉션 새로 고침</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="228"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="236"/>
         <source>Edit folder</source>
         <translation>폴더 편집</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="230"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="238"/>
         <source>New folder</source>
         <translation>새 폴더</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="232"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="240"/>
         <source>New element</source>
         <translation>새 요소</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="234"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="242"/>
         <source>Import an EPLAN part (.edz)…</source>
         <translation>EPLAN 부품 가져오기 (.edz)…</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="236"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="244"/>
         <source>Show only this folder</source>
         <translation>이 폴더만 표시</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="239"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="247"/>
         <source>Show All Folders</source>
         <translation>모든 폴더 표시</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="241"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="249"/>
         <source>Folder properties</source>
         <translation>폴더 속성</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="636"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="644"/>
         <source>Delete element?</source>
         <comment>message box title</comment>
         <translation>요소를 삭제할까요?</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="653"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="661"/>
         <source>Deleting element</source>
         <comment>message box title</comment>
         <translation>요소 삭제</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="655"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="663"/>
         <source>Deleting element failed.</source>
         <comment>message box content</comment>
         <translation>요소 삭제에 실패했습니다.</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="682"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="690"/>
         <source>Deleting folder?</source>
         <comment>message box title</comment>
         <translation>폴더를 삭제할까요?</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="700"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="708"/>
         <source>Folder Delete</source>
         <comment>message box title</comment>
         <translation>폴더 삭제</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="702"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="710"/>
         <source>Folder deletion failed.</source>
         <comment>message box content</comment>
         <translation>폴더 삭제에 실패했습니다.</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="802"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="810"/>
         <source>Warning — Importing an EPLAN file (.edz)</source>
         <translation>경고 — EPLAN 파일(.edz) 가져오기</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="805"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="813"/>
         <source>The .edz file format can come from two different sources:
 • The EPLAN Data Portal (dataportal.eplan.com), which is subject to the terms of use for the EPLAN Cloud environment;
 • A component manufacturer’s (or distributor’s) website, which makes its .edz files available directly, subject to its own terms and conditions.
@@ -7140,83 +7771,83 @@ QElectroTech는 가져오는 파일의 출처나 그에 적용되는 약관을 �
 • QElectroTech, 관리자 및 기여자는 이 데이터의 무단 사용에 대해 어떠한 책임도 지지 않습니다.</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="827"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="835"/>
         <source>I have read and accept these terms and conditions.</source>
         <translation>이 약관을 읽었으며 동의합니다.</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="832"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="840"/>
         <source>Import</source>
         <translation>가져오기</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="873"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="881"/>
         <source>Import an EPLAN part</source>
         <translation>EPLAN 부품 가져오기</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="874"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="882"/>
         <source>EPLAN parts (*.edz)</source>
         <translation>EPLAN 부품 (*.edz)</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="882"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="890"/>
         <source>Import EPLAN</source>
         <translation>EPLAN 가져오기</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="883"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="891"/>
         <source>Could not import this part:
 %1</source>
         <translation>이 부품을 가져올 수 없습니다:
 %1</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="969"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="977"/>
         <source>the folder %1 contains</source>
         <translation>폴더 %1 포함:</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="970"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="978"/>
         <source>%n elements, spread</source>
         <translation>
             <numerusform>%n개 요소(분산)</numerusform>
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="972"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="980"/>
         <source>across %n folders.</source>
         <translation>
             <numerusform>%n개 폴더에</numerusform>
         </translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="974"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="982"/>
         <source>Path of collection :  %1</source>
         <translation>컬렉션 경로 :  %1</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="963"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="971"/>
         <source>Path in the file system :  %1</source>
         <translation>파일 시스템 경로 :  %1</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="255"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="263"/>
         <source>Search...</source>
         <translation>검색...</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="282"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="290"/>
         <source>Collections</source>
         <translation>컬렉션</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="283"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="291"/>
         <source>Templates</source>
         <translation>템플릿</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="637"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="645"/>
         <source>Do you really wish to delete this element ?
 </source>
         <comment>message box content</comment>
@@ -7224,7 +7855,7 @@ QElectroTech는 가져오는 파일의 출처나 그에 적용되는 약관을 �
 </translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="683"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="691"/>
         <source>Are you sure you want to delete the folder?
 All the elements and contents file in this folder will be deleted.</source>
         <comment>message box content</comment>
@@ -7232,7 +7863,7 @@ All the elements and contents file in this folder will be deleted.</source>
 이 폴더의 모든 요소와 파일이 삭제됩니다.</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="979"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="987"/>
         <source>Property of the folder %1</source>
         <translation>폴더 %1 속성</translation>
     </message>
@@ -7470,7 +8101,7 @@ All the elements and contents file in this folder will be deleted.</source>
 <context>
     <name>ExportConfigPage</name>
     <message>
-        <location filename="../sources/ui/configpage/configpages.cpp" line="665"/>
+        <location filename="../sources/ui/configpage/configpages.cpp" line="666"/>
         <source>Export</source>
         <comment>configuration page title</comment>
         <translation>내보내기</translation>
@@ -8086,97 +8717,97 @@ that you create. Text and number inputs are
         <translation>모양</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="32"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="38"/>
         <source>Use system colors</source>
         <translation>시스템 색상 사용</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="822"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="856"/>
         <source>User Collection Path</source>
         <translation>사용자 컬렉션 경로</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="850"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="884"/>
         <source>User Title blocks Path</source>
         <translation>사용자 표제란 경로</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="794"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="828"/>
         <source>Path of the Common Collection</source>
         <translation>공용 컬렉션 경로</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="731"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="745"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="783"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="811"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="825"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="846"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="813"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="827"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="865"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="893"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="907"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="928"/>
         <source>By default</source>
         <translation>기본값</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="736"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="750"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="788"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="816"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="830"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="851"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="888"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="929"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="818"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="832"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="870"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="898"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="912"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="933"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="970"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1011"/>
         <source>Browse...</source>
         <translation>찾아보기...</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="859"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="941"/>
         <source>(Reload the elements collections to apply the changes)</source>
         <translation>(변경 사항을 적용하려면 요소 컬렉션을 다시 불러오세요)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="509"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="473"/>
         <source>Projects</source>
         <translation>프로젝트</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="55"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="328"/>
         <source>Use gestures touchpad</source>
         <translation>터치패드 제스처 사용</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="515"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="479"/>
         <source>Use sheet numbers instead of their position in the project</source>
         <translation>프로젝트 내 위치 대신 시트 번호 사용</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="697"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="648"/>
         <source>Number the title block columns from 0 (1 otherwise)</source>
         <extracomment>Choix de l&apos;increment de depart 1 ou 0</extracomment>
         <translation>표제란 열 번호를 0부터 시작(그 외에는 1)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="532"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="496"/>
         <source>Disabled</source>
         <translation>비활성화</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="538"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="502"/>
         <source> min</source>
         <comment>minute</comment>
         <translation> 분</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="960"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1042"/>
         <source>Highlight freshly integrated elements in the panel</source>
         <translation>패널에서 새로 추가된 요소 강조 표시</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="967"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1079"/>
         <source>Element may include information about its authors, license, or other useful information. Specify the default value of this textfield for new elements below:</source>
         <translation>각 요소에는 작성자, 라이선스 또는 기타 유용한 정보를 자유 입력란에 포함할 수 있습니다.
 여기에서 새로 만드는 요소에 대해 이 입력란의 기본값을 지정할 수 있습니다 :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1003"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1115"/>
         <source>Applied to the next launch of QElectroTech</source>
         <translation>다음 QElectroTech 실행 시 적용</translation>
     </message>
@@ -8186,472 +8817,582 @@ that you create. Text and number inputs are
         <translation>양식</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="522"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="486"/>
         <source>Automatic backup of projects (applied at the next launch of QElectroTech)</source>
         <translation>프로젝트 자동 백업(다음 QElectroTech 실행 시 적용)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="705"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="787"/>
         <source>Collections</source>
         <translation>컬렉션</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="711"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="793"/>
         <source>Access the collections</source>
         <translation>컬렉션 접근</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="768"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="850"/>
         <source>Common collection directory</source>
         <translation>공용 컬렉션 폴더</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="796"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="878"/>
         <source>User collection directory</source>
         <translation>사용자 컬렉션 폴더</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="838"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="920"/>
         <source>User title blocks directory</source>
         <translation>사용자 표제란 폴더</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="951"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1033"/>
         <source>Elements management</source>
         <translation>요소 관리</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1043"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1155"/>
         <source>Here you can define the default appearance of the different texts of QElectroTech</source>
         <translation>여기에서 QElectroTech의 다양한 텍스트에 대한 기본 모양을 설정할 수 있습니다</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1218"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1330"/>
         <source>Designation, type, plant, location, length:</source>
         <translation>명칭, 유형, 설비, 위치, 길이:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1251"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1363"/>
         <source>Core colors (all of them):</source>
         <translation>심선 색 (전체):</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1284"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1396"/>
         <source>Text alignment:</source>
         <translation>텍스트 정렬:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1333"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1445"/>
         <source>Grid + Keyboard</source>
         <translation>격자 + 키보드</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1339"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1451"/>
+        <source>Grid and guides</source>
+        <translation>격자 및 안내선</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1526"/>
         <source>Grid: 1 - 30</source>
         <translation>격자 : 1 - 30</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1406"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1593"/>
         <source>DiagramEditor xGrid</source>
         <translation>도면 편집기 x격자</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1373"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1560"/>
         <source>DiagramEditor yGrid</source>
         <translation>도면 편집기 y격자</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="39"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="45"/>
         <source>Application color</source>
         <translation>응용 프로그램 색상</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="64"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="356"/>
         <source>Selection rectangle selects:</source>
-        <translation type="unfinished"></translation>
+        <translation>선택 사각형이 선택하는 대상:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="75"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="367"/>
         <source>Everything it overlaps (as before)</source>
-        <translation type="unfinished"></translation>
+        <translation>겹치는 모든 것 (이전과 같음)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="80"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="372"/>
         <source>What lies wholly within it</source>
-        <translation type="unfinished"></translation>
+        <translation>완전히 안에 들어 있는 것</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="85"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="377"/>
         <source>By direction: wholly within to the right, overlapped to the left</source>
-        <translation type="unfinished"></translation>
+        <translation>방향에 따라: 오른쪽으로는 완전히 안에 있는 것, 왼쪽으로는 겹치는 것</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="104"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1988"/>
+        <source>Symbol editor: draw like the folio, frame on the grid around the insertion point</source>
+        <translation>기호 편집기: 도면처럼 그리고, 삽입점 주변 격자에 프레임 맞춤</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1069"/>
+        <source>Find and edit a placed element in the collection it was taken from</source>
+        <translation>배치된 요소를 가져온 컬렉션에서 찾아 편집</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1072"/>
+        <source>Saving it there updates the open projects that use it. Otherwise the project&apos;s own copy is edited.</source>
+        <translation>그곳에 저장하면 이를 사용하는 열린 프로젝트가 업데이트됩니다. 그렇지 않으면 프로젝트 자체의 복사본이 편집됩니다.</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="186"/>
+        <source>Corner radius of the selection frame (0: square)</source>
+        <translation>선택 프레임의 모서리 반지름 (0: 직각)</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="280"/>
         <source>Zoom step:</source>
-        <translation type="unfinished"></translation>
+        <translation>확대/축소 단계:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="120"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="296"/>
         <source>How far the mouse wheel, Ctrl++ / Ctrl+- and the zoom buttons zoom at a time, in percent of the zoom shown, rounded to whole fives: with 10 %, 100 % goes to 110 %, 120 %, 130 % and 400 % to 440 %. Alt with the mouse wheel zooms four steps at a time.</source>
-        <translation type="unfinished"></translation>
+        <translation>마우스 휠, Ctrl++ / Ctrl+-, 확대/축소 버튼이 한 번에 확대/축소하는 정도로, 표시된 배율에 대한 백분율이며 5 단위로 반올림됩니다: 10 %일 때 100 %는 110 %, 120 %, 130 %가 되고 400 %는 440 %가 됩니다. Alt를 누른 채 마우스 휠을 돌리면 한 번에 4단계씩 확대/축소합니다.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="123"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="299"/>
         <source>Factor 1.15 (as before)</source>
-        <translation type="unfinished"></translation>
+        <translation>계수 1.15 (이전과 같음)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="126"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="302"/>
         <source> %</source>
-        <translation type="unfinished"> %</translation>
+        <translation> %</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="145"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="400"/>
         <source>Show the properties of a selected conductor in the Selection properties panel</source>
         <translation>선택한 도선의 속성을 선택 항목 속성 패널에 표시</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="152"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="219"/>
         <source>Draw a connected terminal in the color of its conductor</source>
-        <translation type="unfinished"></translation>
+        <translation>연결된 단자를 도체 색상으로 그리기</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="155"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="222"/>
         <source>Unchecked, every terminal is drawn in red. Terminals are never printed or exported.</source>
-        <translation type="unfinished"></translation>
+        <translation>선택하지 않으면 모든 단자가 빨간색으로 그려집니다. 단자는 인쇄되거나 내보내지지 않습니다.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="162"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="229"/>
+        <source>One stub per terminal which has a wire of its own, going up from the strip: what the wire is made of at its foot, where it lands at its top (12K1:A1). Cores of a cable are left out -- the cable is drawn below the strip.</source>
+        <translation>자체 전선이 있는 단자마다 단자대에서 위로 올라가는 인출선을 하나씩 그립니다: 아래쪽에는 전선의 사양, 위쪽에는 연결 대상(12K1:A1). 케이블의 심선은 생략됩니다 -- 케이블은 단자대 아래에 그려집니다.</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="232"/>
+        <source>Draw the wires of a terminal strip above it, like its cables below it</source>
+        <translation>단자대의 전선을 아래쪽 케이블처럼 단자대 위에 그리기</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="690"/>
+        <source>Used when the automatic assignment makes a terminal strip and by &quot;Automatic position&quot; in the terminal manager. Unchecked: the way the plan is drawn, folio by folio then left to right, which keeps N and PE where they are drawn. Checked: by label, X1:2 before X1:10. A strip already made keeps its order until it is sorted again.</source>
+        <translation>자동 할당으로 단자대를 만들 때와 단자대 관리자의 &quot;자동 위치&quot;에서 사용됩니다. 선택 해제: 도면 순서(도면별, 그다음 왼쪽에서 오른쪽)로, N과 PE는 그려진 위치에 그대로 둡니다. 선택: 라벨 순서로, X1:2가 X1:10보다 앞입니다. 이미 만든 단자대는 다시 정렬할 때까지 순서를 유지합니다.</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="693"/>
+        <source>Sort the terminal strips by label instead of the plan order</source>
+        <translation>도면 순서 대신 라벨 순서로 단자대 정렬</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="661"/>
+        <source>A new folio takes the group and sub-group of the folio before it</source>
+        <translation>새 도면은 바로 앞 도면의 그룹과 하위 그룹을 이어받음</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="664"/>
+        <source>Only a group or sub-group typed on that folio is taken. Unchecked, a new folio has none and is in its plant and location.</source>
+        <translation>해당 도면에 입력된 그룹 또는 하위 그룹만 이어받습니다. 선택하지 않으면 새 도면에는 그룹이 없으며 해당 설비와 위치에 속합니다.</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="671"/>
+        <source>Ask for the device labels when placing a macro</source>
+        <translation>매크로를 배치할 때 장치 기호 묻기</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="674"/>
+        <source>Proposes the next free labels, which Accept All takes. Unchecked, a macro keeps its saved labels.</source>
+        <translation>다음 사용 가능한 기호를 제안하며, 모두 수락을 누르면 이를 사용합니다. 선택하지 않으면 매크로는 저장된 기호를 유지합니다.</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="700"/>
         <source>When unticked, no conductors-per-terminal rule applies, whatever the projects&apos; settings.</source>
         <translation>선택하지 않으면 프로젝트 설정과 관계없이 단자당 도선 수 규칙이 적용되지 않습니다.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="165"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="703"/>
         <source>Apply the projects&apos; conductors-per-terminal rules</source>
         <translation>프로젝트의 단자당 도선 수 규칙 적용</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="180"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="718"/>
         <source>Maximum conductors per terminal:</source>
         <translation>단자당 최대 도선 수:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="193"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="731"/>
         <source>For every project except those with their own settings. A new conductor that would take a terminal past this number is refused; conductors already drawn are not changed. 4 means two twin ferrules, one on each side of the screw.</source>
         <translation>자체 설정이 있는 프로젝트를 제외한 모든 프로젝트에 적용됩니다. 단자가 이 수를 넘게 되는 새 도선은 거부되며, 이미 그려진 도선은 바뀌지 않습니다. 4는 나사 양쪽에 하나씩, 트윈 페룰 두 개를 뜻합니다.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="196"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="734"/>
         <source>No limit</source>
         <translation>제한 없음</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="220"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="758"/>
         <source>A sheet reference is a virtual point: it takes only one conductor, the one that continues on the other sheet.</source>
         <translation>시트 참조는 가상 점입니다: 다른 시트로 이어지는 도선 하나만 받습니다.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="223"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="761"/>
         <source>Only one conductor per sheet reference</source>
         <translation>시트 참조당 도선 하나만</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="239"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1457"/>
         <source>Show the default grid (applied the next time the programme is launched)</source>
         <translation>기본 격자 표시 (다음에 프로그램을 시작할 때 적용)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="258"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1476"/>
         <source>Zoomed out further, the dots of any grid step are left out; the zoom shown in the status bar tells where. In pixels as the system scales them, so the same value suits a HiDPI screen</source>
         <translation>더 축소하면 각 그리드 간격의 점이 생략됩니다. 어디서부터인지는 상태 표시줄의 확대/축소 값으로 알 수 있습니다. 시스템이 배율을 적용한 픽셀 단위이므로 같은 값이 HiDPI 화면에도 맞습니다</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="298"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1049"/>
         <source>By default, a double-click inserts the element on the sheet; editing remains accessible from the context menu.</source>
         <translation>기본적으로 두 번 클릭하면 요소가 시트에 삽입됩니다. 편집은 상황 메뉴에서 할 수 있습니다.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="301"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1052"/>
         <source>Double-clicking in the collection opens the element editor instead of inserting it</source>
         <translation>컬렉션에서 두 번 클릭하면 삽입하는 대신 요소 편집기를 엽니다</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="308"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1059"/>
         <source>Ticked: a single list, best match first. Unticked: the collection tree, filtered by the search.</source>
         <translation>선택: 가장 잘 일치하는 항목이 먼저 오는 단일 목록. 선택 해제: 검색으로 필터링된 컬렉션 트리.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="311"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1062"/>
         <source>Show search results as a sorted list</source>
         <translation>검색 결과를 정렬된 목록으로 표시</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="318"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="165"/>
         <source>After a click that selects an element or a conductor, the shortcut bar commands appear near the cursor and fade away when the mouse moves away.</source>
         <translation>요소나 도선을 선택하는 클릭 후 바로 가기 막대 명령이 커서 근처에 나타나고, 마우스가 멀어지면 사라집니다.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="321"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="168"/>
         <source>Show commands near the selection</source>
         <translation>선택 항목 근처에 명령 표시</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="328"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="335"/>
         <source>Holding the right button and dragging in a direction launches a shortcut bar command. A simple right-click still opens the context menu, on button release.</source>
         <translation>오른쪽 버튼을 누른 채 한 방향으로 끌면 바로 가기 막대 명령이 실행됩니다. 단순히 오른쪽 클릭하면 버튼을 놓을 때 여전히 상황 메뉴가 열립니다.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="331"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="338"/>
         <source>Right-button mouse gestures</source>
         <translation>오른쪽 버튼 마우스 제스처</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="338"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="416"/>
         <source>A four-way arrow over what a drag moves; with the crosshair, the pointer jumps with it from grid point to grid point, and a handle within 12 pixels catches it and the click. Unticked: the system pointer, and handles are grabbed under the mouse only.</source>
         <translation>끌기로 움직이는 대상 위에 4방향 화살표를 표시합니다. 십자선을 사용하면 포인터가 그리드 점에서 그리드 점으로 함께 이동하고, 12픽셀 안의 핸들이 클릭과 함께 포인터를 잡습니다. 선택 해제: 시스템 포인터를 사용하며, 핸들은 마우스 바로 아래에 있을 때만 잡힙니다.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="341"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="419"/>
         <source>Four-way arrow and handle catching with the crosshair</source>
         <translation>4방향 화살표와 십자선 핸들 잡기</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="348"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="209"/>
         <source>A symbol&apos;s text that reads from top to bottom once its symbol is turned is drawn the other way round, in the same place, so that upright texts all read from bottom to top, like the wires&apos; texts. Unticked by default: texts turn with their symbol.</source>
         <translation>기호를 회전한 뒤 위에서 아래로 읽히는 기호 텍스트를 같은 자리에서 반대 방향으로 그려, 세로 텍스트가 모두 전선 텍스트처럼 아래에서 위로 읽히게 합니다. 기본값은 해제: 텍스트가 기호와 함께 회전합니다.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="351"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="212"/>
         <source>Upright symbol texts read from bottom to top</source>
         <translation>세로 기호 텍스트를 아래에서 위로 읽기</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="358"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="426"/>
         <source>Dragging a symbol&apos;s text moves the text alone, and Shift+drag moves the symbol, as before version 0.100. Unticked by default: dragging a text moves its symbol, Shift+drag moves the text.</source>
-        <translation type="unfinished"></translation>
+        <translation>기호의 텍스트를 드래그하면 텍스트만 이동하고 Shift+드래그하면 기호가 이동합니다(버전 0.100 이전과 같음). 기본값은 선택 해제: 텍스트를 드래그하면 해당 기호가 이동하고, Shift+드래그하면 텍스트가 이동합니다.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="361"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="429"/>
         <source>Drag symbol texts without holding Shift</source>
-        <translation type="unfinished"></translation>
+        <translation>Shift를 누르지 않고 기호 텍스트 드래그</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="368"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="436"/>
         <source>While a symbol is placed or dragged, a shaded line runs from each of its terminals to the terminal in line with it. Ticked by default.</source>
         <translation>기호를 놓거나 끄는 동안 각 단자에서 일직선상의 단자까지 음영 선이 그려집니다. 기본값은 선택.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="371"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="439"/>
         <source>Help lines from the terminals of a dragged symbol</source>
         <translation>끄는 기호의 단자에서 보조선 표시</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="378"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="145"/>
         <source>A bar at each side of the drawing folds the panels of that side away, as in LibreOffice&apos;s sidebar, and a second click shows them again as they were. Unticked by default; the Display menu does the same with or without the bars.</source>
         <translation>도면 양쪽의 막대가 그쪽 패널을 접습니다 (LibreOffice 사이드바처럼). 다시 클릭하면 원래대로 표시됩니다. 기본값은 해제. 보기 메뉴로도 막대 유무와 관계없이 같은 작업을 할 수 있습니다.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="381"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="148"/>
         <source>Bars beside the drawing to fold the side panels away</source>
         <translation>측면 패널을 접는 도면 옆 막대</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="388"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="155"/>
         <source>The docked panels can be made as narrow as one wants: their texts wrap and what cannot wrap scrolls sideways. Unticked: the panels keep the width their texts and fields need.</source>
         <translation>도킹된 패널을 원하는 만큼 좁힐 수 있습니다: 텍스트는 줄 바꿈되고, 줄 바꿈할 수 없는 것은 옆으로 스크롤됩니다. 선택 해제: 패널은 텍스트와 필드에 필요한 너비를 유지합니다.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="391"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="158"/>
         <source>Narrow docks: wrap texts and scroll (applied the next time the programme is launched)</source>
         <translation>좁은 도크: 텍스트 줄 바꿈 및 스크롤 (다음 프로그램 시작 시 적용)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="398"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="446"/>
         <source>A corner or T-junction placed where one already stands takes its place, and its wires go to the new one. Unticked by default: both stay.</source>
         <translation>이미 코너나 T 분기가 있는 곳에 새로 놓으면 기존 것을 대신하고, 전선은 새것으로 옮겨집니다. 기본값은 해제: 둘 다 남습니다.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="401"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="449"/>
         <source>A new corner or T-junction replaces the one under it</source>
         <translation>새 코너나 T 분기가 그 아래의 것을 대체</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="408"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="239"/>
         <source>Printing and exporting ask first when symbols, texts, shapes, pictures or tables lie outside the sheet, as they are cut off or left out; saving says so in the status bar.</source>
-        <translation type="unfinished"></translation>
+        <translation>기호, 텍스트, 도형, 그림 또는 표가 도면 밖에 있으면 잘리거나 생략되므로 인쇄 및 내보내기 전에 먼저 확인합니다. 저장할 때는 상태 표시줄에 표시됩니다.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="411"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="242"/>
         <source>Warn about items outside the sheet</source>
-        <translation type="unfinished"></translation>
+        <translation>도면 밖의 항목 경고</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="418"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1516"/>
         <source>Show default guides (applies from the next time the programme is launched)</source>
         <translation>기본 안내선 표시 (다음에 프로그램을 시작할 때부터 적용)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="432"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="83"/>
         <source>Use &amp;Windows (applied at the next launch of QElectroTech)</source>
         <translation>창 모드 사용(&amp;W) (다음 QElectroTech 실행 시 적용)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="439"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="30"/>
+        <source>Theme</source>
+        <translation>테마</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="70"/>
+        <source>Main window</source>
+        <translation>메인 창</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="76"/>
         <source>Use &amp;tabs (applied at the next launch of QElectroTech)</source>
         <translation>탭 모드 사용(&amp;T) (다음 QElectroTech 실행 시 적용)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="478"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="115"/>
         <source>High pixel density (hdpi) displays scaling method (applied to the next launch of QElectroTech) :</source>
         <translation>고해상도(HDPI) 디스플레이 배율 방식(다음 QElectroTech 실행 시 적용) :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="551"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="178"/>
+        <source>Drawing on the sheet</source>
+        <translation>도면 위 그리기</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="266"/>
+        <source>Mouse and input</source>
+        <translation>마우스 및 입력</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="272"/>
+        <source>Zoom and navigation</source>
+        <translation>확대/축소 및 탐색</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="348"/>
+        <source>Selection</source>
+        <translation>선택</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="410"/>
+        <source>Drawing and moving</source>
+        <translation>그리기 및 이동</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="515"/>
         <source>Automatically number pasted or duplicated elements that follow a numbering</source>
         <translation>번호 매기기를 따르는 붙여넣거나 복제한 요소에 자동으로 번호 매기기</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="554"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="518"/>
         <source>A pasted element receives the next number of its numbering instead of the copied element&apos;s name, and the numbering advances.</source>
         <translation>붙여넣은 요소는 복사한 요소의 이름 대신 번호 매기기의 다음 번호를 받고, 번호 매기기가 진행됩니다.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="561"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="525"/>
         <source>A small hidden file beside the project says who has it open. Someone else opening it is told, and can open it read-only. Turn this off if your shared drive does not cope with it.</source>
         <translation>프로젝트 옆의 작은 숨김 파일이 누가 프로젝트를 열었는지 알려 줍니다. 다른 사람이 열면 알림을 받고 읽기 전용으로 열 수 있습니다. 공유 드라이브가 이를 처리하지 못하면 끄세요.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="564"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="528"/>
         <source>Tell others who has a project open (lock file beside the project)</source>
         <translation>누가 프로젝트를 열었는지 다른 사람에게 알리기 (프로젝트 옆의 잠금 파일)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="578"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="542"/>
         <source>Allow running JavaScript scripts (Project &gt; Run a script, and --run)</source>
         <translation>JavaScript 스크립트 실행 허용 (프로젝트 &gt; 스크립트 실행, 및 --run)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="581"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="545"/>
         <source>A script runs with your permissions: it can read and modify the open project and write files. Disabled by default; only run scripts whose origin you know.</source>
         <translation>스크립트는 사용자 권한으로 실행됩니다: 열린 프로젝트를 읽고 수정하며 파일을 쓸 수 있습니다. 기본적으로 꺼져 있습니다. 출처를 아는 스크립트만 실행하세요.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="588"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="552"/>
         <source>Allow an AI assistant to act on the open project (live mode)</source>
         <translation>AI 어시스턴트가 열린 프로젝트에서 작업하도록 허용 (실시간 모드)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="591"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="555"/>
         <source>An assistant connected through the MCP server can then run scripts on the open project, as you watch. A warning is shown at every start while this setting is on. Takes effect at the next start; unticking it closes the connection at once.</source>
         <translation>그러면 MCP 서버로 연결된 어시스턴트가 사용자가 지켜보는 동안 열린 프로젝트에서 스크립트를 실행할 수 있습니다. 이 설정이 켜져 있으면 시작할 때마다 경고가 표시됩니다. 다음 시작 시 적용되며, 선택을 해제하면 연결이 즉시 끊깁니다.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="598"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="562"/>
         <source>Enable chained folio reports for report elements</source>
         <translation>도면 시트 참조 요소에 연결 도면 시트 참조 사용</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="601"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="565"/>
         <source>When enabled, report elements (cross-references) across folios with matching labels are automatically chained together. Newly created projects will have this enabled automatically.</source>
         <translation>사용하면 여러 도면 시트에 걸쳐 라벨이 같은 도면 시트 참조 요소 (상호 참조)가 자동으로 연결됩니다. 새로 만드는 프로젝트에서는 자동으로 사용됩니다.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="608"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="572"/>
         <source>Previous versions kept when saving a project</source>
         <translation>프로젝트를 저장할 때 보관하는 이전 버전</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="611"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="618"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="575"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="582"/>
         <source>Before a project is saved, the file as it was is copied to a folder beside it, named after the project with &quot;-backups&quot;. Only the newest are kept.</source>
         <translation>프로젝트를 저장하기 전에 기존 파일을 프로젝트 이름에 “-backups”를 붙인 옆 폴더로 복사합니다. 가장 최근 것만 보관됩니다.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="621"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="585"/>
         <source>None</source>
         <translation>없음</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="631"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="595"/>
         <source>Reopen the projects of the last session at start</source>
         <translation>시작할 때 지난 세션의 프로젝트 다시 열기</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="634"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="598"/>
         <source>The projects open when QElectroTech was last left are opened again, unless it is started with a file to open.</source>
         <translation>QElectroTech를 마지막으로 종료할 때 열려 있던 프로젝트를 다시 엽니다. 단, 열 파일을 지정해 시작한 경우는 제외합니다.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="641"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="605"/>
         <source>Offer to restore automatic backups at start</source>
         <translation>시작할 때 자동 백업 복원 제안</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="644"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="608"/>
         <source>After a crash, the automatic backups (made every few minutes, see &quot;Automatic backup of projects&quot; above) are offered at the next start. Unticked, they are kept but not offered, the status bar says how many there are, and they are offered again once this is ticked. Not the same as the option below, which keeps a copy after every edit.</source>
         <translation>충돌 후 다음 시작 시 자동 백업 (몇 분마다 생성, 위의 &quot;프로젝트 자동 백업&quot; 참조)을 제안합니다. 선택 해제하면 백업은 유지되지만 제안되지 않고, 상태 표시줄에 개수가 표시되며, 다시 선택하면 다시 제안됩니다. 편집할 때마다 사본을 남기는 아래 옵션과는 다릅니다.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="651"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="615"/>
         <source>After a crash, offer projects as they were after their last edit (experimental)</source>
         <translation>충돌 후 마지막 편집 이후 상태의 프로젝트 제안 (실험적)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="654"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="618"/>
         <source>While a project is open, QElectroTech keeps a copy of it in its data folder, saved after every edit. If QElectroTech does not close normally, the next start offers that copy with the recovery files.</source>
         <translation>프로젝트가 열려 있는 동안 QElectroTech는 편집할 때마다 그 사본을 데이터 폴더에 저장합니다. QElectroTech가 정상적으로 종료되지 않으면 다음 시작 시 복구 파일과 함께 이 사본을 제안합니다.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="661"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="625"/>
         <source>Offer saving a project as one database file, .qetdb (experimental)</source>
         <translation>프로젝트를 하나의 데이터베이스 파일 .qetdb로 저장하는 옵션 제공 (실험적)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="664"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="628"/>
         <source>Save As then offers .qetdb: the whole project in one SQLite file. The format may still change; keep a .qet or .qetz copy of projects that matter.</source>
         <translation>그러면 &quot;다른 이름으로 저장&quot;에서 .qetdb를 선택할 수 있습니다: 프로젝트 전체가 하나의 SQLite 파일에 들어갑니다. 형식은 아직 바뀔 수 있으니, 중요한 프로젝트는 .qet 또는 .qetz 사본을 보관하세요.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="723"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="655"/>
+        <source>Folios and macros</source>
+        <translation>도면 및 매크로</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="684"/>
+        <source>Terminal strips and conductors</source>
+        <translation>단자대 및 도선</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="805"/>
         <source>Company collection directory</source>
         <translation>회사 컬렉션 폴더</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="758"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="840"/>
         <source>Create or change the prefix of the user collection&apos;s folders (qet_labels.xml file)</source>
         <extracomment>tooltip of the button opening the prefix configuration dialog of the user collection</extracomment>
         <translation>사용자 컬렉션 폴더의 접두사 만들기 또는 변경 (qet_labels.xml 파일)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="761"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="843"/>
         <source>Configure prefixes…</source>
         <extracomment>button opening the dialog where the folder prefixes of the user collection are configured</extracomment>
         <translation>접두사 설정…</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="775"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="857"/>
         <source>Company title-block directory</source>
         <translation>회사 표제란 폴더</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="803"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="885"/>
         <source>User Macro Directory</source>
         <translation>사용자 매크로 폴더</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="866"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="948"/>
         <source>Materials list file</source>
         <translation>자재 목록 파일</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="875"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="957"/>
         <source>Materials list used to fill in a symbol&apos;s items</source>
         <extracomment>tooltip of the material file path field</extracomment>
         <translation>기호의 항목을 채우는 데 사용하는 자재 목록</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="881"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="922"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="963"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1004"/>
         <source>Not set</source>
         <extracomment>hint shown when no material file is configured yet
 ----------
@@ -8659,85 +9400,85 @@ hint shown when no cable type file is configured yet</extracomment>
         <translation>설정 안 됨</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="895"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="977"/>
         <source>Create the list file with its headers</source>
         <extracomment>tooltip of the button creating the material file with its header line</extracomment>
         <translation>머리글이 있는 목록 파일 만들기</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="898"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="939"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="980"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1021"/>
         <source>Create...</source>
         <translation>만들기...</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="907"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="989"/>
         <source>Cable type list file</source>
         <translation>케이블 유형 목록 파일</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="916"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="998"/>
         <source>Directory of the cable types used to define a cable (number of cores, colors, cross-section)</source>
         <extracomment>tooltip of the cable type file path field</extracomment>
         <translation>케이블 정의에 사용하는 케이블 유형 목록 (심선 수, 색상, 단면적)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="936"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1018"/>
         <source>Create the cable type list file with its header line</source>
         <extracomment>tooltip of the button creating the cable type file with its header line</extracomment>
         <translation>머리글 행이 있는 케이블 유형 목록 파일 만들기</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="994"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1106"/>
         <source>Languages</source>
         <translation>언어</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1037"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1149"/>
         <source>texts</source>
         <translation>텍스트</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1057"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1169"/>
         <source>Elements texts</source>
         <translation>요소 텍스트</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1070"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1136"/>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1182"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1248"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1294"/>
         <source>Font:</source>
         <translation>글꼴 :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1080"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1143"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1192"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1255"/>
         <source>°</source>
         <translation>°</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1090"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1202"/>
         <source>Length :</source>
         <translation>길이 :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1100"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1129"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1212"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1241"/>
         <source>Rotation :</source>
         <translation>회전 :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1123"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1235"/>
         <source>Independent texts</source>
         <translation>독립 텍스트</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1176"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1288"/>
         <source>Other texts</source>
         <translation>기타 텍스트</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1212"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1324"/>
         <source>Cable texts</source>
         <translation>케이블 텍스트</translation>
     </message>
@@ -8746,7 +9487,7 @@ hint shown when no cable type file is configured yet</extracomment>
         <translation type="vanished">품명, 유형, 설비, 위치, 길이:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1241"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1353"/>
         <source>Font of the texts written along the cable line; a cable which has its own keeps it.</source>
         <translation>케이블 선을 따라 표시되는 텍스트의 글꼴입니다. 자체 글꼴이 있는 케이블은 그것을 유지합니다.</translation>
     </message>
@@ -8755,7 +9496,7 @@ hint shown when no cable type file is configured yet</extracomment>
         <translation type="vanished">심선 색상 (전체):</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1274"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1386"/>
         <source>Font of the core colors written along the line; a cable which has its own keeps it.</source>
         <translation>선을 따라 표시되는 심선 색상의 글꼴입니다. 자체 글꼴이 있는 케이블은 그것을 유지합니다.</translation>
     </message>
@@ -8764,53 +9505,53 @@ hint shown when no cable type file is configured yet</extracomment>
         <translation type="vanished">텍스트 정렬:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1294"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1406"/>
         <source>Where the texts of a cable stop relative to the start of its line; a cable which has its own keeps it.</source>
         <translation>케이블 텍스트가 선의 시작점을 기준으로 끝나는 위치입니다. 자체 설정이 있는 케이블은 그것을 유지합니다.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1298"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1410"/>
         <source>Right aligned</source>
         <translation>오른쪽 정렬</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1303"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1415"/>
         <source>Centred</source>
         <translation>가운데</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1308"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1420"/>
         <source>Left aligned</source>
         <translation>왼쪽 정렬</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1380"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1567"/>
         <source>The Grid must be active to see the changes.</source>
         <translation>변경 사항을 보려면 격자가 활성화되어야 합니다.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1426"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1613"/>
         <source>Grid for texts moved with the mouse</source>
         <translation>마우스로 이동하는 텍스트의 격자</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1429"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1616"/>
         <source>Fraction of the sheet grid. Hold Ctrl while moving to place freely.</source>
         <translation>시트 격자의 분수입니다. 자유롭게 배치하려면 이동하는 동안 Ctrl을 누르세요.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1449"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1636"/>
         <source>Keyboard movement: 1 - 30</source>
         <translation>키보드 이동 : 1 - 30</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1499"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1686"/>
         <source>DiagramEditor (key: left / right) xGrid</source>
         <comment>fr: DiagramEditor (touche :   gauche / droite)  xGrid</comment>
         <translation>도면 편집기(키: 왼쪽/오른쪽) x격자</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1506"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1693"/>
         <source>DiagramEditor (key: up / down) yGrid</source>
         <translation>도면 편집기(키: 위/아래) y격자</translation>
     </message>
@@ -8819,344 +9560,349 @@ hint shown when no cable type file is configured yet</extracomment>
         <translation type="vanished">ALT 키로 키보드 이동 : 1 - 9</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1535"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1729"/>
         <source>DiagramEditor (key: left / right) xGrid</source>
         <translation>도면 편집기(키: 왼쪽/오른쪽) x격자</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1564"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1758"/>
         <source>DiagramEditor (key: up / down) yGrid</source>
         <comment>fr: DiagramEditor (touche :  haut / bas)  yGrid</comment>
         <translation>도면 편집기(키: 위/아래) y격자</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1609"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1803"/>
         <source>View grid</source>
         <translation>격자 표시</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1706"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1713"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1900"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1907"/>
         <source>max:</source>
         <translation>최대:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1794"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1995"/>
         <source>When saving a symbol: refuse two terminals with the same name, and report terminals without a name (IEC 61666).</source>
         <translation>기호 저장 시: 이름이 같은 단자 두 개를 거부하고, 이름 없는 단자를 보고합니다 (IEC 61666).</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1797"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1998"/>
         <source>Check terminal names when saving</source>
         <translation>저장 시 단자 이름 확인</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1667"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1861"/>
         <source>Point-size in diagram-editor: 1 - 5</source>
         <translation>도면 편집기 격자 점 크기 : 1 - 5</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1529"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1700"/>
+        <source>Move by the grid step instead (Display &gt; Grid step)</source>
+        <translation>대신 격자 간격으로 이동 (보기 &gt; 격자 간격)</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1723"/>
         <source>Keyboard movement with the Ctrl key: 1 - 9</source>
         <translation>Ctrl 키를 사용한 키보드 이동: 1 - 9</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1615"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1720"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1809"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1914"/>
         <source>min:</source>
         <translation>최소:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1727"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1921"/>
         <source>Point-size in element-editor: 1 - 5</source>
         <translation>요소 편집기 격자 점 크기 : 1 - 5</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1751"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1945"/>
         <source>Editor</source>
         <translation>편집기</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1759"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1953"/>
         <source>Max. parts in Element Editor List</source>
         <translation>요소 편집기 목록의 최대 부품 수</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="571"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="535"/>
         <source>Do not store the labels of items in the copy paste</source>
         <translation>복사/붙여넣기 시 요소 라벨을 유지하지 않음</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="95"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="321"/>
         <source>Allow unzoom beyond the sheet</source>
         <translation>시트 범위를 넘어 축소 허용</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="71"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="74"/>
         <source>Bold italic</source>
         <translation>굵은 기울임꼴</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="73"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="76"/>
         <source>Bold</source>
         <translation>굵게</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="75"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="78"/>
         <source>Italic</source>
         <translation>기울임꼴</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="77"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="80"/>
         <source>Normal</source>
         <translation>보통</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="98"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="101"/>
         <source>Rounding up for 0.5 and more</source>
         <translation>0.5 이상 올림</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="99"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="102"/>
         <source>Always top rounding</source>
         <translation>항상 올림</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="100"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="103"/>
         <source>Always rounded down</source>
         <translation>항상 내림</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="101"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="104"/>
         <source>Rounding up for 0.75 and more</source>
         <translation>0.75 이상 올림</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="102"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="105"/>
         <source>No rounding</source>
         <translation>반올림 안 함</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="145"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="148"/>
         <source>Disabled</source>
         <comment>fr: Désactivée</comment>
         <translation>비활성화</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="200"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="214"/>
         <source>Enabled by the QET_ENABLE_SCRIPTING environment variable; this setting has no effect while it is set.</source>
         <translation>QET_ENABLE_SCRIPTING 환경 변수로 활성화되었습니다. 이 변수가 설정되어 있는 동안 이 설정은 효과가 없습니다.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="344"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="358"/>
         <source>Not set (default: %1)</source>
         <comment>hint shown in the material file field when no file is configured yet</comment>
         <translation>설정 안 됨 (기본값: %1)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="355"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="369"/>
         <source>Not set (default: %1)</source>
         <comment>hint shown in the cable type file field when no file is configured yet</comment>
         <translation>설정 안 됨 (기본값: %1)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="633"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="667"/>
         <source>General</source>
         <comment>configuration page title</comment>
         <translation>일반</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="651"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="685"/>
         <source>System</source>
         <translation>시스템</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="655"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="689"/>
         <source>Arabic</source>
         <translation>아랍어</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="656"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="690"/>
         <source>Brazilian</source>
         <translation>브라질 포르투갈어</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="657"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="691"/>
         <source>Catalan</source>
         <translation>카탈로니아어</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="658"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="692"/>
         <source>Czech</source>
         <translation>체코어</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="659"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="693"/>
         <source>German</source>
         <translation>독일어</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="660"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="694"/>
         <source>Danish</source>
         <translation>덴마크어</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="661"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="695"/>
         <source>Greek</source>
         <translation>그리스어</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="662"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="696"/>
         <source>English</source>
         <translation>영어</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="663"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="697"/>
         <source>Spanish</source>
         <translation>스페인어</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="664"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="698"/>
         <source>French</source>
         <translation>프랑스어</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="665"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="699"/>
         <source>Croatian</source>
         <translation>크로아티아어</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="666"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="700"/>
         <source>Italian</source>
         <translation>이탈리아어</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="667"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="701"/>
         <source>Japanese</source>
         <translation>일본어</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="668"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="702"/>
         <source>Korean</source>
         <translation>한국어</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="669"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="703"/>
         <source>Latvian</source>
         <translation>라트비아어</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="670"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="704"/>
         <source>Polish</source>
         <translation>폴란드어</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="671"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="705"/>
         <source>Portuguese</source>
         <translation>포르투갈어</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="672"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="706"/>
         <source>Romanian</source>
         <translation>루마니아어</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="673"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="707"/>
         <source>Russian</source>
         <translation>러시아어</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="674"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="708"/>
         <source>Slovak</source>
-        <translation type="unfinished"></translation>
+        <translation>슬로바키아어</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="675"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="709"/>
         <source>Slovenian</source>
         <translation>슬로베니아어</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="676"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="710"/>
         <source>Dutch</source>
         <translation>네덜란드어</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="677"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="711"/>
         <source>Norwegian</source>
         <translation>노르웨이어</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="678"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="712"/>
         <source>Belgium-Flemish</source>
         <translation>벨기에-플라망어</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="679"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="713"/>
         <source>Turkish</source>
         <translation>터키어</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="680"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="714"/>
         <source>Hungarian</source>
         <translation>헝가리어</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="681"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="715"/>
         <source>Mongolian</source>
         <translation>몽골어</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="682"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="716"/>
         <source>Ukrainian</source>
         <translation>우크라이나어</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="683"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="717"/>
         <source>Chinese</source>
         <translation>중국어</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="684"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="718"/>
         <source>Chinese (Traditional)</source>
         <translation>중국어 (번체)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="685"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="719"/>
         <source>Swedish</source>
         <translation>스웨덴어</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="761"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="795"/>
         <source>Cable text font</source>
         <translation>케이블 텍스트 글꼴</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="779"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="813"/>
         <source>Core colors font</source>
         <translation>심선 색상 글꼴</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="808"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="842"/>
         <source>Company collection path</source>
         <translation>회사 컬렉션 경로</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="836"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="870"/>
         <source>Company title-blocks</source>
         <translation>회사 표제란 경로</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="864"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="898"/>
         <source>User macro path</source>
         <translation>사용자 매크로 경로</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="906"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="940"/>
         <source>Folder not found</source>
         <translation>폴더를 찾을 수 없음</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="907"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="941"/>
         <source>The user collection folder:
 %1
 does not exist and could not be created.</source>
@@ -9165,12 +9911,12 @@ does not exist and could not be created.</source>
 이(가) 없으며 만들 수 없습니다.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="915"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="949"/>
         <source>No subfolder</source>
         <translation>하위 폴더 없음</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="916"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="950"/>
         <source>The user collection:
 %1
 has no subfolder, so there is no prefix to configure.</source>
@@ -9179,34 +9925,34 @@ has no subfolder, so there is no prefix to configure.</source>
 에 하위 폴더가 없으므로 설정할 접두사가 없습니다.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="924"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="958"/>
         <source>Prefix file cannot be read</source>
         <translation>접두사 파일을 읽을 수 없음</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="933"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="967"/>
         <source>Prefix file damaged</source>
         <translation>접두사 파일 손상됨</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="934"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="968"/>
         <source>The file %1 is not a valid XML file:
 %2</source>
         <translation>파일 %1은(는) 올바른 XML 파일이 아닙니다:
 %2</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="938"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="972"/>
         <source>Fix the file</source>
         <translation>파일 수정</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="939"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="973"/>
         <source>Rebuild</source>
         <translation>다시 만들기</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="940"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="974"/>
         <source>Nothing has been changed yet.
 
 “Fix the file”: this window closes without changing anything. Open the file in a text editor at the place shown, fix it, then run this command again.
@@ -9219,36 +9965,36 @@ has no subfolder, so there is no prefix to configure.</source>
 “다시 만들기”: 폴더 트리를 다시 만들지만, 현재 접두사가 모두 사라집니다. 현재 파일은 바꾸기 전에 qet_labels.xml.bak으로 보관됩니다.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="949"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="983"/>
         <source>File: %1</source>
         <translation>파일: %1</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="973"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1007"/>
         <source>Select the materials list file</source>
         <translation>자재 목록 파일 선택</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="975"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="998"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1039"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1062"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1009"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1032"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1073"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1096"/>
         <source>CSV files (*.csv)</source>
         <translation>CSV 파일 (*.csv)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="996"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1030"/>
         <source>Create the materials list file</source>
         <translation>자재 목록 파일 만들기</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1014"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1048"/>
         <source>Cannot create</source>
         <translation>만들 수 없음</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1015"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1079"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1049"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1113"/>
         <source>Cannot create the file:
 %1
 %2</source>
@@ -9257,32 +10003,32 @@ has no subfolder, so there is no prefix to configure.</source>
 %2</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1037"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1071"/>
         <source>Select the cable types file</source>
         <translation>케이블 유형 파일 선택</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1060"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1094"/>
         <source>Create the cable types file</source>
         <translation>케이블 유형 파일 만들기</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1078"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1112"/>
         <source>Cannot be created</source>
         <translation>만들 수 없음</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1109"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1143"/>
         <source>Values that are too high might cause the application to crash</source>
         <translation>값이 너무 크면 프로그램이 비정상 종료될 수 있습니다.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1144"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1178"/>
         <source>Experimental feature</source>
         <translation>실험적 기능</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1145"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1179"/>
         <source>WARNING:
 Any setting other than “No rounding” may cause rendering errors in the project, depending on:
 
@@ -9297,7 +10043,7 @@ Any setting other than “No rounding” may cause rendering errors in the proje
 3 - 1, 2번과 설정이 다른 컴퓨터 및/또는 화면에서 프로젝트를 편집하는 경우.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="248"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1466"/>
         <source>Hide the grid when its dots are closer on screen than</source>
         <translation>화면에서 격자 점 간격이 다음보다 좁으면 격자 숨기기</translation>
     </message>
@@ -9306,7 +10052,7 @@ Any setting other than “No rounding” may cause rendering errors in the proje
         <translation type="vanished">더 축소하면 어떤 격자 간격이든 점을 생략합니다. 기준은 상태 표시줄의 확대 비율로 알 수 있습니다</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="261"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1479"/>
         <source> px</source>
         <translation> px</translation>
     </message>
@@ -10134,7 +10880,7 @@ Any setting other than “No rounding” may cause rendering errors in the proje
     <message>
         <location filename="../sources/ui/imagepropertieswidget.h" line="46"/>
         <source>Picture properties</source>
-        <translation type="unfinished"></translation>
+        <translation>그림 속성</translation>
     </message>
 </context>
 <context>
@@ -10920,6 +11666,49 @@ This setting is in Configure QElectroTech &gt; General &gt; Projects.</source>
     </message>
 </context>
 <context>
+    <name>MacroLabelsDialog</name>
+    <message>
+        <location filename="../sources/ui/macrolabelsdialog.cpp" line="32"/>
+        <source>Place the macro</source>
+        <translation>매크로 배치</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/macrolabelsdialog.cpp" line="35"/>
+        <source>Enter the labels and texts of this macro. Accept All takes the labels proposed.</source>
+        <translation>이 매크로의 라벨과 텍스트를 입력하십시오. 모두 수락을 누르면 제안된 라벨을 사용합니다.</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/macrolabelsdialog.cpp" line="41"/>
+        <source>Kind</source>
+        <translation>종류</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/macrolabelsdialog.cpp" line="41"/>
+        <source>In the macro</source>
+        <translation>매크로 안</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/macrolabelsdialog.cpp" line="41"/>
+        <source>To place</source>
+        <translation>배치할 값</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/macrolabelsdialog.cpp" line="46"/>
+        <source>Label</source>
+        <translation>라벨</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/macrolabelsdialog.cpp" line="46"/>
+        <source>Text</source>
+        <translation>텍스트</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/macrolabelsdialog.cpp" line="57"/>
+        <source>Accept All</source>
+        <translation>모두 수락</translation>
+    </message>
+</context>
+<context>
     <name>MacroRecorder</name>
     <message>
         <location filename="../sources/scripting/macrorecorder.cpp" line="198"/>
@@ -11467,73 +12256,73 @@ Do you still want to link this slave contact?</source>
         <translation>그리기만 바뀝니다: 요소에 기록된 내용, 번호 매기기, 정렬, 내보내기는 전체 라벨을 그대로 사용합니다.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/configpages.cpp" line="224"/>
+        <location filename="../sources/ui/configpage/configpages.cpp" line="225"/>
         <source>Sheet</source>
         <translation>도면 시트</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/configpages.cpp" line="225"/>
+        <location filename="../sources/ui/configpage/configpages.cpp" line="226"/>
         <source>Conductor</source>
         <translation>도체(전선)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/configpages.cpp" line="226"/>
+        <location filename="../sources/ui/configpage/configpages.cpp" line="227"/>
         <source>Sheet references</source>
         <translation>도면 시트 참조</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/configpages.cpp" line="227"/>
+        <location filename="../sources/ui/configpage/configpages.cpp" line="228"/>
         <source>Cross-references</source>
         <translation>교차 참조</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/configpages.cpp" line="228"/>
+        <location filename="../sources/ui/configpage/configpages.cpp" line="229"/>
         <source>Guides</source>
         <translation>안내선</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/configpages.cpp" line="231"/>
+        <location filename="../sources/ui/configpage/configpages.cpp" line="232"/>
         <source>Potential types</source>
-        <translation type="unfinished"></translation>
+        <translation>전위 유형</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/configpages.cpp" line="238"/>
+        <location filename="../sources/ui/configpage/configpages.cpp" line="239"/>
         <source>Set the default automatic numbering rules for new projects:</source>
         <translation>새 프로젝트의 기본 자동 번호 매기기 규칙 설정:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/configpages.cpp" line="240"/>
+        <location filename="../sources/ui/configpage/configpages.cpp" line="241"/>
         <source>Conductors</source>
         <translation>도선</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/configpages.cpp" line="241"/>
+        <location filename="../sources/ui/configpage/configpages.cpp" line="242"/>
         <source>Elements</source>
         <translation>요소</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/configpages.cpp" line="242"/>
+        <location filename="../sources/ui/configpage/configpages.cpp" line="243"/>
         <source>Sheets</source>
         <translation>폴리오</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/configpages.cpp" line="243"/>
+        <location filename="../sources/ui/configpage/configpages.cpp" line="244"/>
         <source>Cables</source>
         <translation>케이블</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/configpages.cpp" line="245"/>
+        <location filename="../sources/ui/configpage/configpages.cpp" line="246"/>
         <source>Auto Numbering</source>
         <translation>자동 번호 매기기</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/configpages.cpp" line="401"/>
+        <location filename="../sources/ui/configpage/configpages.cpp" line="402"/>
         <source>New sheet</source>
         <comment>configuration page title</comment>
         <translation>새 도면 시트</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/configpages.cpp" line="402"/>
+        <location filename="../sources/ui/configpage/configpages.cpp" line="403"/>
         <source>New project</source>
         <comment>configuration page title</comment>
         <translation>새 프로젝트</translation>
@@ -11663,133 +12452,140 @@ Do you still want to link this slave contact?</source>
         <translation>0</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="137"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="150"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="165"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="292"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="484"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="140"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="153"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="173"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="304"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="499"/>
         <source>number format 1</source>
         <translation>숫자 형식 1</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="138"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="152"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="167"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="296"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="488"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="141"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="160"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="175"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="310"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="505"/>
         <source>number format 01</source>
         <translation>숫자 형식 01</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="139"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="154"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="169"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="300"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="492"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="142"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="162"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="177"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="314"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="509"/>
         <source>number format 001</source>
         <translation>숫자 형식 001</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="140"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="156"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="171"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="320"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="514"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="143"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="164"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="179"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="334"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="531"/>
         <source>Cyclic (modulo)</source>
         <translation>순환 (모듈로)</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="141"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="157"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="172"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="322"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="496"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="144"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="165"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="180"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="336"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="513"/>
         <source>Alphabetical</source>
         <translation>알파벳</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="142"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="158"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="173"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="304"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="498"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="145"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="166"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="181"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="318"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="515"/>
         <source>Text</source>
         <translation>텍스트</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="159"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="174"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="306"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="500"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="158"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="308"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="503"/>
+        <source>number format 1 - Plant</source>
+        <translation>번호 형식 1 - 설비</translation>
+    </message>
+    <message>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="167"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="182"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="320"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="517"/>
         <source>Sheet no.</source>
         <translation>도면 시트 번호</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="160"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="175"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="308"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="502"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="168"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="183"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="322"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="519"/>
         <source>Sheet</source>
         <translation>도면 시트</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="151"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="166"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="294"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="486"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="154"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="174"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="306"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="501"/>
         <source>number format 1 - Sheet</source>
         <translation>숫자 형식 1 - 도면 시트</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="153"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="168"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="298"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="490"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="161"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="176"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="312"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="507"/>
         <source>number format 01 - Sheet</source>
         <translation>숫자 형식 01 - 도면 시트</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="155"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="170"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="302"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="494"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="163"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="178"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="316"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="511"/>
         <source>number format 001 - Sheet</source>
         <translation>숫자 형식 001 - 도면 시트</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="162"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="177"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="312"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="506"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="170"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="185"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="326"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="523"/>
         <source>Location</source>
         <translation>위치</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="161"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="176"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="310"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="504"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="169"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="184"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="324"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="521"/>
         <source>Plant</source>
         <translation>설비</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="178"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="314"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="508"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="186"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="328"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="525"/>
         <source>Element Line</source>
         <translation>요소 행</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="179"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="316"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="510"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="187"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="330"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="527"/>
         <source>Element Column</source>
         <translation>요소 열</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="180"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="318"/>
-        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="512"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="188"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="332"/>
+        <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="529"/>
         <source>Element Prefix</source>
         <translation>요소 접두어</translation>
     </message>
@@ -11814,7 +12610,7 @@ Do you still want to link this slave contact?</source>
         <translation>동적 텍스트 필드</translation>
     </message>
     <message>
-        <location filename="../sources/editor/graphicspart/partdynamictextfield.cpp" line="602"/>
+        <location filename="../sources/editor/graphicspart/partdynamictextfield.cpp" line="605"/>
         <source>Move a text field</source>
         <translation>텍스트 필드 이동</translation>
     </message>
@@ -12113,49 +12909,49 @@ Import them? The elements will then receive the next numbers, starting from 1. O
     <message>
         <location filename="../sources/ui/potentialcheckdialog.cpp" line="43"/>
         <source>Check potential types</source>
-        <translation type="unfinished"></translation>
+        <translation>전위 유형 검사</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialcheckdialog.cpp" line="50"/>
         <source>Each row is a potential whose wires have different types. Click a row to select its wires. Types joined on purpose can be declared in the project properties and are not listed.</source>
-        <translation type="unfinished"></translation>
+        <translation>각 행은 전선 유형이 서로 다른 전위입니다. 행을 클릭하면 해당 전선이 선택됩니다. 의도적으로 결합한 유형은 프로젝트 속성에서 선언할 수 있으며 목록에 표시되지 않습니다.</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialcheckdialog.cpp" line="58"/>
         <source>Types on the potential</source>
-        <translation type="unfinished"></translation>
+        <translation>전위의 유형</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialcheckdialog.cpp" line="58"/>
         <source>Typed wires</source>
-        <translation type="unfinished"></translation>
+        <translation>유형이 지정된 전선</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialcheckdialog.cpp" line="69"/>
         <source>Refresh</source>
-        <translation type="unfinished">새로 고침</translation>
+        <translation>새로 고침</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialcheckdialog.cpp" line="96"/>
         <source>No potential carries wires of different types.</source>
-        <translation type="unfinished"></translation>
+        <translation>유형이 다른 전선을 가진 전위가 없습니다.</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialcheckdialog.cpp" line="97"/>
         <source>Potential types are off for this project, so there is nothing to check.</source>
-        <translation type="unfinished"></translation>
+        <translation>이 프로젝트에서는 전위 유형이 꺼져 있으므로 검사할 것이 없습니다.</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/potentialcheckdialog.cpp" line="100"/>
         <source>%n potential(s) carry wires of different types.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>전위 %n개에 유형이 다른 전선이 있습니다.</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialcheckdialog.cpp" line="142"/>
         <source>These wires no longer exist. Refresh the results.</source>
-        <translation type="unfinished"></translation>
+        <translation>이 전선들은 더 이상 존재하지 않습니다. 결과를 새로 고치십시오.</translation>
     </message>
 </context>
 <context>
@@ -12261,121 +13057,159 @@ The following variables are incompatible:
     </message>
 </context>
 <context>
+    <name>PotentialSourcesWidget</name>
+    <message>
+        <location filename="../sources/ui/potentialsourceswidget.cpp" line="37"/>
+        <source>A type set on a terminal reaches every conductor at its potential that has no type of its own, through terminal blocks and folio reports.</source>
+        <translation>단자에 설정한 유형은 자체 유형이 없는 같은 전위의 모든 도체에 단자대와 도면 시트 참조를 거쳐 전달됩니다.</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/potentialsourceswidget.cpp" line="43"/>
+        <source>Terminal</source>
+        <translation>단자</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/potentialsourceswidget.cpp" line="43"/>
+        <source>Potential type</source>
+        <translation>전위 유형</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/potentialsourceswidget.cpp" line="74"/>
+        <source>Potential sources</source>
+        <translation>전위 소스</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/potentialsourceswidget.cpp" line="101"/>
+        <source>Terminal %1</source>
+        <translation>단자 %1</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/potentialsourceswidget.cpp" line="107"/>
+        <source>None</source>
+        <translation>없음</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/potentialsourceswidget.cpp" line="172"/>
+        <source>Set the potential sources</source>
+        <translation>전위 소스 설정</translation>
+    </message>
+</context>
+<context>
     <name>PotentialTypesWidget</name>
     <message>
         <location filename="../sources/ui/potentialtypeswidget.cpp" line="51"/>
         <source>Draw conductors from their own style</source>
-        <translation type="unfinished"></translation>
+        <translation>도체를 자체 스타일로 그리기</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialtypeswidget.cpp" line="52"/>
         <source>Draw conductors from their potential type, chosen on each conductor</source>
-        <translation type="unfinished"></translation>
+        <translation>도체마다 선택한 전위 유형으로 도체 그리기</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialtypeswidget.cpp" line="54"/>
+        <source>Draw conductors from their potential type, set on the source terminal</source>
+        <translation>소스 단자에 설정한 전위 유형으로 도체 그리기</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/potentialtypeswidget.cpp" line="56"/>
         <source>When a type is used, a conductor whose potential has a type is drawn in that type&apos;s colour, line style and width. The style stored on the conductor is kept, and used again when this is off or the conductor has no type.</source>
-        <translation type="unfinished"></translation>
+        <translation>유형을 사용하면 전위에 유형이 있는 도체는 해당 유형의 색상, 선 스타일, 두께로 그려집니다. 도체에 저장된 스타일은 유지되며, 이 기능이 꺼져 있거나 도체에 유형이 없을 때 다시 사용됩니다.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/potentialtypeswidget.cpp" line="59"/>
-        <source>Choose a conductor&apos;s type in its properties. The type applies to every conductor on the same potential.</source>
-        <translation type="unfinished"></translation>
+        <location filename="../sources/ui/potentialtypeswidget.cpp" line="61"/>
+        <source>Choose a conductor&apos;s type in its properties. The type applies to every conductor on the same potential. With the source terminal, set the type on a terminal of a symbol (the output of a power supply, for example) in the symbol&apos;s properties: it reaches the conductors through terminal blocks and folio reports, not through other devices. A type chosen on a conductor still wins.</source>
+        <translation>도체의 유형은 해당 속성에서 선택합니다. 유형은 같은 전위의 모든 도체에 적용됩니다. 소스 단자를 사용하는 경우 기호 속성에서 기호의 단자(예: 전원 공급 장치의 출력)에 유형을 설정합니다: 유형은 단자대와 도면 시트 참조를 거쳐 도체에 전달되지만, 다른 장치는 거치지 않습니다. 도체에서 선택한 유형이 여전히 우선합니다.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/potentialtypeswidget.cpp" line="64"/>
+        <location filename="../sources/ui/potentialtypeswidget.cpp" line="71"/>
         <source>Name</source>
-        <translation type="unfinished">이름</translation>
+        <translation>이름</translation>
     </message>
     <message>
-        <location filename="../sources/ui/potentialtypeswidget.cpp" line="64"/>
+        <location filename="../sources/ui/potentialtypeswidget.cpp" line="71"/>
         <source>Colour</source>
-        <translation type="unfinished"></translation>
+        <translation>색상</translation>
     </message>
     <message>
-        <location filename="../sources/ui/potentialtypeswidget.cpp" line="64"/>
+        <location filename="../sources/ui/potentialtypeswidget.cpp" line="71"/>
         <source>Line style</source>
-        <translation type="unfinished"></translation>
+        <translation>선 스타일</translation>
     </message>
     <message>
-        <location filename="../sources/ui/potentialtypeswidget.cpp" line="64"/>
+        <location filename="../sources/ui/potentialtypeswidget.cpp" line="71"/>
         <source>Width</source>
-        <translation type="unfinished">너비</translation>
+        <translation>두께</translation>
     </message>
     <message>
-        <location filename="../sources/ui/potentialtypeswidget.cpp" line="75"/>
+        <location filename="../sources/ui/potentialtypeswidget.cpp" line="82"/>
         <source>Add</source>
-        <translation type="unfinished"></translation>
+        <translation>추가</translation>
     </message>
     <message>
-        <location filename="../sources/ui/potentialtypeswidget.cpp" line="76"/>
-        <location filename="../sources/ui/potentialtypeswidget.cpp" line="93"/>
+        <location filename="../sources/ui/potentialtypeswidget.cpp" line="83"/>
+        <location filename="../sources/ui/potentialtypeswidget.cpp" line="100"/>
         <source>Remove</source>
-        <translation type="unfinished"></translation>
+        <translation>제거</translation>
     </message>
     <message>
-        <location filename="../sources/ui/potentialtypeswidget.cpp" line="77"/>
+        <location filename="../sources/ui/potentialtypeswidget.cpp" line="84"/>
         <source>Restore the default types</source>
-        <translation type="unfinished"></translation>
+        <translation>기본 유형 복원</translation>
     </message>
     <message>
-        <location filename="../sources/ui/potentialtypeswidget.cpp" line="86"/>
+        <location filename="../sources/ui/potentialtypeswidget.cpp" line="93"/>
         <source>Types joined on purpose, for example 0V and PE at a power supply. A potential with only these types is not reported as mixed.</source>
-        <translation type="unfinished"></translation>
+        <translation>의도적으로 결합한 유형(예: 전원 공급 장치의 0V와 PE). 이 유형만 있는 전위는 혼합으로 보고되지 않습니다.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/potentialtypeswidget.cpp" line="92"/>
+        <location filename="../sources/ui/potentialtypeswidget.cpp" line="99"/>
         <source>Join</source>
-        <translation type="unfinished"></translation>
+        <translation>결합</translation>
     </message>
     <message>
-        <location filename="../sources/ui/potentialtypeswidget.cpp" line="96"/>
+        <location filename="../sources/ui/potentialtypeswidget.cpp" line="103"/>
         <source>and</source>
-        <translation type="unfinished"></translation>
+        <translation>및</translation>
     </message>
     <message>
-        <location filename="../sources/ui/potentialtypeswidget.cpp" line="116"/>
+        <location filename="../sources/ui/potentialtypeswidget.cpp" line="123"/>
         <source>New type</source>
-        <translation type="unfinished"></translation>
+        <translation>새 유형</translation>
     </message>
     <message>
-        <location filename="../sources/ui/potentialtypeswidget.cpp" line="156"/>
-        <source>Set where the potential starts (not available in this version)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/potentialtypeswidget.cpp" line="173"/>
+        <location filename="../sources/ui/potentialtypeswidget.cpp" line="172"/>
         <source>%1 and %2</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 및 %2</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/potentialtypeswidget.cpp" line="214"/>
+        <source>Solid line</source>
+        <comment>conductor style: solid line</comment>
+        <translation>실선</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialtypeswidget.cpp" line="215"/>
-        <source>Solid line</source>
-        <comment>conductor style: solid line</comment>
-        <translation type="unfinished"></translation>
+        <source>Dashed line</source>
+        <comment>conductor style: dashed line</comment>
+        <translation>파선</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialtypeswidget.cpp" line="216"/>
-        <source>Dashed line</source>
-        <comment>conductor style: dashed line</comment>
-        <translation type="unfinished">점선</translation>
+        <source>Dots and dashes</source>
+        <comment>conductor style: dashed and dotted line</comment>
+        <translation>일점쇄선</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialtypeswidget.cpp" line="217"/>
-        <source>Dots and dashes</source>
-        <comment>conductor style: dashed and dotted line</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/potentialtypeswidget.cpp" line="218"/>
         <source>Dotted line</source>
         <comment>conductor style: dotted line</comment>
-        <translation type="unfinished"></translation>
+        <translation>점선</translation>
     </message>
     <message>
-        <location filename="../sources/ui/potentialtypeswidget.cpp" line="235"/>
+        <location filename="../sources/ui/potentialtypeswidget.cpp" line="234"/>
         <source>Choose a colour</source>
-        <translation type="unfinished"></translation>
+        <translation>색상 선택</translation>
     </message>
 </context>
 <context>
@@ -12482,7 +13316,7 @@ Its copy was kept as:
 <context>
     <name>PrintConfigPage</name>
     <message>
-        <location filename="../sources/ui/configpage/configpages.cpp" line="724"/>
+        <location filename="../sources/ui/configpage/configpages.cpp" line="725"/>
         <source>Printing</source>
         <comment>configuration page title</comment>
         <translation>인쇄</translation>
@@ -13189,13 +14023,13 @@ Give them another numbering first.</source>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="344"/>
         <source>Cell numbering starts from:</source>
-        <translation type="unfinished"></translation>
+        <translation>셀 번호 매기기 시작 위치:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="354"/>
         <source>From which corner to start numbering the cells: Top - Left corner(default), Top - Right, Bottom - Left, Bottom - Right.</source>
         <comment>tooltip</comment>
-        <translation type="unfinished"></translation>
+        <translation>셀 번호 매기기를 시작할 모서리: 왼쪽 위(기본값), 오른쪽 위, 왼쪽 아래, 오른쪽 아래.</translation>
     </message>
     <message>
         <source>Origin (of a coordinate system):</source>
@@ -13426,7 +14260,7 @@ Give them another numbering first.</source>
         <location filename="../sources/print/projectprintwindow.cpp" line="134"/>
         <source>Print preview</source>
         <comment>window title</comment>
-        <translation type="unfinished"></translation>
+        <translation>인쇄 미리 보기</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="135"/>
@@ -13437,7 +14271,7 @@ Give them another numbering first.</source>
         <location filename="../sources/print/projectprintwindow.cpp" line="141"/>
         <source>Export to PDF</source>
         <comment>window title</comment>
-        <translation type="unfinished"></translation>
+        <translation>PDF로 내보내기</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="142"/>
@@ -13506,14 +14340,14 @@ Give them another numbering first.</source>
         <location filename="../sources/projectview.cpp" line="407"/>
         <source>Save as .qetdb?</source>
         <comment>dialog title</comment>
-        <translation type="unfinished"></translation>
+        <translation>.qetdb로 저장하시겠습니까?</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/projectview.cpp" line="408"/>
         <source>%n bridge(s) are drawn in this project. The .qetdb format does not store bridges yet -- they are kept in the normal .qet format only. Save it as .qetdb anyway?</source>
         <comment>also asked when the file name says .qetdb</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>이 프로젝트에는 브리지 %n개가 그려져 있습니다. .qetdb 형식은 아직 브리지를 저장하지 않습니다 -- 브리지는 일반 .qet 형식에만 유지됩니다. 그래도 .qetdb로 저장하시겠습니까?</numerusform>
         </translation>
     </message>
     <message>
@@ -13666,75 +14500,75 @@ Saving over it would lose their changes.</source>
 <context>
     <name>QETApp</name>
     <message>
-        <location filename="../sources/qetapp.cpp" line="354"/>
+        <location filename="../sources/qetapp.cpp" line="367"/>
         <source>LTR</source>
         <comment>Translate this string to RTL if you are translating 		 to a Right-to-Left language, else translate to LTR</comment>
         <translation>LTR</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="556"/>
+        <location filename="../sources/qetapp.cpp" line="572"/>
         <source>QET title blocks</source>
         <comment>title of the title block templates 					collection provided by QElectroTech</comment>
         <translation>QET 타이틀 블록</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="577"/>
+        <location filename="../sources/qetapp.cpp" line="593"/>
         <source>Company title-blocks</source>
         <comment>title of the company&apos;s 					title block templates collection</comment>
         <translation>회사 타이틀 블록</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="597"/>
+        <location filename="../sources/qetapp.cpp" line="613"/>
         <source>User title blocks</source>
         <comment>title of the user&apos;s 					title block templates collection</comment>
         <translation>사용자 타이틀 블록</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2486"/>
-        <location filename="../sources/qetapp.cpp" line="2560"/>
+        <location filename="../sources/qetapp.cpp" line="2511"/>
+        <location filename="../sources/qetapp.cpp" line="2585"/>
         <source>Save settings as...</source>
         <comment>dialog title</comment>
         <translation>다른 이름으로 설정 저장...</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2562"/>
-        <location filename="../sources/qetapp.cpp" line="2604"/>
+        <location filename="../sources/qetapp.cpp" line="2587"/>
+        <location filename="../sources/qetapp.cpp" line="2629"/>
         <source>QElectroTech settings (*.conf)</source>
         <comment>file dialog filter</comment>
         <translation>QElectroTech 설정 (*.conf)</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2577"/>
-        <location filename="../sources/qetapp.cpp" line="2617"/>
+        <location filename="../sources/qetapp.cpp" line="2602"/>
+        <location filename="../sources/qetapp.cpp" line="2642"/>
         <source>Error</source>
         <comment>message box title</comment>
         <translation>오류</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2578"/>
+        <location filename="../sources/qetapp.cpp" line="2603"/>
         <source>Cannot save the settings to “%1”.</source>
         <translation>설정을 “%1”에 저장할 수 없습니다.</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2602"/>
+        <location filename="../sources/qetapp.cpp" line="2627"/>
         <source>Load settings...</source>
         <comment>dialog title</comment>
         <translation>설정 불러오기...</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2618"/>
+        <location filename="../sources/qetapp.cpp" line="2643"/>
         <source>“%1” is not a settings file saved by QElectroTech.</source>
         <translation>“%1”은(는) QElectroTech에서 저장한 설정 파일이 아닙니다.</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2654"/>
-        <location filename="../sources/qetapp.cpp" line="2667"/>
+        <location filename="../sources/qetapp.cpp" line="2679"/>
+        <location filename="../sources/qetapp.cpp" line="2692"/>
         <source>Load settings</source>
         <comment>message box title</comment>
         <translation>설정 불러오기</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2626"/>
+        <location filename="../sources/qetapp.cpp" line="2651"/>
         <source>These settings will replace your current ones, except the window layout and the list of recent files.
 
 QElectroTech will then close. Start it again to use the new settings.
@@ -13747,37 +14581,37 @@ Do you want to continue?</source>
 계속하시겠습니까?</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2465"/>
+        <location filename="../sources/qetapp.cpp" line="2490"/>
         <source>Toolbars, keyboard shortcuts, mouse and trackpad gestures</source>
         <translation>도구 모음, 키보드 단축키, 마우스 및 트랙패드 제스처</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2467"/>
+        <location filename="../sources/qetapp.cpp" line="2492"/>
         <source>Defaults for new projects: folio, title block, wires, numbering</source>
         <translation>새 프로젝트 기본값: 시트, 표제란, 도선, 번호 매기기</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2470"/>
+        <location filename="../sources/qetapp.cpp" line="2495"/>
         <source>All other settings: appearance, grid, language...</source>
         <translation>기타 모든 설정: 모양, 격자, 언어...</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2472"/>
+        <location filename="../sources/qetapp.cpp" line="2497"/>
         <source>Folders of the collections</source>
         <translation>컬렉션 폴더</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2489"/>
+        <location filename="../sources/qetapp.cpp" line="2514"/>
         <source>Settings to save:</source>
         <translation>저장할 설정:</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2499"/>
+        <location filename="../sources/qetapp.cpp" line="2524"/>
         <source>The folders of your collections are saved only when every part is ticked.</source>
         <translation>모든 부분을 선택한 경우에만 컬렉션 폴더가 저장됩니다.</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2638"/>
+        <location filename="../sources/qetapp.cpp" line="2663"/>
         <source>These settings will replace your current ones for:
 %1
 All your other settings are kept.</source>
@@ -13786,149 +14620,149 @@ All your other settings are kept.</source>
 다른 설정은 모두 유지됩니다.</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2644"/>
+        <location filename="../sources/qetapp.cpp" line="2669"/>
         <source>QElectroTech will then close. Start it again to use the new settings.</source>
         <translation>그런 다음 QElectroTech가 종료됩니다. 새 설정을 사용하려면 다시 시작하세요.</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2646"/>
+        <location filename="../sources/qetapp.cpp" line="2671"/>
         <source>Projects already open keep their own defaults.</source>
         <translation>이미 열린 프로젝트는 자체 기본값을 유지합니다.</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2647"/>
+        <location filename="../sources/qetapp.cpp" line="2672"/>
         <source>Do you want to continue?</source>
         <translation>계속하시겠습니까?</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2668"/>
+        <location filename="../sources/qetapp.cpp" line="2693"/>
         <source>The settings are loaded. They are used for the next new project.</source>
         <translation>설정을 불러왔습니다. 다음 새 프로젝트에 사용됩니다.</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="3080"/>
+        <location filename="../sources/qetapp.cpp" line="3105"/>
         <source>&amp;Quit</source>
         <translation>종료(&amp;Q)</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="3082"/>
+        <location filename="../sources/qetapp.cpp" line="3107"/>
         <source>&amp;Hide</source>
         <translation>숨기기(&amp;H)</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="3084"/>
+        <location filename="../sources/qetapp.cpp" line="3109"/>
         <source>&amp;Show</source>
         <translation>표시(&amp;S)</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="3086"/>
+        <location filename="../sources/qetapp.cpp" line="3111"/>
         <source>&amp;Hide diagram editor</source>
         <translation>모든 도면 편집기 숨기기(&amp;D)</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="3089"/>
+        <location filename="../sources/qetapp.cpp" line="3114"/>
         <source>&amp;Show diagram editors</source>
         <translation>모든 도면 편집기 표시(&amp;D)</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="3092"/>
+        <location filename="../sources/qetapp.cpp" line="3117"/>
         <source>&amp;Hide element editor</source>
         <translation>모든 요소 편집기 숨기기(&amp;E)</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="3095"/>
+        <location filename="../sources/qetapp.cpp" line="3120"/>
         <source>&amp;Show element editor</source>
         <translation>모든 요소 편집기 표시(&amp;E)</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="3098"/>
+        <location filename="../sources/qetapp.cpp" line="3123"/>
         <source>&amp;Hide title block template editor</source>
         <comment>systray submenu entry</comment>
         <translation>모든 타이틀 블록 템플릿 편집기 숨기기(&amp;T)</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="3101"/>
+        <location filename="../sources/qetapp.cpp" line="3126"/>
         <source>&amp;Show title block template editors</source>
         <comment>systray submenu entry</comment>
         <translation>모든 타이틀 블록 템플릿 편집기 표시(&amp;T)</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="3104"/>
+        <location filename="../sources/qetapp.cpp" line="3129"/>
         <source>&amp;New diagram editor</source>
         <translation>새 도면 편집기(&amp;N)</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="3106"/>
+        <location filename="../sources/qetapp.cpp" line="3131"/>
         <source>&amp;New element editor</source>
         <translation>새 요소 편집기(&amp;N)</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="3108"/>
+        <location filename="../sources/qetapp.cpp" line="3133"/>
         <source>Closes QElectroTech</source>
         <translation>QElectroTech를 종료합니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="3109"/>
+        <location filename="../sources/qetapp.cpp" line="3134"/>
         <source>Reduces QElectroTech into the systray</source>
         <translation>QElectroTech를 시스템 트레이로 최소화</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="3110"/>
+        <location filename="../sources/qetapp.cpp" line="3135"/>
         <source>Restore QElectroTech</source>
         <translation>QElectroTech 복원</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="3233"/>
+        <location filename="../sources/qetapp.cpp" line="3258"/>
         <source>Diagram editors</source>
         <translation>도면 편집기</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="3243"/>
+        <location filename="../sources/qetapp.cpp" line="3268"/>
         <source>Element editors</source>
         <translation>요소 편집기</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="3254"/>
+        <location filename="../sources/qetapp.cpp" line="3279"/>
         <source>Title block template editors</source>
         <comment>systray menu entry</comment>
         <translation>타이틀 블록 템플릿 편집기</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetapp.cpp" line="3302"/>
+        <location filename="../sources/qetapp.cpp" line="3327"/>
         <source>%n automatic backup(s) kept and not offered: Settings &gt; General, &quot;Offer to restore automatic backups at start&quot;</source>
         <translation>
             <numerusform>자동 백업 %n개를 보관 중이며 제안하지 않음: 설정 &gt; 일반, &quot;시작할 때 자동 백업 복원 제안&quot;</numerusform>
         </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="3447"/>
+        <location filename="../sources/qetapp.cpp" line="3472"/>
         <source>Crash report</source>
         <translation>충돌 보고서</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="3448"/>
+        <location filename="../sources/qetapp.cpp" line="3473"/>
         <source>QElectroTech did not close correctly the last time it was run.
 Here are the last messages logged before it closed — you can save them to include them in a bug report.</source>
         <translation>지난번 실행 때 QElectroTech가 정상적으로 종료되지 않았습니다.
 종료되기 전에 기록된 마지막 메시지입니다 — 저장하여 버그 보고서에 첨부할 수 있습니다.</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="3470"/>
+        <location filename="../sources/qetapp.cpp" line="3495"/>
         <source>Diagnostic report</source>
         <translation>진단 보고서</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="3471"/>
+        <location filename="../sources/qetapp.cpp" line="3496"/>
         <source>This contains the latest log entries for this session. Please check the contents before attaching it to a public bug report.</source>
         <translation>이 세션의 최신 로그 항목이 들어 있습니다. 공개 버그 보고서에 첨부하기 전에 내용을 확인하세요.</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="3551"/>
+        <location filename="../sources/qetapp.cpp" line="3576"/>
         <source>Usage: </source>
         <translation>사용법: </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="3553"/>
+        <location filename="../sources/qetapp.cpp" line="3578"/>
         <source> [options] [file]...
 
 </source>
@@ -13937,7 +14771,7 @@ Here are the last messages logged before it closed — you can save them to incl
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="3554"/>
+        <location filename="../sources/qetapp.cpp" line="3579"/>
         <source>QElectroTech, an application to design electric diagrams.
 
 Available options: 
@@ -13954,114 +14788,114 @@ Available options:
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="3561"/>
+        <location filename="../sources/qetapp.cpp" line="3586"/>
         <source>  --common-elements-dir=DIR     Define the elements collection directory
 </source>
         <translation>  --common-elements-dir=DIR     요소 컬렉션 폴더 지정
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="3564"/>
+        <location filename="../sources/qetapp.cpp" line="3589"/>
         <source>  --common-tbt-dir=DIR          Define the title block templates collection directory
 </source>
         <translation>  --common-tbt-dir=DIR          표제란 템플릿 컬렉션 폴더 지정
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="3567"/>
+        <location filename="../sources/qetapp.cpp" line="3592"/>
         <source>  --config-dir=DIR              Define configuration directory
 </source>
         <translation>  --config-dir=DIR              설정 폴더 지정
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="3570"/>
+        <location filename="../sources/qetapp.cpp" line="3595"/>
         <source>  --data-dir=DIR                Define data directory
 </source>
         <translation>  --data-dir=DIR                데이터 폴더 지정
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="3572"/>
+        <location filename="../sources/qetapp.cpp" line="3597"/>
         <source>  --lang-dir=DIR                Define the language files directory
 </source>
         <translation>  --lang-dir=DIR                언어 파일 폴더 지정
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="165"/>
+        <location filename="../sources/qetapp.cpp" line="163"/>
         <source>Loading... Initializing the elements collection cache</source>
         <comment>splash screen caption</comment>
         <translation>로딩 중... 요소 컬렉션 캐시 초기화</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="176"/>
+        <location filename="../sources/qetapp.cpp" line="174"/>
         <source>Loading... Sheets editor</source>
         <comment>splash screen caption</comment>
         <translation>로딩 중... 도면 편집기</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="181"/>
+        <location filename="../sources/qetapp.cpp" line="179"/>
         <source>Loading... Opening files</source>
         <comment>splash screen caption</comment>
         <translation>로딩 중... 파일 여는 중</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1771"/>
+        <location filename="../sources/qetapp.cpp" line="1796"/>
         <source>Q</source>
         <comment>Single-letter example text - translate length, not meaning</comment>
         <translation>Q</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1773"/>
+        <location filename="../sources/qetapp.cpp" line="1798"/>
         <source>QET</source>
         <comment>Small example text - translate length, not meaning</comment>
         <translation>QET</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1775"/>
+        <location filename="../sources/qetapp.cpp" line="1800"/>
         <source>Diagram</source>
         <comment>Normal example text - translate length, not meaning</comment>
         <translation>도면</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1777"/>
+        <location filename="../sources/qetapp.cpp" line="1802"/>
         <source>Electric</source>
         <comment>Normal example text - translate length, not meaning</comment>
         <translation>전기</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1779"/>
+        <location filename="../sources/qetapp.cpp" line="1804"/>
         <source>QElectroTech</source>
         <comment>Long example text - translate length, not meaning</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2385"/>
+        <location filename="../sources/qetapp.cpp" line="2410"/>
         <source>Configure QElectroTech</source>
         <comment>window title</comment>
         <translation>QElectroTech 설정</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2831"/>
+        <location filename="../sources/qetapp.cpp" line="2856"/>
         <source>Loading...</source>
         <comment>splash screen caption</comment>
         <translation>로딩 중...</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="3073"/>
+        <location filename="../sources/qetapp.cpp" line="3098"/>
         <source>Loading... Systray icon</source>
         <comment>splash screen caption</comment>
         <translation>로딩 중... 시스템 트레이 아이콘</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="3077"/>
+        <location filename="../sources/qetapp.cpp" line="3102"/>
         <source>QElectroTech</source>
         <comment>systray menu title</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="3139"/>
+        <location filename="../sources/qetapp.cpp" line="3164"/>
         <source>QElectroTech</source>
         <comment>systray icon tooltip</comment>
         <translation>QElectroTech</translation>
@@ -14070,1930 +14904,2012 @@ Available options:
 <context>
     <name>QETDiagramEditor</name>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="662"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="688"/>
         <source>Place symbol texts</source>
         <translation>심볼 텍스트 배치</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="663"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="689"/>
         <source>Place the label and the notes of the selected symbols as one block beside them</source>
         <comment>status bar tip</comment>
         <translation>선택한 심볼의 라벨과 메모를 하나의 블록으로 옆에 배치합니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="672"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="698"/>
         <source>Above, left</source>
         <translation>위, 왼쪽</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="673"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="699"/>
         <source>Above</source>
         <translation>위</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="674"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="700"/>
         <source>Above, right</source>
         <translation>위, 오른쪽</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="675"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="701"/>
         <source>Left</source>
         <translation>왼쪽</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="676"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="702"/>
         <source>On the symbol</source>
         <translation>심볼 위</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="677"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="703"/>
         <source>Right</source>
         <translation>오른쪽</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="678"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="704"/>
         <source>Below, left</source>
         <translation>아래, 왼쪽</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="679"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="705"/>
         <source>Below</source>
         <translation>아래</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="680"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="706"/>
         <source>Below, right</source>
         <translation>아래, 오른쪽</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2062"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2138"/>
         <source>Displ&amp;ay</source>
         <translation>표시(&amp;A)</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2242"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2322"/>
         <source>Show or hide the elements panel</source>
         <translation>요소 패널 표시/숨김</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1510"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1582"/>
         <source>Add a column</source>
         <translation>열 추가</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1413"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1485"/>
         <source>&amp;Cascade</source>
         <translation>계단식 배열(&amp;C)</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="578"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="604"/>
         <source>&amp;Paste</source>
         <translation>붙여넣기(&amp;P)</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="577"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="603"/>
         <source>&amp;Copy</source>
         <translation>복사(&amp;C)</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="576"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="602"/>
         <source>Cu&amp;t</source>
         <translation>잘라내기(&amp;T)</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1740"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1812"/>
         <source>Select none</source>
         <translation>선택 해제</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2056"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2132"/>
         <source>&amp;Edit</source>
         <translation>편집(&amp;E)</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1511"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1583"/>
         <source>Remove a column</source>
         <translation>열 제거</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1464"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1536"/>
         <source>&amp;Save</source>
         <translation>저장(&amp;S)</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1465"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1537"/>
         <source>Save as</source>
         <translation>다른 이름으로 저장</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="526"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="552"/>
         <source>&amp;Export</source>
         <translation>내보내기(&amp;X)</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2065"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2141"/>
         <source>Wi&amp;ndows</source>
         <translation>창(&amp;N)</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1468"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5779"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1540"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5933"/>
         <source>&amp;Close</source>
         <translation>닫기(&amp;C)</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2055"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2131"/>
         <source>&amp;File</source>
         <translation>파일(&amp;F)</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="537"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="563"/>
         <source>Print</source>
         <translation>인쇄</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1741"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1813"/>
         <source>Invert selection</source>
         <translation>선택 반전</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1419"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1491"/>
         <source>Select</source>
         <translation>선택 모드</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="477"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="480"/>
         <source>This panel lists the various changes applied to the current sheet. Clicking a change gets the sheet back to its state right after it was applied.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
         <translation>이 패널은 현재 시트에서 수행된 다양한 변경 사항을 나열합니다. 변경 항목을 클릭하면 해당 변경이 적용된 직후의 상태로 되돌릴 수 있습니다.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="876"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="914"/>
         <source>Display the grid</source>
         <translation>격자 표시</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="878"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="916"/>
         <source>Display or hide the grid of sheet</source>
         <translation>시트의 격자를 표시하거나 숨깁니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="893"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="931"/>
         <source>Folio-wide crosshair</source>
         <translation>시트 전체 십자선</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="895"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="933"/>
         <source>Show two lines across the whole folio under the mouse, to see whether parts are in line</source>
         <translation>마우스 아래에 시트 전체를 가로지르는 두 선을 표시하여 부품이 정렬되었는지 확인합니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1093"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1160"/>
         <source>Sheet properties</source>
         <translation>시트 속성</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1168"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1235"/>
         <source>Add a sheet</source>
         <translation>시트 추가</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1177"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4720"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4743"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1244"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4833"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4856"/>
         <source>Delete this sheet</source>
         <translation>시트 삭제</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1432"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1504"/>
         <source>Move</source>
         <translation>보기 모드</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1408"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1480"/>
         <source>&amp;Tile</source>
         <translation>&amp;바둑판식 배열</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="372"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="375"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="527"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="538"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="549"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="560"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="567"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="572"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="582"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="583"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="584"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="585"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="587"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="645"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="646"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="664"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="712"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="735"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="753"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="777"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="788"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="809"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="813"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="837"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="854"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="864"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="873"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="877"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="894"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="907"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="935"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="980"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="994"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1007"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1094"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1106"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1119"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1137"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1148"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1159"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1164"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1169"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1178"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1183"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1194"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1202"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1211"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1219"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1230"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1256"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1267"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1279"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1291"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1304"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1312"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1321"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1350"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1367"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1372"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1384"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1392"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1398"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1409"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1414"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1420"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1433"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1451"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="378"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="553"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="564"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="575"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="586"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="593"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="598"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="608"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="609"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="610"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="611"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="613"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="671"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="672"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="690"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="738"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="762"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="767"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="785"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="815"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="826"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="847"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="851"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="875"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="892"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="902"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="911"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="915"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="932"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="945"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="973"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1018"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1032"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1045"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1161"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1173"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1186"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1204"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1215"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1226"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1231"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1236"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1245"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1250"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1261"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1269"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1278"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1286"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1297"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1323"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1334"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1346"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1358"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1371"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1379"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1385"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1393"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1422"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1439"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1444"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="1456"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1464"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="1470"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1471"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1472"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1473"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1474"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1475"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1488"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1481"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1486"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1492"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1505"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1523"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="1528"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1542"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1543"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1544"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1545"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1546"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="1547"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1548"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1549"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1550"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1552"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1553"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1554"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1555"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1556"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1557"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1574"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1587"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1560"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1600"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1619"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1620"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="1621"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1644"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1658"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1673"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1701"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1702"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1712"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1732"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1622"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1624"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1625"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1626"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1627"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1628"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1629"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1646"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1659"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1693"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1716"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1730"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="1745"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1746"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1747"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1750"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1751"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1776"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1777"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1778"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1779"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1780"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1781"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1894"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1906"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1917"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1773"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1774"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1784"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1804"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1818"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1819"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1820"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1823"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1824"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1825"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1852"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1853"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1854"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1855"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1856"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1857"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1970"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1982"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1993"/>
         <source>Diagram editors</source>
         <translation>도면 편집기</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="548"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="574"/>
         <source>Export in pdf</source>
         <translation>PDF로 내보내기</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="550"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="576"/>
         <source>Export one or more sheets of the current project</source>
         <comment>status bar tip</comment>
         <translation>현재 프로젝트의 시트를 하나 이상 내보냅니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="979"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1017"/>
         <source>View the guides</source>
         <translation>안내선 보기</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="981"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1019"/>
         <source>Shows or hides the guides</source>
         <translation>안내선을 표시하거나 숨깁니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1193"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1260"/>
         <source>Export to CSV</source>
         <translation>CSV로 내보내기</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1218"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1285"/>
         <source>Terminal block manager (DEV)</source>
         <translation>단자대 관리자(DEV)</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1229"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1296"/>
         <source>Launch the terminal block creation plugin</source>
         <translation>단자대 생성 플러그인 실행</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1255"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1322"/>
         <source>Export the list of names of wires</source>
         <translation>도선(와이어) 이름 목록 내보내기</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1266"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1333"/>
         <source>Export the wiring diagram</source>
         <translation>배선도 내보내기</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1290"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1357"/>
         <source>Automatic numbering of terminals</source>
         <translation>단자 자동 번호 매기기</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1383"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1455"/>
         <source>Export the internal project database</source>
         <translation>프로젝트 내부 데이터베이스 내보내기</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1461"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1533"/>
         <source>&amp;New</source>
         <translation>&amp;새로 만들기</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1477"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1549"/>
         <source>Creates a new project</source>
         <comment>status bar tip</comment>
         <translation>새 프로젝트를 생성합니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1480"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1552"/>
         <source>Opens an existing project</source>
         <comment>status bar tip</comment>
         <translation>기존 프로젝트를 엽니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1481"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1553"/>
         <source>Closes the current project</source>
         <comment>status bar tip</comment>
         <translation>현재 프로젝트를 닫습니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1482"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1554"/>
         <source>Saves the current project and all its sheets</source>
         <comment>status bar tip</comment>
         <translation>현재 프로젝트와 모든 시트를 저장합니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1483"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1555"/>
         <source>Saves the current project with a different file name</source>
         <comment>status bar tip</comment>
         <translation>현재 프로젝트를 다른 파일 이름으로 저장합니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1512"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1584"/>
         <source>Add row</source>
         <comment>Add row</comment>
         <translation>행 추가</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1513"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1585"/>
         <source>Remove a row</source>
         <comment>Remove row</comment>
         <translation>행 제거</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1515"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1587"/>
         <source>Add a column to the sheet</source>
         <comment>status bar tip</comment>
         <translation>시트에 열을 추가합니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1516"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1588"/>
         <source>Remove a column from the sheet</source>
         <comment>status bar tip</comment>
         <translation>시트에서 열을 제거합니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1517"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1589"/>
         <source>Expands the sheet height</source>
         <comment>status bar tip</comment>
         <translation>시트 높이를 늘립니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1518"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1590"/>
         <source>Shrinks the sheet height</source>
         <comment>status bar tip</comment>
         <translation>시트 높이를 줄입니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1678"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1750"/>
         <source>Removes selected elements from the sheet</source>
         <comment>status bar tip</comment>
         <translation>선택한 요소를 시트에서 제거합니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1753"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1827"/>
         <source>Selects all elements on the sheet</source>
         <comment>status bar tip</comment>
         <translation>시트의 모든 요소를 선택합니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1754"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1828"/>
         <source>Deselect all elements on the sheet</source>
         <comment>status bar tip</comment>
         <translation>시트의 모든 선택을 해제합니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1783"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1859"/>
         <source>Expand the sheet</source>
         <comment>status bar tip</comment>
         <translation>시트를 확대합니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1784"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1860"/>
         <source>Shrinks the sheet</source>
         <comment>status bar tip</comment>
         <translation>시트를 축소합니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1785"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1861"/>
         <source>Adjusts the zoom to display all the contents of sheet regardless of context</source>
         <translation>프레임과 무관하게 시트의 전체 내용을 표시하도록 확대/축소를 맞춥니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1786"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1862"/>
         <source>Adjusts the zoom on exactly the part of the sheet</source>
         <comment>status bar tip</comment>
         <translation>시트 프레임에 정확히 맞도록 확대/축소를 맞춥니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1818"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1894"/>
         <source>Add line</source>
         <comment>Draw line</comment>
         <translation>선 추가</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1819"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1895"/>
         <source>Add a rectangle</source>
         <translation>사각형 추가</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1820"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1896"/>
         <source>Add an ellipse</source>
         <translation>타원 추가</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1822"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1898"/>
         <source>Add a polygon</source>
         <translation>폴리라인 추가</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="528"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="554"/>
         <source>Exports the current sheet to another format</source>
         <comment>status bar tip</comment>
         <translation>현재 시트를 다른 형식으로 내보냅니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="539"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="565"/>
         <source>Prints one or more sheet of the current project</source>
         <comment>status bar tip</comment>
         <translation>현재 프로젝트의 시트를 하나 이상 인쇄합니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1947"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2023"/>
         <location filename="../sources/diagramtoolbarsettings.cpp" line="78"/>
         <source>Depth</source>
         <comment>toolbar title</comment>
         <translation>깊이</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3669"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3768"/>
         <source>Group</source>
         <translation>그룹</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="591"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="617"/>
         <source>Pastes elements from the clipboard into the sheet</source>
         <comment>status bar tip</comment>
         <translation>클립보드의 요소를 시트에 붙여넣습니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1095"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1162"/>
         <source>Edits the properties of the sheet (size, title block information, conductor properties...)</source>
         <comment>status bar tip</comment>
         <translation>시트 속성(치수, 표제란 정보, 도선 속성 등)을 편집합니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1434"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1506"/>
         <source>Allows to view the sheet without modifying it</source>
         <comment>status bar tip</comment>
         <translation>시트를 수정하지 않고 보기만 할 수 있습니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1935"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2011"/>
         <location filename="../sources/diagramtoolbarsettings.cpp" line="68"/>
         <source>Tools</source>
         <translation>도구</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1463"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1535"/>
         <source>&amp;Open</source>
         <translation>&amp;열기</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2436"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2530"/>
         <source>Open a file</source>
         <translation>파일 열기</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1772"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1848"/>
         <source>Reset zoom</source>
         <translation>확대/축소 초기화</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1535"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1607"/>
         <source>Rotate</source>
         <translation>회전</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="559"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="585"/>
         <source>&amp;Quit</source>
         <translation>&amp;종료</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1534"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3570"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1606"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3669"/>
         <source>Delete</source>
         <translation>삭제</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1739"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1811"/>
         <source>Select All</source>
         <translation>모두 선택</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1771"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1847"/>
         <source>Fit in view</source>
         <translation>화면에 맞춤</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1769"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1845"/>
         <source>Zoom Out</source>
         <translation>축소</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1768"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1844"/>
         <source>Zoom In</source>
         <translation>확대</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="565"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="591"/>
         <source>Undo</source>
         <translation>실행 취소</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="570"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="596"/>
         <source>Redo</source>
         <translation>다시 실행</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="787"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="825"/>
         <source>Reset conductors</source>
         <translation>도선 초기화</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2239"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2319"/>
         <source>Display or hide the main toolbar</source>
         <translation>주 도구 모음을 표시하거나 숨깁니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2240"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2320"/>
         <source>Display or hide the Display toolbar</source>
         <translation>표시 도구 모음을 표시하거나 숨깁니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2241"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2321"/>
         <source>Display or hide the Diagram toolbar</source>
         <translation>도면 도구 모음을 표시하거나 숨깁니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1938"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2014"/>
         <location filename="../sources/diagramtoolbarsettings.cpp" line="70"/>
         <source>Display</source>
         <translation>표시</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1941"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2017"/>
         <location filename="../sources/diagramtoolbarsettings.cpp" line="72"/>
         <source>Diagram</source>
         <translation>도면</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1813"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1889"/>
         <source>Add a textfield</source>
         <translation>텍스트 필드 추가</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="475"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="478"/>
         <source>No modification</source>
         <translation>변경 사항 없음</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2243"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2323"/>
         <source>Display or hide the undo list</source>
         <translation>변경(실행 취소) 목록을 표시하거나 숨깁니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1542"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1614"/>
         <source>Edit the selected item</source>
         <translation>선택한 항목 편집</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1543"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1615"/>
         <source>Group selected texts</source>
         <translation>선택한 텍스트 그룹화</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1679"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1751"/>
         <source>Rotate selected elements and texts</source>
         <comment>status bar tip</comment>
         <translation>선택한 요소와 텍스트를 회전합니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1681"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1753"/>
         <source>Rotate selected texts to a specific angle</source>
         <comment>status bar tip</comment>
         <translation>선택한 텍스트를 지정한 각도로 회전합니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1905"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1981"/>
         <source>Search / Replace</source>
         <translation>찾기/바꾸기</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2057"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2133"/>
         <source>&amp;Project</source>
         <translation>&amp;프로젝트</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2087"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2163"/>
         <source>&amp;Latest files</source>
         <translation>&amp;최근 열었던 파일</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2348"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2372"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2442"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2466"/>
         <source>Project %1 registered in the directory: %2.</source>
         <translation>프로젝트 %1이(가) 다음 폴더에 저장되었습니다: %2.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2758"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2852"/>
         <source>The file you try to open does not seem readable and can not be opened. Please check the file permissions.</source>
         <translation>열려는 파일에 읽기 권한이 없어 열 수 없습니다. 파일 권한을 확인하세요.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2772"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2866"/>
         <source>The project you try to open does not seem writable. It will be opened read-only.</source>
         <translation>열려는 프로젝트에 쓰기 권한이 없어 읽기 전용으로 열립니다.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1391"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1463"/>
         <source>using tabs</source>
         <translation>탭으로 표시</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1397"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1469"/>
         <source>using windows</source>
         <translation>창으로 표시</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2247"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2330"/>
         <source>Display projects</source>
         <translation>프로젝트 표시</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1105"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1172"/>
         <source>Project properties</source>
         <translation>프로젝트 속성</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1182"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1249"/>
         <source>Clean project</source>
         <translation>프로젝트 정리</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2858"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4402"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4449"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2952"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4515"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4562"/>
         <source>Unable to open project</source>
         <comment>message box title</comment>
         <translation>프로젝트 열기 실패</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2860"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2954"/>
         <source>The file %1 does not appear to be a QElectroTech project file. Thus it cannot be opened.</source>
         <comment>message box content</comment>
         <translation>파일 %1은(는) QElectroTech 프로젝트 파일이 아닌 것으로 보입니다. 따라서 열 수 없습니다.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="317"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5064"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5067"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="319"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5180"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5183"/>
         <source>QElectroTech</source>
         <comment>window title</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="352"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="355"/>
         <source>QElectroTech</source>
         <comment>status bar message</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="479"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="482"/>
         <source>Undo</source>
         <comment>dock title</comment>
         <translation>실행 취소</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="476"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="479"/>
         <source>Click an action to get back in the changes you made to your diagram</source>
         <comment>Status tip</comment>
         <translation>작업을 클릭하면 도면 편집 상태를 이전으로 되돌릴 수 있습니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1537"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1609"/>
         <source>Choose texts orientation</source>
         <translation>텍스트 방향 설정</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1540"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1612"/>
         <source>Find in the panel</source>
         <translation>패널에서 찾기</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1814"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1890"/>
         <source>Add a picture</source>
         <translation>이미지 추가</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1210"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1277"/>
         <source>Add a summary</source>
         <translation>목차 추가</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1770"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1846"/>
         <source>Zoom content</source>
         <translation>내용에 맞게 확대/축소</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="561"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="587"/>
         <source>Closes QElectroTech</source>
         <comment>status bar tip</comment>
         <translation>QElectroTech를 종료합니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="568"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="594"/>
         <source>Undoes the previous action</source>
         <comment>status bar tip</comment>
         <translation>이전 작업을 취소합니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="573"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="599"/>
         <source>Restores the undone action</source>
         <comment>status bar tip</comment>
         <translation>취소한 작업을 다시 실행합니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="589"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="615"/>
         <source>Puts selected elements into the clipboard</source>
         <comment>status bar tip</comment>
         <translation>선택한 요소를 클립보드로 잘라냅니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="590"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="616"/>
         <source>Copies selected elements</source>
         <comment>status bar tip</comment>
         <translation>선택한 요소를 클립보드에 복사합니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1755"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1829"/>
         <source>Inverts selection of elements</source>
         <comment>status bar tip</comment>
         <translation>선택을 반전합니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1684"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1756"/>
         <source>Find the selected item in the panel</source>
         <comment>status bar tip</comment>
         <translation>패널에서 선택한 항목을 찾습니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="789"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="827"/>
         <source>Reset the conductors path ignoring the user changes</source>
         <comment>status bar tip</comment>
         <translation>사용자 변경을 무시하고 도선 경로를 다시 계산합니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="796"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="834"/>
         <source>Automatic creation conductor (s)</source>
         <comment>Tool tip of auto conductor</comment>
         <translation>도선 자동 생성</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="409"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="412"/>
         <source>Projects</source>
         <comment>dock title</comment>
         <translation>프로젝트</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="444"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="447"/>
         <source>Collections</source>
         <translation>컬렉션</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="797"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="835"/>
         <source>Using the automatic creation of conductor (s) when possible</source>
         <comment>Status tip of auto conductor</comment>
         <translation>가능한 경우 도선 자동 생성을 사용합니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1787"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1863"/>
         <source>Restores default zoom level</source>
         <comment>status bar tip</comment>
         <translation>기본 확대/축소로 복원합니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1399"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1471"/>
         <source>Shows the various opened projects in windows</source>
         <comment>status bar tip</comment>
         <translation>열려 있는 프로젝트를 하위 창으로 표시합니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="324"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="326"/>
         <source>What the mouse points at, or else what is selected</source>
         <translation>마우스가 가리키는 것, 없으면 선택한 것</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="579"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="605"/>
         <source>Paste at the original position</source>
         <translation>원래 위치에 붙여넣기</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="580"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4252"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="606"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4365"/>
         <source>Paste element information</source>
         <translation>요소 정보 붙여넣기</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="592"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="618"/>
         <source>Places the clipboard&apos;s items at their original position and moves the cursor to that point</source>
         <comment>status bar tip</comment>
         <translation>클립보드 항목을 원래 위치에 놓고 커서를 그 지점으로 옮깁니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="593"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="619"/>
         <source>Copies the filled-in information of the element on the clipboard to the selected elements</source>
         <comment>status bar tip</comment>
         <translation>클립보드에 있는 요소의 입력된 정보를 선택한 요소에 복사합니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="642"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="668"/>
         <source>Copy text format</source>
         <translation>텍스트 서식 복사</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="643"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="669"/>
         <source>Apply text format</source>
         <translation>텍스트 서식 적용</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="648"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="674"/>
         <source>Copy the text format of the selected element as a template</source>
         <comment>status bar tip</comment>
         <translation>선택한 요소의 텍스트 서식을 템플릿으로 복사</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="649"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="675"/>
         <source>Apply the copied text format to the selected elements</source>
         <comment>status bar tip</comment>
         <translation>복사한 텍스트 서식을 선택한 요소에 적용</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="710"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="736"/>
         <source>Reference destination...</source>
         <translation>참조 대상...</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="711"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="737"/>
         <source>Make the selected free texts links to a folio: Ctrl-click opens it, and a PDF export keeps the link</source>
         <comment>status bar tip</comment>
         <translation>선택한 자유 텍스트를 도면 시트 링크로 만듭니다: Ctrl+클릭하면 열리고, PDF로 내보내도 링크가 유지됩니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="723"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="749"/>
         <source>Remove reference destination</source>
         <translation>참조 대상 제거</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="724"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="750"/>
         <source>Assign reference destination</source>
         <translation>참조 대상 지정</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="733"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="759"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6186"/>
+        <source>Show as a dot</source>
+        <translation>점으로 표시</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="761"/>
+        <source>Draws the selected T-junctions as their lines and a dot where they meet</source>
+        <comment>status bar tip</comment>
+        <translation>선택한 T 분기를 선과 만나는 지점의 점으로 그립니다</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="765"/>
         <source>Keep texts clear of wires...</source>
         <translation>텍스트를 전선에서 떼기...</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="734"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="766"/>
         <source>Move the texts that sit on a wire off it, in one undo step</source>
         <comment>status bar tip</comment>
         <translation>전선 위에 있는 텍스트를 한 번의 실행 취소 단계로 전선에서 옮깁니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="752"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="784"/>
         <source>&amp;Duplicate</source>
         <translation>복제(&amp;D)</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="754"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="786"/>
         <source>Copies the selection, offset by the configured spacing</source>
         <comment>status bar tip</comment>
         <translation>설정한 간격만큼 떨어뜨려 선택 항목을 복사합니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="776"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="814"/>
         <source>Configure duplication...</source>
         <translation>복제 설정...</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="778"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="816"/>
         <source>Choose the spacing and direction used by Duplicate</source>
         <comment>status bar tip</comment>
         <translation>복제에 사용할 간격과 방향 선택</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="812"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="850"/>
         <source>Automatic disconnection of conductor(s)</source>
         <comment>Tool tip of auto break conductor</comment>
         <translation>도선 자동 분리</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="814"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="852"/>
         <source>Automatically cut existing conductors when placing an element</source>
         <comment>Status tip of auto break conductor</comment>
         <translation>요소를 배치할 때 기존 도선을 자동으로 자르기</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="830"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="868"/>
         <source>Automatic connections (chosen when the project is created)</source>
         <translation>자동 연결 (프로젝트 생성 시 선택)</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="831"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="869"/>
         <source>Terminals in line connect to the next free terminal they face, and are disconnected again when moved out of line</source>
         <translation>일직선상의 단자는 마주 보는 다음 빈 단자에 연결되고, 일직선에서 벗어나면 다시 연결이 끊어집니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="835"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="873"/>
         <source>Connect aligned terminals on this folio</source>
         <translation>이 도면 시트에서 정렬된 단자 연결</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="836"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="874"/>
         <source>Connect every free terminal of the folio to the next free terminal it faces</source>
         <translation>도면 시트의 빈 단자를 모두 마주 보는 다음 빈 단자에 연결합니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="843"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="881"/>
         <source>Connect aligned terminals</source>
         <translation>정렬된 단자 연결</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="851"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="889"/>
         <source>Show terminal strip labels at their first terminal</source>
         <translation>단자대 라벨을 첫 단자에 표시</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="852"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="890"/>
         <source>The label of each terminal strip stands at its first terminal on every folio and moves with it</source>
         <translation>각 단자대의 라벨이 모든 시트에서 첫 단자에 표시되고 함께 이동합니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="861"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="899"/>
         <source>Show terminal strip bridges between their terminals</source>
         <translation>단자대 브리지를 단자 사이에 표시</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="862"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="900"/>
         <source>Two bridged terminals side by side in a row are joined by a line on every folio</source>
         <translation>한 줄에 나란히 있는 브리지된 두 단자를 모든 시트에서 선으로 연결합니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="952"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="990"/>
         <source>Text grid</source>
         <translation>텍스트 격자</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="959"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="997"/>
         <source>Snap grid for texts moved with the mouse.
 Hold Ctrl while moving to place freely.</source>
         <translation>마우스로 이동하는 텍스트의 맞춤 격자입니다.
 자유롭게 배치하려면 이동하는 동안 Ctrl을 누르세요.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="965"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1003"/>
         <source>Disabled</source>
         <translation>비활성화</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="993"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1031"/>
         <source>Keep headers visible</source>
         <translation>머리글 계속 표시</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="995"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1033"/>
         <source>Keeps the sheet&apos;s column numbers and row letters visible at the edge of the view</source>
         <translation>시트의 열 번호와 행 문자를 보기 가장자리에 계속 표시합니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1006"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1044"/>
         <source>Show cell boundaries</source>
         <translation>셀 경계 표시</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1008"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1046"/>
         <source>Draws the boundaries of the sheet&apos;s columns and rows on the diagram, on screen only</source>
         <translation>시트의 열과 행 경계를 도면에 그립니다 (화면에서만)</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1019"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1057"/>
         <source>Show</source>
         <translation>표시</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1021"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1059"/>
         <source>Element texts</source>
         <translation>요소 텍스트</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1022"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1060"/>
         <source>Conductor texts</source>
         <translation>도선 텍스트</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1023"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1061"/>
         <source>Text fields</source>
         <translation>텍스트 필드</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1024"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1062"/>
         <source>Shapes</source>
         <translation>도형</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1025"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1063"/>
         <source>Pictures</source>
         <translation>그림</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1026"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1064"/>
         <source>Tables</source>
         <translation>표</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1027"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1065"/>
         <source>Cross-references</source>
         <translation>교차 참조</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1044"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1082"/>
         <source>See Display &gt; Show</source>
         <translation>표시 &gt; 표시 참조</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1070"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1086"/>
+        <source>Selection filter</source>
+        <translation>선택 필터</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1089"/>
+        <source>Everything</source>
+        <translation>모두</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1090"/>
+        <source>Automatic: symbols with their texts</source>
+        <translation>자동: 기호와 그 텍스트</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1091"/>
+        <source>Symbols</source>
+        <translation>기호</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1092"/>
+        <source>Conductors</source>
+        <translation>도체</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1093"/>
+        <source>Free texts</source>
+        <translation>자유 텍스트</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1094"/>
+        <source>Symbol texts</source>
+        <translation>기호 텍스트</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1110"/>
+        <source>What a click, a selection rectangle and Select All pick</source>
+        <translation>클릭, 선택 사각형, 모두 선택으로 선택되는 대상</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1137"/>
         <source>Zoom of the folio on screen; a click offers fixed ones</source>
         <translation>화면의 도면 시트 확대/축소. 클릭하면 고정 배율을 고를 수 있습니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1076"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1143"/>
         <source>%1 %</source>
         <translation>%1 %</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1082"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1149"/>
         <source>Whole folio</source>
         <translation>도면 시트 전체</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1135"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1202"/>
         <source>Check potential types...</source>
-        <translation type="unfinished"></translation>
+        <translation>전위 유형 검사...</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1146"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1213"/>
         <source>Project languages...</source>
         <translation>프로젝트 언어...</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1147"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1214"/>
         <source>Show the texts of the project in another language</source>
         <translation>프로젝트 텍스트를 다른 언어로 표시합니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1158"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1225"/>
         <source>History of saves...</source>
         <translation>저장 기록...</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1162"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1229"/>
         <source>Export for delivery...</source>
         <translation>납품용으로 내보내기...</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1163"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1230"/>
         <source>Write a copy of the project without the history of its saves</source>
         <translation>저장 기록 없이 프로젝트 사본을 씁니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1201"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1268"/>
         <source>Add a nomenclature</source>
         <translation>부품표(BOM) 추가</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1234"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1301"/>
         <source>Add a cable list</source>
         <translation>케이블 목록 추가</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1242"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1309"/>
         <source>Export the cable list to CSV format</source>
         <translation>케이블 목록을 CSV 형식으로 내보내기</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1278"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1345"/>
         <source>Wiring list (database)</source>
         <translation>배선 목록 (데이터베이스)</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1296"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1363"/>
         <source>Cable numbering</source>
         <translation>케이블 번호 매기기</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1298"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1365"/>
         <source>Shows the cable numbering rule of the project and renumbers its cables with it</source>
         <translation>프로젝트의 케이블 번호 매기기 규칙을 보여 주고 그 규칙으로 케이블 번호를 다시 매깁니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1303"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5437"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1370"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5554"/>
         <source>Reload element drawings</source>
         <translation>요소 그림 다시 불러오기</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1306"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1373"/>
         <source>Redraws each placed element from its current definition, without having to close and reopen the project (action cannot be undone)</source>
         <translation>프로젝트를 닫았다 다시 열지 않고, 배치된 각 요소를 현재 정의에 따라 다시 그립니다 (실행 취소할 수 없음)</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1311"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5456"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1378"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5610"/>
         <source>Update elements from the collections</source>
-        <translation type="unfinished"></translation>
+        <translation>컬렉션에서 요소 업데이트</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1314"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1381"/>
         <source>Replaces each element of the project that changed in its collection since it was placed, and redraws it (action cannot be undone)</source>
-        <translation type="unfinished"></translation>
+        <translation>배치 이후 컬렉션에서 변경된 프로젝트의 각 요소를 교체하고 다시 그립니다(이 작업은 실행 취소할 수 없음)</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1320"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1384"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5578"/>
+        <source>Lay out the symbol texts as in the symbol</source>
+        <translation>기호 텍스트를 기호대로 배치</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1387"/>
+        <source>Puts the texts of the selected symbols, or of every symbol of the project, where their symbol places them: a placed symbol keeps its own copy of the texts otherwise</source>
+        <translation>선택한 기호 또는 프로젝트의 모든 기호의 텍스트를 해당 기호가 정한 위치에 놓습니다: 그렇지 않으면 배치된 기호는 텍스트의 자체 복사본을 유지합니다</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1392"/>
         <source>Run a script...</source>
         <translation>스크립트 실행...</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1323"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1395"/>
         <source>Runs a JavaScript script on the current project (see qet.* in the script for the available API)</source>
         <translation>현재 프로젝트에서 JavaScript 스크립트를 실행합니다 (사용 가능한 API는 스크립트의 qet.* 참조)</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1337"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1409"/>
         <source>Record a macro</source>
         <translation>매크로 녹화</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1340"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1412"/>
         <source>Records what you do on the project, for an AI assistant to make a script of; click again to stop</source>
         <translation>AI 어시스턴트가 스크립트로 만들 수 있도록 프로젝트에서 하는 작업을 녹화합니다. 멈추려면 다시 클릭하세요</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1353"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1425"/>
         <source>Manage scripts…</source>
         <translation>스크립트 관리…</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1354"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1426"/>
         <source>Write a script and make it a button with an icon</source>
         <translation>스크립트를 작성하고 아이콘이 있는 버튼으로 만들기</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1371"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1443"/>
         <source>Open the scripts folder</source>
         <translation>스크립트 폴더 열기</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1374"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1446"/>
         <source>Every .js file in this folder that starts with a // ==QETScript== header becomes a button</source>
         <translation>이 폴더에서 // ==QETScript== 머리글로 시작하는 모든 .js 파일은 버튼이 됩니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1393"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1465"/>
         <source>Shows the various opened projects in tabs</source>
         <comment>status bar tip</comment>
         <translation>열려 있는 프로젝트를 탭으로 표시합니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1421"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1493"/>
         <source>Allows to select elements</source>
         <comment>status bar tip</comment>
         <translation>요소를 선택할 수 있습니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1462"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1534"/>
         <source>New project with automatic connections</source>
         <translation>자동 연결이 있는 새 프로젝트</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1467"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1539"/>
         <source>Save a copy for an older QElectroTech</source>
         <translation>이전 QElectroTech용 사본 저장</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1478"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1550"/>
         <source>Creates a new project in which terminals in line connect by themselves; a project is of one kind or the other for good</source>
         <comment>status bar tip</comment>
         <translation>일직선상의 단자가 자동으로 연결되는 새 프로젝트를 만듭니다. 프로젝트 종류는 나중에 바꿀 수 없습니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1484"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1556"/>
         <source>Writes a copy of the current project as a .qet file, which versions of QElectroTech that cannot open a .qetz open</source>
         <comment>status bar tip</comment>
         <translation>현재 프로젝트의 사본을 .qet 파일로 저장합니다. .qetz를 열 수 없는 QElectroTech 버전에서도 열 수 있습니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1536"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1608"/>
         <source>Rotate the group</source>
         <translation>그룹 회전</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1538"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1610"/>
         <source>Horizontal mirror</source>
         <translation>가로 대칭</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1539"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1611"/>
         <source>Vertical mirror</source>
         <translation>세로 대칭</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1541"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1613"/>
         <source>Relay contact display...</source>
         <translation>릴레이 접점 표시...</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1544"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2148"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1616"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2227"/>
         <source>Group</source>
         <comment>fr: Grouper</comment>
         <translation>그룹</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1545"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1617"/>
         <source>Ungroup</source>
         <translation>그룹 해제</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1567"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1639"/>
         <source>Insert the last element</source>
         <translation>마지막 요소 삽입</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1569"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1641"/>
         <source>Places the last inserted element again</source>
         <comment>status bar tip</comment>
         <translation>마지막으로 삽입한 요소를 다시 배치합니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1590"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1662"/>
         <source>Use the symbol highlighted in the collection</source>
         <translation>컬렉션에서 강조 표시한 기호 사용</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1595"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1667"/>
         <source>Highlight a symbol in the collection first.</source>
         <translation>먼저 컬렉션에서 기호를 강조 표시하세요.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1602"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1674"/>
         <source>Default symbol</source>
         <translation>기본 기호</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1615"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1687"/>
         <source>Search for a command…</source>
         <translation>명령 검색…</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1617"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1689"/>
         <source>Type part of a command name and press Enter to launch it</source>
         <comment>status bar tip</comment>
         <translation>명령 이름의 일부를 입력하고 Enter를 눌러 실행하세요</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1637"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1709"/>
         <source>Insert an element…</source>
         <translation>요소 삽입…</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1639"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1711"/>
         <source>Opens the element picker at the cursor position</source>
         <comment>status bar tip</comment>
         <translation>커서 위치에 요소 선택기를 엽니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1652"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1724"/>
         <source>Shortcut bar</source>
         <translation>바로 가기 막대</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1654"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1726"/>
         <source>Opens, at the cursor position, the commands useful for the selection, and the element picker</source>
         <comment>status bar tip</comment>
         <translation>커서 위치에 선택 항목에 유용한 명령과 요소 선택기를 엽니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1666"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1738"/>
         <source>Repeat the last command</source>
         <translation>마지막 명령 반복</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1668"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1740"/>
         <source>Relaunches the last drawing tool or element insertion (Enter on the sheet)</source>
         <comment>status bar tip</comment>
         <translation>마지막 그리기 도구나 요소 삽입을 다시 실행합니다 (시트에서 Enter)</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1680"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1752"/>
         <source>Rotates the selection as a group around its centre, rather than each element in place</source>
         <comment>status bar tip</comment>
         <translation>각 요소를 제자리에서 돌리지 않고, 선택 항목을 그룹으로 중심을 기준으로 회전합니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1682"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1754"/>
         <source>Flips the selected elements from left to right</source>
         <comment>status bar tip</comment>
         <translation>선택한 요소를 좌우로 뒤집습니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1683"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1755"/>
         <source>Flips the selected elements from top to bottom</source>
         <comment>status bar tip</comment>
         <translation>선택한 요소를 상하로 뒤집습니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1685"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1757"/>
         <source>Choose how the contacts of the selected relay are shown</source>
         <comment>status bar tip</comment>
         <translation>선택한 릴레이의 접점 표시 방식 선택</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1703"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1775"/>
         <source>Groups the selected elements, texts, shapes and images: they are selected, moved and copied together</source>
         <comment>status bar tip</comment>
         <translation>선택한 요소, 텍스트, 도형, 이미지를 그룹으로 묶습니다: 함께 선택, 이동, 복사됩니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1704"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1776"/>
         <source>Breaks up the selected groups</source>
         <comment>status bar tip</comment>
         <translation>선택한 그룹을 해제합니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1711"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1783"/>
         <source>Align to grid</source>
         <translation>격자에 맞추기</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1713"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1785"/>
         <source>Puts the selected elements, images and texts back on the grid</source>
         <comment>status bar tip</comment>
         <translation>선택한 요소, 이미지, 텍스트를 다시 격자에 놓습니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1722"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1794"/>
         <source>Align left</source>
         <translation>왼쪽 맞춤</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1722"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1794"/>
         <source>Aligns the left edges of the selected items</source>
         <comment>status bar tip</comment>
         <translation>선택한 항목의 왼쪽 가장자리를 맞춥니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1723"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1795"/>
         <source>Centre horizontally</source>
         <translation>가로 가운데 맞춤</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1723"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1795"/>
         <source>Aligns the selected items on one vertical line, by their origin point for elements</source>
         <comment>status bar tip</comment>
         <translation>선택한 항목을 하나의 세로선에 맞춥니다 (요소는 원점 기준)</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1724"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1796"/>
         <source>Align right</source>
         <translation>오른쪽 맞춤</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1724"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1796"/>
         <source>Aligns the right edges of the selected items</source>
         <comment>status bar tip</comment>
         <translation>선택한 항목의 오른쪽 가장자리를 맞춥니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1725"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1797"/>
         <source>Align top</source>
         <translation>위쪽 맞춤</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1725"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1797"/>
         <source>Aligns the top edges of the selected items</source>
         <comment>status bar tip</comment>
         <translation>선택한 항목의 위쪽 가장자리를 맞춥니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1726"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1798"/>
         <source>Centre vertically</source>
         <translation>세로 가운데 맞춤</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1726"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1798"/>
         <source>Aligns the selected items on one horizontal line, by their origin point for elements</source>
         <comment>status bar tip</comment>
         <translation>선택한 항목을 하나의 가로선에 맞춥니다 (요소는 원점 기준)</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1727"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1799"/>
         <source>Align bottom</source>
         <translation>아래쪽 맞춤</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1727"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1799"/>
         <source>Aligns the bottom edges of the selected items</source>
         <comment>status bar tip</comment>
         <translation>선택한 항목의 아래쪽 가장자리를 맞춥니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1742"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1814"/>
         <source>Select all conductors</source>
         <translation>모든 도선 선택</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1743"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1815"/>
         <source>Select all text fields</source>
         <translation>모든 텍스트 필드 선택</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1756"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1816"/>
+        <source>Select the same symbols</source>
+        <translation>같은 기호 선택</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1830"/>
         <source>Selects all conductors on the sheet, deselects the rest</source>
         <comment>status bar tip</comment>
         <translation>시트의 모든 도선을 선택하고 나머지는 선택 해제합니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1757"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1831"/>
         <source>Selects all text fields on the sheet, deselects the rest</source>
         <comment>status bar tip</comment>
         <translation>시트의 모든 텍스트 필드를 선택하고 나머지는 선택 해제합니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1773"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1832"/>
+        <source>Selects every symbol on the sheet of the same kind as a selected one, deselects the rest</source>
+        <comment>status bar tip</comment>
+        <translation>선택한 기호와 같은 종류의 기호를 도면에서 모두 선택하고 나머지는 선택 해제합니다</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1849"/>
         <source>Centre on the cursor</source>
         <translation>커서를 가운데로</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1788"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1864"/>
         <source>Centres the sheet on the point under the mouse cursor, without changing the zoom</source>
         <comment>status bar tip</comment>
         <translation>확대/축소를 바꾸지 않고 마우스 커서 아래 지점을 시트 가운데로 맞춥니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1816"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1892"/>
         <source>Add a PDF</source>
         <translation>PDF 추가</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1821"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1897"/>
         <source>Add an arc</source>
         <translation>호 추가</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1823"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1899"/>
         <source>Add a curve</source>
         <translation>곡선 추가</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1824"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1900"/>
         <source>Add a fillet</source>
         <translation>필렛 추가</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1825"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1901"/>
         <source>Add a terminal plan</source>
         <translation>단자 배치도 추가</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1826"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1902"/>
         <source>Add a generic device…</source>
         <translation>일반 장치 추가…</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1829"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1905"/>
         <source>Draw a cable</source>
         <translation>케이블 그리기</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1830"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1906"/>
         <source>Add linear dimension</source>
         <translation>선형 치수 추가</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1831"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1907"/>
         <source>Add chain dimension</source>
         <translation>연속 치수 추가</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1834"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1910"/>
         <source>Draw a bridge</source>
         <translation>브리지 그리기</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1836"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1912"/>
         <source>Adds a text field to the current sheet</source>
         <translation>현재 시트에 텍스트 필드를 추가합니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1837"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1913"/>
         <source>Add an image to the current sheet</source>
         <translation>현재 시트에 이미지를 추가합니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1839"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1915"/>
         <source>Adds a PDF page to the current sheet</source>
         <translation>현재 시트에 PDF 페이지를 추가합니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1841"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1917"/>
         <source>Add a line to the current sheet</source>
         <translation>현재 시트에 선을 추가합니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1842"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1918"/>
         <source>Adds a rectangle on the current sheet</source>
         <translation>현재 시트에 사각형을 추가합니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1843"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1919"/>
         <source>Add an ellipse to the current sheet</source>
         <translation>현재 시트에 타원을 추가합니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1844"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1920"/>
         <source>Adds an arc on the current sheet</source>
         <translation>현재 시트에 호를 추가합니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1845"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1921"/>
         <source>Adds a polyline to the current sheet</source>
         <translation>현재 시트에 폴리라인을 추가합니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1846"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1922"/>
         <source>Adds a Bézier curve to the current sheet</source>
         <translation>현재 시트에 베지어 곡선을 추가합니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1847"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1923"/>
         <source>Rounds the corner between two lines of the current sheet</source>
         <translation>현재 시트의 두 선 사이 모서리를 둥글게 합니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1848"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1924"/>
         <source>Adds a terminal plan to the current sheet</source>
         <translation>현재 시트에 단자대 배치도를 추가합니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1849"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1925"/>
         <source>Makes a box symbol with terminals on any side and places it on the current sheet</source>
         <translation>아무 면에나 단자가 있는 상자 기호를 만들어 현재 시트에 배치합니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1850"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1926"/>
         <source>Draws the main line of a cable: every conductor crossed becomes one of its cores</source>
         <translation>케이블의 주선을 그립니다: 교차하는 모든 도선이 케이블의 심선이 됩니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1851"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1927"/>
         <source>Adds a linear dimension to the current sheet</source>
         <translation>현재 도면 시트에 선형 치수를 추가합니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1852"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1928"/>
         <source>Adds a chain dimension to the current sheet</source>
         <translation>현재 도면 시트에 연속 치수를 추가합니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1853"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1929"/>
         <source>Draws a bridge over terminals: every terminal crossed becomes one of its connections</source>
         <translation>단자 위에 브리지를 그립니다: 지나간 단자마다 브리지의 연결이 됩니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1916"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1992"/>
         <source>Navigate to an element</source>
         <translation>요소로 이동</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1918"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1994"/>
         <source>Quickly search for and select an element in the sheet</source>
         <comment>status bar tip</comment>
         <translation>시트에서 요소를 빠르게 검색하여 선택합니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1950"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2026"/>
         <location filename="../sources/diagramtoolbarsettings.cpp" line="76"/>
         <source>Connections</source>
         <comment>toolbar title</comment>
         <translation>연결</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2060"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2136"/>
         <source>Numbering</source>
         <translation>번호 매기기</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2061"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2137"/>
         <source>Lists</source>
         <translation>목록</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2128"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2204"/>
         <source>Tape measure</source>
         <translation>줄자</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2438"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2325"/>
+        <source>Show or hide the device navigator</source>
+        <translation>장치 탐색기 표시 또는 숨기기</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2532"/>
         <source>XML Files (*.xml);;All files (*)</source>
         <translation>XML 파일 (*.xml);;모든 파일 (*)</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2494"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2588"/>
         <source>%1 is being opened by another session of QElectroTech.</source>
         <translation>%1을(를) QElectroTech의 다른 세션에서 열고 있습니다.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2497"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2591"/>
         <source>%1 is open by %2 on %3 since %4</source>
         <translation>%1은(는) %4부터 %3에서 %2이(가) 열어 두었습니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2503"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2597"/>
         <source> (active just now).</source>
         <translation> (방금 활동).</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="2504"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2598"/>
         <source> (active %n minute(s) ago).</source>
         <translation>
             <numerusform> (%n분 전 활동).</numerusform>
         </translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2510"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2604"/>
         <source>Project in use</source>
         <comment>message box title</comment>
         <translation>사용 중인 프로젝트</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2511"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2605"/>
         <source>Open it read-only to look at it without changing it. Open it anyway only if you know that session is not using it any more: both of you could then save over each other.</source>
         <translation>바꾸지 않고 보기만 하려면 읽기 전용으로 여세요. 그 세션이 더 이상 사용하지 않는다는 것을 알 때만 그래도 여세요: 그렇지 않으면 서로의 변경 내용을 덮어쓸 수 있습니다.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2514"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2608"/>
         <source>Open read-only</source>
         <translation>읽기 전용으로 열기</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2515"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2609"/>
         <source>Open anyway</source>
         <translation>그래도 열기</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2541"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2569"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2580"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2689"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2635"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2663"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2674"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2783"/>
         <source>Cannot open %1</source>
         <translation>%1을(를) 열 수 없습니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2543"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2637"/>
         <source>The file %1 cannot be read as a QElectroTech project.</source>
         <translation>파일 %1을(를) QElectroTech 프로젝트로 읽을 수 없습니다.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2544"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2638"/>
         <source>The project file is damaged:
 %1</source>
         <translation>프로젝트 파일이 손상되었습니다:
 %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2549"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2643"/>
         <source>Open the version saved %1</source>
         <translation>%1에 저장된 버전 열기</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2554"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2648"/>
         <source>Recover what can be read</source>
         <translation>읽을 수 있는 부분 복구</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2556"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2650"/>
         <source>Either opens as a new project, &quot;%1&quot;; %2 is left as it is.</source>
         <translation>어느 쪽이든 새 프로젝트 “%1”(으)로 열립니다. %2은(는) 그대로 유지됩니다.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2570"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2664"/>
         <source>Nothing can be recovered from it:
 %1</source>
         <translation>복구할 수 있는 것이 없습니다:
 %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2584"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2678"/>
         <source>Project recovered</source>
         <translation>프로젝트 복구됨</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2585"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2679"/>
         <source>What could be read of %1 is open as a new project. Some parts could not be read and were left out: see the details.</source>
         <translation>%1에서 읽을 수 있었던 부분을 새 프로젝트로 열었습니다. 읽을 수 없었던 일부는 제외되었습니다: 자세한 내용을 확인하세요.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2610"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2704"/>
         <source>%1 was changed</source>
         <translation>%1이(가) 변경되었습니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2612"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2706"/>
         <source>Another program changed %1 since QElectroTech saved it.</source>
         <translation>QElectroTech가 저장한 뒤 다른 프로그램이 %1을(를) 변경했습니다.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2613"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2707"/>
         <source>The content of %1 is not what QElectroTech saved: another program changed it, or it is damaged.</source>
         <translation>%1의 내용이 QElectroTech가 저장한 것과 다릅니다: 다른 프로그램이 변경했거나 손상되었습니다.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2618"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2712"/>
         <source>Go back to the saved state</source>
         <translation>저장된 상태로 되돌리기</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2619"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2713"/>
         <source>Open it with its changes</source>
         <translation>변경 내용과 함께 열기</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2621"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2715"/>
         <source>Going back rebuilds the project as QElectroTech saved it, from the repair data the file keeps. The file is written only when you save.</source>
         <translation>되돌리면 파일이 보관한 복구 데이터로 QElectroTech가 저장한 대로 프로젝트를 다시 만듭니다. 파일은 저장할 때만 기록됩니다.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2623"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2717"/>
         <source>The file is written only when you save.</source>
         <translation>파일은 저장할 때만 기록됩니다.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2646"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2740"/>
         <source>%1 is open with the changes another program made to it.</source>
         <translation>%1은(는) 다른 프로그램이 변경한 내용과 함께 열려 있습니다.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2651"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2745"/>
         <source>The changes another program made to %1 were undone: it is open as QElectroTech saved it.</source>
         <translation>다른 프로그램이 %1에 한 변경을 취소했습니다: QElectroTech가 저장한 대로 열려 있습니다.</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="2653"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2747"/>
         <source>%1 was damaged: QElectroTech repaired %n page(s) of it from the repair data the file keeps.</source>
         <translation>
             <numerusform>%1이(가) 손상되었습니다: QElectroTech가 파일의 복구 데이터로 %n페이지를 복구했습니다.</numerusform>
         </translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2656"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2750"/>
         <source>%1 was damaged: QElectroTech repaired its header.</source>
         <translation>%1이(가) 손상되었습니다: QElectroTech가 헤더를 복구했습니다.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2658"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2752"/>
         <source>The repair data %1 keeps was damaged; the project itself was not.</source>
         <translation>%1이(가) 보관한 복구 데이터가 손상되었습니다. 프로젝트 자체는 손상되지 않았습니다.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2659"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2753"/>
         <source>Project repaired</source>
         <translation>프로젝트 복구됨</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2660"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2754"/>
         <source>Save the project to keep it so.</source>
         <translation>이 상태를 유지하려면 프로젝트를 저장하세요.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2671"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2765"/>
         <source>%1 (recovered)</source>
         <translation>%1 (복구됨)</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2674"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2768"/>
         <source>%1 (recovered %2)</source>
         <translation>%1 (복구됨 %2)</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2835"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2929"/>
         <source>Cannot go back to the saved state</source>
         <translation>저장된 상태로 되돌릴 수 없습니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2836"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2930"/>
         <source>The other program rewrote too much of %1 for its repair data to rebuild the state QElectroTech saved.</source>
         <translation>다른 프로그램이 %1을(를) 너무 많이 다시 써서, 복구 데이터로 QElectroTech가 저장한 상태를 다시 만들 수 없습니다.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2877"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2971"/>
         <source>%1 on %2 has taken over %3. Save your changes with Save As to keep them.</source>
         <translation>%2의 %1이(가) %3을(를) 넘겨받았습니다. 변경 내용을 유지하려면 다른 이름으로 저장하세요.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2897"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2991"/>
         <source>This project was saved by a later version of QElectroTech. It is opened read-only, so that saving it cannot lose what this version does not know. Use Save As to keep a copy in this version&apos;s format.</source>
         <translation>이 프로젝트는 QElectroTech의 이후 버전으로 저장되었습니다. 이 버전이 모르는 내용이 저장으로 사라지지 않도록 읽기 전용으로 열립니다. 이 버전 형식의 사본을 남기려면 다른 이름으로 저장을 사용하세요.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2956"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3050"/>
         <source>Elements not loaded</source>
         <comment>message box title</comment>
         <translation>불러오지 못한 요소</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="2957"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3051"/>
         <source>%n elements could not be loaded: their definition is missing from the project and from the collections.
 
 They are not shown, but they are kept in the file as they are, with their conductors, and come back once their definition is available again.</source>
@@ -16005,7 +16921,7 @@ They are not shown, but they are kept in the file as they are, with their conduc
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="2974"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3068"/>
         <source>%n conductors could not be joined to their terminals and were not loaded. The element&apos;s definition is missing, or was replaced by another one with different terminals.
 
 They are not shown, but they are kept in the file as they are, and join their terminals again once the definition has them where they were.</source>
@@ -16017,19 +16933,19 @@ They are not shown, but they are kept in the file as they are, and join their te
         </translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3310"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3409"/>
         <source>Automatic numbering</source>
         <comment>window title</comment>
         <translation>자동 번호 매기기</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3311"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3410"/>
         <source>No automatic cable numbering is defined.</source>
         <comment>shown when a project has no cable numbering rule</comment>
         <translation>자동 케이블 번호 매기기가 정의되어 있지 않습니다.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3315"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3414"/>
         <source>Do you want to define one now?
 
 You can also number the cables automatically later: the rule is set at any time in the project properties, on the &quot;Auto Numbering&quot; page.</source>
@@ -16039,422 +16955,448 @@ You can also number the cables automatically later: the rule is set at any time 
 나중에 케이블에 자동으로 번호를 매길 수도 있습니다: 규칙은 프로젝트 속성의 &quot;자동 번호 매기기&quot; 페이지에서 언제든지 설정할 수 있습니다.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3321"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3420"/>
         <source>Yes</source>
         <comment>yes</comment>
         <translation>예</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3322"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3421"/>
         <source>No</source>
         <comment>no</comment>
         <translation>아니요</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3323"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3422"/>
         <source>Cancel</source>
         <comment>cancel</comment>
         <translation>취소</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3615"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3714"/>
         <source>Change relay contact display</source>
         <translation>릴레이 접점 표시 변경</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4022"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4135"/>
         <source>Edit the information of the elements</source>
         <comment>edit several elements</comment>
         <translation>요소 정보 편집</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4053"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4166"/>
         <source>Edit the cable</source>
         <comment>edit cable</comment>
         <translation>케이블 편집</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5117"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5233"/>
         <source>No symbol is chosen for this button. Highlight one in the collection, then choose &quot;Use the symbol highlighted in the collection&quot; from the arrow beside the button.</source>
         <translation>이 버튼에 선택된 기호가 없습니다. 컬렉션에서 기호를 강조 표시한 다음, 버튼 옆 화살표에서 &quot;컬렉션에서 강조 표시한 기호 사용&quot;을 선택하세요.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5141"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5257"/>
         <source>%1: place &quot;%2&quot;. The arrow beside it chooses the symbol.</source>
         <translation>%1: &quot;%2&quot; 배치. 옆의 화살표로 기호를 선택합니다.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5142"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5258"/>
         <source>%1: no symbol chosen yet. The arrow beside it chooses one.</source>
         <translation>%1: 아직 선택한 기호가 없습니다. 옆의 화살표로 선택합니다.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5462"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5582"/>
+        <source>Every symbol text already lies where its symbol places it.</source>
+        <translation>모든 기호 텍스트가 이미 기호가 정한 위치에 있습니다.</translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../sources/qetdiagrameditor.cpp" line="5586"/>
+        <source>%n texts of the project&apos;s symbols lie elsewhere than their symbol places them. Lay them out as in the symbol?</source>
+        <translation>
+            <numerusform>프로젝트 기호의 텍스트 %n개가 기호가 정한 위치가 아닌 곳에 있습니다. 기호대로 배치하시겠습니까?</numerusform>
+        </translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5616"/>
         <source>Every element of the project matches the collection it was taken from.</source>
-        <translation type="unfinished"></translation>
+        <translation>프로젝트의 모든 요소가 가져온 컬렉션과 일치합니다.</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="5471"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5625"/>
         <source>%n elements of the project differ from the collection they were taken from. Replace them with the version of the collection?</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>프로젝트의 요소 %n개가 가져온 컬렉션과 다릅니다. 컬렉션의 버전으로 교체하시겠습니까?</numerusform>
         </translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5475"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5629"/>
         <source>Placed elements are redrawn and keep their conductors, as long as their terminals have not moved. This action cannot be undone.</source>
-        <translation type="unfinished"></translation>
+        <translation>배치된 요소는 다시 그려지며, 단자가 이동하지 않은 한 도체를 유지합니다. 이 작업은 실행 취소할 수 없습니다.</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="5487"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5641"/>
         <source>%n elements updated.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>요소 %n개를 업데이트했습니다.</numerusform>
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="5564"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5718"/>
         <source>%n elements not redrawn: their terminals have changed (a terminal was added, removed or moved).</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>요소 %n개를 다시 그리지 못했습니다: 단자가 변경되었습니다(단자가 추가, 제거 또는 이동됨).</numerusform>
         </translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5827"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5981"/>
         <source>Remembered after a restart</source>
         <translation>다시 시작해도 기억됨</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5990"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6117"/>
+        <source>Select: %1</source>
+        <translation>선택: %1</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6162"/>
         <source>Dimension format copied</source>
         <translation>치수 서식을 복사했습니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6000"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6172"/>
         <source>Text format of &quot;%1&quot; copied</source>
         <translation>“%1”의 텍스트 서식 복사됨</translation>
     </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6186"/>
+        <source>Show the T-junction symbol</source>
+        <translation>T 분기 기호 표시</translation>
+    </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="6046"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6238"/>
         <source>Dimension format applied to %n dimension(s)</source>
         <translation>
             <numerusform>치수 %n개에 치수 서식을 적용했습니다</numerusform>
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="6062"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6254"/>
         <source>Text format applied to %n element(s)</source>
         <translation>
             <numerusform>요소 %n개에 텍스트 서식 적용됨</numerusform>
         </translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6081"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6167"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6175"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6187"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6264"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6286"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6273"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6359"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6367"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6379"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6456"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6478"/>
         <source>History of saves</source>
         <translation>저장 기록</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6083"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6275"/>
         <source>Keep a history of saves in this file</source>
         <translation>이 파일에 저장 기록 남기기</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6087"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6279"/>
         <source>all</source>
         <translation>전체</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6088"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6280"/>
         <source>The oldest saves are dropped from the history at each save beyond this number</source>
         <translation>저장할 때마다 이 수를 넘는 가장 오래된 저장이 기록에서 삭제됩니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6089"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6281"/>
         <source>Saves to keep:</source>
         <translation>남길 저장 수:</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6095"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6287"/>
         <source>No.</source>
         <translation>번호</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6095"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6287"/>
         <source>Saved</source>
         <translation>저장 시각</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6095"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6287"/>
         <source>By</source>
         <translation>저장한 사람</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6095"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6287"/>
         <source>Changes</source>
         <translation>변경</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6104"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6296"/>
         <source>Open as it was</source>
         <translation>당시 상태로 열기</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6105"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6297"/>
         <source>Open the project as it was after the selected save, read-only</source>
         <translation>선택한 저장 이후 상태로 프로젝트를 읽기 전용으로 엽니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6106"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6298"/>
         <source>Compare</source>
         <translation>비교</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6107"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6299"/>
         <source>What the selected save changed, or what changed between two selected saves</source>
         <translation>선택한 저장이 바꾼 내용, 또는 선택한 두 저장 사이에 바뀐 내용</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6146"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6338"/>
         <source>A history is kept only in a project saved as .qetdb (File &gt; Save as).</source>
         <translation>기록은 .qetdb로 저장한 프로젝트에만 남습니다 (파일 &gt; 다른 이름으로 저장).</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6147"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6339"/>
         <source>This file keeps no history. Switched on, each save records who saved, when and what changed.</source>
         <translation>이 파일은 기록을 남기지 않습니다. 켜면 저장할 때마다 누가, 언제, 무엇을 바꿨는지 기록합니다.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6149"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6341"/>
         <source>Each save records who saved, when and what changed. Copies of the file carry this history: use File &gt; Export for delivery to send a project without it.</source>
         <translation>저장할 때마다 누가, 언제, 무엇을 바꿨는지 기록합니다. 파일 사본에도 이 기록이 들어 있습니다: 기록 없이 프로젝트를 보내려면 파일 &gt; 납품용으로 내보내기를 사용하세요.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6159"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6351"/>
         <source>History started</source>
         <translation>기록 시작됨</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6168"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6360"/>
         <source>Delete the history this file keeps? It cannot be undone.</source>
         <translation>이 파일이 보관한 기록을 삭제할까요? 되돌릴 수 없습니다.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6176"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6188"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6368"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6380"/>
         <source>The history could not be changed: %1</source>
         <translation>기록을 변경할 수 없습니다: %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6209"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6215"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6223"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6229"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6235"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6401"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6407"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6415"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6421"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6427"/>
         <source>Export for delivery</source>
         <translation>납품용으로 내보내기</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6210"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6402"/>
         <source>Only a project saved as .qetdb keeps a history to leave out (File &gt; Save as).</source>
         <translation>제외할 기록이 있는 것은 .qetdb로 저장한 프로젝트뿐입니다 (파일 &gt; 다른 이름으로 저장).</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6216"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6408"/>
         <source>The copy is made from the saved file. Save the project first?</source>
         <translation>사본은 저장된 파일로 만들어집니다. 먼저 프로젝트를 저장할까요?</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6224"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6416"/>
         <source>%1 - delivery.qetdb</source>
         <translation>%1 - 납품.qetdb</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6225"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6417"/>
         <source>QElectroTech project (*.qetdb)</source>
         <translation>QElectroTech 프로젝트 (*.qetdb)</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6230"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6422"/>
         <source>Choose another file than the project&apos;s own.</source>
         <translation>프로젝트 자체가 아닌 다른 파일을 선택하세요.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6236"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6428"/>
         <source>The copy could not be written: %1</source>
         <translation>사본을 쓸 수 없습니다: %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6239"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6431"/>
         <source>Copy without history written to %1</source>
         <translation>기록 없는 사본을 %1에 썼습니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6253"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6445"/>
         <source>%1 - save %2.qetdb</source>
         <translation>%1 - 저장 %2.qetdb</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6265"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6457"/>
         <source>Save %1 could not be written again: %2</source>
         <translation>저장 %1을(를) 다시 쓸 수 없습니다: %2</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6287"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6479"/>
         <source>The saves could not be compared: %1</source>
         <translation>저장을 비교할 수 없습니다: %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6310"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6502"/>
         <source>Changes from save %1 to save %2</source>
         <translation>저장 %1에서 저장 %2까지의 변경</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6315"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6507"/>
         <source>Kind</source>
         <translation>종류</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6315"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6326"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6507"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6518"/>
         <source>Folio</source>
         <translation>도면 시트</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6315"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6507"/>
         <source>Name</source>
         <translation>이름</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6315"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6507"/>
         <source>Change</source>
         <translation>변경</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6324"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6516"/>
         <source>Symbol</source>
         <translation>기호</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6325"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6517"/>
         <source>Wire</source>
         <translation>전선</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6327"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6519"/>
         <source>Drawn item</source>
         <translation>그린 항목</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6328"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6520"/>
         <source>added</source>
         <translation>추가됨</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6329"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6521"/>
         <source>removed</source>
         <translation>제거됨</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6330"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6522"/>
         <source>changed</source>
         <translation>변경됨</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6343"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6535"/>
         <source>Not in the project now</source>
         <translation>지금은 프로젝트에 없음</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="6406"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6598"/>
         <source>%n more</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n개 더</numerusform>
         </translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6409"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6601"/>
         <source>Untitled sheet</source>
         <comment>Fallback label when a diagram has no title</comment>
-        <translation type="unfinished"></translation>
+        <translation>제목 없는 도면</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6413"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6605"/>
         <source>%1 - %2: %3</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 - %2: %3</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="6436"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6628"/>
         <source>... and %n more folio(s)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>... 외 도면 %n개</numerusform>
         </translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6439"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6631"/>
         <source>Outside the sheet</source>
-        <translation type="unfinished"></translation>
+        <translation>도면 밖</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="6440"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6632"/>
         <source>These items lie outside the sheet and are cut off or left out:
 
 %1
 
 Go on anyway?</source>
-        <translation type="unfinished"></translation>
+        <translation>다음 항목은 도면 밖에 있어 잘리거나 생략됩니다:
+
+%1
+
+그래도 계속하시겠습니까?</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="6461"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6653"/>
         <source>Project saved; %n folio(s) with items outside the sheet, named when printing or exporting</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>프로젝트를 저장했습니다. 도면 밖 항목이 있는 도면 %n개는 인쇄하거나 내보낼 때 표시됩니다</numerusform>
         </translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1944"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2020"/>
         <location filename="../sources/diagramtoolbarsettings.cpp" line="74"/>
         <source>Add</source>
         <translation>추가</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1983"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2059"/>
         <source>Scripts</source>
         <comment>toolbar title</comment>
         <translation>스크립트</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2125"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2201"/>
         <source>&amp;Add</source>
         <translation>추가(&amp;A)</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2136"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2212"/>
         <source>Selection</source>
         <translation>선택</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2153"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2232"/>
         <source>Align</source>
         <translation>맞춤</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2167"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2246"/>
         <source>Rows and columns</source>
         <translation>행과 열</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2170"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2249"/>
         <source>Depth</source>
         <translation>깊이</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2207"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5692"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2287"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5846"/>
         <source>Scripts</source>
         <translation>스크립트</translation>
     </message>
@@ -16463,26 +17405,26 @@ Go on anyway?</source>
         <translation type="vanished">QElectroTech 프로젝트 (*.qet);;XML 파일 (*.xml);;모든 파일 (*)</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2741"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2757"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2835"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2851"/>
         <source>Unable to open file</source>
         <comment>message box title</comment>
         <translation>파일을 열 수 없음</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2743"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2837"/>
         <source>It appears the %1 file which you are trying to open does not exist or does not exist anymore.</source>
         <translation>열려는 파일 %1이(가) 존재하지 않거나 더 이상 존재하지 않습니다.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2771"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2896"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2865"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2990"/>
         <source>Opening the file read-only</source>
         <comment>message box title</comment>
         <translation>읽기 전용으로 프로젝트 열기</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="2918"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3012"/>
         <source>%n font descriptions written in a foreign or corrupted format have been restored. They will be rewritten in a stable format the next time the project is saved.</source>
         <comment>message box content</comment>
         <translation>
@@ -16490,7 +17432,7 @@ Go on anyway?</source>
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="2926"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3020"/>
         <source>%n font descriptions could not be read; the default font will be used for these texts.</source>
         <comment>message box content</comment>
         <translation>
@@ -16498,199 +17440,199 @@ Go on anyway?</source>
         </translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2933"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3027"/>
         <source>Project fonts</source>
         <comment>message box title</comment>
         <translation>프로젝트 글꼴</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2946"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2950"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3040"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3044"/>
         <source>Sheet %1: %2</source>
         <translation>시트 %1: %2</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2973"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3067"/>
         <source>Conductors not loaded</source>
         <comment>message box title</comment>
         <translation>불러오지 못한 도선</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3518"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3617"/>
         <source>Unable to delete the terminal</source>
         <translation>단자를 삭제할 수 없습니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3519"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3618"/>
         <source>The deletion cannot be performed because the selection contains one or more terminals that are bridged and/or belong to a multi-level terminal.
 Unbridge and/or remove the levels from the affected terminals so that they can be deleted</source>
         <translation>선택 항목에 브리지로 연결되었거나 다단 단자에 속한 단자가 하나 이상 있어 삭제할 수 없습니다.
 삭제하려면 해당 단자의 브리지를 해제하거나 단을 제거하세요</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="3708"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3807"/>
         <source>%n items put back on the grid</source>
         <translation>
             <numerusform>항목 %n개를 다시 격자에 놓았습니다</numerusform>
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="3709"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3808"/>
         <source>%n items aligned</source>
         <translation>
             <numerusform>항목 %n개를 맞췄습니다</numerusform>
         </translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3715"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3814"/>
         <source>The selection is already on the grid</source>
         <translation>선택 항목이 이미 격자에 있습니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3717"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3816"/>
         <source>Select at least two unlocked elements, images, texts, shapes or groups</source>
         <translation>잠기지 않은 요소, 이미지, 텍스트, 도형 또는 그룹을 두 개 이상 선택하세요</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3719"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3818"/>
         <source>The selection is already aligned, to the nearest grid step</source>
         <translation>선택 항목이 이미 가장 가까운 격자 간격으로 맞춰져 있습니다</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="3723"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3822"/>
         <source>(%n locked objects left in place)</source>
         <translation>
             <numerusform>(잠긴 객체 %n개는 제자리에 둠)</numerusform>
         </translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4032"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4145"/>
         <source>Edit the element</source>
         <comment>edit element</comment>
         <translation>요소 편집</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4039"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4152"/>
         <source>Edit the text field</source>
         <comment>edit text field</comment>
         <translation>텍스트 필드 편집</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4046"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4159"/>
         <source>Edit the image</source>
         <comment>edit image</comment>
         <translation>이미지 편집</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4060"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4173"/>
         <source>Edit conductor</source>
         <comment>edit conductor</comment>
         <translation>도선 편집</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4068"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4181"/>
         <source>Edit the selected object</source>
         <comment>edit selected item</comment>
         <translation>선택한 개체 편집</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4403"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4450"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4516"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4563"/>
         <source>An error occurred while opening file %1.</source>
         <comment>message box content</comment>
         <translation>파일 %1을(를) 여는 동안 오류가 발생했습니다.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4497"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4610"/>
         <source>Activates the project « %1 »</source>
         <translation>프로젝트 « %1 »을(를) 활성화합니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4721"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4834"/>
         <source>Are you sure you want to delete this sheet?</source>
         <translation>이 시트를 삭제하시겠습니까?</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4726"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4839"/>
         <source>Delete the sheets</source>
         <translation>시트 삭제</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4727"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4840"/>
         <source>Are you sure you want to delete the selected %1 sheets ?</source>
         <translation>선택한 시트 %1개를 삭제하시겠습니까?</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4744"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4857"/>
         <source>Delete %1 sheets</source>
         <translation>시트 %1개 삭제</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4782"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4800"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4818"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4836"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4854"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4872"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4890"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4895"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4913"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4931"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4949"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4967"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="4985"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5003"/>
         <source>Move the sheets</source>
         <translation>시트 이동</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5004"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5117"/>
         <source>Error</source>
         <comment>message box title</comment>
         <translation>오류</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5173"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5289"/>
         <source>Repeat: insert &quot;%1&quot;</source>
         <translation>반복: &quot;%1&quot; 삽입</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5174"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5290"/>
         <source>Repeat: %1</source>
         <translation>반복: %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5538"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5692"/>
         <source>sheet %1</source>
         <translation>시트 %1</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="5546"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5700"/>
         <source>%n elements redrawn.</source>
         <translation>
             <numerusform>요소 %n개를 다시 그렸습니다.</numerusform>
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="5552"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5706"/>
         <source>%n elements for which no definition could be found or which were illegible: their current design has been retained.</source>
         <translation>
             <numerusform>정의를 찾을 수 없거나 읽을 수 없는 요소 %n개: 현재 그림을 유지했습니다.</numerusform>
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="5567"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5721"/>
         <source>%n elements not redrawn: their size, grip point or terminals have changed (a terminal was added, removed or moved).</source>
         <translation>
             <numerusform>요소 %n개를 다시 그리지 않았습니다: 크기, 잡는 점 또는 단자가 바뀌었습니다 (단자가 추가, 제거 또는 이동됨).</numerusform>
         </translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5571"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5725"/>
         <source>To update them, they must be deleted then reinserted. Warning: this operation removes the conductors already connected to these elements, which will need to be redrawn.</source>
         <translation>업데이트하려면 삭제한 후 다시 삽입해야 합니다. 경고: 이 작업은 이 요소들에 이미 연결된 도선을 제거하므로, 도선을 다시 그려야 합니다.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5600"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5604"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5754"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5758"/>
         <source>Run a script</source>
         <translation>스크립트 실행</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5629"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5783"/>
         <source>Scripts are disabled.
 
 A script runs with your permissions: it can read and modify the open project and write files. Only run scripts whose origin you know.
@@ -16703,40 +17645,40 @@ Enable scripts? This setting can be changed in Configure QElectroTech &gt; Gener
 스크립트를 켜시겠습니까? 이 설정은 QElectroTech 설정 &gt; 일반 &gt; 프로젝트에서 바꿀 수 있습니다.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5606"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5760"/>
         <source>JavaScript scripts (*.js);;All files (*)</source>
         <translation>JavaScript 스크립트 (*.js);;모든 파일 (*)</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5706"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5860"/>
         <source>Ignored: %1</source>
         <translation>무시됨: %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5741"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5802"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5895"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5956"/>
         <source>Stop</source>
         <translation>중지</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5742"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5896"/>
         <source>Stop recording the macro</source>
         <translation>매크로 녹화 중지</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="5752"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5906"/>
         <source>● Recording: %n steps</source>
         <translation>
             <numerusform>● 녹화 중: %n단계</numerusform>
         </translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5767"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5921"/>
         <source>Macro recorded</source>
         <translation>매크로 녹화됨</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="5768"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5922"/>
         <source>“%1”: %n steps.
 
 To make a script of it, ask your AI assistant: the button below copies the request, just paste it into its window.</source>
@@ -16747,100 +17689,100 @@ To make a script of it, ask your AI assistant: the button below copies the reque
         </translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5777"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5931"/>
         <source>&amp;Copy the request for the assistant</source>
         <translation>어시스턴트용 요청 복사(&amp;C)</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5778"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5932"/>
         <source>&amp;Open the folder</source>
         <translation>폴더 열기(&amp;O)</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5784"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5938"/>
         <source>Request copied: paste it into the assistant&apos;s window</source>
         <translation>요청이 복사되었습니다: 어시스턴트 창에 붙여넣으세요</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5803"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5957"/>
         <source>Close the assistant&apos;s connection for the rest of the session</source>
         <translation>남은 세션 동안 어시스턴트 연결 끊기</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5812"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5966"/>
         <source>Live mode: assistant connected</source>
         <translation>실시간 모드: 어시스턴트 연결됨</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5813"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5967"/>
         <source>Live mode: waiting for an assistant</source>
         <translation>실시간 모드: 어시스턴트 대기 중</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5821"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5865"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5975"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6019"/>
         <source>Assistant</source>
         <translation>어시스턴트</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5825"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5979"/>
         <source>Ask before running a script the assistant wrote</source>
         <translation>어시스턴트가 작성한 스크립트를 실행하기 전에 묻기</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5882"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6036"/>
         <source>Live mode: %1 %2 at %3</source>
         <translation>실시간 모드: %1 %2, %3</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qetdiagrameditor.cpp" line="5924"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6078"/>
         <source>%n kinds of items hidden</source>
         <translation>
             <numerusform>항목 종류 %n개 숨김</numerusform>
         </translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5960"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5965"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6132"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6137"/>
         <source>Texts %1</source>
         <translation>텍스트 %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1410"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1482"/>
         <source>Arranges windows in a tile pattern</source>
         <comment>status bar tip</comment>
         <translation>창을 바둑판식으로 배열합니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1415"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1487"/>
         <source>Arranges windows in a cascade pattern</source>
         <comment>status bar tip</comment>
         <translation>창을 계단식으로 배열합니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1450"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1522"/>
         <source>Next project</source>
         <translation>다음 프로젝트</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1455"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1527"/>
         <source>Previous project</source>
         <translation>이전 프로젝트</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1452"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1524"/>
         <source>Activates the next project</source>
         <comment>status bar tip</comment>
         <translation>다음 프로젝트를 활성화합니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1457"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1529"/>
         <source>Activates the previous project</source>
         <comment>status bar tip</comment>
         <translation>이전 프로젝트를 활성화합니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="4975"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5088"/>
         <source>Zoom %1 %</source>
         <translation>확대 %1 %</translation>
     </message>
@@ -16849,52 +17791,52 @@ To make a script of it, ask your AI assistant: the button below copies the reque
         <translation type="vanished">화면에 표시된 시트의 확대 비율</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="906"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="944"/>
         <source>Snap to the grid</source>
         <translation>격자에 맞추기</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="909"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="947"/>
         <source>Snap the pointer and what is moved or placed to the grid; off, they go to the nearest point</source>
         <translation>포인터와 이동하거나 놓는 것을 격자에 맞춥니다. 끄면 가장 가까운 점에</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="919"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="957"/>
         <source>Grid step</source>
         <translation>격자 간격</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="925"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="963"/>
         <source>The step of the grid that symbols, conductors and the pointer snap to</source>
         <translation>기호, 도체, 포인터가 맞춰지는 격자 간격</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="928"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="966"/>
         <source>Fine (5)</source>
         <translation>촘촘 (5)</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="929"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="967"/>
         <source>Medium (10)</source>
         <translation>보통 (10)</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="930"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="968"/>
         <source>Coarse (20)</source>
         <translation>넓게 (20)</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5941"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6095"/>
         <source>Grid %1</source>
         <translation>격자 %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5942"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="6096"/>
         <source>Grid %1 × %2</source>
         <translation>격자 %1 × %2</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1113"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1180"/>
         <source>Find duplicate signals and components...</source>
         <translation>중복된 신호와 부품 찾기...</translation>
     </message>
@@ -17108,54 +18050,54 @@ To make a script of it, ask your AI assistant: the button below copies the reque
         <translation>크기 조정할 요소 가져오기</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1185"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1238"/>
         <source>Add a line</source>
         <translation>선 추가</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1187"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1240"/>
         <source>Add an ellipse</source>
         <translation>타원 추가</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1188"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1241"/>
         <source>Add a polygon</source>
         <translation>다각형 추가</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1189"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1242"/>
         <source>Add text</source>
         <translation>텍스트 추가</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1190"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1243"/>
         <source>Add an arc</source>
         <translation>호 추가</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1191"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1244"/>
         <source>Add a terminal</source>
         <translation>단자 추가</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1109"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1162"/>
         <source>Undo</source>
         <comment>fr: Annuler</comment>
         <translation>실행 취소</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1110"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1163"/>
         <source>Redo</source>
         <translation>다시 실행</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="814"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="867"/>
         <source>&lt;br&gt;Without terminal, the element can not be connected to other elements via conductors.</source>
         <comment>warning description</comment>
         <translation>&lt;br&gt;단자가 없으면, 이 요소는 도체를 통해 다른 요소에 연결할 수 없습니다.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1414"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1523"/>
         <source>No modification</source>
         <translation>변경 없음</translation>
     </message>
@@ -17199,13 +18141,13 @@ To make a script of it, ask your AI assistant: the button below copies the reque
         <translation>작성자 정보 편집</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1211"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1271"/>
         <source>Parts</source>
         <comment>toolbar title</comment>
         <translation>부품</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1148"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1201"/>
         <source>Depth</source>
         <comment>toolbar title</comment>
         <translation>깊이</translation>
@@ -17221,12 +18163,12 @@ To make a script of it, ask your AI assistant: the button below copies the reque
         <translation>요소 속성 편집</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1192"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1245"/>
         <source>Add a dynamic text field</source>
         <translation>동적 텍스트 필드 추가</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1207"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1267"/>
         <source>Double-click to finish the shape, Right click to cancel the last point</source>
         <translation>더블클릭하여 도형 종료, 오른쪽 클릭으로 마지막 점 취소</translation>
     </message>
@@ -17251,55 +18193,55 @@ To make a script of it, ask your AI assistant: the button below copies the reque
         <translation>다음에서 붙여넣기...</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="494"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="547"/>
         <source>[Changed]</source>
         <comment>window title tag</comment>
         <translation>[수정됨]</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="498"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="551"/>
         <source> [Read only]</source>
         <comment>window title tag</comment>
         <translation> [읽기 전용]</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1453"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1643"/>
         <source>Elements Editor</source>
         <comment>status bar message</comment>
         <translation>요소 편집기</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="582"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="737"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="635"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="790"/>
         <source>%n selected parts.</source>
         <translation>
             <numerusform>%n개 부품 선택됨.</numerusform>
         </translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="541"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="594"/>
         <source>Too many primitives, list not generated: %1</source>
         <translation>프리미티브가 너무 많아 목록을 생성하지 못했습니다: %1</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="813"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="866"/>
         <source>Missing terminal</source>
         <comment>warning title</comment>
         <translation>단자 없음</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="836"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="889"/>
         <source>&lt;br&gt;&lt;b&gt;Error&lt;/b&gt;:&lt;br&gt;Sheet references must have a single terminal.&lt;br&gt;&lt;b&gt;Solution&lt;/b&gt;:&lt;br&gt;Check that the element has only one terminal</source>
         <translation>&lt;br&gt;&lt;b&gt;오류&lt;/b&gt; :&lt;br&gt;폴리오 참조 요소는 단자를 1개만 가져야 합니다.&lt;br&gt;&lt;b&gt;해결&lt;/b&gt; :&lt;br&gt;요소에 단자가 1개만 있는지 확인하십시오</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="912"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="965"/>
         <source>The verification of this element generated</source>
         <comment>message box content</comment>
         <translation>이 요소 검사 결과</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="915"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="968"/>
         <source> %n errors</source>
         <comment>errors</comment>
         <translation>
@@ -17307,32 +18249,32 @@ To make a script of it, ask your AI assistant: the button below copies the reque
         </translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="920"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="973"/>
         <source> and</source>
         <translation> 그리고</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="939"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="992"/>
         <source>Errors</source>
         <translation>오류</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="835"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="888"/>
         <source>Missing terminal</source>
         <translation>단자 없음</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1208"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1268"/>
         <source>Add non-editable element text in diagrams</source>
         <translation>도면에서 편집할 수 없는 요소 텍스트 추가</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1209"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1269"/>
         <source>Add element text that can be edited in diagrams</source>
         <translation>도면에서 편집할 수 있는 요소 텍스트 추가</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="922"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="975"/>
         <source> %n Warnings</source>
         <comment>warnings</comment>
         <translation>
@@ -17340,354 +18282,484 @@ To make a script of it, ask your AI assistant: the button below copies the reque
         </translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="932"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="985"/>
         <source>&lt;b&gt;%1&lt;/b&gt; : %2</source>
         <comment>warning title: warning description</comment>
         <translation>&lt;b&gt;%1&lt;/b&gt; : %2</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="243"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="252"/>
         <source>The file %1 does not exist.</source>
         <comment>message box content</comment>
         <translation>파일 %1이(가) 존재하지 않습니다.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="90"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="99"/>
         <source>Display</source>
         <comment>menu entry</comment>
         <translation>표시</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="249"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1761"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="258"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="2005"/>
         <source>Unable to open the file %1.</source>
         <comment>message box content</comment>
         <translation>파일 %1을(를) 열 수 없습니다.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="256"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1766"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="265"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="2010"/>
         <source>This file is not a valid XML document</source>
         <comment>message box content</comment>
         <translation>이 파일은 유효한 XML 문서가 아닙니다</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="262"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1772"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="271"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="2016"/>
         <source>Error</source>
         <comment>toolbar title</comment>
         <translation>오류</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="273"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="343"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="282"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="352"/>
         <source>Read only edition</source>
         <comment>message box title</comment>
         <translation>읽기 전용 편집</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="274"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="344"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="283"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="353"/>
         <source>You are not allowed to modify this element. Thus it will be edited read-only.</source>
         <comment>message box content</comment>
         <translation>이 요소를 수정할 권한이 없습니다. 따라서 읽기 전용으로 열립니다.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="305"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="369"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="314"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="378"/>
         <source>Error</source>
         <comment>message box title</comment>
         <translation>오류</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="306"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="315"/>
         <source>Unable to write to this file</source>
         <comment>message box content</comment>
         <translation>이 파일에 쓸 수 없습니다</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="370"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="379"/>
         <source>Unable to save the element</source>
         <comment>message box content</comment>
         <translation>요소를 저장할 수 없습니다</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="855"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="908"/>
         <source>Incorrect number of terminals</source>
         <translation>단자 수가 올바르지 않음</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="856"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="909"/>
         <source>&lt;br&gt;&lt;b&gt;Error&lt;/b&gt;:&lt;br&gt;Conductor definitions can only have one terminal.&lt;br&gt;&lt;b&gt;Solution&lt;/b&gt;:&lt;br&gt;Verify that the element has only one terminal</source>
         <translation>&lt;br&gt;&lt;b&gt;오류&lt;/b&gt;:&lt;br&gt;도선 정의에는 단자가 하나만 있을 수 있습니다.&lt;br&gt;&lt;b&gt;해결 방법&lt;/b&gt;:&lt;br&gt;요소에 단자가 하나만 있는지 확인하세요</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="877"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="930"/>
         <source>Duplicate terminal names</source>
         <translation>단자 이름 중복</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="878"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="931"/>
         <source>&lt;br&gt;&lt;b&gt;Error&lt;/b&gt;:&lt;br&gt;Several terminals have the same name: %1.&lt;br&gt;&lt;b&gt;Solution&lt;/b&gt;:&lt;br&gt;Give each terminal a unique name, for example N.1 and N.2. The terminals concerned are selected.</source>
         <translation>&lt;br&gt;&lt;b&gt;오류&lt;/b&gt;:&lt;br&gt;여러 단자의 이름이 같습니다: %1.&lt;br&gt;&lt;b&gt;해결 방법&lt;/b&gt;:&lt;br&gt;각 단자에 고유한 이름을 지정하세요 (예: N.1과 N.2). 해당 단자가 선택되어 있습니다.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="899"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="952"/>
         <source>Terminals without a name</source>
         <translation>이름 없는 단자</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="900"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="953"/>
         <source>&lt;br&gt;%n terminals without a name. Without unique terminal names, the wiring list (what connects to what) cannot name each terminal, so it cannot be used to wire the cabinet in the workshop.</source>
         <translation>
             <numerusform>&lt;br&gt;이름 없는 단자 %n개. 고유한 단자 이름이 없으면 배선 목록(무엇이 무엇에 연결되는지)이 각 단자를 지칭할 수 없으므로, 작업장에서 캐비닛을 배선하는 데 사용할 수 없습니다.</numerusform>
         </translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1113"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1114"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1118"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1119"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1120"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1121"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1122"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1123"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1124"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1125"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1126"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1127"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1128"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1129"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1130"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1131"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1134"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1135"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1137"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1138"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1154"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1158"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1162"/>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1166"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1167"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1171"/>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1172"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1173"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1174"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1175"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1176"/>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1177"/>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1178"/>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1179"/>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1180"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1235"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1261"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1292"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1181"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1182"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1183"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1184"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1187"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1188"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1190"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1191"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1207"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1211"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1215"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1219"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1225"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1230"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1231"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1232"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1233"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1265"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1295"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1321"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1352"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1401"/>
         <source>Element editors</source>
         <translation>요소 편집기</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1170"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1223"/>
         <source>Scale the element...</source>
         <translation>요소 크기 조정...</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1216"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1261"/>
+        <source>Set the insertion point</source>
+        <translation>삽입점 설정</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1263"/>
+        <source>Click a terminal or a corner: it becomes the point the symbol is placed by</source>
+        <translation>단자나 모서리를 클릭하십시오: 그 점이 기호를 배치하는 기준점이 됩니다</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1276"/>
         <source>Tape measure</source>
         <translation>줄자</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1218"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1278"/>
         <source>Measure distance and angle between points</source>
         <translation>점 사이의 거리와 각도 측정</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1238"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1298"/>
         <source>Clear measurements</source>
         <translation>측정 지우기</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1239"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1299"/>
         <source>Clear all tape measurements from the editor</source>
         <translation>편집기의 줄자 측정을 모두 지우기</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1244"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1304"/>
         <source>Measurements cleared</source>
         <translation>측정 지움</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1257"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1317"/>
         <source>Show the background frame</source>
         <translation>배경 틀 표시</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1265"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1325"/>
         <source>Background frame size...</source>
         <translation>배경 틀 크기...</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1268"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1328"/>
         <source>Background frame size</source>
         <translation>배경 틀 크기</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1273"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1279"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1333"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1339"/>
         <source> px</source>
         <translation> px</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1275"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1335"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1379"/>
         <source>Width</source>
         <translation>너비</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1281"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1341"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1380"/>
         <source>Height</source>
         <translation>높이</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1448"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1357"/>
+        <source>Selection frame...</source>
+        <translation>선택 프레임...</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1358"/>
+        <source>The frame a click on the placed symbol hits: worked out from the drawing, or set by hand</source>
+        <translation>배치된 기호를 클릭할 때 적중하는 프레임: 그림에서 계산하거나 직접 설정합니다</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1361"/>
+        <source>Selection frame</source>
+        <translation>선택 프레임</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1363"/>
+        <source>Set by hand</source>
+        <translation>직접 설정</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1377"/>
+        <source>Left</source>
+        <translation>왼쪽</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1378"/>
+        <source>Top</source>
+        <translation>위쪽</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1559"/>
         <source>X: %1  Y: %2</source>
         <translation>X: %1  Y: %2</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1526"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1555"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1621"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1569"/>
+        <source>What a click, a selection rectangle and Select All pick</source>
+        <translation>클릭, 선택 사각형, 모두 선택으로 선택되는 대상</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1573"/>
+        <source>Everything</source>
+        <translation>모두</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1574"/>
+        <source>Drawing</source>
+        <translation>그림</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1575"/>
+        <source>Texts</source>
+        <translation>텍스트</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1576"/>
+        <source>Terminals</source>
+        <translation>단자</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1580"/>
+        <source>Select: %1</source>
+        <translation>선택: %1</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1601"/>
+        <source>The step parts snap to; crosses mark the grid of 10, the folio&apos;s</source>
+        <translation>부품이 맞춰지는 간격. 십자는 도면과 같은 10 격자를 표시합니다</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1605"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1636"/>
+        <source>Grid %1</source>
+        <translation>격자 %1</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1606"/>
+        <source>Grid following the zoom</source>
+        <translation>확대/축소를 따르는 격자</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1622"/>
+        <source>Zoom of the symbol on screen; a click offers fixed ones</source>
+        <translation>화면에서 기호의 확대/축소 배율. 클릭하면 고정 값을 고를 수 있습니다</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1625"/>
+        <source>%1 %</source>
+        <translation>%1 %</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1630"/>
+        <source>Whole symbol</source>
+        <translation>기호 전체</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1637"/>
+        <source>Grid %1 (zoom)</source>
+        <translation>격자 %1 (확대/축소)</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1638"/>
+        <source>Zoom %1 %</source>
+        <translation>확대/축소 %1 %</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1656"/>
+        <source>Collections</source>
+        <translation>컬렉션</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1674"/>
+        <source>The collections panel</source>
+        <translation>컬렉션 패널</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1675"/>
+        <source>Shows the collections: double-click an element, or drag it onto the drawing, to paste its parts</source>
+        <translation>컬렉션을 표시합니다: 요소를 두 번 클릭하거나 그림 위로 드래그하면 해당 부품을 붙여 넣습니다</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1770"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1799"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1865"/>
         <source>The recording failed,
 the conditions are not valid</source>
         <translation>저장에 실패했습니다,
 조건이 올바르지 않습니다</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1655"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1899"/>
         <source>Export as SVG</source>
         <comment>dialog title</comment>
         <translation>SVG로 내보내기</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1657"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1901"/>
         <source>SVG image (*.svg)</source>
         <comment>filetypes allowed when exporting an element to SVG</comment>
         <translation>SVG 이미지 (*.svg)</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1668"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1912"/>
         <source>Export failed</source>
         <translation>내보내기 실패</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1669"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1913"/>
         <source>Unable to write to the file « %1 ».</source>
         <translation>파일 « %1 »에 쓸 수 없습니다.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1853"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="2097"/>
         <source>Warning</source>
         <translation>경고</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1853"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="2097"/>
         <source>Importing a large dxf can take time 
 please wait while importing...</source>
         <translation>큰 dxf를 가져오는 데 시간이 걸릴 수 있습니다 
 가져오는 동안 기다려 주세요...</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1894"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="2138"/>
         <source>Import an element to resize</source>
         <translation>크기 조정할 요소 가져오기</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1896"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="2140"/>
         <source>QElectroTech elements (*.elmt)</source>
         <translation>QElectroTech 요소 (*.elmt)</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="982"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1035"/>
         <source>Unable to open file</source>
         <comment>message box title</comment>
         <translation>파일을 열 수 없습니다</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="984"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1037"/>
         <source>It appears the %1 file which you are trying to open does not exist or does not exist anymore.</source>
         <translation>열려고 하는 파일 %1이(가) 존재하지 않거나 더 이상 존재하지 않는 것 같습니다.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1526"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1555"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1621"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1770"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1799"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1865"/>
         <source>Registration failed</source>
         <translation>저장 실패</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="472"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="525"/>
         <source>Open a file</source>
         <comment>dialog title</comment>
         <translation>파일 열기</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="474"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="527"/>
         <source>QElectroTech elements (*.elmt);;XML files (*.xml);;All files (*)</source>
         <comment>filetypes allowed when opening an element file</comment>
         <translation>QElectroTech 요소 (*.elmt);;XML 파일 (*.xml);;모든 파일 (*)</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1718"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1962"/>
         <source>Reload element</source>
         <comment>dialog title</comment>
         <translation>요소 다시 불러오기</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="942"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="995"/>
         <source>Warnings</source>
         <translation>경고</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1719"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1963"/>
         <source>This element has been modified since last save. If you reload it, these changes will be lost. Do you really want to reload this element?</source>
         <comment>dialog content</comment>
         <translation>이 요소는 마지막 저장 이후 수정되었습니다. 다시 불러오면 수정 내용이 사라집니다. 정말로 이 요소를 다시 불러오시겠습니까?</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1594"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1838"/>
         <source>Save as</source>
         <comment>dialog title</comment>
         <translation>다른 이름으로 저장</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1596"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1840"/>
         <source>QElectroTech elements (*.elmt)</source>
         <comment>filetypes allowed when saving an element file</comment>
         <translation>QElectroTech 요소 (*.elmt)</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1028"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1081"/>
         <source>Save current element?</source>
         <comment>dialog title</comment>
         <translation>현재 요소를 저장하시겠습니까?</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1030"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1083"/>
         <source>Do you wish to save the element %1?</source>
         <comment>dialog content - %1 is an element name</comment>
         <translation>요소 %1을(를) 저장하시겠습니까?</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="320"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="326"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1787"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1793"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="329"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="335"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="2031"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="2037"/>
         <source>Non-existent element.</source>
         <comment>message box title</comment>
         <translation>존재하지 않는 요소.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="327"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1794"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="336"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="2038"/>
         <source>The element does not exist.</source>
         <comment>message box content</comment>
         <translation>요소가 존재하지 않습니다.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="321"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1788"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="330"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="2032"/>
         <source>The chosen virtual path does not match an element.</source>
         <comment>message box content</comment>
         <translation>선택한 가상 경로는 요소와 일치하지 않습니다.</translation>
@@ -17708,7 +18780,7 @@ please wait while importing...</source>
         <translation>&amp;붙여넣기</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1186"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1239"/>
         <source>Add a rectangle</source>
         <translation>사각형 추가</translation>
     </message>
@@ -17912,48 +18984,48 @@ please wait while importing...</source>
 <context>
     <name>QETProject</name>
     <message>
-        <location filename="../sources/qetproject.cpp" line="3970"/>
+        <location filename="../sources/qetproject.cpp" line="4000"/>
         <source>Warning</source>
         <comment>message box title</comment>
         <translation>경고</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1411"/>
+        <location filename="../sources/qetproject.cpp" line="1414"/>
         <source>Project « %1 : %2»</source>
         <comment>displayed title for a ProjectView - %1 is the project title, -%2 is the project path</comment>
         <translation>프로젝트 « %1 : %2»</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1418"/>
+        <location filename="../sources/qetproject.cpp" line="1421"/>
         <source>Project %1</source>
         <comment>displayed title for a title-less project - %1 is the file name</comment>
         <translation>프로젝트 %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1425"/>
+        <location filename="../sources/qetproject.cpp" line="1428"/>
         <source>Untitled project</source>
         <comment>displayed title for a project-less, file-less project</comment>
         <translation>제목 없는 프로젝트</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1434"/>
+        <location filename="../sources/qetproject.cpp" line="1437"/>
         <source>%1 [read-only]</source>
         <comment>displayed title for a read-only project - %1 is a displayable title</comment>
         <translation>%1 [읽기 전용]</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1444"/>
+        <location filename="../sources/qetproject.cpp" line="1447"/>
         <source>%1 [modified]</source>
         <comment>displayed title for a modified project - %1 is a displayable title</comment>
         <translation>%1 [수정됨]</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1802"/>
+        <location filename="../sources/qetproject.cpp" line="1805"/>
         <source>Renumber elements</source>
         <translation>요소 번호 다시 매기기</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1803"/>
+        <location filename="../sources/qetproject.cpp" line="1806"/>
         <source>Renumber elements (%1)</source>
         <translation>요소 번호 다시 매기기 (%1)</translation>
     </message>
@@ -17962,27 +19034,27 @@ please wait while importing...</source>
         <translation type="vanished">QElectroTech 프로젝트 (*.qet *.qetz)</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="3263"/>
+        <location filename="../sources/qetproject.cpp" line="3267"/>
         <source>%1 was opened read-only because someone else has it open. Use Save As to keep your changes in another file.</source>
         <translation>다른 사람이 열어 두어 %1이(가) 읽기 전용으로 열렸습니다. 변경 내용을 다른 파일에 보관하려면 다른 이름으로 저장을 사용하세요.</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="3268"/>
+        <location filename="../sources/qetproject.cpp" line="3272"/>
         <source>Cannot save %1: %2</source>
         <translation>%1을(를) 저장할 수 없습니다: %2</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="3295"/>
+        <location filename="../sources/qetproject.cpp" line="3299"/>
         <source>someone else changed the file on disk at %1 since it was opened, and saving would overwrite that. Save to another name, or set QET_OVERWRITE_CHANGED=1 to overwrite it.</source>
         <translation>연 이후 %1에 다른 사람이 디스크의 파일을 변경했으며, 저장하면 그 변경을 덮어씁니다. 다른 이름으로 저장하거나, 덮어쓰려면 QET_OVERWRITE_CHANGED=1을 설정하세요.</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="3517"/>
+        <location filename="../sources/qetproject.cpp" line="3521"/>
         <source>Modified contact system</source>
         <translation>접점 시스템 변경됨</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="3518"/>
+        <location filename="../sources/qetproject.cpp" line="3522"/>
         <source>The new element defines slave contact groups.
 Existing slave elements will not be automatically assigned. You will need to link the slaves manually and assign the contact groups.
 
@@ -17993,13 +19065,13 @@ Do you wish to continue?</source>
 계속하시겠습니까?</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="3607"/>
+        <location filename="../sources/qetproject.cpp" line="3611"/>
         <source>An error occurred during the template integration.</source>
         <comment>error message</comment>
         <translation>템플릿 통합 중 오류가 발생했습니다.</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="3972"/>
+        <location filename="../sources/qetproject.cpp" line="4002"/>
         <source>This document appears to have been saved with version %1
  which is later than your version ! 
 You are currently using QElectroTech in version %2</source>
@@ -18007,7 +19079,7 @@ You are currently using QElectroTech in version %2</source>
 현재 QElectroTech 버전 %2을(를) 사용하고 있습니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="3976"/>
+        <location filename="../sources/qetproject.cpp" line="4006"/>
         <source>.
  It is then possible that the opening of all or part of this document fails.
 What do you wish to do ?</source>
@@ -18016,49 +19088,49 @@ What do you wish to do ?</source>
 어떻게 하시겠습니까?</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="3998"/>
+        <location filename="../sources/qetproject.cpp" line="4028"/>
         <source>The project you are trying to open is partially compatible with your version %1 of QElectroTech.
 </source>
         <translation>열려고 하는 프로젝트는 QElectroTech %1 버전과 부분적으로만 호환됩니다.
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="3997"/>
+        <location filename="../sources/qetproject.cpp" line="4027"/>
         <source>Warning </source>
         <comment>message box title</comment>
         <translation>경고 </translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="3060"/>
+        <location filename="../sources/qetproject.cpp" line="3064"/>
         <source>QElectroTech project (*.qet *.qetz *.qetdb)</source>
         <translation>QElectroTech 프로젝트 (*.qet *.qetz *.qetdb)</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="3088"/>
-        <location filename="../sources/qetproject.cpp" line="3110"/>
+        <location filename="../sources/qetproject.cpp" line="3092"/>
+        <location filename="../sources/qetproject.cpp" line="3114"/>
         <source>a history is kept only in a project saved as .qetdb</source>
         <translation>기록은 .qetdb로 저장한 프로젝트에만 남습니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="3092"/>
-        <location filename="../sources/qetproject.cpp" line="3114"/>
+        <location filename="../sources/qetproject.cpp" line="3096"/>
+        <location filename="../sources/qetproject.cpp" line="3118"/>
         <source>the file was changed on disk since it was opened or saved</source>
         <translation>열거나 저장한 뒤 디스크의 파일이 변경되었습니다</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="4001"/>
+        <location filename="../sources/qetproject.cpp" line="4031"/>
         <source>In order to make it fully compatible please open this same project with version 0.8, or 0.80 of QElectroTech and save the project and open it again with this version.
 What do you wish to do ?</source>
         <translation>완전히 호환되도록 하려면 이 프로젝트를 QElectroTech 0.8 또는 0.80 버전으로 열어 저장한 다음, 이 버전으로 다시 여세요.
 어떻게 하시겠습니까?</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="4443"/>
+        <location filename="../sources/qetproject.cpp" line="4478"/>
         <source>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Opening the project ...&lt;/b&gt;&lt;br/&gt;Creation of sheets&lt;/p&gt;</source>
         <translation>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;프로젝트 여는 중...&lt;/b&gt;&lt;br/&gt;폴리오 생성 중&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="4573"/>
+        <location filename="../sources/qetproject.cpp" line="4608"/>
         <source>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Opening the project ...&lt;/b&gt;&lt;br/&gt;Setting up cross references&lt;/p&gt;</source>
         <translation>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;프로젝트 여는 중...&lt;/b&gt;&lt;br/&gt;교차 참조 설정 중&lt;/p&gt;</translation>
     </message>
@@ -18449,8 +19521,8 @@ What do you wish to do ?</source>
         <translation>GNU/GPL 라이선스가 포함된 텍스트 파일은 존재하지만 열 수 없습니다 - 어차피 이미 외우고 계시죠?</translation>
     </message>
     <message>
-        <location filename="../sources/factory/elementpicturefactory.cpp" line="312"/>
-        <location filename="../sources/qetgraphicsitem/element.cpp" line="862"/>
+        <location filename="../sources/factory/elementpicturefactory.cpp" line="309"/>
+        <location filename="../sources/qetgraphicsitem/element.cpp" line="940"/>
         <source>Warning: the element has been saved with a more recent version of QElectroTech.</source>
         <translation>경고: 이 요소는 더 최신 버전의 QElectroTech에서 저장되었습니다.</translation>
     </message>
@@ -18615,6 +19687,12 @@ What do you wish to do ?</source>
         <translation>요소 크기 조정</translation>
     </message>
     <message>
+        <location filename="../sources/editor/editorcommands.cpp" line="886"/>
+        <source>frame</source>
+        <comment>undo caption</comment>
+        <translation>프레임</translation>
+    </message>
+    <message>
         <location filename="../sources/editor/graphicspart/partarc.h" line="52"/>
         <source>arc</source>
         <comment>element part name</comment>
@@ -18777,7 +19855,7 @@ What do you wish to do ?</source>
         <translation>깊이</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/terminal.cpp" line="111"/>
+        <location filename="../sources/qetgraphicsitem/terminal.cpp" line="112"/>
         <source>Terminal</source>
         <comment>tooltip</comment>
         <translation>단자</translation>
@@ -18911,7 +19989,7 @@ What do you wish to do ?</source>
         <location filename="../sources/titleblock/templatecommands.cpp" line="1196"/>
         <source>Edit Preview</source>
         <comment>undo preview</comment>
-        <translation type="unfinished"></translation>
+        <translation>편집 미리 보기</translation>
     </message>
     <message>
         <location filename="../sources/titleblockcell.cpp" line="131"/>
@@ -18992,18 +20070,18 @@ What do you wish to do ?</source>
         <translation>값 색</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="357"/>
+        <location filename="../sources/qetinformation.cpp" line="359"/>
         <source>Author</source>
         <translation>작성자</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="359"/>
+        <location filename="../sources/qetinformation.cpp" line="361"/>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="593"/>
         <source>Title</source>
         <translation>제목</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="358"/>
+        <location filename="../sources/qetinformation.cpp" line="360"/>
         <source>Date</source>
         <translation>날짜</translation>
     </message>
@@ -19075,7 +20153,7 @@ What do you wish to do ?</source>
         <translation>단자</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="402"/>
+        <location filename="../sources/qetinformation.cpp" line="406"/>
         <location filename="../sources/formulabuilder.cpp" line="102"/>
         <location filename="../sources/formulabuilder.cpp" line="103"/>
         <location filename="../sources/formulabuilder.cpp" line="104"/>
@@ -19123,8 +20201,8 @@ What do you wish to do ?</source>
         <translation>여러 도체 속성 수정</translation>
     </message>
     <message>
-        <location filename="../sources/conductorautonumerotation.cpp" line="168"/>
-        <location filename="../sources/conductorautonumerotation.cpp" line="272"/>
+        <location filename="../sources/conductorautonumerotation.cpp" line="172"/>
+        <location filename="../sources/conductorautonumerotation.cpp" line="280"/>
         <source>Automatically number a conductor</source>
         <comment>undo caption</comment>
         <translation>도선에 자동으로 번호 매기기</translation>
@@ -19154,12 +20232,12 @@ What do you wish to do ?</source>
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="367"/>
+        <location filename="../sources/qetinformation.cpp" line="371"/>
         <source>Sheet position</source>
         <translation>폴리오 위치</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="366"/>
+        <location filename="../sources/qetinformation.cpp" line="370"/>
         <source>Sheet number</source>
         <translation>폴리오 번호</translation>
     </message>
@@ -19352,8 +20430,8 @@ Do you want to replace it ?</source>
         <translation>%p% 완료 (%v / %m)</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="309"/>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="1001"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="317"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="1009"/>
         <source>load %p% (%v on %m)</source>
         <translation>불러오는 중 %p% (%v / %m)</translation>
     </message>
@@ -19383,83 +20461,83 @@ Do you want to replace it ?</source>
         <translation>독립 텍스트 찾기/바꾸기</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="360"/>
+        <location filename="../sources/qetinformation.cpp" line="362"/>
         <source>File</source>
         <translation>파일</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="361"/>
+        <location filename="../sources/qetinformation.cpp" line="363"/>
         <source>Plant (=)</source>
         <translation>설비 (=)</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="362"/>
-        <location filename="../sources/qetinformation.cpp" line="396"/>
+        <location filename="../sources/qetinformation.cpp" line="364"/>
+        <location filename="../sources/qetinformation.cpp" line="400"/>
         <source>Location (+)</source>
         <translation>위치 (+)</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="363"/>
+        <location filename="../sources/qetinformation.cpp" line="367"/>
         <source>Revision index</source>
         <translation>개정 인덱스</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="364"/>
+        <location filename="../sources/qetinformation.cpp" line="368"/>
         <source>Position</source>
         <translation>위치</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="365"/>
+        <location filename="../sources/qetinformation.cpp" line="369"/>
         <source>Version of QElectroTech</source>
         <translation>QElectroTech 버전</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="368"/>
+        <location filename="../sources/qetinformation.cpp" line="372"/>
         <source>Number of sheets</source>
         <translation>폴리오 수</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="369"/>
+        <location filename="../sources/qetinformation.cpp" line="373"/>
         <source>Number of the previous sheet</source>
         <translation>이전 폴리오 번호</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="370"/>
+        <location filename="../sources/qetinformation.cpp" line="374"/>
         <source>Number of the following sheet</source>
         <translation>다음 폴리오 번호</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="371"/>
+        <location filename="../sources/qetinformation.cpp" line="375"/>
         <source>Project title</source>
         <translation>프로젝트 제목</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="372"/>
+        <location filename="../sources/qetinformation.cpp" line="376"/>
         <source>Project file path</source>
         <translation>프로젝트 파일 경로</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="373"/>
+        <location filename="../sources/qetinformation.cpp" line="377"/>
         <source>File name</source>
         <translation>파일 이름</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="374"/>
+        <location filename="../sources/qetinformation.cpp" line="378"/>
         <source>Date of saving of the file in local date format</source>
         <translation>파일 저장 날짜 (로컬 형식)</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="376"/>
+        <location filename="../sources/qetinformation.cpp" line="380"/>
         <source>Date of saving of the file in the format YYYY-MM-DD</source>
         <translation>파일 저장 날짜 (YYYY-MM-DD)</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="380"/>
+        <location filename="../sources/qetinformation.cpp" line="384"/>
         <source>Label formula</source>
         <translation>라벨 수식</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="381"/>
+        <location filename="../sources/qetinformation.cpp" line="385"/>
         <source>Label</source>
         <translation>라벨</translation>
     </message>
@@ -19475,396 +20553,406 @@ Do you want to replace it ?</source>
     </message>
     <message>
         <location filename="../sources/editor/graphicspart/partplctable.cpp" line="209"/>
-        <location filename="../sources/factory/elementpicturefactory.cpp" line="1456"/>
+        <location filename="../sources/factory/elementpicturefactory.cpp" line="1453"/>
         <location filename="../sources/qetgraphicsitem/crossrefitem.cpp" line="1846"/>
-        <location filename="../sources/qetgraphicsitem/element.cpp" line="3624"/>
+        <location filename="../sources/qetgraphicsitem/element.cpp" line="3781"/>
         <source>Type</source>
         <translation>유형</translation>
     </message>
     <message>
         <location filename="../sources/editor/graphicspart/partplctable.cpp" line="210"/>
-        <location filename="../sources/factory/elementpicturefactory.cpp" line="1457"/>
+        <location filename="../sources/factory/elementpicturefactory.cpp" line="1454"/>
         <location filename="../sources/qetgraphicsitem/crossrefitem.cpp" line="1847"/>
-        <location filename="../sources/qetgraphicsitem/element.cpp" line="3625"/>
+        <location filename="../sources/qetgraphicsitem/element.cpp" line="3782"/>
         <source>Address</source>
         <translation>주소</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="383"/>
+        <location filename="../sources/qetinformation.cpp" line="387"/>
         <location filename="../sources/editor/graphicspart/partplctable.cpp" line="212"/>
-        <location filename="../sources/factory/elementpicturefactory.cpp" line="1459"/>
+        <location filename="../sources/factory/elementpicturefactory.cpp" line="1456"/>
         <location filename="../sources/qetgraphicsitem/crossrefitem.cpp" line="1849"/>
-        <location filename="../sources/qetgraphicsitem/element.cpp" line="3627"/>
+        <location filename="../sources/qetgraphicsitem/element.cpp" line="3784"/>
         <source>Annotation</source>
         <translation>주석</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="445"/>
+        <location filename="../sources/qetinformation.cpp" line="449"/>
         <location filename="../sources/editor/graphicspart/partplctable.cpp" line="213"/>
-        <location filename="../sources/factory/elementpicturefactory.cpp" line="1460"/>
+        <location filename="../sources/factory/elementpicturefactory.cpp" line="1457"/>
         <location filename="../sources/qetgraphicsitem/crossrefitem.cpp" line="1850"/>
-        <location filename="../sources/qetgraphicsitem/element.cpp" line="3628"/>
+        <location filename="../sources/qetgraphicsitem/element.cpp" line="3785"/>
         <source>Cross-reference</source>
         <translation>교차 참조</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="384"/>
-        <location filename="../sources/qetinformation.cpp" line="397"/>
+        <location filename="../sources/qetinformation.cpp" line="388"/>
+        <location filename="../sources/qetinformation.cpp" line="401"/>
         <location filename="../sources/editor/graphicspart/partplctable.cpp" line="211"/>
-        <location filename="../sources/factory/elementpicturefactory.cpp" line="1458"/>
+        <location filename="../sources/factory/elementpicturefactory.cpp" line="1455"/>
         <location filename="../sources/qetgraphicsitem/crossrefitem.cpp" line="1848"/>
-        <location filename="../sources/qetgraphicsitem/element.cpp" line="3626"/>
+        <location filename="../sources/qetgraphicsitem/element.cpp" line="3783"/>
         <source>Function</source>
         <translation>기능</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="382"/>
+        <location filename="../sources/qetinformation.cpp" line="365"/>
+        <source>Folio group</source>
+        <translation>도면 그룹</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="366"/>
+        <source>Folio sub-group</source>
+        <translation>도면 하위 그룹</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="386"/>
         <source>Terminal number</source>
         <translation>단자 번호</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="393"/>
+        <location filename="../sources/qetinformation.cpp" line="397"/>
         <source>Width [mm]</source>
         <translation>너비 [mm]</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="394"/>
+        <location filename="../sources/qetinformation.cpp" line="398"/>
         <source>Height [mm]</source>
         <translation>높이 [mm]</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="395"/>
+        <location filename="../sources/qetinformation.cpp" line="399"/>
         <source>Depth [mm]</source>
         <translation>깊이 [mm]</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="401"/>
+        <location filename="../sources/qetinformation.cpp" line="405"/>
         <source>Conductor type</source>
-        <translation type="unfinished"></translation>
+        <translation>도체 유형</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="404"/>
+        <location filename="../sources/qetinformation.cpp" line="408"/>
         <source>Auxiliary block 1</source>
         <translation>보조 블록 1</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="405"/>
+        <location filename="../sources/qetinformation.cpp" line="409"/>
         <source>Auxiliary 1 text description</source>
         <translation>보조 설명 텍스트 1</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="406"/>
+        <location filename="../sources/qetinformation.cpp" line="410"/>
         <source>Auxiliary 1 article number</source>
         <translation>보조 품목 번호 1</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="407"/>
+        <location filename="../sources/qetinformation.cpp" line="411"/>
         <source>Manufacturer of auxiliary 1</source>
         <translation>보조 제조사 1</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="408"/>
+        <location filename="../sources/qetinformation.cpp" line="412"/>
         <source>Order number auxiliary 1</source>
         <translation>보조 주문 번호 1</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="409"/>
+        <location filename="../sources/qetinformation.cpp" line="413"/>
         <source>Internal number of auxiliary 1</source>
         <translation>보조 내부 번호 1</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="410"/>
+        <location filename="../sources/qetinformation.cpp" line="414"/>
         <source>supplier of auxiliary 1</source>
         <translation>보조 공급업체 1</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="411"/>
+        <location filename="../sources/qetinformation.cpp" line="415"/>
         <source>Quantity of auxiliary 1</source>
         <translation>보조 수량 1</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="412"/>
+        <location filename="../sources/qetinformation.cpp" line="416"/>
         <source>Unity of auxiliary 1</source>
         <translation>보조 단위 1</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="413"/>
+        <location filename="../sources/qetinformation.cpp" line="417"/>
         <source>Auxiliary block 2</source>
         <translation>보조 블록 2</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="414"/>
+        <location filename="../sources/qetinformation.cpp" line="418"/>
         <source>Auxiliary 2 text description</source>
         <translation>보조 설명 텍스트 2</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="415"/>
+        <location filename="../sources/qetinformation.cpp" line="419"/>
         <source>Auxiliary 2 article number</source>
         <translation>보조 품목 번호 2</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="416"/>
+        <location filename="../sources/qetinformation.cpp" line="420"/>
         <source>Manufacturer of auxiliary 2</source>
         <translation>보조 제조사 2</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="417"/>
+        <location filename="../sources/qetinformation.cpp" line="421"/>
         <source>Order number auxiliary 2</source>
         <translation>보조 주문 번호 2</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="418"/>
+        <location filename="../sources/qetinformation.cpp" line="422"/>
         <source>Internal number of auxiliary 2</source>
         <translation>보조 내부 번호 2</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="419"/>
+        <location filename="../sources/qetinformation.cpp" line="423"/>
         <source>supplier of auxiliary 2</source>
         <translation>보조 공급업체 2</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="420"/>
+        <location filename="../sources/qetinformation.cpp" line="424"/>
         <source>Quantity of auxiliary 2</source>
         <translation>보조 수량 2</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="421"/>
+        <location filename="../sources/qetinformation.cpp" line="425"/>
         <source>Unity of auxiliary 2</source>
         <translation>보조 단위 2</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="422"/>
+        <location filename="../sources/qetinformation.cpp" line="426"/>
         <source>Auxiliary block 3</source>
         <translation>보조 블록 3</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="423"/>
+        <location filename="../sources/qetinformation.cpp" line="427"/>
         <source>Auxiliary 3 text description</source>
         <translation>보조 설명 텍스트 3</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="424"/>
+        <location filename="../sources/qetinformation.cpp" line="428"/>
         <source>Auxiliary 3 article number</source>
         <translation>보조 품목 번호 3</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="425"/>
+        <location filename="../sources/qetinformation.cpp" line="429"/>
         <source>Manufacturer of auxiliary 3</source>
         <translation>보조 제조사 3</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="426"/>
+        <location filename="../sources/qetinformation.cpp" line="430"/>
         <source>Order number auxiliary 3</source>
         <translation>보조 주문 번호 3</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="427"/>
+        <location filename="../sources/qetinformation.cpp" line="431"/>
         <source>Internal number of auxiliary 3</source>
         <translation>보조 3 내부 번호</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="428"/>
+        <location filename="../sources/qetinformation.cpp" line="432"/>
         <source>supplier of auxiliary 3</source>
         <translation>보조 3 공급업체</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="429"/>
+        <location filename="../sources/qetinformation.cpp" line="433"/>
         <source>Quantity of auxiliary 3</source>
         <translation>보조 3 수량</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="430"/>
+        <location filename="../sources/qetinformation.cpp" line="434"/>
         <source>Unity of auxiliary 3</source>
         <translation>보조 3 단위</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="431"/>
+        <location filename="../sources/qetinformation.cpp" line="435"/>
         <source>Auxiliary block 4</source>
         <translation>보조 블록 4</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="432"/>
+        <location filename="../sources/qetinformation.cpp" line="436"/>
         <source>Auxiliary 4 text description</source>
         <translation>보조 4 텍스트 설명</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="433"/>
+        <location filename="../sources/qetinformation.cpp" line="437"/>
         <source>Auxiliary 4 article number</source>
         <translation>보조 4 품목 번호</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="434"/>
+        <location filename="../sources/qetinformation.cpp" line="438"/>
         <source>Manufacturer of auxiliary 4</source>
         <translation>보조 4 제조사</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="435"/>
+        <location filename="../sources/qetinformation.cpp" line="439"/>
         <source>Order number auxiliary 4</source>
         <translation>보조 4 주문 번호</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="436"/>
+        <location filename="../sources/qetinformation.cpp" line="440"/>
         <source>Internal number of auxiliary 4</source>
         <translation>보조 4 내부 번호</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="437"/>
+        <location filename="../sources/qetinformation.cpp" line="441"/>
         <source>supplier of auxiliary 4</source>
         <translation>보조 4 공급업체</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="438"/>
+        <location filename="../sources/qetinformation.cpp" line="442"/>
         <source>Quantity of auxiliary 4</source>
         <translation>보조 4 수량</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="439"/>
+        <location filename="../sources/qetinformation.cpp" line="443"/>
         <source>Unity of auxiliary 4</source>
         <translation>보조 4 단위</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="440"/>
+        <location filename="../sources/qetinformation.cpp" line="444"/>
         <source>Type PLC</source>
         <translation>PLC 유형</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="441"/>
+        <location filename="../sources/qetinformation.cpp" line="445"/>
         <source>PLC address</source>
         <translation>PLC 주소</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="442"/>
+        <location filename="../sources/qetinformation.cpp" line="446"/>
         <source>PLC function</source>
         <translation>PLC 기능</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="443"/>
+        <location filename="../sources/qetinformation.cpp" line="447"/>
         <source>PLC comment</source>
         <translation>PLC 설명</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="444"/>
+        <location filename="../sources/qetinformation.cpp" line="448"/>
         <source>PLC cross-reference</source>
         <translation>PLC 교차 참조</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="446"/>
+        <location filename="../sources/qetinformation.cpp" line="450"/>
         <source>Exclude from the bill of materials</source>
-        <translation type="unfinished">부품 목록에서 제외</translation>
+        <translation>부품 목록에서 제외</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="447"/>
+        <location filename="../sources/qetinformation.cpp" line="451"/>
         <source>Wire number</source>
-        <translation type="unfinished"></translation>
+        <translation>전선 번호</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="452"/>
+        <location filename="../sources/qetinformation.cpp" line="456"/>
         <source>%1, connection point %2</source>
-        <translation type="unfinished"></translation>
+        <translation>%1, 연결점 %2</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="385"/>
+        <location filename="../sources/qetinformation.cpp" line="389"/>
         <source>Textual description</source>
         <translation>텍스트 설명</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="352"/>
+        <location filename="../sources/qetinformation.cpp" line="354"/>
         <source>Model</source>
         <translation>모델</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="353"/>
+        <location filename="../sources/qetinformation.cpp" line="355"/>
         <source>Category</source>
         <translation>범주</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="354"/>
+        <location filename="../sources/qetinformation.cpp" line="356"/>
         <source>Rated voltage</source>
         <translation>정격 전압</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="355"/>
+        <location filename="../sources/qetinformation.cpp" line="357"/>
         <source>Rated current</source>
         <translation>정격 전류</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="356"/>
+        <location filename="../sources/qetinformation.cpp" line="358"/>
         <source>Notes</source>
         <translation>비고</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="386"/>
+        <location filename="../sources/qetinformation.cpp" line="390"/>
         <source>Article number</source>
         <translation>품목 번호</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="387"/>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="135"/>
+        <location filename="../sources/qetinformation.cpp" line="391"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="138"/>
         <source>Manufacturer</source>
         <translation>제조사</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="388"/>
+        <location filename="../sources/qetinformation.cpp" line="392"/>
         <source>Order number</source>
         <translation>주문 번호</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="389"/>
+        <location filename="../sources/qetinformation.cpp" line="393"/>
         <source>Internal number</source>
         <translation>내부 번호</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="390"/>
+        <location filename="../sources/qetinformation.cpp" line="394"/>
         <source>Supplier</source>
         <translation>공급업체</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="391"/>
+        <location filename="../sources/qetinformation.cpp" line="395"/>
         <source>Quantity</source>
         <translation>수량</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="392"/>
+        <location filename="../sources/qetinformation.cpp" line="396"/>
         <source>Unity</source>
         <translation>단위</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="398"/>
+        <location filename="../sources/qetinformation.cpp" line="402"/>
         <source>Voltage / Protocol</source>
         <translation>전압 / 프로토콜</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="399"/>
+        <location filename="../sources/qetinformation.cpp" line="403"/>
         <source>Wire color</source>
         <translation>전선 색상</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="400"/>
+        <location filename="../sources/qetinformation.cpp" line="404"/>
         <source>Wire section</source>
         <translation>전선 단면적</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="403"/>
+        <location filename="../sources/qetinformation.cpp" line="407"/>
         <source>Text Formula</source>
         <translation>텍스트 수식</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="375"/>
+        <location filename="../sources/qetinformation.cpp" line="379"/>
         <source>Date of saving of the file in the format DD-MM-YYYY</source>
         <translation>파일 저장 날짜 (형식: dd-MM-yyyy)</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="377"/>
+        <location filename="../sources/qetinformation.cpp" line="381"/>
         <source>File saving time</source>
         <translation>파일 저장 시간</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="378"/>
+        <location filename="../sources/qetinformation.cpp" line="382"/>
         <source>Name of the saved file</source>
         <translation>저장된 파일 이름</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="379"/>
+        <location filename="../sources/qetinformation.cpp" line="383"/>
         <source>Saved file path</source>
         <translation>저장된 파일 경로</translation>
     </message>
@@ -19874,27 +20962,27 @@ Do you want to replace it ?</source>
         <translation>도체 생성</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="3546"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="3645"/>
         <source>Delete</source>
         <translation>삭제</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5321"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5437"/>
         <source>To install the plugin qet_tb_generator&lt;br&gt;Visit :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;Requires python 3.5 or above.&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on Windows&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Install, if required, python 3.5 or above&lt;br&gt; Visit :&lt;br&gt;&lt;a href=&apos;https://www.python.org/downloads/&apos;&gt;python.org&lt;/a&gt;&lt;br&gt;2. pip install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on Windows&lt;/B&gt;&lt;/U&gt;&lt;br&gt;python -m pip install --upgrade qet_tb_generator&lt;br&gt;&gt;&gt;user could launch in a terminal this script in this directory&lt;br&gt; C:\users\XXXX\AppData\Local\Programs\Python\Python36-32\Scripts   &lt;br&gt;</source>
         <translation>qet_tb_generator 플러그인을 설치하려면&lt;br&gt;방문 :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;Python 3.5 이상이 필요합니다.&lt;br&gt;&lt;B&gt;&lt;U&gt; Windows에서 최초 설치&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. 필요 시 Python 3.5 이상을 설치합니다&lt;br&gt; 방문 :&lt;br&gt;&lt;a href=&apos;https://www.python.org/downloads/&apos;&gt;python.org&lt;/a&gt;&lt;br&gt;2. pip install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Windows에서 업데이트&lt;/B&gt;&lt;/U&gt;&lt;br&gt;python -m pip install --upgrade qet_tb_generator&lt;br&gt;&gt;&gt;사용자는 터미널에서 이 디렉터리에 있는 이 스크립트를 실행할 수 있습니다&lt;br&gt; C:\users\XXXX\AppData\Local\Programs\Python\Python36-32\Scripts   &lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5341"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5457"/>
         <source>To install the plugin qet_tb_generator&lt;br&gt;Visit  :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Install, if required, python 3.11 bundle only, &lt;a href=&apos;https://www.python.org/ftp/python/3.11.2/python-3.11.2-macos11.pkg&apos;&gt;python-3.11.2-macos11.pkg&lt;/a&gt;&lt;br&gt;2 Run Profile.command script&lt;br&gt;because program use hardcoded PATH for localise qet-tb-generator plugin &lt;br&gt; Visit :&lt;br&gt;&lt;a href=&apos;https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674&apos;&gt;howto&lt;/a&gt;&lt;br&gt;2. pip3 install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt; pip3 install --upgrade qet_tb_generator&lt;br&gt;</source>
         <translation>qet_tb_generator 플러그인을 설치하려면&lt;br&gt;방문  :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; macOS에서 최초 설치&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. 필요 시 Python 3.11 번들만 설치합니다, &lt;a href=&apos;https://www.python.org/ftp/python/3.11.2/python-3.11.2-macos11.pkg&apos;&gt;python-3.11.2-macos11.pkg&lt;/a&gt;&lt;br&gt;2 Profile.command 스크립트를 실행합니다&lt;br&gt;프로그램이 qet-tb-generator 플러그인을 찾기 위해 하드코딩된 PATH를 사용하기 때문입니다 &lt;br&gt; 방문 :&lt;br&gt;&lt;a href=&apos;https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674&apos;&gt;설치 방법&lt;/a&gt;&lt;br&gt;2. pip3 install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; macOS에서 업데이트&lt;/B&gt;&lt;/U&gt;&lt;br&gt; pip3 install --upgrade qet_tb_generator&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5360"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5476"/>
         <source>To install the plugin qet_tb_generator&lt;br&gt;Visit :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;br&gt;Requires python 3.5 or above.&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. check you have pip3 installed: pip3 --version&lt;br&gt;If not install with: sudo apt-get install python3-pip&lt;br&gt;2. Install the program: sudo pip3 install qet_tb_generator&lt;br&gt;3. Run the program: qet_tb_generator&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;sudo pip3 install --upgrade qet_tb_generator&lt;br&gt;</source>
         <translation>qet_tb_generator 플러그인을 설치하려면&lt;br&gt;방문 :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;br&gt;Python 3.5 이상이 필요합니다.&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; Linux에서 최초 설치&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. pip3가 설치되어 있는지 확인합니다: pip3 --version&lt;br&gt;설치되어 있지 않다면 다음 명령으로 설치하세요: sudo apt-get install python3-pip&lt;br&gt;2. 프로그램 설치: sudo pip3 install qet_tb_generator&lt;br&gt;3. 프로그램 실행: qet_tb_generator&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; Linux에서 업데이트&lt;/B&gt;&lt;/U&gt;&lt;br&gt;sudo pip3 install --upgrade qet_tb_generator&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="5380"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="5496"/>
         <source>Error launching qet_tb_generator plugin</source>
         <translation>qet_tb_generator 플러그인 실행 오류</translation>
     </message>
@@ -19949,118 +21037,118 @@ Do you want to replace it ?</source>
         <translation>단자대 그룹 속성 수정</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/UndoCommand/sortterminalstripcommand.cpp" line="34"/>
+        <location filename="../sources/TerminalStrip/UndoCommand/sortterminalstripcommand.cpp" line="35"/>
         <source>Sort terminal block %1</source>
         <translation>단자대 %1 정렬</translation>
     </message>
     <message>
-        <location filename="../sources/properties/elementdata.cpp" line="967"/>
-        <location filename="../sources/properties/elementdata.cpp" line="987"/>
+        <location filename="../sources/properties/elementdata.cpp" line="1024"/>
+        <location filename="../sources/properties/elementdata.cpp" line="1044"/>
         <source>Generic</source>
         <comment>generic terminal element type</comment>
         <translation>일반</translation>
     </message>
     <message>
-        <location filename="../sources/properties/elementdata.cpp" line="969"/>
+        <location filename="../sources/properties/elementdata.cpp" line="1026"/>
         <source>Fuse</source>
         <comment>fuse terminal element type</comment>
         <translation>퓨즈</translation>
     </message>
     <message>
-        <location filename="../sources/properties/elementdata.cpp" line="971"/>
+        <location filename="../sources/properties/elementdata.cpp" line="1028"/>
         <source>Sectionable</source>
         <comment>sectional terminal element type</comment>
         <translation>단로형</translation>
     </message>
     <message>
-        <location filename="../sources/properties/elementdata.cpp" line="973"/>
+        <location filename="../sources/properties/elementdata.cpp" line="1030"/>
         <source>Diode</source>
         <comment>diode terminal element type</comment>
         <translation>다이오드</translation>
     </message>
     <message>
-        <location filename="../sources/properties/elementdata.cpp" line="975"/>
+        <location filename="../sources/properties/elementdata.cpp" line="1032"/>
         <source>Ground</source>
         <comment>ground terminal element type</comment>
         <translation>접지</translation>
     </message>
     <message>
-        <location filename="../sources/properties/elementdata.cpp" line="977"/>
+        <location filename="../sources/properties/elementdata.cpp" line="1034"/>
         <source>Anti-parallel diodes</source>
         <comment>anti-parallel diodes terminal element type</comment>
         <translation>역병렬 다이오드</translation>
     </message>
     <message>
-        <location filename="../sources/properties/elementdata.cpp" line="979"/>
+        <location filename="../sources/properties/elementdata.cpp" line="1036"/>
         <source>Resistor</source>
         <comment>resistor terminal element type</comment>
         <translation>저항</translation>
     </message>
     <message>
-        <location filename="../sources/properties/elementdata.cpp" line="981"/>
+        <location filename="../sources/properties/elementdata.cpp" line="1038"/>
         <source>Varistor</source>
         <comment>varistor terminal element type</comment>
         <translation>배리스터</translation>
     </message>
     <message>
-        <location filename="../sources/properties/elementdata.cpp" line="983"/>
+        <location filename="../sources/properties/elementdata.cpp" line="1040"/>
         <source>Test socket</source>
         <comment>test socket terminal element type</comment>
         <translation>시험 소켓</translation>
     </message>
     <message>
-        <location filename="../sources/properties/elementdata.cpp" line="985"/>
+        <location filename="../sources/properties/elementdata.cpp" line="1042"/>
         <source>Diode (reversed)</source>
         <comment>reversed diode terminal element type</comment>
         <translation>다이오드 (역방향)</translation>
     </message>
     <message>
-        <location filename="../sources/properties/elementdata.cpp" line="1022"/>
-        <location filename="../sources/properties/elementdata.cpp" line="1026"/>
+        <location filename="../sources/properties/elementdata.cpp" line="1079"/>
+        <location filename="../sources/properties/elementdata.cpp" line="1083"/>
         <source>Generic</source>
         <comment>generic terminal element function</comment>
         <translation>일반</translation>
     </message>
     <message>
-        <location filename="../sources/properties/elementdata.cpp" line="1023"/>
+        <location filename="../sources/properties/elementdata.cpp" line="1080"/>
         <source>Phase</source>
         <comment>phase terminal element function</comment>
         <translation>상</translation>
     </message>
     <message>
-        <location filename="../sources/properties/elementdata.cpp" line="1024"/>
+        <location filename="../sources/properties/elementdata.cpp" line="1081"/>
         <source>Neutral</source>
         <comment>neutral terminal element function</comment>
         <translation>중성선</translation>
     </message>
     <message>
-        <location filename="../sources/properties/elementdata.cpp" line="1293"/>
-        <location filename="../sources/properties/elementdata.cpp" line="1305"/>
+        <location filename="../sources/properties/elementdata.cpp" line="1370"/>
+        <location filename="../sources/properties/elementdata.cpp" line="1382"/>
         <source>Digital input</source>
         <translation>디지털 입력</translation>
     </message>
     <message>
-        <location filename="../sources/properties/elementdata.cpp" line="1295"/>
+        <location filename="../sources/properties/elementdata.cpp" line="1372"/>
         <source>Digital output</source>
         <translation>디지털 출력</translation>
     </message>
     <message>
-        <location filename="../sources/properties/elementdata.cpp" line="1297"/>
+        <location filename="../sources/properties/elementdata.cpp" line="1374"/>
         <source>Analogue input</source>
         <translation>아날로그 입력</translation>
     </message>
     <message>
-        <location filename="../sources/properties/elementdata.cpp" line="1299"/>
+        <location filename="../sources/properties/elementdata.cpp" line="1376"/>
         <source>Analogue output</source>
         <translation>아날로그 출력</translation>
     </message>
     <message>
-        <location filename="../sources/properties/elementdata.cpp" line="1301"/>
+        <location filename="../sources/properties/elementdata.cpp" line="1378"/>
         <source>Universal input</source>
         <translation>범용 입력</translation>
     </message>
     <message>
-        <location filename="../sources/properties/elementdata.cpp" line="1303"/>
+        <location filename="../sources/properties/elementdata.cpp" line="1380"/>
         <source>Universal output</source>
         <translation>범용 출력</translation>
     </message>
@@ -20090,7 +21178,7 @@ Do you want to replace it ?</source>
         <translation>요소 열기</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1846"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="2090"/>
         <source>Import a dxf file</source>
         <translation>DXF 파일 가져오기</translation>
     </message>
@@ -20101,9 +21189,9 @@ Do you want to replace it ?</source>
     </message>
     <message>
         <location filename="../sources/conductorproperties.cpp" line="1105"/>
-        <location filename="../sources/qetapp.cpp" line="3178"/>
-        <location filename="../sources/ElementsCollection/elementslocation.cpp" line="403"/>
-        <location filename="../sources/factory/elementpicturefactory.cpp" line="812"/>
+        <location filename="../sources/qetapp.cpp" line="3203"/>
+        <location filename="../sources/ElementsCollection/elementslocation.cpp" line="405"/>
+        <location filename="../sources/factory/elementpicturefactory.cpp" line="809"/>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="406"/>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="529"/>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="564"/>
@@ -20260,7 +21348,7 @@ Please download it by following the link and unzip it in the installation folder
     <message>
         <location filename="../sources/elementtextsmover.cpp" line="95"/>
         <source>Text grid %1. Hold Ctrl to place freely.</source>
-        <translation type="unfinished"></translation>
+        <translation>텍스트 격자 %1. Ctrl을 누르면 자유롭게 배치합니다.</translation>
     </message>
     <message>
         <location filename="../sources/elementtextsmover.cpp" line="96"/>
@@ -20605,123 +21693,123 @@ To enable it: Configure QElectroTech &gt; General &gt; Projects, or set the QET_
         <translation>세로 대칭</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="332"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="334"/>
         <source>the file is damaged</source>
         <translation>파일이 손상되었습니다</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="337"/>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="342"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="339"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="344"/>
         <source>the file is not a QElectroTech project</source>
         <translation>이 파일은 QElectroTech 프로젝트가 아닙니다</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="350"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="352"/>
         <source>it was saved by a newer QElectroTech (%1)</source>
         <translation>더 새로운 QElectroTech (%1)로 저장되었습니다</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="360"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="362"/>
         <source>the file holds SQL that QElectroTech does not expect (%1)</source>
         <translation>파일에 QElectroTech가 예상하지 않은 SQL이 있습니다 (%1)</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="366"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="368"/>
         <source>the file is damaged: an item refers to one that is not there</source>
         <translation>파일이 손상되었습니다: 없는 항목을 참조하는 항목이 있습니다</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="399"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="401"/>
         <source>the file could not be replaced (error %1)</source>
         <translation>파일을 바꿀 수 없습니다 (오류 %1)</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="442"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="444"/>
         <source>the file could not be opened</source>
         <translation>파일을 열 수 없습니다</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="815"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="817"/>
         <source>the file could not be read back</source>
         <translation>파일을 다시 읽을 수 없습니다</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1217"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1219"/>
         <source>the file could not be written</source>
         <translation>파일을 쓸 수 없습니다</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1239"/>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1755"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1241"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1757"/>
         <source>it keeps no revision %1</source>
         <translation>리비전 %1이(가) 없습니다</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1248"/>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1773"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1250"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1775"/>
         <source>this build of QElectroTech has no SQLite session support</source>
         <translation>이 QElectroTech 빌드는 SQLite 세션을 지원하지 않습니다</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1255"/>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1763"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1257"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1765"/>
         <source>the changes of revision %1 were not recorded</source>
         <translation>리비전 %1의 변경이 기록되지 않았습니다</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1260"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1262"/>
         <source>revision %1 cannot be undone</source>
         <translation>리비전 %1은(는) 되돌릴 수 없습니다</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1270"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1272"/>
         <source>revision %1 does not undo cleanly</source>
         <translation>리비전 %1이(가) 깔끔하게 되돌려지지 않습니다</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1364"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1366"/>
         <source>the file could not be written to disk</source>
         <translation>파일을 디스크에 쓸 수 없습니다</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1429"/>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1545"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1431"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1547"/>
         <source>the file could not be read</source>
         <translation>파일을 읽을 수 없습니다</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1457"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1459"/>
         <source>it has %n damaged page(s), more than the repair data it keeps can rebuild</source>
         <translation>
             <numerusform>손상된 페이지가 %n개 있어, 보관한 복구 데이터로 다시 만들 수 있는 범위를 넘습니다</numerusform>
         </translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1522"/>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1562"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1524"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1564"/>
         <source>its content is not what QElectroTech saved: it is damaged, or another program changed it</source>
         <translation>내용이 QElectroTech가 저장한 것과 다릅니다: 손상되었거나 다른 프로그램이 변경했습니다</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1633"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1635"/>
         <source>keep at least 2 saves, or 0 for all</source>
         <translation>저장을 2개 이상 남기거나, 전부 남기려면 0으로 하세요</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1639"/>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1712"/>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1746"/>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1806"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1641"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1714"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1748"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1808"/>
         <source>it keeps no history</source>
         <translation>기록이 없습니다</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1750"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1752"/>
         <source>revision %1 does not come before revision %2</source>
         <translation>리비전 %1이(가) 리비전 %2보다 앞서지 않습니다</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1781"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1783"/>
         <source>the changes of revision %1 do not follow on</source>
         <translation>리비전 %1의 변경이 이어지지 않습니다</translation>
     </message>
@@ -21434,6 +22522,62 @@ To enable it: Configure QElectroTech &gt; General &gt; Projects, or set the QET_
         <comment>undo command text</comment>
         <translation>브리지 선 삭제</translation>
     </message>
+    <message>
+        <location filename="../sources/editor/esevent/eseventsetorigin.cpp" line="73"/>
+        <source>set the insertion point</source>
+        <comment>undo caption</comment>
+        <translation>삽입점 설정</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/devicenavigatorfilterdialog.cpp" line="35"/>
+        <source>- Not active -</source>
+        <translation>- 비활성 -</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/devicenavigatorfilterdialog.cpp" line="39"/>
+        <source>Contactors / Relays (-K)</source>
+        <translation>접촉기 / 릴레이 (-K)</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/devicenavigatorfilterdialog.cpp" line="43"/>
+        <source>Protection / Fuses (-F)</source>
+        <translation>보호 / 퓨즈 (-F)</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/devicenavigatorfilterdialog.cpp" line="47"/>
+        <source>Power Switches (-Q)</source>
+        <translation>전력 스위치 (-Q)</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/devicenavigatorfilterdialog.cpp" line="51"/>
+        <source>Terminals (-X)</source>
+        <translation>단자 (-X)</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/devicenavigatorfilterdialog.cpp" line="55"/>
+        <source>Cables (-W)</source>
+        <translation>케이블 (-W)</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/devicenavigatorfilterdialog.cpp" line="59"/>
+        <source>Motors / Drives (-M)</source>
+        <translation>모터 / 드라이브 (-M)</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/devicenavigatorfilterdialog.cpp" line="63"/>
+        <source>Sensors / Transducers (-B)</source>
+        <translation>센서 / 변환기 (-B)</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/devicenavigatorfilterdialog.cpp" line="67"/>
+        <source>No structure identifier</source>
+        <translation>구조 식별자 없음</translation>
+    </message>
+    <message>
+        <location filename="../sources/undocommand/resetsymboltextscommand.cpp" line="42"/>
+        <source>lay out the symbol texts as in the symbol</source>
+        <translation>기호 텍스트를 기호대로 배치</translation>
+    </message>
 </context>
 <context>
     <name>QTextOrientationWidget</name>
@@ -21472,7 +22616,7 @@ Please add a new table or adjust the existing table to display all information.<
         <translation>표 제한</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/qetgraphicstableitem.cpp" line="1034"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/qetgraphicstableitem.cpp" line="1036"/>
         <source>Modify the geometry of a table</source>
         <translation>표 형상 수정</translation>
     </message>
@@ -21991,6 +23135,19 @@ nothing has been changed.</source>
     </message>
 </context>
 <context>
+    <name>RenumberConductorsCommand</name>
+    <message>
+        <location filename="../sources/autoNum/renumberconductorscommand.cpp" line="127"/>
+        <source>frozen</source>
+        <translation>고정됨</translation>
+    </message>
+    <message>
+        <location filename="../sources/autoNum/renumberconductorscommand.cpp" line="131"/>
+        <source>reaches a folio not chosen</source>
+        <translation>선택하지 않은 도면에 도달함</translation>
+    </message>
+</context>
+<context>
     <name>RenumberElementsDialog</name>
     <message>
         <location filename="../sources/autoNum/ui/renumberelementsdialog.cpp" line="35"/>
@@ -22285,7 +23442,7 @@ nothing has been changed.</source>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.cpp" line="41"/>
         <source>Replace conductor properties</source>
-        <translation type="unfinished"></translation>
+        <translation>도체 속성 교체</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.cpp" line="207"/>
@@ -22311,7 +23468,7 @@ nothing has been changed.</source>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceelementdialog.cpp" line="35"/>
         <source>Replace element properties</source>
-        <translation type="unfinished"></translation>
+        <translation>요소 속성 교체</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceelementdialog.cpp" line="84"/>
@@ -22324,7 +23481,7 @@ nothing has been changed.</source>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.cpp" line="122"/>
         <source>Replace sheet properties</source>
-        <translation type="unfinished"></translation>
+        <translation>도면 속성 교체</translation>
     </message>
 </context>
 <context>
@@ -25669,7 +26826,7 @@ The other fields are not used.</source>
         <translation>SQL 쿼리:</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/summaryquerywidget.cpp" line="161"/>
+        <location filename="../sources/dataBase/ui/summaryquerywidget.cpp" line="170"/>
         <source>Position</source>
         <translation>위치</translation>
     </message>
@@ -25685,7 +26842,7 @@ The other fields are not used.</source>
 <context>
     <name>Terminal</name>
     <message numerus="yes">
-        <location filename="../sources/qetgraphicsitem/terminal.cpp" line="693"/>
+        <location filename="../sources/qetgraphicsitem/terminal.cpp" line="722"/>
         <source>This terminal already has %n conductors, the project&apos;s limit. Add a terminal to connect one more conductor.</source>
         <comment>wire refused by the wires-per-terminal limit</comment>
         <translation>
@@ -26004,12 +27161,12 @@ The other fields are not used.</source>
 <context>
     <name>TerminalStripAutoImport</name>
     <message>
-        <location filename="../sources/TerminalStrip/terminalstripautoimport.cpp" line="250"/>
+        <location filename="../sources/TerminalStrip/terminalstripautoimport.cpp" line="256"/>
         <source>Re-group all terminals</source>
         <translation>모든 단자 다시 그룹화</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/terminalstripautoimport.cpp" line="252"/>
+        <location filename="../sources/TerminalStrip/terminalstripautoimport.cpp" line="258"/>
         <source>Assign free terminals</source>
         <translation>빈 단자 할당</translation>
     </message>
@@ -26261,32 +27418,98 @@ The other fields are not used.</source>
         <translation>LED:</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="70"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="75"/>
         <source>All manufacturers</source>
         <translation>모든 제조사</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="87"/>
         <source>Sort the terminals the way the drawing is laid out, and bring the bridges drawn there in with them. What the drawing brought is read-only here: it is changed in the drawing or not at all.</source>
-        <translation>도면의 배치대로 단자를 정렬하고, 그곳에 그려진 브리지도 함께 가져옵니다. 도면에서 온 것은 여기서 읽기 전용입니다: 도면에서 바꾸거나 바꾸지 않거나 둘 중 하나입니다.</translation>
+        <translation type="vanished">도면의 배치대로 단자를 정렬하고, 그곳에 그려진 브리지도 함께 가져옵니다. 도면에서 온 것은 여기서 읽기 전용입니다: 도면에서 바꾸거나 바꾸지 않거나 둘 중 하나입니다.</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="233"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="95"/>
+        <source>Sort the terminals the way the drawing is laid out, or by label when the general settings ask for it, and bring the bridges drawn there in with them. What the drawing brought is read-only here: it is changed in the drawing or not at all.</source>
+        <translation>단자를 도면 배치대로, 또는 일반 설정에서 요청하면 라벨 순서로 정렬하고, 그곳에 그려진 브리지도 함께 가져옵니다. 도면에서 가져온 것은 여기서 읽기 전용입니다: 도면에서 바꾸거나 아예 바꾸지 않습니다.</translation>
+    </message>
+    <message>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="242"/>
         <source>Independent terminals</source>
         <translation>독립 단자</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="315"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="328"/>
         <source>Modify terminal strip properties</source>
         <translation>단자대 속성 수정</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1076"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="612"/>
+        <source>Column searched by the filter</source>
+        <translation>필터가 검색하는 열</translation>
+    </message>
+    <message>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="616"/>
+        <source>Filter, for example 24V or K1*</source>
+        <translation>필터, 예: 24V 또는 K1*</translation>
+    </message>
+    <message>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="617"/>
+        <source>Text searched in the column, whatever the case and the spaces: &quot;24 v&quot; finds 24V. * stands for any text and ? for one character. Return selects the terminals found.</source>
+        <translation>열에서 찾을 텍스트로, 대소문자와 공백은 무시합니다: &quot;24 v&quot;로 24V를 찾습니다. *는 임의의 텍스트, ?는 한 글자를 뜻합니다. Enter를 누르면 찾은 단자를 선택합니다.</translation>
+    </message>
+    <message>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="622"/>
+        <source>Hide the others</source>
+        <translation>나머지 숨기기</translation>
+    </message>
+    <message>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="624"/>
+        <source>Show only the terminals found. A terminal of several levels stays whole when one of its levels is found.</source>
+        <translation>찾은 단자만 표시합니다. 여러 단의 단자는 한 단이라도 찾으면 전체가 표시됩니다.</translation>
+    </message>
+    <message>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="629"/>
+        <source>Whole rows</source>
+        <translation>전체 행</translation>
+    </message>
+    <message>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="631"/>
+        <source>Bridge, level %1</source>
+        <translation>브리지, 단 %1</translation>
+    </message>
+    <message>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="634"/>
+        <source>What is selected: whole rows for the type, the function, the LED, the cable or the move, or the cells of one level to bridge them.</source>
+        <translation>선택 대상: 유형, 기능, LED, 케이블 또는 이동에는 전체 행, 브리지하려면 한 단의 셀.</translation>
+    </message>
+    <message>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="638"/>
+        <source>Select</source>
+        <translation>선택</translation>
+    </message>
+    <message>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="639"/>
+        <source>Select the terminals found</source>
+        <translation>찾은 단자 선택</translation>
+    </message>
+    <message>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="680"/>
+        <source>All columns</source>
+        <translation>모든 열</translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="816"/>
+        <source>%n found</source>
+        <translation>
+            <numerusform>%n개 찾음</numerusform>
+        </translation>
+    </message>
+    <message>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1386"/>
         <source>A bridge of your own</source>
         <translation>자체 브리지</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1077"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1387"/>
         <source>This bridge is set here only: it is not added to the drawing, where bridges belong.
 
 Set it here anyway?</source>
@@ -26295,37 +27518,37 @@ Set it here anyway?</source>
 그래도 여기서 설정할까요?</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1288"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1598"/>
         <source>Add spare terminals</source>
         <translation>예비 단자 추가</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1294"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1604"/>
         <source>Number of terminals :</source>
         <translation>단자 수:</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1296"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1606"/>
         <source>Number the terminals</source>
         <translation>단자 번호 매기기</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1301"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1611"/>
         <source>Prefix :</source>
         <translation>접두사:</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1306"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1616"/>
         <source>First number :</source>
         <translation>첫 번호:</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1311"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1621"/>
         <source>Same terminal as %1 (type, section, width, color, manufacturer...)</source>
         <translation>%1과(와) 같은 단자 (유형, 단면적, 너비, 색상, 제조사...)</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1313"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1623"/>
         <source>the selected terminal</source>
         <translation>선택한 단자</translation>
     </message>
@@ -27122,61 +28345,61 @@ Ctrl+Enter로 셀을 확정하고, Esc로 텍스트를 버립니다.</translatio
         <location filename="../sources/titleblock/dimensionwidget.cpp" line="160"/>
         <source>Alignment:</source>
         <comment>default dialog label</comment>
-        <translation type="unfinished"></translation>
+        <translation>정렬:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/dimensionwidget.cpp" line="162"/>
         <source>Top</source>
         <comment>default dialog label</comment>
-        <translation type="unfinished"></translation>
+        <translation>위쪽</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/dimensionwidget.cpp" line="163"/>
         <source>Top Left</source>
         <comment>default dialog label</comment>
-        <translation type="unfinished"></translation>
+        <translation>왼쪽 위</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/dimensionwidget.cpp" line="164"/>
         <source>Top Center</source>
         <comment>default dialog label</comment>
-        <translation type="unfinished"></translation>
+        <translation>가운데 위</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/dimensionwidget.cpp" line="165"/>
         <source>Top Right</source>
         <comment>default dialog label</comment>
-        <translation type="unfinished"></translation>
+        <translation>오른쪽 위</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/dimensionwidget.cpp" line="166"/>
         <source>Bottom</source>
         <comment>default dialog label</comment>
-        <translation type="unfinished"></translation>
+        <translation>아래쪽</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/dimensionwidget.cpp" line="167"/>
         <source>Bottom Left</source>
         <comment>default dialog label</comment>
-        <translation type="unfinished"></translation>
+        <translation>왼쪽 아래</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/dimensionwidget.cpp" line="168"/>
         <source>Bottom Center</source>
         <comment>default dialog label</comment>
-        <translation type="unfinished"></translation>
+        <translation>가운데 아래</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/dimensionwidget.cpp" line="169"/>
         <source>Bottom Right</source>
         <comment>default dialog label</comment>
-        <translation type="unfinished"></translation>
+        <translation>오른쪽 아래</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/dimensionwidget.cpp" line="170"/>
         <source>Indicate which side of the title border template should be aligned with the edge of the workspace</source>
         <comment>default dialog label</comment>
-        <translation type="unfinished"></translation>
+        <translation>타이틀 블록 템플릿의 어느 쪽을 작업 영역 가장자리에 맞출지 지정합니다</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/dimensionwidget.cpp" line="211"/>
@@ -27194,31 +28417,31 @@ Ctrl+Enter로 셀을 확정하고, Esc로 텍스트를 버립니다.</translatio
 <context>
     <name>TitleBlockPropertiesWidget</name>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="489"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="517"/>
         <source>Default template</source>
         <translation>기본 템플릿</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="391"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="411"/>
         <source>Edit this template</source>
         <comment>menu entry</comment>
         <translation>이 템플릿 편집</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="392"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="412"/>
         <source>Duplicate and edit this template</source>
         <comment>menu entry</comment>
         <translation>이 템플릿 복제 후 편집</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="405"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="425"/>
         <source>Title block templates actions</source>
         <translation>표제란 템플릿 작업</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="235"/>
-        <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="428"/>
-        <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="605"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="239"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="456"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="634"/>
         <source>Create an auto sheet numbering</source>
         <translation>도면 번호 자동 매기기 생성</translation>
     </message>
@@ -27233,7 +28456,7 @@ Ctrl+Enter로 셀을 확정하고, Esc로 텍스트를 버립니다.</translatio
         <translation>폼</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="254"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="282"/>
         <source>Sheet:</source>
         <translation>도면 :</translation>
     </message>
@@ -27249,31 +28472,51 @@ Ctrl+Enter로 셀을 확정하고, Esc로 텍스트를 버립니다.</translatio
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="240"/>
+        <source>Folio group:</source>
+        <translation>도면 그룹:</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="247"/>
+        <source>The group this folio belongs to. Left empty, it is the plant. Available as variable %{folio_group} for title blocks</source>
+        <translation>이 도면이 속한 그룹입니다. 비워 두면 설비가 됩니다. 타이틀 블록에서 변수 %{folio_group}(으)로 사용할 수 있습니다</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="254"/>
+        <source>Folio sub-group:</source>
+        <translation>도면 하위 그룹:</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="261"/>
+        <source>The sub-group of this folio within its group. Left empty, it is the location. Available as variable %{folio_subgroup} for title blocks</source>
+        <translation>그룹 안에서 이 도면의 하위 그룹입니다. 비워 두면 위치가 됩니다. 타이틀 블록에서 변수 %{folio_subgroup}(으)로 사용할 수 있습니다</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="268"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Available as% plant for title block templates&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;표제란 템플릿에서 %plant 변수로 사용 가능&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="275"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="303"/>
         <source>Available as variable %filename for title blocks</source>
         <translation>표제란 템플릿에서 %filename 변수로 사용 가능</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="284"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="312"/>
         <source>No date</source>
         <translation>날짜 없음</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="291"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="319"/>
         <source>Current date</source>
         <translation>현재 날짜</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="298"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="326"/>
         <source>Set to current date</source>
         <translation>현재 날짜 적용</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="409"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="437"/>
         <source>You may define here your own name/value associations so the title block takes them into account. E.g. associating the name &quot;volta&quot; with the value &quot;1745&quot; will replace %{volta} by 1745 within the title block.</source>
         <translation>표제란에 반영되도록 여기에서 이름/값 쌍을 직접 정의할 수 있습니다. 예: 이름 &quot;volta&quot;를 값 &quot;1745&quot;와 연결하면 표제란에서 %{volta}가 1745로 바뀝니다.</translation>
     </message>
@@ -27293,17 +28536,17 @@ Ctrl+Enter로 셀을 확정하고, Esc로 텍스트를 버립니다.</translatio
         <translation>표제란 템플릿에서 %locmach 변수로 사용 가능</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="311"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="339"/>
         <source>Available as variable %date for title blocks</source>
         <translation>표제란 템플릿에서 %date 변수로 사용 가능</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="324"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="352"/>
         <source>Fixed date:</source>
         <translation>고정 날짜 :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="344"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="372"/>
         <source>Title:</source>
         <translation>제목 :</translation>
     </message>
@@ -27313,7 +28556,7 @@ Ctrl+Enter로 셀을 확정하고, Esc로 텍스트를 버립니다.</translatio
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;표제란을 도면 하단(가로) 또는 우측(세로)에 표시합니다.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="261"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="289"/>
         <source>File:</source>
         <translation>파일 :</translation>
     </message>
@@ -27323,27 +28566,27 @@ Ctrl+Enter로 셀을 확정하고, Esc로 텍스트를 버립니다.</translatio
         <translation>날짜 :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="268"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="296"/>
         <source>Available as variable %author for title blocks</source>
         <translation>표제란 템플릿에서 %author 변수로 사용 가능</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="247"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="275"/>
         <source>Available as variable %title for title blocks</source>
         <translation>표제란 템플릿에서 %title 변수로 사용 가능</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="371"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="399"/>
         <source>Plant:</source>
         <translation>설비 :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="364"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="392"/>
         <source>Available as variable %indexrev for title blocks</source>
         <translation>표제란 템플릿에서 %indexrev 변수로 사용 가능</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="333"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="361"/>
         <source>Available as % folio for titleblock models
 The following variables can be used:
 -%id: current number of sheets in the project
@@ -27356,17 +28599,17 @@ The following variables can be used:
 -%autonum: 시트 자동 번호</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="357"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="385"/>
         <source>Page no.:</source>
         <translation>페이지 번호:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="378"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="406"/>
         <source>Location :</source>
         <translation>위치 :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="401"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="429"/>
         <source>Custom</source>
         <translation>사용자 지정</translation>
     </message>
@@ -28569,27 +29812,27 @@ The following variables can be used:
 <context>
     <name>projectDataBase</name>
     <message>
-        <location filename="../sources/dataBase/projectdatabase.cpp" line="2544"/>
+        <location filename="../sources/dataBase/projectdatabase.cpp" line="2744"/>
         <source>The query is empty.</source>
         <translation>쿼리가 비어 있습니다.</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/projectdatabase.cpp" line="2551"/>
+        <location filename="../sources/dataBase/projectdatabase.cpp" line="2751"/>
         <source>Only a single SELECT query is allowed (the &apos;;&apos; character may only appear at the very end).</source>
         <translation>SELECT 쿼리 하나만 허용됩니다 (&apos;;&apos; 문자는 맨 끝에만 올 수 있습니다).</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/projectdatabase.cpp" line="2562"/>
+        <location filename="../sources/dataBase/projectdatabase.cpp" line="2762"/>
         <source>Only read-only queries (SELECT or WITH ... SELECT) are allowed.</source>
         <translation>읽기 전용 쿼리(SELECT 또는 WITH ... SELECT)만 허용됩니다.</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/projectdatabase.cpp" line="8473"/>
+        <location filename="../sources/dataBase/projectdatabase.cpp" line="8843"/>
         <source>Export the internal project database</source>
         <translation>프로젝트 내부 데이터베이스 내보내기</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/projectdatabase.cpp" line="8480"/>
+        <location filename="../sources/dataBase/projectdatabase.cpp" line="8850"/>
         <source>untitled</source>
         <translation>이름 없음</translation>
     </message>
@@ -28597,15 +29840,34 @@ The following variables can be used:
 <context>
     <name>qdesigner_internal::ColorAction</name>
     <message>
-        <location filename="../sources/richtext/richtexteditor.cpp" line="369"/>
+        <location filename="../sources/richtext/richtexteditor.cpp" line="419"/>
+        <location filename="../sources/richtext/richtexteditor.cpp" line="420"/>
+        <location filename="../sources/richtext/richtexteditor.cpp" line="500"/>
         <source>Text Color</source>
         <translation>텍스트 색상</translation>
+    </message>
+    <message>
+        <location filename="../sources/richtext/richtexteditor.cpp" line="424"/>
+        <location filename="../sources/richtext/richtexteditor.cpp" line="425"/>
+        <location filename="../sources/richtext/richtexteditor.cpp" line="500"/>
+        <source>Text Background Color</source>
+        <translation>텍스트 배경색</translation>
+    </message>
+    <message>
+        <location filename="../sources/richtext/richtexteditor.cpp" line="429"/>
+        <source>No background color</source>
+        <translation>배경색 없음</translation>
+    </message>
+    <message>
+        <location filename="../sources/richtext/richtexteditor.cpp" line="457"/>
+        <source>More colors...</source>
+        <translation>다른 색상...</translation>
     </message>
 </context>
 <context>
     <name>qdesigner_internal::HtmlTextEdit</name>
     <message>
-        <location filename="../sources/richtext/richtexteditor.cpp" line="311"/>
+        <location filename="../sources/richtext/richtexteditor.cpp" line="356"/>
         <source>Insert HTML entity</source>
         <translation>HTML 특수 문자 삽입</translation>
     </message>
@@ -28613,27 +29875,27 @@ The following variables can be used:
 <context>
     <name>qdesigner_internal::RichTextEditorDialog</name>
     <message>
-        <location filename="../sources/richtext/richtexteditor.cpp" line="826"/>
+        <location filename="../sources/richtext/richtexteditor.cpp" line="1399"/>
         <source>Edit text</source>
         <translation>텍스트 편집</translation>
     </message>
     <message>
-        <location filename="../sources/richtext/richtexteditor.cpp" line="849"/>
+        <location filename="../sources/richtext/richtexteditor.cpp" line="1422"/>
         <source>Rich Text</source>
         <translation>서식 있는 텍스트</translation>
     </message>
     <message>
-        <location filename="../sources/richtext/richtexteditor.cpp" line="850"/>
+        <location filename="../sources/richtext/richtexteditor.cpp" line="1423"/>
         <source>Source</source>
         <translation>소스</translation>
     </message>
     <message>
-        <location filename="../sources/richtext/richtexteditor.cpp" line="855"/>
+        <location filename="../sources/richtext/richtexteditor.cpp" line="1428"/>
         <source>&amp;OK</source>
         <translation>&amp;확인</translation>
     </message>
     <message>
-        <location filename="../sources/richtext/richtexteditor.cpp" line="857"/>
+        <location filename="../sources/richtext/richtexteditor.cpp" line="1430"/>
         <source>&amp;Cancel</source>
         <translation>&amp;취소</translation>
     </message>
@@ -28641,69 +29903,85 @@ The following variables can be used:
 <context>
     <name>qdesigner_internal::RichTextEditorToolBar</name>
     <message>
-        <location filename="../sources/richtext/richtexteditor.cpp" line="521"/>
+        <location filename="../sources/richtext/richtexteditor.cpp" line="624"/>
+        <source>Font family</source>
+        <translation>글꼴 패밀리</translation>
+    </message>
+    <message>
+        <location filename="../sources/richtext/richtexteditor.cpp" line="631"/>
+        <source>Font size</source>
+        <translation>글꼴 크기</translation>
+    </message>
+    <message>
+        <location filename="../sources/richtext/richtexteditor.cpp" line="643"/>
+        <location filename="../sources/richtext/richtexteditor.cpp" line="644"/>
+        <source>Default project font</source>
+        <translation>프로젝트 기본 글꼴</translation>
+    </message>
+    <message>
+        <location filename="../sources/richtext/richtexteditor.cpp" line="656"/>
         <source>Bold</source>
         <translation>굵게</translation>
     </message>
     <message>
-        <location filename="../sources/richtext/richtexteditor.cpp" line="522"/>
-        <location filename="../sources/richtext/richtexteditor.cpp" line="528"/>
-        <location filename="../sources/richtext/richtexteditor.cpp" line="534"/>
+        <location filename="../sources/richtext/richtexteditor.cpp" line="657"/>
+        <location filename="../sources/richtext/richtexteditor.cpp" line="663"/>
+        <location filename="../sources/richtext/richtexteditor.cpp" line="669"/>
         <source>Text editor</source>
         <translation>텍스트 편집기</translation>
     </message>
     <message>
-        <location filename="../sources/richtext/richtexteditor.cpp" line="527"/>
+        <location filename="../sources/richtext/richtexteditor.cpp" line="662"/>
         <source>Italic</source>
         <translation>기울임꼴</translation>
     </message>
     <message>
-        <location filename="../sources/richtext/richtexteditor.cpp" line="533"/>
+        <location filename="../sources/richtext/richtexteditor.cpp" line="668"/>
         <source>Underline</source>
         <translation>밑줄</translation>
     </message>
     <message>
-        <location filename="../sources/richtext/richtexteditor.cpp" line="546"/>
+        <location filename="../sources/richtext/richtexteditor.cpp" line="681"/>
         <source>Left Align</source>
         <translation>왼쪽 정렬</translation>
     </message>
     <message>
-        <location filename="../sources/richtext/richtexteditor.cpp" line="551"/>
+        <location filename="../sources/richtext/richtexteditor.cpp" line="686"/>
         <source>Center</source>
         <translation>가운데 정렬</translation>
     </message>
     <message>
-        <location filename="../sources/richtext/richtexteditor.cpp" line="556"/>
+        <location filename="../sources/richtext/richtexteditor.cpp" line="691"/>
         <source>Right Align</source>
         <translation>오른쪽 정렬</translation>
     </message>
     <message>
-        <location filename="../sources/richtext/richtexteditor.cpp" line="561"/>
+        <location filename="../sources/richtext/richtexteditor.cpp" line="696"/>
         <source>Justify</source>
         <translation>양쪽 맞춤</translation>
     </message>
     <message>
-        <location filename="../sources/richtext/richtexteditor.cpp" line="574"/>
+        <location filename="../sources/richtext/richtexteditor.cpp" line="709"/>
         <source>Superscript</source>
         <translation>위 첨자</translation>
     </message>
     <message>
-        <location filename="../sources/richtext/richtexteditor.cpp" line="580"/>
+        <location filename="../sources/richtext/richtexteditor.cpp" line="715"/>
         <source>Subscript</source>
         <translation>아래 첨자</translation>
     </message>
     <message>
-        <location filename="../sources/richtext/richtexteditor.cpp" line="589"/>
+        <location filename="../sources/richtext/richtexteditor.cpp" line="724"/>
         <source>Insert link</source>
         <translation>링크 삽입</translation>
     </message>
     <message>
-        <location filename="../sources/richtext/richtexteditor.cpp" line="593"/>
+        <location filename="../sources/richtext/richtexteditor.cpp" line="728"/>
         <source>Insert &amp;Image</source>
         <translation>이미지 삽입(&amp;I)</translation>
     </message>
     <message>
-        <location filename="../sources/richtext/richtexteditor.cpp" line="608"/>
+        <location filename="../sources/richtext/richtexteditor.cpp" line="747"/>
         <source>Simplify Rich Text</source>
         <translation>서식 단순화</translation>
     </message>

@@ -151,6 +151,10 @@ void ConductorAutoNumerotation::newProperties(
 	}
 
 	QString autoNum_name = diagram->project()->conductorCurrentAutoNum();
+		//Plant counters continue the count of the folio's plant
+	const QString plant = diagram->border_and_titleblock.plant();
+	context = autonum::plantCounters(context, diagram->project(), plant, autoNum_name);
+	autonum::storePlantCounters(diagram->project(), plant, autoNum_name, context);
 	QString formula = autonum::numerotationContextToFormula(context);
 	cp.m_formula = formula;
 
@@ -242,6 +246,10 @@ void ConductorAutoNumerotation::numerateNewConductor()
 			return;
 
 		QString autoNum_name = m_diagram->project()->conductorCurrentAutoNum();
+			//Plant counters continue the count of the folio's plant
+		const QString plant = m_diagram->border_and_titleblock.plant();
+		context = autonum::plantCounters(context, m_diagram->project(), plant, autoNum_name);
+		autonum::storePlantCounters(m_diagram->project(), plant, autoNum_name, context);
 		QString formula = autonum::numerotationContextToFormula(context);
 
 		ConductorProperties cp = m_conductor -> properties();

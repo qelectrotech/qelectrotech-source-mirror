@@ -27,6 +27,7 @@
 
 #include "ElementsCollection/elementcollectionhandler.h"
 #include "TerminalStrip/GraphicsItem/terminalstripitem.h"
+#include "utils/qetsettings.h"
 #include "cable/cablecopy.h"
 #include "cable/cablepart.h"
 #include "xml/terminalstripitemxml.h"
@@ -3005,6 +3006,22 @@ void Diagram::refreshContents()
 	Do some specific operation if item need it (for example an element)
 	@param item
 */
+void Diagram::refreshTerminalStrips()
+{
+		//With the setting off nothing is drawn above a strip, so there
+		//is nothing to report again -- and this runs for every wire
+		//which comes or goes on the folio
+	if (!QetSettings::stripWiresShown()) {
+		return;
+	}
+	for (QGraphicsItem *item : items())
+	{
+		if (item && item->type() == TerminalStripItem::Type) {
+			static_cast<TerminalStripItem *>(item)->refreshGeometry();
+		}
+	}
+}
+
 void Diagram::addItem(QGraphicsItem *item)
 {
 	if (!item || item->scene() == this) return;
@@ -3033,6 +3050,9 @@ void Diagram::addItem(QGraphicsItem *item)
 			Conductor *conductor = static_cast<Conductor *>(item);
 			conductor->terminal1->addConductor(conductor);
 			conductor->terminal2->addConductor(conductor);
+				//The wires which end at a terminal strip are drawn by
+				//the strip itself, and only now is this one among them
+			refreshTerminalStrips();
 			conductor->calculateTextItemPosition();
 			m_project->dataBase()->addConductor(conductor);
 			break;
@@ -3077,6 +3097,8 @@ void Diagram::removeItem(QGraphicsItem *item)
 			Conductor *conductor = static_cast<Conductor *>(item);
 			conductor->terminal1->removeConductor(conductor);
 			conductor->terminal2->removeConductor(conductor);
+				//One wire the strips above them drew may be gone
+			refreshTerminalStrips();
 			m_project->dataBase()->removeConductor(conductor);
 			break;
 		}

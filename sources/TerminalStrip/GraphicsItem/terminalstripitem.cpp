@@ -293,6 +293,12 @@ void TerminalStripItem::stripChanged()
 	update();
 }
 
+void TerminalStripItem::refreshGeometry()
+{
+	prepareGeometryChange();
+	update();
+}
+
 void TerminalStripItem::setDefaultLayout()
 {
 	if (m_strip && m_strip->project()) {

@@ -58,6 +58,40 @@ namespace QetSettings
 		// for the duplicate check.
 	bool duplicateLabelsCaseSensitive();
 	void setDuplicateLabelsCaseSensitive(bool sensitive);
+		// Whether a wire number need only be unique within its folio's
+		// plant (=) for the duplicate check. Off by default.
+	bool duplicateLabelsSignalsByPlant();
+	void setDuplicateLabelsSignalsByPlant(bool by_plant);
+
+		// Whether a new folio takes the group and sub-group of the folio
+		// before it. Off by default.
+	bool newFolioTakesPreviousGroup();
+	void setNewFolioTakesPreviousGroup(bool takes);
+		// Whether placing a macro asks for its device labels, proposing the
+		// next free ones. Off by default. A macro with a '?' always asks.
+	bool askLabelsPlacingMacro();
+	void setAskLabelsPlacingMacro(bool ask);
+
+	/**
+		Whether a terminal strip draws the wires which end at it: one
+		stub per terminal which has a wire of its own, going up from the
+		strip like its cables go down, naming where the wire lands and
+		saying what it is made of. Off by default, so that the projects
+		drawn before it existed look the same.
+	*/
+	bool stripWiresShown();
+	void setStripWiresShown(bool shown);
+
+	/**
+		Whether a terminal strip is sorted by the label of its terminals
+		("X1:2" before "X1:10") instead of the way the plan is drawn
+		(folio by folio, then left to right). Used when a strip is made
+		by the automatic assignment and by "Automatic position". Off by
+		default: the plan order, which keeps N and PE where they are
+		drawn.
+	*/
+	bool stripSortedByLabel();
+	void setStripSortedByLabel(bool by_label);
 
 	/**
 		@brief Free-text drawing conventions for this installation (grid,

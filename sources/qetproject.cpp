@@ -56,6 +56,7 @@
 #include "qetversion.h"
 #include "undocommand/adddiagramcommand.h"
 #include "utils/previousversions.h"
+#include "utils/qetsettings.h"
 
 #include <QCryptographicHash>
 #include <QElapsedTimer>
@@ -2860,6 +2861,7 @@ QDomDocument QETProject::toXml(QHash<int, QByteArray> *kept_folios, QStringList 
 	writeTerminalLabelSplitXml(project_root);
 	writeWiringRulesXml(project_root);
 	writeChainedReportsXml(project_root);
+	writeConductorPlantCountersXml(project_root);
 	writeOriginXml(project_root);
 
 	// Properties for news diagrams
@@ -3898,7 +3900,23 @@ Diagram *QETProject::addNewDiagram(int pos)
 	Diagram *diagram = new Diagram(this);
 
 	diagram->border_and_titleblock.importBorder(defaultBorderProperties());
-	diagram->border_and_titleblock.importTitleBlock(defaultTitleBlockProperties());
+	TitleBlockProperties titleblock = defaultTitleBlockProperties();
+	if (QetSettings::newFolioTakesPreviousGroup())
+	{
+			//The folio the new one comes after: at @p pos - 1, or the last
+			//one when it is added at the end. Its own group only: one that
+			//is just its plant leaves the new folio its own plant's.
+		const int count = m_diagrams_list.count();
+		const int before = (pos < 0 || pos > count) ? count - 1 : pos - 1;
+		if (before >= 0)
+		{
+			const BorderTitleBlock &previous =
+					m_diagrams_list.at(before)->border_and_titleblock;
+			titleblock.folio_group = previous.folioGroup();
+			titleblock.folio_subgroup = previous.folioSubgroup();
+		}
+	}
+	diagram->border_and_titleblock.importTitleBlock(titleblock);
 	diagram->defaultConductorProperties = defaultConductorProperties();
 	diagram->queueValuesStore();
 
@@ -4054,6 +4072,7 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 	readTerminalLabelSplitXml(xml_project);
 	readWiringRulesXml(xml_project);
 	readChainedReportsXml(xml_project);
+	readConductorPlantCountersXml(xml_project);
 	readOriginXml(xml_project);
 
 		//What this QET does not know of the project, kept for every format
@@ -5344,6 +5363,96 @@ void QETProject::writeChainedReportsXml(QDomElement &xml_element)
 	xml_element.appendChild(cr_elmt);
 }
 
+/**
+	@brief QETProject::conductorPlantCounter
+	@return the values the plant counters ("number format 1 - Plant") of the
+	conductor numbering @p scheme last gave in @p plant, in the order of the
+	parts; empty when it has numbered nothing there yet
+*/
+QStringList QETProject::conductorPlantCounter(const QString &scheme, const QString &plant) const
+{
+	return m_conductor_plant_counters.value(scheme).value(plant);
+}
+
+/**
+	@brief QETProject::setConductorPlantCounter
+	Keep @p values as what the plant counters of @p scheme last gave in
+	@p plant, saved with the project.
+*/
+void QETProject::setConductorPlantCounter(const QString &scheme, const QString &plant,
+										  const QStringList &values)
+{
+	if (m_conductor_plant_counters.value(scheme).value(plant) == values)
+		return;
+		//None: the plant has not been counted (undoing a renumbering)
+	if (values.isEmpty()) {
+		m_conductor_plant_counters[scheme].remove(plant);
+		if (m_conductor_plant_counters.value(scheme).isEmpty())
+			m_conductor_plant_counters.remove(scheme);
+	} else {
+		m_conductor_plant_counters[scheme].insert(plant, values);
+	}
+	storeSettings();
+	setModified(true);
+}
+
+/**
+	@brief QETProject::renameConductorPlantCounters
+	The plant counters of the conductor numbering @p from are @p to's now.
+*/
+void QETProject::renameConductorPlantCounters(const QString &from, const QString &to)
+{
+	if (!m_conductor_plant_counters.contains(from) || from == to)
+		return;
+	m_conductor_plant_counters.insert(to, m_conductor_plant_counters.take(from));
+	storeSettings();
+}
+
+/**
+	@brief QETProject::readConductorPlantCountersXml
+	Read <conductor_plant_counters>: one <counter scheme= plant= values=>
+	per conductor numbering and plant, values separated by ';'.
+*/
+void QETProject::readConductorPlantCountersXml(QDomDocument &xml_project)
+{
+	m_conductor_plant_counters.clear();
+	const QDomElement counters = xml_project.documentElement()
+			.firstChildElement(QStringLiteral("conductor_plant_counters"));
+	for (QDomElement c = counters.firstChildElement(QStringLiteral("counter")) ; !c.isNull()
+		 ; c = c.nextSiblingElement(QStringLiteral("counter")))
+		m_conductor_plant_counters[c.attribute(QStringLiteral("scheme"))]
+				.insert(c.attribute(QStringLiteral("plant")),
+						c.attribute(QStringLiteral("values")).split(QLatin1Char(';')));
+}
+
+/**
+	@brief QETProject::writeConductorPlantCountersXml
+	Write <conductor_plant_counters>, only when a plant counter has numbered
+	something: a project without them is saved as before.
+*/
+void QETProject::writeConductorPlantCountersXml(QDomElement &xml_element)
+{
+	if (m_conductor_plant_counters.isEmpty())
+		return;
+	QDomElement counters = xml_element.ownerDocument()
+			.createElement(QStringLiteral("conductor_plant_counters"));
+	QStringList schemes = m_conductor_plant_counters.keys();
+	schemes.sort();
+	for (const QString &scheme : std::as_const(schemes)) {
+		const QHash<QString, QStringList> &plants = m_conductor_plant_counters.value(scheme);
+		QStringList names = plants.keys();
+		names.sort();
+		for (const QString &plant : std::as_const(names)) {
+			QDomElement c = xml_element.ownerDocument().createElement(QStringLiteral("counter"));
+			c.setAttribute(QStringLiteral("scheme"), scheme);
+			c.setAttribute(QStringLiteral("plant"), plant);
+			c.setAttribute(QStringLiteral("values"), plants.value(plant).join(QLatin1Char(';')));
+			counters.appendChild(c);
+		}
+	}
+	xml_element.appendChild(counters);
+}
+
 bool QETProject::chainedReports() const
 {
 	return m_chained_reports;
@@ -5472,6 +5581,7 @@ void QETProject::storeSettings()
 	writeTerminalLabelSplitXml(root);
 	writeWiringRulesXml(root);
 	writeChainedReportsXml(root);
+	writeConductorPlantCountersXml(root);
 	writeOriginXml(root);
 	QDomElement new_diagrams = document.createElement(QStringLiteral("newdiagrams"));
 	writeDefaultPropertiesXml(new_diagrams);

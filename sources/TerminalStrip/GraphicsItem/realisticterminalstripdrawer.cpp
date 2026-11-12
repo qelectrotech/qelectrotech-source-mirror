@@ -76,12 +76,20 @@ struct PhysicalGeometry
 		//used to find the element of a clicked terminal.
 	int physical_index{-1};
 	QVector<int> real_indexes;
+		//A terminal with levels is drawn as the schematic style draws it :
+		//one column by level, side by side, each level shorter than the
+		//one before it (see levelInsets). level is the level of this
+		//column, level_count the number of levels of its terminal.
+	int level{0};
+	int level_count{1};
 };
 
 /**
- * @return the physical terminals of @a strip with their width, in the drawing order.
- * The width of a physical terminal is the biggest width of its real terminals,
- * or the reference width if no width is known.
+ * @return the columns of @a strip, in the drawing order : one by terminal,
+ * and one by level for a terminal with levels, side by side like the
+ * schematic style draws them. The width of a column is the biggest width
+ * of the real terminals of its terminal, or the reference width if no
+ * width is known, so the levels of a terminal have the same width.
  */
 QVector<PhysicalGeometry> geometry(const AbstractTerminalStripInterface *strip)
 {
@@ -97,8 +105,10 @@ QVector<PhysicalGeometry> geometry(const AbstractTerminalStripInterface *strip)
 		if (!physical_t) {
 			continue;
 		}
-		PhysicalGeometry g_;
-		g_.physical_index = physical_index_;
+		QVector<QSharedPointer<AbstractRealTerminalInterface>> reals_;
+		QVector<int> indexes_;
+		qreal width_mm_{0};
+		bool separator_after_{false};
 		int real_index_{-1};
 		for (const auto &real_t : physical_t->realTerminals())
 		{
@@ -106,23 +116,90 @@ QVector<PhysicalGeometry> geometry(const AbstractTerminalStripInterface *strip)
 			if (!real_t) {
 				continue;
 			}
-			g_.reals.append(real_t);
-			g_.real_indexes.append(real_index_);
-			g_.width_mm = std::max(g_.width_mm, real_t->widthMm());
-			g_.separator_after = g_.separator_after || real_t->hasSeparatorAfter();
-			if (g_.reals.size() == 4) {	//Same limit than the schematic style
+			reals_.append(real_t);
+			indexes_.append(real_index_);
+			width_mm_ = std::max(width_mm_, real_t->widthMm());
+			separator_after_ = separator_after_ || real_t->hasSeparatorAfter();
+			if (reals_.size() == 4) {	//Same limit than the schematic style
 				break;
 			}
 		}
-		if (g_.reals.isEmpty()) {
+		if (reals_.isEmpty()) {
 			continue;
 		}
-		if (g_.width_mm <= 0) {
-			g_.width_mm = Helpers::referenceTerminalWidthMm();
+		if (width_mm_ <= 0) {
+			width_mm_ = Helpers::referenceTerminalWidthMm();
 		}
-		geometry_.append(g_);
+		for (int k = 0 ; k < reals_.size() ; ++k)
+		{
+			PhysicalGeometry g_;
+			g_.width_mm = width_mm_;
+			g_.reals = {reals_.at(k)};
+			g_.physical_index = physical_index_;
+			g_.real_indexes = {indexes_.at(k)};
+			g_.level = k;
+			g_.level_count = static_cast<int>(reals_.size());
+				//The separator plate is mounted after the whole terminal
+			g_.separator_after = separator_after_ && k == reals_.size() - 1;
+			geometry_.append(g_);
+		}
 	}
 	return geometry_;
+}
+
+/**
+ * @brief levelInsets
+ * @return how much shorter the column of @a level is than the column of
+ * the first level, at its top and at its bottom, in fraction of the length
+ * of a terminal. Worked out of the offset and the height the layout gives
+ * to each level for the schematic style ("Terminal level 0..3"), so both
+ * styles draw the levels the same way.
+ */
+QPair<qreal, qreal> levelInsets(const TerminalStripLayoutPattern &pattern, int level)
+{
+	const auto &rects_{pattern.m_terminal_rect};
+	if (level <= 0 || level >= rects_.size() || rects_.first().height() <= 0) {
+		return {0, 0};
+	}
+	const QRectF first_{rects_.first()};
+	const QRectF rect_{rects_.at(level)};
+		//Never shorter than the middle band, the wire entries need room
+	const qreal top_{qBound<qreal>(0, (rect_.top() - first_.top()) / first_.height(), 0.3)};
+	const qreal bottom_{qBound<qreal>(0, (first_.bottom() - rect_.bottom()) / first_.height(), 0.3)};
+	return {top_, bottom_};
+}
+
+	//Depth of the rail added for each level after the first one
+constexpr qreal level_rail_depth{0.04};
+
+/**
+ * @brief bandTop
+ * @return the top of the middle band, in fraction of the length. A strip
+ * with terminals of several levels has a deeper band, reaching further up
+ * by level_rail_depth for each level after the first, to make room for
+ * one bridge rail by level.
+ * @param level_count : the most levels a terminal of the strip has
+ */
+qreal bandTop(int level_count) {
+	return band_top - (std::max(1, level_count) - 1) * level_rail_depth;
+}
+
+/**
+ * @brief levelRow
+ * The bridge rail of the middle band is shared out between the levels:
+ * one row by level, the first level at the top, so that the bars of two
+ * levels lying across the same terminals never cover each other (as the
+ * schematic style draws the bridges of each level at its own height).
+ * @param level : level of the terminal
+ * @param level_count : the most levels a terminal of the strip has
+ * @return the top and the height of the row, in fraction of the length
+ */
+QPair<qreal, qreal> levelRow(int level, int level_count)
+{
+	const int count_{std::max(1, level_count)};
+	const qreal top_{bandTop(count_) + (channels_top - band_top)};
+	const qreal h_{(channels_bottom - top_) / count_};
+	return {top_ + qBound(0, level, count_ - 1) * h_, h_};
 }
 
 qreal endStopWidthMm(const TerminalStripLayoutPattern &pattern) {
@@ -577,12 +654,69 @@ bool haveCable(const AbstractTerminalStripInterface *strip)
 				}
 				Helpers::CableCell cell_;
 				cell_.x = x_ + w_ * (k + 0.5) / levels_;
-				cell_.bottom = length_;
+				cell_.bottom = length_ * (1 - levelInsets(pattern, g_.level).second);
 				cell_.cable = real_t->cable();
 				cell_.wire = real_t->cableWire();
 				cell_.shield = real_t->isShield();
 				cell_.terminal = real_t;
 				cells.append(cell_);
+			}
+
+			x_ += w_;
+			if (g_.separator_after) {
+				x_ += separator_width_mm * s_;
+			}
+		}
+		return cells;
+	}
+
+	/**
+	 * @brief wireCells
+	 * The cells the wires are drawn from : one per terminal of the strip
+	 * which has a wire of its own, spread over the width of its body, all
+	 * of them leaving the strip at its top edge. The paint and the room the
+	 * strip reserves above it both work on this list, so a wire set longer
+	 * than another is never cut off by the drawing area.
+	 */
+	QVector<Helpers::WireCell> wireCells(const AbstractTerminalStripInterface &strip,
+										 const TerminalStripLayoutPattern &pattern)
+	{
+		const qreal s_{pattern.m_realistic_px_per_mm};
+
+			//Left end stop and strip name : the terminals start after them
+		qreal x_{endStopWidthMm(pattern) * s_};
+		if (pattern.m_realistic_group_marker) {
+			x_ += group_marker_width_mm * s_;
+		}
+
+		QVector<Helpers::WireCell> cells;
+		for (const auto &g_ : geometry(&strip))
+		{
+			const qreal w_{g_.width_mm * s_};
+			const int levels_{static_cast<int>(g_.reals.size())};
+
+				//One wire exit by level, spread over the width of the body
+			for (int k = 0 ; k < levels_ ; ++k)
+			{
+				const auto &real_t{g_.reals.at(k)};
+				if (!real_t) {
+					continue;
+				}
+				const auto wires{real_t->wires()};
+					//One stub by wire: a terminal with a twin sleeve
+					//carries two, spread over the width of its level
+				const qreal level_x{x_ + w_ * k / levels_};
+				const qreal level_w{w_ / levels_};
+				for (auto i = 0 ; i < wires.size() ; ++i)
+				{
+					Helpers::WireCell cell_;
+					cell_.x = level_x + level_w * (i + 0.5) / wires.size();
+					cell_.top = pattern.m_realistic_length_mm * s_
+								* levelInsets(pattern, g_.level).first;
+					cell_.target = wires.at(i).target;
+					cell_.definition = wires.at(i).definition;
+					cells.append(cell_);
+				}
 			}
 
 			x_ += w_;
@@ -624,7 +758,14 @@ QRectF boundingRect(const AbstractTerminalStripInterface *strip,
 						+ Helpers::cableBoxesExtraDepth(cableCells(*strip, pattern),
 														pattern);
 	}
-	return QRectF{0, 0, width_mm_ * s_, length_ + extra_bottom_};
+		//The wires are drawn above the strip : the room they need is
+		//reserved above it or their top is cut off
+	const qreal extra_top_{strip
+		? qMax<qreal>(0, -Helpers::wiresTop(wireCells(*strip, pattern),
+								pattern))
+		: 0};
+	return QRectF{0, -extra_top_, width_mm_ * s_,
+				  length_ + extra_bottom_ + extra_top_};
 }
 
 void paint(QPainter *painter,
@@ -689,11 +830,24 @@ void paint(QPainter *painter,
 		//list (boundingRect()), so a box set lower than another one is
 		//never cut off
 	QVector<Helpers::CableCell> cable_cells_{cableCells(strip, pattern)};
+		//The wires above the strip, worked out of the same terminals
+	QVector<Helpers::WireCell> wire_cells_{wireCells(strip, pattern)};
 
-	for (const auto &g_ : geometry(&strip))
+		//The bridge rail is shared out between the levels of the strip
+	const auto columns_{geometry(&strip)};
+	int max_levels_{1};
+	for (const auto &g_ : columns_) {
+		max_levels_ = std::max(max_levels_, g_.level_count);
+	}
+
+	for (const auto &g_ : columns_)
 	{
 		const qreal w_{g_.width_mm * s_};
-		const QRectF body_{x_, 0, w_, length_};
+			//A level after the first one is shorter, at its top and at
+			//its bottom, as in the schematic style
+		const auto insets_{levelInsets(pattern, g_.level)};
+		const QRectF body_{x_, length_ * insets_.first, w_,
+						   length_ * (1 - insets_.first - insets_.second)};
 		const auto first_{g_.reals.first()};
 		const int levels_{static_cast<int>(g_.reals.size())};
 
@@ -720,26 +874,39 @@ void paint(QPainter *painter,
 				//Two-tone terminal (PE) : the stripe color on the left part, like the real ones
 			painter->setPen(Qt::NoPen);
 			painter->setBrush(stripe_);
-			painter->drawRect(QRectF{body_.left(), body_.top(), w_ * 0.6, length_});
+			painter->drawRect(QRectF{body_.left(), body_.top(), w_ * 0.6, body_.height()});
 		}
 		painter->restore();
 
 			//Wire entries : one row by level, at the top and at the bottom
 		const qreal max_r_{max_entry_radius_mm * s_};
-		drawEntriesHalf(painter, body_, length_ * entries_top, length_ * band_top, levels_, max_r_, fill_, screw_);
-		drawEntriesHalf(painter, body_, length_ * (1 - entries_top), length_ * band_bottom, levels_, max_r_, fill_, screw_);
+		drawEntriesHalf(painter, body_, body_.top() + length_ * entries_top, length_ * bandTop(max_levels_), levels_, max_r_, fill_, screw_);
+		drawEntriesHalf(painter, body_, body_.bottom() - length_ * entries_top, length_ * band_bottom, levels_, max_r_, fill_, screw_);
+
+			//The levels of one terminal are one part : a stronger line at
+			//the outer sides of the terminal, a thin one between its levels
+		if (g_.level_count > 1)
+		{
+			painter->save();
+			painter->setPen(QPen(fill_.darker(300), std::max<qreal>(1.0, 0.35 * s_)));
+			if (g_.level == 0) {
+				painter->drawLine(body_.topLeft(), body_.bottomLeft());
+			}
+			if (g_.level == g_.level_count - 1) {
+				painter->drawLine(body_.topRight(), body_.bottomRight());
+			}
+			painter->restore();
+		}
 
 			//Middle band, with one bridge channel by level
 		painter->save();
 		painter->setPen(Qt::NoPen);
 		painter->setBrush(band_color);
-		painter->drawRect(QRectF{x_, length_ * band_top, w_, length_ * (band_bottom - band_top)});
+		painter->drawRect(QRectF{x_, length_ * bandTop(max_levels_), w_, length_ * (band_bottom - bandTop(max_levels_))});
 		painter->setBrush(channel_color);
-		const qreal channel_h_{length_ * (channels_bottom - channels_top) / levels_};
-		for (int k = 0 ; k < levels_ ; ++k) {
-			painter->drawRect(QRectF{x_ + w_ * 0.15, length_ * channels_top + (k + 0.2) * channel_h_,
-									 w_ * 0.7, channel_h_ * 0.6});
-		}
+		const auto row_{levelRow(g_.level, max_levels_)};
+		painter->drawRect(QRectF{x_ + w_ * 0.15, length_ * (row_.first + 0.1 * row_.second),
+								 w_ * 0.7, length_ * row_.second * 0.8});
 		painter->restore();
 
 			//Specific parts of some types of terminal
@@ -859,14 +1026,16 @@ void paint(QPainter *painter,
 				if (!bridge_) {
 					continue;
 				}
-				const qreal channel_h_{length_ * (channels_bottom - channels_top) / 4};
+					//The row of the level of this terminal in the rail
+				const auto row_{levelRow(g_.level, max_levels_)};
+				const qreal channel_h_{length_ * row_.second / 4};
 					//A bar which was never worked out a track sits in
-					//the middle of the rail, where it stood before the
+					//the middle of the row, where it stood before the
 					//tracks were drawn apart
 				const int track{bridge_->track()};
 				const qreal y_{track > 0
-							   ? length_ * channels_top + (qBound(1, track, 4) - 0.5) * channel_h_
-							   : length_ * (channels_top + channels_bottom) / 2};
+							   ? length_ * row_.first + (qBound(1, track, 4) - 0.5) * channel_h_
+							   : length_ * (row_.first + row_.second / 2)};
 				bridges_[bridge_->uuid()].append(BridgePoint{QPointF{x_ + w_ / 2, y_}, w_});
 			}
 		}
@@ -889,7 +1058,10 @@ void paint(QPainter *painter,
 			continue;
 		}
 		painter->save();
-		const qreal thickness_{std::max<qreal>(1.0, 0.9 * s_)};
+			//Thinner bars when the rail is shared out between levels,
+			//so that the bars of two levels stay apart
+		const qreal thickness_{std::max<qreal>(1.0, std::min(0.9 * s_,
+				0.7 * length_ * levelRow(0, max_levels_).second))};
 		painter->setPen(QPen(bridge_color, thickness_, Qt::SolidLine, Qt::FlatCap));
 		painter->drawLine(points_.first().point, points_.last().point);
 		painter->setPen(Qt::NoPen);
@@ -912,6 +1084,17 @@ void paint(QPainter *painter,
 		painter->setFont(pattern.font());
 		painter->setPen(QPen(Qt::black, 0.5));
 		Helpers::drawCables(painter, cable_cells_, pattern);
+		painter->restore();
+	}
+
+		//The wires above the strip : one stub per terminal which has a
+		//wire of its own, drawn the way the cables are drawn below it
+	if (!wire_cells_.isEmpty())
+	{
+		painter->save();
+		painter->setFont(pattern.font());
+		painter->setPen(QPen(Qt::black, 0.5));
+		Helpers::drawWires(painter, wire_cells_, pattern);
 		painter->restore();
 	}
 

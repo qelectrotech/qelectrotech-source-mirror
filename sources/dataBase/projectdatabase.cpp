@@ -4790,6 +4790,66 @@ bool projectDataBase::createDataBase()
 }
 
 /**
+	@brief folioGroupSql
+	The SQL of a folio's group or sub-group: its own, from the title block
+	properties the folio stores (folio_titleblock, written only when set),
+	else its plant or location. The same rule as %{folio_group} /
+	%{folio_subgroup} in its title block
+	(TitleBlockProperties::resolvedFolioGroup()), so the summary and the
+	public views say what the folio shows, built or not.
+	@param name : folio_group or folio_subgroup
+	@param folio_uuid : the folio's uuid column, e.g. d.uuid
+	@param fallback : the folio's plant or location column, e.g. di.plant
+*/
+static QString folioGroupSql(const QString &name, const QString &folio_uuid,
+							 const QString &fallback)
+{
+	return QStringLiteral(
+		"COALESCE(NULLIF((SELECT ft.value FROM folio_titleblock ft "
+		"WHERE ft.diagram_uuid = %2 AND ft.name = '%1'), ''), %3)")
+			.arg(name, folio_uuid, fallback);
+}
+
+/**
+	@brief effectiveStructureSql
+	The SQL of an element's plant (=) or location (+): its own value, else
+	its folio's title block. This is the rule of the full designation
+	(AssignVariables::replaceVariable()); %{plant} / %{location} in the
+	element's texts show the element's own value only. Written once here
+	for every view, so the parts list and the public views never
+	disagree. In SQL, not on the live elements, so that a folio not
+	built (lazy folios) answers the same.
+	@param own : the element's own column, e.g. ei.plant
+	@param folio : the folio's column, e.g. di.plant
+*/
+static QString effectiveStructureSql(const QString &own, const QString &folio)
+{
+	return QStringLiteral("COALESCE(NULLIF(%1, ''), %2)").arg(own, folio);
+}
+
+/**
+	@brief structureIdSql
+	The SQL of the full designation: =plant+location-label, every part left out
+	when it is empty, as AssignVariables::replaceVariable() composes it.
+*/
+static QString structureIdSql(const QString &plant, const QString &location,
+							  const QString &label)
+{
+	const auto part = [](const QString &sign, const QString &value) {
+			//A value typed with its sign ("-K1") keeps one sign, as
+			//AssignVariables::replaceVariable() does
+		return QStringLiteral("CASE WHEN COALESCE(%2, '') = '' THEN '' "
+							  "WHEN substr(%2, 1, 1) = '%1' THEN %2 "
+							  "ELSE '%1' || %2 END")
+				.arg(sign, value);
+	};
+	return QStringLiteral("(%1 || %2 || %3)")
+			.arg(part(QStringLiteral("="), plant),
+				 part(QStringLiteral("+"), location),
+				 part(QStringLiteral("-"), label));
+}
+
+/**
 	@brief projectDataBase::createElementNomenclatureView
 */
 void projectDataBase::createElementNomenclatureView()
@@ -4799,10 +4859,12 @@ void projectDataBase::createElementNomenclatureView()
 		//%M / %LM of the folio), as EPLAN builds the device tag from the
 		//page structure: an element drawn on a +UV1 folio is in +UV1
 		//without the information being typed into every element.
-	QString create_view ("CREATE VIEW element_nomenclature_view AS SELECT "
-						 "ei.label AS label,"
-						 "COALESCE(NULLIF(ei.plant, ''), di.plant) AS plant,"
-						 "COALESCE(NULLIF(ei.location, ''), di.locmach) AS location,"
+	QString create_view (QStringLiteral("CREATE VIEW element_nomenclature_view AS SELECT "
+						 "ei.label AS label,")
+						 + effectiveStructureSql(QStringLiteral("ei.plant"), QStringLiteral("di.plant"))
+						 + QStringLiteral(" AS plant,")
+						 + effectiveStructureSql(QStringLiteral("ei.location"), QStringLiteral("di.locmach"))
+						 + QStringLiteral(" AS location,"
 						 "ei.comment AS comment,"
 						 "ei.function AS function,"
 						 "ei.description AS description,"
@@ -4886,7 +4948,7 @@ void projectDataBase::createElementNomenclatureView()
 							 //own auxiliary contact, say -- is kept out by
 							 //exclude_from_bom above, not by its base type.
 							 //See discussion #847.
-						 " AND e.type IN ('simple', 'terminal', 'master', 'slave', 'thumbnail')");
+						 " AND e.type IN ('simple', 'terminal', 'master', 'slave', 'thumbnail')"));
 
 		//The spare terminals of the terminal strips (on no folio) are lines of
 		//the nomenclature too : the same columns, read in the spare_terminal
@@ -4932,12 +4994,17 @@ void projectDataBase::createElementNomenclatureView()
 */
 void projectDataBase::createSummaryView()
 {
-	QString create_view ("CREATE VIEW project_summary_view AS SELECT "
+	QString create_view = QStringLiteral(
+						 "CREATE VIEW project_summary_view AS SELECT "
 						 "di.title AS title,"
 						 "di.author AS author,"
 						 "di.folio AS folio,"
 						 "di.plant AS plant,"
-						 "di.locmach AS locmach,"
+						 "di.locmach AS locmach,")
+			+ folioGroupSql(QStringLiteral("folio_group"), QStringLiteral("d.uuid"), QStringLiteral("di.plant"))
+			+ QStringLiteral(" AS folio_group,")
+			+ folioGroupSql(QStringLiteral("folio_subgroup"), QStringLiteral("d.uuid"), QStringLiteral("di.locmach"))
+			+ QStringLiteral(" AS folio_subgroup,"
 						 "di.indexrev AS indexrev,"
 						 "di.date AS date,"
 						 "d.pos AS pos"
@@ -5045,7 +5112,9 @@ void projectDataBase::createDrawingItemView()
 QStringList projectDataBase::publicViews()
 {
 	return {QStringLiteral("qet_folios"), QStringLiteral("qet_devices"),
-			QStringLiteral("qet_wires"), QStringLiteral("qet_links")};
+			QStringLiteral("qet_wires"), QStringLiteral("qet_links"),
+			QStringLiteral("qet_device_list"),
+			QStringLiteral("qet_terminals")};
 }
 
 /**
@@ -5059,12 +5128,31 @@ QStringList projectDataBase::publicViews()
 	a folio not built gives the same rows. folio_number is the folio's
 	place in the project from 1, folio its label as its title block shows
 	it. A device's plant and location are its own, or else its folio's,
-	as in the parts list. The links are kept once each: coil to contact,
-	going arrow to coming arrow.
+	as in the parts list, and structure_id composes them with its label
+	(=plant+location-label, the full designation); each
+	end of a wire has its own (from_structure_id, to_structure_id). The
+	links are kept once each: coil to contact, going arrow to coming
+	arrow.
 
-	No view of terminals: the terminal table lists only the terminals a
-	wire ends on, so one would leave out every free terminal without
-	saying so. qet_wires names the terminal at each end.
+	qet_device_list is the project's devices, one row each: a device is
+	what one reference designation (=plant+location-label, IEC 81346)
+	names, so every symbol with the same structure_id is part of it, and
+	a contact is part of its coil's whatever it shows. Derived, never kept
+	by hand: symbols, folios showing it, part numbers (articles) of its
+	symbols, and where it is drawn -- its coil, else its first symbol by
+	folio and position (head_uuid). Folio reports are left out, and so
+	are symbols without a label. model is the head symbol's (qet_devices
+	has each symbol's); it was added last to both.
+
+	qet_terminals is the terminals of each terminal strip, one row per
+	terminal, read from the strips themselves (terminal_strip_value, what
+	TerminalStrip::toXml() writes): the strip (=plant+location-name, its own
+	plant and location), the position of the terminal in it and its level,
+	both counted from 0 as the terminal strip editor shows them, and the
+	symbol drawing it -- its label, its own structure_id and folio -- or
+	spare = 1 for a terminal drawn nowhere. A terminal symbol in no strip
+	is not in it: qet_devices lists every symbol, those of kind 'terminal'
+	included.
 */
 void projectDataBase::createPublicViews()
 {
@@ -5099,19 +5187,29 @@ QStringList projectDataBase::publicViewStatements()
 			"d.pos AS folio_number, di.folio AS folio, di.title AS title, "
 			"di.author AS author, di.plant AS plant, di.locmach AS location, "
 			"di.indexrev AS revision, di.date AS date, di.filename AS filename, "
-			"d.uuid AS folio_uuid "
+			"d.uuid AS folio_uuid, ")
+			+ folioGroupSql(QStringLiteral("folio_group"), QStringLiteral("d.uuid"), QStringLiteral("di.plant"))
+			+ QStringLiteral(" AS folio_group, ")
+			+ folioGroupSql(QStringLiteral("folio_subgroup"), QStringLiteral("d.uuid"), QStringLiteral("di.locmach"))
+			+ QStringLiteral(" AS folio_subgroup "
 			"FROM diagram d LEFT JOIN diagram_info di ON di.diagram_uuid = d.uuid"),
 		QStringLiteral(
 			"CREATE VIEW qet_devices AS SELECT "
 			"d.pos AS folio_number, di.folio AS folio, e.pos AS position, "
-			"ei.label AS label, "
-			"COALESCE(NULLIF(ei.plant, ''), di.plant) AS plant, "
-			"COALESCE(NULLIF(ei.location, ''), di.locmach) AS location, "
+			"ei.label AS label, ")
+			+ effectiveStructureSql(QStringLiteral("ei.plant"), QStringLiteral("di.plant"))
+			+ QStringLiteral(" AS plant, ")
+			+ effectiveStructureSql(QStringLiteral("ei.location"), QStringLiteral("di.locmach"))
+			+ QStringLiteral(" AS location, "
 			"e.type AS kind, e.sub_type AS sub_kind, ei.function AS function, "
 			"ei.description AS description, ei.designation AS designation, "
 			"ei.manufacturer AS manufacturer, ei.manufacturer_reference AS article, "
 			"ei.supplier AS supplier, ei.quantity AS quantity, ei.comment AS comment, "
-			"e.definition AS symbol, e.uuid AS device_uuid, e.diagram_uuid AS folio_uuid "
+			"e.definition AS symbol, e.uuid AS device_uuid, e.diagram_uuid AS folio_uuid, ")
+			+ structureIdSql(effectiveStructureSql(QStringLiteral("ei.plant"), QStringLiteral("di.plant")),
+							 effectiveStructureSql(QStringLiteral("ei.location"), QStringLiteral("di.locmach")),
+							 QStringLiteral("ei.label"))
+			+ QStringLiteral(" AS structure_id, ei.model AS model "
 			"FROM element e LEFT JOIN element_info ei ON ei.element_uuid = e.uuid")
 			+ folio_of.arg(QStringLiteral("e.diagram_uuid")),
 		QStringLiteral(
@@ -5126,7 +5224,15 @@ QStringList projectDataBase::publicViewStatements()
 			+ property(QStringLiteral("function"), QStringLiteral("function")) + QStringLiteral(", ")
 			+ property(QStringLiteral("tension_protocol"), QStringLiteral("voltage")) + QStringLiteral(
 			", c.uuid AS wire_uuid, t1.element_uuid AS from_device_uuid, "
-			"t2.element_uuid AS to_device_uuid "
+			"t2.element_uuid AS to_device_uuid, ")
+			+ structureIdSql(effectiveStructureSql(QStringLiteral("ei1.plant"), QStringLiteral("di.plant")),
+							 effectiveStructureSql(QStringLiteral("ei1.location"), QStringLiteral("di.locmach")),
+							 QStringLiteral("ei1.label"))
+			+ QStringLiteral(" AS from_structure_id, ")
+			+ structureIdSql(effectiveStructureSql(QStringLiteral("ei2.plant"), QStringLiteral("di.plant")),
+							 effectiveStructureSql(QStringLiteral("ei2.location"), QStringLiteral("di.locmach")),
+							 QStringLiteral("ei2.label"))
+			+ QStringLiteral(" AS to_structure_id "
 			"FROM conductor c "
 			"LEFT JOIN terminal t1 ON t1.uuid = c.terminal1_uuid AND t1.element_uuid = c.terminal1_element_uuid "
 			"LEFT JOIN terminal t2 ON t2.uuid = c.terminal2_uuid AND t2.element_uuid = c.terminal2_element_uuid "
@@ -5147,7 +5253,63 @@ QStringList projectDataBase::publicViewStatements()
 			"LEFT JOIN diagram_info di1 ON di1.diagram_uuid = e1.diagram_uuid "
 			"LEFT JOIN diagram d2 ON d2.uuid = e2.diagram_uuid "
 			"LEFT JOIN diagram_info di2 ON di2.diagram_uuid = e2.diagram_uuid "
-			"WHERE e1.type IN ('master', 'next_report')")
+			"WHERE e1.type IN ('master', 'next_report')"),
+			//After qet_devices, which it reads
+		QStringLiteral(
+			"CREATE VIEW qet_device_list AS "
+			"WITH symbol AS (SELECT d.*, "
+				"(SELECT l.linked_uuid FROM link l JOIN element m ON m.uuid = l.linked_uuid "
+				"WHERE l.element_uuid = d.device_uuid AND m.type = 'master' LIMIT 1) AS master_uuid "
+				"FROM qet_devices d "
+				"WHERE COALESCE(d.kind, '') NOT IN ('next_report', 'previous_report')), "
+			"member AS (SELECT s.*, COALESCE(m.structure_id, s.structure_id) AS device, "
+				"CASE WHEN s.kind = 'master' THEN 0 WHEN s.master_uuid IS NULL THEN 1 ELSE 2 END AS rank "
+				"FROM symbol s LEFT JOIN qet_devices m ON m.device_uuid = s.master_uuid "
+				"WHERE COALESCE(NULLIF(m.label, ''), s.label, '') <> ''), "
+			"totals AS (SELECT device, COUNT(*) AS symbols, COUNT(DISTINCT folio_uuid) AS folios, "
+				"GROUP_CONCAT(DISTINCT NULLIF(article, '')) AS articles FROM member GROUP BY device), "
+			"head AS (SELECT device, plant, location, label, folio_number, folio, position, "
+				"designation, description, model, device_uuid, ROW_NUMBER() OVER (PARTITION BY device "
+				"ORDER BY rank, folio_number, position, device_uuid) AS n FROM member) "
+			"SELECT h.device AS structure_id, h.plant, h.location, h.label, t.symbols, t.folios, "
+			"h.folio_number, h.folio, h.position, t.articles, h.designation, h.description, "
+			"h.device_uuid AS head_uuid, h.model AS model "
+			"FROM head h JOIN totals t ON t.device = h.device WHERE h.n = 1 ORDER BY h.device"),
+			//After qet_devices, which it reads
+		QStringLiteral(
+			"CREATE VIEW qet_terminals AS "
+			"WITH info AS (SELECT n.strip_uuid, n.value AS name, t.value AS value "
+				"FROM terminal_strip_value n JOIN terminal_strip_value t "
+				"ON t.strip_uuid = n.strip_uuid AND t.section = n.section AND t.ord = n.ord "
+				"AND t.name = '#text' "
+				"WHERE n.section = 'terminal_strip/terminal_strip_data/informations/information' "
+				"AND n.name = 'name'), "
+			"strip AS (SELECT s.strip_uuid, "
+				"MAX(CASE WHEN i.name = 'installation' THEN i.value END) AS plant, "
+				"MAX(CASE WHEN i.name = 'location' THEN i.value END) AS location, "
+				"MAX(CASE WHEN i.name = 'name' THEN i.value END) AS name "
+				"FROM (SELECT DISTINCT strip_uuid FROM terminal_strip_value) s "
+				"LEFT JOIN info i ON i.strip_uuid = s.strip_uuid GROUP BY s.strip_uuid), "
+				//A strip of one physical terminal writes it without [0]
+			"terminal AS (SELECT strip_uuid, "
+				"CASE WHEN section = 'terminal_strip/layout/physical_terminal/real_terminal' THEN 0 "
+				"ELSE CAST(SUBSTR(section, INSTR(section, '[') + 1, "
+				"INSTR(section, ']') - INSTR(section, '[') - 1) AS INTEGER) END AS position, "
+				"ord AS level, "
+				"MAX(CASE WHEN name = 'element_uuid' THEN value END) AS element_uuid, "
+				"MAX(CASE WHEN name = 'spare_uuid' THEN 1 ELSE 0 END) AS spare "
+				"FROM terminal_strip_value "
+				"WHERE section LIKE 'terminal_strip/layout/physical_terminal%/real_terminal' "
+				"GROUP BY strip_uuid, section, ord) "
+			"SELECT ")
+			+ structureIdSql(QStringLiteral("s.plant"), QStringLiteral("s.location"), QStringLiteral("s.name"))
+			+ QStringLiteral(" AS strip_id, COALESCE(s.plant, '') AS plant, "
+			"COALESCE(s.location, '') AS location, s.name AS strip, t.position, t.level, "
+			"d.label, d.structure_id AS terminal_id, t.spare, d.folio_number, d.folio, "
+			"t.element_uuid, t.strip_uuid "
+			"FROM terminal t JOIN strip s ON s.strip_uuid = t.strip_uuid "
+			"LEFT JOIN qet_devices d ON d.device_uuid = t.element_uuid "
+			"ORDER BY strip_id, t.strip_uuid, t.position, t.level")
 	};
 	return views;
 }

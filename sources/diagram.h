@@ -396,6 +396,11 @@ class Diagram : public QGraphicsScene
 	
 		QList<Element *> elements() const;
 		QList<Conductor *> conductors() const;
+			///Tell every terminal strip drawn on this folio to report
+			///its size again: what is drawn above it changed with the
+			///wires which end at it. Does nothing while the setting for
+			///those wires is off.
+		void refreshTerminalStrips();
 		QSet<Conductor *> selectedConductors() const;
 		DiagramContent content() const;
 		bool canRotateSelection() const;

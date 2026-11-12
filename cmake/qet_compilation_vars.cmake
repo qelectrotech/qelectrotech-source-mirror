@@ -151,6 +151,10 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/import/edz/edzimporter.h
   ${QET_DIR}/sources/import/edz/edzsevenzip.cpp
   ${QET_DIR}/sources/import/edz/edzsevenzip.h
+  ${QET_DIR}/sources/diagramevent/macrolabels.cpp
+  ${QET_DIR}/sources/diagramevent/macrolabels.h
+  ${QET_DIR}/sources/ui/macrolabelsdialog.cpp
+  ${QET_DIR}/sources/ui/macrolabelsdialog.h
   ${QET_DIR}/sources/import/edz/lzma/7zAlloc.c
   ${QET_DIR}/sources/import/edz/lzma/7zArcIn.c
   ${QET_DIR}/sources/import/edz/lzma/7zBuf.c
@@ -364,6 +368,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/autoNum/numerotationcontextcommands.h
   ${QET_DIR}/sources/autoNum/numerotationcontext.cpp
   ${QET_DIR}/sources/autoNum/numerotationcontext.h
+  ${QET_DIR}/sources/autoNum/renumberconductorscommand.cpp
+  ${QET_DIR}/sources/autoNum/renumberconductorscommand.h
   ${QET_DIR}/sources/autoNum/renumberelementscommand.cpp
   ${QET_DIR}/sources/autoNum/renumberelementscommand.h
   ${QET_DIR}/sources/autoNum/autonumschemecommand.cpp
