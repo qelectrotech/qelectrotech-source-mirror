@@ -2445,3 +2445,7 @@ if(NOT BUILD_WITH_KF)
     ${QET_DIR}/sources/ui/nokde)
   target_link_libraries(tst_nokdecolorcombo PRIVATE Qt::Test Qt::Widgets)
 endif()
+
+# The title block recorded for the screen shows what is drawn, and a change
+# of the folio's data reaches the screen
+qet_add_app_test(tst_titleblockcache tst_titleblockcache.cpp)

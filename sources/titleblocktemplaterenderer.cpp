@@ -1,4 +1,5 @@
 #include "titleblocktemplaterenderer.h"
+#include "diagram.h"
 #include "properties/projectlanguages.h"
 #include "titleblocktemplate.h"
 
@@ -110,10 +111,64 @@ int TitleBlockTemplateRenderer::height() const
 void TitleBlockTemplateRenderer::render(QPainter *provided_painter,
 					int titleblock_width) {
 	if (!m_titleblock_template) return;
-	
-	m_titleblock_template -> render(*provided_painter,
-					shownContext(),
-					titleblock_width);
+
+	const DiagramContext context = shownContext();
+
+		// A print, a PDF, an image or an OpenGL viewport: drawn anew.
+		// Only a widget, painted again at every move of the mouse, plays
+		// the recording (working the cells and their texts out takes most
+		// of the time of a repaint of a folio). A screen whose dpi is not
+		// the one of the recording is drawn anew too, so that the texts
+		// keep their size.
+	const QPaintDevice *device = provided_painter -> device();
+	if (!device
+			|| device -> devType() != QInternal::Widget
+			|| device -> logicalDpiX() != m_cache.logicalDpiX()
+			|| device -> logicalDpiY() != m_cache.logicalDpiY())
+	{
+		m_titleblock_template -> render(*provided_painter,
+						context,
+						titleblock_width);
+		return;
+	}
+
+	if (!m_cache_valid
+			|| m_cache_template   != m_titleblock_template
+			|| m_cache_width      != titleblock_width
+			|| m_cache_background != Diagram::background_color
+			|| m_cache_pen        != provided_painter -> pen().color()
+			|| m_cache_font       != provided_painter -> font()
+			|| m_cache_hints      != provided_painter -> renderHints()
+			|| m_cache_context    != context)
+	{
+		m_cache = QPicture();
+		QPainter recorder(&m_cache);
+		recorder.setPen(provided_painter -> pen());
+		recorder.setFont(provided_painter -> font());
+		recorder.setRenderHints(provided_painter -> renderHints());
+		m_titleblock_template -> render(recorder, context, titleblock_width);
+		recorder.end();
+
+		m_cache_valid      = true;
+		m_cache_template   = m_titleblock_template;
+		m_cache_width      = titleblock_width;
+		m_cache_background = Diagram::background_color;
+		m_cache_pen        = provided_painter -> pen().color();
+		m_cache_font       = provided_painter -> font();
+		m_cache_hints      = provided_painter -> renderHints();
+		m_cache_context    = context;
+	}
+	m_cache.play(provided_painter);
+}
+
+/**
+	@brief TitleBlockTemplateRenderer::invalidateCache
+	Forget the title block recorded for the screen: its template changed
+	without changing its address, so the next paint records it again.
+*/
+void TitleBlockTemplateRenderer::invalidateCache()
+{
+	m_cache_valid = false;
 }
 
 /**
