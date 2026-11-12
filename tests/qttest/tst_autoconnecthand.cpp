@@ -18,6 +18,8 @@
 	//Automatic connections lay the wires: they cannot be selected, and
 	//while they are on, the user draws no wires of their own
 #include "qetapptest.h"
+#include "autoconnect.h"
+#include "elementsmover.h"
 #include "ElementsCollection/xmlelementcollection.h"
 #include "factory/elementfactory.h"
 #include "qetgraphicsitem/conductor.h"
@@ -88,7 +90,20 @@ class tst_autoconnecthand : public QObject
 					R"(<definition type="element" link_type="simple" width="20" height="20" hotspot_x="0" hotspot_y="10">
 <names><name lang="en">target</name></names><description>
 <rect x="0" y="-10" width="20" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-<terminal x="0" y="0" orientation="w" name="w"/></description></definition>)")}};
+<terminal x="0" y="0" orientation="w" name="w"/></description></definition>)")},
+					//A terminal facing up, its body below; and one facing
+					//down, its body above and to the right, so that a line
+					//up its left edge passes the body
+				{QStringLiteral("rise"), QStringLiteral(
+					R"(<definition type="element" link_type="simple" width="20" height="20" hotspot_x="10" hotspot_y="0">
+<names><name lang="en">rise</name></names><description>
+<rect x="-10" y="0" width="20" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+<terminal x="0" y="0" orientation="n" name="n"/></description></definition>)")},
+				{QStringLiteral("drop"), QStringLiteral(
+					R"(<definition type="element" link_type="terminal" width="10" height="10" hotspot_x="0" hotspot_y="10">
+<names><name lang="en">drop</name></names><description>
+<polygon x1="0" y1="0" x2="0" y2="-10" x3="10" y3="-10" closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+<terminal x="0" y="0" orientation="s" name="s"/></description></definition>)")}};
 			for (const auto &d : definitions) {
 				QDomDocument doc;
 				doc.setContent(d.second);
@@ -136,6 +151,66 @@ class tst_autoconnecthand : public QObject
 			m_diagram->project()->setLiveAutoConnect(false);
 			QVERIFY(startsWire(named(corner, "2")));
 			QVERIFY(startsWire(named(target, "w")));
+		}
+
+			//A corner put on an automatic wire, its terminal on the line and
+			//facing the wire's lower end: the wire ends there, it no longer
+			//runs on through the corner to the one above
+		void cornerPutOnWire()
+		{
+			m_diagram->project()->setLiveAutoConnect(true);
+			Element *rise = place(QStringLiteral("rise"), QPointF(100, 1000));
+			Element *top = place(QStringLiteral("drop"), QPointF(100, 820));
+			QVERIFY(rise && top);
+			auto *placing = new QUndoCommand();
+			AutoConnect::update(m_diagram, {rise, top}, {}, placing);
+			m_diagram->undoStack().push(placing);
+			Terminal *from = named(rise, "n");
+			QCOMPARE(from->conductors().size(), 1);
+			QCOMPARE(from->conductors().first()->terminal2 == from
+					 ? from->conductors().first()->terminal1
+					 : from->conductors().first()->terminal2, named(top, "s"));
+
+			Element *middle = place(QStringLiteral("drop"), QPointF(100, 910));
+			QVERIFY(middle);
+			auto *adding = new QUndoCommand();
+			AutoConnect::update(m_diagram, {middle}, {}, adding);
+			m_diagram->undoStack().push(adding);
+			QCOMPARE(from->conductors().size(), 1);
+			Conductor *wire = from->conductors().first();
+			QCOMPARE(wire->terminal1 == from ? wire->terminal2 : wire->terminal1, named(middle, "s"));
+			QVERIFY(named(top, "s")->conductors().isEmpty());
+			m_diagram->project()->setLiveAutoConnect(false);
+		}
+
+			//Dragging a symbol: its automatic wire is shown while its ends
+			//still face each other in line, and hidden, not bent round, as
+			//soon as they do not; the drop removes it
+		void wireHiddenOutOfLine()
+		{
+			m_diagram->project()->setLiveAutoConnect(true);
+			Element *rise = place(QStringLiteral("rise"), QPointF(300, 1000));
+			Element *top = place(QStringLiteral("drop"), QPointF(300, 900));
+			QVERIFY(rise && top);
+			auto *placing = new QUndoCommand();
+			AutoConnect::update(m_diagram, {rise, top}, {}, placing);
+			m_diagram->undoStack().push(placing);
+			QCOMPARE(named(rise, "n")->conductors().size(), 1);
+			QPointer<Conductor> wire = named(rise, "n")->conductors().first();
+
+			m_diagram->clearSelection();
+			top->setSelected(true);
+			ElementsMover &mover = m_diagram->elementsMover();
+			mover.beginMovement(m_diagram);
+			mover.continueMovement(QPointF(0, -20));
+			QVERIFY2(wire->isVisible(), "still in line: shown");
+			mover.continueMovement(QPointF(30, 0));
+			QVERIFY2(!wire->isVisible(), "out of line: hidden");
+			mover.endMovement();
+			m_diagram->clearSelection();
+			QVERIFY2(!wire || !wire->scene(), "the drop removes it");
+			QVERIFY(named(rise, "n")->conductors().isEmpty());
+			m_diagram->project()->setLiveAutoConnect(false);
 		}
 };
 
