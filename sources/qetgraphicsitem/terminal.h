@@ -176,6 +176,55 @@ QList<Terminal *> relatedPotentialTerminal (const Terminal *terminal,
 						const bool ignore_function_separation = false);
 
 /**
+	@brief The roles of a junction: which of its connections the wire comes
+	in at, and which ones it goes on to.
+
+	The roles belong to the symbol rather than to one copy of it: they are
+	read from the definition, so every copy answers alike and no database
+	has to hold them.
+*/
+struct JunctionRoles
+{
+	QString source;
+	QStringList targets;
+};
+
+/**
+	@brief junctionRolesOf
+	@return the roles of @a junction, read from its definition. Symbols
+	written before the roles moved to the kind information keep them among
+	their element information, which is read as a fallback so an older
+	symbol opens as it was saved (#1500).
+	@param junction the symbol to read, which need not be one
+*/
+JunctionRoles junctionRolesOf(const Element *junction);
+
+/**
+	@brief junctionRolesOf
+	@return the roles a definition says, whichever of its two blocks holds
+	them. The reader every caller shares, so the drawing and the exports
+	always answer alike (@see junctionRolesOf(const Element *)).
+	@param definition the symbol's definition, or a null element
+*/
+JunctionRoles junctionRolesOf(const QDomElement &definition);
+
+/**
+	@brief junctionChainNeighbours
+	@return the two connections of a junction's chain around @a at: the one
+	the wire comes from, and the one it goes on to, either of them null when
+	there is none.
+
+	That is the chain the definition gives -- source, then target 1, target
+	2, target 3 -- read at the connection @a at sits on. The chain is what
+	says which way a wire runs through the junction, so a cable list can
+	name its ends and a stub can say where it comes from (#1500).
+
+	@param at a connection of a junction; anything else gives two nulls
+	@return {the connection before, the connection after}, in chain order
+*/
+QPair<Terminal *, Terminal *> junctionChainNeighbours(Terminal *at);
+
+/**
 	@brief endsPastJunctions
 	Return the connections a wire ends at, past the junctions it runs
 	through.

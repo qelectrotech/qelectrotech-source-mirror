@@ -8,6 +8,9 @@
 #include <QHash>
 #include <QStringList>
 #include <QDomDocument>
+	//The roles of a junction, and their reader, shared with the drawing:
+	//the two must always answer alike
+#include <qetgraphicsitem/terminal.h>
 
 class QETProject;
 class QWidget;
@@ -53,16 +56,6 @@ struct ConductorData {
 };
 
 /**
- * Where a junction's wire comes in at and where it goes on to, read from
- * the junction's definition: a symbol's own information, which every copy
- * of it shares and which no database has to hold.
- */
-struct JunctionRoles {
-    QString source;
-    QStringList targets;
-};
-
-/**
  * @brief The WiringListExport class
  * Exports the wiring diagram from QElectroTech as a CSV file.
  */
@@ -79,6 +72,21 @@ public:
         have no source connection set and so stayed in the list unresolved
     */
     QString toCsvString(int *unassigned_junctions = nullptr) const;
+
+    /**
+        Write every run through a junction as the one run it is, and count
+        the junctions which have a wire on them and no source connection
+        set. Shared by the CSV export and by the database list, which are
+        meant to agree (#1500).
+        @param conductors the rows, changed in place
+        @param elementsInfo the symbols the rows name, holding the roles
+        read from the definitions of the junctions among them
+        @param unassigned_junctions, when given, is set to how many
+        junctions stayed in the list unresolved
+    */
+    static void resolveJunctionRuns(QList<ConductorData> &conductors,
+                                    const QMap<QString, ElementInfo> &elementsInfo,
+                                    int *unassigned_junctions);
 
 private:
     QETProject *m_project;

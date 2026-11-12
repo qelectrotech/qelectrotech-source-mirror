@@ -1294,3 +1294,115 @@ QList<Terminal *> endsPastJunctions(Terminal *end)
 	return walkPastJunctions(end, passed);
 }
 
+JunctionRoles junctionRolesOf(const QDomElement &definition)
+{
+	JunctionRoles roles;
+	if (definition.isNull()) {
+		return roles;
+	}
+
+		//One of the symbol's two blocks: kind information first, the one a
+		//symbol whose roles have been moved keeps them in, element
+		//information as the fallback for a symbol written before that move
+	const auto readBlock = [&definition](const QString &block_name,
+					 const QString &entry_name) {
+		JunctionRoles read;
+		QString targets[3];
+		const QDomElement block = definition.firstChildElement(block_name);
+		for (QDomElement entry = block.firstChildElement(entry_name) ;
+		     !entry.isNull() ; entry = entry.nextSiblingElement(entry_name))
+		{
+			const QString name = entry.attribute(QStringLiteral("name"));
+			const QString value = entry.text().trimmed();
+			if (name == QLatin1String("junction_source")) {
+				read.source = value;
+			} else if (name == QLatin1String("junction_target_1")) {
+				targets[0] = value;
+			} else if (name == QLatin1String("junction_target_2")) {
+				targets[1] = value;
+			} else if (name == QLatin1String("junction_target_3")) {
+				targets[2] = value;
+			}
+		}
+			//The targets are read by their number rather than by the order
+			//the file holds them in: the chain follows them 1, 2, 3 either way
+		for (const QString &target : targets) {
+			if (!target.isEmpty()) read.targets << target;
+		}
+		return read;
+	};
+
+	const JunctionRoles from_kind = readBlock(QStringLiteral("kindInformations"),
+						   QStringLiteral("kindInformation"));
+	const JunctionRoles from_element = readBlock(QStringLiteral("elementInformations"),
+						     QStringLiteral("elementInformation"));
+	return (from_kind.source.isEmpty() && from_kind.targets.isEmpty())
+			? from_element : from_kind;
+}
+
+JunctionRoles junctionRolesOf(const Element *junction)
+{
+	if (!junction) {
+		return JunctionRoles();
+	}
+	return junctionRolesOf(junction->location().xml());
+}
+
+QPair<Terminal *, Terminal *> junctionChainNeighbours(Terminal *at)
+{
+	const QPair<Terminal *, Terminal *> nowhere(nullptr, nullptr);
+	if (!at || !at->parentElement()) {
+		return nowhere;
+	}
+	Element *junction = at->parentElement();
+	if (!(junction->linkType() & Element::Junction)) {
+		return nowhere;
+	}
+	const JunctionRoles roles = junctionRolesOf(junction);
+	if (roles.source.isEmpty()) {
+			//No source set: there is no chain to read (#1500)
+		return nowhere;
+	}
+
+		//The connection of this junction a uuid names
+	const auto connection = [&junction](const QString &terminal_uuid) {
+		const QUuid wanted(terminal_uuid);
+		for (Terminal *candidate : junction->terminals())
+		{
+			if (candidate->uuid() == wanted) {
+				return candidate;
+			}
+		}
+		return static_cast<Terminal *>(nullptr);
+	};
+
+	const QUuid own = at->uuid();
+	if (own == QUuid(roles.source))
+	{
+			//The source leads on to the first target and comes from nowhere
+		const QString after = roles.targets.isEmpty()
+				? QString() : roles.targets.first();
+		return qMakePair(static_cast<Terminal *>(nullptr), connection(after));
+	}
+
+	int index = -1;
+	for (int i = 0 ; i < roles.targets.size() ; ++i)
+	{
+		if (QUuid(roles.targets.at(i)) == own) {
+			index = i;
+			break;
+		}
+	}
+	if (index < 0) {
+			//A connection the definition gives no role
+		return nowhere;
+	}
+		//What leads to it, and what it leads on to: a target in the middle
+		//of the chain has both, the last one only what leads to it
+	const QString before = index == 0 ? roles.source
+					: roles.targets.at(index - 1);
+	const QString after = index + 1 < roles.targets.size()
+			? roles.targets.at(index + 1) : QString();
+	return qMakePair(connection(before), connection(after));
+}
+
