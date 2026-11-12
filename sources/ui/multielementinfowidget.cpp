@@ -129,7 +129,6 @@ bool MultiElementInfoWidget::takesInformations(const Element *element)
 		case Element::Thumbnail:
 		case Element::Master:
 		case Element::Terminale:
-		case Element::Junction:
 			return true;
 		default:
 			return false;
