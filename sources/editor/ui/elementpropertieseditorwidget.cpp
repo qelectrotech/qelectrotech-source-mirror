@@ -22,6 +22,7 @@
 #include <qetinformation.h>
 #include <TerminalStrip/terminalcatalog.h>
 #include <TerminalStrip/terminalcolor.h>
+#include "qetgraphicsitem/terminal.h"
 #include <TerminalStrip/realterminal.h>
 #include <editor/graphicspart/partterminal.h>
 #include "ui_elementpropertieseditorwidget.h"
@@ -772,24 +773,6 @@ void ElementPropertiesEditorWidget::setConnections(const QList<Connection> &conn
 	populateJunctionRoles();
 }
 
-/// The element information the source connection of a junction is stored against
-const QString JunctionSourceKey = QStringLiteral("junction_source");
-
-/// The element informations the connections a junction goes on to are stored
-/// against, in the order the wiring list follows them
-QStringList junctionTargetKeys()
-{
-	return {QStringLiteral("junction_target_1"),
-			QStringLiteral("junction_target_2"),
-			QStringLiteral("junction_target_3")};
-}
-
-/// Every element information a junction role is stored against
-QStringList junctionRoleKeys()
-{
-	return QStringList{JunctionSourceKey} << junctionTargetKeys();
-}
-
 /**
 	@brief sortConnections
 	The rows read as the symbol was drawn: by name, so that the numbered
@@ -891,10 +874,11 @@ void ElementPropertiesEditorWidget::populateJunctionRoles()
 
 		auto *role = new QComboBox(ui->m_junction_roles);
 		role->addItem(tr("Not assigned"), QString());
-		role->addItem(tr("Source"), JunctionSourceKey);
-		role->addItem(tr("Target 1"), QStringLiteral("junction_target_1"));
-		role->addItem(tr("Target 2"), QStringLiteral("junction_target_2"));
-		role->addItem(tr("Target 3"), QStringLiteral("junction_target_3"));
+		const QStringList target_keys = junctionTargetKeys();
+		role->addItem(tr("Source"), junctionSourceKey());
+		role->addItem(tr("Target 1"), target_keys.at(0));
+		role->addItem(tr("Target 2"), target_keys.at(1));
+		role->addItem(tr("Target 3"), target_keys.at(2));
 		const QString held = role_of.value(connection.uuid.toString());
 		if (!held.isEmpty()) {
 			role->setCurrentIndex(role->findData(held));
