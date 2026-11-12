@@ -102,6 +102,33 @@ class tst_keyboardmovereference : public QObject
 			DiagramView::setCrosshairShown(false);
 		}
 
+			//Following a cross reference: at the jump zoom at least, the
+			//target in the middle; 0 shows the whole folio as before
+		void jumpZoom()
+		{
+			const QRectF target(600, 350, 20, 20);
+			DiagramView::setJumpZoom(125);
+			m_view->zoomFit();
+			QVERIFY(m_view->transform().m11() < 1.25);
+			m_view->showJumpTarget(target);
+			QCOMPARE(m_view->transform().m11(), 1.25);
+			const QPointF middle = m_view->mapToScene(m_view->viewport()->rect().center());
+			QVERIFY2(QLineF(middle, target.center()).length() < 5,
+					 qPrintable(QStringLiteral("%1,%2").arg(middle.x()).arg(middle.y())));
+			m_view->setTransform(QTransform::fromScale(2, 2));
+			m_view->showJumpTarget(target);
+			QCOMPARE(m_view->transform().m11(), 2.0);
+			DiagramView::setJumpZoom(0);
+			m_view->showJumpTarget(target);
+			m_view->zoomFit();
+			const qreal fit = m_view->transform().m11();
+			m_view->setTransform(QTransform::fromScale(2, 2));
+			m_view->showJumpTarget(target);
+			QCOMPARE(m_view->transform().m11(), fit);
+			m_view->resetTransform();
+			m_view->centerOn(300, 250);
+		}
+
 			//The text of a turned symbol: the arrow keys move it along the
 			//folio, not along the symbol; undo puts it back
 		void turnedSymbolText()
