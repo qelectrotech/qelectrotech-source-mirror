@@ -3119,6 +3119,28 @@ class BinaryPolicy(unittest.TestCase):
         inst = self.installed_at(Path(self.tmp.name) / "x", Path(self.tmp.name) / "x" / "mcp")
         self.assertIsNone(inst._installation())
 
+    def test_the_macos_bundle_layout_is_found_too(self):
+        """In a macOS bundle the server sits in Contents/Resources/mcp, the
+        program in Contents/MacOS and the collection in
+        Contents/Resources/elements."""
+        contents = Path(self.tmp.name) / "QElectroTech.app" / "Contents"
+        (contents / "Resources" / "elements").mkdir(parents=True)
+        exe = fake_qet(contents / "MacOS")
+        inst = self.installed_at(contents, contents / "Resources" / "mcp")
+        del os.environ["QET_BINARY"]
+        args = {"project": str(self.root / "ok.qet")}
+        inst.enforce_path_policy("qet_query", args)
+        self.assertTrue(Path(args["binary"]).samefile(exe), args["binary"])
+        self.assertEqual(args["elements_dir"],
+                         str((contents / "Resources" / "elements").resolve()))
+
+    def test_a_resources_folder_without_macos_is_not_an_install(self):
+        """Contents/Resources/mcp with no Contents/MacOS beside it is not a
+        bundle."""
+        contents = Path(self.tmp.name) / "y" / "Contents"
+        inst = self.installed_at(contents, contents / "Resources" / "mcp")
+        self.assertIsNone(inst._installation())
+
 
 class LaunchExecutable(unittest.TestCase):
     """Windows cannot run a lone copy of QElectroTech (F065): its DLLs sit

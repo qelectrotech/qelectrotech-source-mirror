@@ -6154,6 +6154,8 @@ def _installation() -> tuple | None:
                                            (make install: Linux, snap, flatpak, macOS)
       <root>/mcp/                       -> <root>/bin, <root>/elements
                                            (the Windows installers and portable folder)
+      <app>/Contents/Resources/mcp/     -> <app>/Contents/MacOS, <app>/Contents/Resources/elements
+                                           (the macOS application bundle)
     """
     here = Path(__file__).resolve().parent
     if here.name != "mcp":
@@ -6161,6 +6163,9 @@ def _installation() -> tuple | None:
     if here.parent.name == "qelectrotech" and here.parent.parent.name == "share":
         prefix = here.parent.parent.parent
         return prefix / "bin", here.parent / "elements"
+    if (here.parent.name == "Resources" and here.parent.parent.name == "Contents"
+            and (here.parent.parent / "MacOS").is_dir()):
+        return here.parent.parent / "MacOS", here.parent / "elements"
     if (here.parent / "bin").is_dir():
         return here.parent / "bin", here.parent / "elements"
     return None
