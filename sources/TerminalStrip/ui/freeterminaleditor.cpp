@@ -26,6 +26,24 @@
 #include <TerminalStrip/UndoCommand/addterminaltostripcommand.h>
 
 #include <QSortFilterProxyModel>
+#include "../../utils/qetutils.h"
+
+#include <QHeaderView>
+
+namespace {
+	/// Sorts "X1:2" before "X1:10", as the strips are sorted
+class NaturalSortProxyModel : public QSortFilterProxyModel
+{
+	public:
+		using QSortFilterProxyModel::QSortFilterProxyModel;
+	protected:
+		bool lessThan(const QModelIndex &left, const QModelIndex &right) const override
+		{
+			return QETUtils::naturalLessThan(left.data(Qt::DisplayRole).toString(),
+											 right.data(Qt::DisplayRole).toString());
+		}
+};
+}
 
 /**
  * @brief FreeTerminalEditor::FreeTerminalEditor
@@ -45,12 +63,16 @@ FreeTerminalEditor::FreeTerminalEditor(QETProject *project, QWidget *parent) :
 		//The view works on a filtered proxy of the model. The filter is a plain,
 		//case insensitive "contains" on the label, so typing Z1 shows Z1:1, Z1:2...
 		//Not dynamic : an edited label must not vanish from the table while it is typed.
-	m_proxy_model = new QSortFilterProxyModel(this);
+	m_proxy_model = new NaturalSortProxyModel(this);
 	m_proxy_model->setSourceModel(m_model);
 	m_proxy_model->setFilterKeyColumn(FreeTerminalModel::Label);
 	m_proxy_model->setFilterCaseSensitivity(Qt::CaseInsensitive);
 	m_proxy_model->setDynamicSortFilter(false);
 	ui->m_table_view->setModel(m_proxy_model);
+		//A click on a heading sorts by that column, up or down; the
+		//project's order until then
+	ui->m_table_view->horizontalHeader()->setSortIndicator(-1, Qt::AscendingOrder);
+	ui->m_table_view->setSortingEnabled(true);
 	ui->m_table_view->setCurrentIndex(m_proxy_model->index(0,0));
 
 	connect(ui->m_filter_le, &QLineEdit::textChanged, this, [this](const QString &text)

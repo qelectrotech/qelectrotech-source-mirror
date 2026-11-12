@@ -221,6 +221,32 @@ private slots:
 				 QString());
 	}
 
+	void aSignTypedWithTheValueIsNotDoubled()
+	{
+			//Many people type the label as "-K1": one sign, not "--K1",
+			//in the drawing and in the database alike
+		QETProject project;
+		Diagram *diagram = project.addNewDiagram();
+		setFolio(diagram, QStringLiteral("=FACTORY"), QStringLiteral("CP1"));
+		Element *element = symbol(diagram);
+		QVERIFY(element);
+		setInfo(element, info("-K1", {}, QStringLiteral("+FIELD")));
+
+		QCOMPARE(text(QStringLiteral("%{structure_id_full}"), element->elementInformations(), element),
+				 QStringLiteral("=FACTORY+FIELD-K1"));
+		QCOMPARE(text(QStringLiteral("%{structure_id}"), element->elementInformations(), element),
+				 QStringLiteral("+FIELD-K1"));
+
+		project.dataBase()->updateDB();
+		QString error;
+		QSqlQuery query = project.dataBase()->newQuery(QStringLiteral(
+			"SELECT structure_id FROM qet_devices WHERE device_uuid = '%1'")
+				.arg(element->uuid().toString()), &error);
+		QVERIFY2(error.isEmpty(), qPrintable(error));
+		QVERIFY2(query.next(), "the element is not in qet_devices");
+		QCOMPARE(query.value(0).toString(), QStringLiteral("=FACTORY+FIELD-K1"));
+	}
+
 	void databaseSaysWhatTheDrawingSays()
 	{
 			//qet_devices.structure_id is the full designation,

@@ -516,6 +516,7 @@ qet_add_app_test(tst_structureid tst_structureid.cpp)
 qet_add_app_test(tst_devicelist tst_devicelist.cpp)
 # qet_terminals: one row per terminal of a strip, in the strip's order.
 qet_add_app_test(tst_terminallist tst_terminallist.cpp)
+# qet_cables: one row per cable, in its own place or its first folio's (tst_cablelist, above).
 # The labels file behind a symbol's prefix is read once, and again only when it changes.
 qet_add_app_test(tst_labelsfilecache tst_labelsfilecache.cpp)
 # A quick second click on the same spot reaches the shape tools as a
@@ -641,6 +642,9 @@ qet_add_app_test(tst_updateelements tst_updateelements.cpp)
 # Editing a placed element: redrawn on save; optionally found and edited
 # in the collection it was taken from, which updates the open projects.
 qet_add_app_test(tst_editcollectionsource tst_editcollectionsource.cpp)
+# The terminal block manager: the independent terminals, folding the
+# tree, sorting their table, OK.
+qet_add_app_test(tst_terminalstripmanager tst_terminalstripmanager.cpp)
 qet_add_app_test(tst_selectionrectangle tst_selectionrectangle.cpp)
 # The selection filter (status bar): what a click, a selection rectangle
 # and Select All pick; a click goes through what is left out.
@@ -731,6 +735,8 @@ qet_add_app_test(tst_terminalstriporder tst_terminalstriporder.cpp)
 # Location and Label of the first piece its wires land on past the strip, in
 # plan order, the same three fields the cable list computes for a target.
 qet_add_app_test(tst_cabletarget tst_cabletarget.cpp)
+qet_add_app_test(tst_cablelist tst_cablelist.cpp)
+
 # Copying a cable leaves the cable it was copied from whole.
 qet_add_app_test(tst_cablecopy tst_cablecopy.cpp)
 

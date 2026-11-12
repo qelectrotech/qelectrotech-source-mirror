@@ -15,6 +15,7 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
+#include "../qet.h"
 #include <QGraphicsItemGroup>
 #include <QPropertyAnimation>
 
@@ -121,11 +122,14 @@ void MoveGraphicsItemCommand::move(const QPointF &movement)
 			}
 		}
 
+			//The movement is on the folio: in the coordinates of a turned
+			//parent (the text of a turned symbol) it goes another way
+		const QPointF step = QET::sceneStepInParent(qgi, movement);
 		if (const auto graphics_object = qgi->toGraphicsObject()) {
 			setupAnimation(graphics_object,
 						   "pos",
 						   graphics_object->pos(),
-						   graphics_object->pos() + movement);
+						   graphics_object->pos() + step);
 		}
 		else if (qgi->type() == QGraphicsItemGroup::Type)
 		{
@@ -134,12 +138,12 @@ void MoveGraphicsItemCommand::move(const QPointF &movement)
 				setupAnimation(etig,
 							   "pos",
 							   etig->pos(),
-							   etig->pos() + movement);
+							   etig->pos() + step);
 			}
 		}
 		else
 		{
-			qgi->setPos(qgi->pos() + movement);
+			qgi->setPos(qgi->pos() + step);
 		}
 	}
 }

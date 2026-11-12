@@ -80,7 +80,8 @@ const QStringList our_views{QStringLiteral("drawing_item_view"), QStringLiteral(
 							QStringLiteral("qet_folios"), QStringLiteral("qet_devices"),
 							QStringLiteral("qet_wires"), QStringLiteral("qet_links"),
 							QStringLiteral("qet_device_list"),
-							QStringLiteral("qet_terminals")};
+							QStringLiteral("qet_terminals"),
+							QStringLiteral("qet_cables")};
 
 	//The history a project keeps in its .qetdb when told to, one revision
 	//per save (QETDB-S6-SCOPE.md): neither the content digest nor a
