@@ -40,6 +40,9 @@ void TitleBlockTemplateRenderer::setTitleBlockTemplate(
 	if (titleblock_template != m_titleblock_template) {
 		m_titleblock_template = titleblock_template;
 	}
+		// Always record anew: a template removed from the project and
+		// loaded again may come back at the address of the former one
+	invalidateCache();
 }
 
 /**
