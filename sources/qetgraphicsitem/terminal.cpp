@@ -1159,6 +1159,8 @@ void Terminal::setMasterLabelIndex(int index)
 	parent element of terminal.
 	For folio report, return the terminal of linked other report.
 	For Terminal element, return the other terminal of terminal element.
+	For junction, the same: its terminals share one potential, so a wire
+	passes through it with its voltage, colour and section.
 	@param terminal : to start search
 	@param all_diagram :if true return all related terminal,
 	false return only terminal in the same diagram of t
@@ -1206,14 +1208,21 @@ QList<Terminal *> relatedPotentialTerminal (
 			return (elmt_list.first()->terminals());
 		}
 	}
-	// If terminal parent element is a Terminal element.
-	else if (terminal -> parentElement() -> linkType() & Element::Terminale)
+	// If terminal parent element is a Terminal element, or a junction:
+	// both pass a potential through their own terminals, which is the whole
+	// point of a junction being more than a drawing (#1500).
+	else if (terminal -> parentElement() -> linkType()
+			 & (Element::Terminale | Element::Junction))
 	{
 		// English: Check if the user activated the function separation
 		// checkbox for this terminal (the checkbox that used to be called
 		// potential separation -- the stored flag is still
 		// "potential_isolating" so existing elements keep their setting).
+		// Read for a terminal only: a junction has no separation to ask
+		// for, its terminals are one node whatever its definition says, so
+		// a flag left in it from before it was retyped stops nothing (#1500).
 		if (!ignore_function_separation
+			&& (terminal -> parentElement()->linkType() & Element::Terminale)
 			&& QET::infoFlagIsTrue(terminal->parentElement()->elementInformations().value(QStringLiteral("potential_isolating")).toString())) {
 			// English: The terminals are function separated -- but terminals
 			// sharing this terminal's own, non-empty potential-group
@@ -1239,5 +1248,49 @@ QList<Terminal *> relatedPotentialTerminal (
 	}
 
 	return QList<Terminal *>();
+}
+
+	//The walk itself, kept out of the way: the junctions already passed are
+	//carried along so a drawing which runs back to one stops instead of
+	//walking around for ever
+static QList<Terminal *> walkPastJunctions(Terminal *end, QSet<QUuid> &passed)
+{
+	if (!end || !end->parentElement()) {
+		return QList<Terminal *>();
+	}
+	Element *element = end->parentElement();
+	if (!(element->linkType() & Element::Junction)) {
+			//Not a junction: this is where the wire ends, and it names
+			//the end as it stands
+		return QList<Terminal *>() << end;
+	}
+	if (passed.contains(element->uuid())) {
+		return QList<Terminal *>();
+	}
+	passed.insert(element->uuid());
+
+	QList<Terminal *> reached;
+	for (Terminal *other : element->terminals())
+	{
+		if (other == end) {
+			continue;
+		}
+		for (const Conductor *conductor : other->conductors())
+		{
+			if (!conductor || !conductor->terminal1 || !conductor->terminal2) {
+				continue;
+			}
+			Terminal *far = conductor->terminal1 == other
+					? conductor->terminal2 : conductor->terminal1;
+			reached += walkPastJunctions(far, passed);
+		}
+	}
+	return reached;
+}
+
+QList<Terminal *> endsPastJunctions(Terminal *end)
+{
+	QSet<QUuid> passed;
+	return walkPastJunctions(end, passed);
 }
 

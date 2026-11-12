@@ -48,6 +48,7 @@ namespace {
 			case ElementData::NextReport:
 			case ElementData::PreviousReport:      return QCoreApplication::translate("ItemDescription", "Folio report");
 			case ElementData::Terminal:            return QCoreApplication::translate("ItemDescription", "Terminal");
+			case ElementData::Junction:            return QCoreApplication::translate("ItemDescription", "Junction");
 			case ElementData::Thumbnail:           return QCoreApplication::translate("ItemDescription", "Thumbnail");
 			case ElementData::ConductorDefinition: return QCoreApplication::translate("ItemDescription", "Conductor definition");
 			default:                               return QCoreApplication::translate("ItemDescription", "Symbol");

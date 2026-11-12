@@ -369,6 +369,9 @@ void ElementPropertiesWidget::updateUi()
 		case Element::Terminale:
 			m_list_editor << new ElementInfoWidget(m_element, this);
 			break;
+		case Element::Junction:
+			m_list_editor << new ElementInfoWidget(m_element, this);
+			break;
 		case Element::ConductorDefinition:
 			break;
 

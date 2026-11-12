@@ -27,6 +27,7 @@
 #include "qetgraphicsitem/conductor.h"
 #include "qetgraphicsitem/element.h"
 #include "qetgraphicsitem/terminal.h"
+#include "qetgraphicsitem/terminalelement.h"
 
 #include <QGraphicsSceneMouseEvent>
 #include <QUndoStack>
@@ -164,6 +165,33 @@ class TstConnectionSymbols : public QObject
 			diagram->clearEventInterface();
 			ConnectionSymbols::resetPath(ConnectionSymbols::Interruption);
 			QVERIFY(ConnectionSymbols::path(ConnectionSymbols::Interruption).isEmpty());
+		}
+
+			//A corner placed on the folio is a junction, not a terminal: it is
+			//never numbered, carries no label, and is no terminal the terminal
+			//strip manager could pick up as a free one (#1500)
+		void aPlacedJunctionIsNotATerminal()
+		{
+			Diagram *diagram = QetAppTest::diagram();
+			const QPointF at(500, 300);
+			placeCorner(diagram, at);
+			const QList<Element *> placed = cornersAt(diagram, at);
+			QCOMPARE(placed.size(), 1);
+			Element *corner = placed.first();
+
+			QCOMPARE(int(corner->elementData().m_type), int(ElementData::Junction));
+			QCOMPARE(int(corner->linkType()), int(Element::Junction));
+
+				//No numbering scheme may reach it, and it holds no label to give
+			QVERIFY(!corner->takesSchemeNumber());
+			QVERIFY(corner->actualLabel().isEmpty());
+
+				//The type the terminal strip code casts to, and the type the
+				//free-terminal and terminal-numbering queries filter on
+			QVERIFY2(!dynamic_cast<TerminalElement *>(corner),
+				 "a junction is no terminal, so the terminal plan stays free of it");
+
+			diagram->undoStack().undo();
 		}
 };
 

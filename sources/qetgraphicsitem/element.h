@@ -72,7 +72,8 @@ class Element : public QetGraphicsItem
             Slave = 16,
             Terminale = 32,
             Thumbnail = 64,
-            ConductorDefinition = 128};
+            ConductorDefinition = 128,
+            Junction = 256};
 
 		/**
 		 * @brief The LinkInfo struct

@@ -483,6 +483,10 @@ endfunction()
 # The Connections toolbar: a button per symbol on the wires, a click
 # places it, and the symbol of a button can be changed.
 qet_add_app_test(tst_connectionsymbols tst_connectionsymbols.cpp)
+
+# The junction element type: the connection symbol on a wire, which is never
+# numbered and never a terminal (#1500).
+qet_add_app_test(tst_junctiontype tst_junctiontype.cpp)
 target_compile_definitions(tst_connectionsymbols PRIVATE
   QET_ELEMENTS_DIR="${QET_DIR}/elements")
 # Connectivity-aware duplicate labels and clickable occurrences, through the

@@ -175,4 +175,23 @@ QList<Terminal *> relatedPotentialTerminal (const Terminal *terminal,
 						const bool all_diagram = true,
 						const bool ignore_function_separation = false);
 
+/**
+	@brief endsPastJunctions
+	Return the connections a wire ends at, past the junctions it runs
+	through.
+
+	A junction is a connection point on a wire rather than a piece of its
+	own: it is bought nowhere, built nowhere, and the wire does not end
+	there. From the connection the wire ends at, every other connection of
+	that junction carries the wire on, and a junction reached that way is
+	passed in turn (#1500).
+
+	@param end the connection the wire ends at -- one of a junction's own,
+	or one of a piece which names an end
+	@return the connections the wire ends at, none of them a junction's own;
+	empty when it reaches nothing else, which is a wire ending on a junction
+	the rest of the drawing has not wired up yet
+*/
+QList<Terminal *> endsPastJunctions(Terminal *end);
+
 #endif

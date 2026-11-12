@@ -133,10 +133,11 @@ void SearchAndReplaceWorker::replaceElement(QList<Element *> list)
 	project_->undoStack()->beginMacro(QObject::tr("Find / replace element properties."));
 	for (Element *elmt : list)
 	{
-			//We apply change only for master, slave, and terminal element.
+		//We apply change only for master, slave, terminal and junction element.
 		if (elmt->linkType() == Element::Master ||
 			elmt->linkType() == Element::Simple ||
 			elmt->linkType() == Element::Terminale ||
+			elmt->linkType() == Element::Junction ||
 			elmt->linkType() == Element::Thumbnail)
 		{
 			DiagramContext old_context;

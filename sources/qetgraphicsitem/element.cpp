@@ -2278,6 +2278,8 @@ QString Element::linkTypeToString() const
 			return QStringLiteral("Thumbnail");
 		case ConductorDefinition:
 			return QStringLiteral("ConductorDefinition");
+		case Junction:
+			return QStringLiteral("Junction");
 		default:
 			return QStringLiteral("Unknown");
 	}

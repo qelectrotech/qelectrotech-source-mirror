@@ -79,6 +79,10 @@ namespace
 		 * a terminal of a strip by its strip and its position on it
 		 * ("X1:7"), anything else by its element and its terminal
 		 * ("K1:A1").
+		 *
+		 * A wire ending on a junction is named by what the junction leads
+		 * to instead: the junction is a connection point on the wire, so it
+		 * is never where the wire is going (#1500).
 		 */
 	QString endDesignation(Terminal *terminal)
 	{
@@ -88,6 +92,16 @@ namespace
 		Element *element = terminal->parentElement();
 		if (!element) {
 			return QString();
+		}
+
+		if (element->linkType() & Element::Junction) {
+			const auto reached = endsPastJunctions(terminal);
+				//One way on, as the drawing has it: a junction the wire
+				//reaches several ways from here names the first of them,
+				//the way the cable list picks its target
+			if (!reached.isEmpty()) {
+				return endDesignation(reached.first());
+			}
 		}
 
 		auto *terminal_element = qobject_cast<TerminalElement *>(element);
@@ -720,6 +734,24 @@ QVector<QString> RealTerminal::automaticCableTarget() const
 					continue;
 				}
 				if (own_.contains(element_->uuid())) {
+					continue;
+				}
+				//A junction the cable runs through is not where it
+					//lands: it is a connection point on the wire rather
+					//than a piece of its own, so the cable lands on what
+					//the junction leads to (#1500)
+				if (element_->linkType() & Element::Junction) {
+					for (Terminal *reached : endsPastJunctions(terminal_)) {
+						if (!reached || !reached->parentElement()) {
+							continue;
+						}
+						Element *reached_element = reached->parentElement();
+						if ((reached_element->linkType() & Element::AllReport)
+							|| own_.contains(reached_element->uuid())) {
+							continue;
+						}
+						landed_.insert(reached_element->uuid(), reached_element);
+					}
 					continue;
 				}
 				landed_.insert(element_->uuid(), element_);
