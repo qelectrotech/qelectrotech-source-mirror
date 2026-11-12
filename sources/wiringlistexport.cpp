@@ -579,9 +579,10 @@ QString WiringListExport::toCsvString(int *unassigned_junctions) const
 	roles give is the chain: source to target 1, target 1 to target 2, and
 	so on.
 
-	A junction with no source set stays as it is -- the user has not said
-	which way it runs -- and is counted, so both lists can say so rather
-	than listing it silently wrong.
+	A junction with no source set is passed on when only one way out of it
+	carries a wire -- there is nothing to tell apart -- and stays as it
+	stands when there is a choice, counted so both lists can say so rather
+	than listing it silently wrong (#1500).
 
 	@param conductors the rows, changed in place
 	@param elementsInfo the symbols the rows name, holding the roles read
@@ -615,6 +616,22 @@ void WiringListExport::resolveJunctionRuns(QList<ConductorData> &conductors,
     auto labelOf = [&elementsInfo](const QString &element_uuid) {
         const ElementInfo info = elementsInfo.value(element_uuid);
         return info.label.isEmpty() ? info.name : info.label;
+    };
+
+        //The connections of a junction a wire hangs on
+    auto wiredConnectionsOf = [&on_connection](const QString &element_uuid) {
+        QStringList connections;
+        const QString prefix = element_uuid + QLatin1Char('|');
+        for (auto it = on_connection.constBegin(); it != on_connection.constEnd(); ++it)
+        {
+            if (it.key().startsWith(prefix)) {
+                const QString connection_uuid = it.key().mid(prefix.size());
+                if (!connections.contains(connection_uuid)) {
+                    connections << connection_uuid;
+                }
+            }
+        }
+        return connections;
     };
 
         //The end a conductor reaches, given the end it hangs on
@@ -679,7 +696,22 @@ void WiringListExport::resolveJunctionRuns(QList<ConductorData> &conductors,
             const auto links = junctionChainRoles(reached.junctionSource,
                                                   reached.junctionTargets,
                                                   far.second);
-            const QString next = links.first.isEmpty() ? links.second : links.first;
+            QString next = links.first.isEmpty() ? links.second : links.first;
+            if (next.isEmpty()) {
+                    //The chain does not say: nothing was ever set on this
+                    //symbol, or this connection has no role in it. A
+                    //junction with one way out of it still has nothing to
+                    //tell apart, so the wire goes on that way -- a corner
+                    //passes a wire through without needing a source (#1500)
+                QStringList other = wiredConnectionsOf(far.first);
+                other.removeAll(far.second);
+                next = junctionPassThrough(other);
+            }
+            if (next.isEmpty()) {
+                    //More than one way on, or none at all: the run ends
+                    //here and is counted rather than guessed (#1500)
+                continue;
+            }
             stops += walk(far.first, next, passed, walked);
         }
         return stops;
@@ -688,24 +720,51 @@ void WiringListExport::resolveJunctionRuns(QList<ConductorData> &conductors,
     QList<ConductorData> added;
     QSet<int> superseded;
 
+        //Every wire of @a wires has already been written into a row by
+        //another junction: two of them in a row share the wire between
+        //them, and whichever of them is read first writes that part of
+        //the run
+    auto alreadyWritten = [&superseded](const QList<int> &wires) {
+        for (const int wire : wires) {
+            if (!superseded.contains(wire)) {
+                return false;
+            }
+        }
+        return true;
+    };
+
     for (auto it = elementsInfo.constBegin(); it != elementsInfo.constEnd(); ++it)
     {
         const ElementInfo &info = it.value();
         if (!info.isJunction) continue;
 
-        if (info.junctionSource.isEmpty()) {
-                //A junction a wire hangs on has rows ending at it,
-                //which stay as they are: say so rather than listing
-                //them as if the way through it were known. One
-                //nothing was ever wired to has no row to get wrong,
-                //and counts for nothing (#1500)
-            if (unassigned_junctions && wired.contains(it.key())) {
-                ++(*unassigned_junctions);
+            //The connections of the chain: what the roles give, or both
+            //ends of a pass-through -- a junction nothing was ever set on
+            //with a single way out of it, which has nothing to tell apart
+            //and needs no source to be passed on (#1500)
+        QStringList chain_connections;
+        if (info.junctionSource.isEmpty())
+        {
+            const QStringList wired_connections = wiredConnectionsOf(it.key());
+            if (wired_connections.size() != 2) {
+                    //More than one way on, or none at all: the rows stay
+                    //as they are and the junction is said out loud rather
+                    //than listed as if the way through were known. One
+                    //nothing was ever wired to has no row to get wrong and
+                    //counts for nothing (#1500)
+                if (unassigned_junctions && wired.contains(it.key())) {
+                    ++(*unassigned_junctions);
+                }
+                continue;
             }
-            continue;
+            chain_connections = wired_connections;
         }
-        const QString on_source = it.key() + QLatin1Char('|') + info.junctionSource;
-        if (on_connection.value(on_source).isEmpty()) continue;
+        else
+        {
+            const QString on_source = it.key() + QLatin1Char('|') + info.junctionSource;
+            if (on_connection.value(on_source).isEmpty()) continue;
+            chain_connections << info.junctionSource << info.junctionTargets;
+        }
 
         QList<QList<Stop>> chain;   // one list of stops per connection
         QList<QList<int>> walked;   // every wire walked to get there
@@ -728,34 +787,38 @@ void WiringListExport::resolveJunctionRuns(QList<ConductorData> &conductors,
             chain.append(stops);
             walked.append(wires);
         };
-        addToChain(info.junctionSource);
-        for (const QString &target : info.junctionTargets) {
-            addToChain(target);
+        for (const QString &connection_uuid : chain_connections) {
+            addToChain(connection_uuid);
         }
-
-            //Two junctions in a row share the wire between them, and
-            //whichever of them is read first writes the one row for
-            //the whole run: the other is left alone rather than
-            //writing the same run a second time, with a junction at
-            //its end (#1500)
-        bool claimed = false;
-        for (const QList<int> &wires : walked)
-        {
-            for (const int wire : wires)
-            {
-                if (superseded.contains(wire)) {
-                    claimed = true;
-                    break;
-                }
+            //A pass-through has no order of its own, so its row is written
+            //in the order both lists read one in -- the same round the CSV
+            //writes it in -- instead of in whatever order the conductors
+            //happen to be held in (#1500)
+        if (info.junctionSource.isEmpty() && chain.size() == 2) {
+            const auto after = std::make_pair(labelOf(chain.at(1).first().element),
+                                              chain.at(1).first().element);
+            const auto before = std::make_pair(labelOf(chain.at(0).first().element),
+                                               chain.at(0).first().element);
+            if (after < before) {
+                std::swap(chain[0], chain[1]);
+                std::swap(walked[0], walked[1]);
             }
-            if (claimed) break;
         }
-        if (claimed) continue;
 
         for (int k = 1; k < chain.size(); ++k)
         {
             const QList<Stop> &from_side = chain.at(k - 1);
             const QList<Stop> &to_side = chain.at(k);
+                //A link every wire of which is already written belongs to
+                //the run another junction has just listed: left out, so a
+                //run is never written twice and no junction is named. The
+                //other links of that junction are written like any other,
+                //though -- the target of a T which the run through the
+                //corner before it never reaches still gets its row, rather
+                //than being left ending at the junction (#1500)
+            if (alreadyWritten(walked.at(k - 1)) && alreadyWritten(walked.at(k))) {
+                continue;
+            }
                 //Both halves of this link are written as the rows below,
                 //so neither is listed on its own any more -- nor is
                 //anything walked through the junctions in the way. Every

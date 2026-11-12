@@ -244,6 +244,24 @@ QStringList junctionRoleKeys();
 QPair<Terminal *, Terminal *> junctionChainNeighbours(Terminal *at);
 
 /**
+	@brief junctionPassThrough
+	@return the connection a wire goes on to when the chain does not say:
+	the one other connection of that junction which carries a wire, if
+	there is exactly one.
+
+	A junction with a single way out of it has nothing to tell apart, so
+	the wire simply goes on that way even when nothing was ever set on the
+	symbol -- a corner passes a wire through and needs no source for it
+	(#1500). Empty when there is no such connection, or more than one,
+	which is where the way on has to be told apart and there is nothing to
+	go by.
+
+	@param wired the other connections of the junction which carry a wire
+	@return the one of them to go on to, empty for none or several
+*/
+QString junctionPassThrough(const QStringList &wired);
+
+/**
 	@brief junctionChainRoles
 	@return the two connections of a chain around @a at: the one the wire
 	comes from, and the one it goes on to, either of them empty when there
@@ -279,9 +297,11 @@ QPair<QString, QString> junctionChainRoles(const QString &source, const QStringL
 
 	@param end the connection the wire ends at -- one of a junction's own,
 	or one of a piece which names an end
-	@return the connections the wire ends at, none of them a junction's own;
-	empty when the chain does not say where the wire goes on to, which is a
-	junction nothing was ever set on, or one whose run stops there
+	@return the connections the wire ends at, none of them a junction's own.
+	A junction with no source set is passed on when only one way out of it
+	carries a wire, because there is nothing to tell apart (#1500), and
+	the result is empty when there are more ways than that to choose from,
+	or none at all
 */
 QList<Terminal *> endsPastJunctions(Terminal *end);
 

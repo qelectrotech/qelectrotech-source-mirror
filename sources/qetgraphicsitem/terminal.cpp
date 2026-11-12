@@ -1435,6 +1435,11 @@ bool sameUuid(const QString &a, const QString &b)
 	@param at the connection to read the chain at, empty for none
 	@return {the connection before, the connection after}, in chain order
 */
+QString junctionPassThrough(const QStringList &wired)
+{
+	return wired.size() == 1 ? wired.first() : QString();
+}
+
 QPair<QString, QString> junctionChainRoles(const QString &source, const QStringList &targets,
 					   const QString &at)
 {
@@ -1485,10 +1490,27 @@ QPair<Terminal *, Terminal *> junctionChainNeighbours(Terminal *at)
 		//The chain as uuids, read by the one rule the lists read it by
 	const auto chain = junctionChainRoles(roles.source, roles.targets,
 					      at->uuid().toString());
-	if (chain.first.isEmpty() && chain.second.isEmpty()) {
-			//No source set, or a connection with no role in the
-			//chain: there is nothing to follow (#1500)
-		return nowhere;
+	QString way_on = chain.first.isEmpty() ? chain.second : chain.first;
+	if (way_on.isEmpty()) {
+			//The chain does not say: nothing was ever set on this
+			//symbol, or this connection has no role in it. A junction
+			//with one way out of it still has nothing to tell apart,
+			//so the wire goes on that way -- a corner passes a wire
+			//through without needing a source for it (#1500)
+		QStringList wired;
+		for (Terminal *other : junction->terminals())
+		{
+			if (other != at && !other->conductors().isEmpty()) {
+				wired << other->uuid().toString();
+			}
+		}
+		way_on = junctionPassThrough(wired);
+		if (way_on.isEmpty()) {
+				//More than one way on, or none at all: nothing
+				//to follow, and nothing to guess (#1500)
+			return nowhere;
+		}
+		return qMakePair(static_cast<Terminal *>(nullptr), connection(way_on));
 	}
 
 		//The connection of this junction a uuid names

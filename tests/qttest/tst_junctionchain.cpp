@@ -159,6 +159,38 @@ class tst_junctionchain : public QObject
 				 secondTargetUuid().toString());
 	}
 
+		/**
+			@brief cornerDefinition
+			@param with_roles whether the definition says which of its two
+			connections the wire comes in at and where it goes on to: a
+			corner has those two and nothing else, so its chain can only
+			be the one way (#1500)
+			@return the definition of a two-connection junction, the shape
+			of a corner
+		*/
+	static QString cornerDefinition(const bool with_roles)
+	{
+		const QString roles = with_roles
+			? QStringLiteral(
+				  "<kindInformations>"
+				  "<kindInformation name=\"junction_source\">%1</kindInformation>"
+				  "<kindInformation name=\"junction_target_1\">%2</kindInformation>"
+				  "</kindInformations>")
+				  .arg(sourceUuid().toString(), firstTargetUuid().toString())
+			: QString();
+		return QStringLiteral(
+				   "<definition type=\"element\" link_type=\"junction\" "
+				   "width=\"40\" height=\"20\" hotspot_x=\"20\" hotspot_y=\"10\">"
+				   "<names><name lang=\"en\">corner</name></names>%1"
+				   "<description>"
+				   "<line x1=\"0\" y1=\"10\" x2=\"40\" y2=\"10\" "
+				   "style=\"line-style:normal;line-weight:normal;filling:none;color:black\"/>"
+				   "<terminal name=\"1\" orientation=\"w\" uuid=\"%2\" x=\"0\" y=\"10\"/>"
+				   "<terminal name=\"2\" orientation=\"e\" uuid=\"%3\" x=\"40\" y=\"10\"/>"
+				   "</description></definition>")
+			.arg(roles, sourceUuid().toString(), firstTargetUuid().toString());
+	}
+
 		/// The definition of a one-connection terminal, the kind of
 		/// symbol a terminal strip holds
 	static QString terminalDefinition()
@@ -401,6 +433,10 @@ private slots:
 	void theDialogShowsTheResolvedRowsToo();
 	void twoJunctionsInARowAreFollowed();
 	void aStubIsNamedThroughTwoJunctions();
+	void aCornerIsFollowedOneToOne();
+	void aCornerWithoutARoleIsPassedOn();
+	void aJunctionWithOneWayOnIsPassedOn();
+	void aCornerFollowedByATKeepsEveryRow();
 };
 
 void tst_junctionchain::initTestCase()
@@ -785,6 +821,242 @@ void tst_junctionchain::aStubIsNamedThroughTwoJunctions()
 	const auto stub = realOf(scene.terminal);
 	QVERIFY(stub);
 	QCOMPARE(labelsOf(stub->wires()), QStringList({QStringLiteral("7")}));
+}
+
+
+/**
+ * A corner has two connections and nothing else, so its chain can only be
+ * the one way: what comes in at the source goes on to target 1, and the
+ * other way round. Both lists follow it exactly as they follow a T, and
+ * neither of them names the corner (#1500).
+ */
+void tst_junctionchain::aCornerIsFollowedOneToOne()
+{
+	QVERIFY(define(QStringLiteral("corner"), cornerDefinition(true)));
+	Element *corner = place(QStringLiteral("corner"), QString(), QPointF(400, 200));
+	Element *terminal = place(QStringLiteral("clamp"), QStringLiteral("-X1:1"),
+				   QPointF(100, 100));
+	Element *device = place(QStringLiteral("device"), QStringLiteral("7"),
+				QPointF(200, 500));
+	QVERIFY(corner && terminal && device);
+
+	Cable *w1 = cable(QStringLiteral("W1"));
+	Cable *w2 = cable(QStringLiteral("W2"));
+	QVERIFY(wire(connection(terminal), connection(corner, sourceUuid()), w1));
+	QVERIFY(wire(connection(corner, firstTargetUuid()), connection(device), w2));
+
+		//The cable list names the pieces at either end of the run, for
+		//both cables, and never the corner between them
+	const auto rows = CableList::rows(m_project);
+	QCOMPARE(rows.size(), 2);
+	QStringList landed;
+	for (const auto &row : rows) {
+		landed << row.value(QStringLiteral("bmk_start'))
+			+ QLatin1Char('|') + row.value(QStringLiteral("bmk_end"));
+	}
+	landed.sort();
+	QCOMPARE(landed, QStringList({QStringLiteral("-X1|7"),
+				      QStringLiteral("-X1|7")}));
+
+		//Both wiring lists write the run as the one row it is
+	int csv_unassigned = 0;
+	const WiringListExport exporter(m_project);
+	const QString csv = exporter.toCsvString(&csv_unassigned);
+	QCOMPARE(csv_unassigned, 0);
+	const QStringList csv_lines = csv.split(QLatin1Char('\n'), Qt::SkipEmptyParts);
+	QCOMPARE(csv_lines.size(), 2); // header and the one row of the run
+	const QStringList csv_cells = csv_lines.at(1).split(QLatin1Char(';'));
+	QCOMPARE(csv_cells.value(1), QStringLiteral("-X1:1"));
+	QCOMPARE(csv_cells.value(3), QStringLiteral("7"));
+
+	int database_unassigned = 0;
+	QString error;
+	const QVector<WiringListRow> database =
+		wiringListRows(m_project, &database_unassigned, &error);
+	QVERIFY2(error.isEmpty(), qPrintable(error));
+	QCOMPARE(database_unassigned, 0);
+	QCOMPARE(database.size(), 1);
+	QCOMPARE(database.first().from_element_label, QStringLiteral("-X1:1"));
+	QCOMPARE(database.first().to_element_label, QStringLiteral("7"));
+}
+
+/**
+ * A corner nothing was ever set on leads nowhere in either direction, and a
+ * two-way piece has no direction to guess either: both lists keep their rows
+ * exactly as they are, still ending at the corner, and both say how many
+ * such junctions there are (#1500).
+ */
+void tst_junctionchain::aCornerWithoutARoleIsPassedOn()
+{
+	QVERIFY(define(QStringLiteral("corner_open"), cornerDefinition(false)));
+	Element *corner = place(QStringLiteral("corner_open"), QString(),
+				QPointF(400, 200));
+	Element *terminal = place(QStringLiteral("clamp"), QStringLiteral("-X1:1"),
+				   QPointF(100, 100));
+	Element *device = place(QStringLiteral("device"), QStringLiteral("7"),
+				QPointF(200, 500));
+	QVERIFY(corner && terminal && device);
+	QVERIFY(wire(connection(terminal), connection(corner, sourceUuid())));
+	QVERIFY(wire(connection(corner, firstTargetUuid()), connection(device)));
+
+		//A corner has a single way through it, so there is nothing to
+		//tell apart and nothing to wait for: the wire is simply passed
+		//on, and neither list has anything left to report (#1500)
+	int database_unassigned = 0;
+	QString error;
+	const QVector<WiringListRow> database =
+		wiringListRows(m_project, &database_unassigned, &error);
+	QVERIFY2(error.isEmpty(), qPrintable(error));
+	QCOMPARE(database_unassigned, 0);
+	QCOMPARE(database.size(), 1);
+	QCOMPARE(database.first().from_element_label, QStringLiteral("-X1:1"));
+	QCOMPARE(database.first().to_element_label, QStringLiteral("7"));
+
+	int csv_unassigned = 0;
+	const WiringListExport exporter(m_project);
+	const QString csv = exporter.toCsvString(&csv_unassigned);
+	QCOMPARE(csv_unassigned, 0);
+	const QStringList csv_lines = csv.split(QLatin1Char('\n'), Qt::SkipEmptyParts);
+	QCOMPARE(csv_lines.size(), 2); // header and the one row of the run
+	const QStringList csv_cells = csv_lines.at(1).split(QLatin1Char(';'));
+	QCOMPARE(csv_cells.value(1), QStringLiteral("-X1:1"));
+	QCOMPARE(csv_cells.value(3), QStringLiteral("7"));
+}
+
+/**
+ * Two of a three-way junction's connections carry a wire, so there is one
+ * way on and the run is passed on without anything set on the symbol. Wire
+ * the third one as well and there is a choice to be made: then nothing is
+ * guessed, the rows stay as they are and the junction is counted (#1500).
+ */
+void tst_junctionchain::aJunctionWithOneWayOnIsPassedOn()
+{
+	QVERIFY(define(QStringLiteral("open_junction"), junctionDefinition(false)));
+	Element *tee = place(QStringLiteral("open_junction"), QString(), QPointF(400, 200));
+	Element *terminal = place(QStringLiteral("clamp"), QStringLiteral("-X1:1"),
+				   QPointF(100, 100));
+	Element *device = place(QStringLiteral("device"), QStringLiteral("7"),
+				QPointF(200, 500));
+	QVERIFY(tee && terminal && device);
+	QVERIFY(wire(connection(terminal), connection(tee, sourceUuid())));
+	QVERIFY(wire(connection(tee, firstTargetUuid()), connection(device)));
+
+	QString error;
+	int database_unassigned = 0;
+	QVector<WiringListRow> database =
+		wiringListRows(m_project, &database_unassigned, &error);
+	QVERIFY2(error.isEmpty(), qPrintable(error));
+	QCOMPARE(database_unassigned, 0);
+	QCOMPARE(database.size(), 1);
+	QCOMPARE(database.first().from_element_label, QStringLiteral("-X1:1"));
+	QCOMPARE(database.first().to_element_label, QStringLiteral("7"));
+
+		//The third connection is wired as well: now there is a choice,
+		//and nothing is guessed for it
+	Element *second_device = place(QStringLiteral("device"), QStringLiteral("8"),
+				       QPointF(300, 500));
+	QVERIFY(second_device);
+	QVERIFY(wire(connection(second_device), connection(tee, secondTargetUuid())));
+
+	database_unassigned = 0;
+	database = wiringListRows(m_project, &database_unassigned, &error);
+	QVERIFY2(error.isEmpty(), qPrintable(error));
+	QCOMPARE(database_unassigned, 1);
+	QCOMPARE(database.size(), 3);
+	const QString at_tee = tee->uuid().toString();
+	int ending_there = 0;
+	for (const WiringListRow &row : database)
+	{
+		if (row.from_element_uuid == at_tee || row.to_element_uuid == at_tee) {
+			++ending_there;
+		}
+	}
+	QCOMPARE(ending_there, 3);
+}
+
+/**
+ * A corner and a three-way junction in one run: the two describe the same
+ * piece of it, so it is written once, while the target of the T which the
+ * run through the corner never reaches still gets its own row. Skipping
+ * the junction whole instead of its written link would leave that wire
+ * ending at the junction, which is what neither list may do (#1500).
+ */
+void tst_junctionchain::aCornerFollowedByATKeepsEveryRow()
+{
+	QVERIFY(define(QStringLiteral("corner"), cornerDefinition(true)));
+	Element *corner = place(QStringLiteral("corner"), QString(), QPointF(400, 200));
+	Element *tee = place(QStringLiteral("chain_junction"), QString(), QPointF(500, 300));
+	Element *terminal = place(QStringLiteral("clamp"), QStringLiteral("-X1:1"),
+				   QPointF(100, 100));
+	Element *middle = place(QStringLiteral("device"), QStringLiteral("7"),
+				QPointF(200, 300));
+	Element *last = place(QStringLiteral("device"), QStringLiteral("8"),
+			      QPointF(300, 500));
+	QVERIFY(corner && tee && terminal && middle && last);
+
+	Cable *w1 = cable(QStringLiteral("W1"));
+	Cable *w2 = cable(QStringLiteral("W2"));
+		//The run comes in at the corner, goes on through the T to
+		//the device 7, and the second target of the T leads to the
+		//device 8 on a cable of its own
+	QVERIFY(wire(connection(terminal), connection(corner, sourceUuid()), w1));
+	QVERIFY(wire(connection(corner, firstTargetUuid()),
+		     connection(tee, sourceUuid())));
+	QVERIFY(wire(connection(tee, firstTargetUuid()), connection(middle)));
+	QVERIFY(wire(connection(tee, secondTargetUuid()), connection(last), w2));
+
+		//The cable list names the two ends of each part of the run
+	const auto rows = CableList::rows(m_project);
+	QCOMPARE(rows.size(), 2);
+	QStringList landed;
+	for (const auto &row : rows) {
+		landed << row.value(QStringLiteral("bmk_start"))
+			+ QLatin1Char('|') + row.value(QStringLiteral("bmk_end"));
+	}
+	landed.sort();
+	QCOMPARE(landed, QStringList({QStringLiteral("-X1|7"),
+				      QStringLiteral("7|8")}));
+
+		//Both wiring lists write the run as the two rows it is:
+		//once through, and once from the device 7 on to the device 8
+	int csv_unassigned = 0;
+	const WiringListExport exporter(m_project);
+	const QString csv = exporter.toCsvString(&csv_unassigned);
+	QCOMPARE(csv_unassigned, 0);
+	QStringList from_csv;
+	const QStringList csv_lines = csv.split(QLatin1Char('\n'), Qt::SkipEmptyParts);
+	for (int i = 1 ; i < csv_lines.size() ; ++i)
+	{
+		const QStringList cells = csv_lines.at(i).split(QLatin1Char(';'));
+		from_csv << cells.value(1) + QLatin1Char(':') + cells.value(3);
+	}
+	from_csv.sort();
+	QCOMPARE(from_csv, QStringList({QStringLiteral("-X1:1:7"),
+					QStringLiteral("7:8")}));
+
+	int database_unassigned = 0;
+	QString error;
+	const QVector<WiringListRow> database =
+		wiringListRows(m_project, &database_unassigned, &error);
+	QVERIFY2(error.isEmpty(), qPrintable(error));
+	QCOMPARE(database_unassigned, 0);
+	QStringList from_database;
+	for (const WiringListRow &row : database) {
+		from_database << row.from_element_label + QLatin1Char(':')
+					+ row.to_element_label;
+	}
+	from_database.sort();
+	QCOMPARE(from_database, QStringList({QStringLiteral("-X1:1:7"),
+					      QStringLiteral("7:8")}));
+
+		//Nothing was left ending at a junction either: both ends of
+		//every row carry a label
+	for (const WiringListRow &row : database) {
+		QVERIFY2(!row.from_element_label.isEmpty(),
+			 qPrintable(row.values().join(QLatin1Char('|'))));
+		QVERIFY2(!row.to_element_label.isEmpty(),
+			 qPrintable(row.values().join(QLatin1Char('|'))));
+	}
 }
 
 QET_APP_TEST_MAIN(tst_junctionchain)

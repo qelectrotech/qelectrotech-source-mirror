@@ -78,6 +78,10 @@ public:
         @param conductors the rows, changed in place
         @param elementsInfo the symbols the rows name, holding the roles
         read from the definitions of the junctions among them
+        A junction with no source set and a single way out of it is
+        passed on without one -- there is nothing to tell apart -- and
+        the others stay as they stand (#1500).
+
         @param unassigned_junctions, when given, is set to how many
         junctions stayed in the list unresolved
     */

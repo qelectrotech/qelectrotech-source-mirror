@@ -74,9 +74,10 @@ struct WiringListRow
 
 	@param project the project whose database is read
 	@param unassigned_junctions, when given, is set to how many junctions
-	have a wire on them and no source connection set, and so stayed in the
-	list unresolved -- those rows still end at the junction, because there
-	is no chain to follow
+	stayed in the list unresolved: they have a wire and no source
+	connection set, and more than one way on, so there was nothing to
+	follow. A junction with a single way out of it is passed on without
+	one (#1500)
 	@param error, when given, receives why nothing could be read
 */
 QVector<WiringListRow> wiringListRows(QETProject *project,
