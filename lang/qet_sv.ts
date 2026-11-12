@@ -708,7 +708,7 @@
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="14"/>
         <source>Auto numbering selection</source>
-        <translation>Val av auto-numrering</translation>
+        <translation>Val av automatisk numrering</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="21"/>
@@ -771,7 +771,7 @@
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="295"/>
         <source>Configure auto numbering rules</source>
-        <translation>Konfigurera regler för auto-numrering</translation>
+        <translation>Konfigurera regler för automatisk numrering</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="298"/>
@@ -1110,7 +1110,7 @@
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="372"/>
         <source>Auto Numbering Management</source>
         <comment>title window</comment>
-        <translation>Hantering av auto-numrering</translation>
+        <translation>Hantering av automatisk numrering</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.cpp" line="373"/>
@@ -1979,77 +1979,77 @@ Om du bekräftar förlorar den andra kabeln dessa ledare. Vill du fortsätta?</n
 <context>
     <name>CableList</name>
     <message>
-        <location filename="../sources/cablelist/cablelistrows.cpp" line="153"/>
+        <location filename="../sources/cablelist/cablelistrows.cpp" line="180"/>
         <source>No.</source>
         <translation>Nr.</translation>
     </message>
     <message>
-        <location filename="../sources/cablelist/cablelistrows.cpp" line="154"/>
+        <location filename="../sources/cablelist/cablelistrows.cpp" line="181"/>
         <source>Plant (cable)</source>
         <translation>Anläggning (kabel)</translation>
     </message>
     <message>
-        <location filename="../sources/cablelist/cablelistrows.cpp" line="155"/>
+        <location filename="../sources/cablelist/cablelistrows.cpp" line="182"/>
         <source>Location (cable)</source>
         <translation>Placering (kabel)</translation>
     </message>
     <message>
-        <location filename="../sources/cablelist/cablelistrows.cpp" line="156"/>
+        <location filename="../sources/cablelist/cablelistrows.cpp" line="183"/>
         <source>Label (cable)</source>
         <translation>Beteckning (kabel)</translation>
     </message>
     <message>
-        <location filename="../sources/cablelist/cablelistrows.cpp" line="157"/>
+        <location filename="../sources/cablelist/cablelistrows.cpp" line="184"/>
         <source>Plant (start)</source>
         <translation>Anläggning (från)</translation>
     </message>
     <message>
-        <location filename="../sources/cablelist/cablelistrows.cpp" line="158"/>
+        <location filename="../sources/cablelist/cablelistrows.cpp" line="185"/>
         <source>Location (start)</source>
         <translation>Placering (från)</translation>
     </message>
     <message>
-        <location filename="../sources/cablelist/cablelistrows.cpp" line="159"/>
+        <location filename="../sources/cablelist/cablelistrows.cpp" line="186"/>
         <source>Label (start)</source>
         <translation>Beteckning (från)</translation>
     </message>
     <message>
-        <location filename="../sources/cablelist/cablelistrows.cpp" line="160"/>
+        <location filename="../sources/cablelist/cablelistrows.cpp" line="187"/>
         <source>Sheet (start)</source>
         <translation>Blad (från)</translation>
     </message>
     <message>
-        <location filename="../sources/cablelist/cablelistrows.cpp" line="161"/>
+        <location filename="../sources/cablelist/cablelistrows.cpp" line="188"/>
         <source>Plant (end)</source>
         <translation>Anläggning (till)</translation>
     </message>
     <message>
-        <location filename="../sources/cablelist/cablelistrows.cpp" line="162"/>
+        <location filename="../sources/cablelist/cablelistrows.cpp" line="189"/>
         <source>Location (end)</source>
         <translation>Placering (till)</translation>
     </message>
     <message>
-        <location filename="../sources/cablelist/cablelistrows.cpp" line="163"/>
+        <location filename="../sources/cablelist/cablelistrows.cpp" line="190"/>
         <source>Label (end)</source>
         <translation>Beteckning (till)</translation>
     </message>
     <message>
-        <location filename="../sources/cablelist/cablelistrows.cpp" line="164"/>
+        <location filename="../sources/cablelist/cablelistrows.cpp" line="191"/>
         <source>Sheet (end)</source>
         <translation>Blad (till)</translation>
     </message>
     <message>
-        <location filename="../sources/cablelist/cablelistrows.cpp" line="165"/>
+        <location filename="../sources/cablelist/cablelistrows.cpp" line="192"/>
         <source>Cable type</source>
         <translation>Kabeltyp</translation>
     </message>
     <message>
-        <location filename="../sources/cablelist/cablelistrows.cpp" line="166"/>
+        <location filename="../sources/cablelist/cablelistrows.cpp" line="193"/>
         <source>Length</source>
         <translation>Längd</translation>
     </message>
     <message>
-        <location filename="../sources/cablelist/cablelistrows.cpp" line="167"/>
+        <location filename="../sources/cablelist/cablelistrows.cpp" line="194"/>
         <source>Used cores</source>
         <translation>Använda ledare</translation>
     </message>
@@ -3022,7 +3022,7 @@ Vill du numrera om dem också?</numerusform>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="102"/>
         <source>Auto Numbering</source>
-        <translation>Auto-numrering:</translation>
+        <translation>Automatisk numrering:</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="112"/>
@@ -3032,7 +3032,7 @@ Vill du numrera om dem också?</numerusform>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="141"/>
         <source>Conductor section</source>
-        <translation>Tvärsnitt:</translation>
+        <translation>Ledararea:</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="148"/>
@@ -3120,7 +3120,7 @@ Vill du numrera om dem också?</numerusform>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="286"/>
         <source>Position and rotation of the conductor text:</source>
-        <translation>Position och rotation av textetikett:</translation>
+        <translation>Position och rotation av förbindningens text:</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="297"/>
@@ -3145,7 +3145,7 @@ Vill du numrera om dem också?</numerusform>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="332"/>
         <source>Edit numbering</source>
-        <translation>Redigera auto-numrering</translation>
+        <translation>Redigera automatisk numrering</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="355"/>
@@ -4188,7 +4188,7 @@ Fortsätta?</translation>
     <message>
         <location filename="../sources/ui/diagrambgcolorbutton.cpp" line="97"/>
         <source>A black sheet: symbols and texts in yellow, conductors in red, dashed ones in light blue and dash-dotted ones in yellow, the rest in white. Printing and exporting stay black on white.</source>
-        <translation>Ett svart ark: symboler och texter i gult, ledare i rött, streckade i ljusblått och streckprickade i gult, resten i vitt. Utskrift och export förblir svart på vitt.</translation>
+        <translation>Ett svart blad: symboler och texter i gult, förbindningar i rött, streckade i ljusblått och streckprickade i gult, resten i vitt. Utskrift och export förblir svart på vitt.</translation>
     </message>
 </context>
 <context>
@@ -5603,7 +5603,7 @@ Håll ned Skift och dra för att flytta enbart denna text</translation>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="678"/>
         <source>Change the height of an element text</source>
-        <translation>Ändra höjden på en elementtext</translation>
+        <translation>Ändra höjden på en symboltext</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="86"/>
@@ -8393,7 +8393,7 @@ Genom att importera denna fil bekräftar du att:
     <message>
         <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="40"/>
         <source>Sheet Auto Numbering :</source>
-        <translation>Auto-numrering av blad:</translation>
+        <translation>Automatisk numrering av blad:</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="66"/>
@@ -8434,7 +8434,7 @@ Genom att importera denna fil bekräftar du att:
         <location filename="../sources/autoNum/ui/folioautonumbering.cpp" line="193"/>
         <source>Sheet Autonumbering</source>
         <comment>title window</comment>
-        <translation>Auto-numrering av blad</translation>
+        <translation>Automatisk numrering av blad</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/folioautonumbering.cpp" line="195"/>
@@ -8699,27 +8699,27 @@ som du skapar. Text- och nummerinmatningar är
         <translation>Med</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.cpp" line="140"/>
+        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.cpp" line="162"/>
         <source>Modify terminal strip properties</source>
         <translation>Ändra egenskaper för plintar</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.cpp" line="328"/>
+        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.cpp" line="350"/>
         <source>The project has no terminal strip: create one with the + button</source>
         <translation>Projektet har ingen plintrad: skapa en med knappen +</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.cpp" line="330"/>
+        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.cpp" line="352"/>
         <source>Apply or cancel the current changes before moving</source>
         <translation>Tillämpa eller ångra de pågående ändringarna innan du flyttar</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.cpp" line="332"/>
+        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.cpp" line="354"/>
         <source>Select the terminals to move in the table</source>
         <translation>Markera i tabellen de plintar som ska flyttas</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.cpp" line="334"/>
+        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.cpp" line="356"/>
         <source>Move the selected terminals to the chosen terminal block</source>
         <translation>Flytta de markerade plintarna till den valda plintraden</translation>
     </message>
@@ -9666,286 +9666,286 @@ Här kan du ange standardvärdet för detta fält för de symboler du skapar:</t
         <translation>Maximalt antal delar i symbolredigerarens lista</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="74"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="78"/>
         <source>Bold italic</source>
         <translation>Fet kursiv</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="76"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="80"/>
         <source>Bold</source>
         <translation>Fet</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="78"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="82"/>
         <source>Italic</source>
         <translation>Kursiv</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="80"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="84"/>
         <source>Normal</source>
         <translation>Normal</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="101"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="105"/>
         <source>Rounding up for 0.5 and more</source>
         <translation>Avrunda uppåt för 0,5 och över</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="102"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="106"/>
         <source>Always top rounding</source>
         <translation>Avrunda alltid uppåt</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="103"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="107"/>
         <source>Always rounded down</source>
         <translation>Avrunda alltid nedåt</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="104"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="108"/>
         <source>Rounding up for 0.75 and more</source>
         <translation>Avrunda uppåt för 0,75 och över</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="105"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="109"/>
         <source>No rounding</source>
         <translation>Ingen avrundning</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="148"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="152"/>
         <source>Disabled</source>
         <comment>fr: Désactivée</comment>
         <translation>Av</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="214"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="218"/>
         <source>Enabled by the QET_ENABLE_SCRIPTING environment variable; this setting has no effect while it is set.</source>
         <translation>Aktiverat av miljövariabeln QET_ENABLE_SCRIPTING; denna inställning har ingen effekt så länge den är satt.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="358"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="362"/>
         <source>Not set (default: %1)</source>
         <comment>hint shown in the material file field when no file is configured yet</comment>
         <translation>Inte inställt (standard: %1)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="369"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="373"/>
         <source>Not set (default: %1)</source>
         <comment>hint shown in the cable type file field when no file is configured yet</comment>
         <translation>Inte inställt (standard: %1)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="667"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="671"/>
         <source>General</source>
         <comment>configuration page title</comment>
         <translation>Allmänt</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="685"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="689"/>
         <source>System</source>
         <translation>System</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="689"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="693"/>
         <source>Arabic</source>
         <translation>Arabiska</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="690"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="694"/>
         <source>Brazilian</source>
         <translation>Brasiliansk portugisiska</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="691"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="695"/>
         <source>Catalan</source>
         <translation>Katalanska</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="692"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="696"/>
         <source>Czech</source>
         <translation>Tjeckiska</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="693"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="697"/>
         <source>German</source>
         <translation>Tyska</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="694"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="698"/>
         <source>Danish</source>
         <translation>Danska</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="695"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="699"/>
         <source>Greek</source>
         <translation>Grekiska</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="696"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="700"/>
         <source>English</source>
         <translation>Engelska</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="697"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="701"/>
         <source>Spanish</source>
         <translation>Spanska</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="698"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="702"/>
         <source>French</source>
         <translation>Franska</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="699"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="703"/>
         <source>Croatian</source>
         <translation>Kroatiska</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="700"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="704"/>
         <source>Italian</source>
         <translation>Italienska</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="701"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="705"/>
         <source>Japanese</source>
         <translation>Japanska</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="702"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="706"/>
         <source>Korean</source>
         <translation>Koreanska</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="703"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="707"/>
         <source>Latvian</source>
         <translation>Lettiska</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="704"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="708"/>
         <source>Polish</source>
         <translation>Polska</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="705"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="709"/>
         <source>Portuguese</source>
         <translation>Portugisiska</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="706"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="710"/>
         <source>Romanian</source>
         <translation>Rumänska</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="707"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="711"/>
         <source>Russian</source>
         <translation>Ryska</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="708"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="712"/>
         <source>Slovak</source>
         <translation>Slovakiska</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="709"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="713"/>
         <source>Slovenian</source>
         <translation>Slovenska</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="710"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="714"/>
         <source>Dutch</source>
         <translation>Nederländska</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="711"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="715"/>
         <source>Norwegian</source>
         <translation>Norska</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="712"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="716"/>
         <source>Belgium-Flemish</source>
         <translation>Flamländska (Belgien)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="713"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="717"/>
         <source>Turkish</source>
         <translation>Turkiska</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="714"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="718"/>
         <source>Hungarian</source>
         <translation>Ungerska</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="715"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="719"/>
         <source>Mongolian</source>
         <translation>Mongoliska</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="716"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="720"/>
         <source>Ukrainian</source>
         <translation>Ukrainska</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="717"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="721"/>
         <source>Chinese</source>
         <translation>Kinesiska</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="718"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="722"/>
         <source>Chinese (Traditional)</source>
         <translation>Kinesiska (traditionell)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="719"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="723"/>
         <source>Swedish</source>
         <translation>Svenska</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="795"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="799"/>
         <source>Cable text font</source>
         <translation>Typsnitt för kabeltexter</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="813"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="817"/>
         <source>Core colors font</source>
         <translation>Typsnitt för ledarfärger</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="828"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="832"/>
         <source>Path of the Common Collection</source>
         <translation>Sökväg till gemensamt symbolbibliotek</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="842"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="846"/>
         <source>Company collection path</source>
         <translation>Sökväg till organisationens symbolbibliotek</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="856"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="860"/>
         <source>User Collection Path</source>
         <translation>Sökväg till personligt symbolbibliotek</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="870"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="874"/>
         <source>Company title-blocks</source>
         <translation>Sökväg till organisationens ritningshuvudbibliotek</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="884"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="888"/>
         <source>User Title blocks Path</source>
         <translation>Sökväg till personligt ritningshuvudbibliotek</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="898"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="902"/>
         <source>User macro path</source>
         <translation>Sökväg för användarmakron</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="940"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="944"/>
         <source>Folder not found</source>
         <translation>Mappen hittades inte</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="941"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="945"/>
         <source>The user collection folder:
 %1
 does not exist and could not be created.</source>
@@ -9954,12 +9954,12 @@ does not exist and could not be created.</source>
 finns inte och kunde inte skapas.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="949"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="953"/>
         <source>No subfolder</source>
         <translation>Ingen undermapp</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="950"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="954"/>
         <source>The user collection:
 %1
 has no subfolder, so there is no prefix to configure.</source>
@@ -9968,34 +9968,34 @@ has no subfolder, so there is no prefix to configure.</source>
 har inga undermappar, så det finns inget prefix att konfigurera.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="958"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="962"/>
         <source>Prefix file cannot be read</source>
         <translation>Prefixfilen kan inte läsas</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="967"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="971"/>
         <source>Prefix file damaged</source>
         <translation>Prefixfilen är skadad</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="968"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="972"/>
         <source>The file %1 is not a valid XML file:
 %2</source>
         <translation>Filen %1 är inte en giltig XML-fil:
 %2</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="972"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="976"/>
         <source>Fix the file</source>
         <translation>Rätta filen</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="973"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="977"/>
         <source>Rebuild</source>
         <translation>Bygg om</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="974"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="978"/>
         <source>Nothing has been changed yet.
 
 “Fix the file”: this window closes without changing anything. Open the file in a text editor at the place shown, fix it, then run this command again.
@@ -10008,36 +10008,36 @@ har inga undermappar, så det finns inget prefix att konfigurera.</translation>
 ”Bygg om”: mappträdet skapas på nytt, men alla nuvarande prefix går förlorade. Den nuvarande filen sparas som qet_labels.xml.bak innan den ersätts.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="983"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="987"/>
         <source>File: %1</source>
         <translation>Fil: %1</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1007"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1011"/>
         <source>Select the materials list file</source>
         <translation>Välj filen med artikellistan</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1009"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1032"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1073"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1096"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1013"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1036"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1077"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1100"/>
         <source>CSV files (*.csv)</source>
         <translation>CSV-filer (*.csv)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1030"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1034"/>
         <source>Create the materials list file</source>
         <translation>Skapa filen med artikellistan</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1048"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1052"/>
         <source>Cannot create</source>
         <translation>Kan inte skapa</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1049"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1113"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1053"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1117"/>
         <source>Cannot create the file:
 %1
 %2</source>
@@ -10046,32 +10046,32 @@ har inga undermappar, så det finns inget prefix att konfigurera.</translation>
 %2</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1071"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1075"/>
         <source>Select the cable types file</source>
         <translation>Välj filen med kabeltyper</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1094"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1098"/>
         <source>Create the cable types file</source>
         <translation>Skapa filen med kabeltyper</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1112"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1116"/>
         <source>Cannot be created</source>
         <translation>Kan inte skapas</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1143"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1147"/>
         <source>Values that are too high might cause the application to crash</source>
         <translation>För höga värden kan få programmet att krascha.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1178"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1182"/>
         <source>Experimental feature</source>
         <translation>Experimentell funktion</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1179"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1183"/>
         <source>WARNING:
 Any setting other than “No rounding” may cause rendering errors in the project, depending on:
 
@@ -11654,7 +11654,7 @@ För dem först till samma plintrad.</translation>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="593"/>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="604"/>
         <source>Conductor section</source>
-        <translation>Förbindningstvärsnitt</translation>
+        <translation>Ledararea</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="676"/>
@@ -12273,12 +12273,12 @@ Vill du ändå länka denna slavkontakt?</translation>
     <message>
         <location filename="../sources/ui/multipastedialog.ui" line="100"/>
         <source>Self-numbering of elements</source>
-        <translation>Auto-numrering för symboler</translation>
+        <translation>Automatisk numrering för symboler</translation>
     </message>
     <message>
         <location filename="../sources/ui/multipastedialog.ui" line="107"/>
         <source>Self-numbering of conductors</source>
-        <translation>Auto-numrering för förbindningar</translation>
+        <translation>Automatisk numrering för förbindningar</translation>
     </message>
     <message>
         <location filename="../sources/ui/multipastedialog.cpp" line="107"/>
@@ -13129,7 +13129,7 @@ Spänning/protokoll: %1</translation>
         <source>
 Conductor color : %1</source>
         <translation>
-Färg på förbindning: %1</translation>
+Förbindningsfärg: %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="223"/>
@@ -13138,7 +13138,7 @@ Färg på förbindning: %1</translation>
         <source>
 Conductor section : %1</source>
         <translation>
-Tvärsnitt på förbindning: %1</translation>
+Ledararea: %1</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/potentialselectordialog.cpp" line="314"/>
@@ -13450,7 +13450,7 @@ En kopia av den sparades som:
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="548"/>
         <source>Auto Numbering</source>
-        <translation>Auto-numrering</translation>
+        <translation>Automatisk numrering</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="616"/>
@@ -13519,7 +13519,7 @@ En kopia av den sparades som:
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="667"/>
         <source>Sheet Auto Numbering</source>
-        <translation>Auto-numrering av blad</translation>
+        <translation>Automatisk numrering av blad</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="670"/>
@@ -15545,12 +15545,12 @@ Tillgängliga alternativ:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="889"/>
         <source>Show terminal strip labels at their first terminal</source>
-        <translation>Visa plintradens märkning vid första plinten</translation>
+        <translation>Visa plintradens beteckning vid första plinten</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="890"/>
         <source>The label of each terminal strip stands at its first terminal on every folio and moves with it</source>
-        <translation>Märkningen för varje plintrad står vid dess första plint på varje blad och flyttar med den</translation>
+        <translation>Beteckningen för varje plintrad står vid dess första plint på varje blad och flyttar med den</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="899"/>
@@ -17972,7 +17972,7 @@ Be din AI-assistent att göra ett skript av det: knappen nedan kopierar begäran
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="963"/>
         <source>The step of the grid that symbols, conductors and the pointer snap to</source>
-        <translation>Rutnätssteget som symboler, ledare och pekaren fästs mot</translation>
+        <translation>Rutnätssteget som symboler, förbindningar och pekaren fästs mot</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="966"/>
@@ -19877,7 +19877,7 @@ det översatta namnet på denna mapp kunde inte läsas, så mappnamnet visas i s
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="463"/>
-        <location filename="../sources/undocommand/movegraphicsitemcommand.cpp" line="55"/>
+        <location filename="../sources/undocommand/movegraphicsitemcommand.cpp" line="56"/>
         <source>move %1</source>
         <comment>undo caption - %1 is a sentence listing the moved content</comment>
         <translation>Flytta %1</translation>
@@ -20131,22 +20131,22 @@ det översatta namnet på denna mapp kunde inte läsas, så mappnamnet visas i s
         <translation>Importera en DXF-fil</translation>
     </message>
     <message>
-        <location filename="../sources/elementsmover.cpp" line="106"/>
+        <location filename="../sources/elementsmover.cpp" line="107"/>
         <source>This group cannot be moved: the position of one of its elements is locked.</source>
         <translation>Gruppen kan inte flyttas: positionen för en av dess symboler är låst.</translation>
     </message>
     <message>
-        <location filename="../sources/elementsmover.cpp" line="313"/>
+        <location filename="../sources/elementsmover.cpp" line="320"/>
         <source>A terminal may not be dropped on a bridge which cannot take one more.</source>
         <translation>En plint får inte släppas på en bygel som inte kan ta en till.</translation>
     </message>
     <message>
-        <location filename="../sources/elementsmover.cpp" line="507"/>
+        <location filename="../sources/elementsmover.cpp" line="514"/>
         <source>Update automatic connections</source>
         <translation>Uppdatera automatiska förbindningar</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/elementsmover.cpp" line="531"/>
+        <location filename="../sources/elementsmover.cpp" line="538"/>
         <source>Add %n conductors</source>
         <comment>add a numbers of conductor one or more</comment>
         <translation>
@@ -20380,7 +20380,7 @@ Vill du ersätta den?</translation>
         <translation>Universell utgång</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qet.cpp" line="355"/>
+        <location filename="../sources/qet.cpp" line="356"/>
         <source>%n elements</source>
         <comment>Sentence fragment used in an automatically generated list of different objects, e.g. objects moved at the same time, which will be combined into a sentence.</comment>
         <translation>
@@ -20389,7 +20389,7 @@ Vill du ersätta den?</translation>
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qet.cpp" line="365"/>
+        <location filename="../sources/qet.cpp" line="366"/>
         <source>%n conductors</source>
         <comment>Sentence fragment used in an automatically generated list of different objects, e.g. objects moved at the same time, which will be combined into a sentence.</comment>
         <translation>
@@ -20398,7 +20398,7 @@ Vill du ersätta den?</translation>
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qet.cpp" line="375"/>
+        <location filename="../sources/qet.cpp" line="376"/>
         <source>%n textfields</source>
         <comment>Sentence fragment used in an automatically generated list of different objects, e.g. objects moved at the same time, which will be combined into a sentence.</comment>
         <translation>
@@ -20407,7 +20407,7 @@ Vill du ersätta den?</translation>
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qet.cpp" line="385"/>
+        <location filename="../sources/qet.cpp" line="386"/>
         <source>%n images</source>
         <comment>Sentence fragment used in an automatically generated list of different objects, e.g. objects moved at the same time, which will be combined into a sentence.</comment>
         <translation>
@@ -20416,7 +20416,7 @@ Vill du ersätta den?</translation>
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qet.cpp" line="395"/>
+        <location filename="../sources/qet.cpp" line="396"/>
         <source>%n shapes</source>
         <comment>Sentence fragment used in an automatically generated list of different objects, e.g. objects moved at the same time, which will be combined into a sentence.</comment>
         <translation>
@@ -20425,7 +20425,7 @@ Vill du ersätta den?</translation>
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qet.cpp" line="405"/>
+        <location filename="../sources/qet.cpp" line="406"/>
         <source>%n texts of element</source>
         <comment>Sentence fragment used in an automatically generated list of different objects, e.g. objects moved at the same time, which will be combined into a sentence.</comment>
         <translation>
@@ -20434,7 +20434,7 @@ Vill du ersätta den?</translation>
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qet.cpp" line="415"/>
+        <location filename="../sources/qet.cpp" line="416"/>
         <source>%n tables</source>
         <comment>Sentence fragment used in an automatically generated list of different objects, e.g. objects moved at the same time, which will be combined into a sentence.</comment>
         <translation>
@@ -20443,7 +20443,7 @@ Vill du ersätta den?</translation>
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qet.cpp" line="425"/>
+        <location filename="../sources/qet.cpp" line="426"/>
         <source>%n layouts of terminal blocks</source>
         <comment>Sentence fragment used in an automatically generated list of different objects, e.g. objects moved at the same time, which will be combined into a sentence.</comment>
         <translation>
@@ -20452,74 +20452,74 @@ Vill du ersätta den?</translation>
         </translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="497"/>
+        <location filename="../sources/qet.cpp" line="498"/>
         <source>The text file containing the GNU/GPL license could not be found - however, you know it by heart, don&apos;t you?</source>
         <translation>Textfilen som innehåller GNU/GPL-licensen kan inte hittas - men den kan du ju ändå utantill, eller hur?</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="501"/>
+        <location filename="../sources/qet.cpp" line="502"/>
         <source>The text file containing the GNU/GPL license exists but could not be opened - however, you know it by heart, don&apos;t you?</source>
         <translation>Textfilen som innehåller GNU/GPL-licensen finns men kunde inte öppnas - men du kan den ju ändå utantill, eller hur?</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="816"/>
-        <location filename="../sources/qet.cpp" line="954"/>
+        <location filename="../sources/qet.cpp" line="817"/>
+        <location filename="../sources/qet.cpp" line="955"/>
         <location filename="../sources/qetxml.cpp" line="273"/>
         <source>Unable to open file %1 with write access, encountered error %2.</source>
         <comment>error message when attempting to write an XML file</comment>
         <translation>Det gick inte att öppna filen %1 med skrivbehörighet, fel %2 uppstod.</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="830"/>
+        <location filename="../sources/qet.cpp" line="831"/>
         <source>An error occurred while writing file %1, error %2 encountered.</source>
         <comment>error message when attempting to write an XML file</comment>
         <translation>Ett fel uppstod vid skrivning till filen %1, fel %2 uppstod.</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="909"/>
+        <location filename="../sources/qet.cpp" line="910"/>
         <source>Bring to front</source>
         <translation>Flytta till förgrunden</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="910"/>
+        <location filename="../sources/qet.cpp" line="911"/>
         <source>Raise</source>
         <translation>Flytta upp</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="911"/>
+        <location filename="../sources/qet.cpp" line="912"/>
         <source>Lower</source>
         <translation>Flytta ned</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="912"/>
+        <location filename="../sources/qet.cpp" line="913"/>
         <source>Send backward</source>
         <translation>Flytta till bakgrunden</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="914"/>
+        <location filename="../sources/qet.cpp" line="915"/>
         <source>Bring the selection (s) to front</source>
         <translation>Tar fram markering till förgrunden</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="915"/>
+        <location filename="../sources/qet.cpp" line="916"/>
         <source>Approach the selection (s)</source>
         <translation>Flyttar upp markering</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="916"/>
+        <location filename="../sources/qet.cpp" line="917"/>
         <source>Move away the selection (s)</source>
         <translation>Flyttar ned markering</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="917"/>
+        <location filename="../sources/qet.cpp" line="918"/>
         <source>Send in the backward the selection (s)</source>
         <translation>Flyttar markering till bakgrunden</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="919"/>
         <location filename="../sources/qet.cpp" line="920"/>
         <location filename="../sources/qet.cpp" line="921"/>
         <location filename="../sources/qet.cpp" line="922"/>
+        <location filename="../sources/qet.cpp" line="923"/>
         <source>Depth</source>
         <translation>Djup</translation>
     </message>
@@ -21069,7 +21069,7 @@ Vill du ersätta den?</translation>
     <message>
         <location filename="../sources/qetinformation.cpp" line="404"/>
         <source>Wire section</source>
-        <translation>Förbindningstvärsnitt</translation>
+        <translation>Ledararea</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="407"/>
@@ -21899,92 +21899,92 @@ Så här aktiverar du den: Konfigurera QElectroTech &gt; Allmänt &gt; Projekt, 
         <translation>Vertikal spegling</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="334"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="335"/>
         <source>the file is damaged</source>
         <translation>filen är skadad</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="339"/>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="344"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="340"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="345"/>
         <source>the file is not a QElectroTech project</source>
         <translation>filen är inte ett QElectroTech-projekt</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="352"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="353"/>
         <source>it was saved by a newer QElectroTech (%1)</source>
         <translation>den sparades med en nyare QElectroTech (%1)</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="362"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="363"/>
         <source>the file holds SQL that QElectroTech does not expect (%1)</source>
         <translation>filen innehåller SQL som QElectroTech inte förväntar sig (%1)</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="368"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="369"/>
         <source>the file is damaged: an item refers to one that is not there</source>
         <translation>filen är skadad: ett objekt hänvisar till ett som inte finns</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="401"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="402"/>
         <source>the file could not be replaced (error %1)</source>
         <translation>filen kunde inte ersättas (fel %1)</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="444"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="445"/>
         <source>the file could not be opened</source>
         <translation>filen kunde inte öppnas</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="817"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="818"/>
         <source>the file could not be read back</source>
         <translation>filen kunde inte läsas tillbaka</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1219"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1220"/>
         <source>the file could not be written</source>
         <translation>filen kunde inte skrivas</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1241"/>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1757"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1242"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1758"/>
         <source>it keeps no revision %1</source>
         <translation>den har ingen revision %1</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1250"/>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1775"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1251"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1776"/>
         <source>this build of QElectroTech has no SQLite session support</source>
         <translation>denna version av QElectroTech saknar stöd för SQLite-sessioner</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1257"/>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1765"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1258"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1766"/>
         <source>the changes of revision %1 were not recorded</source>
         <translation>ändringarna i revision %1 registrerades inte</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1262"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1263"/>
         <source>revision %1 cannot be undone</source>
         <translation>revision %1 kan inte ångras</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1272"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1273"/>
         <source>revision %1 does not undo cleanly</source>
         <translation>revision %1 går inte att ångra utan problem</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1366"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1367"/>
         <source>the file could not be written to disk</source>
         <translation>filen kunde inte skrivas till disken</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1431"/>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1547"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1432"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1548"/>
         <source>the file could not be read</source>
         <translation>filen kunde inte läsas</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1459"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1460"/>
         <source>it has %n damaged page(s), more than the repair data it keeps can rebuild</source>
         <translation>
             <numerusform>den har %n skadad sida, fler än dess reparationsdata kan återskapa</numerusform>
@@ -21992,31 +21992,31 @@ Så här aktiverar du den: Konfigurera QElectroTech &gt; Allmänt &gt; Projekt, 
         </translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1524"/>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1564"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1525"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1565"/>
         <source>its content is not what QElectroTech saved: it is damaged, or another program changed it</source>
         <translation>dess innehåll är inte det som QElectroTech sparade: det är skadat, eller så har ett annat program ändrat det</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1635"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1636"/>
         <source>keep at least 2 saves, or 0 for all</source>
         <translation>behåll minst 2 sparningar, eller 0 för alla</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1641"/>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1714"/>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1748"/>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1808"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1642"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1715"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1749"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1809"/>
         <source>it keeps no history</source>
         <translation>den har ingen historik</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1752"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1753"/>
         <source>revision %1 does not come before revision %2</source>
         <translation>revision %1 kommer inte före revision %2</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/qetdbfile.cpp" line="1783"/>
+        <location filename="../sources/dataBase/qetdbfile.cpp" line="1784"/>
         <source>the changes of revision %1 do not follow on</source>
         <translation>ändringarna i revision %1 hänger inte ihop</translation>
     </message>
@@ -23541,7 +23541,7 @@ inget har ändrats.</translation>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="312"/>
         <source>Conductor section</source>
-        <translation>Tvärsnitt:</translation>
+        <translation>Ledararea:</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="342"/>
@@ -24433,7 +24433,7 @@ qet.addText(f, &quot;Text&quot;, 40, 40);
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="408"/>
         <source>Sheet Auto Numbering</source>
         <comment>title window</comment>
-        <translation>Auto-numrering av blad</translation>
+        <translation>Automatisk numrering av blad</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="410"/>
@@ -24467,7 +24467,7 @@ Fältet &quot;Inkrement&quot; används inte.
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="431"/>
         <source>Numbering conductors</source>
         <comment>title window</comment>
-        <translation>Auto-numrering av förbindningar</translation>
+        <translation>Automatisk numrering av förbindningar</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="433"/>
@@ -24555,7 +24555,7 @@ De andra fälten används inte.</translation>
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="486"/>
         <source>Element Auto Numbering</source>
         <comment>title window</comment>
-        <translation>Auto-numrering av symboler</translation>
+        <translation>Automatisk numrering av symboler</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="488"/>
@@ -27427,7 +27427,7 @@ De andra fälten används inte.</translation>
     <message>
         <location filename="../sources/ui/terminalnumberingdialog.ui" line="20"/>
         <source>This function numbers the terminals in the project according to their position. Empty or locked terminals are ignored. Terminal labelling must be configured in advance as follows : &apos;-X:AB&apos;. The part before the colon (the terminal block) can be named as desired. &apos;AB&apos; can consist of numbers or letters.&quot;</source>
-        <translation>Denna funktion numrerar projektets plintar efter deras position. Tomma eller låsta plintar ignoreras. Plintarnas märkning måste först konfigureras enligt följande: &apos;-X:AB&apos;. Delen före kolonet (plintraden) kan namnges fritt. &apos;AB&apos; kan bestå av siffror eller bokstäver.</translation>
+        <translation>Denna funktion numrerar projektets plintar efter deras position. Tomma eller låsta plintar ignoreras. Plintarnas beteckningar måste först konfigureras enligt följande: &apos;-X:AB&apos;. Delen före kolonet (plintraden) kan namnges fritt. &apos;AB&apos; kan bestå av siffror eller bokstäver.</translation>
     </message>
     <message>
         <location filename="../sources/ui/terminalnumberingdialog.ui" line="34"/>
@@ -27915,7 +27915,7 @@ Vill du ändå ange den här?</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.ui" line="95"/>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.cpp" line="209"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.cpp" line="213"/>
         <source>Assign free terminals</source>
         <translation>Tilldela lediga plintar</translation>
     </message>
@@ -27926,7 +27926,7 @@ Vill du ändå ange den här?</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.ui" line="106"/>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.cpp" line="208"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.cpp" line="212"/>
         <source>Re-group all terminals</source>
         <translation>Omgruppera alla plintar</translation>
     </message>
@@ -27936,32 +27936,32 @@ Vill du ändå ange den här?</translation>
         <translation>Tilldelar de lediga plintarna och flyttar även varje plint vars beteckningsprefix, eller anläggning och placering, inte längre stämmer med dess plintrad. Befintliga plintrader sorteras aldrig om. Ber om bekräftelse.</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.cpp" line="55"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.cpp" line="56"/>
         <source>Opening the terminal block manager...</source>
         <translation>Öppnar plintradshanteraren...</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.cpp" line="56"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.cpp" line="57"/>
         <source>Terminal block manager</source>
         <translation>Plintradshanterare</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.cpp" line="92"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.cpp" line="93"/>
         <source>Reading folio %1 of %2...</source>
         <translation>Läser blad %1 av %2...</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.cpp" line="202"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.cpp" line="206"/>
         <source>Unapplied edits</source>
         <translation>Ej tillämpade ändringar</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.cpp" line="203"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.cpp" line="207"/>
         <source>Apply or discard the pending edits of the free terminals table first.</source>
         <translation>Tillämpa eller förkasta först de väntande ändringarna i tabellen över lediga plintar.</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.cpp" line="211"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.cpp" line="215"/>
         <source>Free terminals will be added to the terminal strips named after their labels, and every terminal whose label prefix or plant and location no longer match its strip will be moved to the right strip.
 
 Terminals you placed by hand in a strip whose name does not match their label will be moved too. Existing strips are never re-sorted.
@@ -27974,7 +27974,7 @@ Plintar som du har placerat manuellt i en plintrad vars namn inte stämmer med d
 Åtgärden kan ångras med ett enda Ångra.</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.cpp" line="219"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.cpp" line="223"/>
         <source>Every free terminal will be added to the terminal strip named after its label (&quot;X1:2&quot; goes to the strip &quot;X1&quot;), creating the strips when needed.
 
 Terminals that already belong to a strip are not touched and no strip is re-sorted.
@@ -27987,7 +27987,7 @@ Plintar som redan tillhör en plintrad berörs inte och ingen plintrad sorteras 
 Åtgärden kan ångras med ett enda Ångra.</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.cpp" line="242"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.cpp" line="246"/>
         <source>%1 terminal(s) assigned or moved to a terminal strip.</source>
         <translation>
             <numerusform>%1 plint tilldelad eller flyttad till en plintrad.</numerusform>
@@ -27995,7 +27995,7 @@ Plintar som redan tillhör en plintrad berörs inte och ingen plintrad sorteras 
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.cpp" line="247"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.cpp" line="251"/>
         <source>%1 free terminal(s) added to the terminal strips.</source>
         <translation>
             <numerusform>%1 ledig plint lagd till i plintraderna.</numerusform>
@@ -28393,14 +28393,39 @@ Ctrl+Retur bekräftar cellen, Esc förkastar texten.</translation>
         <translation>Plintnavigator</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstriptreedockwidget.cpp" line="250"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstriptreedockwidget.cpp" line="70"/>
+        <source>Expand all</source>
+        <translation>Fäll ut alla</translation>
+    </message>
+    <message>
+        <location filename="../sources/TerminalStrip/ui/terminalstriptreedockwidget.cpp" line="71"/>
+        <source>Unfold every plant, location and terminal strip of the tree</source>
+        <translation>Fäll ut alla anläggningar, placeringar och plintrader i trädet</translation>
+    </message>
+    <message>
+        <location filename="../sources/TerminalStrip/ui/terminalstriptreedockwidget.cpp" line="73"/>
+        <source>Collapse all</source>
+        <translation>Fäll ihop alla</translation>
+    </message>
+    <message>
+        <location filename="../sources/TerminalStrip/ui/terminalstriptreedockwidget.cpp" line="74"/>
+        <source>Fold every plant, location and terminal strip of the tree</source>
+        <translation>Fäll ihop alla anläggningar, placeringar och plintrader i trädet</translation>
+    </message>
+    <message>
+        <location filename="../sources/TerminalStrip/ui/terminalstriptreedockwidget.cpp" line="355"/>
         <source>Untitled project</source>
         <translation>Namnlöst projekt</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstriptreedockwidget.cpp" line="256"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstriptreedockwidget.cpp" line="361"/>
         <source>Independent terminals</source>
         <translation>Fristående plintar</translation>
+    </message>
+    <message>
+        <location filename="../sources/TerminalStrip/ui/terminalstriptreedockwidget.cpp" line="478"/>
+        <source>(no label) %1, folio %2</source>
+        <translation>(ingen beteckning) %1, blad %2</translation>
     </message>
 </context>
 <context>
@@ -30167,12 +30192,12 @@ Följande variabler kan användas:
         <translation>Endast skrivskyddade frågor (SELECT eller WITH ... SELECT) är tillåtna.</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/projectdatabase.cpp" line="8843"/>
+        <location filename="../sources/dataBase/projectdatabase.cpp" line="8890"/>
         <source>Export the internal project database</source>
         <translation>Exportera den interna projektdatabasen</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/projectdatabase.cpp" line="8850"/>
+        <location filename="../sources/dataBase/projectdatabase.cpp" line="8897"/>
         <source>untitled</source>
         <translation>namnlös</translation>
     </message>
