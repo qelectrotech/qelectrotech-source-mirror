@@ -120,6 +120,33 @@ class tst_cablelist : public QObject
   private slots:
 	void initTestCase() { QETProject::setBackupEnabled(false); }
 
+	void oneRowPerCore()
+	{
+		QETProject project;
+		Diagram *folio = project.addNewDiagram();
+		setPlace(folio, QStringLiteral("FACTORY"), QStringLiteral("CP1"));
+		Cable *w1 = cable(project, QStringLiteral("W1"));
+		w1->setCoreCount(3);
+		const QUuid part = drawOn(w1, folio);
+		CableCore free;
+		free.core = 2;
+		free.part = part;
+		w1->setCore(free);
+		project.dataBase()->updateDB();
+		QString error;
+		QSqlQuery query = project.dataBase()->newQuery(QStringLiteral(
+			"SELECT structure_id, position, core, wire_number FROM qet_cable_cores"), &error);
+		QVERIFY2(error.isEmpty(), qPrintable(error));
+		QStringList rows;
+		while (query.next())
+			rows << query.value(0).toString() + QLatin1Char('|') + query.value(1).toString()
+					+ QLatin1Char('|') + query.value(2).toString() + QLatin1Char('|')
+					+ query.value(3).toString();
+		QCOMPARE(rows, QStringList({QStringLiteral("=FACTORY+CP1-W1|0|1|"),
+									QStringLiteral("=FACTORY+CP1-W1|1|2|"),
+									QStringLiteral("=FACTORY+CP1-W1|2|3|")}));
+	}
+
 	void oneRowPerCable()
 	{
 		QETProject project;
