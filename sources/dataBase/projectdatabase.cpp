@@ -5115,7 +5115,8 @@ QStringList projectDataBase::publicViews()
 			QStringLiteral("qet_wires"), QStringLiteral("qet_links"),
 			QStringLiteral("qet_device_list"),
 			QStringLiteral("qet_terminals"),
-			QStringLiteral("qet_cables")};
+			QStringLiteral("qet_cables"),
+			QStringLiteral("qet_plc_io")};
 }
 
 /**
@@ -5352,7 +5353,32 @@ QStringList projectDataBase::publicViewStatements()
 			"designation, type, COALESCE(cores, 0) AS cores, COALESCE(k.drawn_cores, 0) AS drawn_cores, "
 			"COALESCE(k.wired_cores, 0) AS wired_cores, length, folios, folio_number, folio, "
 			"p.cable_uuid FROM placed p LEFT JOIN core k ON k.cable_uuid = p.cable_uuid "
-			"ORDER BY structure_id, p.cable_uuid")
+			"ORDER BY structure_id, p.cable_uuid"),
+			//After qet_devices, which it reads: one row per entry of a PLC's
+			//I/O table, with the slave linked to it where one is drawn
+		QStringLiteral(
+			"CREATE VIEW qet_plc_io AS "
+			"WITH io AS (SELECT element_uuid, ord, "
+				"MAX(CASE WHEN name = 'address' THEN value END) AS address, "
+				"MAX(CASE WHEN name = 'type' THEN value END) AS io_type, "
+				"MAX(CASE WHEN name = 'functionText' THEN value END) AS function_text, "
+				"MAX(CASE WHEN name = 'comment' THEN value END) AS comment "
+				"FROM element_value WHERE section = 'plcMasterData/plcIOs/plcIO' "
+				"GROUP BY element_uuid, ord) "
+			"SELECT m.structure_id AS structure_id, m.plant AS plant, m.location AS location, "
+			"m.label AS plc, m.article AS article, io.ord + 1 AS entry, io.address AS address, "
+			"CASE io.io_type WHEN 'entree_digitale' THEN 'DI' WHEN 'sortie_digitale' THEN 'DO' "
+				"WHEN 'entree_analogique' THEN 'AI' WHEN 'sortie_analogique' THEN 'AO' "
+				"WHEN 'entree_universelle' THEN 'UI' WHEN 'sortie_universelle' THEN 'UO' "
+				"ELSE io.io_type END AS type, "
+			"io.function_text AS function, io.comment AS comment, "
+			"m.folio_number AS plc_folio_number, s.folio_number AS folio_number, "
+			"s.folio AS folio, s.position AS position, "
+			"m.device_uuid AS plc_uuid, s.device_uuid AS slave_uuid "
+			"FROM io JOIN qet_devices m ON m.device_uuid = io.element_uuid "
+			"LEFT JOIN link l ON l.element_uuid = io.element_uuid AND l.group_index = io.ord "
+			"LEFT JOIN qet_devices s ON s.device_uuid = l.linked_uuid "
+			"ORDER BY m.structure_id, io.ord")
 	};
 	return views;
 }
