@@ -642,6 +642,9 @@ qet_add_app_test(tst_updateelements tst_updateelements.cpp)
 # Editing a placed element: redrawn on save; optionally found and edited
 # in the collection it was taken from, which updates the open projects.
 qet_add_app_test(tst_editcollectionsource tst_editcollectionsource.cpp)
+# The terminal block manager: the independent terminals, folding the
+# tree, sorting their table, OK.
+qet_add_app_test(tst_terminalstripmanager tst_terminalstripmanager.cpp)
 qet_add_app_test(tst_selectionrectangle tst_selectionrectangle.cpp)
 # The selection filter (status bar): what a click, a selection rectangle
 # and Select All pick; a click goes through what is left out.

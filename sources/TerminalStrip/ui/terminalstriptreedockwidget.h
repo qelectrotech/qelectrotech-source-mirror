@@ -19,6 +19,7 @@
 #define TERMINALSTRIPTREEDOCKWIDGET_H
 
 #include <QDockWidget>
+#include <QSet>
 #include <QPointer>
 #include <QHash>
 #include <QUuid>
@@ -62,7 +63,10 @@ class TerminalStripTreeDockWidget : public QDockWidget
 		QString currentLocation() const;
 		void setSelectedStrip(TerminalStrip *strip);
 		QSharedPointer<RealTerminal> currentRealTerminal() const;
+		bool currentIsFreeTerminals() const;
 		void setDropCheck(std::function<bool()> check);
+		void expandAll();
+		void collapseAll();
 
 	protected:
 		bool eventFilter(QObject *watched, QEvent *event) override;
@@ -75,6 +79,7 @@ class TerminalStripTreeDockWidget : public QDockWidget
 
 	private:
 		void buildTree();
+		QString itemKey(const QTreeWidgetItem *item) const;
 		QTreeWidgetItem* addTerminalStrip(TerminalStrip *terminal_strip);
 		void addFreeTerminal();
 		void setCurrentStrip(TerminalStrip *strip);
@@ -86,6 +91,10 @@ class TerminalStripTreeDockWidget : public QDockWidget
 		Ui::TerminalStripTreeDockWidget *ui;
 		QPointer<QETProject> m_project;
 		QPointer<TerminalStrip> m_current_strip;
+			//The folded and unfolded items, kept over a reload; empty
+			//before the first one, which unfolds everything
+		QSet<QString> m_expanded;
+		bool m_built_once = false;
 
         QHash<QTreeWidgetItem *, QPointer<TerminalStrip>> m_item_strip_H;
 		QHash<QUuid, QSharedPointer<RealTerminal>> m_uuid_terminal_H;

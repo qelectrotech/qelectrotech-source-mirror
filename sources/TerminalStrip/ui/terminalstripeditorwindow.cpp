@@ -31,6 +31,7 @@
 #include "terminalstriptreedockwidget.h"
 
 #include <QApplication>
+#include <QDialogButtonBox>
 #include <QElapsedTimer>
 #include <QMessageBox>
 #include <QProgressDialog>
@@ -143,6 +144,9 @@ TerminalStripEditorWindow::TerminalStripEditorWindow(QETProject *project, QWidge
     }
 	ui->m_remove_terminal->setDisabled(true);
 	addTreeDockWidget();
+
+		//OK applies and closes, Apply applies and keeps the window open
+	ui->m_button_box->addButton(QDialogButtonBox::Ok);
 
 	m_free_terminal_editor = new FreeTerminalEditor(m_project, this);
 	m_terminal_strip_editor = new TerminalStripEditor{m_project, this};
@@ -297,6 +301,10 @@ void TerminalStripEditorWindow::updateUi()
 			ui->m_stacked_widget->setCurrentIndex(FREE_TERMINAL_PAGE);
 			m_free_terminal_editor->reload();
 		}
+	} else if (m_tree_dock->currentIsFreeTerminals()) {
+			//The independent terminals themselves: all of them in the table
+		ui->m_stacked_widget->setCurrentIndex(FREE_TERMINAL_PAGE);
+		m_free_terminal_editor->reload();
 	} else if (auto strip_ = m_tree_dock->currentStrip()) {
 		ui->m_stacked_widget->setCurrentIndex(TERMINAL_STRIP_PAGE);
 		m_terminal_strip_editor->setCurrentStrip(strip_);
@@ -358,7 +366,7 @@ void TerminalStripEditorWindow::on_m_button_box_clicked(QAbstractButton *button)
 {
 	auto role_{ui->m_button_box->buttonRole(button)};
 
-	if (role_ == QDialogButtonBox::ApplyRole)
+	if (role_ == QDialogButtonBox::ApplyRole || role_ == QDialogButtonBox::AcceptRole)
 	{
 		switch (ui->m_stacked_widget->currentIndex()) {
 			case FREE_TERMINAL_PAGE:
@@ -371,7 +379,11 @@ void TerminalStripEditorWindow::on_m_button_box_clicked(QAbstractButton *button)
 				break;
 		}
 	}
-	else if (role_ == QDialogButtonBox::ResetRole)
+	if (role_ == QDialogButtonBox::AcceptRole) {
+		close();
+		return;
+	}
+	if (role_ == QDialogButtonBox::ResetRole)
 	{
 		m_terminal_strip_editor->reload();
 		m_free_terminal_editor->reload();
