@@ -50,9 +50,6 @@ struct ConductorData {
     QString cable;
     QString folio;
     int folio_index = 0; // position of the folio in the project, from 1
-        /// The row as it stands: through a junction, both ends are the
-        /// connections the junction leads to rather than the junction itself
-    bool resolved = false;
 };
 
 /**

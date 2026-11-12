@@ -828,31 +828,17 @@ QVector<QString> RealTerminal::automaticCableTarget() const
 				}
 				//A junction the cable runs through is not where it
 				//lands: it is a connection point on the wire rather
-				//than a piece of its own. The chain says which way the
-				//wire runs through, so the cable lands where the chain
-				//leads -- at the connection before it, or at the first
-				//one after it when it starts at the source -- the same
+				//than a piece of its own. endsPastJunctions() says where
+				//the chain leads -- through another junction in the way,
+				//when the run goes on through two of them -- the same
 				//rule the cable list applies, so the strip and the list
 				//can never disagree (#1500)
 				if (element_->linkType() & Element::Junction) {
-					const auto neighbours = junctionChainNeighbours(terminal_);
-					const Terminal *next = neighbours.first ? neighbours.first
-									     : neighbours.second;
-					for (const Conductor *chain_conductor
-						 : next ? next->conductors()
-								: QList<Conductor *>())
-					{
-						if (!chain_conductor || !chain_conductor->terminal1
-							|| !chain_conductor->terminal2) {
+					for (Terminal *reached : endsPastJunctions(terminal_)) {
+						if (!reached || !reached->parentElement()) {
 							continue;
 						}
-						Terminal *far = chain_conductor->terminal1 == next
-								? chain_conductor->terminal2
-								: chain_conductor->terminal1;
-						if (!far || !far->parentElement()) {
-							continue;
-						}
-						Element *reached_element = far->parentElement();
+						Element *reached_element = reached->parentElement();
 						if ((reached_element->linkType() & Element::AllReport)
 							|| own_.contains(reached_element->uuid())) {
 							continue;

@@ -328,6 +328,39 @@ class tst_junctionchain : public QObject
 		return strip;
 	}
 
+		///The scene of two junctions in a row, one run through both of
+		///them: the wire of @a first comes in at the first junction, the
+		///run goes on from there into the second one, and @a second
+		///leads out of it to the device 7. A null cable means a plain
+		///wire, which the strip draws a stub of its own for; a cable is
+		///drawn below the strip with the rest of itself.
+	struct TwoJunctions
+	{
+		Element *terminal = nullptr;
+		Element *second = nullptr;
+		Element *device = nullptr;
+	};
+
+	TwoJunctions drawTwoJunctionsInARow(Cable *first, Cable *second)
+	{
+		TwoJunctions scene;
+		scene.second = place(QStringLiteral("chain_junction"), QString(),
+				    QPointF(500, 300));
+		scene.terminal = place(QStringLiteral("clamp"), QStringLiteral("-X1:1"),
+				       QPointF(100, 100));
+		scene.device = place(QStringLiteral("device"), QStringLiteral("7"),
+				     QPointF(200, 500));
+		if (!scene.second || !scene.terminal || !scene.device) {
+			return scene;
+		}
+		wire(connection(scene.terminal), connection(m_junction, sourceUuid()), first);
+		wire(connection(m_junction, firstTargetUuid()),
+		     connection(scene.second, sourceUuid()));
+		wire(connection(scene.second, firstTargetUuid()), connection(scene.device),
+		     second);
+		return scene;
+	}
+
 		/**
 			@brief drawThroughAJunction
 			The scene both wiring lists are read from: the cable W1 comes
@@ -366,6 +399,8 @@ private slots:
 	void bothListsAgree();
 	void aJunctionWithNoSourceIsCountedInBothLists();
 	void theDialogShowsTheResolvedRowsToo();
+	void twoJunctionsInARowAreFollowed();
+	void aStubIsNamedThroughTwoJunctions();
 };
 
 void tst_junctionchain::initTestCase()
@@ -674,6 +709,82 @@ void tst_junctionchain::theDialogShowsTheResolvedRowsToo()
 	found.sort();
 	QCOMPARE(found, QStringList({QStringLiteral("-X1:1|7"),
 				     QStringLiteral("7|8")}));
+}
+
+
+/**
+ * Two junctions in a row -- a T followed by a corner -- are one run, not
+ * two: the lists follow it through both of them and name the pieces at
+ * either end, never the junctions in between. The wire between the two is
+ * walked by each of them, so whichever is read first writes the one row
+ * for the run and the other is left alone rather than writing it twice
+ * (#1500).
+ */
+void tst_junctionchain::twoJunctionsInARowAreFollowed()
+{
+	const TwoJunctions scene = drawTwoJunctionsInARow(cable(QStringLiteral("W1")),
+							  cable(QStringLiteral("W2")));
+	QVERIFY(scene.terminal && scene.second && scene.device);
+
+		//The cable list names the two pieces either end of the run,
+		//for both cables, and no junction in between
+	const auto rows = CableList::rows(m_project);
+	QCOMPARE(rows.size(), 2);
+	QStringList landed;
+	for (const auto &row : rows) {
+		landed << row.value(QStringLiteral("bmk_start"))
+			+ QLatin1Char('|') + row.value(QStringLiteral("bmk_end"));
+	}
+	landed.sort();
+		//No strip in this scene, so the terminal is named by its own
+		//label the way the list writes it
+	QCOMPARE(landed, QStringList({QStringLiteral("-X1|7"),
+				      QStringLiteral("-X1|7")}));
+
+
+		//Both wiring lists follow the run the same way and name the
+		//same two pieces: a junction among them would show up as an
+		//empty end, because a junction has no label to write
+	int csv_unassigned = 0;
+	const WiringListExport exporter(m_project);
+	const QString csv = exporter.toCsvString(&csv_unassigned);
+	QCOMPARE(csv_unassigned, 0);
+	const QStringList csv_lines = csv.split(QLatin1Char('\n'), Qt::SkipEmptyParts);
+	QCOMPARE(csv_lines.size(), 2); // header and the one row of the run
+	const QStringList csv_cells = csv_lines.at(1).split(QLatin1Char(';'));
+	QCOMPARE(csv_cells.value(1), QStringLiteral("-X1:1"));
+	QCOMPARE(csv_cells.value(3), QStringLiteral("7"));
+
+	int database_unassigned = 0;
+	QString error;
+	const QVector<WiringListRow> database =
+		wiringListRows(m_project, &database_unassigned, &error);
+	QVERIFY2(error.isEmpty(), qPrintable(error));
+	QCOMPARE(database_unassigned, 0);
+	QCOMPARE(database.size(), 1);
+	QCOMPARE(database.first().from_element_label, QStringLiteral("-X1:1"));
+	QCOMPARE(database.first().to_element_label, QStringLiteral("7"));
+}
+
+
+/**
+ * The strip draws a stub for a wire of its own, and what that stub says
+ * has to be looked up through both junctions of the run: naming it at the
+ * first one would write the second junction's name, and a junction has no
+ * name to write (#1500).
+ */
+void tst_junctionchain::aStubIsNamedThroughTwoJunctions()
+{
+	const TwoJunctions scene = drawTwoJunctionsInARow(nullptr, nullptr);
+	QVERIFY(scene.terminal && scene.second && scene.device);
+
+	TerminalStrip *strip = newStrip();
+	QVERIFY(strip);
+	QVERIFY(strip->addTerminal(scene.terminal));
+
+	const auto stub = realOf(scene.terminal);
+	QVERIFY(stub);
+	QCOMPARE(labelsOf(stub->wires()), QStringList({QStringLiteral("7")}));
 }
 
 QET_APP_TEST_MAIN(tst_junctionchain)

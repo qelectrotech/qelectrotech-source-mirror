@@ -191,22 +191,41 @@ struct JunctionRoles
 
 /**
 	@brief junctionRolesOf
-	@return the roles of @a junction, read from its definition. Symbols
-	written before the roles moved to the kind information keep them among
-	their element information, which is read as a fallback so an older
-	symbol opens as it was saved (#1500).
+	@return the roles of @a junction, as its own data holds them: the
+	symbol is read once and its roles come back with it, rather than the
+	definition being read again for every wire (#1500).
 	@param junction the symbol to read, which need not be one
 */
 JunctionRoles junctionRolesOf(const Element *junction);
 
 /**
 	@brief junctionRolesOf
-	@return the roles a definition says, whichever of its two blocks holds
-	them. The reader every caller shares, so the drawing and the exports
-	always answer alike (@see junctionRolesOf(const Element *)).
+	@return the roles a definition says. The reader every caller shares,
+	so the drawing and the exports always answer alike
+	(@see junctionRolesOf(const Element *)).
 	@param definition the symbol's definition, or a null element
 */
 JunctionRoles junctionRolesOf(const QDomElement &definition);
+
+/**
+	@brief junctionSourceKey
+	@return the element information a junction's source connection is
+	stored against
+*/
+QString junctionSourceKey();
+
+/**
+	@brief junctionTargetKeys
+	@return the element informations a junction's connections go on to are
+	stored against, in the order the chain follows them
+*/
+QStringList junctionTargetKeys();
+
+/**
+	@brief junctionRoleKeys
+	@return every element information a junction role is stored against
+*/
+QStringList junctionRoleKeys();
 
 /**
 	@brief junctionChainNeighbours
@@ -225,21 +244,44 @@ JunctionRoles junctionRolesOf(const QDomElement &definition);
 QPair<Terminal *, Terminal *> junctionChainNeighbours(Terminal *at);
 
 /**
+	@brief junctionChainRoles
+	@return the two connections of a chain around @a at: the one the wire
+	comes from, and the one it goes on to, either of them empty when there
+	is none.
+
+	The chain itself -- source, then target 1, then target 2, then target 3
+	-- read as plain uuids rather than as elements, so the drawing and the
+	lists, which hold their rows as uuids, follow one rule (#1500).
+
+	@param source the connection the wire comes in at, empty when the
+	junction has none set
+	@param targets where it goes on to, in the order the lists follow them
+	@param at the connection to read the chain at, empty for none
+	@return {the connection before, the connection after}, in chain order
+*/
+QPair<QString, QString> junctionChainRoles(const QString &source, const QStringList &targets,
+					   const QString &at);
+
+/**
 	@brief endsPastJunctions
 	Return the connections a wire ends at, past the junctions it runs
 	through.
 
 	A junction is a connection point on a wire rather than a piece of its
 	own: it is bought nowhere, built nowhere, and the wire does not end
-	there. From the connection the wire ends at, every other connection of
-	that junction carries the wire on, and a junction reached that way is
-	passed in turn (#1500).
+	there. The chain the junction's definition gives -- what the wire
+	comes from, then where it goes on to -- says which way it runs on,
+	and a junction reached that way is passed in turn, so a run through
+	two of them in a row ends where it really ends (#1500).
+
+	This is the one rule the cable list, the terminal strip and the
+	wiring lists name their lands with, so the three can never disagree.
 
 	@param end the connection the wire ends at -- one of a junction's own,
 	or one of a piece which names an end
 	@return the connections the wire ends at, none of them a junction's own;
-	empty when it reaches nothing else, which is a wire ending on a junction
-	the rest of the drawing has not wired up yet
+	empty when the chain does not say where the wire goes on to, which is a
+	junction nothing was ever set on, or one whose run stops there
 */
 QList<Terminal *> endsPastJunctions(Terminal *end);
 

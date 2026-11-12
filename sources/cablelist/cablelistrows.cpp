@@ -275,38 +275,24 @@ QVector<QMap<QString, QString>> CableList::rows(QETProject *project)
 
 					//A junction the cable runs through is not a piece it
 					//lands on: it is a connection point on the wire rather
-					//than a part of its own. The chain says which way the
-					//wire runs through, so the cable lands where the chain
-					//leads -- at the connection before it, or at the first
-					//one after it when the cable starts at the source
-					//(#1500). A junction is never a landing of its own: a
-					//chain the definition does not give leaves the landing
-					//out rather than naming a guess.
+					//than a part of its own. endsPastJunctions() says where
+					//the chain leads -- through another junction in the way,
+					//when the run goes on through two of them -- and the
+					//cable lands there. A junction is never a landing of its
+					//own, and a chain the definition does not give leaves
+					//the landing out rather than naming a guess (#1500).
 				if (element->linkType() & Element::Junction) {
-					const auto neighbours = junctionChainNeighbours(terminal);
-					const Terminal *next = neighbours.first ? neighbours.first
-									     : neighbours.second;
-					for (const Conductor *chain_conductor
-						 : next ? next->conductors()
-								: QList<Conductor *>())
-					{
-						if (!chain_conductor || !chain_conductor->terminal1
-							|| !chain_conductor->terminal2) {
+					for (Terminal *reached : endsPastJunctions(terminal)) {
+						if (!reached || !reached->parentElement()) {
 							continue;
 						}
-						Terminal *far = chain_conductor->terminal1 == next
-								? chain_conductor->terminal2
-								: chain_conductor->terminal1;
-						if (!far || !far->parentElement()) {
-							continue;
-						}
-						Element *reached_element = far->parentElement();
+						Element *reached_element = reached->parentElement();
 						if (reached_element->linkType() & Element::AllReport) {
 							continue;
 						}
 						CableEnd junction_end;
 						junction_end.diagram = reached_element->diagram();
-						junction_end.scene = far->scenePos();
+						junction_end.scene = reached->scenePos();
 						junction_end.element = reached_element;
 						junction_end.element_uuid = reached_element->uuid();
 						junction_end.tie = conductor->uuid().toString();
