@@ -342,6 +342,23 @@ class GenericDeviceTerminalsPage : public QWizardPage
 				m_pattern[side]->setPlaceholderText(tr("e.g. L1,L2,L3,,PE"));
 				line->addWidget(m_pattern[side], 1);
 				layout->addLayout(line);
+					//A PLC: the terminals of this side are its inputs or
+					//outputs, listed in its table of inputs and outputs
+				auto *io_line = new QHBoxLayout();
+				io_line->addWidget(new QLabel(tr("PLC inputs and outputs:")));
+				m_io[side] = new QComboBox();
+				for (Io io : {Io::None, Io::DigitalIn, Io::DigitalOut, Io::AnalogIn, Io::AnalogOut})
+					m_io[side]->addItem(ioName(io), int(io));
+				m_io[side]->setToolTip(tr("Marking a side makes the device a PLC: its terminals "
+							  "become the PLC's inputs or outputs, in the order they are listed."));
+				io_line->addWidget(m_io[side]);
+				io_line->addStretch();
+				layout->addLayout(io_line);
+				connect(m_io[side], qOverload<int>(&QComboBox::currentIndexChanged), this,
+					[this, side](int index) {
+						m_wizard->editableSpec().io[side] = Io(m_io[side]->itemData(index).toInt());
+						changed();
+					});
 				m_error[side] = new QLabel();
 				m_error[side]->setWordWrap(true);
 				m_error[side]->setStyleSheet(QStringLiteral("color: #c0392b"));
@@ -430,6 +447,9 @@ class GenericDeviceTerminalsPage : public QWizardPage
 			for (int side = 0 ; side < SideCount ; ++side) {
 				rebuildTable(Side(side));
 				updatePattern(Side(side));
+				QSignalBlocker blocker(m_io[side]);
+				m_io[side]->setCurrentIndex(
+					m_io[side]->findData(int(m_wizard->editableSpec().io[side])));
 			}
 		}
 
@@ -624,6 +644,7 @@ class GenericDeviceTerminalsPage : public QWizardPage
 		GenericDeviceWizard *m_wizard;
 		QTabWidget *m_tabs;
 		QLineEdit *m_pattern[SideCount];
+		QComboBox *m_io[SideCount];
 		QLabel *m_error[SideCount];
 		QTableWidget *m_table[SideCount];
 		QLabel *m_paste_report;
