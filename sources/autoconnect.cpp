@@ -216,7 +216,10 @@ void makeWire(State &s, Terminal *a, Terminal *b, QUndoCommand *parent)
 {
 	Diagram *diagram = s.diagram;
 	auto *conductor = new Conductor(a, b);
-	conductor->setAutomatic(true);
+		//Automatic only where something keeps it up to date: an automatic
+		//wire cannot be selected, so in any other project nothing could
+		//ever remove it (#1837)
+	conductor->setAutomatic(AutoConnect::isOn(diagram));
 	new AddGraphicsObjectCommand(conductor, diagram, QPointF(), parent);
 
 		//Same rule as a wire drawn by hand: the properties of the potential

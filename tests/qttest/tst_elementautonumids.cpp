@@ -722,6 +722,50 @@ qet.log('PROBE ' + JSON.stringify(r));
 		m_preferences.clear();
 	}
 
+	// A formula written by hand, with no sequential part, stands for no
+	// numbering: a copy keeps it when the label preference keeps labels,
+	// even with "number pasted elements" on (bugtracker #1828). A formula
+	// with a sequential part which names no numbering of the project is
+	// still not kept, and erasing (the default) still empties both.
+	void handWrittenFormulaIsKept()
+	{
+		const QString script = QStringLiteral(R"JS(
+var a = null, b = null;
+for (var f = 0; f < qet.folioCount() && !b; ++f) {
+  var u = qet.elementUuids(f);
+  for (var i = 0; i < u.length && !b; ++i)
+    if (qet.elementInfo(f, u[i], 'formula') === '' && qet.elementInfo(f, u[i], 'label') !== '') {
+      if (!a) a = [f, u[i]]; else if (f === a[0]) b = [f, u[i]];
+    }
+}
+var r = {found: !!(a && b)};
+r.setA = qet.setElementInfo(a[0], a[1], 'formula', '%f-K9');
+r.setB = qet.setElementInfo(b[0], b[1], 'formula', 'Z%sequ_1');
+var ca = qet.duplicateElements(a[0], [a[1]], a[0], 0, 60);
+var cb = qet.duplicateElements(b[0], [b[1]], b[0], 0, 60);
+r.plain = qet.elementInfo(a[0], ca[0], 'formula');
+r.sequential = qet.elementInfo(b[0], cb[0], 'formula');
+r.original = qet.elementInfo(a[0], a[1], 'formula');
+qet.log('PROBE ' + JSON.stringify(r));
+)JS");
+		m_preferences = QStringLiteral("[diagramcommands]\nerase-label-on-copy=false\n");
+		const QJsonObject kept = run(script, QStringLiteral(QET_EXAMPLES_DIR "/industrial.qet"));
+		QVERIFY2(!kept.isEmpty(), "the script logged nothing");
+		QVERIFY(kept.value(QStringLiteral("found")).toBool());
+		QVERIFY(kept.value(QStringLiteral("setA")).toBool());
+		QVERIFY(kept.value(QStringLiteral("setB")).toBool());
+		QCOMPARE(kept.value(QStringLiteral("original")).toString(), QStringLiteral("%f-K9"));
+		QCOMPARE(kept.value(QStringLiteral("plain")).toString(), QStringLiteral("%f-K9"));
+		QVERIFY(kept.value(QStringLiteral("sequential")).toString().isEmpty());
+
+		m_preferences.clear();
+		const QJsonObject erased = run(script, QStringLiteral(QET_EXAMPLES_DIR "/industrial.qet"));
+		QVERIFY2(!erased.isEmpty(), "the script logged nothing");
+		QCOMPARE(erased.value(QStringLiteral("original")).toString(), QStringLiteral("%f-K9"));
+		QVERIFY(erased.value(QStringLiteral("plain")).toString().isEmpty());
+		QVERIFY(erased.value(QStringLiteral("sequential")).toString().isEmpty());
+	}
+
 	// Conductor numberings: names are unique and never empty, a rename moves
 	// the folios which read the numbering with it (26 folios of
 	// industrial.qet read "Wire"), a numbering which folios read cannot be

@@ -1200,7 +1200,13 @@ bool Conductor::fromXml(QDomElement &dom_element)
 		m_autoNum_seq.fromXml(dom_element.firstChildElement("sequentialNumbers"));
 
 	m_freeze_label = dom_element.attribute("freezeLabel") == "true" ? true : false;
-	setAutomatic(dom_element.attribute(QStringLiteral("automatic")) == QLatin1String("true"));
+		//Automatic only in a project that keeps automatic connections up
+		//to date: elsewhere the wire could never be selected nor removed
+		//(#1837), as in files saved before that was checked, or a copy
+		//pasted from such a project
+	setAutomatic(dom_element.attribute(QStringLiteral("automatic")) == QLatin1String("true")
+				 && diagram() && diagram()->project()
+				 && diagram()->project()->liveAutoConnect());
 
 		//Changed through the project database while its folio was not
 		//built (lazy folios): the change, not what the file says

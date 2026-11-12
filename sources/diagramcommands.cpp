@@ -266,11 +266,17 @@ void PasteDiagramCommand::redo()
 					//not kept: it would stand for a numbering which does
 					//not exist here, with a label which is not its result.
 					//The label is what the erase preference made of it.
+					//A formula with no sequential part (%sequ_, %sequf_...)
+					//stands for no numbering: it is a formula written by
+					//hand, kept when the erase preference keeps it
+					//(bugtracker #1828).
 				for (Element *e : elmts_list)
 				{
 					const DiagramContext &info = e->elementInformations();
+					const QString formula = info.value(QETInformation::ELMT_FORMULA).toString();
 					if (e->linkType() == Element::Slave || (e->linkType() & Element::AllReport)
-							|| info.value(QETInformation::ELMT_FORMULA).toString().isEmpty()
+							|| formula.isEmpty()
+							|| !formula.contains(QLatin1String("%seq"))
 							|| !ElementAutoNumSchemeCommand::followedScheme(project, info).isEmpty()
 							|| pasted_schemes_has(pasted_schemes, e)) {
 						continue;

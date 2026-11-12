@@ -523,6 +523,8 @@ qet_add_app_test(tst_terminallist tst_terminallist.cpp)
 # qet_cables: one row per cable, in its own place or its first folio's (tst_cablelist, above).
 # The labels file behind a symbol's prefix is read once, and again only when it changes.
 qet_add_app_test(tst_labelsfilecache tst_labelsfilecache.cpp)
+# The prefix dialog names the folders the way the collection panel does (#1802).
+qet_add_app_test(tst_prefixdialogtitles tst_prefixdialogtitles.cpp)
 # A quick second click on the same spot reaches the shape tools as a
 # double-click: it must still start the next line, rectangle or ellipse.
 qet_add_app_test(tst_shapequickclick tst_shapequickclick.cpp)
@@ -745,6 +747,8 @@ qet_add_app_test(tst_cablelist tst_cablelist.cpp)
 # which ends on the junction, and where a cable list says each cable starts
 # and ends, neither of them naming the junction itself (#1500).
 qet_add_app_test(tst_junctionchain tst_junctionchain.cpp)
+# Copying a cable leaves the cable it was copied from whole.
+qet_add_app_test(tst_cablecopy tst_cablecopy.cpp)
 
 # What lies outside the sheet: named per folio, for the warning before
 # printing and exporting; off with the setting.
