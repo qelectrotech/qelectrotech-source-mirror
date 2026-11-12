@@ -29,6 +29,9 @@
 #include "qetgraphicsitem/terminal.h"
 #include "foliogrid.h"
 #include "qetproject.h"
+#include "cable/cable.h"
+#include "cable/cablepart.h"
+#include "cable/addcablecommand.h"
 
 #include <QCursor>
 #include <QKeyEvent>
@@ -95,6 +98,34 @@ class tst_keyboardmovereference : public QObject
 			m_view->resize(900, 700);
 			m_view->centerOn(300, 250);
 			DiagramView::setCrosshairShown(true);
+		}
+
+			//A cable line marked on its own moves with the keys as well,
+			//one undo step taking it back
+		void cableOnItsOwn()
+		{
+			CablePartData data;
+			data.uuid = QUuid::createUuid();
+			data.diagram = m_diagram->uuid();
+			data.p1 = QPointF(100, 500);
+			data.p2 = QPointF(300, 500);
+			auto *cable = m_diagram->project()->newCable();
+			cable->addPart(data);
+			auto *line = new CablePart(data);
+			line->setCable(cable);
+			m_diagram->addItem(line);
+			m_diagram->undoStack().push(new AddCableCommand(cable, line, m_diagram, true));
+
+			m_diagram->clearSelection();
+			line->setSelected(true);
+			const int steps = m_diagram->undoStack().count();
+			key(Qt::Key_Right);
+			QVERIFY(line->firstPoint().x() > 100);
+			QCOMPARE(line->firstPoint().y(), 500.0);
+			QCOMPARE(m_diagram->undoStack().count(), steps + 1);
+			m_diagram->undoStack().undo();
+			QCOMPARE(line->firstPoint(), QPointF(100, 500));
+			line->setSelected(false);
 		}
 
 		void cleanupTestCase()
