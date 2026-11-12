@@ -24,11 +24,15 @@
 #include "connectionsymbols.h"
 #include "qetmessagebox.h"
 #include "diagramevent/diagrameventaddelement.h"
+#include "ElementsCollection/elementslocation.h"
+#include "ElementsCollection/xmlelementcollection.h"
 #include "qetgraphicsitem/conductor.h"
 #include "qetgraphicsitem/element.h"
 #include "qetgraphicsitem/terminal.h"
 #include "qetgraphicsitem/terminalelement.h"
+#include "qetproject.h"
 
+#include <QDomDocument>
 #include <QGraphicsSceneMouseEvent>
 #include <QUndoStack>
 
@@ -45,11 +49,10 @@ class TstConnectionSymbols : public QObject
 			return QetAppTest::action(ConnectionSymbols::commandId(kind).section('.', 1));
 		}
 
-		/// A click with the corner's tool at @a at: one placed
-		void placeCorner(Diagram *diagram, const QPointF &at)
+		/// A click with the tool for @a location at @a at: one placed
+		void placeAt(ElementsLocation location, Diagram *diagram, const QPointF &at)
 		{
-			ElementsLocation corner = ConnectionSymbols::location(ConnectionSymbols::Corner);
-			DiagramEventAddElement tool(corner, diagram);
+			DiagramEventAddElement tool(location, diagram);
 			for (QEvent::Type type : {QEvent::GraphicsSceneMouseMove, QEvent::GraphicsSceneMousePress,
 						  QEvent::GraphicsSceneMouseRelease}) {
 				QGraphicsSceneMouseEvent event(type);
@@ -60,6 +63,46 @@ class TstConnectionSymbols : public QObject
 				else if (type == QEvent::GraphicsSceneMousePress) tool.mousePressEvent(&event);
 				else tool.mouseReleaseEvent(&event);
 			}
+		}
+
+		/// A click with the corner's tool at @a at: one placed
+		void placeCorner(Diagram *diagram, const QPointF &at)
+		{
+			placeAt(ConnectionSymbols::location(ConnectionSymbols::Corner), diagram, at);
+		}
+
+		/**
+			@brief ownJunction
+			@return a junction symbol of this test's own, in the project's
+			own collection.
+
+			The shipped connection symbols are retyped by the elements
+			collection, which lives in another repository and is not part
+			of this change, so what is checked here is what QElectroTech
+			does with a junction wherever the symbol came from (#1500).
+		*/
+		ElementsLocation ownJunction()
+		{
+			Diagram *diagram = QetAppTest::diagram();
+			auto *collection = diagram->project()->embeddedElementCollection();
+			const QString name = QStringLiteral("test_junction");
+			if (!collection->exist(QStringLiteral("import/%1.elmt").arg(name))) {
+				QDomDocument definition;
+				definition.setContent(QStringLiteral(
+					R"(<definition type="element" link_type="junction" width="20" height="20" hotspot_x="10" hotspot_y="10">
+<names><name lang="en">Test junction</name></names>
+<description>
+<line x1="0" y1="10" x2="20" y2="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+<terminal orientation="w" uuid="%1" x="0" y="10"/><terminal orientation="e" uuid="%2" x="20" y="10"/>
+</description></definition>)")
+						.arg(QUuid::createUuid().toString(), QUuid::createUuid().toString()));
+				if (!collection->addElementDefinition(QStringLiteral("import"), name,
+								 definition.documentElement())) {
+					return ElementsLocation();
+				}
+			}
+			return ElementsLocation(QStringLiteral("embed://import/%1.elmt").arg(name),
+						diagram->project());
 		}
 
 		QList<Element *> cornersAt(Diagram *diagram, const QPointF &at)
@@ -167,28 +210,33 @@ class TstConnectionSymbols : public QObject
 			QVERIFY(ConnectionSymbols::path(ConnectionSymbols::Interruption).isEmpty());
 		}
 
-			//A corner placed on the folio is a junction, not a terminal: it is
-			//never numbered, carries no label, and is no terminal the terminal
-			//strip manager could pick up as a free one (#1500)
+			//A junction placed on the folio is not a terminal: it is
+			//never numbered, carries no label, and is no terminal the
+			//terminal strip manager could pick up as a free one. The
+			//symbol is this test's own, because the shipped ones are
+			//retyped by the elements collection, which lives in another
+			//repository and is not part of this change (#1500)
 		void aPlacedJunctionIsNotATerminal()
 		{
 			Diagram *diagram = QetAppTest::diagram();
 			const QPointF at(500, 300);
-			placeCorner(diagram, at);
+			const ElementsLocation junction = ownJunction();
+			QVERIFY(!junction.isNull());
+			placeAt(junction, diagram, at);
 			const QList<Element *> placed = cornersAt(diagram, at);
 			QCOMPARE(placed.size(), 1);
-			Element *corner = placed.first();
+			Element *placed_junction = placed.first();
 
-			QCOMPARE(int(corner->elementData().m_type), int(ElementData::Junction));
-			QCOMPARE(int(corner->linkType()), int(Element::Junction));
+			QCOMPARE(int(placed_junction->elementData().m_type), int(ElementData::Junction));
+			QCOMPARE(int(placed_junction->linkType()), int(Element::Junction));
 
 				//No numbering scheme may reach it, and it holds no label to give
-			QVERIFY(!corner->takesSchemeNumber());
-			QVERIFY(corner->actualLabel().isEmpty());
+			QVERIFY(!placed_junction->takesSchemeNumber());
+			QVERIFY(placed_junction->actualLabel().isEmpty());
 
 				//The type the terminal strip code casts to, and the type the
 				//free-terminal and terminal-numbering queries filter on
-			QVERIFY2(!dynamic_cast<TerminalElement *>(corner),
+			QVERIFY2(!dynamic_cast<TerminalElement *>(placed_junction),
 				 "a junction is no terminal, so the terminal plan stays free of it");
 
 			diagram->undoStack().undo();
