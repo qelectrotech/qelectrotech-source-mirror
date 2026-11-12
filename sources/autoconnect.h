@@ -25,6 +25,7 @@
 #include <QSet>
 
 class Diagram;
+class Conductor;
 class Element;
 class Terminal;
 class QUndoCommand;
@@ -71,6 +72,12 @@ namespace AutoConnect
 
 	/// The terminal @a from would connect to now, or nullptr
 	Terminal *partner(const Terminal *from);
+	/**
+		@return true when the ends of the automatic wire @a conductor still
+		face each other in line, so that it may stay: while a symbol is
+		dragged, a wire whose ends no longer do is not shown
+	*/
+	bool endsInLine(const Conductor *conductor);
 
 	/**
 		Where copies of @a sample go when it is dragged along @a drag, as

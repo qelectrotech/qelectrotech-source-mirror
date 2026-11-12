@@ -32,6 +32,7 @@
 
 #include <QCursor>
 #include <QKeyEvent>
+#include "qetgraphicsitem/dynamicelementtextitem.h"
 #include <QMouseEvent>
 
 class tst_keyboardmovereference : public QObject
@@ -126,6 +127,32 @@ class tst_keyboardmovereference : public QObject
 			QCOMPARE(m_view->transform().m11(), fit);
 			m_view->resetTransform();
 			m_view->centerOn(300, 250);
+		}
+
+			//The text of a turned symbol: the arrow keys move it along the
+			//folio, not along the symbol; undo puts it back
+		void turnedSymbolText()
+		{
+			Element *turned = place(QPointF(500, 400));
+			QVERIFY(turned);
+			turned->setRotation(90);
+			auto *text = new DynamicElementTextItem(turned);
+			turned->addDynamicTextItem(text);
+			text->setPos(20, 0);
+			m_diagram->clearSelection();
+			text->setSelected(true);
+			const QPointF start = text->scenePos();
+			key(Qt::Key_Left);
+			QCOMPARE(text->scenePos(), start + QPointF(-10, 0));
+			key(Qt::Key_Down);
+			QCOMPARE(text->scenePos(), start + QPointF(-10, 10));
+			m_diagram->undoStack().undo();
+			m_diagram->undoStack().undo();
+			QCOMPARE(text->scenePos(), start);
+			m_diagram->undoStack().redo();
+			QCOMPARE(text->scenePos(), start + QPointF(-10, 0));
+			m_diagram->undoStack().undo();
+			m_diagram->clearSelection();
 		}
 
 			//Two symbols: on the left one's insertion point, whatever was nearer

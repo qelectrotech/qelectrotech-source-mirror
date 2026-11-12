@@ -15,6 +15,7 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
+#include "qet.h"
 #include "elementsmover.h"
 #include "qetproject.h"
 #include "autobreakconductor.h"
@@ -227,7 +228,8 @@ void ElementsMover::applyMovement(const QPointF &movement)
 	{
 		if (qgi == m_movement_driver)
 			continue;
-		qgi->setPos(qgi->pos() + movement);
+			//The movement is on the folio, whichever way a parent is turned
+		qgi->setPos(qgi->pos() + QET::sceneStepInParent(qgi, movement));
 	}
 
 	QVector<Conductor *>list_conductors;
@@ -247,6 +249,11 @@ void ElementsMover::applyMovement(const QPointF &movement)
 	{
 		conductor->updatePath();
 	}
+
+		//An automatic wire whose ends no longer face each other in line
+		//goes at the drop: it is not shown bent round meanwhile
+	for (const QPointer<Conductor> &c : std::as_const(m_preview_wires))
+		if (c) c->setVisible(AutoConnect::endsInLine(c));
 
 		//The cable lines he marked together with the elements come along
 		//by the very same step: one gesture moves the whole selection
@@ -695,6 +702,9 @@ void ElementsMover::cancelMovement()
 void ElementsMover::endPreview()
 {
 	for (const QPointer<Conductor> &c : std::as_const(m_preview_wires))
-		if (c) c->setPreview(false);
+		if (c) {
+			c->setPreview(false);
+			c->setVisible(true);
+		}
 	m_preview_wires.clear();
 }

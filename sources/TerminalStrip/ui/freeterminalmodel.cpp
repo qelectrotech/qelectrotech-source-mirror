@@ -395,7 +395,7 @@ void FreeTerminalModel::fillTerminalVector()
 {
     if (m_project) {
         ElementProvider provider_(m_project);
-        auto free_terminal_vector = provider_.freeTerminal();
+        auto free_terminal_vector = provider_.freeTerminalBlocks();
 
         std::sort(free_terminal_vector.begin(), free_terminal_vector.end(),
                   [](TerminalElement *a, TerminalElement *b)

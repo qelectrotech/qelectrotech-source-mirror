@@ -33,7 +33,10 @@
 #include <QApplication>
 #include <QDrag>
 #include <QDropEvent>
+#include "../../diagram.h"
+#include <QBoxLayout>
 #include <QMimeData>
+#include <QToolButton>
 #include <QMouseEvent>
 #include <QUuid>
 
@@ -45,6 +48,34 @@ TerminalStripTreeDockWidget::TerminalStripTreeDockWidget(QETProject *project, QW
     setProject(project);
 
 	ui->m_tree_view->expandRecursively(ui->m_tree_view->rootIndex());
+
+		//Above the tree: fold or unfold it all at once, with the icons of
+		//the theme, or the words where it has none
+	auto buttons_ = new QHBoxLayout();
+	const auto addButton = [this, buttons_](const QString &icon, const QString &text,
+											 const QString &tip, void (TerminalStripTreeDockWidget::*slot)()) {
+		auto button = new QToolButton(ui->dockWidgetContents);
+		const QIcon themed = QIcon::fromTheme(icon);
+		if (themed.isNull()) {
+			button->setText(text);
+		} else {
+			button->setIcon(themed);
+			button->setAutoRaise(true);
+		}
+		button->setToolTip(tip);
+		button->setAccessibleName(text);
+		connect(button, &QToolButton::clicked, this, slot);
+		buttons_->addWidget(button);
+	};
+	addButton(QStringLiteral("expand-all"), tr("Expand all"),
+			  tr("Unfold every plant, location and terminal strip of the tree"),
+			  &TerminalStripTreeDockWidget::expandAll);
+	addButton(QStringLiteral("collapse-all"), tr("Collapse all"),
+			  tr("Fold every plant, location and terminal strip of the tree"),
+			  &TerminalStripTreeDockWidget::collapseAll);
+	buttons_->addStretch();
+	if (auto box = qobject_cast<QBoxLayout *>(ui->dockWidgetContents->layout()))
+		box->insertLayout(0, buttons_);
 
 		//Free terminals are dragged from this tree or from the free terminal
 		//table and dropped on a strip. The tree items themselves never move,
@@ -92,6 +123,23 @@ void TerminalStripTreeDockWidget::setProject(QETProject *project)
 void TerminalStripTreeDockWidget::reload()
 {
 	auto current_ = m_current_strip;
+	const bool free_current = m_current_is_free_terminal;
+
+		//What was folded stays folded: a move into a strip does not unfold
+		//every strip again
+	if (m_built_once) {
+		m_expanded.clear();
+		QList<QTreeWidgetItem *> stack;
+		for (int i = 0; i < ui->m_tree_view->topLevelItemCount(); ++i)
+			stack << ui->m_tree_view->topLevelItem(i);
+		while (!stack.isEmpty()) {
+			QTreeWidgetItem *item = stack.takeLast();
+			if (item->isExpanded())
+				m_expanded << itemKey(item);
+			for (int i = 0; i < item->childCount(); ++i)
+				stack << item->child(i);
+		}
+	}
 
 	ui->m_tree_view->clear();
 	m_item_strip_H.clear();
@@ -106,13 +154,67 @@ void TerminalStripTreeDockWidget::reload()
 
 	buildTree();
 
-	ui->m_tree_view->expandRecursively(ui->m_tree_view->rootIndex());
+	if (!m_built_once) {
+		ui->m_tree_view->expandRecursively(ui->m_tree_view->rootIndex());
+		m_built_once = m_project;
+	} else {
+		QList<QTreeWidgetItem *> stack;
+		for (int i = 0; i < ui->m_tree_view->topLevelItemCount(); ++i)
+			stack << ui->m_tree_view->topLevelItem(i);
+		while (!stack.isEmpty()) {
+			QTreeWidgetItem *item = stack.takeLast();
+			item->setExpanded(m_expanded.contains(itemKey(item)));
+			for (int i = 0; i < item->childCount(); ++i)
+				stack << item->child(i);
+		}
+	}
 
-		//Reselect the tree widget item of the current edited strip
+		//Reselect the tree widget item of the current edited strip, or the
+		//independent terminals
    auto item = m_item_strip_H.key(current_);
    if (item) {
 	   ui->m_tree_view->setCurrentItem(item);
+   } else if (free_current && ui->m_tree_view->topLevelItemCount() > 1) {
+	   ui->m_tree_view->setCurrentItem(ui->m_tree_view->topLevelItem(1));
    }
+}
+
+/**
+ * @brief TerminalStripTreeDockWidget::itemKey
+ * @return what tells @a item apart over a reload of the tree: its kind
+ * and the texts of the items from the top down to it, or the uuid of a
+ * strip
+ */
+QString TerminalStripTreeDockWidget::itemKey(const QTreeWidgetItem *item) const
+{
+	if (item->type() == Strip)
+		return QStringLiteral("strip:") + item->data(0, UUID_USER_ROLE).toString();
+	QStringList path;
+	for (const QTreeWidgetItem *i = item; i; i = i->parent())
+		path.prepend(i->text(0));
+	return QString::number(item->type()) + QLatin1Char(':') + path.join(QChar(0x1f));
+}
+
+void TerminalStripTreeDockWidget::expandAll() {
+	ui->m_tree_view->expandAll();
+}
+
+void TerminalStripTreeDockWidget::collapseAll()
+{
+		//The project and the independent terminals stay open: everything
+		//below them folds
+	ui->m_tree_view->collapseAll();
+	for (int i = 0; i < ui->m_tree_view->topLevelItemCount(); ++i)
+		ui->m_tree_view->topLevelItem(i)->setExpanded(i == 0);
+}
+
+/**
+ * @brief TerminalStripTreeDockWidget::currentIsFreeTerminals
+ * @return true when the independent terminals, or one of them, are
+ * selected: the table of the independent terminals shows
+ */
+bool TerminalStripTreeDockWidget::currentIsFreeTerminals() const {
+	return m_current_is_free_terminal;
 }
 
 /**
@@ -216,6 +318,9 @@ void TerminalStripTreeDockWidget::on_m_tree_view_currentItemChanged(QTreeWidgetI
 	const auto current_type{current->type()};
 	if (current_type == Strip) {
 		strip_ = m_item_strip_H.value(current);
+	}
+	else if (current_type == FreeTerminal) {
+		current_is_free = true;
 	}
 	else if (current_type == Terminal && current->parent())
 	{
@@ -347,7 +452,7 @@ QTreeWidgetItem* TerminalStripTreeDockWidget::addTerminalStrip(TerminalStrip *te
 void TerminalStripTreeDockWidget::addFreeTerminal()
 {
 	ElementProvider ep(m_project);
-	auto vector_ = ep.freeTerminal();
+	auto vector_ = ep.freeTerminalBlocks();
 
 	if (vector_.isEmpty()) {
 		return;
@@ -366,7 +471,13 @@ void TerminalStripTreeDockWidget::addFreeTerminal()
 	for (const auto terminal : std::as_const(vector_))
 	{
 		QUuid uuid_ = terminal->uuid();
-		QStringList strl{terminal->actualLabel()};
+			//One without a label says what and where it is
+		QString text_ = terminal->actualLabel();
+		if (text_.isEmpty()) {
+			const int folio_ = terminal->diagram() ? terminal->diagram()->folioIndex() + 1 : 0;
+			text_ = tr("(no label) %1, folio %2").arg(terminal->name()).arg(folio_);
+		}
+		QStringList strl{text_};
 		auto item = new QTreeWidgetItem(free_terminal_item, strl, Terminal);
 		item->setData(0, UUID_USER_ROLE, uuid_.toString());
 		item->setIcon(0, QET::Icons::ElementTerminal);

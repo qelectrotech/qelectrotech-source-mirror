@@ -334,8 +334,15 @@ QList<CableCopy::Wired> CableCopy::wire(Diagram *diagram,
 		for (const Offered &item : std::as_const(offered))
 		{
 				//A wire is one piece of wire: whichever cable held it
-				//before has to let it go.
-			CableManager::claimConductor(project, item.conductor, cable);
+				//before has to let it go. A wire which came with this
+				//copy was held by nobody: until the paste is on the undo
+				//stack it still has the identity of the wire it was
+				//copied from, so the cable field written onto it by the
+				//cores set just before names the source cable, and
+				//claiming it would take that core away from the source.
+			if (!fresh.contains(item.conductor)) {
+				CableManager::claimConductor(project, item.conductor, cable);
+			}
 
 				//A cable binds a conductor by its identity, so a
 				//conductor read back from a file written before it had a
