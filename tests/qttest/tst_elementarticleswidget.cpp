@@ -281,6 +281,57 @@ class tst_elementarticleswidget : public QObject
 					 qPrintable(QStringLiteral("Dock minimum width grew too large: %1")
 									.arg(dock.minimumSizeHint().width())));
 		}
+
+		void materialPickerKeepsInformationTabFields()
+		{
+			ElementPropertiesWidget props(m_element);
+			auto *info_widget = props.findChild<ElementInfoWidget *>();
+			auto *articles = props.findChild<ElementArticlesWidget *>();
+			QVERIFY(info_widget && articles);
+
+			MaterialRecord record;
+			record.values.insert(QETInformation::ELMT_DESIGNATION, QStringLiteral("3RV2011-1AA10"));
+			record.values.insert(QETInformation::ELMT_FUNCTION, QStringLiteral("Motor starter"));
+			record.values.insert(QETInformation::ELMT_PLANT, QStringLiteral("P1"));
+			record.values.insert(QETInformation::ELMT_LOCATION, QStringLiteral("Cab2"));
+			record.values.insert(QETInformation::ELMT_COMMENT, QStringLiteral("Main breaker"));
+			record.values.insert(QETInformation::ELMT_NOTES, QStringLiteral("Check torque"));
+
+			articles->applyMaterialRecord(record, 0);
+
+			const DiagramContext preview = articles->currentInfo();
+			QCOMPARE(preview.value(QETInformation::ELMT_DESIGNATION).toString(), QStringLiteral("3RV2011-1AA10"));
+			QCOMPARE(preview.value(QETInformation::ELMT_FUNCTION).toString(), QStringLiteral("Motor starter"));
+			QCOMPARE(preview.value(QETInformation::ELMT_PLANT).toString(), QStringLiteral("P1"));
+			QCOMPARE(preview.value(QETInformation::ELMT_LOCATION).toString(), QStringLiteral("Cab2"));
+			QCOMPARE(preview.value(QETInformation::ELMT_COMMENT).toString(), QStringLiteral("Main breaker"));
+			QCOMPARE(preview.value(QETInformation::ELMT_NOTES).toString(), QStringLiteral("Check torque"));
+
+			props.apply();
+
+			const DiagramContext saved = m_element->elementInformations();
+			QCOMPARE(saved.value(QETInformation::ELMT_DESIGNATION).toString(), QStringLiteral("3RV2011-1AA10"));
+			QCOMPARE(saved.value(QETInformation::ELMT_FUNCTION).toString(), QStringLiteral("Motor starter"));
+			QCOMPARE(saved.value(QETInformation::ELMT_PLANT).toString(), QStringLiteral("P1"));
+			QCOMPARE(saved.value(QETInformation::ELMT_LOCATION).toString(), QStringLiteral("Cab2"));
+			QCOMPARE(saved.value(QETInformation::ELMT_COMMENT).toString(), QStringLiteral("Main breaker"));
+			QCOMPARE(saved.value(QETInformation::ELMT_NOTES).toString(), QStringLiteral("Check torque"));
+			QCOMPARE(findPart(info_widget, QETInformation::ELMT_FUNCTION)->text(), QStringLiteral("Motor starter"));
+			QCOMPARE(findPart(info_widget, QETInformation::ELMT_PLANT)->text(), QStringLiteral("P1"));
+
+			// Live-edit pick also pushes and refreshes Information tab immediately.
+			props.setLiveEdit(true);
+			MaterialRecord live_record;
+			live_record.values.insert(QETInformation::ELMT_DESIGNATION, QStringLiteral("5SY4116-7"));
+			live_record.values.insert(QETInformation::ELMT_FUNCTION, QStringLiteral("Circuit breaker"));
+			live_record.values.insert(QETInformation::ELMT_PLANT, QStringLiteral("P2"));
+			articles->applyMaterialRecord(live_record, 0);
+
+			QCOMPARE(m_element->elementInformations().value(QETInformation::ELMT_DESIGNATION).toString(), QStringLiteral("5SY4116-7"));
+			QCOMPARE(m_element->elementInformations().value(QETInformation::ELMT_FUNCTION).toString(), QStringLiteral("Circuit breaker"));
+			QCOMPARE(findPart(info_widget, QETInformation::ELMT_FUNCTION)->text(), QStringLiteral("Circuit breaker"));
+			QCOMPARE(findPart(info_widget, QETInformation::ELMT_PLANT)->text(), QStringLiteral("P2"));
+		}
 };
 
 QET_APP_TEST_MAIN(tst_elementarticleswidget)

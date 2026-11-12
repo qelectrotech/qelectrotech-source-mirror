@@ -106,7 +106,10 @@ class ElementArticlesWidget : public AbstractElementPropertiesEditorWidget
 		std::array<QWidget *, kBlockCount> m_block_pages{};
 		std::array<bool, kBlockCount> m_explicitly_added{};
 		QMap<QString, QString> m_loaded_values;
+		QMap<QString, QString> m_pending_extra_info;
 		bool m_ui_built = false;
+
+		friend class tst_elementarticleswidget;
 };
 
 #endif // ELEMENTARTICLESWIDGET_H

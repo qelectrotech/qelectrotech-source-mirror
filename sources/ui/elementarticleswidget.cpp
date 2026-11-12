@@ -274,6 +274,7 @@ void ElementArticlesWidget::setElement(Element *element)
 	}
 
 	m_explicitly_added.fill(false);
+	m_pending_extra_info.clear();
 	m_element = element;
 	updateUi();
 
@@ -293,6 +294,7 @@ void ElementArticlesWidget::apply()
 	}
 	if (QUndoCommand *undo = associatedUndo()) {
 		m_element->diagram()->undoStack().push(undo);
+		m_pending_extra_info.clear();
 	}
 }
 
@@ -303,6 +305,7 @@ void ElementArticlesWidget::reset()
 {
 	if (m_element) {
 		m_explicitly_added.fill(false);
+		m_pending_extra_info.clear();
 		updateUi();
 	}
 }
@@ -579,6 +582,7 @@ void ElementArticlesWidget::updateUi()
 	if (!m_element) {
 		return;
 	}
+	m_pending_extra_info.clear();
 
 	const bool was_live = m_live_edit;
 	if (was_live) {
@@ -620,6 +624,14 @@ DiagramContext ElementArticlesWidget::currentInfo() const
 			info.remove(key);
 		} else {
 			info.addValue(key, part->text());
+		}
+	}
+
+	for (auto it = m_pending_extra_info.cbegin(); it != m_pending_extra_info.cend(); ++it) {
+		if (it.value().isEmpty()) {
+			info.remove(it.key());
+		} else {
+			info.addValue(it.key(), it.value());
 		}
 	}
 	return info;
@@ -968,7 +980,7 @@ void ElementArticlesWidget::applyMaterialRecord(const MaterialRecord &record, in
 		disableLiveEdit();
 	}
 
-	for (const QString &column : articleColumnsForBlock(block)) {
+	for (const QString &column : MaterialList::columnsForBlock(block)) {
 		if (!record.values.contains(column)) {
 			continue;
 		}
@@ -982,6 +994,9 @@ void ElementArticlesWidget::applyMaterialRecord(const MaterialRecord &record, in
 		}
 		if (ElementInfoPartWidget *part = partForKey(key)) {
 			part->setText(value);
+			m_pending_extra_info.remove(key);
+		} else {
+			m_pending_extra_info.insert(key, value);
 		}
 	}
 
