@@ -28,28 +28,33 @@
 /*
 	QETApp::cableTextsFont(key) -- the default font of one text of a
 	cable, each of the five having one of its own on the "Texte" page
-	since they were set apart.
+	since they were set apart, and the colours of the cores having a
+	row of their own beside them.
 
-	Three things are pinned here, and all three are about not moving
+	Four things are pinned here, and all four are about not moving
 	what an existing installation already sees:
 
-	* With nothing chosen, every one of the five follows the font all
-	  of them shared before, which itself is the font the drawing
-	  writes its own texts with, a shade smaller. Opening the
-	  preferences must change nothing until he picks something.
+	* With nothing chosen, every one of them follows the font all five
+	  shared before, which itself is the font the drawing writes its
+	  own texts with, a shade smaller. Opening the preferences must
+	  change nothing until he picks something.
 	* The single setting an older version stored under
-	  "cable-management/cable-text-font" still reaches all five, so
-	  what he picked before this was split apart goes on being drawn
-	  the way he chose it.
+	  "cable-management/cable-text-font" still reaches all five which
+	  have no default of their own, and the one stored under
+	  "cable-management/cable-core-font" still reaches the colours, so
+	  what he picked before goes on being drawn the way he chose it.
 	* A font set for one text reaches that text alone. The others go
 	  on following the shared one, and taking the choice back puts
 	  just that text back to it -- which is what the reset button
 	  beside each row in the preferences does.
+	* The colours of the cores keep the very key they have always
+	  used: they are one row for all of them together, so there is one
+	  setting for the lot rather than one per colour.
 
-	Names outside those five (the colours of the cores, the reference
-	to another folio) are left alone: the preferences offer no
-	default of their own for them, so there is nothing to set apart
-	and nothing to take back.
+	Names outside those six (the reference to another folio, or a name
+	which is no text of a cable at all) are left alone: the
+	preferences offer no default of their own for them here, so there
+	is nothing to set apart and nothing to take back.
 */
 class tst_cabletextfont : public QObject
 {
@@ -206,7 +211,7 @@ class tst_cabletextfont : public QObject
 							 ownFont(15.0)));
 		}
 
-		void namesOutsideTheFiveAreLeftAlone()
+		void theCoresHaveARowOfTheirOwnToo()
 		{
 			const QFont shared = ownFont(11.0);
 			QSettings settings;
@@ -214,11 +219,41 @@ class tst_cabletextfont : public QObject
 							  QETUtils::fontToString(shared));
 			settings.sync();
 
-				//The colours of the cores and the reference to another
-				//folio follow the shared font: no default of their own
-				//to set apart
+				//Without a choice of his own the colours follow the
+				//font all five share, the way they always have
+			QVERIFY(sameFont(QETApp::cableCoreFont(), shared));
 			QVERIFY(sameFont(QETApp::cableTextsFont(QStringLiteral("cores")),
 							 shared));
+			QVERIFY(!QETApp::hasCableTextFont(QStringLiteral("cores")));
+
+				//A choice for them is kept under the very key the
+				//colours have always used, so what he picked before
+				//is still honoured -- and still offered to take back
+			QETApp::setCableTextFont(QStringLiteral("cores"), ownFont(6.0));
+			QVERIFY(QETApp::hasCableTextFont(QStringLiteral("cores")));
+			QVERIFY(sameFont(QETApp::cableCoreFont(), ownFont(6.0)));
+			QVERIFY(sameFont(QETApp::cableTextsFont(QStringLiteral("cores")),
+							 ownFont(6.0)));
+
+				//Taking it back leaves the five where they were
+			QETApp::clearCableTextFont(QStringLiteral("cores"));
+			QVERIFY(!QETApp::hasCableTextFont(QStringLiteral("cores")));
+			QVERIFY(sameFont(QETApp::cableCoreFont(), shared));
+			QVERIFY(sameFont(QETApp::cableTextsFont(QStringLiteral("length")),
+							 shared));
+		}
+
+		void namesOutsideThoseSixAreLeftAlone()
+		{
+			const QFont shared = ownFont(11.0);
+			QSettings settings;
+			settings.setValue(QStringLiteral("cable-management/cable-text-font"),
+							  QETUtils::fontToString(shared));
+			settings.sync();
+
+				//The reference to another folio is set under
+				//Cross-references rather than here, and any name
+				//which is no text of a cable is no text of a cable
 			QVERIFY(sameFont(QETApp::cableTextsFont(QStringLiteral("xref")),
 							 shared));
 			QVERIFY(sameFont(QETApp::cableTextsFont(QStringLiteral("nothing")),
@@ -226,11 +261,11 @@ class tst_cabletextfont : public QObject
 
 				//And there is nothing to write or take back for them,
 				//whatever he asks for
-			QETApp::setCableTextFont(QStringLiteral("cores"), ownFont(22.0));
+			QETApp::setCableTextFont(QStringLiteral("xref"), ownFont(22.0));
 			QETApp::setCableTextFont(QStringLiteral("bogus"), ownFont(22.0));
-			QVERIFY(!QETApp::hasCableTextFont(QStringLiteral("cores")));
+			QVERIFY(!QETApp::hasCableTextFont(QStringLiteral("xref")));
 			QVERIFY(!QETApp::hasCableTextFont(QStringLiteral("bogus")));
-			QVERIFY(sameFont(QETApp::cableTextsFont(QStringLiteral("cores")),
+			QVERIFY(sameFont(QETApp::cableTextsFont(QStringLiteral("xref")),
 							 shared));
 		}
 
@@ -264,6 +299,10 @@ class tst_cabletextfont : public QObject
 		{
 			QETApp::setCableTextFont(QStringLiteral("location"),
 									 ownFont(15.0));
+			QETApp::setCableTextFont(QStringLiteral("length"),
+									 ownFont(12.0));
+			QETApp::setCableTextFont(QStringLiteral("cores"),
+									 ownFont(6.0));
 
 			GeneralConfigurationPage page;
 			const struct {
@@ -286,6 +325,9 @@ class tst_cabletextfont : public QObject
 				{QStringLiteral("length"),
 				 QStringLiteral("m_cable_length_font_pb"),
 				 QStringLiteral("m_cable_length_reset_tb")},
+				{QStringLiteral("cores"),
+				 QStringLiteral("m_cable_core_font_pb"),
+				 QStringLiteral("m_cable_core_reset_tb")},
 			};
 
 			for (const auto &row : rows)
@@ -305,11 +347,16 @@ class tst_cabletextfont : public QObject
 						 QETApp::hasCableTextFont(row.key));
 			}
 
-				//Only the row he set apart offers something to undo
+				//The rows he set apart offer something to undo, the
+				//others do not
 			QVERIFY(page.findChild<QToolButton *>(
 						QStringLiteral("m_cable_location_reset_tb"))->isEnabled());
+			QVERIFY(page.findChild<QToolButton *>(
+						QStringLiteral("m_cable_length_reset_tb"))->isEnabled());
 			QVERIFY(!page.findChild<QToolButton *>(
-						 QStringLiteral("m_cable_length_reset_tb"))->isEnabled());
+						 QStringLiteral("m_cable_designation_reset_tb"))->isEnabled());
+			QVERIFY(page.findChild<QToolButton *>(
+						QStringLiteral("m_cable_core_reset_tb"))->isEnabled());
 				//Taking it back puts that row back to the shared font
 				//and takes the offer away again
 			auto *reset = page.findChild<QToolButton *>(
@@ -317,6 +364,23 @@ class tst_cabletextfont : public QObject
 			QTest::mouseClick(reset, Qt::LeftButton);
 			QVERIFY(!QETApp::hasCableTextFont(QStringLiteral("location")));
 			QVERIFY(!reset->isEnabled());
+				//The row beside it is left exactly as it was
+			QVERIFY(QETApp::hasCableTextFont(QStringLiteral("length")));
+			QVERIFY(page.findChild<QToolButton *>(
+						QStringLiteral("m_cable_length_reset_tb"))->isEnabled());
+
+				//The colours of the cores have a reset of their own,
+				//and it takes back only their font
+			auto *core_reset = page.findChild<QToolButton *>(
+						QStringLiteral("m_cable_core_reset_tb"));
+			QVERIFY(core_reset->isEnabled());
+			QTest::mouseClick(core_reset, Qt::LeftButton);
+			QVERIFY(!QETApp::hasCableTextFont(QStringLiteral("cores")));
+			QVERIFY(!core_reset->isEnabled());
+				//The length keeps its own font through it all
+			QVERIFY(QETApp::hasCableTextFont(QStringLiteral("length")));
+			QVERIFY(sameFont(QETApp::cableTextsFont(QStringLiteral("length")),
+							 ownFont(12.0)));
 		}
 };
 

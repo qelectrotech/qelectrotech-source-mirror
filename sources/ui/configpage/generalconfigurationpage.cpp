@@ -287,7 +287,9 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 		//written in a font of its own -- what he leaves alone keeps
 		//following the font all five share, which is what an
 		//installation which picked one before they were set apart
-		//still holds.
+		//still holds. The colours of the cores come last: all of them
+		//together, since they are drawn in one row along the line,
+		//but with a row of their own so they may be taken back too.
 	m_cable_text_rows = {
 		{QStringLiteral("designation"), ui->m_cable_designation_font_pb,
 		 ui->m_cable_designation_reset_tb},
@@ -299,6 +301,8 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 		 ui->m_cable_location_reset_tb},
 		{QStringLiteral("length"), ui->m_cable_length_font_pb,
 		 ui->m_cable_length_reset_tb},
+		{QStringLiteral("cores"), ui->m_cable_core_font_pb,
+		 ui->m_cable_core_reset_tb},
 	};
 	for (const CableTextRow &row : std::as_const(m_cable_text_rows))
 	{
@@ -311,7 +315,6 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 			refreshCableTextRow(row);
 		});
 	}
-	ui->m_cable_core_font_pb->setText(fontButtonLabel(QETApp::cableCoreFont()));
 
 		//Where those texts stop in relation to the beginning of their
 		//own line, for the cables which say nothing about it themselves
@@ -839,7 +842,8 @@ void GeneralConfigurationPage::refreshCableTextRow(const CableTextRow &row)
 	Let him pick the font one text of a cable is written with by
 	default: designation, type, installation, location or length,
 	each on its own row, so that a length may be written smaller than
-	the designation above it.
+	the designation above it -- or the colours of the cores, which are
+	one row for all of them together, the way they are drawn.
 
 	Every cable which has not been given a font of its own for that
 	text follows it, from now on: one which has keeps the one it was
@@ -852,34 +856,15 @@ void GeneralConfigurationPage::editCableTextFont(const CableTextRow &row)
 {
 	bool ok = false;
 	const QFont start = QETApp::cableTextsFont(row.key);
+	const bool cores = row.key == QLatin1String("cores");
 	const QFont font = QFontDialog::getFont(&ok, start, this,
-			tr("Cable text font"), QFontDialog::DontUseNativeDialog);
+			cores ? tr("Core colors font") : tr("Cable text font"),
+			QFontDialog::DontUseNativeDialog);
 	if (!ok) return;
 
 	QETApp::setCableTextFont(row.key, font);
 	refreshCableTextRow(row);
 }
-
-/**
-	@brief GeneralConfigurationPage::on_m_cable_core_font_pb_clicked
-	Let him pick the font the colours of the cores are written with by
-	default -- all of them together, the way they are drawn: one row of
-	colours beside the line, never set apart from each other.
-*/
-void GeneralConfigurationPage::on_m_cable_core_font_pb_clicked()
-{
-	bool ok = false;
-	const QFont font = QFontDialog::getFont(&ok, QETApp::cableCoreFont(), this,
-			tr("Core colors font"), QFontDialog::DontUseNativeDialog);
-	if (!ok) return;
-
-	QSettings settings;
-	settings.setValue("cable-management/cable-core-font", QETUtils::fontToString(font));
-	ui->m_cable_core_font_pb->setText(fontButtonLabel(QETApp::cableCoreFont()));
-}
-
-
-
 
 void GeneralConfigurationPage::on_m_common_elmt_path_cb_currentIndexChanged(int index)
 {

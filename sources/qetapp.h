@@ -192,25 +192,26 @@ class QETApp : public QObject
 
 			Each of the five may be set apart from the others, so that
 			a length may be written smaller than the designation above
-			it. Any other name than those five -- the colours of the
-			cores, the reference to another folio -- answers with the
-			font they all share, since the preferences offer neither
-			of them a default of their own.
+			it, and the colours of the cores have one of theirs as
+			well. Any other name than those six -- the reference to
+			another folio -- answers with the font they all share,
+			since the preferences offer that one a default of its own
+			under Cross-references rather than here.
 			@param key the name of that text: "designation", "type",
-			"installation", "location" or "length"
+			"installation", "location", "length" or "cores"
 		*/
 		static QFont cableTextsFont(const QString &key);
 		/**
 			@brief Whether the preferences hold a font of their own for
-			one of those five texts -- what the reset button beside
-			its font button has to know to say whether there is
-			something to take back.
+			one of those texts -- what the reset button beside its
+			font button has to know to say whether there is something
+			to take back.
 			@param key the name of that text
 		*/
 		static bool hasCableTextFont(const QString &key);
 		/**
-			@brief Give one of those five texts a default font of its
-			own, so that it is written that way from now on.
+			@brief Give one of those texts a default font of its own,
+			so that it is written that way from now on.
 			@param key the name of that text
 			@param font what it is to be written with
 		*/
