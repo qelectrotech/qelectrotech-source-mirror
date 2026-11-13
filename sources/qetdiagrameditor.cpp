@@ -49,6 +49,7 @@
 #include "QWidgetAnimation/qwidgetanimation.h"
 #include "autoNum/ui/autonumberingdockwidget.h"
 #include "ui/devicenavigatordockwidget.h"
+#include "ui/toolmenu.h"
 #include "conductornumexport.h"
 #include "diagramcommands.h"
 #include "diagramcontent.h"
@@ -2212,10 +2213,14 @@ void QETDiagramEditor::setUpMenu()
 		//toolbar button has no key, so text fields, images and every drawing
 		//shape simply could not be added. m_depth_action_group below has
 		//always been in both places; this brings these into line with it.
-	m_add_item_menu = menu_edition -> addMenu(tr("&Add"));
+		//Tool menus: no radio button in front of each tool (see ToolMenu)
+	m_add_item_menu = new ToolMenu(tr("&Add"), menu_edition);
+	menu_edition -> addMenu(m_add_item_menu);
 	m_add_item_menu -> setIcon(QET::Icons::Add);
 	m_add_item_menu -> addActions(m_add_item_actions_group.actions());
-	QMenu *tape_menu = menu_edition -> addMenu(QET::Icons::DimensionLinear, tr("Tape measure"));
+	QMenu *tape_menu = new ToolMenu(tr("Tape measure"), menu_edition);
+	tape_menu -> setIcon(QET::Icons::DimensionLinear);
+	menu_edition -> addMenu(tape_menu);
 	tape_menu -> addAction(m_add_dimension_linear);
 	tape_menu -> addAction(m_add_dimension_chain);
 	menu_edition -> addSeparator();
