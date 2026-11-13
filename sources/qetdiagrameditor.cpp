@@ -1018,6 +1018,15 @@ void QETDiagramEditor::setUpActions()
 		QSettings().setValue(TextGrid::settings_key, action->data());
 		emit QETApp::instance()->textGridChanged();
 	});
+	m_text_grid_menu->addSeparator();
+	QAction *text_middle = m_text_grid_menu->addAction(tr("Snap the middle of the text"));
+	text_middle->setToolTip(tr("Puts the middle of a moved text on the grid instead of the top "
+							   "left corner of its frame, e.g. a terminal number centred on a grid line."));
+	text_middle->setCheckable(true);
+	text_middle->setChecked(QSettings().value(TextGrid::middle_key, false).toBool());
+	connect(text_middle, &QAction::toggled, this, [](bool on) {
+		QSettings().setValue(TextGrid::middle_key, on);
+	});
 	connect(QETApp::instance(), &QETApp::textGridChanged,
 			this, &QETDiagramEditor::updateTextGridButton);
 	updateTextGridButton();
@@ -6160,7 +6169,8 @@ void QETDiagramEditor::updateTextGridButton()
 	const qreal divisor = QSettings().value(TextGrid::settings_key, 1).toReal();
 	for (QAction *action : m_text_grid_menu->actions())
 	{
-		if (qFuzzyCompare(action->data().toReal() + 1, divisor + 1))
+			//The divisors only, not the middle switch below them
+		if (action->actionGroup() && qFuzzyCompare(action->data().toReal() + 1, divisor + 1))
 		{
 			action->setChecked(true);
 			m_text_grid_button->setText(tr("Texts %1").arg(action->text()));
