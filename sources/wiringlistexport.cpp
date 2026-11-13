@@ -697,12 +697,15 @@ void WiringListExport::resolveJunctionRuns(QList<ConductorData> &conductors,
                                                   reached.junctionTargets,
                                                   far.second);
             QString next = links.first.isEmpty() ? links.second : links.first;
-            if (next.isEmpty()) {
-                    //The chain does not say: nothing was ever set on this
-                    //symbol, or this connection has no role in it. A
-                    //junction with one way out of it still has nothing to
-                    //tell apart, so the wire goes on that way -- a corner
-                    //passes a wire through without needing a source (#1500)
+            if (next.isEmpty()
+                || on_connection.value(far.first + QLatin1Char('|') + next).isEmpty()) {
+                    //The chain does not say, or names a connection this
+                    //symbol does not have or has no wire on -- which is
+                    //how a corner whose source points at a terminal it
+                    //was never drawn with came out of the list with
+                    //nothing (#1500). A junction with one way out of it
+                    //still has nothing to tell apart, so the wire goes on
+                    //that way.
                 QStringList other = wiredConnectionsOf(far.first);
                 other.removeAll(far.second);
                 next = junctionPassThrough(other);
@@ -743,8 +746,23 @@ void WiringListExport::resolveJunctionRuns(QList<ConductorData> &conductors,
             //with a single way out of it, which has nothing to tell apart
             //and needs no source to be passed on (#1500)
         QStringList chain_connections;
-        if (info.junctionSource.isEmpty())
+            //Set when the chain is taken from what is wired rather than
+            //from the roles: such a pair has no order of its own, so the
+            //row is sorted into the order both lists read one in below
+            //(#1500)
+        bool pass_through = false;
+        if (info.junctionSource.isEmpty()
+            || on_connection.value(it.key() + QLatin1Char('|')
+                                   + info.junctionSource).isEmpty())
         {
+                //No source set, or one no wire hangs on -- which is how a
+                //corner whose roles were copied from a symbol with three
+                //connections names a terminal it does not have. What the
+                //symbol says cannot be followed then, and a junction with
+                //a single way out of it still has nothing to tell apart,
+                //so both of its wired connections are taken and the wire
+                //passed on. Anything else stays as it stands and is
+                //counted rather than guessed (#1500)
             const QStringList wired_connections = wiredConnectionsOf(it.key());
             if (wired_connections.size() != 2) {
                     //More than one way on, or none at all: the rows stay
@@ -758,11 +776,10 @@ void WiringListExport::resolveJunctionRuns(QList<ConductorData> &conductors,
                 continue;
             }
             chain_connections = wired_connections;
+            pass_through = true;
         }
         else
         {
-            const QString on_source = it.key() + QLatin1Char('|') + info.junctionSource;
-            if (on_connection.value(on_source).isEmpty()) continue;
             chain_connections << info.junctionSource << info.junctionTargets;
         }
 
@@ -794,7 +811,7 @@ void WiringListExport::resolveJunctionRuns(QList<ConductorData> &conductors,
             //in the order both lists read one in -- the same round the CSV
             //writes it in -- instead of in whatever order the conductors
             //happen to be held in (#1500)
-        if (info.junctionSource.isEmpty() && chain.size() == 2) {
+        if (pass_through && chain.size() == 2) {
             const auto after = std::make_pair(labelOf(chain.at(1).first().element),
                                               chain.at(1).first().element);
             const auto before = std::make_pair(labelOf(chain.at(0).first().element),

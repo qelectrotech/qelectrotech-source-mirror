@@ -1313,33 +1313,48 @@ JunctionRoles junctionRolesOf(const QDomElement &definition)
 		return roles;
 	}
 
-		//The roles are kind information: they were introduced with the
-		//junction type itself, so no symbol written before that can be
-		//holding them anywhere else, and there is nowhere to fall back
-		//to (#1500)
-	QString targets[3];
-	const QStringList target_keys = junctionTargetKeys();
-	const QDomElement block = definition.firstChildElement(QStringLiteral("kindInformations"));
-	for (QDomElement entry = block.firstChildElement(QStringLiteral("kindInformation")) ;
-	     !entry.isNull() ; entry = entry.nextSiblingElement(QStringLiteral("kindInformation")))
-	{
-		const QString name = entry.attribute(QStringLiteral("name"));
-		const QString value = entry.text().trimmed();
-		const int index = target_keys.indexOf(name);
-		if (name == junctionSourceKey()) {
-			roles.source = value;
-		} else if (index >= 0 && index < 3) {
-			targets[index] = value;
+		//The roles are kind information, where they were introduced with
+		//the junction type itself. Symbols written before that move keep
+		//them among their element information instead -- the ones in the
+		//wild do, including the junction symbols uploaded to the forum --
+		//so that block is read too, and the kind one wins when it has
+		//anything to say (#1500)
+	const auto readBlock = [&definition](const QString &block_name,
+					   const QString &entry_name) {
+		JunctionRoles read;
+		QString targets[3];
+		const QStringList target_keys = junctionTargetKeys();
+		const QDomElement block = definition.firstChildElement(block_name);
+		for (QDomElement entry = block.firstChildElement(entry_name) ;
+		     !entry.isNull() ; entry = entry.nextSiblingElement(entry_name))
+		{
+			const QString name = entry.attribute(QStringLiteral("name"));
+			const QString value = entry.text().trimmed();
+			const int index = target_keys.indexOf(name);
+			if (name == junctionSourceKey()) {
+				read.source = value;
+			} else if (index >= 0 && index < 3) {
+				targets[index] = value;
+			}
 		}
-	}
-		//The targets are read by their number rather than by the order
-		//the file holds them in: the chain follows them 1, 2, 3 either way
-	for (const QString &target : targets) {
-		if (!target.isEmpty()) {
-			roles.targets << target;
+			//The targets are read by their number rather than by the
+			//order the file holds them in: the chain follows them
+			//1, 2, 3 either way
+		for (const QString &target : targets) {
+			if (!target.isEmpty()) {
+				read.targets << target;
+			}
 		}
+		return read;
+	};
+
+	const JunctionRoles from_kind = readBlock(QStringLiteral("kindInformations"),
+						   QStringLiteral("kindInformation"));
+	if (!from_kind.source.isEmpty() || !from_kind.targets.isEmpty()) {
+		return from_kind;
 	}
-	return roles;
+	return readBlock(QStringLiteral("elementInformations"),
+			 QStringLiteral("elementInformation"));
 }
 
 JunctionRoles junctionRolesOf(const Element *junction)
@@ -1372,7 +1387,14 @@ JunctionRoles junctionRolesOf(const Element *junction)
 			roles.targets << target;
 		}
 	}
-	return roles;
+	if (!roles.source.isEmpty() || !roles.targets.isEmpty()) {
+		return roles;
+	}
+		//Nothing among the kind informations: a symbol written before
+		//the roles moved keeps them among its element information, so
+		//the definition is read for those -- only for those, which is
+		//the rare case rather than every lookup (#1500)
+	return junctionRolesOf(junction->location().xml());
 }
 
 QString junctionSourceKey()
@@ -1487,32 +1509,6 @@ QPair<Terminal *, Terminal *> junctionChainNeighbours(Terminal *at)
 	}
 	const JunctionRoles roles = junctionRolesOf(junction);
 
-		//The chain as uuids, read by the one rule the lists read it by
-	const auto chain = junctionChainRoles(roles.source, roles.targets,
-					      at->uuid().toString());
-	QString way_on = chain.first.isEmpty() ? chain.second : chain.first;
-	if (way_on.isEmpty()) {
-			//The chain does not say: nothing was ever set on this
-			//symbol, or this connection has no role in it. A junction
-			//with one way out of it still has nothing to tell apart,
-			//so the wire goes on that way -- a corner passes a wire
-			//through without needing a source for it (#1500)
-		QStringList wired;
-		for (Terminal *other : junction->terminals())
-		{
-			if (other != at && !other->conductors().isEmpty()) {
-				wired << other->uuid().toString();
-			}
-		}
-		way_on = junctionPassThrough(wired);
-		if (way_on.isEmpty()) {
-				//More than one way on, or none at all: nothing
-				//to follow, and nothing to guess (#1500)
-			return nowhere;
-		}
-		return qMakePair(static_cast<Terminal *>(nullptr), connection(way_on));
-	}
-
 		//The connection of this junction a uuid names
 	const auto connection = [&junction](const QString &terminal_uuid) {
 		for (Terminal *candidate : junction->terminals())
@@ -1523,7 +1519,34 @@ QPair<Terminal *, Terminal *> junctionChainNeighbours(Terminal *at)
 		}
 		return static_cast<Terminal *>(nullptr);
 	};
-	return qMakePair(chain.first.isEmpty() ? nullptr : connection(chain.first),
-			 chain.second.isEmpty() ? nullptr : connection(chain.second));
+
+	//The chain as uuids, read by the one rule the lists read it by
+	const auto chain = junctionChainRoles(roles.source, roles.targets,
+					      at->uuid().toString());
+	Terminal *before = chain.first.isEmpty() ? nullptr : connection(chain.first);
+	Terminal *after = chain.second.isEmpty() ? nullptr : connection(chain.second);
+	if (!before && !after) {
+			//The chain does not say, or names a connection this
+			//symbol does not have -- which is how a corner whose
+			//source points at a terminal it was never drawn with
+			//still passes a wire on (#1500). A junction with one way
+			//out of it has nothing to tell apart, so the wire goes
+			//that way without needing a source set on it.
+		QStringList wired;
+		for (Terminal *other : junction->terminals())
+		{
+			if (other != at && !other->conductors().isEmpty()) {
+				wired << other->uuid().toString();
+			}
+		}
+		const QString way_on = junctionPassThrough(wired);
+		if (way_on.isEmpty()) {
+				//More than one way on, or none at all: nothing
+				//to follow, and nothing to guess (#1500)
+			return nowhere;
+		}
+		return qMakePair(static_cast<Terminal *>(nullptr), connection(way_on));
+	}
+	return qMakePair(before, after);
 }
 

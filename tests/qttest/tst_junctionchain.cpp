@@ -191,6 +191,57 @@ class tst_junctionchain : public QObject
 			.arg(roles, sourceUuid().toString(), firstTargetUuid().toString());
 	}
 
+		/**
+			@brief oldCornerDefinition
+			@return the definition of a two-connection junction whose
+			roles are still among its element information, the block
+			symbols written before the roles moved to the kind
+			information keep them in (#1500)
+		*/
+	static QString oldCornerDefinition()
+	{
+		return QStringLiteral(
+				   "<definition type=\"element\" link_type=\"junction\" "
+				   "width=\"40\" height=\"20\" hotspot_x=\"20\" hotspot_y=\"10\">"
+				   "<names><name lang=\"en\">old corner</name></names>"
+				   "<elementInformations>"
+				   "<elementInformation name=\"junction_source\">%1</elementInformation>"
+				   "<elementInformation name=\"junction_target_1\">%2</elementInformation>"
+				   "</elementInformations>"
+				   "<description>"
+				   "<terminal name=\"1\" orientation=\"w\" uuid=\"%1\" x=\"0\" y=\"10\"/>"
+				   "<terminal name=\"2\" orientation=\"e\" uuid=\"%2\" x=\"40\" y=\"10\"/>"
+				   "</description></definition>")
+			.arg(sourceUuid().toString(), firstTargetUuid().toString(),
+				 secondTargetUuid().toString());
+	}
+
+		/**
+			@brief brokenCornerDefinition
+			@return the definition of a two-connection junction whose
+			source names a terminal it was never drawn with -- the way a
+			corner can end up when its roles were copied from a symbol
+			with three connections (#1500)
+		*/
+	static QString brokenCornerDefinition()
+	{
+		return QStringLiteral(
+				   "<definition type=\"element\" link_type=\"junction\" "
+				   "width=\"40\" height=\"20\" hotspot_x=\"20\" hotspot_y=\"10\">"
+				   "<names><name lang=\"en\">broken corner</name></names>"
+				   "<kindInformations>"
+				   "<kindInformation name=\"junction_source\">%1</kindInformation>"
+				   "<kindInformation name=\"junction_target_1\">%2</kindInformation>"
+				   "<kindInformation name=\"junction_target_2\">%3</kindInformation>"
+				   "</kindInformations>"
+				   "<description>"
+				   "<terminal name=\"1\" orientation=\"w\" uuid=\"%2\" x=\"0\" y=\"10\"/>"
+				   "<terminal name=\"2\" orientation=\"e\" uuid=\"%3\" x=\"40\" y=\"10\"/>"
+				   "</description></definition>")
+			.arg(sourceUuid().toString(), firstTargetUuid().toString(),
+				 secondTargetUuid().toString());
+	}
+
 		/// The definition of a one-connection terminal, the kind of
 		/// symbol a terminal strip holds
 	static QString terminalDefinition()
@@ -437,6 +488,8 @@ private slots:
 	void aCornerWithoutARoleIsPassedOn();
 	void aJunctionWithOneWayOnIsPassedOn();
 	void aCornerFollowedByATKeepsEveryRow();
+	void aCornerWithItsRolesInTheOldBlockIsFollowed();
+	void aCornerWithASourceItDoesNotHaveIsFollowed();
 };
 
 void tst_junctionchain::initTestCase()
@@ -851,7 +904,7 @@ void tst_junctionchain::aCornerIsFollowedOneToOne()
 	QCOMPARE(rows.size(), 2);
 	QStringList landed;
 	for (const auto &row : rows) {
-		landed << row.value(QStringLiteral("bmk_start'))
+		landed << row.value(QStringLiteral("bmk_start"))
 			+ QLatin1Char('|') + row.value(QStringLiteral("bmk_end"));
 	}
 	landed.sort();
@@ -1057,6 +1110,72 @@ void tst_junctionchain::aCornerFollowedByATKeepsEveryRow()
 		QVERIFY2(!row.to_element_label.isEmpty(),
 			 qPrintable(row.values().join(QLatin1Char('|'))));
 	}
+}
+
+
+/**
+ * Symbols written before the roles moved to the kind information keep them
+ * among their element information -- the junction symbols uploaded to the
+ * forum do -- and those roles still have to be read, or the whole run of a
+ * wire through such a junction is left out of both lists (#1500).
+ */
+void tst_junctionchain::aCornerWithItsRolesInTheOldBlockIsFollowed()
+{
+	QVERIFY(define(QStringLiteral("old_corner"), oldCornerDefinition()));
+	Element *corner = place(QStringLiteral("old_corner"), QString(),
+				QPointF(400, 200));
+	Element *terminal = place(QStringLiteral("clamp"), QStringLiteral("-X1:1"),
+				   QPointF(100, 100));
+	Element *device = place(QStringLiteral("device"), QStringLiteral("7"),
+				QPointF(200, 500));
+	QVERIFY(corner && terminal && device);
+	QVERIFY(wire(connection(terminal), connection(corner, sourceUuid())));
+	QVERIFY(wire(connection(corner, firstTargetUuid()), connection(device)));
+
+	int database_unassigned = 0;
+	QString error;
+	const QVector<WiringListRow> database =
+		wiringListRows(m_project, &database_unassigned, &error);
+	QVERIFY2(error.isEmpty(), qPrintable(error));
+	QCOMPARE(database_unassigned, 0);
+	QCOMPARE(database.size(), 1);
+	QCOMPARE(database.first().from_element_label, QStringLiteral("-X1:1"));
+	QCOMPARE(database.first().to_element_label, QStringLiteral("7"));
+}
+
+/**
+ * A corner can name a source it was never drawn with, because its roles
+ * were copied from a symbol with three connections. The chain then points
+ * at a connection which is not there, and the wire is passed on to the one
+ * way out of the corner rather than being left hanging (#1500).
+ */
+void tst_junctionchain::aCornerWithASourceItDoesNotHaveIsFollowed()
+{
+	QVERIFY(define(QStringLiteral("broken_corner"), brokenCornerDefinition()));
+	Element *corner = place(QStringLiteral("broken_corner"), QString(),
+				QPointF(400, 200));
+	Element *terminal = place(QStringLiteral("clamp"), QStringLiteral("-X1:1"),
+				   QPointF(100, 100));
+	Element *device = place(QStringLiteral("device"), QStringLiteral("7"),
+				QPointF(200, 500));
+	QVERIFY(corner && terminal && device);
+		//The corner has two connections: the source its roles name is
+		//not one of them
+	QVERIFY(connection(corner, firstTargetUuid()));
+	QVERIFY(connection(corner, secondTargetUuid()));
+	QVERIFY(!connection(corner, sourceUuid()));
+	QVERIFY(wire(connection(terminal), connection(corner, firstTargetUuid())));
+	QVERIFY(wire(connection(corner, secondTargetUuid()), connection(device)));
+
+	int database_unassigned = 0;
+	QString error;
+	const QVector<WiringListRow> database =
+		wiringListRows(m_project, &database_unassigned, &error);
+	QVERIFY2(error.isEmpty(), qPrintable(error));
+	QCOMPARE(database_unassigned, 0);
+	QCOMPARE(database.size(), 1);
+	QCOMPARE(database.first().from_element_label, QStringLiteral("-X1:1"));
+	QCOMPARE(database.first().to_element_label, QStringLiteral("7"));
 }
 
 QET_APP_TEST_MAIN(tst_junctionchain)
