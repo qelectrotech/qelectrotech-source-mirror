@@ -38,6 +38,7 @@
 #include <qetmessagebox.h>
 #include <qetgraphicsitem/qgraphicsitemutility.h>
 #include <foliogrid.h>
+#include <autoconnect.h>
 #include <textgrid.h>
 #include <wiringrules.h>
 #include <ui/wiringruleswarning.h>
@@ -141,6 +142,7 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	ui->m_grid_only_placing_cb->setChecked(DiagramView::gridOnlyWhilePlacing());
 	ui->m_vertical_texts_from_bottom_cb->setChecked(DynamicElementTextItem::verticalFromBottom());
 	ui->m_drag_texts_without_shift_cb->setChecked(DynamicElementTextItem::dragMovesTextAlone());
+	ui->m_drag_places_auto_conductor_cb->setChecked(AutoConnect::dragPlacesWithAutoConductor());
 	ui->m_junction_replaces_cb->setChecked(ConnectionSymbols::newJunctionReplacesOld());
 	ui->m_terminal_help_lines_cb->setChecked(DiagramView::terminalHelpLinesShown());
 	ui->m_dock_fold_cb->setChecked(DockFold::enabled());
@@ -519,6 +521,7 @@ void GeneralConfigurationPage::applyConf()
 	if (ui->m_vertical_texts_from_bottom_cb->isChecked() != DynamicElementTextItem::verticalFromBottom())
 		DynamicElementTextItem::setVerticalFromBottom(ui->m_vertical_texts_from_bottom_cb->isChecked());
 	DynamicElementTextItem::setDragMovesTextAlone(ui->m_drag_texts_without_shift_cb->isChecked());
+	AutoConnect::setDragPlacesWithAutoConductor(ui->m_drag_places_auto_conductor_cb->isChecked());
 	DiagramView::setTerminalHelpLinesShown(ui->m_terminal_help_lines_cb->isChecked());
 	DockFold::setEnabled(ui->m_dock_fold_cb->isChecked());
 	DockFit::setEnabled(ui->m_narrow_docks_cb->isChecked());
