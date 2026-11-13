@@ -301,8 +301,10 @@ namespace autonum
 		Replace the variables in formula in form %{my-var}
 		to the corresponding value stored in dc.
 		%{plant} and %{location} are replaced by the element's own
-		value only; they never fall back to the folio or a structure
-		box, so existing projects look as they always did.
+		value only, so existing projects look as they always did; when
+		its project says so (QETProject::plantAndLocationInherited()),
+		by the place the element takes instead, as in
+		%{structure_id_full} below.
 		%{structure_id_full} composes =plant+location-label (IEC 81346);
 		there an empty plant or location is taken from the smallest
 		StructureBoxItem the element is visually inside that gives one,
@@ -370,8 +372,12 @@ namespace autonum
 			label_value);
 
 		str.replace("%{label}", label_value);
-		str.replace("%{plant}", own_plant);
-		str.replace("%{location}", own_location);
+			//The place the element takes, as %{structure_id_full} gives it,
+			//when its project says so; else its own values only
+		const bool inherited = diagram && diagram->project()
+				&& diagram->project()->plantAndLocationInherited();
+		str.replace("%{plant}", inherited ? plant_value : own_plant);
+		str.replace("%{location}", inherited ? location_value : own_location);
 		str.replace("%{prefix}", prefix_value);
 		str.replace("%{structure_id}", structure_id);
 		str.replace("%{structure_id_full}", structure_id_full);

@@ -93,9 +93,12 @@ class StructureBoxItem : public QetShapeItem
 			/// taken from referencePlace() when it is empty.
 		static Place placeOf(const Element *element);
 			/// Work out again the texts of the symbols of @p diagram which
-			/// show a reference designation (%{structure_id...}): what a
-			/// box gives them changed, or the boxes were loaded after them
+			/// show a reference designation (%{structure_id...}) or a place
+			/// (%{plant}, %{location}): what a box or the folio gives them
+			/// changed, or the boxes were loaded after them
 		static void refreshSymbolTexts(Diagram *diagram);
+			/// The same for the texts of @p element alone: it moved
+		static void refreshTextsOf(Element *element);
 
 	signals:
 			/// Its plant, location or prefix changed

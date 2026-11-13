@@ -26,6 +26,7 @@
 #include "qetgraphicsitem/element.h"
 #include "qetgraphicsitem/structureboxitem.h"
 #include "qetproject.h"
+#include "qetresult.h"
 #include "titleblockproperties.h"
 #include "ui/structureboxpropertieswidget.h"
 
@@ -44,7 +45,8 @@
 	equals the folio's own. A symbol inside a structure box takes the box's
 	plant and location instead (the next box's, then the folio's, where the
 	box leaves one empty), for both tokens. %{plant} and %{location} are not affected: they
-	show the element's own value only.
+	show the element's own value only, unless the project's setting
+	(QETProject::plantAndLocationInherited()) makes them show that place.
 */
 class tst_structureid : public QObject
 {
@@ -409,6 +411,68 @@ private slots:
 
 		QCOMPARE(text(QStringLiteral("%{plant}|%{location}"), info("S5"), element),
 				 QStringLiteral("|"));
+	}
+
+		//Behind the project's setting, %{plant} and %{location} give the
+		//place the element takes: its own, the box's, else the folio's
+	void plantAndLocationFollowThePlaceWhenTheProjectSaysSo()
+	{
+		QETProject project;
+		project.setPlantAndLocationInherited(true);
+		Diagram *diagram = project.addNewDiagram();
+		setFolio(diagram, QStringLiteral("FACTORY"), QStringLiteral("CP1"));
+		box(diagram, QRectF(0, 0, 400, 400), {}, QStringLiteral("FIELD"));
+		Element *inside = symbol(diagram);
+		Element *outside = symbol(diagram);
+		QVERIFY(inside && outside);
+		inside->setPos(200, 200);
+		outside->setPos(800, 800);
+
+		const QString place = QStringLiteral("%{plant}|%{location}");
+			//The box gives +FIELD only: the =plant stays the folio's
+		QCOMPARE(text(place, info("S5"), inside), QStringLiteral("FACTORY|FIELD"));
+		QCOMPARE(text(place, info("S5", {}, QStringLiteral("DB50")), inside),
+				 QStringLiteral("FACTORY|DB50"));
+		QCOMPARE(text(place, info("K1"), outside), QStringLiteral("FACTORY|CP1"));
+		QCOMPARE(text(place, info("K1", QStringLiteral("SILO")), outside),
+				 QStringLiteral("SILO|CP1"));
+	}
+
+		//Switching the setting redraws the texts that use the variables, and
+		//it is saved only when on, so a project with it off saves as before
+	void theSettingRedrawsTextsAndIsSavedOnlyWhenOn()
+	{
+		QTemporaryDir dir;
+		QVERIFY(dir.isValid());
+		QETProject project;
+		Diagram *diagram = project.addNewDiagram();
+		setFolio(diagram, QStringLiteral("FACTORY"), QStringLiteral("CP1"));
+		Element *element = symbol(diagram);
+		QVERIFY(element);
+		setInfo(element, info("K1"));
+		auto *text = new DynamicElementTextItem(element);
+		text->setTextFrom(DynamicElementTextItem::CompositeText);
+		text->setCompositeText(QStringLiteral("%{plant}|%{location}"));
+		element->addDynamicTextItem(text);
+		QCOMPARE(text->toPlainText(), QStringLiteral("|"));
+		QVERIFY(!project.toXml().toString().contains(QLatin1String("plant_location")));
+
+		project.setPlantAndLocationInherited(true);
+		QCOMPARE(text->toPlainText(), QStringLiteral("FACTORY|CP1"));
+			//And it follows the title block from then on
+		setFolio(diagram, QStringLiteral("FACTORY"), QStringLiteral("CP2"));
+		QCOMPARE(text->toPlainText(), QStringLiteral("FACTORY|CP2"));
+
+		for (const QString &name : {QStringLiteral("inherited.qet"),
+									QStringLiteral("inherited.qetz")}) {
+			project.setFilePath(dir.filePath(name));
+			QVERIFY2(project.write().isOk(), qPrintable(name));
+			QETProject reopened(project.filePath());
+			QVERIFY2(reopened.plantAndLocationInherited(), qPrintable(name));
+		}
+
+		project.setPlantAndLocationInherited(false);
+		QCOMPARE(text->toPlainText(), QStringLiteral("|"));
 	}
 
 	void shortFormLeavesOutWhatTheBoxSays()
