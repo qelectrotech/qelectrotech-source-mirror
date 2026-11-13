@@ -2010,6 +2010,18 @@ add_test(NAME tst_conductordashpattern COMMAND tst_conductordashpattern)
 target_include_directories(tst_conductordashpattern PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_conductordashpattern PRIVATE Qt::Test Qt::Widgets Qt::Xml pugixml::pugixml)
 
+# The page layout dialog of the PDF export on Windows and macOS: paper
+# size, orientation and margins in and out, the rest of the layout kept
+add_executable(
+  tst_pdfpagesetupdialog
+  tst_pdfpagesetupdialog.cpp
+  ${QET_DIR}/sources/print/pdfpagesetupdialog.cpp)
+add_test(NAME tst_pdfpagesetupdialog COMMAND tst_pdfpagesetupdialog)
+set_tests_properties(tst_pdfpagesetupdialog PROPERTIES
+  ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
+target_include_directories(tst_pdfpagesetupdialog PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_pdfpagesetupdialog PRIVATE Qt::Test Qt::Widgets Qt::PrintSupport)
+
 # The conductor type of a wire: written only when it is set, read back
 # the way it was written, and offered in the dynamic text fields
 add_executable(
