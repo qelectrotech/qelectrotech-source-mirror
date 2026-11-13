@@ -24,7 +24,9 @@
 #include "diagram.h"
 #include "factory/elementfactory.h"
 #include "qetapptest.h"
+#include "qetgraphicsitem/conductor.h"
 #include "qetgraphicsitem/element.h"
+#include "qetgraphicsitem/terminal.h"
 #include "qetproject.h"
 
 #include <QDomDocument>
@@ -104,6 +106,32 @@ class tst_terminallist : public QObject
   private slots:
 	void initTestCase() { QETProject::setBackupEnabled(false); }
 	void init() { m_position = 0; }
+
+	void aTerminalListsItsWires()
+	{
+		QETProject project;
+		Diagram *folio = project.addNewDiagram();
+		setPlace(folio, QStringLiteral("FACTORY"), QStringLiteral("CP1"));
+		Element *x1 = terminal(folio, QStringLiteral("X1:1"));
+		Element *x2 = terminal(folio, QStringLiteral("X1:2"));
+		Element *x3 = terminal(folio, QStringLiteral("X1:3"));
+		QVERIFY(x1 && x2 && x3);
+		TerminalStrip *strip = project.newTerminalStrip(QString(), QString(), QStringLiteral("X1"));
+		QVERIFY(strip->addTerminal(x1));
+		QVERIFY(strip->addTerminal(x2));
+		QVERIFY(strip->addTerminal(x3));
+		auto *wire = new Conductor(x1->terminals().at(1), x2->terminals().at(0));
+		folio->addItem(wire);
+		ConductorProperties properties = wire->properties();
+		properties.text = QStringLiteral("101");
+		wire->setProperties(properties);
+		project.dataBase()->updateDB();
+		QCOMPARE(rows(project, QStringLiteral(
+					 "SELECT label, wires, connected_to FROM qet_terminals"), 3),
+				 QStringList({QStringLiteral("X1:1|101|=FACTORY+CP1-X1:2"),
+							  QStringLiteral("X1:2|101|=FACTORY+CP1-X1:1"),
+							  QStringLiteral("X1:3||")}));
+	}
 
 	void oneRowPerTerminalInStripOrder()
 	{

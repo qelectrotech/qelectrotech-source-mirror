@@ -512,6 +512,10 @@ qet_add_app_test(tst_plcio tst_plcio.cpp)
 qet_add_app_test(tst_readonlyfolios tst_readonlyfolios.cpp)
 target_compile_definitions(tst_readonlyfolios PRIVATE
   QET_EXAMPLES_DIR="${QET_DIR}/examples")
+# The link tab lists are filled without building folios (#1842).
+qet_add_app_test(tst_linklists tst_linklists.cpp)
+target_compile_definitions(tst_linklists PRIVATE
+  QET_EXAMPLES_DIR="${QET_DIR}/examples")
 # IEC 81346 plant/location: an element takes its folio's, %{structure_id} composes them.
 qet_add_app_test(tst_structureid tst_structureid.cpp)
 # qet_device_list: one row per reference designation, a contact with its coil.
@@ -660,6 +664,7 @@ qet_add_app_test(tst_selectionfilter tst_selectionfilter.cpp)
 # The arrow keys: the crosshair on the leftmost selected symbol's terminal
 # or a text's middle; the folio's grid step when set so.
 qet_add_app_test(tst_keyboardmovereference tst_keyboardmovereference.cpp)
+qet_add_app_test(tst_tidyeditmenu tst_tidyeditmenu.cpp)
 # Edit > Select the same symbols: the folio's symbols drawn from the
 # definition of a selected one, the rest deselected.
 qet_add_app_test(tst_selectsamesymbols tst_selectsamesymbols.cpp)
@@ -745,11 +750,20 @@ qet_add_app_test(tst_terminalstriporder tst_terminalstriporder.cpp)
 qet_add_app_test(tst_cabletarget tst_cabletarget.cpp)
 qet_add_app_test(tst_cablelist tst_cablelist.cpp)
 
+# A wire dropped on a terminal that already has a wire is made.
+qet_add_app_test(tst_wireonusedterminal tst_wireonusedterminal.cpp)
+
+# Joining two potentials offers only the two potentials.
+qet_add_app_test(tst_potentialchoices tst_potentialchoices.cpp)
+
 # A double-click on the middle of a wire opens its properties.
 qet_add_app_test(tst_wiredoubleclick tst_wiredoubleclick.cpp)
 
 # Copying a cable leaves the cable it was copied from whole.
 qet_add_app_test(tst_cablecopy tst_cablecopy.cpp)
+
+# Adding a list table is one undo step.
+qet_add_app_test(tst_tableundo tst_tableundo.cpp)
 
 # What lies outside the sheet: named per folio, for the warning before
 # printing and exporting; off with the setting.
@@ -2005,6 +2019,18 @@ add_executable(
 add_test(NAME tst_conductordashpattern COMMAND tst_conductordashpattern)
 target_include_directories(tst_conductordashpattern PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_conductordashpattern PRIVATE Qt::Test Qt::Widgets Qt::Xml pugixml::pugixml)
+
+# The page layout dialog of the PDF export on Windows and macOS: paper
+# size, orientation and margins in and out, the rest of the layout kept
+add_executable(
+  tst_pdfpagesetupdialog
+  tst_pdfpagesetupdialog.cpp
+  ${QET_DIR}/sources/print/pdfpagesetupdialog.cpp)
+add_test(NAME tst_pdfpagesetupdialog COMMAND tst_pdfpagesetupdialog)
+set_tests_properties(tst_pdfpagesetupdialog PROPERTIES
+  ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
+target_include_directories(tst_pdfpagesetupdialog PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_pdfpagesetupdialog PRIVATE Qt::Test Qt::Widgets Qt::PrintSupport)
 
 # The conductor type of a wire: written only when it is set, read back
 # the way it was written, and offered in the dynamic text fields

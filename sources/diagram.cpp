@@ -221,6 +221,22 @@ Diagram::Diagram(QETProject *project) :
 		for (auto conductor : content().conductors()) {
 			conductor->refreshText();
 		}
+			//A symbol's reference designation leaves out the plant and
+			//location its folio already says (%{structure_id}): it follows
+			//the title block, which a symbol does not watch
+		const auto refresh = [](DynamicElementTextItem *text) {
+			if (text->textFrom() == DynamicElementTextItem::CompositeText
+					&& text->compositeText().contains(QLatin1String("%{structure_id"))) {
+				text->refreshConductorText();
+			}
+		};
+		for (Element *element : elements()) {
+			for (DynamicElementTextItem *text : element->dynamicTextItems())
+				refresh(text);
+			for (ElementTextItemGroup *group : element->textGroups())
+				for (DynamicElementTextItem *text : group->texts())
+					refresh(text);
+		}
 		emit diagramInformationChanged();
 	});
 
@@ -723,7 +739,11 @@ void Diagram::keyPressEvent(QKeyEvent *event)
 	qreal top_position = 0;
 	qreal left_position = 0;
 	DiagramContent dc(this);
-	if (dc.items(DiagramContent::All).isEmpty())
+		//A marked cable line counts too: it is not part of DiagramContent
+	bool cable_marked = false;
+	for (QGraphicsItem *item : selectedItems())
+		if (qgraphicsitem_cast<CablePart *>(item)) { cable_marked = true; break; }
+	if (dc.items(DiagramContent::All).isEmpty() && !cable_marked)
 	{
 		event->ignore();
 		QGraphicsScene::keyPressEvent(event);

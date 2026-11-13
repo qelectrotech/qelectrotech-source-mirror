@@ -2181,13 +2181,12 @@ void QETDiagramEditor::setUpMenu()
 	menu_edition -> addAction(m_cut);
 	menu_edition -> addAction(m_copy);
 	menu_edition -> addAction(m_paste);
-	menu_edition -> addAction(m_copy_text_format);
-	menu_edition -> addAction(m_apply_text_format);
-	menu_edition -> addAction(m_place_texts);
-	menu_edition -> addAction(m_text_destination);
-	menu_edition -> addAction(m_text_clearance);
-	menu_edition -> addAction(m_paste_origin);
-	menu_edition -> addAction(m_paste_element_info);
+		//Kept short (see #1336): the less used kinds of the same command
+		//sit one level down, next to the command they belong to. Every
+		//action and its shortcut is unchanged.
+	QMenu *paste_menu = menu_edition -> addMenu(QET::Icons::EditPaste, tr("Paste special"));
+	paste_menu -> addAction(m_paste_origin);
+	paste_menu -> addAction(m_paste_element_info);
 	menu_edition -> addAction(m_duplicate);
 	menu_edition -> addAction(m_configure_duplicate);
 	menu_edition -> addSeparator();
@@ -2214,16 +2213,26 @@ void QETDiagramEditor::setUpMenu()
 	select_menu -> addSeparator();
 	select_menu -> addMenu(m_selection_filter_menu);
 	menu_edition -> addSeparator();
-	menu_edition -> addAction(m_delete_selection);
-	menu_edition -> addAction(m_rotate_selection);
-	menu_edition -> addAction(m_rotate_group_selection);
-	menu_edition -> addAction(m_rotate_texts);
-	menu_edition -> addAction(m_mirror_horizontal);
-	menu_edition -> addAction(m_mirror_vertical);
-	menu_edition -> addAction(m_show_as_dot);
-	menu_edition -> addAction(m_find_element);
-	menu_edition -> addAction(m_contact_display);
 	menu_edition -> addAction(m_edit_selection);
+	menu_edition -> addAction(m_delete_selection);
+	QMenu *turn_menu = menu_edition -> addMenu(QET::Icons::TransformRotate, tr("Rotate and mirror"));
+	turn_menu -> addAction(m_rotate_selection);
+	turn_menu -> addAction(m_rotate_group_selection);
+	turn_menu -> addSeparator();
+	turn_menu -> addAction(m_mirror_horizontal);
+	turn_menu -> addAction(m_mirror_vertical);
+	QMenu *texts_menu = menu_edition -> addMenu(QET::Icons::PartText, tr("Texts"));
+	texts_menu -> addAction(m_rotate_texts);
+	texts_menu -> addAction(m_place_texts);
+	texts_menu -> addAction(m_text_destination);
+	texts_menu -> addAction(m_text_clearance);
+	texts_menu -> addSeparator();
+	texts_menu -> addAction(m_copy_text_format);
+	texts_menu -> addAction(m_apply_text_format);
+	QMenu *symbols_menu = menu_edition -> addMenu(QET::Icons::Element, tr("Symbols"));
+	symbols_menu -> addAction(m_show_as_dot);
+	symbols_menu -> addAction(m_find_element);
+	symbols_menu -> addAction(m_contact_display);
 	QMenu *group_menu = menu_edition -> addMenu(QET::Icons::textGroup, tr("Group", "fr: Grouper"));
 	group_menu -> addAction(m_group_selection);
 	group_menu -> addAction(m_ungroup_selection);

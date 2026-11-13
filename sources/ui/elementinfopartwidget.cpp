@@ -21,7 +21,10 @@
 #include <qeticons.h>
 #include <qetinformation.h>
 #include "ui_elementinfopartwidget.h"
+#include <QAbstractItemView>
+#include <QApplication>
 #include <QCompleter>
+#include <QMouseEvent>
 #include <QDialog>
 #include <QDialogButtonBox>
 #include <QPlainTextEdit>
@@ -186,6 +189,8 @@ void ElementInfoPartWidget::setSuggestions(const QStringList &suggestions)
 		m_completer = new QCompleter(m_suggestions_model, this);
 		m_completer->setCaseSensitivity(Qt::CaseInsensitive);
 		m_completer->setFilterMode(Qt::MatchContains);
+			//After the completer's own filter, so this one is asked first
+		m_completer->popup()->installEventFilter(this);
 	}
 	m_suggestions_model->setStringList(suggestions);
 	ui->line_edit->setCompleter(m_completer);
@@ -264,4 +269,39 @@ void ElementInfoPartWidget::on_m_erase_text_clicked()
 			       ? SearchAndReplaceWorker::eraseText()
 			       : QString());
 	ui->line_edit->setDisabled(ui->m_erase_text->isChecked());
+}
+
+/**
+	@brief ElementInfoPartWidget::eventFilter
+	A click outside the open list of suggestions closes the list, and Qt
+	drops that click: the Apply or OK button clicked to finish the edit did
+	nothing, and the edit could then be lost. The click is passed on to the
+	widget under it.
+*/
+bool ElementInfoPartWidget::eventFilter(QObject *watched, QEvent *event)
+{
+	if (m_completer && watched == m_completer->popup()
+			&& event->type() == QEvent::MouseButtonPress)
+	{
+		QWidget *popup = m_completer->popup();
+		auto *mouse = static_cast<QMouseEvent *>(event);
+		const QPoint global = mouse->globalPosition().toPoint();
+		if (!popup->rect().contains(popup->mapFromGlobal(global)))
+		{
+			popup->hide();
+				//A whole click: the release that follows goes to the
+				//closed list, not to the widget, so it is sent too
+			if (QWidget *target = QApplication::widgetAt(global)) {
+				const QPointF local = target->mapFromGlobal(global);
+				QCoreApplication::postEvent(target, new QMouseEvent(
+						QEvent::MouseButtonPress, local, global, mouse->button(),
+						mouse->buttons(), mouse->modifiers()));
+				QCoreApplication::postEvent(target, new QMouseEvent(
+						QEvent::MouseButtonRelease, local, global, mouse->button(),
+						Qt::NoButton, mouse->modifiers()));
+			}
+			return true;
+		}
+	}
+	return QWidget::eventFilter(watched, event);
 }

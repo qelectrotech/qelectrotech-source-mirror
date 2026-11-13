@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "projectprintwindow.h"
+#include "pdfpagesetupdialog.h"
 #include "printdrawing.h"
 #include <qetdiagrameditor.h>
 
@@ -160,18 +161,6 @@ ProjectPrintWindow::ProjectPrintWindow(QETProject *project, QPrinter *printer, Q
 	ui->m_date_cb->blockSignals(true);
 	ui->m_date_cb->setDate(QDate::currentDate());
 	ui->m_date_cb->blockSignals(false);
-
-#ifdef Q_OS_WINDOWS
-	/*
-	 * On windows, the QPageSetupDialog use the native dialog.
-	 * This dialog can only manage physical printer ("native printer")
-	 */
-	if (m_printer->outputFormat() == QPrinter::PdfFormat)
-	{
-		ui->m_page_setup->setDisabled(true);
-		ui->m_page_setup->setText(tr("Layout (not available on Windows for PDF export)"));
-	}
-#endif
 
 	m_backup_diagram_background_color = Diagram::background_color;
 	Diagram::background_color = Qt::white;
@@ -824,6 +813,19 @@ void ProjectPrintWindow::on_m_display_all_page_action_triggered() {
 
 void ProjectPrintWindow::on_m_page_setup_triggered()
 {
+#if defined(Q_OS_WINDOWS) || defined(Q_OS_MACOS)
+		//There QPageSetupDialog is the system's dialog, which only
+		//works with a physical printer: for a PDF it shows nothing.
+	if (m_printer->outputFormat() == QPrinter::PdfFormat)
+	{
+		PdfPageSetupDialog d(m_printer->pageLayout(), this);
+		if (d.exec() == QDialog::Accepted) {
+			m_printer->setPageLayout(d.pageLayout());
+			m_preview->updatePreview();
+		}
+		return;
+	}
+#endif
 	QPageSetupDialog d(m_printer, this);
 	if (d.exec() == QDialog::Accepted) {
 		m_preview->updatePreview();

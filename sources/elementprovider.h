@@ -43,6 +43,9 @@ class ElementProvider
 		ElementProvider(Diagram *diag);
 		explicit ElementProvider(const QList<Diagram *> &diagrams);
 		QVector <QPointer<Element>> freeElement(ElementData::Types filter) const;
+			/// Search the folios already built only (lazy folios): the
+			/// caller lists the others from the project database
+		void setBuiltOnly(bool built_only) {m_built_only = built_only;}
 		QList <Element *> fromUuids(QList <QUuid>) const;
 		QVector<QPointer<Element> > find(ElementData::Types elmt_type) const;
 		QVector <QetGraphicsTableItem *> table(QetGraphicsTableItem *table = nullptr, QAbstractItemModel *model = nullptr);
@@ -64,6 +67,7 @@ class ElementProvider
 			//those a search can find something on
 		QETProject *m_project = nullptr;
 		Diagram *m_excluded = nullptr;
+		bool m_built_only = false;
 };
 
 #endif // ELEMENTPROVIDER_H
