@@ -22,6 +22,7 @@
 #include "diagram.h"
 #include "factory/elementfactory.h"
 #include "qetapptest.h"
+#include "qetgraphicsitem/dynamicelementtextitem.h"
 #include "qetgraphicsitem/element.h"
 #include "qetproject.h"
 #include "titleblockproperties.h"
@@ -277,6 +278,30 @@ private slots:
 					 ? QStringLiteral("=FACTORY+CP1-X1")
 					 : QStringLiteral("=FACTORY+FIELD-S5"));
 		}
+	}
+
+		//A symbol's text shows the short form against its folio: it
+		//follows the folio's plant and location when the title block is
+		//changed, not only when the symbol changes
+	void aSymbolTextFollowsTheTitleBlock()
+	{
+		QETProject project;
+		Diagram *diagram = project.addNewDiagram();
+		Element *element = symbol(diagram);
+		QVERIFY(element);
+		setInfo(element, info("K1", QStringLiteral("FACTORY"), QStringLiteral("CP1")));
+		auto *text = new DynamicElementTextItem(element);
+		text->setTextFrom(DynamicElementTextItem::CompositeText);
+		text->setCompositeText(QStringLiteral("%{structure_id}"));
+		element->addDynamicTextItem(text);
+		QCOMPARE(text->toPlainText(), QStringLiteral("=FACTORY+CP1-K1"));
+
+		setFolio(diagram, QStringLiteral("FACTORY"), QString());
+		QCOMPARE(text->toPlainText(), QStringLiteral("+CP1-K1"));
+		setFolio(diagram, QStringLiteral("FACTORY"), QStringLiteral("CP1"));
+		QCOMPARE(text->toPlainText(), QStringLiteral("-K1"));
+		setFolio(diagram, QStringLiteral("FACTORY"), QStringLiteral("CP2"));
+		QCOMPARE(text->toPlainText(), QStringLiteral("+CP1-K1"));
 	}
 
 	void withoutAnElementOnlyItsOwnValuesCount()
