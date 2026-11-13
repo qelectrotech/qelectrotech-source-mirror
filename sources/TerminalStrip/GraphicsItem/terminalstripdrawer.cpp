@@ -499,14 +499,16 @@ void drawCables(QPainter *painter, const QVector<CableCell> &cells,
 		const qreal fitted_height{fitted_metrics.height()};
 		painter->save();
 		painter->setFont(text_font);
-			//The clip keeps the text under the terminal even when a number is
+			//The clip keeps the text outside the terminal even when a number is
 			//so long that the smallest font does not fit it any more
 		painter->setClipRect(QRectF{x - 1 - fitted_height,
 									above ? y(mark_y - 4) : terminal_bottom + 2,
 									fitted_height + 1, room});
-		painter->translate(x - 1, y(mark_y - 4));
-		painter->rotate(above ? 90 : 270);
-		painter->drawText(QRectF{0, above ? 0 : -fitted_height,
+			//Both sides read upwards. Start at the lower edge of the gap.
+		const qreal text_base{above ? y(terminal_bottom + 2) : y(mark_y - 4)};
+		painter->translate(x - 1, text_base);
+		painter->rotate(270);
+		painter->drawText(QRectF{0, -fitted_height,
 								fitted_width + 2, fitted_height},
 						  Qt::AlignLeft | Qt::AlignVCenter,
 						  text);
@@ -643,9 +645,10 @@ void drawCables(QPainter *painter, const QVector<CableCell> &cells,
 		const qreal name_top{bar_1_y};
 		const qreal name_bottom{shields.isEmpty() ? bar_2_y : ellipse_y - ellipse_ry};
 		painter->save();
-		painter->translate(cable_x - 2, y((name_top + name_bottom + name_width) / 2));
-		painter->rotate(above ? 90 : 270);
-		painter->drawText(QRectF{0, above ? 0 : -text_height,
+		painter->translate(cable_x - 2, y((name_top + name_bottom) / 2)
+						   + name_width / 2);
+		painter->rotate(270);
+		painter->drawText(QRectF{0, -text_height,
 								name_width + 2, text_height},
 						  Qt::AlignLeft | Qt::AlignVCenter,
 						  cells.at(first).cable);
