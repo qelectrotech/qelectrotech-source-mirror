@@ -447,6 +447,13 @@
             </property>
            </widget>
           </item>
+          <item>
+           <widget class="QCheckBox" name="m_strong_selection_cb">
+            <property name="text">
+             <string>Frame selected symbols clearly, in the highlight colour</string>
+            </property>
+           </widget>
+          </item>
          </layout>
         </widget>
        </item>

@@ -74,6 +74,13 @@ set_tests_properties(tst_darkimagelayers PROPERTIES
   ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
 target_include_directories(tst_darkimagelayers PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_darkimagelayers PRIVATE Qt::Test Qt::Widgets)
+# The frame of a selected item, deferred past the inversion of a dark sheet.
+add_executable(tst_darkselectionframe tst_darkselectionframe.cpp
+  ${QET_DIR}/sources/palettegraphicsview.cpp ${QET_DIR}/sources/palettegraphicsview.h
+  ${QET_DIR}/sources/qetpalette.cpp)
+add_test(NAME tst_darkselectionframe COMMAND tst_darkselectionframe)
+target_include_directories(tst_darkselectionframe PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_darkselectionframe PRIVATE Qt::Test Qt::Widgets)
 # MSVC's Debug libraries make QElectroTech five to eight times slower than a
 # GCC build, for which the tests' time limits were chosen. Every limit is
 # multiplied by this scale: ctest's below, and the tests' own through
@@ -674,6 +681,8 @@ qet_add_app_test(tst_terminalcolor tst_terminalcolor.cpp)
 # The corner radius of the frame around a selected symbol: 10 as before,
 # 0 square.
 qet_add_app_test(tst_selectionframeradius tst_selectionframeradius.cpp)
+# Selected symbols framed clearly in the highlight colour, a setting.
+qet_add_app_test(tst_strongselection tst_strongselection.cpp)
 
 # The element editor's collections dock: an element dropped on the drawing
 # pastes its parts, centred on the drop and on the grid; double-clicked, the
