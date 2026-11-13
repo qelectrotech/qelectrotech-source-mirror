@@ -269,8 +269,8 @@ void projectDataBase::loadCaches()
 		while (query.next()) m_kept_items[QUuid(query.value(0).toString())].append(query.value(1).toString());
 
 	m_element_placements.clear();
-	if (query.exec(QStringLiteral("SELECT element_uuid, type, x, y, rotation, horizontal_mirror, vertical_mirror, z "
-								  "FROM element_placement")))
+	if (query.exec(QStringLiteral("SELECT element_uuid, type, x, y, rotation, horizontal_mirror, vertical_mirror, z, "
+								  "centre_x, centre_y FROM element_placement")))
 		while (query.next()) {
 			ElementPlacement placement;
 			placement.type = query.value(1).toString();
@@ -280,6 +280,8 @@ void projectDataBase::loadCaches()
 			placement.horizontal_mirror = query.value(5).toBool();
 			placement.vertical_mirror = query.value(6).toBool();
 			placement.z = query.value(7).toDouble();
+			if (!query.value(8).isNull() && !query.value(9).isNull())
+				placement.centre = QPointF(query.value(8).toDouble(), query.value(9).toDouble());
 			m_element_placements.insert(QUuid(query.value(0).toString()), placement);
 		}
 
@@ -484,8 +486,10 @@ QString projectDataBase::stateDump() const
 	dumpCache(out, QStringLiteral("cable_values"), m_cable_values, rowsText);
 	dumpCache(out, QStringLiteral("bridge_values"), m_bridge_values, rowsText);
 	dumpCache(out, QStringLiteral("element_placements"), m_element_placements, [](const ElementPlacement &p) {
-		return QStringLiteral("%1 %2 %3 %4 %5 %6 %7").arg(p.type, number(p.x), number(p.y), number(p.rotation))
-				.arg(p.horizontal_mirror).arg(p.vertical_mirror).arg(number(p.z));
+		return QStringLiteral("%1 %2 %3 %4 %5 %6 %7 %8").arg(p.type, number(p.x), number(p.y), number(p.rotation))
+				.arg(p.horizontal_mirror).arg(p.vertical_mirror).arg(number(p.z))
+				.arg(p.centre ? number(p.centre->x()) + QLatin1Char(',') + number(p.centre->y())
+							  : QStringLiteral("-"));
 	});
 	dumpCache(out, QStringLiteral("sequences"), m_sequences, [](const autonum::sequentialNumbers &n) {
 		return QStringList{n.unit.join(','), n.wrap.join(','), n.unit_folio.join(','), n.ten.join(','),

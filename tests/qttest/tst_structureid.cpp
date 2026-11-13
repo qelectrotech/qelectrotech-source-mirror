@@ -56,14 +56,25 @@ class tst_structureid : public QObject
 	Q_OBJECT
 	QTemporaryDir m_definitions;
 
-	Element *symbol(Diagram *diagram)
+		//A symbol whose insertion point is its centre, or with @p corner
+		//its top left corner: its centre is then 20, 20 further
+	Element *symbol(Diagram *diagram, bool corner = false)
 	{
 		auto *collection = diagram->project()->embeddedElementCollection();
-		if (!collection->exist(QStringLiteral("import/simple.elmt")))
+		const QString name = corner ? QStringLiteral("corner") : QStringLiteral("simple");
+		if (!collection->exist(QStringLiteral("import/%1.elmt").arg(name)))
 		{
 			QDomDocument definition;
-			definition.setContent(
-				QString(R"(<definition type="element" link_type="simple" uuid="%1" width="20" height="40" hotspot_x="10" hotspot_y="20">
+			definition.setContent(corner
+				? QString(R"(<definition type="element" link_type="simple" uuid="%1" width="40" height="40" hotspot_x="0" hotspot_y="0">
+<names><name lang="en">Test symbol</name></names>
+<description><line x1="20" y1="0" x2="20" y2="40"/>
+<terminal x="20" y="0" orientation="n" uuid="%2"/><terminal x="20" y="40" orientation="s" uuid="%3"/>
+</description></definition>)")
+					.arg(QUuid::createUuid().toString(),
+						 QUuid::createUuid().toString(),
+						 QUuid::createUuid().toString())
+				: QString(R"(<definition type="element" link_type="simple" uuid="%1" width="20" height="40" hotspot_x="10" hotspot_y="20">
 <names><name lang="en">Test symbol</name></names>
 <description><line x1="0" y1="-10" x2="0" y2="10"/>
 <terminal x="0" y="-20" orientation="n" uuid="%2"/><terminal x="0" y="20" orientation="s" uuid="%3"/>
@@ -72,13 +83,13 @@ class tst_structureid : public QObject
 						 QUuid::createUuid().toString(),
 						 QUuid::createUuid().toString()));
 			if (!collection->addElementDefinition(
-					QStringLiteral("import"), QStringLiteral("simple"),
+					QStringLiteral("import"), name,
 					definition.documentElement()))
 				return nullptr;
 		}
 		int state = 0;
 		Element *element = ElementFactory::Instance()->createElement(
-			ElementsLocation(QStringLiteral("embed://import/simple.elmt"),
+			ElementsLocation(QStringLiteral("embed://import/%1.elmt").arg(name),
 							 diagram->project()),
 			nullptr, &state);
 		if (state || !element) return nullptr;
@@ -705,6 +716,89 @@ private slots:
 		QCOMPARE(text->toPlainText(), QStringLiteral("-K1"));
 		setFolio(diagram, QStringLiteral("FACTORY"), QStringLiteral("CP2"));
 		QCOMPARE(text->toPlainText(), QStringLiteral("+CP1-K1"));
+	}
+
+	void databaseHonoursTheBoxes()
+	{
+			//The same rule in SQL (the views) as in the texts:
+			//own value, smallest box with a value, folio -- field by field,
+			//which %{plant} and %{location} show with the project's setting
+		QETProject project;
+		project.setPlantAndLocationInherited(true);
+		Diagram *diagram = project.addNewDiagram();
+		setFolio(diagram, QStringLiteral("FACTORY"), QStringLiteral("CP1"));
+		box(diagram, QRectF(0, 0, 800, 800), QStringLiteral("SILO"), QStringLiteral("CP1000"));
+		StructureBoxItem *inner = box(diagram, QRectF(100, 100, 200, 200), {}, QStringLiteral("J3"));
+		inner->setPos(50, 0);	//its rectangle is now 150..350 x 100..300
+		Element *in_inner = symbol(diagram);
+		Element *in_outer = symbol(diagram);
+		Element *on_folio = symbol(diagram);
+		Element *own = symbol(diagram);
+		QVERIFY(in_inner && in_outer && on_folio && own);
+		in_inner->setPos(200, 200);
+		in_outer->setPos(120, 600);
+		on_folio->setPos(1200, 1200);
+		own->setPos(200, 200);
+		setInfo(in_inner, info("M1"));
+		setInfo(in_outer, info("M2"));
+		setInfo(on_folio, info("M3"));
+		setInfo(own, info("M4", {}, QStringLiteral("DB50")));
+
+		project.dataBase()->updateDB();
+		const QHash<Element *, QString> expected {
+			{in_inner, QStringLiteral("=SILO+J3-M1")}, {in_outer, QStringLiteral("=SILO+CP1000-M2")},
+			{on_folio, QStringLiteral("=FACTORY+CP1-M3")}, {own, QStringLiteral("=SILO+DB50-M4")}};
+		for (auto it = expected.cbegin() ; it != expected.cend() ; ++it)
+		{
+			Element *element = it.key();
+			const DiagramContext dc = element->elementInformations();
+			QCOMPARE(text(QStringLiteral("%{structure_id_full}"), dc, element), it.value());
+			QString error;
+			QSqlQuery query = project.dataBase()->newQuery(QStringLiteral(
+				"SELECT plant, location, structure_id FROM qet_devices WHERE device_uuid = '%1'")
+					.arg(element->uuid().toString()), &error);
+			QVERIFY2(error.isEmpty(), qPrintable(error));
+			QVERIFY2(query.next(), "the element is not in qet_devices");
+			QCOMPARE(query.value(0).toString(), text(QStringLiteral("%{plant}"), dc, element));
+			QCOMPARE(query.value(1).toString(), text(QStringLiteral("%{location}"), dc, element));
+			QCOMPARE(query.value(2).toString(), it.value());
+		}
+	}
+
+	void theDatabaseTestsTheCentreToo()
+	{
+			//"Inside a box" is the symbol's centre, in the texts and in
+			//SQL alike: not its insertion point
+		QETProject project;
+		Diagram *diagram = project.addNewDiagram();
+		setFolio(diagram, QStringLiteral("FACTORY"), QStringLiteral("CP1"));
+		box(diagram, QRectF(100, 100, 100, 100), {}, QStringLiteral("CP10"));
+		Element *centre_in = symbol(diagram, true);
+		Element *centre_out = symbol(diagram, true);
+		QVERIFY(centre_in && centre_out);
+		centre_in->setPos(90, 90);		//its centre: 110, 110
+		centre_out->setPos(190, 190);	//its centre: 210, 210
+		setInfo(centre_in, info("K1"));
+		setInfo(centre_out, info("K2"));
+
+		const auto located = [&project](const Element *element) {
+			project.dataBase()->updateDB();
+			QString error;
+			QSqlQuery query = project.dataBase()->newQuery(QStringLiteral(
+				"SELECT location FROM qet_devices WHERE device_uuid = '%1'")
+					.arg(element->uuid().toString()), &error);
+			return error.isEmpty() && query.next() ? query.value(0).toString()
+												   : QStringLiteral("(no row: %1)").arg(error);
+		};
+		QCOMPARE(StructureBoxItem::placeOf(centre_in).location, QStringLiteral("CP10"));
+		QCOMPARE(located(centre_in), QStringLiteral("CP10"));
+		QCOMPARE(StructureBoxItem::placeOf(centre_out).location, QStringLiteral("CP1"));
+		QCOMPARE(located(centre_out), QStringLiteral("CP1"));
+
+			//Moved: its insertion point still in the box, its centre out
+		centre_in->setPos(185, 185);	//its centre: 205, 205
+		QCOMPARE(StructureBoxItem::placeOf(centre_in).location, QStringLiteral("CP1"));
+		QCOMPARE(located(centre_in), QStringLiteral("CP1"));
 	}
 
 	void theNameIsAMovableTextOfItsOwn()
