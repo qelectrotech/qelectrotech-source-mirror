@@ -739,6 +739,11 @@ void QetGraphicsTableItem::fromXml(const QDomElement &dom_element)
 	m_header_item->fromXml(
 				dom_element.firstChildElement(
 					QetGraphicsHeaderItem::xmlTagName()));
+		//The model set above took the default header's minimum widths:
+		//take the restored header's, or the columns are sized from one and
+		//the table's width from the other, and the table grows past the
+		//width it was saved with
+	setUpColumnAndRowMinimumSize();
 	emit changed();
 }
 
