@@ -59,6 +59,9 @@
 #include <QFontDialog>
 #include <QMessageBox>
 #include <QSettings>
+#include <QToolButton>
+
+#include <utility>
 
 #include <diagram.h>
 #include <qetproject.h>
@@ -280,9 +283,34 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 		ui->m_indi_text_font_pb->setText(fontInfos);
 	} else { ui->m_indi_text_font_pb->setText("Liberation Sans 9 (Regular)"); }
 
-		//Cable texts: what every cable writes along its own line when
-		//it has not been given a font of its own.
-	ui->m_cable_text_font_pb->setText(fontButtonLabel(QETApp::cableTextsFont()));
+		//Cable texts: one row for each of the five, since each may be
+		//written in a font of its own -- what he leaves alone keeps
+		//following the font all five share, which is what an
+		//installation which picked one before they were set apart
+		//still holds.
+	m_cable_text_rows = {
+		{QStringLiteral("designation"), ui->m_cable_designation_font_pb,
+		 ui->m_cable_designation_reset_tb},
+		{QStringLiteral("type"), ui->m_cable_type_font_pb,
+		 ui->m_cable_type_reset_tb},
+		{QStringLiteral("installation"), ui->m_cable_installation_font_pb,
+		 ui->m_cable_installation_reset_tb},
+		{QStringLiteral("location"), ui->m_cable_location_font_pb,
+		 ui->m_cable_location_reset_tb},
+		{QStringLiteral("length"), ui->m_cable_length_font_pb,
+		 ui->m_cable_length_reset_tb},
+	};
+	for (const CableTextRow &row : std::as_const(m_cable_text_rows))
+	{
+		refreshCableTextRow(row);
+		connect(row.font_button, &QPushButton::clicked, this,
+				[this, row]() {editCableTextFont(row);});
+		connect(row.reset_button, &QToolButton::clicked, this,
+				[this, row]() {
+			QETApp::clearCableTextFont(row.key);
+			refreshCableTextRow(row);
+		});
+	}
 	ui->m_cable_core_font_pb->setText(fontButtonLabel(QETApp::cableCoreFont()));
 
 		//Where those texts stop in relation to the beginning of their
@@ -793,24 +821,43 @@ void GeneralConfigurationPage::on_m_dyn_text_font_pb_clicked()
 }
 
 /**
-	@brief GeneralConfigurationPage::on_m_cable_text_font_pb_clicked
-	Let him pick the font the texts of a cable are written with by
-	default: designation, type, installation, location and length.
-
-	Every cable which has not been given a font of its own follows it,
-	from now on: one which has keeps the one it was given, which is why
-	those are set on the cable itself rather than here.
+	@brief GeneralConfigurationPage::refreshCableTextRow
+	Say which font one text of a cable is written with by default, and
+	whether there is a choice of his own to take back: the reset is
+	offered only while there is one, so that a row which follows the
+	font all five share shows nothing to undo.
+	@param row the row to say it for
 */
-void GeneralConfigurationPage::on_m_cable_text_font_pb_clicked()
+void GeneralConfigurationPage::refreshCableTextRow(const CableTextRow &row)
+{
+	row.font_button->setText(fontButtonLabel(QETApp::cableTextsFont(row.key)));
+	row.reset_button->setEnabled(QETApp::hasCableTextFont(row.key));
+}
+
+/**
+	@brief GeneralConfigurationPage::editCableTextFont
+	Let him pick the font one text of a cable is written with by
+	default: designation, type, installation, location or length,
+	each on its own row, so that a length may be written smaller than
+	the designation above it.
+
+	Every cable which has not been given a font of its own for that
+	text follows it, from now on: one which has keeps the one it was
+	given, which is why those are set on the cable itself rather than
+	here. What he does not pick here keeps following the font all five
+	share.
+	@param row the row whose button was pressed
+*/
+void GeneralConfigurationPage::editCableTextFont(const CableTextRow &row)
 {
 	bool ok = false;
-	const QFont font = QFontDialog::getFont(&ok, QETApp::cableTextsFont(), this,
+	const QFont start = QETApp::cableTextsFont(row.key);
+	const QFont font = QFontDialog::getFont(&ok, start, this,
 			tr("Cable text font"), QFontDialog::DontUseNativeDialog);
 	if (!ok) return;
 
-	QSettings settings;
-	settings.setValue("cable-management/cable-text-font", QETUtils::fontToString(font));
-	ui->m_cable_text_font_pb->setText(fontButtonLabel(QETApp::cableTextsFont()));
+	QETApp::setCableTextFont(row.key, font);
+	refreshCableTextRow(row);
 }
 
 /**

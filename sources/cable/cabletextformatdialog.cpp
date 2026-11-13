@@ -82,36 +82,40 @@ namespace {
 /**
 	@brief CableTextFormatDialog::CableTextFormatDialog
 	@param format what this cable writes that text with right now
-	@param cores true for the colours of the cores
+	@param key the name of that text, "cores" for the colours of the
+	cores -- which is what tells this window whether the text lines up
+	at the line at all
 	@param parent
 */
 CableTextFormatDialog::CableTextFormatDialog(const CableTextFormat &format,
-											 bool cores,
+											 const QString &key,
 											 QWidget *parent) :
 	QDialog(parent),
-	m_cores(cores)
+	m_key(key),
+	m_cores(key == QLatin1String("cores"))
 {
-	setWindowTitle(cores ? tr("Core colors")
-						 : tr("Text format"));
+	setWindowTitle(m_cores ? tr("Core colors")
+						   : tr("Text format"));
 	buildUi();
 
 		//The font this text is written with right now: the one this
-		//cable asks for, or the one the preferences offer when it asks
-		//for none -- which is what he sees on the sheet as he opens this.
+		//cable asks for, or the one the preferences offer for that
+		//very text when it asks for none -- which is what he sees on
+		//the sheet as he opens this.
 	QFont font;
 	bool restored = false;
 	if (!format.font.isEmpty()) {
 		restored = QETUtils::fontFromString(font, format.font);
 	}
 	if (!restored) {
-		font = cores ? QETApp::cableCoreFont() : QETApp::cableTextsFont();
+		font = m_cores ? QETApp::cableCoreFont() : QETApp::cableTextsFont(m_key);
 	}
 
 		//Where this text stands right now, in the same way: the answer
 		//of the cable itself, or -- when it has none -- the one the
 		//preferences offer, so that he opens this onto what the sheet
 		//really shows rather than onto whatever the default used to be.
-	m_initial_alignment = cores ? 0
+	m_initial_alignment = m_cores ? 0
 			: (format.alignment ? format.alignment
 								: int(QETApp::cableTextAlignment()));
 
@@ -258,7 +262,7 @@ CableTextFormat CableTextFormatDialog::format() const
 
 	const QFont font = chosenFont();
 	const QFont default_font = m_cores ? QETApp::cableCoreFont()
-									   : QETApp::cableTextsFont();
+									   : QETApp::cableTextsFont(m_key);
 
 	CableTextFormat answer;
 	if (!sameFont(font, default_font)) {
