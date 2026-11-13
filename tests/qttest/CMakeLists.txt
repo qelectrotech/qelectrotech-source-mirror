@@ -710,6 +710,9 @@ qet_add_app_test(tst_selectionframeradius tst_selectionframeradius.cpp)
 qet_add_app_test(tst_strongselection tst_strongselection.cpp)
 # Ctrl drag copies, Duplicate on the mouse: two settings, off by default.
 qet_add_app_test(tst_ctrldragcopy tst_ctrldragcopy.cpp)
+# Text grid, "Snap the middle of the text": the middle of a dragged text on
+# the grid instead of the corner of its frame; off by default.
+qet_add_app_test(tst_textgridmiddle tst_textgridmiddle.cpp)
 
 # The element editor's collections dock: an element dropped on the drawing
 # pastes its parts, centred on the drop and on the grid; double-clicked, the

@@ -649,7 +649,7 @@ void DiagramTextItem::mouseMoveEvent(QGraphicsSceneMouseEvent *event) {
 
 		//Set the actual pos
 		QPointF new_pos = event->scenePos() + m_mouse_to_origin_movement;
-		event->modifiers() == Qt::ControlModifier ? setPos(new_pos) : setPos(Diagram::snapToTextGrid(new_pos));
+		event->modifiers() == Qt::ControlModifier ? setPos(new_pos) : setPos(Diagram::snapToTextGrid(new_pos, this));
 
 
 		//Update the actual movement for other selected item

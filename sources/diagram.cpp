@@ -4235,21 +4235,30 @@ void Diagram::setGridSnap(bool snap)
 	Return the nearest point of p on the text grid, see TextGrid.
 	Ctrl held, or the snap switched off, rounds to the nearest pixel
 	instead, as snapToGrid() does.
-	@param p point to find the nearest snapped point
+	@param p : the position @a text is about to take, in its parent's
+	coordinates
+	@param text : the text being moved. With the "middle" setting on, the
+	middle of what it shows goes on the grid rather than the top left
+	corner of its frame, so a short text such as a terminal number stands
+	centred on a grid line. Without @a text, @a p itself is snapped.
 	@return
 */
-QPointF Diagram::snapToTextGrid(const QPointF &p)
+QPointF Diagram::snapToTextGrid(const QPointF &p, const QGraphicsItem *text)
 {
 	QSettings settings;
 	const qreal divisor =
 		!gridSnap() || QApplication::keyboardModifiers().testFlag(Qt::ControlModifier)
 			? 0
 			: settings.value(TextGrid::settings_key, 1).toReal();
+	const QPointF middle = text && divisor > 0
+			&& settings.value(TextGrid::middle_key, false).toBool()
+		? text->mapToParent(text->boundingRect().center()) - text->pos()
+		: QPointF();
 
-	return TextGrid::snap(p,
+	return TextGrid::snap(p + middle,
 						  FolioGrid::step(settings.value(FolioGrid::x_key), Diagram::xGrid),
 						  FolioGrid::step(settings.value(FolioGrid::y_key), Diagram::yGrid),
-						  divisor);
+						  divisor) - middle;
 }
 
 

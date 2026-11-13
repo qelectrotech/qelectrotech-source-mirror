@@ -354,7 +354,7 @@ class Diagram : public QGraphicsScene
 			/// settings.
 		static bool gridSnap();
 		static void setGridSnap(bool snap);
-		static QPointF snapToTextGrid(const QPointF &p);
+		static QPointF snapToTextGrid(const QPointF &p, const QGraphicsItem *text = nullptr);
 			/// What a click, a selection rectangle and Select All pick
 			/// (the status bar's selection filter); All: everything, as
 			/// always before
