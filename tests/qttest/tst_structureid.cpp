@@ -658,6 +658,31 @@ private slots:
 		//A symbol's text shows the short form against its folio: it
 		//follows the folio's plant and location when the title block is
 		//changed, not only when the symbol changes
+		//A symbol moved into or out of a box: its text follows. Dragging,
+		//the arrow keys and an undo all move it by setting its position
+	void aSymbolTextFollowsTheSymbol()
+	{
+		QETProject project;
+		project.setPlantAndLocationInherited(true);
+		Diagram *diagram = project.addNewDiagram();
+		setFolio(diagram, QStringLiteral("FACTORY"), QStringLiteral("CP1"));
+		box(diagram, QRectF(0, 0, 400, 400), {}, QStringLiteral("CP10"));
+		Element *element = symbol(diagram);
+		QVERIFY(element);
+		setInfo(element, info("K10"));
+		auto *text = new DynamicElementTextItem(element);
+		text->setTextFrom(DynamicElementTextItem::CompositeText);
+		text->setCompositeText(QStringLiteral("%{structure_id_full} %{location}"));
+		element->addDynamicTextItem(text);
+
+		element->setPos(800, 800);
+		QCOMPARE(text->toPlainText(), QStringLiteral("=FACTORY+CP1-K10 CP1"));
+		element->setPos(200, 200);
+		QCOMPARE(text->toPlainText(), QStringLiteral("=FACTORY+CP10-K10 CP10"));
+		element->setPos(800, 800);
+		QCOMPARE(text->toPlainText(), QStringLiteral("=FACTORY+CP1-K10 CP1"));
+	}
+
 	void aSymbolTextFollowsTheTitleBlock()
 	{
 		QETProject project;
