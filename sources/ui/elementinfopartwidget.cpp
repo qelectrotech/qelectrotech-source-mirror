@@ -68,7 +68,7 @@ ElementInfoPartWidget::ElementInfoPartWidget(
 	connect(ui->m_multiline_btn, &QToolButton::clicked,
 			this, &ElementInfoPartWidget::editOnSeveralLines);
 
-	if (key_ == QETInformation::ELMT_WIDTH || key_ == QETInformation::ELMT_HEIGHT || key_ == QETInformation::ELMT_DEPTH)
+	if (QETInformation::isNumericInfoKey(key_))
 	{
 		ui->m_multiline_btn->setVisible(false);
 		auto *validator = new QETInformation::NumericInfoValidator(ui->line_edit);

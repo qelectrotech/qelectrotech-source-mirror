@@ -17,6 +17,7 @@
 */
 #include "materialentrydialog.h"
 #include <qet.h>
+#include <qetinformation.h>
 
 #include <qetmessagebox.h>
 
@@ -69,6 +70,14 @@ MaterialEntryDialog::MaterialEntryDialog(const QStringList &columns, QWidget *pa
 
 		auto *edit = new QLineEdit(container);
 		edit->setClearButtonEnabled(true);
+			//A number the lists can add up: the same check as in the
+			//element information, so what the file gives an element is
+			//what could have been typed there
+		if (QETInformation::isNumericInfoKey(column)) {
+			edit->setValidator(new QETInformation::NumericInfoValidator(edit));
+			edit->setPlaceholderText(tr("e.g. 80.5"));
+			edit->setToolTip(tr("Decimal number with a dot as separator (e.g. 80.5)"));
+		}
 
 		label->setBuddy(edit);
 		const int row = i / 2;

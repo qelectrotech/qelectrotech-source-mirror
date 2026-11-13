@@ -66,7 +66,7 @@ QWidget* EditorDelegate::createEditor(QWidget *parent,
 	{
 		const QString key = index.sibling(index.row(), 0)
 								.data(Qt::UserRole).toString();
-			if (key == QETInformation::ELMT_WIDTH || key == QETInformation::ELMT_HEIGHT || key == QETInformation::ELMT_DEPTH)
+			if (QETInformation::isNumericInfoKey(key))
 		{
 			auto *line_edit = new QLineEdit(parent);
 			auto *validator = new QETInformation::NumericInfoValidator(line_edit);

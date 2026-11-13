@@ -225,7 +225,9 @@ QStringList MaterialList::columnsForBlock(int block)
 		QStringLiteral("location"),
 		QStringLiteral("width"),
 		QStringLiteral("height"),
-		QStringLiteral("depth")
+		QStringLiteral("depth"),
+		QStringLiteral("unit_price"),
+		QStringLiteral("labour_time")
 	};
 
 	static const QStringList auxiliary_columns = {
@@ -310,6 +312,8 @@ bool MaterialList::isArticleBound(const QString &column)
 		QStringLiteral("width"),
 		QStringLiteral("height"),
 		QStringLiteral("depth"),
+		QStringLiteral("unit_price"),
+		QStringLiteral("labour_time"),
 		QStringLiteral("auxiliary")
 	};
 

@@ -532,6 +532,9 @@ qet_add_app_test(tst_renumberwires tst_renumberwires.cpp)
 qet_add_app_test(tst_macrolabels tst_macrolabels.cpp)
 # qet_plc_io: one row per PLC I/O entry, with the slave linked to it.
 qet_add_app_test(tst_plcio tst_plcio.cpp)
+# Part data: unit price, labour time and size, kept by .qet and .qetdb,
+# columns of the parts list; every field the export offers is a column.
+qet_add_app_test(tst_partdata tst_partdata.cpp)
 # A read-only project builds its lazy folios whole: shown, exported, written out.
 qet_add_app_test(tst_readonlyfolios tst_readonlyfolios.cpp)
 target_compile_definitions(tst_readonlyfolios PRIVATE
