@@ -22,6 +22,7 @@
 #include "abstractelementpropertieseditorwidget.h"
 
 #include <QHash>
+#include <QUuid>
 #include <QDialog>
 #include <QComboBox>
 
@@ -92,12 +93,19 @@ class LinkSingleElementWidget : public AbstractElementPropertiesEditorWidget
 		void hideFullMastersToggled(bool checked);
 
 	private:
+		Element *elementOf(QTreeWidgetItem *qtwi);
+		void addUnbuiltRows();
+
 	Ui::LinkSingleElementWidget *ui;
 
 	bool m_unlink = false;
 	ElementData::Type m_filter;
 
 	QHash <QTreeWidgetItem*, Element*> m_qtwi_elmt_hash;
+		/// The rows of symbols on folios not built yet (lazy folios):
+		/// their symbol in m_qtwi_elmt_hash is nullptr until elementOf()
+		/// builds its folio
+	QHash <QTreeWidgetItem*, QUuid> m_qtwi_uuid_hash;
 	QHash <QTreeWidgetItem*, QStringList> m_qtwi_strl_hash;
 
 	QTreeWidgetItem *m_qtwi_at_context_menu = nullptr,

@@ -29,6 +29,7 @@
 #include <qetgraphicsitem/masterelement.h>
 #include <qeticons.h>
 #include "dynamicelementtextitemeditor.h"
+#include "elementarticleswidget.h"
 #include "elementinfowidget.h"
 #include "linksingleelementwidget.h"
 #include "masterpropertieswidget.h"
@@ -214,21 +215,26 @@ void ElementPropertiesWidget::setTextsGroup(ElementTextItemGroup *group)
 */
 void ElementPropertiesWidget::apply()
 {
-	QList <QUndoCommand *> undo_list;
+	QUndoStack &stack = m_element->diagram()->undoStack();
+	bool macro_started = false;
 
-	foreach (PropertiesEditorWidget *pew, m_list_editor)
+		//Evaluate and push each editor's undo sequentially so editors sharing
+		//m_element->elementInformations() (Information and Articles) merge cleanly.
+	for (PropertiesEditorWidget *pew : std::as_const(m_list_editor))
+	{
 		if (QUndoCommand *undo = pew->associatedUndo())
-			undo_list << undo;
+		{
+			if (!macro_started)
+			{
+				stack.beginMacro(undo->text());
+				macro_started = true;
+			}
+			stack.push(undo);
+		}
+	}
 
-	if (undo_list.isEmpty()) return;
-
-	QString str;
-	foreach(QUndoCommand *uc, undo_list) str += uc->text() += " ";
-
-	QUndoStack &stack = m_element -> diagram() -> undoStack();
-	stack.beginMacro(str);
-	foreach(QUndoCommand *uc, undo_list) stack.push(uc);
-	stack.endMacro();
+	if (macro_started)
+		stack.endMacro();
 
 	foreach(PropertiesEditorWidget *pew, m_list_editor)
 		pew->updateUi();
@@ -334,13 +340,19 @@ void ElementPropertiesWidget::updateUi()
 		m_general_widget = nullptr;
 	}
 
+	auto addInfoAndArticlesTabs = [this]()
+	{
+		m_list_editor << new ElementInfoWidget(m_element, this);
+		m_list_editor << new ElementArticlesWidget(m_element, this);
+	};
+
 		//Create editor according to the type of element
 	switch (m_element -> linkType())	{
 		case Element::Simple:
-			m_list_editor << new ElementInfoWidget(m_element, this);
+			addInfoAndArticlesTabs();
 			break;
 		case Element::Thumbnail:
-			m_list_editor << new ElementInfoWidget(m_element, this);
+			addInfoAndArticlesTabs();
 			break;
 		case Element::NextReport:
 		case Element::PreviousReport: {
@@ -351,14 +363,14 @@ void ElementPropertiesWidget::updateUi()
 				enable_chained = QSettings().value(QStringLiteral("project/enable-chained-reports"), false).toBool();
 			}
 			if (enable_chained) {
-				m_list_editor << new ElementInfoWidget(m_element, this);
+				addInfoAndArticlesTabs();
 			}
 			m_list_editor << new LinkSingleElementWidget(m_element, this);
 			break;
 		}
 		case Element::Master:
 			m_list_editor << new MasterPropertiesWidget(m_element, this);
-			m_list_editor << new ElementInfoWidget(m_element, this);
+			addInfoAndArticlesTabs();
 			break;
 		case Element::Slave:
 			if (m_element->elementData().m_slave_type == ElementData::PLCSlave)
@@ -367,7 +379,7 @@ void ElementPropertiesWidget::updateUi()
 				m_list_editor << new LinkSingleElementWidget(m_element, this);
 			break;
 		case Element::Terminale:
-			m_list_editor << new ElementInfoWidget(m_element, this);
+			addInfoAndArticlesTabs();
 			break;
 		case Element::ConductorDefinition:
 			break;

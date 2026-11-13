@@ -443,6 +443,64 @@ private slots:
 			QCOMPARE(def2.attribute(a), def.attribute(a));
 	}
 
+		//Not asked for, a device is the plain box it always was
+	void notAPlcUnlessASideIsMarked()
+	{
+		QDomDocument doc;
+		const QDomElement def = toDefinition(vsd(), fonts(), doc);
+		QCOMPARE(def.attribute(QStringLiteral("link_type")), QStringLiteral("simple"));
+		QVERIFY(def.firstChildElement(QStringLiteral("kindInformations")).isNull());
+	}
+
+		//A side marked as inputs (outputs) makes the device a PLC master,
+		//its terminals the PLC's inputs and outputs, in their order
+	void aPlcListsItsMarkedSides()
+	{
+		Spec spec;
+		spec.name = QStringLiteral("PLC");
+		spec.label = QStringLiteral("-K10");
+		spec.sides[Left] = parse(QStringLiteral("L+,M"));
+		spec.sides[Top] = parse(QStringLiteral("I/{z3}"));
+		spec.sides[Bottom] = parse(QStringLiteral("O/{z2}"));
+		spec.sides[Top][1].function = QStringLiteral("level high");
+		spec.io[Top] = Io::DigitalIn;
+		spec.io[Bottom] = Io::DigitalOut;
+		QVERIFY(spec.isPlc());
+
+		QDomDocument doc;
+		const QDomElement def = toDefinition(spec, fonts(), doc);
+		QCOMPARE(def.attribute(QStringLiteral("link_type")), QStringLiteral("master"));
+		const QDomElement kinds = def.firstChildElement(QStringLiteral("kindInformations"));
+		QCOMPARE(kinds.firstChildElement(QStringLiteral("kindInformation")).text(), QStringLiteral("plc"));
+		const QDomNodeList ios = kinds.elementsByTagName(QStringLiteral("plcIO"));
+		QCOMPARE(ios.size(), 5);
+		const QStringList want_address{QStringLiteral("I/0"), QStringLiteral("I/1"), QStringLiteral("I/2"),
+					       QStringLiteral("O/0"), QStringLiteral("O/1")};
+		for (int i = 0 ; i < ios.size() ; ++i) {
+			const QDomElement io = ios.at(i).toElement();
+			QCOMPARE(io.attribute(QStringLiteral("address")), want_address.at(i));
+			QCOMPARE(io.attribute(QStringLiteral("type")),
+				 i < 3 ? QStringLiteral("entree_digitale") : QStringLiteral("sortie_digitale"));
+			QCOMPARE(io.firstChildElement(QStringLiteral("terminal")).text(), want_address.at(i));
+		}
+		QCOMPARE(ios.at(1).toElement().attribute(QStringLiteral("functionText")), QStringLiteral("level high"));
+			//Its table is shown beside the box, not over it
+		const QDomElement table = def.firstChildElement(QStringLiteral("description"))
+				.firstChildElement(QStringLiteral("plc_table"));
+		QVERIFY(!table.isNull());
+		const QDomElement box = def.firstChildElement(QStringLiteral("description"))
+				.firstChildElement(QStringLiteral("rect"));
+		QVERIFY(table.attribute(QStringLiteral("x")).toDouble()
+			> box.attribute(QStringLiteral("width")).toDouble());
+
+			//Read back, the marked sides are marked again
+		Spec back;
+		QVERIFY(fromDefinition(def, fonts(), &back));
+		QCOMPARE(int(back.io[Top]), int(Io::DigitalIn));
+		QCOMPARE(int(back.io[Bottom]), int(Io::DigitalOut));
+		QCOMPARE(int(back.io[Left]), int(Io::None));
+	}
+
 	void roundTripWithPaddingAndNoMarks()
 	{
 		Spec spec;

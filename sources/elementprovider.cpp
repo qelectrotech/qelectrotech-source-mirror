@@ -64,7 +64,9 @@ QList<Diagram *> ElementProvider::folios(ElementData::Types kinds, bool free_onl
 	if (!m_project) {
 		return m_diagram_list;
 	}
-	m_project->buildFoliosHolding(kinds, free_only);
+	if (!m_built_only) {
+		m_project->buildFoliosHolding(kinds, free_only);
+	}
 	QList<Diagram *> list = m_project->builtFolios();
 	list.removeOne(m_excluded);
 	return list;

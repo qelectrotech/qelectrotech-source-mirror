@@ -458,6 +458,14 @@ if [ -d "${QET_LICENSES_DIR}" ]; then
     cp -R -L ${QET_LICENSES_DIR} $BUNDLE/Contents/Resources/licenses
 fi
 
+# The MCP server (misc/qet-mcp), as the Linux and Windows packages install it:
+# from Contents/Resources/mcp it finds Contents/MacOS/qelectrotech and
+# Contents/Resources/elements by itself.
+mkdir -p $BUNDLE/Contents/Resources/mcp
+cp "${current_dir}/misc/qet-mcp/qet_mcp.py" "${current_dir}/misc/qet-mcp/README.md" \
+    $BUNDLE/Contents/Resources/mcp/ \
+    || { echo "ERROR: cannot copy the MCP server"; exit 1; }
+
 ### Sign the bundle #################################################
 # Sign in correct order: all dylibs first (including flat libs copied
 # by macdeployqt from Homebrew), then frameworks, plugins, bundle last.

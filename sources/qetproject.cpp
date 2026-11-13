@@ -1030,8 +1030,39 @@ void QETProject::buildFolios(const QList<Diagram *> &folios) const
 */
 void QETProject::buildFoliosHolding(ElementData::Types kinds, bool free_only)
 {
-	if (!unloadedFolioCount()) {
+	QSet<QUuid> holding;
+	for (const projectDataBase::FolioSymbol &symbol : unbuiltSymbols(kinds, free_only))
+		holding.insert(symbol.folio);
+	QList<Diagram *> to_build;
+	for (Diagram *d : std::as_const(m_diagrams_list))
+		if (!d->isLoaded() && holding.contains(d->uuid()))
+			to_build << d;
+	if (to_build.isEmpty()) {
 		return;
+	}
+	if (qEnvironmentVariableIntValue("QET_LAZY_FOLIOS_TRACE") == 1) {
+		qWarning().noquote() << "lazy folios:" << to_build.size()
+							 << "folios built for a search of"
+							 << (free_only ? "free" : "") << "symbols of kinds" << int(kinds);
+	}
+	buildFolios(to_build);
+}
+
+/**
+	@brief QETProject::unbuiltSymbols
+	The symbols on folios not built yet (lazy folios) of one of the kinds
+	@p kinds -- if @p free_only, those which may be linked to nothing once
+	built: none of the partners they were saved linked to is in the
+	project. Read from the project database: nothing is built. The rows a
+	list of symbols to link shows for those folios (see
+	projectDataBase::linkRows()), and what buildFoliosHolding() builds.
+*/
+QList<projectDataBase::FolioSymbol> QETProject::unbuiltSymbols(ElementData::Types kinds,
+															   bool free_only) const
+{
+	QList<projectDataBase::FolioSymbol> found;
+	if (!unloadedFolioCount()) {
+		return found;
 	}
 	QSet<QUuid> unbuilt;
 	QSet<QUuid> placed;
@@ -1050,7 +1081,6 @@ void QETProject::buildFoliosHolding(ElementData::Types kinds, bool free_only)
 			placed.insert(it.key());
 	}
 		//The symbols and their links as the database has them
-	QList<Diagram *> to_build;
 	for (Diagram *d : std::as_const(m_diagrams_list))
 	{
 		if (d->isLoaded()) {
@@ -1071,20 +1101,34 @@ void QETProject::buildFoliosHolding(ElementData::Types kinds, bool free_only)
 				}
 			}
 			if (!linked) {
-				to_build << d;
-				break;
+				found << symbol;
 			}
 		}
 	}
-	if (to_build.isEmpty()) {
-		return;
+	return found;
+}
+
+/**
+	@brief QETProject::buildSymbol
+	@return the symbol @p symbol, its folio built first if it is not yet
+	(lazy folios): what a list showing a symbol of a folio not built
+	needs once that symbol is chosen. nullptr if the project has none.
+*/
+Element *QETProject::buildSymbol(const QUuid &symbol)
+{
+	buildFoliosHoldingSymbols({symbol});
+		//Only the folio the database places it on: a large project has
+		//many folios built by then
+	const QSet<QUuid> folio = m_data_base.folioUuidsOfElements({symbol});
+	for (Diagram *d : std::as_const(m_diagrams_list)) {
+		if (!d->isLoaded() || (!folio.isEmpty() && !folio.contains(d->uuid()))) {
+			continue;
+		}
+		for (Element *element : d->elements())
+			if (element->uuid() == symbol)
+				return element;
 	}
-	if (qEnvironmentVariableIntValue("QET_LAZY_FOLIOS_TRACE") == 1) {
-		qWarning().noquote() << "lazy folios:" << to_build.size()
-							 << "folios built for a search of"
-							 << (free_only ? "free" : "") << "symbols of kinds" << int(kinds);
-	}
-	buildFolios(to_build);
+	return nullptr;
 }
 
 /**

@@ -397,13 +397,14 @@ class tst_multielementinfo : public QObject
 			ElementInfoWidget w(m_elements[0]);
 			ElementInfoPartWidget *part = nullptr;
 			for (auto *p : w.findChildren<ElementInfoPartWidget *>())
-				if (p->key() == QETInformation::ELMT_SUPPLIER)
+				if (p->key() == QETInformation::ELMT_LABEL)
 					part = p;
 			QVERIFY(part);
+			const QString original = part->text();
 			part->setText("changed");
-			QCOMPARE(w.currentInfo().value(QETInformation::ELMT_SUPPLIER).toString(), QString("changed"));
+			QCOMPARE(w.currentInfo().value(QETInformation::ELMT_LABEL).toString(), QString("changed"));
 			w.reset();
-			QCOMPARE(w.currentInfo().value(QETInformation::ELMT_SUPPLIER).toString(), QString("S1"));
+			QCOMPARE(w.currentInfo().value(QETInformation::ELMT_LABEL).toString(), original);
 		}
 };
 

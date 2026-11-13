@@ -37,6 +37,7 @@
 #include <qetinformation.h>
 #include <qetgraphicsitem/conductor.h>
 #include <qetgraphicsitem/terminal.h>
+#include <ui/elementarticleswidget.h>
 #include <ui/elementpropertieswidget.h>
 #include <undocommand/changeelementinformationcommand.h>
 #include <undocommand/setautonumcontextcommand.h>
@@ -281,6 +282,16 @@ void Element::editProperty()
 				width = qMin(width, screen->availableGeometry().width());
 			dialog.resize(width, natural.height());
 		}
+		if (epw->findChild<ElementArticlesWidget *>()) {
+			const QRect avail = QApplication::primaryScreen()
+				? QApplication::primaryScreen()->availableGeometry()
+				: QRect(0, 0, 1024, 768);
+			const int target_w = qMin(qMax(dialog.width(), 920), avail.width());
+			const int target_h = qMin(qMax(dialog.height(), 640), avail.height());
+			if (target_w != dialog.width() || target_h != dialog.height()) {
+				dialog.resize(target_w, target_h);
+			}
+		}
 
 		dialog.exec();
 	}
@@ -332,8 +343,9 @@ void Element::showAsJumpTarget()
 /**
 	@brief Element::jumpTo
 	Go to @a target, the other end of a folio report or the master of a
-	cross reference: its folio is shown whole, as a page, without zooming
-	in on it, and the target and its texts are shaded blue for a moment,
+	cross reference: its folio is shown whole, as a page, or at the jump
+	zoom of the settings with the target in the middle
+	(DiagramView::showJumpTarget()), and the target and its texts are shaded blue for a moment,
 	so that the eye finds it on the page.
 	The mouse pointer is put on it too, except on Wayland, which does not
 	let a program move the pointer.
@@ -349,7 +361,7 @@ void Element::jumpTo(Element *target)
 	for (QGraphicsView *view : diagram->views())
 	{
 		if (auto *diagram_view = qobject_cast<DiagramView *>(view))
-			diagram_view->zoomFit();
+			diagram_view->showJumpTarget(target->sceneBoundingRect());
 		else
 			view->fitInView(diagram->sceneRect(), Qt::KeepAspectRatio);
 	}

@@ -506,9 +506,15 @@ qet_add_app_test(tst_plantcounter tst_plantcounter.cpp)
 qet_add_app_test(tst_renumberwires tst_renumberwires.cpp)
 # Placing a macro: its labels and question-mark texts.
 qet_add_app_test(tst_macrolabels tst_macrolabels.cpp)
+# qet_plc_io: one row per PLC I/O entry, with the slave linked to it.
+qet_add_app_test(tst_plcio tst_plcio.cpp)
 # A read-only project builds its lazy folios whole: shown, exported, written out.
 qet_add_app_test(tst_readonlyfolios tst_readonlyfolios.cpp)
 target_compile_definitions(tst_readonlyfolios PRIVATE
+  QET_EXAMPLES_DIR="${QET_DIR}/examples")
+# The link tab lists are filled without building folios (#1842).
+qet_add_app_test(tst_linklists tst_linklists.cpp)
+target_compile_definitions(tst_linklists PRIVATE
   QET_EXAMPLES_DIR="${QET_DIR}/examples")
 # IEC 81346 plant/location: an element takes its folio's, %{structure_id} composes them.
 qet_add_app_test(tst_structureid tst_structureid.cpp)
@@ -519,6 +525,8 @@ qet_add_app_test(tst_terminallist tst_terminallist.cpp)
 # qet_cables: one row per cable, in its own place or its first folio's (tst_cablelist, above).
 # The labels file behind a symbol's prefix is read once, and again only when it changes.
 qet_add_app_test(tst_labelsfilecache tst_labelsfilecache.cpp)
+# The prefix dialog names the folders the way the collection panel does (#1802).
+qet_add_app_test(tst_prefixdialogtitles tst_prefixdialogtitles.cpp)
 # A quick second click on the same spot reaches the shape tools as a
 # double-click: it must still start the next line, rectangle or ellipse.
 qet_add_app_test(tst_shapequickclick tst_shapequickclick.cpp)
@@ -565,6 +573,10 @@ qet_add_app_test(tst_rotateselectionimage tst_rotateselectionimage.cpp)
 # panel's editor and the Edit action.
 qet_add_app_test(tst_multielementinfo tst_multielementinfo.cpp)
 target_compile_definitions(tst_multielementinfo PRIVATE
+  "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
+
+qet_add_app_test(tst_elementarticleswidget tst_elementarticleswidget.cpp)
+target_compile_definitions(tst_elementarticleswidget PRIVATE
   "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
 
 # An elements collection item set up after the application object is gone.
@@ -652,6 +664,7 @@ qet_add_app_test(tst_selectionfilter tst_selectionfilter.cpp)
 # The arrow keys: the crosshair on the leftmost selected symbol's terminal
 # or a text's middle; the folio's grid step when set so.
 qet_add_app_test(tst_keyboardmovereference tst_keyboardmovereference.cpp)
+qet_add_app_test(tst_tidyeditmenu tst_tidyeditmenu.cpp)
 # Edit > Select the same symbols: the folio's symbols drawn from the
 # definition of a selected one, the rest deselected.
 qet_add_app_test(tst_selectsamesymbols tst_selectsamesymbols.cpp)
@@ -736,6 +749,15 @@ qet_add_app_test(tst_terminalstriporder tst_terminalstriporder.cpp)
 # plan order, the same three fields the cable list computes for a target.
 qet_add_app_test(tst_cabletarget tst_cabletarget.cpp)
 qet_add_app_test(tst_cablelist tst_cablelist.cpp)
+
+# Joining two potentials offers only the two potentials.
+qet_add_app_test(tst_potentialchoices tst_potentialchoices.cpp)
+
+# Copying a cable leaves the cable it was copied from whole.
+qet_add_app_test(tst_cablecopy tst_cablecopy.cpp)
+
+# Adding a list table is one undo step.
+qet_add_app_test(tst_tableundo tst_tableundo.cpp)
 
 # What lies outside the sheet: named per folio, for the warning before
 # printing and exporting; off with the setting.
@@ -1992,6 +2014,18 @@ add_test(NAME tst_conductordashpattern COMMAND tst_conductordashpattern)
 target_include_directories(tst_conductordashpattern PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_conductordashpattern PRIVATE Qt::Test Qt::Widgets Qt::Xml pugixml::pugixml)
 
+# The page layout dialog of the PDF export on Windows and macOS: paper
+# size, orientation and margins in and out, the rest of the layout kept
+add_executable(
+  tst_pdfpagesetupdialog
+  tst_pdfpagesetupdialog.cpp
+  ${QET_DIR}/sources/print/pdfpagesetupdialog.cpp)
+add_test(NAME tst_pdfpagesetupdialog COMMAND tst_pdfpagesetupdialog)
+set_tests_properties(tst_pdfpagesetupdialog PROPERTIES
+  ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
+target_include_directories(tst_pdfpagesetupdialog PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_pdfpagesetupdialog PRIVATE Qt::Test Qt::Widgets Qt::PrintSupport)
+
 # The conductor type of a wire: written only when it is set, read back
 # the way it was written, and offered in the dynamic text fields
 add_executable(
@@ -2445,3 +2479,7 @@ if(NOT BUILD_WITH_KF)
     ${QET_DIR}/sources/ui/nokde)
   target_link_libraries(tst_nokdecolorcombo PRIVATE Qt::Test Qt::Widgets)
 endif()
+
+# The title block recorded for the screen shows what is drawn, and a change
+# of the folio's data reaches the screen
+qet_add_app_test(tst_titleblockcache tst_titleblockcache.cpp)
