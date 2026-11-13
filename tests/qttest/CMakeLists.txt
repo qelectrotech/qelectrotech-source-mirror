@@ -756,6 +756,9 @@ qet_add_app_test(tst_wireonusedterminal tst_wireonusedterminal.cpp)
 # Joining two potentials offers only the two potentials.
 qet_add_app_test(tst_potentialchoices tst_potentialchoices.cpp)
 
+# A double-click on the middle of a wire opens its properties.
+qet_add_app_test(tst_wiredoubleclick tst_wiredoubleclick.cpp)
+
 # Copying a cable leaves the cable it was copied from whole.
 qet_add_app_test(tst_cablecopy tst_cablecopy.cpp)
 
