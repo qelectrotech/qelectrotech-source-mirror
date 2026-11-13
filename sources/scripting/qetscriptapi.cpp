@@ -3405,9 +3405,9 @@ QStringList QetScriptApi::tables(int folioIndex) const
 	"cable_list" the query is comma-joined column keys of CableList, and
 	empty means the default columns.
 
-	Not undoable: newTable(), which create() calls, calls
-	Diagram::addItem() directly, with no undo command of its own, in the
-	stock action as much as here. Which of the (possibly several) tables
+	Undoable: newTable(), which create() calls, puts each table on the
+	sheet through an AddGraphicsObjectCommand, in the stock action as much
+	as here. Which of the (possibly several) tables
 	create() left in the diagram is the new one is found by set difference
 	against the folio's table listing taken just before the call, since
 	create()'s return type is void and newTable() itself is private.

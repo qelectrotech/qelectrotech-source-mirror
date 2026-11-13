@@ -752,6 +752,9 @@ qet_add_app_test(tst_potentialchoices tst_potentialchoices.cpp)
 # Copying a cable leaves the cable it was copied from whole.
 qet_add_app_test(tst_cablecopy tst_cablecopy.cpp)
 
+# Adding a list table is one undo step.
+qet_add_app_test(tst_tableundo tst_tableundo.cpp)
+
 # What lies outside the sheet: named per folio, for the warning before
 # printing and exporting; off with the setting.
 qet_add_app_test(tst_outsidesheet tst_outsidesheet.cpp)

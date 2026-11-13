@@ -22,6 +22,7 @@
 #include <dataBase/ui/elementquerywidget.h>
 #include <dataBase/ui/summaryquerywidget.h>
 #include <diagram.h>
+#include <undocommand/addgraphicsobjectcommand.h>
 #include <qetgraphicsitem/ViewItem/projectdbmodel.h>
 #include <qetgraphicsitem/ViewItem/qetgraphicsheaderitem.h>
 #include <qetgraphicsitem/ViewItem/qetgraphicstableitem.h>
@@ -93,12 +94,26 @@ void QetGraphicsTableFactory::createAndAddCableList(Diagram *diagram)
 	}
 }
 
+namespace {
+		/// Put @p table on the undo stack of its sheet, where it now stands,
+		/// as every other item put on a sheet: Ctrl+Z takes it off again
+	void pushAdded(QetGraphicsTableItem *table)
+	{
+		Diagram *diagram = table->diagram();
+		if (!diagram) return;
+		const QPointF pos = table->pos();
+		diagram->removeItem(table);
+		diagram->undoStack().push(new AddGraphicsObjectCommand(table, diagram, pos));
+	}
+}
+
 void QetGraphicsTableFactory::create(Diagram *diagram, AddTableDialog *dialog)
 {
 	auto table_ = newTable(diagram, dialog);
 	if (dialog->adjustTableToFolio()) {
 		QetGraphicsTableItem::adjustTableToFolio(table_);
 	}
+	pushAdded(table_);
 
 		//Add new table if needed and option checked
 	if (dialog->addNewTableToNewDiagram()
@@ -122,6 +137,7 @@ void QetGraphicsTableFactory::create(Diagram *diagram, AddTableDialog *dialog)
 			if (dialog->adjustTableToFolio()) {
 				QetGraphicsTableItem::adjustTableToFolio(table_);
 			}
+			pushAdded(table_);
 				//Update some variable for the next loop
 			already_displayed_rows += table_->displayNRow();
 			previous_table = table_;
