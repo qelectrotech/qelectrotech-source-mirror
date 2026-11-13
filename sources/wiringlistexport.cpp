@@ -881,7 +881,12 @@ void WiringListExport::resolveJunctionRuns(QList<ConductorData> &conductors,
                 row.conductor_color = to_wire.conductor_color;
                 row.conductor_section = to_wire.conductor_section;
                 row.function = to_wire.function;
-                row.cable = to_wire.cable;
+                //The cable a run belongs to: through a junction it is
+                //made of two wires, and either of them may be the one
+                //which is a cable's core -- the wire coming in at a
+                //terminal carries it, the wire going on to a device may
+                //not -- so both are read (#1500)
+                row.cable = mergeFields(from_wire.cable, to_wire.cable);
                 row.folio = mergeFields(from_wire.folio, to_wire.folio);
                 row.folio_index = std::min(from_wire.folio_index, to_wire.folio_index);
                 added.append(row);

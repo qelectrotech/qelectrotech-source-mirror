@@ -370,6 +370,10 @@ class tst_junctionchain : public QObject
 		if (cable) {
 			ConductorProperties properties = conductor->properties();
 			properties.m_cable_uuid = cable->uuid();
+				//The text the lists write for a core, which
+				//CableManager::refreshLabels() puts there when a
+				//cable is drawn rather than built by a test
+			properties.m_cable = cable->designation();
 			conductor->setProperties(properties);
 		}
 		return conductor;
@@ -726,6 +730,20 @@ void tst_junctionchain::bothListsAgree()
 		QVERIFY2(!row.to_element_label.isEmpty(),
 			 qPrintable(row.values().join(QLatin1Char('|'))));
 	}
+
+		//The cable a run belongs to is read from both of its wires: the
+		//one coming in at the terminal is W1's core, the one going on to
+		//the device 8 is W2's, and neither run loses the cable it is made
+		//of just because the other half of it is a plain wire (#1500)
+	QStringList cables;
+	for (int i = 1 ; i < lines.size() ; ++i)
+	{
+		const QStringList cells = lines.at(i).split(QLatin1Char(';'));
+		cables << cells.value(9);
+	}
+	cables.sort();
+	QCOMPARE(cables, QStringList({QStringLiteral("W1"),
+				      QStringLiteral("W2")}));
 }
 
 /**
