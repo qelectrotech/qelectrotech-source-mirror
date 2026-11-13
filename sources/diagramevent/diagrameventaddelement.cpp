@@ -139,7 +139,9 @@ void DiagramEventAddElement::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 void DiagramEventAddElement::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
 	m_drag_cancelled = false;
-	if (m_element && event->button() == Qt::LeftButton && AutoConnect::isOn(m_diagram)) {
+	if (m_element && event->button() == Qt::LeftButton
+		&& (AutoConnect::isOn(m_diagram)
+		    || (m_diagram->project()->autoConductor() && AutoConnect::dragPlacesWithAutoConductor()))) {
 		m_pressed = true;
 		m_press_pos = Diagram::snapToGrid(event->scenePos());
 	}
@@ -554,7 +556,10 @@ void DiagramEventAddElement::addElements(const QList<QPointF> &positions)
 		//As addElement(): the element that follows the mouse is not part
 		//of the folio
 	m_diagram->removeItem(m_element);
-	AutoConnect::update(m_diagram, added, {}, undo_object);
+	if (AutoConnect::isOn(m_diagram))
+		AutoConnect::update(m_diagram, added, {}, undo_object);
+	else
+		AutoConnect::connectOnce(m_diagram, added, undo_object);
 	m_diagram->addItem(m_element);
 
 	for (Element *element : std::as_const(added))

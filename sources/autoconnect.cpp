@@ -27,6 +27,8 @@
 #include "undocommand/addgraphicsobjectcommand.h"
 #include "undocommand/deleteqgraphicsitemcommand.h"
 
+#include <QSettings>
+
 #include <algorithm>
 
 namespace {
@@ -43,6 +45,8 @@ struct State
 	QSet<Terminal *> used;
 		/// symbols the caller removes
 	QSet<Element *> leaving;
+		/// whether the wires made are automatic ones, kept up to date
+	bool automatic = true;
 };
 
 QPointF direction(Qet::Orientation o)
@@ -218,8 +222,8 @@ void makeWire(State &s, Terminal *a, Terminal *b, QUndoCommand *parent)
 	auto *conductor = new Conductor(a, b);
 		//Automatic only where something keeps it up to date: an automatic
 		//wire cannot be selected, so in any other project nothing could
-		//ever remove it (#1837)
-	conductor->setAutomatic(AutoConnect::isOn(diagram));
+		//ever remove it (#1837); connectOnce() makes ordinary ones
+	conductor->setAutomatic(s.automatic && AutoConnect::isOn(diagram));
 	new AddGraphicsObjectCommand(conductor, diagram, QPointF(), parent);
 
 		//Same rule as a wire drawn by hand: the properties of the potential
@@ -370,6 +374,22 @@ int AutoConnect::connectWholeDiagram(Diagram *diagram, QUndoCommand *parent)
 	return made;
 }
 
+int AutoConnect::connectOnce(Diagram *diagram, const QList<Element *> &elements, QUndoCommand *parent)
+{
+	if (!diagram || !parent)
+		return 0;
+	State s;
+	s.diagram = diagram;
+	s.automatic = false;
+	QSet<Terminal *> candidates;
+	for (Element *e : elements)
+		for (Terminal *t : e->terminals())
+			candidates << t;
+	int made = 0;
+	connectAll(s, candidates, parent, &made);
+	return made;
+}
+
 Terminal *AutoConnect::partner(const Terminal *from)
 {
 	if (!from || !from->diagram())
@@ -478,4 +498,14 @@ QList<QLineF> AutoConnect::previewWires(const Diagram *diagram,
 			}
 		}
 	return wires;
+}
+
+bool AutoConnect::dragPlacesWithAutoConductor()
+{
+	return QSettings().value(QStringLiteral("diagrameditor/drag_places_auto_conductor"), false).toBool();
+}
+
+void AutoConnect::setDragPlacesWithAutoConductor(bool on)
+{
+	QSettings().setValue(QStringLiteral("diagrameditor/drag_places_auto_conductor"), on);
 }

@@ -496,6 +496,16 @@
             </property>
            </widget>
           </item>
+          <item>
+           <widget class="QCheckBox" name="m_drag_places_auto_conductor_cb">
+            <property name="toolTip">
+             <string>In a project with "auto conductor" but without automatic connections: dragging a corner, T-junction or folio report being placed puts one on every wire the drag crosses, each joined once by an ordinary wire.</string>
+            </property>
+            <property name="text">
+             <string>With "auto conductor", a drag places a connection symbol on every wire it crosses</string>
+            </property>
+           </widget>
+          </item>
          </layout>
         </widget>
        </item>
