@@ -33,6 +33,7 @@
 #include <qetgraphicsitem/element.h>
 #include <qetgraphicsitem/independenttextitem.h>
 #include <qetgraphicsitem/qetshapeitem.h>
+#include <qetgraphicsitem/structureboxitem.h>
 #include <qetgraphicsitem/ViewItem/qetgraphicstableitem.h>
 #include <qetgraphicsitem/terminal.h>
 #include <qetinformation.h>
@@ -3911,6 +3912,9 @@ void projectDataBase::addDrawingItem(QGraphicsItem *item)
 		connect(shape, &QetShapeItem::transformChanged, this, &projectDataBase::drawingItemChanged, unique);
 		connect(shape, &QetShapeItem::penChanged,       this, &projectDataBase::drawingItemChanged, unique);
 		connect(shape, &QetShapeItem::brushChanged,     this, &projectDataBase::drawingItemChanged, unique);
+			//A structure box is a shape whose row also holds its =plant +location
+		if (auto box = qobject_cast<StructureBoxItem *>(object))
+			connect(box, &StructureBoxItem::identityChanged, this, &projectDataBase::drawingItemChanged, unique);
 	}
 	else if (auto text = qobject_cast<IndependentTextItem *>(object)) {
 		connect(text, &IndependentTextItem::uuidChanged, this, &projectDataBase::drawingItemChanged, unique);

@@ -26,6 +26,7 @@
 #include <qetinformation.h>
 #include <qetgraphicsitem/conductor.h>
 #include <qetgraphicsitem/element.h>
+#include <qetgraphicsitem/structureboxitem.h>
 #include <qetxml.h>
 #include <qetproject.h>
 #include <ElementsCollection/qetlabelsfile.h>
@@ -300,19 +301,21 @@ namespace autonum
 		Replace the variables in formula in form %{my-var}
 		to the corresponding value stored in dc.
 		%{plant} and %{location} are replaced by the element's own
-		value only; they never fall back to the folio, so existing
-		projects look as they always did.
+		value only; they never fall back to the folio or a structure
+		box, so existing projects look as they always did.
 		%{structure_id_full} composes =plant+location-label (IEC 81346);
-		there an empty plant or location is taken from the containing
-		diagram's title block installation (=) / location (+) fields,
-		and an empty part is left out.
+		there an empty plant or location is taken from the smallest
+		StructureBoxItem the element is visually inside that gives one,
+		then the next box around it, else from the containing diagram's
+		title block installation (=) / location (+) fields (discussion
+		#649). An empty part is left out.
 		%{structure_id} is the same, reduced by dropping the =plant
-		or +location part that equals the diagram's own title block
-		(IEC 81346's allowance for a designation implied by context).
+		or +location part that equals that reference point (IEC 81346's
+		allowance for a designation implied by context).
 		@param formula
 		@param dc
 		@param elmt the element the formula belongs to, if any;
-		used for the folio fallback of %{structure_id} and
+		used for the box/folio fallback of %{structure_id} and
 		%{structure_id_full} and for the %{prefix} token. May be null.
 		@return
 	*/
@@ -327,42 +330,44 @@ namespace autonum
 		const QString own_plant = dc.value("plant").toString();
 		const QString own_location = dc.value("location").toString();
 
-			//Only the structure_id tokens fall back to the folio
+			//The reference point: the box the element is inside, else its
+			//folio. Only the structure_id tokens use it.
+			//Field by field: an empty plant or location of a box is the one
+			//of the next box around it, then of the folio. A box that only
+			//says +FIELD keeps the =plant of its folio.
+		QString reference_plant, reference_location;
+		if (elmt && elmt->diagram()) {
+			const StructureBoxItem::Place reference = StructureBoxItem::referencePlace(elmt);
+			reference_plant = reference.plant;
+			reference_location = reference.location;
+		} else if (diagram) {
+			reference_plant = diagram->border_and_titleblock.plant();
+			reference_location = diagram->border_and_titleblock.locmach();
+		}
+
 		QString plant_value = own_plant;
-		if (plant_value.isEmpty() && diagram)
-			plant_value = diagram->border_and_titleblock.plant();
+		if (plant_value.isEmpty())
+			plant_value = reference_plant;
 
 		QString location_value = own_location;
-		if (location_value.isEmpty() && diagram)
-			location_value = diagram->border_and_titleblock.locmach();
+		if (location_value.isEmpty())
+			location_value = reference_location;
 
 		QString prefix_value = elmt ? elmt->getPrefix() : QString();
 		QString label_value = dc.value("label").toString();
 
-		QString diagram_plant = diagram ? diagram->border_and_titleblock.plant() : QString();
-		QString diagram_location = diagram ? diagram->border_and_titleblock.locmach() : QString();
-
 			//Full IEC 81346 reference designation (=plant+location-label),
 			//each segment omitted when its underlying value is empty.
-		QString structure_id_full;
-		if (!plant_value.isEmpty())
-			structure_id_full += withSign(QLatin1Char('='), plant_value);
-		if (!location_value.isEmpty())
-			structure_id_full += withSign(QLatin1Char('+'), location_value);
-		if (!label_value.isEmpty())
-			structure_id_full += withSign(QLatin1Char('-'), label_value);
+		QString structure_id_full = buildStructureId(plant_value, location_value, label_value);
 
-			//Reduced form relative to the page (IEC 81346's own allowance for
-			//dropping higher-level parts already implied by context): the =/+
-			//segments are also omitted when they match the diagram's own title
-			//block, since an empty value already resolves to that value.
-		QString structure_id;
-		if (!plant_value.isEmpty() && plant_value != diagram_plant)
-			structure_id += withSign(QLatin1Char('='), plant_value);
-		if (!location_value.isEmpty() && location_value != diagram_location)
-			structure_id += withSign(QLatin1Char('+'), location_value);
-		if (!label_value.isEmpty())
-			structure_id += withSign(QLatin1Char('-'), label_value);
+			//Reduced form relative to the reference point (IEC 81346's own
+			//allowance for dropping higher-level parts already implied by
+			//context): the =/+ segments are also omitted when they match it,
+			//since an empty value already resolves to it.
+		QString structure_id = buildStructureId(
+			plant_value != reference_plant ? plant_value : QString(),
+			location_value != reference_location ? location_value : QString(),
+			label_value);
 
 		str.replace("%{label}", label_value);
 		str.replace("%{plant}", own_plant);
@@ -542,6 +547,27 @@ namespace autonum
 			//replaced. %T on its own only, not the start of a longer word.
 		static const QRegularExpression folio_title(QStringLiteral("%T(?![A-Za-z0-9_])"));
 		m_assigned_label.replace(folio_title, m_context.folio_title);
+	}
+
+	/**
+		@brief AssignVariables::buildStructureId
+		Assemble an IEC 81346 reference designation from its three aspects,
+		omitting any segment whose value is empty.
+		@param plant the "=" installation aspect
+		@param location the "+" location aspect
+		@param suffix the "-" product/component aspect
+		@return the assembled designation, e.g. "=E1+A2-K3"
+	*/
+	QString AssignVariables::buildStructureId(const QString &plant, const QString &location, const QString &suffix)
+	{
+		QString id;
+		if (!plant.isEmpty())
+			id += withSign(QLatin1Char('='), plant);
+		if (!location.isEmpty())
+			id += withSign(QLatin1Char('+'), location);
+		if (!suffix.isEmpty())
+			id += withSign(QLatin1Char('-'), suffix);
+		return id;
 	}
 
 	void AssignVariables::assignTitleBlockVar()
