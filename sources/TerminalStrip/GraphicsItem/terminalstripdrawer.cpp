@@ -278,6 +278,7 @@ struct TargetBox
 {
 	int first{-1};          ///<First terminal of the cable, in the cells
 	QVector<QString> lines; ///<One line per field, empty when there is no box
+	bool core_targets{false};
 	qreal bar_2_y{0};       ///<Cross bar the cable ends on
 	qreal cable_x{0};       ///<Middle of the cable the box hangs on
 	qreal min_x{0};         ///<Cross bar the box spans
@@ -390,12 +391,29 @@ QVector<TargetBox> targetBoxes(const QVector<CableCell> &cells,
 		box.min_x = first_wire.x;
 		box.max_x = cells.at(wires.last()).x;
 		box.cable_x = (box.min_x + box.max_x) / 2;
-		box.lines = first_wire.terminal ? first_wire.terminal->cableTarget()
-										: QVector<QString>();
+		if (QetSettings::stripCableCoreTargetsShown()) {
+			QStringList targets;
+			for (int i = first; i <= last; ++i) {
+				const auto &cell = cells.at(i);
+				if (cell.terminal) {
+					targets.append(cell.terminal->cableCoreTargets(
+						cell.cable, QUuid(), -1));
+				}
+			}
+			targets.removeDuplicates();
+			if (!targets.isEmpty()) {
+				box.lines = targets;
+				box.core_targets = true;
+			}
+		}
+		if (box.lines.isEmpty() && first_wire.terminal) {
+			box.lines = first_wire.terminal->cableTarget();
+		}
 
 		if (!box.lines.isEmpty())
 		{
-			const QFontMetricsF metrics{boxFont(font, box.lines, end_length - stub)};
+			const QFontMetricsF metrics{box.core_targets ? font
+				: boxFont(font, box.lines, end_length - stub)};
 			box.width = qMax<qreal>(box.max_x - box.min_x, 16);
 			for (const QString &line_ : std::as_const(box.lines)) {
 				box.width = qMax(box.width, metrics.horizontalAdvance(line_) + 6);
@@ -583,8 +601,8 @@ void drawCables(QPainter *painter, const QVector<CableCell> &cells, const Termin
 
 				//The font of the drawing, shrunk only while the lines do not
 				//fit the height the settings leave for the box
-			const QFont box_font{boxFont(painter->font(), box.lines,
-										 end_length - stub)};
+			const QFont box_font{box.core_targets ? painter->font()
+				: boxFont(painter->font(), box.lines, end_length - stub)};
 			const QFontMetricsF box_metrics{box_font};
 			const QRectF box_rect{cable_x - box.width / 2, box.top,
 								  box.width, box.height};
@@ -1467,6 +1485,21 @@ qreal Helpers::cableBoxesExtraDepth(const QVector<CableCell> &cells,
 	return qMax<qreal>(0, extra);
 }
 
+QRectF Helpers::coreTargetBoxBounds(const QVector<CableCell> &cells,
+								   const TerminalStripLayoutPattern &pattern)
+{
+	QRectF bounds;
+	if (!QetSettings::stripCableCoreTargetsShown()) return bounds;
+	for (const auto &box : ::TerminalStripDrawer::targetBoxes(
+			 cells, pattern, pattern.font())) {
+		if (box.core_targets) {
+			bounds = bounds.united(QRectF{box.cable_x - box.width / 2,
+										 box.top, box.width, box.height});
+		}
+	}
+	return bounds;
+}
+
 /**
  * @brief TerminalStripDrawer::paint
  * @param painter
@@ -1995,6 +2028,10 @@ QRectF TerminalStripDrawer::boundingRect() const
 		}
 
 		rect_.setBottom(rect_.bottom() + extra_bottom);
+		if (m_strip && QetSettings::stripCableCoreTargetsShown()) {
+			rect_ = rect_.united(Helpers::coreTargetBoxBounds(
+				cableCells(*m_strip, *m_pattern), *m_pattern));
+		}
 	}
 
 	return rect_;

@@ -234,6 +234,16 @@
            </widget>
           </item>
           <item>
+           <widget class="QCheckBox" name="m_strip_cable_core_targets">
+            <property name="text">
+             <string>Show the destination terminal of each cable core in terminal strip plans</string>
+            </property>
+            <property name="toolTip">
+             <string>Show the destination device and terminal for each connected core in the cable's destination box.</string>
+            </property>
+           </widget>
+          </item>
+          <item>
            <widget class="QCheckBox" name="m_warn_outside_sheet_cb">
             <property name="toolTip">
              <string>Printing and exporting ask first when symbols, texts, shapes, pictures or tables lie outside the sheet, as they are cut off or left out; saving says so in the status bar.</string>
@@ -2101,6 +2111,7 @@
   <tabstop>m_selection_frame_radius_sb</tabstop>
   <tabstop>m_terminal_conductor_color</tabstop>
   <tabstop>m_strip_wires</tabstop>
+  <tabstop>m_strip_cable_core_targets</tabstop>
   <tabstop>m_zoom_out_beyond_folio</tabstop>
   <tabstop>m_use_gesture_trackpad</tabstop>
   <tabstop>m_selection_rectangle_cb</tabstop>

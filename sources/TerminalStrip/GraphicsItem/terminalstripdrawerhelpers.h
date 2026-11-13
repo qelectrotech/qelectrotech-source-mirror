@@ -65,6 +65,8 @@ namespace TerminalStripDrawer
 			//same cells, so the two can never disagree.
 		qreal cableBoxesExtraDepth(const QVector<CableCell> &cells,
 								   const TerminalStripLayoutPattern &pattern);
+		QRectF coreTargetBoxBounds(const QVector<CableCell> &cells,
+								   const TerminalStripLayoutPattern &pattern);
 			//What is needed to draw the wire of a terminal above the strip
 		struct WireCell
 		{
