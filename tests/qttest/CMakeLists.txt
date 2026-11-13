@@ -512,6 +512,10 @@ qet_add_app_test(tst_plcio tst_plcio.cpp)
 qet_add_app_test(tst_readonlyfolios tst_readonlyfolios.cpp)
 target_compile_definitions(tst_readonlyfolios PRIVATE
   QET_EXAMPLES_DIR="${QET_DIR}/examples")
+# The link tab lists are filled without building folios (#1842).
+qet_add_app_test(tst_linklists tst_linklists.cpp)
+target_compile_definitions(tst_linklists PRIVATE
+  QET_EXAMPLES_DIR="${QET_DIR}/examples")
 # IEC 81346 plant/location: an element takes its folio's, %{structure_id} composes them.
 qet_add_app_test(tst_structureid tst_structureid.cpp)
 # qet_device_list: one row per reference designation, a contact with its coil.
