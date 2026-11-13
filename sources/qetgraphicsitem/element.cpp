@@ -803,6 +803,8 @@ void Element::updateDrawnRect()
 	{
 		prepareGeometryChange();
 		m_drawn_rect = drawn;
+			//It moves the centre, which the store keeps
+		storePlacement();
 	}
 }
 
@@ -2573,6 +2575,7 @@ ElementPlacement Element::ownPlacement() const
 	placement.rotation = orientation();
 	placement.horizontal_mirror = m_horizontal_mirror;
 	placement.vertical_mirror = m_vertical_mirror;
+	placement.centre = sceneBoundingRect().center();
 	return placement;
 }
 
@@ -3624,6 +3627,8 @@ Element::ReloadPictureResult Element::reloadPicture(bool adopt_frame)
 	updateDrawnRect();
 	updateSymbolPictures(true);
 	update();
+		//A frame adopted moves the centre
+	if (adopt_frame) storePlacement();
 	return ReloadPictureResult::Reloaded;
 }
 
