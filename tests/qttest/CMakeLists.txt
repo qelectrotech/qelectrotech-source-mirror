@@ -677,6 +677,8 @@ qet_add_app_test(tst_selectionfilter tst_selectionfilter.cpp)
 # The arrow keys: the crosshair on the leftmost selected symbol's terminal
 # or a text's middle; the folio's grid step when set so.
 qet_add_app_test(tst_keyboardmovereference tst_keyboardmovereference.cpp)
+# "Pointer on the grid only while placing": off by default, the grid as before.
+qet_add_app_test(tst_pointerfreeunlessplacing tst_pointerfreeunlessplacing.cpp)
 qet_add_app_test(tst_tidyeditmenu tst_tidyeditmenu.cpp)
 # Edit > Replace the symbols: place, label and wires kept, one undo step.
 qet_add_app_test(tst_replacesymbols tst_replacesymbols.cpp)

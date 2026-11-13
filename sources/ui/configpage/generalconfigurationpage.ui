@@ -467,6 +467,16 @@
            </widget>
           </item>
           <item>
+           <widget class="QCheckBox" name="m_grid_only_placing_cb">
+            <property name="toolTip">
+             <string>The pointer and the crosshair jump from grid point to grid point only while something is placed or dragged; otherwise they follow the mouse, so small items are easy to grab. What is placed still lands on the grid.</string>
+            </property>
+            <property name="text">
+             <string>Pointer on the grid only while placing</string>
+            </property>
+           </widget>
+          </item>
+          <item>
            <widget class="QCheckBox" name="m_drag_texts_without_shift_cb">
             <property name="toolTip">
              <string>Dragging a symbol's text moves the text alone, and Shift+drag moves the symbol, as before version 0.100. Unticked by default: dragging a text moves its symbol, Shift+drag moves the text.</string>
