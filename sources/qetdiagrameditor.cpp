@@ -797,6 +797,20 @@ void QETDiagramEditor::setUpActions()
 		auto *dv = currentDiagramView();
 		if (!dv || !dv->diagram()) return;
 
+			//The copy on the mouse, put down with a click, when so set
+			//(Settings > General, off by default)
+		if (DiagramEventAddPaste::duplicateFollowsMouse()) {
+			if (dv->diagram()->isReadOnly() || dv->diagram()->selectedItems().isEmpty()) return;
+			const QPoint last_pos = dv->lastMousePos();
+			const QPoint view_pos = (last_pos.x() >= 0 && dv->viewport()->rect().contains(last_pos))
+					? last_pos
+					: dv->viewport()->rect().center();
+			dv->diagram()->setEventInterface(new DiagramEventAddPaste(
+				dv->diagram(), dv->mapToScene(view_pos), DiagramEventAddPaste::UnderCursor,
+				dv->diagram()->selectionFragment()));
+			return;
+		}
+
 			//Ask the first time only -- every later press reuses whatever
 			//was confirmed then, so the shortcut can be tapped repeatedly
 			//without an interruption each time. m_configure_duplicate

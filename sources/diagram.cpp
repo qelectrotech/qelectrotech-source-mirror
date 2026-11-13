@@ -3358,6 +3358,17 @@ void Diagram::setItemGroup(QGraphicsItem *item, const QUuid &group)
 }
 
 /**
+	@brief Diagram::selectionFragment
+	@return the selection as a copy writes it, cable lines included
+*/
+QString Diagram::selectionFragment()
+{
+	QDomDocument document = toXml(false, true);
+	CableCopy::write(this, document);
+	return document.toString();
+}
+
+/**
 	@brief Diagram::completeGroupSelection
 	Make the selection whole groups again after the user changed it with a
 	click, see ItemGroups::completeSelection(). Called from the mouse

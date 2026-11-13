@@ -523,6 +523,20 @@
             </property>
            </widget>
           </item>
+          <item>
+           <widget class="QCheckBox" name="m_ctrl_drag_copies_cb">
+            <property name="text">
+             <string>Dragging with Ctrl held copies the selection</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="m_duplicate_follows_mouse_cb">
+            <property name="text">
+             <string>Duplicate: the copy follows the mouse until a click</string>
+            </property>
+           </widget>
+          </item>
          </layout>
         </widget>
        </item>
