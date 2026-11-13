@@ -208,6 +208,7 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/conductorrouter.h
   ${QET_DIR}/sources/conductorrouter.cpp
   ${QET_DIR}/sources/ui/wiringlistdialog.h
+  ${QET_DIR}/sources/ui/toolmenu.h
   ${QET_DIR}/sources/ui/wiringlistdialog.cpp
   ${QET_DIR}/sources/conductornumexport.h
   ${QET_DIR}/sources/bomexport.cpp

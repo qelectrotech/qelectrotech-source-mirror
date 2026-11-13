@@ -468,6 +468,14 @@ set_tests_properties(tst_handlersize PROPERTIES ENVIRONMENT "QT_QPA_PLATFORM=off
 target_include_directories(tst_handlersize PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_handlersize PRIVATE Qt::Test Qt::Widgets)
 
+# The Add and Tape measure menus draw no radio button in front of their
+# tools; the toolbar buttons still show the tool in use.
+add_executable(tst_toolmenu tst_toolmenu.cpp)
+add_test(NAME tst_toolmenu COMMAND tst_toolmenu)
+set_tests_properties(tst_toolmenu PROPERTIES ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
+target_include_directories(tst_toolmenu PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_toolmenu PRIVATE Qt::Test Qt::Widgets)
+
 # Tests that need the application around the class they test -- a folio,
 # its view, the editor window and its actions -- link the application's own
 # code (the qelectrotech_objects library) and run a real QETApp offscreen,
