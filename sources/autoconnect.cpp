@@ -82,6 +82,18 @@ bool isFree(const State &s, const Terminal *t)
 }
 
 /**
+	@return the frame of @a e on the folio: the width and height its
+	definition gives, without the pixel the line width adds around the
+	drawing. A T-junction's line ends on its terminals, so with that pixel
+	its top terminal reached one step up and stopped a wire passing along
+	the grid line there.
+*/
+QRectF frameOf(const Element *e)
+{
+	return e->mapRectToScene(QRectF(-QPointF(e->hotspot()), QSizeF(e->size())));
+}
+
+/**
 	@return true when the body of a symbol not in @a ignore lies across the
 	straight, level or upright line from @a p to @a q
 */
@@ -96,10 +108,13 @@ bool bodyAcross(const Diagram *diagram, const QPointF &p, const QPointF &q,
 		auto *e = qgraphicsitem_cast<Element *>(qgi);
 		if (!e || ignore.contains(e))
 			continue;
+		const QRectF frame = frameOf(e);
+		if (!frame.intersects(search))
+			continue;
 
 			//Only the inside of the body stops the line: a symbol whose edge
 			//the line just touches, or runs along, leaves it free.
-		const QRectF body = e->sceneBoundingRect().adjusted(
+		const QRectF body = frame.adjusted(
 					kTolerance, kTolerance, -kTolerance, -kTolerance);
 		if (body.isEmpty())
 			continue;
