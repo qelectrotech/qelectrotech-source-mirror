@@ -38,8 +38,10 @@ namespace
 {
 	/**
 	 * Terminals going to one strip : a label prefix plus the plant and
-	 * the location typed on the terminals. A plant or location set on
-	 * the terminals must match the strip exactly, an empty one accepts
+	 * the location of the terminals (RealTerminal::placeOf() : typed on
+	 * them, or their structure box's or folio's when the project says
+	 * so). A plant or location set this way must match the strip
+	 * exactly, an empty one accepts
 	 * every strip of the same name (in most projects the plant and the
 	 * location live on the strip, not on the terminals).
 	 */
@@ -49,15 +51,6 @@ namespace
 		QVector<QPair<QSharedPointer<RealTerminal>, TerminalStrip *>> placed_terminals;
 		QString name, plant, location;
 	};
-
-	QString elementInfo(const QSharedPointer<RealTerminal> &terminal, const QString &key)
-	{
-		auto element_ = terminal->element();
-		if (!element_) {
-			return QString();
-		}
-		return element_->elementData().m_informations.value(key).toString().trimmed();
-	}
 
 		//An empty plant is saved and read back as "=" and an empty
 		//location as "+" (the placeholders of the title block) : all
@@ -155,10 +148,12 @@ TerminalStripAutoImport::ImportResult TerminalStripAutoImport::importFreeTermina
 		if (name_.isEmpty()) {
 			return;
 		}
-		const auto plant_ = normalizedPlant(
-			elementInfo(real_, QETInformation::ELMT_PLANT));
-		const auto location_ = normalizedLocation(
-			elementInfo(real_, QETInformation::ELMT_LOCATION));
+			//Where the terminal is, as its label shows it : its own plant
+			//and location, or those of its structure box or folio when
+			//the project says so
+		const auto place_ = RealTerminal::placeOf(real_->element());
+		const auto plant_ = normalizedPlant(place_.first);
+		const auto location_ = normalizedLocation(place_.second);
 
 		auto &group_ = groups_[groupKey(name_, plant_, location_)];
 		group_.name = name_;

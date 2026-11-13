@@ -36,6 +36,7 @@
 #include "autoNum/elementautonumschemecommand.h"
 #include "diagram.h"
 #include "qetgraphicsitem/element.h"
+#include "qetgraphicsitem/structureboxitem.h"
 #include "qetgraphicsitem/conductor.h"
 #include "qetgraphicsitem/terminal.h"
 #include "properties/terminaldata.h"
@@ -1030,8 +1031,39 @@ void QETProject::buildFolios(const QList<Diagram *> &folios) const
 */
 void QETProject::buildFoliosHolding(ElementData::Types kinds, bool free_only)
 {
-	if (!unloadedFolioCount()) {
+	QSet<QUuid> holding;
+	for (const projectDataBase::FolioSymbol &symbol : unbuiltSymbols(kinds, free_only))
+		holding.insert(symbol.folio);
+	QList<Diagram *> to_build;
+	for (Diagram *d : std::as_const(m_diagrams_list))
+		if (!d->isLoaded() && holding.contains(d->uuid()))
+			to_build << d;
+	if (to_build.isEmpty()) {
 		return;
+	}
+	if (qEnvironmentVariableIntValue("QET_LAZY_FOLIOS_TRACE") == 1) {
+		qWarning().noquote() << "lazy folios:" << to_build.size()
+							 << "folios built for a search of"
+							 << (free_only ? "free" : "") << "symbols of kinds" << int(kinds);
+	}
+	buildFolios(to_build);
+}
+
+/**
+	@brief QETProject::unbuiltSymbols
+	The symbols on folios not built yet (lazy folios) of one of the kinds
+	@p kinds -- if @p free_only, those which may be linked to nothing once
+	built: none of the partners they were saved linked to is in the
+	project. Read from the project database: nothing is built. The rows a
+	list of symbols to link shows for those folios (see
+	projectDataBase::linkRows()), and what buildFoliosHolding() builds.
+*/
+QList<projectDataBase::FolioSymbol> QETProject::unbuiltSymbols(ElementData::Types kinds,
+															   bool free_only) const
+{
+	QList<projectDataBase::FolioSymbol> found;
+	if (!unloadedFolioCount()) {
+		return found;
 	}
 	QSet<QUuid> unbuilt;
 	QSet<QUuid> placed;
@@ -1050,7 +1082,6 @@ void QETProject::buildFoliosHolding(ElementData::Types kinds, bool free_only)
 			placed.insert(it.key());
 	}
 		//The symbols and their links as the database has them
-	QList<Diagram *> to_build;
 	for (Diagram *d : std::as_const(m_diagrams_list))
 	{
 		if (d->isLoaded()) {
@@ -1071,20 +1102,34 @@ void QETProject::buildFoliosHolding(ElementData::Types kinds, bool free_only)
 				}
 			}
 			if (!linked) {
-				to_build << d;
-				break;
+				found << symbol;
 			}
 		}
 	}
-	if (to_build.isEmpty()) {
-		return;
+	return found;
+}
+
+/**
+	@brief QETProject::buildSymbol
+	@return the symbol @p symbol, its folio built first if it is not yet
+	(lazy folios): what a list showing a symbol of a folio not built
+	needs once that symbol is chosen. nullptr if the project has none.
+*/
+Element *QETProject::buildSymbol(const QUuid &symbol)
+{
+	buildFoliosHoldingSymbols({symbol});
+		//Only the folio the database places it on: a large project has
+		//many folios built by then
+	const QSet<QUuid> folio = m_data_base.folioUuidsOfElements({symbol});
+	for (Diagram *d : std::as_const(m_diagrams_list)) {
+		if (!d->isLoaded() || (!folio.isEmpty() && !folio.contains(d->uuid()))) {
+			continue;
+		}
+		for (Element *element : d->elements())
+			if (element->uuid() == symbol)
+				return element;
 	}
-	if (qEnvironmentVariableIntValue("QET_LAZY_FOLIOS_TRACE") == 1) {
-		qWarning().noquote() << "lazy folios:" << to_build.size()
-							 << "folios built for a search of"
-							 << (free_only ? "free" : "") << "symbols of kinds" << int(kinds);
-	}
-	buildFolios(to_build);
+	return nullptr;
 }
 
 /**
@@ -2509,6 +2554,38 @@ void QETProject::setUprightSymbolTexts(bool upright)
 }
 
 /**
+	@brief QETProject::plantAndLocationInherited
+	@return true if %{plant} and %{location} give the plant and location a
+	symbol takes: its own, else those of the structure boxes around it,
+	else its folio's (StructureBoxItem::placeOf()), as %{structure_id_full}
+	does. Off unless the project says otherwise: they then give the
+	symbol's own only, so the texts of a project saved without it do not
+	change.
+*/
+bool QETProject::plantAndLocationInherited() const {
+	return m_plant_location_inherited;
+}
+
+/**
+	@brief QETProject::setPlantAndLocationInherited
+	Set whether %{plant} and %{location} give the plant and location a
+	symbol takes, and work out again the texts of the built folios that use
+	them. A folio not built yet reads the setting when its texts are made.
+	@param inherited
+*/
+void QETProject::setPlantAndLocationInherited(bool inherited)
+{
+	if (inherited == m_plant_location_inherited) {
+		return;
+	}
+	m_plant_location_inherited = inherited;
+	storeSettings();
+	for (Diagram *diagram : builtFolios()) {
+		StructureBoxItem::refreshSymbolTexts(diagram);
+	}
+}
+
+/**
 	@brief QETProject::terminalLabelSplit
 	@return whether the terminals of this project draw their label split,
 	the label ("X1") and the terminal number ("1") each in their own text
@@ -2856,6 +2933,7 @@ QDomDocument QETProject::toXml(QHash<int, QByteArray> *kept_folios, QStringList 
 	writeUsageXml(project_root);
 	writeWireHopsXml(project_root);
 	writeSymbolTextsXml(project_root);
+	writePlantLocationXml(project_root);
 	writeLanguagesXml(project_root);
 	writePotentialTypesXml(project_root);
 	writeTerminalLabelSplitXml(project_root);
@@ -4067,6 +4145,7 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 	readUsageXml(xml_project);
 	readWireHopsXml(xml_project);
 	readSymbolTextsXml(xml_project);
+	readPlantLocationXml(xml_project);
 	readLanguagesXml(xml_project);
 	readPotentialTypesXml(xml_project);
 	readTerminalLabelSplitXml(xml_project);
@@ -4705,6 +4784,21 @@ void QETProject::readSymbolTextsXml(QDomDocument &xml_project)
 }
 
 /**
+	@brief QETProject::readPlantLocationXml
+	Read the <plant_location> element of the project, if any. A project
+	without it was saved before the setting existed, or with it off: its
+	%{plant} and %{location} give a symbol's own values only.
+	@param xml_project : the xml description of the project
+*/
+void QETProject::readPlantLocationXml(QDomDocument &xml_project)
+{
+	const QDomElement place = xml_project.documentElement()
+			.firstChildElement(QStringLiteral("plant_location"));
+	m_plant_location_inherited = !place.isNull()
+			&& place.attribute(QStringLiteral("inherited")) == QLatin1String("true");
+}
+
+/**
 	@brief QETProject::readTerminalLabelSplitXml
 	Read the <terminal_labelling> element of the project, if any. A
 	project without it was saved before the setting existed, or with it
@@ -5302,6 +5396,23 @@ void QETProject::writeSymbolTextsXml(QDomElement &xml_element)
 }
 
 /**
+	@brief QETProject::writePlantLocationXml
+	Export whether %{plant} and %{location} give the plant and location a
+	symbol takes, as a <plant_location> child of \a xml_element. Written
+	only when on, so a project with it off saves exactly as before.
+*/
+void QETProject::writePlantLocationXml(QDomElement &xml_element)
+{
+	if (!m_plant_location_inherited) {
+		return;
+	}
+	QDomElement place = xml_element.ownerDocument()
+			.createElement(QStringLiteral("plant_location"));
+	place.setAttribute(QStringLiteral("inherited"), QStringLiteral("true"));
+	xml_element.appendChild(place);
+}
+
+/**
 	@brief QETProject::writeTerminalLabelSplitXml
 	Export whether the terminals draw their label split, as a
 	<terminal_labelling> child of \a xml_element. Written only when on,
@@ -5576,6 +5687,7 @@ void QETProject::storeSettings()
 	root.appendChild(properties);
 	writeWireHopsXml(root);
 	writeSymbolTextsXml(root);
+	writePlantLocationXml(root);
 	writeLanguagesXml(root);
 	writePotentialTypesXml(root);
 	writeTerminalLabelSplitXml(root);

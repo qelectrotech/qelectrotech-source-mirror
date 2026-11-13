@@ -110,6 +110,13 @@ class RealTerminal
 		static QString shieldInfoKey()    { return QStringLiteral("terminal_shield"); }
 		//Keys used to store the color and the section (mm2) of the terminal
 		static QString colorInfoKey()     { return QStringLiteral("terminal_color"); }
+
+			/// The plant (first) and location (second) of @p element as
+			/// the terminal strips see it: the place its labels show, so
+			/// the one of its structure box or folio when its project
+			/// says so (QETProject::plantAndLocationInherited()), else its
+			/// own values only, as before.
+		static QPair<QString, QString> placeOf(const Element *element);
 		static QString sectionInfoKey()   { return QStringLiteral("terminal_section"); }
 		//Key used to store the width (mm) of the terminal, drawn in the terminal strip
 		static QString widthInfoKey()     { return QStringLiteral("terminal_width"); }

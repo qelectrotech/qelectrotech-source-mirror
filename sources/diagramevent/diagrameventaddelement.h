@@ -32,9 +32,12 @@ class QStatusBar;
 	@brief The DiagramEventAddElement class
 	This diagram event add a new element, for each left click button at the position of click.
 	Space key rotate current element by 90°, right click button finish this event.
-	With the project's automatic connections on, pressing and dragging
-	places one copy on every line that crosses the drag (corners,
-	T-junctions, folio reports), as in EPLAN; see AutoConnect::dragPlacements().
+	With the project's automatic connections on, or its "auto conductor"
+	and AutoConnect::dragPlacesWithAutoConductor(),
+	pressing and dragging places one copy on every line that crosses the
+	drag (corners, T-junctions, folio reports); see
+	AutoConnect::dragPlacements(). Without automatic connections the copies
+	are joined once, with ordinary wires.
 */
 class DiagramEventAddElement : public DiagramEventInterface
 {

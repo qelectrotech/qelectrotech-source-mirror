@@ -54,6 +54,11 @@ class DiagramEventAddShape : public DiagramEventInterface
 		void reapplyLastPosition (QKeyEvent *event);
 
 	protected:
+		//Factory hook so a subclass can create a different QetShapeItem
+		//subclass (e.g. StructureBoxItem) while reusing all the mouse
+		//handling below unchanged.
+		virtual QetShapeItem *createShapeItem(QPointF p1, QPointF p2, QetShapeItem::ShapeType shape_type);
+
 		QetShapeItem::ShapeType  m_shape_type;
 		bool                     m_half_arc = false;   // Ellipse only: draw a half arc whose chord is the first click's height (the Arc tool)
 		QetShapeItem            *m_shape_item;

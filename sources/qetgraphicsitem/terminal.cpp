@@ -623,6 +623,23 @@ void Terminal::mousePressEvent(QGraphicsSceneMouseEvent *e)
 	}
 }
 
+namespace {
+	/**
+		@return the topmost terminal at @p pos of @p diagram, or nullptr.
+		A wire ending on a terminal is drawn over it, so the topmost item
+		there is often that wire, not the terminal.
+	*/
+	Terminal *terminalUnder(Diagram *diagram, const QPointF &pos)
+	{
+		const QList<QGraphicsItem *> items = diagram->items(pos);
+		for (QGraphicsItem *item : items) {
+			if (auto *terminal = qgraphicsitem_cast<Terminal *>(item))
+				return terminal;
+		}
+		return nullptr;
+	}
+}
+
 /**
 	@brief Terminal::mouseMoveEvent
 	Gere le fait qu'on bouge la souris sur la Borne.
@@ -660,10 +677,9 @@ void Terminal::mouseMoveEvent(QGraphicsSceneMouseEvent *e)
 	// s'il n'y rien d'autre que le poseur de conducteur dans la liste, on arrete la
 	if (qgis.size() <= 1) return;
 
-	// sinon on prend le deuxieme element de la liste et on verifie s'il s'agit d'une borne
-	QGraphicsItem *qgi = qgis.at(1);
-	// si le qgi est une borne...
-	Terminal *other_terminal = qgraphicsitem_cast<Terminal *>(qgi);
+		//The first terminal under the pointer, even under the end of a
+		//wire already on it: the wire is drawn over the terminal
+	Terminal *other_terminal = terminalUnder(diag, e->scenePos());
 	if (!other_terminal) return;
 	m_previous_terminal = other_terminal;
 
@@ -695,12 +711,9 @@ void Terminal::mouseReleaseEvent(QGraphicsSceneMouseEvent *e)
 	//Stop conductor preview
 	diagram() -> setConductor(false);
 
-	//Get item under cursor
-	QGraphicsItem *qgi = diagram() -> itemAt(e -> scenePos(), QTransform());
-	if (!qgi) return;
-
-	//Element must be a terminal
-	Terminal *other_terminal = qgraphicsitem_cast<Terminal *>(qgi);
+		//The terminal under the cursor, even when the end of a wire
+		//already on it is drawn over it
+	Terminal *other_terminal = terminalUnder(diagram(), e->scenePos());
 	if (!other_terminal) return;
 
 	other_terminal -> m_hovered_color = neutralColor;

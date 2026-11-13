@@ -210,6 +210,7 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/conductorrouter.h
   ${QET_DIR}/sources/conductorrouter.cpp
   ${QET_DIR}/sources/ui/wiringlistdialog.h
+  ${QET_DIR}/sources/ui/toolmenu.h
   ${QET_DIR}/sources/ui/wiringlistdialog.cpp
   ${QET_DIR}/sources/conductornumexport.h
   ${QET_DIR}/sources/bomexport.cpp
@@ -425,6 +426,8 @@ set(QET_SRC_FILES
 
   ${QET_DIR}/sources/autobreakconductor.cpp
   ${QET_DIR}/sources/autobreakconductor.h
+  ${QET_DIR}/sources/replacesymbols.cpp
+  ${QET_DIR}/sources/replacesymbols.h
   ${QET_DIR}/sources/symboltextplacement.cpp
   ${QET_DIR}/sources/symboltextplacement.h
   ${QET_DIR}/sources/formulabuilder.cpp
@@ -456,6 +459,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/diagramevent/diagrameventaddcable.h
   ${QET_DIR}/sources/diagramevent/diagrameventaddbridge.cpp
   ${QET_DIR}/sources/diagramevent/diagrameventaddbridge.h
+  ${QET_DIR}/sources/diagramevent/diagrameventaddstructurebox.cpp
+  ${QET_DIR}/sources/diagramevent/diagrameventaddstructurebox.h
   ${QET_DIR}/sources/diagramevent/diagrameventaddtext.cpp
   ${QET_DIR}/sources/diagramevent/diagrameventaddtext.h
   ${QET_DIR}/sources/diagramevent/diagrameventinterface.cpp
@@ -619,6 +624,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/NameList/ui/namelistwidget.cpp
   ${QET_DIR}/sources/NameList/ui/namelistwidget.h
 
+  ${QET_DIR}/sources/print/pdfpagesetupdialog.cpp
+  ${QET_DIR}/sources/print/pdfpagesetupdialog.h
   ${QET_DIR}/sources/print/projectprintwindow.cpp
   ${QET_DIR}/sources/print/projectprintwindow.h
   ${QET_DIR}/sources/print/printdrawing.h
@@ -684,6 +691,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/qetgraphicsitem/dimensionitem.h
   ${QET_DIR}/sources/qetgraphicsitem/shapetransform.cpp
   ${QET_DIR}/sources/qetgraphicsitem/shapetransform.h
+  ${QET_DIR}/sources/qetgraphicsitem/structureboxitem.cpp
+  ${QET_DIR}/sources/qetgraphicsitem/structureboxitem.h
   ${QET_DIR}/sources/qetgraphicsitem/qgraphicsitemutility.cpp
   ${QET_DIR}/sources/qetgraphicsitem/qgraphicsitemutility.h
   ${QET_DIR}/sources/qetgraphicsitem/junctionelement.cpp
@@ -915,6 +924,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/ui/customelementinfopartwidget.h
   ${QET_DIR}/sources/ui/elementinfopartwidget.cpp
   ${QET_DIR}/sources/ui/elementinfopartwidget.h
+  ${QET_DIR}/sources/ui/elementarticleswidget.cpp
+  ${QET_DIR}/sources/ui/elementarticleswidget.h
   ${QET_DIR}/sources/ui/elementinfowidget.cpp
   ${QET_DIR}/sources/ui/elementinfowidget.h
   ${QET_DIR}/sources/ui/multielementinfowidget.cpp
@@ -975,6 +986,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/ui/dimensionpropertiesdialog.h
   ${QET_DIR}/sources/ui/dimensionpropertieswidget.cpp
   ${QET_DIR}/sources/ui/dimensionpropertieswidget.h
+  ${QET_DIR}/sources/ui/structureboxpropertieswidget.cpp
+  ${QET_DIR}/sources/ui/structureboxpropertieswidget.h
   ${QET_DIR}/sources/ui/thirdpartybinaryinstalldialog.cpp
   ${QET_DIR}/sources/ui/thirdpartybinaryinstalldialog.h
   ${QET_DIR}/sources/ui/titleblockpropertieswidget.cpp

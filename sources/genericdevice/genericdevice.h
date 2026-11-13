@@ -45,6 +45,9 @@
 namespace GenericDevice
 {
 	enum Side { Left = 0, Right, Top, Bottom };
+
+		/// What the terminals of a side are when the device is a PLC
+	enum class Io { None, DigitalIn, DigitalOut, AnalogIn, AnalogOut };
 	constexpr int SideCount = 4;
 
 	constexpr int Grid = 10;           ///< grid step of the folio
@@ -99,8 +102,13 @@ namespace GenericDevice
 		int extra_height = 0;
 		bool mark_gaps = true;   ///< draw a divider mark on each gap
 		bool line_up = true;     ///< pad groups so dividers meet across the box
+			/// Per side: its terminals are the PLC's inputs or outputs. Any
+			/// side other than None makes the device a PLC, which lists
+			/// them in its table of inputs and outputs.
+		Io io[SideCount] = {Io::None, Io::None, Io::None, Io::None};
 
 		int terminalCount() const;
+		bool isPlc() const;
 	};
 
 	/**
@@ -160,6 +168,7 @@ namespace GenericDevice
 	};
 
 	QString sideName(Side side);
+	QString ioName(Io io);
 
 	PatternResult expandPattern(const QString &pattern);
 	QString toPattern(const Slots &list, bool *expressible = nullptr);

@@ -30414,4 +30414,90 @@ die Variable &quot;volta&quot; kombiniert mit dem Wert &quot;1745&quot; lässt i
         <translation>Was:</translation>
     </message>
 </context>
+<context>
+    <name>ElementArticlesWidget</name>
+    <message>
+        <source>Parts</source>
+        <translation type="unfinished">Artikel</translation>
+    </message>
+    <message>
+        <source>Article</source>
+        <translation type="unfinished">Artikel</translation>
+    </message>
+    <message>
+        <source>Quantity</source>
+        <translation type="unfinished">Menge</translation>
+    </message>
+    <message>
+        <source>List…</source>
+        <translation type="unfinished">Liste…</translation>
+    </message>
+    <message>
+        <source>Article %1</source>
+        <translation type="unfinished">Artikel %1</translation>
+    </message>
+    <message>
+        <source>Add article</source>
+        <translation type="unfinished">Artikel hinzufügen</translation>
+    </message>
+    <message>
+        <source>Remove</source>
+        <translation type="unfinished">Entfernen</translation>
+    </message>
+    <message>
+        <source>Choose from materials list…</source>
+        <translation type="unfinished">Aus Artikelliste wählen…</translation>
+    </message>
+    <message>
+        <source>Main article (empty)</source>
+        <translation type="unfinished">Hauptartikel (leer)</translation>
+    </message>
+    <message>
+        <source>Empty article</source>
+        <translation type="unfinished">Leerer Artikel</translation>
+    </message>
+    <message>
+        <source>Add another article slot (up to %1)</source>
+        <translation type="unfinished">Weiteren Artikel-Platz hinzufügen (bis zu %1)</translation>
+    </message>
+    <message>
+        <source>All %1 native article slots are already shown</source>
+        <translation type="unfinished">Alle %1 nativen Artikel-Plätze werden bereits angezeigt</translation>
+    </message>
+    <message>
+        <source>Clear and remove the selected auxiliary article</source>
+        <translation type="unfinished">Ausgewählten Zusatzartikel leeren und entfernen</translation>
+    </message>
+    <message>
+        <source>Clear the fields of Article 1</source>
+        <translation type="unfinished">Felder von Artikel 1 leeren</translation>
+    </message>
+    <message>
+        <source>No materials list</source>
+        <translation type="unfinished">Keine Artikelliste</translation>
+    </message>
+    <message>
+        <source>There is no materials list file at this location:
+%1
+
+Create it?</source>
+        <comment>message asking to create the material file</comment>
+        <translation type="unfinished">An diesem Speicherort existiert keine Artikellisten-Datei:
+%1
+
+Erstellen?</translation>
+    </message>
+    <message>
+        <source>Cannot create</source>
+        <translation type="unfinished">Kann nicht erstellen</translation>
+    </message>
+    <message>
+        <source>Cannot create the file:
+%1
+%2</source>
+        <translation type="unfinished">Kann die Datei nicht erstellen:
+%1
+%2</translation>
+    </message>
+</context>
 </TS>

@@ -27,6 +27,7 @@
 #include <autoNum/elementautonumschemecommand.h>
 #include <autoNum/numerotationcontextcommands.h>
 #include <diagram.h>
+#include <shownkinds.h>
 #include <diagramcommands.h>
 #include <diagramcontext.h>
 #include <diagramposition.h>
@@ -37,6 +38,7 @@
 #include <qetinformation.h>
 #include <qetgraphicsitem/conductor.h>
 #include <qetgraphicsitem/terminal.h>
+#include <ui/elementarticleswidget.h>
 #include <ui/elementpropertieswidget.h>
 #include <undocommand/changeelementinformationcommand.h>
 #include <undocommand/setautonumcontextcommand.h>
@@ -45,6 +47,7 @@
 #include <TerminalStrip/terminalstrip.h>
 #include "dynamicelementtextitem.h"
 #include "elementtextitemgroup.h"
+#include "structureboxitem.h"
 #include "iostream"
 
 #include <QAbstractTextDocumentLayout>
@@ -192,6 +195,12 @@ Element::Element(
 	connect(this, &Element::rotationChanged, this, &Element::applyMirrorTransform);
 		//Texts kept horizontal in a turned symbol depend on the turn
 	connect(this, &Element::rotationChanged, this, [this]() {updateSymbolPictures();});
+		//A text showing the symbol's place (%{structure_id}...) follows it
+		//into and out of structure boxes: inside is where its centre is
+	const auto refresh_place_texts = [this]() {StructureBoxItem::refreshTextsOf(this);};
+	connect(this, &Element::xChanged, this, refresh_place_texts);
+	connect(this, &Element::yChanged, this, refresh_place_texts);
+	connect(this, &Element::rotationChanged, this, refresh_place_texts);
 		//And its texts and their groups
 	for (DynamicElementTextItem *deti : std::as_const(m_dynamic_text_list))
 		connectTextStore(deti);
@@ -281,6 +290,16 @@ void Element::editProperty()
 				width = qMin(width, screen->availableGeometry().width());
 			dialog.resize(width, natural.height());
 		}
+		if (epw->findChild<ElementArticlesWidget *>()) {
+			const QRect avail = QApplication::primaryScreen()
+				? QApplication::primaryScreen()->availableGeometry()
+				: QRect(0, 0, 1024, 768);
+			const int target_w = qMin(qMax(dialog.width(), 920), avail.width());
+			const int target_h = qMin(qMax(dialog.height(), 640), avail.height());
+			if (target_w != dialog.width() || target_h != dialog.height()) {
+				dialog.resize(target_w, target_h);
+			}
+		}
 
 		dialog.exec();
 	}
@@ -332,8 +351,9 @@ void Element::showAsJumpTarget()
 /**
 	@brief Element::jumpTo
 	Go to @a target, the other end of a folio report or the master of a
-	cross reference: its folio is shown whole, as a page, without zooming
-	in on it, and the target and its texts are shaded blue for a moment,
+	cross reference: its folio is shown whole, as a page, or at the jump
+	zoom of the settings with the target in the middle
+	(DiagramView::showJumpTarget()), and the target and its texts are shaded blue for a moment,
 	so that the eye finds it on the page.
 	The mouse pointer is put on it too, except on Wayland, which does not
 	let a program move the pointer.
@@ -349,7 +369,7 @@ void Element::jumpTo(Element *target)
 	for (QGraphicsView *view : diagram->views())
 	{
 		if (auto *diagram_view = qobject_cast<DiagramView *>(view))
-			diagram_view->zoomFit();
+			diagram_view->showJumpTarget(target->sceneBoundingRect());
 		else
 			view->fitInView(diagram->sceneRect(), Qt::KeepAspectRatio);
 	}
@@ -616,8 +636,22 @@ void Element::keepChildrenReadable() const
 void Element::paint(
 		QPainter *painter,
 		const QStyleOptionGraphicsItem *options,
-		QWidget *)
+		QWidget *widget)
 {
+		//A drawing aid is drawn on screen only, light grey: never printed
+		//nor exported (a printer, a PDF, an image or an SVG paints the
+		//folio without a view's widget)
+	const bool aid = isDrawingAid();
+	if (aid)
+	{
+		const QPaintDevice *device = painter->device();
+		const bool on_screen = widget && device
+				&& (device->devType() == QInternal::Widget
+					|| device->devType() == QInternal::Pixmap);
+		if (!on_screen)
+			return;
+	}
+
 	if (m_must_highlight || m_jump_highlight > 0) {
 		drawHighlight(painter, options);
 	}
@@ -632,6 +666,8 @@ void Element::paint(
 	QBrush brush;
 	painter->setPen(pen);
 	painter->setBrush(brush);
+	if (aid)
+		painter->setOpacity(painter->opacity() * 0.35);
 	if (const std::optional<QPointF> dot = m_shown_as_dot ? dotPoint() : std::nullopt) {
 		drawAsDot(painter, *dot);
 		painter->restore();
@@ -668,6 +704,20 @@ void Element::paint(
 	if ( isSelected() || m_mouse_over ) {
 		QGIUtility::drawBoundingRectSelection(this, painter);
 	}
+}
+
+/**
+	@brief Element::isDrawingAid
+	@return true when the symbol's definition marks it as a drawing aid
+	(kind information drawing_aid="true"): a symbol that only steers the
+	drawing, as an interruption point stops the automatic connections. It
+	is light grey on screen, never printed nor exported, can be hidden
+	with View > Show, and has no label of its own.
+*/
+bool Element::isDrawingAid() const
+{
+	return m_kind_informations.value(QStringLiteral("drawing_aid")).toString()
+			== QLatin1String("true");
 }
 
 /**
@@ -981,6 +1031,8 @@ bool Element::buildFromXml(const QDomElement &xml_def_elmt, int *state)
 	m_corner = m_kind_informations.value(QStringLiteral("corner")).toString() == QLatin1String("true")
 		|| QUuid(xml_def_elmt.firstChildElement(QStringLiteral("uuid")).attribute(QStringLiteral("uuid")))
 			== QUuid(QStringLiteral("{b4bba5d9-a60d-8f6c-a61d-1b18a5c9397d}")); //114_connections/corner.elmt
+	if (isDrawingAid())
+		ShownKinds::tag(this, ShownKinds::DrawingAids);
 		//load element information
 	m_data.m_informations.fromXml(
 				xml_def_elmt.firstChildElement(QStringLiteral("elementInformations")),

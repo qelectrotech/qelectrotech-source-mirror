@@ -316,6 +316,52 @@
            </layout>
           </item>
           <item>
+           <layout class="QHBoxLayout" name="m_jump_zoom_layout">
+            <item>
+             <widget class="QLabel" name="m_jump_zoom_label">
+              <property name="text">
+               <string>Zoom when following a cross reference:</string>
+              </property>
+              <property name="buddy">
+               <cstring>m_jump_zoom_sb</cstring>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QSpinBox" name="m_jump_zoom_sb">
+              <property name="minimumSize">
+               <size>
+                <width>120</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="toolTip">
+               <string>A jump along a cross reference or a folio report shows its target in the middle of the view, at this zoom at least; closer views stay as they are.</string>
+              </property>
+              <property name="specialValueText">
+               <string>Whole folio</string>
+              </property>
+              <property name="suffix">
+               <string> %</string>
+              </property>
+              <property name="maximum">
+               <number>400</number>
+              </property>
+              <property name="singleStep">
+               <number>5</number>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="m_jump_zoom_spacer">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </item>
+          <item>
            <widget class="QCheckBox" name="m_zoom_out_beyond_folio">
             <property name="text">
              <string>Allow unzoom beyond the sheet</string>
@@ -401,6 +447,13 @@
             </property>
            </widget>
           </item>
+          <item>
+           <widget class="QCheckBox" name="m_strong_selection_cb">
+            <property name="text">
+             <string>Frame selected symbols clearly, in the highlight colour</string>
+            </property>
+           </widget>
+          </item>
          </layout>
         </widget>
        </item>
@@ -417,6 +470,16 @@
             </property>
             <property name="text">
              <string>Four-way arrow and handle catching with the crosshair</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="m_grid_only_placing_cb">
+            <property name="toolTip">
+             <string>The pointer and the crosshair jump from grid point to grid point only while something is placed or dragged; otherwise they follow the mouse, so small items are easy to grab. What is placed still lands on the grid.</string>
+            </property>
+            <property name="text">
+             <string>Pointer on the grid only while placing</string>
             </property>
            </widget>
           </item>
@@ -447,6 +510,16 @@
             </property>
             <property name="text">
              <string>A new corner or T-junction replaces the one under it</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="m_drag_places_auto_conductor_cb">
+            <property name="toolTip">
+             <string>In a project with "auto conductor" but without automatic connections: dragging a corner, T-junction or folio report being placed puts one on every wire the drag crosses, each joined once by an ordinary wire.</string>
+            </property>
+            <property name="text">
+             <string>With "auto conductor", a drag places a connection symbol on every wire it crosses</string>
             </property>
            </widget>
           </item>

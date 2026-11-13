@@ -38,6 +38,7 @@
 #include <utils/qetutils.h>
 #include <wirehops.h>
 
+#include <QApplication>
 #include <QMultiHash>
 #include <QtDebug>
 
@@ -789,6 +790,8 @@ void Conductor::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) {
 void Conductor::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
 	QGraphicsObject::mousePressEvent(event);
+	m_last_press.start();
+	m_last_press_pos = event->scenePos();
 
 	if (event->modifiers() & Qt::ControlModifier)
 		setSelected(!isSelected());
@@ -892,7 +895,20 @@ bool Conductor::sceneEventFilter(QGraphicsItem *watched, QEvent *event)
 			{
 				if(event->type() == QEvent::GraphicsSceneMousePress) //Click
 				{
-					handlerMousePressEvent(qghi, static_cast<QGraphicsSceneMouseEvent *>(event));
+					auto *mouse = static_cast<QGraphicsSceneMouseEvent *>(event);
+						//The first click selected the wire and showed this
+						//handle under the pointer; Qt then hands the second
+						//click of the double-click to the handle as a plain
+						//press. It is still a double-click on the wire.
+					if (m_last_press.isValid()
+							&& m_last_press.elapsed() < QApplication::doubleClickInterval()
+							&& QLineF(m_last_press_pos, mouse->scenePos()).length() < 4.0)
+					{
+						m_last_press.invalidate();
+						editProperty();
+						return true;
+					}
+					handlerMousePressEvent(qghi, mouse);
 					return true;
 				}
 				else if(event->type() == QEvent::GraphicsSceneMouseMove) //Move

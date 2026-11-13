@@ -64,7 +64,9 @@ QList<Diagram *> ElementProvider::folios(ElementData::Types kinds, bool free_onl
 	if (!m_project) {
 		return m_diagram_list;
 	}
-	m_project->buildFoliosHolding(kinds, free_only);
+	if (!m_built_only) {
+		m_project->buildFoliosHolding(kinds, free_only);
+	}
 	QList<Diagram *> list = m_project->builtFolios();
 	list.removeOne(m_excluded);
 	return list;
@@ -275,7 +277,7 @@ QVector<TerminalElement *> ElementProvider::freeTerminal() const
 
 /**
  * @brief ElementProvider::joinsWiresOnly
- * @return true for a corner or a T-junction: a symbol of
+ * @return true for a corner, a T-junction or a drawing aid: a symbol of
  * the terminal kind that only joins wires on the folio and is no terminal
  * block. A T-junction is told by its three terminals (see
  * Element::dotPoint()); one with a label counts as a terminal block.
@@ -284,7 +286,7 @@ bool ElementProvider::joinsWiresOnly(const Element *element)
 {
 	if (!element)
 		return false;
-	if (element->isCorner())
+	if (element->isCorner() || element->isDrawingAid())
 		return true;
 	return element->dotPoint().has_value()
 			&& const_cast<Element *>(element)->actualLabel().isEmpty();

@@ -156,6 +156,9 @@ class Element : public QetGraphicsItem
 		 * @return
 		 */
 		DiagramContext kindInformations() const;
+			/// A symbol that only steers the drawing (kind information
+			/// drawing_aid="true"): drawn light grey, never printed
+		bool isDrawingAid() const;
 			/// This symbol's own copy of its kind information, whatever the store holds
 		DiagramContext ownKindInformations() const {return m_kind_informations;}
 			/// Where this symbol comes from and sits, from its own members,

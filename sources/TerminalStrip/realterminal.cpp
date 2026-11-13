@@ -31,6 +31,7 @@
 #include <cable/cable.h>
 #include <cable/cablemanager.h>
 #include <qetproject.h>
+#include <qetgraphicsitem/structureboxitem.h>
 
 #include <QHash>
 #include <QSet>
@@ -865,8 +866,9 @@ QVector<QString> RealTerminal::automaticCableTarget() const
 	}
 
 	const DiagramContext informations_{target_->elementInformations()};
-	const auto installation_{informations_.value(QETInformation::ELMT_PLANT).toString()};
-	const auto location_{informations_.value(QETInformation::ELMT_LOCATION).toString()};
+	const auto place_{placeOf(target_)};
+	const auto installation_{place_.first};
+	const auto location_{place_.second};
 	const auto label_{informations_.value(QETInformation::ELMT_LABEL).toString()};
 
 	QVector<QString> lines_;
@@ -1147,4 +1149,32 @@ QUuid RealTerminal::elementUuid() const {
  */
 QString RealTerminal::RealTerminal::xmlTagName() {
 	return QStringLiteral("real_terminal");
+}
+
+/**
+ * @brief RealTerminal::placeOf
+ * The plant and location of @p element as the terminal strips see it :
+ * what its labels show (%{plant}, %{location}). With the project's
+ * "inherited" setting that is the place it takes from its structure box
+ * or folio when it has none of its own (StructureBoxItem::placeOf()),
+ * without it its own values only, so a project saved before looks as it
+ * always did.
+ * @param element
+ * @return the plant first, the location second
+ */
+QPair<QString, QString> RealTerminal::placeOf(const Element *element)
+{
+	if (!element) {
+		return {};
+	}
+	const auto diagram_{element->diagram()};
+	if (diagram_ && diagram_->project()
+		&& diagram_->project()->plantAndLocationInherited())
+	{
+		const auto place_{StructureBoxItem::placeOf(element)};
+		return {place_.plant.trimmed(), place_.location.trimmed()};
+	}
+	const auto &informations_{element->elementData().m_informations};
+	return {informations_.value(QETInformation::ELMT_PLANT).toString().trimmed(),
+			informations_.value(QETInformation::ELMT_LOCATION).toString().trimmed()};
 }

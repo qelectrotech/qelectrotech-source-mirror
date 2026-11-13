@@ -215,6 +215,7 @@ class Diagram : public QGraphicsScene
 
 	private:
 		void selectNextItem(bool forward);
+		void selectOnly(const std::function<bool(QGraphicsItem *)> &wanted);
 
 	public:
 		void correctTextPos(Element* elmt);

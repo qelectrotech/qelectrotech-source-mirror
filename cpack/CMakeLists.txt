@@ -55,6 +55,13 @@ if("WIX" IN_LIST CPACK_GENERATOR)
   # The icon of the official installers, also given to the shortcuts
   set(nsis_icons "${PROJECT_SOURCE_DIR}/build-aux/windows/nsis_base/files/ico")
   set(CPACK_WIX_PRODUCT_ICON "${nsis_icons}/qelectrotech.ico")
+  # QElectroTech's pictures in the installer, instead of WiX's: the icon above
+  # on the banner's right end, as long texts reach far into the banner, and
+  # the NSIS installer's side picture (wizard.bmp) on the welcome and finish
+  # pages. Both on white at the sizes WiX wants.
+  set(wix_images "${PROJECT_SOURCE_DIR}/build-aux/windows/images")
+  set(CPACK_WIX_UI_BANNER "${wix_images}/wix-banner.bmp")
+  set(CPACK_WIX_UI_DIALOG "${wix_images}/wix-dialog.bmp")
   # The shortcuts, in the start menu itself and on the desktop, and the file
   # types Windows opens with QElectroTech. The shortcuts are there and not
   # from CPACK_PACKAGE_EXECUTABLES, which can't give them an icon: the

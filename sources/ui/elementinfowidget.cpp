@@ -27,8 +27,7 @@
 #include <autoNum/elementautonumschemecommand.h>
 #include <undocommand/freezeelementlabelcommand.h>
 #include <diagram.h>
-#include <materiallist/materiallist.h>
-#include <materiallist/materialselectiondialog.h>
+#include "elementarticleswidget.h"
 #include <qetapp.h>
 #include <qetgraphicsitem/element.h>
 #include <qetmessagebox.h>
@@ -84,6 +83,13 @@ void ElementInfoWidget::setElement(Element *element)
 
 	m_element = element;
 	updateUi();
+
+		//A drawing aid has no label nor information of its own
+	const bool aid = m_element && m_element->isDrawingAid();
+	setDisabled(aid);
+	setToolTip(aid ? tr("A drawing aid (an interruption point) has no label: "
+						"it is not printed, and is left out of every list.")
+				   : QString());
 
 	const auto formula_info_widget = infoPartWidgetForKey(QETInformation::ELMT_FORMULA);
 	const auto label_info_widget = infoPartWidgetForKey(QETInformation::ELMT_LABEL);
@@ -324,6 +330,12 @@ void ElementInfoWidget::buildInterface()
 		//stays a text variable (%{terminal_number}) of the element editor.
 	keys.removeAll(QETInformation::ELMT_TERMINAL_NUMBER);
 
+		//Article-related fields (main article + auxiliary blocks 1..4) live in the
+		//dedicated Articles tab so they are not duplicated in Information.
+	for (const QString &article_key : ElementArticlesWidget::managedKeys()) {
+		keys.removeAll(article_key);
+	}
+
 	for (auto str : keys)
 	{
 		ElementInfoPartWidget *eipw = new ElementInfoPartWidget(str, QETInformation::translatedInfoKey(str), this);
@@ -331,7 +343,6 @@ void ElementInfoWidget::buildInterface()
 		m_eipw_list << eipw;
 	}
 
-	setupMaterialButtons();
 	setupSchemeRow();
 	setupNumberRow();
 	setupFreezeRow();
@@ -431,186 +442,14 @@ ElementInfoPartWidget *ElementInfoWidget::infoPartWidgetForKey(const QString &ke
 }
 
 /**
-	@brief ElementInfoWidget::setupMaterialButtons
-	Show the "..." button opening the material file on the description row
-	of each block: one for the main article, one per auxiliary article
-	which really has a description row.
-
-	Only that row carries the button: the same window fills the whole
-	block, so repeating it on every field of the block would just offer
-	five ways to do the same thing.
+	@brief ElementInfoWidget::populateSuggestions
+	Offer, for each information widget in @p widgets, the values already used by
+	other elements of @p element's project.
 */
-void ElementInfoWidget::setupMaterialButtons()
+void ElementInfoWidget::populateSuggestions(Element *element,
+											const QList<ElementInfoPartWidget *> &widgets)
 {
-	auto register_button = [this](ElementInfoPartWidget *eipw, int block)
-	{
-		eipw->setMaterialButtonVisible(true);
-		connect(eipw, &ElementInfoPartWidget::materialButtonClicked, this,
-				[this, block]() { materialFromFile(block); });
-	};
-
-		//Main article. A terminal has no description row: its article
-		//number is the one which identifies it, so the button sits there.
-	if (ElementInfoPartWidget *eipw = infoPartWidgetForKey(QETInformation::ELMT_DESCRIPTION)) {
-		register_button(eipw, 0);
-	} else if (ElementInfoPartWidget *eipw = infoPartWidgetForKey(QETInformation::ELMT_DESIGNATION)) {
-		register_button(eipw, 0);
-	}
-
-		//Auxiliary articles 1 to 4.
-	const QStringList auxiliary_keys = {
-		QETInformation::ELMT_DESCRIPTION_AUX1,
-		QETInformation::ELMT_DESCRIPTION_AUX2,
-		QETInformation::ELMT_DESCRIPTION_AUX3,
-		QETInformation::ELMT_DESCRIPTION_AUX4
-	};
-
-	for (int block = 1; block <= 4 && block <= auxiliary_keys.size(); ++block)
-	{
-		if (ElementInfoPartWidget *eipw = infoPartWidgetForKey(auxiliary_keys.at(block - 1))) {
-			register_button(eipw, block);
-		}
-	}
-}
-
-/**
-	@brief ElementInfoWidget::materialFromFile
-	Open the material file, let the user pick an article, and write it
-	into the block the button belongs to.
-	@param block 0 for the main article, 1 to 4 for an auxiliary article
-*/
-void ElementInfoWidget::materialFromFile(int block)
-{
-		//Nothing configured yet: the standard location is used, the same
-		//one the preferences offer to create, so that the catalogue can be
-		//reached from here without asking for a file to be saved first.
-	QString path = MaterialList::configuredPath();
-	if (path.isEmpty())
-	{
-		path = MaterialList::defaultPath();
-		MaterialList::setConfiguredPath(path);
-	}
-
-		//A missing or empty file has no entry to pick: offer to write the
-		//header line instead of opening an empty window.
-	if (MaterialList::isEmptyFile(path))
-	{
-		const auto answer = QET::QetMessageBox::question(
-			this,
-			tr("No materials list"),
-			tr("There is no materials list file at this location:\n"
-			   "%1\n"
-			   "\n"
-			   "Create it?", "message asking to create the material file").arg(path),
-			QMessageBox::Yes | QMessageBox::No,
-			QMessageBox::Yes);
-
-		if (answer != QMessageBox::Yes) {
-			return;
-		}
-
-		QString error;
-		if (!MaterialList::createFile(path, &error))
-		{
-			QET::QetMessageBox::critical(this,
-										 tr("Cannot create"),
-										 tr("Cannot create the file:\n%1\n%2")
-											.arg(path, error));
-			return;
-		}
-	}
-
-		//The catalogue opens on the whole list : the search field starts
-		//empty, whatever the block already holds.
-	MaterialSelectionDialog dialog(path, this);
-	if (dialog.exec() == QDialog::Accepted) {
-		applyMaterialRecord(dialog.selectedRecord(), block);
-	}
-}
-
-/**
-	@brief ElementInfoWidget::applyMaterialRecord
-	Write a catalogue entry into the fields of one block.
-
-	Only the fields of that block are touched: applied to an auxiliary
-	article, the entry never reaches the main article.
-
-	An empty cell of a column describing the article (MaterialList::
-	isArticleBound) clears the field: keeping the manufacturer of the
-	article picked before would describe a part which does not exist.
-	An empty cell of any other column, and any column the file does not
-	hold at all, leaves the field alone, so picking an entry describing
-	only the order reference never wipes a comment.
-	@param record the entry taken from the material file
-	@param block 0 for the main article, 1 to 4 for an auxiliary article
-*/
-void ElementInfoWidget::applyMaterialRecord(const MaterialRecord &record, int block)
-{
-	if (record.values.isEmpty()) {
-		return;
-	}
-
-		//Fill the fields without letting the live edit push one undo
-		//command per line edit: the whole entry must be undoable at once.
-	const bool live_edit = m_live_edit;
-	if (live_edit) {
-		disableLiveEdit();
-	}
-
-	for (const QString &column : MaterialList::columnsForBlock(block))
-	{
-			//A column the file does not hold says nothing about the
-			//article: the field of the element stays as it is.
-		if (!record.values.contains(column)) {
-			continue;
-		}
-
-		const QString value = record.value(column);
-
-			//An empty cell only matters for the columns describing the
-			//article itself, where the previous value belongs to another
-			//part. For the others (function, comment, quantity...) an
-			//empty cell means the file has nothing to say about them.
-		if (value.isEmpty() && !MaterialList::isArticleBound(column)) {
-			continue;
-		}
-
-		const QString key = MaterialList::elementInfoKey(column, block);
-		if (key.isEmpty() || !QETInformation::elementInfoKeys().contains(key)) {
-			continue;
-		}
-
-		if (ElementInfoPartWidget *eipw = infoPartWidgetForKey(key)) {
-			eipw->setText(value);
-		}
-	}
-
-	if (live_edit) {
-		enableLiveEdit();
-	}
-
-		//Outside of the live edit the fields only carry the article: it
-		//is the properties window which applies them when the user presses
-		//"Apply" (ElementPropertiesWidget::apply() takes the undo command
-		//from these very fields). Applying right away would push the change
-		//on the undo stack before he has decided anything, and "Cancel"
-		//would give the fields back but never the element.
-	if (live_edit) {
-		apply();
-	}
-}
-
-/**
-	@brief ElementInfoWidget::updateSuggestions
-	Offer, for each information, the values already used by the other
-	elements of the project (supplier, manufacturer...), so they can be
-	picked instead of typed again.
-	The values come from the project database rather than from the
-	diagrams, which already holds them in the element_info table.
-*/
-void ElementInfoWidget::updateSuggestions()
-{
-	Diagram *diagram = m_element ? m_element->diagram() : nullptr;
+	Diagram *diagram = element ? element->diagram() : nullptr;
 	QETProject *project = diagram ? diagram->project() : nullptr;
 	if (!project || !project->dataBase()) {
 		return;
@@ -620,9 +459,9 @@ void ElementInfoWidget::updateSuggestions()
 		//against that list rather than trusted, because it becomes part of
 		//the SQL text.
 	const QStringList columns = QETInformation::elementInfoKeys();
-	const QString uuid = m_element->uuid().toString();
+	const QString uuid = element->uuid().toString();
 
-	for (ElementInfoPartWidget *eipw : m_eipw_list)
+	for (ElementInfoPartWidget *eipw : widgets)
 	{
 		const QString key = eipw->key();
 			//A label identifies one element, suggesting the others is noise
@@ -647,6 +486,14 @@ void ElementInfoWidget::updateSuggestions()
 		}
 		eipw->setSuggestions(values);
 	}
+}
+
+/**
+	@brief ElementInfoWidget::updateSuggestions
+*/
+void ElementInfoWidget::updateSuggestions()
+{
+	populateSuggestions(m_element, m_eipw_list);
 }
 
 /**
@@ -718,13 +565,20 @@ void ElementInfoWidget::updateUi()
 */
 DiagramContext ElementInfoWidget::currentInfo() const
 {
-	DiagramContext info_;
+	// Start from the element's current information so keys managed in other tabs
+	// (e.g. ElementArticlesWidget) are preserved untouched.
+	DiagramContext info_ = m_element ? m_element->elementInformations() : DiagramContext();
+
+	for (const QString &key : QETInformation::elementCustomInfoKeys(info_.keys())) {
+		info_.remove(key);
+	}
 
 	for (const auto &eipw : std::as_const(m_eipw_list))
 	{
 		if (!eipw->hasAcceptableInput())
 			continue;
 
+		info_.remove(eipw->key());
 		//add value only if they're something to store
 		if (!eipw->text().isEmpty())
 		{
@@ -764,8 +618,12 @@ DiagramContext ElementInfoWidget::currentInfo() const
 	// The name is drawn unless the element says otherwise: only a name
 	// which is not drawn needs an information, so that elements which
 	// draw it keep their files exactly as they are.
-	if (m_label_shown_cb && !m_label_shown_cb->isChecked()) {
-		info_.addValue(QStringLiteral("label_shown"), QStringLiteral("false"));
+	if (m_label_shown_cb) {
+		if (m_label_shown_cb->isChecked()) {
+			info_.remove(QStringLiteral("label_shown"));
+		} else {
+			info_.addValue(QStringLiteral("label_shown"), QStringLiteral("false"));
+		}
 	}
 
 		//The element keeps following its numbering scheme as long as its
@@ -776,6 +634,8 @@ DiagramContext ElementInfoWidget::currentInfo() const
 			&& info_.value(QETInformation::ELMT_FORMULA) == elmt_info.value(QETInformation::ELMT_FORMULA)) {
 		info_.addValue(QETInformation::ELMT_FORMULA_ID,
 					   elmt_info.value(QETInformation::ELMT_FORMULA_ID), false);
+	} else {
+		info_.remove(QETInformation::ELMT_FORMULA_ID);
 	}
 	return info_;
 }
@@ -1177,7 +1037,9 @@ void ElementInfoWidget::openSchemePage()
 */
 void ElementInfoWidget::firstActivated()
 {
-	m_eipw_list.first() -> setFocusTolineEdit();
+	if (!m_eipw_list.isEmpty()) {
+		m_eipw_list.first()->setFocusTolineEdit();
+	}
 }
 
 /**

@@ -38,6 +38,7 @@
 #include <qetmessagebox.h>
 #include <qetgraphicsitem/qgraphicsitemutility.h>
 #include <foliogrid.h>
+#include <autoconnect.h>
 #include <textgrid.h>
 #include <wiringrules.h>
 #include <ui/wiringruleswarning.h>
@@ -138,8 +139,10 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	ui->m_context_toolbar_cb->setChecked(settings.value("diagrameditor/context_toolbar", true).toBool());
 	ui->m_mouse_gestures_cb->setChecked(settings.value("diagrameditor/mouse_gestures", true).toBool());
 	ui->m_pointer_aids_cb->setChecked(DiagramView::pointerAids());
+	ui->m_grid_only_placing_cb->setChecked(DiagramView::gridOnlyWhilePlacing());
 	ui->m_vertical_texts_from_bottom_cb->setChecked(DynamicElementTextItem::verticalFromBottom());
 	ui->m_drag_texts_without_shift_cb->setChecked(DynamicElementTextItem::dragMovesTextAlone());
+	ui->m_drag_places_auto_conductor_cb->setChecked(AutoConnect::dragPlacesWithAutoConductor());
 	ui->m_junction_replaces_cb->setChecked(ConnectionSymbols::newJunctionReplacesOld());
 	ui->m_terminal_help_lines_cb->setChecked(DiagramView::terminalHelpLinesShown());
 	ui->m_dock_fold_cb->setChecked(DockFold::enabled());
@@ -182,8 +185,10 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	ui->m_editor_like_folio_cb->setChecked(ElementScene::likeFolio());
 	ui->m_edit_collection_source_cb->setChecked(ElementsLocation::findsAndEditsCollectionSource());
 	ui->m_selection_frame_radius_sb->setValue(QGIUtility::selectionFrameRadius());
+	ui->m_strong_selection_cb->setChecked(QGIUtility::strongSelection());
 	ui->m_zoom_out_beyond_folio->setChecked(settings.value("diagrameditor/zoom-out-beyond-of-folio", false).toBool());
 	ui->m_zoom_step_sb->setValue(DiagramView::zoomStep());
+	ui->m_jump_zoom_sb->setValue(DiagramView::jumpZoom());
 	ui->m_terminal_conductor_color->setChecked(Terminal::takesConductorColor());
 	ui->m_strip_wires->setChecked(QetSettings::stripWiresShown());
 	ui->m_strip_sort_by_label->setChecked(QetSettings::stripSortedByLabel());
@@ -457,8 +462,10 @@ void GeneralConfigurationPage::applyConf()
 	ElementScene::setLikeFolio(ui->m_editor_like_folio_cb->isChecked());
 	ElementsLocation::setFindsAndEditsCollectionSource(ui->m_edit_collection_source_cb->isChecked());
 	QGIUtility::setSelectionFrameRadius(ui->m_selection_frame_radius_sb->value());
+	QGIUtility::setStrongSelection(ui->m_strong_selection_cb->isChecked());
 	settings.setValue("diagrameditor/zoom-out-beyond-of-folio", ui->m_zoom_out_beyond_folio->isChecked());
 	DiagramView::setZoomStep(ui->m_zoom_step_sb->value());
+	DiagramView::setJumpZoom(ui->m_jump_zoom_sb->value());
 	settings.setValue("diagrameditor/conductor_properties_panel", ui->m_conductor_properties_panel->isChecked());
 	QetSettings::setNewFolioTakesPreviousGroup(ui->m_new_folio_group_cb->isChecked());
 	QetSettings::setAskLabelsPlacingMacro(ui->m_macro_ask_labels_cb->isChecked());
@@ -509,10 +516,12 @@ void GeneralConfigurationPage::applyConf()
 	settings.setValue("diagrameditor/context_toolbar", ui->m_context_toolbar_cb->isChecked());
 	settings.setValue("diagrameditor/mouse_gestures", ui->m_mouse_gestures_cb->isChecked());
 	DiagramView::setPointerAids(ui->m_pointer_aids_cb->isChecked());
+	DiagramView::setGridOnlyWhilePlacing(ui->m_grid_only_placing_cb->isChecked());
 	ConnectionSymbols::setNewJunctionReplacesOld(ui->m_junction_replaces_cb->isChecked());
 	if (ui->m_vertical_texts_from_bottom_cb->isChecked() != DynamicElementTextItem::verticalFromBottom())
 		DynamicElementTextItem::setVerticalFromBottom(ui->m_vertical_texts_from_bottom_cb->isChecked());
 	DynamicElementTextItem::setDragMovesTextAlone(ui->m_drag_texts_without_shift_cb->isChecked());
+	AutoConnect::setDragPlacesWithAutoConductor(ui->m_drag_places_auto_conductor_cb->isChecked());
 	DiagramView::setTerminalHelpLinesShown(ui->m_terminal_help_lines_cb->isChecked());
 	DockFold::setEnabled(ui->m_dock_fold_cb->isChecked());
 	DockFit::setEnabled(ui->m_narrow_docks_cb->isChecked());

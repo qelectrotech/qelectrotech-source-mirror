@@ -159,6 +159,12 @@
     <!-- WixVariable without ui: namespace, at Package level -->
     <WixVariable Id="WixUILicenseRtf" Value="$(var.LicenseRtf)" />
 
+    <!-- QElectroTech's pictures instead of WiX's, the same as in the
+         CPack MSI: a banner over the pages and one on the welcome and
+         finish pages, beside this file in images\ -->
+    <WixVariable Id="WixUIBannerBmp" Value="$(sys.SOURCEFILEDIR)images\wix-banner.bmp" />
+    <WixVariable Id="WixUIDialogBmp" Value="$(sys.SOURCEFILEDIR)images\wix-dialog.bmp" />
+
     <!-- Properties shown in Programs and Features -->
     <Property Id="ARPPRODUCTICON" Value="qet.ico" />
     <Property Id="ARPHELPLINK"    Value="https://qelectrotech.org" />
