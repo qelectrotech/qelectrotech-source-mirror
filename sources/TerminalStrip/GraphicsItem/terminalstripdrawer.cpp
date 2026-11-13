@@ -467,11 +467,9 @@ void drawCables(QPainter *painter, const QVector<CableCell> &cells,
 	};
 
 		//Draw a mark (small oblique line) on a wire and the number of the wire next to it.
-		//The text is written from the bottom to the top, at the left of the wire, starting
-		//above the mark and running towards the terminal: the font shrinks while the text
-		//is longer than the room left between the mark and the terminal, and what still
-		//does not fit is clipped away, so a long number never runs into the drawing of
-		//the terminal. The room left is @a terminal_bottom the bottom of that terminal.
+		//The label reads upwards on both sides, beside the mark. Above the
+		//strip its upper end stays at the mark, so longer labels extend
+		//towards the terminal. Fit and clip the label to the gap.
 	const auto draw_wire_mark = [&](qreal x, qreal mark_y, qreal terminal_bottom, const QString &text)
 	{
 		draw_line(x - 3, mark_y + 3, x + 3, mark_y - 3);
@@ -504,13 +502,13 @@ void drawCables(QPainter *painter, const QVector<CableCell> &cells,
 		painter->setClipRect(QRectF{x - 1 - fitted_height,
 									above ? y(mark_y - 4) : terminal_bottom + 2,
 									fitted_height + 1, room});
-			//Both sides read upwards. Start at the lower edge of the gap.
-		const qreal text_base{above ? y(terminal_bottom + 2) : y(mark_y - 4)};
-		painter->translate(x - 1, text_base);
+		painter->translate(x - 1, y(mark_y - 4));
 		painter->rotate(270);
-		painter->drawText(QRectF{0, -fitted_height,
-								fitted_width + 2, fitted_height},
-						  Qt::AlignLeft | Qt::AlignVCenter,
+		const QRectF label_rect{above ? -room : 0, -fitted_height,
+								above ? room : fitted_width + 2, fitted_height};
+		painter->drawText(label_rect,
+						  (above ? Qt::AlignRight : Qt::AlignLeft)
+							  | Qt::AlignVCenter,
 						  text);
 		painter->restore();
 	};
