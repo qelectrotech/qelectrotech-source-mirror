@@ -32,6 +32,19 @@ class TerminalStrip;
 
 namespace TerminalStripDrawer
 {
+	struct CableConnection
+	{
+		QUuid uuid;
+		QString name;
+		QString wire;
+
+		QString key() const
+		{
+			return uuid.isNull() ? QStringLiteral("name:") + name
+								 : uuid.toString();
+		}
+	};
+
 	/**
 	 * @brief The hoverTerminal struct
 	 * Just a little struct use to know what is the physical and real terminal
@@ -97,6 +110,12 @@ namespace TerminalStripDrawer
 			//Cable (hose) connected to the terminal, drawn under the strip.
 			virtual QString cable() const { return QString(); }
 			virtual QString cableWire() const { return QString(); }
+			virtual QVector<CableConnection> cableConnections() const
+			{
+				const QString name = cable();
+				if (name.isEmpty()) return {};
+				return {{QUuid(), name, cableWire()}};
+			}
 			virtual bool isShield() const { return false; }
 			//Installation, Location and Label (BMK) of the piece the cable
 			//goes to at its far end -- the same three fields the cable list
@@ -104,6 +123,10 @@ namespace TerminalStripDrawer
 			//when the terminal has no cable, or when the cable lands on
 			//nothing past the strip's own terminals.
 			virtual QVector<QString> cableTarget() const { return QVector<QString>(); }
+			virtual QVector<QString> cableTarget(const QUuid &) const
+			{
+				return cableTarget();
+			}
 			//One entry per wire of the terminal which is no core of a
 			//cable: what the wire's other end is called ("12K1:A1"), and
 			//what it is made of in the order type, colour and section
@@ -151,6 +174,7 @@ namespace TerminalStripDrawer
 			virtual QString installation() const = 0;
 			virtual QString location() const = 0;
 			virtual QString name() const = 0;
+			virtual bool cableAbove(const QString &) const { return false; }
 			virtual QVector<QSharedPointer<AbstractPhysicalTerminalInterface>> physicalTerminal() const = 0;
 	};
 

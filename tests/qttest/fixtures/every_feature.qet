@@ -989,6 +989,7 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
                     <information name="location">Cabinet 0</information>
                     <information name="name">X1</information>
                 </informations>
+                <cable_above key="name:W1"/>
             </terminal_strip_data>
             <layout>
                 <physical_terminal>

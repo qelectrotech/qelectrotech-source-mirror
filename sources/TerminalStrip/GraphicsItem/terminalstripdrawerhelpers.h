@@ -46,18 +46,30 @@ namespace TerminalStripDrawer
 		struct CableCell
 		{
 			qreal x{0};          ///< x of the middle of the terminal, in the strip coordinates
-			qreal bottom{0};     ///< y of the bottom of the terminal
+			qreal bottom{0};     ///< outward coordinate of the terminal edge
 			QString cable;       ///< name of the cable (hose)
 			QString wire;        ///< color / number of the wire
 			bool shield{false};  ///< true if the terminal is the shield of the cable
 			QSharedPointer<AbstractRealTerminalInterface> terminal; ///< to ask where the cable goes
+			QUuid cable_uuid;
+			QString key() const { return CableConnection{cable_uuid, cable, {}}.key(); }
 		};
+		int upperCableCount(const AbstractTerminalStripInterface &strip,
+							const AbstractRealTerminalInterface &terminal);
+		void appendCableCells(QVector<CableCell> &cells,
+							  const AbstractTerminalStripInterface &strip,
+							  const QSharedPointer<AbstractRealTerminalInterface> &terminal,
+							  const QRectF &terminal_rect, bool above);
 			//Draw the cables under the terminals, whichever style draws them :
 			//consecutive terminals with the same cable share one cable, which ends
 			//together in a short stub and a box naming where it goes (see drawCables()
 			//in terminalstripdrawer.cpp for the whole drawing)
 		void drawCables(QPainter *painter, const QVector<CableCell> &cells,
-						const TerminalStripLayoutPattern &pattern);
+						const TerminalStripLayoutPattern &pattern, bool above = false,
+						qreal minimum_box_depth = 0);
+		QRectF upperCableBounds(const QVector<CableCell> &cells,
+							   const TerminalStripLayoutPattern &pattern,
+							   qreal minimum_box_depth);
 			//How much deeper than the end zone (m_cable_end_length) the boxes of
 			//the cables need: a box reaching into another one is set lower than
 			//the others, and the strip must reserve the room for it or the lower

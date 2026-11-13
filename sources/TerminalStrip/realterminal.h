@@ -32,6 +32,7 @@ class Element;
 class TerminalElement;
 class PhysicalTerminal;
 class TerminalStripBridge;
+namespace TerminalStripDrawer { struct CableConnection; }
 
 /**
  * @brief The RealTerminal class
@@ -61,7 +62,7 @@ class RealTerminal
 			///Where the wires of a cable land, worked out from the project:
 			///empty when no cable lands on a piece worth naming (cableTarget()
 			///then falls back on the text typed in by hand).
-		QVector<QString> automaticCableTarget() const;
+		QVector<QString> automaticCableTarget(QUuid cable_uuid = {}) const;
 
 	public:
 		~RealTerminal();
@@ -81,9 +82,10 @@ class RealTerminal
 		QString Xref() const;
 		QString cable() const;
 		QString cableWire() const;
+		QVector<TerminalStripDrawer::CableConnection> cableConnections() const;
 		bool cableIsAutomatic() const;
 		bool isShield() const;
-		QVector<QString> cableTarget() const;
+		QVector<QString> cableTarget(const QUuid &cable_uuid = {}) const;
 			///True when cableTarget() is worked out from the project (read only),
 			///false when it is the text typed in by hand (which may be edited)
 		bool cableTargetIsAutomatic() const;

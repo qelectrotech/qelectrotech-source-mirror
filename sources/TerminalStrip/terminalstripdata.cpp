@@ -56,6 +56,14 @@ QDomElement TerminalStripData::toXml(QDomDocument &xml_document) const
 		info_elmt.appendChild(infoToXml(xml_document, QStringLiteral("manufacturer"), m_manufacturer));
 	}
 
+	auto upper_cables = m_upper_cables.values();
+	upper_cables.sort();
+	for (const auto &key : upper_cables) {
+		auto cable = xml_document.createElement(QStringLiteral("cable_above"));
+		cable.setAttribute(QStringLiteral("key"), key);
+		root_elmt.appendChild(cable);
+	}
+
 	return root_elmt;
 }
 
@@ -69,6 +77,13 @@ bool TerminalStripData::fromXml(const QDomElement &xml_element)
 	}
 
 	m_uuid = QUuid::fromString(xml_element.attribute(QStringLiteral("uuid")));
+
+	m_upper_cables.clear();
+	for (auto cable = xml_element.firstChildElement(QStringLiteral("cable_above"));
+		 !cable.isNull();
+		 cable = cable.nextSiblingElement(QStringLiteral("cable_above"))) {
+		setCableAbove(cable.attribute(QStringLiteral("key")), true);
+	}
 
 	for (auto &xml_info :
 		 QETXML::findInDomElement(xml_element.firstChildElement(QStringLiteral("informations")),
@@ -97,8 +112,24 @@ TerminalStripData &TerminalStripData::operator=(const TerminalStripData &other)
 	m_description = other.m_description;
 	m_manufacturer = other.m_manufacturer;
 	m_uuid = other.m_uuid;
+	m_upper_cables = other.m_upper_cables;
 
 	return *this;
+}
+
+bool TerminalStripData::cableAbove(const QString &key) const
+{
+	return m_upper_cables.contains(key);
+}
+
+void TerminalStripData::setCableAbove(const QString &key, bool above)
+{
+	if (key.isEmpty()) return;
+	if (above) {
+		m_upper_cables.insert(key);
+	} else {
+		m_upper_cables.remove(key);
+	}
 }
 
 QDomElement TerminalStripData::infoToXml(QDomDocument &xml_doc, const QString &name, const QString &value)
