@@ -816,7 +816,7 @@ void ElementTextItemGroup::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 		button_down_parent_pos = mapToParent(mapFromScene(event->buttonDownScenePos(Qt::LeftButton)));
 		
 		QPointF new_pos = m_initial_position + current_parent_pos - button_down_parent_pos;
-		event->modifiers() == Qt::ControlModifier ? setPos(new_pos) : setPos(Diagram::snapToTextGrid(new_pos));
+		event->modifiers() == Qt::ControlModifier ? setPos(new_pos) : setPos(Diagram::snapToTextGrid(new_pos, this));
 		
 		if(diagram())
 			diagram()->elementTextsMover().continueMovement(event);
