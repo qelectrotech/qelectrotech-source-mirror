@@ -223,21 +223,10 @@ Diagram::Diagram(QETProject *project) :
 			conductor->refreshText();
 		}
 			//A symbol's reference designation leaves out the plant and
-			//location its folio already says (%{structure_id}): it follows
-			//the title block, which a symbol does not watch
-		const auto refresh = [](DynamicElementTextItem *text) {
-			if (text->textFrom() == DynamicElementTextItem::CompositeText
-					&& text->compositeText().contains(QLatin1String("%{structure_id"))) {
-				text->refreshConductorText();
-			}
-		};
-		for (Element *element : elements()) {
-			for (DynamicElementTextItem *text : element->dynamicTextItems())
-				refresh(text);
-			for (ElementTextItemGroup *group : element->textGroups())
-				for (DynamicElementTextItem *text : group->texts())
-					refresh(text);
-		}
+			//location its folio already says (%{structure_id}), and its
+			//%{plant} and %{location} may be the folio's: they follow the
+			//title block, which a symbol does not watch
+		StructureBoxItem::refreshSymbolTexts(this);
 		emit diagramInformationChanged();
 	});
 

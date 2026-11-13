@@ -46,6 +46,7 @@
 #include <TerminalStrip/terminalstrip.h>
 #include "dynamicelementtextitem.h"
 #include "elementtextitemgroup.h"
+#include "structureboxitem.h"
 #include "iostream"
 
 #include <QAbstractTextDocumentLayout>
@@ -193,6 +194,12 @@ Element::Element(
 	connect(this, &Element::rotationChanged, this, &Element::applyMirrorTransform);
 		//Texts kept horizontal in a turned symbol depend on the turn
 	connect(this, &Element::rotationChanged, this, [this]() {updateSymbolPictures();});
+		//A text showing the symbol's place (%{structure_id}...) follows it
+		//into and out of structure boxes: inside is where its centre is
+	const auto refresh_place_texts = [this]() {StructureBoxItem::refreshTextsOf(this);};
+	connect(this, &Element::xChanged, this, refresh_place_texts);
+	connect(this, &Element::yChanged, this, refresh_place_texts);
+	connect(this, &Element::rotationChanged, this, refresh_place_texts);
 		//And its texts and their groups
 	for (DynamicElementTextItem *deti : std::as_const(m_dynamic_text_list))
 		connectTextStore(deti);

@@ -341,6 +341,8 @@ class QETProject : public QObject
 		void setWireHops(WireHops::Mode mode);
 		bool uprightSymbolTexts() const;
 		void setUprightSymbolTexts(bool upright);
+		bool plantAndLocationInherited() const;
+		void setPlantAndLocationInherited(bool inherited);
 		const ProjectLanguages &languages() const {return m_languages;}
 		void setLanguages(const ProjectLanguages &languages);
 		const PotentialTypes &potentialTypes() const {return m_potential_types;}
@@ -526,6 +528,7 @@ class QETProject : public QObject
 		void readWireHopsXml(QDomDocument &xml_project);
 		void readOriginXml(QDomDocument& xml_project);
 		void readSymbolTextsXml(QDomDocument &xml_project);
+		void readPlantLocationXml(QDomDocument &xml_project);
 		void readLanguagesXml(QDomDocument &xml_project);
 		void readPotentialTypesXml(QDomDocument &xml_project);
 		void readChainedReportsXml(QDomDocument &xml_project);
@@ -545,6 +548,7 @@ class QETProject : public QObject
 		void writeWireHopsXml(QDomElement &);
 		void writeOriginXml(QDomElement&);
 		void writeSymbolTextsXml(QDomElement &);
+		void writePlantLocationXml(QDomElement &);
 		void writeLanguagesXml(QDomElement &);
 		void writePotentialTypesXml(QDomElement &);
 		void writeChainedReportsXml(QDomElement &);
@@ -670,6 +674,9 @@ class QETProject : public QObject
 			/// Texts drawn in a turned symbol stay horizontal (on for a new
 			/// project, off for one saved without it), see uprightSymbolTexts()
 		bool m_upright_symbol_texts = false;
+			/// %{plant} and %{location} give the place a symbol takes, see
+			/// plantAndLocationInherited()
+		bool m_plant_location_inherited = false;
 			/// The texts in other languages, see ProjectLanguages
 		ProjectLanguages m_languages;
 			/// The potential types and whether conductors are drawn from them

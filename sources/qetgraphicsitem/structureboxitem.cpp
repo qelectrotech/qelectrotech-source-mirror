@@ -70,27 +70,47 @@ QVariant StructureBoxItem::itemChange(GraphicsItemChange change, const QVariant 
 /**
 	@brief StructureBoxItem::refreshSymbolTexts
 	Work out again every text of the symbols of @p diagram that shows a
-	reference designation: %{structure_id} and %{structure_id_full} read
-	the boxes around a symbol (enclosing()), which a symbol does not watch.
+	reference designation or a place (refreshTextsOf()).
 */
 void StructureBoxItem::refreshSymbolTexts(Diagram *diagram)
 {
 	if (!diagram) {
 		return;
 	}
+	for (Element *element : diagram->elements()) {
+		refreshTextsOf(element);
+	}
+}
+
+/**
+	@brief StructureBoxItem::refreshTextsOf
+	Work out again the texts of @p element that show a reference
+	designation or a place: %{structure_id} and %{structure_id_full} read
+	the boxes around the symbol (enclosing()) and its folio, and so do
+	%{plant} and %{location} when the project inherits them
+	(QETProject::plantAndLocationInherited()). A symbol does not watch them.
+*/
+void StructureBoxItem::refreshTextsOf(Element *element)
+{
+	if (!element || !element->diagram()) {
+		return;
+	}
 	const auto refresh = [](DynamicElementTextItem *text) {
-		if (text->textFrom() == DynamicElementTextItem::CompositeText
-				&& text->compositeText().contains(QLatin1String("%{structure_id"))) {
+		if (text->textFrom() != DynamicElementTextItem::CompositeText) {
+			return;
+		}
+		const QString composite = text->compositeText();
+		if (composite.contains(QLatin1String("%{structure_id"))
+				|| composite.contains(QLatin1String("%{plant}"))
+				|| composite.contains(QLatin1String("%{location}"))) {
 			text->refreshConductorText();
 		}
 	};
-	for (Element *element : diagram->elements()) {
-		for (DynamicElementTextItem *text : element->dynamicTextItems())
+	for (DynamicElementTextItem *text : element->dynamicTextItems())
+		refresh(text);
+	for (ElementTextItemGroup *group : element->textGroups())
+		for (DynamicElementTextItem *text : group->texts())
 			refresh(text);
-		for (ElementTextItemGroup *group : element->textGroups())
-			for (DynamicElementTextItem *text : group->texts())
-				refresh(text);
-	}
 }
 
 void StructureBoxItem::setPlant(const QString &plant)
