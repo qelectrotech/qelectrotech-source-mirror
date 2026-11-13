@@ -5116,7 +5116,8 @@ QStringList projectDataBase::publicViews()
 			QStringLiteral("qet_device_list"),
 			QStringLiteral("qet_terminals"),
 			QStringLiteral("qet_cables"),
-			QStringLiteral("qet_plc_io")};
+			QStringLiteral("qet_plc_io"),
+			QStringLiteral("qet_cable_cores")};
 }
 
 /**
@@ -5309,15 +5310,30 @@ QStringList projectDataBase::publicViewStatements()
 				"MAX(CASE WHEN name = 'spare_uuid' THEN 1 ELSE 0 END) AS spare "
 				"FROM terminal_strip_value "
 				"WHERE section LIKE 'terminal_strip/layout/physical_terminal%/real_terminal' "
-				"GROUP BY strip_uuid, section, ord) "
+				"GROUP BY strip_uuid, section, ord), "
+				//What is on each terminal: its wires' numbers and what they reach
+			"ends AS (SELECT from_device_uuid AS element, wire_number AS number, "
+				"to_structure_id || CASE WHEN COALESCE(to_terminal, '') <> '' "
+				"THEN ':' || to_terminal ELSE '' END AS other FROM qet_wires "
+				"UNION ALL SELECT to_device_uuid, wire_number, "
+				"from_structure_id || CASE WHEN COALESCE(from_terminal, '') <> '' "
+				"THEN ':' || from_terminal ELSE '' END FROM qet_wires), "
+			"numbers AS (SELECT element, group_concat(number, ', ') AS wires FROM "
+				"(SELECT DISTINCT element, number FROM ends WHERE COALESCE(number, '') <> '') "
+				"GROUP BY element), "
+			"reached AS (SELECT element, group_concat(other, ', ') AS connected_to FROM "
+				"(SELECT DISTINCT element, other FROM ends WHERE other IS NOT NULL) "
+				"GROUP BY element) "
 			"SELECT ")
 			+ structureIdSql(QStringLiteral("s.plant"), QStringLiteral("s.location"), QStringLiteral("s.name"))
 			+ QStringLiteral(" AS strip_id, COALESCE(s.plant, '') AS plant, "
 			"COALESCE(s.location, '') AS location, s.name AS strip, t.position, t.level, "
 			"d.label, d.structure_id AS terminal_id, t.spare, d.folio_number, d.folio, "
-			"t.element_uuid, t.strip_uuid "
+			"t.element_uuid, t.strip_uuid, n.wires, r.connected_to "
 			"FROM terminal t JOIN strip s ON s.strip_uuid = t.strip_uuid "
 			"LEFT JOIN qet_devices d ON d.device_uuid = t.element_uuid "
+			"LEFT JOIN numbers n ON n.element = t.element_uuid "
+			"LEFT JOIN reached r ON r.element = t.element_uuid "
 			"ORDER BY strip_id, t.strip_uuid, t.position, t.level"),
 			//After qet_folios, which it reads
 		QStringLiteral(
@@ -5378,7 +5394,27 @@ QStringList projectDataBase::publicViewStatements()
 			"FROM io JOIN qet_devices m ON m.device_uuid = io.element_uuid "
 			"LEFT JOIN link l ON l.element_uuid = io.element_uuid AND l.group_index = io.ord "
 			"LEFT JOIN qet_devices s ON s.device_uuid = l.linked_uuid "
-			"ORDER BY m.structure_id, io.ord")
+			"ORDER BY m.structure_id, io.ord"),
+			//After qet_cables and qet_wires, which it reads: one row per
+			//core of each cable, whether or not it is on a wire
+		QStringLiteral(
+			"CREATE VIEW qet_cable_cores AS "
+			"WITH RECURSIVE counter(i) AS (SELECT 0 UNION ALL SELECT i + 1 FROM counter WHERE i < 999), "
+			"colour AS (SELECT cable_uuid, ord AS position, value AS name FROM cable_value "
+				"WHERE section = 'cable/colors/color' AND name = '#text'), "
+			"on_wire AS (SELECT i.cable_uuid, CAST(i.value AS INTEGER) AS position, w.value AS wire_uuid "
+				"FROM cable_value i JOIN cable_value w ON w.cable_uuid = i.cable_uuid "
+				"AND w.section = i.section AND w.ord = i.ord AND w.name = 'conductor' "
+				"WHERE i.section = 'cable/core' AND i.name = 'index') "
+			"SELECT k.structure_id, k.plant, k.location, k.designation, c.i AS position, "
+			"COALESCE(o.name, CAST(c.i + 1 AS TEXT)) AS core, w.wire_number, w.section, w.colour, "
+			"w.from_structure_id, w.from_terminal, w.to_structure_id, w.to_terminal, "
+			"w.folio_number, w.folio, k.cable_uuid, w.wire_uuid "
+			"FROM qet_cables k JOIN counter c ON c.i < k.cores "
+			"LEFT JOIN colour o ON o.cable_uuid = k.cable_uuid AND o.position = c.i "
+			"LEFT JOIN on_wire d ON d.cable_uuid = k.cable_uuid AND d.position = c.i "
+			"LEFT JOIN qet_wires w ON w.wire_uuid = d.wire_uuid "
+			"ORDER BY k.structure_id, k.cable_uuid, c.i")
 	};
 	return views;
 }

@@ -296,7 +296,19 @@ private slots:
 											dirs.at(i) + QLatin1Char('/') + copies.first(), written},
 										   QString(), false, &exit_code);
 				if (last < 0) {
-					QVERIFY2(exit_code != 0 && log.contains(QStringLiteral("not ready")), qPrintable(log));
+						//Killed while opening, as far as the pipe told: the
+						//copy is not ready. Under load a run can reach DONE 0
+						//and be killed before that line is read; its copy is
+						//then the project as opened, and nothing is lost.
+					if (exit_code != 0) {
+						QVERIFY2(log.contains(QStringLiteral("not ready")), qPrintable(log));
+						continue;
+					}
+					QVERIFY2(savedHash(written) == m_reference.at(0),
+							 qPrintable(QStringLiteral("killed before DONE 0 was read: the "
+													   "ready copy is not the project as "
+													   "opened (%1)").arg(dirs.at(i))));
+					++at_edit[0];
 					continue;
 				}
 				QVERIFY2(exit_code == 0, qPrintable(log));

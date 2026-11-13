@@ -723,7 +723,11 @@ void Diagram::keyPressEvent(QKeyEvent *event)
 	qreal top_position = 0;
 	qreal left_position = 0;
 	DiagramContent dc(this);
-	if (dc.items(DiagramContent::All).isEmpty())
+		//A marked cable line counts too: it is not part of DiagramContent
+	bool cable_marked = false;
+	for (QGraphicsItem *item : selectedItems())
+		if (qgraphicsitem_cast<CablePart *>(item)) { cable_marked = true; break; }
+	if (dc.items(DiagramContent::All).isEmpty() && !cable_marked)
 	{
 		event->ignore();
 		QGraphicsScene::keyPressEvent(event);

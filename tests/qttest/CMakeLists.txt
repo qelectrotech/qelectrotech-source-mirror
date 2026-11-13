@@ -660,6 +660,7 @@ qet_add_app_test(tst_selectionfilter tst_selectionfilter.cpp)
 # The arrow keys: the crosshair on the leftmost selected symbol's terminal
 # or a text's middle; the folio's grid step when set so.
 qet_add_app_test(tst_keyboardmovereference tst_keyboardmovereference.cpp)
+qet_add_app_test(tst_tidyeditmenu tst_tidyeditmenu.cpp)
 # Edit > Select the same symbols: the folio's symbols drawn from the
 # definition of a selected one, the rest deselected.
 qet_add_app_test(tst_selectsamesymbols tst_selectsamesymbols.cpp)
@@ -748,8 +749,14 @@ qet_add_app_test(tst_cablelist tst_cablelist.cpp)
 # A wire dropped on a terminal that already has a wire is made.
 qet_add_app_test(tst_wireonusedterminal tst_wireonusedterminal.cpp)
 
+# Joining two potentials offers only the two potentials.
+qet_add_app_test(tst_potentialchoices tst_potentialchoices.cpp)
+
 # Copying a cable leaves the cable it was copied from whole.
 qet_add_app_test(tst_cablecopy tst_cablecopy.cpp)
+
+# Adding a list table is one undo step.
+qet_add_app_test(tst_tableundo tst_tableundo.cpp)
 
 # What lies outside the sheet: named per folio, for the warning before
 # printing and exporting; off with the setting.
