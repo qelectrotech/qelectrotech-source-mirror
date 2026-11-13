@@ -1063,7 +1063,8 @@ void QETDiagramEditor::setUpActions()
 		{ShownKinds::Shapes,          tr("Shapes")},
 		{ShownKinds::Pictures,        tr("Pictures")},
 		{ShownKinds::Tables,          tr("Tables")},
-		{ShownKinds::CrossReferences, tr("Cross-references")}};
+		{ShownKinds::CrossReferences, tr("Cross-references")},
+		{ShownKinds::DrawingAids,     tr("Drawing aids")}};
 	for (const auto &kind : kinds)
 	{
 		QAction *action = m_shown_kinds_menu->addAction(kind.second);

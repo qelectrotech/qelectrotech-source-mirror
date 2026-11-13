@@ -91,10 +91,12 @@ bool bodyAcross(const Diagram *diagram, const QPointF &p, const QPointF &q,
 	const QRectF span = QRectF(p, q).normalized();
 	const QRectF search = span.adjusted(-1, -1, 1, 1);
 
-	for (QGraphicsItem *qgi : diagram->items(search, Qt::IntersectsItemBoundingRect))
+		//Every symbol, also one hidden with View > Show (a drawing aid):
+		//hiding it changes the view, not the connections. A search of the
+		//scene by area would leave hidden items out.
+	for (Element *e : diagram->elements())
 	{
-		auto *e = qgraphicsitem_cast<Element *>(qgi);
-		if (!e || ignore.contains(e))
+		if (ignore.contains(e) || !e->sceneBoundingRect().intersects(search))
 			continue;
 
 			//Only the inside of the body stops the line: a symbol whose edge
