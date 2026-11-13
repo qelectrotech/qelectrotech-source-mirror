@@ -30,10 +30,14 @@
 #include "qetgraphicsitem/element.h"
 #include "qetinformation.h"
 #include "qetproject.h"
+#include "qetresult.h"
+#include "TerminalStrip/UndoCommand/changeterminalstripdata.h"
 
 #include <QImage>
 #include <QPainter>
 #include <QStandardPaths>
+#include <QTemporaryDir>
+#include <QUndoStack>
 
 /**
 	The terminal strip graphic names where a cable goes: Installation,
@@ -184,6 +188,8 @@ private slots:
 	void typedTargetIsDrawnInItsOwnLines();
 	void boxesOfTwoCablesAreSetApart();
 	void realisticStyleDrawsTheCable();
+	void cableSideFollowsUndoAndReload();
+	void cablesCanDrawOnBothSides();
 };
 
 void tst_cabletarget::init()
@@ -726,6 +732,113 @@ void tst_cabletarget::boxesOfTwoCablesAreSetApart()
 			 "the strip reserves no room for the box it sets lower");
 	QVERIFY2(two_bounds.bottom() - one_bounds.bottom() > 0.5 * box_height,
 			 "the room reserved for the lower box is too small");
+}
+
+void tst_cabletarget::cableSideFollowsUndoAndReload()
+{
+	QVERIFY(wireCableToTheContact());
+	auto *strip = m_project->terminalStrip().first();
+	auto *cable = m_project->cables().last();
+	cable->setCoreCount(1);
+	CableCore core;
+	core.core = 0;
+	core.conductor = QUuid(QStringLiteral("{8bd16d7a-18c4-4fa0-9495-8dab65fd6408}"));
+	cable->setCore(core);
+	cable->setDesignation(QStringLiteral("W100"));
+	const QString key = cable->uuid().toString();
+	const auto terminal = terminalInStrip(
+		QStringLiteral("{891b70f2-2822-41c3-9f94-28efb448b5c4}"));
+	QVERIFY(terminal);
+	QVERIFY(!terminal->cableConnections().isEmpty());
+	QCOMPARE(terminal->cableConnections().first().key(), key);
+	QVERIFY(!strip->cableAbove(key));
+
+	auto data = strip->data();
+	data.setCableAbove(key, true);
+	m_project->undoStack()->push(new ChangeTerminalStripData(strip, data, nullptr));
+	QVERIFY(strip->cableAbove(key));
+	m_project->undoStack()->undo();
+	QVERIFY(!strip->cableAbove(key));
+	m_project->undoStack()->redo();
+	QVERIFY(strip->cableAbove(key));
+	cable->setDesignation(QStringLiteral("W101"));
+	QVERIFY(!terminal->cableConnections().isEmpty());
+	QCOMPARE(terminal->cableConnections().first().key(), key);
+	QVERIFY(strip->cableAbove(key));
+
+	QTemporaryDir folder;
+	QVERIFY(folder.isValid());
+	for (const auto &suffix : {QStringLiteral(".qet"), QStringLiteral(".qetz"),
+							   QStringLiteral(".qetdb")}) {
+		const QString path = folder.filePath(QStringLiteral("sides") + suffix);
+		m_project->setFilePath(path);
+		QVERIFY(m_project->write().isOk());
+		QETProject reopened(path);
+		QCOMPARE(reopened.state(), QETProject::Ok);
+		QVERIFY(!reopened.terminalStrip().isEmpty());
+		QVERIFY2(reopened.terminalStrip().first()->cableAbove(key),
+				 qPrintable(suffix));
+	}
+}
+
+void tst_cabletarget::cablesCanDrawOnBothSides()
+{
+	QVERIFY(wireCableToTheContact());
+	auto *strip = m_project->terminalStrip().first();
+	const auto other = terminalInStrip(
+		QStringLiteral("{4861e268-d344-413e-a86f-034ea5ada16c}"));
+	QVERIFY(other && other->element());
+	auto other_data = other->element()->elementData();
+	other_data.m_informations.addValue(RealTerminal::cableInfoKey(),
+									   QStringLiteral("W200"));
+	other->element()->setElementData(other_data);
+
+	const auto adapter = QSharedPointer<TerminalStripDrawer::TrueTerminalStrip>
+		::create(strip);
+	const auto pattern = QSharedPointer<TerminalStripLayoutPattern>::create();
+	TerminalStripDrawer::TerminalStripDrawer drawer(adapter, pattern);
+	using Style = TerminalStripLayoutPattern::DrawStyle;
+	for (auto style : {Style::Schematic, Style::RealisticPushIn,
+					   Style::RealisticScrew}) {
+		drawer.setDrawStyle(style);
+		auto data = strip->data();
+		data.setCableAbove(QStringLiteral("name:X99"), false);
+		strip->setData(data);
+		const QRectF before = drawer.boundingRect();
+		data.setCableAbove(QStringLiteral("name:X99"), true);
+		strip->setData(data);
+		const QRectF after = drawer.boundingRect();
+		QVERIFY(after.top() < before.top());
+		QVERIFY(after.bottom() <= before.bottom() + 1);
+
+		QImage image(after.size().toSize() + QSize(8, 8),
+					 QImage::Format_ARGB32_Premultiplied);
+		image.fill(Qt::transparent);
+		QPainter painter(&image);
+		painter.translate(-after.topLeft() + QPointF(4, 4));
+		drawer.paint(&painter);
+		painter.end();
+		const auto pixelsInRow = [&image](int row) {
+			for (int x = 0; x < image.width(); ++x) {
+				if (qAlpha(image.pixel(x, row))) return true;
+			}
+			return false;
+		};
+		bool above = false;
+		for (int row = 4; row < qFloor(before.top() - after.top()); ++row) {
+			above |= pixelsInRow(row);
+		}
+		bool below = false;
+		const qreal body_bottom = style == Style::Schematic
+			? pattern->m_terminal_rect.last().bottom()
+			: pattern->m_realistic_length_mm * pattern->m_realistic_px_per_mm;
+		for (int row = qCeil(body_bottom - after.top()) + 20;
+			 row < image.height() - 4; ++row) {
+			below |= pixelsInRow(row);
+		}
+		QVERIFY(above);
+		QVERIFY(below);
+	}
 }
 
 int main(int argc, char **argv)

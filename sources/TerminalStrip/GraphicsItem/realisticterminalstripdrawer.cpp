@@ -599,36 +599,17 @@ struct BridgePoint
 	qreal width{0};
 };
 
-	//True when at least one terminal of the strip carries a cable : the strip
-	//then needs the zone drawn under it to let the cables out, like the
-	//schematic style does.
-bool haveCable(const AbstractTerminalStripInterface *strip)
-{
-	if (!strip) {
-		return false;
-	}
-	for (const auto &physical_t : strip->physicalTerminal())
-	{
-		for (const auto &real_t : physical_t->realTerminals())
-		{
-			if (real_t && !real_t->cable().isEmpty()) {
-				return true;
-			}
-		}
-	}
-	return false;
-}
-
 	/**
 	 * @brief cableCells
 	 * The cells the cables are drawn from : one per terminal of the strip
 	 * carrying a cable, spread over the width of its body, all of them
-	 * leaving the strip at its bottom edge. The paint and the depth the
-	 * strip reserves under it both work on this list, so a box set lower
+	 * leaving the strip on the selected side. Paint and bounds both
+	 * work on this list, so a box set farther away
 	 * than the others is never cut off by the drawing area.
 	 */
 	QVector<Helpers::CableCell> cableCells(const AbstractTerminalStripInterface &strip,
-										   const TerminalStripLayoutPattern &pattern)
+										   const TerminalStripLayoutPattern &pattern,
+										   bool above = false)
 	{
 		const qreal s_{pattern.m_realistic_px_per_mm};
 		const qreal length_{pattern.m_realistic_length_mm * s_};
@@ -649,17 +630,11 @@ bool haveCable(const AbstractTerminalStripInterface *strip)
 			for (int k = 0 ; k < levels_ ; ++k)
 			{
 				const auto &real_t{g_.reals.at(k)};
-				if (!real_t || real_t->cable().isEmpty()) {
-					continue;
-				}
-				Helpers::CableCell cell_;
-				cell_.x = x_ + w_ * (k + 0.5) / levels_;
-				cell_.bottom = length_ * (1 - levelInsets(pattern, g_.level).second);
-				cell_.cable = real_t->cable();
-				cell_.wire = real_t->cableWire();
-				cell_.shield = real_t->isShield();
-				cell_.terminal = real_t;
-				cells.append(cell_);
+				const auto insets = levelInsets(pattern, g_.level);
+				Helpers::appendCableCells(cells, strip, real_t,
+					QRectF{x_ + w_ * k / levels_, length_ * insets.first,
+						   w_ / levels_, length_ * (1 - insets.first - insets.second)},
+					above);
 			}
 
 			x_ += w_;
@@ -707,10 +682,12 @@ bool haveCable(const AbstractTerminalStripInterface *strip)
 					//carries two, spread over the width of its level
 				const qreal level_x{x_ + w_ * k / levels_};
 				const qreal level_w{w_ / levels_};
+				const auto cables = Helpers::upperCableCount(strip, *real_t);
 				for (auto i = 0 ; i < wires.size() ; ++i)
 				{
 					Helpers::WireCell cell_;
-					cell_.x = level_x + level_w * (i + 0.5) / wires.size();
+					cell_.x = level_x + level_w * (cables + i + 0.5)
+						/ (cables + wires.size());
 					cell_.top = pattern.m_realistic_length_mm * s_
 								* levelInsets(pattern, g_.level).first;
 					cell_.target = wires.at(i).target;
@@ -745,7 +722,9 @@ QRectF boundingRect(const AbstractTerminalStripInterface *strip,
 		//The cables are drawn under the strip, in the zone the schematic
 		//style reserves for them too
 	qreal extra_bottom_{0};
-	if (pattern.m_cable_wire_length > 0 && haveCable(strip))
+	const auto lower_cables = strip && pattern.m_cable_wire_length > 0
+		? cableCells(*strip, pattern) : QVector<Helpers::CableCell>();
+	if (!lower_cables.isEmpty())
 	{
 			//4 is the diameter of the circle at the end of the wires.
 			//A box standing in the way of another one is drawn lower than
@@ -755,8 +734,7 @@ QRectF boundingRect(const AbstractTerminalStripInterface *strip,
 						+ std::max<qreal>(0, pattern.m_cable_length)
 						+ std::max<qreal>(0, pattern.m_cable_end_length)
 						+ 4
-						+ Helpers::cableBoxesExtraDepth(cableCells(*strip, pattern),
-														pattern);
+						+ Helpers::cableBoxesExtraDepth(lower_cables, pattern);
 	}
 		//The wires are drawn above the strip : the room they need is
 		//reserved above it or their top is cut off
@@ -764,8 +742,13 @@ QRectF boundingRect(const AbstractTerminalStripInterface *strip,
 		? qMax<qreal>(0, -Helpers::wiresTop(wireCells(*strip, pattern),
 								pattern))
 		: 0};
-	return QRectF{0, -extra_top_, width_mm_ * s_,
-				  length_ + extra_bottom_ + extra_top_};
+	QRectF rect{0, -extra_top_, width_mm_ * s_,
+				length_ + extra_bottom_ + extra_top_};
+	if (strip && pattern.m_cable_wire_length > 0) {
+		rect = rect.united(Helpers::upperCableBounds(
+			cableCells(*strip, pattern, true), pattern, extra_top_));
+	}
+	return rect;
 }
 
 void paint(QPainter *painter,
@@ -830,6 +813,7 @@ void paint(QPainter *painter,
 		//list (boundingRect()), so a box set lower than another one is
 		//never cut off
 	QVector<Helpers::CableCell> cable_cells_{cableCells(strip, pattern)};
+	const auto upper_cables = cableCells(strip, pattern, true);
 		//The wires above the strip, worked out of the same terminals
 	QVector<Helpers::WireCell> wire_cells_{wireCells(strip, pattern)};
 
@@ -1078,12 +1062,14 @@ void paint(QPainter *painter,
 		//The cables under the strip : the wires of a cable join it, and the
 		//cable ends together in the box naming where it goes -- drawn exactly
 		//like the schematic style draws them, so both styles tell the same thing
-	if (!cable_cells_.isEmpty())
+	if (!cable_cells_.isEmpty() || !upper_cables.isEmpty())
 	{
 		painter->save();
 		painter->setFont(pattern.font());
 		painter->setPen(QPen(Qt::black, 0.5));
 		Helpers::drawCables(painter, cable_cells_, pattern);
+		Helpers::drawCables(painter, upper_cables, pattern, true,
+							-Helpers::wiresTop(wire_cells_, pattern));
 		painter->restore();
 	}
 

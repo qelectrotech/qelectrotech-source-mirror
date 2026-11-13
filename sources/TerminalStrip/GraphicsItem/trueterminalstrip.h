@@ -35,6 +35,7 @@ namespace TerminalStripDrawer
 			QString installation() const override;
 			QString location() const override;
 			QString name() const override;
+			bool cableAbove(const QString &key) const override;
 			QVector<QSharedPointer<AbstractPhysicalTerminalInterface>> physicalTerminal() const override;
 
 		private:
@@ -64,8 +65,10 @@ namespace TerminalStripDrawer
 			bool isLed() const override;
 			QString cable() const override;
 			QString cableWire() const override;
+			QVector<CableConnection> cableConnections() const override;
 			bool isShield() const override;
 			QVector<QString> cableTarget() const override;
+			QVector<QString> cableTarget(const QUuid &uuid) const override;
 			QVector<Wire> wires() const override;
 			bool hasWire() const override;
 			QColor color() const override;

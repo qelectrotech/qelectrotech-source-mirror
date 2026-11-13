@@ -143,6 +143,16 @@ namespace TerminalStripDrawer
 		return m_real ? m_real->cable() : QString();
 	}
 
+	bool TrueTerminalStrip::cableAbove(const QString &key) const
+	{
+		return m_strip && m_strip->cableAbove(key);
+	}
+
+	QVector<CableConnection> TrueRealTerminal::cableConnections() const
+	{
+		return m_real ? m_real->cableConnections() : QVector<CableConnection>();
+	}
+
 	QString TrueRealTerminal::cableWire() const
 	{
 		return m_real ? m_real->cableWire() : QString();
@@ -156,6 +166,11 @@ namespace TerminalStripDrawer
 	QVector<QString> TrueRealTerminal::cableTarget() const
 	{
 		return m_real ? m_real->cableTarget() : QVector<QString>();
+	}
+
+	QVector<QString> TrueRealTerminal::cableTarget(const QUuid &uuid) const
+	{
+		return m_real ? m_real->cableTarget(uuid) : QVector<QString>();
 	}
 
 	QVector<TrueRealTerminal::Wire> TrueRealTerminal::wires() const

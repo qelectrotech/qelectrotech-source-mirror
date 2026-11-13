@@ -21,6 +21,7 @@
 #include <properties/propertiesinterface.h>
 
 #include <QUuid>
+#include <QSet>
 
 class TerminalStripData : public PropertiesInterface
 {
@@ -41,6 +42,9 @@ class TerminalStripData : public PropertiesInterface
 
 		TerminalStripData &operator= (const TerminalStripData &other);
 
+		bool cableAbove(const QString &key) const;
+		void setCableAbove(const QString &key, bool above);
+
 	private :
 		static QDomElement infoToXml(QDomDocument &xml_doc, const QString &name, const QString &value);
 
@@ -51,6 +55,7 @@ class TerminalStripData : public PropertiesInterface
 				m_description,
 				m_manufacturer;	//Manufacturer of the terminals proposed in the editor, empty = all
 		QUuid m_uuid = QUuid::createUuid();
+		QSet<QString> m_upper_cables;
 
 };
 
