@@ -423,6 +423,8 @@ set(QET_SRC_FILES
 
   ${QET_DIR}/sources/autobreakconductor.cpp
   ${QET_DIR}/sources/autobreakconductor.h
+  ${QET_DIR}/sources/replacesymbols.cpp
+  ${QET_DIR}/sources/replacesymbols.h
   ${QET_DIR}/sources/symboltextplacement.cpp
   ${QET_DIR}/sources/symboltextplacement.h
   ${QET_DIR}/sources/formulabuilder.cpp

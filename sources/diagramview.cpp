@@ -3202,6 +3202,7 @@ QList<QAction *> DiagramView::contextMenuActions() const
 			list << qde->m_conductor_reset;
 			list << qde->m_select_same_symbols;
 			list << qde->m_show_as_dot;
+			list << qde->m_replace_symbols;
 			list << m_separators.at(1);
 			list << qde->m_selection_actions_group.actions();
 			list << qde->m_align_menu->menuAction();
