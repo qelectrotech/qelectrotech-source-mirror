@@ -678,6 +678,8 @@ qet_add_app_test(tst_selectionfilter tst_selectionfilter.cpp)
 # or a text's middle; the folio's grid step when set so.
 qet_add_app_test(tst_keyboardmovereference tst_keyboardmovereference.cpp)
 qet_add_app_test(tst_tidyeditmenu tst_tidyeditmenu.cpp)
+# Edit > Replace the symbols: place, label and wires kept, one undo step.
+qet_add_app_test(tst_replacesymbols tst_replacesymbols.cpp)
 # Edit > Select the same symbols: the folio's symbols drawn from the
 # definition of a selected one, the rest deselected.
 qet_add_app_test(tst_selectsamesymbols tst_selectsamesymbols.cpp)

@@ -239,6 +239,7 @@ class QETDiagramEditor : public QETMainWindow
 		void copyTextFormat();
 		void applyTextFormat();
 		void placeSymbolTexts(Qt::Alignment where);
+		void replaceSelectedSymbols();
 
 	private slots:
 		void updateTextGridButton();
@@ -261,6 +262,7 @@ class QETDiagramEditor : public QETMainWindow
 		*m_text_destination = nullptr,	///< Choose the folio a selected free text leads to
 		*m_text_clearance = nullptr,	///< Move texts off the wires they sit on
 		*m_show_as_dot = nullptr,	///< Draw the selected T-junctions as a dot
+		*m_replace_symbols = nullptr,	///< Replace the selected symbols by one from a collection
 		*m_select_same_symbols = nullptr;	///< Select the symbols of the same kind as a selected one
 		
 		QActionGroup

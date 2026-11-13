@@ -161,6 +161,8 @@
 #include <QUrl>
 #include <algorithm>
 #include "foliogrid.h"
+#include "replacesymbols.h"
+#include "elementdialog.h"
 
 namespace {
 	/**
@@ -774,6 +776,11 @@ void QETDiagramEditor::setUpActions()
 		if (QUndoCommand *undo = TextClearance::command(dialog.plan()))
 			dv->diagram()->undoStack().push(undo);
 	});
+
+	m_replace_symbols = new QAction(QET::Icons::Element, tr("Replace the symbols..."), this);
+	m_replace_symbols->setStatusTip(tr("Replaces the selected symbols by a symbol from a collection, keeping their place, label and wires", "status bar tip"));
+	ShortcutManager::instance().registerAction(m_replace_symbols, "diagrameditor.replace_symbols", tr("Diagram editors"), QKeySequence());
+	connect(m_replace_symbols, &QAction::triggered, this, &QETDiagramEditor::replaceSelectedSymbols);
 
 		//Duplicate: copy the selection and place it at a configured,
 		//grid-step offset immediately -- no interactive follow-the-
@@ -2238,6 +2245,7 @@ void QETDiagramEditor::setUpMenu()
 	texts_menu -> addAction(m_copy_text_format);
 	texts_menu -> addAction(m_apply_text_format);
 	QMenu *symbols_menu = menu_edition -> addMenu(QET::Icons::Element, tr("Symbols"));
+	symbols_menu -> addAction(m_replace_symbols);
 	symbols_menu -> addAction(m_show_as_dot);
 	symbols_menu -> addAction(m_find_element);
 	symbols_menu -> addAction(m_contact_display);
@@ -4022,7 +4030,8 @@ void QETDiagramEditor::slot_updateComplexActions()
 			    << m_group_selection
 			    << m_ungroup_selection
 			    << m_select_same_symbols
-			    << m_show_as_dot;
+			    << m_show_as_dot
+			    << m_replace_symbols;
 		for(QAction *action : action_list)
 			action->setEnabled(false);
 		m_align_actions_group.setEnabled(false);
@@ -4048,6 +4057,7 @@ void QETDiagramEditor::slot_updateComplexActions()
 	m_apply_text_format->setEnabled(!ro && ((selected_elements_count >= 1 && ElementTextFormatPattern::hasPattern()) ||
 	                                        (selected_dimensions_count >= 1 && DimensionFormatPattern::hasPattern())));
 	m_place_texts->setEnabled(!ro && selected_elements_count >= 1);
+	m_replace_symbols->setEnabled(!ro && selected_elements_count >= 1);
 	m_select_same_symbols->setEnabled(selected_elements_count >= 1);
 	{
 		bool any = false, all = true;
@@ -6216,6 +6226,39 @@ void QETDiagramEditor::showSelectedAsDot(bool dot)
  * @brief QETDiagramEditor::applyTextFormat
  * Applies the stored text formatting template to all selected elements in the active diagram.
  */
+/**
+	@brief QETDiagramEditor::replaceSelectedSymbols
+	Ask for a symbol in the collections and put it in place of each
+	selected symbol, in one undo step (see ReplaceSymbols). Wires that
+	find no terminal on the new symbol are removed, and the user is told.
+*/
+void QETDiagramEditor::replaceSelectedSymbols()
+{
+	DiagramView *dv = currentDiagramView();
+	if (!dv || !dv->diagram() || dv->diagram()->isReadOnly())
+		return;
+	Diagram *diagram = dv->diagram();
+	const QList<Element *> elements = DiagramContent(diagram).m_elements;
+	if (elements.isEmpty())
+		return;
+	const ElementsLocation location = ElementDialog::getOpenElementLocation(this);
+	if (!location.isElement())
+		return;
+
+	const ReplaceSymbols::Result result = ReplaceSymbols::build(diagram, elements, location);
+	if (!result.command) {
+		if (!result.problem.isEmpty())
+			QET::QetMessageBox::information(this, tr("Replace the symbols"), result.problem);
+		return;
+	}
+	diagram->clearSelection();
+	diagram->undoStack().push(result.command);
+	if (result.lost_wires)
+		QET::QetMessageBox::information(this, tr("Replace the symbols"),
+			tr("%n wire(s) found no terminal on the new symbol and were removed. "
+			   "Undo brings them back.", "", result.lost_wires));
+}
+
 /**
 	@brief QETDiagramEditor::placeSymbolTexts
 	Place the texts of the selected symbols as one block at @a where,
