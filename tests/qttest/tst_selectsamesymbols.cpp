@@ -25,6 +25,7 @@
 #include "factory/elementfactory.h"
 #include "qetgraphicsitem/conductor.h"
 #include "qetgraphicsitem/element.h"
+#include "QetGraphicsItemModeler/qetgraphicshandleritem.h"
 #include "qetproject.h"
 
 class tst_selectsamesymbols : public QObject
@@ -122,6 +123,42 @@ class tst_selectsamesymbols : public QObject
 			QCoreApplication::processEvents();
 			QVERIFY(!m_action->isEnabled());
 			m_diagram->selectSameSymbols();
+			QVERIFY(m_conductor->isSelected());
+			QVERIFY(selectedElements().isEmpty());
+		}
+
+			//A selected wire has handles, items of the folio that are
+			//deleted when it is deselected: "Select the same symbols", all
+			//wires and all texts must not reach them afterwards (a crash,
+			//now and then, while they went through a list taken before)
+		void aDeselectedWireLeavesNoHandle()
+		{
+			const auto handles = [this]() {
+				int count = 0;
+				for (QGraphicsItem *item : m_diagram->items())
+					if (dynamic_cast<QetGraphicsHandlerItem *>(item)) ++count;
+				return count;
+			};
+			const auto select_wire_and = [this](Element *element) {
+				m_diagram->clearSelection();
+				m_conductor->setSelected(true);
+				if (element) element->setSelected(true);
+			};
+
+			select_wire_and(m_a2);
+			QVERIFY(handles() > 0);
+			m_diagram->selectSameSymbols();
+			QCOMPARE(selectedElements().size(), 3);
+			QVERIFY(!m_conductor->isSelected());
+			QCOMPARE(handles(), 0);
+
+			select_wire_and(nullptr);
+			m_diagram->selectAllTextFields();
+			QVERIFY(!m_conductor->isSelected());
+			QCOMPARE(handles(), 0);
+
+			select_wire_and(m_b1);
+			m_diagram->selectAllConductors();
 			QVERIFY(m_conductor->isSelected());
 			QVERIFY(selectedElements().isEmpty());
 		}

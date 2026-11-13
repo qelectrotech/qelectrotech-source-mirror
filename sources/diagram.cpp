@@ -3272,12 +3272,9 @@ void Diagram::selectAllConductors()
 {
 	if (items().isEmpty()) return;
 
-	blockSignals(true);
-	for (auto item : items()) {
-		item -> setSelected(dynamic_cast<Conductor *>(item) != nullptr);
-	}
-	blockSignals(false);
-	emit selectionChanged();
+	selectOnly([](QGraphicsItem *item) {
+		return dynamic_cast<Conductor *>(item) != nullptr;
+	});
 }
 
 /**
@@ -3289,12 +3286,9 @@ void Diagram::selectAllTextFields()
 {
 	if (items().isEmpty()) return;
 
-	blockSignals(true);
-	for (auto item : items()) {
-		item -> setSelected(dynamic_cast<DiagramTextItem *>(item) != nullptr);
-	}
-	blockSignals(false);
-	emit selectionChanged();
+	selectOnly([](QGraphicsItem *item) {
+		return dynamic_cast<DiagramTextItem *>(item) != nullptr;
+	});
 }
 
 /**
@@ -3313,10 +3307,35 @@ void Diagram::selectSameSymbols()
 	}
 	if (locations.isEmpty()) return;
 
-	blockSignals(true);
-	for (auto item : items()) {
+	selectOnly([&locations](QGraphicsItem *item) {
 		auto *element = qgraphicsitem_cast<Element *>(item);
-		item -> setSelected(element && locations.contains(element -> location().toString()));
+		return element && locations.contains(element -> location().toString());
+	});
+}
+
+/**
+	@brief Diagram::selectOnly
+	Select the items of this diagram @p wanted accepts, and nothing else,
+	then emit selectionChanged() once.
+	Deselecting first: a selected wire or text has handles, child items
+	that are deleted when it is deselected, so a list of the items taken
+	before would still hold them (see invertSelection()). The items are
+	listed only once nothing is selected; selecting only adds handles.
+	@param wanted
+*/
+void Diagram::selectOnly(const std::function<bool(QGraphicsItem *)> &wanted)
+{
+	blockSignals(true);
+	clearSelection();
+	const QList<QGraphicsItem *> all = items();
+	QList<QGraphicsItem *> chosen;
+	for (QGraphicsItem *item : all) {
+		if (wanted(item)) {
+			chosen << item;
+		}
+	}
+	for (QGraphicsItem *item : std::as_const(chosen)) {
+		item -> setSelected(true);
 	}
 	blockSignals(false);
 	emit selectionChanged();
