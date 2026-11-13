@@ -57,6 +57,7 @@ class ElementInfoPartWidget : public QWidget
 		void setEraseTextChecked (bool check);
 		Qt::CheckState EraseTextCheckState ()const;
 		void setMaterialButtonVisible (bool visible);
+		bool eventFilter(QObject *watched, QEvent *event) override;
 
 	signals:
 		void textEdited  (const QString & text);
