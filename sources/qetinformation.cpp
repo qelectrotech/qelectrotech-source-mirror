@@ -89,6 +89,7 @@ QHash<QString, QString> QETInformation::titleblockTranslatedKeyHashVar()
 QStringList QETInformation::folioReportInfoKeys()
 {
 	QStringList list = { ELMT_LABEL,
+						 QStringLiteral("remote_endpoint"),
 						 COND_FUNCTION,
 						 COND_TENSION_PROTOCOL,
 						 COND_COLOR,
@@ -101,6 +102,7 @@ QHash<QString, QString> QETInformation::folioReportInfoKeyToVar()
 {
 	QHash <QString, QString> H_;
 	H_.insert(ELMT_LABEL,            infoToVar(ELMT_LABEL));
+	H_.insert(QStringLiteral("remote_endpoint"), QStringLiteral("%{remote_endpoint}"));
 	H_.insert(COND_FUNCTION,         infoToVar(COND_FUNCTION));
 	H_.insert(COND_TENSION_PROTOCOL, infoToVar(COND_TENSION_PROTOCOL));
 	H_.insert(COND_COLOR,            infoToVar(COND_COLOR));
@@ -351,6 +353,8 @@ QString QETInformation::infoToVar(const QString &info)
  */
 QString QETInformation::translatedInfoKey(const QString &info)
 {
+	if (info == QLatin1String("remote_endpoint"))
+		return QObject::tr("Remote endpoint");
 	if      (info == ELMT_MODEL)                       return QObject::tr("Model");
 	else if (info == ELMT_CATEGORY)                    return QObject::tr("Category");
 	else if (info == ELMT_VOLTAGE_RATING)              return QObject::tr("Rated voltage");

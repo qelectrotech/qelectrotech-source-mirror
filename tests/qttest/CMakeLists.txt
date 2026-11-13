@@ -600,6 +600,7 @@ qet_add_app_test(tst_titleblockbulkformat tst_titleblockbulkformat.cpp)
 
 # %T in a report or cross reference formula is the target folio's title.
 qet_add_app_test(tst_reportfoliotitle tst_reportfoliotitle.cpp)
+qet_add_app_test(tst_reportendpoint tst_reportendpoint.cpp)
 
 # The cable cells of a terminal strip are worked out from the cables of
 # the project: wired shows the cable and its core read only, unwired keeps
