@@ -40,6 +40,7 @@
 #include <foliogrid.h>
 #include <autoconnect.h>
 #include <textgrid.h>
+#include <qetgraphicsitem/structureboxitem.h>
 #include <wiringrules.h>
 #include <ui/wiringruleswarning.h>
 #include <editor/terminalnamecheck.h>
@@ -144,6 +145,8 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	ui->m_drag_texts_without_shift_cb->setChecked(DynamicElementTextItem::dragMovesTextAlone());
 	ui->m_drag_places_auto_conductor_cb->setChecked(AutoConnect::dragPlacesWithAutoConductor());
 	ui->m_junction_replaces_cb->setChecked(ConnectionSymbols::newJunctionReplacesOld());
+	ui->m_structure_box_color_kpb->setColor(StructureBoxItem::newBoxColor());
+	ui->m_structure_box_ask_place_cb->setChecked(StructureBoxItem::askPlaceWhenDrawn());
 	ui->m_terminal_help_lines_cb->setChecked(DiagramView::terminalHelpLinesShown());
 	ui->m_dock_fold_cb->setChecked(DockFold::enabled());
 	ui->m_narrow_docks_cb->setChecked(DockFit::enabled());
@@ -518,6 +521,8 @@ void GeneralConfigurationPage::applyConf()
 	DiagramView::setPointerAids(ui->m_pointer_aids_cb->isChecked());
 	DiagramView::setGridOnlyWhilePlacing(ui->m_grid_only_placing_cb->isChecked());
 	ConnectionSymbols::setNewJunctionReplacesOld(ui->m_junction_replaces_cb->isChecked());
+	StructureBoxItem::setNewBoxColor(ui->m_structure_box_color_kpb->color());
+	StructureBoxItem::setAskPlaceWhenDrawn(ui->m_structure_box_ask_place_cb->isChecked());
 	if (ui->m_vertical_texts_from_bottom_cb->isChecked() != DynamicElementTextItem::verticalFromBottom())
 		DynamicElementTextItem::setVerticalFromBottom(ui->m_vertical_texts_from_bottom_cb->isChecked());
 	DynamicElementTextItem::setDragMovesTextAlone(ui->m_drag_texts_without_shift_cb->isChecked());

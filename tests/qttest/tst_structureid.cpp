@@ -20,6 +20,7 @@
 #include "autoNum/assignvariables.h"
 #include "dataBase/projectdatabase.h"
 #include "diagram.h"
+#include "diagramevent/diagrameventaddstructurebox.h"
 #include "factory/elementfactory.h"
 #include "qetapptest.h"
 #include "qetgraphicsitem/dynamicelementtextitem.h"
@@ -33,6 +34,8 @@
 #include <QDomDocument>
 #include <QLineEdit>
 #include <QSqlQuery>
+#include <QSettings>
+#include <QTimer>
 #include <QTemporaryDir>
 #include <QUuid>
 #include <QtTest>
@@ -711,7 +714,9 @@ private slots:
 		StructureBoxItem *b = box(diagram, QRectF(100, 100, 200, 200), QStringLiteral("SILO"), QStringLiteral("J3"));
 		QVERIFY(b->label());
 		QCOMPARE(b->label()->toPlainText(), QStringLiteral("=SILO+J3"));
-		QCOMPARE(b->labelOffset(), QPointF(2, 2));           //inside the corner, as before
+			//above the top left corner, outside the box
+		QCOMPARE(b->labelOffset(), QPointF(0, -b->label()->boundingRect().height()));
+		QVERIFY(b->label()->mapRectToParent(b->label()->boundingRect()).bottom() <= b->rect().top());
 		QVERIFY(b->label()->flags() & QGraphicsItem::ItemIsMovable);
 		QVERIFY(b->label()->flags() & QGraphicsItem::ItemIsSelectable);
 
@@ -733,6 +738,65 @@ private slots:
 		QCOMPARE(read->labelSize(), 5.0);
 		QCOMPARE(read->label()->toPlainText(), QStringLiteral("=SILO+J3"));
 		QCOMPARE(read->label()->font().pointSizeF(), 5.0);
+	}
+
+	void theNameIsDrawnInTheColourOfTheBox()
+	{
+		QETProject project;
+		Diagram *diagram = project.addNewDiagram();
+		StructureBoxItem *b = box(diagram, QRectF(100, 100, 200, 200), QStringLiteral("SILO"), QStringLiteral("J3"));
+		QPen pen = b->pen();
+		pen.setColor(QColor(QStringLiteral("#ffd700")));
+		b->setPen(pen);
+		QCOMPARE(b->label()->defaultTextColor(), QColor(QStringLiteral("#ffd700")));
+	}
+
+	void newBoxesTakeTheColourSet()
+	{
+		struct Probe : DiagramEventAddStructureBox {
+			using DiagramEventAddStructureBox::DiagramEventAddStructureBox;
+			using DiagramEventAddStructureBox::createShapeItem;
+		};
+		QETProject project;
+		Diagram *diagram = project.addNewDiagram();
+		QSettings().remove(QStringLiteral("diagrameditor/structure_box_color"));
+		QCOMPARE(StructureBoxItem::newBoxColor(), QColor(Qt::black));   //as before
+		QVERIFY(!StructureBoxItem::askPlaceWhenDrawn());                  //off by default
+
+		StructureBoxItem::setNewBoxColor(QColor(QStringLiteral("#ffd700")));
+		Probe probe(diagram);
+		auto *shape = probe.createShapeItem(QPointF(0, 0), QPointF(50, 50), QetShapeItem::Rectangle);
+		QCOMPARE(shape->pen().color(), QColor(QStringLiteral("#ffd700")));
+		QCOMPARE(shape->pen().style(), Qt::DashDotLine);
+		delete shape;
+		QSettings().remove(QStringLiteral("diagrameditor/structure_box_color"));
+	}
+
+	void thePlaceAskedForIsTheBoxs()
+	{
+		QETProject project;
+		Diagram *diagram = project.addNewDiagram();
+		StructureBoxItem *b = box(diagram, QRectF(0, 0, 100, 100), {}, {});
+		QTimer::singleShot(0, [] {
+			QWidget *dialog = QApplication::activeModalWidget();
+			QVERIFY(dialog);
+			QCOMPARE(dialog->objectName(), QStringLiteral("askStructureBoxPlace"));
+			dialog->findChild<QLineEdit *>(QStringLiteral("plant"))->setText(QStringLiteral("E1"));
+			dialog->findChild<QLineEdit *>(QStringLiteral("location"))->setText(QStringLiteral(" VD2 "));
+			static_cast<QDialog *>(dialog)->accept();
+		});
+		QVERIFY(DiagramEventAddStructureBox::askPlace(b, nullptr));
+		QCOMPARE(b->structureId(), QStringLiteral("=E1+VD2"));
+
+		StructureBoxItem *empty = box(diagram, QRectF(200, 0, 100, 100), {}, {});
+		QTimer::singleShot(0, [] {
+			QWidget *dialog = QApplication::activeModalWidget();
+			QVERIFY(dialog);
+			dialog->findChild<QLineEdit *>(QStringLiteral("plant"))->setText(QStringLiteral("E1"));
+			static_cast<QDialog *>(dialog)->reject();
+		});
+		QVERIFY(!DiagramEventAddStructureBox::askPlace(empty, nullptr));
+		QVERIFY(empty->structureId().isEmpty());       //cancelled: the box stays empty
 	}
 
 	void withoutAnElementOnlyItsOwnValuesCount()

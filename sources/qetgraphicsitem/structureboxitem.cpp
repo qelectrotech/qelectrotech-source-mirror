@@ -28,6 +28,7 @@
 #include "../ui/structureboxpropertieswidget.h"
 
 #include <QDomDocument>
+#include <QSettings>
 #include <QFont>
 #include <QGraphicsSceneMouseEvent>
 
@@ -48,6 +49,8 @@ StructureBoxItem::StructureBoxItem(QPointF p1, QPointF p2, QGraphicsItem *parent
 	m_label = new StructureBoxLabelItem(this);
 	connect(m_label, &StructureBoxLabelItem::movedByUser, this, [this]() {m_label_moved = true;});
 	connect(this, &QetShapeItem::geometryChanged, this, &StructureBoxItem::placeLabel);
+		//The name is drawn in the colour of the box's line
+	connect(this, &QetShapeItem::penChanged, this, &StructureBoxItem::refreshLabel);
 	refreshLabel();
 }
 
@@ -135,13 +138,15 @@ void StructureBoxItem::refreshLabel()
 
 /**
 	@brief StructureBoxItem::placeLabel
-	A label nobody has moved stands inside the top left corner, however
-	the box is resized.
+	A label nobody has moved stands above the top left corner, outside the
+	box, as a device's designation stands outside its frame; it stays there
+	however the box is resized.
 */
 void StructureBoxItem::placeLabel()
 {
 	if (!m_label_moved)
-		m_label->setPos(rect().normalized().topLeft() + QPointF(2, 2));
+		m_label->setPos(rect().normalized().topLeft()
+						- QPointF(0, m_label->boundingRect().height()));
 }
 
 /**
@@ -382,4 +387,26 @@ void StructureBoxLabelItem::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *even
 {
 	event->accept();
 	m_box->editProperty();
+}
+
+QColor StructureBoxItem::newBoxColor()
+{
+	const QColor color(QSettings().value(QStringLiteral("diagrameditor/structure_box_color"),
+										 QStringLiteral("#000000")).toString());
+	return color.isValid() ? color : QColor(Qt::black);
+}
+
+void StructureBoxItem::setNewBoxColor(const QColor &color)
+{
+	QSettings().setValue(QStringLiteral("diagrameditor/structure_box_color"), color.name());
+}
+
+bool StructureBoxItem::askPlaceWhenDrawn()
+{
+	return QSettings().value(QStringLiteral("diagrameditor/structure_box_ask_place"), false).toBool();
+}
+
+void StructureBoxItem::setAskPlaceWhenDrawn(bool ask)
+{
+	QSettings().setValue(QStringLiteral("diagrameditor/structure_box_ask_place"), ask);
 }
