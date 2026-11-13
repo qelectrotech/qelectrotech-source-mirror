@@ -27,6 +27,7 @@
 #include <autoNum/elementautonumschemecommand.h>
 #include <autoNum/numerotationcontextcommands.h>
 #include <diagram.h>
+#include <shownkinds.h>
 #include <diagramcommands.h>
 #include <diagramcontext.h>
 #include <diagramposition.h>
@@ -635,8 +636,22 @@ void Element::keepChildrenReadable() const
 void Element::paint(
 		QPainter *painter,
 		const QStyleOptionGraphicsItem *options,
-		QWidget *)
+		QWidget *widget)
 {
+		//A drawing aid is drawn on screen only, light grey: never printed
+		//nor exported (a printer, a PDF, an image or an SVG paints the
+		//folio without a view's widget)
+	const bool aid = isDrawingAid();
+	if (aid)
+	{
+		const QPaintDevice *device = painter->device();
+		const bool on_screen = widget && device
+				&& (device->devType() == QInternal::Widget
+					|| device->devType() == QInternal::Pixmap);
+		if (!on_screen)
+			return;
+	}
+
 	if (m_must_highlight || m_jump_highlight > 0) {
 		drawHighlight(painter, options);
 	}
@@ -651,6 +666,8 @@ void Element::paint(
 	QBrush brush;
 	painter->setPen(pen);
 	painter->setBrush(brush);
+	if (aid)
+		painter->setOpacity(painter->opacity() * 0.35);
 	if (const std::optional<QPointF> dot = m_shown_as_dot ? dotPoint() : std::nullopt) {
 		drawAsDot(painter, *dot);
 		painter->restore();
@@ -687,6 +704,20 @@ void Element::paint(
 	if ( isSelected() || m_mouse_over ) {
 		QGIUtility::drawBoundingRectSelection(this, painter);
 	}
+}
+
+/**
+	@brief Element::isDrawingAid
+	@return true when the symbol's definition marks it as a drawing aid
+	(kind information drawing_aid="true"): a symbol that only steers the
+	drawing, as an interruption point stops the automatic connections. It
+	is light grey on screen, never printed nor exported, can be hidden
+	with View > Show, and has no label of its own.
+*/
+bool Element::isDrawingAid() const
+{
+	return m_kind_informations.value(QStringLiteral("drawing_aid")).toString()
+			== QLatin1String("true");
 }
 
 /**
@@ -1000,6 +1031,8 @@ bool Element::buildFromXml(const QDomElement &xml_def_elmt, int *state)
 	m_corner = m_kind_informations.value(QStringLiteral("corner")).toString() == QLatin1String("true")
 		|| QUuid(xml_def_elmt.firstChildElement(QStringLiteral("uuid")).attribute(QStringLiteral("uuid")))
 			== QUuid(QStringLiteral("{b4bba5d9-a60d-8f6c-a61d-1b18a5c9397d}")); //114_connections/corner.elmt
+	if (isDrawingAid())
+		ShownKinds::tag(this, ShownKinds::DrawingAids);
 		//load element information
 	m_data.m_informations.fromXml(
 				xml_def_elmt.firstChildElement(QStringLiteral("elementInformations")),

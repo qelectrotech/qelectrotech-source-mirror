@@ -84,6 +84,13 @@ void ElementInfoWidget::setElement(Element *element)
 	m_element = element;
 	updateUi();
 
+		//A drawing aid has no label nor information of its own
+	const bool aid = m_element && m_element->isDrawingAid();
+	setDisabled(aid);
+	setToolTip(aid ? tr("A drawing aid (an interruption point) has no label: "
+						"it is not printed, and is left out of every list.")
+				   : QString());
+
 	const auto formula_info_widget = infoPartWidgetForKey(QETInformation::ELMT_FORMULA);
 	const auto label_info_widget = infoPartWidgetForKey(QETInformation::ELMT_LABEL);
 

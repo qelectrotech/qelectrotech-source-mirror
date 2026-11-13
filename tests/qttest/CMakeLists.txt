@@ -223,6 +223,15 @@ if(Python3_Interpreter_FOUND AND CMAKE_GENERATOR STREQUAL "Ninja")
       --fixture ${CMAKE_CURRENT_SOURCE_DIR}/fixtures/auto_connect_drag.qet)
   set_tests_properties(tst_autoconnectdragintegration PROPERTIES TIMEOUT ${qet_probe_ctest_timeout} RESOURCE_LOCK qet_probe_ninja
     ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
+  # A drawing aid (an interruption point): light grey on screen, never
+  # printed nor exported, hidden with View > Show, no label of its own.
+  add_test(NAME tst_drawingaidintegration
+    COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/run_drawing_aid_probe.py
+      --build ${CMAKE_BINARY_DIR} --binary $<TARGET_FILE:qelectrotech>
+      --source ${CMAKE_CURRENT_SOURCE_DIR}/drawing_aid_probe.cpp
+      --fixture ${CMAKE_CURRENT_SOURCE_DIR}/fixtures/auto_connect.qet)
+  set_tests_properties(tst_drawingaidintegration PROPERTIES TIMEOUT ${qet_probe_ctest_timeout} RESOURCE_LOCK qet_probe_ninja
+    ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
 endif()
 if(Python3_Interpreter_FOUND AND CMAKE_GENERATOR STREQUAL "Ninja")
   add_test(NAME tst_darkimageintegration
