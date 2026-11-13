@@ -746,6 +746,9 @@ qet_add_app_test(tst_terminalstriporder tst_terminalstriporder.cpp)
 qet_add_app_test(tst_cabletarget tst_cabletarget.cpp)
 qet_add_app_test(tst_cablelist tst_cablelist.cpp)
 
+# Joining two potentials offers only the two potentials.
+qet_add_app_test(tst_potentialchoices tst_potentialchoices.cpp)
+
 # Copying a cable leaves the cable it was copied from whole.
 qet_add_app_test(tst_cablecopy tst_cablecopy.cpp)
 
