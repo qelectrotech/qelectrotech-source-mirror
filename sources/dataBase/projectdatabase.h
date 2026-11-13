@@ -171,6 +171,9 @@ class projectDataBase : public QObject
 		static constexpr int PublicViewsVersion = 1;
 		static QStringList publicViews();
 		static QStringList publicViewStatements();
+			/// A subquery: the plant and location the structure boxes give
+			/// each element they hold (element_uuid, plant, location)
+		static QString structurePlacesSql();
 		QSqlDatabase database() const {return m_data_base;}
 		int excludedConductorCount() const;
 
