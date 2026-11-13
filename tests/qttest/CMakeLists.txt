@@ -518,6 +518,7 @@ target_compile_definitions(tst_linklists PRIVATE
   QET_EXAMPLES_DIR="${QET_DIR}/examples")
 # IEC 81346 plant/location: an element takes its folio's, %{structure_id} composes them.
 qet_add_app_test(tst_structureid tst_structureid.cpp)
+qet_add_app_test(tst_stripplacefrombox tst_stripplacefrombox.cpp)
 # qet_device_list: one row per reference designation, a contact with its coil.
 qet_add_app_test(tst_devicelist tst_devicelist.cpp)
 # qet_terminals: one row per terminal of a strip, in the strip's order.
