@@ -38,6 +38,7 @@ class tst_pasteaxislock : public QObject
 	void testShortcutRegistration();
 	void testAxisLockAndOriginalPositionSnap();
 	void testCustomShortcut();
+	void testMenuPasteFocusAndKeyRouting();
 };
 
 void tst_pasteaxislock::testShortcutRegistration()
@@ -257,6 +258,64 @@ void tst_pasteaxislock::testCustomShortcut()
 	QKeyEvent cancel(QEvent::KeyPress, Qt::Key_Escape, Qt::NoModifier);
 	paste->keyPressEvent(&cancel);
 	diagram->clearEventInterface();
+}
+
+void tst_pasteaxislock::testMenuPasteFocusAndKeyRouting()
+{
+	QETDiagramEditor *editor = QetAppTest::editor();
+	QVERIFY(editor != nullptr);
+	Diagram *diagram = QetAppTest::diagram();
+	QVERIFY(diagram != nullptr);
+	DiagramView *view = QetAppTest::view();
+	QVERIFY(view != nullptr);
+
+	editor->show();
+	QVERIFY(QTest::qWaitForWindowExposed(editor));
+
+	auto *rect = new QetShapeItem(QPointF(0, 0), QPointF(40, 40), QetShapeItem::Rectangle);
+	rect->setPos(120, 140);
+	diagram->addItem(rect);
+	diagram->clearSelection();
+	rect->setSelected(true);
+	view->copy();
+
+	// Simulate focus being elsewhere (e.g. tab bar or project panel) before Edit -> Paste
+	view->clearFocus();
+	editor->setFocus();
+	QVERIFY(!view->hasFocus());
+
+	// Trigger the Edit -> Paste action directly (as if clicked from the menu)
+	QAction *paste_action = ShortcutManager::instance().action(QStringLiteral("diagrameditor.paste"), editor);
+	QVERIFY(paste_action != nullptr);
+	QVERIFY(paste_action->isEnabled());
+	paste_action->trigger();
+
+	// DiagramView must now have keyboard focus and DiagramEventAddPaste must be running
+	QVERIFY(view->hasFocus());
+	QVERIFY(diagram->eventInterfaceIsRunning());
+
+	QList<QGraphicsItem *> selected = diagram->selectedItems();
+	QVERIFY(!selected.isEmpty());
+	QGraphicsItem *pasted = nullptr;
+	for (QGraphicsItem *item : selected) {
+		if (item != rect) {
+			pasted = item;
+			break;
+		}
+	}
+	QVERIFY(pasted != nullptr);
+
+	// Send X and Y key events to whichever widget currently has focus
+	QWidget *focused = QApplication::focusWidget();
+	QVERIFY(focused == view || view->isAncestorOf(focused));
+	QTest::keyClick(focused, Qt::Key_X);
+	QCOMPARE(pasted->pos().x(), 120.0);
+	QTest::keyClick(focused, Qt::Key_Y);
+	QCOMPARE(pasted->pos(), QPointF(120.0, 140.0));
+
+	QTest::keyClick(focused, Qt::Key_Escape);
+	QCoreApplication::processEvents();
+	QVERIFY(!diagram->eventInterfaceIsRunning());
 }
 
 QET_APP_TEST_MAIN(tst_pasteaxislock)

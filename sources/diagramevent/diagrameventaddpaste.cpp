@@ -301,6 +301,7 @@ void DiagramEventAddPaste::init()
 	const auto views = m_diagram->views();
 	for (auto *view : views) {
 		view->setContextMenuPolicy(Qt::NoContextMenu);
+		view->setFocus(Qt::OtherFocusReason);
 	}
 }
 

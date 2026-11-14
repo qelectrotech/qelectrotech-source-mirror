@@ -672,6 +672,7 @@ void QETDiagramEditor::setUpActions()
 
 		dv->diagram()->setEventInterface(
 					new DiagramEventAddPaste(dv->diagram(), start_pos, placement));
+		dv->setFocus(Qt::OtherFocusReason);
 	};
 	connect(m_paste, &QAction::triggered, [start_paste]() {
 		start_paste(DiagramEventAddPaste::UnderCursor);
