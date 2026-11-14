@@ -22,6 +22,7 @@
 #include <QPointer>
 
 class PropertiesEditorWidget;
+class QScrollArea;
 
 namespace Ui {
 	class PropertiesEditorDockWidget;
@@ -53,6 +54,11 @@ class PropertiesEditorDockWidget : public QDockWidget
 		void updateSizeConstraint();
 		void fitScrollArea();
 		bool isTabbed() const;
+			/**
+				The scroll area a widget stands in, on its way up to this
+				dock's own contents -- 0 when it stands in none of them.
+			*/
+		QScrollArea *scrollAreaOf(QWidget *widget) const;
 
 		Ui::PropertiesEditorDockWidget *ui;
 		QList<QPointer<QDockWidget>> m_area_docks;

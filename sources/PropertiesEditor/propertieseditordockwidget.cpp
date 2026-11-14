@@ -276,6 +276,22 @@ void PropertiesEditorDockWidget::updateSizeConstraint()
 }
 
 /**
+	@brief PropertiesEditorDockWidget::scrollAreaOf
+	The scroll area @p widget stands in, on its way up to this dock's own
+	contents -- 0 when it stands in none of them, in which case this dock
+	itself is the one to scroll.
+	@param widget the widget a wheel was seen over
+	@return the scroll area holding that widget, or nullptr
+*/
+QScrollArea *PropertiesEditorDockWidget::scrollAreaOf(QWidget *widget) const
+{
+	for (QWidget *w = widget; w && w != ui->m_scroll_contents; w = w->parentWidget())
+		if (auto *area = qobject_cast<QScrollArea *>(w))
+			return area;
+	return nullptr;
+}
+
+/**
 	@brief PropertiesEditorDockWidget::eventFilter
 	Fit the scroll area again whenever the editors' layout changes: an
 	editor came or went, or one shows or hides a part of itself.
@@ -284,12 +300,22 @@ bool PropertiesEditorDockWidget::eventFilter(QObject *watched, QEvent *event)
 {
 	if (watched == ui->m_scroll_contents && event->type() == QEvent::LayoutRequest)
 		fitScrollArea();
-		// The wheel over a field that is not being edited scrolls the
-		// dock, rather than changing the field's value under the mouse
+		// The wheel over a field that is not being edited scrolls, rather
+		// than changing the field's value under the mouse -- to the scroll
+		// area that very field stands in.
+		// A scroll bar is no such field: it is the very thing the wheel was
+		// seen over, and it scrolls itself. Handing it to this panel instead
+		// is what left the bar beside the element editor's rows dead to the
+		// wheel while it still worked dragged -- and it came alive after a
+		// click, which gave that bar the focus this check looks for. It also
+		// sent a bar its own wheel back through this filter, over and over.
 	if (event->type() == QEvent::Wheel && watched != ui->m_scroll_contents) {
 		auto *field = qobject_cast<QWidget *>(watched);
-		if (field && !field->hasFocus()) {
-			QCoreApplication::sendEvent(ui->m_scroll_area->verticalScrollBar(), event);
+		if (field && !field->hasFocus() && !qobject_cast<QScrollBar *>(field)) {
+			QScrollArea *own = scrollAreaOf(field);
+			QCoreApplication::sendEvent(own ? own->verticalScrollBar()
+												 : ui->m_scroll_area->verticalScrollBar(),
+										event);
 			return true;
 		}
 	}
@@ -319,6 +345,26 @@ void PropertiesEditorDockWidget::fitScrollArea()
 	ui->m_scroll_area->setMaximumHeight(isTabbed() || grows
 			? QWIDGETSIZE_MAX
 			: m_editor_list.isEmpty() ? 0 : hint.height());
+		// One bar for one lot of rows: an editor which brings a scroll area
+		// of his own scrolls those rows himself, and a bar of this panel
+		// beside it only stands in the way -- the user sees two bars for
+		// one lot of rows. Out of the way it goes, and the rows take the
+		// height this panel has. An editor without a bar of his own keeps
+		// this one: it is what stops a low panel from being drawn over by
+		// the one below it. Only an area which is up counts -- a tab
+		// holding one that is not shown still needs this panel's bar.
+		// Set only when it changes: this runs off a LayoutRequest, and
+		// handing the policy over again moves the bar and asks anew.
+	bool own_bar = false;
+	for (QWidget *editor : std::as_const(m_editor_list))
+		for (QAbstractScrollArea *area : editor->findChildren<QAbstractScrollArea *>())
+			if (area->window() == editor->window() && area->isVisibleTo(editor))
+				own_bar = true;
+	const Qt::ScrollBarPolicy policy = own_bar
+			? Qt::ScrollBarAlwaysOff
+			: Qt::ScrollBarAsNeeded;
+	if (ui->m_scroll_area->verticalScrollBarPolicy() != policy)
+		ui->m_scroll_area->setVerticalScrollBarPolicy(policy);
 	for (QWidget *field : ui->m_scroll_contents->findChildren<QWidget *>())
 		if ((qobject_cast<QAbstractSpinBox *>(field) || qobject_cast<QComboBox *>(field)
 		     || qobject_cast<QAbstractSlider *>(field))
