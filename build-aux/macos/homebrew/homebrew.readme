@@ -1,0 +1,108 @@
+QElectroTech macOS bundle (Homebrew, Qt 6, KF6)
+===============================================
+
+RESUME
+------
+These scripts build a signed and notarized QElectroTech DMG for macOS on
+Apple Silicon, with the Homebrew Qt 6 and the KDE Frameworks QET uses.
+
+They are adapted from the digiKam Homebrew scripts by Gilles Caulier
+(digikam/project/bundles/homebrew and 3rdparty/ext_kf6), reduced to what
+QElectroTech needs, on the model of build-aux/linux/appimage. The
+deployment, signing and DMG steps come from misc/MacQetDeploy_arm64_cmake.sh.
+
+Location in the QET tree: build-aux/macos/homebrew/
+
+
+AUTHORS
+-------
+(c)      2015 Shanti <listaccount at revenant dot org>
+(c) 2015-2026 Gilles Caulier <caulier dot gilles at gmail dot com>
+(c)      2026 The QElectroTech Team
+
+
+DIFFERENCES WITH THE DIGIKAM SCRIPTS
+------------------------------------
+
+- No root, no sudo: Homebrew refuses root (digiKam's 01 script fails
+  for this reason). The Homebrew installer asks for the password itself,
+  once, to create /opt/homebrew.
+- An existing /opt/homebrew is never removed, formulae are only added.
+- About 10 formulae instead of about 40 (no boost, opencv, ffmpeg, exiv2,
+  lensfun, imagemagick, mariadb...), and Qt as split modules (qtbase,
+  qtsvg, qttools, qttranslations, qtimageformats) instead of the "qt"
+  meta formula (qtwebengine, qtmultimedia...).
+- KDE Frameworks: 3 modules (extra-cmake-modules, kcoreaddons,
+  kwidgetsaddons) instead of 25, no patches, built statically in
+  $HOME/qet-homebrew-work/kf6 and not in /opt/homebrew: no KF dylib to
+  deploy or sign. Built once (a few minutes), kept for the next builds.
+- No Packages .pkg installer nor package_lib.py: QET ships a
+  drag-and-drop DMG, signed and notarized, as before.
+- Not interactive: the questions of MacQetDeploy_arm64_cmake.sh are
+  settings in config.sh.
+
+
+FILES
+-----
+
+build-aux/macos/homebrew/
+├── homebrew.readme           This file
+├── config.sh                 Settings: target, formulae, QET branch, signing
+├── common.sh                 Shared functions
+├── 01-build-homebrew.sh      Homebrew (if missing) and the formulae QET needs
+├── 02-build-qet.sh           KDE Frameworks (once), then QElectroTech
+├── 03-build-installer.sh     macdeployqt, QET data, signature, DMG, notarization
+├── makeall.sh                01 + 02 + 03 : everything from scratch
+└── update.sh                 02 + 03 : rebuild QET and the DMG
+
+
+REQUIREMENTS
+------------
+
+- A Mac with Apple Silicon and macOS 14 or newer.
+- Xcode Command Line Tools: xcode-select --install
+- A normal user, admin of the Mac (for the Homebrew installer only).
+- To sign: the "Developer ID Application" certificate in the login
+  keychain. To notarize: a notarytool profile, created once with
+    xcrun notarytool store-credentials "org.qelectrotech" \
+          --apple-id <apple id> --team-id Y73WZ6WZ5X
+- Internet access to: github.com (Homebrew, QET), the Homebrew bottles
+  (ghcr.io), invent.kde.org (KDE Frameworks).
+
+
+CONFIGURATION (config.sh)
+-------------------------
+
+OSX_MIN_TARGET   Minimal macOS version (14.0, minimum of the Homebrew Qt6
+                 bottles). Written in the binaries and in Info.plist.
+BREW_*           Homebrew formulae to install. BREW_QT_OPTIONAL is
+                 installed only if Homebrew has it (QtPdf: PDF page import).
+QET_VERSION      QET branch or tag cloned in $HOME/qet-homebrew-work/build.
+QET_SOURCE_DIR   Build an existing checkout as it is, instead of cloning:
+                   QET_SOURCE_DIR=~/qelectrotech-source-mirror ./update.sh
+QET_WITH_KF      1 = KF6 (default), 0 = QET's sources/ui/nokde replacements.
+KF_VERSION       KF6 version, same as cmake/fetch_kdeaddons.cmake (v6.10.0).
+                 Changing it rebuilds KF6 at the next run.
+QET_SPACEMOUSE   3D mouse support with hidapi.
+QET_SIGN         1 = Developer ID signature, 0 = ad hoc (local tests only,
+                 Gatekeeper refuses it on other Macs, no notarization).
+QET_NOTARIZE     Notarize and staple the .app and the DMG.
+QET_UPLOAD       Upload with rsync to QET_UPLOADURL:QET_UPLOADDIR.
+
+
+USAGE
+-----
+
+  cd build-aux/macos/homebrew
+  ./makeall.sh            first time: Homebrew, KF6, QET, DMG
+  ./update.sh             next times: QET and DMG only
+
+Logs are in ./logs, the DMG and its SHA256 file in ./bundle.
+
+
+TODO
+----
+
+- Intel (x86_64) builds: /usr/local Homebrew, ARCH_TARGET.
+- A GitHub CI job (macos-14 runner) calling 01 + 02 + 03 with QET_SIGN=0,
+  then signing with the certificate stored in the repository secrets.
