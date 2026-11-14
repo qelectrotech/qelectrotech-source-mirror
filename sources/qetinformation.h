@@ -198,11 +198,11 @@ namespace QETInformation
 	QString elementInfoToVar(const QString &info);
 
 	bool isNumericInfoKey(const QString &key);
-	QRegularExpression numericInfoPattern();
+	QRegularExpression numericInfoPattern(const QString &key = QString());
 	class NumericInfoValidator : public QRegularExpressionValidator
 	{
 	public:
-		explicit NumericInfoValidator(QObject *parent = nullptr);
+		explicit NumericInfoValidator(const QString &key, QObject *parent = nullptr);
 		State validate(QString &input, int &pos) const override;
 	};
 

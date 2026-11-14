@@ -71,7 +71,7 @@ ElementInfoPartWidget::ElementInfoPartWidget(
 	if (QETInformation::isNumericInfoKey(key_))
 	{
 		ui->m_multiline_btn->setVisible(false);
-		auto *validator = new QETInformation::NumericInfoValidator(ui->line_edit);
+		auto *validator = new QETInformation::NumericInfoValidator(key_, ui->line_edit);
 		ui->line_edit->setValidator(validator);
 		ui->line_edit->setPlaceholderText(tr("e.g. 80.5"));
 		ui->line_edit->setToolTip(tr("Decimal number with a dot as separator (e.g. 80.5)"));

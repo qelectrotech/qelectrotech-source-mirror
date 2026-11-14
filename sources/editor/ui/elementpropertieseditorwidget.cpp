@@ -69,7 +69,7 @@ QWidget* EditorDelegate::createEditor(QWidget *parent,
 			if (QETInformation::isNumericInfoKey(key))
 		{
 			auto *line_edit = new QLineEdit(parent);
-			auto *validator = new QETInformation::NumericInfoValidator(line_edit);
+			auto *validator = new QETInformation::NumericInfoValidator(key, line_edit);
 			line_edit->setValidator(validator);
 			line_edit->setPlaceholderText(tr("e.g. 80.5"));
 			line_edit->setToolTip(tr("Decimal number with a dot as separator (e.g. 80.5)"));

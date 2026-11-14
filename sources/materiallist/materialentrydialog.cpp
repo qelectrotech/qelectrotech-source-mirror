@@ -74,7 +74,7 @@ MaterialEntryDialog::MaterialEntryDialog(const QStringList &columns, QWidget *pa
 			//element information, so what the file gives an element is
 			//what could have been typed there
 		if (QETInformation::isNumericInfoKey(column)) {
-			edit->setValidator(new QETInformation::NumericInfoValidator(edit));
+			edit->setValidator(new QETInformation::NumericInfoValidator(column, edit));
 			edit->setPlaceholderText(tr("e.g. 80.5"));
 			edit->setToolTip(tr("Decimal number with a dot as separator (e.g. 80.5)"));
 		}
@@ -139,10 +139,23 @@ MaterialRecord MaterialEntryDialog::record() const
 /**
 	@brief MaterialEntryDialog::accept
 	Refuse an empty form: an article without any information is not worth
-	a line in the file.
+	a line in the file. Refuse a number left half typed ("12.") too.
 */
 void MaterialEntryDialog::accept()
 {
+	for (QLineEdit *edit : std::as_const(m_edits))
+	{
+		if (edit->validator() && !edit->text().isEmpty() && !edit->hasAcceptableInput())
+		{
+			QET::QetMessageBox::warning(this,
+										tr("Unfinished number"),
+										tr("Finish the number or empty the "
+										   "field."));
+			edit->setFocus();
+			return;
+		}
+	}
+
 	if (record().values.isEmpty())
 	{
 		QET::QetMessageBox::warning(this,

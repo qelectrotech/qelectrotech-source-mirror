@@ -20,6 +20,7 @@
 #include "dataBase/projectdatabase.h"
 #include "diagram.h"
 #include "factory/elementfactory.h"
+#include "materiallist/materialentrydialog.h"
 #include "materiallist/materiallist.h"
 #include "qetapptest.h"
 #include "qetgraphicsitem/element.h"
@@ -28,7 +29,10 @@
 #include "qetresult.h"
 
 #include <QDomDocument>
+#include <QApplication>
 #include <QFile>
+#include <QLineEdit>
+#include <QTimer>
 #include <QSqlQuery>
 #include <QTemporaryDir>
 #include <QUuid>
@@ -197,6 +201,61 @@ private slots:
 			QVERIFY(QETInformation::isNumericInfoKey(column));
 			QVERIFY(!QETInformation::translatedInfoKey(column).isEmpty());
 		}
+	}
+
+		//A size takes two decimals; a price or a time takes four, for a
+		//part bought by the reel or a job of a few minutes. "12." is
+		//unfinished, which the material entry dialog refuses to save
+	void numbersTakeTheirDecimals_data()
+	{
+		QTest::addColumn<QString>("key");
+		QTest::addColumn<QString>("value");
+		QTest::addColumn<int>("state");
+		const int ok = QValidator::Acceptable, not_ok = QValidator::Invalid,
+				unfinished = QValidator::Intermediate;
+		QTest::newRow("width 57.5") << "width" << "57.5" << ok;
+		QTest::newRow("width 57.125") << "width" << "57.125" << not_ok;
+		QTest::newRow("price 0.0045") << "unit_price" << "0.0045" << ok;
+		QTest::newRow("price 38,90") << "unit_price" << "38,90" << ok;
+		QTest::newRow("price 0.00451") << "unit_price" << "0.00451" << not_ok;
+		QTest::newRow("price 12.") << "unit_price" << "12." << unfinished;
+		QTest::newRow("labour 0.125") << "labour_time" << "0.125" << ok;
+		QTest::newRow("labour 1h") << "labour_time" << "1h" << not_ok;
+	}
+
+	void numbersTakeTheirDecimals()
+	{
+		QFETCH(QString, key);
+		QFETCH(QString, value);
+		QFETCH(int, state);
+		QETInformation::NumericInfoValidator validator(key);
+		int pos = 0;
+		QCOMPARE(int(validator.validate(value, pos)), state);
+	}
+
+		//A new article with a number left unfinished is not saved
+	void entryRefusesAnUnfinishedNumber()
+	{
+		MaterialEntryDialog dialog({QStringLiteral("unit_price")});
+		auto *edit = dialog.findChild<QLineEdit *>();
+		QVERIFY(edit);
+		bool warned = false;
+		const auto closeWarning = [&warned] {
+			if (QWidget *box = QApplication::activeModalWidget()) {
+				warned = true;
+				box->close();
+			}
+		};
+		edit->setText(QStringLiteral("12."));
+		QTimer::singleShot(0, &dialog, closeWarning);
+		dialog.accept();
+		QVERIFY(warned);
+		QCOMPARE(dialog.result(), int(QDialog::Rejected));
+
+		edit->setText(QStringLiteral("12.5"));
+		dialog.accept();
+		QCOMPARE(dialog.result(), int(QDialog::Accepted));
+		QCOMPARE(dialog.record().values.value(QStringLiteral("unit_price")), QStringLiteral("12.5"));
 	}
 };
 

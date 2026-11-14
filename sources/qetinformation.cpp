@@ -313,18 +313,25 @@ bool QETInformation::isNumericInfoKey(const QString &key)
  * fields (see isNumericInfoKey()): digits with an optional "."
  * as decimal separator, requiring at least one digit overall so a
  * lone "." can never be a complete, acceptable value on its own.
+ * A size in mm takes two decimals; a unit price or a labour time
+ * takes four, for a part bought by the reel (0.0045) or a job of a
+ * few minutes (0.125 h).
+ * @param key the information the value is for
  */
-QRegularExpression QETInformation::numericInfoPattern()
+QRegularExpression QETInformation::numericInfoPattern(const QString &key)
 {
+	if (key == ELMT_UNIT_PRICE || key == ELMT_LABOUR_TIME)
+		return QRegularExpression(QStringLiteral(R"(^[0-9]+$|^[0-9]*\.[0-9]{1,4}$)"));
 	return QRegularExpression(QStringLiteral(R"(^[0-9]+$|^[0-9]*\.[0-9]{1,2}$)"));
 }
 
 /**
 	@brief QETInformation::NumericInfoValidator::NumericInfoValidator
+	@param key the information the value is for, see numericInfoPattern()
 	@param parent
 */
-QETInformation::NumericInfoValidator::NumericInfoValidator(QObject *parent) :
-	QRegularExpressionValidator(numericInfoPattern(), parent)
+QETInformation::NumericInfoValidator::NumericInfoValidator(const QString &key, QObject *parent) :
+	QRegularExpressionValidator(numericInfoPattern(key), parent)
 {
 }
 
