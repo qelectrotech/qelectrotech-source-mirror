@@ -46,4 +46,27 @@ class SetDeviceTypeCommand : public QUndoCommand
 		DeviceType m_old;   ///< null when the project had no such type
 };
 
+/**
+	@brief The EditDeviceTypeCommand class
+	A device type of a project made, changed or deleted in Project > Device
+	types: the project's type named @p name becomes @p type, a null @p type
+	deleting it. Undo gives back what was there.
+*/
+class EditDeviceTypeCommand : public QUndoCommand
+{
+	public:
+		EditDeviceTypeCommand(QETProject *project, const QString &name,
+							  const DeviceType &type, QUndoCommand *parent = nullptr);
+		void undo() override;
+		void redo() override;
+
+	private:
+		void put(const DeviceType &type);
+
+		QPointer<QETProject> m_project;
+		QString m_name;
+		DeviceType m_new;   ///< null to delete
+		DeviceType m_old;   ///< null when the project had no such type
+};
+
 #endif // SETDEVICETYPECOMMAND_H

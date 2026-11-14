@@ -537,6 +537,8 @@ qet_add_app_test(tst_plcio tst_plcio.cpp)
 qet_add_app_test(tst_devicetype tst_devicetype.cpp)
 # Is a device drawn the way its type says: parts not drawn, symbols beyond.
 qet_add_app_test(tst_devicetypecheck tst_devicetypecheck.cpp)
+# Project > Device types: the list of types and the editor of one
+qet_add_app_test(tst_devicetypeeditor tst_devicetypeeditor.cpp)
 # Giving a placed symbol the terminals of a part of its device type.
 qet_add_app_test(tst_devicetypeassign tst_devicetypeassign.cpp)
 # A read-only project builds its lazy folios whole: shown, exported, written out.

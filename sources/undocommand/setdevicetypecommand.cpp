@@ -45,3 +45,50 @@ void SetDeviceTypeCommand::redo()
 {
 	if (m_project) m_project->setDeviceType(m_new);
 }
+
+/**
+	@brief EditDeviceTypeCommand::EditDeviceTypeCommand
+	@param project : the project whose types change
+	@param name : the type's name
+	@param type : what the type becomes; null to delete it
+	@param parent : parent undo command
+*/
+EditDeviceTypeCommand::EditDeviceTypeCommand(QETProject *project, const QString &name,
+											 const DeviceType &type, QUndoCommand *parent) :
+	QUndoCommand(parent),
+	m_project(project),
+	m_name(name),
+	m_new(type)
+{
+	if (project) m_old = project->deviceType(name);
+	if (m_new.isNull())
+		//: %1 is a device type's name, such as "CONTR10"
+		setText(QObject::tr("Delete the device type %1").arg(name));
+	else if (m_old.isNull())
+		setText(QObject::tr("Add the device type %1 to the project").arg(name));
+	else
+		setText(QObject::tr("Edit the device type %1").arg(name));
+}
+
+void EditDeviceTypeCommand::undo()
+{
+	put(m_old);
+}
+
+void EditDeviceTypeCommand::redo()
+{
+	put(m_new);
+}
+
+/**
+	@brief EditDeviceTypeCommand::put
+	The project's type of this name becomes @p type; a null one deletes it
+*/
+void EditDeviceTypeCommand::put(const DeviceType &type)
+{
+	if (!m_project) return;
+	if (type.isNull())
+		m_project->removeDeviceType(m_name);
+	else
+		m_project->setDeviceType(type);
+}

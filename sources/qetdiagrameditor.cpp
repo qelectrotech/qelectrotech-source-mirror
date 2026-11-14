@@ -101,6 +101,7 @@
 #include "ui/diagrambgcolorbutton.h"
 #include "ui/duplicatelabelsdialog.h"
 #include "ui/devicetypecheckdialog.h"
+#include "ui/devicetypesdialog.h"
 #include "ui/potentialcheckdialog.h"
 #include "ui/duplicateoffsetdialog.h"
 #include "ui/jumptoelementdialog.h"
@@ -1218,6 +1219,17 @@ void QETDiagramEditor::setUpActions()
 				dialog->show();
 			}
 		});
+	// The device types of the project and of the user's library
+	m_device_types = new QAction(tr("Device types..."), this);
+	m_device_types->setObjectName(QStringLiteral("deviceTypes"));
+	m_device_types->setStatusTip(tr("Make and change the device types of the project and of your library", "status bar tip"));
+	ShortcutManager::instance().registerAction(m_device_types, "diagrameditor.device_types", tr("Diagram editors"), QKeySequence());
+	connect(m_device_types, &QAction::triggered, this, [this]() {
+		if (ProjectView *view = currentProjectView()) {
+			DeviceTypesDialog dialog(view->project(), this);
+			dialog.exec();
+		}
+	});
 	// Devices not drawn the way their device type says
 	m_check_device_types = new QAction(tr("Check device types..."), this);
 	m_check_device_types->setObjectName(QStringLiteral("checkDeviceTypes"));
@@ -2325,6 +2337,7 @@ void QETDiagramEditor::setUpMenu()
 	menu_project -> addAction(m_clean_project);
 	menu_project->addAction(m_find_duplicate_labels);
 	menu_project->addAction(m_check_potentials);
+	menu_project->addAction(m_device_types);
 	menu_project->addAction(m_check_device_types);
 	menu_project->addAction(m_project_languages);
 	menu_project -> addSeparator();
@@ -3952,6 +3965,7 @@ void QETDiagramEditor::slot_updateActions()
 	m_project_edit_properties     -> setEnabled(opened_project);
 	m_find_duplicate_labels->setEnabled(opened_project);
 	m_check_potentials->setEnabled(opened_project);
+	m_device_types->setEnabled(opened_project);
 	m_check_device_types->setEnabled(opened_project);
 	m_project_languages->setEnabled(opened_project);
 	m_project_history             -> setEnabled(opened_project);
