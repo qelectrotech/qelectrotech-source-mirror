@@ -135,6 +135,7 @@ class CrossRefItem : public QGraphicsObject
 		void linkedChanged();
 		void buildHeaderContact(QPainter &painter, QPointF no_pos, QPointF nc_pos);
 		void setUpCrossBoundingRect(QPainter &painter);
+		void setGeometryRect(const QRectF &rect);
 		void drawAsCross(QPainter &painter);
 		void drawAsContacts(QPainter &painter);
 		void drawAsPlcTable(QPainter &painter);

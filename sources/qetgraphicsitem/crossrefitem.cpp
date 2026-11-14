@@ -942,9 +942,29 @@ void CrossRefItem::setUpCrossBoundingRect(QPainter &painter)
 
 	//Minor adjustement for better visual
 	default_bounding.adjust(0, 0, 4, 0);
-	m_shape_path.addRect(default_bounding);
-	prepareGeometryChange();
-	m_bounding_rect = default_bounding;
+	setGeometryRect(default_bounding);
+}
+
+/**
+	@brief CrossRefItem::setGeometryRect
+	Store @p rect as the bounding rect of this item.
+	The geometry is built in updateLabel() (m_update_map == true):
+	only there the shape is extended and the scene told the geometry
+	changes. paint() replays the same draw functions with
+	m_update_map == false and gets the very same rect: calling
+	prepareGeometryChange() from paint() would mark the item dirty
+	again and schedule a new paint, endlessly (100% of a CPU core,
+	issue #1903), and m_shape_path would grow at every paint.
+	@param rect : the new bounding rect
+*/
+void CrossRefItem::setGeometryRect(const QRectF &rect)
+{
+	if (m_update_map)
+	{
+		prepareGeometryChange();
+		m_shape_path.addRect(rect);
+	}
+	m_bounding_rect = rect;
 }
 
 /**
@@ -1115,9 +1135,7 @@ void CrossRefItem::drawAsContacts(QPainter &painter)
 	}
 
 	bounding_rect.adjust(-list_margin_left, -4, list_margin_right, 4);
-	prepareGeometryChange();
-	m_bounding_rect = bounding_rect;
-	m_shape_path.addRect(bounding_rect);
+	setGeometryRect(bounding_rect);
 }
 
 /**
@@ -1725,8 +1743,10 @@ void CrossRefItem::AddExtraInfo(QPainter &painter, const QString& type)
 
 		text_bounding.adjust(-1,0,1,0); //adjust only for better visual
 
-		m_shape_path.addRect(text_bounding);
-		prepareGeometryChange();
+		if (m_update_map) {
+			m_shape_path.addRect(text_bounding);
+			prepareGeometryChange();
+		}
 		m_bounding_rect = m_bounding_rect.united(text_bounding);
 		if (type == "comment") painter.drawRoundedRect(text_bounding,
 							       2,
@@ -2031,7 +2051,5 @@ void CrossRefItem::drawAsPlcTable(QPainter &painter)
 		}
 	}
 
-	prepareGeometryChange();
-	m_bounding_rect = bg_rect;
-	m_shape_path.addRect(bg_rect);
+	setGeometryRect(bg_rect);
 }
