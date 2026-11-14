@@ -5041,6 +5041,15 @@ void projectDataBase::createElementNomenclatureView()
 					 "ei.plc_function AS plc_function,"
 					 "ei.plc_comment AS plc_comment,"
 					 "ei.plc_crossref AS plc_crossref,"
+					 "ei.xref AS xref,"
+						//What the part is physically and what it costs: the
+						//parts list export offers these fields, so they have
+						//to be columns of this view
+					 "ei.width AS width,"
+					 "ei.height AS height,"
+					 "ei.depth AS depth,"
+					 "ei.unit_price AS unit_price,"
+					 "ei.labour_time AS labour_time,"
 					
 					 "d.pos AS diagram_position,"
 						 "e.type AS element_type,"

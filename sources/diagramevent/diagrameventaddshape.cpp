@@ -277,6 +277,7 @@ void DiagramEventAddShape::mousePressEvent(QGraphicsSceneMouseEvent *event)
 			if (m_shape_item->shapeType() == QetShapeItem::Rectangle || m_shape_item->shapeType() == QetShapeItem::Ellipse) {
 				m_shape_item->setRect(m_shape_item->rect().normalized());
 			}
+			shapeDrawn(m_shape_item);
 			m_diagram->undoStack().push (new AddGraphicsObjectCommand(m_shape_item, m_diagram));
 			m_shape_item = nullptr; //< set to nullptr for create new shape at next left clic
 			hideCenterMarker();
