@@ -23,10 +23,13 @@
 
 #include <QPointF>
 
+#include <functional>
+
 class Element;
 class QGraphicsLineItem;
 class QGraphicsPathItem;
 class QStatusBar;
+class QUndoCommand;
 
 /**
 	@brief The DiagramEventAddElement class
@@ -55,6 +58,10 @@ class DiagramEventAddElement : public DiagramEventInterface
 		void init() override;
 			/// The symbol that follows the mouse, until it is dropped
 		Element *pendingElement() const { return m_element; }
+			/// Place one symbol only, without numbering it: @p placed is
+			/// given it and the command placing it, then this event ends
+		void placeOnce(std::function<void(Element *, QUndoCommand *)> placed)
+		{ m_placed = std::move(placed); }
 
 	private:
 		bool buildElement();
@@ -69,6 +76,7 @@ class DiagramEventAddElement : public DiagramEventInterface
 		Element *m_element;
 		QString m_integrate_path;
 		QPointer<QStatusBar> m_status_bar;
+		std::function<void(Element *, QUndoCommand *)> m_placed;
 
 			/// Placing along a drag
 		bool m_pressed = false,

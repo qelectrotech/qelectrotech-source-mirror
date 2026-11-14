@@ -234,12 +234,57 @@
            </widget>
           </item>
           <item>
+           <widget class="QCheckBox" name="m_strip_cable_core_targets">
+            <property name="text">
+             <string>Show the destination terminal of each cable core in terminal strip plans</string>
+            </property>
+            <property name="toolTip">
+             <string>Show the destination device and terminal for each connected core in the cable's destination box.</string>
+            </property>
+           </widget>
+          </item>
+          <item>
            <widget class="QCheckBox" name="m_warn_outside_sheet_cb">
             <property name="toolTip">
              <string>Printing and exporting ask first when symbols, texts, shapes, pictures or tables lie outside the sheet, as they are cut off or left out; saving says so in the status bar.</string>
             </property>
             <property name="text">
              <string>Warn about items outside the sheet</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="m_structure_box_color_layout">
+            <item>
+             <widget class="QLabel" name="m_structure_box_color_label">
+              <property name="text">
+               <string>Colour of new structure boxes</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="KColorButton" name="m_structure_box_color_kpb">
+              <property name="toolTip">
+               <string>A structure box is drawn in this colour, its name too, so that it is told apart from wires and drawn shapes. Each box can take another colour in its properties. Black by default.</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="m_structure_box_color_spacer">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="m_structure_box_ask_place_cb">
+            <property name="toolTip">
+             <string>As soon as a structure box is drawn, its plant, location and prefix are asked for. Cancelled, the box stays empty. Unticked by default: they are entered afterwards in its properties.</string>
+            </property>
+            <property name="text">
+             <string>Ask for the place of a structure box when it is drawn</string>
             </property>
            </widget>
           </item>
@@ -520,6 +565,20 @@
             </property>
             <property name="text">
              <string>With "auto conductor", a drag places a connection symbol on every wire it crosses</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="m_ctrl_drag_copies_cb">
+            <property name="text">
+             <string>Dragging with Ctrl held copies the selection</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="m_duplicate_follows_mouse_cb">
+            <property name="text">
+             <string>Duplicate: the copy follows the mouse until a click</string>
             </property>
            </widget>
           </item>
@@ -1147,6 +1206,16 @@
            </widget>
           </item>
           <item>
+           <widget class="QCheckBox" name="m_update_follows_moved_origin_cb">
+            <property name="text">
+             <string>Updating the elements moves a symbol whose insertion point moved</string>
+            </property>
+            <property name="toolTip">
+             <string>Project &gt; Update elements from the collections: when a symbol's drawing was moved as a whole, its insertion point set elsewhere, each placed symbol is moved back by the same offset, so its terminals, conductors and texts stay where they are. Unticked by default: such a symbol keeps its old drawing and is listed.</string>
+            </property>
+           </widget>
+          </item>
+          <item>
            <widget class="QLabel" name="label_4">
             <property name="text">
              <string>Element may include information about its authors, license, or other useful information. Specify the default value of this textfield for new elements below:</string>
@@ -1398,17 +1467,14 @@
          </property>
          <layout class="QGridLayout" name="gridLayout_cable_textes">
           <item row="0" column="0">
-           <widget class="QLabel" name="label_cable_textes">
+           <widget class="QLabel" name="label_cable_designation">
             <property name="text">
-             <string>Designation, type, plant, location, length:</string>
-            </property>
-            <property name="wordWrap">
-             <bool>true</bool>
+             <string extracomment="one of the five texts of a cable, one row each in the preferences; the same names the cable properties dialog uses">Designation:</string>
             </property>
            </widget>
           </item>
           <item row="0" column="1">
-           <spacer name="horizontalSpacer_cable_textes">
+           <spacer name="horizontalSpacer_cable_designation">
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
             </property>
@@ -1421,27 +1487,37 @@
            </spacer>
           </item>
           <item row="0" column="2">
-           <widget class="QPushButton" name="m_cable_text_font_pb">
+           <widget class="QPushButton" name="m_cable_designation_font_pb">
             <property name="toolTip">
-             <string>Font of the texts written along the cable line; a cable which has its own keeps it.</string>
+             <string extracomment="tooltip of the font button of one text of a cable in the preferences">Font of this text written along the cable line; a cable which has its own keeps it.</string>
             </property>
             <property name="text">
              <string/>
             </property>
            </widget>
           </item>
-          <item row="1" column="0">
-           <widget class="QLabel" name="label_cable_core_textes">
-            <property name="text">
-             <string>Core colors (all of them):</string>
+          <item row="0" column="3">
+           <widget class="QToolButton" name="m_cable_designation_reset_tb">
+            <property name="toolTip">
+             <string extracomment="tooltip of the reset button beside a text of a cable in the preferences">Set this text back to the default font of the cable texts</string>
             </property>
-            <property name="wordWrap">
+            <property name="autoRaise">
              <bool>true</bool>
+            </property>
+            <property name="icon">
+             <iconset theme="edit-undo"/>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="label_cable_type">
+            <property name="text">
+             <string extracomment="one of the five texts of a cable, one row each in the preferences; the same names the cable properties dialog uses">Type:</string>
             </property>
            </widget>
           </item>
           <item row="1" column="1">
-           <spacer name="horizontalSpacer_cable_core_textes">
+           <spacer name="horizontalSpacer_cable_type">
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
             </property>
@@ -1454,6 +1530,181 @@
            </spacer>
           </item>
           <item row="1" column="2">
+           <widget class="QPushButton" name="m_cable_type_font_pb">
+            <property name="toolTip">
+             <string extracomment="tooltip of the font button of one text of a cable in the preferences">Font of this text written along the cable line; a cable which has its own keeps it.</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="3">
+           <widget class="QToolButton" name="m_cable_type_reset_tb">
+            <property name="toolTip">
+             <string extracomment="tooltip of the reset button beside a text of a cable in the preferences">Set this text back to the default font of the cable texts</string>
+            </property>
+            <property name="autoRaise">
+             <bool>true</bool>
+            </property>
+            <property name="icon">
+             <iconset theme="edit-undo"/>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="label_cable_installation">
+            <property name="text">
+             <string extracomment="one of the five texts of a cable, one row each in the preferences; the same names the cable properties dialog uses">Plant (=):</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <spacer name="horizontalSpacer_cable_installation">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="2" column="2">
+           <widget class="QPushButton" name="m_cable_installation_font_pb">
+            <property name="toolTip">
+             <string extracomment="tooltip of the font button of one text of a cable in the preferences">Font of this text written along the cable line; a cable which has its own keeps it.</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="3">
+           <widget class="QToolButton" name="m_cable_installation_reset_tb">
+            <property name="toolTip">
+             <string extracomment="tooltip of the reset button beside a text of a cable in the preferences">Set this text back to the default font of the cable texts</string>
+            </property>
+            <property name="autoRaise">
+             <bool>true</bool>
+            </property>
+            <property name="icon">
+             <iconset theme="edit-undo"/>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0">
+           <widget class="QLabel" name="label_cable_location">
+            <property name="text">
+             <string extracomment="one of the five texts of a cable, one row each in the preferences; the same names the cable properties dialog uses">Location (+):</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1">
+           <spacer name="horizontalSpacer_cable_location">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="3" column="2">
+           <widget class="QPushButton" name="m_cable_location_font_pb">
+            <property name="toolTip">
+             <string extracomment="tooltip of the font button of one text of a cable in the preferences">Font of this text written along the cable line; a cable which has its own keeps it.</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="3">
+           <widget class="QToolButton" name="m_cable_location_reset_tb">
+            <property name="toolTip">
+             <string extracomment="tooltip of the reset button beside a text of a cable in the preferences">Set this text back to the default font of the cable texts</string>
+            </property>
+            <property name="autoRaise">
+             <bool>true</bool>
+            </property>
+            <property name="icon">
+             <iconset theme="edit-undo"/>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="0">
+           <widget class="QLabel" name="label_cable_length">
+            <property name="text">
+             <string extracomment="one of the five texts of a cable, one row each in the preferences; the same names the cable properties dialog uses">Length:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="1">
+           <spacer name="horizontalSpacer_cable_length">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="4" column="2">
+           <widget class="QPushButton" name="m_cable_length_font_pb">
+            <property name="toolTip">
+             <string extracomment="tooltip of the font button of one text of a cable in the preferences">Font of this text written along the cable line; a cable which has its own keeps it.</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="3">
+           <widget class="QToolButton" name="m_cable_length_reset_tb">
+            <property name="toolTip">
+             <string extracomment="tooltip of the reset button beside a text of a cable in the preferences">Set this text back to the default font of the cable texts</string>
+            </property>
+            <property name="autoRaise">
+             <bool>true</bool>
+            </property>
+            <property name="icon">
+             <iconset theme="edit-undo"/>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="0">
+           <widget class="QLabel" name="label_cable_core_textes">
+            <property name="text">
+             <string>Core colors (all of them):</string>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="1">
+           <spacer name="horizontalSpacer_cable_core_textes">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="5" column="2">
            <widget class="QPushButton" name="m_cable_core_font_pb">
             <property name="toolTip">
              <string>Font of the core colors written along the line; a cable which has its own keeps it.</string>
@@ -1463,7 +1714,20 @@
             </property>
            </widget>
           </item>
-          <item row="2" column="0">
+          <item row="5" column="3">
+           <widget class="QToolButton" name="m_cable_core_reset_tb">
+            <property name="toolTip">
+             <string extracomment="tooltip of the reset button beside a text of a cable in the preferences">Set this text back to the default font of the cable texts</string>
+            </property>
+            <property name="autoRaise">
+             <bool>true</bool>
+            </property>
+            <property name="icon">
+             <iconset theme="edit-undo"/>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="0">
            <widget class="QLabel" name="label_cable_align">
             <property name="text">
              <string>Text alignment:</string>
@@ -1473,7 +1737,7 @@
             </property>
            </widget>
           </item>
-          <item row="2" column="1" colspan="2">
+          <item row="6" column="1" colspan="3">
            <widget class="QComboBox" name="m_cable_align_cb">
             <property name="toolTip">
              <string>Where the texts of a cable stop relative to the start of its line; a cable which has its own keeps it.</string>
@@ -2101,6 +2365,7 @@
   <tabstop>m_selection_frame_radius_sb</tabstop>
   <tabstop>m_terminal_conductor_color</tabstop>
   <tabstop>m_strip_wires</tabstop>
+  <tabstop>m_strip_cable_core_targets</tabstop>
   <tabstop>m_zoom_out_beyond_folio</tabstop>
   <tabstop>m_use_gesture_trackpad</tabstop>
   <tabstop>m_selection_rectangle_cb</tabstop>

@@ -16,6 +16,7 @@
  *	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include "masterpropertieswidget.h"
+#include "../devicetype/devicetypelink.h"
 #include "contactgroupselectiondialog.h"
 #include <qetproject.h>
 #include <diagram.h>
@@ -30,6 +31,8 @@
 #include <QListWidgetItem>
 #include <QMessageBox>
 #include <QTableWidget>
+#include <QPointer>
+#include <QTimer>
 #include <QSpinBox>
 #include <QCheckBox>
 #include <QComboBox>
@@ -302,10 +305,34 @@ void MasterPropertiesWidget::headerCustomContextMenuRequested(const QPoint &pos)
  */
 void MasterPropertiesWidget::on_link_button_clicked()
 {
+		//A device with a device type, in a project following the types: its
+		//type says what it has, in place of max_slaves (DeviceTypeLink)
+	const bool typed = DeviceTypeLink::limits(m_element);
+	if (typed) {
+		QTreeWidgetItem *current = ui->m_free_tree_widget->currentItem();
+		Element *slave = current ? elementOf(current) : nullptr;
+		if (slave && DeviceTypeLink::refuses(m_element, slave)) {
+			QMessageBox::warning(this->window(), tr("That link cannot be made"),
+								 tr("This device has no free contact of this kind: every "
+									"part of its device type is drawn."));
+			return;
+		}
+		if (slave) {
+			QPointer<Element> linked = slave;
+			connect(slave, &Element::linkedElementChanged, slave, [linked]() {
+					//After the link's own step: the symbol is replaced
+				QTimer::singleShot(0, linked, [linked]() {
+					if (linked && !linked->linkedElements().isEmpty())
+						DeviceTypeLink::takeNextFreePart(linked);
+				});
+			}, Qt::SingleShotConnection);
+		}
+	}
+
 	// Get the maximum number of allowed slaves from the element's information
 	QVariant max_slaves_variant = m_element->kindInformations().value("max_slaves");
 
-	if (max_slaves_variant.isValid() && !max_slaves_variant.toString().isEmpty()) {
+	if (!typed && max_slaves_variant.isValid() && !max_slaves_variant.toString().isEmpty()) {
 		int max_slaves = max_slaves_variant.toInt();
 		int current_slaves = ui->m_link_tree_widget->topLevelItemCount();
 

@@ -1,0 +1,224 @@
+name: macOS DMG
+
+# Builds the universal (arm64 + x86_64) macOS DMG with the scripts of
+# build-aux/macos/homebrew and publishes it on the rolling nightly release.
+#
+# No signature in this CI: QET_SIGN=0 signs ad hoc (arm64 binaries must be
+# signed to run), without a Developer ID, so there is no notarization
+# either. macOS blocks such a DMG at first launch; the download page tells
+# the user how to allow it. Releases stay signed and notarized on a Mac.
+#
+# Not triggered on its own: windows-msi.yml calls it, in parallel with the
+# MSI and the AppImage, so the DMG is only built when the Windows CI/CD
+# runs, and its deploy-pages job waits for it before regenerating the
+# download page. A manual run is still possible; it updates the release,
+# not the page.
+
+on:
+  workflow_call:
+    inputs:
+      ref:
+        description: "Commit to build (default: the triggering commit)"
+        type: string
+        required: false
+        default: ""
+      nightly_tag:
+        description: "Release receiving the DMG"
+        type: string
+        required: false
+        default: "nightly-qt6"
+    outputs:
+      dmg_name:
+        description: "File name of the published DMG (empty if none)"
+        value: ${{ jobs.build-dmg.outputs.dmg_name }}
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: "Commit or branch to build (empty: master)"
+        required: false
+        default: ""
+      nightly_tag:
+        description: "Release receiving the DMG"
+        required: false
+        default: "nightly-qt6"
+
+jobs:
+  build-dmg:
+    name: Build DMG (Qt6, universal)
+    # Standard arm64 runner (free for public repositories, unlike the
+    # -large / -xlarge ones). The Intel part of the DMG is cross-built
+    # here: no Intel runner needed (the last one, macos-15-intel, goes
+    # away in August 2027).
+    runs-on: macos-15
+    timeout-minutes: 150
+
+    permissions:
+      contents: write
+
+    env:
+      NIGHTLY_TAG: ${{ inputs.nightly_tag || 'nightly-qt6' }}
+      SCRIPTS_DIR: build-aux/macos/homebrew
+      # No Developer ID in the CI, no upload to download.qelectrotech.org
+      QET_SIGN: "0"
+      QET_NOTARIZE: "0"
+      QET_UPLOAD: "0"
+      HOMEBREW_NO_AUTO_UPDATE: "1"
+      HOMEBREW_NO_INSTALL_CLEANUP: "1"
+      CCACHE_MAXSIZE: 1G
+
+    outputs:
+      dmg_name: ${{ steps.result.outputs.dmg_name }}
+
+    steps:
+      # ----------------------------------------------------------------
+      # 1. Checkout
+      #
+      #    fetch-depth 0: the revision number of the DMG name is
+      #    git rev-list HEAD --count + 473, as for the other packagings.
+      #    lfs false: the LFS objects are not needed to build, and each
+      #    run would otherwise use LFS bandwidth (see issue #975).
+      # ----------------------------------------------------------------
+      - name: Checkout
+        uses: actions/checkout@v7
+        with:
+          ref: ${{ inputs.ref || github.event.workflow_run.head_sha || github.sha }}
+          fetch-depth: 0
+          submodules: recursive
+          lfs: false
+
+      # ----------------------------------------------------------------
+      # 2. Versions and paths from config.sh, for the cache keys
+      # ----------------------------------------------------------------
+      - name: Read build configuration
+        shell: bash
+        run: |
+          set -euo pipefail
+          source "$SCRIPTS_DIR/config.sh"
+          if [ "$QT_FROM" != "aqt" ]; then
+            echo "::error::The CI builds with QT_FROM=aqt (universal DMG), config.sh has QT_FROM=$QT_FROM."
+            exit 1
+          fi
+          {
+            echo "QT_VERSION=$QT_VERSION"
+            echo "KF_VERSION=$KF_VERSION"
+            echo "QT_ROOT=$QT_ROOT"
+            echo "KF_PREFIX=$KF_PREFIX"
+            echo "DEPS_PREFIX=$DEPS_PREFIX"
+            echo "CCACHE_DIR=$RUNNER_TEMP/ccache"
+            echo "LIBS_KEY=qt$QT_VERSION-kf$KF_VERSION-sqlite$SQLITE_VERSION-hidapi$HIDAPI_VERSION-macos$OSX_MIN_TARGET-$(echo "$OSX_ARCHS" | tr ';' '-')"
+          } >> "$GITHUB_ENV"
+
+      # ----------------------------------------------------------------
+      # 3. Caches
+      #
+      #    Qt (aqtinstall), KF6, sqlite and hidapi only change with their
+      #    versions in config.sh: restored, they make 01/02 skip them and
+      #    only QET is built. ccache speeds up the universal QET build
+      #    (every file is compiled twice, once per architecture).
+      # ----------------------------------------------------------------
+      - name: Cache Qt and libraries
+        uses: actions/cache@v4
+        with:
+          path: |
+            ${{ env.QT_ROOT }}
+            ${{ env.KF_PREFIX }}
+            ${{ env.DEPS_PREFIX }}
+          key: macos-${{ env.LIBS_KEY }}-v1
+
+      - name: Cache ccache
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.CCACHE_DIR }}
+          key: macos-ccache-${{ env.LIBS_KEY }}-${{ github.sha }}
+          restore-keys: |
+            macos-ccache-${{ env.LIBS_KEY }}-
+
+      # ----------------------------------------------------------------
+      # 4. Build: tools and Qt, libraries and QET, DMG
+      #
+      #    QET_SOURCE_DIR: build this checkout instead of cloning QET.
+      # ----------------------------------------------------------------
+      - name: Prepare the host
+        working-directory: ${{ env.SCRIPTS_DIR }}
+        run: ./01-build-homebrew.sh
+
+      - name: Build QElectroTech
+        working-directory: ${{ env.SCRIPTS_DIR }}
+        env:
+          QET_SOURCE_DIR: ${{ github.workspace }}
+        run: ./02-build-qet.sh
+
+      - name: Build the DMG
+        working-directory: ${{ env.SCRIPTS_DIR }}
+        run: ./03-build-installer.sh
+
+      - name: Find the DMG
+        id: result
+        shell: bash
+        run: |
+          set -euo pipefail
+          FILE=$(find "$SCRIPTS_DIR/bundle" -maxdepth 1 -name "*.dmg" | head -n 1)
+          [ -n "$FILE" ] || { echo "::error::No DMG in $SCRIPTS_DIR/bundle"; exit 1; }
+          echo "dmg_name=$(basename "$FILE")" >> "$GITHUB_OUTPUT"
+          echo "Built: $(basename "$FILE") ($(du -h "$FILE" | cut -f1))"
+
+      # Short retention: the DMG is also on the nightly release, the
+      # artifact is only there to download the build of a given run.
+      - name: Upload DMG artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: qelectrotech-macos-dmg
+          path: ${{ env.SCRIPTS_DIR }}/bundle/*
+          if-no-files-found: error
+          retention-days: 7
+
+      - name: Upload build logs
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: qelectrotech-macos-dmg-logs
+          path: ${{ env.SCRIPTS_DIR }}/logs/*
+          if-no-files-found: ignore
+          retention-days: 7
+
+      # ----------------------------------------------------------------
+      # 5. Publish on the nightly release
+      #
+      #    The previous DMG is only deleted once a new one exists (same
+      #    lesson as the MSI: a failed build must not leave the nightly
+      #    without any DMG to download).
+      # ----------------------------------------------------------------
+      - name: Delete old nightly DMG assets
+        if: steps.result.outputs.dmg_name != ''
+        shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          if ! gh release view "$NIGHTLY_TAG" --repo "$REPO" > /dev/null 2>&1 ; then
+            echo "Release '$NIGHTLY_TAG' does not exist yet: nothing to delete."
+            exit 0
+          fi
+          gh release view "$NIGHTLY_TAG" --repo "$REPO" --json assets \
+             --jq '.assets[].name | select(test("\\.dmg(-SHA256\\.txt)?$"))' |
+          while read -r NAME ; do
+            echo "Deleting $NAME"
+            gh release delete-asset "$NIGHTLY_TAG" "$NAME" --repo "$REPO" --yes
+          done
+
+      # prerelease / make_latest set explicitly, as in windows-msi.yml: if
+      # this step creates the release, it must not become "Latest".
+      - name: Upload DMG to nightly release
+        if: steps.result.outputs.dmg_name != ''
+        uses: softprops/action-gh-release@v3
+        with:
+          tag_name: ${{ env.NIGHTLY_TAG }}
+          prerelease: true
+          make_latest: false
+          files: |
+            ${{ env.SCRIPTS_DIR }}/bundle/*.dmg
+            ${{ env.SCRIPTS_DIR }}/bundle/*.dmg-SHA256.txt
+          fail_on_unmatched_files: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -213,12 +213,17 @@ QLineF CablePart::line() const
 
 /**
 	@brief CablePart::textFont
-	@return the font a text of the cable is written with when the cable
-	itself asks for none: what the preferences offer on the "Textes"
+	@return the font every text of the cable follows when neither the
+	cable nor the preferences give that very text a font of its own:
+	what the preferences offer for all of them together on the "Textes"
 	page, and -- until he has picked something there -- the font the
 	folio writes its own texts with, a shade smaller: the way every
 	cable has always been drawn, so that merely opening the
 	preferences changes nothing.
+
+	One text of a cable may well be set apart from the others, so a
+	text which has a default of its own is written with that instead:
+	see fontOf().
 */
 QFont CablePart::textFont() const
 {
@@ -242,7 +247,8 @@ QFont CablePart::coreFont() const
 	"installation", "location", "length" or "cores"
 	@return the font that text is really written with: the one this
 	cable asks for, or -- when it asks for none -- the one the
-	preferences offer
+	preferences offer for that very text, each of the five having a
+	default of its own since they were set apart
 */
 QFont CablePart::fontOf(const QString &key) const
 {
@@ -276,7 +282,8 @@ QFont CablePart::fontOf(const QString &key) const
 		}
 	}
 
-	return key == QLatin1String("cores") ? QETApp::cableCoreFont() : textFont();
+	return key == QLatin1String("cores") ? QETApp::cableCoreFont()
+										 : QETApp::cableTextsFont(key);
 }
 
 /**

@@ -25,6 +25,8 @@
 namespace Ui {
 	class GeneralConfigurationPage;
 }
+class QPushButton;
+class QToolButton;
 
 class GeneralConfigurationPage : public ConfigPage
 {
@@ -53,8 +55,6 @@ class GeneralConfigurationPage : public ConfigPage
 		void on_m_cable_type_list_browse_pb_clicked();
 		void on_m_cable_type_list_create_pb_clicked();
 		void on_m_indi_text_font_pb_clicked();
-		void on_m_cable_text_font_pb_clicked();
-		void on_m_cable_core_font_pb_clicked();
 		void on_MaxPartsElementEditorList_sb_valueChanged(int value);
 		void on_DiagramEditor_Grid_PointSize_min_sb_valueChanged(int value);
 		void on_ElementEditor_Grid_PointSize_min_sb_valueChanged(int value);
@@ -64,6 +64,24 @@ class GeneralConfigurationPage : public ConfigPage
 
 	private:
 		void fillLang();
+			/**
+				One row of the texts of a cable on the "Texte" page:
+				the name the text goes by in the settings and in the
+				cable itself, the button picking a font for it and the
+				button taking that choice back. Six of them: the five
+				texts written along the line, plus the colours of the
+				cores which are drawn together beside it.
+			*/
+		struct CableTextRow
+		{
+			QString key;
+			QPushButton *font_button = nullptr;
+			QToolButton *reset_button = nullptr;
+		};
+			///Every row of the box, in the order they are offered
+		QList<CableTextRow> m_cable_text_rows;
+		void refreshCableTextRow(const CableTextRow &row);
+		void editCableTextFont(const CableTextRow &row);
 	
 	private:
 		Ui::GeneralConfigurationPage *ui;

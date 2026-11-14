@@ -86,9 +86,11 @@ struct CablePartData
 
 	Both fields may say nothing at all, and that is the normal case:
 	the cable then writes that text the way the preferences offer it
-	(QETApp::cableTextsFont() and QETApp::cableCoreFont()), so picking
-	another default in the preferences reaches every cable which has
-	not been given a font of its own.
+	for that very text (QETApp::cableTextsFont(key) and
+	QETApp::cableCoreFont()), so picking another default in the
+	preferences reaches every cable which has not been given a font
+	of its own -- and the five texts may be given defaults apart from
+	each other, since they were set apart on that page.
 
 	The texts of a cable are kept in one hash rather than one pair of
 	members each, so that a new text can be added without dragging a

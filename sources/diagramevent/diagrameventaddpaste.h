@@ -71,11 +71,16 @@ class DiagramEventAddPaste : public DiagramEventInterface
 				///the OS cursor to the group's origin so the baseline
 				///matches what is on screen: Ctrl+Shift+V, "paste at the
 				///origin point".
-			AtOrigin
+			AtOrigin,
+				///Leave the group at its original XML position and move it
+				///by the cursor's step from \a start_pos: a copy dragged
+				///off the original with Ctrl held.
+			InPlace
 		};
 
 		DiagramEventAddPaste(Diagram *diagram, const QPointF &start_pos,
-				     PastePlacement placement = UnderCursor);
+				     PastePlacement placement = UnderCursor,
+				     const QString &fragment = QString());
 		~DiagramEventAddPaste() override;
 
 		void mouseMoveEvent    (QGraphicsSceneMouseEvent *event) override;
@@ -86,6 +91,16 @@ class DiagramEventAddPaste : public DiagramEventInterface
 
 			///@return true if the clipboard holds something this can paste.
 		static bool clipboardHasDiagram();
+			///Settings > General: a symbol dragged with Ctrl held leaves a
+			///copy of the selection to put down, instead of toggling it;
+			///off by default
+		static bool ctrlDragCopies();
+		static void setCtrlDragCopies(bool copies);
+			///Settings > General: Duplicate (Ctrl+D) hangs the copy on the
+			///mouse until a click, instead of stamping it at the
+			///configured spacing; off by default
+		static bool duplicateFollowsMouse();
+		static void setDuplicateFollowsMouse(bool follows);
 
 	private:
 		void moveTo(const QPointF &scene_pos);

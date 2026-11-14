@@ -37,6 +37,7 @@
 #include <ui/projectpropertiesdialog.h>
 #include <ui_elementinfowidget.h>
 #include <undocommand/changeelementinformationcommand.h>
+#include <devicetype/devicetype.h>
 #include "customelementinfopartwidget.h"
 #include "elementinfopartwidget.h"
 
@@ -483,6 +484,17 @@ void ElementInfoWidget::populateSuggestions(Element *element,
 			"ORDER BY v COLLATE NOCASE").arg(key, uuid));
 		while (query.next()) {
 			values << query.value(0).toString();
+		}
+			//The device types of the project and the user's library
+		if (key == QETInformation::ELMT_DEVICE_TYPE) {
+			QStringList types;
+			for (const DeviceType &type : project->deviceTypes())
+				types << type.name;
+			types << DeviceTypeLibrary::names();
+			for (const QString &type : std::as_const(types))
+				if (!values.contains(type, Qt::CaseInsensitive))
+					values << type;
+			values.sort(Qt::CaseInsensitive);
 		}
 		eipw->setSuggestions(values);
 	}

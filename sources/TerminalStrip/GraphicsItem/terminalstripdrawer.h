@@ -97,6 +97,8 @@ namespace TerminalStripDrawer
 			//Cable (hose) connected to the terminal, drawn under the strip.
 			virtual QString cable() const { return QString(); }
 			virtual QString cableWire() const { return QString(); }
+			virtual QStringList cableCoreTargets(const QString &, const QUuid &,
+												 int) const { return {}; }
 			virtual bool isShield() const { return false; }
 			//Installation, Location and Label (BMK) of the piece the cable
 			//goes to at its far end -- the same three fields the cable list

@@ -57,9 +57,11 @@
 	@param placement : UnderCursor moves the group under the cursor
 	(default), AtOrigin leaves it at its original XML position and warps
 	the OS cursor to the group's origin so baseline and screen match.
+	@param fragment : the diagram fragment to place, as Diagram::toXml()
+	writes it; the clipboard's when empty
 */
 	DiagramEventAddPaste::DiagramEventAddPaste(Diagram *diagram, const QPointF &start_pos,
-						   PastePlacement placement) :
+						   PastePlacement placement, const QString &fragment) :
 	DiagramEventInterface(diagram)
 {
 	m_placement = placement;
@@ -69,7 +71,8 @@
 		//DiagramEventAddMacro does.
 	init();
 
-	const QString clipboard_text = QApplication::clipboard()->text();
+	const QString clipboard_text = fragment.isEmpty() ? QApplication::clipboard()->text()
+													  : fragment;
 	if (clipboard_text.isEmpty()) return;
 
 	QDomDocument document_xml;
@@ -152,7 +155,7 @@
 			qRound(p.y() / yGrid) * yGrid);
 	};
 	m_original_pos = snapGrid(top_left);
-	const QPointF grid_origin = (m_placement == AtOrigin)
+	const QPointF grid_origin = (m_placement != UnderCursor)
 			? m_original_pos
 			: snapGrid(start_pos);
 	m_current_pos = grid_origin;
@@ -230,6 +233,10 @@
 		m_initial_cursor = m_group_origin;
 		m_baseline_captured = true;
 	}
+	if (m_placement == InPlace) {
+		m_initial_cursor = snapGrid(start_pos);
+		m_baseline_captured = true;
+	}
 
 	m_diagram->clearSelection();
 	for (auto *item : movable) {
@@ -279,6 +286,26 @@ DiagramEventAddPaste::~DiagramEventAddPaste()
 			view->setContextMenuPolicy(Qt::DefaultContextMenu);
 		}
 	}
+}
+
+bool DiagramEventAddPaste::ctrlDragCopies()
+{
+	return QSettings().value(QStringLiteral("diagrameditor/ctrl_drag_copies"), false).toBool();
+}
+
+void DiagramEventAddPaste::setCtrlDragCopies(bool copies)
+{
+	QSettings().setValue(QStringLiteral("diagrameditor/ctrl_drag_copies"), copies);
+}
+
+bool DiagramEventAddPaste::duplicateFollowsMouse()
+{
+	return QSettings().value(QStringLiteral("diagrameditor/duplicate_follows_mouse"), false).toBool();
+}
+
+void DiagramEventAddPaste::setDuplicateFollowsMouse(bool follows)
+{
+	QSettings().setValue(QStringLiteral("diagrameditor/duplicate_follows_mouse"), follows);
 }
 
 /**

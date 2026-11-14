@@ -259,6 +259,8 @@ void ConductorPropertiesEditorWidget::connectChangeSignals()
 		m_live_connections << c;
 	};
 
+	add(connect(m_cpw, &ConductorPropertiesWidget::colorCodePicked,
+				this, &ConductorPropertiesEditorWidget::apply));
 	for (auto *w : m_cpw->findChildren<QLineEdit *>())
 		add(connect(w, &QLineEdit::editingFinished,
 					this, &ConductorPropertiesEditorWidget::apply));

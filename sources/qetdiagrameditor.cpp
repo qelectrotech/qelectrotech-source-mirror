@@ -100,6 +100,8 @@
 #include "ui/conductorcolortoolbutton.h"
 #include "ui/diagrambgcolorbutton.h"
 #include "ui/duplicatelabelsdialog.h"
+#include "ui/devicetypecheckdialog.h"
+#include "ui/devicetypesdialog.h"
 #include "ui/potentialcheckdialog.h"
 #include "ui/duplicateoffsetdialog.h"
 #include "ui/jumptoelementdialog.h"
@@ -812,6 +814,20 @@ void QETDiagramEditor::setUpActions()
 		auto *dv = currentDiagramView();
 		if (!dv || !dv->diagram()) return;
 
+			//The copy on the mouse, put down with a click, when so set
+			//(Settings > General, off by default)
+		if (DiagramEventAddPaste::duplicateFollowsMouse()) {
+			if (dv->diagram()->isReadOnly() || dv->diagram()->selectedItems().isEmpty()) return;
+			const QPoint last_pos = dv->lastMousePos();
+			const QPoint view_pos = (last_pos.x() >= 0 && dv->viewport()->rect().contains(last_pos))
+					? last_pos
+					: dv->viewport()->rect().center();
+			dv->diagram()->setEventInterface(new DiagramEventAddPaste(
+				dv->diagram(), dv->mapToScene(view_pos), DiagramEventAddPaste::UnderCursor,
+				dv->diagram()->selectionFragment()));
+			return;
+		}
+
 			//Ask the first time only -- every later press reuses whatever
 			//was confirmed then, so the shortcut can be tapped repeatedly
 			//without an interruption each time. m_configure_duplicate
@@ -1232,6 +1248,29 @@ void QETDiagramEditor::setUpActions()
 				dialog->show();
 			}
 		});
+	// The device types of the project and of the user's library
+	m_device_types = new QAction(tr("Device types..."), this);
+	m_device_types->setObjectName(QStringLiteral("deviceTypes"));
+	m_device_types->setStatusTip(tr("Make and change the device types of the project and of your library", "status bar tip"));
+	ShortcutManager::instance().registerAction(m_device_types, "diagrameditor.device_types", tr("Diagram editors"), QKeySequence());
+	connect(m_device_types, &QAction::triggered, this, [this]() {
+		if (ProjectView *view = currentProjectView()) {
+			DeviceTypesDialog dialog(view->project(), this);
+			dialog.exec();
+		}
+	});
+	// Devices not drawn the way their device type says
+	m_check_device_types = new QAction(tr("Check device types..."), this);
+	m_check_device_types->setObjectName(QStringLiteral("checkDeviceTypes"));
+	m_check_device_types->setStatusTip(tr("Lists the parts of each device's type which are not drawn, and the symbols beyond it", "status bar tip"));
+	ShortcutManager::instance().registerAction(m_check_device_types, "diagrameditor.check_device_types", tr("Diagram editors"), QKeySequence());
+	connect(m_check_device_types, &QAction::triggered, this, [this]() {
+		if (ProjectView *view = currentProjectView()) {
+			auto *dialog = new DeviceTypeCheckDialog(view->project(), this);
+			dialog->setAttribute(Qt::WA_DeleteOnClose);
+			dialog->show();
+		}
+	});
 	// Mixed potential types on one potential
 	m_check_potentials = new QAction(tr("Check potential types..."), this);
 	m_check_potentials->setObjectName(QStringLiteral("checkPotentialTypes"));
@@ -2327,6 +2366,8 @@ void QETDiagramEditor::setUpMenu()
 	menu_project -> addAction(m_clean_project);
 	menu_project->addAction(m_find_duplicate_labels);
 	menu_project->addAction(m_check_potentials);
+	menu_project->addAction(m_device_types);
+	menu_project->addAction(m_check_device_types);
 	menu_project->addAction(m_project_languages);
 	menu_project -> addSeparator();
 	menu_project -> addAction(m_csv_export);
@@ -3953,6 +3994,8 @@ void QETDiagramEditor::slot_updateActions()
 	m_project_edit_properties     -> setEnabled(opened_project);
 	m_find_duplicate_labels->setEnabled(opened_project);
 	m_check_potentials->setEnabled(opened_project);
+	m_device_types->setEnabled(opened_project);
+	m_check_device_types->setEnabled(opened_project);
 	m_project_languages->setEnabled(opened_project);
 	m_project_history             -> setEnabled(opened_project);
 	m_export_delivery             -> setEnabled(opened_project);
@@ -5684,19 +5727,26 @@ void QETDiagramEditor::slot_updateElementsFromCollections() {
 							"they were taken from. Replace them with the version "
 							"of the collection?", "", outdated.size())
 						 % QStringLiteral("\n\n")
-						 % tr("Placed elements are redrawn and keep their conductors, "
-							  "as long as their terminals have not moved. This "
-							  "action cannot be undone."),
+						 % (Element::updateFollowsMovedOrigin()
+							? tr("Placed elements are redrawn and keep their conductors, "
+								 "as long as their terminals have not moved or moved "
+								 "all together with the insertion point: such an element "
+								 "is moved back so its terminals stay where they are. "
+								 "This action cannot be undone.")
+							: tr("Placed elements are redrawn and keep their conductors, "
+								 "as long as their terminals have not moved. This "
+								 "action cannot be undone.")),
 						 QMessageBox::Yes | QMessageBox::Cancel, this);
 	question.setDetailedText(names.join(QLatin1Char('\n')));
 	if (question.exec() != QMessageBox::Yes) return;
 
+	const bool follow = Element::updateFollowsMovedOrigin();
 	for (const QETProject::OutdatedElement &element : outdated)
-		project->updateElement(element);
+		project->updateElement(element, follow);
 	project->setModified(true);
 
 	reloadElementDrawings(project, true, title,
-						  tr("%n elements updated.", "", outdated.size()));
+						  tr("%n elements updated.", "", outdated.size()), follow);
 }
 
 /**
@@ -5708,11 +5758,15 @@ void QETDiagramEditor::slot_updateElementsFromCollections() {
 	(see Element::reloadPicture())
 	@param title : title of the report
 	@param intro : first line of the report, may be empty
+	@param follow_moved_origin : move an element whose terminals all moved
+	with its insertion point, so they stay where they are, and redraw it
+	(see Element::followMovedOrigin())
 */
 void QETDiagramEditor::reloadElementDrawings(QETProject *project,
 											 bool adopt_frame,
 											 const QString &title,
-											 const QString &intro) {
+											 const QString &intro,
+											 bool follow_moved_origin) {
 	QList<Element *> elements;
 	QSet<QString> dropped_locations;
 	for (Diagram *diagram : project->diagrams())
@@ -5732,10 +5786,19 @@ void QETDiagramEditor::reloadElementDrawings(QETProject *project,
 
 	int reloaded = 0;
 	int unavailable = 0;
+	int moved = 0;
 	QStringList geometry_changed;
 	for (Element *elmt : elements)
 	{
-		switch (elmt->reloadPicture(adopt_frame))
+		Element::ReloadPictureResult result = elmt->reloadPicture(adopt_frame);
+		if (result == Element::ReloadPictureResult::GeometryChanged
+			&& follow_moved_origin && elmt->followMovedOrigin())
+		{
+			result = elmt->reloadPicture(adopt_frame);
+			if (result == Element::ReloadPictureResult::Reloaded)
+				++moved;
+		}
+		switch (result)
 		{
 			case Element::ReloadPictureResult::Reloaded:
 				++reloaded;
@@ -5756,6 +5819,10 @@ void QETDiagramEditor::reloadElementDrawings(QETProject *project,
 	}
 
 	QString message = tr("%n elements redrawn.", "", reloaded);
+	if (moved)
+		message += QStringLiteral(" ")
+				% tr("%n of them moved with their insertion point: their terminals "
+					 "and conductors stayed where they were.", "", moved);
 	if (!intro.isEmpty())
 		message = intro % QStringLiteral("\n") % message;
 
