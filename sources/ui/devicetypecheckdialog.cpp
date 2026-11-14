@@ -136,7 +136,8 @@ void DeviceTypeCheckDialog::refresh()
 	updatePlaceButton();
 	if (!m_project) return;
 	buildFolios();
-	m_devices = DeviceTypeCheck::check(m_project);
+	QList<Element *> unlinked;
+	m_devices = DeviceTypeCheck::check(m_project, &unlinked);
 	const auto &devices = m_devices;
 
 	const auto where = [this](QTreeWidgetItem *row, Element *symbol) {
@@ -206,7 +207,6 @@ void DeviceTypeCheckDialog::refresh()
 		}
 	}
 		//The contacts without their device
-	const QList<Element *> unlinked = DeviceTypeCheck::unlinkedContacts(m_project);
 	if (!unlinked.isEmpty()) {
 		auto *root = new QTreeWidgetItem(m_tree);
 		root->setIcon(0, style()->standardIcon(QStyle::SP_MessageBoxWarning));

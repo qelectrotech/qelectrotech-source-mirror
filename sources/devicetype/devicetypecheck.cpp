@@ -26,6 +26,7 @@
 #include "../qetproject.h"
 
 #include <QHash>
+#include <QSet>
 #include <QObject>
 
 namespace DeviceTypeCheck
@@ -214,8 +215,11 @@ namespace DeviceTypeCheck
 			}
 		}
 
-			/// The devices of the project, or only the one named by @p only
-		QVector<Device> devices(QETProject *project, Element *only)
+			/// The devices of the project, or only the one named by @p only;
+			/// with @p unlinked, the contacts linked to no master, in the
+			/// same pass over the folios
+		QVector<Device> devices(QETProject *project, Element *only,
+								QList<Element *> *unlinked = nullptr)
 		{
 			QVector<Device> list;
 			if (!project) return list;
@@ -230,10 +234,14 @@ namespace DeviceTypeCheck
 					place_of.insert(head, DuplicateLabels::place(head));
 				return place_of.value(head);
 			};
+			const bool all = project->followDeviceTypes();
 			for (Diagram *diagram : project->diagrams()) {
 				for (Element *element : diagram->elements()) {
 					if (!counted(element)) continue;
 					Element *head = headOf(element);
+					if (unlinked && head == element && (element->linkType() & Element::Slave)
+						&& (all || !typeNameOf(element->elementInformations()).isEmpty()))
+						*unlinked << element;
 					const QString label = deviceLabel(head);
 					if (label.isEmpty()) continue;
 					if (only && label != only_label) continue;
@@ -292,12 +300,13 @@ namespace DeviceTypeCheck
 	/**
 		@return the project's devices which have a device type, in folio order
 	*/
-	QVector<Device> check(QETProject *project)
+	QVector<Device> check(QETProject *project, QList<Element *> *unlinked)
 	{
 		QVector<Device> list;
+		if (unlinked) unlinked->clear();
 		if (project && project->unloadedFolioCount())
 			project->loadFolios();
-		for (const Device &device : devices(project, nullptr))
+		for (const Device &device : devices(project, nullptr, unlinked))
 			if (!device.typeName.isEmpty()) list << device;
 		return list;
 	}
@@ -314,32 +323,25 @@ namespace DeviceTypeCheck
 		return list.isEmpty() ? Device() : list.first();
 	}
 
-	QList<Element *> unlinkedContacts(QETProject *project)
-	{
-		QList<Element *> list;
-		if (!project) return list;
-		const bool all = project->followDeviceTypes();
-		for (Diagram *diagram : project->diagrams()) {
-			for (Element *element : diagram->elements()) {
-				if (!(element->linkType() & Element::Slave)) continue;
-				if (headOf(element) != element) continue;
-				if (!all && typeNameOf(element->elementInformations()).isEmpty()) continue;
-				list << element;
-			}
-		}
-		return list;
-	}
-
 	int extraContacts(const Device &device)
 	{
 		if (!device.known()) return 0;
-		int contacts = 0, parts = 0;
-		for (const auto &symbol : device.symbols)
-			if (symbol && (symbol->linkType() & Element::Slave) && headOf(symbol) != symbol)
-				++contacts;
-		for (const DeviceType::Part &part : device.type.parts)
-			if (part.role == QLatin1String("slave")) ++parts;
-		return qMax(0, contacts - parts);
+			//Room: the contact parts, and a part of another role a linked
+			//contact draws (match() pairs by symbol and pins, not by role),
+			//so a complete device never has too many
+		QSet<int> room;
+		for (int p = 0 ; p < device.type.parts.size() ; ++p)
+			if (device.type.parts.at(p).role == QLatin1String("slave")) room.insert(p);
+		int contacts = 0;
+		for (int s = 0 ; s < device.symbols.size() ; ++s) {
+			Element *symbol = device.symbols.at(s).data();
+			if (!symbol || !(symbol->linkType() & Element::Slave) || headOf(symbol) == symbol)
+				continue;
+			++contacts;
+			const int part = device.drawn.value(s, Beyond);
+			if (part >= 0) room.insert(part);
+		}
+		return qMax(0, contacts - int(room.size()));
 	}
 
 	/**
