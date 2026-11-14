@@ -148,8 +148,6 @@ class DiagramEventAddPaste : public DiagramEventInterface
 		///Whether the X or Y movement axis is currently locked.
 	bool m_lock_x{false};
 	bool m_lock_y{false};
-		///Coordinates at which the axes were locked.
-	QPointF m_locked_pos;
 		///The latest cursor position received from mouseMoveEvent.
 	QPointF m_current_pos;
 		///The original source folio position (grid-snapped top-left) of the copied items.

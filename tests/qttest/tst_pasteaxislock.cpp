@@ -124,19 +124,20 @@ void tst_pasteaxislock::testAxisLockAndOriginalPositionSnap()
 	QVERIFY(!hasDashedLine(Qt::Vertical));
 	QVERIFY(!hasDashedLine(Qt::Horizontal));
 
-	// 2. Press X: locks X axis at current 300 -> dashed line along Y axis (vertical)
+	// 2. Press X: locks X axis to original X (100) -> dashed line along Y axis (vertical)
 	QKeyEvent key_x(QEvent::KeyPress, Qt::Key_X, Qt::NoModifier);
 	paste->keyPressEvent(&key_x);
 	QVERIFY(key_x.isAccepted());
+	QCOMPARE(pasted->pos().x(), 100.0);
 	QVERIFY(hasDashedLine(Qt::Vertical));
 	QVERIFY(!hasDashedLine(Qt::Horizontal));
 
-	// Move mouse to (500, 600) -> X must stay at 300 (deltaX = +100), Y moves
-	// to 600 (deltaY = +400)
+	// Move mouse to (500, 600) -> X must stay at original 100, Y moves to 600 (deltaY = +400)
 	QGraphicsSceneMouseEvent move2(QEvent::GraphicsSceneMouseMove);
 	move2.setScenePos(QPointF(500, 600));
 	paste->mouseMoveEvent(&move2);
-	QCOMPARE(pasted->pos(), base_pos + QPointF(100, 400));
+	QCOMPARE(pasted->pos().x(), 100.0);
+	QCOMPARE(pasted->pos().y(), base_pos.y() + 400);
 	QVERIFY(hasDashedLine(Qt::Vertical));
 
 	// 3. Press Y: now BOTH X and Y are locked! Must snap to original position (100, 100)
@@ -181,17 +182,19 @@ void tst_pasteaxislock::testAxisLockAndOriginalPositionSnap()
 	QVERIFY(!hasDashedLine(Qt::Horizontal));
 
 	// 6. Test Y then X:
-	// Press Y to lock Y at 950 (deltaY = +750) -> horizontal dashed line visible
+	// Press Y to lock Y to original Y (100) -> horizontal dashed line visible
 	QKeyEvent key_y2(QEvent::KeyPress, Qt::Key_Y, Qt::NoModifier);
 	paste->keyPressEvent(&key_y2);
+	QCOMPARE(pasted->pos().y(), 100.0);
 	QVERIFY(!hasDashedLine(Qt::Vertical));
 	QVERIFY(hasDashedLine(Qt::Horizontal));
 
 	QGraphicsSceneMouseEvent move5(QEvent::GraphicsSceneMouseMove);
 	move5.setScenePos(QPointF(600, 400));
 	paste->mouseMoveEvent(&move5);
-	// deltaX = 600 - 200 = +400, Y locked at +750
-	QCOMPARE(pasted->pos(), base_pos + QPointF(400, 750));
+	// deltaX = 600 - 200 = +400, Y locked at original 100
+	QCOMPARE(pasted->pos().x(), base_pos.x() + 400);
+	QCOMPARE(pasted->pos().y(), 100.0);
 
 	// Now press X -> both locked -> snap to original position (100, 100) -> both dashed lines visible
 	QKeyEvent key_x2(QEvent::KeyPress, Qt::Key_X, Qt::NoModifier);

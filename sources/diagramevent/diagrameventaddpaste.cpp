@@ -156,7 +156,6 @@
 			? m_original_pos
 			: snapGrid(start_pos);
 	m_current_pos = grid_origin;
-	m_locked_pos = grid_origin;
 
 	if (m_placement == UnderCursor) {
 			//Land the pasted content under the cursor immediately, rather than
@@ -320,9 +319,9 @@ void DiagramEventAddPaste::showHint()
 	if (m_lock_x && m_lock_y) {
 		status = tr("Original position (X+Y locked)", "status bar lock state");
 	} else if (m_lock_x) {
-		status = tr("X axis locked", "status bar lock state");
+		status = tr("Original X locked (move along Y)", "status bar lock state");
 	} else if (m_lock_y) {
-		status = tr("Y axis locked", "status bar lock state");
+		status = tr("Original Y locked (move along X)", "status bar lock state");
 	}
 
 	QString msg = tr("Click to place, Esc or right-click to cancel. [%1]: lock X, [%2]: lock Y, [%1]+[%2]: original position",
@@ -336,21 +335,17 @@ void DiagramEventAddPaste::showHint()
 void DiagramEventAddPaste::updateEffectivePosition()
 {
 	QPointF effective_pos = m_current_pos;
-	if (m_lock_x && m_lock_y) {
-		effective_pos = m_original_pos;
-		if (m_diagram && !m_diagram->views().isEmpty()) {
-			if (auto *view = m_diagram->views().at(0)) {
-				if (!view->viewport()->rect().contains(view->mapFromScene(m_original_pos.toPoint()))) {
-					view->ensureVisible(QRectF(m_original_pos, QSizeF(100, 100)), 50, 50);
-				}
+	if (m_lock_x) {
+		effective_pos.setX(m_original_pos.x());
+	}
+	if (m_lock_y) {
+		effective_pos.setY(m_original_pos.y());
+	}
+	if ((m_lock_x || m_lock_y) && m_diagram && !m_diagram->views().isEmpty()) {
+		if (auto *view = m_diagram->views().at(0)) {
+			if (!view->viewport()->rect().contains(view->mapFromScene(effective_pos.toPoint()))) {
+				view->ensureVisible(QRectF(effective_pos, QSizeF(100, 100)), 50, 50);
 			}
-		}
-	} else {
-		if (m_lock_x) {
-			effective_pos.setX(m_locked_pos.x());
-		}
-		if (m_lock_y) {
-			effective_pos.setY(m_locked_pos.y());
 		}
 	}
 	moveTo(effective_pos);
@@ -381,7 +376,7 @@ void DiagramEventAddPaste::updateHelpLines()
 	const qreal top = rect.isValid() ? rect.top() - 5000 : -10000;
 	const qreal bottom = rect.isValid() ? rect.bottom() + 5000 : 10000;
 
-	// When X is locked (or both): movement is along Y, show dashed line on Y axis
+	// When X is locked (or both): movement is along Y, show dashed line on Y axis at original X
 	if (m_lock_x) {
 		if (!m_help_line_y) {
 			m_help_line_y = new QGraphicsLineItem();
@@ -391,14 +386,13 @@ void DiagramEventAddPaste::updateHelpLines()
 		} else {
 			m_help_line_y->setPen(pen);
 		}
-		const qreal x = (m_lock_x && m_lock_y) ? m_original_pos.x() : m_locked_pos.x();
-		m_help_line_y->setLine(x, top, x, bottom);
+		m_help_line_y->setLine(m_original_pos.x(), top, m_original_pos.x(), bottom);
 		m_help_line_y->setVisible(true);
 	} else if (m_help_line_y) {
 		m_help_line_y->setVisible(false);
 	}
 
-	// When Y is locked (or both): movement is along X, show dashed line on X axis
+	// When Y is locked (or both): movement is along X, show dashed line on X axis at original Y
 	if (m_lock_y) {
 		if (!m_help_line_x) {
 			m_help_line_x = new QGraphicsLineItem();
@@ -408,8 +402,7 @@ void DiagramEventAddPaste::updateHelpLines()
 		} else {
 			m_help_line_x->setPen(pen);
 		}
-		const qreal y = (m_lock_x && m_lock_y) ? m_original_pos.y() : m_locked_pos.y();
-		m_help_line_x->setLine(left, y, right, y);
+		m_help_line_x->setLine(left, m_original_pos.y(), right, m_original_pos.y());
 		m_help_line_x->setVisible(true);
 	} else if (m_help_line_x) {
 		m_help_line_x->setVisible(false);
@@ -539,11 +532,6 @@ void DiagramEventAddPaste::keyPressEvent(QKeyEvent *event)
 
 	if (matchesShortcut(event, QStringLiteral("diagrameditor.paste_lock_x"))) {
 		m_lock_x = !m_lock_x;
-		if (m_lock_x && m_lock_y) {
-			m_locked_pos = m_original_pos;
-		} else if (m_lock_x) {
-			m_locked_pos.setX(m_current_pos.x());
-		}
 		updateEffectivePosition();
 		showHint();
 		event->setAccepted(true);
@@ -552,11 +540,6 @@ void DiagramEventAddPaste::keyPressEvent(QKeyEvent *event)
 
 	if (matchesShortcut(event, QStringLiteral("diagrameditor.paste_lock_y"))) {
 		m_lock_y = !m_lock_y;
-		if (m_lock_x && m_lock_y) {
-			m_locked_pos = m_original_pos;
-		} else if (m_lock_y) {
-			m_locked_pos.setY(m_current_pos.y());
-		}
 		updateEffectivePosition();
 		showHint();
 		event->setAccepted(true);
