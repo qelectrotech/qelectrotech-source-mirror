@@ -11,9 +11,13 @@
 #include "qetgraphicsitem/terminal.h"
 #include "qetproject.h"
 #include "qetresult.h"
+#include "ui/elementpropertieswidget.h"
+#include "ui/linksingleelementwidget.h"
 
 #include <QDomDocument>
+#include <QAction>
 #include <QTemporaryDir>
+#include <QTreeWidget>
 #include <QtTest>
 
 /**
@@ -172,6 +176,40 @@ class tst_devicetypelink : public QObject
 
 			//Taken again: nothing changes
 		QCOMPARE(DeviceTypeLink::takeNextFreePart(fresh), fresh);
+	}
+
+	void linkingInTheSelectionPropertiesPanel()
+	{
+			//The panel applies a link at once (live edit), then the contact
+			//is replaced by its copy with the part's terminals, and the
+			//panel is given that copy (the new selection): the contact it
+			//showed is off the folio by then
+		Relay relay;
+		relay.project.setFollowDeviceTypes(true);
+		Element *one = place(relay.folio, relay.contact, QPointF(200, 100));
+		QVERIFY(one);
+		ElementPropertiesWidget panel(one);
+		panel.setLiveEdit(true);
+		auto *link = panel.findChild<LinkSingleElementWidget *>();
+		QVERIFY(link);
+		auto *tree = link->findChild<QTreeWidget *>();
+		QVERIFY(tree && tree->topLevelItemCount() == 1);
+		tree->setCurrentItem(tree->topLevelItem(0));
+		emit tree->customContextMenuRequested(QPoint(1, 1));
+		QAction *action = nullptr;
+		for (QAction *a : link->findChildren<QAction *>())
+			if (a->text() == QStringLiteral("Link the item")) action = a;
+		QVERIFY(action);
+		action->trigger();
+		QTRY_VERIFY(!one->scene());
+		Element *fresh = nullptr;
+		for (Element *element : relay.folio->elements())
+			if (element != relay.coil) fresh = element;
+		QVERIFY(fresh);
+		QCOMPARE(pins(fresh), QStringList({QStringLiteral("13"), QStringLiteral("14")}));
+		panel.setElement(fresh);
+		QCoreApplication::processEvents();
+		QVERIFY(fresh->linkedElements().contains(relay.coil));
 	}
 };
 
