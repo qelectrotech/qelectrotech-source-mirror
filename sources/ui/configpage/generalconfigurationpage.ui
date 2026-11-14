@@ -243,6 +243,41 @@
             </property>
            </widget>
           </item>
+          <item>
+           <layout class="QHBoxLayout" name="m_structure_box_color_layout">
+            <item>
+             <widget class="QLabel" name="m_structure_box_color_label">
+              <property name="text">
+               <string>Colour of new structure boxes</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="KColorButton" name="m_structure_box_color_kpb">
+              <property name="toolTip">
+               <string>A structure box is drawn in this colour, its name too, so that it is told apart from wires and drawn shapes. Each box can take another colour in its properties. Black by default.</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="m_structure_box_color_spacer">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="m_structure_box_ask_place_cb">
+            <property name="toolTip">
+             <string>As soon as a structure box is drawn, its plant, location and prefix are asked for. Cancelled, the box stays empty. Unticked by default: they are entered afterwards in its properties.</string>
+            </property>
+            <property name="text">
+             <string>Ask for the place of a structure box when it is drawn</string>
+            </property>
+           </widget>
+          </item>
          </layout>
         </widget>
        </item>
