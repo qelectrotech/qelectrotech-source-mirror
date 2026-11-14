@@ -106,7 +106,8 @@ class QETDiagramEditor : public QETMainWindow
 		bool openAsRecovered(const QString &source, const QString &original);
 		static QString recoveredPath(const QString &filepath, const QString &suffix);
 		void reloadElementDrawings(QETProject *project, bool adopt_frame,
-								   const QString &title, const QString &intro);
+								   const QString &title, const QString &intro,
+								   bool follow_moved_origin = false);
 		// Declared first so it is initialised before any member whose
 		// constructor may dispatch a Qt event calling event() (e.g. the
 		// QActionGroup members below trigger QObject::setParent events).

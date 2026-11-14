@@ -17,6 +17,7 @@
 */
 
 #include "qetproject.h"
+#include "ElementsCollection/terminaluuids.h"
 #include "TerminalStrip/terminalstriplabels.h"
 #include "container/qetcontainer.h"
 #include "container/qetcontainerdb.h"
@@ -3931,12 +3932,28 @@ QList<QETProject::OutdatedElement> QETProject::outdatedElements() const
 	Replace the embedded element of @p element by its source, keeping the
 	uuids of the terminals that did not move. Placed elements keep their
 	old drawing until they are reloaded (Element::reloadPicture()).
+
+	With @p follow_moved_origin, a source drawn the same but moved as a
+	whole (its insertion point moved, TerminalUuids::commonOffset()) gives
+	each terminal the uuid of the one it was moved from instead, for the
+	placed symbols moved with it (Element::followMovedOrigin()).
 */
-void QETProject::updateElement(const OutdatedElement &element)
+void QETProject::updateElement(const OutdatedElement &element, bool follow_moved_origin)
 {
 	ElementsLocation source = element.source;
 	ElementsLocation parent = element.embedded.parent();
+	const QDomElement old_definition = follow_moved_origin
+			? element.embedded.xml().cloneNode(true).toElement()
+			: QDomElement();
 	m_elements_collection->copy(source, parent);
+
+	if (!follow_moved_origin)
+		return;
+	QDomElement new_definition = element.embedded.xml();
+	QPointF offset;
+	if (TerminalUuids::commonOffset(old_definition, new_definition, &offset)
+		&& !offset.isNull())
+		TerminalUuids::keepShifted(old_definition, new_definition, offset);
 }
 
 /**
