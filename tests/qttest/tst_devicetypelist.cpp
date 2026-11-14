@@ -101,6 +101,14 @@ class tst_devicetypelist : public QObject
 	};
 
 
+		/// The contacts linked to no master, as check() gives them
+	static QList<Element *> unlinked(QETProject &project)
+	{
+		QList<Element *> list;
+		DeviceTypeCheck::check(&project, &list);
+		return list;
+	}
+
 	static QStringList lines(const QString &csv)
 	{
 		return csv.split(QLatin1Char('\n'), Qt::SkipEmptyParts);
@@ -174,14 +182,14 @@ class tst_devicetypelist : public QObject
 		QVERIFY(one && two && three && loose);
 
 			//Not followed: only a loose contact naming a type is listed
-		QVERIFY(DeviceTypeCheck::unlinkedContacts(&relay.project).isEmpty());
+		QVERIFY(unlinked(relay.project).isEmpty());
 		DiagramContext info = loose->elementInformations();
 		info.addValue(QStringLiteral("device_type"), QStringLiteral("RELAY-2NO"));
 		loose->setElementInformations(info);
-		QCOMPARE(DeviceTypeCheck::unlinkedContacts(&relay.project), QList<Element *>({loose}));
+		QCOMPARE(unlinked(relay.project), QList<Element *>({loose}));
 			//Followed: every contact linked to no master
 		relay.project.setFollowDeviceTypes(true);
-		QCOMPARE(DeviceTypeCheck::unlinkedContacts(&relay.project).size(), 4);
+		QCOMPARE(unlinked(relay.project).size(), 4);
 
 		relay.coil->linkToElement(one);
 		relay.coil->linkToElement(two);
@@ -189,7 +197,80 @@ class tst_devicetypelist : public QObject
 		relay.project.setFollowDeviceTypes(false);
 		relay.coil->linkToElement(three);
 		QCOMPARE(DeviceTypeCheck::extraContacts(DeviceTypeCheck::checkDevice(relay.coil)), 1);
-		QCOMPARE(DeviceTypeCheck::unlinkedContacts(&relay.project), QList<Element *>({loose}));
+		QCOMPARE(unlinked(relay.project), QList<Element *>({loose}));
+	}
+		//A type may give its contacts' parts a role other than slave: a
+		//linked contact drawing one is not one too many
+	void contactPartsOfAnotherRole()
+	{
+		Relay relay;
+		DeviceType type = relay.project.deviceType(QStringLiteral("RELAY-2NO"));
+		type.parts[1].role = QStringLiteral("simple");
+		type.parts[2].role = QStringLiteral("simple");
+		relay.project.setDeviceType(type);
+		Element *one = place(relay.folio, relay.contact, QPointF(200, 100));
+		Element *two = place(relay.folio, relay.contact, QPointF(260, 100));
+		Element *three = place(relay.folio, relay.contact, QPointF(320, 100));
+		QVERIFY(one && two && three);
+		relay.coil->linkToElement(one);
+		relay.coil->linkToElement(two);
+		auto device = DeviceTypeCheck::checkDevice(relay.coil);
+		QVERIFY(device.complete());
+		QCOMPARE(DeviceTypeCheck::extraContacts(device), 0);
+			//A third has no part left to draw
+		relay.coil->linkToElement(three);
+		device = DeviceTypeCheck::checkDevice(relay.coil);
+		QVERIFY(!device.complete());
+		QCOMPARE(DeviceTypeCheck::extraContacts(device), 1);
+	}
+
+		//A contact part another symbol took is no room for a contact,
+		//nor is the master's part
+	void roomTakenByAnotherSymbol()
+	{
+		Relay relay;
+		const QString aux = define(relay.project, QStringLiteral("aux"), QStringLiteral("simple"),
+								   {QStringLiteral("23"), QStringLiteral("24")});
+		const QString other = define(relay.project, QStringLiteral("other"), QStringLiteral("slave"),
+									 {QString(), QString()});
+		Element *drawn = place(relay.folio, aux, QPointF(200, 100));
+		Element *one = place(relay.folio, relay.contact, QPointF(260, 100));
+		Element *beyond = place(relay.folio, other, QPointF(320, 100));
+		QVERIFY(drawn && one && beyond);
+		DiagramContext info = drawn->elementInformations();
+		info.addValue(QStringLiteral("label"), QStringLiteral("K1"));
+		drawn->setElementInformations(info);
+		relay.coil->linkToElement(one);
+		relay.coil->linkToElement(beyond);
+		const auto device = DeviceTypeCheck::checkDevice(relay.coil);
+			//K1 13 14 is the contact, 23 24 the simple symbol: the other
+			//contact has no part left
+		QCOMPARE(device.symbols.size(), 4);
+		QCOMPARE(device.beyond(), 1);
+		QCOMPARE(DeviceTypeCheck::extraContacts(device), 1);
+	}
+
+		//The list describes each type in the language asked, as the
+		//dialog shows it; English by default
+	void theDescriptionsLanguage()
+	{
+		DeviceType relay;
+		relay.name = QStringLiteral("RELAY");
+		relay.names.insert(QStringLiteral("en"), QStringLiteral("Relay"));
+		relay.names.insert(QStringLiteral("fr"), QStringLiteral("Relais"));
+		QCOMPARE(lines(DeviceTypeList::csv({relay}, DeviceTypeList::Kind::Brief)).value(1),
+				 QStringLiteral("RELAY;Relay;0"));
+		QCOMPARE(lines(DeviceTypeList::csv({relay}, DeviceTypeList::Kind::Brief, nullptr,
+										   QStringLiteral("fr"))).value(1),
+				 QStringLiteral("RELAY;Relais;0"));
+		QCOMPARE(lines(DeviceTypeList::csv({relay}, DeviceTypeList::Kind::Full, nullptr,
+										   QStringLiteral("fr"))).value(1),
+				 QStringLiteral("RELAY;Relais;;;;;;"));
+			//A full locale finds its base language
+		QCOMPARE(relay.text(QStringLiteral("fr_CA")), QStringLiteral("Relais"));
+			//An empty name is no name
+		relay.names.insert(QStringLiteral("fr"), QString());
+		QCOMPARE(relay.text(QStringLiteral("fr_CA")), QStringLiteral("Relay"));
 	}
 };
 
