@@ -1348,6 +1348,18 @@ void DiagramView::mouseMoveEvent(QMouseEvent *original)
 	QMouseEvent *e = onCaughtHandle(original, shifted);
 	const AcceptedBack accepted_back{e, original};
 	m_last_mouse_pos = e->pos();
+		//A placement started by a drop from the elements panel: on Windows
+		//and macOS, the end of the drag gives the keyboard focus back to
+		//the panel, despite the setFocus() of startElementPlacement(). Space,
+		//which rotates the pending element, then never reached the view
+		//before a first click (forum, pid=23632). Take the focus back as
+		//soon as the mouse moves over the folio during the placement.
+	if (e->buttons() == Qt::NoButton && m_diagram
+	    && m_diagram->eventInterfaceIsRunning() && !hasFocus()) {
+		if (!window()->isActiveWindow())
+			activateWindow();
+		setFocus(Qt::OtherFocusReason);
+	}
 	if (e->buttons() & Qt::LeftButton)
 		updateRubberBandMode(e->pos());
 		//The topmost item that is one of the folio's: the crosshair and
