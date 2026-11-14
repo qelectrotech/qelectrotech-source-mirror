@@ -4995,4 +4995,64 @@ additional information about %1 import / scaling</source>
     <target>Transformatör</target>
     <definition>transformer</definition>
 </phrase>
+<phrase>
+    <source>Folio</source>
+    <target>Sayfa</target>
+    <definition>same as Sheet: a page of a project</definition>
+</phrase>
+<phrase>
+    <source>Symbol</source>
+    <target>Sembol</target>
+    <definition>graphic symbol of a device</definition>
+</phrase>
+<phrase>
+    <source>Macro</source>
+    <target>Makro</target>
+    <definition>a saved group of symbols and conductors placed in one go</definition>
+</phrase>
+<phrase>
+    <source>Core</source>
+    <target>Damar</target>
+    <definition>one conductor inside a cable</definition>
+</phrase>
+<phrase>
+    <source>Folio report</source>
+    <target>Sayfa referansı</target>
+    <definition>symbol that continues a conductor on another folio</definition>
+</phrase>
+<phrase>
+    <source>Bill of materials</source>
+    <target>Malzeme listesi</target>
+    <definition>list of the devices and parts of a project</definition>
+</phrase>
+<phrase>
+    <source>Bridge</source>
+    <target>Köprü</target>
+    <definition>jumper linking terminals of a terminal strip</definition>
+</phrase>
+<phrase>
+    <source>Plant</source>
+    <target>Tesis</target>
+    <definition>IEC 81346 plant designation (=)</definition>
+</phrase>
+<phrase>
+    <source>Location</source>
+    <target>Konum</target>
+    <definition>IEC 81346 location designation (+)</definition>
+</phrase>
+<phrase>
+    <source>Device</source>
+    <target>Cihaz</target>
+    <definition>physical piece of equipment, e.g. a contactor</definition>
+</phrase>
+<phrase>
+    <source>Shield</source>
+    <target>Ekran</target>
+    <definition>cable shield (screen)</definition>
+</phrase>
+<phrase>
+    <source>Wire number</source>
+    <target>Tel numarası</target>
+    <definition>number marked on a wire</definition>
+</phrase>
 </QPH>

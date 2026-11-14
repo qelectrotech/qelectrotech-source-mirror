@@ -27,6 +27,7 @@
 
 #include "ElementsCollection/elementcollectionhandler.h"
 #include "TerminalStrip/GraphicsItem/terminalstripitem.h"
+#include "utils/qetsettings.h"
 #include "cable/cablecopy.h"
 #include "cable/cablepart.h"
 #include "xml/terminalstripitemxml.h"
@@ -50,6 +51,7 @@
 #include "qetgraphicsitem/independenttextitem.h"
 #include "qetgraphicsitem/qetshapeitem.h"
 #include "qetgraphicsitem/dimensionitem.h"
+#include "qetgraphicsitem/structureboxitem.h"
 #include "qetgraphicsitem/terminal.h"
 #include "qetxml.h"
 #include "undocommand/addelementtextcommand.h"
@@ -220,6 +222,11 @@ Diagram::Diagram(QETProject *project) :
 		for (auto conductor : content().conductors()) {
 			conductor->refreshText();
 		}
+			//A symbol's reference designation leaves out the plant and
+			//location its folio already says (%{structure_id}), and its
+			//%{plant} and %{location} may be the folio's: they follow the
+			//title block, which a symbol does not watch
+		StructureBoxItem::refreshSymbolTexts(this);
 		emit diagramInformationChanged();
 	});
 
@@ -348,6 +355,7 @@ QStringList Diagram::itemsOutsideSheet() const
 			}
 			case IndependentTextItem::Type: names << tr("a text"); break;
 			case QetShapeItem::Type:        names << tr("a shape"); break;
+			case StructureBoxItem::Type:    names << tr("a structure box"); break;
 			case DiagramImageItem::Type:    names << tr("a picture"); break;
 			case QetGraphicsTableItem::Type: names << tr("a table"); break;
 			case TerminalStripItem::Type:   names << tr("a terminal strip"); break;
@@ -722,7 +730,11 @@ void Diagram::keyPressEvent(QKeyEvent *event)
 	qreal top_position = 0;
 	qreal left_position = 0;
 	DiagramContent dc(this);
-	if (dc.items(DiagramContent::All).isEmpty())
+		//A marked cable line counts too: it is not part of DiagramContent
+	bool cable_marked = false;
+	for (QGraphicsItem *item : selectedItems())
+		if (qgraphicsitem_cast<CablePart *>(item)) { cable_marked = true; break; }
+	if (dc.items(DiagramContent::All).isEmpty() && !cable_marked)
 	{
 		event->ignore();
 		QGraphicsScene::keyPressEvent(event);
@@ -1664,6 +1676,12 @@ QDomDocument Diagram::toXml(bool whole_content, bool is_copy_command) {
 				auto shape = static_cast<QetShapeItem *>(qgi);
 				if (whole_content || shape->isSelected())
 					list_shapes << shape;
+				break;
+			}
+			case StructureBoxItem::Type: {
+				auto box = static_cast<StructureBoxItem *>(qgi);
+				if (whole_content || box->isSelected())
+					list_shapes << box;	//saved as a shape, see StructureBoxItem
 				break;
 			}
 			case QetGraphicsTableItem::Type: {
@@ -2656,7 +2674,9 @@ bool Diagram::fromXml(QDomElement &document,
 	for (auto shape_xml : QET::findInDomElement(root,
 												QStringLiteral("shapes"),
 												QStringLiteral("shape"))) {
-		QetShapeItem *dii = new QetShapeItem (QPointF(0,0));
+		QetShapeItem *dii = StructureBoxItem::isStructureBoxXml(shape_xml)
+				? new StructureBoxItem(QPointF(0,0))
+				: new QetShapeItem (QPointF(0,0));
 		dii -> fromXml(shape_xml);
 		settle_uuid(dii, shape_xml, QStringLiteral("shape"), added_shapes.size());
 		ItemGroups::setGroup(dii, ItemGroups::read(shape_xml));
@@ -3005,6 +3025,22 @@ void Diagram::refreshContents()
 	Do some specific operation if item need it (for example an element)
 	@param item
 */
+void Diagram::refreshTerminalStrips()
+{
+		//With the setting off nothing is drawn above a strip, so there
+		//is nothing to report again -- and this runs for every wire
+		//which comes or goes on the folio
+	if (!QetSettings::stripWiresShown()) {
+		return;
+	}
+	for (QGraphicsItem *item : items())
+	{
+		if (item && item->type() == TerminalStripItem::Type) {
+			static_cast<TerminalStripItem *>(item)->refreshGeometry();
+		}
+	}
+}
+
 void Diagram::addItem(QGraphicsItem *item)
 {
 	if (!item || item->scene() == this) return;
@@ -3033,11 +3069,15 @@ void Diagram::addItem(QGraphicsItem *item)
 			Conductor *conductor = static_cast<Conductor *>(item);
 			conductor->terminal1->addConductor(conductor);
 			conductor->terminal2->addConductor(conductor);
+				//The wires which end at a terminal strip are drawn by
+				//the strip itself, and only now is this one among them
+			refreshTerminalStrips();
 			conductor->calculateTextItemPosition();
 			m_project->dataBase()->addConductor(conductor);
 			break;
 		}
 		case QetShapeItem::Type:
+		case StructureBoxItem::Type:
 		case DimensionItem::Type:
 		case IndependentTextItem::Type:
 		case DiagramImageItem::Type:
@@ -3077,10 +3117,13 @@ void Diagram::removeItem(QGraphicsItem *item)
 			Conductor *conductor = static_cast<Conductor *>(item);
 			conductor->terminal1->removeConductor(conductor);
 			conductor->terminal2->removeConductor(conductor);
+				//One wire the strips above them drew may be gone
+			refreshTerminalStrips();
 			m_project->dataBase()->removeConductor(conductor);
 			break;
 		}
 		case QetShapeItem::Type:
+		case StructureBoxItem::Type:
 		case DimensionItem::Type:
 		case IndependentTextItem::Type:
 		case DiagramImageItem::Type:
@@ -3229,12 +3272,9 @@ void Diagram::selectAllConductors()
 {
 	if (items().isEmpty()) return;
 
-	blockSignals(true);
-	for (auto item : items()) {
-		item -> setSelected(dynamic_cast<Conductor *>(item) != nullptr);
-	}
-	blockSignals(false);
-	emit selectionChanged();
+	selectOnly([](QGraphicsItem *item) {
+		return dynamic_cast<Conductor *>(item) != nullptr;
+	});
 }
 
 /**
@@ -3246,12 +3286,9 @@ void Diagram::selectAllTextFields()
 {
 	if (items().isEmpty()) return;
 
-	blockSignals(true);
-	for (auto item : items()) {
-		item -> setSelected(dynamic_cast<DiagramTextItem *>(item) != nullptr);
-	}
-	blockSignals(false);
-	emit selectionChanged();
+	selectOnly([](QGraphicsItem *item) {
+		return dynamic_cast<DiagramTextItem *>(item) != nullptr;
+	});
 }
 
 /**
@@ -3270,10 +3307,35 @@ void Diagram::selectSameSymbols()
 	}
 	if (locations.isEmpty()) return;
 
-	blockSignals(true);
-	for (auto item : items()) {
+	selectOnly([&locations](QGraphicsItem *item) {
 		auto *element = qgraphicsitem_cast<Element *>(item);
-		item -> setSelected(element && locations.contains(element -> location().toString()));
+		return element && locations.contains(element -> location().toString());
+	});
+}
+
+/**
+	@brief Diagram::selectOnly
+	Select the items of this diagram @p wanted accepts, and nothing else,
+	then emit selectionChanged() once.
+	Deselecting first: a selected wire or text has handles, child items
+	that are deleted when it is deselected, so a list of the items taken
+	before would still hold them (see invertSelection()). The items are
+	listed only once nothing is selected; selecting only adds handles.
+	@param wanted
+*/
+void Diagram::selectOnly(const std::function<bool(QGraphicsItem *)> &wanted)
+{
+	blockSignals(true);
+	clearSelection();
+	const QList<QGraphicsItem *> all = items();
+	QList<QGraphicsItem *> chosen;
+	for (QGraphicsItem *item : all) {
+		if (wanted(item)) {
+			chosen << item;
+		}
+	}
+	for (QGraphicsItem *item : std::as_const(chosen)) {
+		item -> setSelected(true);
 	}
 	blockSignals(false);
 	emit selectionChanged();
@@ -3293,6 +3355,17 @@ void Diagram::setItemGroup(QGraphicsItem *item, const QUuid &group)
 		m_project->dataBase()->itemGroupChanged(item);
 	}
 	emit itemGroupChanged();
+}
+
+/**
+	@brief Diagram::selectionFragment
+	@return the selection as a copy writes it, cable lines included
+*/
+QString Diagram::selectionFragment()
+{
+	QDomDocument document = toXml(false, true);
+	CableCopy::write(this, document);
+	return document.toString();
 }
 
 /**
@@ -4162,21 +4235,30 @@ void Diagram::setGridSnap(bool snap)
 	Return the nearest point of p on the text grid, see TextGrid.
 	Ctrl held, or the snap switched off, rounds to the nearest pixel
 	instead, as snapToGrid() does.
-	@param p point to find the nearest snapped point
+	@param p : the position @a text is about to take, in its parent's
+	coordinates
+	@param text : the text being moved. With the "middle" setting on, the
+	middle of what it shows goes on the grid rather than the top left
+	corner of its frame, so a short text such as a terminal number stands
+	centred on a grid line. Without @a text, @a p itself is snapped.
 	@return
 */
-QPointF Diagram::snapToTextGrid(const QPointF &p)
+QPointF Diagram::snapToTextGrid(const QPointF &p, const QGraphicsItem *text)
 {
 	QSettings settings;
 	const qreal divisor =
 		!gridSnap() || QApplication::keyboardModifiers().testFlag(Qt::ControlModifier)
 			? 0
 			: settings.value(TextGrid::settings_key, 1).toReal();
+	const QPointF middle = text && divisor > 0
+			&& settings.value(TextGrid::middle_key, false).toBool()
+		? text->mapToParent(text->boundingRect().center()) - text->pos()
+		: QPointF();
 
-	return TextGrid::snap(p,
+	return TextGrid::snap(p + middle,
 						  FolioGrid::step(settings.value(FolioGrid::x_key), Diagram::xGrid),
 						  FolioGrid::step(settings.value(FolioGrid::y_key), Diagram::yGrid),
-						  divisor);
+						  divisor) - middle;
 }
 
 

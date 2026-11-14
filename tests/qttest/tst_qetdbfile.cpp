@@ -95,6 +95,30 @@ class tst_qetdbfile : public QObject
 		return ok;
 	}
 
+	// Rebuild @p table of @p path without its primary key, as a file saved
+	// before the tables had keys holds it. One connection, with
+	// legacy_alter_table: on a RENAME, SQLite otherwise checks every view
+	// of the file, and a view that reads the table dropped for that moment
+	// makes it fail (SQLite's documented way to rebuild a table by hand).
+	static bool rebuildWithoutKey(const QString &path, const QString &table)
+	{
+		bool ok = false;
+		{
+			QSqlDatabase db = QSqlDatabase::addDatabase(QStringLiteral("QSQLITE"), QStringLiteral("rebuild"));
+			db.setDatabaseName(path);
+			QSqlQuery query(db);
+			ok = db.open()
+					&& query.exec(QStringLiteral("PRAGMA legacy_alter_table = ON"))
+					&& query.exec(QStringLiteral("CREATE TABLE old_%1 AS SELECT * FROM %1 ORDER BY rowid").arg(table))
+					&& query.exec(QStringLiteral("DROP TABLE %1").arg(table))
+					&& query.exec(QStringLiteral("ALTER TABLE old_%1 RENAME TO %1").arg(table));
+			query = QSqlQuery();
+			db.close();
+		}
+		QSqlDatabase::removeDatabase(QStringLiteral("rebuild"));
+		return ok;
+	}
+
 	// The tables of @p path without a primary key
 	static QStringList tablesWithoutKey(const QString &path)
 	{
@@ -150,7 +174,7 @@ private slots:
 		QCOMPARE(pragma(path, QStringLiteral("SELECT value FROM qet_format WHERE key = 'views'")).toString(),
 				 QStringLiteral("1"));
 		QCOMPARE(pragma(path, QStringLiteral("SELECT count(*) FROM sqlite_master WHERE type = 'view' "
-											 "AND name IN ('qet_folios', 'qet_devices', 'qet_wires', 'qet_links')")).toInt(), 4);
+											 "AND name IN ('qet_folios', 'qet_devices', 'qet_wires', 'qet_links', 'qet_device_list', 'qet_terminals', 'qet_cables', 'qet_plc_io')")).toInt(), 8);
 			//The indexes stay: speed matters more than size
 		QVERIFY(pragma(path, QStringLiteral("SELECT count(*) FROM sqlite_master WHERE name = 'idx_conductor_diagram'")).toInt() == 1);
 		QCOMPARE(pragma(path, QStringLiteral("SELECT count(*) FROM sqlite_master WHERE name = 'working_copy'")).toInt(), 0);
@@ -296,11 +320,8 @@ private slots:
 		static const QStringList keyed{QStringLiteral("element_text_value"), QStringLiteral("drawing_item"),
 			QStringLiteral("element_value"), QStringLiteral("folio_value"), QStringLiteral("project_setting"),
 			QStringLiteral("cable_value"), QStringLiteral("bridge_value"), QStringLiteral("terminal_strip_value"), QStringLiteral("kept_item")};
-		for (const QString &table : keyed) {
-			QVERIFY(exec(old, QStringLiteral("CREATE TABLE old_%1 AS SELECT * FROM %1 ORDER BY rowid").arg(table)));
-			QVERIFY(exec(old, QStringLiteral("DROP TABLE %1").arg(table)));
-			QVERIFY(exec(old, QStringLiteral("ALTER TABLE old_%1 RENAME TO %1").arg(table)));
-		}
+		for (const QString &table : keyed)
+			QVERIFY2(rebuildWithoutKey(old, table), qPrintable(table));
 		QCOMPARE(tablesWithoutKey(old).size(), keyed.size());
 		const QString again = m_dir.filePath(QStringLiteral("with-keys.qetdb"));
 		const QString log = resave(old, again);

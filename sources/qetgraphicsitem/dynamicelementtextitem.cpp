@@ -697,7 +697,7 @@ void DynamicElementTextItem::setTextFrom(DynamicElementTextItem::TextFrom text_f
 				//settings say, every other information as it is stored
 			DiagramContext dc = elementUseForInfo()->elementInformations();
 			elementUseForInfo()->addDisplayValues(dc);
-			setPlainText(autonum::AssignVariables::replaceVariable(m_composite_text, dc));
+			setPlainText(autonum::AssignVariables::replaceVariable(m_composite_text, dc, elementUseForInfo()));
 		}
 		
 		if(old_text_from == UserText)
@@ -865,9 +865,9 @@ void DynamicElementTextItem::setCompositeText(const QString &text)
 		DiagramContext dc;
 		if(elementUseForInfo())
 			dc = elementUseForInfo()->elementInformations();
-		setPlainText(autonum::AssignVariables::replaceVariable(m_composite_text, dc));
+		setPlainText(autonum::AssignVariables::replaceVariable(m_composite_text, dc, elementUseForInfo()));
 	}
-	
+
 	emit compositeTextChanged(m_composite_text);
 }
 
@@ -971,7 +971,7 @@ void DynamicElementTextItem::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 				//DiagramTextItem::mouseMoveEvent() for independent texts.
 				//Without it this was the only text move in the editor that
 				//ignored the grid.
-			event->modifiers() == Qt::ControlModifier ? setPos(new_pos) : setPos(Diagram::snapToTextGrid(new_pos));
+			event->modifiers() == Qt::ControlModifier ? setPos(new_pos) : setPos(Diagram::snapToTextGrid(new_pos, this));
 
 			if(diagram())
 				diagram()->elementTextsMover().continueMovement(event);
@@ -1524,7 +1524,7 @@ void DynamicElementTextItem::elementInfoChanged()
 		if (m_parent_element && (m_parent_element.data()->linkType() & Element::AllReport))
 			final_text = reportReplacedCompositeText();
 		else
-			final_text = autonum::AssignVariables::replaceVariable(m_composite_text, dc);
+			final_text = autonum::AssignVariables::replaceVariable(m_composite_text, dc, element);
 	}
 	else if (m_text_from  == UserText)
 		final_text = m_text;
@@ -1879,7 +1879,7 @@ void DynamicElementTextItem::updateLabel()
 				dc.addValue(QETInformation::ELMT_LABEL,           label_element->labelForDisplay());
 				dc.addValue(QETInformation::ELMT_TERMINAL_NUMBER, element->terminalNumberForDisplay());
 			}
-			setPlainText(autonum::AssignVariables::replaceVariable(m_composite_text, dc));
+			setPlainText(autonum::AssignVariables::replaceVariable(m_composite_text, dc, element));
 		}
 	}
 }
@@ -2112,7 +2112,8 @@ QString DynamicElementTextItem::reportReplacedCompositeText() const
 			//which device and terminal it leads to (%{comment}), the way
 			//EPLAN prints "-XS27:N 2 UG Raum - 1.1"
 		string = autonum::AssignVariables::replaceVariable(
-					string, m_parent_element.data()->elementInformations());
+					string, m_parent_element.data()->elementInformations(),
+					m_parent_element.data());
 	}
 	
 	return string;

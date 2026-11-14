@@ -3060,6 +3060,24 @@ class BinaryPolicy(unittest.TestCase):
         os.environ["QET_MCP_ELEMENTS"] = str(coll)
         self.call(elements_dir=str(coll / "10_electric"))
 
+    def test_symbol_search_may_read_a_listed_collection(self):
+        """qet_element_search reads a collection, as elements_dir names one:
+        the collections listed in QET_MCP_ELEMENTS are open to it as well
+        as the workspace, for reading only."""
+        coll = Path(self.tmp.name) / "collection"
+        coll.mkdir()
+        with self.assertRaisesRegex(ValueError, "outside the workspace"):
+            m.enforce_path_policy("qet_element_search", {"directory": str(coll)})
+        os.environ["QET_MCP_ELEMENTS"] = str(coll)
+        m.enforce_path_policy("qet_element_search", {"directory": str(coll)})
+        other = Path(self.tmp.name) / "not-listed"
+        other.mkdir()
+        with self.assertRaisesRegex(ValueError, "outside the workspace"):
+            m.enforce_path_policy("qet_element_search", {"directory": str(other)})
+        with self.assertRaisesRegex(ValueError, "outside the workspace"):
+            m.enforce_path_policy("qet_project_info",
+                                  {"path": str(coll / "x.qet")})
+
     def test_an_install_finds_its_own_qet_and_collection(self):
         """Installed as <prefix>/share/qelectrotech/mcp/qet_mcp.py, the
         server needs no configuration at all."""
@@ -3117,6 +3135,28 @@ class BinaryPolicy(unittest.TestCase):
     def test_a_folder_named_mcp_is_not_an_install(self):
         """Without a bin/ beside it, an mcp/ folder is just a folder."""
         inst = self.installed_at(Path(self.tmp.name) / "x", Path(self.tmp.name) / "x" / "mcp")
+        self.assertIsNone(inst._installation())
+
+    def test_the_macos_bundle_layout_is_found_too(self):
+        """In a macOS bundle the server sits in Contents/Resources/mcp, the
+        program in Contents/MacOS and the collection in
+        Contents/Resources/elements."""
+        contents = Path(self.tmp.name) / "QElectroTech.app" / "Contents"
+        (contents / "Resources" / "elements").mkdir(parents=True)
+        exe = fake_qet(contents / "MacOS")
+        inst = self.installed_at(contents, contents / "Resources" / "mcp")
+        del os.environ["QET_BINARY"]
+        args = {"project": str(self.root / "ok.qet")}
+        inst.enforce_path_policy("qet_query", args)
+        self.assertTrue(Path(args["binary"]).samefile(exe), args["binary"])
+        self.assertEqual(args["elements_dir"],
+                         str((contents / "Resources" / "elements").resolve()))
+
+    def test_a_resources_folder_without_macos_is_not_an_install(self):
+        """Contents/Resources/mcp with no Contents/MacOS beside it is not a
+        bundle."""
+        contents = Path(self.tmp.name) / "y" / "Contents"
+        inst = self.installed_at(contents, contents / "Resources" / "mcp")
         self.assertIsNone(inst._installation())
 
 

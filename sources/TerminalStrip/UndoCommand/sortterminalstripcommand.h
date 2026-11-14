@@ -63,6 +63,18 @@ class SortTerminalStripCommand : public QUndoCommand
 		static bool planOrderLessThan(const QSharedPointer<RealTerminal> &a_,
 									  const QSharedPointer<RealTerminal> &b_);
 
+		/**
+		 * @brief labelOrderLessThan
+		 * Order two real terminals by their label, in natural order
+		 * ("X1:2" before "X1:10"); two terminals of the same label keep
+		 * the plan order (@sa planOrderLessThan).
+		 * @param a_ : first terminal
+		 * @param b_ : second terminal
+		 * @return true if @a a_ comes before @a b_
+		 */
+		static bool labelOrderLessThan(const QSharedPointer<RealTerminal> &a_,
+									   const QSharedPointer<RealTerminal> &b_);
+
 	private:
 		void sort();
 

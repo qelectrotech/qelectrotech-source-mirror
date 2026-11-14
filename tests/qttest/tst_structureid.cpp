@@ -1,0 +1,911 @@
+/*
+	Copyright 2006-2026 The QElectroTech Team
+	This file is part of QElectroTech.
+
+	QElectroTech is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 2 of the License, or
+	(at your option) any later version.
+
+	QElectroTech is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+
+	You should have received a copy of the GNU General Public License
+	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
+*/
+#include "ElementsCollection/elementslocation.h"
+#include "ElementsCollection/xmlelementcollection.h"
+#include "autoNum/assignvariables.h"
+#include "dataBase/projectdatabase.h"
+#include "diagram.h"
+#include "diagramevent/diagrameventaddstructurebox.h"
+#include "factory/elementfactory.h"
+#include "qetapptest.h"
+#include "qetgraphicsitem/dynamicelementtextitem.h"
+#include "qetgraphicsitem/element.h"
+#include "qetgraphicsitem/structureboxitem.h"
+#include "qetproject.h"
+#include "qetresult.h"
+#include "titleblockproperties.h"
+#include "ui/structureboxpropertieswidget.h"
+
+#include <QDomDocument>
+#include <QLineEdit>
+#include <QSqlQuery>
+#include <QSettings>
+#include <QTimer>
+#include <QTemporaryDir>
+#include <QUuid>
+#include <QtTest>
+
+/**
+	%{structure_id_full} composes =plant+location-label (IEC 81346). An
+	element that has no plant or location of its own takes the one of its
+	folio's title block, and every part that is empty is left out.
+	%{structure_id} is the same, without the =plant or +location part that
+	equals the folio's own. A symbol inside a structure box takes the box's
+	plant and location instead (the next box's, then the folio's, where the
+	box leaves one empty), for both tokens. %{plant} and %{location} are not affected: they
+	show the element's own value only, unless the project's setting
+	(QETProject::plantAndLocationInherited()) makes them show that place.
+*/
+class tst_structureid : public QObject
+{
+	Q_OBJECT
+	QTemporaryDir m_definitions;
+
+		//A symbol whose insertion point is its centre, or with @p corner
+		//its top left corner: its centre is then 20, 20 further
+	Element *symbol(Diagram *diagram, bool corner = false)
+	{
+		auto *collection = diagram->project()->embeddedElementCollection();
+		const QString name = corner ? QStringLiteral("corner") : QStringLiteral("simple");
+		if (!collection->exist(QStringLiteral("import/%1.elmt").arg(name)))
+		{
+			QDomDocument definition;
+			definition.setContent(corner
+				? QString(R"(<definition type="element" link_type="simple" uuid="%1" width="40" height="40" hotspot_x="0" hotspot_y="0">
+<names><name lang="en">Test symbol</name></names>
+<description><line x1="20" y1="0" x2="20" y2="40"/>
+<terminal x="20" y="0" orientation="n" uuid="%2"/><terminal x="20" y="40" orientation="s" uuid="%3"/>
+</description></definition>)")
+					.arg(QUuid::createUuid().toString(),
+						 QUuid::createUuid().toString(),
+						 QUuid::createUuid().toString())
+				: QString(R"(<definition type="element" link_type="simple" uuid="%1" width="20" height="40" hotspot_x="10" hotspot_y="20">
+<names><name lang="en">Test symbol</name></names>
+<description><line x1="0" y1="-10" x2="0" y2="10"/>
+<terminal x="0" y="-20" orientation="n" uuid="%2"/><terminal x="0" y="20" orientation="s" uuid="%3"/>
+</description></definition>)")
+					.arg(QUuid::createUuid().toString(),
+						 QUuid::createUuid().toString(),
+						 QUuid::createUuid().toString()));
+			if (!collection->addElementDefinition(
+					QStringLiteral("import"), name,
+					definition.documentElement()))
+				return nullptr;
+		}
+		int state = 0;
+		Element *element = ElementFactory::Instance()->createElement(
+			ElementsLocation(QStringLiteral("embed://import/%1.elmt").arg(name),
+							 diagram->project()),
+			nullptr, &state);
+		if (state || !element) return nullptr;
+		diagram->addItem(element);
+		return element;
+	}
+
+	static void setFolio(Diagram *diagram, const QString &plant, const QString &location)
+	{
+		TitleBlockProperties tb = diagram->border_and_titleblock.exportTitleBlock();
+		tb.plant = plant;
+		tb.locmach = location;
+		diagram->border_and_titleblock.importTitleBlock(tb);
+	}
+
+	static DiagramContext info(const QString &label,
+							   const QString &plant = {},
+							   const QString &location = {})
+	{
+		DiagramContext dc;
+		dc.addValue(QStringLiteral("label"), label);
+		if (!plant.isEmpty())    dc.addValue(QStringLiteral("plant"), plant);
+		if (!location.isEmpty()) dc.addValue(QStringLiteral("location"), location);
+		return dc;
+	}
+
+	static StructureBoxItem *box(Diagram *diagram, const QRectF &rect,
+								 const QString &plant, const QString &location)
+	{
+		auto *b = new StructureBoxItem(rect.topLeft(), rect.bottomRight());
+		b->setPlant(plant);
+		b->setLocation(location);
+		diagram->addItem(b);
+		return b;
+	}
+
+	static void setInfo(Element *element, const DiagramContext &values)
+	{
+		DiagramContext info = element->elementInformations();
+		for (const QString &key : values.keys())
+			info.addValue(key, values.value(key));
+		element->setElementInformations(info);
+	}
+
+	static QString text(const QString &formula, const DiagramContext &dc,
+						const Element *element)
+	{
+		return autonum::AssignVariables::replaceVariable(formula, dc, element);
+	}
+
+private slots:
+	void elementWithoutValuesTakesTheFolios()
+	{
+		QETProject project;
+		Diagram *diagram = project.addNewDiagram();
+		setFolio(diagram, QStringLiteral("FACTORY"), QStringLiteral("CP1"));
+		Element *element = symbol(diagram);
+		QVERIFY(element);
+
+		QCOMPARE(text(QStringLiteral("%{structure_id_full}"), info("X1"), element),
+				 QStringLiteral("=FACTORY+CP1-X1"));
+	}
+
+	void sameAsTheFolioIsLeftOut()
+	{
+		QETProject project;
+		Diagram *diagram = project.addNewDiagram();
+		setFolio(diagram, QStringLiteral("E1"), QStringLiteral("CP1"));
+		Element *element = symbol(diagram);
+		QVERIFY(element);
+
+			//No own value, or the same value as the folio: just the label
+		QCOMPARE(text(QStringLiteral("%{structure_id}"), info("K1"), element),
+				 QStringLiteral("-K1"));
+		QCOMPARE(text(QStringLiteral("%{structure_id}"),
+					  info("K1", QStringLiteral("E1"), QStringLiteral("CP1")), element),
+				 QStringLiteral("-K1"));
+		QCOMPARE(text(QStringLiteral("%{structure_id_full}"),
+					  info("K1", QStringLiteral("E1"), QStringLiteral("CP1")), element),
+				 QStringLiteral("=E1+CP1-K1"));
+	}
+
+	void differentFromTheFolioIsKept()
+	{
+		QETProject project;
+		Diagram *diagram = project.addNewDiagram();
+		setFolio(diagram, QStringLiteral("E1"), QStringLiteral("CP1"));
+		Element *element = symbol(diagram);
+		QVERIFY(element);
+
+			//Own plant differs: =OTHER kept, +CP1 (the folio's) left out
+		QCOMPARE(text(QStringLiteral("%{structure_id}"),
+					  info("K1", QStringLiteral("OTHER")), element),
+				 QStringLiteral("=OTHER-K1"));
+			//Own location differs: +FIELD kept, =E1 left out
+		QCOMPARE(text(QStringLiteral("%{structure_id}"),
+					  info("K1", {}, QStringLiteral("FIELD")), element),
+				 QStringLiteral("+FIELD-K1"));
+			//Both differ
+		QCOMPARE(text(QStringLiteral("%{structure_id}"),
+					  info("K1", QStringLiteral("OTHER"), QStringLiteral("FIELD")), element),
+				 QStringLiteral("=OTHER+FIELD-K1"));
+			//The full form never leaves a part out
+		QCOMPARE(text(QStringLiteral("%{structure_id_full}"),
+					  info("K1", QStringLiteral("OTHER")), element),
+				 QStringLiteral("=OTHER+CP1-K1"));
+	}
+
+	void plantAndLocationTokensAreUnchanged()
+	{
+		QETProject project;
+		Diagram *diagram = project.addNewDiagram();
+		setFolio(diagram, QStringLiteral("E1"), QStringLiteral("CP1"));
+		Element *element = symbol(diagram);
+		QVERIFY(element);
+
+			//As before: the element's own value only, no folio fallback
+		QCOMPARE(text(QStringLiteral("%{plant}|%{location}"), info("X1"), element),
+				 QStringLiteral("|"));
+		QCOMPARE(text(QStringLiteral("%{plant}|%{location}"),
+					  info("X1", QStringLiteral("P"), QStringLiteral("L")), element),
+				 QStringLiteral("P|L"));
+		QCOMPARE(text(QStringLiteral("%{plant}"), info("X1"), element), QString());
+		QCOMPARE(text(QStringLiteral("%{structure_id_full}"), info("X1"), element),
+				 QStringLiteral("=E1+CP1-X1"));
+	}
+
+	void elementsOwnValueWins()
+	{
+		QETProject project;
+		Diagram *diagram = project.addNewDiagram();
+		setFolio(diagram, QStringLiteral("FACTORY"), QStringLiteral("CP1"));
+		Element *element = symbol(diagram);
+		QVERIFY(element);
+
+			//A device drawn on the CP1 folio that is mounted in the field
+		QCOMPARE(text(QStringLiteral("%{structure_id_full}"),
+					  info("S5", {}, QStringLiteral("FIELD")), element),
+				 QStringLiteral("=FACTORY+FIELD-S5"));
+		QCOMPARE(text(QStringLiteral("%{plant}|%{location}"),
+					  info("S5", {}, QStringLiteral("FIELD")), element),
+				 QStringLiteral("|FIELD"));
+		QCOMPARE(text(QStringLiteral("%{structure_id}"),
+					  info("S5", QStringLiteral("SILO"), QStringLiteral("CP1000")), element),
+				 QStringLiteral("=SILO+CP1000-S5"));
+	}
+
+	void emptyPartsAreLeftOut()
+	{
+		QETProject project;
+		Diagram *diagram = project.addNewDiagram();
+		setFolio(diagram, {}, QStringLiteral("CP1"));
+		Element *element = symbol(diagram);
+		QVERIFY(element);
+
+		QCOMPARE(text(QStringLiteral("%{structure_id_full}"), info("K1"), element),
+				 QStringLiteral("+CP1-K1"));
+		QCOMPARE(text(QStringLiteral("%{structure_id_full}"), info({}), element),
+				 QStringLiteral("+CP1"));
+		QCOMPARE(text(QStringLiteral("%{structure_id}"), info({}), element),
+				 QString());
+	}
+
+	void aSignTypedWithTheValueIsNotDoubled()
+	{
+			//Many people type the label as "-K1": one sign, not "--K1",
+			//in the drawing and in the database alike
+		QETProject project;
+		Diagram *diagram = project.addNewDiagram();
+		setFolio(diagram, QStringLiteral("=FACTORY"), QStringLiteral("CP1"));
+		Element *element = symbol(diagram);
+		QVERIFY(element);
+		setInfo(element, info("-K1", {}, QStringLiteral("+FIELD")));
+
+		QCOMPARE(text(QStringLiteral("%{structure_id_full}"), element->elementInformations(), element),
+				 QStringLiteral("=FACTORY+FIELD-K1"));
+		QCOMPARE(text(QStringLiteral("%{structure_id}"), element->elementInformations(), element),
+				 QStringLiteral("+FIELD-K1"));
+
+		project.dataBase()->updateDB();
+		QString error;
+		QSqlQuery query = project.dataBase()->newQuery(QStringLiteral(
+			"SELECT structure_id FROM qet_devices WHERE device_uuid = '%1'")
+				.arg(element->uuid().toString()), &error);
+		QVERIFY2(error.isEmpty(), qPrintable(error));
+		QVERIFY2(query.next(), "the element is not in qet_devices");
+		QCOMPARE(query.value(0).toString(), QStringLiteral("=FACTORY+FIELD-K1"));
+	}
+
+	void databaseSaysWhatTheDrawingSays()
+	{
+			//qet_devices.structure_id is the full designation,
+			//=plant+location-label; plant and location in the view fall back
+			//to the folio, where %{plant} / %{location} show the element's own.
+		QETProject project;
+		Diagram *diagram = project.addNewDiagram();
+		setFolio(diagram, QStringLiteral("FACTORY"), QStringLiteral("CP1"));
+		Element *on_folio = symbol(diagram);
+		Element *in_field = symbol(diagram);
+		QVERIFY(on_folio && in_field);
+		setInfo(on_folio, info("X1"));
+		setInfo(in_field, info("S5", {}, QStringLiteral("FIELD")));
+
+		project.dataBase()->updateDB();
+		for (Element *element : {on_folio, in_field})
+		{
+			QString error;
+			QSqlQuery query = project.dataBase()->newQuery(QStringLiteral(
+				"SELECT plant, location, structure_id FROM qet_devices WHERE device_uuid = '%1'")
+					.arg(element->uuid().toString()), &error);
+			QVERIFY2(error.isEmpty(), qPrintable(error));
+			QVERIFY2(query.next(), "the element is not in qet_devices");
+			QCOMPARE(query.value(0).toString(), QStringLiteral("FACTORY"));
+			QCOMPARE(query.value(1).toString(), element == on_folio ? QStringLiteral("CP1")
+																   : QStringLiteral("FIELD"));
+			QCOMPARE(query.value(2).toString(), element == on_folio
+					 ? QStringLiteral("=FACTORY+CP1-X1")
+					 : QStringLiteral("=FACTORY+FIELD-S5"));
+		}
+	}
+
+	void symbolInsideABoxTakesTheBox()
+	{
+		QETProject project;
+		Diagram *diagram = project.addNewDiagram();
+		setFolio(diagram, QStringLiteral("FACTORY"), QStringLiteral("CP1"));
+		box(diagram, QRectF(0, 0, 400, 400), {}, QStringLiteral("FIELD"));
+		Element *inside = symbol(diagram);
+		Element *outside = symbol(diagram);
+		QVERIFY(inside && outside);
+			//In the middle of the box, far from its outline
+		inside->setPos(200, 200);
+		outside->setPos(800, 800);
+
+			//The box gives +FIELD only: the =plant stays the folio's
+		QCOMPARE(text(QStringLiteral("%{structure_id_full}"), info("S5"), inside),
+				 QStringLiteral("=FACTORY+FIELD-S5"));
+		QCOMPARE(text(QStringLiteral("%{structure_id_full}"), info("K1"), outside),
+				 QStringLiteral("=FACTORY+CP1-K1"));
+	}
+
+	void smallestBoxWins()
+	{
+		QETProject project;
+		Diagram *diagram = project.addNewDiagram();
+		setFolio(diagram, QStringLiteral("FACTORY"), QStringLiteral("CP1"));
+		box(diagram, QRectF(0, 0, 800, 800), QStringLiteral("SILO"), QStringLiteral("CP1000"));
+		box(diagram, QRectF(100, 100, 200, 200), QStringLiteral("SILO"), QStringLiteral("J3"));
+		Element *element = symbol(diagram);
+		QVERIFY(element);
+		element->setPos(200, 200);
+
+		QCOMPARE(text(QStringLiteral("%{structure_id_full}"), info("M1"), element),
+				 QStringLiteral("=SILO+J3-M1"));
+	}
+
+	void anEmptyFieldOfABoxIsTheNextOnes()
+	{
+		QETProject project;
+		Diagram *diagram = project.addNewDiagram();
+		setFolio(diagram, QStringLiteral("FACTORY"), QStringLiteral("CP1"));
+		box(diagram, QRectF(0, 0, 800, 800), QStringLiteral("SILO"), QStringLiteral("CP1000"));
+		box(diagram, QRectF(100, 100, 200, 200), {}, QStringLiteral("J3"));
+		Element *element = symbol(diagram);
+		QVERIFY(element);
+		element->setPos(200, 200);
+
+			//+J3 from the inner box, =SILO from the outer one
+		QCOMPARE(text(QStringLiteral("%{structure_id_full}"), info("M1"), element),
+				 QStringLiteral("=SILO+J3-M1"));
+	}
+
+		//The public rule other features use (terminal strip manager, checks):
+		//the boxes a symbol is in, the place they give it, and its own place
+	void thePublicRuleSaysWhereASymbolIs()
+	{
+		QETProject project;
+		Diagram *diagram = project.addNewDiagram();
+		setFolio(diagram, QStringLiteral("FACTORY"), QStringLiteral("CP1"));
+		const StructureBoxItem *outer = box(diagram, QRectF(0, 0, 800, 800), QStringLiteral("SILO"), QString());
+		const StructureBoxItem *inner = box(diagram, QRectF(100, 100, 200, 200), QString(), QStringLiteral("J3"));
+		Element *in_both = symbol(diagram);
+		Element *own = symbol(diagram);
+		Element *outside = symbol(diagram);
+		QVERIFY(in_both && own && outside);
+		in_both->setPos(200, 200);
+		own->setPos(210, 210);
+		setInfo(own, info("X1", {}, QStringLiteral("DB50")));
+		outside->setPos(1200, 1200);
+
+		QCOMPARE(StructureBoxItem::enclosing(in_both),
+				 (QList<const StructureBoxItem *>{inner, outer}));
+		QVERIFY(StructureBoxItem::enclosing(outside).isEmpty());
+		QVERIFY(StructureBoxItem::enclosing(nullptr).isEmpty());
+
+		const StructureBoxItem::Place reference = StructureBoxItem::referencePlace(in_both);
+		QCOMPARE(reference.plant, QStringLiteral("SILO"));
+		QCOMPARE(reference.location, QStringLiteral("J3"));
+
+			//Its own location wins, the empty plant comes from the boxes
+		const StructureBoxItem::Place place = StructureBoxItem::placeOf(own);
+		QCOMPARE(place.plant, QStringLiteral("SILO"));
+		QCOMPARE(place.location, QStringLiteral("DB50"));
+
+			//Outside every box: the folio
+		const StructureBoxItem::Place folio = StructureBoxItem::placeOf(outside);
+		QCOMPARE(folio.plant, QStringLiteral("FACTORY"));
+		QCOMPARE(folio.location, QStringLiteral("CP1"));
+	}
+
+	void ownValueBeatsTheBox()
+	{
+		QETProject project;
+		Diagram *diagram = project.addNewDiagram();
+		box(diagram, QRectF(0, 0, 400, 400), QStringLiteral("FACTORY"), QStringLiteral("FIELD"));
+		Element *element = symbol(diagram);
+		QVERIFY(element);
+		element->setPos(200, 200);
+
+		QCOMPARE(text(QStringLiteral("%{structure_id_full}"),
+					  info("S5", {}, QStringLiteral("DB50")), element),
+				 QStringLiteral("=FACTORY+DB50-S5"));
+	}
+
+	void plantAndLocationStayTheElementsOwnInsideABox()
+	{
+		QETProject project;
+		Diagram *diagram = project.addNewDiagram();
+		box(diagram, QRectF(0, 0, 400, 400), QStringLiteral("FACTORY"), QStringLiteral("FIELD"));
+		Element *element = symbol(diagram);
+		QVERIFY(element);
+		element->setPos(200, 200);
+
+		QCOMPARE(text(QStringLiteral("%{plant}|%{location}"), info("S5"), element),
+				 QStringLiteral("|"));
+	}
+
+		//Behind the project's setting, %{plant} and %{location} give the
+		//place the element takes: its own, the box's, else the folio's
+	void plantAndLocationFollowThePlaceWhenTheProjectSaysSo()
+	{
+		QETProject project;
+		project.setPlantAndLocationInherited(true);
+		Diagram *diagram = project.addNewDiagram();
+		setFolio(diagram, QStringLiteral("FACTORY"), QStringLiteral("CP1"));
+		box(diagram, QRectF(0, 0, 400, 400), {}, QStringLiteral("FIELD"));
+		Element *inside = symbol(diagram);
+		Element *outside = symbol(diagram);
+		QVERIFY(inside && outside);
+		inside->setPos(200, 200);
+		outside->setPos(800, 800);
+
+		const QString place = QStringLiteral("%{plant}|%{location}");
+			//The box gives +FIELD only: the =plant stays the folio's
+		QCOMPARE(text(place, info("S5"), inside), QStringLiteral("FACTORY|FIELD"));
+		QCOMPARE(text(place, info("S5", {}, QStringLiteral("DB50")), inside),
+				 QStringLiteral("FACTORY|DB50"));
+		QCOMPARE(text(place, info("K1"), outside), QStringLiteral("FACTORY|CP1"));
+		QCOMPARE(text(place, info("K1", QStringLiteral("SILO")), outside),
+				 QStringLiteral("SILO|CP1"));
+	}
+
+		//Switching the setting redraws the texts that use the variables, and
+		//it is saved only when on, so a project with it off saves as before
+	void theSettingRedrawsTextsAndIsSavedOnlyWhenOn()
+	{
+		QTemporaryDir dir;
+		QVERIFY(dir.isValid());
+		QETProject project;
+		Diagram *diagram = project.addNewDiagram();
+		setFolio(diagram, QStringLiteral("FACTORY"), QStringLiteral("CP1"));
+		Element *element = symbol(diagram);
+		QVERIFY(element);
+		setInfo(element, info("K1"));
+		auto *text = new DynamicElementTextItem(element);
+		text->setTextFrom(DynamicElementTextItem::CompositeText);
+		text->setCompositeText(QStringLiteral("%{plant}|%{location}"));
+		element->addDynamicTextItem(text);
+		QCOMPARE(text->toPlainText(), QStringLiteral("|"));
+		QVERIFY(!project.toXml().toString().contains(QLatin1String("plant_location")));
+
+		project.setPlantAndLocationInherited(true);
+		QCOMPARE(text->toPlainText(), QStringLiteral("FACTORY|CP1"));
+			//And it follows the title block from then on
+		setFolio(diagram, QStringLiteral("FACTORY"), QStringLiteral("CP2"));
+		QCOMPARE(text->toPlainText(), QStringLiteral("FACTORY|CP2"));
+
+		for (const QString &name : {QStringLiteral("inherited.qet"),
+									QStringLiteral("inherited.qetz")}) {
+			project.setFilePath(dir.filePath(name));
+			QVERIFY2(project.write().isOk(), qPrintable(name));
+			QETProject reopened(project.filePath());
+			QVERIFY2(reopened.plantAndLocationInherited(), qPrintable(name));
+		}
+
+		project.setPlantAndLocationInherited(false);
+		QCOMPARE(text->toPlainText(), QStringLiteral("|"));
+	}
+
+	void shortFormLeavesOutWhatTheBoxSays()
+	{
+		QETProject project;
+		Diagram *diagram = project.addNewDiagram();
+		setFolio(diagram, QStringLiteral("FACTORY"), QStringLiteral("CP1"));
+		box(diagram, QRectF(0, 0, 400, 400), QStringLiteral("SILO"), QStringLiteral("FIELD"));
+		Element *inside = symbol(diagram);
+		Element *outside = symbol(diagram);
+		QVERIFY(inside && outside);
+		inside->setPos(200, 200);
+		outside->setPos(800, 800);
+
+			//Inside the box, the box's =SILO+FIELD is implied
+		QCOMPARE(text(QStringLiteral("%{structure_id}"), info("S5"), inside),
+				 QStringLiteral("-S5"));
+		QCOMPARE(text(QStringLiteral("%{structure_id}"),
+					  info("S5", {}, QStringLiteral("DB50")), inside),
+				 QStringLiteral("+DB50-S5"));
+			//Outside it, the folio's =FACTORY+CP1 is
+		QCOMPARE(text(QStringLiteral("%{structure_id}"), info("K1"), outside),
+				 QStringLiteral("-K1"));
+		QCOMPARE(text(QStringLiteral("%{structure_id}"),
+					  info("K1", QStringLiteral("SILO")), outside),
+				 QStringLiteral("=SILO-K1"));
+	}
+
+	void boxSurvivesSaveAndReload()
+	{
+		QETProject project;
+		Diagram *diagram = project.addNewDiagram();
+		box(diagram, QRectF(10, 20, 300, 200), QStringLiteral("SILO"), QStringLiteral("J3"));
+		diagram->addItem(new QetShapeItem(QPointF(0, 0), QPointF(50, 50), QetShapeItem::Rectangle));
+		QDomDocument saved = diagram->toXml();
+
+		QETProject other;
+		Diagram *reloaded = other.addNewDiagram();
+		QVERIFY(reloaded->fromXml(saved));
+		int boxes = 0, shapes = 0;
+		for (QGraphicsItem *item : reloaded->items()) {
+			if (item->type() == StructureBoxItem::Type) {
+				auto *b = static_cast<StructureBoxItem *>(item);
+				QCOMPARE(b->plant(), QStringLiteral("SILO"));
+				QCOMPARE(b->location(), QStringLiteral("J3"));
+				QCOMPARE(b->mapRectToScene(b->rect().normalized()), QRectF(10, 20, 300, 200));
+				++boxes;
+			}
+			else if (item->type() == QetShapeItem::Type)
+				++shapes;
+		}
+		QCOMPARE(boxes, 1);
+		QCOMPARE(shapes, 1);	//a plain rectangle stays a plain rectangle
+	}
+
+		//A new box is drawn dash-dot, a location boundary (IEC 60617);
+		//its line is saved with it, and a plain rectangle stays solid
+	void aNewBoxIsDashDot()
+	{
+		QETProject project;
+		Diagram *diagram = project.addNewDiagram();
+		StructureBoxItem *b = box(diagram, QRectF(10, 20, 300, 200), QStringLiteral("SILO"), QString());
+		QCOMPARE(b->pen().style(), Qt::DashDotLine);
+		QCOMPARE(QetShapeItem(QPointF(0, 0), QPointF(50, 50), QetShapeItem::Rectangle).pen().style(),
+				 Qt::SolidLine);
+
+		QPen solid = b->pen();
+		solid.setStyle(Qt::SolidLine);
+		b->setPen(solid);
+		QDomDocument saved = diagram->toXml();
+		QETProject other;
+		Diagram *reloaded = other.addNewDiagram();
+		QVERIFY(reloaded->fromXml(saved));
+		for (QGraphicsItem *item : reloaded->items())
+			if (item->type() == StructureBoxItem::Type)
+				QCOMPARE(static_cast<StructureBoxItem *>(item)->pen().style(), Qt::SolidLine);
+	}
+
+		//A text showing the reference designation follows the boxes: drawn
+		//around the symbol, given a location, moved away, deleted, and a
+		//project read back with the box (boxes load after the symbols)
+	void aSymbolTextFollowsTheBox()
+	{
+		QETProject project;
+		Diagram *diagram = project.addNewDiagram();
+		setFolio(diagram, QStringLiteral("FACTORY"), QStringLiteral("CP1"));
+		Element *element = symbol(diagram);
+		QVERIFY(element);
+		element->setPos(200, 200);
+		setInfo(element, info("K1"));
+		auto *text = new DynamicElementTextItem(element);
+		text->setTextFrom(DynamicElementTextItem::CompositeText);
+		text->setCompositeText(QStringLiteral("%{structure_id_full}"));
+		element->addDynamicTextItem(text);
+		QCOMPARE(text->toPlainText(), QStringLiteral("=FACTORY+CP1-K1"));
+
+		StructureBoxItem *b = box(diagram, QRectF(0, 0, 400, 400), QString(), QString());
+		QCOMPARE(text->toPlainText(), QStringLiteral("=FACTORY+CP1-K1"));
+		b->setLocation(QStringLiteral("F1"));
+		QCOMPARE(text->toPlainText(), QStringLiteral("=FACTORY+F1-K1"));
+		b->setPos(1000, 1000);
+		QCOMPARE(text->toPlainText(), QStringLiteral("=FACTORY+CP1-K1"));
+		b->setPos(0, 0);
+		QCOMPARE(text->toPlainText(), QStringLiteral("=FACTORY+F1-K1"));
+
+			//Read back (into the same project, which holds the symbol's
+			//definition): the symbol is built before the box
+		QDomDocument saved = diagram->toXml();
+		Diagram *reloaded = project.addNewDiagram();
+		QVERIFY(reloaded->fromXml(saved));
+		bool found = false;
+		for (Element *e : reloaded->elements())
+			for (DynamicElementTextItem *t : e->dynamicTextItems())
+				if (t->textFrom() == DynamicElementTextItem::CompositeText) {
+					QCOMPARE(t->toPlainText(), QStringLiteral("=FACTORY+F1-K1"));
+					found = true;
+				}
+		QVERIFY(found);
+
+		diagram->removeItem(b);
+		QCOMPARE(text->toPlainText(), QStringLiteral("=FACTORY+CP1-K1"));
+		delete b;
+	}
+
+	void boxIdentityIsInTheDatabase()
+	{
+			//Its row is what a .qetdb saves: it must carry the identity
+		QETProject project;
+		Diagram *diagram = project.addNewDiagram();
+		StructureBoxItem *b = box(diagram, QRectF(0, 0, 100, 100),
+								  QStringLiteral("SILO"), QStringLiteral("J3"));
+		b->setLocation(QStringLiteral("J4"));	//a change after it was added
+
+		QString error;
+		QSqlQuery query = project.dataBase()->newQuery(QStringLiteral(
+			"SELECT name, value FROM drawing_item WHERE item_uuid = '%1' "
+			"AND name IN ('structure_box', 'plant', 'location')").arg(b->uuid().toString()), &error);
+		QVERIFY2(error.isEmpty(), qPrintable(error));
+		QHash<QString, QString> values;
+		while (query.next()) values.insert(query.value(0).toString(), query.value(1).toString());
+		QCOMPARE(values.value(QStringLiteral("structure_box")), QStringLiteral("true"));
+		QCOMPARE(values.value(QStringLiteral("plant")), QStringLiteral("SILO"));
+		QCOMPARE(values.value(QStringLiteral("location")), QStringLiteral("J4"));
+	}
+
+	void theSidePanelAppliesALeftField()
+	{
+			//In the Selection properties panel there is no Apply button:
+			//leaving a field applies it
+		QETProject project;
+		Diagram *diagram = project.addNewDiagram();
+		StructureBoxItem *b = box(diagram, QRectF(0, 0, 100, 100), {}, QStringLiteral("J3"));
+		StructureBoxPropertiesWidget editor(b);
+		QVERIFY(editor.setLiveEdit(true));
+		for (QLineEdit *edit : editor.findChildren<QLineEdit *>()) {
+			if (edit->text() == QLatin1String("J3")) {
+				edit->setText(QStringLiteral("F1"));
+				emit edit->editingFinished();
+			}
+		}
+		QCOMPARE(b->location(), QStringLiteral("F1"));
+		diagram->undoStack().undo();
+		QCOMPARE(b->location(), QStringLiteral("J3"));
+	}
+
+	void editingABoxCanBeUndone()
+	{
+		QETProject project;
+		Diagram *diagram = project.addNewDiagram();
+		StructureBoxItem *b = box(diagram, QRectF(0, 0, 100, 100),
+								  QStringLiteral("SILO"), QStringLiteral("J3"));
+		StructureBoxPropertiesWidget editor(b);
+		for (QLineEdit *edit : editor.findChildren<QLineEdit *>()) {
+			if (edit->text() == QLatin1String("J3")) edit->setText(QStringLiteral("CP1000"));
+		}
+		editor.apply();
+		QCOMPARE(b->location(), QStringLiteral("CP1000"));
+		diagram->undoStack().undo();
+		QCOMPARE(b->location(), QStringLiteral("J3"));
+		QCOMPARE(b->plant(), QStringLiteral("SILO"));
+	}
+
+		//A symbol's text shows the short form against its folio: it
+		//follows the folio's plant and location when the title block is
+		//changed, not only when the symbol changes
+		//A symbol moved into or out of a box: its text follows. Dragging,
+		//the arrow keys and an undo all move it by setting its position
+	void aSymbolTextFollowsTheSymbol()
+	{
+		QETProject project;
+		project.setPlantAndLocationInherited(true);
+		Diagram *diagram = project.addNewDiagram();
+		setFolio(diagram, QStringLiteral("FACTORY"), QStringLiteral("CP1"));
+		box(diagram, QRectF(0, 0, 400, 400), {}, QStringLiteral("CP10"));
+		Element *element = symbol(diagram);
+		QVERIFY(element);
+		setInfo(element, info("K10"));
+		auto *text = new DynamicElementTextItem(element);
+		text->setTextFrom(DynamicElementTextItem::CompositeText);
+		text->setCompositeText(QStringLiteral("%{structure_id_full} %{location}"));
+		element->addDynamicTextItem(text);
+
+		element->setPos(800, 800);
+		QCOMPARE(text->toPlainText(), QStringLiteral("=FACTORY+CP1-K10 CP1"));
+		element->setPos(200, 200);
+		QCOMPARE(text->toPlainText(), QStringLiteral("=FACTORY+CP10-K10 CP10"));
+		element->setPos(800, 800);
+		QCOMPARE(text->toPlainText(), QStringLiteral("=FACTORY+CP1-K10 CP1"));
+	}
+
+	void aSymbolTextFollowsTheTitleBlock()
+	{
+		QETProject project;
+		Diagram *diagram = project.addNewDiagram();
+		Element *element = symbol(diagram);
+		QVERIFY(element);
+		setInfo(element, info("K1", QStringLiteral("FACTORY"), QStringLiteral("CP1")));
+		auto *text = new DynamicElementTextItem(element);
+		text->setTextFrom(DynamicElementTextItem::CompositeText);
+		text->setCompositeText(QStringLiteral("%{structure_id}"));
+		element->addDynamicTextItem(text);
+		QCOMPARE(text->toPlainText(), QStringLiteral("=FACTORY+CP1-K1"));
+
+		setFolio(diagram, QStringLiteral("FACTORY"), QString());
+		QCOMPARE(text->toPlainText(), QStringLiteral("+CP1-K1"));
+		setFolio(diagram, QStringLiteral("FACTORY"), QStringLiteral("CP1"));
+		QCOMPARE(text->toPlainText(), QStringLiteral("-K1"));
+		setFolio(diagram, QStringLiteral("FACTORY"), QStringLiteral("CP2"));
+		QCOMPARE(text->toPlainText(), QStringLiteral("+CP1-K1"));
+	}
+
+	void databaseHonoursTheBoxes()
+	{
+			//The same rule in SQL (the views) as in the texts:
+			//own value, smallest box with a value, folio -- field by field,
+			//which %{plant} and %{location} show with the project's setting
+		QETProject project;
+		project.setPlantAndLocationInherited(true);
+		Diagram *diagram = project.addNewDiagram();
+		setFolio(diagram, QStringLiteral("FACTORY"), QStringLiteral("CP1"));
+		box(diagram, QRectF(0, 0, 800, 800), QStringLiteral("SILO"), QStringLiteral("CP1000"));
+		StructureBoxItem *inner = box(diagram, QRectF(100, 100, 200, 200), {}, QStringLiteral("J3"));
+		inner->setPos(50, 0);	//its rectangle is now 150..350 x 100..300
+		Element *in_inner = symbol(diagram);
+		Element *in_outer = symbol(diagram);
+		Element *on_folio = symbol(diagram);
+		Element *own = symbol(diagram);
+		QVERIFY(in_inner && in_outer && on_folio && own);
+		in_inner->setPos(200, 200);
+		in_outer->setPos(120, 600);
+		on_folio->setPos(1200, 1200);
+		own->setPos(200, 200);
+		setInfo(in_inner, info("M1"));
+		setInfo(in_outer, info("M2"));
+		setInfo(on_folio, info("M3"));
+		setInfo(own, info("M4", {}, QStringLiteral("DB50")));
+
+		project.dataBase()->updateDB();
+		const QHash<Element *, QString> expected {
+			{in_inner, QStringLiteral("=SILO+J3-M1")}, {in_outer, QStringLiteral("=SILO+CP1000-M2")},
+			{on_folio, QStringLiteral("=FACTORY+CP1-M3")}, {own, QStringLiteral("=SILO+DB50-M4")}};
+		for (auto it = expected.cbegin() ; it != expected.cend() ; ++it)
+		{
+			Element *element = it.key();
+			const DiagramContext dc = element->elementInformations();
+			QCOMPARE(text(QStringLiteral("%{structure_id_full}"), dc, element), it.value());
+			QString error;
+			QSqlQuery query = project.dataBase()->newQuery(QStringLiteral(
+				"SELECT plant, location, structure_id FROM qet_devices WHERE device_uuid = '%1'")
+					.arg(element->uuid().toString()), &error);
+			QVERIFY2(error.isEmpty(), qPrintable(error));
+			QVERIFY2(query.next(), "the element is not in qet_devices");
+			QCOMPARE(query.value(0).toString(), text(QStringLiteral("%{plant}"), dc, element));
+			QCOMPARE(query.value(1).toString(), text(QStringLiteral("%{location}"), dc, element));
+			QCOMPARE(query.value(2).toString(), it.value());
+		}
+	}
+
+	void theDatabaseTestsTheCentreToo()
+	{
+			//"Inside a box" is the symbol's centre, in the texts and in
+			//SQL alike: not its insertion point
+		QETProject project;
+		Diagram *diagram = project.addNewDiagram();
+		setFolio(diagram, QStringLiteral("FACTORY"), QStringLiteral("CP1"));
+		box(diagram, QRectF(100, 100, 100, 100), {}, QStringLiteral("CP10"));
+		Element *centre_in = symbol(diagram, true);
+		Element *centre_out = symbol(diagram, true);
+		QVERIFY(centre_in && centre_out);
+		centre_in->setPos(90, 90);		//its centre: 110, 110
+		centre_out->setPos(190, 190);	//its centre: 210, 210
+		setInfo(centre_in, info("K1"));
+		setInfo(centre_out, info("K2"));
+
+		const auto located = [&project](const Element *element) {
+			project.dataBase()->updateDB();
+			QString error;
+			QSqlQuery query = project.dataBase()->newQuery(QStringLiteral(
+				"SELECT location FROM qet_devices WHERE device_uuid = '%1'")
+					.arg(element->uuid().toString()), &error);
+			return error.isEmpty() && query.next() ? query.value(0).toString()
+												   : QStringLiteral("(no row: %1)").arg(error);
+		};
+		QCOMPARE(StructureBoxItem::placeOf(centre_in).location, QStringLiteral("CP10"));
+		QCOMPARE(located(centre_in), QStringLiteral("CP10"));
+		QCOMPARE(StructureBoxItem::placeOf(centre_out).location, QStringLiteral("CP1"));
+		QCOMPARE(located(centre_out), QStringLiteral("CP1"));
+
+			//Moved: its insertion point still in the box, its centre out
+		centre_in->setPos(185, 185);	//its centre: 205, 205
+		QCOMPARE(StructureBoxItem::placeOf(centre_in).location, QStringLiteral("CP1"));
+		QCOMPARE(located(centre_in), QStringLiteral("CP1"));
+	}
+
+	void theNameIsAMovableTextOfItsOwn()
+	{
+		QETProject project;
+		Diagram *diagram = project.addNewDiagram();
+		StructureBoxItem *b = box(diagram, QRectF(100, 100, 200, 200), QStringLiteral("SILO"), QStringLiteral("J3"));
+		QVERIFY(b->label());
+		QCOMPARE(b->label()->toPlainText(), QStringLiteral("=SILO+J3"));
+			//above the top left corner, outside the box
+		QCOMPARE(b->labelOffset(), QPointF(0, -b->label()->boundingRect().height()));
+		QVERIFY(b->label()->mapRectToParent(b->label()->boundingRect()).bottom() <= b->rect().top());
+		QVERIFY(b->label()->flags() & QGraphicsItem::ItemIsMovable);
+		QVERIFY(b->label()->flags() & QGraphicsItem::ItemIsSelectable);
+
+		QDomDocument document;
+		QDomElement plain = b->toXml(document);
+		QVERIFY(!plain.hasAttribute(QStringLiteral("label_x")));  //a box left alone saves as ever
+		QVERIFY(!plain.hasAttribute(QStringLiteral("label_size")));
+
+		b->setLabelOffset(QPointF(-5, -14));
+		b->setLabelSize(5);
+		const QDomElement moved = b->toXml(document);
+		QCOMPARE(moved.attribute(QStringLiteral("label_x")), QStringLiteral("-5.0"));
+		QCOMPARE(moved.attribute(QStringLiteral("label_y")), QStringLiteral("-14.0"));
+		QCOMPARE(moved.attribute(QStringLiteral("label_size")), QStringLiteral("5"));
+
+		StructureBoxItem *read = box(diagram, QRectF(0, 0, 50, 50), {}, {});
+		QVERIFY(read->fromXml(moved));
+		QCOMPARE(read->labelOffset(), QPointF(-5, -14));
+		QCOMPARE(read->labelSize(), 5.0);
+		QCOMPARE(read->label()->toPlainText(), QStringLiteral("=SILO+J3"));
+		QCOMPARE(read->label()->font().pointSizeF(), 5.0);
+	}
+
+	void theNameIsDrawnInTheColourOfTheBox()
+	{
+		QETProject project;
+		Diagram *diagram = project.addNewDiagram();
+		StructureBoxItem *b = box(diagram, QRectF(100, 100, 200, 200), QStringLiteral("SILO"), QStringLiteral("J3"));
+		QPen pen = b->pen();
+		pen.setColor(QColor(QStringLiteral("#ffd700")));
+		b->setPen(pen);
+		QCOMPARE(b->label()->defaultTextColor(), QColor(QStringLiteral("#ffd700")));
+	}
+
+	void newBoxesTakeTheColourSet()
+	{
+		struct Probe : DiagramEventAddStructureBox {
+			using DiagramEventAddStructureBox::DiagramEventAddStructureBox;
+			using DiagramEventAddStructureBox::createShapeItem;
+		};
+		QETProject project;
+		Diagram *diagram = project.addNewDiagram();
+		QSettings().remove(QStringLiteral("diagrameditor/structure_box_color"));
+		QCOMPARE(StructureBoxItem::newBoxColor(), QColor(Qt::black));   //as before
+		QVERIFY(!StructureBoxItem::askPlaceWhenDrawn());                  //off by default
+
+		StructureBoxItem::setNewBoxColor(QColor(QStringLiteral("#ffd700")));
+		Probe probe(diagram);
+		auto *shape = probe.createShapeItem(QPointF(0, 0), QPointF(50, 50), QetShapeItem::Rectangle);
+		QCOMPARE(shape->pen().color(), QColor(QStringLiteral("#ffd700")));
+		QCOMPARE(shape->pen().style(), Qt::DashDotLine);
+		delete shape;
+		QSettings().remove(QStringLiteral("diagrameditor/structure_box_color"));
+	}
+
+	void thePlaceAskedForIsTheBoxs()
+	{
+		QETProject project;
+		Diagram *diagram = project.addNewDiagram();
+		StructureBoxItem *b = box(diagram, QRectF(0, 0, 100, 100), {}, {});
+		QTimer::singleShot(0, [] {
+			QWidget *dialog = QApplication::activeModalWidget();
+			QVERIFY(dialog);
+			QCOMPARE(dialog->objectName(), QStringLiteral("askStructureBoxPlace"));
+			dialog->findChild<QLineEdit *>(QStringLiteral("plant"))->setText(QStringLiteral("E1"));
+			dialog->findChild<QLineEdit *>(QStringLiteral("location"))->setText(QStringLiteral(" VD2 "));
+			static_cast<QDialog *>(dialog)->accept();
+		});
+		QVERIFY(DiagramEventAddStructureBox::askPlace(b, nullptr));
+		QCOMPARE(b->structureId(), QStringLiteral("=E1+VD2"));
+
+		StructureBoxItem *empty = box(diagram, QRectF(200, 0, 100, 100), {}, {});
+		QTimer::singleShot(0, [] {
+			QWidget *dialog = QApplication::activeModalWidget();
+			QVERIFY(dialog);
+			dialog->findChild<QLineEdit *>(QStringLiteral("plant"))->setText(QStringLiteral("E1"));
+			static_cast<QDialog *>(dialog)->reject();
+		});
+		QVERIFY(!DiagramEventAddStructureBox::askPlace(empty, nullptr));
+		QVERIFY(empty->structureId().isEmpty());       //cancelled: the box stays empty
+	}
+
+	void withoutAnElementOnlyItsOwnValuesCount()
+	{
+			//Callers with no element (e.g. a symbol in the element editor)
+			//keep the old behaviour: no folio to fall back to.
+		QCOMPARE(text(QStringLiteral("%{plant}|%{location}|%{structure_id}"
+									 "|%{structure_id_full}"),
+					  info("Q1"), nullptr),
+				 QStringLiteral("||-Q1|-Q1"));
+		QCOMPARE(text(QStringLiteral("%{structure_id}|%{structure_id_full}"),
+					  info("Q1", QStringLiteral("P"), QStringLiteral("L")), nullptr),
+				 QStringLiteral("=P+L-Q1|=P+L-Q1"));
+	}
+};
+
+QET_APP_TEST_MAIN(tst_structureid)
+#include "tst_structureid.moc"

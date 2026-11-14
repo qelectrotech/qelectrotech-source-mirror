@@ -19,6 +19,7 @@
 #include <palettegraphicsview.h>
 #include <shownkinds.h>
 #include <lastusedstyle.h>
+#include <conductorcolorcodes.h>
 #include <qetproject.h>
 #include <QPropertyUndoCommand/qpropertyundocommand.h>
 #include <autoNum/numerotationcontextcommands.h>
@@ -38,6 +39,7 @@
 #include <utils/qetutils.h>
 #include <wirehops.h>
 
+#include <QApplication>
 #include <QMultiHash>
 #include <QtDebug>
 
@@ -167,6 +169,10 @@ Conductor::Conductor(Terminal *p1, Terminal* p2) :
 		ConductorProperties properties = dia->defaultConductorProperties;
 		if (LastUsedStyle::hasConductorColor())
 			properties.color = LastUsedStyle::conductorColor();
+			//A colour code from the toolbar also gives the colour text
+			//and, for green-yellow, the stripes
+		if (const auto *code = ConductorColorCodes::find(LastUsedStyle::conductorColorCode()))
+			ConductorColorCodes::apply(*code, properties);
 		setProperties(properties);
 	}
 }
@@ -789,6 +795,8 @@ void Conductor::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) {
 void Conductor::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
 	QGraphicsObject::mousePressEvent(event);
+	m_last_press.start();
+	m_last_press_pos = event->scenePos();
 
 	if (event->modifiers() & Qt::ControlModifier)
 		setSelected(!isSelected());
@@ -892,7 +900,20 @@ bool Conductor::sceneEventFilter(QGraphicsItem *watched, QEvent *event)
 			{
 				if(event->type() == QEvent::GraphicsSceneMousePress) //Click
 				{
-					handlerMousePressEvent(qghi, static_cast<QGraphicsSceneMouseEvent *>(event));
+					auto *mouse = static_cast<QGraphicsSceneMouseEvent *>(event);
+						//The first click selected the wire and showed this
+						//handle under the pointer; Qt then hands the second
+						//click of the double-click to the handle as a plain
+						//press. It is still a double-click on the wire.
+					if (m_last_press.isValid()
+							&& m_last_press.elapsed() < QApplication::doubleClickInterval()
+							&& QLineF(m_last_press_pos, mouse->scenePos()).length() < 4.0)
+					{
+						m_last_press.invalidate();
+						editProperty();
+						return true;
+					}
+					handlerMousePressEvent(qghi, mouse);
 					return true;
 				}
 				else if(event->type() == QEvent::GraphicsSceneMouseMove) //Move
@@ -1200,7 +1221,13 @@ bool Conductor::fromXml(QDomElement &dom_element)
 		m_autoNum_seq.fromXml(dom_element.firstChildElement("sequentialNumbers"));
 
 	m_freeze_label = dom_element.attribute("freezeLabel") == "true" ? true : false;
-	setAutomatic(dom_element.attribute(QStringLiteral("automatic")) == QLatin1String("true"));
+		//Automatic only in a project that keeps automatic connections up
+		//to date: elsewhere the wire could never be selected nor removed
+		//(#1837), as in files saved before that was checked, or a copy
+		//pasted from such a project
+	setAutomatic(dom_element.attribute(QStringLiteral("automatic")) == QLatin1String("true")
+				 && diagram() && diagram()->project()
+				 && diagram()->project()->liveAutoConnect());
 
 		//Changed through the project database while its folio was not
 		//built (lazy folios): the change, not what the file says
@@ -1803,6 +1830,7 @@ void Conductor::updateDefinitionMark()
 	}
 }
 
+
 /**
 	Sauvegarde le profil courant du conducteur pour l'utiliser ulterieurement
 	dans priv_modifieConductor.
@@ -2009,6 +2037,9 @@ void Conductor::setProperties(const ConductorProperties &property)
 		if (c != this)
 			c->updateDefinitionMark();
 	update();
+		//What a strip above this wire draws of it changed with the
+		//three fields
+	if (diagram()) diagram()->refreshTerminalStrips();
 	if (Terminal::takesConductorColor()) {
 		if (terminal1) terminal1->update();
 		if (terminal2) terminal2->update();
@@ -2187,6 +2218,9 @@ void Conductor::setCableReference(const QString &label,
 		m_properties.m_conductor_type.clear();
 	}
 	storeProperties();
+		//Becoming a core of a cable, or ceasing to be one, changes what
+		//the terminal strip above this wire draws of it
+	if (diagram()) diagram()->refreshTerminalStrips();
 	emit propertiesChange();
 }
 

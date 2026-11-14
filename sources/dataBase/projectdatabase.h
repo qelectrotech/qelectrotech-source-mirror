@@ -171,6 +171,9 @@ class projectDataBase : public QObject
 		static constexpr int PublicViewsVersion = 1;
 		static QStringList publicViews();
 		static QStringList publicViewStatements();
+			/// A subquery: the plant and location the structure boxes give
+			/// each element they hold (element_uuid, plant, location)
+		static QString structurePlacesSql();
 		QSqlDatabase database() const {return m_data_base;}
 		int excludedConductorCount() const;
 
@@ -463,6 +466,15 @@ class projectDataBase : public QObject
 		};
 		QList<FolioSymbol> symbolsOnFolios(const QList<QUuid> &folios) const;
 		QList<QUuid> linkedSymbols(const QUuid &element) const;
+			/// What a list of symbols to link shows of a symbol on a folio
+			/// not built yet, read from qet_devices and qet_wires: its
+			/// label, comment, sub kind and position, and the first wire
+			/// on it (a folio report shows that wire's properties)
+		struct LinkRow {
+			QString label, comment, sub_kind, position;
+			QString wire_number, wire_function, wire_voltage, wire_colour, wire_section;
+		};
+		QHash<QUuid, LinkRow> linkRows(const QList<QUuid> &elements) const;
 			/// A wire placed on a folio: its text and the kinds of the
 			/// symbols at its ends (ElementData::typeToString())
 		struct FolioWire { QString text; QString kind1; QString kind2; };

@@ -23,8 +23,10 @@
 #include <diagram.h>
 #include <diagramposition.h>
 #include <qetapp.h>
+#include <qetinformation.h>
 #include <qetgraphicsitem/conductor.h>
 #include <qetgraphicsitem/element.h>
+#include <qetgraphicsitem/structureboxitem.h>
 #include <qetxml.h>
 #include <qetproject.h>
 #include <ElementsCollection/qetlabelsfile.h>
@@ -34,6 +36,20 @@
 #include <QVariant>
 #include <algorithm>
 #include <utility>
+
+namespace {
+	/**
+		@return @p value with the IEC 81346 sign @p sign in front of it,
+		unless it already starts with that sign: a label typed as "-K1"
+		stays "-K1", not "--K1".
+	*/
+	QString withSign(QChar sign, const QString &value)
+	{
+		if (value.startsWith(sign))
+			return value;
+		return sign + value;
+	}
+}
 
 namespace autonum
 {
@@ -283,17 +299,88 @@ namespace autonum
 	/**
 		@brief AssignVariables::replaceVariable
 		Replace the variables in formula in form %{my-var}
-		to the corresponding value stored in dc
+		to the corresponding value stored in dc.
+		%{plant} and %{location} are replaced by the element's own
+		value only, so existing projects look as they always did; when
+		its project says so (QETProject::plantAndLocationInherited()),
+		by the place the element takes instead, as in
+		%{structure_id_full} below.
+		%{structure_id_full} composes =plant+location-label (IEC 81346);
+		there an empty plant or location is taken from the smallest
+		StructureBoxItem the element is visually inside that gives one,
+		then the next box around it, else from the containing diagram's
+		title block installation (=) / location (+) fields (discussion
+		#649). An empty part is left out.
+		%{structure_id} is the same, reduced by dropping the =plant
+		or +location part that equals that reference point (IEC 81346's
+		allowance for a designation implied by context).
 		@param formula
 		@param dc
+		@param elmt the element the formula belongs to, if any;
+		used for the box/folio fallback of %{structure_id} and
+		%{structure_id_full} and for the %{prefix} token. May be null.
 		@return
 	*/
 	QString AssignVariables::replaceVariable(const QString &formula,
-						 const DiagramContext &dc)
+						 const DiagramContext &dc,
+						 const Element *elmt)
 	{
 		QString str = formula;
-		str.replace("%{label}", dc.value("label").toString());
-		str.replace("%{plant}", dc.value("plant").toString());
+
+		Diagram *diagram = elmt ? elmt->diagram() : nullptr;
+
+		const QString own_plant = dc.value("plant").toString();
+		const QString own_location = dc.value("location").toString();
+
+			//The reference point: the box the element is inside, else its
+			//folio. Only the structure_id tokens use it.
+			//Field by field: an empty plant or location of a box is the one
+			//of the next box around it, then of the folio. A box that only
+			//says +FIELD keeps the =plant of its folio.
+		QString reference_plant, reference_location;
+		if (elmt && elmt->diagram()) {
+			const StructureBoxItem::Place reference = StructureBoxItem::referencePlace(elmt);
+			reference_plant = reference.plant;
+			reference_location = reference.location;
+		} else if (diagram) {
+			reference_plant = diagram->border_and_titleblock.plant();
+			reference_location = diagram->border_and_titleblock.locmach();
+		}
+
+		QString plant_value = own_plant;
+		if (plant_value.isEmpty())
+			plant_value = reference_plant;
+
+		QString location_value = own_location;
+		if (location_value.isEmpty())
+			location_value = reference_location;
+
+		QString prefix_value = elmt ? elmt->getPrefix() : QString();
+		QString label_value = dc.value("label").toString();
+
+			//Full IEC 81346 reference designation (=plant+location-label),
+			//each segment omitted when its underlying value is empty.
+		QString structure_id_full = buildStructureId(plant_value, location_value, label_value);
+
+			//Reduced form relative to the reference point (IEC 81346's own
+			//allowance for dropping higher-level parts already implied by
+			//context): the =/+ segments are also omitted when they match it,
+			//since an empty value already resolves to it.
+		QString structure_id = buildStructureId(
+			plant_value != reference_plant ? plant_value : QString(),
+			location_value != reference_location ? location_value : QString(),
+			label_value);
+
+		str.replace("%{label}", label_value);
+			//The place the element takes, as %{structure_id_full} gives it,
+			//when its project says so; else its own values only
+		const bool inherited = diagram && diagram->project()
+				&& diagram->project()->plantAndLocationInherited();
+		str.replace("%{plant}", inherited ? plant_value : own_plant);
+		str.replace("%{location}", inherited ? location_value : own_location);
+		str.replace("%{prefix}", prefix_value);
+		str.replace("%{structure_id}", structure_id);
+		str.replace("%{structure_id_full}", structure_id_full);
 		str.replace("%{comment}", dc.value("comment").toString());
 		str.replace("%{description}", dc.value("description").toString());
 		str.replace("%{designation}", dc.value("designation").toString());
@@ -349,7 +436,6 @@ namespace autonum
 		
 		str.replace("%{machine_manufacturer_reference}", dc.value("machine_manufacturer_reference").toString());
 
-		str.replace("%{location}", dc.value("location").toString());
 		str.replace("%{function}", dc.value("function").toString());
 		str.replace("%{tension_protocol}", dc.value("tension_protocol").toString());
 		str.replace("%{conductor_section}", dc.value("conductor_section").toString());
@@ -381,6 +467,13 @@ namespace autonum
 		str.replace("%{plc_t2}", dc.value("plc_t2").toString());
 		str.replace("%{plc_t3}", dc.value("plc_t3").toString());
 		str.replace("%{plc_t4}", dc.value("plc_t4").toString());
+
+			//A user-defined custom property, %{address_a}
+		if (str.contains(QLatin1String("%{"))) {
+			for (const QString &key : QETInformation::elementCustomInfoKeys(dc.keys())) {
+				str.replace("%{" + key + "}", dc.value(key).toString());
+			}
+		}
 
 		return str;
 	}
@@ -460,6 +553,27 @@ namespace autonum
 			//replaced. %T on its own only, not the start of a longer word.
 		static const QRegularExpression folio_title(QStringLiteral("%T(?![A-Za-z0-9_])"));
 		m_assigned_label.replace(folio_title, m_context.folio_title);
+	}
+
+	/**
+		@brief AssignVariables::buildStructureId
+		Assemble an IEC 81346 reference designation from its three aspects,
+		omitting any segment whose value is empty.
+		@param plant the "=" installation aspect
+		@param location the "+" location aspect
+		@param suffix the "-" product/component aspect
+		@return the assembled designation, e.g. "=E1+A2-K3"
+	*/
+	QString AssignVariables::buildStructureId(const QString &plant, const QString &location, const QString &suffix)
+	{
+		QString id;
+		if (!plant.isEmpty())
+			id += withSign(QLatin1Char('='), plant);
+		if (!location.isEmpty())
+			id += withSign(QLatin1Char('+'), location);
+		if (!suffix.isEmpty())
+			id += withSign(QLatin1Char('-'), suffix);
+		return id;
 	}
 
 	void AssignVariables::assignTitleBlockVar()
@@ -553,7 +667,11 @@ namespace autonum
 	{
 		for (int i = 0; i < context.size(); i++)
 		{
-			if (context.itemAt(i).at(0) == type)
+				//A plant counter is numbered like a unit, under the
+				//same %sequ_ placeholders, in the order of the parts
+			if (context.itemAt(i).at(0) == type
+					|| (type == QLatin1String("unit")
+						&& context.itemAt(i).at(0) == QLatin1String("unitplant")))
 			{
 				const QStringList item = context.itemAt(i);
 					//A zero-padding mask, spreadsheet style: its length is the
@@ -812,6 +930,118 @@ namespace autonum
 	}
 
 	/**
+		@brief plantCounters
+		@param nc the conductor numbering rule, its counters as they are
+		@param project the project which keeps the plant counters
+		@param plant the plant (=) of the folio being numbered
+		@param scheme the numbering's name
+		@return @p nc with its plant counters ("unitplant" parts) set to
+		where @p plant has got to under @p scheme -- the numbers it has
+		been given, plus one step -- or to where the rule starts when it
+		has been given none yet. Other parts are left as they are: a plant
+		counter numbers each plant on its own, as projects numbered per
+		installation do, while a unit counts over the whole project.
+	*/
+	NumerotationContext plantCounters(const NumerotationContext &nc,
+					  QETProject *project,
+					  const QString &plant,
+					  const QString &scheme)
+	{
+		if (!project) {
+			return nc;
+		}
+		return plantCounters(nc, project->conductorPlantCounter(scheme, plant));
+	}
+
+	/**
+		@brief plantCounters
+		@return @p nc with its plant counters set to follow @p given, the
+		values they last gave (none: the rule's start)
+	*/
+	NumerotationContext plantCounters(const NumerotationContext &nc,
+					  const QStringList &given)
+	{
+		NumerotationContext out = nc;
+		int index = 0;
+		for (int i = 0 ; i < out.size() ; ++i)
+		{
+			const QStringList parts = out.itemAt(i);
+			if (parts.isEmpty() || parts.at(0) != QLatin1String("unitplant")) {
+				continue;
+			}
+			const bool has_start = parts.size() > 3
+					&& !parts.at(3).isEmpty();
+			const int start = has_start ? parts.at(3).toInt() : 1;
+			const int increase = parts.size() > 2
+					&& !parts.at(2).isEmpty()
+					? std::max(1, parts.at(2).toInt()) : 1;
+			const int value = index < given.size()
+					? given.at(index).toInt() + increase
+					: start;
+			++index;
+			out.replaceValue(i, QString::number(value));
+		}
+		return out;
+	}
+
+	/**
+		@brief storePlantCounters
+		Keep the values the plant counters of @p given (the rule a conductor
+		was just numbered with) gave in @p plant, for the next conductor
+		there. Nothing is kept for a rule without plant counters.
+	*/
+	void storePlantCounters(QETProject *project, const QString &plant,
+				const QString &scheme,
+				const NumerotationContext &given)
+	{
+		if (!project) {
+			return;
+		}
+		const QStringList values = plantCounterValues(given);
+		if (!values.isEmpty()) {
+			project->setConductorPlantCounter(scheme, plant, values);
+		}
+	}
+
+	/**
+		@brief plantCounterValues
+		@return the values of the plant counters of @p nc, in order
+	*/
+	QStringList plantCounterValues(const NumerotationContext &nc)
+	{
+		QStringList values;
+		for (int i = 0 ; i < nc.size() ; ++i)
+		{
+			const QStringList parts = nc.itemAt(i);
+			if (!parts.isEmpty() && parts.at(0) == QLatin1String("unitplant")) {
+				values << parts.at(1);
+			}
+		}
+		return values;
+	}
+
+	/**
+		@brief sequenceOf
+		@return the sequential numbers a label numbered with @p nc carries,
+		every kind of counter, as setSequential() fills them -- without
+		touching any folio's counters
+	*/
+	sequentialNumbers sequenceOf(const NumerotationContext &nc)
+	{
+		sequentialNumbers seq;
+		NumerotationContext context = nc;
+		setSequentialToList(seq.unit, context, QStringLiteral("unit"));
+		setSequentialToList(seq.wrap, context, QStringLiteral("wrap"));
+		setSequentialToList(seq.unit_folio, context, QStringLiteral("unitfolio"));
+		setSequentialToList(seq.ten, context, QStringLiteral("ten"));
+		setSequentialToList(seq.ten_folio, context, QStringLiteral("tenfolio"));
+		setSequentialToList(seq.hundred, context, QStringLiteral("hundred"));
+		setSequentialToList(seq.hundred_folio, context, QStringLiteral("hundredfolio"));
+		setSequentialToList(seq.alpha, context, QStringLiteral("alpha"));
+		return seq;
+	}
+
+	/**
 		@brief resetContextCounters
 		@param nc the rule to read
 		@return the same rule, with every part which counts set back to
@@ -896,7 +1126,7 @@ namespace autonum
 			else if (type == "string") {
 				formula.append(value);
 			}
-			else if (type == "unit") {
+			else if (type == "unit" || type == "unitplant") {
 				count_unit++;
 				formula.append("%sequ_" + QString::number(count_unit));
 			}

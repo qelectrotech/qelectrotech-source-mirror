@@ -26,9 +26,14 @@
 #include <qetinformation.h>
 #include <qetproject.h>
 #include <qetgraphicsitem/masterelement.h>
+#include <ElementsCollection/elementslocation.h>
 #include <ui_linksingleelementwidget.h>
 
 #include <QTreeWidgetItem>
+#include <QPointer>
+#include <QTimer>
+
+#include "../devicetype/devicetypelink.h"
 #include <QInputDialog>
 #include <QMessageBox>
 
@@ -37,6 +42,34 @@
 #include <QSettings>
 #include <QSignalBlocker>
 
+
+namespace {
+	/**
+		@return whether the master @p symbol, on a folio not built yet
+		(lazy folios), is full: the rule of MasterElement::isFull(), its
+		links and kind information read from the project database and its
+		contact groups from its definition, without building its folio
+	*/
+	bool unbuiltMasterIsFull(QETProject *project, const projectDataBase::FolioSymbol &symbol)
+	{
+		const int linked = int(project->dataBase()->linkedSymbols(symbol.uuid).size());
+		ElementData data;
+		const QDomElement definition = ElementsLocation(symbol.location, project).xml();
+		if (!definition.isNull()) {
+			data.fromXml(definition);
+		}
+		if (!data.m_slave_contact_groups.isEmpty()) {
+			return linked >= data.m_slave_contact_groups.size();
+		}
+		const QVariant max_slaves = project->dataBase()->elementKindInformation(symbol.uuid)
+				.value(QStringLiteral("max_slaves"));
+		if (!max_slaves.isValid() || max_slaves.toString().isEmpty()
+				|| max_slaves.toInt() == -1) {
+			return false;
+		}
+		return linked >= max_slaves.toInt();
+	}
+}
 
 /**
 	@brief LinkSingleElementWidget::LinkSingleElementWidget
@@ -146,10 +179,14 @@ void LinkSingleElementWidget::setElement(Element *element)
 		//Remove connection of previous edited element
 	if (m_element)
 	{
-		disconnect(m_element->diagram()->project(),
-			   &QETProject::diagramRemoved,
-			   this,
-			   &LinkSingleElementWidget::diagramWasRemovedFromProject);
+			//An element just taken off its folio (a contact replaced by its
+			//copy with the terminals of its device type) has no diagram:
+			//the connection to its project stays, made unique below
+		if (m_element->diagram())
+			disconnect(m_element->diagram()->project(),
+				   &QETProject::diagramRemoved,
+				   this,
+				   &LinkSingleElementWidget::diagramWasRemovedFromProject);
 		disconnect(m_element.data(),
 			   &Element::linkedElementChanged,
 			   this,
@@ -179,7 +216,8 @@ void LinkSingleElementWidget::setElement(Element *element)
 		m_filter = ElementData::Simple;
 
 	connect(m_element->diagram()->project(), &QETProject::diagramRemoved,
-		this, &LinkSingleElementWidget::diagramWasRemovedFromProject);
+		this, &LinkSingleElementWidget::diagramWasRemovedFromProject,
+		Qt::UniqueConnection);
 	connect(m_element.data(), &Element::linkedElementChanged,
 		this, &LinkSingleElementWidget::updateUi, Qt::QueuedConnection);
 
@@ -447,7 +485,7 @@ void LinkSingleElementWidget::buildTree()
 			ui->m_tree_widget->resizeColumnToContents(6);
 		}
 	}
-	
+	addUnbuiltRows();
 	setUpCompleter();
 }
 
@@ -478,6 +516,9 @@ QVector <QPointer<Element>> LinkSingleElementWidget::availableElements()
 	if (!m_element->diagram() || !m_element->diagram()->project()) return elmt_vector;
 	
 	ElementProvider ep(m_element->diagram()->project());
+		//The folios not built yet (lazy folios) are listed from the
+		//project database by addUnbuiltRows(), without building them
+	ep.setBuiltOnly(true);
 	if (m_filter & ElementData::AllReport)
 		elmt_vector = ep.freeElement(m_filter);
 	else
@@ -552,6 +593,7 @@ void LinkSingleElementWidget::clearTreeWidget()
 		delete qtwi;
 	
 	m_qtwi_elmt_hash.clear();
+	m_qtwi_uuid_hash.clear();
 	m_qtwi_strl_hash.clear();
 	m_full_masters.clear();
 }
@@ -640,8 +682,37 @@ void LinkSingleElementWidget::linkTriggered()
 	if(!m_qtwi_at_context_menu)
 		return;
 
-	m_element_to_link = m_qtwi_elmt_hash.value(m_qtwi_at_context_menu);
+	m_element_to_link = elementOf(m_qtwi_at_context_menu);
 	m_pending_group_index = -1;
+
+		//A device with a device type, in a project following the types:
+		//only one whose type has a free part for this contact, which then
+		//takes that part's terminals once linked
+	if (m_element->linkType() == Element::Slave && m_element_to_link
+		&& m_element_to_link->linkType() == Element::Master
+		&& DeviceTypeLink::limits(m_element_to_link))
+	{
+		if (DeviceTypeLink::refuses(m_element_to_link, m_element)) {
+			QMessageBox::warning(this, tr("That link cannot be made"),
+								 tr("This device has no free contact of this kind: every "
+									"part of its device type is drawn."));
+			m_element_to_link = nullptr;
+			return;
+		}
+		QPointer<Element> slave = m_element;
+		connect(m_element, &Element::linkedElementChanged, m_element, [slave]() {
+				//After the link's own step: the symbol is replaced
+			QTimer::singleShot(0, slave, [slave]() {
+				if (!slave || slave->linkedElements().isEmpty()) return;
+				Diagram *diagram = slave->diagram();
+				Element *fresh = DeviceTypeLink::takeNextFreePart(slave);
+				if (fresh && fresh != slave && diagram) {
+					diagram->clearSelection();
+					fresh->setSelected(true);
+				}
+			});
+		}, Qt::SingleShotConnection);
+	}
 
 	//If linking a slave to a master with contact groups, show group selection dialog
 	if (m_element->linkType() == Element::Slave
@@ -818,7 +889,10 @@ void LinkSingleElementWidget::on_m_tree_widget_itemDoubleClicked(
 		m_showed_element->setHighlighted(false);
 	}
 	
-	Element *elmt = m_qtwi_elmt_hash.value(item);
+	Element *elmt = elementOf(item);
+	if (!elmt || !elmt->diagram()) {
+		return;
+	}
 	elmt->diagram()->showMe();
 	elmt->setHighlighted(true);
 	m_showed_element = elmt;
@@ -902,5 +976,100 @@ void LinkSingleElementWidget::updateItemsVisibility()
 		}
 		it.key()->setHidden(!match
 			|| (hide_full && m_full_masters.contains(it.key())));
+	}
+}
+
+/**
+	@brief LinkSingleElementWidget::elementOf
+	@return the symbol of the row @p qtwi. A row of a folio not built yet
+	(lazy folios) has none until now: its folio is built, and only it.
+*/
+Element *LinkSingleElementWidget::elementOf(QTreeWidgetItem *qtwi)
+{
+	Element *element = m_qtwi_elmt_hash.value(qtwi);
+	if (!element && m_qtwi_uuid_hash.contains(qtwi)
+			&& m_element->diagram() && m_element->diagram()->project()) {
+		element = m_element->diagram()->project()->buildSymbol(m_qtwi_uuid_hash.value(qtwi));
+		if (element) {
+			m_qtwi_elmt_hash.insert(qtwi, element);
+		}
+	}
+	return element;
+}
+
+/**
+	@brief LinkSingleElementWidget::addUnbuiltRows
+	Add a row for each symbol to link on a folio not built yet (lazy
+	folios), read from the project database (#1842): filling the list
+	builds no folio. The same filters as availableElements(): free folio
+	reports, masters of the same kind (PLC or not). A full master is
+	marked as a built one is.
+*/
+void LinkSingleElementWidget::addUnbuiltRows()
+{
+	if (!m_element->isFree() && !m_unlink) {
+		return;
+	}
+	QETProject *project = m_element->diagram() ? m_element->diagram()->project() : nullptr;
+	if (!project) {
+		return;
+	}
+	const bool reports = m_filter & ElementData::AllReport;
+	const QList<projectDataBase::FolioSymbol> symbols = project->unbuiltSymbols(m_filter, reports);
+	if (symbols.isEmpty()) {
+		return;
+	}
+	QList<QUuid> uuids;
+	for (const auto &symbol : symbols)
+		uuids << symbol.uuid;
+	const QHash<QUuid, projectDataBase::LinkRow> rows = project->dataBase()->linkRows(uuids);
+	QHash<QUuid, Diagram *> folios;
+	for (Diagram *folio : project->folios())
+		folios.insert(folio->uuid(), folio);
+
+	const bool element_is_plc = (m_element->elementData().m_type == ElementData::Slave &&
+								 m_element->elementData().m_slave_type == ElementData::PLCSlave);
+	const QString plc = ElementData::masterTypeToString(ElementData::PLC);
+	QSettings settings;
+	const bool folio_label = settings.value(QStringLiteral("genericpanel/folio"), false).toBool();
+	for (const auto &symbol : symbols)
+	{
+		Diagram *diag = folios.value(symbol.folio);
+		if (!diag || !rows.contains(symbol.uuid)) {
+			continue;
+		}
+		const projectDataBase::LinkRow row = rows.value(symbol.uuid);
+		QStringList str_list;
+		if (reports) {
+			str_list << row.wire_number << row.wire_function << row.wire_voltage
+					 << row.wire_colour << row.wire_section;
+		} else {
+				//PLC slave to PLC master only, and the other way round
+			if (element_is_plc != (row.sub_kind == plc)) {
+				continue;
+			}
+			str_list << row.label << row.comment;
+		}
+		QStringList search_list;
+		for (const QString &text : std::as_const(str_list))
+			if (!text.isEmpty()) search_list << text;
+		if (folio_label) {
+			autonum::sequentialNumbers seq;
+			str_list << autonum::AssignVariables::formulaToLabel(
+							diag->border_and_titleblock.folio(), seq, diag, nullptr);
+		} else {
+			str_list << QString::number(diag->folioIndex() + 1);
+		}
+		str_list << row.position << diag->title();
+
+		auto *qtwi = new QTreeWidgetItem(ui->m_tree_widget, str_list);
+		m_qtwi_elmt_hash.insert(qtwi, nullptr);
+		m_qtwi_uuid_hash.insert(qtwi, symbol.uuid);
+		m_qtwi_strl_hash.insert(qtwi, search_list);
+		if (!reports && unbuiltMasterIsFull(project, symbol)) {
+			m_full_masters.insert(qtwi);
+			if (ui->m_hide_full_masters_cb->isChecked())
+				qtwi->setHidden(true);
+		}
 	}
 }

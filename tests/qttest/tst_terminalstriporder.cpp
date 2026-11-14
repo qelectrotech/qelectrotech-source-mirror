@@ -25,6 +25,7 @@
 #include "properties/elementdata.h"
 #include "qetgraphicsitem/element.h"
 #include "qetproject.h"
+#include "utils/qetsettings.h"
 #include "utils/qetutils.h"
 
 #include <QStandardPaths>
@@ -109,6 +110,8 @@ private slots:
 	void spareWithoutFolioGoesLast();
 	void sortKeepsThePlanOrder();
 	void sortFollowsMovedElements();
+	void labelOrderFollowsTheLabel();
+	void sortByLabelWhenAsked();
 };
 
 void tst_terminalstriporder::init()
@@ -255,6 +258,46 @@ void tst_terminalstriporder::sortFollowsMovedElements()
 
 	SortTerminalStripCommand command_(strip_);
 	command_.redo();
+
+	QCOMPARE(physicalOrder(),
+			 QStringList({
+				 QStringLiteral("{4861e268-d344-413e-a86f-034ea5ada16c}"),
+				 QStringLiteral("{891b70f2-2822-41c3-9f94-28efb448b5c4}"),
+			 }));
+}
+
+/**
+	labelOrderLessThan orders by label alone: 4861e268, whose label is
+	empty, comes first though it stands right of 891b70f2.
+*/
+void tst_terminalstriporder::labelOrderFollowsTheLabel()
+{
+	const auto a_ = terminalInStrip(QStringLiteral("{891b70f2-2822-41c3-9f94-28efb448b5c4}"));
+	const auto b_ = terminalInStrip(QStringLiteral("{4861e268-d344-413e-a86f-034ea5ada16c}"));
+	QVERIFY(a_);
+	QVERIFY(b_);
+
+	QVERIFY(SortTerminalStripCommand::labelOrderLessThan(b_, a_));
+	QVERIFY(!SortTerminalStripCommand::labelOrderLessThan(a_, b_));
+		//A terminal is never before itself: a strict weak ordering
+	QVERIFY(!SortTerminalStripCommand::labelOrderLessThan(a_, a_));
+}
+
+/**
+	With "Sort the terminal strips by label" on, sorting the strip puts
+	the terminals label by label, the opposite of the plan order of
+	sortKeepsThePlanOrder. The setting is put back off before the test
+	ends.
+*/
+void tst_terminalstriporder::sortByLabelWhenAsked()
+{
+	auto *strip_ = strip();
+	QVERIFY(strip_);
+
+	QetSettings::setStripSortedByLabel(true);
+	SortTerminalStripCommand command_(strip_);
+	command_.redo();
+	QetSettings::setStripSortedByLabel(false);
 
 	QCOMPARE(physicalOrder(),
 			 QStringList({

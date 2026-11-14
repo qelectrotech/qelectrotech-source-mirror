@@ -25,6 +25,7 @@
 #include "qetgraphicsitem/elementtextitemgroup.h"
 #include "qetgraphicsitem/independenttextitem.h"
 #include "qetgraphicsitem/qetshapeitem.h"
+#include "qetgraphicsitem/structureboxitem.h"
 #include "qetgraphicsitem/terminal.h"
 #include "qetgraphicsitem/ViewItem/qetgraphicstableitem.h"
 
@@ -116,6 +117,11 @@ QString ItemDescription::of(const QGraphicsItem *item)
 			return of(item->parentItem());
 		case QetShapeItem::Type:
 			return shapeKind(static_cast<const QetShapeItem *>(item));
+		case StructureBoxItem::Type: {
+			const QString id = static_cast<const StructureBoxItem *>(item)->structureId();
+			return id.isEmpty() ? QCoreApplication::translate("ItemDescription", "Structure box")
+								: QCoreApplication::translate("ItemDescription", "Structure box %1").arg(id);
+		}
 		case DiagramImageItem::Type:
 			return QCoreApplication::translate("ItemDescription", "Picture");
 		case QetGraphicsTableItem::Type:

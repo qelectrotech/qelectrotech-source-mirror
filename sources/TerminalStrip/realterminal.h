@@ -21,6 +21,9 @@
 #include <QSharedPointer>
 #include <QColor>
 #include <QDomElement>
+#include <QPair>
+#include <QStringList>
+#include <QVector>
 #include <QUuid>
 #include <properties/elementdata.h>
 
@@ -78,12 +81,23 @@ class RealTerminal
 		QString Xref() const;
 		QString cable() const;
 		QString cableWire() const;
+		QStringList cableCoreTargets(const QString &cable_name,
+									 const QUuid &cable_uuid = {},
+									 int slot = -1) const;
 		bool cableIsAutomatic() const;
 		bool isShield() const;
 		QVector<QString> cableTarget() const;
 			///True when cableTarget() is worked out from the project (read only),
 			///false when it is the text typed in by hand (which may be edited)
 		bool cableTargetIsAutomatic() const;
+			///One entry per wire of this terminal which is no core of a
+			///cable: (what the other end is called -- "12K1:A1" --, what
+			///the wire is made of in the order type, colour and section
+			///with the empty ones left out). A terminal with a twin
+			///sleeve carries two wires and gets two entries.
+		QVector<QPair<QString, QStringList>> wires() const;
+			///Whether this terminal has a wire of its own at all
+		bool hasWire() const;
 		QColor color() const;
 		QColor stripeColor() const;
 		qreal section() const;
@@ -99,6 +113,13 @@ class RealTerminal
 		static QString shieldInfoKey()    { return QStringLiteral("terminal_shield"); }
 		//Keys used to store the color and the section (mm2) of the terminal
 		static QString colorInfoKey()     { return QStringLiteral("terminal_color"); }
+
+			/// The plant (first) and location (second) of @p element as
+			/// the terminal strips see it: the place its labels show, so
+			/// the one of its structure box or folio when its project
+			/// says so (QETProject::plantAndLocationInherited()), else its
+			/// own values only, as before.
+		static QPair<QString, QString> placeOf(const Element *element);
 		static QString sectionInfoKey()   { return QStringLiteral("terminal_section"); }
 		//Key used to store the width (mm) of the terminal, drawn in the terminal strip
 		static QString widthInfoKey()     { return QStringLiteral("terminal_width"); }

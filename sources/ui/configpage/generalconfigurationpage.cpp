@@ -38,14 +38,22 @@
 #include <qetmessagebox.h>
 #include <qetgraphicsitem/qgraphicsitemutility.h>
 #include <foliogrid.h>
+#include <autoconnect.h>
 #include <textgrid.h>
+#include <qetgraphicsitem/element.h>
+#include <qetgraphicsitem/structureboxitem.h>
 #include <wiringrules.h>
 #include <ui/wiringruleswarning.h>
 #include <editor/terminalnamecheck.h>
 #include <ElementsCollection/qetlabelsfile.h>
 #include <ui/prefixconfigurationdialog.h>
-#include <ui/nokde/kcolorbutton.h>
+#ifdef BUILD_WITHOUT_KF
+#	include <ui/nokde/kcolorbutton.h>
+#else
+#	include <KColorButton>
+#endif
 #include <editor/elementscene.h>
+#include <diagramevent/diagrameventaddpaste.h>
 #include <ElementsCollection/elementslocation.h>
 #include <QCoreApplication>
 #include <QDir>
@@ -54,6 +62,9 @@
 #include <QFontDialog>
 #include <QMessageBox>
 #include <QSettings>
+#include <QToolButton>
+
+#include <utility>
 
 #include <diagram.h>
 #include <qetproject.h>
@@ -134,9 +145,15 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	ui->m_context_toolbar_cb->setChecked(settings.value("diagrameditor/context_toolbar", true).toBool());
 	ui->m_mouse_gestures_cb->setChecked(settings.value("diagrameditor/mouse_gestures", true).toBool());
 	ui->m_pointer_aids_cb->setChecked(DiagramView::pointerAids());
+	ui->m_grid_only_placing_cb->setChecked(DiagramView::gridOnlyWhilePlacing());
 	ui->m_vertical_texts_from_bottom_cb->setChecked(DynamicElementTextItem::verticalFromBottom());
 	ui->m_drag_texts_without_shift_cb->setChecked(DynamicElementTextItem::dragMovesTextAlone());
+	ui->m_drag_places_auto_conductor_cb->setChecked(AutoConnect::dragPlacesWithAutoConductor());
+	ui->m_ctrl_drag_copies_cb->setChecked(DiagramEventAddPaste::ctrlDragCopies());
+	ui->m_duplicate_follows_mouse_cb->setChecked(DiagramEventAddPaste::duplicateFollowsMouse());
 	ui->m_junction_replaces_cb->setChecked(ConnectionSymbols::newJunctionReplacesOld());
+	ui->m_structure_box_color_kpb->setColor(StructureBoxItem::newBoxColor());
+	ui->m_structure_box_ask_place_cb->setChecked(StructureBoxItem::askPlaceWhenDrawn());
 	ui->m_terminal_help_lines_cb->setChecked(DiagramView::terminalHelpLinesShown());
 	ui->m_dock_fold_cb->setChecked(DockFold::enabled());
 	ui->m_narrow_docks_cb->setChecked(DockFit::enabled());
@@ -177,10 +194,19 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	ui->m_selection_rectangle_cb->setCurrentIndex(static_cast<int>(DiagramView::selectionRectangle()));
 	ui->m_editor_like_folio_cb->setChecked(ElementScene::likeFolio());
 	ui->m_edit_collection_source_cb->setChecked(ElementsLocation::findsAndEditsCollectionSource());
+	ui->m_update_follows_moved_origin_cb->setChecked(Element::updateFollowsMovedOrigin());
 	ui->m_selection_frame_radius_sb->setValue(QGIUtility::selectionFrameRadius());
+	ui->m_strong_selection_cb->setChecked(QGIUtility::strongSelection());
 	ui->m_zoom_out_beyond_folio->setChecked(settings.value("diagrameditor/zoom-out-beyond-of-folio", false).toBool());
 	ui->m_zoom_step_sb->setValue(DiagramView::zoomStep());
+	ui->m_jump_zoom_sb->setValue(DiagramView::jumpZoom());
 	ui->m_terminal_conductor_color->setChecked(Terminal::takesConductorColor());
+	ui->m_strip_wires->setChecked(QetSettings::stripWiresShown());
+	ui->m_strip_cable_core_targets->setChecked(
+		QetSettings::stripCableCoreTargetsShown());
+	ui->m_strip_sort_by_label->setChecked(QetSettings::stripSortedByLabel());
+	ui->m_new_folio_group_cb->setChecked(QetSettings::newFolioTakesPreviousGroup());
+	ui->m_macro_ask_labels_cb->setChecked(QetSettings::askLabelsPlacingMacro());
 	ui->m_conductor_properties_panel->setChecked(settings.value("diagrameditor/conductor_properties_panel", false).toBool());
 	ui->m_wiring_rules_cb->setChecked(WiringRules::masterEnabled());
 	{
@@ -267,10 +293,38 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 		ui->m_indi_text_font_pb->setText(fontInfos);
 	} else { ui->m_indi_text_font_pb->setText("Liberation Sans 9 (Regular)"); }
 
-		//Cable texts: what every cable writes along its own line when
-		//it has not been given a font of its own.
-	ui->m_cable_text_font_pb->setText(fontButtonLabel(QETApp::cableTextsFont()));
-	ui->m_cable_core_font_pb->setText(fontButtonLabel(QETApp::cableCoreFont()));
+		//Cable texts: one row for each of the five, since each may be
+		//written in a font of its own -- what he leaves alone keeps
+		//following the font all five share, which is what an
+		//installation which picked one before they were set apart
+		//still holds. The colours of the cores come last: all of them
+		//together, since they are drawn in one row along the line,
+		//but with a row of their own so they may be taken back too.
+	m_cable_text_rows = {
+		{QStringLiteral("designation"), ui->m_cable_designation_font_pb,
+		 ui->m_cable_designation_reset_tb},
+		{QStringLiteral("type"), ui->m_cable_type_font_pb,
+		 ui->m_cable_type_reset_tb},
+		{QStringLiteral("installation"), ui->m_cable_installation_font_pb,
+		 ui->m_cable_installation_reset_tb},
+		{QStringLiteral("location"), ui->m_cable_location_font_pb,
+		 ui->m_cable_location_reset_tb},
+		{QStringLiteral("length"), ui->m_cable_length_font_pb,
+		 ui->m_cable_length_reset_tb},
+		{QStringLiteral("cores"), ui->m_cable_core_font_pb,
+		 ui->m_cable_core_reset_tb},
+	};
+	for (const CableTextRow &row : std::as_const(m_cable_text_rows))
+	{
+		refreshCableTextRow(row);
+		connect(row.font_button, &QPushButton::clicked, this,
+				[this, row]() {editCableTextFont(row);});
+		connect(row.reset_button, &QToolButton::clicked, this,
+				[this, row]() {
+			QETApp::clearCableTextFont(row.key);
+			refreshCableTextRow(row);
+		});
+	}
 
 		//Where those texts stop in relation to the beginning of their
 		//own line, for the cables which say nothing about it themselves
@@ -448,16 +502,35 @@ void GeneralConfigurationPage::applyConf()
 		ui->m_selection_rectangle_cb->currentIndex()));
 	ElementScene::setLikeFolio(ui->m_editor_like_folio_cb->isChecked());
 	ElementsLocation::setFindsAndEditsCollectionSource(ui->m_edit_collection_source_cb->isChecked());
+	Element::setUpdateFollowsMovedOrigin(ui->m_update_follows_moved_origin_cb->isChecked());
 	QGIUtility::setSelectionFrameRadius(ui->m_selection_frame_radius_sb->value());
+	QGIUtility::setStrongSelection(ui->m_strong_selection_cb->isChecked());
 	settings.setValue("diagrameditor/zoom-out-beyond-of-folio", ui->m_zoom_out_beyond_folio->isChecked());
 	DiagramView::setZoomStep(ui->m_zoom_step_sb->value());
+	DiagramView::setJumpZoom(ui->m_jump_zoom_sb->value());
 	settings.setValue("diagrameditor/conductor_properties_panel", ui->m_conductor_properties_panel->isChecked());
+	QetSettings::setNewFolioTakesPreviousGroup(ui->m_new_folio_group_cb->isChecked());
+	QetSettings::setAskLabelsPlacingMacro(ui->m_macro_ask_labels_cb->isChecked());
 	if (ui->m_terminal_conductor_color->isChecked() != Terminal::takesConductorColor()) {
 		Terminal::setTakesConductorColor(ui->m_terminal_conductor_color->isChecked());
 		for (QETProject *project : QETApp::registeredProjects())
 			for (Diagram *diagram : project->diagrams())
 				diagram->update();
 	}
+	const bool core_targets = ui->m_strip_cable_core_targets->isChecked();
+	if (ui->m_strip_wires->isChecked() != QetSettings::stripWiresShown()
+		|| core_targets != QetSettings::stripCableCoreTargetsShown()) {
+		QetSettings::setStripWiresShown(ui->m_strip_wires->isChecked());
+		QetSettings::setStripCableCoreTargetsShown(core_targets);
+		for (QETProject *project : QETApp::registeredProjects())
+			for (Diagram *diagram : project->builtFolios())
+			{
+					//Wire and destination labels can change the strip bounds.
+				diagram->refreshTerminalStrips();
+				diagram->update();
+			}
+	}
+	QetSettings::setStripSortedByLabel(ui->m_strip_sort_by_label->isChecked());
 	WiringRules::setMasterEnabled(ui->m_wiring_rules_cb->isChecked());
 	{
 		const WiringRules::Settings before = WiringRules::applicationSettings();
@@ -485,10 +558,16 @@ void GeneralConfigurationPage::applyConf()
 	settings.setValue("diagrameditor/context_toolbar", ui->m_context_toolbar_cb->isChecked());
 	settings.setValue("diagrameditor/mouse_gestures", ui->m_mouse_gestures_cb->isChecked());
 	DiagramView::setPointerAids(ui->m_pointer_aids_cb->isChecked());
+	DiagramView::setGridOnlyWhilePlacing(ui->m_grid_only_placing_cb->isChecked());
 	ConnectionSymbols::setNewJunctionReplacesOld(ui->m_junction_replaces_cb->isChecked());
+	StructureBoxItem::setNewBoxColor(ui->m_structure_box_color_kpb->color());
+	StructureBoxItem::setAskPlaceWhenDrawn(ui->m_structure_box_ask_place_cb->isChecked());
 	if (ui->m_vertical_texts_from_bottom_cb->isChecked() != DynamicElementTextItem::verticalFromBottom())
 		DynamicElementTextItem::setVerticalFromBottom(ui->m_vertical_texts_from_bottom_cb->isChecked());
 	DynamicElementTextItem::setDragMovesTextAlone(ui->m_drag_texts_without_shift_cb->isChecked());
+	AutoConnect::setDragPlacesWithAutoConductor(ui->m_drag_places_auto_conductor_cb->isChecked());
+	DiagramEventAddPaste::setCtrlDragCopies(ui->m_ctrl_drag_copies_cb->isChecked());
+	DiagramEventAddPaste::setDuplicateFollowsMouse(ui->m_duplicate_follows_mouse_cb->isChecked());
 	DiagramView::setTerminalHelpLinesShown(ui->m_terminal_help_lines_cb->isChecked());
 	DockFold::setEnabled(ui->m_dock_fold_cb->isChecked());
 	DockFit::setEnabled(ui->m_narrow_docks_cb->isChecked());
@@ -760,46 +839,47 @@ void GeneralConfigurationPage::on_m_dyn_text_font_pb_clicked()
 }
 
 /**
-	@brief GeneralConfigurationPage::on_m_cable_text_font_pb_clicked
-	Let him pick the font the texts of a cable are written with by
-	default: designation, type, installation, location and length.
-
-	Every cable which has not been given a font of its own follows it,
-	from now on: one which has keeps the one it was given, which is why
-	those are set on the cable itself rather than here.
+	@brief GeneralConfigurationPage::refreshCableTextRow
+	Say which font one text of a cable is written with by default, and
+	whether there is a choice of his own to take back: the reset is
+	offered only while there is one, so that a row which follows the
+	font all five share shows nothing to undo.
+	@param row the row to say it for
 */
-void GeneralConfigurationPage::on_m_cable_text_font_pb_clicked()
+void GeneralConfigurationPage::refreshCableTextRow(const CableTextRow &row)
 {
-	bool ok = false;
-	const QFont font = QFontDialog::getFont(&ok, QETApp::cableTextsFont(), this,
-			tr("Cable text font"), QFontDialog::DontUseNativeDialog);
-	if (!ok) return;
-
-	QSettings settings;
-	settings.setValue("cable-management/cable-text-font", QETUtils::fontToString(font));
-	ui->m_cable_text_font_pb->setText(fontButtonLabel(QETApp::cableTextsFont()));
+	row.font_button->setText(fontButtonLabel(QETApp::cableTextsFont(row.key)));
+	row.reset_button->setEnabled(QETApp::hasCableTextFont(row.key));
 }
 
 /**
-	@brief GeneralConfigurationPage::on_m_cable_core_font_pb_clicked
-	Let him pick the font the colours of the cores are written with by
-	default -- all of them together, the way they are drawn: one row of
-	colours beside the line, never set apart from each other.
+	@brief GeneralConfigurationPage::editCableTextFont
+	Let him pick the font one text of a cable is written with by
+	default: designation, type, installation, location or length,
+	each on its own row, so that a length may be written smaller than
+	the designation above it -- or the colours of the cores, which are
+	one row for all of them together, the way they are drawn.
+
+	Every cable which has not been given a font of its own for that
+	text follows it, from now on: one which has keeps the one it was
+	given, which is why those are set on the cable itself rather than
+	here. What he does not pick here keeps following the font all five
+	share.
+	@param row the row whose button was pressed
 */
-void GeneralConfigurationPage::on_m_cable_core_font_pb_clicked()
+void GeneralConfigurationPage::editCableTextFont(const CableTextRow &row)
 {
 	bool ok = false;
-	const QFont font = QFontDialog::getFont(&ok, QETApp::cableCoreFont(), this,
-			tr("Core colors font"), QFontDialog::DontUseNativeDialog);
+	const QFont start = QETApp::cableTextsFont(row.key);
+	const bool cores = row.key == QLatin1String("cores");
+	const QFont font = QFontDialog::getFont(&ok, start, this,
+			cores ? tr("Core colors font") : tr("Cable text font"),
+			QFontDialog::DontUseNativeDialog);
 	if (!ok) return;
 
-	QSettings settings;
-	settings.setValue("cable-management/cable-core-font", QETUtils::fontToString(font));
-	ui->m_cable_core_font_pb->setText(fontButtonLabel(QETApp::cableCoreFont()));
+	QETApp::setCableTextFont(row.key, font);
+	refreshCableTextRow(row);
 }
-
-
-
 
 void GeneralConfigurationPage::on_m_common_elmt_path_cb_currentIndexChanged(int index)
 {

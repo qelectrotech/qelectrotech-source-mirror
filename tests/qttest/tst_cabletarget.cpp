@@ -28,8 +28,10 @@
 #include "properties/elementdata.h"
 #include "qetgraphicsitem/conductor.h"
 #include "qetgraphicsitem/element.h"
+#include "qetgraphicsitem/terminal.h"
 #include "qetinformation.h"
 #include "qetproject.h"
+#include "utils/qetsettings.h"
 
 #include <QImage>
 #include <QPainter>
@@ -184,6 +186,9 @@ private slots:
 	void typedTargetIsDrawnInItsOwnLines();
 	void boxesOfTwoCablesAreSetApart();
 	void realisticStyleDrawsTheCable();
+	void coreDestinationsFollowTheirOwnPins();
+	void coreDestinationsFollowFolioReports();
+	void coreDestinationsFollowBranches();
 };
 
 void tst_cabletarget::init()
@@ -726,6 +731,107 @@ void tst_cabletarget::boxesOfTwoCablesAreSetApart()
 			 "the strip reserves no room for the box it sets lower");
 	QVERIFY2(two_bounds.bottom() - one_bounds.bottom() > 0.5 * box_height,
 			 "the room reserved for the lower box is too small");
+}
+
+void tst_cabletarget::coreDestinationsFollowTheirOwnPins()
+{
+	const auto a = terminalInStrip(
+		QStringLiteral("{891b70f2-2822-41c3-9f94-28efb448b5c4}"));
+	const auto b = terminalInStrip(
+		QStringLiteral("{4861e268-d344-413e-a86f-034ea5ada16c}"));
+	auto *coil = element(
+		QStringLiteral("{844f41db-a9b6-4abe-a6bf-a99debe64791}"));
+	QVERIFY(a && b && coil);
+	auto info = coil->elementInformations();
+	info.remove(QStringLiteral("formula"));
+	info.addValue(QStringLiteral("label"), QStringLiteral("K1"));
+	coil->setElementInformations(info);
+	QCOMPARE(coil->terminals().size(), 2);
+	auto *wire_a = new Conductor(a->element()->terminals().first(),
+								 coil->terminals().first());
+	auto *wire_b = new Conductor(b->element()->terminals().first(),
+								 coil->terminals().last());
+	coil->diagram()->addItem(wire_a);
+	coil->diagram()->addItem(wire_b);
+	auto *cable = m_project->newCable();
+	cable->setDesignation(QStringLiteral("W1"));
+	cable->setCoreCount(2);
+	wire_a->setCableReference(QStringLiteral("W1:1"), cable->uuid(), 0);
+	wire_b->setCableReference(QStringLiteral("W1:2"), cable->uuid(), 1);
+	QCOMPARE(a->cableCoreTargets(cable->designation()),
+			 QStringList{QStringLiteral("1 → K1:A1")});
+	QCOMPARE(b->cableCoreTargets(cable->designation()),
+			 QStringList{QStringLiteral("2 → K1:A2")});
+
+	const auto strip = QSharedPointer<TerminalStripDrawer::TrueTerminalStrip>
+		::create(m_project->terminalStrip().first());
+	const auto pattern = QSharedPointer<TerminalStripLayoutPattern>::create();
+	pattern->m_cable_end_length = 18;
+	TerminalStripDrawer::TerminalStripDrawer drawer(strip, pattern);
+	QVERIFY(!QetSettings::stripCableCoreTargetsShown());
+	const auto before = drawer.boundingRect();
+	QetSettings::setStripCableCoreTargetsShown(true);
+	const auto after = drawer.boundingRect();
+	QetSettings::setStripCableCoreTargetsShown(false);
+	QVERIFY(after.height() > before.height());
+}
+
+void tst_cabletarget::coreDestinationsFollowFolioReports()
+{
+	auto *wire = conductor(
+		QStringLiteral("{7888da9a-5f78-47df-a41a-b5a9e47cf3dc}"));
+	const auto local = terminalInStrip(
+		QStringLiteral("{4861e268-d344-413e-a86f-034ea5ada16c}"));
+	auto *incoming = element(
+		QStringLiteral("{89e05b60-d7c2-4c24-996d-fabf598763a6}"));
+	auto *coil = element(
+		QStringLiteral("{770e931a-9c1c-4ca9-9017-10a7e9c7ee1b}"));
+	QVERIFY(wire && local && incoming && coil);
+	auto info = coil->elementInformations();
+	info.remove(QStringLiteral("formula"));
+	info.addValue(QStringLiteral("label"), QStringLiteral("K2"));
+	coil->setElementInformations(info);
+	auto *continued = new Conductor(incoming->terminals().first(),
+									coil->terminals().last());
+	incoming->diagram()->addItem(continued);
+	auto *cable = m_project->newCable();
+	cable->setDesignation(QStringLiteral("W2"));
+	cable->setCoreCount(2);
+	wire->setCableReference(QStringLiteral("W2:1"), cable->uuid(), 0);
+	continued->setCableReference(QStringLiteral("W2:2"), cable->uuid(), 1);
+	QVERIFY(local->cableCoreTargets(cable->designation()).isEmpty());
+	continued->setCableReference(QStringLiteral("W2:1"), cable->uuid(), 0);
+	QCOMPARE(local->cableCoreTargets(cable->designation()),
+			 QStringList{QStringLiteral("1 → K2:A2")});
+}
+
+void tst_cabletarget::coreDestinationsFollowBranches()
+{
+	const auto local = terminalInStrip(
+		QStringLiteral("{891b70f2-2822-41c3-9f94-28efb448b5c4}"));
+	auto *wire = conductor(
+		QStringLiteral("{8bd16d7a-18c4-4fa0-9495-8dab65fd6408}"));
+	auto *junction = element(
+		QStringLiteral("{fc9cc920-5822-421a-916e-a17100acdcf6}"));
+	auto *coil = element(
+		QStringLiteral("{844f41db-a9b6-4abe-a6bf-a99debe64791}"));
+	QVERIFY(local && wire && junction && coil);
+	junction->setShownAsDot(true);
+	auto info = coil->elementInformations();
+	info.remove(QStringLiteral("formula"));
+	info.addValue(QStringLiteral("label"), QStringLiteral("K1"));
+	coil->setElementInformations(info);
+	for (auto *pin : coil->terminals()) {
+		auto *branch = new Conductor(junction->terminals().first(), pin);
+		coil->diagram()->addItem(branch);
+	}
+	auto *cable = m_project->newCable();
+	cable->setDesignation(QStringLiteral("W1"));
+	cable->setCoreCount(1);
+	wire->setCableReference(QStringLiteral("W1:1"), cable->uuid(), 0);
+	const QStringList expected{QStringLiteral("1 → K1:A1"),
+							   QStringLiteral("1 → K1:A2")};
+	QCOMPARE(local->cableCoreTargets(cable->designation()), expected);
 }
 
 int main(int argc, char **argv)

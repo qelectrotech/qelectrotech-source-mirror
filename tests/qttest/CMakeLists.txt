@@ -74,6 +74,13 @@ set_tests_properties(tst_darkimagelayers PROPERTIES
   ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
 target_include_directories(tst_darkimagelayers PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_darkimagelayers PRIVATE Qt::Test Qt::Widgets)
+# The frame of a selected item, deferred past the inversion of a dark sheet.
+add_executable(tst_darkselectionframe tst_darkselectionframe.cpp
+  ${QET_DIR}/sources/palettegraphicsview.cpp ${QET_DIR}/sources/palettegraphicsview.h
+  ${QET_DIR}/sources/qetpalette.cpp)
+add_test(NAME tst_darkselectionframe COMMAND tst_darkselectionframe)
+target_include_directories(tst_darkselectionframe PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_darkselectionframe PRIVATE Qt::Test Qt::Widgets)
 # MSVC's Debug libraries make QElectroTech five to eight times slower than a
 # GCC build, for which the tests' time limits were chosen. Every limit is
 # multiplied by this scale: ctest's below, and the tests' own through
@@ -222,6 +229,15 @@ if(Python3_Interpreter_FOUND AND CMAKE_GENERATOR STREQUAL "Ninja")
       --source ${CMAKE_CURRENT_SOURCE_DIR}/auto_connect_drag_probe.cpp
       --fixture ${CMAKE_CURRENT_SOURCE_DIR}/fixtures/auto_connect_drag.qet)
   set_tests_properties(tst_autoconnectdragintegration PROPERTIES TIMEOUT ${qet_probe_ctest_timeout} RESOURCE_LOCK qet_probe_ninja
+    ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
+  # A drawing aid (an interruption point): light grey on screen, never
+  # printed nor exported, hidden with View > Show, no label of its own.
+  add_test(NAME tst_drawingaidintegration
+    COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/run_drawing_aid_probe.py
+      --build ${CMAKE_BINARY_DIR} --binary $<TARGET_FILE:qelectrotech>
+      --source ${CMAKE_CURRENT_SOURCE_DIR}/drawing_aid_probe.cpp
+      --fixture ${CMAKE_CURRENT_SOURCE_DIR}/fixtures/auto_connect.qet)
+  set_tests_properties(tst_drawingaidintegration PROPERTIES TIMEOUT ${qet_probe_ctest_timeout} RESOURCE_LOCK qet_probe_ninja
     ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
 endif()
 if(Python3_Interpreter_FOUND AND CMAKE_GENERATOR STREQUAL "Ninja")
@@ -468,6 +484,14 @@ set_tests_properties(tst_handlersize PROPERTIES ENVIRONMENT "QT_QPA_PLATFORM=off
 target_include_directories(tst_handlersize PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_handlersize PRIVATE Qt::Test Qt::Widgets)
 
+# The Add and Tape measure menus draw no radio button in front of their
+# tools; the toolbar buttons still show the tool in use.
+add_executable(tst_toolmenu tst_toolmenu.cpp)
+add_test(NAME tst_toolmenu COMMAND tst_toolmenu)
+set_tests_properties(tst_toolmenu PROPERTIES ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
+target_include_directories(tst_toolmenu PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_toolmenu PRIVATE Qt::Test Qt::Widgets)
+
 # Tests that need the application around the class they test -- a folio,
 # its view, the editor window and its actions -- link the application's own
 # code (the qelectrotech_objects library) and run a real QETApp offscreen,
@@ -498,12 +522,56 @@ qet_add_app_test(tst_folioautonumcopy tst_folioautonumcopy.cpp)
 # A folio's group and sub-group: named, or its plant and location; title
 # block variables, kept by .qet and .qetdb, absent from older files.
 qet_add_app_test(tst_foliogroup tst_foliogroup.cpp)
+# "number format 1 - Plant": a conductor numbering part counting each plant
+# (=) on its own; counts kept by .qet and .qetdb.
+qet_add_app_test(tst_plantcounter tst_plantcounter.cpp)
+# Renumber conductors: one number per potential, folio then top-left order,
+# frozen and unchosen kept, plant counters, one undo step.
+qet_add_app_test(tst_renumberwires tst_renumberwires.cpp)
+# Placing a macro: its labels and question-mark texts.
+qet_add_app_test(tst_macrolabels tst_macrolabels.cpp)
+# qet_plc_io: one row per PLC I/O entry, with the slave linked to it.
+qet_add_app_test(tst_plcio tst_plcio.cpp)
+# Device types: parts and their ways to be drawn, kept by .qet, .qetdb and
+# the user's library of .qetdt files.
+qet_add_app_test(tst_devicetype tst_devicetype.cpp)
+# Is a device drawn the way its type says: parts not drawn, symbols beyond.
+qet_add_app_test(tst_devicetypecheck tst_devicetypecheck.cpp)
+# Project > Device types: the list of types and the editor of one
+qet_add_app_test(tst_devicetypeeditor tst_devicetypeeditor.cpp)
+# A contact linked to a device with a type takes a free part of the type
+qet_add_app_test(tst_devicetypelink tst_devicetypelink.cpp)
+# Asking which device type a master placed is
+qet_add_app_test(tst_devicetypechooser tst_devicetypechooser.cpp)
+# Giving a device another device type, its contacts carried over
+qet_add_app_test(tst_devicetypechange tst_devicetypechange.cpp)
+# The device types listed, full and brief; contacts without their device
+qet_add_app_test(tst_devicetypelist tst_devicetypelist.cpp)
+# Giving a placed symbol the terminals of a part of its device type.
+qet_add_app_test(tst_devicetypeassign tst_devicetypeassign.cpp)
+# Part data: unit price, labour time and size, kept by .qet and .qetdb,
+# columns of the parts list; every field the export offers is a column.
+qet_add_app_test(tst_partdata tst_partdata.cpp)
 # A read-only project builds its lazy folios whole: shown, exported, written out.
 qet_add_app_test(tst_readonlyfolios tst_readonlyfolios.cpp)
 target_compile_definitions(tst_readonlyfolios PRIVATE
   QET_EXAMPLES_DIR="${QET_DIR}/examples")
+# The link tab lists are filled without building folios (#1842).
+qet_add_app_test(tst_linklists tst_linklists.cpp)
+target_compile_definitions(tst_linklists PRIVATE
+  QET_EXAMPLES_DIR="${QET_DIR}/examples")
+# IEC 81346 plant/location: an element takes its folio's, %{structure_id} composes them.
+qet_add_app_test(tst_structureid tst_structureid.cpp)
+qet_add_app_test(tst_stripplacefrombox tst_stripplacefrombox.cpp)
+# qet_device_list: one row per reference designation, a contact with its coil.
+qet_add_app_test(tst_devicelist tst_devicelist.cpp)
+# qet_terminals: one row per terminal of a strip, in the strip's order.
+qet_add_app_test(tst_terminallist tst_terminallist.cpp)
+# qet_cables: one row per cable, in its own place or its first folio's (tst_cablelist, above).
 # The labels file behind a symbol's prefix is read once, and again only when it changes.
 qet_add_app_test(tst_labelsfilecache tst_labelsfilecache.cpp)
+# The prefix dialog names the folders the way the collection panel does (#1802).
+qet_add_app_test(tst_prefixdialogtitles tst_prefixdialogtitles.cpp)
 # A quick second click on the same spot reaches the shape tools as a
 # double-click: it must still start the next line, rectangle or ellipse.
 qet_add_app_test(tst_shapequickclick tst_shapequickclick.cpp)
@@ -520,12 +588,18 @@ target_compile_definitions(tst_conductordefinitionmark PRIVATE
 # Two different symbols carrying the same uuid (one copied from the other and
 # redrawn) each keep their own drawing (#1789).
 qet_add_app_test(tst_symbolpicturecache tst_symbolpicturecache.cpp)
+# What a terminal strip says about the wires which end at it, and how
+# long the stub it draws above itself has to be for it.
+qet_add_app_test(tst_stripwires tst_stripwires.cpp)
 # A copy of a conductor definition keeps the point its right-aligned texts
 # stand on, as a copy of a folio report does.
 qet_add_app_test(tst_conductordefcopy tst_conductordefcopy.cpp)
 # The projects of the last session are opened again at start, and the
 # ones open when the editor closes are kept for the next start.
 qet_add_app_test(tst_autoconnecthand tst_autoconnecthand.cpp)
+# Automatic connections: only a symbol's frame stops a wire, not the pixel
+# of line width around its drawing.
+qet_add_app_test(tst_autoconnectframe tst_autoconnectframe.cpp)
 # A T-junction shown as a dot: drawn, saved and undone.
 qet_add_app_test(tst_junctiondot tst_junctiondot.cpp)
 qet_add_app_test(tst_reopenprojects tst_reopenprojects.cpp)
@@ -547,6 +621,10 @@ qet_add_app_test(tst_rotateselectionimage tst_rotateselectionimage.cpp)
 # panel's editor and the Edit action.
 qet_add_app_test(tst_multielementinfo tst_multielementinfo.cpp)
 target_compile_definitions(tst_multielementinfo PRIVATE
+  "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
+
+qet_add_app_test(tst_elementarticleswidget tst_elementarticleswidget.cpp)
+target_compile_definitions(tst_elementarticleswidget PRIVATE
   "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
 
 # An elements collection item set up after the application object is gone.
@@ -584,6 +662,16 @@ qet_add_app_test(tst_terminalcableauto tst_terminalcableauto.cpp)
 qet_add_app_test(tst_terminallabeldisplay tst_terminallabeldisplay.cpp)
 qet_add_app_test(tst_terminalconductortext tst_terminalconductortext.cpp)
 
+# A symbol's user-defined custom property (#642) can be shown on the
+# drawing (discussion #561): picked as the information of a text, or
+# typed as %{key} in a composite text, and both follow its value.
+qet_add_app_test(tst_custominfotext tst_custominfotext.cpp)
+
+# A symbol can define its own custom properties (discussion #561): every
+# placed copy has them, filled in or not, an empty one adds nothing to
+# the saved project, and a typed name becomes a key every version opens.
+qet_add_app_test(tst_symbolcustominfo tst_symbolcustominfo.cpp)
+
 # A PLC contact draws its master's BMK: the master's label comes from its
 # numbering formula, which holds the page number, so a folio moved to
 # another place changes it -- the contact shows the new label at once, the
@@ -611,9 +699,15 @@ qet_add_app_test(tst_touchingconductor tst_touchingconductor.cpp)
 # bounding rect covers the drawing, not only the frame.
 qet_add_app_test(tst_symboloutsideframe tst_symboloutsideframe.cpp)
 qet_add_app_test(tst_updateelements tst_updateelements.cpp)
+# Update elements from the collections, with the setting on: a symbol whose
+# insertion point moved is moved back, its terminals and conductors kept.
+qet_add_app_test(tst_updatefollowsorigin tst_updatefollowsorigin.cpp)
 # Editing a placed element: redrawn on save; optionally found and edited
 # in the collection it was taken from, which updates the open projects.
 qet_add_app_test(tst_editcollectionsource tst_editcollectionsource.cpp)
+# The terminal block manager: the independent terminals, folding the
+# tree, sorting their table, OK.
+qet_add_app_test(tst_terminalstripmanager tst_terminalstripmanager.cpp)
 qet_add_app_test(tst_selectionrectangle tst_selectionrectangle.cpp)
 # The selection filter (status bar): what a click, a selection rectangle
 # and Select All pick; a click goes through what is left out.
@@ -621,6 +715,11 @@ qet_add_app_test(tst_selectionfilter tst_selectionfilter.cpp)
 # The arrow keys: the crosshair on the leftmost selected symbol's terminal
 # or a text's middle; the folio's grid step when set so.
 qet_add_app_test(tst_keyboardmovereference tst_keyboardmovereference.cpp)
+# "Pointer on the grid only while placing": off by default, the grid as before.
+qet_add_app_test(tst_pointerfreeunlessplacing tst_pointerfreeunlessplacing.cpp)
+qet_add_app_test(tst_tidyeditmenu tst_tidyeditmenu.cpp)
+# Edit > Replace the symbols: place, label and wires kept, one undo step.
+qet_add_app_test(tst_replacesymbols tst_replacesymbols.cpp)
 # Edit > Select the same symbols: the folio's symbols drawn from the
 # definition of a selected one, the rest deselected.
 qet_add_app_test(tst_selectsamesymbols tst_selectsamesymbols.cpp)
@@ -630,6 +729,13 @@ qet_add_app_test(tst_terminalcolor tst_terminalcolor.cpp)
 # The corner radius of the frame around a selected symbol: 10 as before,
 # 0 square.
 qet_add_app_test(tst_selectionframeradius tst_selectionframeradius.cpp)
+# Selected symbols framed clearly in the highlight colour, a setting.
+qet_add_app_test(tst_strongselection tst_strongselection.cpp)
+# Ctrl drag copies, Duplicate on the mouse: two settings, off by default.
+qet_add_app_test(tst_ctrldragcopy tst_ctrldragcopy.cpp)
+# Text grid, "Snap the middle of the text": the middle of a dragged text on
+# the grid instead of the corner of its frame; off by default.
+qet_add_app_test(tst_textgridmiddle tst_textgridmiddle.cpp)
 
 # The element editor's collections dock: an element dropped on the drawing
 # pastes its parts, centred on the drop and on the grid; double-clicked, the
@@ -704,6 +810,27 @@ qet_add_app_test(tst_terminalstriporder tst_terminalstriporder.cpp)
 # Location and Label of the first piece its wires land on past the strip, in
 # plan order, the same three fields the cable list computes for a target.
 qet_add_app_test(tst_cabletarget tst_cabletarget.cpp)
+qet_add_app_test(tst_cablelist tst_cablelist.cpp)
+
+# A wire dropped on a terminal that already has a wire is made.
+qet_add_app_test(tst_wireonusedterminal tst_wireonusedterminal.cpp)
+
+# Joining two potentials offers only the two potentials.
+qet_add_app_test(tst_potentialchoices tst_potentialchoices.cpp)
+
+# A double-click on the middle of a wire opens its properties.
+qet_add_app_test(tst_wiredoubleclick tst_wiredoubleclick.cpp)
+
+# Copying a cable leaves the cable it was copied from whole.
+qet_add_app_test(tst_cablecopy tst_cablecopy.cpp)
+
+# The default font of one text of a cable, each of the five having one of its
+# own on the "Texte" page; what an installation picked before they were set
+# apart still reaches all five.
+qet_add_app_test(tst_cabletextfont tst_cabletextfont.cpp)
+
+# Adding a list table is one undo step.
+qet_add_app_test(tst_tableundo tst_tableundo.cpp)
 
 # What lies outside the sheet: named per folio, for the warning before
 # printing and exporting; off with the setting.
@@ -1960,6 +2087,18 @@ add_test(NAME tst_conductordashpattern COMMAND tst_conductordashpattern)
 target_include_directories(tst_conductordashpattern PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_conductordashpattern PRIVATE Qt::Test Qt::Widgets Qt::Xml pugixml::pugixml)
 
+# The page layout dialog of the PDF export on Windows and macOS: paper
+# size, orientation and margins in and out, the rest of the layout kept
+add_executable(
+  tst_pdfpagesetupdialog
+  tst_pdfpagesetupdialog.cpp
+  ${QET_DIR}/sources/print/pdfpagesetupdialog.cpp)
+add_test(NAME tst_pdfpagesetupdialog COMMAND tst_pdfpagesetupdialog)
+set_tests_properties(tst_pdfpagesetupdialog PROPERTIES
+  ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
+target_include_directories(tst_pdfpagesetupdialog PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_pdfpagesetupdialog PRIVATE Qt::Test Qt::Widgets Qt::PrintSupport)
+
 # The conductor type of a wire: written only when it is set, read back
 # the way it was written, and offered in the dynamic text fields
 add_executable(
@@ -2301,6 +2440,9 @@ qet_add_app_test(tst_potentialview tst_potentialview.cpp)
 # A core of a cable: section, colour and type are locked in the dialog and
 # show a small sign saying why, so an edit cannot write over the cable
 qet_add_app_test(tst_cablelockedfields tst_cablelockedfields.cpp)
+# IEC 60757 wire colour codes: a code picked from the list sets the colour
+# text and the drawing (green-yellow striped); typed text stays text.
+qet_add_app_test(tst_conductorcolorcodes tst_conductorcolorcodes.cpp)
 
 # Settings for every test. get_property(... TESTS) only sees the tests added
 # so far, so they wait for the end of this file: a test takes them wherever
@@ -2413,3 +2555,12 @@ if(NOT BUILD_WITH_KF)
     ${QET_DIR}/sources/ui/nokde)
   target_link_libraries(tst_nokdecolorcombo PRIVATE Qt::Test Qt::Widgets)
 endif()
+
+# The title block recorded for the screen shows what is drawn, and a change
+# of the folio's data reaches the screen
+qet_add_app_test(tst_titleblockcache tst_titleblockcache.cpp)
+# A properties dialog given its own key remembers its size apart from the
+# others of its editor (a PLC master's element dialog opens much wider)
+qet_add_app_test(tst_propertieseditordialog tst_propertieseditordialog.cpp)
+# A list table reopens at the width it was saved with
+qet_add_app_test(tst_tablereopen tst_tablereopen.cpp)

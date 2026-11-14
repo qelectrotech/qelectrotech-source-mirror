@@ -7,6 +7,7 @@ namespace Ui {
 	class CompositeTextEditDialog;
 }
 
+class DiagramContext;
 class DynamicElementTextItem;
 
 /**
@@ -27,6 +28,7 @@ class CompositeTextEditDialog : public QDialog
 		
 		QString plainText() const;
 		void addTerminalConductorInfo(int connection_count);
+		void addCustomInfo(const DiagramContext &informations);
 	
 	private slots:
 		void on_m_info_cb_activated(int index);

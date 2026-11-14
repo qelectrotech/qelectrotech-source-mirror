@@ -12,6 +12,8 @@
 // - moving E out of line keeps the wire drawn by hand;
 // - deleting B joins A and C in the same step;
 // - the flag is written to the file.
+// With them off, connecting the folio makes ordinary wires, and a wire read
+// as automatic is loaded as an ordinary one (#1837).
 #include <QApplication>
 #include <QDomDocument>
 #include <QFontDatabase>
@@ -172,6 +174,29 @@ int main(int argc, char **argv)
 		const QDomElement xml = wire(aE, bW)->toXml(doc, ids);
 		check(xml.attribute("automatic") == "true", "an automatic wire is written as automatic");
 		check(!by_hand->toXml(doc, ids).hasAttribute("automatic"), "a wire drawn by hand is not");
+
+			//A project without live automatic connections (#1837): nothing
+			//would ever remove an automatic wire there, and it cannot be
+			//selected, so the wires made are ordinary ones
+		diagram->undoStack().setIndex(0);
+		check(diagram->conductors().size() == 1, "back to the start: only D-E");
+		project.setLiveAutoConnect(false);
+		auto *plain = new QUndoCommand("connect");
+		check(AutoConnect::connectWholeDiagram(diagram, plain) == 2, "connecting the folio, live off: two wires");
+		diagram->undoStack().push(plain);
+		Conductor *ab = wire(aE, bW);
+		check(ab && !ab->isAutomatic(), "live off: A-B is an ordinary wire");
+		check(ab->flags() & QGraphicsItem::ItemIsSelectable, "live off: A-B can be selected");
+
+		QDomElement saved = ab->toXml(doc, ids);
+		saved.setAttribute("automatic", "true");
+		ab->fromXml(saved);
+		check(!ab->isAutomatic() && (ab->flags() & QGraphicsItem::ItemIsSelectable),
+			  "live off: a wire read as automatic is loaded as an ordinary one");
+		project.setLiveAutoConnect(true);
+		ab->fromXml(saved);
+		check(ab->isAutomatic() && !(ab->flags() & QGraphicsItem::ItemIsSelectable),
+			  "live on: the same wire is read as automatic");
 	}
 	catch (const std::exception &error)
 	{

@@ -392,7 +392,10 @@ QString PartDynamicTextField::infoName() const{
 void PartDynamicTextField::setCompositeText(const QString &text) {
 	m_composite_text = text;
 	if(m_text_from == DynamicElementTextItem::CompositeText && elementScene())
-		setPlainText(autonum::AssignVariables::replaceVariable(m_composite_text, elementScene()->elementData().m_informations));
+	{
+		const auto ed = elementScene()->elementData();
+		setPlainText(autonum::AssignVariables::replaceVariable(m_composite_text, ed.withCustomInfo(ed.m_informations)));
+	}
 	emit compositeTextChanged(m_composite_text);
 }
 
@@ -688,8 +691,11 @@ void PartDynamicTextField::elementInfoChanged()
 	if(m_text_from == DynamicElementTextItem::ElementInfo)
 		setPlainText(elementScene()->elementData().m_informations.value(m_info_name).toString());
 	else if (m_text_from == DynamicElementTextItem::CompositeText && elementScene())
+	{
+		const auto ed = elementScene()->elementData();
 		setPlainText(autonum::AssignVariables::replaceVariable(
-			m_composite_text, elementScene()->elementData().m_informations));
+			m_composite_text, ed.withCustomInfo(ed.m_informations)));
+	}
 }
 
 void PartDynamicTextField::prepareAlignment()

@@ -64,8 +64,12 @@ namespace TerminalStripDrawer
 			bool isLed() const override;
 			QString cable() const override;
 			QString cableWire() const override;
+			QStringList cableCoreTargets(const QString &name, const QUuid &uuid,
+										 int slot) const override;
 			bool isShield() const override;
 			QVector<QString> cableTarget() const override;
+			QVector<Wire> wires() const override;
+			bool hasWire() const override;
 			QColor color() const override;
 			QColor stripeColor() const override;
 			qreal widthMm() const override;

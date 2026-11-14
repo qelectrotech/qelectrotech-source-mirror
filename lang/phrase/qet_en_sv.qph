@@ -68,6 +68,11 @@
 </phrase>
 <phrase>
     <source>Wire</source>
+    <target>Förbindning</target>
+    <definition>Ritad förbindning i schemat, samma som conductor</definition>
+</phrase>
+<phrase>
+    <source>Wire</source>
     <target>Ledare</target>
     <definition>Fysisk ledare, t.ex. i kopplingslistor och kablar</definition>
 </phrase>
@@ -206,11 +211,23 @@
 </phrase>
 <phrase>
     <source>Nomenclature</source>
-    <target>Förteckning</target>
+    <target>Stycklista</target>
 </phrase>
 <phrase>
     <source>Bill of materials</source>
-    <target>Förteckning</target>
+    <target>Stycklista</target>
+</phrase>
+<phrase>
+    <source>Summary</source>
+    <target>Innehållsförteckning</target>
+</phrase>
+<phrase>
+    <source>Device list</source>
+    <target>Apparatlista</target>
+</phrase>
+<phrase>
+    <source>Materials list</source>
+    <target>Artikellista</target>
 </phrase>
 <phrase>
     <source>Wiring list</source>
@@ -1249,7 +1266,7 @@ Alla värden andra än ”Ingen avrundning” kan orsaka renderingsfel i projekt
 </phrase>
 <phrase>
     <source>Exclude from the bill of materials</source>
-    <target>Undanta från förteckningen</target>
+    <target>Undanta från stycklistan</target>
 </phrase>
 <phrase>
     <source>Exclude from automatic numbering</source>
@@ -1495,7 +1512,7 @@ Alla värden andra än ”Ingen avrundning” kan orsaka renderingsfel i projekt
 <phrase>
     <source>Unable to save the parts list to %1.
 %2</source>
-    <target>Det gick inte att spara förteckningen i %1.
+    <target>Det gick inte att spara stycklistan i %1.
 %2</target>
 </phrase>
 <phrase>
@@ -2605,5 +2622,55 @@ Här är de senaste meddelandena som loggades före avslutningen – du kan spar
 <phrase>
     <source>Are you sure you want to delete the selected %1 sheets ?</source>
     <target>Är du säker på att du vill ta bort de %1 markerade bladen?</target>
+</phrase>
+<phrase>
+    <source>Folio</source>
+    <target>Blad</target>
+    <definition>same as Sheet: a page of a project</definition>
+</phrase>
+<phrase>
+    <source>Symbol</source>
+    <target>Symbol</target>
+    <definition>graphic symbol of a device</definition>
+</phrase>
+<phrase>
+    <source>Macro</source>
+    <target>Makro</target>
+    <definition>a saved group of symbols and conductors placed in one go</definition>
+</phrase>
+<phrase>
+    <source>Grid</source>
+    <target>Rutnät</target>
+    <definition>the dot grid of the drawing area</definition>
+</phrase>
+<phrase>
+    <source>Device</source>
+    <target>Apparat</target>
+    <definition>physical piece of equipment, e.g. a contactor</definition>
+</phrase>
+<phrase>
+    <source>Coil</source>
+    <target>Spole</target>
+    <definition>relay or contactor coil</definition>
+</phrase>
+<phrase>
+    <source>Shield</source>
+    <target>Skärm</target>
+    <definition>cable shield (screen)</definition>
+</phrase>
+<phrase>
+    <source>Wire number</source>
+    <target>Förbindningsnummer</target>
+    <definition>number marked on a wire</definition>
+</phrase>
+<phrase>
+    <source>Auto numbering</source>
+    <target>Automatisk numrering</target>
+    <definition>automatic numbering of labels, conductors or folios</definition>
+</phrase>
+<phrase>
+    <source>Conductor section</source>
+    <target>Ledararea</target>
+    <definition>tvärsnittsarea i mm²</definition>
 </phrase>
 </QPH>

@@ -16,6 +16,7 @@
  *	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include "masterpropertieswidget.h"
+#include "../devicetype/devicetypelink.h"
 #include "contactgroupselectiondialog.h"
 #include <qetproject.h>
 #include <diagram.h>
@@ -25,10 +26,13 @@
 #include <undocommand/linkelementcommand.h>
 #include "ui_masterpropertieswidget.h"
 #include <properties/elementdata.h>
+#include <ElementsCollection/elementslocation.h>
 
 #include <QListWidgetItem>
 #include <QMessageBox>
 #include <QTableWidget>
+#include <QPointer>
+#include <QTimer>
 #include <QSpinBox>
 #include <QCheckBox>
 #include <QComboBox>
@@ -202,6 +206,7 @@ void MasterPropertiesWidget::reset()
 		delete qtwi;
 
 	m_qtwi_hash.clear();
+	m_qtwi_uuid_hash.clear();
 	updateUi();
 }
 
@@ -300,10 +305,34 @@ void MasterPropertiesWidget::headerCustomContextMenuRequested(const QPoint &pos)
  */
 void MasterPropertiesWidget::on_link_button_clicked()
 {
+		//A device with a device type, in a project following the types: its
+		//type says what it has, in place of max_slaves (DeviceTypeLink)
+	const bool typed = DeviceTypeLink::limits(m_element);
+	if (typed) {
+		QTreeWidgetItem *current = ui->m_free_tree_widget->currentItem();
+		Element *slave = current ? elementOf(current) : nullptr;
+		if (slave && DeviceTypeLink::refuses(m_element, slave)) {
+			QMessageBox::warning(this->window(), tr("That link cannot be made"),
+								 tr("This device has no free contact of this kind: every "
+									"part of its device type is drawn."));
+			return;
+		}
+		if (slave) {
+			QPointer<Element> linked = slave;
+			connect(slave, &Element::linkedElementChanged, slave, [linked]() {
+					//After the link's own step: the symbol is replaced
+				QTimer::singleShot(0, linked, [linked]() {
+					if (linked && !linked->linkedElements().isEmpty())
+						DeviceTypeLink::takeNextFreePart(linked);
+				});
+			}, Qt::SingleShotConnection);
+		}
+	}
+
 	// Get the maximum number of allowed slaves from the element's information
 	QVariant max_slaves_variant = m_element->kindInformations().value("max_slaves");
 
-	if (max_slaves_variant.isValid() && !max_slaves_variant.toString().isEmpty()) {
+	if (!typed && max_slaves_variant.isValid() && !max_slaves_variant.toString().isEmpty()) {
 		int max_slaves = max_slaves_variant.toInt();
 		int current_slaves = ui->m_link_tree_widget->topLevelItemCount();
 
@@ -333,7 +362,7 @@ void MasterPropertiesWidget::on_link_button_clicked()
 	QTreeWidgetItem *qtwi = ui->m_free_tree_widget->currentItem();
 	if (qtwi)
 	{
-		Element *slave_elmt = m_qtwi_hash.value(qtwi);
+		Element *slave_elmt = elementOf(qtwi);
 
 		//If master has contact groups, show group selection dialog
 		const auto &groups = m_element->elementData().m_slave_contact_groups;
@@ -411,7 +440,10 @@ void MasterPropertiesWidget::showElementFromTWI(QTreeWidgetItem *qtwi, int colum
 	if (m_element)
 		m_element->setHighlighted(false);
 
-	m_showed_element = m_qtwi_hash[qtwi];
+	m_showed_element = elementOf(qtwi);
+	if (!m_showed_element || !m_showed_element->diagram()) {
+		return;
+	}
 	m_showed_element->diagram()->showMe();
 	m_showed_element->setHighlighted(true);
 	connect(m_showed_element, &QObject::destroyed, this, &MasterPropertiesWidget::showedElementWasDeleted);
@@ -643,17 +675,21 @@ void MasterPropertiesWidget::updateUi()
 		if (m_plc_widget)
 			m_plc_widget->setVisible(false);
 
-		// Restore normal widget size policies
-		for (QWidget *w : {static_cast<QWidget*>(ui->m_free_tree_widget),
-				   static_cast<QWidget*>(ui->m_link_tree_widget),
-				   static_cast<QWidget*>(ui->label),
-				   static_cast<QWidget*>(ui->label_2),
-				   static_cast<QWidget*>(ui->link_button),
-				   static_cast<QWidget*>(ui->unlink_button)}) {
-			w->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+		// Restore the size policy each widget has in the .ui file: only
+		// the two lists take the free height. Making every widget
+		// Expanding made the label and button rows as tall as the lists,
+		// with two huge arrow buttons in the middle of the dialog.
+		auto restore = [](QWidget *w, QSizePolicy::Policy h, QSizePolicy::Policy v) {
+			w->setSizePolicy(h, v);
 			w->setMinimumSize(0, 0);
 			w->setMaximumSize(QWIDGETSIZE_MAX, QWIDGETSIZE_MAX);
-		}
+		};
+		restore(ui->m_free_tree_widget, QSizePolicy::Expanding, QSizePolicy::Expanding);
+		restore(ui->m_link_tree_widget, QSizePolicy::Expanding, QSizePolicy::Expanding);
+		restore(ui->label,              QSizePolicy::Preferred, QSizePolicy::Preferred);
+		restore(ui->label_2,            QSizePolicy::Preferred, QSizePolicy::Preferred);
+		restore(ui->link_button,        QSizePolicy::Minimum,   QSizePolicy::Fixed);
+		restore(ui->unlink_button,      QSizePolicy::Minimum,   QSizePolicy::Fixed);
 		for (int col = 0; col < ui->gridLayout->columnCount(); ++col)
 			ui->gridLayout->setColumnStretch(col, 0);
 
@@ -661,6 +697,9 @@ void MasterPropertiesWidget::updateUi()
 			return;
 
 		ElementProvider elmt_prov(m_project);
+			//The folios not built yet (lazy folios) are listed from the
+			//project database by addUnbuiltSlaves(), without building them
+		elmt_prov.setBuiltOnly(true);
 		QSettings settings;
 
 		//Build the list of free available element
@@ -698,6 +737,7 @@ void MasterPropertiesWidget::updateUi()
 			items_list.append(qtwi);
 			m_qtwi_hash.insert(qtwi, elmt);
 		}
+		addUnbuiltSlaves(items_list);
 
 		ui->m_free_tree_widget->addTopLevelItems(items_list);
 		items_list.clear();
@@ -1078,4 +1118,84 @@ void MasterPropertiesWidget::plcShowTableContextMenu(const QPoint &pos)
 	menu.addAction(tr("Paste from the clipboard"), this, &MasterPropertiesWidget::plcPasteFromClipboard);
 
 	menu.exec(m_plc_table->mapToGlobal(pos));
+}
+
+/**
+	@brief MasterPropertiesWidget::elementOf
+	@return the symbol of the row @p qtwi. A free slave of a folio not
+	built yet (lazy folios) has none until now: its folio is built, and
+	only it.
+*/
+Element *MasterPropertiesWidget::elementOf(QTreeWidgetItem *qtwi)
+{
+	Element *element = m_qtwi_hash.value(qtwi);
+	if (!element && m_qtwi_uuid_hash.contains(qtwi) && m_project) {
+		element = m_project->buildSymbol(m_qtwi_uuid_hash.value(qtwi));
+		if (element) {
+			m_qtwi_hash.insert(qtwi, element);
+		}
+	}
+	return element;
+}
+
+/**
+	@brief MasterPropertiesWidget::addUnbuiltSlaves
+	Add to @p items a row for each free slave on a folio not built yet
+	(lazy folios), read from the project database (#1842): filling the
+	list builds no folio. As for a built one, a PLC slave is left out: it
+	links to a PLC master only.
+*/
+void MasterPropertiesWidget::addUnbuiltSlaves(QList<QTreeWidgetItem *> &items)
+{
+	const QList<projectDataBase::FolioSymbol> symbols = m_project->unbuiltSymbols(ElementData::Slave, true);
+	if (symbols.isEmpty()) {
+		return;
+	}
+	QList<QUuid> uuids;
+	for (const auto &symbol : symbols)
+		uuids << symbol.uuid;
+	const QHash<QUuid, projectDataBase::LinkRow> rows = m_project->dataBase()->linkRows(uuids);
+	QHash<QUuid, Diagram *> folios;
+	for (Diagram *folio : m_project->folios())
+		folios.insert(folio->uuid(), folio);
+
+	QSettings settings;
+	const bool folio_label = settings.value(QStringLiteral("genericpanel/folio"), false).toBool();
+		//A definition read once however many symbols draw it
+	QHash<QString, bool> plc_slave;
+	QHash<QString, QIcon> icon;
+	for (const auto &symbol : symbols)
+	{
+		Diagram *diag = folios.value(symbol.folio);
+		if (!diag || !rows.contains(symbol.uuid)) {
+			continue;
+		}
+		if (!plc_slave.contains(symbol.location)) {
+			const ElementsLocation location(symbol.location, m_project);
+			ElementData data;
+			const QDomElement definition = location.xml();
+			if (!definition.isNull()) {
+				data.fromXml(definition);
+			}
+			plc_slave.insert(symbol.location, data.m_slave_type == ElementData::PLCSlave);
+			icon.insert(symbol.location, location.icon());
+		}
+		if (plc_slave.value(symbol.location)) {
+			continue;
+		}
+		auto *qtwi = new QTreeWidgetItem(ui->m_free_tree_widget);
+		qtwi->setIcon(0, icon.value(symbol.location));
+		if (folio_label) {
+			autonum::sequentialNumbers seq;
+			qtwi->setText(1, autonum::AssignVariables::formulaToLabel(
+							 diag->border_and_titleblock.folio(), seq, diag, nullptr));
+		} else {
+			qtwi->setText(1, QString::number(diag->folioIndex() + 1));
+		}
+		qtwi->setText(2, diag->title());
+		qtwi->setText(4, rows.value(symbol.uuid).position);
+		items.append(qtwi);
+		m_qtwi_hash.insert(qtwi, nullptr);
+		m_qtwi_uuid_hash.insert(qtwi, symbol.uuid);
+	}
 }

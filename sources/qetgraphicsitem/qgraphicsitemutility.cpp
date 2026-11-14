@@ -19,6 +19,7 @@
 
 #include <diagram.h>
 #include "element.h"
+#include "../palettegraphicsview.h"
 
 #include <QDebug>
 #include <QGraphicsItem>
@@ -112,18 +113,30 @@ bool centerToBottomDiagram (QGraphicsItem *item_to_center, Element *element_to_f
 	return true;
 }
 
+namespace {
+	int s_strong_selection = -1;
+	const QString strong_selection_key = QStringLiteral("diagrameditor/strong_selection_frame");
+}
+
+bool strongSelection()
+{
+	if (s_strong_selection < 0)
+		s_strong_selection = QSettings().value(strong_selection_key, false).toBool() ? 1 : 0;
+	return s_strong_selection == 1;
+}
+
+void setStrongSelection(bool strong)
+{
+	s_strong_selection = strong ? 1 : 0;
+	QSettings().setValue(strong_selection_key, strong);
+}
+
 void drawBoundingRectSelection(QGraphicsItem *item, QPainter *painter)
 {
-	painter->save();
-	QPen t;
-	t.setColor(Qt::gray);
-	t.setStyle(Qt::DashDotLine);
-	t.setCosmetic(true);
-
-	painter->setPen(t);
+	const bool strong = item->isSelected() && strongSelection();
 	const int radius = selectionFrameRadius();
-	painter->drawRoundedRect(item->boundingRect(), radius, radius);
-	painter->restore();
+	if (!PaletteGraphicsView::deferSelectionFrame(painter, item->boundingRect(), strong, radius))
+		PaletteGraphicsView::drawSelectionFrame(painter, item->boundingRect(), strong, false, radius);
 }
 
 namespace {

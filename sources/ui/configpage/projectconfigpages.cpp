@@ -199,6 +199,16 @@ void ProjectMainConfigPage::applyProjectConf()
 		modified_project = true;
 	}
 
+	if (m_project -> plantAndLocationInherited() != m_plant_location_cb -> isChecked()) {
+		m_project -> setPlantAndLocationInherited(m_plant_location_cb -> isChecked());
+		modified_project = true;
+	}
+
+	if (m_project -> followDeviceTypes() != m_follow_device_types_cb -> isChecked()) {
+		m_project -> setFollowDeviceTypes(m_follow_device_types_cb -> isChecked());
+		modified_project = true;
+	}
+
 	if (m_project -> chainedReports() != chained_reports_cb_ -> isChecked()) {
 		m_project -> setChainedReports(chained_reports_cb_ -> isChecked());
 		modified_project = true;
@@ -282,6 +292,25 @@ void ProjectMainConfigPage::initWidgets()
 	upright_symbol_texts_cb_ -> setToolTip(tr("Texts drawn in an element and the names of its terminals stay readable "
 											  "when the element is rotated: their frame turns with the element, not the "
 											  "text. Uncheck to make them turn with the element, as before.",
+											  "tooltip"));
+
+		//%{plant} and %{location} of an element without its own
+	m_plant_location_cb = new QCheckBox(tr("Elements without their own plant or location show those of "
+										   "their structure box or folio",
+										   "checkbox label"));
+	m_plant_location_cb -> setToolTip(tr("The variables %{plant} and %{location} of an element that has none of "
+										 "its own give the plant and location of the structure box around it, "
+										 "else of its folio, as %{structure_id_full} does. Uncheck to show only "
+										 "the element's own, as before.",
+										 "tooltip"));
+
+		//Placing and linking follow the device types
+	m_follow_device_types_cb = new QCheckBox(tr("Follow device types when placing and linking",
+												"checkbox label"));
+	m_follow_device_types_cb -> setObjectName(QStringLiteral("followDeviceTypes"));
+	m_follow_device_types_cb -> setToolTip(tr("A contact is linked only to a device whose type has a free part for "
+											  "it, and takes that part's terminals; a master symbol placed is asked "
+											  "its device type. Uncheck to place and link as before.",
 											  "tooltip"));
 
 	chained_reports_cb_ = new QCheckBox(tr("Enable chained folio reports for report elements", "checkbox label"));
@@ -393,6 +422,12 @@ void ProjectMainConfigPage::initLayout()
 	main_layout0 -> addWidget(upright_symbol_texts_cb_);
 	main_layout0 -> addSpacing(10);
 
+	main_layout0 -> addWidget(m_plant_location_cb);
+	main_layout0 -> addSpacing(10);
+
+	main_layout0 -> addWidget(m_follow_device_types_cb);
+	main_layout0 -> addSpacing(10);
+
 	main_layout0 -> addWidget(chained_reports_cb_);
 	main_layout0 -> addSpacing(10);
 
@@ -445,6 +480,8 @@ void ProjectMainConfigPage::readValuesFromProject()
 	const int wire_hops_index = wire_hops_cb_ -> findData(WireHops::toString(m_project -> wireHops()));
 	wire_hops_cb_ -> setCurrentIndex(qMax(0, wire_hops_index));
 	upright_symbol_texts_cb_ -> setChecked(m_project -> uprightSymbolTexts());
+	m_plant_location_cb -> setChecked(m_project -> plantAndLocationInherited());
+	m_follow_device_types_cb -> setChecked(m_project -> followDeviceTypes());
 	chained_reports_cb_ -> setChecked(m_project -> chainedReports());
 	if (m_project -> terminalLabelSplit()) {
 		terminal_label_split_rb_ -> setChecked(true);
@@ -510,6 +547,8 @@ void ProjectMainConfigPage::adjustReadOnly()
 	usage_reset_pb_ -> setDisabled(is_read_only);
 	wire_hops_cb_ -> setDisabled(is_read_only);
 	upright_symbol_texts_cb_ -> setDisabled(is_read_only);
+	m_plant_location_cb -> setDisabled(is_read_only);
+	m_follow_device_types_cb -> setDisabled(is_read_only);
 	chained_reports_cb_ -> setDisabled(is_read_only);
 	terminal_label_gb_ -> setDisabled(is_read_only);
 	wiring_rules_gb_ -> setDisabled(is_read_only);

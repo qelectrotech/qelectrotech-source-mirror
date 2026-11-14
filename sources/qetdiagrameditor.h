@@ -106,7 +106,8 @@ class QETDiagramEditor : public QETMainWindow
 		bool openAsRecovered(const QString &source, const QString &original);
 		static QString recoveredPath(const QString &filepath, const QString &suffix);
 		void reloadElementDrawings(QETProject *project, bool adopt_frame,
-								   const QString &title, const QString &intro);
+								   const QString &title, const QString &intro,
+								   bool follow_moved_origin = false);
 		// Declared first so it is initialised before any member whose
 		// constructor may dispatch a Qt event calling event() (e.g. the
 		// QActionGroup members below trigger QObject::setParent events).
@@ -239,6 +240,7 @@ class QETDiagramEditor : public QETMainWindow
 		void copyTextFormat();
 		void applyTextFormat();
 		void placeSymbolTexts(Qt::Alignment where);
+		void replaceSelectedSymbols();
 
 	private slots:
 		void updateTextGridButton();
@@ -261,6 +263,7 @@ class QETDiagramEditor : public QETMainWindow
 		*m_text_destination = nullptr,	///< Choose the folio a selected free text leads to
 		*m_text_clearance = nullptr,	///< Move texts off the wires they sit on
 		*m_show_as_dot = nullptr,	///< Draw the selected T-junctions as a dot
+		*m_replace_symbols = nullptr,	///< Replace the selected symbols by one from a collection
 		*m_select_same_symbols = nullptr;	///< Select the symbols of the same kind as a selected one
 		
 		QActionGroup
@@ -285,6 +288,8 @@ class QETDiagramEditor : public QETMainWindow
 		
 		QAction* m_find_duplicate_labels = nullptr;
 		QAction* m_check_potentials = nullptr;
+		QAction *m_check_device_types = nullptr;
+		QAction *m_device_types = nullptr;
 		QAction* m_project_languages = nullptr;
 
 		QAction

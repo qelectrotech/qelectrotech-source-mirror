@@ -32,7 +32,6 @@ class QCheckBox;
 class QComboBox;
 class QPushButton;
 class QWidget;
-struct MaterialRecord;
 
 namespace Ui {
 	class ElementInfoWidget;
@@ -59,6 +58,8 @@ class ElementInfoWidget : public AbstractElementPropertiesEditorWidget
 		bool setLiveEdit(bool live_edit) override;
 		void updateUi() override;
 		DiagramContext currentInfo() const;
+		static void populateSuggestions(Element *element,
+										const QList<ElementInfoPartWidget *> &widgets);
 
 
 	protected:
@@ -68,11 +69,7 @@ class ElementInfoWidget : public AbstractElementPropertiesEditorWidget
 
 	private:
 		void buildInterface();
-		void setupMaterialButtons();
-		void materialFromFile(int block);
-		void applyMaterialRecord(const MaterialRecord &record, int block);
 		ElementInfoPartWidget *infoPartWidgetForKey(const QString &key) const;
-		QStringList predefinedKeys() const;
 		void updateSuggestions();
 		void setupSchemeRow();
 		void setupFreezeRow();

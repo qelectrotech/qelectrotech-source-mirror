@@ -45,7 +45,8 @@ class PropertiesEditorDialog : public QDialog
 		Q_OBJECT
 	public:
 		template<typename T>
-		PropertiesEditorDialog(T editor, QWidget *parent = nullptr) :
+		PropertiesEditorDialog(T editor, QWidget *parent = nullptr,
+							   const QString &geometry_key = QString()) :
 		QDialog (parent)
 		{
 			// Without this, a QWidget-modal QDialog with a parent falls
@@ -81,8 +82,12 @@ class PropertiesEditorDialog : public QDialog
 				// template is the same PropertiesEditorDialog class,
 				// so using its class name here would have every kind
 				// of wrapped editor (conductor properties, element
-				// properties, ...) fight over one saved size.
-			QET::trackDialogGeometry(this, editor->metaObject()->className());
+				// properties, ...) fight over one saved size. A caller
+				// whose editor opens at a size of its own passes its own
+				// key, so that size is not the one the others reopen at.
+			QET::trackDialogGeometry(this, geometry_key.isEmpty()
+				? QString::fromLatin1(editor->metaObject()->className())
+				: geometry_key);
 
 			//Setup connection between button box and the editor
 			connect(button_box,

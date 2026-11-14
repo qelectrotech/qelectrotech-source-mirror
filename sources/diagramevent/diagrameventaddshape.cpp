@@ -242,7 +242,7 @@ void DiagramEventAddShape::mousePressEvent(QGraphicsSceneMouseEvent *event)
 			//Create shape item
 		if (!m_shape_item)
 		{
-			m_shape_item = new QetShapeItem(pos, pos, m_shape_type);
+			m_shape_item = createShapeItem(pos, pos, m_shape_type);
 			m_anchor_point = pos;
 			// Initial feedback only -- applyPosition() re-decides this
 			// live on every subsequent move, from whatever Ctrl state is
@@ -277,6 +277,7 @@ void DiagramEventAddShape::mousePressEvent(QGraphicsSceneMouseEvent *event)
 			if (m_shape_item->shapeType() == QetShapeItem::Rectangle || m_shape_item->shapeType() == QetShapeItem::Ellipse) {
 				m_shape_item->setRect(m_shape_item->rect().normalized());
 			}
+			shapeDrawn(m_shape_item);
 			m_diagram->undoStack().push (new AddGraphicsObjectCommand(m_shape_item, m_diagram));
 			m_shape_item = nullptr; //< set to nullptr for create new shape at next left clic
 			hideCenterMarker();
@@ -532,6 +533,19 @@ QString DiagramEventAddShape::afterClickHint() const
 		default:
 			return QString();
 	}
+}
+
+/**
+	@brief DiagramEventAddShape::createShapeItem
+	@param p1
+	@param p2
+	@param shape_type
+	@return a new QetShapeItem to add to the diagram. Overridden by
+	subclasses that need a different QetShapeItem subclass instead.
+*/
+QetShapeItem *DiagramEventAddShape::createShapeItem(QPointF p1, QPointF p2, QetShapeItem::ShapeType shape_type)
+{
+	return new QetShapeItem(p1, p2, shape_type);
 }
 
 /**

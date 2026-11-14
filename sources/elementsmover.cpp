@@ -15,6 +15,7 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
+#include "qet.h"
 #include "elementsmover.h"
 #include "qetproject.h"
 #include "autobreakconductor.h"
@@ -122,7 +123,27 @@ int ElementsMover::beginMovement(Diagram *diagram, QGraphicsItem *driver_item)
 		}
 	}
 
-	if (!m_moved_content.count()) return(-1);
+		//The cable lines he marked together with the elements come along
+		//too: a selection of elements and lines is one thing to move.
+		//When the finger is on a line itself, that line carries its own
+		//kind -- every line of the selection is begun by the one being
+		//dragged (see CablePart) -- so there is nothing to collect here.
+	m_moved_cables.clear();
+	if (!qgraphicsitem_cast<CablePart *>(m_movement_driver))
+	{
+		for (QGraphicsItem *item : diagram->selectedItems())
+		{
+			auto *cable = qgraphicsitem_cast<CablePart *>(item);
+			if (!cable || !cable->cable()) continue;
+
+			cable->beginLineGesture();
+			m_moved_cables.append(cable);
+		}
+	}
+
+		//Cable lines alone are worth a movement too: the arrow keys move
+		//a cable that is marked on its own
+	if (!m_moved_content.count() && m_moved_cables.isEmpty()) return(-1);
 
 		//Live AutoConnect works the automatic wires out anew at the drop:
 		//until then they only follow, grey, so they do not pass for the
@@ -141,24 +162,6 @@ int ElementsMover::beginMovement(Diagram *diagram, QGraphicsItem *driver_item)
 		//never worth keeping: whatever starts here starts from nothing.
 	qDeleteAll(m_extra_commands);
 	m_extra_commands.clear();
-
-		//The cable lines he marked together with the elements come along
-		//too: a selection of elements and lines is one thing to move.
-		//When the finger is on a line itself, that line carries its own
-		//kind -- every line of the selection is begun by the one being
-		//dragged (see CablePart) -- so there is nothing to collect here.
-	m_moved_cables.clear();
-	if (!qgraphicsitem_cast<CablePart *>(m_movement_driver))
-	{
-		for (QGraphicsItem *item : diagram->selectedItems())
-		{
-			auto *cable = qgraphicsitem_cast<CablePart *>(item);
-			if (!cable || !cable->cable()) continue;
-
-			cable->beginLineGesture();
-			m_moved_cables.append(cable);
-		}
-	}
 
 		//Where every one of them stands at this moment: calling the
 		//movement off puts them all back here, recorded rather than
@@ -190,7 +193,7 @@ int ElementsMover::beginMovement(Diagram *diagram, QGraphicsItem *driver_item)
 	 * There is now a move in progress */
 	m_movement_running = true;
 
-	return(m_moved_content.count());
+	return(m_moved_content.count() + m_moved_cables.size());
 }
 
 /**
@@ -227,7 +230,8 @@ void ElementsMover::applyMovement(const QPointF &movement)
 	{
 		if (qgi == m_movement_driver)
 			continue;
-		qgi->setPos(qgi->pos() + movement);
+			//The movement is on the folio, whichever way a parent is turned
+		qgi->setPos(qgi->pos() + QET::sceneStepInParent(qgi, movement));
 	}
 
 	QVector<Conductor *>list_conductors;
@@ -247,6 +251,11 @@ void ElementsMover::applyMovement(const QPointF &movement)
 	{
 		conductor->updatePath();
 	}
+
+		//An automatic wire whose ends no longer face each other in line
+		//goes at the drop: it is not shown bent round meanwhile
+	for (const QPointer<Conductor> &c : std::as_const(m_preview_wires))
+		if (c) c->setVisible(AutoConnect::endsInLine(c));
 
 		//The cable lines he marked together with the elements come along
 		//by the very same step: one gesture moves the whole selection
@@ -355,7 +364,7 @@ void ElementsMover::endMovement()
 	QUndoCommand *undo_object{new QUndoCommand()};
 
 		//Create undo move if there is a movement
-	if (!m_current_movement.isNull()) {
+	if (!m_current_movement.isNull() && m_moved_content.count()) {
 		QUndoCommand *quc{new MoveGraphicsItemCommand(m_diagram, m_moved_content, m_current_movement, undo_object)};
 		undo_object->setText(quc->text());
 	}
@@ -695,6 +704,9 @@ void ElementsMover::cancelMovement()
 void ElementsMover::endPreview()
 {
 	for (const QPointer<Conductor> &c : std::as_const(m_preview_wires))
-		if (c) c->setPreview(false);
+		if (c) {
+			c->setPreview(false);
+			c->setVisible(true);
+		}
 	m_preview_wires.clear();
 }

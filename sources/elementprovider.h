@@ -43,11 +43,19 @@ class ElementProvider
 		ElementProvider(Diagram *diag);
 		explicit ElementProvider(const QList<Diagram *> &diagrams);
 		QVector <QPointer<Element>> freeElement(ElementData::Types filter) const;
+			/// Search the folios already built only (lazy folios): the
+			/// caller lists the others from the project database
+		void setBuiltOnly(bool built_only) {m_built_only = built_only;}
 		QList <Element *> fromUuids(QList <QUuid>) const;
 		QVector<QPointer<Element> > find(ElementData::Types elmt_type) const;
 		QVector <QetGraphicsTableItem *> table(QetGraphicsTableItem *table = nullptr, QAbstractItemModel *model = nullptr);
 		QetGraphicsTableItem *tableFromUuid(const QUuid &uuid);
 		QVector<TerminalElement *> freeTerminal() const;
+			/// The free terminals that are terminal blocks: without the corners,
+			/// T-junctions and drawing aids, which are terminals for QElectroTech
+			/// but join wires on the folio only
+		QVector<TerminalElement *> freeTerminalBlocks() const;
+		static bool joinsWiresOnly(const Element *element);
 
 	private:
 		QList<Diagram *> folios(ElementData::Types kinds, bool free_only) const;
@@ -59,6 +67,7 @@ class ElementProvider
 			//those a search can find something on
 		QETProject *m_project = nullptr;
 		Diagram *m_excluded = nullptr;
+		bool m_built_only = false;
 };
 
 #endif // ELEMENTPROVIDER_H

@@ -20,7 +20,9 @@
 
 #include <QColor>
 #include <QPointer>
+#include <QStringList>
 #include <QUuid>
+#include <QVector>
 
 #include "properties/terminalstriplayoutpattern.h"
 #include <properties/elementdata.h>
@@ -95,6 +97,8 @@ namespace TerminalStripDrawer
 			//Cable (hose) connected to the terminal, drawn under the strip.
 			virtual QString cable() const { return QString(); }
 			virtual QString cableWire() const { return QString(); }
+			virtual QStringList cableCoreTargets(const QString &, const QUuid &,
+												 int) const { return {}; }
 			virtual bool isShield() const { return false; }
 			//Installation, Location and Label (BMK) of the piece the cable
 			//goes to at its far end -- the same three fields the cable list
@@ -102,6 +106,23 @@ namespace TerminalStripDrawer
 			//when the terminal has no cable, or when the cable lands on
 			//nothing past the strip's own terminals.
 			virtual QVector<QString> cableTarget() const { return QVector<QString>(); }
+			//One entry per wire of the terminal which is no core of a
+			//cable: what the wire's other end is called ("12K1:A1"), and
+			//what it is made of in the order type, colour and section
+			//with the empty ones left out. A terminal with a twin sleeve
+			//carries two wires and gets two entries; empty when it has
+			//none -- a cable says all of that itself and is drawn under
+			//the strip.
+			struct Wire
+			{
+				QString target;
+				QStringList definition;
+			};
+			virtual QVector<Wire> wires() const { return QVector<Wire>(); }
+			//Whether the terminal has a wire of its own at all, whatever
+			//there is to say about it: the stub is drawn for every one of
+			//them, like the cables get one.
+			virtual bool hasWire() const { return false; }
 			//Color and width (mm) of the terminal, only used to draw the terminal.
 			//An invalid color means "no override" : the default color of the type is used.
 			//A width <= 0 means "unknown" : the default width of the layout is used.

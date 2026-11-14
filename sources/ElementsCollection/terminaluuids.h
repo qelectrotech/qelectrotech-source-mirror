@@ -18,6 +18,7 @@
 #ifndef TERMINALUUIDS_H
 #define TERMINALUUIDS_H
 
+#include <QPointF>
 #include <QUuid>
 
 class QDomElement;
@@ -30,6 +31,10 @@ namespace TerminalUuids
 	void keep(const QDomElement &old_element, QDomElement &new_element);
 	void keepInDirectory(const QDomElement &old_directory,
 						 QDomElement &new_directory);
+	bool commonOffset(const QDomElement &old_definition,
+					  const QDomElement &new_definition, QPointF *offset);
+	void keepShifted(const QDomElement &old_definition,
+					 QDomElement &new_definition, const QPointF &offset);
 }
 
 #endif // TERMINALUUIDS_H

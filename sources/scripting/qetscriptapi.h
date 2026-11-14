@@ -214,11 +214,10 @@ class QetGraphicsTableItem;
 	  comma-joined column keys instead and accepts an empty query, which
 	  means its default columns.
 
-	  Neither creating nor deleting a table is undoable:
-	  QetGraphicsTableFactory::newTable(), which create() calls, calls
-	  Diagram::addItem() directly, with no undo command of its own, in the
-	  stock "add table" action as much as here -- a pre-existing gap in the
-	  application, not something introduced by this API. Tables are
+	  Creating a table is undoable: QetGraphicsTableFactory::newTable(),
+	  which create() calls, puts it on the sheet through an
+	  AddGraphicsObjectCommand, as the stock "add table" action does.
+	  Deleting one through this API is not. Tables are
 	  addressed by index in a position-sorted listing, like texts, shapes
 	  and images.
 	- @b Auto-numbering: define a named numbering context of kind

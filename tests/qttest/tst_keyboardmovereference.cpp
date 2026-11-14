@@ -29,9 +29,13 @@
 #include "qetgraphicsitem/terminal.h"
 #include "foliogrid.h"
 #include "qetproject.h"
+#include "cable/cable.h"
+#include "cable/cablepart.h"
+#include "cable/addcablecommand.h"
 
 #include <QCursor>
 #include <QKeyEvent>
+#include "qetgraphicsitem/dynamicelementtextitem.h"
 #include <QMouseEvent>
 
 class tst_keyboardmovereference : public QObject
@@ -96,9 +100,90 @@ class tst_keyboardmovereference : public QObject
 			DiagramView::setCrosshairShown(true);
 		}
 
+			//A cable line marked on its own moves with the keys as well,
+			//one undo step taking it back
+		void cableOnItsOwn()
+		{
+			CablePartData data;
+			data.uuid = QUuid::createUuid();
+			data.diagram = m_diagram->uuid();
+			data.p1 = QPointF(100, 500);
+			data.p2 = QPointF(300, 500);
+			auto *cable = m_diagram->project()->newCable();
+			cable->addPart(data);
+			auto *line = new CablePart(data);
+			line->setCable(cable);
+			m_diagram->addItem(line);
+			m_diagram->undoStack().push(new AddCableCommand(cable, line, m_diagram, true));
+
+			m_diagram->clearSelection();
+			line->setSelected(true);
+			const int steps = m_diagram->undoStack().count();
+			key(Qt::Key_Right);
+			QVERIFY(line->firstPoint().x() > 100);
+			QCOMPARE(line->firstPoint().y(), 500.0);
+			QCOMPARE(m_diagram->undoStack().count(), steps + 1);
+			m_diagram->undoStack().undo();
+			QCOMPARE(line->firstPoint(), QPointF(100, 500));
+			line->setSelected(false);
+		}
+
 		void cleanupTestCase()
 		{
 			DiagramView::setCrosshairShown(false);
+		}
+
+			//Following a cross reference: at the jump zoom at least, the
+			//target in the middle; 0 shows the whole folio as before
+		void jumpZoom()
+		{
+			const QRectF target(600, 350, 20, 20);
+			DiagramView::setJumpZoom(125);
+			m_view->zoomFit();
+			QVERIFY(m_view->transform().m11() < 1.25);
+			m_view->showJumpTarget(target);
+			QCOMPARE(m_view->transform().m11(), 1.25);
+			const QPointF middle = m_view->mapToScene(m_view->viewport()->rect().center());
+			QVERIFY2(QLineF(middle, target.center()).length() < 5,
+					 qPrintable(QStringLiteral("%1,%2").arg(middle.x()).arg(middle.y())));
+			m_view->setTransform(QTransform::fromScale(2, 2));
+			m_view->showJumpTarget(target);
+			QCOMPARE(m_view->transform().m11(), 2.0);
+			DiagramView::setJumpZoom(0);
+			m_view->showJumpTarget(target);
+			m_view->zoomFit();
+			const qreal fit = m_view->transform().m11();
+			m_view->setTransform(QTransform::fromScale(2, 2));
+			m_view->showJumpTarget(target);
+			QCOMPARE(m_view->transform().m11(), fit);
+			m_view->resetTransform();
+			m_view->centerOn(300, 250);
+		}
+
+			//The text of a turned symbol: the arrow keys move it along the
+			//folio, not along the symbol; undo puts it back
+		void turnedSymbolText()
+		{
+			Element *turned = place(QPointF(500, 400));
+			QVERIFY(turned);
+			turned->setRotation(90);
+			auto *text = new DynamicElementTextItem(turned);
+			turned->addDynamicTextItem(text);
+			text->setPos(20, 0);
+			m_diagram->clearSelection();
+			text->setSelected(true);
+			const QPointF start = text->scenePos();
+			key(Qt::Key_Left);
+			QCOMPARE(text->scenePos(), start + QPointF(-10, 0));
+			key(Qt::Key_Down);
+			QCOMPARE(text->scenePos(), start + QPointF(-10, 10));
+			m_diagram->undoStack().undo();
+			m_diagram->undoStack().undo();
+			QCOMPARE(text->scenePos(), start);
+			m_diagram->undoStack().redo();
+			QCOMPARE(text->scenePos(), start + QPointF(-10, 0));
+			m_diagram->undoStack().undo();
+			m_diagram->clearSelection();
 		}
 
 			//Two symbols: on the left one's insertion point, whatever was nearer

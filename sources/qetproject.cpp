@@ -17,6 +17,7 @@
 */
 
 #include "qetproject.h"
+#include "ElementsCollection/terminaluuids.h"
 #include "TerminalStrip/terminalstriplabels.h"
 #include "container/qetcontainer.h"
 #include "container/qetcontainerdb.h"
@@ -36,6 +37,7 @@
 #include "autoNum/elementautonumschemecommand.h"
 #include "diagram.h"
 #include "qetgraphicsitem/element.h"
+#include "qetgraphicsitem/structureboxitem.h"
 #include "qetgraphicsitem/conductor.h"
 #include "qetgraphicsitem/terminal.h"
 #include "properties/terminaldata.h"
@@ -56,6 +58,7 @@
 #include "qetversion.h"
 #include "undocommand/adddiagramcommand.h"
 #include "utils/previousversions.h"
+#include "utils/qetsettings.h"
 
 #include <QCryptographicHash>
 #include <QElapsedTimer>
@@ -1029,8 +1032,39 @@ void QETProject::buildFolios(const QList<Diagram *> &folios) const
 */
 void QETProject::buildFoliosHolding(ElementData::Types kinds, bool free_only)
 {
-	if (!unloadedFolioCount()) {
+	QSet<QUuid> holding;
+	for (const projectDataBase::FolioSymbol &symbol : unbuiltSymbols(kinds, free_only))
+		holding.insert(symbol.folio);
+	QList<Diagram *> to_build;
+	for (Diagram *d : std::as_const(m_diagrams_list))
+		if (!d->isLoaded() && holding.contains(d->uuid()))
+			to_build << d;
+	if (to_build.isEmpty()) {
 		return;
+	}
+	if (qEnvironmentVariableIntValue("QET_LAZY_FOLIOS_TRACE") == 1) {
+		qWarning().noquote() << "lazy folios:" << to_build.size()
+							 << "folios built for a search of"
+							 << (free_only ? "free" : "") << "symbols of kinds" << int(kinds);
+	}
+	buildFolios(to_build);
+}
+
+/**
+	@brief QETProject::unbuiltSymbols
+	The symbols on folios not built yet (lazy folios) of one of the kinds
+	@p kinds -- if @p free_only, those which may be linked to nothing once
+	built: none of the partners they were saved linked to is in the
+	project. Read from the project database: nothing is built. The rows a
+	list of symbols to link shows for those folios (see
+	projectDataBase::linkRows()), and what buildFoliosHolding() builds.
+*/
+QList<projectDataBase::FolioSymbol> QETProject::unbuiltSymbols(ElementData::Types kinds,
+															   bool free_only) const
+{
+	QList<projectDataBase::FolioSymbol> found;
+	if (!unloadedFolioCount()) {
+		return found;
 	}
 	QSet<QUuid> unbuilt;
 	QSet<QUuid> placed;
@@ -1049,7 +1083,6 @@ void QETProject::buildFoliosHolding(ElementData::Types kinds, bool free_only)
 			placed.insert(it.key());
 	}
 		//The symbols and their links as the database has them
-	QList<Diagram *> to_build;
 	for (Diagram *d : std::as_const(m_diagrams_list))
 	{
 		if (d->isLoaded()) {
@@ -1070,20 +1103,34 @@ void QETProject::buildFoliosHolding(ElementData::Types kinds, bool free_only)
 				}
 			}
 			if (!linked) {
-				to_build << d;
-				break;
+				found << symbol;
 			}
 		}
 	}
-	if (to_build.isEmpty()) {
-		return;
+	return found;
+}
+
+/**
+	@brief QETProject::buildSymbol
+	@return the symbol @p symbol, its folio built first if it is not yet
+	(lazy folios): what a list showing a symbol of a folio not built
+	needs once that symbol is chosen. nullptr if the project has none.
+*/
+Element *QETProject::buildSymbol(const QUuid &symbol)
+{
+	buildFoliosHoldingSymbols({symbol});
+		//Only the folio the database places it on: a large project has
+		//many folios built by then
+	const QSet<QUuid> folio = m_data_base.folioUuidsOfElements({symbol});
+	for (Diagram *d : std::as_const(m_diagrams_list)) {
+		if (!d->isLoaded() || (!folio.isEmpty() && !folio.contains(d->uuid()))) {
+			continue;
+		}
+		for (Element *element : d->elements())
+			if (element->uuid() == symbol)
+				return element;
 	}
-	if (qEnvironmentVariableIntValue("QET_LAZY_FOLIOS_TRACE") == 1) {
-		qWarning().noquote() << "lazy folios:" << to_build.size()
-							 << "folios built for a search of"
-							 << (free_only ? "free" : "") << "symbols of kinds" << int(kinds);
-	}
-	buildFolios(to_build);
+	return nullptr;
 }
 
 /**
@@ -2508,6 +2555,65 @@ void QETProject::setUprightSymbolTexts(bool upright)
 }
 
 /**
+	@brief QETProject::plantAndLocationInherited
+	@return true if %{plant} and %{location} give the plant and location a
+	symbol takes: its own, else those of the structure boxes around it,
+	else its folio's (StructureBoxItem::placeOf()), as %{structure_id_full}
+	does. Off unless the project says otherwise: they then give the
+	symbol's own only, so the texts of a project saved without it do not
+	change.
+*/
+bool QETProject::plantAndLocationInherited() const {
+	return m_plant_location_inherited;
+}
+
+/**
+	@brief QETProject::setPlantAndLocationInherited
+	Set whether %{plant} and %{location} give the plant and location a
+	symbol takes, and work out again the texts of the built folios that use
+	them. A folio not built yet reads the setting when its texts are made.
+	@param inherited
+*/
+void QETProject::setPlantAndLocationInherited(bool inherited)
+{
+	if (inherited == m_plant_location_inherited) {
+		return;
+	}
+	m_plant_location_inherited = inherited;
+	storeSettings();
+	for (Diagram *diagram : builtFolios()) {
+		StructureBoxItem::refreshSymbolTexts(diagram);
+	}
+}
+
+/**
+	@brief QETProject::followDeviceTypes
+	@return true if placing and linking follow the device types: a contact
+	is linked only to a device whose type has a free part for it, and takes
+	that part's terminals; a master placed is asked its device type. Off
+	unless the project says otherwise, so a project saved without it
+	behaves as it always did.
+*/
+bool QETProject::followDeviceTypes() const
+{
+	return m_follow_device_types;
+}
+
+/**
+	@brief QETProject::setFollowDeviceTypes
+	@param follow : whether placing and linking follow the device types
+*/
+void QETProject::setFollowDeviceTypes(bool follow)
+{
+	if (follow == m_follow_device_types) {
+		return;
+	}
+	m_follow_device_types = follow;
+	storeSettings();
+	setModified(true);
+}
+
+/**
 	@brief QETProject::terminalLabelSplit
 	@return whether the terminals of this project draw their label split,
 	the label ("X1") and the terminal number ("1") each in their own text
@@ -2855,11 +2961,15 @@ QDomDocument QETProject::toXml(QHash<int, QByteArray> *kept_folios, QStringList 
 	writeUsageXml(project_root);
 	writeWireHopsXml(project_root);
 	writeSymbolTextsXml(project_root);
+	writePlantLocationXml(project_root);
+	writeDeviceTypeRulesXml(project_root);
 	writeLanguagesXml(project_root);
 	writePotentialTypesXml(project_root);
 	writeTerminalLabelSplitXml(project_root);
 	writeWiringRulesXml(project_root);
 	writeChainedReportsXml(project_root);
+	writeConductorPlantCountersXml(project_root);
+	writeDeviceTypesXml(project_root);
 	writeOriginXml(project_root);
 
 	// Properties for news diagrams
@@ -3822,12 +3932,28 @@ QList<QETProject::OutdatedElement> QETProject::outdatedElements() const
 	Replace the embedded element of @p element by its source, keeping the
 	uuids of the terminals that did not move. Placed elements keep their
 	old drawing until they are reloaded (Element::reloadPicture()).
+
+	With @p follow_moved_origin, a source drawn the same but moved as a
+	whole (its insertion point moved, TerminalUuids::commonOffset()) gives
+	each terminal the uuid of the one it was moved from instead, for the
+	placed symbols moved with it (Element::followMovedOrigin()).
 */
-void QETProject::updateElement(const OutdatedElement &element)
+void QETProject::updateElement(const OutdatedElement &element, bool follow_moved_origin)
 {
 	ElementsLocation source = element.source;
 	ElementsLocation parent = element.embedded.parent();
+	const QDomElement old_definition = follow_moved_origin
+			? element.embedded.xml().cloneNode(true).toElement()
+			: QDomElement();
 	m_elements_collection->copy(source, parent);
+
+	if (!follow_moved_origin)
+		return;
+	QDomElement new_definition = element.embedded.xml();
+	QPointF offset;
+	if (TerminalUuids::commonOffset(old_definition, new_definition, &offset)
+		&& !offset.isNull())
+		TerminalUuids::keepShifted(old_definition, new_definition, offset);
 }
 
 /**
@@ -3898,7 +4024,23 @@ Diagram *QETProject::addNewDiagram(int pos)
 	Diagram *diagram = new Diagram(this);
 
 	diagram->border_and_titleblock.importBorder(defaultBorderProperties());
-	diagram->border_and_titleblock.importTitleBlock(defaultTitleBlockProperties());
+	TitleBlockProperties titleblock = defaultTitleBlockProperties();
+	if (QetSettings::newFolioTakesPreviousGroup())
+	{
+			//The folio the new one comes after: at @p pos - 1, or the last
+			//one when it is added at the end. Its own group only: one that
+			//is just its plant leaves the new folio its own plant's.
+		const int count = m_diagrams_list.count();
+		const int before = (pos < 0 || pos > count) ? count - 1 : pos - 1;
+		if (before >= 0)
+		{
+			const BorderTitleBlock &previous =
+					m_diagrams_list.at(before)->border_and_titleblock;
+			titleblock.folio_group = previous.folioGroup();
+			titleblock.folio_subgroup = previous.folioSubgroup();
+		}
+	}
+	diagram->border_and_titleblock.importTitleBlock(titleblock);
 	diagram->defaultConductorProperties = defaultConductorProperties();
 	diagram->queueValuesStore();
 
@@ -4049,11 +4191,15 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 	readUsageXml(xml_project);
 	readWireHopsXml(xml_project);
 	readSymbolTextsXml(xml_project);
+	readPlantLocationXml(xml_project);
+	readDeviceTypeRulesXml(xml_project);
 	readLanguagesXml(xml_project);
 	readPotentialTypesXml(xml_project);
 	readTerminalLabelSplitXml(xml_project);
 	readWiringRulesXml(xml_project);
 	readChainedReportsXml(xml_project);
+	readConductorPlantCountersXml(xml_project);
+	readDeviceTypesXml(xml_project);
 	readOriginXml(xml_project);
 
 		//What this QET does not know of the project, kept for every format
@@ -4686,6 +4832,35 @@ void QETProject::readSymbolTextsXml(QDomDocument &xml_project)
 }
 
 /**
+	@brief QETProject::readPlantLocationXml
+	Read the <plant_location> element of the project, if any. A project
+	without it was saved before the setting existed, or with it off: its
+	%{plant} and %{location} give a symbol's own values only.
+	@param xml_project : the xml description of the project
+*/
+void QETProject::readPlantLocationXml(QDomDocument &xml_project)
+{
+	const QDomElement place = xml_project.documentElement()
+			.firstChildElement(QStringLiteral("plant_location"));
+	m_plant_location_inherited = !place.isNull()
+			&& place.attribute(QStringLiteral("inherited")) == QLatin1String("true");
+}
+
+/**
+	@brief QETProject::readDeviceTypeRulesXml
+	Read the <devicetype_rules> element of the project, if any: a project
+	without it does not follow the device types (followDeviceTypes()).
+	@param xml_project : the xml description of the project
+*/
+void QETProject::readDeviceTypeRulesXml(QDomDocument &xml_project)
+{
+	const QDomElement rules = xml_project.documentElement()
+			.firstChildElement(QStringLiteral("devicetype_rules"));
+	m_follow_device_types = !rules.isNull()
+			&& rules.attribute(QStringLiteral("follow")) == QLatin1String("true");
+}
+
+/**
 	@brief QETProject::readTerminalLabelSplitXml
 	Read the <terminal_labelling> element of the project, if any. A
 	project without it was saved before the setting existed, or with it
@@ -5283,6 +5458,40 @@ void QETProject::writeSymbolTextsXml(QDomElement &xml_element)
 }
 
 /**
+	@brief QETProject::writePlantLocationXml
+	Export whether %{plant} and %{location} give the plant and location a
+	symbol takes, as a <plant_location> child of \a xml_element. Written
+	only when on, so a project with it off saves exactly as before.
+*/
+void QETProject::writePlantLocationXml(QDomElement &xml_element)
+{
+	if (!m_plant_location_inherited) {
+		return;
+	}
+	QDomElement place = xml_element.ownerDocument()
+			.createElement(QStringLiteral("plant_location"));
+	place.setAttribute(QStringLiteral("inherited"), QStringLiteral("true"));
+	xml_element.appendChild(place);
+}
+
+/**
+	@brief QETProject::writeDeviceTypeRulesXml
+	Export whether placing and linking follow the device types, as a
+	<devicetype_rules> child of \a xml_element. Written only when on, so a
+	project with it off saves exactly as before.
+*/
+void QETProject::writeDeviceTypeRulesXml(QDomElement &xml_element)
+{
+	if (!m_follow_device_types) {
+		return;
+	}
+	QDomElement rules = xml_element.ownerDocument()
+			.createElement(QStringLiteral("devicetype_rules"));
+	rules.setAttribute(QStringLiteral("follow"), QStringLiteral("true"));
+	xml_element.appendChild(rules);
+}
+
+/**
 	@brief QETProject::writeTerminalLabelSplitXml
 	Export whether the terminals draw their label split, as a
 	<terminal_labelling> child of \a xml_element. Written only when on,
@@ -5342,6 +5551,150 @@ void QETProject::writeChainedReportsXml(QDomElement &xml_element)
 			.createElement(QStringLiteral("chained_reports"));
 	cr_elmt.setAttribute(QStringLiteral("enabled"), m_chained_reports ? QStringLiteral("true") : QStringLiteral("false"));
 	xml_element.appendChild(cr_elmt);
+}
+
+/**
+	@brief QETProject::conductorPlantCounter
+	@return the values the plant counters ("number format 1 - Plant") of the
+	conductor numbering @p scheme last gave in @p plant, in the order of the
+	parts; empty when it has numbered nothing there yet
+*/
+QStringList QETProject::conductorPlantCounter(const QString &scheme, const QString &plant) const
+{
+	return m_conductor_plant_counters.value(scheme).value(plant);
+}
+
+/**
+	@brief QETProject::setConductorPlantCounter
+	Keep @p values as what the plant counters of @p scheme last gave in
+	@p plant, saved with the project.
+*/
+void QETProject::setConductorPlantCounter(const QString &scheme, const QString &plant,
+										  const QStringList &values)
+{
+	if (m_conductor_plant_counters.value(scheme).value(plant) == values)
+		return;
+		//None: the plant has not been counted (undoing a renumbering)
+	if (values.isEmpty()) {
+		m_conductor_plant_counters[scheme].remove(plant);
+		if (m_conductor_plant_counters.value(scheme).isEmpty())
+			m_conductor_plant_counters.remove(scheme);
+	} else {
+		m_conductor_plant_counters[scheme].insert(plant, values);
+	}
+	storeSettings();
+	setModified(true);
+}
+
+/**
+	@brief QETProject::renameConductorPlantCounters
+	The plant counters of the conductor numbering @p from are @p to's now.
+*/
+void QETProject::renameConductorPlantCounters(const QString &from, const QString &to)
+{
+	if (!m_conductor_plant_counters.contains(from) || from == to)
+		return;
+	m_conductor_plant_counters.insert(to, m_conductor_plant_counters.take(from));
+	storeSettings();
+}
+
+/**
+	@brief QETProject::readConductorPlantCountersXml
+	Read <conductor_plant_counters>: one <counter scheme= plant= values=>
+	per conductor numbering and plant, values separated by ';'.
+*/
+void QETProject::readConductorPlantCountersXml(QDomDocument &xml_project)
+{
+	m_conductor_plant_counters.clear();
+	const QDomElement counters = xml_project.documentElement()
+			.firstChildElement(QStringLiteral("conductor_plant_counters"));
+	for (QDomElement c = counters.firstChildElement(QStringLiteral("counter")) ; !c.isNull()
+		 ; c = c.nextSiblingElement(QStringLiteral("counter")))
+		m_conductor_plant_counters[c.attribute(QStringLiteral("scheme"))]
+				.insert(c.attribute(QStringLiteral("plant")),
+						c.attribute(QStringLiteral("values")).split(QLatin1Char(';')));
+}
+
+/**
+	@brief QETProject::writeConductorPlantCountersXml
+	Write <conductor_plant_counters>, only when a plant counter has numbered
+	something: a project without them is saved as before.
+*/
+void QETProject::writeConductorPlantCountersXml(QDomElement &xml_element)
+{
+	if (m_conductor_plant_counters.isEmpty())
+		return;
+	QDomElement counters = xml_element.ownerDocument()
+			.createElement(QStringLiteral("conductor_plant_counters"));
+	QStringList schemes = m_conductor_plant_counters.keys();
+	schemes.sort();
+	for (const QString &scheme : std::as_const(schemes)) {
+		const QHash<QString, QStringList> &plants = m_conductor_plant_counters.value(scheme);
+		QStringList names = plants.keys();
+		names.sort();
+		for (const QString &plant : std::as_const(names)) {
+			QDomElement c = xml_element.ownerDocument().createElement(QStringLiteral("counter"));
+			c.setAttribute(QStringLiteral("scheme"), scheme);
+			c.setAttribute(QStringLiteral("plant"), plant);
+			c.setAttribute(QStringLiteral("values"), plants.value(plant).join(QLatin1Char(';')));
+			counters.appendChild(c);
+		}
+	}
+	xml_element.appendChild(counters);
+}
+
+/**
+	@brief QETProject::setDeviceType
+	Keep @p type in the project, in place of one of the same name.
+*/
+void QETProject::setDeviceType(const DeviceType &type)
+{
+	if (type.isNull() || m_device_types.value(type.name) == type)
+		return;
+	m_device_types.insert(type.name, type);
+	storeSettings();
+	setModified(true);
+}
+
+void QETProject::removeDeviceType(const QString &name)
+{
+	if (!m_device_types.remove(name))
+		return;
+	storeSettings();
+	setModified(true);
+}
+
+/**
+	@brief QETProject::readDeviceTypesXml
+	Read <devicetypes>: the device types the project keeps.
+*/
+void QETProject::readDeviceTypesXml(QDomDocument &xml_project)
+{
+	m_device_types.clear();
+	const QDomElement types = xml_project.documentElement()
+			.firstChildElement(QStringLiteral("devicetypes"));
+	for (QDomElement t = types.firstChildElement(QStringLiteral("devicetype")) ; !t.isNull()
+		 ; t = t.nextSiblingElement(QStringLiteral("devicetype"))) {
+		const DeviceType type = DeviceType::fromXml(t);
+		if (!type.isNull())
+			m_device_types.insert(type.name, type);
+	}
+}
+
+/**
+	@brief QETProject::writeDeviceTypesXml
+	Write <devicetypes>, only when the project keeps one: a project without
+	device types is saved as before.
+*/
+void QETProject::writeDeviceTypesXml(QDomElement &xml_element)
+{
+	if (m_device_types.isEmpty())
+		return;
+	QDomDocument document = xml_element.ownerDocument();
+	QDomElement types = document.createElement(QStringLiteral("devicetypes"));
+	for (const DeviceType &type : std::as_const(m_device_types))
+		types.appendChild(type.toXml(document));
+	xml_element.appendChild(types);
 }
 
 bool QETProject::chainedReports() const
@@ -5467,11 +5820,15 @@ void QETProject::storeSettings()
 	root.appendChild(properties);
 	writeWireHopsXml(root);
 	writeSymbolTextsXml(root);
+	writePlantLocationXml(root);
+	writeDeviceTypeRulesXml(root);
 	writeLanguagesXml(root);
 	writePotentialTypesXml(root);
 	writeTerminalLabelSplitXml(root);
 	writeWiringRulesXml(root);
 	writeChainedReportsXml(root);
+	writeConductorPlantCountersXml(root);
+	writeDeviceTypesXml(root);
 	writeOriginXml(root);
 	QDomElement new_diagrams = document.createElement(QStringLiteral("newdiagrams"));
 	writeDefaultPropertiesXml(new_diagrams);

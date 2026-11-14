@@ -105,6 +105,7 @@ there it finds that QElectroTech and its element collection by itself:
 |---|---|---|
 | `make install`, Linux distributions | `<prefix>/share/qelectrotech/mcp/qet_mcp.py` | `<prefix>/bin/qelectrotech`, `<prefix>/share/qelectrotech/elements` |
 | Windows installer, MSI, portable folder | `<folder>\mcp\qet_mcp.py` (the "AI assistant (MCP)" component) | `<folder>\bin\QElectroTech.exe`, `<folder>\elements` |
+| macOS application bundle | `QElectroTech.app/Contents/Resources/mcp/qet_mcp.py` | `Contents/MacOS/qelectrotech`, `Contents/Resources/elements` |
 
 So a client configuration needs only the path to the server and the
 workspace. On Windows, the installer also offers **Python for the AI

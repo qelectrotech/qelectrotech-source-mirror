@@ -22,6 +22,7 @@
 #include <qetinformation.h>
 #include <qetproject.h>
 #include <utils/qetutils.h>
+#include <utils/qetsettings.h>
 #include "UndoCommand/addterminalstripcommand.h"
 #include "UndoCommand/addterminaltostripcommand.h"
 #include "UndoCommand/sortterminalstripcommand.h"
@@ -37,8 +38,10 @@ namespace
 {
 	/**
 	 * Terminals going to one strip : a label prefix plus the plant and
-	 * the location typed on the terminals. A plant or location set on
-	 * the terminals must match the strip exactly, an empty one accepts
+	 * the location of the terminals (RealTerminal::placeOf() : typed on
+	 * them, or their structure box's or folio's when the project says
+	 * so). A plant or location set this way must match the strip
+	 * exactly, an empty one accepts
 	 * every strip of the same name (in most projects the plant and the
 	 * location live on the strip, not on the terminals).
 	 */
@@ -48,15 +51,6 @@ namespace
 		QVector<QPair<QSharedPointer<RealTerminal>, TerminalStrip *>> placed_terminals;
 		QString name, plant, location;
 	};
-
-	QString elementInfo(const QSharedPointer<RealTerminal> &terminal, const QString &key)
-	{
-		auto element_ = terminal->element();
-		if (!element_) {
-			return QString();
-		}
-		return element_->elementData().m_informations.value(key).toString().trimmed();
-	}
 
 		//An empty plant is saved and read back as "=" and an empty
 		//location as "+" (the placeholders of the title block) : all
@@ -130,7 +124,9 @@ namespace
  * In both cases the order the user gave to a strip is never changed,
  * only a strip created by the run itself is sorted -- the way the plan
  * is drawn : folio by folio, then left to right (see
- * SortTerminalStripCommand::planOrderLessThan).
+ * SortTerminalStripCommand::planOrderLessThan), or by label when
+ * QetSettings::stripSortedByLabel() is on (see
+ * SortTerminalStripCommand::labelOrderLessThan).
  */
 TerminalStripAutoImport::ImportResult TerminalStripAutoImport::importFreeTerminals(
 	QETProject *project, bool move_placed)
@@ -152,10 +148,12 @@ TerminalStripAutoImport::ImportResult TerminalStripAutoImport::importFreeTermina
 		if (name_.isEmpty()) {
 			return;
 		}
-		const auto plant_ = normalizedPlant(
-			elementInfo(real_, QETInformation::ELMT_PLANT));
-		const auto location_ = normalizedLocation(
-			elementInfo(real_, QETInformation::ELMT_LOCATION));
+			//Where the terminal is, as its label shows it : its own plant
+			//and location, or those of its structure box or folio when
+			//the project says so
+		const auto place_ = RealTerminal::placeOf(real_->element());
+		const auto plant_ = normalizedPlant(place_.first);
+		const auto location_ = normalizedLocation(place_.second);
 
 		auto &group_ = groups_[groupKey(name_, plant_, location_)];
 		group_.name = name_;
@@ -169,7 +167,7 @@ TerminalStripAutoImport::ImportResult TerminalStripAutoImport::importFreeTermina
 	};
 
 	const ElementProvider provider(project);
-	for (auto terminal_ : provider.freeTerminal()) {
+	for (auto terminal_ : provider.freeTerminalBlocks()) {
 		if (terminal_) {
 			collect_(terminal_->realTerminal(), nullptr);
 		}
@@ -189,14 +187,17 @@ TerminalStripAutoImport::ImportResult TerminalStripAutoImport::importFreeTermina
 
 	for (auto it_ = groups_.begin(); it_ != groups_.end(); ++it_)
 	{
-			//The plan order : folio by folio, then left to right, so the
-			//strip comes out the way the plan is drawn instead of label
-			//by label ("N" and "PE" stay where they are on the sheet).
-			//SortTerminalStripCommand, pushed below for a strip this run
-			//creates, sorts with the same rule and cannot undo it.
-		auto by_plan_ = [](const QSharedPointer<RealTerminal> &a_,
-						   const QSharedPointer<RealTerminal> &b_) {
-			return SortTerminalStripCommand::planOrderLessThan(a_, b_);
+			//The order chosen in the settings : by default the plan
+			//order, folio by folio then left to right, so the strip comes
+			//out the way the plan is drawn ("N" and "PE" stay where they
+			//are on the sheet), or label by label when the user asked
+			//for it. SortTerminalStripCommand, pushed below for a strip
+			//this run creates, sorts with the same rule and cannot undo it.
+		const bool by_label_ = QetSettings::stripSortedByLabel();
+		auto by_plan_ = [by_label_](const QSharedPointer<RealTerminal> &a_,
+									const QSharedPointer<RealTerminal> &b_) {
+			return by_label_ ? SortTerminalStripCommand::labelOrderLessThan(a_, b_)
+							 : SortTerminalStripCommand::planOrderLessThan(a_, b_);
 		};
 		std::sort(it_.value().free_terminals.begin(),
 				  it_.value().free_terminals.end(), by_plan_);

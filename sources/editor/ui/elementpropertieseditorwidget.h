@@ -26,6 +26,7 @@
 #include <QItemDelegate>
 
 class QTableWidget;
+class QTreeWidgetItem;
 class QSpinBox;
 class QCheckBox;
 class QGroupBox;
@@ -76,6 +77,9 @@ class ElementPropertiesEditorWidget : public QDialog
 		void setUpInterface();
 		void updateTree();
 		void populateTree();
+		void setUpCustomInfo();
+		QTreeWidgetItem *addCustomInfoRow(const QString &key, const QString &value);
+		void addCustomInfo();
 		void populateSlaveGroupsTable();
 		void readSlaveGroupsFromTable();
 		void createPlcConfigWidgets();
@@ -111,6 +115,7 @@ class ElementPropertiesEditorWidget : public QDialog
 		QCheckBox *m_plc_break_checkboxes[4] = {nullptr, nullptr, nullptr, nullptr};
 		QSpinBox *m_plc_break_spinboxes[4] = {nullptr, nullptr, nullptr, nullptr};
 		QSpinBox *m_plc_row_height_spinbox = nullptr;
+		QWidget *m_custom_info_w = nullptr;
 		QPushButton *m_plc_header_font_btn = nullptr;
 		QPushButton *m_plc_cell_font_btn = nullptr;
 		QCheckBox   *m_plc_show_headers_cb = nullptr;

@@ -23,6 +23,7 @@
 #include <qetgraphicsitem/element.h>
 #include <qetgraphicsitem/independenttextitem.h>
 #include <qetgraphicsitem/qetshapeitem.h>
+#include <qetgraphicsitem/structureboxitem.h>
 #include <qetgraphicsitem/dimensionitem.h>
 
 #include <QSet>
@@ -92,6 +93,7 @@ bool GroupItemsCommand::isGroupable(const QGraphicsItem *item)
 		case Element::Type:
 		case IndependentTextItem::Type:
 		case QetShapeItem::Type:
+		case StructureBoxItem::Type:
 		case DimensionItem::Type:
 		case DiagramImageItem::Type:
 			return true;

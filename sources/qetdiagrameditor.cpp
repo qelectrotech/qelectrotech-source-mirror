@@ -49,6 +49,7 @@
 #include "QWidgetAnimation/qwidgetanimation.h"
 #include "autoNum/ui/autonumberingdockwidget.h"
 #include "ui/devicenavigatordockwidget.h"
+#include "ui/toolmenu.h"
 #include "conductornumexport.h"
 #include "diagramcommands.h"
 #include "diagramcontent.h"
@@ -62,6 +63,7 @@
 #include "diagramevent/diagrameventaddcable.h"
 #include "diagramevent/diagrameventaddbridge.h"
 #include "diagramevent/diagrameventfillet.h"
+#include "diagramevent/diagrameventaddstructurebox.h"
 #include "diagramevent/diagrameventaddtext.h"
 #include "cable/cablepart.h"
 #include "cable/editcablecommand.h"
@@ -98,6 +100,8 @@
 #include "ui/conductorcolortoolbutton.h"
 #include "ui/diagrambgcolorbutton.h"
 #include "ui/duplicatelabelsdialog.h"
+#include "ui/devicetypecheckdialog.h"
+#include "ui/devicetypesdialog.h"
 #include "ui/potentialcheckdialog.h"
 #include "ui/duplicateoffsetdialog.h"
 #include "ui/jumptoelementdialog.h"
@@ -160,6 +164,8 @@
 #include <QUrl>
 #include <algorithm>
 #include "foliogrid.h"
+#include "replacesymbols.h"
+#include "elementdialog.h"
 
 namespace {
 	/**
@@ -774,6 +780,11 @@ void QETDiagramEditor::setUpActions()
 			dv->diagram()->undoStack().push(undo);
 	});
 
+	m_replace_symbols = new QAction(QET::Icons::Element, tr("Replace the symbols..."), this);
+	m_replace_symbols->setStatusTip(tr("Replaces the selected symbols by a symbol from a collection, keeping their place, label and wires", "status bar tip"));
+	ShortcutManager::instance().registerAction(m_replace_symbols, "diagrameditor.replace_symbols", tr("Diagram editors"), QKeySequence());
+	connect(m_replace_symbols, &QAction::triggered, this, &QETDiagramEditor::replaceSelectedSymbols);
+
 		//Duplicate: copy the selection and place it at a configured,
 		//grid-step offset immediately -- no interactive follow-the-
 		//cursor step, unlike Ctrl+V above. That is deliberate (#991):
@@ -787,6 +798,20 @@ void QETDiagramEditor::setUpActions()
 	connect(m_duplicate, &QAction::triggered, [this]() {
 		auto *dv = currentDiagramView();
 		if (!dv || !dv->diagram()) return;
+
+			//The copy on the mouse, put down with a click, when so set
+			//(Settings > General, off by default)
+		if (DiagramEventAddPaste::duplicateFollowsMouse()) {
+			if (dv->diagram()->isReadOnly() || dv->diagram()->selectedItems().isEmpty()) return;
+			const QPoint last_pos = dv->lastMousePos();
+			const QPoint view_pos = (last_pos.x() >= 0 && dv->viewport()->rect().contains(last_pos))
+					? last_pos
+					: dv->viewport()->rect().center();
+			dv->diagram()->setEventInterface(new DiagramEventAddPaste(
+				dv->diagram(), dv->mapToScene(view_pos), DiagramEventAddPaste::UnderCursor,
+				dv->diagram()->selectionFragment()));
+			return;
+		}
 
 			//Ask the first time only -- every later press reuses whatever
 			//was confirmed then, so the shortcut can be tapped repeatedly
@@ -1009,6 +1034,15 @@ void QETDiagramEditor::setUpActions()
 		QSettings().setValue(TextGrid::settings_key, action->data());
 		emit QETApp::instance()->textGridChanged();
 	});
+	m_text_grid_menu->addSeparator();
+	QAction *text_middle = m_text_grid_menu->addAction(tr("Snap the middle of the text"));
+	text_middle->setToolTip(tr("Puts the middle of a moved text on the grid instead of the top "
+							   "left corner of its frame, e.g. a terminal number centred on a grid line."));
+	text_middle->setCheckable(true);
+	text_middle->setChecked(QSettings().value(TextGrid::middle_key, false).toBool());
+	connect(text_middle, &QAction::toggled, this, [](bool on) {
+		QSettings().setValue(TextGrid::middle_key, on);
+	});
 	connect(QETApp::instance(), &QETApp::textGridChanged,
 			this, &QETDiagramEditor::updateTextGridButton);
 	updateTextGridButton();
@@ -1062,7 +1096,8 @@ void QETDiagramEditor::setUpActions()
 		{ShownKinds::Shapes,          tr("Shapes")},
 		{ShownKinds::Pictures,        tr("Pictures")},
 		{ShownKinds::Tables,          tr("Tables")},
-		{ShownKinds::CrossReferences, tr("Cross-references")}};
+		{ShownKinds::CrossReferences, tr("Cross-references")},
+		{ShownKinds::DrawingAids,     tr("Drawing aids")}};
 	for (const auto &kind : kinds)
 	{
 		QAction *action = m_shown_kinds_menu->addAction(kind.second);
@@ -1198,6 +1233,29 @@ void QETDiagramEditor::setUpActions()
 				dialog->show();
 			}
 		});
+	// The device types of the project and of the user's library
+	m_device_types = new QAction(tr("Device types..."), this);
+	m_device_types->setObjectName(QStringLiteral("deviceTypes"));
+	m_device_types->setStatusTip(tr("Make and change the device types of the project and of your library", "status bar tip"));
+	ShortcutManager::instance().registerAction(m_device_types, "diagrameditor.device_types", tr("Diagram editors"), QKeySequence());
+	connect(m_device_types, &QAction::triggered, this, [this]() {
+		if (ProjectView *view = currentProjectView()) {
+			DeviceTypesDialog dialog(view->project(), this);
+			dialog.exec();
+		}
+	});
+	// Devices not drawn the way their device type says
+	m_check_device_types = new QAction(tr("Check device types..."), this);
+	m_check_device_types->setObjectName(QStringLiteral("checkDeviceTypes"));
+	m_check_device_types->setStatusTip(tr("Lists the parts of each device's type which are not drawn, and the symbols beyond it", "status bar tip"));
+	ShortcutManager::instance().registerAction(m_check_device_types, "diagrameditor.check_device_types", tr("Diagram editors"), QKeySequence());
+	connect(m_check_device_types, &QAction::triggered, this, [this]() {
+		if (ProjectView *view = currentProjectView()) {
+			auto *dialog = new DeviceTypeCheckDialog(view->project(), this);
+			dialog->setAttribute(Qt::WA_DeleteOnClose);
+			dialog->show();
+		}
+	});
 	// Mixed potential types on one potential
 	m_check_potentials = new QAction(tr("Check potential types..."), this);
 	m_check_potentials->setObjectName(QStringLiteral("checkPotentialTypes"));
@@ -1927,6 +1985,10 @@ void QETDiagramEditor::setUpActions()
 	m_add_dimension_linear->setStatusTip(tr("Adds a linear dimension to the current sheet"));
 	m_add_dimension_chain ->setStatusTip(tr("Adds a chain dimension to the current sheet"));
 	m_add_bridge    ->setStatusTip(tr("Draws a bridge over terminals: every terminal crossed becomes one of its connections"));
+		//A frame with its own =plant +location: the symbols drawn inside it
+		//take them (see StructureBoxItem)
+	QAction *add_structure_box = m_add_item_actions_group.addAction(QET::Icons::PartRectangle, tr("Add a structure box"));
+	add_structure_box->setStatusTip(tr("Adds a structure box (plant, location, prefix) to the current sheet: the symbols inside it take its plant and location"));
 
 	add_text     ->setData(QStringLiteral("text"));
 	add_image    ->setData(QStringLiteral("image"));
@@ -1946,6 +2008,7 @@ void QETDiagramEditor::setUpActions()
 	m_add_dimension_linear->setData(QStringLiteral("dimension_linear"));
 	m_add_dimension_chain ->setData(QStringLiteral("dimension_chain"));
 	m_add_bridge    ->setData(QStringLiteral("bridge"));
+	add_structure_box->setData(QStringLiteral("structure_box"));
 
 	add_text->setCheckable(true);
 	add_line->setCheckable(true);
@@ -1959,6 +2022,7 @@ void QETDiagramEditor::setUpActions()
 	add_fillet->setCheckable(true);
 	m_add_dimension_linear->setCheckable(true);
 	m_add_dimension_chain->setCheckable(true);
+	add_structure_box->setCheckable(true);
 
 	connect(&m_add_item_actions_group, &QActionGroup::triggered, this, &QETDiagramEditor::addItemGroupTriggered);
 		//No default key, but an id: they can then be found by the command
@@ -2181,13 +2245,12 @@ void QETDiagramEditor::setUpMenu()
 	menu_edition -> addAction(m_cut);
 	menu_edition -> addAction(m_copy);
 	menu_edition -> addAction(m_paste);
-	menu_edition -> addAction(m_copy_text_format);
-	menu_edition -> addAction(m_apply_text_format);
-	menu_edition -> addAction(m_place_texts);
-	menu_edition -> addAction(m_text_destination);
-	menu_edition -> addAction(m_text_clearance);
-	menu_edition -> addAction(m_paste_origin);
-	menu_edition -> addAction(m_paste_element_info);
+		//Kept short (see #1336): the less used kinds of the same command
+		//sit one level down, next to the command they belong to. Every
+		//action and its shortcut is unchanged.
+	QMenu *paste_menu = menu_edition -> addMenu(QET::Icons::EditPaste, tr("Paste special"));
+	paste_menu -> addAction(m_paste_origin);
+	paste_menu -> addAction(m_paste_element_info);
 	menu_edition -> addAction(m_duplicate);
 	menu_edition -> addAction(m_configure_duplicate);
 	menu_edition -> addSeparator();
@@ -2198,10 +2261,14 @@ void QETDiagramEditor::setUpMenu()
 		//toolbar button has no key, so text fields, images and every drawing
 		//shape simply could not be added. m_depth_action_group below has
 		//always been in both places; this brings these into line with it.
-	m_add_item_menu = menu_edition -> addMenu(tr("&Add"));
+		//Tool menus: no radio button in front of each tool (see ToolMenu)
+	m_add_item_menu = new ToolMenu(tr("&Add"), menu_edition);
+	menu_edition -> addMenu(m_add_item_menu);
 	m_add_item_menu -> setIcon(QET::Icons::Add);
 	m_add_item_menu -> addActions(m_add_item_actions_group.actions());
-	QMenu *tape_menu = menu_edition -> addMenu(QET::Icons::DimensionLinear, tr("Tape measure"));
+	QMenu *tape_menu = new ToolMenu(tr("Tape measure"), menu_edition);
+	tape_menu -> setIcon(QET::Icons::DimensionLinear);
+	menu_edition -> addMenu(tape_menu);
 	tape_menu -> addAction(m_add_dimension_linear);
 	tape_menu -> addAction(m_add_dimension_chain);
 	menu_edition -> addSeparator();
@@ -2214,16 +2281,27 @@ void QETDiagramEditor::setUpMenu()
 	select_menu -> addSeparator();
 	select_menu -> addMenu(m_selection_filter_menu);
 	menu_edition -> addSeparator();
-	menu_edition -> addAction(m_delete_selection);
-	menu_edition -> addAction(m_rotate_selection);
-	menu_edition -> addAction(m_rotate_group_selection);
-	menu_edition -> addAction(m_rotate_texts);
-	menu_edition -> addAction(m_mirror_horizontal);
-	menu_edition -> addAction(m_mirror_vertical);
-	menu_edition -> addAction(m_show_as_dot);
-	menu_edition -> addAction(m_find_element);
-	menu_edition -> addAction(m_contact_display);
 	menu_edition -> addAction(m_edit_selection);
+	menu_edition -> addAction(m_delete_selection);
+	QMenu *turn_menu = menu_edition -> addMenu(QET::Icons::TransformRotate, tr("Rotate and mirror"));
+	turn_menu -> addAction(m_rotate_selection);
+	turn_menu -> addAction(m_rotate_group_selection);
+	turn_menu -> addSeparator();
+	turn_menu -> addAction(m_mirror_horizontal);
+	turn_menu -> addAction(m_mirror_vertical);
+	QMenu *texts_menu = menu_edition -> addMenu(QET::Icons::PartText, tr("Texts"));
+	texts_menu -> addAction(m_rotate_texts);
+	texts_menu -> addAction(m_place_texts);
+	texts_menu -> addAction(m_text_destination);
+	texts_menu -> addAction(m_text_clearance);
+	texts_menu -> addSeparator();
+	texts_menu -> addAction(m_copy_text_format);
+	texts_menu -> addAction(m_apply_text_format);
+	QMenu *symbols_menu = menu_edition -> addMenu(QET::Icons::Element, tr("Symbols"));
+	symbols_menu -> addAction(m_replace_symbols);
+	symbols_menu -> addAction(m_show_as_dot);
+	symbols_menu -> addAction(m_find_element);
+	symbols_menu -> addAction(m_contact_display);
 	QMenu *group_menu = menu_edition -> addMenu(QET::Icons::textGroup, tr("Group", "fr: Grouper"));
 	group_menu -> addAction(m_group_selection);
 	group_menu -> addAction(m_ungroup_selection);
@@ -2273,6 +2351,8 @@ void QETDiagramEditor::setUpMenu()
 	menu_project -> addAction(m_clean_project);
 	menu_project->addAction(m_find_duplicate_labels);
 	menu_project->addAction(m_check_potentials);
+	menu_project->addAction(m_device_types);
+	menu_project->addAction(m_check_device_types);
 	menu_project->addAction(m_project_languages);
 	menu_project -> addSeparator();
 	menu_project -> addAction(m_csv_export);
@@ -3492,6 +3572,8 @@ void QETDiagramEditor::addItemGroupTriggered(QAction *action)
 		diagram_event = new DiagramEventAddShape (d, QetShapeItem::Ellipse);
 	else if (value == "arc")
 		diagram_event = new DiagramEventAddShape (d, QetShapeItem::Ellipse, true);
+	else if (value == "structure_box")
+		diagram_event = new DiagramEventAddStructureBox (d);
 	else if (value == "polyline")
 		diagram_event = new DiagramEventAddShape (d, QetShapeItem::Polygon);
 	else if (value == "path")
@@ -3897,6 +3979,8 @@ void QETDiagramEditor::slot_updateActions()
 	m_project_edit_properties     -> setEnabled(opened_project);
 	m_find_duplicate_labels->setEnabled(opened_project);
 	m_check_potentials->setEnabled(opened_project);
+	m_device_types->setEnabled(opened_project);
+	m_check_device_types->setEnabled(opened_project);
 	m_project_languages->setEnabled(opened_project);
 	m_project_history             -> setEnabled(opened_project);
 	m_export_delivery             -> setEnabled(opened_project);
@@ -4003,7 +4087,8 @@ void QETDiagramEditor::slot_updateComplexActions()
 			    << m_group_selection
 			    << m_ungroup_selection
 			    << m_select_same_symbols
-			    << m_show_as_dot;
+			    << m_show_as_dot
+			    << m_replace_symbols;
 		for(QAction *action : action_list)
 			action->setEnabled(false);
 		m_align_actions_group.setEnabled(false);
@@ -4029,6 +4114,7 @@ void QETDiagramEditor::slot_updateComplexActions()
 	m_apply_text_format->setEnabled(!ro && ((selected_elements_count >= 1 && ElementTextFormatPattern::hasPattern()) ||
 	                                        (selected_dimensions_count >= 1 && DimensionFormatPattern::hasPattern())));
 	m_place_texts->setEnabled(!ro && selected_elements_count >= 1);
+	m_replace_symbols->setEnabled(!ro && selected_elements_count >= 1);
 	m_select_same_symbols->setEnabled(selected_elements_count >= 1);
 	{
 		bool any = false, all = true;
@@ -5626,19 +5712,26 @@ void QETDiagramEditor::slot_updateElementsFromCollections() {
 							"they were taken from. Replace them with the version "
 							"of the collection?", "", outdated.size())
 						 % QStringLiteral("\n\n")
-						 % tr("Placed elements are redrawn and keep their conductors, "
-							  "as long as their terminals have not moved. This "
-							  "action cannot be undone."),
+						 % (Element::updateFollowsMovedOrigin()
+							? tr("Placed elements are redrawn and keep their conductors, "
+								 "as long as their terminals have not moved or moved "
+								 "all together with the insertion point: such an element "
+								 "is moved back so its terminals stay where they are. "
+								 "This action cannot be undone.")
+							: tr("Placed elements are redrawn and keep their conductors, "
+								 "as long as their terminals have not moved. This "
+								 "action cannot be undone.")),
 						 QMessageBox::Yes | QMessageBox::Cancel, this);
 	question.setDetailedText(names.join(QLatin1Char('\n')));
 	if (question.exec() != QMessageBox::Yes) return;
 
+	const bool follow = Element::updateFollowsMovedOrigin();
 	for (const QETProject::OutdatedElement &element : outdated)
-		project->updateElement(element);
+		project->updateElement(element, follow);
 	project->setModified(true);
 
 	reloadElementDrawings(project, true, title,
-						  tr("%n elements updated.", "", outdated.size()));
+						  tr("%n elements updated.", "", outdated.size()), follow);
 }
 
 /**
@@ -5650,11 +5743,15 @@ void QETDiagramEditor::slot_updateElementsFromCollections() {
 	(see Element::reloadPicture())
 	@param title : title of the report
 	@param intro : first line of the report, may be empty
+	@param follow_moved_origin : move an element whose terminals all moved
+	with its insertion point, so they stay where they are, and redraw it
+	(see Element::followMovedOrigin())
 */
 void QETDiagramEditor::reloadElementDrawings(QETProject *project,
 											 bool adopt_frame,
 											 const QString &title,
-											 const QString &intro) {
+											 const QString &intro,
+											 bool follow_moved_origin) {
 	QList<Element *> elements;
 	QSet<QString> dropped_locations;
 	for (Diagram *diagram : project->diagrams())
@@ -5674,10 +5771,19 @@ void QETDiagramEditor::reloadElementDrawings(QETProject *project,
 
 	int reloaded = 0;
 	int unavailable = 0;
+	int moved = 0;
 	QStringList geometry_changed;
 	for (Element *elmt : elements)
 	{
-		switch (elmt->reloadPicture(adopt_frame))
+		Element::ReloadPictureResult result = elmt->reloadPicture(adopt_frame);
+		if (result == Element::ReloadPictureResult::GeometryChanged
+			&& follow_moved_origin && elmt->followMovedOrigin())
+		{
+			result = elmt->reloadPicture(adopt_frame);
+			if (result == Element::ReloadPictureResult::Reloaded)
+				++moved;
+		}
+		switch (result)
 		{
 			case Element::ReloadPictureResult::Reloaded:
 				++reloaded;
@@ -5698,6 +5804,10 @@ void QETDiagramEditor::reloadElementDrawings(QETProject *project,
 	}
 
 	QString message = tr("%n elements redrawn.", "", reloaded);
+	if (moved)
+		message += QStringLiteral(" ")
+				% tr("%n of them moved with their insertion point: their terminals "
+					 "and conductors stayed where they were.", "", moved);
 	if (!intro.isEmpty())
 		message = intro % QStringLiteral("\n") % message;
 
@@ -6126,7 +6236,8 @@ void QETDiagramEditor::updateTextGridButton()
 	const qreal divisor = QSettings().value(TextGrid::settings_key, 1).toReal();
 	for (QAction *action : m_text_grid_menu->actions())
 	{
-		if (qFuzzyCompare(action->data().toReal() + 1, divisor + 1))
+			//The divisors only, not the middle switch below them
+		if (action->actionGroup() && qFuzzyCompare(action->data().toReal() + 1, divisor + 1))
 		{
 			action->setChecked(true);
 			m_text_grid_button->setText(tr("Texts %1").arg(action->text()));
@@ -6197,6 +6308,39 @@ void QETDiagramEditor::showSelectedAsDot(bool dot)
  * @brief QETDiagramEditor::applyTextFormat
  * Applies the stored text formatting template to all selected elements in the active diagram.
  */
+/**
+	@brief QETDiagramEditor::replaceSelectedSymbols
+	Ask for a symbol in the collections and put it in place of each
+	selected symbol, in one undo step (see ReplaceSymbols). Wires that
+	find no terminal on the new symbol are removed, and the user is told.
+*/
+void QETDiagramEditor::replaceSelectedSymbols()
+{
+	DiagramView *dv = currentDiagramView();
+	if (!dv || !dv->diagram() || dv->diagram()->isReadOnly())
+		return;
+	Diagram *diagram = dv->diagram();
+	const QList<Element *> elements = DiagramContent(diagram).m_elements;
+	if (elements.isEmpty())
+		return;
+	const ElementsLocation location = ElementDialog::getOpenElementLocation(this);
+	if (!location.isElement())
+		return;
+
+	const ReplaceSymbols::Result result = ReplaceSymbols::build(diagram, elements, location);
+	if (!result.command) {
+		if (!result.problem.isEmpty())
+			QET::QetMessageBox::information(this, tr("Replace the symbols"), result.problem);
+		return;
+	}
+	diagram->clearSelection();
+	diagram->undoStack().push(result.command);
+	if (result.lost_wires)
+		QET::QetMessageBox::information(this, tr("Replace the symbols"),
+			tr("%n wire(s) found no terminal on the new symbol and were removed. "
+			   "Undo brings them back.", "", result.lost_wires));
+}
+
 /**
 	@brief QETDiagramEditor::placeSymbolTexts
 	Place the texts of the selected symbols as one block at @a where,

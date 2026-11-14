@@ -21,7 +21,10 @@
 #include <qeticons.h>
 #include <qetinformation.h>
 #include "ui_elementinfopartwidget.h"
+#include <QAbstractItemView>
+#include <QApplication>
 #include <QCompleter>
+#include <QMouseEvent>
 #include <QDialog>
 #include <QDialogButtonBox>
 #include <QPlainTextEdit>
@@ -65,10 +68,10 @@ ElementInfoPartWidget::ElementInfoPartWidget(
 	connect(ui->m_multiline_btn, &QToolButton::clicked,
 			this, &ElementInfoPartWidget::editOnSeveralLines);
 
-	if (key_ == QETInformation::ELMT_WIDTH || key_ == QETInformation::ELMT_HEIGHT || key_ == QETInformation::ELMT_DEPTH)
+	if (QETInformation::isNumericInfoKey(key_))
 	{
 		ui->m_multiline_btn->setVisible(false);
-		auto *validator = new QETInformation::NumericInfoValidator(ui->line_edit);
+		auto *validator = new QETInformation::NumericInfoValidator(key_, ui->line_edit);
 		ui->line_edit->setValidator(validator);
 		ui->line_edit->setPlaceholderText(tr("e.g. 80.5"));
 		ui->line_edit->setToolTip(tr("Decimal number with a dot as separator (e.g. 80.5)"));
@@ -78,6 +81,8 @@ ElementInfoPartWidget::ElementInfoPartWidget(
 		this, &ElementInfoPartWidget::textEdited);
 	connect(ui->line_edit, &QLineEdit::textChanged,
 		this, &ElementInfoPartWidget::textChanged);
+	connect(ui->line_edit, &QLineEdit::editingFinished,
+		this, &ElementInfoPartWidget::editingFinished);
 		//The line edit shows a line break as a space: the tooltip shows
 		//the text as it is drawn.
 	connect(ui->line_edit, &QLineEdit::textChanged, this, [this](const QString &txt) {
@@ -186,6 +191,8 @@ void ElementInfoPartWidget::setSuggestions(const QStringList &suggestions)
 		m_completer = new QCompleter(m_suggestions_model, this);
 		m_completer->setCaseSensitivity(Qt::CaseInsensitive);
 		m_completer->setFilterMode(Qt::MatchContains);
+			//After the completer's own filter, so this one is asked first
+		m_completer->popup()->installEventFilter(this);
 	}
 	m_suggestions_model->setStringList(suggestions);
 	ui->line_edit->setCompleter(m_completer);
@@ -264,4 +271,39 @@ void ElementInfoPartWidget::on_m_erase_text_clicked()
 			       ? SearchAndReplaceWorker::eraseText()
 			       : QString());
 	ui->line_edit->setDisabled(ui->m_erase_text->isChecked());
+}
+
+/**
+	@brief ElementInfoPartWidget::eventFilter
+	A click outside the open list of suggestions closes the list, and Qt
+	drops that click: the Apply or OK button clicked to finish the edit did
+	nothing, and the edit could then be lost. The click is passed on to the
+	widget under it.
+*/
+bool ElementInfoPartWidget::eventFilter(QObject *watched, QEvent *event)
+{
+	if (m_completer && watched == m_completer->popup()
+			&& event->type() == QEvent::MouseButtonPress)
+	{
+		QWidget *popup = m_completer->popup();
+		auto *mouse = static_cast<QMouseEvent *>(event);
+		const QPoint global = mouse->globalPosition().toPoint();
+		if (!popup->rect().contains(popup->mapFromGlobal(global)))
+		{
+			popup->hide();
+				//A whole click: the release that follows goes to the
+				//closed list, not to the widget, so it is sent too
+			if (QWidget *target = QApplication::widgetAt(global)) {
+				const QPointF local = target->mapFromGlobal(global);
+				QCoreApplication::postEvent(target, new QMouseEvent(
+						QEvent::MouseButtonPress, local, global, mouse->button(),
+						mouse->buttons(), mouse->modifiers()));
+				QCoreApplication::postEvent(target, new QMouseEvent(
+						QEvent::MouseButtonRelease, local, global, mouse->button(),
+						Qt::NoButton, mouse->modifiers()));
+			}
+			return true;
+		}
+	}
+	return QWidget::eventFilter(watched, event);
 }

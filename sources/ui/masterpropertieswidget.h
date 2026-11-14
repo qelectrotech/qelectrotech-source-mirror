@@ -20,6 +20,7 @@
 
 #include <QWidget>
 #include <QHash>
+#include <QUuid>
 #include <QMap>
 
 #include "abstractelementpropertieseditorwidget.h"
@@ -93,6 +94,11 @@ class MasterPropertiesWidget : public AbstractElementPropertiesEditorWidget
 	private:
 	Ui::MasterPropertiesWidget *ui;
 	QHash <QTreeWidgetItem *, Element *> m_qtwi_hash;
+		/// The free slaves on folios not built yet (lazy folios): their
+		/// symbol in m_qtwi_hash is nullptr until elementOf() builds its folio
+	QHash <QTreeWidgetItem *, QUuid> m_qtwi_uuid_hash;
+	Element *elementOf(QTreeWidgetItem *qtwi);
+	void addUnbuiltSlaves(QList<QTreeWidgetItem *> &items);
 	QMap <Element *, int> m_pending_group_indices;
 	QTreeWidgetItem *m_qtwi_at_context_menu = nullptr;
 	QPointer <Element> m_showed_element;

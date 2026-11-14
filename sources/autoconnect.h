@@ -25,6 +25,7 @@
 #include <QSet>
 
 class Diagram;
+class Conductor;
 class Element;
 class Terminal;
 class QUndoCommand;
@@ -69,8 +70,33 @@ namespace AutoConnect
 	*/
 	int connectWholeDiagram(Diagram *diagram, QUndoCommand *parent);
 
+	/**
+		Join the terminals of @a elements, once, to the free terminals they
+		face, by the same rule as update(), with ordinary wires: for a
+		project that does not keep automatic connections up to date, as
+		"auto conductor" joins a single symbol placed in line.
+		@return the number of wires made
+	*/
+	int connectOnce(Diagram *diagram, const QList<Element *> &elements, QUndoCommand *parent);
+
+	/**
+		Settings > General: with the project's "auto conductor" on but no
+		automatic connections, dragging a corner, T-junction or folio
+		report being placed puts one on every wire the drag crosses, as
+		with automatic connections, joined once with ordinary wires. Off
+		by default: the drag places a single copy at the release, as before.
+	*/
+	bool dragPlacesWithAutoConductor();
+	void setDragPlacesWithAutoConductor(bool on);
+
 	/// The terminal @a from would connect to now, or nullptr
 	Terminal *partner(const Terminal *from);
+	/**
+		@return true when the ends of the automatic wire @a conductor still
+		face each other in line, so that it may stay: while a symbol is
+		dragged, a wire whose ends no longer do is not shown
+	*/
+	bool endsInLine(const Conductor *conductor);
 
 	/**
 		Where copies of @a sample go when it is dragged along @a drag, as

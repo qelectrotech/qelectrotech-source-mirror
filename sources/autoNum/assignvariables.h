@@ -29,6 +29,7 @@ class Conductor;
 class Diagram;
 class Element;
 class ElementsLocation;
+class QETProject;
 
 namespace autonum
 {
@@ -100,8 +101,22 @@ namespace autonum
 		public:
 			static QString formulaToLabel (QString formula, sequentialNumbers &seqStruct, Diagram *diagram, const Element *elmt = nullptr, const Conductor *cndr = nullptr);
 			static QString formulaToLabel (QString formula, sequentialNumbers &seqStruct, const FormulaContext &context);
-			static QString replaceVariable (const QString &formula, const DiagramContext &dc);
+			static QString replaceVariable (const QString &formula, const DiagramContext &dc, const Element *elmt = nullptr);
 			static QString genericXref (const Element *element);
+
+			/**
+				@brief buildStructureId
+				Assemble an IEC 81346 reference designation from its three
+				aspects, omitting any segment whose value is empty. Shared by
+				replaceVariable() (for %{structure_id}/%{structure_id_full})
+				and StructureBoxItem (for its own displayed identity).
+				@param plant the "=" installation aspect
+				@param location the "+" location aspect
+				@param suffix the "-" product/component aspect (an element's
+				label, or a structure box's own prefix)
+				@return the assembled designation, e.g. "=E1+A2-K3"
+			*/
+			static QString buildStructureId(const QString &plant, const QString &location, const QString &suffix);
 
 		private:
 			AssignVariables(const QString& formula, const sequentialNumbers& seqStruct, const FormulaContext &context);
@@ -154,6 +169,17 @@ namespace autonum
 	NumerotationContext folioCounters(const NumerotationContext &nc,
 					  Diagram *diagram,
 					  const QString &key);
+	NumerotationContext plantCounters(const NumerotationContext &nc,
+					  QETProject *project,
+					  const QString &plant,
+					  const QString &scheme);
+	NumerotationContext plantCounters(const NumerotationContext &nc,
+					  const QStringList &given);
+	QStringList plantCounterValues(const NumerotationContext &nc);
+	sequentialNumbers sequenceOf(const NumerotationContext &nc);
+	void storePlantCounters(QETProject *project, const QString &plant,
+				const QString &scheme,
+				const NumerotationContext &given);
 	/**
 		Set every part of a numbering rule which counts back to its very
 		first value, so that numbering starts at the beginning again --

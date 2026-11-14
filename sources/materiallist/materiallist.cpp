@@ -218,6 +218,9 @@ QStringList MaterialList::columnsForBlock(int block)
 		QStringLiteral("comment"),
 		QStringLiteral("notes"),
 		QStringLiteral("model"),
+			//A part may name its device type; not article-bound: a part
+			//without one leaves the device's type as it is
+		QStringLiteral("device_type"),
 		QStringLiteral("category"),
 		QStringLiteral("voltage_rating"),
 		QStringLiteral("current_rating"),
@@ -225,7 +228,9 @@ QStringList MaterialList::columnsForBlock(int block)
 		QStringLiteral("location"),
 		QStringLiteral("width"),
 		QStringLiteral("height"),
-		QStringLiteral("depth")
+		QStringLiteral("depth"),
+		QStringLiteral("unit_price"),
+		QStringLiteral("labour_time")
 	};
 
 	static const QStringList auxiliary_columns = {
@@ -310,6 +315,8 @@ bool MaterialList::isArticleBound(const QString &column)
 		QStringLiteral("width"),
 		QStringLiteral("height"),
 		QStringLiteral("depth"),
+		QStringLiteral("unit_price"),
+		QStringLiteral("labour_time"),
 		QStringLiteral("auxiliary")
 	};
 

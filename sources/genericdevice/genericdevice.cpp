@@ -22,6 +22,7 @@
 
 #include <QCoreApplication>
 #include <QFontMetricsF>
+#include <QHash>
 #include <QRegularExpression>
 #include <QtMath>
 
@@ -106,6 +107,52 @@ int Spec::terminalCount() const
 	for (const Slots &side : sides)
 		count += terminalsIn(side);
 	return count;
+}
+
+bool Spec::isPlc() const
+{
+	for (Io side_io : io)
+		if (side_io != Io::None) return true;
+	return false;
+}
+
+/**
+	@brief ioName
+	@return what a side's terminals are, as the wizard offers it
+*/
+QString ioName(Io io)
+{
+	switch (io) {
+		case Io::DigitalIn:  return QCoreApplication::translate("GenericDevice", "Digital inputs");
+		case Io::DigitalOut: return QCoreApplication::translate("GenericDevice", "Digital outputs");
+		case Io::AnalogIn:   return QCoreApplication::translate("GenericDevice", "Analog inputs");
+		case Io::AnalogOut:  return QCoreApplication::translate("GenericDevice", "Analog outputs");
+		case Io::None:       break;
+	}
+	return QCoreApplication::translate("GenericDevice", "None");
+}
+
+namespace {
+		/// The type of an input or output as a PLC element stores it
+		/// (ElementData::plcIOTypeToString)
+	QString ioType(Io io)
+	{
+		switch (io) {
+			case Io::DigitalIn:  return QStringLiteral("entree_digitale");
+			case Io::DigitalOut: return QStringLiteral("sortie_digitale");
+			case Io::AnalogIn:   return QStringLiteral("entree_analogique");
+			case Io::AnalogOut:  return QStringLiteral("sortie_analogique");
+			case Io::None:       break;
+		}
+		return QString();
+	}
+
+	Io ioFromType(const QString &type)
+	{
+		for (Io io : {Io::DigitalIn, Io::DigitalOut, Io::AnalogIn, Io::AnalogOut})
+			if (ioType(io) == type) return io;
+		return Io::None;
+	}
 }
 
 QString sideName(Side side)
@@ -641,7 +688,10 @@ QDomElement toDefinition(const Spec &spec,
 	if (!version.isEmpty())
 		definition.setAttribute(QStringLiteral("version"), version);
 	definition.setAttribute(QStringLiteral("type"), QStringLiteral("element"));
-	definition.setAttribute(QStringLiteral("link_type"), QStringLiteral("simple"));
+		//A PLC is a master of the PLC kind: its table of inputs and outputs
+		//lists the terminals of the sides marked as inputs or outputs
+	definition.setAttribute(QStringLiteral("link_type"),
+				spec.isPlc() ? QStringLiteral("master") : QStringLiteral("simple"));
 	definition.setAttribute(QStringLiteral("width"), width);
 	definition.setAttribute(QStringLiteral("height"), height);
 	definition.setAttribute(QStringLiteral("hotspot_x"), hotspot_x);
@@ -678,6 +728,40 @@ QDomElement toDefinition(const Spec &spec,
 		informations.appendChild(e);
 	}
 	definition.appendChild(informations);
+
+	if (spec.isPlc())
+	{
+		QDomElement kinds = document.createElement(QStringLiteral("kindInformations"));
+		QDomElement kind = document.createElement(QStringLiteral("kindInformation"));
+		kind.setAttribute(QStringLiteral("name"), QStringLiteral("type"));
+		kind.appendChild(document.createTextNode(QStringLiteral("plc")));
+		kinds.appendChild(kind);
+		QDomElement plc = document.createElement(QStringLiteral("plcMasterData"));
+		plc.setAttribute(QStringLiteral("rowHeight"), QStringLiteral("8.00"));
+		QDomElement ios = document.createElement(QStringLiteral("plcIOs"));
+		for (int side = 0 ; side < SideCount ; ++side)
+		{
+			if (spec.io[side] == Io::None) continue;
+			for (const Slot &slot : spec.sides[side])
+			{
+				if (!slot.isTerminal()) continue;
+				QDomElement io = document.createElement(QStringLiteral("plcIO"));
+				io.setAttribute(QStringLiteral("type"), ioType(spec.io[side]));
+				io.setAttribute(QStringLiteral("address"), slot.name.trimmed());
+				io.setAttribute(QStringLiteral("functionText"), slot.function.trimmed());
+				io.setAttribute(QStringLiteral("comment"), QString());
+				io.setAttribute(QStringLiteral("crossRef"), QString());
+				io.setAttribute(QStringLiteral("terminalCount"), 1);
+				QDomElement terminal = document.createElement(QStringLiteral("terminal"));
+				terminal.appendChild(document.createTextNode(slot.name.trimmed()));
+				io.appendChild(terminal);
+				ios.appendChild(io);
+			}
+		}
+		plc.appendChild(ios);
+		kinds.appendChild(plc);
+		definition.appendChild(kinds);
+	}
 
 	QDomElement description = document.createElement(QStringLiteral("description"));
 	const QString style = QStringLiteral("line-style:normal;line-weight:normal;filling:none;color:black");
@@ -751,6 +835,19 @@ QDomElement toDefinition(const Spec &spec,
 	if (spec.show_reference && !spec.reference.trimmed().isEmpty())
 		add_dynamic(QStringLiteral("manufacturer_reference"), spec.reference.trimmed(),
 			    l.label_box.bottom(), fonts.names);
+
+		//A PLC shows its table of inputs and outputs beside the box, past
+		//the terminals and names of its right side, not over the box
+	if (spec.isPlc())
+	{
+		qreal right = w;
+		for (const auto &t : l.terminals)
+			right = std::max(right, t.point.x());
+		QDomElement table = document.createElement(QStringLiteral("plc_table"));
+		table.setAttribute(QStringLiteral("x"), number(right + 2 * Grid));
+		table.setAttribute(QStringLiteral("y"), number(0));
+		description.appendChild(table);
+	}
 
 	for (const auto &t : l.terminals)
 	{
@@ -840,6 +937,8 @@ bool fromDefinition(const QDomElement &definition,
 				s.show_reference = true;
 			else if (info != QLatin1String("label"))
 				return false;
+		} else if (tag == QLatin1String("plc_table")) {
+				//where a PLC shows its table: written again from the spec
 		} else if (tag == QLatin1String("terminal")) {
 			Slot slot = Slot::terminal(e.attribute(QStringLiteral("name")));
 			slot.type = e.attribute(QStringLiteral("type"), QStringLiteral("Generic"));
@@ -998,6 +1097,30 @@ bool fromDefinition(const QDomElement &definition,
 	const Layout auto_layout = layout(sized, fonts);
 	s.extra_width = std::max(0, (w - auto_layout.auto_width) / Grid);
 	s.extra_height = std::max(0, (h - auto_layout.auto_height) / Grid);
+
+		//A PLC: a side whose terminals are all inputs (outputs) of one kind
+		//in its table is a side of that kind
+	const QDomElement ios = definition.firstChildElement(QStringLiteral("kindInformations"))
+			.firstChildElement(QStringLiteral("plcMasterData"))
+			.firstChildElement(QStringLiteral("plcIOs"));
+	QHash<QString, Io> io_of;
+	for (QDomElement io = ios.firstChildElement(QStringLiteral("plcIO")) ; !io.isNull() ;
+	     io = io.nextSiblingElement(QStringLiteral("plcIO")))
+		io_of.insert(io.attribute(QStringLiteral("address")),
+			     ioFromType(io.attribute(QStringLiteral("type"))));
+	for (int side = 0 ; side < SideCount && !io_of.isEmpty() ; ++side)
+	{
+		Io kind = Io::None;
+		bool same = true;
+		for (const Slot &slot : std::as_const(s.sides[side]))
+		{
+			if (!slot.isTerminal()) continue;
+			const Io io = io_of.value(slot.name.trimmed(), Io::None);
+			if (io == Io::None || (kind != Io::None && io != kind)) { same = false; break; }
+			kind = io;
+		}
+		if (same) s.io[side] = kind;
+	}
 
 	*spec = s;
 	return true;

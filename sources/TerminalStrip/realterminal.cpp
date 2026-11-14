@@ -30,7 +30,9 @@
 #include <diagram.h>
 #include <cable/cable.h>
 #include <cable/cablemanager.h>
+#include <connectionsymbols.h>
 #include <qetproject.h>
+#include <qetgraphicsitem/structureboxitem.h>
 
 #include <QHash>
 #include <QSet>
@@ -72,6 +74,191 @@ namespace
 			}
 		}
 		return cores;
+	}
+
+		/**
+		 * What the far end of a wire standing at @p terminal is called:
+		 * a terminal of a strip by its strip and its position on it
+		 * ("X1:7"), anything else by its element and its terminal
+		 * ("K1:A1").
+		 */
+	QString endDesignation(Terminal *terminal)
+	{
+		if (!terminal) {
+			return QString();
+		}
+		Element *element = terminal->parentElement();
+		if (!element) {
+			return QString();
+		}
+
+		auto *terminal_element = qobject_cast<TerminalElement *>(element);
+		if (terminal_element)
+		{
+				//A terminal says it in its own label -- the very number
+				//the strip draws on it ("X3:29"). The position it stands
+				//at is a different numbering, which runs out of step with
+				//the labels as soon as one of them is reordered, so it is
+				//only used for a terminal which has no label at all.
+				//Taken as it stands: it is the very thing the strip
+				//writes in the box of this terminal, so the two can
+				//never disagree about which terminal is meant
+			const QString own = element->actualLabel();
+			if (!own.isEmpty()) {
+				return own;
+			}
+
+			if (TerminalStrip *strip = terminal_element->parentTerminalStrip())
+			{
+				const auto real = terminal_element->realTerminal();
+				const auto physical = real ? real->physicalTerminal() : nullptr;
+				const QString number = physical
+					? QString::number(physical->pos() + 1) : QString();
+				if (!strip->name().isEmpty() && !number.isEmpty()) {
+					return strip->name() + QLatin1Char(':') + number;
+				}
+				if (!number.isEmpty()) {
+					return number;
+				}
+			}
+		}
+
+		const QString name = terminal->name();
+		QString label = element->actualLabel();
+		if (label.isEmpty()) {
+			return name;
+		}
+		if (name.isEmpty()) {
+			return label;
+		}
+		return label + QLatin1Char(':') + name;
+	}
+
+	// Follow a core past reports and wire junctions, stopping at devices.
+	// A report shared by several cores must keep its cable and slot.
+	QStringList coreDestinations(Terminal *start, const Conductor *first,
+								 const TerminalStrip *strip)
+	{
+		const auto reference = first->ownProperties();
+		struct Step {
+			Terminal *pin;
+			bool through_report;
+		};
+		QList<Step> pending;
+		QSet<Terminal *> visited{start};
+		QSet<const Conductor *> walked;
+		QStringList destinations;
+		const auto cross = [&](const Conductor *wire, Terminal *pin) {
+			if (walked.contains(wire)) return;
+			walked.insert(wire);
+			auto *other = wire->terminal1 == pin ? wire->terminal2
+												: wire->terminal1;
+			if (other) pending.append({other, false});
+		};
+		cross(first, start);
+		while (!pending.isEmpty()) {
+			const auto step = pending.takeLast();
+			auto *pin = step.pin;
+			auto *element = pin->parentElement();
+			if (!element || visited.contains(pin)) continue;
+			visited.insert(pin);
+
+			const bool report = element->linkType() & Element::AllReport;
+			if (report && !step.through_report) {
+				for (auto *other : relatedPotentialTerminal(pin, true, false)) {
+					pending.append({other, true});
+				}
+				continue;
+			}
+			if (!report && !element->isCorner() && !element->isShownAsDot()
+				&& !ConnectionSymbols::isJunction(element->location())) {
+				const auto *terminal = qobject_cast<TerminalElement *>(element);
+				// Do not follow a core back into the strip's own wiring.
+				if (terminal && terminal->parentTerminalStrip() == strip) {
+					continue;
+				}
+				const QString target = endDesignation(pin);
+				if (!target.isEmpty() && !destinations.contains(target)) {
+					destinations.append(target);
+				}
+				continue;
+			}
+
+			const auto exits = report ? QList<Terminal *>{pin}
+									  : element->terminals();
+			for (auto *exit : exits) {
+				for (auto *wire : exit->conductors()) {
+					const auto properties = wire->ownProperties();
+					const bool same_core = !reference.m_cable_uuid.isNull()
+						&& properties.m_cable_uuid == reference.m_cable_uuid
+						&& reference.m_cable_slot >= 0
+						&& properties.m_cable_slot == reference.m_cable_slot;
+					const bool ordinary_wire = properties.m_cable_uuid.isNull()
+						&& properties.m_cable.isEmpty();
+					if (same_core || (!report && ordinary_wire)) {
+						cross(wire, exit);
+					}
+				}
+			}
+		}
+		destinations.sort();
+		return destinations;
+	}
+
+		/**
+		 * Whether @p properties says the conductor is a core of a cable:
+		 * the reference the cable gave it, or -- in the projects saved
+		 * before that reference existed -- the text of the cable field,
+		 * which is generated from the cable and never typed in.
+		 */
+	bool isCableCore(const ConductorProperties &properties)
+	{
+		return !properties.m_cable_uuid.isNull()
+			|| !properties.m_cable.isEmpty();
+	}
+
+		/**
+		 * The wires of @p element which are no core of a cable: a cable
+		 * says where its cores go and what they are made of itself, and
+		 * is drawn under the strip with the rest of the cable. Every
+		 * terminal of the element may carry one, so a terminal with a
+		 * twin sleeve comes back with two of them.
+		 */
+	QList<Conductor *> ownWiresOf(Element *element)
+	{
+		QList<Conductor *> wires;
+		if (!element) {
+			return wires;
+		}
+		for (const auto terminal : element->terminals())
+		{
+			for (const auto conductor : terminal->conductors())
+			{
+				if (!isCableCore(conductor->ownProperties())) {
+					wires << conductor;
+				}
+			}
+		}
+		return wires;
+	}
+
+		/**
+		 * What @p conductor is made of, in the order type, colour and
+		 * section, the empty ones left out.
+		 */
+	QStringList definitionOf(const Conductor *conductor)
+	{
+		const ConductorProperties properties = conductor->ownProperties();
+		QStringList definition;
+		for (const QString &value : {properties.m_conductor_type,
+					     properties.m_wire_color,
+					     properties.m_wire_section})
+		{
+			if (!value.isEmpty()) {
+				definition << value;
+			}
+		}
+		return definition;
 	}
 }
 
@@ -398,6 +585,37 @@ QString RealTerminal::cableWire() const
 	return QString();
 }
 
+QStringList RealTerminal::cableCoreTargets(const QString &cable_name,
+										  const QUuid &cable_uuid,
+										  int slot) const
+{
+	QStringList lines;
+	auto *strip = parentStrip();
+	if (!m_element || !strip || !strip->project()) return lines;
+	for (auto *pin : m_element->terminals()) {
+		for (auto *wire : pin->conductors()) {
+			const auto properties = wire->ownProperties();
+			const auto *cable = CableManager::cableByUuid(
+				strip->project(), properties.m_cable_uuid);
+			if (!cable || (cable_uuid.isNull()
+				? cable->designation() != cable_name
+				: cable->uuid() != cable_uuid)
+				|| (slot >= 0 && properties.m_cable_slot != slot)) continue;
+
+			QString core = cable->colorOfCore(properties.m_cable_slot);
+			if (core.isEmpty() && properties.m_cable_slot >= 0) {
+				core = QString::number(properties.m_cable_slot + 1);
+			}
+			if (core.isEmpty()) continue;
+			for (const auto &target : coreDestinations(pin, wire, strip)) {
+				const QString line = QStringLiteral("%1 \u2192 %2").arg(core, target);
+				if (!lines.contains(line)) lines.append(line);
+			}
+		}
+	}
+	return lines;
+}
+
 /**
  * @brief RealTerminal::isShield
  * @return true if this terminal is the shield of the cable
@@ -453,6 +671,45 @@ QVector<QString> RealTerminal::cableTarget() const
 		}
 	}
 	return QVector<QString>();
+}
+
+/**
+ * @brief RealTerminal::wires
+ * @return one entry per wire of this terminal which is no core of a
+ * cable: (what the other end is called, what the wire is made of).
+ * A terminal with a twin sleeve carries two wires and comes back with
+ * two entries; empty when there is none.
+ */
+QVector<QPair<QString, QStringList>> RealTerminal::wires() const
+{
+	QVector<QPair<QString, QStringList>> result;
+	if (m_spare || m_element.isNull()) {
+		return result;
+	}
+	for (const Conductor *conductor : ownWiresOf(m_element.data()))
+	{
+		if (!conductor->terminal1 || !conductor->terminal2) {
+			continue;
+		}
+			//The end which does not hang on this element is the
+			//far end the wire is named by
+		Terminal *attached = conductor->terminal1->parentElement() == m_element
+			? conductor->terminal1 : conductor->terminal2;
+		Terminal *far_end = attached == conductor->terminal1
+			? conductor->terminal2 : conductor->terminal1;
+		result.append({endDesignation(far_end), definitionOf(conductor)});
+	}
+	return result;
+}
+
+/**
+ * @brief RealTerminal::hasWire
+ * @return true when this terminal has a wire of its own which is no core
+ * of a cable -- a cable is drawn under the strip with the rest of itself
+ */
+bool RealTerminal::hasWire() const
+{
+	return !ownWiresOf(m_element.data()).isEmpty();
 }
 
 /**
@@ -587,8 +844,9 @@ QVector<QString> RealTerminal::automaticCableTarget() const
 	}
 
 	const DiagramContext informations_{target_->elementInformations()};
-	const auto installation_{informations_.value(QETInformation::ELMT_PLANT).toString()};
-	const auto location_{informations_.value(QETInformation::ELMT_LOCATION).toString()};
+	const auto place_{placeOf(target_)};
+	const auto installation_{place_.first};
+	const auto location_{place_.second};
 	const auto label_{informations_.value(QETInformation::ELMT_LABEL).toString()};
 
 	QVector<QString> lines_;
@@ -869,4 +1127,32 @@ QUuid RealTerminal::elementUuid() const {
  */
 QString RealTerminal::RealTerminal::xmlTagName() {
 	return QStringLiteral("real_terminal");
+}
+
+/**
+ * @brief RealTerminal::placeOf
+ * The plant and location of @p element as the terminal strips see it :
+ * what its labels show (%{plant}, %{location}). With the project's
+ * "inherited" setting that is the place it takes from its structure box
+ * or folio when it has none of its own (StructureBoxItem::placeOf()),
+ * without it its own values only, so a project saved before looks as it
+ * always did.
+ * @param element
+ * @return the plant first, the location second
+ */
+QPair<QString, QString> RealTerminal::placeOf(const Element *element)
+{
+	if (!element) {
+		return {};
+	}
+	const auto diagram_{element->diagram()};
+	if (diagram_ && diagram_->project()
+		&& diagram_->project()->plantAndLocationInherited())
+	{
+		const auto place_{StructureBoxItem::placeOf(element)};
+		return {place_.plant.trimmed(), place_.location.trimmed()};
+	}
+	const auto &informations_{element->elementData().m_informations};
+	return {informations_.value(QETInformation::ELMT_PLANT).toString().trimmed(),
+			informations_.value(QETInformation::ELMT_LOCATION).toString().trimmed()};
 }
