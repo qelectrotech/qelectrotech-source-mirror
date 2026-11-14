@@ -393,6 +393,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/autoNum/ui/renumberpreviewdialog.h
   ${QET_DIR}/sources/undocommand/freezeelementlabelcommand.cpp
   ${QET_DIR}/sources/undocommand/freezeelementlabelcommand.h
+  ${QET_DIR}/sources/undocommand/setdevicetypecommand.cpp
+  ${QET_DIR}/sources/undocommand/setdevicetypecommand.h
   ${QET_DIR}/sources/autoNum/ui/autonumberingdockwidget.cpp
   ${QET_DIR}/sources/autoNum/ui/autonumberingdockwidget.h
   ${QET_DIR}/sources/autoNum/ui/autonumberingmanagementw.cpp

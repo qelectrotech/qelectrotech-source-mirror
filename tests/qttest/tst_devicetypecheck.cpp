@@ -24,6 +24,9 @@
 #include "qetgraphicsitem/element.h"
 #include "qetproject.h"
 #include "ui/devicetypecheckdialog.h"
+#include "ui/elementarticleswidget.h"
+#include "ui/elementinfopartwidget.h"
+#include "undocommand/setdevicetypecommand.h"
 
 #include <QDomDocument>
 #include <QCheckBox>
@@ -212,7 +215,7 @@ class tst_devicetypecheck : public QObject
 		QVERIFY(place(folio, QStringLiteral("power"), QStringLiteral("K2")));
 		Element *table = place(folio, QStringLiteral("table"), QStringLiteral("K2"));
 		QVERIFY(table);
-		QVERIFY(place(folio, QStringLiteral("aux"), QStringLiteral("K3")));   //no model
+		QVERIFY(place(folio, QStringLiteral("aux"), QStringLiteral("K3")));   //no device type
 		const auto devices = DeviceTypeCheck::check(&project);
 		QCOMPARE(devices.size(), 1);
 		QVERIFY(devices.first().complete());
@@ -222,7 +225,7 @@ class tst_devicetypecheck : public QObject
 	}
 
 		//A strip is checked terminal by terminal, each against its own
-		//model's type: feed-through and earth terminals in one strip
+		//type: feed-through and earth terminals in one strip
 	void aStripIsCheckedTerminalByTerminal()
 	{
 		QETProject project;
@@ -245,7 +248,7 @@ class tst_devicetypecheck : public QObject
 		QCOMPARE(devices.first().symbols.size(), 3);
 		QVERIFY(devices.first().complete());
 
-			//A terminal without a model is beyond the strip's types
+			//A terminal without a device type is beyond the strip's types
 		QVERIFY(place(folio, QStringLiteral("term"), QStringLiteral("X1:3")));
 		devices = DeviceTypeCheck::check(&project);
 		QCOMPARE(devices.size(), 1);
@@ -286,6 +289,107 @@ class tst_devicetypecheck : public QObject
 		QCOMPARE(device.drawn, QList<int>({0, 3}));
 		QCOMPARE(device.missing, QList<int>({1, 2}));
 	}
+	void addTypeUndoable()
+	{
+		QETProject project;
+		DeviceType type = contactor();
+		{
+			SetDeviceTypeCommand add(&project, type);
+			add.redo();
+			QVERIFY(project.deviceType(type.name) == type);
+			add.undo();
+			QVERIFY(project.deviceType(type.name).isNull());
+		}
+			//In place of one of the same name: undo gives it back
+		project.setDeviceType(type);
+		DeviceType other = type;
+		other.parts.removeLast();
+		SetDeviceTypeCommand replace(&project, other);
+		replace.redo();
+		QCOMPARE(project.deviceType(type.name).parts.size(), 2);
+		replace.undo();
+		QVERIFY(project.deviceType(type.name) == type);
+	}
+
+		//On the Parts tab, below the main article's model, its device type
+	void partsTabShowsTheType()
+	{
+		QETProject project;
+		Diagram *folio = project.addNewDiagram();
+		defineAll(&project);
+		Element *coil = place(folio, QStringLiteral("coil"), QStringLiteral("K12"), QStringLiteral("CONTR10"));
+		Element *aux = place(folio, QStringLiteral("aux"));
+		Element *plain = place(folio, QStringLiteral("lamp"), QStringLiteral("H1"));
+		QVERIFY(coil && aux && plain);
+		coil->linkToElement(aux);
+
+		ElementArticlesWidget widget(coil);
+		auto *label = widget.findChild<QLabel *>(QStringLiteral("deviceTypeLabel"));
+		QVERIFY(label);
+		QVERIFY(!label->isHidden());
+		QCOMPARE(label->text(), QStringLiteral("MOTOR CONTR, 1 N/O CONTACT: 2 of 3 part(s) drawn\n"
+											   "Not drawn: power 1 2 3 4 5 6"));
+			//No device type: no row
+		widget.setElement(plain);
+		QVERIFY(label->isHidden());
+	}
+
+		//In the same undo step as the device type field
+	void libraryTypeIsCopiedOnApply()
+	{
+		DeviceType type = contactor();
+		type.name = QStringLiteral("CONTR10-LIB");
+		QVERIFY(DeviceTypeLibrary::save(type));
+		QETProject project;
+		Diagram *folio = project.addNewDiagram();
+		defineAll(&project);
+		Element *coil = place(folio, QStringLiteral("coil"), QStringLiteral("K7"));
+		QVERIFY(coil);
+
+		ElementArticlesWidget widget(coil);
+		ElementInfoPartWidget *model = nullptr;
+		for (auto *row : widget.findChildren<ElementInfoPartWidget *>())
+			if (row->key() == QStringLiteral("device_type")) model = row;
+		QVERIFY(model);
+		model->setText(type.name);
+		auto *label = widget.findChild<QLabel *>(QStringLiteral("deviceTypeLabel"));
+		QVERIFY(label->text().contains(QStringLiteral("of your library")));
+		widget.apply();
+		QVERIFY(project.deviceType(type.name) == type);
+		QCOMPARE(coil->elementInformations().value(QStringLiteral("device_type")).toString(), type.name);
+		QVERIFY(label->text().contains(QStringLiteral("part(s) drawn")));
+		folio->undoStack().undo();   //the model and the copy
+		QVERIFY(project.deviceType(type.name).isNull());
+		QVERIFY(coil->elementInformations().value(QStringLiteral("device_type")).toString().isEmpty());
+		QVERIFY(DeviceTypeLibrary::remove(type.name));
+	}
+		//Live (the side panel): not for each letter typed, once the
+		//model's edit is finished
+	void liveTypeComesWhenTheFieldIsFinished()
+	{
+		DeviceType type = contactor();
+		type.name = QStringLiteral("CONTR10-LIVE");
+		QVERIFY(DeviceTypeLibrary::save(type));
+		QETProject project;
+		Diagram *folio = project.addNewDiagram();
+		defineAll(&project);
+		Element *coil = place(folio, QStringLiteral("coil"), QStringLiteral("K8"));
+		QVERIFY(coil);
+
+		ElementArticlesWidget widget(coil);
+		widget.setLiveEdit(true);
+		ElementInfoPartWidget *model = nullptr;
+		for (auto *row : widget.findChildren<ElementInfoPartWidget *>())
+			if (row->key() == QStringLiteral("device_type")) model = row;
+		QVERIFY(model);
+		model->setText(type.name);
+		QCOMPARE(coil->elementInformations().value(QStringLiteral("device_type")).toString(), type.name);
+		QVERIFY(project.deviceType(type.name).isNull());
+		emit model->editingFinished();
+		QVERIFY(project.deviceType(type.name) == type);
+		QVERIFY(DeviceTypeLibrary::remove(type.name));
+	}
+
 	void dialogListsIncompleteDevices()
 	{
 		QETProject project;
