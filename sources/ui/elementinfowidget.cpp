@@ -602,7 +602,8 @@ DiagramContext ElementInfoWidget::currentInfo() const
 		}
 	}
 
-	const QStringList declared = m_element->elementData().m_custom_info_keys;
+	const QStringList declared = m_element ? m_element->elementData().m_custom_info_keys
+										   : QStringList();
 	for (const auto &custom : std::as_const(m_custom_eipw_list))
 	{
 			//A property the symbol defines is kept empty: the element
