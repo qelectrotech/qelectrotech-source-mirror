@@ -91,6 +91,7 @@ class ElementArticlesWidget : public AbstractElementPropertiesEditorWidget
 		ElementInfoPartWidget *partForKey(const QString &key) const;
 		void updateTypeRow();
 		void bringTypeNow();
+		void chooseTypeSymbol();
 		DeviceType typeToBring(const DiagramContext &info) const;
 		QStringList libraryTypes() const;
 		int currentBlock() const;
@@ -114,6 +115,7 @@ class ElementArticlesWidget : public AbstractElementPropertiesEditorWidget
 		QMap<QString, QString> m_pending_extra_info;
 		bool m_ui_built = false;
 		QLabel *m_type_label = nullptr;	///< the device type the model names
+		QPushButton *m_type_symbol_button = nullptr;
 		mutable QStringList m_library_types;	///< the user's, read once
 		mutable bool m_library_read = false;
 			///Live, the type is brought when the model's edit is finished

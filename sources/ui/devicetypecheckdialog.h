@@ -18,13 +18,19 @@
 #ifndef DEVICETYPECHECKDIALOG_H
 #define DEVICETYPECHECKDIALOG_H
 
+#include <devicetype/devicetypecheck.h>
+
 #include <QDialog>
 #include <QHash>
+#include <QPair>
 #include <QPointer>
+#include <QVector>
 
+class Diagram;
 class Element;
 class QCheckBox;
 class QLabel;
+class QPushButton;
 class QETProject;
 class QTreeWidget;
 class QTreeWidgetItem;
@@ -33,7 +39,8 @@ class QTreeWidgetItem;
 	@brief The DeviceTypeCheckDialog class
 	Lists the devices which are not drawn the way their device type says
 	(DeviceTypeCheck): the parts of the type not drawn, the symbols beyond
-	it, the models the project has no type for. A click shows the symbol.
+	it, the models the project has no type for. A click shows the symbol;
+	a part not drawn can be placed on the current folio.
 */
 class DeviceTypeCheckDialog : public QDialog
 {
@@ -44,14 +51,21 @@ class DeviceTypeCheckDialog : public QDialog
 	public slots:
 		void refresh();
 		void showSymbol(QTreeWidgetItem *row);
+		void placeRow(QTreeWidgetItem *row);
+		bool startPlacing(QTreeWidgetItem *row, int way, Diagram *folio = nullptr);
 
 	private:
 		void buildFolios();
+		void updatePlaceButton();
 
 		QPointer<QETProject> m_project;
 		QTreeWidget *m_tree;
 		QCheckBox *m_show_complete;
 		QLabel *m_summary;
+		QPushButton *m_place;
+		QVector<DeviceTypeCheck::Device> m_devices;
+			/// A part not drawn: its device in m_devices, its part
+		QHash<QTreeWidgetItem *, QPair<int, int>> m_parts;
 		QHash<QTreeWidgetItem *, QPointer<Element>> m_targets;
 };
 

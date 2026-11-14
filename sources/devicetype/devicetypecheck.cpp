@@ -127,7 +127,7 @@ namespace DeviceTypeCheck
 				{
 					if (!m_names.contains(location))
 						m_names.insert(location,
-									   ElementsLocation(location, m_project).name());
+									   symbolLocation(location, m_project).name());
 					return m_names.value(location);
 				}
 				QETProject *m_project;
@@ -276,6 +276,12 @@ namespace DeviceTypeCheck
 			}
 			return list;
 		}
+	}
+
+	ElementsLocation symbolLocation(const QString &location, QETProject *project)
+	{
+		return location.startsWith(QLatin1String("embed://"))
+				? ElementsLocation(location, project) : ElementsLocation(location);
 	}
 
 	QString typeNameOf(const DiagramContext &info)
