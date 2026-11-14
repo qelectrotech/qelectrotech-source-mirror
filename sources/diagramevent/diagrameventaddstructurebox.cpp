@@ -17,7 +17,14 @@
 */
 #include "diagrameventaddstructurebox.h"
 
+#include "../diagram.h"
 #include "../qetgraphicsitem/structureboxitem.h"
+
+#include <QDialog>
+#include <QDialogButtonBox>
+#include <QFormLayout>
+#include <QGraphicsView>
+#include <QLineEdit>
 
 DiagramEventAddStructureBox::DiagramEventAddStructureBox(Diagram *diagram) :
 	DiagramEventAddShape(diagram, QetShapeItem::Rectangle)
@@ -27,5 +34,52 @@ DiagramEventAddStructureBox::DiagramEventAddStructureBox(Diagram *diagram) :
 QetShapeItem *DiagramEventAddStructureBox::createShapeItem(QPointF p1, QPointF p2, QetShapeItem::ShapeType shape_type)
 {
 	Q_UNUSED(shape_type)
-	return new StructureBoxItem(p1, p2);
+	auto box = new StructureBoxItem(p1, p2);
+		//A new box is drawn in the colour chosen for structure boxes
+	QPen pen = box->pen();
+	pen.setColor(StructureBoxItem::newBoxColor());
+	box->setPen(pen);
+	return box;
+}
+
+/**
+	@brief DiagramEventAddStructureBox::shapeDrawn
+	A box without a place does nothing: if wanted, it is asked for at once.
+*/
+void DiagramEventAddStructureBox::shapeDrawn(QetShapeItem *shape)
+{
+	if (!StructureBoxItem::askPlaceWhenDrawn())
+		return;
+	auto box = static_cast<StructureBoxItem *>(shape);
+	const auto views = m_diagram->views();
+	askPlace(box, views.isEmpty() ? nullptr : views.first());
+}
+
+bool DiagramEventAddStructureBox::askPlace(StructureBoxItem *box, QWidget *parent)
+{
+	QDialog dialog(parent);
+	dialog.setObjectName(QStringLiteral("askStructureBoxPlace"));
+	dialog.setWindowTitle(tr("New structure box"));
+	auto layout = new QFormLayout(&dialog);
+	auto plant = new QLineEdit(box->plant(), &dialog);
+	auto location = new QLineEdit(box->location(), &dialog);
+	auto prefix = new QLineEdit(box->prefix(), &dialog);
+	plant->setObjectName(QStringLiteral("plant"));
+	location->setObjectName(QStringLiteral("location"));
+	prefix->setObjectName(QStringLiteral("prefix"));
+	layout->addRow(tr("Plant (=)"), plant);
+	layout->addRow(tr("Location (+)"), location);
+	layout->addRow(tr("Prefix (-)"), prefix);
+	auto buttons = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel, &dialog);
+	layout->addRow(buttons);
+	connect(buttons, &QDialogButtonBox::accepted, &dialog, &QDialog::accept);
+	connect(buttons, &QDialogButtonBox::rejected, &dialog, &QDialog::reject);
+	location->setFocus();
+
+	if (dialog.exec() != QDialog::Accepted)
+		return false;
+	box->setPlant(plant->text().trimmed());
+	box->setLocation(location->text().trimmed());
+	box->setPrefix(prefix->text().trimmed());
+	return true;
 }
