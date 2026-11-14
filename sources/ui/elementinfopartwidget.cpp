@@ -81,6 +81,8 @@ ElementInfoPartWidget::ElementInfoPartWidget(
 		this, &ElementInfoPartWidget::textEdited);
 	connect(ui->line_edit, &QLineEdit::textChanged,
 		this, &ElementInfoPartWidget::textChanged);
+	connect(ui->line_edit, &QLineEdit::editingFinished,
+		this, &ElementInfoPartWidget::editingFinished);
 		//The line edit shows a line break as a space: the tooltip shows
 		//the text as it is drawn.
 	connect(ui->line_edit, &QLineEdit::textChanged, this, [this](const QString &txt) {

@@ -62,6 +62,7 @@ class ElementInfoPartWidget : public QWidget
 	signals:
 		void textEdited  (const QString & text);
 		void textChanged (const QString & text);
+		void editingFinished();
 		void materialButtonClicked();
 
 		//ATTRIBUTES
