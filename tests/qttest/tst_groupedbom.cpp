@@ -29,6 +29,28 @@ class tst_groupedbom : public QObject
 		QVERIFY(q.exec());
 	}
 
+		// The costing columns are added only by the tests which need them:
+		// the others prove a list without costing never reads them.
+	void addCostingColumns()
+	{
+		QSqlQuery q(m_db);
+		QVERIFY(q.exec(QStringLiteral("ALTER TABLE element_nomenclature_view ADD COLUMN unit_price")));
+		QVERIFY(q.exec(QStringLiteral("ALTER TABLE element_nomenclature_view ADD COLUMN labour_time")));
+	}
+
+	void addPriced(const QString &label, const QString &article, const QString &price,
+				   const QString &labour, const QString &quantity = QString(),
+				   const QString &aux_article = QString())
+	{
+		add(label, "ABB", article, "Part " + article, quantity, aux_article);
+		QSqlQuery q(m_db);
+		q.prepare(QStringLiteral("UPDATE element_nomenclature_view SET unit_price = ?, labour_time = ? "
+								 "WHERE rowid = (SELECT MAX(rowid) FROM element_nomenclature_view)"));
+		q.addBindValue(price);
+		q.addBindValue(labour);
+		QVERIFY(q.exec());
+	}
+
 	QList<QStringList> run(const BomExport::GroupedOptions &options, QStringList *columns = nullptr)
 	{
 		QSqlQuery q(m_db);
@@ -147,6 +169,95 @@ class tst_groupedbom : public QObject
 			QStringList columns;
 			run(o, &columns);
 			QCOMPARE(columns, (QStringList{"quantity", "name", "part_number", "manufacturer", "unit"}));
+		}
+		void costingColumnsAndTotalLine()
+		{
+			addCostingColumns();
+			BomExport::GroupedOptions o;
+			o.costing = true;
+			o.total_label = QStringLiteral("All 'parts'");
+			QStringList columns;
+			run(o, &columns);
+			QCOMPARE(columns, (QStringList{"number", "quantity", "name", "part_number",
+										   "references", "manufacturer", "unit",
+										   "unit_price", "total_price", "labour_time", "total_labour"}));
+			o.numbering = false;
+			o.references = false;
+			const auto rows = run(o, &columns);
+			QCOMPARE(columns, (QStringList{"quantity", "name", "part_number", "manufacturer", "unit",
+										   "unit_price", "total_price", "labour_time", "total_labour"}));
+				// no part at all: still the last line, adding up to nothing
+			QCOMPARE(rows.size(), 1);
+			QCOMPARE(rows[0], (QStringList{"", "All 'parts'", "", "", "", "", "0", "", "0"}));
+		}
+
+			// The hand count: 2 x A9 at 12.5 (0.25 h) = 25 (0.5 h),
+			// B1 quantity 2 at 30 (0.5 h) = 60 (1 h), X1 has no price.
+			// Project: 85 and 1.5 h.
+		void totalsMatchAHandCount()
+		{
+			addCostingColumns();
+			addPriced("K1", "A9", "12.5", "0.25");
+			addPriced("K2", "A9", "12.5", "0.25");
+			addPriced("F1", "B1", "30", "0.5", "2");
+			add("X1", "", "", "Terminal");
+			BomExport::GroupedOptions o;
+			o.costing = true;
+			const auto rows = run(o);
+			QCOMPARE(rows.size(), 4);
+			QCOMPARE(rows[0], (QStringList{"1", "1", "Terminal", "", "X1", "", "", "", "", "", ""}));
+			QCOMPARE(rows[1], (QStringList{"2", "2", "Part A9", "A9", "K1,K2", "ABB", "",
+										   "12.5", "25", "0.25", "0.5"}));
+			QCOMPARE(rows[2], (QStringList{"3", "2", "Part B1", "B1", "F1", "ABB", "",
+										   "30", "60", "0.5", "1"}));
+			QCOMPARE(rows[3], (QStringList{"", "", "Total", "", "", "", "", "", "85", "", "1.5"}));
+		}
+
+		void elementsPricedDifferentlyStillAddUp()
+		{
+			addCostingColumns();
+			addPriced("K1", "A9", "10", "");
+			addPriced("K2", "A9", "12,5", "");
+			BomExport::GroupedOptions o;
+			o.costing = true;
+			const auto rows = run(o);
+				// no single unit price to show, but the total is right
+			QCOMPARE(rows[0].mid(7), (QStringList{"", "22.5", "", ""}));
+			QCOMPARE(rows[1][8], QStringLiteral("22.5"));
+		}
+
+		void countedRowsCostOnceEach()
+		{
+			addCostingColumns();
+			addPriced("W1", "CAB3", "2", "", "10");
+			BomExport::GroupedOptions o;
+			o.costing = true;
+			QCOMPARE(run(o)[0][8], QStringLiteral("20"));
+			o.sum_quantity = false;
+			QCOMPARE(run(o)[0][8], QStringLiteral("2"));
+		}
+
+		void smallPricesKeepTheirDecimals()
+		{
+			addCostingColumns();
+			addPriced("R1", "R10K", "0.0045", "0.0001", "100");
+			BomExport::GroupedOptions o;
+			o.costing = true;
+			const auto rows = run(o);
+			QCOMPARE(rows[0].mid(7), (QStringList{"0.0045", "0.45", "0.0001", "0.01"}));
+		}
+
+		void auxiliaryBlocksHaveNoPrice()
+		{
+			addCostingColumns();
+			addPriced("QF1", "B1", "30", "0.5", "", "AUX9");
+			BomExport::GroupedOptions o;
+			o.costing = true;
+			const auto rows = run(o);
+			QCOMPARE(rows.size(), 3);
+			QCOMPARE(rows[0][3], QStringLiteral("AUX9"));
+			QCOMPARE(rows[0][8], QString());
+			QCOMPARE(rows[2][8], QStringLiteral("30"));
 		}
 };
 
