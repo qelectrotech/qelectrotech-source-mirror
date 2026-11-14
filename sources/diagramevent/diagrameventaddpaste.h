@@ -28,6 +28,7 @@
 
 class Bridge;
 class CablePart;
+class QGraphicsLineItem;
 class QStatusBar;
 
 /**
@@ -89,6 +90,8 @@ class DiagramEventAddPaste : public DiagramEventInterface
 	private:
 		void moveTo(const QPointF &scene_pos);
 		void updateEffectivePosition();
+		void updateHelpLines();
+		void removeHelpLines();
 		bool matchesShortcut(const QKeyEvent *event, const QString &action_id) const;
 		void commit();
 		void cancel();
@@ -151,6 +154,9 @@ class DiagramEventAddPaste : public DiagramEventInterface
 	QPointF m_current_pos;
 		///The original source folio position (grid-snapped top-left) of the copied items.
 	QPointF m_original_pos;
+		///Guide lines indicating remaining movement axes during paste placement.
+	QGraphicsLineItem *m_help_line_x{nullptr};
+	QGraphicsLineItem *m_help_line_y{nullptr};
 	QPointer<QStatusBar> m_status_bar;
 	bool m_finished{false};
 };

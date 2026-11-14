@@ -40,6 +40,7 @@
 #include <QClipboard>
 #include <QCoreApplication>
 #include <QCursor>
+#include <QGraphicsLineItem>
 #include <QGraphicsSceneMouseEvent>
 #include <QGraphicsView>
 #include <QKeyEvent>
@@ -256,6 +257,7 @@
 */
 DiagramEventAddPaste::~DiagramEventAddPaste()
 {
+	removeHelpLines();
 	if (!m_finished && m_diagram) {
 		removeItems();
 		m_finished = true;
@@ -352,6 +354,80 @@ void DiagramEventAddPaste::updateEffectivePosition()
 		}
 	}
 	moveTo(effective_pos);
+	updateHelpLines();
+}
+
+void DiagramEventAddPaste::updateHelpLines()
+{
+	if (!m_diagram) return;
+
+	if (!m_lock_x && !m_lock_y) {
+		if (m_help_line_x) m_help_line_x->setVisible(false);
+		if (m_help_line_y) m_help_line_y->setVisible(false);
+		return;
+	}
+
+	const bool dark = Diagram::background_color.lightness() < 128;
+	const QColor color = dark ? QColor(85, 170, 255) : QColor(0, 102, 204);
+	QPen pen(color, 1.0, Qt::DashLine);
+	pen.setCosmetic(true);
+
+	QRectF rect = m_diagram->border_and_titleblock.insideBorderRect();
+	if (rect.isEmpty()) {
+		rect = m_diagram->sceneRect();
+	}
+	const qreal left = rect.isValid() ? rect.left() - 5000 : -10000;
+	const qreal right = rect.isValid() ? rect.right() + 5000 : 10000;
+	const qreal top = rect.isValid() ? rect.top() - 5000 : -10000;
+	const qreal bottom = rect.isValid() ? rect.bottom() + 5000 : 10000;
+
+	// When X is locked (or both): movement is along Y, show dashed line on Y axis
+	if (m_lock_x) {
+		if (!m_help_line_y) {
+			m_help_line_y = new QGraphicsLineItem();
+			m_help_line_y->setPen(pen);
+			m_help_line_y->setZValue(1e6);
+			m_diagram->addItem(m_help_line_y);
+		} else {
+			m_help_line_y->setPen(pen);
+		}
+		const qreal x = (m_lock_x && m_lock_y) ? m_original_pos.x() : m_locked_pos.x();
+		m_help_line_y->setLine(x, top, x, bottom);
+		m_help_line_y->setVisible(true);
+	} else if (m_help_line_y) {
+		m_help_line_y->setVisible(false);
+	}
+
+	// When Y is locked (or both): movement is along X, show dashed line on X axis
+	if (m_lock_y) {
+		if (!m_help_line_x) {
+			m_help_line_x = new QGraphicsLineItem();
+			m_help_line_x->setPen(pen);
+			m_help_line_x->setZValue(1e6);
+			m_diagram->addItem(m_help_line_x);
+		} else {
+			m_help_line_x->setPen(pen);
+		}
+		const qreal y = (m_lock_x && m_lock_y) ? m_original_pos.y() : m_locked_pos.y();
+		m_help_line_x->setLine(left, y, right, y);
+		m_help_line_x->setVisible(true);
+	} else if (m_help_line_x) {
+		m_help_line_x->setVisible(false);
+	}
+}
+
+void DiagramEventAddPaste::removeHelpLines()
+{
+	if (m_help_line_x) {
+		if (m_diagram) m_diagram->removeItem(m_help_line_x);
+		delete m_help_line_x;
+		m_help_line_x = nullptr;
+	}
+	if (m_help_line_y) {
+		if (m_diagram) m_diagram->removeItem(m_help_line_y);
+		delete m_help_line_y;
+		m_help_line_y = nullptr;
+	}
 }
 
 bool DiagramEventAddPaste::matchesShortcut(const QKeyEvent *event, const QString &action_id) const
@@ -520,6 +596,7 @@ void DiagramEventAddPaste::keyPressEvent(QKeyEvent *event)
 void DiagramEventAddPaste::commit()
 {
 	if (m_finished || !m_diagram) return;
+	removeHelpLines();
 	m_finished = true;
 	m_running = false;
 
@@ -575,6 +652,7 @@ PasteNumberingImport::push(m_diagram->views().isEmpty() ? nullptr : m_diagram->v
 void DiagramEventAddPaste::cancel()
 {
 	if (m_finished || !m_diagram) return;
+	removeHelpLines();
 	removeItems();
 	m_finished = true;
 	m_running = false;

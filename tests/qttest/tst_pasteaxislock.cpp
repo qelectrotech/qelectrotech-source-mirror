@@ -15,17 +15,17 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
-#include "qetapptest.h"
-
 #include "diagram.h"
 #include "diagramcommands.h"
 #include "diagramevent/diagrameventaddpaste.h"
 #include "diagramview.h"
+#include "qetapptest.h"
 #include "qetdiagrameditor.h"
 #include "qetgraphicsitem/qetshapeitem.h"
 #include "qetproject.h"
 #include "shortcutmanager.h"
 
+#include <QGraphicsLineItem>
 #include <QGraphicsSceneMouseEvent>
 #include <QKeyEvent>
 #include <QTest>
@@ -34,7 +34,7 @@ class tst_pasteaxislock : public QObject
 {
 	Q_OBJECT
 
-private slots:
+  private slots:
 	void testShortcutRegistration();
 	void testAxisLockAndOriginalPositionSnap();
 	void testCustomShortcut();
@@ -42,7 +42,7 @@ private slots:
 
 void tst_pasteaxislock::testShortcutRegistration()
 {
-	QETDiagramEditor *editor = QetAppTest::editor();
+	QETDiagramEditor* editor = QetAppTest::editor();
 	QVERIFY(editor != nullptr);
 	const QKeySequence x_seq = ShortcutManager::instance().currentSequence(
 		QStringLiteral("diagrameditor.paste_lock_x"));
@@ -54,13 +54,16 @@ void tst_pasteaxislock::testShortcutRegistration()
 
 void tst_pasteaxislock::testAxisLockAndOriginalPositionSnap()
 {
-	Diagram *diagram = QetAppTest::diagram();
+	Diagram* diagram = QetAppTest::diagram();
 	QVERIFY(diagram != nullptr);
-	DiagramView *view = QetAppTest::view();
+	DiagramView* view = QetAppTest::view();
 	QVERIFY(view != nullptr);
 
 	// Create an item at an exact known position: (100, 100)
-	auto *rect = new QetShapeItem(QPointF(0, 0), QPointF(40, 40), QetShapeItem::Rectangle);
+	auto* rect = new QetShapeItem(
+		QPointF(0, 0),
+		QPointF(40, 40),
+		QetShapeItem::Rectangle);
 	rect->setPos(100, 100);
 	diagram->addItem(rect);
 	QCOMPARE(rect->pos(), QPointF(100, 100));
@@ -73,15 +76,21 @@ void tst_pasteaxislock::testAxisLockAndOriginalPositionSnap()
 
 	// Start paste in UnderCursor placement at (200, 200)
 	const QPointF start_pos(200, 200);
-	auto *paste = new DiagramEventAddPaste(diagram, start_pos, DiagramEventAddPaste::UnderCursor);
+	auto*		  paste = new DiagramEventAddPaste(
+		diagram,
+		start_pos,
+		DiagramEventAddPaste::UnderCursor);
 	diagram->setEventInterface(paste);
 
-	// Get the pasted item (the one that is currently selected and not the original)
-	QList<QGraphicsItem *> selected = diagram->selectedItems();
-	QVERIFY(!selected.isEmpty());
-	QGraphicsItem *pasted = nullptr;
-	for (QGraphicsItem *item : selected) {
-		if (item != rect) {
+	// Get the pasted item (the one that is currently selected and not the
+	// original)
+	QList<QGraphicsItem*> selected = diagram->selectedItems();
+	QVERIFY(! selected.isEmpty());
+	QGraphicsItem* pasted = nullptr;
+	for (QGraphicsItem* item : selected)
+	{
+		if (item != rect)
+		{
 			pasted = item;
 			break;
 		}
@@ -89,41 +98,73 @@ void tst_pasteaxislock::testAxisLockAndOriginalPositionSnap()
 	QVERIFY(pasted != nullptr);
 	const QPointF base_pos = pasted->pos();
 
-	// 1. Move to (300, 400) without locks
+	auto hasDashedLine = [diagram](Qt::Orientation orientation) -> bool {
+		for (auto *item : diagram->items()) {
+			if (auto *line = qgraphicsitem_cast<QGraphicsLineItem *>(item)) {
+				if (line->isVisible() && line->pen().style() == Qt::DashLine) {
+					const QLineF l = line->line();
+					if (orientation == Qt::Vertical && qFuzzyCompare(l.x1(), l.x2())) {
+						return true;
+					}
+					if (orientation == Qt::Horizontal && qFuzzyCompare(l.y1(), l.y2())) {
+						return true;
+					}
+				}
+			}
+		}
+		return false;
+	};
+
+	// 1. Move to (300, 400) without locks -> no dashed lines
 	QGraphicsSceneMouseEvent move1(QEvent::GraphicsSceneMouseMove);
 	move1.setScenePos(QPointF(300, 400));
 	paste->mouseMoveEvent(&move1);
 	// Delta from start_pos (200, 200) is (+100, +200)
 	QCOMPARE(pasted->pos(), base_pos + QPointF(100, 200));
+	QVERIFY(!hasDashedLine(Qt::Vertical));
+	QVERIFY(!hasDashedLine(Qt::Horizontal));
 
-	// 2. Press X: locks X axis at current 300
+	// 2. Press X: locks X axis at current 300 -> dashed line along Y axis (vertical)
 	QKeyEvent key_x(QEvent::KeyPress, Qt::Key_X, Qt::NoModifier);
 	paste->keyPressEvent(&key_x);
 	QVERIFY(key_x.isAccepted());
+	QVERIFY(hasDashedLine(Qt::Vertical));
+	QVERIFY(!hasDashedLine(Qt::Horizontal));
 
-	// Move mouse to (500, 600) -> X must stay at 300 (deltaX = +100), Y moves to 600 (deltaY = +400)
+	// Move mouse to (500, 600) -> X must stay at 300 (deltaX = +100), Y moves
+	// to 600 (deltaY = +400)
 	QGraphicsSceneMouseEvent move2(QEvent::GraphicsSceneMouseMove);
 	move2.setScenePos(QPointF(500, 600));
 	paste->mouseMoveEvent(&move2);
 	QCOMPARE(pasted->pos(), base_pos + QPointF(100, 400));
+	QVERIFY(hasDashedLine(Qt::Vertical));
 
 	// 3. Press Y: now BOTH X and Y are locked! Must snap to original position (100, 100)
+	// and show dashed lines in both directions (cross)
 	QKeyEvent key_y(QEvent::KeyPress, Qt::Key_Y, Qt::NoModifier);
 	paste->keyPressEvent(&key_y);
 	QVERIFY(key_y.isAccepted());
 	QCOMPARE(pasted->pos(), QPointF(100, 100));
+	QVERIFY(hasDashedLine(Qt::Vertical));
+	QVERIFY(hasDashedLine(Qt::Horizontal));
 
-	// Moving mouse while both are locked should NOT move the pasted item away from original position
+	// Moving mouse while both are locked should NOT move the pasted item away
+	// from original position
 	QGraphicsSceneMouseEvent move3(QEvent::GraphicsSceneMouseMove);
 	move3.setScenePos(QPointF(800, 900));
 	paste->mouseMoveEvent(&move3);
 	QCOMPARE(pasted->pos(), QPointF(100, 100));
+	QVERIFY(hasDashedLine(Qt::Vertical));
+	QVERIFY(hasDashedLine(Qt::Horizontal));
 
-	// 4. Press X again to unlock X: Y remains locked at original Y (100), X moves to mouse (800 - 200 = +600)
+	// 4. Press X again to unlock X: Y remains locked at original Y (100), X
+	// moves to mouse (800 - 200 = +600) -> only horizontal line visible
 	QKeyEvent key_x_unlock(QEvent::KeyPress, Qt::Key_X, Qt::NoModifier);
 	paste->keyPressEvent(&key_x_unlock);
 	QCOMPARE(pasted->pos().x(), base_pos.x() + 600);
 	QCOMPARE(pasted->pos().y(), 100.0);
+	QVERIFY(!hasDashedLine(Qt::Vertical));
+	QVERIFY(hasDashedLine(Qt::Horizontal));
 
 	// Move mouse to (850, 950) -> X follows to (850 - 200 = +650), Y stays at 100
 	QGraphicsSceneMouseEvent move4(QEvent::GraphicsSceneMouseMove);
@@ -132,34 +173,43 @@ void tst_pasteaxislock::testAxisLockAndOriginalPositionSnap()
 	QCOMPARE(pasted->pos().x(), base_pos.x() + 650);
 	QCOMPARE(pasted->pos().y(), 100.0);
 
-	// 5. Press Y again to unlock Y: both axes are free again
+	// 5. Press Y again to unlock Y: both axes are free again -> no dashed lines
 	QKeyEvent key_y_unlock(QEvent::KeyPress, Qt::Key_Y, Qt::NoModifier);
 	paste->keyPressEvent(&key_y_unlock);
 	QCOMPARE(pasted->pos(), base_pos + QPointF(650, 750));
+	QVERIFY(!hasDashedLine(Qt::Vertical));
+	QVERIFY(!hasDashedLine(Qt::Horizontal));
 
 	// 6. Test Y then X:
-	// Press Y to lock Y at 950 (deltaY = +750)
+	// Press Y to lock Y at 950 (deltaY = +750) -> horizontal dashed line visible
 	QKeyEvent key_y2(QEvent::KeyPress, Qt::Key_Y, Qt::NoModifier);
 	paste->keyPressEvent(&key_y2);
+	QVERIFY(!hasDashedLine(Qt::Vertical));
+	QVERIFY(hasDashedLine(Qt::Horizontal));
+
 	QGraphicsSceneMouseEvent move5(QEvent::GraphicsSceneMouseMove);
 	move5.setScenePos(QPointF(600, 400));
 	paste->mouseMoveEvent(&move5);
 	// deltaX = 600 - 200 = +400, Y locked at +750
 	QCOMPARE(pasted->pos(), base_pos + QPointF(400, 750));
 
-	// Now press X -> both locked -> snap to original position (100, 100)
+	// Now press X -> both locked -> snap to original position (100, 100) -> both dashed lines visible
 	QKeyEvent key_x2(QEvent::KeyPress, Qt::Key_X, Qt::NoModifier);
 	paste->keyPressEvent(&key_x2);
 	QCOMPARE(pasted->pos(), QPointF(100, 100));
+	QVERIFY(hasDashedLine(Qt::Vertical));
+	QVERIFY(hasDashedLine(Qt::Horizontal));
 
-	// Commit paste using Enter
+	// Commit paste using Enter -> dashed lines must disappear
 	QKeyEvent key_enter(QEvent::KeyPress, Qt::Key_Return, Qt::NoModifier);
 	paste->keyPressEvent(&key_enter);
 	diagram->clearEventInterface();
 
-	// Item must be landed at (100, 100)
+	// Item must be landed at (100, 100) and dashed lines must be gone
 	QCOMPARE(pasted->pos(), QPointF(100, 100));
 	QCOMPARE(pasted->scene(), diagram);
+	QVERIFY(!hasDashedLine(Qt::Vertical));
+	QVERIFY(!hasDashedLine(Qt::Horizontal));
 }
 
 void tst_pasteaxislock::testCustomShortcut()
@@ -208,4 +258,3 @@ void tst_pasteaxislock::testCustomShortcut()
 
 QET_APP_TEST_MAIN(tst_pasteaxislock)
 #include "tst_pasteaxislock.moc"
-
