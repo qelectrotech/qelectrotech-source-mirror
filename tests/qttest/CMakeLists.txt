@@ -535,6 +535,8 @@ qet_add_app_test(tst_plcio tst_plcio.cpp)
 # Device types: parts and their ways to be drawn, kept by .qet, .qetdb and
 # the user's library of .qetdt files.
 qet_add_app_test(tst_devicetype tst_devicetype.cpp)
+# Is a device drawn the way its type says: parts not drawn, symbols beyond.
+qet_add_app_test(tst_devicetypecheck tst_devicetypecheck.cpp)
 # A read-only project builds its lazy folios whole: shown, exported, written out.
 qet_add_app_test(tst_readonlyfolios tst_readonlyfolios.cpp)
 target_compile_definitions(tst_readonlyfolios PRIVATE
