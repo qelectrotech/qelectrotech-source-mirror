@@ -424,6 +424,12 @@ add_test(NAME tst_terminalnamecheck COMMAND tst_terminalnamecheck)
 target_include_directories(tst_terminalnamecheck PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_terminalnamecheck PRIVATE Qt::Test)
 
+# symbolgridcheck.h is header-only: the grid rule of --check-elements --grid.
+add_executable(tst_symbolgridcheck tst_symbolgridcheck.cpp)
+add_test(NAME tst_symbolgridcheck COMMAND tst_symbolgridcheck)
+target_include_directories(tst_symbolgridcheck PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_symbolgridcheck PRIVATE Qt::Test)
+
 # symbolscale.h is header-only: which factors the element editor offers
 # for scaling an element without taking its terminals off the grid.
 add_executable(tst_symbolscale tst_symbolscale.cpp)
