@@ -147,10 +147,14 @@ QString BomExport::groupedQuery(const GroupedOptions &options)
 		//The main part and each auxiliary block, as the same set of columns.
 		//The row number tells two elements with no part number apart.
 		//A price or a time is a number or nothing: an empty field must not
-		//count as 0, or a part nobody priced would look free.
+		//count as 0, or a part nobody priced would look free. Nor must text
+		//that is no plain number ("€12", "1,234.50"): SQLite's CAST would
+		//read it as 0 or 1.234, so it counts as no price.
 	const auto number = [](const QString &field) {
+		const QString value = QStringLiteral("REPLACE(TRIM(%1), ',', '.')").arg(field);
 		return QStringLiteral(
-			"CAST(REPLACE(NULLIF(TRIM(%1), ''), ',', '.') AS REAL)").arg(field);
+			"CASE WHEN %1 GLOB '*[0-9]*' AND %1 NOT GLOB '*[^0-9.]*' "
+			"AND %1 NOT GLOB '*.*.*' THEN CAST(%1 AS REAL) END").arg(value);
 	};
 		//Only read when asked for, so a list without costing runs on a
 		//database which has no price columns.

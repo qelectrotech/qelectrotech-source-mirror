@@ -226,6 +226,22 @@ class tst_groupedbom : public QObject
 			QCOMPARE(rows[1][8], QStringLiteral("22.5"));
 		}
 
+		void textThatIsNoNumberIsNoPrice()
+		{
+			addCostingColumns();
+			addPriced("K1", "A9", "€12", "");
+			addPriced("K2", "B1", "1,234.50", "");
+			addPriced("K3", "C1", "7", "");
+			BomExport::GroupedOptions o;
+			o.costing = true;
+			const auto rows = run(o);
+				// neither reads as 0 or 1.234: no price, and the total is K3's
+			QCOMPARE(rows[0].mid(7, 2), (QStringList{"", ""}));
+			QCOMPARE(rows[1].mid(7, 2), (QStringList{"", ""}));
+			QCOMPARE(rows[2].mid(7, 2), (QStringList{"7", "7"}));
+			QCOMPARE(rows[3][8], QStringLiteral("7"));
+		}
+
 		void countedRowsCostOnceEach()
 		{
 			addCostingColumns();
