@@ -199,6 +199,10 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/ui/duplicatelabelsdialog.h
   ${QET_DIR}/sources/ui/duplicatelabelsdialog.cpp
   ${QET_DIR}/sources/ui/devicetypecheckdialog.h
+  ${QET_DIR}/sources/ui/devicetypeeditor.h
+  ${QET_DIR}/sources/ui/devicetypeeditor.cpp
+  ${QET_DIR}/sources/ui/devicetypesdialog.h
+  ${QET_DIR}/sources/ui/devicetypesdialog.cpp
   ${QET_DIR}/sources/ui/devicetypecheckdialog.cpp
   ${QET_DIR}/sources/conductornumexport.cpp
   ${QET_DIR}/sources/wiringlistexport.h
