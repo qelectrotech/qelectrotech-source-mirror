@@ -2412,6 +2412,9 @@ qet_add_app_test(tst_potentialview tst_potentialview.cpp)
 # A core of a cable: section, colour and type are locked in the dialog and
 # show a small sign saying why, so an edit cannot write over the cable
 qet_add_app_test(tst_cablelockedfields tst_cablelockedfields.cpp)
+# IEC 60757 wire colour codes: a code picked from the list sets the colour
+# text and the drawing (green-yellow striped); typed text stays text.
+qet_add_app_test(tst_conductorcolorcodes tst_conductorcolorcodes.cpp)
 
 # Settings for every test. get_property(... TESTS) only sees the tests added
 # so far, so they wait for the end of this file: a test takes them wherever
