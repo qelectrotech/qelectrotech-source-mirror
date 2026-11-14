@@ -81,6 +81,15 @@ namespace DeviceTypeCheck
 	QVector<Device> check(QETProject *project);
 	Device checkDevice(Element *element);
 	QString partText(const DeviceType::Part &part);
+
+		/// The contacts linked to no master (a contact without its
+		/// device): those which name a device type, or all of them when
+		/// the project follows the device types. Call after check(),
+		/// which builds the lazy folios.
+	QList<Element *> unlinkedContacts(QETProject *project);
+		/// How many more contacts are linked to the master of @p device
+		/// than its type has contacts for; 0 when not too many
+	int extraContacts(const Device &device);
 }
 
 #endif // DEVICETYPECHECK_H

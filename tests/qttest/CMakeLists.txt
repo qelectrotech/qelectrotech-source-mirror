@@ -545,6 +545,8 @@ qet_add_app_test(tst_devicetypelink tst_devicetypelink.cpp)
 qet_add_app_test(tst_devicetypechooser tst_devicetypechooser.cpp)
 # Giving a device another device type, its contacts carried over
 qet_add_app_test(tst_devicetypechange tst_devicetypechange.cpp)
+# The device types listed, full and brief; contacts without their device
+qet_add_app_test(tst_devicetypelist tst_devicetypelist.cpp)
 # Giving a placed symbol the terminals of a part of its device type.
 qet_add_app_test(tst_devicetypeassign tst_devicetypeassign.cpp)
 # A read-only project builds its lazy folios whole: shown, exported, written out.

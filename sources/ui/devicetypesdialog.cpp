@@ -17,21 +17,22 @@
 */
 #include "devicetypesdialog.h"
 
-#include "../dataBase/projectdatabase.h"
 #include "../qetapp.h"
 #include "../qetmessagebox.h"
 #include "../qetproject.h"
 #include "../undocommand/setdevicetypecommand.h"
 #include "devicetypeeditor.h"
+#include "../devicetype/devicetypelist.h"
 
 #include <QDialogButtonBox>
+#include <QFileDialog>
 #include <QHBoxLayout>
 #include <QHash>
 #include <QHeaderView>
 #include <QLabel>
+#include <QMenu>
 #include <QMessageBox>
 #include <QPushButton>
-#include <QSqlQuery>
 #include <QTabWidget>
 #include <QTreeWidget>
 #include <QUndoStack>
@@ -93,9 +94,19 @@ DeviceTypesDialog::DeviceTypesDialog(QETProject *project, QWidget *parent,
 	m_remove = new QPushButton(tr("Delete"), this);
 	m_copy = new QPushButton(this);
 	m_copy->setObjectName(QStringLiteral("deviceTypeCopy"));
+	auto *list = new QPushButton(tr("Export list"), this);
+	list->setObjectName(QStringLiteral("deviceTypeExportList"));
+	list->setToolTip(tr("Save the device types of this tab as a CSV list"));
+	auto *list_menu = new QMenu(list);
+	list_menu->addAction(tr("Full list (every part and its terminals)..."), this,
+						 [this]() {exportList(DeviceTypeList::Kind::Full);});
+	list_menu->addAction(tr("Brief list (name and description)..."), this,
+						 [this]() {exportList(DeviceTypeList::Kind::Brief);});
+	list->setMenu(list_menu);
 	for (QPushButton *button : {add, m_duplicate, m_edit, m_remove, m_copy})
 		buttons->addWidget(button);
 	buttons->addStretch();
+	buttons->addWidget(list);
 	layout->addLayout(buttons);
 	connect(add, &QPushButton::clicked, this, &DeviceTypesDialog::newType);
 	connect(m_duplicate, &QPushButton::clicked, this, &DeviceTypesDialog::duplicate);
@@ -153,14 +164,7 @@ void DeviceTypesDialog::refresh()
 	const QString selected = selectedName();
 
 		//How many symbols name each type: a column of element_info
-	QHash<QString, int> used;
-	if (m_project && m_project->dataBase()) {
-		QSqlQuery query = m_project->dataBase()->newQuery(QStringLiteral(
-			"SELECT device_type, COUNT(*) FROM element_info "
-			"WHERE device_type IS NOT NULL AND device_type != '' GROUP BY device_type"));
-		while (query.next())
-			used.insert(query.value(0).toString(), query.value(1).toInt());
-	}
+	const QHash<QString, int> used = DeviceTypeList::usedBy(m_project);
 
 	const QString lang = QETApp::langFromSetting();
 	const auto fill = [&](QTreeWidget *list, const QList<DeviceType> &types, bool count) {
@@ -321,6 +325,34 @@ void DeviceTypesDialog::copySelected()
 			return;
 	}
 	copy(name, !library);
+}
+
+/**
+	@brief DeviceTypesDialog::listCsv
+	@return the device types of the tab shown, as a list of @p kind; the
+	brief list of the project's says how many symbols use each type
+*/
+QString DeviceTypesDialog::listCsv(DeviceTypeList::Kind kind) const
+{
+	QList<DeviceType> types;
+	for (const QString &name : names(inLibrary())) types << typeNamed(name, inLibrary());
+	const QHash<QString, int> used = DeviceTypeList::usedBy(m_project);
+	return DeviceTypeList::csv(types, kind, inLibrary() ? nullptr : &used);
+}
+
+void DeviceTypesDialog::exportList(DeviceTypeList::Kind kind)
+{
+	const QString path = QFileDialog::getSaveFileName(
+				this, tr("Export the list of device types"),
+				kind == DeviceTypeList::Kind::Full ? tr("device_types.csv")
+												   : tr("device_types_brief.csv"),
+				tr("CSV files (*.csv)"));
+	if (path.isEmpty()) return;
+	QString error;
+	if (!DeviceTypeList::write(path, listCsv(kind), &error))
+		QET::QetMessageBox::warning(this, tr("Export the list of device types"),
+									//: %1 is a file, %2 why it cannot be written
+									tr("Cannot write %1: %2").arg(path, error));
 }
 
 void DeviceTypesDialog::updateButtons()

@@ -53,6 +53,8 @@ namespace CLIExport {
 		  qelectrotech --export-nets    <project.qet> <output.json>
 		  qelectrotech --export-links   <project.qet> <output.csv>
 		  qelectrotech --check-device-types <project.qet> <output.csv>
+		  qelectrotech --export-device-types <project.qet> <output.csv>
+		  qelectrotech --export-device-types-brief <project.qet> <output.csv>
 		  qelectrotech --info           <project.qet> [output.json]
 		  qelectrotech --check-elements <element.elmt | directory>
 		  qelectrotech --resave         <project.qet> <output.qet>

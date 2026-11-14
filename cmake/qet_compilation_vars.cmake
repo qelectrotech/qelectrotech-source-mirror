@@ -386,6 +386,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/devicetype/devicetypelink.cpp
   ${QET_DIR}/sources/devicetype/devicetypechange.h
   ${QET_DIR}/sources/devicetype/devicetypechange.cpp
+  ${QET_DIR}/sources/devicetype/devicetypelist.h
+  ${QET_DIR}/sources/devicetype/devicetypelist.cpp
   ${QET_DIR}/sources/devicetype/devicetypeassign.h
   ${QET_DIR}/sources/devicetype/devicetypecheck.cpp
   ${QET_DIR}/sources/devicetype/devicetypecheck.h
