@@ -22,6 +22,7 @@
 #include <diagramevent/diagrameventaddelement.h>
 #include <diagramview.h>
 #include <qet.h>
+#include <qetapp.h>
 #include <qetdiagrameditor.h>
 #include <qetgraphicsitem/element.h>
 #include <projectview.h>
@@ -175,7 +176,7 @@ void DeviceTypeCheckDialog::refresh()
 		//: %1 is the device, such as "=P1+CP1-K12"
 		root->setText(0, tr("%1: %2 of %n parts drawn", nullptr, parts)
 					  .arg(device.designation).arg(parts - device.missing.size()));
-		root->setToolTip(0, device.type.text());
+		root->setToolTip(0, device.type.text(QETApp::langFromSetting()));
 		root->setIcon(0, style()->standardIcon(device.complete()
 						  ? QStyle::SP_DialogApplyButton : QStyle::SP_MessageBoxCritical));
 		for (int part : device.missing) {

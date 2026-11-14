@@ -268,6 +268,9 @@ class tst_devicetypelist : public QObject
 				 QStringLiteral("RELAY;Relais;;;;;;"));
 			//A full locale finds its base language
 		QCOMPARE(relay.text(QStringLiteral("fr_CA")), QStringLiteral("Relais"));
+			//An empty name is no name
+		relay.names.insert(QStringLiteral("fr"), QString());
+		QCOMPARE(relay.text(QStringLiteral("fr_CA")), QStringLiteral("Relay"));
 	}
 };
 

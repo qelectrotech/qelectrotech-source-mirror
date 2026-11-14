@@ -30,11 +30,11 @@
 */
 QString DeviceType::text(const QString &lang) const
 {
-	if (names.contains(lang)) return names.value(lang);
-		//pt_BR, de_DE: the base language, as NamesList::name()
+		//pt_BR, de_DE: then the base language, as NamesList::name(); an
+		//empty name is no name
 	const QString base = lang.section(QLatin1Char('_'), 0, 0);
-	if (names.contains(base)) return names.value(base);
-	if (names.contains(QStringLiteral("en"))) return names.value(QStringLiteral("en"));
+	for (const QString &key : {lang, base, QStringLiteral("en")})
+		if (!names.value(key).isEmpty()) return names.value(key);
 	return names.isEmpty() ? QString() : names.first();
 }
 

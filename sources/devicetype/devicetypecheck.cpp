@@ -336,8 +336,10 @@ namespace DeviceTypeCheck
 			Element *symbol = device.symbols.at(s).data();
 			if (!symbol || !(symbol->linkType() & Element::Slave) || headOf(symbol) == symbol)
 				continue;
-			++contacts;
 			const int part = device.drawn.value(s, Beyond);
+				//A contact table or picture without terminals is no contact
+			if (part == NotAPart) continue;
+			++contacts;
 			if (part >= 0) by_contact.insert(part);
 		}
 		int room = 0;
