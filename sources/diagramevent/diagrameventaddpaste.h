@@ -28,6 +28,7 @@
 
 class Bridge;
 class CablePart;
+class QGraphicsLineItem;
 class QStatusBar;
 
 /**
@@ -103,6 +104,10 @@ class DiagramEventAddPaste : public DiagramEventInterface
 
 	private:
 		void moveTo(const QPointF &scene_pos);
+		void updateEffectivePosition();
+		void updateHelpLines();
+		void removeHelpLines();
+		bool matchesShortcut(const QKeyEvent *event, const QString &action_id) const;
 		void commit();
 		void cancel();
 		void showHint();
@@ -155,6 +160,16 @@ class DiagramEventAddPaste : public DiagramEventInterface
 		///than testing m_initial_cursor.isNull(), which cannot tell "not
 		///set yet" from a baseline that is legitimately scene (0,0).
 	bool m_baseline_captured{false};
+		///Whether the X or Y movement axis is currently locked.
+	bool m_lock_x{false};
+	bool m_lock_y{false};
+		///The latest cursor position received from mouseMoveEvent.
+	QPointF m_current_pos;
+		///The original source folio position (grid-snapped top-left) of the copied items.
+	QPointF m_original_pos;
+		///Guide lines indicating remaining movement axes during paste placement.
+	QGraphicsLineItem *m_help_line_x{nullptr};
+	QGraphicsLineItem *m_help_line_y{nullptr};
 	QPointer<QStatusBar> m_status_bar;
 	bool m_finished{false};
 };
