@@ -118,6 +118,21 @@ if [[ "$QT_FROM" = "aqt" ]] ; then
         make -j$CPU_CORES
         make install
 
+        # sqlite's Makefile builds a universal sqlite3.o, but archives it
+        # with "ar", which does not understand universal objects: lipo sees
+        # no architecture in the resulting libsqlite3.a. Rebuild it: one
+        # thin object and one archive per architecture (libtool -static),
+        # merged with lipo.
+        rm -f "$DEPS_PREFIX/lib/libsqlite3.a"
+        THIN_LIBS=""
+        for _a in $OSX_ARCHS_LIST ; do
+            lipo sqlite3.o -thin "$_a" -output "sqlite3-$_a.o" 2>/dev/null \
+                || cp sqlite3.o "sqlite3-$_a.o"
+            libtool -static -o "libsqlite3-$_a.a" "sqlite3-$_a.o"
+            THIN_LIBS="$THIN_LIBS libsqlite3-$_a.a"
+        done
+        lipo -create $THIN_LIBS -output "$DEPS_PREFIX/lib/libsqlite3.a"
+
         cd "$ORIG_WD"
 
         # hidapi: CMake, darwin backend (IOKit)
