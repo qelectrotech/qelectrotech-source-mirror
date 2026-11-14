@@ -200,6 +200,8 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	ui->m_jump_zoom_sb->setValue(DiagramView::jumpZoom());
 	ui->m_terminal_conductor_color->setChecked(Terminal::takesConductorColor());
 	ui->m_strip_wires->setChecked(QetSettings::stripWiresShown());
+	ui->m_strip_cable_core_targets->setChecked(
+		QetSettings::stripCableCoreTargetsShown());
 	ui->m_strip_sort_by_label->setChecked(QetSettings::stripSortedByLabel());
 	ui->m_new_folio_group_cb->setChecked(QetSettings::newFolioTakesPreviousGroup());
 	ui->m_macro_ask_labels_cb->setChecked(QetSettings::askLabelsPlacingMacro());
@@ -512,15 +514,15 @@ void GeneralConfigurationPage::applyConf()
 			for (Diagram *diagram : project->diagrams())
 				diagram->update();
 	}
-	if (ui->m_strip_wires->isChecked() != QetSettings::stripWiresShown()) {
-			//The wires are drawn by the strip itself, so every folio
-			//open has to be drawn again
+	const bool core_targets = ui->m_strip_cable_core_targets->isChecked();
+	if (ui->m_strip_wires->isChecked() != QetSettings::stripWiresShown()
+		|| core_targets != QetSettings::stripCableCoreTargetsShown()) {
 		QetSettings::setStripWiresShown(ui->m_strip_wires->isChecked());
+		QetSettings::setStripCableCoreTargetsShown(core_targets);
 		for (QETProject *project : QETApp::registeredProjects())
-			for (Diagram *diagram : project->diagrams())
+			for (Diagram *diagram : project->builtFolios())
 			{
-					//The strips report their size again: with the
-					//setting on they reach further up than before
+					//Wire and destination labels can change the strip bounds.
 				diagram->refreshTerminalStrips();
 				diagram->update();
 			}

@@ -30,6 +30,7 @@
 #include <diagram.h>
 #include <cable/cable.h>
 #include <cable/cablemanager.h>
+#include <connectionsymbols.h>
 #include <qetproject.h>
 #include <qetgraphicsitem/structureboxitem.h>
 
@@ -131,6 +132,77 @@ namespace
 			return label;
 		}
 		return label + QLatin1Char(':') + name;
+	}
+
+	// Follow a core past reports and wire junctions, stopping at devices.
+	// A report shared by several cores must keep its cable and slot.
+	QStringList coreDestinations(Terminal *start, const Conductor *first,
+								 const TerminalStrip *strip)
+	{
+		const auto reference = first->ownProperties();
+		struct Step {
+			Terminal *pin;
+			bool through_report;
+		};
+		QList<Step> pending;
+		QSet<Terminal *> visited{start};
+		QSet<const Conductor *> walked;
+		QStringList destinations;
+		const auto cross = [&](const Conductor *wire, Terminal *pin) {
+			if (walked.contains(wire)) return;
+			walked.insert(wire);
+			auto *other = wire->terminal1 == pin ? wire->terminal2
+												: wire->terminal1;
+			if (other) pending.append({other, false});
+		};
+		cross(first, start);
+		while (!pending.isEmpty()) {
+			const auto step = pending.takeLast();
+			auto *pin = step.pin;
+			auto *element = pin->parentElement();
+			if (!element || visited.contains(pin)) continue;
+			visited.insert(pin);
+
+			const bool report = element->linkType() & Element::AllReport;
+			if (report && !step.through_report) {
+				for (auto *other : relatedPotentialTerminal(pin, true, false)) {
+					pending.append({other, true});
+				}
+				continue;
+			}
+			if (!report && !element->isCorner() && !element->isShownAsDot()
+				&& !ConnectionSymbols::isJunction(element->location())) {
+				const auto *terminal = qobject_cast<TerminalElement *>(element);
+				// Do not follow a core back into the strip's own wiring.
+				if (terminal && terminal->parentTerminalStrip() == strip) {
+					continue;
+				}
+				const QString target = endDesignation(pin);
+				if (!target.isEmpty() && !destinations.contains(target)) {
+					destinations.append(target);
+				}
+				continue;
+			}
+
+			const auto exits = report ? QList<Terminal *>{pin}
+									  : element->terminals();
+			for (auto *exit : exits) {
+				for (auto *wire : exit->conductors()) {
+					const auto properties = wire->ownProperties();
+					const bool same_core = !reference.m_cable_uuid.isNull()
+						&& properties.m_cable_uuid == reference.m_cable_uuid
+						&& reference.m_cable_slot >= 0
+						&& properties.m_cable_slot == reference.m_cable_slot;
+					const bool ordinary_wire = properties.m_cable_uuid.isNull()
+						&& properties.m_cable.isEmpty();
+					if (same_core || (!report && ordinary_wire)) {
+						cross(wire, exit);
+					}
+				}
+			}
+		}
+		destinations.sort();
+		return destinations;
 	}
 
 		/**
@@ -511,6 +583,37 @@ QString RealTerminal::cableWire() const
 		return terminalData().m_informations.value(cableWireInfoKey()).toString();
 	}
 	return QString();
+}
+
+QStringList RealTerminal::cableCoreTargets(const QString &cable_name,
+										  const QUuid &cable_uuid,
+										  int slot) const
+{
+	QStringList lines;
+	auto *strip = parentStrip();
+	if (!m_element || !strip || !strip->project()) return lines;
+	for (auto *pin : m_element->terminals()) {
+		for (auto *wire : pin->conductors()) {
+			const auto properties = wire->ownProperties();
+			const auto *cable = CableManager::cableByUuid(
+				strip->project(), properties.m_cable_uuid);
+			if (!cable || (cable_uuid.isNull()
+				? cable->designation() != cable_name
+				: cable->uuid() != cable_uuid)
+				|| (slot >= 0 && properties.m_cable_slot != slot)) continue;
+
+			QString core = cable->colorOfCore(properties.m_cable_slot);
+			if (core.isEmpty() && properties.m_cable_slot >= 0) {
+				core = QString::number(properties.m_cable_slot + 1);
+			}
+			if (core.isEmpty()) continue;
+			for (const auto &target : coreDestinations(pin, wire, strip)) {
+				const QString line = QStringLiteral("%1 \u2192 %2").arg(core, target);
+				if (!lines.contains(line)) lines.append(line);
+			}
+		}
+	}
+	return lines;
 }
 
 /**
