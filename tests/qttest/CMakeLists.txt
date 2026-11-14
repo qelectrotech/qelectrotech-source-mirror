@@ -535,6 +535,8 @@ qet_add_app_test(tst_plcio tst_plcio.cpp)
 # Device types: parts and their ways to be drawn, kept by .qet, .qetdb and
 # the user's library of .qetdt files.
 qet_add_app_test(tst_devicetype tst_devicetype.cpp)
+# Is a device drawn the way its type says: parts not drawn, symbols beyond.
+qet_add_app_test(tst_devicetypecheck tst_devicetypecheck.cpp)
 # Part data: unit price, labour time and size, kept by .qet and .qetdb,
 # columns of the parts list; every field the export offers is a column.
 qet_add_app_test(tst_partdata tst_partdata.cpp)

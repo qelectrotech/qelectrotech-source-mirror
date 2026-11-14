@@ -198,6 +198,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/duplicatelabels.cpp
   ${QET_DIR}/sources/ui/duplicatelabelsdialog.h
   ${QET_DIR}/sources/ui/duplicatelabelsdialog.cpp
+  ${QET_DIR}/sources/ui/devicetypecheckdialog.h
+  ${QET_DIR}/sources/ui/devicetypecheckdialog.cpp
   ${QET_DIR}/sources/conductornumexport.cpp
   ${QET_DIR}/sources/wiringlistexport.h
   ${QET_DIR}/sources/wiringlistexport.cpp
@@ -373,6 +375,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/autoNum/numerotationcontext.h
   ${QET_DIR}/sources/devicetype/devicetype.cpp
   ${QET_DIR}/sources/devicetype/devicetype.h
+  ${QET_DIR}/sources/devicetype/devicetypecheck.cpp
+  ${QET_DIR}/sources/devicetype/devicetypecheck.h
   ${QET_DIR}/sources/autoNum/renumberconductorscommand.cpp
   ${QET_DIR}/sources/autoNum/renumberconductorscommand.h
   ${QET_DIR}/sources/autoNum/renumberelementscommand.cpp

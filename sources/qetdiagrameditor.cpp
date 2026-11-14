@@ -100,6 +100,7 @@
 #include "ui/conductorcolortoolbutton.h"
 #include "ui/diagrambgcolorbutton.h"
 #include "ui/duplicatelabelsdialog.h"
+#include "ui/devicetypecheckdialog.h"
 #include "ui/potentialcheckdialog.h"
 #include "ui/duplicateoffsetdialog.h"
 #include "ui/jumptoelementdialog.h"
@@ -1231,6 +1232,18 @@ void QETDiagramEditor::setUpActions()
 				dialog->show();
 			}
 		});
+	// Devices not drawn the way their device type says
+	m_check_device_types = new QAction(tr("Check device types..."), this);
+	m_check_device_types->setObjectName(QStringLiteral("checkDeviceTypes"));
+	m_check_device_types->setStatusTip(tr("Lists the parts of each device's type which are not drawn, and the symbols beyond it", "status bar tip"));
+	ShortcutManager::instance().registerAction(m_check_device_types, "diagrameditor.check_device_types", tr("Diagram editors"), QKeySequence());
+	connect(m_check_device_types, &QAction::triggered, this, [this]() {
+		if (ProjectView *view = currentProjectView()) {
+			auto *dialog = new DeviceTypeCheckDialog(view->project(), this);
+			dialog->setAttribute(Qt::WA_DeleteOnClose);
+			dialog->show();
+		}
+	});
 	// Mixed potential types on one potential
 	m_check_potentials = new QAction(tr("Check potential types..."), this);
 	m_check_potentials->setObjectName(QStringLiteral("checkPotentialTypes"));
@@ -2326,6 +2339,7 @@ void QETDiagramEditor::setUpMenu()
 	menu_project -> addAction(m_clean_project);
 	menu_project->addAction(m_find_duplicate_labels);
 	menu_project->addAction(m_check_potentials);
+	menu_project->addAction(m_check_device_types);
 	menu_project->addAction(m_project_languages);
 	menu_project -> addSeparator();
 	menu_project -> addAction(m_csv_export);
@@ -3952,6 +3966,7 @@ void QETDiagramEditor::slot_updateActions()
 	m_project_edit_properties     -> setEnabled(opened_project);
 	m_find_duplicate_labels->setEnabled(opened_project);
 	m_check_potentials->setEnabled(opened_project);
+	m_check_device_types->setEnabled(opened_project);
 	m_project_languages->setEnabled(opened_project);
 	m_project_history             -> setEnabled(opened_project);
 	m_export_delivery             -> setEnabled(opened_project);
