@@ -17,188 +17,75 @@
 */
 #include "materialselectiondialog.h"
 
-#include "materialentrydialog.h"
-#include <qetmessagebox.h>
 #include "ui_materialselectiondialog.h"
 
-#include <QAbstractButton>
-#include <QAbstractItemView>
+#include <qetapp.h>
+#include <qetinformation.h>
+#include <qetmessagebox.h>
+
+#include <QComboBox>
+#include <QFont>
 #include <QHeaderView>
-#include <QItemSelectionModel>
 #include <QLineEdit>
+#include <QMap>
 #include <QPushButton>
-#include <QScrollBar>
-#include <QWheelEvent>
+#include <QStyledItemDelegate>
+#include <QTableWidgetItem>
+#include <QTreeWidgetItem>
+
+namespace {
+
+constexpr int SourceRowRole = Qt::UserRole;
+constexpr int ColumnKeyRole = Qt::UserRole;
 
 /**
-	@brief MaterialTableModel::MaterialTableModel
-	Constructor
-	@param parent parent object
+	@brief Delegate attaching QETInformation::NumericInfoValidator when editing
+	numeric columns in the right-hand Field/Value table.
 */
-MaterialTableModel::MaterialTableModel(QObject *parent) :
-	QAbstractTableModel(parent)
+class MaterialValueDelegate : public QStyledItemDelegate
 {
-}
-
-/**
-	@brief MaterialTableModel::setMaterial
-	Replace the displayed file content
-	@param columns
-	@param records
-*/
-void MaterialTableModel::setMaterial(const QStringList &columns, const QList<MaterialRecord> &records)
-{
-	beginResetModel();
-	m_columns = columns;
-	m_records = records;
-	endResetModel();
-}
-
-/**
-	@brief MaterialTableModel::record
-	@param row
-	@return the record of that row, a null one when out of range
-*/
-MaterialRecord MaterialTableModel::record(int row) const
-{
-	return m_records.value(row);
-}
-
-/**
-	@brief MaterialTableModel::rowCount
-	@param parent
-	@return
-*/
-int MaterialTableModel::rowCount(const QModelIndex &parent) const
-{
-	return parent.isValid() ? 0 : m_records.size();
-}
-
-/**
-	@brief MaterialTableModel::columnCount
-	@param parent
-	@return
-*/
-int MaterialTableModel::columnCount(const QModelIndex &parent) const
-{
-	return parent.isValid() ? 0 : m_columns.size();
-}
-
-/**
-	@brief MaterialTableModel::data
-	@param index
-	@param role
-	@return
-*/
-QVariant MaterialTableModel::data(const QModelIndex &index, int role) const
-{
-	if (!index.isValid()
-		|| index.row() < 0 || index.row() >= m_records.size()
-		|| index.column() < 0 || index.column() >= m_columns.size())
-	{
-		return QVariant();
-	}
-
-	const QString value = m_records.at(index.row()).value(m_columns.at(index.column()));
-
-	switch (role)
-	{
-		case Qt::DisplayRole:
-		case Qt::ToolTipRole:
-			//The tooltip shows the whole cell once the column is too narrow
-			return value;
-		default:
-			return QVariant();
-	}
-}
-
-/**
-	@brief MaterialTableModel::headerData
-	@param section
-	@param orientation
-	@param role
-	@return
-*/
-QVariant MaterialTableModel::headerData(int section, Qt::Orientation orientation, int role) const
-{
-	if (role != Qt::DisplayRole) {
-		return QVariant();
-	}
-
-	if (orientation == Qt::Horizontal)
-	{
-		if (section >= 0 && section < m_columns.size()) {
-			return MaterialList::translatedColumn(m_columns.at(section));
+	public:
+		explicit MaterialValueDelegate(QObject *parent = nullptr) :
+			QStyledItemDelegate(parent)
+		{
 		}
-		return QVariant();
-	}
 
-	return section + 1;
-}
+		QWidget *createEditor(QWidget *parent,
+							  const QStyleOptionViewItem &option,
+							  const QModelIndex &index) const override
+		{
+			QWidget *editor = QStyledItemDelegate::createEditor(parent, option, index);
+			if (auto *line_edit = qobject_cast<QLineEdit *>(editor))
+			{
+				line_edit->setClearButtonEnabled(true);
+				const QModelIndex field_index = index.sibling(index.row(), 0);
+				const QString column = field_index.data(ColumnKeyRole).toString();
+				if (QETInformation::isNumericInfoKey(column))
+				{
+					line_edit->setValidator(
+						new QETInformation::NumericInfoValidator(column, line_edit));
+					line_edit->setPlaceholderText(
+						MaterialSelectionDialog::tr("e.g. 80.5"));
+				}
+			}
+			return editor;
+		}
+};
 
-/**
-	@brief MaterialFilterProxy::MaterialFilterProxy
-	Constructor
-	@param model the material table model, also used as source model
-	@param parent parent object
-*/
-MaterialFilterProxy::MaterialFilterProxy(MaterialTableModel *model, QObject *parent) :
-	QSortFilterProxyModel(parent),
-	m_model(model)
+bool recordMatchesTokens(const MaterialRecord &record,
+						 const QStringList &columns,
+						 const QStringList &tokens)
 {
-	setSourceModel(model);
-	setFilterCaseSensitivity(Qt::CaseInsensitive);
-	setDynamicSortFilter(true);
-}
-
-/**
-	@brief MaterialFilterProxy::setTokens
-	Set the words every row must hold to be shown.
-	@param tokens
-*/
-void MaterialFilterProxy::setTokens(const QStringList &tokens)
-{
-	if (m_tokens == tokens) {
-		return;
-	}
-	m_tokens = tokens;
-		//The plain string filter of the base class is not what keeps the
-		//rows (filterAcceptsRow() below is), setting it is only how the
-		//base class is told to run the filter again.
-	setFilterFixedString(tokens.join(QLatin1Char(' ')));
-}
-
-/**
-	@brief MaterialFilterProxy::filterAcceptsRow
-	A row is kept when each token is found in at least one of its cells :
-	the words may be spread over different columns, as a search for
-	"Hilfsschalter Schneider" expects.
-
-	Every token walks every cell of the row, which means the whole file
-	on every keystroke : well within reach for a catalogue, to be
-	revisited before someone imports a supplier export of tens of
-	thousands of lines.
-	@param source_row
-	@param source_parent
-	@return
-*/
-bool MaterialFilterProxy::filterAcceptsRow(int source_row, const QModelIndex &source_parent) const
-{
-	Q_UNUSED(source_parent)
-
-	if (m_tokens.isEmpty() || !m_model) {
+	if (tokens.isEmpty()) {
 		return true;
 	}
 
-	const QStringList columns = m_model->columns();
-	for (const QString &token : m_tokens)
+	for (const QString &token : tokens)
 	{
 		bool found = false;
-		for (int column = 0; column < columns.size(); ++column)
+		for (const QString &column : columns)
 		{
-			const QModelIndex index = m_model->index(source_row, column);
-			const QString value = m_model->data(index, Qt::DisplayRole).toString();
-			if (value.contains(token, Qt::CaseInsensitive))
+			if (record.value(column).contains(token, Qt::CaseInsensitive))
 			{
 				found = true;
 				break;
@@ -208,334 +95,10 @@ bool MaterialFilterProxy::filterAcceptsRow(int source_row, const QModelIndex &so
 			return false;
 		}
 	}
-
 	return true;
 }
 
-/**
-	@brief MaterialSelectionDialog::MaterialSelectionDialog
-	Constructor
-	@param path path of the material file
-	@param parent parent widget
-*/
-MaterialSelectionDialog::MaterialSelectionDialog(const QString &path,
-												 QWidget *parent) :
-	QDialog(parent),
-	ui(new Ui::MaterialSelectionDialog),
-	m_path(path)
-{
-	ui->setupUi(this);
-
-	m_model = new MaterialTableModel(this);
-	m_proxy = new MaterialFilterProxy(m_model, this);
-
-	ui->m_table_view->setModel(m_proxy);
-	ui->m_table_view->setSortingEnabled(true);
-	ui->m_table_view->horizontalHeader()->setStretchLastSection(true);
-
-		//The wheel is taken in hand here : it moves the rows, and the
-		//columns when the movement is horizontal or Shift is held.
-	ui->m_table_view->viewport()->installEventFilter(this);
-
-		//The row numbers are the order of the file : clicking them, or the
-		//corner just above them, sorts the table by them, which means the
-		//table is no longer sorted at all.
-		//
-		//QTableView keeps that corner button to itself, so the only way to
-		//reach it is the name Qt gives that private class. Nothing breaks
-		//if the name ever changes : the row numbers below stay connected
-		//and only this shortcut disappears.
-	for (QAbstractButton *button : ui->m_table_view->findChildren<QAbstractButton *>())
-	{
-		if (button->inherits("QTableCornerButton")) {
-			connect(button, &QAbstractButton::clicked,
-					this, &MaterialSelectionDialog::resetSorting);
-		}
-	}
-	ui->m_table_view->verticalHeader()->setSectionsClickable(true);
-	connect(ui->m_table_view->verticalHeader(), &QHeaderView::sectionClicked,
-			this, &MaterialSelectionDialog::resetSorting);
-
-	ui->m_button_box->button(QDialogButtonBox::Ok)->setText(tr("Apply"));
-	ui->m_button_box->button(QDialogButtonBox::Cancel)->setText(tr("Cancel"));
-
-	connect(ui->m_search_edit, &QLineEdit::textChanged,
-			this, &MaterialSelectionDialog::searchChanged);
-	if (QItemSelectionModel *selection_model = ui->m_table_view->selectionModel())
-	{
-		connect(selection_model, &QItemSelectionModel::selectionChanged, this,
-				[this](const QItemSelection &, const QItemSelection &) { updateApplyButton(); });
-	}
-
-	reload();
-
-	if (const QSize saved_size = MaterialList::savedDialogSize(); saved_size.isValid()) {
-		resize(saved_size);
-	}
-
-	const int description_column = m_data.columns.indexOf(QStringLiteral("description"));
-	if (description_column >= 0) {
-		ui->m_table_view->sortByColumn(description_column, Qt::AscendingOrder);
-	}
-
-		//Last, so that the columns the user widened, moved or sorted last
-		//time are the ones he finds again.
-	restoreViewState();
-
-	updateApplyButton();
-}
-
-/**
-	@brief MaterialSelectionDialog::~MaterialSelectionDialog
-	Destructor
-*/
-MaterialSelectionDialog::~MaterialSelectionDialog()
-{
-	delete ui;
-}
-
-/**
-	@brief MaterialSelectionDialog::restoreViewState
-	Give the columns back the width, the place and the order they had the
-	last time the window was closed.
-*/
-void MaterialSelectionDialog::restoreViewState()
-{
-	const QByteArray state = MaterialList::savedHeaderState();
-	if (state.isEmpty()) {
-		return;
-	}
-	ui->m_table_view->horizontalHeader()->restoreState(state);
-
-		//Every column of the file is shown, even one an older version of
-		//the window had hidden because no record used it yet.
-	for (int column = 0; column < ui->m_table_view->model()->columnCount(); ++column) {
-		ui->m_table_view->setColumnHidden(column, false);
-	}
-}
-
-/**
-	@brief MaterialSelectionDialog::saveViewState
-	Remember how the columns were laid out, and how big the window was.
-*/
-void MaterialSelectionDialog::saveViewState()
-{
-	MaterialList::saveHeaderState(ui->m_table_view->horizontalHeader()->saveState());
-	MaterialList::saveDialogSize(size());
-}
-
-/**
-	@brief MaterialSelectionDialog::resetSorting
-	Give the table back the order of the file: no column sorted and no
-	arrow in the header, the rows counting from one down again.
-*/
-void MaterialSelectionDialog::resetSorting()
-{
-		//Sorting by the row numbers is sorting by nothing : without a
-		//column to sort by, the proxy writes the rows the way the file
-		//does.
-	m_proxy->sort(-1, Qt::AscendingOrder);
-	ui->m_table_view->horizontalHeader()->setSortIndicator(-1, Qt::AscendingOrder);
-}
-
-/**
-	@brief MaterialSelectionDialog::done
-	Every way out of the window goes through here, so a column resized by
-	the user is never lost, be it "Apply", "Cancel" or the window manager
-	close button.
-	@param result
-*/
-void MaterialSelectionDialog::done(int result)
-{
-	saveViewState();
-	QDialog::done(result);
-}
-
-/**
-	@brief MaterialSelectionDialog::eventFilter
-	The table takes the wheel in hand: the rows must move up and down and
-	the columns left and right, whether the platform does anything with
-	wheel events or not.
-	@param watched
-	@param event
-	@return true when the event was handled here
-*/
-bool MaterialSelectionDialog::eventFilter(QObject *watched, QEvent *event)
-{
-	if (watched == ui->m_table_view->viewport() && event->type() == QEvent::Wheel)
-	{
-		scrollTable(static_cast<QWheelEvent *>(event));
-		return true;
-	}
-	return QDialog::eventFilter(watched, event);
-}
-
-/**
-	@brief wheelAmount
-	Turn one wheel movement into an amount to scroll.
-
-	@param delta the movement, in eighths of a degree (120 per notch) or
-	in pixels, depending on the device
-	@param counting_items true when the scroll bar counts rows and columns
-	instead of pixels, which is how the scroll bars of a table work
-	@return how far the scroll bar moves, in its own unit
-*/
-static int wheelAmount(int delta, bool counting_items)
-{
-	if (counting_items) {
-		return 3 * qRound(static_cast<double>(delta) / static_cast<int>(QWheelEvent::DefaultDeltasPerStep));
-	}
-	return delta;
-}
-
-/**
-	@brief MaterialSelectionDialog::scrollTable
-	Scroll the table with the wheel, in both directions.
-
-	A wheel which only turns moves the rows. A movement reported on the
-	horizontal axis (a wheel which tilts, a touchpad swiped sideways), or
-	Shift held down on a plain wheel, moves the columns instead, which is
-	how the rest of a wide catalogue is reached.
-
-	Three rows or columns travel with every notch, the same amount Qt
-	itself scrolls when it gets the wheel.
-	@param event
-*/
-void MaterialSelectionDialog::scrollTable(QWheelEvent *event)
-{
-	QPoint delta = event->angleDelta();
-	if (delta.isNull()) {
-		delta = event->pixelDelta();
-	}
-
-		//Shift turns the wheel movement sideways.
-	if ((event->modifiers() & Qt::ShiftModifier) && delta.x() == 0 && delta.y() != 0) {
-		delta.setX(delta.y());
-		delta.setY(0);
-	}
-	if (delta.isNull()) {
-		return;
-	}
-
-	if (delta.y() != 0 && ui->m_table_view->verticalScrollBar())
-	{
-		const bool counting_rows =
-				ui->m_table_view->verticalScrollMode() == QAbstractItemView::ScrollPerItem;
-		QScrollBar *bar = ui->m_table_view->verticalScrollBar();
-		bar->setValue(bar->value() - wheelAmount(delta.y(), counting_rows));
-	}
-
-	if (delta.x() != 0 && ui->m_table_view->horizontalScrollBar())
-	{
-		const bool counting_columns =
-				ui->m_table_view->horizontalScrollMode() == QAbstractItemView::ScrollPerItem;
-		QScrollBar *bar = ui->m_table_view->horizontalScrollBar();
-		bar->setValue(bar->value() - wheelAmount(delta.x(), counting_columns));
-	}
-}
-
-/**
-	@brief MaterialSelectionDialog::reload
-	Read the material file again, so that anything the user saved from his
-	spreadsheet since the dialog was built shows up.
-*/
-void MaterialSelectionDialog::reload()
-{
-	QString error;
-	MaterialListData data;
-
-	if (!MaterialList::load(m_path, &data, &error))
-	{
-		QET::QetMessageBox::warning(this,
-									tr("Cannot read"),
-									tr("Cannot read the file:\n%1\n%2")
-										.arg(m_path, error));
-		data = MaterialListData();
-	}
-
-	m_data = data;
-	m_model->setMaterial(m_data.columns, m_data.records);
-	updateCount();
-}
-
-/**
-	@brief MaterialSelectionDialog::updateCount
-	Tell how many entries are shown.
-*/
-void MaterialSelectionDialog::updateCount()
-{
-	const int total = m_model->rowCount();
-	const int shown = m_proxy->rowCount();
-
-	if (m_proxy->tokens().isEmpty()) {
-		ui->m_count_label->setText(tr("Entries: %1").arg(total));
-	} else {
-		ui->m_count_label->setText(tr("Entries: %1 of %2").arg(shown).arg(total));
-	}
-}
-
-/**
-	@brief MaterialSelectionDialog::updateApplyButton
-	Apply is only meaningful with an entry selected.
-*/
-void MaterialSelectionDialog::updateApplyButton()
-{
-	QPushButton *button = ui->m_button_box->button(QDialogButtonBox::Ok);
-	if (button) {
-		button->setEnabled(!selectedRecord().values.isEmpty());
-	}
-}
-
-/**
-	@brief MaterialSelectionDialog::searchChanged
-	Refilter the table each time the search field changes.
-	@param text
-*/
-void MaterialSelectionDialog::searchChanged(const QString &text)
-{
-	m_proxy->setTokens(text.simplified().split(QLatin1Char(' '), Qt::SkipEmptyParts));
-	updateCount();
-	updateApplyButton();
-}
-
-/**
-	@brief MaterialSelectionDialog::selectedRecord
-	@return the selected entry, a null one when nothing is selected
-*/
-MaterialRecord MaterialSelectionDialog::selectedRecord() const
-{
-	if (!m_proxy || !ui->m_table_view->selectionModel()) {
-		return MaterialRecord();
-	}
-
-	const QModelIndexList rows = ui->m_table_view->selectionModel()->selectedRows();
-	if (rows.isEmpty()) {
-		return MaterialRecord();
-	}
-
-	const QModelIndex source = m_proxy->mapToSource(rows.first());
-	if (!source.isValid()) {
-		return MaterialRecord();
-	}
-
-	return m_model->record(source.row());
-}
-
-/**
-	@brief sameEntry
-	Tell whether two records describe the same article of the file.
-
-	The maps are not compared as they are: an entry built by the entry
-	form leaves the empty columns out, load() gives every column to every
-	record, and a file may hold spaces the form has trimmed. Comparing
-	per column makes both shapes say the same thing. Cells the file holds
-	past the header are not part of it: they say nothing about which
-	article a line is.
-	@param lhs
-	@param rhs
-	@return true when both records describe the same article
-*/
-static bool sameEntry(const MaterialRecord &lhs, const MaterialRecord &rhs)
+bool sameEntry(const MaterialRecord &lhs, const MaterialRecord &rhs)
 {
 	QStringList columns = lhs.values.keys();
 	for (const QString &column : rhs.values.keys())
@@ -551,55 +114,407 @@ static bool sameEntry(const MaterialRecord &lhs, const MaterialRecord &rhs)
 			return false;
 		}
 	}
-
 	return true;
 }
 
+QString partNumberLabel(const MaterialRecord &record)
+{
+	QString ref = record.value(QStringLiteral("manufacturer_reference")).trimmed();
+	if (ref.isEmpty()) {
+		ref = record.value(QStringLiteral("order_number")).trimmed();
+	}
+	if (ref.isEmpty()) {
+		ref = record.value(QStringLiteral("internal_number")).trimmed();
+	}
+	return ref;
+}
+
+} // namespace
+
 /**
-	@brief MaterialSelectionDialog::selectRecord
-	Select the row holding that record, scrolling to it.
-	@param record
-	@return true when the record was found and is visible
+	@brief MaterialSelectionDialog::MaterialSelectionDialog
+	@param path material CSV file path
+	@param parent parent widget
 */
+MaterialSelectionDialog::MaterialSelectionDialog(const QString &path,
+												 QWidget *parent) :
+	QDialog(parent),
+	ui(new Ui::MaterialSelectionDialog),
+	m_path(path)
+{
+	ui->setupUi(this);
+
+	ui->m_button_box->button(QDialogButtonBox::Ok)->setText(tr("Apply"));
+	ui->m_button_box->button(QDialogButtonBox::Cancel)->setText(tr("Cancel"));
+
+	ui->m_tree_widget->header()->setSectionResizeMode(0, QHeaderView::ResizeToContents);
+	ui->m_tree_widget->header()->setStretchLastSection(true);
+	ui->m_tree_widget->sortByColumn(0, Qt::AscendingOrder);
+
+	ui->m_details_table->setItemDelegateForColumn(1, new MaterialValueDelegate(ui->m_details_table));
+	ui->m_details_table->horizontalHeader()->setSectionResizeMode(0, QHeaderView::ResizeToContents);
+	ui->m_details_table->horizontalHeader()->setStretchLastSection(true);
+
+	ui->m_edit_bar->setVisible(false);
+
+	connect(ui->m_search_edit, &QLineEdit::textChanged,
+			this, &MaterialSelectionDialog::filterUpdated);
+	connect(ui->m_filter_combo, &QComboBox::currentIndexChanged,
+			this, &MaterialSelectionDialog::filterUpdated);
+	connect(ui->m_tree_widget, &QTreeWidget::itemSelectionChanged,
+			this, &MaterialSelectionDialog::treeSelectionChanged);
+	connect(ui->m_tree_widget, &QTreeWidget::itemDoubleClicked,
+			this, &MaterialSelectionDialog::treeItemDoubleClicked);
+
+	reload();
+
+	if (const QSize saved_size = MaterialList::savedDialogSize(); saved_size.isValid()) {
+		resize(saved_size);
+	}
+	ui->m_splitter->setSizes({440, 660});
+
+	updateButtons();
+}
+
+/**
+	@brief MaterialSelectionDialog::~MaterialSelectionDialog
+*/
+MaterialSelectionDialog::~MaterialSelectionDialog()
+{
+	delete ui;
+}
+
+void MaterialSelectionDialog::done(int result)
+{
+	MaterialList::saveDialogSize(size());
+	QDialog::done(result);
+}
+
+QStringList MaterialSelectionDialog::effectiveColumns() const
+{
+	return m_data.columns.isEmpty() ? MaterialList::defaultColumns() : m_data.columns;
+}
+
+void MaterialSelectionDialog::reload()
+{
+	QString error;
+	MaterialListData data;
+	if (!MaterialList::load(m_path, &data, &error))
+	{
+		QET::QetMessageBox::warning(this,
+									tr("Cannot read"),
+									tr("Cannot read the file:\n%1\n%2")
+										.arg(m_path, error));
+	}
+
+	const QString current_filter = ui->m_filter_combo->currentData().toString();
+	m_data = data;
+
+	populateFilterCombo(current_filter);
+	rebuildTree();
+	populateDetails(selectedRecord());
+	updateButtons();
+}
+
+void MaterialSelectionDialog::populateFilterCombo(const QString &keep_manufacturer)
+{
+	const QSignalBlocker blocker(ui->m_filter_combo);
+	ui->m_filter_combo->clear();
+	ui->m_filter_combo->addItem(tr("All manufacturers"), QString());
+
+	QStringList manufacturers;
+	bool has_empty = false;
+	for (const MaterialRecord &record : std::as_const(m_data.records))
+	{
+		const QString mfr = record.value(QStringLiteral("manufacturer")).trimmed();
+		if (mfr.isEmpty()) {
+			has_empty = true;
+		} else if (!manufacturers.contains(mfr, Qt::CaseInsensitive)) {
+			manufacturers.append(mfr);
+		}
+	}
+	std::sort(manufacturers.begin(), manufacturers.end(), [](const QString &a, const QString &b) {
+		return QString::compare(a, b, Qt::CaseInsensitive) < 0;
+	});
+
+	for (const QString &mfr : std::as_const(manufacturers)) {
+		ui->m_filter_combo->addItem(mfr, mfr);
+	}
+	if (has_empty) {
+		ui->m_filter_combo->addItem(tr("(No manufacturer)"), QStringLiteral("__empty__"));
+	}
+
+	const int idx = ui->m_filter_combo->findData(keep_manufacturer);
+	ui->m_filter_combo->setCurrentIndex(idx >= 0 ? idx : 0);
+}
+
+void MaterialSelectionDialog::rebuildTree()
+{
+	const QSignalBlocker blocker(ui->m_tree_widget);
+	ui->m_tree_widget->clear();
+
+	const QStringList tokens = ui->m_search_edit->text()
+			.simplified()
+			.split(QLatin1Char(' '), Qt::SkipEmptyParts);
+	const QString filter_mfr = ui->m_filter_combo->currentData().toString();
+	const QStringList cols = effectiveColumns();
+
+	QMap<QString, QList<int>> grouped_rows;
+	int visible_count = 0;
+
+	for (int i = 0; i < m_data.records.size(); ++i)
+	{
+		const MaterialRecord &rec = m_data.records.at(i);
+		const QString mfr = rec.value(QStringLiteral("manufacturer")).trimmed();
+
+		if (filter_mfr == QStringLiteral("__empty__")) {
+			if (!mfr.isEmpty()) continue;
+		} else if (!filter_mfr.isEmpty()) {
+			if (QString::compare(mfr, filter_mfr, Qt::CaseInsensitive) != 0) continue;
+		}
+
+		if (!recordMatchesTokens(rec, cols, tokens)) {
+			continue;
+		}
+
+		const QString group_key = mfr.isEmpty() ? tr("(No manufacturer)") : mfr;
+		grouped_rows[group_key].append(i);
+		++visible_count;
+	}
+
+	QStringList group_names = grouped_rows.keys();
+	std::sort(group_names.begin(), group_names.end(), [](const QString &a, const QString &b) {
+		return QString::compare(a, b, Qt::CaseInsensitive) < 0;
+	});
+
+	for (const QString &group : std::as_const(group_names))
+	{
+		auto *group_item = new QTreeWidgetItem(ui->m_tree_widget);
+		group_item->setText(0, group);
+		group_item->setFirstColumnSpanned(true);
+		group_item->setFlags(Qt::ItemIsEnabled);
+		group_item->setData(0, SourceRowRole, -1);
+
+		QFont bold_font = group_item->font(0);
+		bold_font.setBold(true);
+		group_item->setFont(0, bold_font);
+
+		for (int row : grouped_rows.value(group))
+		{
+			const MaterialRecord &rec = m_data.records.at(row);
+			auto *child = new QTreeWidgetItem(group_item);
+			child->setText(0, partNumberLabel(rec));
+			child->setText(1, rec.value(QStringLiteral("description")));
+			child->setFlags(Qt::ItemIsEnabled | Qt::ItemIsSelectable);
+			child->setData(0, SourceRowRole, row);
+		}
+	}
+
+	if (!tokens.isEmpty() || !filter_mfr.isEmpty() || group_names.size() <= 3) {
+		ui->m_tree_widget->expandAll();
+	}
+
+	updateCount(visible_count);
+}
+
+void MaterialSelectionDialog::updateCount(int visible_count)
+{
+	const int total = m_data.records.size();
+	if (visible_count == total) {
+		ui->m_count_label->setText(tr("Entries: %1").arg(total));
+	} else {
+		ui->m_count_label->setText(tr("Entries: %1 of %2").arg(visible_count).arg(total));
+	}
+}
+
+void MaterialSelectionDialog::populateDetails(const MaterialRecord &record)
+{
+	ui->m_details_table->setRowCount(0);
+	const QStringList cols = effectiveColumns();
+	ui->m_details_table->setRowCount(cols.size());
+
+	const bool editable = (m_edit_mode != EditMode::View);
+
+	for (int i = 0; i < cols.size(); ++i)
+	{
+		const QString &column = cols.at(i);
+
+		auto *field_item = new QTableWidgetItem(MaterialList::translatedColumn(column));
+		field_item->setFlags(Qt::ItemIsEnabled | Qt::ItemIsSelectable);
+		field_item->setData(ColumnKeyRole, column);
+		ui->m_details_table->setItem(i, 0, field_item);
+
+		auto *value_item = new QTableWidgetItem(record.value(column));
+		Qt::ItemFlags flags = Qt::ItemIsEnabled | Qt::ItemIsSelectable;
+		if (editable) {
+			flags |= Qt::ItemIsEditable;
+		}
+		value_item->setFlags(flags);
+		ui->m_details_table->setItem(i, 1, value_item);
+	}
+}
+
+void MaterialSelectionDialog::setEditMode(EditMode mode)
+{
+	m_edit_mode = mode;
+	const bool editing = (mode != EditMode::View);
+
+	ui->m_edit_bar->setVisible(editing);
+	if (mode == EditMode::New) {
+		ui->m_edit_mode_label->setText(tr("New entry"));
+	} else if (mode == EditMode::Edit) {
+		ui->m_edit_mode_label->setText(tr("Editing entry"));
+	} else {
+		ui->m_edit_mode_label->clear();
+	}
+
+	ui->m_tree_widget->setEnabled(!editing);
+	ui->m_search_edit->setEnabled(!editing);
+	ui->m_filter_combo->setEnabled(!editing);
+
+	if (mode == EditMode::New) {
+		populateDetails(MaterialRecord());
+	} else if (mode == EditMode::Edit) {
+		populateDetails(m_editing_original);
+	} else {
+		populateDetails(selectedRecord());
+	}
+
+	if (editing && ui->m_details_table->rowCount() > 0)
+	{
+		ui->m_details_table->setCurrentCell(0, 1);
+		ui->m_details_table->setFocus();
+	}
+
+	updateButtons();
+}
+
+MaterialRecord MaterialSelectionDialog::detailsRecord() const
+{
+	MaterialRecord record;
+	if (m_edit_mode == EditMode::Edit) {
+		record.extra = m_editing_original.extra;
+	}
+
+	const int rows = ui->m_details_table->rowCount();
+	for (int i = 0; i < rows; ++i)
+	{
+		const QTableWidgetItem *field_item = ui->m_details_table->item(i, 0);
+		const QTableWidgetItem *value_item = ui->m_details_table->item(i, 1);
+		if (!field_item || !value_item) continue;
+
+		const QString column = field_item->data(ColumnKeyRole).toString();
+		QString value = value_item->text();
+		value.remove(QLatin1Char('\r'));
+		value.remove(QLatin1Char('\n'));
+		value = value.trimmed();
+		if (!value.isEmpty()) {
+			record.setValue(column, value);
+		}
+	}
+
+	return record;
+}
+
+void MaterialSelectionDialog::updateButtons()
+{
+	const bool in_view = (m_edit_mode == EditMode::View);
+	const bool has_selection = (selectedSourceRow() >= 0);
+
+	if (QPushButton *ok_btn = ui->m_button_box->button(QDialogButtonBox::Ok)) {
+		ok_btn->setEnabled(in_view && has_selection);
+	}
+	ui->m_new_entry_btn->setEnabled(in_view);
+	ui->m_edit_entry_btn->setEnabled(in_view && has_selection);
+	ui->m_settings_btn->setEnabled(in_view);
+}
+
+void MaterialSelectionDialog::filterUpdated()
+{
+	const MaterialRecord current = selectedRecord();
+	rebuildTree();
+	if (!current.values.isEmpty()) {
+		selectRecord(current);
+	}
+	populateDetails(selectedRecord());
+	updateButtons();
+}
+
+void MaterialSelectionDialog::treeSelectionChanged()
+{
+	if (m_edit_mode != EditMode::View) {
+		return;
+	}
+	populateDetails(selectedRecord());
+	updateButtons();
+}
+
+void MaterialSelectionDialog::treeItemDoubleClicked(QTreeWidgetItem *item, int)
+{
+	if (m_edit_mode != EditMode::View || !item) {
+		return;
+	}
+	const int row = item->data(0, SourceRowRole).toInt();
+	if (row >= 0) {
+		accept();
+	}
+}
+
+int MaterialSelectionDialog::selectedSourceRow() const
+{
+	const QList<QTreeWidgetItem *> items = ui->m_tree_widget->selectedItems();
+	if (items.isEmpty()) {
+		return -1;
+	}
+	const int row = items.first()->data(0, SourceRowRole).toInt();
+	return (row >= 0 && row < m_data.records.size()) ? row : -1;
+}
+
+MaterialRecord MaterialSelectionDialog::selectedRecord() const
+{
+	const int row = selectedSourceRow();
+	return row >= 0 ? m_data.records.at(row) : MaterialRecord();
+}
+
 bool MaterialSelectionDialog::selectRecord(const MaterialRecord &record)
 {
-	const QList<MaterialRecord> records = m_model->records();
-	int row = -1;
-		//The newest match wins : appending an entry twice in a row selects
-		//the line which was just written.
-	for (int i = records.size() - 1; i >= 0; --i)
+	int target_row = -1;
+	for (int i = m_data.records.size() - 1; i >= 0; --i)
 	{
-		if (sameEntry(records.at(i), record))
+		if (sameEntry(m_data.records.at(i), record))
 		{
-			row = i;
+			target_row = i;
 			break;
 		}
 	}
-	if (row < 0) {
+	if (target_row < 0) {
 		return false;
 	}
 
-	const QModelIndex proxy = m_proxy->mapFromSource(m_model->index(row, 0));
-	if (!proxy.isValid()) {
-		return false;
+	for (int g = 0; g < ui->m_tree_widget->topLevelItemCount(); ++g)
+	{
+		QTreeWidgetItem *group = ui->m_tree_widget->topLevelItem(g);
+		for (int c = 0; c < group->childCount(); ++c)
+		{
+			QTreeWidgetItem *child = group->child(c);
+			if (child->data(0, SourceRowRole).toInt() == target_row)
+			{
+				group->setExpanded(true);
+				ui->m_tree_widget->setCurrentItem(child);
+				ui->m_tree_widget->scrollToItem(child);
+				updateButtons();
+				return true;
+			}
+		}
 	}
-
-	ui->m_table_view->setCurrentIndex(proxy);
-	ui->m_table_view->selectionModel()->select(
-		proxy, QItemSelectionModel::ClearAndSelect | QItemSelectionModel::Rows);
-	ui->m_table_view->scrollTo(proxy);
-	updateApplyButton();
-
-	return true;
+	return false;
 }
 
-/**
-	@brief MaterialSelectionDialog::accept
-	Refuse to close the dialog without a selection: "Apply" with nothing
-	chosen would silently do nothing.
-*/
 void MaterialSelectionDialog::accept()
 {
+	if (m_edit_mode != EditMode::View) {
+		return;
+	}
 	if (selectedRecord().values.isEmpty())
 	{
 		QET::QetMessageBox::information(this,
@@ -607,31 +522,77 @@ void MaterialSelectionDialog::accept()
 										tr("Select an item in the list first."));
 		return;
 	}
-
 	QDialog::accept();
 }
 
-/**
-	@brief MaterialSelectionDialog::on_m_new_entry_btn_clicked
-	Open the entry form and, once it is filled, append the article to the
-	material file, then select it in the table.
-*/
 void MaterialSelectionDialog::on_m_new_entry_btn_clicked()
 {
-	QStringList columns = m_data.columns;
-	if (columns.isEmpty()) {
-		columns = MaterialList::defaultColumns();
-	}
+	m_editing_row = -1;
+	m_editing_original = MaterialRecord();
+	setEditMode(EditMode::New);
+}
 
-	MaterialEntryDialog entry_dialog(columns, this);
-	if (entry_dialog.exec() != QDialog::Accepted) {
+void MaterialSelectionDialog::on_m_edit_entry_btn_clicked()
+{
+	const int row = selectedSourceRow();
+	if (row < 0) {
+		return;
+	}
+	m_editing_row = row;
+	m_editing_original = m_data.records.at(row);
+	setEditMode(EditMode::Edit);
+}
+
+void MaterialSelectionDialog::on_m_save_entry_btn_clicked()
+{
+	if (m_edit_mode == EditMode::View) {
 		return;
 	}
 
-	const MaterialRecord record = entry_dialog.record();
+		//Close any active inline cell editor so its text is committed.
+	ui->m_details_table->setCurrentItem(nullptr);
+
+	const int rows = ui->m_details_table->rowCount();
+	for (int i = 0; i < rows; ++i)
+	{
+		const QTableWidgetItem *field_item = ui->m_details_table->item(i, 0);
+		QTableWidgetItem *value_item = ui->m_details_table->item(i, 1);
+		if (!field_item || !value_item) continue;
+
+		const QString column = field_item->data(ColumnKeyRole).toString();
+		const QString text = value_item->text().trimmed();
+		if (!text.isEmpty() && QETInformation::isNumericInfoKey(column))
+		{
+			QETInformation::NumericInfoValidator validator(column);
+			QString copy = text;
+			int pos = 0;
+			if (validator.validate(copy, pos) != QValidator::Acceptable)
+			{
+				QET::QetMessageBox::warning(this,
+											tr("Unfinished number"),
+											tr("Finish the number or empty the field."));
+				ui->m_details_table->setCurrentCell(i, 1);
+				ui->m_details_table->editItem(value_item);
+				return;
+			}
+		}
+	}
+
+	const MaterialRecord record = detailsRecord();
+	if (record.values.isEmpty())
+	{
+		QET::QetMessageBox::warning(this,
+									tr("Nothing filled in"),
+									tr("Fill in at least one field to create an entry."));
+		return;
+	}
 
 	QString error;
-	if (!MaterialList::appendRecord(m_path, record, &error))
+	const bool ok = (m_edit_mode == EditMode::New)
+			? MaterialList::appendRecord(m_path, record, &error)
+			: MaterialList::updateRecord(m_path, m_editing_row, m_editing_original, record, &error);
+
+	if (!ok)
 	{
 		QET::QetMessageBox::critical(this,
 									 tr("Cannot write"),
@@ -640,15 +601,36 @@ void MaterialSelectionDialog::on_m_new_entry_btn_clicked()
 		return;
 	}
 
-		//The file is read again so the new line is found where it really
-		//is, and not guessed from where it was before the write.
+	m_editing_row = -1;
+	m_editing_original = MaterialRecord();
+	setEditMode(EditMode::View);
 	reload();
 
-		//A search hiding the new article would leave the user with a form
-		//he just filled and no line to see.
 	if (!selectRecord(record))
 	{
 		ui->m_search_edit->clear();
+		ui->m_filter_combo->setCurrentIndex(0);
 		selectRecord(record);
 	}
+	populateDetails(selectedRecord());
+}
+
+void MaterialSelectionDialog::on_m_cancel_entry_btn_clicked()
+{
+	m_editing_row = -1;
+	m_editing_original = MaterialRecord();
+	setEditMode(EditMode::View);
+}
+
+void MaterialSelectionDialog::on_m_settings_btn_clicked()
+{
+	if (QETApp *app = QETApp::instance()) {
+		app->configureQET();
+	}
+
+	const QString configured = MaterialList::configuredPath();
+	if (!configured.isEmpty()) {
+		m_path = configured;
+	}
+	reload();
 }

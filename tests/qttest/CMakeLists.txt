@@ -557,6 +557,8 @@ qet_add_app_test(tst_devicetypeassign tst_devicetypeassign.cpp)
 # Part data: unit price, labour time and size, kept by .qet and .qetdb,
 # columns of the parts list; every field the export offers is a column.
 qet_add_app_test(tst_partdata tst_partdata.cpp)
+# Split-view materials list dialog with inline editing and creation.
+qet_add_app_test(tst_materiallistedit tst_materiallistedit.cpp)
 # A read-only project builds its lazy folios whole: shown, exported, written out.
 qet_add_app_test(tst_readonlyfolios tst_readonlyfolios.cpp)
 target_compile_definitions(tst_readonlyfolios PRIVATE

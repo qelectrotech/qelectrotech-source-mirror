@@ -814,6 +814,69 @@ bool MaterialList::appendRecord(const QString &path, const MaterialRecord &recor
 }
 
 /**
+	@brief MaterialList::updateRecord
+	Replace an existing article in a material file.
+	The file is read again first so external spreadsheet changes to other
+	rows are preserved.
+	@param path
+	@param row expected 0-based index of the record in the file
+	@param original record as it was loaded before editing
+	@param updated replacement record
+	@param error receives a message when the file can't be updated
+	@return true on success
+*/
+bool MaterialList::updateRecord(const QString &path, int row,
+								const MaterialRecord &original,
+								const MaterialRecord &updated,
+								QString *error)
+{
+	if (error) {
+		error->clear();
+	}
+
+	MaterialListData data;
+	if (!load(path, &data, error)) {
+		return false;
+	}
+	if (data.columns.isEmpty())
+	{
+		if (error) {
+			*error = QCoreApplication::translate("MaterialList", "The file has no header: columns are missing.");
+		}
+		return false;
+	}
+
+	int target_row = -1;
+	if (row >= 0 && row < data.records.size() && data.records.at(row) == original) {
+		target_row = row;
+	} else {
+		for (int i = 0; i < data.records.size(); ++i)
+		{
+			if (data.records.at(i) == original)
+			{
+				target_row = i;
+				break;
+			}
+		}
+	}
+
+	if (target_row < 0)
+	{
+		if (error) {
+			*error = QCoreApplication::translate("MaterialList", "The entry to edit no longer exists in the file.");
+		}
+		return false;
+	}
+
+	MaterialRecord replacement = updated;
+	if (replacement.extra.isEmpty() && !data.records.at(target_row).extra.isEmpty()) {
+		replacement.extra = data.records.at(target_row).extra;
+	}
+	data.records[target_row] = replacement;
+	return writeFile(path, data, error);
+}
+
+/**
 	@brief MaterialList::createFile
 	Create an empty material file holding only the header line.
 	@param path
