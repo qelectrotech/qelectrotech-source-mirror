@@ -92,6 +92,7 @@ class Terminal : public QGraphicsObject
 		Qet::Orientation orientation() const;
 		QPointF dockConductor() const;
 		void updateConductor();
+		void shiftInSymbol(const QPointF &offset);
 		bool isLinkedTo(Terminal *);
 		bool canBeLinkedTo(Terminal *);
 		int wireLimit() const;

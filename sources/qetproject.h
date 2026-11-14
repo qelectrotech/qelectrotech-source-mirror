@@ -419,7 +419,7 @@ class QETProject : public QObject
 			ElementsLocation source;
 		};
 		QList<OutdatedElement> outdatedElements() const;
-		void updateElement(const OutdatedElement &element);
+		void updateElement(const OutdatedElement &element, bool follow_moved_origin = false);
 		QString integrateTitleBlockTemplate(const TitleBlockTemplateLocation &, MoveTitleBlockTemplatesHandler *handler);
 		bool usesElement(const ElementsLocation &) const;
 		QList <ElementsLocation> unusedElements() const;

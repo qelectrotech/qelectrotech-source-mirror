@@ -40,6 +40,7 @@
 #include <foliogrid.h>
 #include <autoconnect.h>
 #include <textgrid.h>
+#include <qetgraphicsitem/element.h>
 #include <qetgraphicsitem/structureboxitem.h>
 #include <wiringrules.h>
 #include <ui/wiringruleswarning.h>
@@ -193,6 +194,7 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	ui->m_selection_rectangle_cb->setCurrentIndex(static_cast<int>(DiagramView::selectionRectangle()));
 	ui->m_editor_like_folio_cb->setChecked(ElementScene::likeFolio());
 	ui->m_edit_collection_source_cb->setChecked(ElementsLocation::findsAndEditsCollectionSource());
+	ui->m_update_follows_moved_origin_cb->setChecked(Element::updateFollowsMovedOrigin());
 	ui->m_selection_frame_radius_sb->setValue(QGIUtility::selectionFrameRadius());
 	ui->m_strong_selection_cb->setChecked(QGIUtility::strongSelection());
 	ui->m_zoom_out_beyond_folio->setChecked(settings.value("diagrameditor/zoom-out-beyond-of-folio", false).toBool());
@@ -500,6 +502,7 @@ void GeneralConfigurationPage::applyConf()
 		ui->m_selection_rectangle_cb->currentIndex()));
 	ElementScene::setLikeFolio(ui->m_editor_like_folio_cb->isChecked());
 	ElementsLocation::setFindsAndEditsCollectionSource(ui->m_edit_collection_source_cb->isChecked());
+	Element::setUpdateFollowsMovedOrigin(ui->m_update_follows_moved_origin_cb->isChecked());
 	QGIUtility::setSelectionFrameRadius(ui->m_selection_frame_radius_sb->value());
 	QGIUtility::setStrongSelection(ui->m_strong_selection_cb->isChecked());
 	settings.setValue("diagrameditor/zoom-out-beyond-of-folio", ui->m_zoom_out_beyond_folio->isChecked());

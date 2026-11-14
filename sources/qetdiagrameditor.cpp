@@ -5712,19 +5712,26 @@ void QETDiagramEditor::slot_updateElementsFromCollections() {
 							"they were taken from. Replace them with the version "
 							"of the collection?", "", outdated.size())
 						 % QStringLiteral("\n\n")
-						 % tr("Placed elements are redrawn and keep their conductors, "
-							  "as long as their terminals have not moved. This "
-							  "action cannot be undone."),
+						 % (Element::updateFollowsMovedOrigin()
+							? tr("Placed elements are redrawn and keep their conductors, "
+								 "as long as their terminals have not moved or moved "
+								 "all together with the insertion point: such an element "
+								 "is moved back so its terminals stay where they are. "
+								 "This action cannot be undone.")
+							: tr("Placed elements are redrawn and keep their conductors, "
+								 "as long as their terminals have not moved. This "
+								 "action cannot be undone.")),
 						 QMessageBox::Yes | QMessageBox::Cancel, this);
 	question.setDetailedText(names.join(QLatin1Char('\n')));
 	if (question.exec() != QMessageBox::Yes) return;
 
+	const bool follow = Element::updateFollowsMovedOrigin();
 	for (const QETProject::OutdatedElement &element : outdated)
-		project->updateElement(element);
+		project->updateElement(element, follow);
 	project->setModified(true);
 
 	reloadElementDrawings(project, true, title,
-						  tr("%n elements updated.", "", outdated.size()));
+						  tr("%n elements updated.", "", outdated.size()), follow);
 }
 
 /**
@@ -5736,11 +5743,15 @@ void QETDiagramEditor::slot_updateElementsFromCollections() {
 	(see Element::reloadPicture())
 	@param title : title of the report
 	@param intro : first line of the report, may be empty
+	@param follow_moved_origin : move an element whose terminals all moved
+	with its insertion point, so they stay where they are, and redraw it
+	(see Element::followMovedOrigin())
 */
 void QETDiagramEditor::reloadElementDrawings(QETProject *project,
 											 bool adopt_frame,
 											 const QString &title,
-											 const QString &intro) {
+											 const QString &intro,
+											 bool follow_moved_origin) {
 	QList<Element *> elements;
 	QSet<QString> dropped_locations;
 	for (Diagram *diagram : project->diagrams())
@@ -5760,10 +5771,19 @@ void QETDiagramEditor::reloadElementDrawings(QETProject *project,
 
 	int reloaded = 0;
 	int unavailable = 0;
+	int moved = 0;
 	QStringList geometry_changed;
 	for (Element *elmt : elements)
 	{
-		switch (elmt->reloadPicture(adopt_frame))
+		Element::ReloadPictureResult result = elmt->reloadPicture(adopt_frame);
+		if (result == Element::ReloadPictureResult::GeometryChanged
+			&& follow_moved_origin && elmt->followMovedOrigin())
+		{
+			result = elmt->reloadPicture(adopt_frame);
+			if (result == Element::ReloadPictureResult::Reloaded)
+				++moved;
+		}
+		switch (result)
 		{
 			case Element::ReloadPictureResult::Reloaded:
 				++reloaded;
@@ -5784,6 +5804,10 @@ void QETDiagramEditor::reloadElementDrawings(QETProject *project,
 	}
 
 	QString message = tr("%n elements redrawn.", "", reloaded);
+	if (moved)
+		message += QStringLiteral(" ")
+				% tr("%n of them moved with their insertion point: their terminals "
+					 "and conductors stayed where they were.", "", moved);
 	if (!intro.isEmpty())
 		message = intro % QStringLiteral("\n") % message;
 

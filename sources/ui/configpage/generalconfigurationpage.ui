@@ -1206,6 +1206,16 @@
            </widget>
           </item>
           <item>
+           <widget class="QCheckBox" name="m_update_follows_moved_origin_cb">
+            <property name="text">
+             <string>Updating the elements moves a symbol whose insertion point moved</string>
+            </property>
+            <property name="toolTip">
+             <string>Project &gt; Update elements from the collections: when a symbol's drawing was moved as a whole, its insertion point set elsewhere, each placed symbol is moved back by the same offset, so its terminals, conductors and texts stay where they are. Unticked by default: such a symbol keeps its old drawing and is listed.</string>
+            </property>
+           </widget>
+          </item>
+          <item>
            <widget class="QLabel" name="label_4">
             <property name="text">
              <string>Element may include information about its authors, license, or other useful information. Specify the default value of this textfield for new elements below:</string>
