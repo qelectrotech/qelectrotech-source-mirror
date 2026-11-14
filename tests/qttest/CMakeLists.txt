@@ -507,6 +507,10 @@ endfunction()
 # The Connections toolbar: a button per symbol on the wires, a click
 # places it, and the symbol of a button can be changed.
 qet_add_app_test(tst_connectionsymbols tst_connectionsymbols.cpp)
+
+# The junction element type: the connection symbol on a wire, which is never
+# numbered and never a terminal (#1500).
+qet_add_app_test(tst_junctiontype tst_junctiontype.cpp)
 target_compile_definitions(tst_connectionsymbols PRIVATE
   QET_ELEMENTS_DIR="${QET_DIR}/elements")
 # Connectivity-aware duplicate labels and clickable occurrences, through the
@@ -795,6 +799,10 @@ qet_add_app_test(tst_terminalstriporder tst_terminalstriporder.cpp)
 qet_add_app_test(tst_cabletarget tst_cabletarget.cpp)
 qet_add_app_test(tst_cablelist tst_cablelist.cpp)
 
+# What a junction's chain says: how a stub beside the strip names the wire
+# which ends on the junction, and where a cable list says each cable starts
+# and ends, neither of them naming the junction itself (#1500).
+qet_add_app_test(tst_junctionchain tst_junctionchain.cpp)
 # A wire dropped on a terminal that already has a wire is made.
 qet_add_app_test(tst_wireonusedterminal tst_wireonusedterminal.cpp)
 

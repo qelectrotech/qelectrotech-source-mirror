@@ -22,7 +22,9 @@
 #include <qetinformation.h>
 #include <TerminalStrip/terminalcatalog.h>
 #include <TerminalStrip/terminalcolor.h>
+#include "qetgraphicsitem/terminal.h"
 #include <TerminalStrip/realterminal.h>
+#include <editor/graphicspart/partterminal.h>
 #include "ui_elementpropertieseditorwidget.h"
 
 #include <qet.h>
@@ -35,6 +37,7 @@
 #include <QScrollBar>
 #include <QWheelEvent>
 #include <QTableWidget>
+#include <QGraphicsScene>
 #include <QCheckBox>
 #include <QGroupBox>
 #include <QVBoxLayout>
@@ -349,6 +352,7 @@ void ElementPropertiesEditorWidget::setUpInterface()
 	ui->m_base_type_cb->addItem (tr("Next sheet reference"),   ElementData::NextReport);
 	ui->m_base_type_cb->addItem (tr("Previous sheet reference"), ElementData::PreviousReport);
 	ui->m_base_type_cb->addItem (tr("Terminal block"), ElementData::Terminal);
+	ui->m_base_type_cb->addItem (tr("Junction"), ElementData::Junction);
 	ui->m_base_type_cb->addItem (tr("Thumbnail"), ElementData::Thumbnail);
 	ui->m_base_type_cb->addItem (tr("Conductor definition"), ElementData::ConductorDefinition);
 
@@ -430,6 +434,12 @@ void ElementPropertiesEditorWidget::setUpInterface()
 			ui->m_type_cb->setCurrentIndex(0);
 		}
 	});
+
+	// A click on a row of the junction roles points at the connection it is
+	// about in the drawing: the row names it in words as well, but the one
+	// marked in the symbol is the one which cannot be mistaken (#1500)
+	connect(ui->m_junction_roles, &QTableWidget::cellClicked,
+		this, [this](int row, int) { junctionConnectionChosen(row); });
 
 	setUpCustomInfo();
 	populateTree();
@@ -549,6 +559,9 @@ void ElementPropertiesEditorWidget::updateTree()
 			ui->m_tree->setEnabled(true);
 			break;
 		case ElementData::Terminal:
+			ui->m_tree->setEnabled(true);
+			break;
+		case ElementData::Junction:
 			ui->m_tree->setEnabled(true);
 			break;
 		default:
@@ -748,6 +761,199 @@ void ElementPropertiesEditorWidget::refreshTerminalWidthCombo()
 }
 
 /**
+	@brief ElementPropertiesEditorWidget::setConnections
+	Tell the dialog which connections the symbol has, so that a junction can
+	ask which of them the wire comes in at. The dialog is modal and the symbol
+	is edited nowhere else while it is open, so the list is read once, here.
+	@param connections the symbol's connections, in any order
+*/
+void ElementPropertiesEditorWidget::setConnections(const QList<Connection> &connections)
+{
+	m_connections = connections;
+	populateJunctionRoles();
+}
+
+/**
+	@brief sortConnections
+	The rows read as the symbol was drawn: by name, so that the numbered
+	connections of a shipped symbol come out "1", "2", "3" rather than in the
+	order the file happened to store them, and by position for the ties and
+	for the connections a symbol left unnamed.
+*/
+void sortConnections(QList<ElementPropertiesEditorWidget::Connection> &connections)
+{
+	const auto before = [](const ElementPropertiesEditorWidget::Connection &a,
+			       const ElementPropertiesEditorWidget::Connection &b) {
+		if (a.name != b.name)
+		{
+			if (a.name.isEmpty()) return false;
+			if (b.name.isEmpty()) return true;
+				//Numbered names in their number, so that "10" is not
+				//read between "1" and "2"
+			bool a_number = false, b_number = false;
+			const int a_value = a.name.toInt(&a_number);
+			const int b_value = b.name.toInt(&b_number);
+			if (a_number && b_number && a_value != b_value)
+				return a_value < b_value;
+			const int by_name = QString::localeAwareCompare(a.name, b.name);
+			if (by_name != 0) return by_name < 0;
+		}
+		if (a.pos.x() != b.pos.x()) return a.pos.x() < b.pos.x();
+		return a.pos.y() < b.pos.y();
+	};
+	std::sort(connections.begin(), connections.end(), before);
+}
+
+/**
+	@brief ElementPropertiesEditorWidget::populateJunctionRoles
+	One row per connection of the symbol, with the role the user gives it:
+	which connection the wire comes in at, and which ones it goes on to.
+	Nothing is assigned until the user chooses it, so that a junction left
+	as it is stays out of the way rather than guessing a source.
+*/
+void ElementPropertiesEditorWidget::populateJunctionRoles()
+{
+	ui->m_junction_roles->setRowCount(0);
+	if (m_connections.isEmpty()) {
+		return;
+	}
+
+	QList<Connection> connections = m_connections;
+	sortConnections(connections);
+
+		//Which connection holds which role. The role belongs to the symbol
+		//and not to this one copy of it, so it is read from the symbol's own
+		//kind information; symbols written before the roles moved there still
+		//keep them among their element information, which is read as a
+		//fallback so they open as they were saved (#1500).
+	const auto roleOf = [this](const QString &key) {
+		for (const auto &other : std::as_const(m_data.m_other_kind_informations))
+			if (other.first == key) return other.second;
+		return m_data.m_informations.value(key).toString();
+	};
+	QHash<QString, QString> role_of;
+	for (const QString &key : junctionRoleKeys()) {
+		const QString uuid = roleOf(key);
+		if (!uuid.isEmpty()) role_of.insert(uuid, key);
+	}
+
+		//A name several connections share would not tell them apart, so
+		//those rows carry their position too
+	QHash<QString, int> names;
+	for (const Connection &connection : std::as_const(connections))
+		if (!connection.name.isEmpty()) ++names[connection.name];
+
+	ui->m_junction_roles->setRowCount(connections.size());
+	int row = 0;
+	for (const Connection &connection : std::as_const(connections))
+	{
+			//The side it sits on, so a row reads as the connection in the
+			//drawing it is about even where the symbol draws no names
+		QString side;
+		if (connection.side == QLatin1String("n")) side = tr("top");
+		else if (connection.side == QLatin1String("e")) side = tr("right");
+		else if (connection.side == QLatin1String("s")) side = tr("bottom");
+		else if (connection.side == QLatin1String("w")) side = tr("left");
+
+		QString text = connection.name;
+		if (text.isEmpty()) {
+			text = QString::number(row + 1);
+		} else if (names.value(connection.name) > 1) {
+				//A name several connections share: their position tells
+				//them apart where their side may not
+			text += QStringLiteral(" (%1, %2)").arg(
+				QLocale().toString(connection.pos.x()),
+				QLocale().toString(connection.pos.y()));
+		} else if (!side.isEmpty()) {
+			text += QStringLiteral(" (%1)").arg(side);
+		}
+		auto *connection_item = new QTableWidgetItem(text);
+		connection_item->setFlags(connection_item->flags() & ~Qt::ItemIsEditable);
+		connection_item->setData(Qt::UserRole, connection.uuid.toString());
+		ui->m_junction_roles->setItem(row, 0, connection_item);
+
+		auto *role = new QComboBox(ui->m_junction_roles);
+		role->addItem(tr("Not assigned"), QString());
+		const QStringList target_keys = junctionTargetKeys();
+		role->addItem(tr("Source"), junctionSourceKey());
+		role->addItem(tr("Target 1"), target_keys.at(0));
+		role->addItem(tr("Target 2"), target_keys.at(1));
+		role->addItem(tr("Target 3"), target_keys.at(2));
+		const QString held = role_of.value(connection.uuid.toString());
+		if (!held.isEmpty()) {
+			role->setCurrentIndex(role->findData(held));
+		}
+		connect(role, QOverload<int>::of(&QComboBox::currentIndexChanged),
+			this, [this, row](int) { junctionRoleChanged(row); });
+		ui->m_junction_roles->setCellWidget(row, 1, role);
+		++row;
+	}
+	ui->m_junction_roles->resizeColumnsToContents();
+}
+
+/**
+	@brief ElementPropertiesEditorWidget::junctionConnectionChosen
+	Point at the connection the row is about, in the drawing: the dialog sits
+	over the symbol, so the row names it in words as well, but the one marked
+	in the symbol is the one which cannot be mistaken (#1500).
+	@param row the row that was clicked
+*/
+void ElementPropertiesEditorWidget::junctionConnectionChosen(int row)
+{
+	const QTableWidgetItem *connection_item = ui->m_junction_roles->item(row, 0);
+	if (!connection_item) {
+		return;
+	}
+	const QString uuid = connection_item->data(Qt::UserRole).toString();
+
+	for (const Connection &connection : std::as_const(m_connections))
+	{
+		if (connection.uuid.toString() != uuid || !connection.item) continue;
+			//One at a time: whatever was marked before belongs to nobody
+		if (QGraphicsScene *scene = connection.item->scene()) {
+			scene->clearSelection();
+		}
+		connection.item->setSelected(true);
+		return;
+	}
+}
+
+/**
+	@brief ElementPropertiesEditorWidget::junctionRoleChanged
+	A role belongs to one connection only: the row which has just taken it
+	takes it off every other row, so that the wiring list never follows two
+	sources. The other combos are set with their signals blocked, so the
+	other rows do not answer back.
+	@param row the row whose role was changed
+*/
+void ElementPropertiesEditorWidget::junctionRoleChanged(int row)
+{
+	auto *given = qobject_cast<QComboBox *>(ui->m_junction_roles->cellWidget(row, 1));
+	if (!given) {
+		return;
+	}
+	const QString key = given->currentData().toString();
+	if (key.isEmpty()) {
+		return;
+	}
+
+	for (int other_row = 0 ; other_row < ui->m_junction_roles->rowCount() ; ++other_row)
+	{
+		if (other_row == row) continue;
+		auto *other = qobject_cast<QComboBox *>(ui->m_junction_roles->cellWidget(other_row, 1));
+		if (other && other->currentData().toString() == key) {
+			const QSignalBlocker blocker(other);
+			other->setCurrentIndex(0);
+		}
+	}
+
+		//And point at the connection it was given to: whoever assigns a
+		//role sees which connection of the symbol it belongs to, so the
+		//row and the drawing cannot be read as two different things
+	junctionConnectionChosen(row);
+}
+
+/**
 	@brief ElementPropertiesEditorWidget::on_m_buttonBox_accepted
 	Action on button accepted : the new information is set
 */
@@ -787,6 +993,35 @@ void ElementPropertiesEditorWidget::on_m_buttonBox_accepted()
 		m_data.m_terminal_type = ui->m_terminal_type_cb->currentData().value<ElementData::TerminalType>();
 		m_data.m_terminal_function = ui->m_terminal_func_cb->currentData().value<ElementData::TerminalFunction>();
 	}
+
+		//A junction's roles belong to the symbol and not to this one copy of
+		//it, so they are written as kind information -- what a definition
+		//carries for every copy of it -- and taken away from the element
+		//information, where symbols written before the move kept them: an
+		//older symbol is carried over the moment it is saved again (#1500).
+		const QStringList role_keys = junctionRoleKeys();
+		for (int i = m_data.m_other_kind_informations.size() - 1 ; i >= 0 ; --i) {
+			if (role_keys.contains(m_data.m_other_kind_informations.at(i).first)) {
+				m_data.m_other_kind_informations.removeAt(i);
+			}
+		}
+		for (const QString &key : role_keys) {
+			m_data.m_informations.remove(key);
+		}
+		if (m_data.m_type == ElementData::Junction)
+		{
+			for (int row = 0 ; row < ui->m_junction_roles->rowCount() ; ++row)
+			{
+				const QTableWidgetItem *connection_item = ui->m_junction_roles->item(row, 0);
+				auto *role = qobject_cast<QComboBox *>(ui->m_junction_roles->cellWidget(row, 1));
+				if (!connection_item || !role) continue;
+				const QString key = role->currentData().toString();
+				if (key.isEmpty()) continue;
+					//The connection's own uuid, which a rename does not touch
+				m_data.m_other_kind_informations.append(qMakePair(
+					key, connection_item->data(Qt::UserRole).toString()));
+			}
+		}
 
 	const QStringList old_custom_keys = m_data.m_custom_info_keys;
 	m_data.m_custom_info_keys.clear();
@@ -872,6 +1107,7 @@ void ElementPropertiesEditorWidget::on_m_base_type_cb_currentIndexChanged(int in
 	ui->m_slave_gb->setVisible(slave);
 	ui->m_master_gb->setVisible(master);
 	ui->m_terminal_gb->setVisible(terminal);
+	ui->m_junction_gb->setVisible(type_ == ElementData::Junction);
 
 		//Every base type whose tree updateTree() enables and whose data
 		//ElementScene::toXml() writes. These three checks were never
@@ -882,6 +1118,7 @@ void ElementPropertiesEditorWidget::on_m_base_type_cb_currentIndexChanged(int in
 								  type_ == ElementData::Master ||
 								  type_ == ElementData::Slave ||
 								  type_ == ElementData::Terminal ||
+								  type_ == ElementData::Junction ||
 								  type_ == ElementData::Thumbnail));
 
 	updateTree();

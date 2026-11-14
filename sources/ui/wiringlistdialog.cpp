@@ -20,11 +20,12 @@
 
 #include <dataBase/projectdatabase.h>
 #include <qetproject.h>
+#include <wiringlistdb.h>
 
 #include <QDialogButtonBox>
 #include <QHeaderView>
 #include <QLabel>
-#include <QSqlQueryModel>
+#include <QStandardItemModel>
 #include <QTableView>
 #include <QVBoxLayout>
 
@@ -44,60 +45,71 @@ WiringListDialog::WiringListDialog(QETProject *project, QWidget *parent) :
 
 		//The wiring list reads the database rather than the diagrams, and a
 		//conductor's row is only as fresh as the last thing that touched it.
-		//Refresh before querying so the dialog cannot show a wire number that
-		//was edited earlier in the session.
-	m_project->dataBase()->updateDB();
+		//wiringListRows() refreshes before querying, so the dialog cannot
+		//show a wire number that was edited earlier in the session. A wire
+		//ending on a junction names where the junction's chain leads rather
+		//than the junction itself, the way the CSV export names it (#1500).
+	int unassigned_junctions = 0;
+	QString error;
+	const QVector<WiringListRow> rows =
+		wiringListRows(m_project, &unassigned_junctions, &error);
 
-	auto *model = new QSqlQueryModel(this);
-	model->setQuery(QStringLiteral(
-				"SELECT wire_number, from_element_label, from_terminal,"
-				" to_element_label, to_terminal, diagram_position"
-				" FROM wiring_list_view"
-				//Wire numbers are text, so a plain sort puts "10" before "9".
-				//Numeric ones first, ordered by value; anything non-numeric
-				//after, ordered as text. The trailing wire_number keeps ties
-				//stable.
-				" ORDER BY diagram_position,"
-				" CASE WHEN wire_number GLOB '[0-9]*' THEN 0 ELSE 1 END,"
-				" CAST(wire_number AS INTEGER),"
-				" wire_number"),
-			m_project->dataBase()->database());
-
-	model->setHeaderData(0, Qt::Horizontal, tr("Wire", "column title"));
-	model->setHeaderData(1, Qt::Horizontal, tr("Component 1", "column title"));
-	model->setHeaderData(2, Qt::Horizontal, tr("Terminal 1", "column title"));
-	model->setHeaderData(3, Qt::Horizontal, tr("Component 2", "column title"));
-	model->setHeaderData(4, Qt::Horizontal, tr("Terminal 2", "column title"));
-	model->setHeaderData(5, Qt::Horizontal, tr("Sheet", "column title"));
+	auto *model = new QStandardItemModel(int(rows.size()), 6, this);
+	model->setHorizontalHeaderLabels({tr("Wire", "column title"),
+					  tr("Component 1", "column title"),
+					  tr("Terminal 1", "column title"),
+					  tr("Component 2", "column title"),
+					  tr("Terminal 2", "column title"),
+					  tr("Sheet", "column title")});
+	for (int r = 0 ; r < rows.size() ; ++r)
+	{
+		const WiringListRow &row = rows.at(r);
+		const QStringList cells{row.wire_number,
+					row.from_element_label,
+					row.from_terminal,
+					row.to_element_label,
+					row.to_terminal,
+					row.diagram_position};
+		for (int c = 0 ; c < cells.size() ; ++c) {
+			model->setItem(r, c, new QStandardItem(cells.at(c)));
+		}
+	}
+	const int listed = rows.size();
 
 	const int excluded = m_project->dataBase()->excludedConductorCount();
 
-		//QSqlQueryModel fetches lazily, so rowCount() straight after
-		//setQuery() reports the first batch (256) rather than the query's
-		//size. Draining it first is what makes the count below true for a
-		//project with more wires than that.
-	while (model->canFetchMore()) {
-		model->fetchMore();
-	}
-	const int listed = model->rowCount();
-
 	auto *summary = new QLabel(this);
 	summary->setWordWrap(true);
+	QStringList said;
+	if (!error.isEmpty())
+	{
+			//An empty list which says nothing would read as a project
+			//without a single wire rather than as a list which could
+			//not be read
+		said << tr("The wiring list could not be read: %1",
+			   "wiring list read error").arg(error);
+	}
+	said << tr("%n conductors listed.", "wiring list summary", listed);
 	if (excluded > 0)
 	{
 			//Rare now that Terminal::stableUuid() gives every terminal an
 			//identity: what is left is a conductor whose endpoint has no
 			//parent element at all. Still worth saying out loud rather than
 			//presenting a short list as if it were complete.
-		summary->setText(tr("%n conductors listed.", "wiring list summary", listed)
-				 % QStringLiteral(" ")
-				 % tr("%n conductors excluded: one end is not attached to any "
-				      "element.",
-				      "wiring list exclusion warning", excluded));
+		said << tr("%n conductors excluded: one end is not attached to any "
+			   "element.",
+			   "wiring list exclusion warning", excluded);
 	}
-	else {
-		summary->setText(tr("%n conductors listed.", "wiring list summary", listed));
+	if (unassigned_junctions > 0)
+	{
+			//Those rows end at the junction, because nothing says which
+			//way the wire runs through it: said rather than listed as if
+			//the way through were known (#1500)
+		said << tr("%n junction(s) have no source connection set, so their rows "
+			   "still end at the junction.",
+			   "wiring list junction warning", unassigned_junctions);
 	}
+	summary->setText(said.join(QLatin1Char(' ')));
 	layout->addWidget(summary);
 
 	auto *view = new QTableView(this);

@@ -1172,6 +1172,8 @@ void Terminal::setMasterLabelIndex(int index)
 	parent element of terminal.
 	For folio report, return the terminal of linked other report.
 	For Terminal element, return the other terminal of terminal element.
+	For junction, the same: its terminals share one potential, so a wire
+	passes through it with its voltage, colour and section.
 	@param terminal : to start search
 	@param all_diagram :if true return all related terminal,
 	false return only terminal in the same diagram of t
@@ -1219,14 +1221,21 @@ QList<Terminal *> relatedPotentialTerminal (
 			return (elmt_list.first()->terminals());
 		}
 	}
-	// If terminal parent element is a Terminal element.
-	else if (terminal -> parentElement() -> linkType() & Element::Terminale)
+	// If terminal parent element is a Terminal element, or a junction:
+	// both pass a potential through their own terminals, which is the whole
+	// point of a junction being more than a drawing (#1500).
+	else if (terminal -> parentElement() -> linkType()
+			 & (Element::Terminale | Element::Junction))
 	{
 		// English: Check if the user activated the function separation
 		// checkbox for this terminal (the checkbox that used to be called
 		// potential separation -- the stored flag is still
 		// "potential_isolating" so existing elements keep their setting).
+		// Read for a terminal only: a junction has no separation to ask
+		// for, its terminals are one node whatever its definition says, so
+		// a flag left in it from before it was retyped stops nothing (#1500).
 		if (!ignore_function_separation
+			&& (terminal -> parentElement()->linkType() & Element::Terminale)
 			&& QET::infoFlagIsTrue(terminal->parentElement()->elementInformations().value(QStringLiteral("potential_isolating")).toString())) {
 			// English: The terminals are function separated -- but terminals
 			// sharing this terminal's own, non-empty potential-group
@@ -1252,5 +1261,305 @@ QList<Terminal *> relatedPotentialTerminal (
 	}
 
 	return QList<Terminal *>();
+}
+
+	//The walk itself, kept out of the way: the junctions already passed are
+	//carried along so a drawing which runs back to one stops instead of
+	//walking around for ever
+static QList<Terminal *> walkPastJunctions(Terminal *end, QSet<QUuid> &passed)
+{
+	if (!end || !end->parentElement()) {
+		return QList<Terminal *>();
+	}
+	Element *element = end->parentElement();
+	if (!(element->linkType() & Element::Junction)) {
+			//Not a junction: this is where the wire ends, and it names
+			//the end as it stands
+		return QList<Terminal *>() << end;
+	}
+	if (passed.contains(element->uuid())) {
+			//A loop: two junctions wired to each other, say
+		return QList<Terminal *>();
+	}
+	passed.insert(element->uuid());
+
+		//The chain says which way the wire runs on from here: the
+		//connection it comes from, or the first one it goes on to when
+		//this is the source. A junction nothing was ever set on, or a
+		//connection with no role in the chain, leads nowhere -- it is
+		//left unnamed rather than named by a guess (#1500)
+	const auto neighbours = junctionChainNeighbours(end);
+	const Terminal *next = neighbours.first ? neighbours.first
+					     : neighbours.second;
+	if (!next) {
+		return QList<Terminal *>();
+	}
+
+	QList<Terminal *> reached;
+	for (const Conductor *conductor : next->conductors())
+	{
+		if (!conductor || !conductor->terminal1 || !conductor->terminal2) {
+			continue;
+		}
+		Terminal *far = conductor->terminal1 == next
+				? conductor->terminal2 : conductor->terminal1;
+			//A junction reached that way is passed in turn: it is
+			//a connection point on the wire rather than a piece of
+			//it, so a run through two of them in a row -- a T
+			//followed by a corner -- is followed all the way to
+			//where it really ends (#1500)
+		reached += walkPastJunctions(far, passed);
+	}
+	return reached;
+}
+
+QList<Terminal *> endsPastJunctions(Terminal *end)
+{
+	QSet<QUuid> passed;
+	return walkPastJunctions(end, passed);
+}
+
+JunctionRoles junctionRolesOf(const QDomElement &definition)
+{
+	JunctionRoles roles;
+	if (definition.isNull()) {
+		return roles;
+	}
+
+		//The roles are kind information, where they were introduced with
+		//the junction type itself. Symbols written before that move keep
+		//them among their element information instead -- the ones in the
+		//wild do, including the junction symbols uploaded to the forum --
+		//so that block is read too, and the kind one wins when it has
+		//anything to say (#1500)
+	const auto readBlock = [&definition](const QString &block_name,
+					   const QString &entry_name) {
+		JunctionRoles read;
+		QString targets[3];
+		const QStringList target_keys = junctionTargetKeys();
+		const QDomElement block = definition.firstChildElement(block_name);
+		for (QDomElement entry = block.firstChildElement(entry_name) ;
+		     !entry.isNull() ; entry = entry.nextSiblingElement(entry_name))
+		{
+			const QString name = entry.attribute(QStringLiteral("name"));
+			const QString value = entry.text().trimmed();
+			const int index = target_keys.indexOf(name);
+			if (name == junctionSourceKey()) {
+				read.source = value;
+			} else if (index >= 0 && index < 3) {
+				targets[index] = value;
+			}
+		}
+			//The targets are read by their number rather than by the
+			//order the file holds them in: the chain follows them
+			//1, 2, 3 either way
+		for (const QString &target : targets) {
+			if (!target.isEmpty()) {
+				read.targets << target;
+			}
+		}
+		return read;
+	};
+
+	const JunctionRoles from_kind = readBlock(QStringLiteral("kindInformations"),
+						   QStringLiteral("kindInformation"));
+	if (!from_kind.source.isEmpty() || !from_kind.targets.isEmpty()) {
+		return from_kind;
+	}
+	return readBlock(QStringLiteral("elementInformations"),
+			 QStringLiteral("elementInformation"));
+}
+
+JunctionRoles junctionRolesOf(const Element *junction)
+{
+	JunctionRoles roles;
+	if (!junction) {
+		return roles;
+	}
+		//Read from the symbol as it stands rather than out of its
+		//definition once more: kindInfoFromXml() has already put every
+		//name it does not know into the element's data, and this is
+		//looked up once per junction connection per wire in the strip,
+		//the cable list and the wiring lists (#1500)
+	const ElementData data = junction->elementData();
+	QString targets[3];
+	const QStringList target_keys = junctionTargetKeys();
+	for (const auto &entry : data.m_other_kind_informations)
+	{
+		const int index = target_keys.indexOf(entry.first);
+		if (entry.first == junctionSourceKey()) {
+			roles.source = entry.second;
+		} else if (index >= 0 && index < 3) {
+			targets[index] = entry.second;
+		}
+	}
+		//The targets are read by their number rather than by the order
+		//the file holds them in: the chain follows them 1, 2, 3 either way
+	for (const QString &target : targets) {
+		if (!target.isEmpty()) {
+			roles.targets << target;
+		}
+	}
+	if (!roles.source.isEmpty() || !roles.targets.isEmpty()) {
+		return roles;
+	}
+		//Nothing among the kind informations: a symbol written before
+		//the roles moved keeps them among its element information, so
+		//the definition is read for those -- only for those, which is
+		//the rare case rather than every lookup (#1500)
+	return junctionRolesOf(junction->location().xml());
+}
+
+QString junctionSourceKey()
+{
+	return QStringLiteral("junction_source");
+}
+
+QStringList junctionTargetKeys()
+{
+	return {QStringLiteral("junction_target_1"),
+		QStringLiteral("junction_target_2"),
+		QStringLiteral("junction_target_3")};
+}
+
+QStringList junctionRoleKeys()
+{
+	return QStringList{junctionSourceKey()} << junctionTargetKeys();
+}
+
+namespace {
+
+/**
+	@brief sameUuid
+	Two uuids the same, whichever way the file wrote them: with the braces
+	or without. An empty one is never the same as anything, not even as
+	another empty one, so a terminal which has no uuid cannot be matched
+	by accident.
+	@param a first uuid
+	@param b second uuid
+	@return true when both name the same thing
+*/
+bool sameUuid(const QString &a, const QString &b)
+{
+	if (a.isEmpty() || b.isEmpty()) {
+		return false;
+	}
+	if (a == b) {
+		return true;
+	}
+	const QUuid ua(a);
+	const QUuid ub(b);
+	return !ua.isNull() && ua == ub;
+}
+
+} // namespace
+
+/**
+	@brief junctionChainRoles
+	@return the two connections of a chain around @a at: the one the wire
+	comes from, and the one it goes on to, either of them empty when there
+	is none.
+
+	The chain itself -- source, then target 1, then target 2, then target 3
+	-- read as plain uuids rather than as elements, so the drawing and the
+	lists, which hold their rows as uuids, follow one rule (#1500).
+
+	@param source the connection the wire comes in at, empty when the
+	junction has none set
+	@param targets where it goes on to, in the order the lists follow them
+	@param at the connection to read the chain at, empty for none
+	@return {the connection before, the connection after}, in chain order
+*/
+QString junctionPassThrough(const QStringList &wired)
+{
+	return wired.size() == 1 ? wired.first() : QString();
+}
+
+QPair<QString, QString> junctionChainRoles(const QString &source, const QStringList &targets,
+					   const QString &at)
+{
+	const QPair<QString, QString> nowhere;
+	if (source.isEmpty() || at.isEmpty()) {
+			//No source set: there is no chain to read (#1500)
+		return nowhere;
+	}
+	if (sameUuid(at, source)) {
+			//The source comes from nowhere and leads on to the first
+			//target
+		return qMakePair(QString(), targets.isEmpty() ? QString()
+							     : targets.first());
+	}
+	int index = -1;
+	for (int i = 0 ; i < targets.size() ; ++i)
+	{
+		if (sameUuid(at, targets.at(i))) {
+			index = i;
+			break;
+		}
+	}
+	if (index < 0) {
+			//A connection the definition gives no role
+		return nowhere;
+	}
+		//What leads to it, and what it leads on to: a target in the
+		//middle of the chain has both, the first one only what leads
+		//to it, the last one only what it leads on to
+	const QString before = index == 0 ? source : targets.at(index - 1);
+	const QString after = index + 1 < targets.size() ? targets.at(index + 1)
+							: QString();
+	return qMakePair(before, after);
+}
+
+QPair<Terminal *, Terminal *> junctionChainNeighbours(Terminal *at)
+{
+	const QPair<Terminal *, Terminal *> nowhere(nullptr, nullptr);
+	if (!at || !at->parentElement()) {
+		return nowhere;
+	}
+	Element *junction = at->parentElement();
+	if (!(junction->linkType() & Element::Junction)) {
+		return nowhere;
+	}
+	const JunctionRoles roles = junctionRolesOf(junction);
+
+		//The connection of this junction a uuid names
+	const auto connection = [&junction](const QString &terminal_uuid) {
+		for (Terminal *candidate : junction->terminals())
+		{
+			if (sameUuid(candidate->uuid().toString(), terminal_uuid)) {
+				return candidate;
+			}
+		}
+		return static_cast<Terminal *>(nullptr);
+	};
+
+	//The chain as uuids, read by the one rule the lists read it by
+	const auto chain = junctionChainRoles(roles.source, roles.targets,
+					      at->uuid().toString());
+	Terminal *before = chain.first.isEmpty() ? nullptr : connection(chain.first);
+	Terminal *after = chain.second.isEmpty() ? nullptr : connection(chain.second);
+	if (!before && !after) {
+			//The chain does not say, or names a connection this
+			//symbol does not have -- which is how a corner whose
+			//source points at a terminal it was never drawn with
+			//still passes a wire on (#1500). A junction with one way
+			//out of it has nothing to tell apart, so the wire goes
+			//that way without needing a source set on it.
+		QStringList wired;
+		for (Terminal *other : junction->terminals())
+		{
+			if (other != at && !other->conductors().isEmpty()) {
+				wired << other->uuid().toString();
+			}
+		}
+		const QString way_on = junctionPassThrough(wired);
+		if (way_on.isEmpty()) {
+				//More than one way on, or none at all: nothing
+				//to follow, and nothing to guess (#1500)
+			return nowhere;
+		}
+		return qMakePair(static_cast<Terminal *>(nullptr), connection(way_on));
+	}
+	return qMakePair(before, after);
 }
 

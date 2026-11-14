@@ -72,12 +72,33 @@ TerminalEditor::~TerminalEditor()
  * Reimplemented from ElementItemEditor
  * Update the content of this widget
  */
+/**
+	@brief TerminalEditor::updateJunctionVisibility
+	The type and the potential group are terminal things: a junction passes
+	a potential through by definition, has no type of its own, and the box
+	which asks for a separation is not shown for it -- so those two rows
+	would offer something the symbol never reads (#1500).
+*/
+void TerminalEditor::updateJunctionVisibility()
+{
+	const bool junction = elementEditor()
+			&& elementEditor()->elementScene()
+			&& elementEditor()->elementScene()->elementData().m_type
+				   == ElementData::Junction;
+	ui->label_5->setVisible(!junction);
+	ui->m_type_cb->setVisible(!junction);
+	ui->label_potential->setVisible(!junction);
+	ui->m_potential_le->setVisible(!junction);
+}
+
 void TerminalEditor::updateForm()
 {
 	if (!m_part) {
 		return;
 	}
 	activeConnections(false);
+
+	updateJunctionVisibility();
 
 	ui->m_x_dsb->setValue(m_part->property("x").toReal());
 	ui->m_y_dsb->setValue(m_part->property("y").toReal());
@@ -606,6 +627,7 @@ bool TerminalEditor::updateMasterLabelVisibility()
 
 void TerminalEditor::refreshMasterLabelVisibility()
 {
+	updateJunctionVisibility();
 	updateMasterLabelVisibility();
 	if (m_part) {
 		updateForm();

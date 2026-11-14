@@ -38,6 +38,7 @@
 #include "qetgraphicsitem/terminal.h"
 #include "qetproject.h"
 #include "titleblockproperties.h"
+#include "wiringlistdb.h"
 #include "wiringlistexport.h"
 
 // Private Qt PDF engine for drawHyperlink() — see pdf_links / projectprintwindow.
@@ -706,38 +707,24 @@ QHash<Element *, int> folioIndex(QETProject &project)
 /// GUI.
 int exportWiring(QETProject &project, const QString &output)
 {
-	// The project database is built lazily; force a (re)build before querying.
-	project.dataBase()->updateDB();
-
-	static const QStringList columns {
-		"wire_number", "from_element_label", "from_terminal",
-		"to_element_label", "to_terminal", "diagram_position", "conductor_uuid",
-		"from_terminal_index", "from_terminal_uuid", "to_terminal_index", "to_terminal_uuid"
-	};
-
-	QSqlQuery query = project.dataBase()->newQuery(
-		"SELECT " % columns.join(", ") %
-		" FROM wiring_list_view"
-		//Wire numbers are text, so a plain sort puts "10" before "9".
-		//Numeric ones first, ordered by value; anything non-numeric after,
-		//ordered as text. The trailing wire_number keeps ties stable.
-		" ORDER BY diagram_position,"
-		" CASE WHEN wire_number GLOB '[0-9]*' THEN 0 ELSE 1 END,"
-		" CAST(wire_number AS INTEGER),"
-		" wire_number");
-	if (!query.exec()) {
-		err << "Wiring list query failed: " << query.lastError().text() << "\n";
+	// Read from the project database, with every end which is a junction
+	// already resolved to where the junction's chain leads: the one rule
+	// this export and the CSV one share, so the two lists agree (#1500).
+	int unassigned_junctions = 0;
+	QString error;
+	const QVector<WiringListRow> rows =
+		wiringListRows(&project, &unassigned_junctions, &error);
+	if (!error.isEmpty()) {
+		err << "Wiring list query failed: " << error << "\n";
 		return 1;
 	}
 
-	QString csv = columns.join(";") % "\n";
-	int rows = 0;
-	while (query.next()) {
+	QString csv = WiringListRow::columns().join(";") % "\n";
+	for (const WiringListRow &row : rows) {
 		QStringList values;
-		for (int i = 0; i < columns.size(); ++i)
-			values << csvField(query.value(i).toString());
+		for (const QString &value : row.values())
+			values << csvField(value);
 		csv += values.join(";") % "\n";
-		++rows;
 	}
 
 		//Written through QSaveFile so a failure part-way leaves the previous
@@ -757,7 +744,12 @@ int exportWiring(QETProject &project, const QString &output)
 		err << "Cannot write '" << output << "': " << file.errorString() << "\n";
 		return 1;
 	}
-	out << "Exported " << rows << " conductor(s) -> " << output << "\n";
+	out << "Exported " << rows.size() << " conductor(s) -> " << output << "\n";
+		//Said rather than left out: those rows end at the junction, which
+		//is what the export would otherwise not tell anyone about
+	if (unassigned_junctions > 0)
+		out << unassigned_junctions << " junction(s) have no source connection set, "
+			   "so their rows still end at the junction.\n";
 	return 0;
 }
 

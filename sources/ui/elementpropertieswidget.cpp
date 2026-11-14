@@ -381,6 +381,14 @@ void ElementPropertiesWidget::updateUi()
 		case Element::Terminale:
 			addInfoAndArticlesTabs();
 			break;
+		case Element::Junction:
+			//A junction is a connection point on a wire rather than a
+			//part: it takes no label, no formula and no description of
+			//its own, so the information page would have nothing to say
+			//(#1500). What a junction does take -- which of its
+			//connections the wire comes in at and where it goes on to --
+			//belongs to the symbol and is set in the element editor.
+			break;
 		case Element::ConductorDefinition:
 			break;
 

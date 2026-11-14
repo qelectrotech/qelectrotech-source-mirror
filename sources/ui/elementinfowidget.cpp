@@ -653,6 +653,15 @@ void ElementInfoWidget::setupSchemeRow()
 		return;
 	}
 
+		//A junction is never numbered: no numbering to choose, no formula to
+		//show, and no number to freeze -- it carries no label, because a label
+		//on it would name nothing (#1500). setupNumberRow() follows this row,
+		//so it stays away too.
+	if (m_element->linkType() == Element::Junction) {
+		formula->setDisabled(true);
+		return;
+	}
+
 	m_scheme_row = new QWidget(this);
 	auto *layout = new QHBoxLayout(m_scheme_row);
 	layout->setContentsMargins(0, 0, 0, 0);
@@ -690,6 +699,10 @@ void ElementInfoWidget::setupFreezeRow()
 {
 	ElementInfoPartWidget *label = infoPartWidgetForKey(QETInformation::ELMT_LABEL);
 	if (!label || !m_element) {
+		return;
+	}
+		//Nothing to freeze: a junction carries no label (#1500)
+	if (m_element->linkType() == Element::Junction) {
 		return;
 	}
 	m_freeze_cb = new QCheckBox(tr("Freeze name"), this);

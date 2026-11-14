@@ -2321,7 +2321,7 @@ QSet<Conductor *> Conductor::relatedPotentialConductors(const bool all_diagram,
 			QList <Conductor *> other_conductors_list_t = terminal->conductors();
 
 				//Get the other terminals of the parent element of @terminal, who share the same potential
-				//This is use for element type "folio report" and "terminal element"
+				//This is use for element type "folio report", "terminal element" and "junction"
 			for (Terminal *t : relatedPotentialTerminal(terminal, all_diagram,
 								ignore_function_separation))
 			{

@@ -9,7 +9,9 @@
 #include <QTextStream>
 #include <QDomDocument>
 #include <QFile>
+#include <QSet>
 #include <algorithm>
+#include <functional>
 
 WiringListExport::WiringListExport(QETProject *project, QWidget *parent) :
 QObject(parent),
@@ -136,10 +138,76 @@ QDomDocument WiringListExport::projectDocument() const
     return document;
 }
 
+/**
+    @brief mergeFields
+    Two places one row spans, written the way every list writes them: the
+    first one, then the second -- or just the one there is.
+    @param a first place
+    @param b second place
+    @return both places as one string
+*/
+static QString mergeFields(const QString &a, const QString &b)
+{
+    QString at = a.trimmed();
+    QString bt = b.trimmed();
+    if (at.isEmpty()) return bt;
+    if (bt.isEmpty()) return at;
+    if (at == bt) return at;
+    return at + ", " + bt;
+}
+
+/**
+	@brief WiringListExport::junctionRoles
+	@return the roles of every junction definition the project's embedded
+	collection holds, by the path a placed symbol names its definition with.
+
+	The roles are a property of the symbol: they sit in the definition, so
+	every copy of the symbol answers the same way and no database has to
+	hold them. Symbols written before the roles became kind information keep
+	them among their element information, which is read as a fallback so an
+	older symbol opens as it was saved (#1500).
+	@param root the document holding the project's embedded collection
+*/
+QHash<QString, JunctionRoles> WiringListExport::junctionRoles(const QDomElement &root) const
+{
+	QHash<QString, JunctionRoles> roles;
+	const QDomElement collection = root.firstChildElement(QStringLiteral("collection"));
+	if (collection.isNull()) {
+		return roles;
+	}
+
+	QList<QPair<QDomElement, QString>> pending;
+	pending.append(qMakePair(collection, QStringLiteral("embed://")));
+	while (!pending.isEmpty())
+	{
+		const auto step = pending.takeLast();
+		for (QDomElement child = step.first.firstChildElement() ;
+		     !child.isNull() ; child = child.nextSiblingElement())
+		{
+			const QString path = step.second + child.attribute(QStringLiteral("name"));
+			if (child.tagName() == QLatin1String("category")) {
+				pending.append(qMakePair(child, path + QLatin1Char('/')));
+			} else if (child.tagName() == QLatin1String("element")) {
+				const QDomElement definition =
+					child.firstChildElement(QStringLiteral("definition"));
+				if (definition.attribute(QStringLiteral("link_type"))
+				    != QLatin1String("junction")) {
+					continue;
+				}
+					//Read by the same reader the drawing uses, so the
+					//two always answer alike
+				roles.insert(path, junctionRolesOf(definition));
+			}
+		}
+	}
+	return roles;
+}
+
 QMap<QString, ElementInfo> WiringListExport::collectElementsInfo(const QDomElement &root) const
 {
     QMap<QString, ElementInfo> infoMap;
 
+    const QHash<QString, JunctionRoles> junctions = junctionRoles(root);
     QSet<QString> placeholderTypes;
     QDomElement collection = root.firstChildElement("collection");
     if (!collection.isNull()) {
@@ -189,6 +257,18 @@ QMap<QString, ElementInfo> WiringListExport::collectElementsInfo(const QDomEleme
         }
 
         QString typeVal = el.attribute("type");
+            //Where the wire comes in at and where it goes on to are the
+            //symbol's own information, read from its definition -- the one
+            //every copy is drawn from -- and not from this copy's own block.
+            //A definition stores them the way an uuid is written there, with
+            //the braces; the wires store theirs normalized, so they are
+            //normalized here too and the two meet again.
+        const JunctionRoles roles = junctions.value(typeVal);
+        info.isJunction = junctions.contains(typeVal);
+        info.junctionSource = normalizeUuid(roles.source);
+        for (const QString &target : roles.targets) {
+            info.junctionTargets << normalizeUuid(target);
+        }
         info.isPlaceholder = false;
         for (const QString &ptype : placeholderTypes) {
             if (typeVal.endsWith(ptype)) {
@@ -216,6 +296,10 @@ QList<ConductorData> WiringListExport::collectConductors(const QDomElement &root
         data.index = i;
         data.el1_uuid = normalizeUuid(cond.attribute("element1", cond.attribute("element1id", "")));
         data.el2_uuid = normalizeUuid(cond.attribute("element2", cond.attribute("element2id", "")));
+            //The connection each end sits on: a junction's roles are stored
+            //against them, so a row can be resolved through a junction
+        data.terminal1_uuid = normalizeUuid(cond.attribute("terminal1"));
+        data.terminal2_uuid = normalizeUuid(cond.attribute("terminal2"));
 
         data.element1_label = cond.attribute("element1_label");
         if (data.element1_label.isEmpty()) {
@@ -249,7 +333,8 @@ void WiringListExport::toCsv()
 {
     if (!m_project) return;
 
-    const QString csv = toCsvString();
+    int unassigned_junctions = 0;
+    const QString csv = toCsvString(&unassigned_junctions);
     if (csv.isEmpty()) {
         QMessageBox::warning(m_parent, tr("Error"), tr("Unable to read the project's in-memory structure."));
         return;
@@ -272,12 +357,22 @@ void WiringListExport::toCsv()
     QTextStream out(&file);
     out << csv;
     file.close();
-    QMessageBox::information(m_parent, tr("Export successful"), tr("The wiring diagram has been successfully exported !"));
+
+    QString message = tr("The wiring diagram has been successfully exported !");
+    if (unassigned_junctions > 0) {
+            //Said rather than left out: those rows end at the junction,
+            //which is what the export would otherwise not tell anyone about
+        message += QLatin1Char('\n') + tr(
+            "Note: %n junction(s) have no source connection set, so their "
+            "rows still end at the junction.", nullptr, unassigned_junctions);
+    }
+    QMessageBox::information(m_parent, tr("Export successful"), message);
 }
 
-QString WiringListExport::toCsvString() const
+QString WiringListExport::toCsvString(int *unassigned_junctions) const
 {
     if (!m_project) return QString();
+    if (unassigned_junctions) *unassigned_junctions = 0;
 
     QDomDocument doc = projectDocument();
     if (doc.isNull()) return QString();
@@ -339,14 +434,7 @@ QString WiringListExport::toCsvString() const
         return c;
     };
 
-    auto mergeField = [](const QString &a, const QString &b) {
-        QString at = a.trimmed();
-        QString bt = b.trimmed();
-        if (at.isEmpty()) return bt;
-        if (bt.isEmpty()) return at;
-        if (at == bt) return at;
-        return at + ", " + bt;
-    };
+    resolveJunctionRuns(conductors, elementsInfo, unassigned_junctions);
 
     for (int i = 0; i < conductors.size(); ++i) {
         ConductorData c = conductors[i];
@@ -405,7 +493,7 @@ QString WiringListExport::toCsvString() const
         const ConductorData &normC = others.first();
 
         ConductorData merged;
-        merged.folio = mergeField(otherHalf.folio, normC.folio);
+        merged.folio = mergeFields(otherHalf.folio, normC.folio);
         merged.folio_index = std::min(otherHalf.folio_index, normC.folio_index);
 
         merged.el1_uuid = otherHalf.el1_uuid;
@@ -416,11 +504,11 @@ QString WiringListExport::toCsvString() const
         merged.element2_label = normC.element1_label;
         merged.terminalname2 = normC.terminalname1;
 
-        merged.tension_protocol = mergeField(otherHalf.tension_protocol, normC.tension_protocol);
-        merged.conductor_color = mergeField(otherHalf.conductor_color, normC.conductor_color);
-        merged.conductor_section = mergeField(otherHalf.conductor_section, normC.conductor_section);
-        merged.function = mergeField(otherHalf.function, normC.function);
-        merged.cable = mergeField(otherHalf.cable, normC.cable);
+        merged.tension_protocol = mergeFields(otherHalf.tension_protocol, normC.tension_protocol);
+        merged.conductor_color = mergeFields(otherHalf.conductor_color, normC.conductor_color);
+        merged.conductor_section = mergeFields(otherHalf.conductor_section, normC.conductor_section);
+        merged.function = mergeFields(otherHalf.function, normC.function);
+        merged.cable = mergeFields(otherHalf.cable, normC.cable);
 
         uniqueConductors.append(merged);
     }
@@ -477,4 +565,344 @@ QString WiringListExport::toCsvString() const
     }
 
     return csv;
+}
+
+/**
+	@brief WiringListExport::resolveJunctionRuns
+	Written once for both lists: the CSV export and the database list are
+	meant to agree, so they share this one rule (#1500).
+
+	A junction is a connection point on a wire, never a part of its own:
+	the rows running through one are listed as the one run they are, from
+	the real end the wire comes in at to the real end it goes on to, and
+	the halves which stopped at the junction are left out. The order the
+	roles give is the chain: source to target 1, target 1 to target 2, and
+	so on.
+
+	A junction with no source set is passed on when only one way out of it
+	carries a wire -- there is nothing to tell apart -- and stays as it
+	stands when there is a choice, counted so both lists can say so rather
+	than listing it silently wrong (#1500).
+
+	@param conductors the rows, changed in place
+	@param elementsInfo the symbols the rows name, holding the roles read
+	from the definitions of the junctions among them
+	@param unassigned_junctions, when given, is set to how many junctions
+	have a wire on them and no source connection set, and so stayed in the
+	list unresolved
+*/
+void WiringListExport::resolveJunctionRuns(QList<ConductorData> &conductors,
+                                           const QMap<QString, ElementInfo> &elementsInfo,
+                                           int *unassigned_junctions)
+{
+    if (unassigned_junctions) *unassigned_junctions = 0;
+    //The symbols at least one conductor hangs on: what says whether
+    //a junction with no source set has rows ending at it
+    QSet<QString> wired;
+    for (const ConductorData &c : std::as_const(conductors)) {
+        wired.insert(c.el1_uuid);
+        wired.insert(c.el2_uuid);
+    }
+
+    //The conductors sitting on each connection of each symbol
+    QHash<QString, QList<int>> on_connection;
+    for (int i = 0; i < conductors.size(); ++i) {
+        on_connection[conductors[i].el1_uuid + QLatin1Char('|')
+                      + conductors[i].terminal1_uuid] << i;
+        on_connection[conductors[i].el2_uuid + QLatin1Char('|')
+                      + conductors[i].terminal2_uuid] << i;
+    }
+
+    auto labelOf = [&elementsInfo](const QString &element_uuid) {
+        const ElementInfo info = elementsInfo.value(element_uuid);
+        return info.label.isEmpty() ? info.name : info.label;
+    };
+
+        //The connections of a junction a wire hangs on
+    auto wiredConnectionsOf = [&on_connection](const QString &element_uuid) {
+        QStringList connections;
+        const QString prefix = element_uuid + QLatin1Char('|');
+        for (auto it = on_connection.constBegin(); it != on_connection.constEnd(); ++it)
+        {
+            if (it.key().startsWith(prefix)) {
+                const QString connection_uuid = it.key().mid(prefix.size());
+                if (!connections.contains(connection_uuid)) {
+                    connections << connection_uuid;
+                }
+            }
+        }
+        return connections;
+    };
+
+        //The end a conductor reaches, given the end it hangs on
+    auto farEnd = [&conductors](int wire, const QString &element_uuid,
+                                const QString &terminal_uuid) {
+        const ConductorData &c = conductors.at(wire);
+        if (c.el1_uuid == element_uuid && c.terminal1_uuid == terminal_uuid)
+            return QPair<QString, QString>(c.el2_uuid, c.terminal2_uuid);
+        return QPair<QString, QString>(c.el1_uuid, c.terminal1_uuid);
+    };
+
+        //One end of the chain: what it reaches, and the wire it sits on
+    struct Stop {
+        QString element;
+        QString terminal;
+        int wire = 0;
+    };
+
+        //Where the wires on one connection of a chain really end: their
+        //far ends, and on through every junction in the way, because the
+        //chain of such a junction says how the run goes on and a junction
+        //reached that way is passed in turn. A run through two junctions
+        //in a row therefore ends at real pieces rather than at the second
+        //one (#1500).
+        //
+        //Every wire hanging on the connection is followed, the second and
+        //third one like the first, and every wire walked comes back in
+        //@a walked so that none of them is left with a row ending at a
+        //junction. The connections already passed are carried along the
+        //path rather than shared between the paths, so a loop is caught
+        //without holding up a wire which happens to reach the same place
+        //another way (#1500).
+    std::function<QList<Stop>(const QString &, const QString &, QSet<QString>,
+                              QList<int> &)> walk;
+    walk = [&](const QString &element_uuid, const QString &terminal_uuid,
+               QSet<QString> passed, QList<int> &walked) {
+        QList<Stop> stops;
+        if (element_uuid.isEmpty() || terminal_uuid.isEmpty()) {
+            return stops;
+        }
+        const QString here = element_uuid + QLatin1Char('|') + terminal_uuid;
+        if (passed.contains(here)) {
+                //A loop: two junctions wired to each other, say
+            return stops;
+        }
+        passed.insert(here);
+
+        for (const int wire : on_connection.value(here))
+        {
+            walked.append(wire);
+            const auto far = farEnd(wire, element_uuid, terminal_uuid);
+            const ElementInfo &reached = elementsInfo.value(far.first);
+            if (!reached.isJunction) {
+                    //A real piece: this is where the run ends
+                stops.append(Stop{far.first, far.second, wire});
+                continue;
+            }
+                //On through that junction by the rule the drawing follows,
+                //so the two cannot disagree (#1500): what leads to the
+                //connection we came in at, or the first one it goes on to
+                //when that is its source
+            const auto links = junctionChainRoles(reached.junctionSource,
+                                                  reached.junctionTargets,
+                                                  far.second);
+            QString next = links.first.isEmpty() ? links.second : links.first;
+            if (next.isEmpty()
+                || on_connection.value(far.first + QLatin1Char('|') + next).isEmpty()) {
+                    //The chain does not say, or names a connection this
+                    //symbol does not have or has no wire on -- which is
+                    //how a corner whose source points at a terminal it
+                    //was never drawn with came out of the list with
+                    //nothing (#1500). A junction with one way out of it
+                    //still has nothing to tell apart, so the wire goes on
+                    //that way.
+                QStringList other = wiredConnectionsOf(far.first);
+                other.removeAll(far.second);
+                next = junctionPassThrough(other);
+            }
+            if (next.isEmpty()) {
+                    //More than one way on, or none at all: the run ends
+                    //here and is counted rather than guessed (#1500)
+                continue;
+            }
+            stops += walk(far.first, next, passed, walked);
+        }
+        return stops;
+    };
+
+    QList<ConductorData> added;
+    QSet<int> superseded;
+
+        //Every wire of @a wires has already been written into a row by
+        //another junction: two of them in a row share the wire between
+        //them, and whichever of them is read first writes that part of
+        //the run
+    auto alreadyWritten = [&superseded](const QList<int> &wires) {
+        for (const int wire : wires) {
+            if (!superseded.contains(wire)) {
+                return false;
+            }
+        }
+        return true;
+    };
+
+    for (auto it = elementsInfo.constBegin(); it != elementsInfo.constEnd(); ++it)
+    {
+        const ElementInfo &info = it.value();
+        if (!info.isJunction) continue;
+
+            //The connections of the chain: what the roles give, or both
+            //ends of a pass-through -- a junction nothing was ever set on
+            //with a single way out of it, which has nothing to tell apart
+            //and needs no source to be passed on (#1500)
+        QStringList chain_connections;
+            //Set when the chain is taken from what is wired rather than
+            //from the roles: such a pair has no order of its own, so the
+            //row is sorted into the order both lists read one in below
+            //(#1500)
+        bool pass_through = false;
+        if (info.junctionSource.isEmpty()
+            || on_connection.value(it.key() + QLatin1Char('|')
+                                   + info.junctionSource).isEmpty())
+        {
+                //No source set, or one no wire hangs on -- which is how a
+                //corner whose roles were copied from a symbol with three
+                //connections names a terminal it does not have. What the
+                //symbol says cannot be followed then, and a junction with
+                //a single way out of it still has nothing to tell apart,
+                //so both of its wired connections are taken and the wire
+                //passed on. Anything else stays as it stands and is
+                //counted rather than guessed (#1500)
+            const QStringList wired_connections = wiredConnectionsOf(it.key());
+            if (wired_connections.size() != 2) {
+                    //More than one way on, or none at all: the rows stay
+                    //as they are and the junction is said out loud rather
+                    //than listed as if the way through were known. One
+                    //nothing was ever wired to has no row to get wrong and
+                    //counts for nothing (#1500)
+                if (unassigned_junctions && wired.contains(it.key())) {
+                    ++(*unassigned_junctions);
+                }
+                continue;
+            }
+            chain_connections = wired_connections;
+            pass_through = true;
+        }
+        else
+        {
+            chain_connections << info.junctionSource << info.junctionTargets;
+        }
+
+        QList<QList<Stop>> chain;   // one list of stops per connection
+        QList<QList<int>> walked;   // every wire walked to get there
+        auto addToChain = [&](const QString &terminal_uuid) {
+            if (terminal_uuid.isEmpty()) return;
+            if (on_connection.value(it.key() + QLatin1Char('|') + terminal_uuid).isEmpty()) {
+                    //A connection the user has not wired yet simply leaves
+                    //the chain shorter; it does not end it somewhere wrong
+                return;
+            }
+            QList<int> wires;
+            QSet<QString> passed;
+            const QList<Stop> stops = walk(it.key(), terminal_uuid, passed, wires);
+            if (stops.isEmpty()) {
+                    //The chain does not say where this one goes on to:
+                    //its wires stay as they are rather than being written
+                    //somewhere wrong (#1500)
+                return;
+            }
+            chain.append(stops);
+            walked.append(wires);
+        };
+        for (const QString &connection_uuid : chain_connections) {
+            addToChain(connection_uuid);
+        }
+            //A pass-through has no order of its own, so its row is written
+            //in the order both lists read one in -- the same round the CSV
+            //writes it in -- instead of in whatever order the conductors
+            //happen to be held in (#1500)
+        if (pass_through && chain.size() == 2) {
+            const auto after = std::make_pair(labelOf(chain.at(1).first().element),
+                                              chain.at(1).first().element);
+            const auto before = std::make_pair(labelOf(chain.at(0).first().element),
+                                               chain.at(0).first().element);
+            if (after < before) {
+                std::swap(chain[0], chain[1]);
+                std::swap(walked[0], walked[1]);
+            }
+        }
+
+        for (int k = 1; k < chain.size(); ++k)
+        {
+            const QList<Stop> &from_side = chain.at(k - 1);
+            const QList<Stop> &to_side = chain.at(k);
+                //A link every wire of which is already written belongs to
+                //the run another junction has just listed: left out, so a
+                //run is never written twice and no junction is named. The
+                //other links of that junction are written like any other,
+                //though -- the target of a T which the run through the
+                //corner before it never reaches still gets its row, rather
+                //than being left ending at the junction (#1500)
+            if (alreadyWritten(walked.at(k - 1)) && alreadyWritten(walked.at(k))) {
+                continue;
+            }
+                //Both halves of this link are written as the rows below,
+                //so neither is listed on its own any more -- nor is
+                //anything walked through the junctions in the way. Every
+                //wire on either side gets a row: where there are more on
+                //one side than on the other, the extra ones go to the
+                //first of the others rather than being dropped (#1500)
+            for (const int wire : walked.at(k - 1)) {
+                superseded.insert(wire);
+            }
+            for (const int wire : walked.at(k)) {
+                superseded.insert(wire);
+            }
+
+            for (int p = 0, sides = std::max(from_side.size(), to_side.size());
+                 p < sides; ++p)
+            {
+                const Stop &from = from_side.at(p % from_side.size());
+                const Stop &to = to_side.at(p % to_side.size());
+                const ConductorData &from_wire = conductors.at(from.wire);
+                const ConductorData &to_wire = conductors.at(to.wire);
+
+                ConductorData row;
+                row.index = to_wire.index;
+                row.el1_uuid = from.element;
+                row.el2_uuid = to.element;
+                row.terminal1_uuid = from.terminal;
+                row.terminal2_uuid = to.terminal;
+                row.element1_label = labelOf(from.element);
+                row.element2_label = labelOf(to.element);
+                    //The name each end is drawn with, read from the wire
+                    //that end sits on: the connection the wire ends at is
+                    //the one the row is about, so it is the side holding it
+                    //whose name is written
+                row.terminalname1 = (from_wire.el1_uuid == from.element
+                                     && from_wire.terminal1_uuid == from.terminal)
+                        ? from_wire.terminalname1 : from_wire.terminalname2;
+                row.terminalname2 = (to_wire.el1_uuid == to.element
+                                     && to_wire.terminal1_uuid == to.terminal)
+                        ? to_wire.terminalname1 : to_wire.terminalname2;
+                    //One potential all the way through, so the run's
+                    //properties are the wire's which leads to its far end
+                row.tension_protocol = to_wire.tension_protocol;
+                row.conductor_color = to_wire.conductor_color;
+                row.conductor_section = to_wire.conductor_section;
+                row.function = to_wire.function;
+                //The cable a run belongs to: through a junction it is
+                //made of two wires, and either of them may be the one
+                //which is a cable's core -- the wire coming in at a
+                //terminal carries it, the wire going on to a device may
+                //not -- so both are read (#1500)
+                row.cable = mergeFields(from_wire.cable, to_wire.cable);
+                row.folio = mergeFields(from_wire.folio, to_wire.folio);
+                row.folio_index = std::min(from_wire.folio_index, to_wire.folio_index);
+                added.append(row);
+            }
+        }
+    }
+
+        //The halves which ended at a resolved junction are replaced by
+        //the rows above; one ending at a junction with no source set
+        //stays, which is what was asked for
+    if (!superseded.isEmpty()) {
+        QList<ConductorData> kept;
+        for (int i = 0; i < conductors.size(); ++i) {
+            if (!superseded.contains(i)) kept << conductors.at(i);
+        }
+        conductors = kept;
+    }
+    conductors.append(added);
 }
