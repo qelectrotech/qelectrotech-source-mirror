@@ -56,7 +56,7 @@ namespace CLIExport {
 		  qelectrotech --export-device-types <project.qet> <output.csv>
 		  qelectrotech --export-device-types-brief <project.qet> <output.csv>
 		  qelectrotech --info           <project.qet> [output.json]
-		  qelectrotech --check-elements <element.elmt | directory>
+		  qelectrotech --check-elements <element.elmt | directory> [--grid]
 		  qelectrotech --resave         <project.qet> <output.qet>
 		  qelectrotech --recover        <damaged.qetz> <output.qet>
 		  qelectrotech --set-titleblock <project.qet> <output.qet> key=value...
@@ -98,6 +98,10 @@ namespace CLIExport {
 		info: structural project summary as JSON (stdout, or a file) —
 		      per-page element / conductor counts and unconnected terminals.
 		check-elements: validate .elmt file(s) against the element schema.
+		--grid: check-elements also warns about a symbol that does not line
+		      up with the folio grid: its insertion point on no connection
+		      point, its frame (hotspot, width, height) or a connection
+		      point off the grid of 10.
 		resave: load and rewrite the project XML (round-trip integrity).
 		--ignore-lock: resave and set-titleblock leave a file alone when a lock
 		      file beside it (.~<name>.lock, made by a QElectroTech that has

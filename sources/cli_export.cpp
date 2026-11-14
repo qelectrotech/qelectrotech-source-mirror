@@ -29,6 +29,7 @@
 #include "diagramcontext.h"
 #include "devicetype/devicetypecheck.h"
 #include "devicetype/devicetypelist.h"
+#include "editor/symbolgridcheck.h"
 #include "editor/terminalnamecheck.h"
 #include "dxfexport.h"
 #include "exportproperties.h"
@@ -549,7 +550,7 @@ int exportInfo(QETProject &project, const QString &output)
 
 /// Validate one .elmt file against QET's element schema.
 /// @return 0 = OK, 1 = warning (loads but suspicious), 2 = failure.
-int checkOneElement(const QString &path)
+int checkOneElement(const QString &path, bool grid)
 {
 	QFile file(path);
 	if (!file.open(QIODevice::ReadOnly)) {
@@ -642,12 +643,30 @@ int checkOneElement(const QString &path)
 		return 1;
 	}
 
+	// --grid: the insertion point on a connection point, the frame and the
+	// connection points on the grid (SymbolGridCheck)
+	if (grid && type != "thumbnail") {
+		QList<QPointF> points;
+		for (int i = 0; i < terminals; ++i) {
+			const QDomElement t = terminal_nodes.at(i).toElement();
+			points << QPointF(t.attribute("x").toDouble(), t.attribute("y").toDouble());
+		}
+		const QStringList problems = SymbolGridCheck::problems(
+				root.attribute("hotspot_x").toInt(), root.attribute("hotspot_y").toInt(),
+				int(w), int(h), points);
+		if (!problems.isEmpty()) {
+			out << "WARN  " << path << "  (grid: " << problems.join("; ") << ")\n";
+			return 1;
+		}
+	}
+
 	out << "OK    " << path << "  (" << terminals << " terminals)\n";
 	return 0;
 }
 
-/// Validate a single .elmt file or every .elmt under a directory.
-int checkElements(const QString &path)
+/// Validate a single .elmt file or every .elmt under a directory; with
+/// @p grid, also check that each symbol lines up with the folio grid.
+int checkElements(const QString &path, bool grid)
 {
 	QStringList files;
 	const QFileInfo info(path);
@@ -671,7 +690,7 @@ int checkElements(const QString &path)
 
 	int warnings = 0, failures = 0;
 	for (const QString &f : files) {
-		const int r = checkOneElement(f);
+		const int r = checkOneElement(f, grid);
 		if (r == 1) ++warnings;
 		else if (r == 2) ++failures;
 	}
@@ -1329,6 +1348,7 @@ int run(const QStringList &args)
 	const bool includeJunctions = filtered.removeAll("--no-junctions") == 0;
 	const bool ignoreLock = filtered.removeAll("--ignore-lock") > 0;
 	const bool json = filtered.removeAll("--json") > 0;
+	const bool grid = filtered.removeAll("--grid") > 0;
 
 	QString flag;
 	QStringList rest;
@@ -1346,10 +1366,10 @@ int run(const QStringList &args)
 	if (format == "check") {
 		if (rest.isEmpty()) {
 			err << "Usage: qelectrotech --check-elements "
-				   "<element.elmt | directory>\n";
+				   "<element.elmt | directory> [--grid]\n";
 			return 2;
 		}
-		return checkElements(rest.at(0));
+		return checkElements(rest.at(0), grid);
 	}
 
 	// --recover reads what it can of a damaged .qetz, which a project
