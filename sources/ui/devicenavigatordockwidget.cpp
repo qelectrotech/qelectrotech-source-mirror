@@ -18,7 +18,9 @@
 #include "devicenavigatordockwidget.h"
 #include "ui_devicenavigatordockwidget.h"
 #include "../qetproject.h"
+#include "../dataBase/projectdatabase.h"
 #include "../diagram.h"
+#include "../qetgraphicsitem/structureboxitem.h"
 #include "../diagramview.h"
 #include "../qetgraphicsitem/element.h"
 #include "../qetgraphicsitem/masterelement.h"
@@ -364,6 +366,7 @@ void DeviceNavigatorDockWidget::buildData(QList<ElementInfo> &items)
 			continue;
 		}
 
+		const auto folioBoxes = StructureBoxItem::boxesOf(diag);
 		for (Element *elmt : diag->elements()) {
 			if (!elmt) continue;
 
@@ -390,15 +393,11 @@ void DeviceNavigatorDockWidget::buildData(QList<ElementInfo> &items)
 			info.isConductorDef = isConductorDef;
 			info.isCable = false;
 
-			// Plant & Location (Structure identifier)
-			QString plant = dc.value(QStringLiteral("plant")).toString().trimmed();
-			QString location = dc.value(QStringLiteral("location")).toString().trimmed();
-			if (plant.isEmpty()) {
-				plant = diag->border_and_titleblock.plant().trimmed();
-			}
-			if (location.isEmpty()) {
-				location = diag->border_and_titleblock.locmach().trimmed();
-			}
+			// Plant & Location (Structure identifier): its own, else the
+			// structure box it is in, else its folio's
+			const StructureBoxItem::Place place = StructureBoxItem::placeOf(elmt, folioBoxes);
+			const QString plant = place.plant.trimmed();
+			const QString location = place.location.trimmed();
 			info.plant = plant;
 			info.location = location;
 			info.hasStructure = (!plant.isEmpty() || !location.isEmpty());
@@ -487,10 +486,12 @@ void DeviceNavigatorDockWidget::buildData(QList<ElementInfo> &items)
 
 		QString sql = QStringLiteral(
 			"SELECT e.uuid, e.diagram_uuid, e.pos, e.type, e.sub_type, "
-			"ei.label, ei.plant, ei.location, ei.comment, ei.description, ei.designation, ei.function "
+			"ei.label, ei.plant, ei.location, ei.comment, ei.description, ei.designation, ei.function, "
+			"es.plant, es.location "
 			"FROM element e "
-			"LEFT JOIN element_info ei ON e.uuid = ei.element_uuid"
-		);
+			"LEFT JOIN element_info ei ON e.uuid = ei.element_uuid "
+			"LEFT JOIN ") + projectDataBase::structurePlacesSql()
+			+ QStringLiteral(" es ON e.uuid = es.element_uuid");
 		QSqlQuery q = db->newQuery(sql);
 		while (q.next()) {
 			QUuid diagUuid(q.value(1).toString());
@@ -510,6 +511,13 @@ void DeviceNavigatorDockWidget::buildData(QList<ElementInfo> &items)
 			QString description = q.value(9).toString().trimmed();
 			QString designation = q.value(10).toString().trimmed();
 			QString function = q.value(11).toString().trimmed();
+			// The structure box it is in comes before its folio
+			if (plant.isEmpty()) {
+				plant = q.value(12).toString().trimmed();
+			}
+			if (location.isEmpty()) {
+				location = q.value(13).toString().trimmed();
+			}
 
 			bool isReport = (typeStr == QStringLiteral("next_report") || typeStr == QStringLiteral("previous_report"));
 			bool isConductorDef = (typeStr == QStringLiteral("conductor_definition"));

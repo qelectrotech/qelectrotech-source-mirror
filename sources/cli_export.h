@@ -110,11 +110,12 @@ namespace CLIExport {
 		      the project it came from first, as CSV (RFC 4180, a header
 		      row) or, with --json, as a JSON array of objects. The views
 		      qet_folios, qet_devices, qet_wires, qet_links, qet_cables,
-		      qet_device_list, qet_terminals, qet_plc_io and qet_cable_cores
-		      keep their names and columns from one version to the next. A
-		      project that cannot be opened or queried is reported on stderr, the
-		      others still run, and the exit code is 1. A .qetdb is read
-		      itself, without opening the project: seconds for hundreds.
+		      qet_device_list, qet_terminals, qet_plc_io, qet_cable_cores and
+		      qet_locations keep their names and columns from one version to
+		      the next. A project that cannot be opened or queried is
+		      reported on stderr, the others still run, and the exit code
+		      is 1. A .qetdb is read itself, without opening the project:
+		      seconds for hundreds.
 		      E.g. --query "SELECT label, folio FROM qet_devices
 		      WHERE article = 'LC1D09'" *.qet
 		set-titleblock: stamp title-block fields onto every folio, then save.

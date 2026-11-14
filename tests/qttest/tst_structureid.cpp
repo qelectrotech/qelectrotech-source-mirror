@@ -893,6 +893,49 @@ private slots:
 		QVERIFY(empty->structureId().isEmpty());       //cancelled: the box stays empty
 	}
 
+	void locationsAreTheStructure()
+	{
+			//qet_locations: each (plant, location) a symbol or a folio has,
+			//counted from what is drawn, never a list kept by hand
+		QETProject project;
+		Diagram *first = project.addNewDiagram();
+		Diagram *second = project.addNewDiagram();
+		setFolio(first, QStringLiteral("FACTORY"), QStringLiteral("CP1"));
+		setFolio(second, QStringLiteral("SILO"), QStringLiteral("J3"));
+		box(first, QRectF(0, 0, 400, 400), {}, QStringLiteral("FIELD"));
+		Element *a = symbol(first);
+		Element *b = symbol(first);
+		Element *c = symbol(first);
+		Element *d = symbol(second);
+		QVERIFY(a && b && c && d);
+		a->setPos(100, 100);
+		b->setPos(200, 200);
+		c->setPos(1000, 1000);
+		d->setPos(100, 100);
+		setInfo(a, info("M1"));
+		setInfo(b, info("M2"));
+		setInfo(c, info("K1"));
+		setInfo(d, info("K1", {}, QStringLiteral("CP1")));
+		project.dataBase()->updateDB();
+		QString error;
+		QSqlQuery query = project.dataBase()->newQuery(QStringLiteral(
+			"SELECT plant, location, structure_id, symbols, folios, first_folio_number FROM qet_locations"), &error);
+		QVERIFY2(error.isEmpty(), qPrintable(error));
+		QStringList rows;
+		while (query.next()) {
+			QStringList row;
+			for (int i = 0 ; i < 6 ; ++i) row << query.value(i).toString();
+			rows << row.join(QLatin1Char('|'));
+		}
+			//+CP1 of FACTORY and +CP1 of SILO are two locations; +J3 is only
+			//a title block, so has no symbol
+		QCOMPARE(rows, QStringList({
+			QStringLiteral("FACTORY|CP1|=FACTORY+CP1|1|1|1"),
+			QStringLiteral("FACTORY|FIELD|=FACTORY+FIELD|2|1|1"),
+			QStringLiteral("SILO|CP1|=SILO+CP1|1|1|2"),
+			QStringLiteral("SILO|J3|=SILO+J3|0|1|2")}));
+	}
+
 	void withoutAnElementOnlyItsOwnValuesCount()
 	{
 			//Callers with no element (e.g. a symbol in the element editor)

@@ -25,6 +25,8 @@
 #include <QPointF>
 #include <QPointer>
 
+#include <functional>
+
 class Element;
 class StructureBoxLabelItem;
 
@@ -105,13 +107,25 @@ class StructureBoxItem : public QetShapeItem
 			/// the centre of the symbol is inside the box. The one rule for
 			/// every feature that asks where a symbol is.
 		static QList<const StructureBoxItem *> enclosing(const Element *element);
+			/// The same among @p folio_boxes, boxesOf() the element's folio:
+			/// for reading many symbols of one folio, as a scene lookup per
+			/// symbol is slow on a large project
+		static QList<const StructureBoxItem *> enclosing(
+				const Element *element,
+				const QList<const StructureBoxItem *> &folio_boxes);
+			/// The structure boxes drawn on @p diagram, possibly null
+		static QList<const StructureBoxItem *> boxesOf(const Diagram *diagram);
 			/// Where the boxes around @p element and its folio put it: field
 			/// by field, an empty plant or location of a box is the next
 			/// box's, then the folio's. The element's own values are not read.
 		static Place referencePlace(const Element *element);
+		static Place referencePlace(const Element *element,
+									const QList<const StructureBoxItem *> &folio_boxes);
 			/// Where @p element is: its own plant and location, each one
 			/// taken from referencePlace() when it is empty.
 		static Place placeOf(const Element *element);
+		static Place placeOf(const Element *element,
+							 const QList<const StructureBoxItem *> &folio_boxes);
 			/// Work out again the texts of the symbols of @p diagram which
 			/// show a reference designation (%{structure_id...}) or a place
 			/// (%{plant}, %{location}): what a box or the folio gives them
@@ -131,6 +145,11 @@ class StructureBoxItem : public QetShapeItem
 	private:
 		void refreshLabel();
 		void placeLabel();
+		static QList<const StructureBoxItem *> boxesAmong(const QList<QGraphicsItem *> &items);
+		static Place placeIn(const Element *element,
+							 const QList<const StructureBoxItem *> &boxes);
+		static Place ownOrElse(const Element *element,
+							   const std::function<Place()> &reference);
 
 		QString m_plant, m_location, m_prefix;
 			/// The folio it was last on: the symbols it leaves are

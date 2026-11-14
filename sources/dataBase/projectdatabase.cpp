@@ -2836,9 +2836,11 @@ QSqlQuery projectDataBase::newQuery(const QString &query, QString *error) {
 		//laid-out size, a picture's pixels): with folios not built yet
 		//(lazy folios) a read of them builds those first, and so does a
 		//read of the view made of them. Every other table was filled from
-		//the document.
+		//the document. A word in quotes is a value, not a table: the
+		//structure boxes' subquery (structurePlacesSql()) reads
+		//drawing_item rows of section 'shape', filled from the document.
 	static const QRegularExpression drawing_tables(
-			QStringLiteral("\\b(shape|independent_text|image|drawing_item_view)\\b"),
+			QStringLiteral("(?<!')\\b(shape|independent_text|image|drawing_item_view)\\b(?!')"),
 			QRegularExpression::CaseInsensitiveOption);
 	if (m_project && m_project->unloadedFolioCount() && drawing_tables.match(query).hasMatch()) {
 		m_project->loadFolios();
@@ -5250,7 +5252,8 @@ QStringList projectDataBase::publicViews()
 			QStringLiteral("qet_terminals"),
 			QStringLiteral("qet_cables"),
 			QStringLiteral("qet_plc_io"),
-			QStringLiteral("qet_cable_cores")};
+			QStringLiteral("qet_cable_cores"),
+			QStringLiteral("qet_locations")};
 }
 
 /**
@@ -5296,6 +5299,12 @@ QStringList projectDataBase::publicViews()
 	spare = 1 for a terminal drawn nowhere. A terminal symbol in no strip
 	is not in it: qet_devices lists every symbol, those of kind 'terminal'
 	included.
+	qet_locations is the project's structure as a query, never kept by hand:
+	each (plant, location) a symbol or a folio's title block has, with the
+	symbols in it (folio reports left out), the folios showing it and the
+	first of them. Empty plant and location are '' (the row of what has
+	neither), and structure_id is =plant+location.
+
 */
 void projectDataBase::createPublicViews()
 {
@@ -5550,7 +5559,19 @@ QStringList projectDataBase::publicViewStatements()
 			"LEFT JOIN colour o ON o.cable_uuid = k.cable_uuid AND o.position = c.i "
 			"LEFT JOIN on_wire d ON d.cable_uuid = k.cable_uuid AND d.position = c.i "
 			"LEFT JOIN qet_wires w ON w.wire_uuid = d.wire_uuid "
-			"ORDER BY k.structure_id, k.cable_uuid, c.i")
+			"ORDER BY k.structure_id, k.cable_uuid, c.i"),
+			//After qet_devices and qet_folios, which it reads
+		QStringLiteral(
+			"CREATE VIEW qet_locations AS SELECT plant, location, ")
+			+ structureIdSql(QStringLiteral("plant"), QStringLiteral("location"), QStringLiteral("NULL"))
+			+ QStringLiteral(" AS structure_id, SUM(is_symbol) AS symbols, "
+			"COUNT(DISTINCT folio_uuid) AS folios, MIN(folio_number) AS first_folio_number "
+			"FROM (SELECT COALESCE(plant, '') AS plant, COALESCE(location, '') AS location, "
+			"folio_uuid, folio_number, 1 AS is_symbol FROM qet_devices "
+			"WHERE COALESCE(kind, '') NOT IN ('next_report', 'previous_report') "
+			"UNION ALL SELECT COALESCE(plant, ''), COALESCE(location, ''), "
+			"folio_uuid, folio_number, 0 FROM qet_folios) "
+			"GROUP BY plant, location ORDER BY plant, location")
 	};
 	return views;
 }
