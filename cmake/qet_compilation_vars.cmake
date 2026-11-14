@@ -205,6 +205,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/ui/devicetypesdialog.cpp
   ${QET_DIR}/sources/ui/devicetypechooser.h
   ${QET_DIR}/sources/ui/devicetypechooser.cpp
+  ${QET_DIR}/sources/ui/devicetypechangedialog.h
+  ${QET_DIR}/sources/ui/devicetypechangedialog.cpp
   ${QET_DIR}/sources/ui/devicetypecheckdialog.cpp
   ${QET_DIR}/sources/conductornumexport.cpp
   ${QET_DIR}/sources/wiringlistexport.h
@@ -382,6 +384,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/devicetype/devicetypeassign.cpp
   ${QET_DIR}/sources/devicetype/devicetypelink.h
   ${QET_DIR}/sources/devicetype/devicetypelink.cpp
+  ${QET_DIR}/sources/devicetype/devicetypechange.h
+  ${QET_DIR}/sources/devicetype/devicetypechange.cpp
   ${QET_DIR}/sources/devicetype/devicetypeassign.h
   ${QET_DIR}/sources/devicetype/devicetypecheck.cpp
   ${QET_DIR}/sources/devicetype/devicetypecheck.h
