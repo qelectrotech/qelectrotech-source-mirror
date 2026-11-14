@@ -117,16 +117,16 @@ bool sameEntry(const MaterialRecord &lhs, const MaterialRecord &rhs)
 	return true;
 }
 
-QString partNumberLabel(const MaterialRecord &record)
+QString articleNumberLabel(const MaterialRecord &record)
 {
-	QString ref = record.value(QStringLiteral("manufacturer_reference")).trimmed();
-	if (ref.isEmpty()) {
-		ref = record.value(QStringLiteral("order_number")).trimmed();
+	QString num = record.value(QStringLiteral("designation")).trimmed();
+	if (num.isEmpty()) {
+		num = record.value(QStringLiteral("manufacturer_reference")).trimmed();
 	}
-	if (ref.isEmpty()) {
-		ref = record.value(QStringLiteral("internal_number")).trimmed();
+	if (num.isEmpty()) {
+		num = record.value(QStringLiteral("machine_manufacturer_reference")).trimmed();
 	}
-	return ref;
+	return num;
 }
 
 } // namespace
@@ -157,9 +157,22 @@ MaterialSelectionDialog::MaterialSelectionDialog(const QString &path,
 
 	ui->m_edit_bar->setVisible(false);
 
+	ui->m_group_combo->addItem(tr("None"), QString());
+	ui->m_group_combo->addItem(tr("Manufacturer"), QStringLiteral("manufacturer"));
+	ui->m_group_combo->addItem(tr("Category"), QStringLiteral("category"));
+	ui->m_group_combo->setCurrentIndex(1);
+
+	ui->m_filter_field_combo->addItem(tr("Off"), QString());
+	ui->m_filter_field_combo->addItem(tr("Manufacturer"), QStringLiteral("manufacturer"));
+	ui->m_filter_field_combo->addItem(tr("Category"), QStringLiteral("category"));
+
 	connect(ui->m_search_edit, &QLineEdit::textChanged,
 			this, &MaterialSelectionDialog::filterUpdated);
-	connect(ui->m_filter_combo, &QComboBox::currentIndexChanged,
+	connect(ui->m_group_combo, &QComboBox::currentIndexChanged,
+			this, &MaterialSelectionDialog::filterUpdated);
+	connect(ui->m_filter_field_combo, &QComboBox::currentIndexChanged,
+			this, &MaterialSelectionDialog::filterFieldChanged);
+	connect(ui->m_filter_value_combo, &QComboBox::currentIndexChanged,
 			this, &MaterialSelectionDialog::filterUpdated);
 	connect(ui->m_tree_widget, &QTreeWidget::itemSelectionChanged,
 			this, &MaterialSelectionDialog::treeSelectionChanged);
@@ -207,45 +220,55 @@ void MaterialSelectionDialog::reload()
 										.arg(m_path, error));
 	}
 
-	const QString current_filter = ui->m_filter_combo->currentData().toString();
+	const QString current_filter_val = ui->m_filter_value_combo->currentData().toString();
 	m_data = data;
 
-	populateFilterCombo(current_filter);
+	populateFilterValues(current_filter_val);
 	rebuildTree();
 	populateDetails(selectedRecord());
 	updateButtons();
 }
 
-void MaterialSelectionDialog::populateFilterCombo(const QString &keep_manufacturer)
+void MaterialSelectionDialog::populateFilterValues(const QString &keep_value)
 {
-	const QSignalBlocker blocker(ui->m_filter_combo);
-	ui->m_filter_combo->clear();
-	ui->m_filter_combo->addItem(tr("All manufacturers"), QString());
+	const QSignalBlocker blocker(ui->m_filter_value_combo);
+	ui->m_filter_value_combo->clear();
 
-	QStringList manufacturers;
+	const QString field = ui->m_filter_field_combo->currentData().toString();
+	if (field.isEmpty())
+	{
+		ui->m_filter_value_combo->addItem(tr("All"), QString());
+		ui->m_filter_value_combo->setEnabled(false);
+		return;
+	}
+
+	ui->m_filter_value_combo->setEnabled(m_edit_mode == EditMode::View);
+	ui->m_filter_value_combo->addItem(tr("All"), QString());
+
+	QStringList values;
 	bool has_empty = false;
 	for (const MaterialRecord &record : std::as_const(m_data.records))
 	{
-		const QString mfr = record.value(QStringLiteral("manufacturer")).trimmed();
-		if (mfr.isEmpty()) {
+		const QString val = record.value(field).trimmed();
+		if (val.isEmpty()) {
 			has_empty = true;
-		} else if (!manufacturers.contains(mfr, Qt::CaseInsensitive)) {
-			manufacturers.append(mfr);
+		} else if (!values.contains(val, Qt::CaseInsensitive)) {
+			values.append(val);
 		}
 	}
-	std::sort(manufacturers.begin(), manufacturers.end(), [](const QString &a, const QString &b) {
+	std::sort(values.begin(), values.end(), [](const QString &a, const QString &b) {
 		return QString::compare(a, b, Qt::CaseInsensitive) < 0;
 	});
 
-	for (const QString &mfr : std::as_const(manufacturers)) {
-		ui->m_filter_combo->addItem(mfr, mfr);
+	for (const QString &val : std::as_const(values)) {
+		ui->m_filter_value_combo->addItem(val, val);
 	}
 	if (has_empty) {
-		ui->m_filter_combo->addItem(tr("(No manufacturer)"), QStringLiteral("__empty__"));
+		ui->m_filter_value_combo->addItem(tr("(Empty)"), QStringLiteral("__empty__"));
 	}
 
-	const int idx = ui->m_filter_combo->findData(keep_manufacturer);
-	ui->m_filter_combo->setCurrentIndex(idx >= 0 ? idx : 0);
+	const int idx = ui->m_filter_value_combo->findData(keep_value);
+	ui->m_filter_value_combo->setCurrentIndex(idx >= 0 ? idx : 0);
 }
 
 void MaterialSelectionDialog::rebuildTree()
@@ -256,62 +279,90 @@ void MaterialSelectionDialog::rebuildTree()
 	const QStringList tokens = ui->m_search_edit->text()
 			.simplified()
 			.split(QLatin1Char(' '), Qt::SkipEmptyParts);
-	const QString filter_mfr = ui->m_filter_combo->currentData().toString();
+	const QString group_field = ui->m_group_combo->currentData().toString();
+	const QString filter_field = ui->m_filter_field_combo->currentData().toString();
+	const QString filter_val = ui->m_filter_value_combo->currentData().toString();
 	const QStringList cols = effectiveColumns();
 
+	ui->m_tree_widget->setRootIsDecorated(!group_field.isEmpty());
+
 	QMap<QString, QList<int>> grouped_rows;
+	QList<int> flat_rows;
 	int visible_count = 0;
 
 	for (int i = 0; i < m_data.records.size(); ++i)
 	{
 		const MaterialRecord &rec = m_data.records.at(i);
-		const QString mfr = rec.value(QStringLiteral("manufacturer")).trimmed();
 
-		if (filter_mfr == QStringLiteral("__empty__")) {
-			if (!mfr.isEmpty()) continue;
-		} else if (!filter_mfr.isEmpty()) {
-			if (QString::compare(mfr, filter_mfr, Qt::CaseInsensitive) != 0) continue;
+		if (!filter_field.isEmpty() && !filter_val.isEmpty())
+		{
+			const QString val = rec.value(filter_field).trimmed();
+			if (filter_val == QStringLiteral("__empty__")) {
+				if (!val.isEmpty()) continue;
+			} else {
+				if (QString::compare(val, filter_val, Qt::CaseInsensitive) != 0) continue;
+			}
 		}
 
 		if (!recordMatchesTokens(rec, cols, tokens)) {
 			continue;
 		}
 
-		const QString group_key = mfr.isEmpty() ? tr("(No manufacturer)") : mfr;
-		grouped_rows[group_key].append(i);
+		if (group_field.isEmpty()) {
+			flat_rows.append(i);
+		} else {
+			const QString gval = rec.value(group_field).trimmed();
+			const QString group_key = gval.isEmpty() ? tr("(Empty)") : gval;
+			grouped_rows[group_key].append(i);
+		}
 		++visible_count;
 	}
 
-	QStringList group_names = grouped_rows.keys();
-	std::sort(group_names.begin(), group_names.end(), [](const QString &a, const QString &b) {
-		return QString::compare(a, b, Qt::CaseInsensitive) < 0;
-	});
-
-	for (const QString &group : std::as_const(group_names))
+	if (group_field.isEmpty())
 	{
-		auto *group_item = new QTreeWidgetItem(ui->m_tree_widget);
-		group_item->setText(0, group);
-		group_item->setFirstColumnSpanned(true);
-		group_item->setFlags(Qt::ItemIsEnabled);
-		group_item->setData(0, SourceRowRole, -1);
-
-		QFont bold_font = group_item->font(0);
-		bold_font.setBold(true);
-		group_item->setFont(0, bold_font);
-
-		for (int row : grouped_rows.value(group))
+		for (int row : std::as_const(flat_rows))
 		{
 			const MaterialRecord &rec = m_data.records.at(row);
-			auto *child = new QTreeWidgetItem(group_item);
-			child->setText(0, partNumberLabel(rec));
-			child->setText(1, rec.value(QStringLiteral("description")));
-			child->setFlags(Qt::ItemIsEnabled | Qt::ItemIsSelectable);
-			child->setData(0, SourceRowRole, row);
+			auto *item = new QTreeWidgetItem(ui->m_tree_widget);
+			item->setText(0, articleNumberLabel(rec));
+			item->setText(1, rec.value(QStringLiteral("description")));
+			item->setFlags(Qt::ItemIsEnabled | Qt::ItemIsSelectable);
+			item->setData(0, SourceRowRole, row);
 		}
 	}
+	else
+	{
+		QStringList group_names = grouped_rows.keys();
+		std::sort(group_names.begin(), group_names.end(), [](const QString &a, const QString &b) {
+			return QString::compare(a, b, Qt::CaseInsensitive) < 0;
+		});
 
-	if (!tokens.isEmpty() || !filter_mfr.isEmpty() || group_names.size() <= 3) {
-		ui->m_tree_widget->expandAll();
+		for (const QString &group : std::as_const(group_names))
+		{
+			auto *group_item = new QTreeWidgetItem(ui->m_tree_widget);
+			group_item->setText(0, group);
+			group_item->setFirstColumnSpanned(true);
+			group_item->setFlags(Qt::ItemIsEnabled);
+			group_item->setData(0, SourceRowRole, -1);
+
+			QFont bold_font = group_item->font(0);
+			bold_font.setBold(true);
+			group_item->setFont(0, bold_font);
+
+			for (int row : grouped_rows.value(group))
+			{
+				const MaterialRecord &rec = m_data.records.at(row);
+				auto *child = new QTreeWidgetItem(group_item);
+				child->setText(0, articleNumberLabel(rec));
+				child->setText(1, rec.value(QStringLiteral("description")));
+				child->setFlags(Qt::ItemIsEnabled | Qt::ItemIsSelectable);
+				child->setData(0, SourceRowRole, row);
+			}
+		}
+
+		if (!tokens.isEmpty() || !filter_val.isEmpty() || group_names.size() <= 3) {
+			ui->m_tree_widget->expandAll();
+		}
 	}
 
 	updateCount(visible_count);
@@ -370,7 +421,10 @@ void MaterialSelectionDialog::setEditMode(EditMode mode)
 
 	ui->m_tree_widget->setEnabled(!editing);
 	ui->m_search_edit->setEnabled(!editing);
-	ui->m_filter_combo->setEnabled(!editing);
+	ui->m_group_combo->setEnabled(!editing);
+	ui->m_filter_field_combo->setEnabled(!editing);
+	ui->m_filter_value_combo->setEnabled(
+		!editing && !ui->m_filter_field_combo->currentData().toString().isEmpty());
 
 	if (mode == EditMode::New) {
 		populateDetails(MaterialRecord());
@@ -427,6 +481,12 @@ void MaterialSelectionDialog::updateButtons()
 	ui->m_new_entry_btn->setEnabled(in_view);
 	ui->m_edit_entry_btn->setEnabled(in_view && has_selection);
 	ui->m_settings_btn->setEnabled(in_view);
+}
+
+void MaterialSelectionDialog::filterFieldChanged()
+{
+	populateFilterValues(QString());
+	filterUpdated();
 }
 
 void MaterialSelectionDialog::filterUpdated()
@@ -491,15 +551,22 @@ bool MaterialSelectionDialog::selectRecord(const MaterialRecord &record)
 		return false;
 	}
 
-	for (int g = 0; g < ui->m_tree_widget->topLevelItemCount(); ++g)
+	for (int i = 0; i < ui->m_tree_widget->topLevelItemCount(); ++i)
 	{
-		QTreeWidgetItem *group = ui->m_tree_widget->topLevelItem(g);
-		for (int c = 0; c < group->childCount(); ++c)
+		QTreeWidgetItem *top = ui->m_tree_widget->topLevelItem(i);
+		if (top->data(0, SourceRowRole).toInt() == target_row)
 		{
-			QTreeWidgetItem *child = group->child(c);
+			ui->m_tree_widget->setCurrentItem(top);
+			ui->m_tree_widget->scrollToItem(top);
+			updateButtons();
+			return true;
+		}
+		for (int c = 0; c < top->childCount(); ++c)
+		{
+			QTreeWidgetItem *child = top->child(c);
 			if (child->data(0, SourceRowRole).toInt() == target_row)
 			{
-				group->setExpanded(true);
+				top->setExpanded(true);
 				ui->m_tree_widget->setCurrentItem(child);
 				ui->m_tree_widget->scrollToItem(child);
 				updateButtons();
@@ -609,7 +676,7 @@ void MaterialSelectionDialog::on_m_save_entry_btn_clicked()
 	if (!selectRecord(record))
 	{
 		ui->m_search_edit->clear();
-		ui->m_filter_combo->setCurrentIndex(0);
+		ui->m_filter_field_combo->setCurrentIndex(0);
 		selectRecord(record);
 	}
 	populateDetails(selectedRecord());

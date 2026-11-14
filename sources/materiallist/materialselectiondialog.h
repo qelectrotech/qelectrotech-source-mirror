@@ -56,6 +56,7 @@ class MaterialSelectionDialog : public QDialog
 		void on_m_settings_btn_clicked();
 		void on_m_save_entry_btn_clicked();
 		void on_m_cancel_entry_btn_clicked();
+		void filterFieldChanged();
 		void filterUpdated();
 		void treeSelectionChanged();
 		void treeItemDoubleClicked(QTreeWidgetItem *item, int column);
@@ -68,7 +69,7 @@ class MaterialSelectionDialog : public QDialog
 		};
 
 		void reload();
-		void populateFilterCombo(const QString &keep_manufacturer);
+		void populateFilterValues(const QString &keep_value);
 		void rebuildTree();
 		void populateDetails(const MaterialRecord &record);
 		void setEditMode(EditMode mode);

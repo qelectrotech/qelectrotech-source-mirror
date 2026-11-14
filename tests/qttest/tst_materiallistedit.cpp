@@ -132,22 +132,26 @@ void tst_materiallistedit::testSplitViewTreeFilterAndDetails()
 
 	MaterialListData initial;
 	initial.columns = {
-		QStringLiteral("manufacturer_reference"),
+		QStringLiteral("designation"),
 		QStringLiteral("description"),
 		QStringLiteral("manufacturer"),
-		QStringLiteral("order_number")
+		QStringLiteral("manufacturer_reference"),
+		QStringLiteral("category")
 	};
 
 	MaterialRecord siemens;
-	siemens.setValue(QStringLiteral("manufacturer_reference"), QStringLiteral("SIE.815"));
+	siemens.setValue(QStringLiteral("designation"), QStringLiteral("ART-815"));
 	siemens.setValue(QStringLiteral("description"), QStringLiteral("Fuse"));
 	siemens.setValue(QStringLiteral("manufacturer"), QStringLiteral("Siemens"));
-	siemens.setValue(QStringLiteral("order_number"), QStringLiteral("815"));
+	siemens.setValue(QStringLiteral("manufacturer_reference"), QStringLiteral("5SY4116"));
+	siemens.setValue(QStringLiteral("category"), QStringLiteral("Protection"));
 
 	MaterialRecord hager;
-	hager.setValue(QStringLiteral("manufacturer_reference"), QStringLiteral("HAG.100"));
+	hager.setValue(QStringLiteral("designation"), QStringLiteral("ART-100"));
 	hager.setValue(QStringLiteral("description"), QStringLiteral("SLS 50A"));
 	hager.setValue(QStringLiteral("manufacturer"), QStringLiteral("Hager"));
+	hager.setValue(QStringLiteral("manufacturer_reference"), QStringLiteral("HTS350E"));
+	hager.setValue(QStringLiteral("category"), QStringLiteral("Main Breaker"));
 
 	initial.records = {siemens, hager};
 	QVERIFY(MaterialList::writeFile(path, initial));
@@ -155,33 +159,60 @@ void tst_materiallistedit::testSplitViewTreeFilterAndDetails()
 	MaterialSelectionDialog dialog(path);
 	auto *tree = dialog.findChild<QTreeWidget *>(QStringLiteral("m_tree_widget"));
 	auto *details = dialog.findChild<QTableWidget *>(QStringLiteral("m_details_table"));
-	auto *filter = dialog.findChild<QComboBox *>(QStringLiteral("m_filter_combo"));
+	auto *group_combo = dialog.findChild<QComboBox *>(QStringLiteral("m_group_combo"));
+	auto *filter_field = dialog.findChild<QComboBox *>(QStringLiteral("m_filter_field_combo"));
+	auto *filter_value = dialog.findChild<QComboBox *>(QStringLiteral("m_filter_value_combo"));
 	auto *search = dialog.findChild<QLineEdit *>(QStringLiteral("m_search_edit"));
 	auto *edit_btn = dialog.findChild<QPushButton *>(QStringLiteral("m_edit_entry_btn"));
 	auto *settings_btn = dialog.findChild<QPushButton *>(QStringLiteral("m_settings_btn"));
 
-	QVERIFY(tree && details && filter && search && edit_btn && settings_btn);
+	QVERIFY(tree && details && group_combo && filter_field && filter_value && search && edit_btn && settings_btn);
 	QCOMPARE(tree->topLevelItemCount(), 2);
 	QVERIFY(!edit_btn->isEnabled());
+	QVERIFY(!filter_value->isEnabled());
 
-	// Filter to Siemens only
-	const int siemens_idx = filter->findText(QStringLiteral("Siemens"));
+	// Filter by Manufacturer -> Siemens
+	const int mfr_field_idx = filter_field->findData(QStringLiteral("manufacturer"));
+	QVERIFY(mfr_field_idx >= 0);
+	filter_field->setCurrentIndex(mfr_field_idx);
+	QVERIFY(filter_value->isEnabled());
+	const int siemens_idx = filter_value->findText(QStringLiteral("Siemens"));
 	QVERIFY(siemens_idx >= 0);
-	filter->setCurrentIndex(siemens_idx);
+	filter_value->setCurrentIndex(siemens_idx);
 	QCOMPARE(tree->topLevelItemCount(), 1);
 	QTreeWidgetItem *group = tree->topLevelItem(0);
 	QCOMPARE(group->childCount(), 1);
+	// Column 0 shows designation (Article number), NOT manufacturer_reference (Order number)
+	QCOMPARE(group->child(0)->text(0), QStringLiteral("ART-815"));
 
 	// Select Siemens item -> details table on the right updates
 	tree->setCurrentItem(group->child(0));
 	QVERIFY(edit_btn->isEnabled());
-	QCOMPARE(details->rowCount(), 4);
-	QCOMPARE(details->item(0, 1)->text(), QStringLiteral("SIE.815"));
+	QCOMPARE(details->rowCount(), 5);
+	QCOMPARE(details->item(0, 1)->text(), QStringLiteral("ART-815"));
 	QCOMPARE(details->item(1, 1)->text(), QStringLiteral("Fuse"));
 	QCOMPARE(details->item(2, 1)->text(), QStringLiteral("Siemens"));
-	QCOMPARE(details->item(3, 1)->text(), QStringLiteral("815"));
+	QCOMPARE(details->item(3, 1)->text(), QStringLiteral("5SY4116"));
+	QCOMPARE(details->item(4, 1)->text(), QStringLiteral("Protection"));
 
-	// Search mismatch hides item
+	// Filter by Category -> Main Breaker
+	const int cat_field_idx = filter_field->findData(QStringLiteral("category"));
+	QVERIFY(cat_field_idx >= 0);
+	filter_field->setCurrentIndex(cat_field_idx);
+	const int breaker_idx = filter_value->findText(QStringLiteral("Main Breaker"));
+	QVERIFY(breaker_idx >= 0);
+	filter_value->setCurrentIndex(breaker_idx);
+	QCOMPARE(tree->topLevelItemCount(), 1);
+	QCOMPARE(tree->topLevelItem(0)->child(0)->text(0), QStringLiteral("ART-100"));
+
+	// Turn filter Off and switch Group to None (flat list)
+	filter_field->setCurrentIndex(0);
+	QVERIFY(!filter_value->isEnabled());
+	group_combo->setCurrentIndex(0);
+	QCOMPARE(tree->topLevelItemCount(), 2);
+	QCOMPARE(tree->topLevelItem(0)->childCount(), 0);
+
+	// Search mismatch hides items
 	search->setText(QStringLiteral("NonExistent"));
 	QCOMPARE(tree->topLevelItemCount(), 0);
 }
@@ -194,12 +225,12 @@ void tst_materiallistedit::testInlineNewAndEditEntry()
 
 	MaterialListData initial;
 	initial.columns = {
-		QStringLiteral("manufacturer_reference"),
+		QStringLiteral("designation"),
 		QStringLiteral("description"),
 		QStringLiteral("manufacturer")
 	};
 	MaterialRecord rec;
-	rec.setValue(QStringLiteral("manufacturer_reference"), QStringLiteral("EAT.1"));
+	rec.setValue(QStringLiteral("designation"), QStringLiteral("EAT.1"));
 	rec.setValue(QStringLiteral("description"), QStringLiteral("Switch"));
 	rec.setValue(QStringLiteral("manufacturer"), QStringLiteral("Eaton"));
 	initial.records = {rec};
@@ -232,7 +263,7 @@ void tst_materiallistedit::testInlineNewAndEditEntry()
 	details->item(2, 1)->setText(QStringLiteral("ABB"));
 	save_btn->click();
 
-	QCOMPARE(dialog.selectedRecord().value(QStringLiteral("manufacturer_reference")),
+	QCOMPARE(dialog.selectedRecord().value(QStringLiteral("designation")),
 			 QStringLiteral("ABB.2"));
 
 	MaterialListData reloaded;
@@ -240,7 +271,7 @@ void tst_materiallistedit::testInlineNewAndEditEntry()
 	QCOMPARE(reloaded.records.size(), 2);
 	QCOMPARE(reloaded.records.at(0).value(QStringLiteral("description")),
 			 QStringLiteral("Main Switch"));
-	QCOMPARE(reloaded.records.at(1).value(QStringLiteral("manufacturer_reference")),
+	QCOMPARE(reloaded.records.at(1).value(QStringLiteral("designation")),
 			 QStringLiteral("ABB.2"));
 }
 

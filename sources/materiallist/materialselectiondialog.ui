@@ -68,18 +68,52 @@
           </widget>
          </item>
          <item row="1" column="0">
+          <widget class="QLabel" name="m_group_label">
+           <property name="text">
+            <string>Group:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QComboBox" name="m_group_combo">
+           <property name="toolTip">
+            <string>Group list entries by manufacturer, category, or show a flat list</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
           <widget class="QLabel" name="m_filter_label">
            <property name="text">
             <string>Filter:</string>
            </property>
           </widget>
          </item>
-         <item row="1" column="1">
-          <widget class="QComboBox" name="m_filter_combo">
-           <property name="toolTip">
-            <string>Filter items by manufacturer</string>
-           </property>
-          </widget>
+         <item row="2" column="1">
+          <layout class="QHBoxLayout" name="m_filter_row_layout">
+           <item>
+            <widget class="QComboBox" name="m_filter_field_combo">
+             <property name="toolTip">
+              <string>Disable filtering or choose a field to filter by</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QComboBox" name="m_filter_value_combo">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+               <horstretch>1</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="toolTip">
+              <string>Select the value to filter by</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
          </item>
         </layout>
        </item>
@@ -99,7 +133,7 @@
          </property>
          <column>
           <property name="text">
-           <string>Part number</string>
+           <string>Article number</string>
           </property>
          </column>
          <column>
