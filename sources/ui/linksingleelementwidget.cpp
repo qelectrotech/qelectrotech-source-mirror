@@ -179,10 +179,14 @@ void LinkSingleElementWidget::setElement(Element *element)
 		//Remove connection of previous edited element
 	if (m_element)
 	{
-		disconnect(m_element->diagram()->project(),
-			   &QETProject::diagramRemoved,
-			   this,
-			   &LinkSingleElementWidget::diagramWasRemovedFromProject);
+			//An element just taken off its folio (a contact replaced by its
+			//copy with the terminals of its device type) has no diagram:
+			//the connection to its project stays, made unique below
+		if (m_element->diagram())
+			disconnect(m_element->diagram()->project(),
+				   &QETProject::diagramRemoved,
+				   this,
+				   &LinkSingleElementWidget::diagramWasRemovedFromProject);
 		disconnect(m_element.data(),
 			   &Element::linkedElementChanged,
 			   this,
@@ -212,7 +216,8 @@ void LinkSingleElementWidget::setElement(Element *element)
 		m_filter = ElementData::Simple;
 
 	connect(m_element->diagram()->project(), &QETProject::diagramRemoved,
-		this, &LinkSingleElementWidget::diagramWasRemovedFromProject);
+		this, &LinkSingleElementWidget::diagramWasRemovedFromProject,
+		Qt::UniqueConnection);
 	connect(m_element.data(), &Element::linkedElementChanged,
 		this, &LinkSingleElementWidget::updateUi, Qt::QueuedConnection);
 
