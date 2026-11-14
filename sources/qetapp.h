@@ -179,9 +179,49 @@ class QETApp : public QObject
 		/**
 			@brief The font the texts of a cable (designation, type,
 			installation, location, length) are written with when the
-			cable itself asks for none.
+			cable itself asks for none and the very text has no
+			default of its own either -- what those five fall back
+			to, one and all.
 		*/
 		static QFont cableTextsFont();
+		/**
+			@brief The font one named text of a cable is written with
+			when neither the cable nor the preferences give it a font
+			of its own: its own default when he has picked one, the
+			font every one of those five shares otherwise.
+
+			Each of the five may be set apart from the others, so that
+			a length may be written smaller than the designation above
+			it, and the colours of the cores have one of theirs as
+			well. Any other name than those six -- the reference to
+			another folio -- answers with the font they all share,
+			since the preferences offer that one a default of its own
+			under Cross-references rather than here.
+			@param key the name of that text: "designation", "type",
+			"installation", "location", "length" or "cores"
+		*/
+		static QFont cableTextsFont(const QString &key);
+		/**
+			@brief Whether the preferences hold a font of their own for
+			one of those texts -- what the reset button beside its
+			font button has to know to say whether there is something
+			to take back.
+			@param key the name of that text
+		*/
+		static bool hasCableTextFont(const QString &key);
+		/**
+			@brief Give one of those texts a default font of its own,
+			so that it is written that way from now on.
+			@param key the name of that text
+			@param font what it is to be written with
+		*/
+		static void setCableTextFont(const QString &key, const QFont &font);
+		/**
+			@brief Take that font of its own away again: the text goes
+			back to following the font every one of those five shares.
+			@param key the name of that text
+		*/
+		static void clearCableTextFont(const QString &key);
 		/**
 			@brief The font the colour labels of the cores of a cable
 			are written with when the cable itself asks for none.

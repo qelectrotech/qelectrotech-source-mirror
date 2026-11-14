@@ -821,6 +821,11 @@ qet_add_app_test(tst_wiredoubleclick tst_wiredoubleclick.cpp)
 # Copying a cable leaves the cable it was copied from whole.
 qet_add_app_test(tst_cablecopy tst_cablecopy.cpp)
 
+# The default font of one text of a cable, each of the five having one of its
+# own on the "Texte" page; what an installation picked before they were set
+# apart still reaches all five.
+qet_add_app_test(tst_cabletextfont tst_cabletextfont.cpp)
+
 # Adding a list table is one undo step.
 qet_add_app_test(tst_tableundo tst_tableundo.cpp)
 

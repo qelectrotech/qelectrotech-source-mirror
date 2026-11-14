@@ -255,7 +255,7 @@ void CablePropertiesWidget::addOffsetRow(QGridLayout *grid,
 */
 void CablePropertiesWidget::editFormat(const QString &key)
 {
-	CableTextFormatDialog dialog(m_formats.value(key), coresKey(key), this);
+	CableTextFormatDialog dialog(m_formats.value(key), key, this);
 	if (dialog.exec() != QDialog::Accepted) return;
 
 	const CableTextFormat answer = dialog.format();
@@ -298,7 +298,8 @@ void CablePropertiesWidget::refreshFormatButton(const QString &key)
 	@param key the name of a text of the form
 	@return the font that text really is written with on the drawing:
 	the one this cable asks for, or -- when it asks for none -- the one
-	the preferences offer
+	the preferences offer for that very text, each of the five having
+	a default of its own since they were set apart
 */
 QFont CablePropertiesWidget::effectiveFont(const QString &key) const
 {
@@ -310,7 +311,7 @@ QFont CablePropertiesWidget::effectiveFont(const QString &key) const
 			return font;
 		}
 	}
-	return coresKey(key) ? QETApp::cableCoreFont() : QETApp::cableTextsFont();
+	return coresKey(key) ? QETApp::cableCoreFont() : QETApp::cableTextsFont(key);
 }
 
 /**
