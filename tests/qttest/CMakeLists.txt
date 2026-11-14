@@ -535,6 +535,9 @@ qet_add_app_test(tst_plcio tst_plcio.cpp)
 # Device types: parts and their ways to be drawn, kept by .qet, .qetdb and
 # the user's library of .qetdt files.
 qet_add_app_test(tst_devicetype tst_devicetype.cpp)
+# Part data: unit price, labour time and size, kept by .qet and .qetdb,
+# columns of the parts list; every field the export offers is a column.
+qet_add_app_test(tst_partdata tst_partdata.cpp)
 # A read-only project builds its lazy folios whole: shown, exported, written out.
 qet_add_app_test(tst_readonlyfolios tst_readonlyfolios.cpp)
 target_compile_definitions(tst_readonlyfolios PRIVATE
@@ -711,6 +714,8 @@ qet_add_app_test(tst_terminalcolor tst_terminalcolor.cpp)
 qet_add_app_test(tst_selectionframeradius tst_selectionframeradius.cpp)
 # Selected symbols framed clearly in the highlight colour, a setting.
 qet_add_app_test(tst_strongselection tst_strongselection.cpp)
+# Ctrl drag copies, Duplicate on the mouse: two settings, off by default.
+qet_add_app_test(tst_ctrldragcopy tst_ctrldragcopy.cpp)
 # Text grid, "Snap the middle of the text": the middle of a dragged text on
 # the grid instead of the corner of its frame; off by default.
 qet_add_app_test(tst_textgridmiddle tst_textgridmiddle.cpp)
@@ -2413,6 +2418,9 @@ qet_add_app_test(tst_potentialview tst_potentialview.cpp)
 # A core of a cable: section, colour and type are locked in the dialog and
 # show a small sign saying why, so an edit cannot write over the cable
 qet_add_app_test(tst_cablelockedfields tst_cablelockedfields.cpp)
+# IEC 60757 wire colour codes: a code picked from the list sets the colour
+# text and the drawing (green-yellow striped); typed text stays text.
+qet_add_app_test(tst_conductorcolorcodes tst_conductorcolorcodes.cpp)
 
 # Settings for every test. get_property(... TESTS) only sees the tests added
 # so far, so they wait for the end of this file: a test takes them wherever
@@ -2529,3 +2537,6 @@ endif()
 # The title block recorded for the screen shows what is drawn, and a change
 # of the folio's data reaches the screen
 qet_add_app_test(tst_titleblockcache tst_titleblockcache.cpp)
+# A properties dialog given its own key remembers its size apart from the
+# others of its editor (a PLC master's element dialog opens much wider)
+qet_add_app_test(tst_propertieseditordialog tst_propertieseditordialog.cpp)

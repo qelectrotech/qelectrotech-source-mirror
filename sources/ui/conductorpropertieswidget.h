@@ -56,6 +56,12 @@ class ConductorPropertiesWidget : public QWidget
 		void setTextLocked(bool locked);
 		QComboBox *autonumComboBox() const;
 		QPushButton *editAutonumPushButton() const;
+		void pickColorCode(const QString &text);
+
+	signals:
+			/// A colour code was picked from the list: the drawn colour
+			/// changed with it, in one go
+		void colorCodePicked();
 
 	private:
 		void initWidget();

@@ -22,6 +22,7 @@
 #include <QColor>
 #include <QFont>
 #include <QPen>
+#include <QString>
 
 /**
 	@brief The LastUsedStyle class
@@ -55,6 +56,8 @@ class LastUsedStyle
 		static bool hasConductorColor();
 		static QColor conductorColor();
 		static void setConductorColor(const QColor &color);
+		static QString conductorColorCode();
+		static void setConductorColorCode(const QString &code, const QColor &color);
 
 	private:
 		LastUsedStyle() = delete;
@@ -67,6 +70,7 @@ class LastUsedStyle
 		static bool m_has_text_font;
 		static QColor m_conductor_color;
 		static bool m_has_conductor_color;
+		static QString m_conductor_color_code;
 };
 
 #endif // LAST_USED_STYLE_H
