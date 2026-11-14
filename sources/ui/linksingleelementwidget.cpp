@@ -30,6 +30,10 @@
 #include <ui_linksingleelementwidget.h>
 
 #include <QTreeWidgetItem>
+#include <QPointer>
+#include <QTimer>
+
+#include "../devicetype/devicetypelink.h"
 #include <QInputDialog>
 #include <QMessageBox>
 
@@ -675,6 +679,35 @@ void LinkSingleElementWidget::linkTriggered()
 
 	m_element_to_link = elementOf(m_qtwi_at_context_menu);
 	m_pending_group_index = -1;
+
+		//A device with a device type, in a project following the types:
+		//only one whose type has a free part for this contact, which then
+		//takes that part's terminals once linked
+	if (m_element->linkType() == Element::Slave && m_element_to_link
+		&& m_element_to_link->linkType() == Element::Master
+		&& DeviceTypeLink::limits(m_element_to_link))
+	{
+		if (DeviceTypeLink::refuses(m_element_to_link, m_element)) {
+			QMessageBox::warning(this, tr("That link cannot be made"),
+								 tr("This device has no free contact of this kind: every "
+									"part of its device type is drawn."));
+			m_element_to_link = nullptr;
+			return;
+		}
+		QPointer<Element> slave = m_element;
+		connect(m_element, &Element::linkedElementChanged, m_element, [slave]() {
+				//After the link's own step: the symbol is replaced
+			QTimer::singleShot(0, slave, [slave]() {
+				if (!slave || slave->linkedElements().isEmpty()) return;
+				Diagram *diagram = slave->diagram();
+				Element *fresh = DeviceTypeLink::takeNextFreePart(slave);
+				if (fresh && fresh != slave && diagram) {
+					diagram->clearSelection();
+					fresh->setSelected(true);
+				}
+			});
+		}, Qt::SingleShotConnection);
+	}
 
 	//If linking a slave to a master with contact groups, show group selection dialog
 	if (m_element->linkType() == Element::Slave

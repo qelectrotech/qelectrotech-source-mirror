@@ -419,6 +419,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
             </category>
         </category>
     </collection>
+    <devicetype_rules follow="true"/>
     <devicetypes>
         <devicetype name="CONTR-1NO" version="1">
             <names>
