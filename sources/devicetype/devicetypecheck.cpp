@@ -326,12 +326,11 @@ namespace DeviceTypeCheck
 	int extraContacts(const Device &device)
 	{
 		if (!device.known()) return 0;
-			//Room: the contact parts, and a part of another role a linked
-			//contact draws (match() pairs by symbol and pins, not by role),
-			//so a complete device never has too many
-		QSet<int> room;
-		for (int p = 0 ; p < device.type.parts.size() ; ++p)
-			if (device.type.parts.at(p).role == QLatin1String("slave")) room.insert(p);
+			//Room for a linked contact: a part one draws (match() pairs by
+			//symbol and pins, not by role), or a contact part nothing draws;
+			//never the master's part, nor a part another symbol took. So a
+			//complete device never has too many.
+		QSet<int> by_contact;
 		int contacts = 0;
 		for (int s = 0 ; s < device.symbols.size() ; ++s) {
 			Element *symbol = device.symbols.at(s).data();
@@ -339,9 +338,17 @@ namespace DeviceTypeCheck
 				continue;
 			++contacts;
 			const int part = device.drawn.value(s, Beyond);
-			if (part >= 0) room.insert(part);
+			if (part >= 0) by_contact.insert(part);
 		}
-		return qMax(0, contacts - int(room.size()));
+		int room = 0;
+		for (int p = 0 ; p < device.type.parts.size() ; ++p) {
+			const QString &role = device.type.parts.at(p).role;
+			if (role == QLatin1String("master")) continue;
+			if (by_contact.contains(p)
+				|| (role == QLatin1String("slave") && device.missing.contains(p)))
+				++room;
+		}
+		return qMax(0, contacts - room);
 	}
 
 	/**

@@ -224,6 +224,32 @@ class tst_devicetypelist : public QObject
 		QCOMPARE(DeviceTypeCheck::extraContacts(device), 1);
 	}
 
+		//A contact part another symbol took is no room for a contact,
+		//nor is the master's part
+	void roomTakenByAnotherSymbol()
+	{
+		Relay relay;
+		const QString aux = define(relay.project, QStringLiteral("aux"), QStringLiteral("simple"),
+								   {QStringLiteral("23"), QStringLiteral("24")});
+		const QString other = define(relay.project, QStringLiteral("other"), QStringLiteral("slave"),
+									 {QString(), QString()});
+		Element *drawn = place(relay.folio, aux, QPointF(200, 100));
+		Element *one = place(relay.folio, relay.contact, QPointF(260, 100));
+		Element *beyond = place(relay.folio, other, QPointF(320, 100));
+		QVERIFY(drawn && one && beyond);
+		DiagramContext info = drawn->elementInformations();
+		info.addValue(QStringLiteral("label"), QStringLiteral("K1"));
+		drawn->setElementInformations(info);
+		relay.coil->linkToElement(one);
+		relay.coil->linkToElement(beyond);
+		const auto device = DeviceTypeCheck::checkDevice(relay.coil);
+			//K1 13 14 is the contact, 23 24 the simple symbol: the other
+			//contact has no part left
+		QCOMPARE(device.symbols.size(), 4);
+		QCOMPARE(device.beyond(), 1);
+		QCOMPARE(DeviceTypeCheck::extraContacts(device), 1);
+	}
+
 		//The list describes each type in the language asked, as the
 		//dialog shows it; English by default
 	void theDescriptionsLanguage()
@@ -240,6 +266,8 @@ class tst_devicetypelist : public QObject
 		QCOMPARE(lines(DeviceTypeList::csv({relay}, DeviceTypeList::Kind::Full, nullptr,
 										   QStringLiteral("fr"))).value(1),
 				 QStringLiteral("RELAY;Relais;;;;;;"));
+			//A full locale finds its base language
+		QCOMPARE(relay.text(QStringLiteral("fr_CA")), QStringLiteral("Relais"));
 	}
 };
 
