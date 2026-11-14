@@ -22,8 +22,8 @@ build = pathlib.Path(args.build).resolve()
 binary = pathlib.Path(args.binary).resolve()
 source = pathlib.Path(args.source).resolve()
 fixture = pathlib.Path(args.fixture).resolve()
-probe_binary = ninja_probe.build_probe(build, binary, source, 'auto-connect-probe.ninja')
-output = build / 'auto-connect'
+probe_binary = ninja_probe.build_probe(build, binary, source, 'drawing-aid-probe.ninja')
+output = build / 'drawing-aid'
 output.mkdir(exist_ok=True)
 report = output / 'results.txt'
 result = subprocess.run([str(probe_binary), str(fixture), str(report), str(output)], timeout=ninja_probe.timeout(90))

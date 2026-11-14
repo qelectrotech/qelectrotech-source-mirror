@@ -8,6 +8,7 @@ copy of the manifest stays in the build directory.
 Ninja writes paths with / on Unix and with \\ on Windows (MSVC and MinGW), so
 both are matched.
 """
+import contextlib
 import os
 import pathlib
 import re
@@ -32,7 +33,17 @@ def _escape(path):
 
 
 def build_probe(build, binary, source, manifest_name):
-    """Build the probe `source` (a .cpp) in place of main.cpp; return its path."""
+    """Build the probe `source` (a .cpp) in place of main.cpp; return its path.
+
+    Every probe runs Ninja in the application's build folder, and two Ninja
+    runs there at once would write its log and dependency files together.
+    Only this build step is locked: the probes themselves run side by side.
+    """
+    with _build_lock(build):
+        return _build_probe(build, binary, source, manifest_name)
+
+
+def _build_probe(build, binary, source, manifest_name):
     manifest = (build / 'build.ninja').read_text(encoding='utf-8')
     match = re.search(r'^build (\S*?[/\\]sources[/\\]main\.cpp\.(?:obj|o)):',
                       manifest, re.MULTILINE)
@@ -69,3 +80,30 @@ def build_probe(build, binary, source, manifest_name):
     target = probe_binary.name if probe_binary.parent == build else str(probe_binary)
     subprocess.run([ninja, '-C', str(build), '-f', probe_manifest.name, target], check=True)
     return probe_binary
+
+
+@contextlib.contextmanager
+def _build_lock(build):
+    """Hold an exclusive lock on build/probe-ninja.lock until the block ends."""
+    with open(build / 'probe-ninja.lock', 'a+b') as handle:
+        if os.name == 'nt':
+            import msvcrt
+            while True:
+                handle.seek(0)
+                try:
+                    msvcrt.locking(handle.fileno(), msvcrt.LK_LOCK, 1)
+                    break
+                except OSError:
+                    continue  # LK_LOCK gives up after ten one-second tries
+            try:
+                yield
+            finally:
+                handle.seek(0)
+                msvcrt.locking(handle.fileno(), msvcrt.LK_UNLCK, 1)
+        else:
+            import fcntl
+            fcntl.flock(handle, fcntl.LOCK_EX)
+            try:
+                yield
+            finally:
+                fcntl.flock(handle, fcntl.LOCK_UN)
