@@ -513,10 +513,8 @@ void MultiElementInfoWidget::buildInterface()
 		row->restore->setAutoRaise(true);
 		row->restore->setToolTip(tr("Restore the values the elements had"));
 
-		if (key == QETInformation::ELMT_WIDTH
-				|| key == QETInformation::ELMT_HEIGHT
-				|| key == QETInformation::ELMT_DEPTH) {
-			row->edit->setValidator(new QETInformation::NumericInfoValidator(row->edit));
+		if (QETInformation::isNumericInfoKey(key)) {
+			row->edit->setValidator(new QETInformation::NumericInfoValidator(key, row->edit));
 			row->edit->setToolTip(tr("Decimal number with a dot as separator (e.g. 80.5)"));
 		}
 

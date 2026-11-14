@@ -287,6 +287,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/itemgroups.h
   ${QET_DIR}/sources/shownkinds.cpp
   ${QET_DIR}/sources/shownkinds.h
+  ${QET_DIR}/sources/conductorcolorcodes.cpp
+  ${QET_DIR}/sources/conductorcolorcodes.h
   ${QET_DIR}/sources/lastusedstyle.cpp
   ${QET_DIR}/sources/lastusedstyle.h
   ${QET_DIR}/sources/machine_info.cpp

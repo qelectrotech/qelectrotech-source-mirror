@@ -25,6 +25,7 @@
 #include <qetdiagrameditor.h>
 #include <projectview.h>
 #include <qetgraphicsitem/conductor.h>
+#include <conductorcolorcodes.h>
 #include <conductorproperties.h>
 #include <utils/colordialogdoubleclick.h>
 
@@ -35,31 +36,6 @@
 #include <QSet>
 
 namespace {
-	/**
-		The colours an electrician reaches for, in the order the trade
-		names them: the three phases, neutral, earth, then the ones used
-		for control and extra-low-voltage circuits. Not a standard in
-		itself -- IEC 60445 only fixes blue for neutral and green/yellow
-		for protective earth -- but it covers the wiring a schematic
-		actually shows, which is what makes the toolbar worth a click.
-	*/
-	struct NamedColor { const char *context_name; QColor color; };
-
-	QList<NamedColor> standardColors()
-	{
-		return {
-			{QT_TRANSLATE_NOOP("ConductorColorToolButton", "Black"),        QColor(0x00, 0x00, 0x00)},
-			{QT_TRANSLATE_NOOP("ConductorColorToolButton", "Brown"),      QColor(0x7B, 0x3F, 0x00)},
-			{QT_TRANSLATE_NOOP("ConductorColorToolButton", "Gray"),        QColor(0x80, 0x80, 0x80)},
-			{QT_TRANSLATE_NOOP("ConductorColorToolButton", "Blue"),        QColor(0x00, 0x00, 0xFF)},
-			{QT_TRANSLATE_NOOP("ConductorColorToolButton", "Green"),        QColor(0x00, 0x80, 0x00)},
-			{QT_TRANSLATE_NOOP("ConductorColorToolButton", "Red"),       QColor(0xFF, 0x00, 0x00)},
-			{QT_TRANSLATE_NOOP("ConductorColorToolButton", "Orange"),      QColor(0xFF, 0x80, 0x00)},
-			{QT_TRANSLATE_NOOP("ConductorColorToolButton", "Purple"),      QColor(0x80, 0x00, 0x80)},
-			{QT_TRANSLATE_NOOP("ConductorColorToolButton", "White"),       QColor(0xFF, 0xFF, 0xFF)},
-		};
-	}
-
 	const int MAX_RECENT = 6;
 }
 
@@ -82,6 +58,9 @@ ConductorColorToolButton::ConductorColorToolButton(QETDiagramEditor *editor, QWi
 	setMenu(new QMenu(this));
 	rebuildMenu();
 	setSwatch(m_current);
+	if (const auto *code = ConductorColorCodes::find(LastUsedStyle::conductorColorCode())) {
+		setIcon(ConductorColorCodes::swatch(*code));
+	}
 }
 
 /**
@@ -117,12 +96,14 @@ void ConductorColorToolButton::rebuildMenu()
 	QMenu *m = menu();
 	m->clear();
 
-	for (const auto &nc : standardColors())
+		//The IEC 60757 codes: each sets how the wire is drawn and its
+		//colour text, so the wiring list says what the drawing shows
+	for (const auto &code : ConductorColorCodes::all())
 	{
-		const QColor c = nc.color;
-		QAction *a = m->addAction(swatchIcon(c),
-					  tr(nc.context_name));
-		connect(a, &QAction::triggered, this, [this, c]() { applyColor(c); });
+		const QString text = code.code;
+		QAction *a = m->addAction(ConductorColorCodes::swatch(code),
+					  ConductorColorCodes::displayName(code));
+		connect(a, &QAction::triggered, this, [this, text]() { applyCode(text); });
 	}
 
 	if (!m_recent.isEmpty())
@@ -145,7 +126,8 @@ void ConductorColorToolButton::rebuildMenu()
 /**
 	@brief ConductorColorToolButton::applyColor
 	Recolour the selected conductors, and remember the colour for the next
-	one drawn.
+	one drawn. Only the drawn colour changes: the colour text and the
+	stripes stay as they are.
 	@param color
 */
 void ConductorColorToolButton::applyColor(const QColor &color)
@@ -159,6 +141,43 @@ void ConductorColorToolButton::applyColor(const QColor &color)
 	rememberRecent(color);
 	setSwatch(color);
 
+	applyToSelection([color](ConductorProperties &properties) {
+		properties.color = color;
+	});
+}
+
+/**
+	@brief ConductorColorToolButton::applyCode
+	Give the selected conductors an IEC 60757 colour code -- drawn colour,
+	stripes and colour text together -- and remember it for the next one
+	drawn.
+	@param text : the code, as ConductorColorCodes lists it
+*/
+void ConductorColorToolButton::applyCode(const QString &text)
+{
+	const ConductorColorCodes::Code *code = ConductorColorCodes::find(text);
+	if (!code) {
+		return;
+	}
+
+	LastUsedStyle::setConductorColorCode(code->code, code->color);
+	m_current = code->color;
+	setIcon(ConductorColorCodes::swatch(*code));
+
+	const ConductorColorCodes::Code c = *code;
+	applyToSelection([c](ConductorProperties &properties) {
+		ConductorColorCodes::apply(c, properties);
+	});
+}
+
+/**
+	@brief ConductorColorToolButton::applyToSelection
+	Change the selected conductors, as one undo step.
+	@param change : what to do to each conductor's properties
+*/
+void ConductorColorToolButton::applyToSelection(
+		const std::function<void (ConductorProperties &)> &change)
+{
 	DiagramView *dv = currentView();
 	if (!dv) {
 		return;
@@ -191,11 +210,11 @@ void ConductorColorToolButton::applyColor(const QColor &color)
 	for (Conductor *conductor : conductors)
 	{
 		ConductorProperties before = conductor->properties();
-		if (before.color == color) {
+		ConductorProperties after = before;
+		change(after);
+		if (after == before) {
 			continue;
 		}
-		ConductorProperties after = before;
-		after.color = color;
 
 		QVariant old_value, new_value;
 		old_value.setValue(before);
@@ -236,8 +255,8 @@ void ConductorColorToolButton::rememberRecent(const QColor &color)
 {
 		//A colour that is already one row up in the standard list would
 		//only appear twice, under a hex name it does not need.
-	for (const auto &nc : standardColors()) {
-		if (nc.color == color) {
+	for (const auto &code : ConductorColorCodes::all()) {
+		if (!code.isTwoColour() && code.color == color) {
 			return;
 		}
 	}
