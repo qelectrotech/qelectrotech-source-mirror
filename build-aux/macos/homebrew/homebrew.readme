@@ -3,8 +3,14 @@ QElectroTech macOS bundle (Homebrew, Qt 6, KF6)
 
 RESUME
 ------
-These scripts build a signed and notarized QElectroTech DMG for macOS on
-Apple Silicon, with the Homebrew Qt 6 and the KDE Frameworks QET uses.
+These scripts build a signed and notarized QElectroTech DMG for macOS,
+with Qt 6 and the KDE Frameworks QET uses:
+
+- QT_FROM=aqt (default): official Qt binaries (aqtinstall), universal
+  DMG for Apple Silicon and Intel Macs. Homebrew only provides the build
+  tools (cmake, ninja, git, ccache).
+- QT_FROM=brew: Homebrew Qt 6, arm64 DMG only (Homebrew no longer builds
+  Intel bottles).
 
 They are adapted from the digiKam Homebrew scripts by Gilles Caulier
 (digikam/project/bundles/homebrew and 3rdparty/ext_kf6), reduced to what
@@ -28,10 +34,13 @@ DIFFERENCES WITH THE DIGIKAM SCRIPTS
   for this reason). The Homebrew installer asks for the password itself,
   once, to create /opt/homebrew.
 - An existing /opt/homebrew is never removed, formulae are only added.
-- About 10 formulae instead of about 40 (no boost, opencv, ffmpeg, exiv2,
-  lensfun, imagemagick, mariadb...), and Qt as split modules (qtbase,
-  qtsvg, qttools, qttranslations, qtimageformats) instead of the "qt"
-  meta formula (qtwebengine, qtmultimedia...).
+- 4 formulae (cmake, ninja, git, ccache) instead of about 40 (no boost,
+  opencv, ffmpeg, exiv2, lensfun, imagemagick, mariadb...). With
+  QT_FROM=brew, Qt as split modules (qtbase, qtsvg, qttools,
+  qttranslations, qtimageformats) instead of the "qt" meta formula
+  (qtwebengine, qtmultimedia...), plus sqlite and hidapi.
+- With QT_FROM=aqt, sqlite and hidapi are built universal and static in
+  $HOME/qet-homebrew-work/deps, once.
 - KDE Frameworks: 3 modules (extra-cmake-modules, kcoreaddons,
   kwidgetsaddons) instead of 25, no patches, built statically in
   $HOME/qet-homebrew-work/kf6 and not in /opt/homebrew: no KF dylib to
@@ -49,8 +58,8 @@ build-aux/macos/homebrew/
 ├── homebrew.readme           This file
 ├── config.sh                 Settings: target, formulae, QET branch, signing
 ├── common.sh                 Shared functions
-├── 01-build-homebrew.sh      Homebrew (if missing) and the formulae QET needs
-├── 02-build-qet.sh           KDE Frameworks (once), then QElectroTech
+├── 01-build-homebrew.sh      Homebrew (if missing), build tools, Qt 6
+├── 02-build-qet.sh           sqlite, hidapi, KF6 (once), then QElectroTech
 ├── 03-build-installer.sh     macdeployqt, QET data, signature, DMG, notarization
 ├── makeall.sh                01 + 02 + 03 : everything from scratch
 └── update.sh                 02 + 03 : rebuild QET and the DMG
@@ -59,22 +68,33 @@ build-aux/macos/homebrew/
 REQUIREMENTS
 ------------
 
-- A Mac with Apple Silicon and macOS 14 or newer.
+- A Mac with macOS 14 or newer. Apple Silicon for QT_FROM=brew; an Intel
+  Mac also works with QT_FROM=aqt.
 - Xcode Command Line Tools: xcode-select --install
 - A normal user, admin of the Mac (for the Homebrew installer only).
 - To sign: the "Developer ID Application" certificate in the login
   keychain. To notarize: a notarytool profile, created once with
     xcrun notarytool store-credentials "org.qelectrotech" \
           --apple-id <apple id> --team-id Y73WZ6WZ5X
-- Internet access to: github.com (Homebrew, QET), the Homebrew bottles
-  (ghcr.io), invent.kde.org (KDE Frameworks).
+- Internet access to: github.com (Homebrew, QET, sqlite, hidapi), the
+  Homebrew bottles (ghcr.io), PyPI and the Qt mirrors (aqtinstall),
+  invent.kde.org (KDE Frameworks).
 
 
 CONFIGURATION (config.sh)
 -------------------------
 
-OSX_MIN_TARGET   Minimal macOS version (14.0, minimum of the Homebrew Qt6
-                 bottles). Written in the binaries and in Info.plist.
+OSX_MIN_TARGET   Minimal macOS version (14.0), written in the binaries and
+                 in Info.plist. 02-build-qet.sh stops if the Qt used needs
+                 a newer macOS (its "minos"), instead of producing a DMG
+                 that older Macs refuse with the -10825 error.
+QT_FROM          aqt (default, universal) or brew (arm64 only).
+QT_VERSION       Qt version installed by aqt (6.11.2).
+QT_AQT_MODULES   Extra Qt modules: qtpdf (PDF page import), qtimageformats.
+OSX_ARCHS        "arm64;x86_64" (universal, default) or one of them, with
+                 QT_FROM=aqt. Every binary of the bundle is checked with lipo.
+SQLITE_VERSION,  Versions of the universal sqlite and hidapi built with
+HIDAPI_VERSION   QT_FROM=aqt.
 BREW_*           Homebrew formulae to install. BREW_QT_OPTIONAL is
                  installed only if Homebrew has it (QtPdf: PDF page import).
 QET_VERSION      QET branch or tag cloned in $HOME/qet-homebrew-work/build.
@@ -84,10 +104,11 @@ QET_WITH_KF      1 = KF6 (default), 0 = QET's sources/ui/nokde replacements.
 KF_VERSION       KF6 version, same as cmake/fetch_kdeaddons.cmake (v6.10.0).
                  Changing it rebuilds KF6 at the next run.
 QET_SPACEMOUSE   3D mouse support with hidapi.
-QET_SIGN         1 = Developer ID signature, 0 = ad hoc (local tests only,
-                 Gatekeeper refuses it on other Macs, no notarization).
+QET_SIGN         1 = Developer ID signature, 0 = ad hoc (local tests and
+                 CI: Gatekeeper blocks it at first launch, no notarization).
 QET_NOTARIZE     Notarize and staple the .app and the DMG.
 QET_UPLOAD       Upload with rsync to QET_UPLOADURL:QET_UPLOADDIR.
+                 These three can be given in the environment.
 
 
 USAGE
@@ -99,10 +120,30 @@ USAGE
 
 Logs are in ./logs, the DMG and its SHA256 file in ./bundle.
 
+To test the Intel part of a universal DMG on an Apple Silicon Mac:
+
+  arch -x86_64 /Applications/qelectrotech.app/Contents/MacOS/qelectrotech
+
+
+CONTINUOUS INTEGRATION
+----------------------
+
+.github/workflows/macos-dmg.yml runs these scripts on a GitHub macOS
+runner, with QET_SIGN=0 (no certificate in the CI) and QET_UPLOAD=0, and
+publishes the universal DMG on the nightly release. It is called by
+windows-msi.yml, like the Linux AppImage. Qt, KF6, sqlite and hidapi are
+cached: only QET is built on each run.
+
+The CI DMG is only signed ad hoc: macOS blocks it at first launch. Allow
+it in System Settings > Privacy & Security > "Open Anyway", or:
+
+  xattr -dr com.apple.quarantine /Applications/qelectrotech.app
+
+Releases stay signed and notarized on a Mac with the Developer ID.
+
 
 TODO
 ----
 
-- Intel (x86_64) builds: /usr/local Homebrew, ARCH_TARGET.
-- A GitHub CI job (macos-14 runner) calling 01 + 02 + 03 with QET_SIGN=0,
-  then signing with the certificate stored in the repository secrets.
+- Sign and notarize in the CI (certificate and App Store Connect API key
+  in the repository secrets).

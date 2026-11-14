@@ -112,17 +112,62 @@ echo "Elapsed time for script execution : $(($difftimelps / 3600 )) hours $((($d
 HostAdjustments()
 {
 
-echo "macOS host      : $(sw_vers -productName) $(sw_vers -productVersion) ($(uname -m))"
-
-if [[ "$ARCH_TARGET" != "arm64" ]] ; then
-    echo "Architecture $ARCH_TARGET is not supported by these scripts (arm64 only)."
-    exit 1
-fi
+HOST_ARCH=$(uname -m)
+echo "macOS host      : $(sw_vers -productName) $(sw_vers -productVersion) ($HOST_ARCH)"
 
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
-QT_PREFIX=$("$BREW" --prefix qtbase 2>/dev/null || true)
+if [[ "$QT_FROM" = "brew" ]] ; then
+
+    # Homebrew bottles exist for the host architecture only, and Homebrew
+    # no longer builds Intel ones.
+    if [[ "$HOST_ARCH" != "arm64" ]] ; then
+        echo "QT_FROM=brew needs an Apple Silicon Mac. Use QT_FROM=aqt on Intel."
+        exit 1
+    fi
+
+    OSX_ARCHS="arm64"
+    QT_PREFIX=$("$BREW" --prefix qtbase 2>/dev/null || true)
+    SQLITE_PREFIX=$("$BREW" --prefix sqlite 2>/dev/null || true)
+
+    # The Homebrew prefix holds Qt, hidapi and the other libraries.
+    BUILD_PREFIX_PATH="$KF_PREFIX;$BREW_PREFIX"
+    BUILD_IGNORE_PATH=""
+
+elif [[ "$QT_FROM" = "aqt" ]] ; then
+
+    QT_PREFIX="$QT_ROOT/$QT_VERSION/macos"
+    SQLITE_PREFIX="$DEPS_PREFIX"
+
+    # Only our universal libraries: anything found in the Homebrew prefix
+    # would be arm64 only and break the x86_64 link. Homebrew still
+    # provides cmake, ninja, git and ccache through the PATH.
+    BUILD_PREFIX_PATH="$KF_PREFIX;$DEPS_PREFIX;$QT_PREFIX"
+    BUILD_IGNORE_PATH="$BREW_PREFIX"
+    export PKG_CONFIG_PATH=""
+    export PKG_CONFIG_LIBDIR="$DEPS_PREFIX/lib/pkgconfig"
+
+else
+
+    echo "QT_FROM=$QT_FROM : unknown value (aqt or brew)."
+    exit 1
+
+fi
+
+# Name of the architecture in the DMG file name
+if [[ "$OSX_ARCHS" = *";"* ]] ; then
+    PKG_ARCH="universal"
+else
+    PKG_ARCH="$OSX_ARCHS"
+fi
+
+# Same list with spaces, for lipo and the shell loops
+OSX_ARCHS_LIST=$(echo "$OSX_ARCHS" | tr ';' ' ')
+
+echo "Qt from         : $QT_FROM"
+echo "Architectures   : $OSX_ARCHS_LIST ($PKG_ARCH)"
+
 QMAKE="$QT_PREFIX/bin/qmake"
 
 if [[ -x "$QMAKE" ]] ; then
@@ -130,5 +175,41 @@ if [[ -x "$QMAKE" ]] ; then
     QT_TRANSDIR=$("$QMAKE" -query QT_INSTALL_TRANSLATIONS)
     echo "Qt used         : $("$QMAKE" -query QT_VERSION) ($QT_PREFIX)"
 fi
+
+}
+
+########################################################################
+# Check that a Mach-O file holds every architecture of OSX_ARCHS.
+# arg1 : file to check. Returns 1 and prints the missing ones otherwise.
+ChecksArchs()
+{
+
+_archs=$(lipo -archs "$1" 2>/dev/null || true)
+_missing=""
+
+for _a in $OSX_ARCHS_LIST ; do
+    case " $_archs " in
+        *" $_a "*) ;;
+        *) _missing="$_missing $_a" ;;
+    esac
+done
+
+if [[ -n "$_missing" ]] ; then
+    echo "   $1 : missing$_missing (has: ${_archs:-none})"
+    return 1
+fi
+
+return 0
+
+}
+
+########################################################################
+# Minimal macOS version a Mach-O file was built for (its "minos").
+# arg1 : file. Prints the highest minos of its architectures.
+MachoMinos()
+{
+
+otool -arch all -l "$1" 2>/dev/null | awk '/LC_BUILD_VERSION/{f=1} f && $1=="minos"{print $2; f=0}' \
+    | sort -t . -k1,1n -k2,2n | tail -n 1
 
 }

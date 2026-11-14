@@ -25,13 +25,44 @@ BUNDLE_DIR="$WORK_DIR/bundle"
 ########################################################################
 # Target
 
-# Minimal macOS version. 14.0 is the minimum of the Homebrew Qt6 bottles;
-# a higher value than the bottles' would give the -10825 error on older
-# systems (minos of the binary newer than LSMinimumSystemVersion).
+# Minimal macOS version, written in the binaries and in Info.plist.
+# It must not be lower than the minimum of the Qt used (the "minos" of
+# QtCore, see 02-build-qet.sh), or macOS refuses to start QET with the
+# -10825 error. With QT_FROM=brew, check the bottles: Homebrew only builds
+# them for its Tier 1 macOS versions.
 OSX_MIN_TARGET="14.0"
 
-# Apple Silicon only for now ("arm64"). Homebrew installs in /opt/homebrew.
-ARCH_TARGET="$(uname -m)"
+########################################################################
+# Qt6 to bundle
+#
+#   aqt  : official Qt binaries installed with aqtinstall (default).
+#          They are universal (arm64 + x86_64) and target older macOS
+#          versions than the Homebrew bottles: one DMG for every Mac.
+#          sqlite and hidapi are then built universal by 02-build-qet.sh,
+#          and Homebrew only provides the build tools.
+#   brew : Homebrew Qt6 (BREW_QT below). arm64 only: Homebrew no longer
+#          builds Intel bottles (Tier 3 since Sept. 2026).
+
+QT_FROM=aqt
+QT_VERSION=6.11.2
+QT_ROOT="$WORK_DIR/Qt"
+
+# Extra aqt modules: qtpdf (PDF page import), qtimageformats (more image
+# plugins). qtsvg, qttools and qttranslations are in the base install.
+QT_AQT_MODULES="qtpdf qtimageformats"
+
+# Architectures of the bundle, with QT_FROM=aqt. Forced to arm64 with
+# QT_FROM=brew. "arm64;x86_64" gives a universal DMG.
+OSX_ARCHS="arm64;x86_64"
+
+# sqlite (with the session extension used by the .qetdb history) and
+# hidapi (3D mouse), built universal and static in $DEPS_PREFIX with
+# QT_FROM=aqt. Homebrew's are arm64 only.
+DEPS_PREFIX="$WORK_DIR/deps"
+SQLITE_VERSION=3.54.1
+SQLITE_GITURL="https://github.com/sqlite/sqlite.git"
+HIDAPI_VERSION=0.15.0
+HIDAPI_GITURL="https://github.com/libusb/hidapi.git"
 
 ########################################################################
 # Homebrew packages
@@ -41,9 +72,12 @@ ARCH_TARGET="$(uname -m)"
 # modules, not the "qt" meta formula that pulls qtwebengine,
 # qtmultimedia, qt3d... If "qt" is already installed, nothing breaks:
 # these modules are among its dependencies.
+#
+# BREW_TOOLS are always installed. BREW_LIBS, BREW_QT and
+# BREW_QT_OPTIONAL only with QT_FROM=brew.
 
-BREW_TOOLS="cmake ninja git ccache pkgconf"
-BREW_LIBS="sqlite hidapi"
+BREW_TOOLS="cmake ninja git ccache"
+BREW_LIBS="sqlite hidapi pkgconf"
 BREW_QT="qtbase qtsvg qttools qttranslations qtimageformats"
 
 # Optional formula for the PDF page import (toolbar "Ajouter un PDF").
@@ -94,18 +128,23 @@ QET_CCACHE=1
 # must be signed) but Gatekeeper refuses it elsewhere. Notarization needs
 # QET_SIGN=1.
 
-QET_SIGN=1
+#
+# These three settings can be given in the environment, as the CI does
+# (.github/workflows/macos-dmg.yml: no signature, no upload):
+#   QET_SIGN=0 QET_UPLOAD=0 ./makeall.sh
+
+QET_SIGN=${QET_SIGN:-1}
 QET_IDENTITY="Developer ID Application: Laurent TRINQUES (Y73WZ6WZ5X)"
 
 # notarytool profile created once with:
 #   xcrun notarytool store-credentials "org.qelectrotech" --apple-id ... --team-id Y73WZ6WZ5X
-QET_NOTARIZE=1
+QET_NOTARIZE=${QET_NOTARIZE:-1}
 QET_NOTARY_PROFILE="org.qelectrotech"
 
 # Upload with rsync over ssh. "server" is a Host alias in ~/.ssh/config.
 # The DMG is first copied to QET_UPLOAD_LOCALDIR, which is mirrored to the
 # server (--delete-after), as misc/MacQetDeploy_arm64_cmake.sh did.
-QET_UPLOAD=0
+QET_UPLOAD=${QET_UPLOAD:-0}
 QET_UPLOADURL="server"
 QET_UPLOADDIR="download.qelectrotech.org/qet/builds/MAC_OS_X/arm64/"
 QET_UPLOAD_LOCALDIR="$HOME/MAC_OS_X"

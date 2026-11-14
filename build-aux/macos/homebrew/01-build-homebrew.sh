@@ -1,7 +1,8 @@
 #!/bin/bash
 
-# Prepare a macOS host (Apple Silicon) to build the QElectroTech bundle:
-# installs Homebrew if needed, then only the formulae QET needs.
+# Prepare a macOS host to build the QElectroTech bundle: installs Homebrew
+# if needed, then only the formulae QET needs, and Qt6 from Homebrew
+# (QT_FROM=brew) or the official universal binaries (QT_FROM=aqt).
 # Runs as a normal user: the Homebrew installer asks for your password
 # itself, once, to create /opt/homebrew.
 #
@@ -71,32 +72,72 @@ fi
 
 #################################################################################################
 
-echo -e "---------- Install build tools and libraries\n"
+echo -e "---------- Install build tools\n"
 
-"$BREW" install $BREW_TOOLS $BREW_LIBS
-
-echo -e "---------- Install Qt6 modules\n"
-
-"$BREW" install $BREW_QT
-
-for FORMULA in $BREW_QT_OPTIONAL ; do
-    if "$BREW" info --formula "$FORMULA" >/dev/null 2>&1 ; then
-        "$BREW" install "$FORMULA"
+# Only the missing ones: git comes with the Xcode CLI tools, and CI runners
+# already have cmake and ninja (installing them again with brew can fail
+# on a link conflict).
+for TOOL in $BREW_TOOLS ; do
+    if command -v "$TOOL" >/dev/null 2>&1 ; then
+        echo "$TOOL already installed: $(command -v "$TOOL")"
     else
-        echo "Optional formula $FORMULA not available in Homebrew, skipped."
+        "$BREW" install "$TOOL"
     fi
 done
+
+HostAdjustments
+
+if [[ "$QT_FROM" = "brew" ]] ; then
+
+    echo -e "---------- Install libraries and Qt6 modules with Homebrew\n"
+
+    "$BREW" install $BREW_LIBS $BREW_QT
+
+    for FORMULA in $BREW_QT_OPTIONAL ; do
+        if "$BREW" info --formula "$FORMULA" >/dev/null 2>&1 ; then
+            "$BREW" install "$FORMULA"
+        else
+            echo "Optional formula $FORMULA not available in Homebrew, skipped."
+        fi
+    done
+
+    QT_SOURCE_INFO="Homebrew: $("$BREW" list --versions $BREW_QT $BREW_QT_OPTIONAL 2>/dev/null | tr '\n' ' ')"
+
+else
+
+    echo -e "---------- Install Qt $QT_VERSION with aqtinstall\n"
+
+    if [[ -x "$QT_PREFIX/bin/qmake" ]] ; then
+
+        echo "Qt $QT_VERSION already installed in $QT_ROOT (cache), skipped."
+
+    else
+
+        # python3 of the Xcode Command Line Tools
+        /usr/bin/python3 -m venv "$WORK_DIR/aqt-venv"
+        "$WORK_DIR/aqt-venv/bin/pip" install --upgrade aqtinstall
+
+        "$WORK_DIR/aqt-venv/bin/aqt" install-qt mac desktop "$QT_VERSION" clang_64 \
+             -m $QT_AQT_MODULES \
+             -O "$QT_ROOT"
+
+    fi
+
+    QT_SOURCE_INFO="aqtinstall: Qt $QT_VERSION ($QT_AQT_MODULES)"
+
+fi
 
 #################################################################################################
 
 HostAdjustments
 
 if [[ ! -x "$QMAKE" ]] ; then
-    echo "ERROR: Qt6 not found after installation (brew --prefix qtbase)."
+    echo "ERROR: Qt6 not found after installation ($QT_PREFIX)."
     exit 1
 fi
 
 echo -e "\n---------- Installed versions\n"
-"$BREW" list --versions $BREW_TOOLS $BREW_LIBS $BREW_QT $BREW_QT_OPTIONAL 2>/dev/null || true
+for TOOL in $BREW_TOOLS ; do echo "$TOOL : $("$TOOL" --version 2>/dev/null | head -n 1)" ; done
+echo "$QT_SOURCE_INFO"
 
 TerminateScript

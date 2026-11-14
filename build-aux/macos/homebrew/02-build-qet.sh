@@ -1,6 +1,10 @@
 #!/bin/bash
 
-# Build the KDE Frameworks QET uses (once), then QElectroTech.
+# Build the libraries QET needs (once), then QElectroTech.
+#
+#   - QT_FROM=aqt : sqlite and hidapi, universal and static, in $DEPS_PREFIX
+#   - KDE Frameworks : ECM, KCoreAddons, KWidgetsAddons, static, in $KF_PREFIX
+#   - QElectroTech, for every architecture of OSX_ARCHS
 #
 # Adapted from the digiKam Homebrew scripts by Gilles Caulier
 # (02-build-extralibs.sh and 03-build-digikam.sh).
@@ -22,8 +26,8 @@ exec > >(tee ./logs/build-qet.full.log) 2>&1
 
 #################################################################################################
 
-echo "02-build-qet.sh : build KDE Frameworks and QElectroTech."
-echo "--------------------------------------------------------"
+echo "02-build-qet.sh : build the libraries and QElectroTech."
+echo "-------------------------------------------------------"
 
 #################################################################################################
 # Pre-processing checks
@@ -38,26 +42,124 @@ ChecksHomebrew
 HostAdjustments
 
 if [[ ! -x "$QMAKE" ]] ; then
-    echo "ERROR: Homebrew Qt6 not found : run 01-build-homebrew.sh first."
-    exit 1
-fi
-
-SQLITE_PREFIX=$("$BREW" --prefix sqlite 2>/dev/null || true)
-
-# The sqlite3.h of the macOS SDK has no session extension (sqlite3session_*,
-# sqlite3changeset_*) used by QetDbFile for the .qetdb history. The sqlite
-# formula is keg-only: it must be given to CMake explicitly.
-if [[ ! -f "$SQLITE_PREFIX/include/sqlite3.h" ]] ; then
-    echo "ERROR: Homebrew SQLite not found : run 01-build-homebrew.sh first."
+    echo "ERROR: Qt6 not found in $QT_PREFIX : run 01-build-homebrew.sh first."
     exit 1
 fi
 
 ORIG_WD="`pwd`"
 
+# Minimal macOS version of the Qt used: OSX_MIN_TARGET must not be lower,
+# or macOS refuses to start QET (-10825 error, "minos" of the binary newer
+# than LSMinimumSystemVersion).
+QT_MINOS=$(MachoMinos "$QT_PREFIX/lib/QtCore.framework/QtCore")
+echo "QtCore minos    : ${QT_MINOS:-unknown}"
+
+if [[ -n "$QT_MINOS" ]] ; then
+    _qt_major=${QT_MINOS%%.*}
+    _min_major=${OSX_MIN_TARGET%%.*}
+    if [[ $_qt_major -gt $_min_major ]] ; then
+        echo "ERROR: this Qt needs macOS $QT_MINOS, but OSX_MIN_TARGET is $OSX_MIN_TARGET."
+        echo "       Raise OSX_MIN_TARGET in config.sh (users of older macOS could not"
+        echo "       start the DMG), or use QT_FROM=aqt."
+        exit 1
+    fi
+fi
+
+# Common to every CMake project built here. CMAKE_IGNORE_PREFIX_PATH keeps
+# the Homebrew libraries out of a universal build (they are arm64 only).
 COMMON_CMAKE_OPTIONS="\
 -DCMAKE_OSX_DEPLOYMENT_TARGET=$OSX_MIN_TARGET \
--DCMAKE_OSX_ARCHITECTURES=$ARCH_TARGET \
+-DCMAKE_OSX_ARCHITECTURES=$OSX_ARCHS \
+-DCMAKE_PREFIX_PATH=$BUILD_PREFIX_PATH \
 "
+
+if [[ -n "$BUILD_IGNORE_PATH" ]] ; then
+    COMMON_CMAKE_OPTIONS="$COMMON_CMAKE_OPTIONS -DCMAKE_IGNORE_PREFIX_PATH=$BUILD_IGNORE_PATH"
+fi
+
+# Rebuild the libraries when any of these settings changes
+LIBS_STAMP="$QT_FROM-$QT_VERSION-$OSX_MIN_TARGET-$(echo $OSX_ARCHS_LIST | tr ' ' '-')"
+
+#################################################################################################
+# sqlite and hidapi, universal, with QT_FROM=aqt (Homebrew's are arm64 only).
+# Static: nothing to deploy or sign in the bundle.
+
+if [[ "$QT_FROM" = "aqt" ]] ; then
+
+    DEPS_STAMP="$DEPS_PREFIX/.built-sqlite$SQLITE_VERSION-hidapi$HIDAPI_VERSION-$LIBS_STAMP"
+
+    if [[ ! -f "$DEPS_STAMP" ]] ; then
+
+        echo -e "\n---------- Build sqlite $SQLITE_VERSION and hidapi $HIDAPI_VERSION in $DEPS_PREFIX\n"
+
+        rm -rf "$DEPS_PREFIX" "$BUILDING_DIR/deps"
+        mkdir -p "$BUILDING_DIR/deps"
+
+        ARCH_FLAGS=""
+        for _a in $OSX_ARCHS_LIST ; do
+            ARCH_FLAGS="$ARCH_FLAGS -arch $_a"
+        done
+
+        # sqlite: canonical sources from the GitHub mirror. Since 3.48 they
+        # build with autosetup, without TCL. --enable-session: the session
+        # extension (sqlite3session_*, sqlite3changeset_*) used by QetDbFile
+        # for the .qetdb history, absent from the sqlite3.h of the macOS SDK.
+        git clone --depth 1 --branch "version-$SQLITE_VERSION" \
+            "$SQLITE_GITURL" "$BUILDING_DIR/deps/sqlite"
+
+        cd "$BUILDING_DIR/deps/sqlite"
+
+        CFLAGS="-O2 $ARCH_FLAGS -mmacosx-version-min=$OSX_MIN_TARGET" \
+        ./configure --prefix="$DEPS_PREFIX" \
+                    --enable-session \
+                    --disable-shared \
+                    --disable-tcl
+
+        make -j$CPU_CORES
+        make install
+
+        cd "$ORIG_WD"
+
+        # hidapi: CMake, darwin backend (IOKit)
+        git clone --depth 1 --branch "hidapi-$HIDAPI_VERSION" \
+            "$HIDAPI_GITURL" "$BUILDING_DIR/deps/hidapi"
+
+        cmake -S "$BUILDING_DIR/deps/hidapi" -B "$BUILDING_DIR/deps/hidapi/build" -G Ninja \
+              -DCMAKE_BUILD_TYPE=Release \
+              -DCMAKE_INSTALL_PREFIX="$DEPS_PREFIX" \
+              $COMMON_CMAKE_OPTIONS \
+              -DBUILD_SHARED_LIBS=OFF \
+              -DHIDAPI_BUILD_HIDTEST=OFF \
+              -Wno-dev
+
+        cmake --build "$BUILDING_DIR/deps/hidapi/build" -j$CPU_CORES
+        cmake --install "$BUILDING_DIR/deps/hidapi/build"
+
+        # Without its .pc file, QET's cmake/find_spacemouse.cmake uses hidapi's
+        # CMake package, which carries the IOKit/CoreFoundation/AppKit
+        # frameworks a static hidapi needs; pkg-config would not give them.
+        rm -f "$DEPS_PREFIX"/lib/pkgconfig/hidapi*.pc
+
+        for LIB in "$DEPS_PREFIX/lib/libsqlite3.a" "$DEPS_PREFIX"/lib/libhidapi*.a ; do
+            ChecksArchs "$LIB" || { echo "ERROR: $LIB is not built for every architecture."; exit 1; }
+        done
+
+        touch "$DEPS_STAMP"
+
+    else
+
+        echo "sqlite $SQLITE_VERSION and hidapi $HIDAPI_VERSION already built in $DEPS_PREFIX, skipped."
+
+    fi
+
+fi
+
+# The sqlite3.h of the macOS SDK has no session extension: QET must get
+# Homebrew's (keg-only, given explicitly to CMake) or ours.
+if [[ ! -f "$SQLITE_PREFIX/include/sqlite3.h" ]] ; then
+    echo "ERROR: SQLite not found in $SQLITE_PREFIX : run 01-build-homebrew.sh first."
+    exit 1
+fi
 
 #################################################################################################
 # KDE Frameworks : only ECM, KCoreAddons and KWidgetsAddons, instead of the
@@ -68,7 +170,9 @@ COMMON_CMAKE_OPTIONS="\
 
 if [[ $QET_WITH_KF = 1 ]] ; then
 
-    if [[ ! -f "$KF_PREFIX/.built-$KF_VERSION-$OSX_MIN_TARGET" ]] ; then
+    KF_STAMP="$KF_PREFIX/.built-$KF_VERSION-$LIBS_STAMP"
+
+    if [[ ! -f "$KF_STAMP" ]] ; then
 
         echo -e "\n---------- Build KDE Frameworks $KF_VERSION in $KF_PREFIX\n"
 
@@ -83,7 +187,6 @@ if [[ $QET_WITH_KF = 1 ]] ; then
             cmake -S "$BUILDING_DIR/kf6/$MODULE" -B "$BUILDING_DIR/kf6/$MODULE/build" -G Ninja \
                   -DCMAKE_BUILD_TYPE=Release \
                   -DCMAKE_INSTALL_PREFIX="$KF_PREFIX" \
-                  -DCMAKE_PREFIX_PATH="$KF_PREFIX;$BREW_PREFIX" \
                   $COMMON_CMAKE_OPTIONS \
                   -DCMAKE_POSITION_INDEPENDENT_CODE=ON \
                   -DBUILD_SHARED_LIBS=OFF \
@@ -102,7 +205,7 @@ if [[ $QET_WITH_KF = 1 ]] ; then
 
         done
 
-        touch "$KF_PREFIX/.built-$KF_VERSION-$OSX_MIN_TARGET"
+        touch "$KF_STAMP"
 
     else
 
@@ -203,7 +306,6 @@ rm -rf "$BUILD_DIR"
 
 cmake -S . -B "$BUILD_DIR" -G Ninja \
       -DCMAKE_BUILD_TYPE=$BUILD_TYPE \
-      -DCMAKE_PREFIX_PATH="$KF_PREFIX;$BREW_PREFIX" \
       -DCMAKE_C_COMPILER_LAUNCHER="$CCACHE_BIN" \
       -DCMAKE_CXX_COMPILER_LAUNCHER="$CCACHE_BIN" \
       $COMMON_CMAKE_OPTIONS \
@@ -219,7 +321,7 @@ cmake -S . -B "$BUILD_DIR" -G Ninja \
 #################################################################################################
 # Build
 
-echo -e "\n---------- Building QElectroTech $QET_VERSION\n"
+echo -e "\n---------- Building QElectroTech $QET_VERSION ($OSX_ARCHS_LIST)\n"
 
 [[ -n "$CCACHE_BIN" ]] && "$CCACHE_BIN" -z >/dev/null 2>&1 || true
 
@@ -229,10 +331,15 @@ cmake --build "$BUILD_DIR" -j$CPU_CORES
 
 # add_executable(... MACOSX_BUNDLE) without RUNTIME_OUTPUT_DIRECTORY:
 # the .app is at the root of the build tree.
-if [[ ! -x "$BUILD_DIR/qelectrotech.app/Contents/MacOS/qelectrotech" ]] ; then
+QET_BIN="$BUILD_DIR/qelectrotech.app/Contents/MacOS/qelectrotech"
+
+if [[ ! -x "$QET_BIN" ]] ; then
     echo "ERROR: $BUILD_DIR/qelectrotech.app not found after the build."
     exit 1
 fi
+
+ChecksArchs "$QET_BIN" || { echo "ERROR: qelectrotech is not built for every architecture."; exit 1; }
+echo "qelectrotech    : $(lipo -archs "$QET_BIN"), minos $(MachoMinos "$QET_BIN")"
 
 echo "$BUILD_DIR" > "$WORK_DIR/BUILDDIR.txt"
 

@@ -62,7 +62,7 @@ BUILD_DIR=$(cat "$WORK_DIR/BUILDDIR.txt")
 current_dir=$(cat "$WORK_DIR/SOURCEDIR.txt")
 APPNAME='qelectrotech'
 BUNDLE=$APPNAME.app
-DMG_NAME="${APPNAME}-$VERSION-r$HEAD-$ARCH_TARGET.dmg"
+DMG_NAME="${APPNAME}-$VERSION-r$HEAD-$PKG_ARCH.dmg"
 DMG_PATH="$ORIG_WD/bundle/$DMG_NAME"
 
 RW_DMG="/tmp/qet_rw.dmg"
@@ -107,8 +107,26 @@ else
 
 fi
 
-echo "Release ID      : $VERSION-r$HEAD"
+echo "Release ID      : $VERSION-r$HEAD ($PKG_ARCH)"
 echo "Signing identity: $IDENTITY"
+
+#################################################################################################
+# hdiutil sometimes fails with "Resource busy" on CI runners (and now and
+# then on a desktop, when Spotlight or an antivirus scans the image): try
+# again a few times before giving up.
+
+HdiutilRetry()
+{
+
+for _try in 1 2 3 4 5 ; do
+    hdiutil "$@" && return 0
+    echo "hdiutil $1 failed (try $_try), retrying in 10 s..."
+    sleep 10
+done
+
+return 1
+
+}
 
 #################################################################################################
 # Fresh copy of the built bundle
@@ -268,6 +286,25 @@ if [ -n "$HOMEBREW_REFS" ]; then
 fi
 echo "All dependencies resolved inside the bundle."
 
+### check the architectures of the bundle ##########################
+# Every Mach-O file must hold every architecture of OSX_ARCHS: a library
+# taken from Homebrew by mistake (arm64 only) would make the x86_64 part
+# of a universal DMG crash at startup on Intel Macs.
+echo
+echo "______________________________________________________________"
+echo "Check architectures ($OSX_ARCHS_LIST):"
+ARCH_ERRORS=$(list_macho | while read bin; do
+    if lipo -archs "$bin" >/dev/null 2>&1 ; then
+        ChecksArchs "$bin" || true
+    fi
+done)
+if [ -n "$ARCH_ERRORS" ]; then
+    echo "ERROR: some files of the bundle miss an architecture:"
+    echo "$ARCH_ERRORS"
+    exit 1
+fi
+echo "All binaries of the bundle hold: $OSX_ARCHS_LIST"
+
 ### install Info.plist and app icon #################################
 # NOTE: this must run AFTER macdeployqt, not before. macdeployqt
 # rewrites/regenerates parts of Contents/Resources, and files copied
@@ -293,7 +330,7 @@ cp -f "${current_dir}/misc/Info.plist" "$BUNDLE/Contents/Info.plist" \
 cp -f "${current_dir}"/ico/mac_icon/*.icns "$BUNDLE/Contents/Resources/" \
     || { echo "ERROR: cannot install the .icns icons"; exit 1; }
 /usr/libexec/PlistBuddy -c "Set :CFBundleShortVersionString $VERSION r$HEAD" "$BUNDLE/Contents/Info.plist"
-/usr/libexec/PlistBuddy -c "Set :LSMinimumSystemVersion 14.0.0" "$BUNDLE/Contents/Info.plist"
+/usr/libexec/PlistBuddy -c "Set :LSMinimumSystemVersion $OSX_MIN_TARGET" "$BUNDLE/Contents/Info.plist"
 
 ### add missing files ###############################################
 echo
@@ -469,7 +506,7 @@ echo "Bundle signature OK."
 echo
 echo "______________________________________________________________"
 echo "Create temporary ZIP for notarization:"
-NOTARIZE_ZIP="/tmp/${APPNAME}-$VERSION-r$HEAD-$ARCH_TARGET-notarize.zip"
+NOTARIZE_ZIP="/tmp/${APPNAME}-$VERSION-r$HEAD-$PKG_ARCH-notarize.zip"
 /usr/bin/ditto -c -k --keepParent "$BUNDLE" "$NOTARIZE_ZIP"
 
 if [[ $QET_NOTARIZE = 1 ]]; then
@@ -516,7 +553,7 @@ echo
 echo "______________________________________________________________"
 echo "Create writable DMG (UDRW) and re-sign .app inside:"
 rm -f "$RW_DMG"
-hdiutil create \
+HdiutilRetry create \
     -volname "QElectroTech $VERSION" \
     -srcfolder "$STAGING" \
     -ov \
@@ -531,7 +568,7 @@ fi
 
 rm -rf "$MOUNT_POINT"
 mkdir -p "$MOUNT_POINT"
-hdiutil attach "$RW_DMG" -mountpoint "$MOUNT_POINT" -nobrowse -noverify
+HdiutilRetry attach "$RW_DMG" -mountpoint "$MOUNT_POINT" -nobrowse -noverify
 if [ $? -ne 0 ]; then
     echo "ERROR: failed to mount writable DMG."
     rm -f "$RW_DMG"
@@ -575,8 +612,9 @@ echo "______________________________________________________________"
 echo "Convert to final compressed DMG (UDZO):"
 mkdir -p "$(dirname "$DMG_PATH")"
 rm -f "$DMG_PATH"
-hdiutil convert "$RW_DMG" \
+HdiutilRetry convert "$RW_DMG" \
     -format UDZO \
+    -ov \
     -o "$DMG_PATH"
 if [ $? -ne 0 ]; then
     echo "ERROR: hdiutil convert failed."
