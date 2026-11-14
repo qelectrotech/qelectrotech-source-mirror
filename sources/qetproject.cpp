@@ -2586,6 +2586,33 @@ void QETProject::setPlantAndLocationInherited(bool inherited)
 }
 
 /**
+	@brief QETProject::followDeviceTypes
+	@return true if placing and linking follow the device types: a contact
+	is linked only to a device whose type has a free part for it, and takes
+	that part's terminals; a master placed is asked its device type. Off
+	unless the project says otherwise, so a project saved without it
+	behaves as it always did.
+*/
+bool QETProject::followDeviceTypes() const
+{
+	return m_follow_device_types;
+}
+
+/**
+	@brief QETProject::setFollowDeviceTypes
+	@param follow : whether placing and linking follow the device types
+*/
+void QETProject::setFollowDeviceTypes(bool follow)
+{
+	if (follow == m_follow_device_types) {
+		return;
+	}
+	m_follow_device_types = follow;
+	storeSettings();
+	setModified(true);
+}
+
+/**
 	@brief QETProject::terminalLabelSplit
 	@return whether the terminals of this project draw their label split,
 	the label ("X1") and the terminal number ("1") each in their own text
@@ -2934,6 +2961,7 @@ QDomDocument QETProject::toXml(QHash<int, QByteArray> *kept_folios, QStringList 
 	writeWireHopsXml(project_root);
 	writeSymbolTextsXml(project_root);
 	writePlantLocationXml(project_root);
+	writeDeviceTypeRulesXml(project_root);
 	writeLanguagesXml(project_root);
 	writePotentialTypesXml(project_root);
 	writeTerminalLabelSplitXml(project_root);
@@ -4147,6 +4175,7 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 	readWireHopsXml(xml_project);
 	readSymbolTextsXml(xml_project);
 	readPlantLocationXml(xml_project);
+	readDeviceTypeRulesXml(xml_project);
 	readLanguagesXml(xml_project);
 	readPotentialTypesXml(xml_project);
 	readTerminalLabelSplitXml(xml_project);
@@ -4801,6 +4830,20 @@ void QETProject::readPlantLocationXml(QDomDocument &xml_project)
 }
 
 /**
+	@brief QETProject::readDeviceTypeRulesXml
+	Read the <devicetype_rules> element of the project, if any: a project
+	without it does not follow the device types (followDeviceTypes()).
+	@param xml_project : the xml description of the project
+*/
+void QETProject::readDeviceTypeRulesXml(QDomDocument &xml_project)
+{
+	const QDomElement rules = xml_project.documentElement()
+			.firstChildElement(QStringLiteral("devicetype_rules"));
+	m_follow_device_types = !rules.isNull()
+			&& rules.attribute(QStringLiteral("follow")) == QLatin1String("true");
+}
+
+/**
 	@brief QETProject::readTerminalLabelSplitXml
 	Read the <terminal_labelling> element of the project, if any. A
 	project without it was saved before the setting existed, or with it
@@ -5415,6 +5458,23 @@ void QETProject::writePlantLocationXml(QDomElement &xml_element)
 }
 
 /**
+	@brief QETProject::writeDeviceTypeRulesXml
+	Export whether placing and linking follow the device types, as a
+	<devicetype_rules> child of \a xml_element. Written only when on, so a
+	project with it off saves exactly as before.
+*/
+void QETProject::writeDeviceTypeRulesXml(QDomElement &xml_element)
+{
+	if (!m_follow_device_types) {
+		return;
+	}
+	QDomElement rules = xml_element.ownerDocument()
+			.createElement(QStringLiteral("devicetype_rules"));
+	rules.setAttribute(QStringLiteral("follow"), QStringLiteral("true"));
+	xml_element.appendChild(rules);
+}
+
+/**
 	@brief QETProject::writeTerminalLabelSplitXml
 	Export whether the terminals draw their label split, as a
 	<terminal_labelling> child of \a xml_element. Written only when on,
@@ -5744,6 +5804,7 @@ void QETProject::storeSettings()
 	writeWireHopsXml(root);
 	writeSymbolTextsXml(root);
 	writePlantLocationXml(root);
+	writeDeviceTypeRulesXml(root);
 	writeLanguagesXml(root);
 	writePotentialTypesXml(root);
 	writeTerminalLabelSplitXml(root);

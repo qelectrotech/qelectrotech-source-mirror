@@ -539,6 +539,14 @@ qet_add_app_test(tst_devicetype tst_devicetype.cpp)
 qet_add_app_test(tst_devicetypecheck tst_devicetypecheck.cpp)
 # Project > Device types: the list of types and the editor of one
 qet_add_app_test(tst_devicetypeeditor tst_devicetypeeditor.cpp)
+# A contact linked to a device with a type takes a free part of the type
+qet_add_app_test(tst_devicetypelink tst_devicetypelink.cpp)
+# Asking which device type a master placed is
+qet_add_app_test(tst_devicetypechooser tst_devicetypechooser.cpp)
+# Giving a device another device type, its contacts carried over
+qet_add_app_test(tst_devicetypechange tst_devicetypechange.cpp)
+# The device types listed, full and brief; contacts without their device
+qet_add_app_test(tst_devicetypelist tst_devicetypelist.cpp)
 # Giving a placed symbol the terminals of a part of its device type.
 qet_add_app_test(tst_devicetypeassign tst_devicetypeassign.cpp)
 # Part data: unit price, labour time and size, kept by .qet and .qetdb,

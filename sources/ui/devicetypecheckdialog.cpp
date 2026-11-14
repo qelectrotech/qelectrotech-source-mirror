@@ -149,12 +149,14 @@ void DeviceTypeCheckDialog::refresh()
 		m_targets.insert(row, symbol);
 	};
 
-	int complete = 0, incomplete = 0, unknown = 0;
+	int complete = 0, incomplete = 0, unknown = 0, too_many = 0;
 	for (int index = 0 ; index < devices.size() ; ++index) {
 		const auto &device = devices.at(index);
 		if (!device.known()) ++unknown;
 		else if (device.complete()) ++complete;
 		else ++incomplete;
+		const int extra = DeviceTypeCheck::extraContacts(device);
+		if (extra) ++too_many;
 		if (device.complete() && !m_show_complete->isChecked()) continue;
 
 		auto *root = new QTreeWidgetItem(m_tree);
@@ -188,6 +190,12 @@ void DeviceTypeCheckDialog::refresh()
 			else
 				row->setToolTip(0, tr("Double-click to place it on the current folio."));
 		}
+		if (extra) {
+			auto *row = new QTreeWidgetItem(root);
+			row->setIcon(0, style()->standardIcon(QStyle::SP_MessageBoxWarning));
+			//: %n counts the contacts linked to the device's master beyond the ones its type has
+			row->setText(0, tr("%n contact(s) more than the device type has", nullptr, extra));
+		}
 		for (int i = 0 ; i < device.symbols.size() ; ++i) {
 			if (device.drawn.at(i) != DeviceTypeCheck::Beyond) continue;
 			Element *symbol = device.symbols.at(i).data();
@@ -197,11 +205,39 @@ void DeviceTypeCheckDialog::refresh()
 			where(row, symbol);
 		}
 	}
+		//The contacts without their device
+	const QList<Element *> unlinked = DeviceTypeCheck::unlinkedContacts(m_project);
+	if (!unlinked.isEmpty()) {
+		auto *root = new QTreeWidgetItem(m_tree);
+		root->setIcon(0, style()->standardIcon(QStyle::SP_MessageBoxWarning));
+		//: %n counts the contacts linked to no master
+		root->setText(0, tr("%n contact(s) linked to no master", nullptr, int(unlinked.size())));
+		root->setToolTip(0, tr("A contact belongs to a device once it is linked to the device's master."));
+		for (Element *symbol : unlinked) {
+			auto *row = new QTreeWidgetItem(root);
+			const QString label = symbol->elementInformations()
+					.value(QStringLiteral("label")).toString();
+			row->setText(0, label.isEmpty() ? symbol->name()
+											//: %1 is the symbol's name, %2 its label
+											: tr("%1 %2").arg(symbol->name(), label));
+			row->setText(1, DeviceTypeCheck::typeNameOf(symbol->elementInformations()));
+			where(row, symbol);
+		}
+	}
+
 	//: %n counts the devices which have a device type
-	m_summary->setText(tr("%n device(s) with a device type: %1 complete, %2 incomplete, "
-						  "%3 of a type the project does not have.", nullptr,
-						  int(devices.size()))
-					   .arg(complete).arg(incomplete).arg(unknown));
+	QString summary = tr("%n device(s) with a device type: %1 complete, %2 incomplete, "
+						 "%3 of a type the project does not have.", nullptr,
+						 int(devices.size()))
+					  .arg(complete).arg(incomplete).arg(unknown);
+	if (too_many)
+		//: %n counts the devices whose master has more contacts linked than their type has
+		summary += QLatin1Char(' ') + tr("%n with too many contacts.", nullptr, too_many);
+	if (!unlinked.isEmpty())
+		//: %n counts the contacts linked to no master
+		summary += QLatin1Char(' ') + tr("%n contact(s) linked to no master.", nullptr,
+										 int(unlinked.size()));
+	m_summary->setText(summary);
 }
 
 /**

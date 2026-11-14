@@ -314,6 +314,34 @@ namespace DeviceTypeCheck
 		return list.isEmpty() ? Device() : list.first();
 	}
 
+	QList<Element *> unlinkedContacts(QETProject *project)
+	{
+		QList<Element *> list;
+		if (!project) return list;
+		const bool all = project->followDeviceTypes();
+		for (Diagram *diagram : project->diagrams()) {
+			for (Element *element : diagram->elements()) {
+				if (!(element->linkType() & Element::Slave)) continue;
+				if (headOf(element) != element) continue;
+				if (!all && typeNameOf(element->elementInformations()).isEmpty()) continue;
+				list << element;
+			}
+		}
+		return list;
+	}
+
+	int extraContacts(const Device &device)
+	{
+		if (!device.known()) return 0;
+		int contacts = 0, parts = 0;
+		for (const auto &symbol : device.symbols)
+			if (symbol && (symbol->linkType() & Element::Slave) && headOf(symbol) != symbol)
+				++contacts;
+		for (const DeviceType::Part &part : device.type.parts)
+			if (part.role == QLatin1String("slave")) ++parts;
+		return qMax(0, contacts - parts);
+	}
+
 	/**
 		@return how a part reads in a list: "contact NO 13 14"
 	*/

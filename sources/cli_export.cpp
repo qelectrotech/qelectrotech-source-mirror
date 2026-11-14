@@ -28,6 +28,7 @@
 #include "diagram.h"
 #include "diagramcontext.h"
 #include "devicetype/devicetypecheck.h"
+#include "devicetype/devicetypelist.h"
 #include "editor/terminalnamecheck.h"
 #include "dxfexport.h"
 #include "exportproperties.h"
@@ -91,6 +92,8 @@ const QHash<QString, QString> &exportFlags()
 		{"--export-nets", "nets"},
 		{"--export-links", "links"},
 		{"--check-device-types", "devicetypes"},
+		{"--export-device-types", "devicetypelist"},
+		{"--export-device-types-brief", "devicetypebrief"},
 		{"--info", "info"},
 		{"--check-elements", "check"},
 		{"--resave", "resave"},
@@ -899,7 +902,7 @@ int exportDeviceTypeCheck(QETProject &project, const QString &output)
 	const QHash<Element *, int> folio = folioIndex(project);
 	const auto devices = DeviceTypeCheck::check(&project);
 
-	QString csv("device;device_type;status;parts;symbols;not_drawn;beyond;missing;folio\n");
+	QString csv("device;device_type;status;parts;symbols;not_drawn;beyond;missing;folio;extra\n");
 	int complete = 0, incomplete = 0, unknown = 0;
 	for (const auto &device : devices) {
 		QString status;
@@ -922,7 +925,16 @@ int exportDeviceTypeCheck(QETProject &project, const QString &output)
 			 % (device.known() ? QString::number(device.missing.size()) : QString()) % ";"
 			 % (device.known() ? QString::number(device.beyond()) : QString()) % ";"
 			 % csvField(missing.join(", ")) % ";"
-			 % QString::number(folio.value(head, 0)) % "\n";
+			 % QString::number(folio.value(head, 0)) % ";"
+			 % QString::number(DeviceTypeCheck::extraContacts(device)) % "\n";
+	}
+		//A contact linked to no master: a row of its own, status unlinked
+	const QList<Element *> unlinked = DeviceTypeCheck::unlinkedContacts(&project);
+	for (Element *contact : unlinked) {
+		csv += csvField(elementLabel(contact)) % ";"
+			 % csvField(DeviceTypeCheck::typeNameOf(contact->elementInformations()))
+			 % ";unlinked;;1;;;;"
+			 % QString::number(folio.value(contact, 0)) % ";\n";
 	}
 
 	QFile file(output);
@@ -935,7 +947,27 @@ int exportDeviceTypeCheck(QETProject &project, const QString &output)
 	file.close();
 	out << "Checked " << devices.size() << " device(s) with a device type: "
 		<< complete << " complete, " << incomplete << " incomplete, "
-		<< unknown << " of an unknown type -> " << output << "\n";
+		<< unknown << " of an unknown type, " << unlinked.size()
+		<< " contact(s) linked to no master -> " << output << "\n";
+	return 0;
+}
+
+/// The project's device types as a list (DeviceTypeList): --export-device-types
+/// gives every part of each type and its symbols' terminals,
+/// --export-device-types-brief one row per type with the symbols using it.
+int exportDeviceTypeList(QETProject &project, const QString &output, bool brief)
+{
+	const QHash<QString, int> used = DeviceTypeList::usedBy(&project);
+	const QList<DeviceType> types = project.deviceTypes();
+	const QString csv = DeviceTypeList::csv(types, brief ? DeviceTypeList::Kind::Brief
+														 : DeviceTypeList::Kind::Full,
+											brief ? &used : nullptr);
+	QString error;
+	if (!DeviceTypeList::write(output, csv, &error)) {
+		err << "Cannot write '" << output << "': " << error << "\n";
+		return 1;
+	}
+	out << "Listed " << types.size() << " device type(s) -> " << output << "\n";
 	return 0;
 }
 
@@ -1540,6 +1572,8 @@ int run(const QStringList &args)
 		return exportLinks(project, output);
 	if (format == "devicetypes")
 		return exportDeviceTypeCheck(project, output);
+	if (format == "devicetypelist" || format == "devicetypebrief")
+		return exportDeviceTypeList(project, output, format == "devicetypebrief");
 		//The verbs that write a project file leave alone one that someone
 		//has open (their lock beside it), unless told to: the read-only
 		//verbs above never look at locks

@@ -18,7 +18,7 @@
 #ifndef DEVICETYPESDIALOG_H
 #define DEVICETYPESDIALOG_H
 
-#include "../devicetype/devicetype.h"
+#include "../devicetype/devicetypelist.h"
 
 #include <QDialog>
 #include <QPointer>
@@ -57,6 +57,7 @@ class DeviceTypesDialog : public QDialog
 
 	public slots:
 		void refresh();
+		QString listCsv(DeviceTypeList::Kind kind) const;
 
 	private:
 		QStringList names(bool library) const;
@@ -67,6 +68,7 @@ class DeviceTypesDialog : public QDialog
 		void removeSelected();
 		void copySelected();
 		void updateButtons();
+		void exportList(DeviceTypeList::Kind kind);
 
 		QPointer<QETProject> m_project;
 		QString m_folder;

@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "diagrameventaddelement.h"
+#include "../ui/devicetypechooser.h"
 #include <qetproject.h>
 #include <conductorautonumerotation.h>
 #include <diagram.h>
@@ -32,6 +33,8 @@
 #include <connectionsymbols.h>
 #include <diagramcontent.h>
 #include <autoconnect.h>
+#include <QPointer>
+#include <QTimer>
 #include <QGraphicsLineItem>
 #include <QGraphicsPathItem>
 #include <QPainterPath>
@@ -426,6 +429,18 @@ void DiagramEventAddElement::addElement()
 
 	m_diagram -> undoStack().push(undo_object);
 	element->freezeNewAddedElement();
+
+		//A master placed in a project following the device types: which
+		//type is it? Asked once the placing is pushed (DeviceTypeChooser)
+	if (!m_placed && m_diagram->project() && m_diagram->project()->followDeviceTypes()
+		&& (element->linkType() & Element::Master))
+	{
+		QPointer<Element> placed = element;
+		QWidget *view = m_diagram->views().value(0);
+		QTimer::singleShot(0, element, [placed, view]() {
+			if (placed) DeviceTypeChooser::askFor(placed, view);
+		});
+	}
 
 	if (m_placed)
 	{
