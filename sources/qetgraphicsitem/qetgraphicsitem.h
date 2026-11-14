@@ -67,6 +67,9 @@ class QetGraphicsItem : public QGraphicsObject
 	protected:
 		bool is_movable_;
 		bool m_first_move;
+			/// Ctrl pressed on a selected item while a Ctrl drag copies:
+			/// it is deselected at the release only if it was not dragged
+		bool m_deselect_on_release{false};
 		bool snap_to_grid_;
 		QPointF m_mouse_to_origin_movement;
 		QET::GraphicsItemState m_state = QET:: GIOK;

@@ -266,8 +266,15 @@ void Element::editProperty()
 {
 	if (diagram() && !diagram()->isReadOnly())
 	{
+		const ElementData data = elementData();
+		const bool plc = data.m_type == ElementData::Master
+				&& data.m_master_type == ElementData::PLC;
 		ElementPropertiesWidget *epw = new ElementPropertiesWidget(this);
-		PropertiesEditorDialog dialog(epw, QApplication::activeWindow());
+			// A PLC master's dialog opens wider (below): it keeps a size of
+			// its own, or every element's dialog would reopen that wide
+		PropertiesEditorDialog dialog(epw, QApplication::activeWindow(),
+									  plc ? QStringLiteral("ElementPropertiesWidgetPlc")
+										  : QString());
 		connect(epw,
 			&ElementPropertiesWidget::findEditClicked,
 			&dialog,
@@ -281,9 +288,7 @@ void Element::editProperty()
 		// size the dialog falls back to its (cramped) sizeHint, so open it
 		// at three times its natural width instead. The height stays at
 		// the natural one, and the width never exceeds the screen.
-		const ElementData data = elementData();
-		if (data.m_type == ElementData::Master
-			&& data.m_master_type == ElementData::PLC) {
+		if (plc) {
 			const QSize natural = dialog.sizeHint();
 			int width = natural.width() * 3;
 			if (QScreen *screen = QApplication::primaryScreen())
