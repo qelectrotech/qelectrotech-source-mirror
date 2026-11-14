@@ -616,7 +616,7 @@ DiagramContext ElementInfoWidget::currentInfo() const
 	}
 
 	// Save the auto numbering lock status
-	if (m_element->elementData().m_type == ElementData::Terminal) {
+	if (m_element && m_element->elementData().m_type == ElementData::Terminal) {
 		info_.addValue(QStringLiteral("auto_num_locked"), ui->m_auto_num_locked_cb->isChecked() ? QStringLiteral("true") : QStringLiteral("false"));
 
 		if (m_potential_isolating_cb) {
