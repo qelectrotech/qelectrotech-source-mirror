@@ -158,6 +158,7 @@ QStringList QETInformation::elementInfoKeys()
 						 ELMT_MANUFACTURER,
 						 ELMT_MANUFACTURER_REF,
 						 ELMT_MODEL,
+						 ELMT_DEVICE_TYPE,
 						 ELMT_CATEGORY,
 						 ELMT_VOLTAGE_RATING,
 						 ELMT_CURRENT_RATING,
@@ -374,6 +375,7 @@ QString QETInformation::infoToVar(const QString &info)
 QString QETInformation::translatedInfoKey(const QString &info)
 {
 	if      (info == ELMT_MODEL)                       return QObject::tr("Model");
+	else if (info == ELMT_DEVICE_TYPE)                 return QObject::tr("Device type");
 	else if (info == ELMT_CATEGORY)                    return QObject::tr("Category");
 	else if (info == ELMT_VOLTAGE_RATING)              return QObject::tr("Rated voltage");
 	else if (info == ELMT_CURRENT_RATING)              return QObject::tr("Rated current");

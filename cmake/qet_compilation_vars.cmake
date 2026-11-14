@@ -371,6 +371,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/autoNum/numerotationcontextcommands.h
   ${QET_DIR}/sources/autoNum/numerotationcontext.cpp
   ${QET_DIR}/sources/autoNum/numerotationcontext.h
+  ${QET_DIR}/sources/devicetype/devicetype.cpp
+  ${QET_DIR}/sources/devicetype/devicetype.h
   ${QET_DIR}/sources/autoNum/renumberconductorscommand.cpp
   ${QET_DIR}/sources/autoNum/renumberconductorscommand.h
   ${QET_DIR}/sources/autoNum/renumberelementscommand.cpp
