@@ -18,10 +18,14 @@
 #include "ElementsCollection/elementslocation.h"
 #include "ElementsCollection/xmlelementcollection.h"
 #include "devicetype/devicetypecheck.h"
+#include "devicetype/devicetypeplacement.h"
+#include "diagramevent/diagrameventaddelement.h"
 #include "diagram.h"
 #include "factory/elementfactory.h"
+#include "qetapp.h"
 #include "qetapptest.h"
 #include "qetgraphicsitem/element.h"
+#include "qetgraphicsitem/terminal.h"
 #include "qetproject.h"
 #include "ui/devicetypecheckdialog.h"
 #include "ui/elementarticleswidget.h"
@@ -29,8 +33,12 @@
 #include "undocommand/setdevicetypecommand.h"
 
 #include <QDomDocument>
+#include <QGraphicsSceneMouseEvent>
 #include <QCheckBox>
 #include <QLabel>
+#include <QPushButton>
+#include <QScopeGuard>
+#include <QSignalSpy>
 #include <QTreeWidget>
 #include <QtTest>
 
@@ -124,6 +132,21 @@ class tst_devicetypecheck : public QObject
 		QVERIFY(define(project, QStringLiteral("lamp"), QStringLiteral("LAMP"),
 					   QStringLiteral("slave"), {QStringLiteral("X1"), QStringLiteral("X2")}));
 		project->setDeviceType(contactor());
+	}
+
+		//One left click: the placing drops its symbol where it is
+	static void drop(DiagramEventAddElement &placing)
+	{
+		QGraphicsSceneMouseEvent event(QEvent::GraphicsSceneMouseRelease);
+		event.setButton(Qt::LeftButton);
+		placing.mouseReleaseEvent(&event);
+	}
+
+	static QStringList pinsOf(Element *element)
+	{
+		QStringList pins;
+		for (Terminal *terminal : element->terminals()) pins << terminal->baseName();
+		return pins;
 	}
 
   private slots:
@@ -414,6 +437,174 @@ class tst_devicetypecheck : public QObject
 		QCOMPARE(tree->topLevelItem(0)->childCount(), 2);
 		dialog.findChild<QCheckBox *>(QStringLiteral("deviceTypeShowComplete"))->setChecked(true);
 		QCOMPARE(tree->topLevelItemCount(), 2);
+	}
+	void placeAContactWithItsPins()
+	{
+			//The symbol drawn first was a simple one with pins 83 84: placed
+			//as this part it is a contact with 13 14, linked to the coil
+		QETProject project;
+		QETApp::registerProject(&project);
+		const auto registered = qScopeGuard([&project]() {QETApp::unregisterProject(&project);});
+		Diagram *folio = project.addNewDiagram();
+		defineAll(&project);
+		QVERIFY(define(&project, QStringLiteral("rawaux"), QStringLiteral("CONTR-AUX-NO"),
+					   QStringLiteral("simple"), {QStringLiteral("83"), QStringLiteral("84")}));
+		DeviceType type = contactor();
+		type.parts[2].symbols[0].location = QStringLiteral("embed://import/rawaux.elmt");
+		project.setDeviceType(type);
+		Element *coil = place(folio, QStringLiteral("coil"), QStringLiteral("K12"), QStringLiteral("CONTR10"));
+		QVERIFY(coil);
+		const auto before = DeviceTypeCheck::checkDevice(coil);
+		QCOMPARE(before.missing, QList<int>({1, 2}));
+		QCOMPARE(DeviceTypePlacement::placeableWays(before, 2), QList<int>({0}));
+
+		const int elements = folio->elements().size();
+		QScopedPointer<DiagramEventAddElement> placing(
+					DeviceTypePlacement::begin(before, 2, 0, folio, QPointF(300, 300)));
+		QVERIFY(placing);
+		QVERIFY(placing->isRunning());
+		QSignalSpy finished(placing.data(), &DiagramEventInterface::finish);
+		drop(*placing);
+		QCOMPARE(finished.size(), 1);   //one symbol, then done
+		QVERIFY(!placing->isRunning());
+		QVERIFY(!placing->pendingElement());
+		QCOMPARE(folio->elements().size(), elements + 1);
+
+		Element *contact = nullptr;
+		for (Element *e : folio->elements()) if (e != coil) contact = e;
+		QVERIFY(contact);
+		QCOMPARE(contact->linkType(), Element::Slave);
+		QCOMPARE(contact->linkedElements(), QList<Element *>({coil}));
+		QCOMPARE(pinsOf(contact), QStringList({QStringLiteral("13"), QStringLiteral("14")}));
+		QCOMPARE(contact->name(), QStringLiteral("CONTR-AUX-NO"));
+		QCOMPARE(contact->elementData().m_slave_state, ElementData::NO);
+			//The check now finds it, and its original symbol is untouched
+		QCOMPARE(DeviceTypeCheck::checkDevice(coil).missing, QList<int>({1}));
+		QVERIFY(project.embeddedElementCollection()->exist(QStringLiteral("import/rawaux.elmt")));
+		QCOMPARE(ElementsLocation(QStringLiteral("embed://import/rawaux.elmt"), &project)
+				 .xml().attribute(QStringLiteral("link_type")), QStringLiteral("simple"));
+
+			//One undo takes it away, link included
+		folio->undoStack().undo();
+		QCOMPARE(folio->elements().size(), elements);
+		QVERIFY(coil->linkedElements().isEmpty());
+		QCOMPARE(DeviceTypeCheck::checkDevice(coil).missing, QList<int>({1, 2}));
+		folio->undoStack().redo();
+		QCOMPARE(coil->linkedElements().size(), 1);
+	}
+
+	void noMasterTakesLabelAndPlace()
+	{
+			//A plug and its contact: nothing to link to, one designation
+		QETProject project;
+		QETApp::registerProject(&project);
+		const auto registered = qScopeGuard([&project]() {QETApp::unregisterProject(&project);});
+		Diagram *first = project.addNewDiagram();
+		Diagram *second = project.addNewDiagram();
+		defineAll(&project);
+		QVERIFY(define(&project, QStringLiteral("plug"), QStringLiteral("PLUG"),
+					   QStringLiteral("simple"), {QStringLiteral("A"), QStringLiteral("B")}));
+		DeviceType type;
+		type.name = QStringLiteral("PLUG2");
+		type.informations = {{QStringLiteral("model"), type.name},
+							 {QStringLiteral("description"), QStringLiteral("A PLUG")}};
+		DeviceType::Part part{QStringLiteral("slave"), QStringLiteral("simple"), {},
+			{{QStringLiteral("embed://import/plug.elmt"), {QStringLiteral("A"), QStringLiteral("B")}, {}}}};
+		type.parts = {part, part};
+		project.setDeviceType(type);
+		Element *plug = place(first, QStringLiteral("plug"), QStringLiteral("XP1"), type.name);
+		QVERIFY(plug);
+		auto info = plug->elementInformations();
+		info.addValue(QStringLiteral("plant"), QStringLiteral("FACTORY"));
+		info.addValue(QStringLiteral("location"), QStringLiteral("CP1"));
+		plug->setElementInformations(info);
+		const auto device = DeviceTypeCheck::checkDevice(plug);
+		QCOMPARE(device.missing, QList<int>({1}));
+		QCOMPARE(device.label, QStringLiteral("XP1"));
+
+		DiagramEventAddElement *placing = DeviceTypePlacement::begin(device, 1, 0, second);
+		QVERIFY(placing);
+		drop(*placing);
+		delete placing;
+		QCOMPARE(second->elements().size(), 1);
+		Element *other = second->elements().first();
+		QCOMPARE(other->linkType(), Element::Simple);
+		QCOMPARE(other->elementInformations().value(QStringLiteral("label")).toString(), QStringLiteral("XP1"));
+		QCOMPARE(other->elementInformations().value(QStringLiteral("description")).toString(), QStringLiteral("A PLUG"));
+		const auto after = DeviceTypeCheck::checkDevice(plug);
+		QVERIFY(after.complete());
+		QCOMPARE(after.symbols.size(), 2);
+	}
+
+	void alternativesAndWhatCannotBePlaced()
+	{
+		QETProject project;
+		QETApp::registerProject(&project);
+		const auto registered = qScopeGuard([&project]() {QETApp::unregisterProject(&project);});
+		Diagram *folio = project.addNewDiagram();
+		defineAll(&project);
+		DeviceType type = contactor();
+		type.name = QStringLiteral("RELAY");
+		type.parts[2].symbols = {
+			{QStringLiteral("embed://import/aux.elmt"), {QStringLiteral("4"), QStringLiteral("3")}, QStringLiteral("NO")},
+			{QStringLiteral("embed://import/aux.elmt"), {QStringLiteral("2"), QStringLiteral("3")}, QStringLiteral("NC")},
+			{QStringLiteral("embed://import/nothing.elmt"), {QStringLiteral("9")}, QStringLiteral("SW")},
+			{QString(), {QStringLiteral("8")}, {}}};
+		DeviceType::Part plc{QStringLiteral("slave"), QStringLiteral("plc"), {},
+			{{QStringLiteral("embed://import/aux.elmt"), {QStringLiteral("I0")}, {}}}};
+		type.parts << plc;
+		project.setDeviceType(type);
+		Element *coil = place(folio, QStringLiteral("coil"), QStringLiteral("K9"), type.name);
+		QVERIFY(coil);
+		const auto device = DeviceTypeCheck::checkDevice(coil);
+		QCOMPARE(DeviceTypePlacement::placeableWays(device, 2), QList<int>({0, 1}));
+		QCOMPARE(DeviceTypePlacement::wayText(device.type.parts.at(2), 1), QStringLiteral("NC 2 3"));
+		QVERIFY(DeviceTypePlacement::placeableWays(device, 3).isEmpty());   //a PLC point
+		QVERIFY(!DeviceTypePlacement::begin(device, 3, 0, folio));
+
+		DiagramEventAddElement *placing = DeviceTypePlacement::begin(device, 2, 1, folio, QPointF(200, 400));
+		QVERIFY(placing);
+		drop(*placing);
+		delete placing;
+		QCOMPARE(coil->linkedElements().size(), 1);
+		Element *contact = coil->linkedElements().first();
+		QCOMPARE(contact->elementData().m_slave_state, ElementData::NC);
+		QCOMPARE(pinsOf(contact), QStringList({QStringLiteral("2"), QStringLiteral("3")}));
+			//The copies of one symbol, one per way, do not mix
+		placing = DeviceTypePlacement::begin(device, 2, 0, folio, QPointF(280, 400));
+		QVERIFY(placing);
+		drop(*placing);
+		delete placing;
+		QCOMPARE(coil->linkedElements().size(), 2);
+		QCOMPARE(coil->linkedElements().last()->elementData().m_slave_state, ElementData::NO);
+	}
+	void dialogPlacesAPart()
+	{
+		QETProject project;
+		QETApp::registerProject(&project);
+		const auto registered = qScopeGuard([&project]() {QETApp::unregisterProject(&project);});
+		Diagram *folio = project.addNewDiagram();
+		defineAll(&project);
+		Element *coil = place(folio, QStringLiteral("coil"), QStringLiteral("K1"), QStringLiteral("CONTR10"));
+		QVERIFY(coil);
+		DeviceTypeCheckDialog dialog(&project);
+		auto *tree = dialog.findChild<QTreeWidget *>(QStringLiteral("deviceTypeDevices"));
+		auto *button = dialog.findChild<QPushButton *>(QStringLiteral("placeDeviceTypePart"));
+		QVERIFY(tree && button);
+		QVERIFY(!button->isEnabled());
+		QTreeWidgetItem *aux = tree->topLevelItem(0)->child(1);
+		QCOMPARE(aux->text(0), QStringLiteral("Not drawn: simple NO 13 14"));
+		tree->setCurrentItem(aux);
+		QVERIFY(button->isEnabled());
+
+		QVERIFY(dialog.startPlacing(aux, 0, folio));
+		QVERIFY(folio->pendingElement());
+		QGraphicsSceneMouseEvent release(QEvent::GraphicsSceneMouseRelease);
+		release.setButton(Qt::LeftButton);
+		QApplication::sendEvent(folio, &release);
+		QTRY_COMPARE(tree->topLevelItem(0)->childCount(), 1);   //read again once placed
+		QCOMPARE(coil->linkedElements().size(), 1);
+		QVERIFY(!folio->pendingElement());
 	}
 };
 

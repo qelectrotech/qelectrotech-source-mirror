@@ -22,6 +22,7 @@
 #include "elementinfowidget.h"
 
 #include <devicetype/devicetype.h>
+#include <devicetype/devicetypeassign.h>
 #include <devicetype/devicetypecheck.h>
 #include <diagram.h>
 #include <materiallist/materiallist.h>
@@ -34,6 +35,10 @@
 #include <undocommand/setdevicetypecommand.h>
 
 #include <QApplication>
+#include <QCursor>
+#include <QDialog>
+#include <QHash>
+#include <QMenu>
 #include <QDockWidget>
 #include <QFrame>
 #include <QGridLayout>
@@ -385,6 +390,66 @@ void ElementArticlesWidget::bringTypeNow()
 }
 
 /**
+	@brief ElementArticlesWidget::chooseTypeSymbol
+	Ask which part of the device type this symbol draws, and give it that
+	part's terminals. The fields are saved first, the type brought into
+	the project with them: the choice replaces the symbol, so a properties
+	window showing it closes.
+*/
+void ElementArticlesWidget::chooseTypeSymbol()
+{
+	ElementInfoPartWidget *type_row = partForKey(QETInformation::ELMT_DEVICE_TYPE);
+	Diagram *diagram = m_element ? m_element->diagram() : nullptr;
+	if (!type_row || !diagram) {
+		return;
+	}
+	bringTypeNow();
+	const QString name = type_row->text().trimmed();
+	const DeviceType type = diagram->project()->deviceType(name);
+	if (type.isNull()) {
+		return;
+	}
+
+	const auto device = DeviceTypeAssign::deviceOf(m_element.data(), type);
+	const auto choices = DeviceTypeAssign::choices(m_element.data(), device);
+	if (choices.isEmpty()) {
+		QET::QetMessageBox::information(this, tr("Set this symbol from the device type"),
+										tr("Every part of this device type is already drawn."));
+		return;
+	}
+	QMenu menu(this);
+	QHash<QAction *, int> chosen;
+	for (int i = 0 ; i < choices.size() ; ++i) {
+		QAction *action = menu.addAction(choices.at(i).text);
+		action->setEnabled(choices.at(i).possible);
+		action->setToolTip(choices.at(i).reason);
+		chosen.insert(action, i);
+	}
+	menu.setToolTipsVisible(true);
+	QAction *picked = menu.exec(QCursor::pos());
+	if (!picked) {
+		return;
+	}
+
+	QString error;
+	QDialog *dialog = qobject_cast<QDialog *>(window());
+	Element *fresh = DeviceTypeAssign::apply(m_element.data(), device,
+											 choices.at(chosen.value(picked)), &error);
+	if (!fresh) {
+		QET::QetMessageBox::warning(this, tr("Set this symbol from the device type"), error);
+		return;
+	}
+	if (fresh != m_element.data()) {
+		if (dialog) {
+			dialog->reject();
+			return;
+		}
+		diagram->clearSelection();
+		fresh->setSelected(true);
+	}
+}
+
+/**
 	@brief ElementArticlesWidget::libraryTypes
 	@return the names of the user's device types (DeviceTypeLibrary), read
 	the first time only
@@ -412,11 +477,18 @@ void ElementArticlesWidget::updateTypeRow()
 		return;
 	}
 	const QString name = type_row->text().trimmed();
+	if (m_type_symbol_button) {
+		m_type_symbol_button->setVisible(false);
+	}
 	if (name.isEmpty()) {
 		m_type_label->setVisible(false);
 		return;
 	}
 	QETProject *project = diagram->project();
+	if (m_type_symbol_button) {
+		m_type_symbol_button->setVisible(!project->deviceType(name).isNull()
+										 || libraryTypes().contains(name));
+	}
 	QString text;
 	const DeviceType type = project->deviceType(name);
 	if (type.isNull()) {
@@ -658,7 +730,7 @@ QWidget *ElementArticlesWidget::buildBlockPage(int block)
 
 	const QStringList columns = articleColumnsForBlock(block);
 		//The main article: its device type, in rows of their own below the
-		//model's (the field, what the type is made of)
+		//model's (the field, what the type is made of, the symbol button)
 	const int model_row = block == 0
 			? int(columns.indexOf(QETInformation::ELMT_MODEL)) / 2 : -1;
 	for (int i = 0; i < columns.size(); ++i) {
@@ -681,7 +753,7 @@ QWidget *ElementArticlesWidget::buildBlockPage(int block)
 					[this, block]() { updateArticleListRow(block); });
 		}
 
-		const int row = i / 2 + (model_row >= 0 && i / 2 > model_row ? 2 : 0);
+		const int row = i / 2 + (model_row >= 0 && i / 2 > model_row ? 3 : 0);
 		const int col = i % 2;
 		grid->addWidget(part, row, col);
 		m_block_parts[block] << part;
@@ -707,7 +779,15 @@ QWidget *ElementArticlesWidget::buildBlockPage(int block)
 		m_type_label->setContentsMargins(6, 0, 6, 4);
 		m_type_label->setVisible(false);
 		grid->addWidget(m_type_label, model_row + 2, 0, 1, 2);
-		rows += 2;
+		m_type_symbol_button = new QPushButton(
+				tr("Set this symbol from the device type..."), container);
+		m_type_symbol_button->setObjectName(QStringLiteral("deviceTypeSymbolButton"));
+		m_type_symbol_button->setToolTip(tr("Choose which part of the device type this symbol draws: it takes that part's terminals."));
+		m_type_symbol_button->setVisible(false);
+		grid->addWidget(m_type_symbol_button, model_row + 3, 0, 1, 2, Qt::AlignLeft);
+		connect(m_type_symbol_button, &QPushButton::clicked,
+				this, &ElementArticlesWidget::chooseTypeSymbol);
+		rows += 3;
 	}
 
 	grid->setColumnStretch(0, 1);

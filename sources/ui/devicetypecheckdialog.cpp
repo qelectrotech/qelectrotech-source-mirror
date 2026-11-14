@@ -17,12 +17,14 @@
 */
 #include "devicetypecheckdialog.h"
 
-#include <devicetype/devicetypecheck.h>
+#include <devicetype/devicetypeplacement.h>
 #include <diagram.h>
+#include <diagramevent/diagrameventaddelement.h>
 #include <diagramview.h>
 #include <qet.h>
 #include <qetdiagrameditor.h>
 #include <qetgraphicsitem/element.h>
+#include <projectview.h>
 #include <qetproject.h>
 
 #include <QApplication>
@@ -30,6 +32,7 @@
 #include <QDialogButtonBox>
 #include <QHeaderView>
 #include <QLabel>
+#include <QMenu>
 #include <QProgressDialog>
 #include <QPushButton>
 #include <QScopeGuard>
@@ -42,7 +45,8 @@ DeviceTypeCheckDialog::DeviceTypeCheckDialog(QETProject *project, QWidget *paren
 	m_project(project),
 	m_tree(new QTreeWidget(this)),
 	m_show_complete(new QCheckBox(this)),
-	m_summary(new QLabel(this))
+	m_summary(new QLabel(this)),
+	m_place(nullptr)
 {
 	setWindowTitle(tr("Check device types"));
 	resize(820, 520);
@@ -52,8 +56,9 @@ DeviceTypeCheckDialog::DeviceTypeCheckDialog(QETProject *project, QWidget *paren
 	layout->addWidget(m_summary);
 	auto *help = new QLabel(
 		tr("A device takes the device type named on its Parts tab. Click a "
-		   "device or a symbol to select and show it on its sheet. Refresh "
-		   "after editing the project."), this);
+		   "device or a symbol to select and show it on its sheet. Double-click "
+		   "a part not drawn to place it on the current folio. Refresh after "
+		   "editing the project."), this);
 	help->setWordWrap(true);
 	layout->addWidget(help);
 	m_show_complete->setObjectName(QStringLiteral("deviceTypeShowComplete"));
@@ -73,10 +78,19 @@ DeviceTypeCheckDialog::DeviceTypeCheckDialog(QETProject *project, QWidget *paren
 			[this](QTreeWidgetItem *row, int) {showSymbol(row);});
 	connect(m_tree, &QTreeWidget::itemActivated, this,
 			[this](QTreeWidgetItem *row, int) {showSymbol(row);});
+	connect(m_tree, &QTreeWidget::itemDoubleClicked, this,
+			[this](QTreeWidgetItem *row, int) {placeRow(row);});
+	connect(m_tree, &QTreeWidget::currentItemChanged, this,
+			&DeviceTypeCheckDialog::updatePlaceButton);
 
 	auto *buttons = new QDialogButtonBox(QDialogButtonBox::Close, this);
 	auto *refresh_button = buttons->addButton(tr("Refresh"), QDialogButtonBox::ActionRole);
 	refresh_button->setObjectName(QStringLiteral("refreshDeviceTypes"));
+	m_place = buttons->addButton(tr("Place on the current folio"), QDialogButtonBox::ActionRole);
+	m_place->setObjectName(QStringLiteral("placeDeviceTypePart"));
+	m_place->setToolTip(tr("Place the selected part: the symbol follows the mouse until you click"));
+	m_place->setEnabled(false);
+	connect(m_place, &QPushButton::clicked, this, [this]() {placeRow(m_tree->currentItem());});
 	connect(refresh_button, &QPushButton::clicked, this, &DeviceTypeCheckDialog::refresh);
 	connect(buttons, &QDialogButtonBox::rejected, this, &QDialog::reject);
 	layout->addWidget(buttons);
@@ -117,10 +131,13 @@ void DeviceTypeCheckDialog::buildFolios()
 void DeviceTypeCheckDialog::refresh()
 {
 	m_targets.clear();
+	m_parts.clear();
 	m_tree->clear();
+	updatePlaceButton();
 	if (!m_project) return;
 	buildFolios();
-	const auto devices = DeviceTypeCheck::check(m_project);
+	m_devices = DeviceTypeCheck::check(m_project);
+	const auto &devices = m_devices;
 
 	const auto where = [this](QTreeWidgetItem *row, Element *symbol) {
 		Diagram *diagram = symbol ? symbol->diagram() : nullptr;
@@ -133,7 +150,8 @@ void DeviceTypeCheckDialog::refresh()
 	};
 
 	int complete = 0, incomplete = 0, unknown = 0;
-	for (const auto &device : devices) {
+	for (int index = 0 ; index < devices.size() ; ++index) {
+		const auto &device = devices.at(index);
 		if (!device.known()) ++unknown;
 		else if (device.complete()) ++complete;
 		else ++incomplete;
@@ -162,6 +180,13 @@ void DeviceTypeCheckDialog::refresh()
 			//: %1 describes the part, such as "simple NO 13 14"
 			row->setText(0, tr("Not drawn: %1")
 						 .arg(DeviceTypeCheck::partText(device.type.parts.at(part))));
+			m_parts.insert(row, {index, part});
+			if (DeviceTypePlacement::placeableWays(device, part).isEmpty())
+				row->setToolTip(0, device.type.parts.at(part).kind == QLatin1String("plc")
+								? tr("Place PLC points with the PLC Manager.")
+								: tr("The project does not have a symbol for this part."));
+			else
+				row->setToolTip(0, tr("Double-click to place it on the current folio."));
 		}
 		for (int i = 0 ; i < device.symbols.size() ; ++i) {
 			if (device.drawn.at(i) != DeviceTypeCheck::Beyond) continue;
@@ -177,6 +202,86 @@ void DeviceTypeCheckDialog::refresh()
 						  "%3 of a type the project does not have.", nullptr,
 						  int(devices.size()))
 					   .arg(complete).arg(incomplete).arg(unknown));
+}
+
+/**
+	@brief DeviceTypeCheckDialog::updatePlaceButton
+	The button is for a part not drawn which can be placed.
+*/
+void DeviceTypeCheckDialog::updatePlaceButton()
+{
+	if (!m_place) return;
+	const auto row = m_parts.constFind(m_tree->currentItem());
+	m_place->setEnabled(row != m_parts.constEnd()
+			&& !DeviceTypePlacement::placeableWays(
+				m_devices.at(row->first), row->second).isEmpty());
+}
+
+/**
+	@brief DeviceTypeCheckDialog::placeRow
+	Place the part of @p row; a part with several ways of being drawn (NO,
+	NC, changeover) asks which.
+*/
+void DeviceTypeCheckDialog::placeRow(QTreeWidgetItem *row)
+{
+	if (!m_parts.contains(row)) return;
+	const auto where = m_parts.value(row);
+	const auto &device = m_devices.at(where.first);
+	const QList<int> ways = DeviceTypePlacement::placeableWays(device, where.second);
+	if (ways.isEmpty()) return;
+	int way = ways.first();
+	if (ways.size() > 1) {
+		QMenu menu(this);
+		for (int candidate : ways)
+			menu.addAction(DeviceTypePlacement::wayText(device.type.parts.at(where.second), candidate))
+					->setData(candidate);
+		QAction *chosen = menu.exec(QCursor::pos());
+		if (!chosen) return;
+		way = chosen->data().toInt();
+	}
+	startPlacing(row, way);
+}
+
+/**
+	@brief DeviceTypeCheckDialog::startPlacing
+	The symbol of the part of @p row follows the mouse on @p folio, the
+	folio the editor shows by default. The list is read again afterwards.
+	@return false when it cannot be placed there
+*/
+bool DeviceTypeCheckDialog::startPlacing(QTreeWidgetItem *row, int way, Diagram *folio)
+{
+	if (!m_parts.contains(row) || !m_project) return false;
+	DiagramView *view = nullptr;
+	auto *editor = qobject_cast<QETDiagramEditor *>(parentWidget());
+	if (!folio && editor) {
+		editor->activateProject(m_project);
+		if (ProjectView *project_view = editor->currentProjectView())
+			view = project_view->currentDiagram();
+		if (view) folio = view->diagram();
+	}
+	if (!folio || folio->project() != m_project) {
+		m_summary->setText(tr("Open a folio of this project to place the part."));
+		return false;
+	}
+	QPointF pos;
+	if (view)
+		pos = view->mapToScene(view->viewport()->rect().center());
+	const auto where = m_parts.value(row);
+	DiagramEventAddElement *placing = DeviceTypePlacement::begin(
+				m_devices.at(where.first), where.second, way, folio, pos);
+	if (!placing) {
+		m_summary->setText(tr("This part cannot be placed."));
+		return false;
+	}
+	connect(placing, &DiagramEventInterface::finish, this,
+			&DeviceTypeCheckDialog::refresh, Qt::QueuedConnection);
+	folio->setEventInterface(placing);
+	if (editor) {
+		editor->raise();
+		editor->activateWindow();
+	}
+	if (view) view->setFocus();
+	return true;
 }
 
 void DeviceTypeCheckDialog::showSymbol(QTreeWidgetItem *row)

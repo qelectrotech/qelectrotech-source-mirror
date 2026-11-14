@@ -375,8 +375,12 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/autoNum/numerotationcontext.h
   ${QET_DIR}/sources/devicetype/devicetype.cpp
   ${QET_DIR}/sources/devicetype/devicetype.h
+  ${QET_DIR}/sources/devicetype/devicetypeassign.cpp
+  ${QET_DIR}/sources/devicetype/devicetypeassign.h
   ${QET_DIR}/sources/devicetype/devicetypecheck.cpp
   ${QET_DIR}/sources/devicetype/devicetypecheck.h
+  ${QET_DIR}/sources/devicetype/devicetypeplacement.cpp
+  ${QET_DIR}/sources/devicetype/devicetypeplacement.h
   ${QET_DIR}/sources/autoNum/renumberconductorscommand.cpp
   ${QET_DIR}/sources/autoNum/renumberconductorscommand.h
   ${QET_DIR}/sources/autoNum/renumberelementscommand.cpp

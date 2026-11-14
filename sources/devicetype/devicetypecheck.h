@@ -26,6 +26,7 @@
 #include <QVector>
 
 class Element;
+class ElementsLocation;
 class DiagramContext;
 class QETProject;
 
@@ -70,6 +71,9 @@ namespace DeviceTypeCheck
 		bool complete() const {return known() && missing.isEmpty() && !drawn.contains(Beyond);}
 		int beyond() const {return int(drawn.count(Beyond));}
 	};
+
+		/// Where a part's symbol is: a project holds only the embed:// ones
+	ElementsLocation symbolLocation(const QString &location, QETProject *project);
 
 		/// The device type a symbol's informations name (its "device_type")
 	QString typeNameOf(const DiagramContext &info);
