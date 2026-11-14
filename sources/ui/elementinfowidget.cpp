@@ -337,6 +337,22 @@ void ElementInfoWidget::buildInterface()
 		keys.removeAll(article_key);
 	}
 
+		//Rows the symbol and the link write themselves: the PLC ones are
+		//taken from the symbol's own I/O definition when it is read, the
+		//cross reference from the link it belongs to. An edit here was
+		//overwritten by the next load, and they belong to a PLC module
+		//rather than to an overview of the element. Taking them out of
+		//the list keeps their values: currentInfo() starts from what the
+		//element already holds and only writes back the rows it shows.
+	for (const QString &key : {QETInformation::ELMT_PLC_TYPE,
+							   QETInformation::ELMT_PLC_ADDRESS,
+							   QETInformation::ELMT_PLC_FUNCTION,
+							   QETInformation::ELMT_PLC_COMMENT,
+							   QETInformation::ELMT_PLC_CROSSREF,
+							   QETInformation::ELMT_XREF}) {
+		keys.removeAll(key);
+	}
+
 	for (auto str : keys)
 	{
 		ElementInfoPartWidget *eipw = new ElementInfoPartWidget(str, QETInformation::translatedInfoKey(str), this);
