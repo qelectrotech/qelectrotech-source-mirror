@@ -616,6 +616,20 @@ void QETDiagramEditor::setUpActions()
 		//No default shortcut: Ctrl+Shift+V is taken by m_paste_origin.
 	ShortcutManager::instance().registerAction(m_paste_element_info, "diagrameditor.paste_element_info", tr("Diagram editors"), QKeySequence());
 
+	m_paste_lock_x = new QAction(tr("Lock X axis (paste mode)"), this);
+	m_paste_lock_x->setStatusTip(tr("Locks the X coordinate while positioning a paste, so items move only along Y", "status bar tip"));
+	m_paste_lock_x->setEnabled(false);
+	ShortcutManager::instance().registerAction(
+		m_paste_lock_x, "diagrameditor.paste_lock_x",
+		tr("Diagram editors"), QKeySequence(Qt::Key_X));
+
+	m_paste_lock_y = new QAction(tr("Lock Y axis (paste mode)"), this);
+	m_paste_lock_y->setStatusTip(tr("Locks the Y coordinate while positioning a paste, so items move only along X", "status bar tip"));
+	m_paste_lock_y->setEnabled(false);
+	ShortcutManager::instance().registerAction(
+		m_paste_lock_y, "diagrameditor.paste_lock_y",
+		tr("Diagram editors"), QKeySequence(Qt::Key_Y));
+
 	m_cut   -> setStatusTip(tr("Puts selected elements into the clipboard", "status bar tip"));
 	m_copy  -> setStatusTip(tr("Copies selected elements", "status bar tip"));
 	m_paste -> setStatusTip(tr("Pastes elements from the clipboard into the sheet", "status bar tip"));

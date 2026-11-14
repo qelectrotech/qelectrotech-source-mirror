@@ -302,6 +302,8 @@ class QETDiagramEditor : public QETMainWindow
 		*redo,				///< Redo the latest cancelled operation
 		*m_paste,			///< Paste clipboard content on the current diagram
 		*m_paste_origin,		///< Same, at the copied position, cursor warped to the origin (Ctrl+Shift+V)
+		*m_paste_lock_x = nullptr,	///< Lock X axis while placing a paste
+		*m_paste_lock_y = nullptr,	///< Lock Y axis while placing a paste
 		*m_duplicate,			///< Copy selection, offset by the configured step (#991)
 		*m_configure_duplicate,		///< Reopen the duplicate offset/direction dialog (#991)
 		*m_auto_conductor,		///< Enable/Disable the use of auto conductor

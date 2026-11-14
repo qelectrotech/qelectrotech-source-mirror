@@ -32,6 +32,7 @@
 #include <bridge/bridgecopy.h>
 #include <bridge/bridgepart.h>
 #include <qetproject.h>
+#include <shortcutmanager.h>
 
 #include <QSettings>
 
@@ -149,9 +150,12 @@
 			qRound(p.x() / xGrid) * xGrid,
 			qRound(p.y() / yGrid) * yGrid);
 	};
+	m_original_pos = snapGrid(top_left);
 	const QPointF grid_origin = (m_placement == AtOrigin)
-			? snapGrid(top_left)
+			? m_original_pos
 			: snapGrid(start_pos);
+	m_current_pos = grid_origin;
+	m_locked_pos = grid_origin;
 
 	if (m_placement == UnderCursor) {
 			//Land the pasted content under the cursor immediately, rather than
@@ -301,11 +305,68 @@ void DiagramEventAddPaste::init()
 
 void DiagramEventAddPaste::showHint()
 {
-	if (m_status_bar) {
-		m_status_bar->showMessage(
-			tr("Click to place the pasted content, Esc or right-click to cancel",
-			   "status bar tip while positioning a paste"));
+	if (!m_status_bar) return;
+
+	const QKeySequence x_seq = ShortcutManager::instance().currentSequence(
+		QStringLiteral("diagrameditor.paste_lock_x"));
+	const QKeySequence y_seq = ShortcutManager::instance().currentSequence(
+		QStringLiteral("diagrameditor.paste_lock_y"));
+	const QString x_str = x_seq.isEmpty() ? QStringLiteral("X") : x_seq.toString(QKeySequence::NativeText);
+	const QString y_str = y_seq.isEmpty() ? QStringLiteral("Y") : y_seq.toString(QKeySequence::NativeText);
+
+	QString status;
+	if (m_lock_x && m_lock_y) {
+		status = tr("Original position (X+Y locked)", "status bar lock state");
+	} else if (m_lock_x) {
+		status = tr("X axis locked", "status bar lock state");
+	} else if (m_lock_y) {
+		status = tr("Y axis locked", "status bar lock state");
 	}
+
+	QString msg = tr("Click to place, Esc or right-click to cancel. [%1]: lock X, [%2]: lock Y, [%1]+[%2]: original position",
+			 "status bar tip while positioning a paste").arg(x_str, y_str);
+	if (!status.isEmpty()) {
+		msg += QStringLiteral(" -- ") + status;
+	}
+	m_status_bar->showMessage(msg);
+}
+
+void DiagramEventAddPaste::updateEffectivePosition()
+{
+	QPointF effective_pos = m_current_pos;
+	if (m_lock_x && m_lock_y) {
+		effective_pos = m_original_pos;
+		if (m_diagram && !m_diagram->views().isEmpty()) {
+			if (auto *view = m_diagram->views().at(0)) {
+				if (!view->viewport()->rect().contains(view->mapFromScene(m_original_pos.toPoint()))) {
+					view->ensureVisible(QRectF(m_original_pos, QSizeF(100, 100)), 50, 50);
+				}
+			}
+		}
+	} else {
+		if (m_lock_x) {
+			effective_pos.setX(m_locked_pos.x());
+		}
+		if (m_lock_y) {
+			effective_pos.setY(m_locked_pos.y());
+		}
+	}
+	moveTo(effective_pos);
+}
+
+bool DiagramEventAddPaste::matchesShortcut(const QKeyEvent *event, const QString &action_id) const
+{
+	const QKeySequence sequence = ShortcutManager::instance().currentSequence(action_id);
+	if (sequence.isEmpty()) {
+		return false;
+	}
+	const int key = event->key();
+	if (key == Qt::Key_Control || key == Qt::Key_Shift || key == Qt::Key_Alt || key == Qt::Key_Meta) {
+		return false;
+	}
+	const Qt::KeyboardModifiers mods = event->modifiers() & (Qt::ShiftModifier | Qt::ControlModifier | Qt::AltModifier | Qt::MetaModifier);
+	const int key_with_mod = (mods != Qt::NoModifier) ? (int(mods) | key) : key;
+	return sequence.matches(QKeySequence(key_with_mod)) == QKeySequence::ExactMatch;
 }
 
 /**
@@ -371,7 +432,8 @@ void DiagramEventAddPaste::moveTo(const QPointF &scene_pos)
 void DiagramEventAddPaste::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {
 	if (!m_running) return;
-	moveTo(event->scenePos());
+	m_current_pos = event->scenePos();
+	updateEffectivePosition();
 	event->setAccepted(true);
 }
 
@@ -398,6 +460,32 @@ void DiagramEventAddPaste::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 void DiagramEventAddPaste::keyPressEvent(QKeyEvent *event)
 {
 	if (!m_running) return;
+
+	if (matchesShortcut(event, QStringLiteral("diagrameditor.paste_lock_x"))) {
+		m_lock_x = !m_lock_x;
+		if (m_lock_x && m_lock_y) {
+			m_locked_pos = m_original_pos;
+		} else if (m_lock_x) {
+			m_locked_pos.setX(m_current_pos.x());
+		}
+		updateEffectivePosition();
+		showHint();
+		event->setAccepted(true);
+		return;
+	}
+
+	if (matchesShortcut(event, QStringLiteral("diagrameditor.paste_lock_y"))) {
+		m_lock_y = !m_lock_y;
+		if (m_lock_x && m_lock_y) {
+			m_locked_pos = m_original_pos;
+		} else if (m_lock_y) {
+			m_locked_pos.setY(m_current_pos.y());
+		}
+		updateEffectivePosition();
+		showHint();
+		event->setAccepted(true);
+		return;
+	}
 
 	switch (event->key()) {
 		case Qt::Key_Escape:
