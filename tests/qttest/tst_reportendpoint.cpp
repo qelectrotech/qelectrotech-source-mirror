@@ -39,7 +39,8 @@ class tst_reportendpoint : public QObject
 {
 	Q_OBJECT
 
-	static Element *symbol(Diagram *folio, const QString &kind)
+	static Element *symbol(Diagram *folio, const QString &kind,
+						   const QString &pin_name = QStringLiteral("A1"))
 	{
 		QDomDocument doc;
 		const QString name = QUuid::createUuid().toString(QUuid::Id128);
@@ -47,10 +48,10 @@ class tst_reportendpoint : public QObject
 			R"(<definition type="element" link_type="%1" width="20" height="40" hotspot_x="10" hotspot_y="20">
 <names><name lang="en">Test symbol</name></names>
 <description><line x1="0" y1="-10" x2="0" y2="10"/>
-<terminal name="A1" x="0" y="-20" orientation="n" uuid="%2"/>
+<terminal name="%4" x="0" y="-20" orientation="n" uuid="%2"/>
 <terminal name="A2" x="0" y="20" orientation="s" uuid="%3"/>
 </description></definition>)").arg(kind, QUuid::createUuid().toString(),
-				QUuid::createUuid().toString()));
+				QUuid::createUuid().toString(), pin_name));
 		if (!folio->project()->embeddedElementCollection()->addElementDefinition(
 				QStringLiteral("import"), name, doc.documentElement()))
 			return nullptr;
@@ -121,28 +122,47 @@ private slots:
 	void readsDestinationOnLoad_data()
 	{
 		QTest::addColumn<bool>("eager");
-		QTest::newRow("lazy") << false;
-		QTest::newRow("eager") << true;
+		QTest::addColumn<QString>("kind");
+		QTest::addColumn<QString>("label");
+		QTest::addColumn<QString>("terminal");
+		QTest::addColumn<QString>("expected");
+		QTest::newRow("device-lazy") << false << QString("simple")
+				<< QString("KM2") << QString("A1") << QString("KM2:A1");
+		QTest::newRow("device-eager") << true << QString("simple")
+				<< QString("KM2") << QString("A1") << QString("KM2:A1");
+		QTest::newRow("strip-terminal-lazy") << false << QString("terminal")
+				<< QString("X5:7") << QString() << QString("X5:7");
+		QTest::newRow("strip-terminal-named-pin") << true << QString("terminal")
+				<< QString("X5:7") << QString("2") << QString("X5:7");
+		QTest::newRow("terminal-symbol") << false << QString("thumbnail")
+				<< QString("X5:7") << QString() << QString("X5:7");
+		QTest::newRow("device-unnamed-pin") << false << QString("simple")
+				<< QString("KM2:7") << QString() << QString();
 	}
 
 	void readsDestinationOnLoad()
 	{
 		QFETCH(bool, eager);
+		QFETCH(QString, kind);
+		QFETCH(QString, label);
+		QFETCH(QString, terminal);
+		QFETCH(QString, expected);
 		QETProject project;
 		auto *first = project.addNewDiagram();
 		auto *second = project.addNewDiagram();
 		auto *source = symbol(first, "simple");
-		auto *target = symbol(second, "simple");
+		auto *target = symbol(second, kind, terminal);
 		auto *out = symbol(first, "next_report");
 		auto *in = symbol(second, "previous_report");
 		QVERIFY(source && target && out && in);
 		auto info = target->elementInformations();
-		info.addValue("label", "KM2");
+		info.addValue("label", label);
 		target->setElementInformations(info);
 		first->addItem(new Conductor(pin(source, "A1"),
 									 out->terminals().first()));
-		second->addItem(new Conductor(in->terminals().first(),
-									  pin(target, "A1")));
+		auto *target_pin = pin(target, terminal);
+		QVERIFY(target_pin);
+		second->addItem(new Conductor(in->terminals().first(), target_pin));
 		out->linkToElement(in);
 		auto *text = field(out, false);
 		text->setPlainText(QString());
@@ -172,12 +192,40 @@ private slots:
 		for (auto *element : loaded->elements()) {
 			if (element->uuid() != out->uuid()) continue;
 			QCOMPARE(element->dynamicTextItems().size(), 1);
-			QCOMPARE(element->dynamicTextItems().first()->toPlainText(),
-					 QStringLiteral("KM2:A1"));
+			QCOMPARE(element->dynamicTextItems().first()->toPlainText(), expected);
 			QCOMPARE(remote->isLoaded(), eager);
 			return;
 		}
 		QFAIL("The source report was not loaded");
+	}
+
+	void followsContactMaster()
+	{
+		QETProject project;
+		auto *first = project.addNewDiagram();
+		auto *second = project.addNewDiagram();
+		auto *source = symbol(first, "simple");
+		auto *master = symbol(first, "master");
+		auto *contact = symbol(second, "slave", "11");
+		auto *out = symbol(first, "next_report");
+		auto *in = symbol(second, "previous_report");
+		QVERIFY(source && master && contact && out && in);
+		auto info = master->elementInformations();
+		info.addValue("label", "QF1");
+		master->setElementInformations(info);
+		master->linkToElement(contact);
+		first->addItem(new Conductor(pin(source, "A1"), out->terminals().first()));
+		second->addItem(new Conductor(in->terminals().first(), pin(contact, "11")));
+		out->linkToElement(in);
+		auto *text = field(out, false);
+		QTRY_COMPARE(text->toPlainText(), QString("QF1:11"));
+
+		auto renamed = info;
+		renamed.addValue("label", "QF9");
+		project.undoStack()->push(new ChangeElementInformationCommand(master, info, renamed));
+		QTRY_COMPARE(text->toPlainText(), QString("QF9:11"));
+		project.undoStack()->undo();
+		QTRY_COMPARE(text->toPlainText(), QString("QF1:11"));
 	}
 
 	void followsEditsAndUndo()
@@ -201,6 +249,7 @@ private slots:
 		auto *composite = field(out, true);
 		QTRY_COMPARE(text->toPlainText(), QString("KM2:A1"));
 		QTRY_COMPARE(composite->toPlainText(), QString("To KM2:A1"));
+		first->addItem(new Conductor(pin(source, "A2"), out->terminals().first()));
 
 		auto renamed = info;
 		renamed.addValue("label", "KM20");
@@ -226,7 +275,16 @@ private slots:
 		project.undoStack()->undo();
 		QTRY_COMPARE(text->toPlainText(), QString("KM20:A1"));
 
-		// A second wire on the remote arrow makes its endpoint ambiguous.
+		// A second wire to the same pin still has one destination.
+		auto *duplicate = new Conductor(in->terminals().last(), pin(target, "A1"));
+		second->addItem(duplicate);
+		QCoreApplication::processEvents();
+		QCOMPARE(text->toPlainText(), QString("KM20:A1"));
+		DiagramContent duplicate_content;
+		duplicate_content.m_conductors_to_move.append(duplicate);
+		project.undoStack()->push(new DeleteQGraphicsItemCommand(second, duplicate_content));
+
+		// A second distinct pin on the remote side makes it ambiguous.
 		auto *extra = new Conductor(in->terminals().first(), pin(target, "A2"));
 		second->addItem(extra);
 		QTRY_COMPARE(text->toPlainText(), QString());

@@ -2100,34 +2100,53 @@ QString DynamicElementTextItem::remoteEndpoint() const
 		|| !report->diagram() || !report->diagram()->project())
 		return {};
 
-	// Read by stable identities, also when the destination folio is unbuilt.
-	// Exactly one wire on each side is needed to name a unique endpoint.
+	// Resolve one direct destination by UUID, even when its folio is unbuilt.
+	// Wires on the source side only establish that the report is connected.
 	const QString sql = QStringLiteral(
 		"WITH partner AS (SELECT linked_uuid FROM link "
 		"WHERE element_uuid = '%1'), "
-		"ends AS (SELECT terminal1_element_uuid AS report, "
-		"terminal2_element_uuid AS device, terminal2_uuid AS pin "
-		"FROM conductor UNION ALL "
-		"SELECT terminal2_element_uuid, terminal1_element_uuid, "
-		"terminal1_uuid FROM conductor) "
-		"SELECT ei.label, t.name FROM partner p "
-		"JOIN ends e ON e.report = p.linked_uuid "
+		"ends AS (SELECT terminal2_element_uuid AS device, terminal2_uuid AS pin "
+		"FROM conductor WHERE terminal1_element_uuid = (SELECT linked_uuid FROM partner) "
+		"UNION SELECT terminal1_element_uuid, terminal1_uuid "
+		"FROM conductor WHERE terminal2_element_uuid = (SELECT linked_uuid FROM partner)) "
+		"SELECT d.type, ei.label, t.name, "
+		"CASE WHEN d.type = 'slave' AND COALESCE(ei.label, '') = '' THEN ("
+		"SELECT CASE WHEN count(*) = 1 THEN max(mi.label) END FROM link l "
+		"JOIN element m ON m.uuid = l.linked_uuid AND m.type = 'master' "
+		"LEFT JOIN element_info mi ON mi.element_uuid = m.uuid "
+		"WHERE l.element_uuid = d.uuid) END "
+		"FROM ends e "
 		"JOIN element d ON d.uuid = e.device "
-		"JOIN element_info ei ON ei.element_uuid = e.device "
+		"LEFT JOIN element_info ei ON ei.element_uuid = e.device "
 		"JOIN terminal t ON t.element_uuid = e.device AND t.uuid = e.pin "
 		"WHERE (SELECT count(*) FROM partner) = 1 "
-		"AND (SELECT count(*) FROM ends WHERE report = '%1') = 1 "
-		"AND (SELECT count(*) FROM ends WHERE report = p.linked_uuid) = 1 "
+		"AND EXISTS (SELECT 1 FROM conductor WHERE terminal1_element_uuid = '%1' "
+		"OR terminal2_element_uuid = '%1') "
+		"AND (SELECT count(*) FROM ends) = 1 "
 		"AND d.type NOT IN ('next_report', 'previous_report', "
 		"'conductor_definition')").arg(report->uuid().toString());
 	QSqlQuery query = report->diagram()->project()->dataBase()->newQuery(sql);
 	if (!query.next())
 		return {};
-	const QString label = query.value(0).toString();
-	const QString pin = query.value(1).toString();
-	if (label.isEmpty() || pin.isEmpty())
+	const QString type = query.value(0).toString();
+	QString label = query.value(1).toString().trimmed();
+	const QString pin = query.value(2).toString().trimmed();
+	if (label.isEmpty())
+		label = query.value(3).toString().trimmed();
+	if (label.isEmpty())
 		return {};
-	return label + QLatin1Char(':') + pin;
+
+	// A strip terminal can already be labelled "X1:7". Its pin name may
+	// identify the side of that terminal, so keep the strip designation.
+	const int colon = label.lastIndexOf(QLatin1Char(':'));
+	const bool has_number = colon > 0 && colon < label.size() - 1;
+	if (type == QLatin1String("terminal") && (has_number || pin.isEmpty()))
+		return label;
+	if (!pin.isEmpty())
+		return label + QLatin1Char(':') + pin;
+	if (type == QLatin1String("thumbnail") && has_number)
+		return label;
+	return {};
 }
 
 bool DynamicElementTextItem::refreshRemoteEndpoint()
