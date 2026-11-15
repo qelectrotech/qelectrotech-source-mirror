@@ -2,7 +2,7 @@
     <defs>
         <style type="text/css" id="current-color-scheme">
         .ColorScheme-Text {
-        color:#232629;
+        color:#4d4d4d;
       }</style>
     </defs>
     <path  d="m4 19v-16h10l4 4v12zm1-1h12v-10h-4v-4h-8z"  style="fill:currentColor;fill-opacity:1;stroke:none" class="ColorScheme-Text"/>

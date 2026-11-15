@@ -8,13 +8,13 @@
         color:#eff0f1;
       }
       .ColorScheme-Accent {
-        color:#3daee9;
+        color:#1892d2;
       }
       .ColorScheme-ButtonText {
         color:#31363b;
       }
       .ColorScheme-NegativeText {
-        color:#da4453;
+        color:#db4b59;
       }
   </style>
     <g transform="translate(27,27) translate(-22,-22)" id="document-open-recent">
