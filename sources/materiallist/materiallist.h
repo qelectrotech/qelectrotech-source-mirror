@@ -123,6 +123,8 @@ class MaterialList
 								  const QList<int> &rows,
 								  const QList<MaterialRecord> &originals,
 								  QString *error = nullptr);
+		static QString nextDuplicateDesignation(const QList<MaterialRecord> &records,
+												const QString &designation);
 		static int countImportConflicts(const MaterialListData &existing,
 										const MaterialListData &incoming);
 		static bool importFromFile(const QString &target_path,

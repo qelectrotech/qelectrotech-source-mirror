@@ -170,6 +170,7 @@ MaterialSelectionDialog::MaterialSelectionDialog(const QString &path,
 	connect(ui->m_tree_widget, &QTreeWidget::customContextMenuRequested,
 			this, &MaterialSelectionDialog::showTreeContextMenu);
 
+	ui->m_duplicate_entry_btn->setIcon(QET::Icons::EditCopy);
 	ui->m_remove_entry_btn->setIcon(QET::Icons::EditDelete);
 
 	ui->m_details_table->setItemDelegateForColumn(1, new MaterialValueDelegate(ui->m_details_table));
@@ -589,6 +590,7 @@ void MaterialSelectionDialog::updateButtons()
 	}
 	ui->m_new_entry_btn->setEnabled(in_view);
 	ui->m_edit_entry_btn->setEnabled(in_view && has_selection);
+	ui->m_duplicate_entry_btn->setEnabled(in_view && has_selection);
 	ui->m_remove_entry_btn->setEnabled(in_view && has_any_selection);
 	ui->m_import_btn->setEnabled(in_view);
 	ui->m_export_btn->setEnabled(in_view && !m_data.records.isEmpty());
@@ -1111,6 +1113,32 @@ void MaterialSelectionDialog::showDetailsContextMenu(const QPoint &pos)
 	menu.exec(ui->m_details_table->viewport()->mapToGlobal(pos));
 }
 
+void MaterialSelectionDialog::on_m_duplicate_entry_btn_clicked()
+{
+	const int row = selectedSourceRow();
+	if (row < 0 || row >= m_data.records.size()) {
+		return;
+	}
+
+	MaterialRecord copy = m_data.records.at(row);
+	const QString new_designation = MaterialList::nextDuplicateDesignation(
+		m_data.records,
+		copy.value(QStringLiteral("designation")));
+	copy.setValue(QStringLiteral("designation"), new_designation);
+
+	QString error;
+	if (!MaterialList::appendRecord(m_path, copy, &error)) {
+		QET::QetMessageBox::warning(
+			this,
+			tr("Duplicate material entry"),
+			error.isEmpty() ? tr("Unable to duplicate selected entry in the material list.") : error);
+		return;
+	}
+
+	reload();
+	selectRecord(copy);
+}
+
 void MaterialSelectionDialog::on_m_remove_entry_btn_clicked()
 {
 	const QList<int> rows = selectedSourceRows();
@@ -1173,6 +1201,10 @@ void MaterialSelectionDialog::showTreeContextMenu(const QPoint &pos)
 	QAction *edit_action = menu.addAction(QET::Icons::ElementEdit, tr("Edit"),
 										  this, &MaterialSelectionDialog::on_m_edit_entry_btn_clicked);
 	edit_action->setEnabled(selectedSourceRow() >= 0);
+
+	QAction *duplicate_action = menu.addAction(QET::Icons::EditCopy, tr("Duplicate"),
+											   this, &MaterialSelectionDialog::on_m_duplicate_entry_btn_clicked);
+	duplicate_action->setEnabled(selectedSourceRow() >= 0);
 
 	QAction *remove_action = menu.addAction(QET::Icons::EditDelete, tr("Remove"),
 											this, &MaterialSelectionDialog::on_m_remove_entry_btn_clicked);

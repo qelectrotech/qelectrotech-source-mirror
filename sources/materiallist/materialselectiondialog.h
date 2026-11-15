@@ -53,6 +53,7 @@ class MaterialSelectionDialog : public QDialog
 	private slots:
 		void on_m_new_entry_btn_clicked();
 		void on_m_edit_entry_btn_clicked();
+		void on_m_duplicate_entry_btn_clicked();
 		void on_m_remove_entry_btn_clicked();
 		void on_m_import_btn_clicked();
 		void on_m_export_btn_clicked();

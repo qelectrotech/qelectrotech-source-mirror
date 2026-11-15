@@ -23,7 +23,9 @@
 #include <QDir>
 #include <QFile>
 #include <QFileInfo>
+#include <QRegularExpression>
 #include <QSaveFile>
+#include <QSet>
 #include <QSettings>
 #include <QStandardPaths>
 
@@ -1119,4 +1121,34 @@ bool MaterialList::createFile(const QString &path, QString *error)
 bool MaterialList::isEmptyFile(const QString &path)
 {
 	return !hasContent(path);
+}
+
+/**
+	@brief MaterialList::nextDuplicateDesignation
+	Compute the next free copy designation with a " (1)", " (2)", ... suffix.
+*/
+QString MaterialList::nextDuplicateDesignation(const QList<MaterialRecord> &records,
+											   const QString &designation)
+{
+	static const QRegularExpression suffix_re(QStringLiteral("\\s*\\(\\d+\\)$"));
+	QString base = designation.trimmed();
+	base.remove(suffix_re);
+	base = base.trimmed();
+
+	QSet<QString> existing;
+	existing.reserve(records.size());
+	for (const MaterialRecord &rec : records) {
+		existing.insert(rec.value(QStringLiteral("designation")).trimmed().toLower());
+	}
+
+	int index = 1;
+	while (true) {
+		const QString candidate = base.isEmpty()
+			? QStringLiteral("(%1)").arg(index)
+			: QStringLiteral("%1 (%2)").arg(base).arg(index);
+		if (!existing.contains(candidate.toLower())) {
+			return candidate;
+		}
+		++index;
+	}
 }

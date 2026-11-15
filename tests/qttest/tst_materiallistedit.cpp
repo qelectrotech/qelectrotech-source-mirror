@@ -44,6 +44,7 @@ class tst_materiallistedit : public QObject
 		void testInlineNewAndEditEntry();
 		void testImportAndExportCsv();
 		void testRemoveEntry();
+		void testDuplicateEntry();
 };
 
 void tst_materiallistedit::testUpdateRecordPreservesRowsAndExtra()
@@ -483,6 +484,57 @@ void tst_materiallistedit::testRemoveEntry()
 	MaterialListData after_all;
 	QVERIFY2(MaterialList::load(csv_path, &after_all, &err), qPrintable(err));
 	QCOMPARE(after_all.records.size(), 0);
+}
+
+void tst_materiallistedit::testDuplicateEntry()
+{
+	QTemporaryDir dir;
+	QVERIFY(dir.isValid());
+	const QString csv_path = dir.filePath(QStringLiteral("duplicate_test.csv"));
+
+	{
+		QFile f(csv_path);
+		QVERIFY(f.open(QIODevice::WriteOnly | QIODevice::Text));
+		f.write("designation;description;manufacturer\n"
+				"ART100;Contactor;Siemens\n");
+	}
+
+	MaterialSelectionDialog dialog(csv_path);
+	auto *tree = dialog.findChild<QTreeWidget *>(QStringLiteral("m_tree_widget"));
+	auto *dup_btn = dialog.findChild<QPushButton *>(QStringLiteral("m_duplicate_entry_btn"));
+	QVERIFY(tree && dup_btn);
+	QVERIFY(!dup_btn->icon().isNull());
+	QVERIFY(!dup_btn->isEnabled());
+
+	QTreeWidgetItem *group0 = tree->topLevelItem(0);
+	QVERIFY(group0 && group0->childCount() == 1);
+	tree->setCurrentItem(group0->child(0));
+	QVERIFY(dup_btn->isEnabled());
+
+	// Duplicate 3 times -> (1), (2), (3)
+	dup_btn->click();
+	QCOMPARE(dialog.selectedRecord().value(QStringLiteral("designation")),
+			 QStringLiteral("ART100 (1)"));
+	QCOMPARE(dialog.selectedRecord().value(QStringLiteral("description")),
+			 QStringLiteral("Contactor"));
+
+	dup_btn->click();
+	QCOMPARE(dialog.selectedRecord().value(QStringLiteral("designation")),
+			 QStringLiteral("ART100 (2)"));
+
+	dup_btn->click();
+	QCOMPARE(dialog.selectedRecord().value(QStringLiteral("designation")),
+			 QStringLiteral("ART100 (3)"));
+
+	MaterialListData reloaded;
+	QString err;
+	QVERIFY2(MaterialList::load(csv_path, &reloaded, &err), qPrintable(err));
+	QCOMPARE(reloaded.records.size(), 4);
+	QCOMPARE(reloaded.records.at(0).value(QStringLiteral("designation")), QStringLiteral("ART100"));
+	QCOMPARE(reloaded.records.at(1).value(QStringLiteral("designation")), QStringLiteral("ART100 (1)"));
+	QCOMPARE(reloaded.records.at(2).value(QStringLiteral("designation")), QStringLiteral("ART100 (2)"));
+	QCOMPARE(reloaded.records.at(3).value(QStringLiteral("designation")), QStringLiteral("ART100 (3)"));
+	QCOMPARE(reloaded.records.at(3).value(QStringLiteral("manufacturer")), QStringLiteral("Siemens"));
 }
 
 QET_APP_TEST_MAIN(tst_materiallistedit)
