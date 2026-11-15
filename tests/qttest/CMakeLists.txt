@@ -542,6 +542,8 @@ qet_add_app_test(tst_plcio tst_plcio.cpp)
 qet_add_app_test(tst_devicetype tst_devicetype.cpp)
 # Is a device drawn the way its type says: parts not drawn, symbols beyond.
 qet_add_app_test(tst_devicetypecheck tst_devicetypecheck.cpp)
+# The Device Navigator lists a device's free parts and places them
+qet_add_app_test(tst_devicenavigatorparts tst_devicenavigatorparts.cpp)
 # Project > Device types: the list of types and the editor of one
 qet_add_app_test(tst_devicetypeeditor tst_devicetypeeditor.cpp)
 # A contact linked to a device with a type takes a free part of the type

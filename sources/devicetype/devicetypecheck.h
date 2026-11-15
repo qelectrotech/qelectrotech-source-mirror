@@ -83,6 +83,9 @@ namespace DeviceTypeCheck
 		/// name a device type, or all of them when the project follows the
 		/// device types
 	QVector<Device> check(QETProject *project, QList<Element *> *unlinked = nullptr);
+		/// The devices with a device type on the folios built so far:
+		/// builds none, as checkDevice()
+	QVector<Device> checkBuilt(QETProject *project);
 	Device checkDevice(Element *element);
 	QString partText(const DeviceType::Part &part);
 
