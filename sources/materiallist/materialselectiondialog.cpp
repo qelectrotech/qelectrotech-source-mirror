@@ -170,8 +170,13 @@ MaterialSelectionDialog::MaterialSelectionDialog(const QString &path,
 	connect(ui->m_tree_widget, &QTreeWidget::customContextMenuRequested,
 			this, &MaterialSelectionDialog::showTreeContextMenu);
 
+	ui->m_new_entry_btn->setIcon(QET::Icons::Add);
+	ui->m_edit_entry_btn->setIcon(QET::Icons::ElementEdit);
 	ui->m_duplicate_entry_btn->setIcon(QET::Icons::EditCopy);
 	ui->m_remove_entry_btn->setIcon(QET::Icons::EditDelete);
+	ui->m_import_btn->setIcon(QET::Icons::DocumentImport);
+	ui->m_export_btn->setIcon(QET::Icons::DocumentExport);
+	ui->m_settings_btn->setIcon(QET::Icons::Configure);
 
 	ui->m_details_table->setItemDelegateForColumn(1, new MaterialValueDelegate(ui->m_details_table));
 	ui->m_details_table->horizontalHeader()->setSectionResizeMode(0, QHeaderView::ResizeToContents);
