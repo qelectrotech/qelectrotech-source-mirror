@@ -23,15 +23,22 @@
 #include <qetinformation.h>
 #include <qetmessagebox.h>
 
+#include <QApplication>
+#include <QClipboard>
 #include <QComboBox>
 #include <QFont>
 #include <QHeaderView>
 #include <QLineEdit>
 #include <QMap>
+#include <QMenu>
+#include <QMimeData>
 #include <QPushButton>
+#include <QShortcut>
 #include <QStyledItemDelegate>
 #include <QTableWidgetItem>
 #include <QTreeWidgetItem>
+
+#include <algorithm>
 
 namespace {
 
@@ -154,6 +161,14 @@ MaterialSelectionDialog::MaterialSelectionDialog(const QString &path,
 	ui->m_details_table->setItemDelegateForColumn(1, new MaterialValueDelegate(ui->m_details_table));
 	ui->m_details_table->horizontalHeader()->setSectionResizeMode(0, QHeaderView::ResizeToContents);
 	ui->m_details_table->horizontalHeader()->setStretchLastSection(true);
+	ui->m_details_table->setContextMenuPolicy(Qt::CustomContextMenu);
+	connect(ui->m_details_table, &QTableWidget::customContextMenuRequested,
+			this, &MaterialSelectionDialog::showDetailsContextMenu);
+
+	auto *copy_shortcut = new QShortcut(QKeySequence::Copy, ui->m_details_table);
+	copy_shortcut->setContext(Qt::WidgetWithChildrenShortcut);
+	connect(copy_shortcut, &QShortcut::activated,
+			this, &MaterialSelectionDialog::copyDetailsSelection);
 
 	ui->m_edit_bar->setVisible(false);
 
@@ -715,4 +730,69 @@ void MaterialSelectionDialog::on_m_settings_btn_clicked()
 		m_path = configured;
 	}
 	reload();
+}
+
+void MaterialSelectionDialog::copyDetailsSelection()
+{
+	if (auto *line_edit = qobject_cast<QLineEdit *>(QApplication::focusWidget())) {
+		line_edit->copy();
+		return;
+	}
+
+	QModelIndexList selected_rows = ui->m_details_table->selectionModel()->selectedRows();
+	if (selected_rows.isEmpty()) {
+		return;
+	}
+
+	std::sort(selected_rows.begin(), selected_rows.end(),
+			  [](const QModelIndex &a, const QModelIndex &b) {
+		return a.row() < b.row();
+	});
+
+	auto escape_tsv = [](QString text) {
+		if (text.contains(QLatin1Char('\t'))
+			|| text.contains(QLatin1Char('\n'))
+			|| text.contains(QLatin1Char('\r'))
+			|| text.contains(QLatin1Char('"')))
+		{
+			text.replace(QLatin1Char('"'), QStringLiteral("\"\""));
+			return QStringLiteral("\"%1\"").arg(text);
+		}
+		return text;
+	};
+
+	QStringList tsv_lines;
+	QString html = QStringLiteral("<table><tbody>");
+	for (const QModelIndex &idx : std::as_const(selected_rows))
+	{
+		const int row = idx.row();
+		const QTableWidgetItem *field_item = ui->m_details_table->item(row, 0);
+		const QTableWidgetItem *value_item = ui->m_details_table->item(row, 1);
+		const QString field = field_item ? field_item->text() : QString();
+		const QString value = value_item ? value_item->text() : QString();
+
+		tsv_lines.append(escape_tsv(field) + QLatin1Char('\t') + escape_tsv(value));
+		html += QStringLiteral("<tr><td>%1</td><td>%2</td></tr>")
+					.arg(field.toHtmlEscaped(), value.toHtmlEscaped());
+	}
+	html += QStringLiteral("</tbody></table>");
+
+	auto *mime = new QMimeData();
+	mime->setText(tsv_lines.join(QLatin1Char('\n')));
+	mime->setHtml(html);
+	QApplication::clipboard()->setMimeData(mime);
+}
+
+void MaterialSelectionDialog::showDetailsContextMenu(const QPoint &pos)
+{
+	QMenu menu(this);
+	QAction *copy_action = menu.addAction(tr("Copy"), QKeySequence::Copy,
+										  this, &MaterialSelectionDialog::copyDetailsSelection);
+	copy_action->setEnabled(!ui->m_details_table->selectionModel()->selectedRows().isEmpty());
+
+	QAction *select_all_action = menu.addAction(tr("Select All"), QKeySequence::SelectAll,
+												ui->m_details_table, &QTableWidget::selectAll);
+	select_all_action->setEnabled(ui->m_details_table->rowCount() > 0);
+
+	menu.exec(ui->m_details_table->viewport()->mapToGlobal(pos));
 }

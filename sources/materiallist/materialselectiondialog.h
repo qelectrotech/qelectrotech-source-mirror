@@ -80,6 +80,8 @@ class MaterialSelectionDialog : public QDialog
 		void updateButtons();
 		void updateCount(int visible_count);
 		QStringList effectiveColumns() const;
+		void copyDetailsSelection();
+		void showDetailsContextMenu(const QPoint &pos);
 
 		Ui::MaterialSelectionDialog *ui;
 		QString m_path;

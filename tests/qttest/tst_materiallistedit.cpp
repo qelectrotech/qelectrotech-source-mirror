@@ -19,9 +19,13 @@
 #include "materiallist/materialselectiondialog.h"
 #include "qetapptest.h"
 
+#include <QApplication>
+#include <QClipboard>
 #include <QComboBox>
 #include <QLineEdit>
+#include <QMimeData>
 #include <QPushButton>
+#include <QShortcut>
 #include <QTableWidget>
 #include <QTemporaryDir>
 #include <QTest>
@@ -207,6 +211,22 @@ void tst_materiallistedit::testSplitViewTreeFilterAndDetails()
 	QCOMPARE(details->item(2, 1)->text(), QStringLiteral("Siemens"));
 	QCOMPARE(details->item(3, 1)->text(), QStringLiteral("5SY4116"));
 	QCOMPARE(details->item(4, 1)->text(), QStringLiteral("Protection"));
+
+	// Select multiple rows in details table and copy as TSV + HTML for Excel
+	QCOMPARE(details->selectionMode(), QAbstractItemView::ExtendedSelection);
+	details->clearSelection();
+	details->selectRow(0);
+	details->selectionModel()->select(
+		details->model()->index(2, 0),
+		QItemSelectionModel::Select | QItemSelectionModel::Rows);
+	auto *copy_shortcut = details->findChild<QShortcut *>();
+	QVERIFY(copy_shortcut);
+	emit copy_shortcut->activated();
+	const QString expected_tsv = details->item(0, 0)->text() + QLatin1Char('\t') + QStringLiteral("ART-815\n")
+							 + details->item(2, 0)->text() + QLatin1Char('\t') + QStringLiteral("Siemens");
+	QCOMPARE(QApplication::clipboard()->text(), expected_tsv);
+	QVERIFY(QApplication::clipboard()->mimeData()->hasHtml());
+	QVERIFY(QApplication::clipboard()->mimeData()->html().contains(QStringLiteral("<table>")));
 
 	// Filter by Category -> Main Breaker
 	const int cat_field_idx = filter_field->findData(QStringLiteral("category"));
