@@ -45,5 +45,8 @@ JunctionElement::~JunctionElement()
 	pass a potential through.
 */
 void JunctionElement::initLink(QETProject *project) {
-	Element::initLink(project);
+		//Nothing to do: the base class would look for a partner to link
+		//to, and a junction is a connection point on a wire rather than the
+		//partner of a report, a master or a slave (#1500)
+	(void)project;
 }

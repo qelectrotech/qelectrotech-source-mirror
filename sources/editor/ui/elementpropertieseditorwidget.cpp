@@ -780,7 +780,7 @@ void ElementPropertiesEditorWidget::setConnections(const QList<Connection> &conn
 	order the file happened to store them, and by position for the ties and
 	for the connections a symbol left unnamed.
 */
-void sortConnections(QList<ElementPropertiesEditorWidget::Connection> &connections)
+static void sortConnections(QList<ElementPropertiesEditorWidget::Connection> &connections)
 {
 	const auto before = [](const ElementPropertiesEditorWidget::Connection &a,
 			       const ElementPropertiesEditorWidget::Connection &b) {
