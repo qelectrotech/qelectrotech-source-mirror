@@ -20,16 +20,30 @@
 #include "dockfit.h"
 #include "elementinfopartwidget.h"
 #include "elementinfowidget.h"
+#include "devicetypechangedialog.h"
+#include "devicetypechooser.h"
 
+#include <devicetype/devicetype.h>
+#include <devicetype/devicetypeassign.h>
+#include <devicetype/devicetypechange.h>
+#include <devicetype/devicetypecheck.h>
 #include <diagram.h>
 #include <materiallist/materiallist.h>
 #include <materiallist/materialselectiondialog.h>
 #include <qetgraphicsitem/element.h>
 #include <qetinformation.h>
 #include <qetmessagebox.h>
+#include <qetproject.h>
 #include <undocommand/changeelementinformationcommand.h>
+#include <undocommand/setdevicetypecommand.h>
 
 #include <QApplication>
+#include <QCursor>
+#include <QDialog>
+#include <QHash>
+#include <QMenu>
+#include <QPointer>
+#include <QMessageBox>
 #include <QDockWidget>
 #include <QFrame>
 #include <QGridLayout>
@@ -166,6 +180,8 @@ namespace
 			columns.removeAll(QETInformation::ELMT_NOTES);
 			columns.removeAll(QETInformation::ELMT_PLANT);
 			columns.removeAll(QETInformation::ELMT_LOCATION);
+				// The device type has rows of its own below the model's
+			columns.removeAll(QETInformation::ELMT_DEVICE_TYPE);
 		}
 		const int desc_idx = columns.indexOf(QETInformation::ELMT_DESCRIPTION);
 		const int desig_idx = columns.indexOf(QETInformation::ELMT_DESIGNATION);
@@ -253,6 +269,7 @@ QStringList ElementArticlesWidget::managedKeys()
 				}
 			}
 		}
+		result << QETInformation::ELMT_DEVICE_TYPE;
 		return result;
 	}();
 	return keys;
@@ -296,6 +313,7 @@ void ElementArticlesWidget::apply()
 		m_element->diagram()->undoStack().push(undo);
 		m_pending_extra_info.clear();
 	}
+	updateTypeRow();
 }
 
 /**
@@ -312,7 +330,11 @@ void ElementArticlesWidget::reset()
 
 /**
 	@brief ElementArticlesWidget::associatedUndo
-	@return undo command when article fields changed, nullptr otherwise
+	A device type field naming a type of the user's library which the
+	project has not got yet brings that type into the project, in the same
+	step: the type is what the device is checked against.
+	@return undo command when article fields changed or a type is to be
+	brought, nullptr otherwise
 */
 QUndoCommand *ElementArticlesWidget::associatedUndo() const
 {
@@ -321,10 +343,266 @@ QUndoCommand *ElementArticlesWidget::associatedUndo() const
 	}
 	const DiagramContext old_info = m_element->elementInformations();
 	const DiagramContext new_info = currentInfo();
-	if (old_info != new_info) {
-		return new ChangeElementInformationCommand(m_element, old_info, new_info);
+	const DeviceType type = typeToBring(new_info);
+	if (type.isNull()) {
+		if (old_info != new_info) {
+			return new ChangeElementInformationCommand(m_element, old_info, new_info);
+		}
+		return nullptr;
 	}
-	return nullptr;
+	QETProject *project = m_element->diagram()->project();
+	if (old_info == new_info) {
+		return new SetDeviceTypeCommand(project, type);
+	}
+	auto *macro = new QUndoCommand(
+				QObject::tr("Edit information of the element : %1")
+				.arg(m_element->name()));
+	new SetDeviceTypeCommand(project, type, macro);
+	new ChangeElementInformationCommand(m_element, old_info, new_info, macro);
+	return macro;
+}
+
+/**
+	@brief ElementArticlesWidget::typeToBring
+	@return the device type of the user's library which the device type
+	field of @p info names and the project has not got, to be brought into the
+	project; a null type if none, or while a live edit is typed
+*/
+DeviceType ElementArticlesWidget::typeToBring(const DiagramContext &info) const
+{
+	Diagram *diagram = m_element ? m_element->diagram() : nullptr;
+	if (!diagram || (m_live_edit && !m_bring_type)) {
+		return DeviceType();
+	}
+	const QString name = DeviceTypeCheck::typeNameOf(info);
+	if (name.isEmpty() || !diagram->project()->deviceType(name).isNull()
+			|| !libraryTypes().contains(name)) {
+		return DeviceType();
+	}
+	return DeviceTypeLibrary::load(name);
+}
+
+/**
+	@brief ElementArticlesWidget::bringTypeNow
+	Live: apply, the type the device type field names included
+*/
+void ElementArticlesWidget::bringTypeNow()
+{
+	m_bring_type = true;
+	apply();
+	m_bring_type = false;
+	updateTypeRow();
+}
+
+/**
+	@brief ElementArticlesWidget::changeType
+	Give the device another device type, as when a relay needs one more
+	contact: choose the type, then its symbols take the parts of the new
+	one, matched automatically or one by one (DeviceTypeChangeDialog).
+*/
+void ElementArticlesWidget::changeType()
+{
+	ElementInfoPartWidget *type_row = partForKey(QETInformation::ELMT_DEVICE_TYPE);
+	Diagram *diagram = m_element ? m_element->diagram() : nullptr;
+	if (!type_row || !diagram) {
+		return;
+	}
+	bringTypeNow();
+	const DeviceTypeCheck::Device device = DeviceTypeCheck::checkDevice(m_element.data());
+	if (!device.known()) {
+		return;
+	}
+
+	DeviceTypeChooser chooser(m_element.data(), this, device.typeName);
+	chooser.setShowAll(true);
+	if (chooser.exec() != QDialog::Accepted || chooser.chosen().isEmpty()) {
+		return;
+	}
+	const QString name = chooser.chosen();
+	DeviceType type = diagram->project()->deviceType(name);
+	if (type.isNull()) {
+		type = DeviceTypeLibrary::load(name);
+	}
+	if (type.isNull()) {
+		return;
+	}
+
+		//A device whose part number names its type: changing it is said
+	const QString of_part = DeviceTypeChange::partNumberType(device.symbols.value(0));
+	if (!of_part.isEmpty() && of_part != name
+		&& QET::QetMessageBox::question(this, tr("Change the device type"),
+			//: %1 and %2 are device types' names, such as "CONTR10"
+			tr("The part number of this device names the device type %1. Change it to %2 anyway?")
+				.arg(of_part, name),
+			QMessageBox::Yes | QMessageBox::No, QMessageBox::No) != QMessageBox::Yes) {
+		return;
+	}
+
+	QList<int> parts = DeviceTypeChange::automatic(device, type);
+	const auto answer = QET::QetMessageBox::question(this, tr("Change the device type"),
+		tr("Copy the existing contacts to the new device type automatically?"),
+		QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel, QMessageBox::Yes);
+	if (answer == QMessageBox::Cancel) {
+		return;
+	}
+	if (answer == QMessageBox::No) {
+		DeviceTypeChangeDialog manual(device, type, parts, this);
+		if (manual.exec() != QDialog::Accepted) {
+			return;
+		}
+		parts = manual.parts();
+	}
+
+	DeviceTypeChooser::remember(name);
+	QPointer<QDialog> dialog = qobject_cast<QDialog *>(window());
+	QString error;
+	if (!DeviceTypeChange::apply(device, type, parts, &error) && !error.isEmpty()) {
+		QET::QetMessageBox::warning(this, tr("Change the device type"), error);
+	}
+		//Its symbol may have been replaced: a window showing it closes
+	if (dialog && !m_element->scene()) {
+		dialog->reject();
+		return;
+	}
+	updateUi();
+}
+
+/**
+	@brief ElementArticlesWidget::chooseTypeSymbol
+	Ask which part of the device type this symbol draws, and give it that
+	part's terminals. The fields are saved first, the type brought into
+	the project with them: the choice replaces the symbol, so a properties
+	window showing it closes.
+*/
+void ElementArticlesWidget::chooseTypeSymbol()
+{
+	ElementInfoPartWidget *type_row = partForKey(QETInformation::ELMT_DEVICE_TYPE);
+	Diagram *diagram = m_element ? m_element->diagram() : nullptr;
+	if (!type_row || !diagram) {
+		return;
+	}
+	bringTypeNow();
+	const QString name = type_row->text().trimmed();
+	const DeviceType type = diagram->project()->deviceType(name);
+	if (type.isNull()) {
+		return;
+	}
+
+	const auto device = DeviceTypeAssign::deviceOf(m_element.data(), type);
+	const auto choices = DeviceTypeAssign::choices(m_element.data(), device);
+	if (choices.isEmpty()) {
+		QET::QetMessageBox::information(this, tr("Set this symbol from the device type"),
+										tr("Every part of this device type is already drawn."));
+		return;
+	}
+	QMenu menu(this);
+	QHash<QAction *, int> chosen;
+	for (int i = 0 ; i < choices.size() ; ++i) {
+		QAction *action = menu.addAction(choices.at(i).text);
+		action->setEnabled(choices.at(i).possible);
+		action->setToolTip(choices.at(i).reason);
+		chosen.insert(action, i);
+	}
+	menu.setToolTipsVisible(true);
+	QAction *picked = menu.exec(QCursor::pos());
+	if (!picked) {
+		return;
+	}
+
+	QString error;
+	QDialog *dialog = qobject_cast<QDialog *>(window());
+	Element *fresh = DeviceTypeAssign::apply(m_element.data(), device,
+											 choices.at(chosen.value(picked)), &error);
+	if (!fresh) {
+		QET::QetMessageBox::warning(this, tr("Set this symbol from the device type"), error);
+		return;
+	}
+	if (fresh != m_element.data()) {
+		if (dialog) {
+			dialog->reject();
+			return;
+		}
+		diagram->clearSelection();
+		fresh->setSelected(true);
+	}
+}
+
+/**
+	@brief ElementArticlesWidget::libraryTypes
+	@return the names of the user's device types (DeviceTypeLibrary), read
+	the first time only
+*/
+QStringList ElementArticlesWidget::libraryTypes() const
+{
+	if (!m_library_read) {
+		m_library_types = DeviceTypeLibrary::names();
+		m_library_read = true;
+	}
+	return m_library_types;
+}
+
+/**
+	@brief ElementArticlesWidget::updateTypeRow
+	Below the device type field: the type it names, its text and, for the
+	type the element has, the parts of the type the device does not draw.
+	Hidden while the field is empty.
+*/
+void ElementArticlesWidget::updateTypeRow()
+{
+	ElementInfoPartWidget *type_row = partForKey(QETInformation::ELMT_DEVICE_TYPE);
+	Diagram *diagram = m_element ? m_element->diagram() : nullptr;
+	if (!m_type_label || !type_row || !diagram) {
+		return;
+	}
+	const QString name = type_row->text().trimmed();
+	if (m_type_symbol_button) {
+		m_type_symbol_button->setVisible(false);
+	}
+	if (m_type_change_button) {
+		m_type_change_button->setVisible(false);
+	}
+	if (name.isEmpty()) {
+		m_type_label->setVisible(false);
+		return;
+	}
+	QETProject *project = diagram->project();
+	if (m_type_change_button) {
+		m_type_change_button->setVisible(!project->deviceType(name).isNull());
+	}
+	if (m_type_symbol_button) {
+		m_type_symbol_button->setVisible(!project->deviceType(name).isNull()
+										 || libraryTypes().contains(name));
+	}
+	QString text;
+	const DeviceType type = project->deviceType(name);
+	if (type.isNull()) {
+		if (libraryTypes().contains(name))
+			//: %1 is a device type's name, such as "CONTR10"
+			text = tr("Device type %1 of your library: the project keeps a copy once applied.").arg(name);
+		else
+			text = tr("No device type %1 in the project or your library.").arg(name);
+	} else {
+		const QString saved = DeviceTypeCheck::typeNameOf(m_element->elementInformations());
+		const auto device = DeviceTypeCheck::checkDevice(m_element.data());
+		const int parts = int(type.parts.size());
+		if (saved != name || device.typeName != name) {
+			//: %1 is the type's text, %n its number of parts
+			text = tr("%1 (%n part(s))", nullptr, parts).arg(type.text());
+		} else {
+			//: %1 is the type's text, %2 the parts drawn, %n all of its parts
+			text = tr("%1: %2 of %n part(s) drawn", nullptr, parts)
+					.arg(type.text()).arg(parts - device.missing.size());
+			QStringList missing;
+			for (int part : device.missing)
+				missing << DeviceTypeCheck::partText(type.parts.at(part));
+			if (!missing.isEmpty())
+				text += QLatin1Char('\n') + tr("Not drawn: %1").arg(missing.join(QStringLiteral(", ")));
+			if (device.beyond())
+				text += QLatin1Char('\n') + tr("%n symbol(s) beyond the type", nullptr, device.beyond());
+		}
+	}
+	m_type_label->setText(text);
+	m_type_label->setVisible(true);
 }
 
 /**
@@ -535,6 +813,10 @@ QWidget *ElementArticlesWidget::buildBlockPage(int block)
 	grid->setVerticalSpacing(4);
 
 	const QStringList columns = articleColumnsForBlock(block);
+		//The main article: its device type, in rows of their own below the
+		//model's (the field, what the type is made of, the symbol button)
+	const int model_row = block == 0
+			? int(columns.indexOf(QETInformation::ELMT_MODEL)) / 2 : -1;
 	for (int i = 0; i < columns.size(); ++i) {
 		const QString &column = columns.at(i);
 		const QString key = MaterialList::elementInfoKey(column, block);
@@ -555,16 +837,57 @@ QWidget *ElementArticlesWidget::buildBlockPage(int block)
 					[this, block]() { updateArticleListRow(block); });
 		}
 
-		const int row = i / 2;
+		const int row = i / 2 + (model_row >= 0 && i / 2 > model_row ? 3 : 0);
 		const int col = i % 2;
 		grid->addWidget(part, row, col);
 		m_block_parts[block] << part;
 		m_parts << part;
 	}
+	int rows = (int(columns.size()) + 1) / 2;
+	if (model_row >= 0) {
+		auto *type_part = new ElementInfoPartWidget(
+				QETInformation::ELMT_DEVICE_TYPE,
+				QETInformation::translatedInfoKey(QETInformation::ELMT_DEVICE_TYPE), container);
+		type_part->setToolTip(tr("What this device is made of: its device type, from the project or your library"));
+		grid->addWidget(type_part, model_row + 1, 0);
+		m_parts << type_part;
+		connect(type_part, &ElementInfoPartWidget::textChanged,
+				this, &ElementArticlesWidget::updateTypeRow);
+		connect(type_part, &ElementInfoPartWidget::editingFinished, this, [this]() {
+			if (m_live_edit) bringTypeNow();
+		});
+		m_type_label = new QLabel(container);
+		m_type_label->setObjectName(QStringLiteral("deviceTypeLabel"));
+		m_type_label->setWordWrap(true);
+		m_type_label->setTextFormat(Qt::PlainText);
+		m_type_label->setContentsMargins(6, 0, 6, 4);
+		m_type_label->setVisible(false);
+		grid->addWidget(m_type_label, model_row + 2, 0, 1, 2);
+		m_type_symbol_button = new QPushButton(
+				tr("Set this symbol from the device type..."), container);
+		m_type_symbol_button->setObjectName(QStringLiteral("deviceTypeSymbolButton"));
+		m_type_symbol_button->setToolTip(tr("Choose which part of the device type this symbol draws: it takes that part's terminals."));
+		m_type_symbol_button->setVisible(false);
+		m_type_change_button = new QPushButton(tr("Change the device type..."), container);
+		m_type_change_button->setObjectName(QStringLiteral("deviceTypeChangeButton"));
+		m_type_change_button->setToolTip(tr("Give the device another device type: its symbols take the parts of the new one."));
+		m_type_change_button->setVisible(false);
+		connect(m_type_change_button, &QPushButton::clicked,
+				this, &ElementArticlesWidget::changeType);
+		auto *type_buttons = new QHBoxLayout();
+		type_buttons->setContentsMargins(0, 0, 0, 0);
+		type_buttons->addWidget(m_type_symbol_button);
+		type_buttons->addWidget(m_type_change_button);
+		type_buttons->addStretch();
+		grid->addLayout(type_buttons, model_row + 3, 0, 1, 2);
+		connect(m_type_symbol_button, &QPushButton::clicked,
+				this, &ElementArticlesWidget::chooseTypeSymbol);
+		rows += 3;
+	}
 
 	grid->setColumnStretch(0, 1);
 	grid->setColumnStretch(1, 1);
-	grid->setRowStretch((columns.size() + 1) / 2, 1);
+	grid->setRowStretch(rows, 1);
 
 	scroll->setWidget(container);
 	return scroll;
@@ -601,6 +924,7 @@ void ElementArticlesWidget::updateUi()
 
 	ElementInfoWidget::populateSuggestions(m_element, m_parts);
 	refreshArticleList(selected_before);
+	updateTypeRow();
 
 	if (was_live) {
 		enableLiveEdit();
@@ -1004,7 +1328,7 @@ void ElementArticlesWidget::applyMaterialRecord(const MaterialRecord &record, in
 
 	if (live_edit) {
 		enableLiveEdit();
-		apply();
+		bringTypeNow();
 	}
 }
 

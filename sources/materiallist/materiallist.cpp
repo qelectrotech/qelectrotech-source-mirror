@@ -218,6 +218,9 @@ QStringList MaterialList::columnsForBlock(int block)
 		QStringLiteral("comment"),
 		QStringLiteral("notes"),
 		QStringLiteral("model"),
+			//A part may name its device type; not article-bound: a part
+			//without one leaves the device's type as it is
+		QStringLiteral("device_type"),
 		QStringLiteral("category"),
 		QStringLiteral("voltage_rating"),
 		QStringLiteral("current_rating"),
@@ -225,7 +228,9 @@ QStringList MaterialList::columnsForBlock(int block)
 		QStringLiteral("location"),
 		QStringLiteral("width"),
 		QStringLiteral("height"),
-		QStringLiteral("depth")
+		QStringLiteral("depth"),
+		QStringLiteral("unit_price"),
+		QStringLiteral("labour_time")
 	};
 
 	static const QStringList auxiliary_columns = {
@@ -310,6 +315,8 @@ bool MaterialList::isArticleBound(const QString &column)
 		QStringLiteral("width"),
 		QStringLiteral("height"),
 		QStringLiteral("depth"),
+		QStringLiteral("unit_price"),
+		QStringLiteral("labour_time"),
 		QStringLiteral("auxiliary")
 	};
 
@@ -803,6 +810,69 @@ bool MaterialList::appendRecord(const QString &path, const MaterialRecord &recor
 	}
 
 	data.records.append(record);
+	return writeFile(path, data, error);
+}
+
+/**
+	@brief MaterialList::updateRecord
+	Replace an existing article in a material file.
+	The file is read again first so external spreadsheet changes to other
+	rows are preserved.
+	@param path
+	@param row expected 0-based index of the record in the file
+	@param original record as it was loaded before editing
+	@param updated replacement record
+	@param error receives a message when the file can't be updated
+	@return true on success
+*/
+bool MaterialList::updateRecord(const QString &path, int row,
+								const MaterialRecord &original,
+								const MaterialRecord &updated,
+								QString *error)
+{
+	if (error) {
+		error->clear();
+	}
+
+	MaterialListData data;
+	if (!load(path, &data, error)) {
+		return false;
+	}
+	if (data.columns.isEmpty())
+	{
+		if (error) {
+			*error = QCoreApplication::translate("MaterialList", "The file has no header: columns are missing.");
+		}
+		return false;
+	}
+
+	int target_row = -1;
+	if (row >= 0 && row < data.records.size() && data.records.at(row) == original) {
+		target_row = row;
+	} else {
+		for (int i = 0; i < data.records.size(); ++i)
+		{
+			if (data.records.at(i) == original)
+			{
+				target_row = i;
+				break;
+			}
+		}
+	}
+
+	if (target_row < 0)
+	{
+		if (error) {
+			*error = QCoreApplication::translate("MaterialList", "The entry to edit no longer exists in the file.");
+		}
+		return false;
+	}
+
+	MaterialRecord replacement = updated;
+	if (replacement.extra.isEmpty() && !data.records.at(target_row).extra.isEmpty()) {
+		replacement.extra = data.records.at(target_row).extra;
+	}
+	data.records[target_row] = replacement;
 	return writeFile(path, data, error);
 }
 

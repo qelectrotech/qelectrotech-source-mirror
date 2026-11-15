@@ -230,6 +230,12 @@ class Element : public QetGraphicsItem
 			GeometryChanged    ///< size, hotspot or terminals changed, old drawing kept
 		};
 		ReloadPictureResult reloadPicture(bool adopt_frame = false);
+		bool followMovedOrigin();
+			/// Whether updating the elements from the collections moves a
+			/// placed symbol whose insertion point moved, so that its
+			/// terminals stay where they are: off unless set
+		static bool updateFollowsMovedOrigin();
+		static void setUpdateFollowsMovedOrigin(bool follows);
 		virtual void setHighlighted(bool);
 		void showAsJumpTarget();
 		bool isShownAsJumpTarget() const { return m_jump_highlight > 0; }

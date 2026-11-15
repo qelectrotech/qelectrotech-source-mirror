@@ -18,11 +18,15 @@
 #ifndef STRUCTUREBOXITEM_H
 #define STRUCTUREBOXITEM_H
 
+#include "diagramtextitem.h"
 #include "qetshapeitem.h"
 
+#include <QColor>
+#include <QPointF>
 #include <QPointer>
 
 class Element;
+class StructureBoxLabelItem;
 
 /**
 	@brief The StructureBoxItem class
@@ -47,6 +51,7 @@ class StructureBoxItem : public QetShapeItem
 	Q_PROPERTY(QString plant READ plant WRITE setPlant NOTIFY identityChanged)
 	Q_PROPERTY(QString location READ location WRITE setLocation NOTIFY identityChanged)
 	Q_PROPERTY(QString prefix READ prefix WRITE setPrefix NOTIFY identityChanged)
+	Q_PROPERTY(qreal labelSize READ labelSize WRITE setLabelSize)
 
 	public:
 		enum { Type = UserType + 1015 };
@@ -65,11 +70,26 @@ class StructureBoxItem : public QetShapeItem
 
 		QString structureId() const;
 
+			/// Its name: a text of its own, which can stand anywhere
+		StructureBoxLabelItem *label() const {return m_label;}
+		QPointF labelOffset() const;
+		void setLabelOffset(const QPointF &offset);
+		qreal labelSize() const {return m_label_size;}
+		void setLabelSize(qreal size);
+
 		bool fromXml(const QDomElement &e) override;
 		QDomElement toXml(QDomDocument &document) const override;
 
 		void editProperty() override;
 		QString name() const override;
+
+			/// The colour new boxes are drawn in: black unless set
+		static QColor newBoxColor();
+		static void setNewBoxColor(const QColor &color);
+			/// Whether the place is asked for as soon as a box is drawn:
+			/// off unless set
+		static bool askPlaceWhenDrawn();
+		static void setAskPlaceWhenDrawn(bool ask);
 
 			/// Whether @p e, a <shape>, is a structure box
 		static bool isStructureBoxXml(const QDomElement &e);
@@ -106,17 +126,49 @@ class StructureBoxItem : public QetShapeItem
 
 
 	protected:
-		void paint(
-				QPainter *painter,
-				const QStyleOptionGraphicsItem *option,
-				QWidget *widget) override;
 		QVariant itemChange(GraphicsItemChange change, const QVariant &value) override;
 
 	private:
+		void refreshLabel();
+		void placeLabel();
+
 		QString m_plant, m_location, m_prefix;
 			/// The folio it was last on: the symbols it leaves are
 			/// refreshed once it is gone
 		QPointer<Diagram> m_folio;
+		StructureBoxLabelItem *m_label = nullptr;
+		bool m_label_moved = false;     ///< else it keeps to the box's corner
+		qreal m_label_size = 8;
+};
+
+/**
+	@brief The StructureBoxLabelItem class
+	The name of a structure box: selected and dragged on its own, wherever
+	it is wanted, in one undo step. A double click edits the box.
+*/
+class StructureBoxLabelItem : public DiagramTextItem
+{
+	Q_OBJECT
+
+	public:
+		enum { Type = UserType + 1017 };
+		explicit StructureBoxLabelItem(StructureBoxItem *box);
+		int type() const override { return Type; }
+		void fromXml(const QDomElement &) override {}
+
+	signals:
+		void movedByUser();
+
+	protected:
+		void mousePressEvent(QGraphicsSceneMouseEvent *event) override;
+		void mouseMoveEvent(QGraphicsSceneMouseEvent *event) override;
+		void mouseReleaseEvent(QGraphicsSceneMouseEvent *event) override;
+		void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) override;
+
+	private:
+		StructureBoxItem *m_box;
+		QPointF m_grab;
+		QPointF m_start;
 };
 
 #endif // STRUCTUREBOXITEM_H

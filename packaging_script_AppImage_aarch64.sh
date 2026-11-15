@@ -51,7 +51,7 @@ mkdir -p AppDir/qelectrotech/usr/share/icons/hicolor/256x256/apps
 mkdir -p AppDir/qelectrotech/usr/translations
 cd AppDir/qelectrotech
 cp -r ../../{elements,examples,titleblocks,lang,man} usr/share/
-cp -r ../../ico/breeze-icons/256x256/apps/*.png usr/share/icons/hicolor/256x256/apps/
+cp -r ../../ico/app/hicolor/256x256/apps/*.png usr/share/icons/hicolor/256x256/apps/
 
 cd ../../
 

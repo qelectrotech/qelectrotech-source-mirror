@@ -5041,6 +5041,19 @@ void projectDataBase::createElementNomenclatureView()
 					 "ei.plc_function AS plc_function,"
 					 "ei.plc_comment AS plc_comment,"
 					 "ei.plc_crossref AS plc_crossref,"
+					 "ei.xref AS xref,"
+						//What the part is physically and what it costs: the
+						//parts list export offers these fields, so they have
+						//to be columns of this view
+					 "ei.width AS width,"
+					 "ei.height AS height,"
+					 "ei.depth AS depth,"
+					 "ei.unit_price AS unit_price,"
+					 "ei.labour_time AS labour_time,"
+						//The device type field (#1884): offered too
+					 "ei.device_type AS device_type,"
+						//The device type is offered by the export too
+					 "ei.device_type AS device_type,"
 					
 					 "d.pos AS diagram_position,"
 						 "e.type AS element_type,"
@@ -9175,7 +9188,12 @@ QStringList projectDataBase::foreignChildren(const QDomElement &parent, bool fol
 		QStringLiteral("terminal_labelling"), QStringLiteral("wiring_rules"),
 		QStringLiteral("chained_reports"), QStringLiteral("style"),
 		QStringLiteral("terminal_strip_layout"), QStringLiteral("terminal_strips"),
-		QStringLiteral("cables"), QStringLiteral("bridges")};
+		QStringLiteral("cables"), QStringLiteral("bridges"),
+			//Written only when not empty or not the default: if they were
+			//kept as foreign, deleting them would not last past a save
+		QStringLiteral("devicetype_rules"), QStringLiteral("devicetypes"),
+		QStringLiteral("conductor_plant_counters"), QStringLiteral("potentialtypes"),
+		QStringLiteral("cell_origin")};
 	static const QSet<QString> folio_known{
 		QStringLiteral("defaultconductor"), QStringLiteral("elements"), QStringLiteral("conductors"),
 		QStringLiteral("inputs"), QStringLiteral("images"), QStringLiteral("shapes"),

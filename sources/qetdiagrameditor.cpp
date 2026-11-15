@@ -100,6 +100,8 @@
 #include "ui/conductorcolortoolbutton.h"
 #include "ui/diagrambgcolorbutton.h"
 #include "ui/duplicatelabelsdialog.h"
+#include "ui/devicetypecheckdialog.h"
+#include "ui/devicetypesdialog.h"
 #include "ui/potentialcheckdialog.h"
 #include "ui/duplicateoffsetdialog.h"
 #include "ui/jumptoelementdialog.h"
@@ -616,6 +618,20 @@ void QETDiagramEditor::setUpActions()
 		//No default shortcut: Ctrl+Shift+V is taken by m_paste_origin.
 	ShortcutManager::instance().registerAction(m_paste_element_info, "diagrameditor.paste_element_info", tr("Diagram editors"), QKeySequence());
 
+	m_paste_lock_x = new QAction(tr("Lock X axis (paste mode)"), this);
+	m_paste_lock_x->setStatusTip(tr("Locks the X coordinate while positioning a paste, so items move only along Y", "status bar tip"));
+	m_paste_lock_x->setEnabled(false);
+	ShortcutManager::instance().registerAction(
+		m_paste_lock_x, "diagrameditor.paste_lock_x",
+		tr("Diagram editors"), QKeySequence(Qt::Key_X));
+
+	m_paste_lock_y = new QAction(tr("Lock Y axis (paste mode)"), this);
+	m_paste_lock_y->setStatusTip(tr("Locks the Y coordinate while positioning a paste, so items move only along X", "status bar tip"));
+	m_paste_lock_y->setEnabled(false);
+	ShortcutManager::instance().registerAction(
+		m_paste_lock_y, "diagrameditor.paste_lock_y",
+		tr("Diagram editors"), QKeySequence(Qt::Key_Y));
+
 	m_cut   -> setStatusTip(tr("Puts selected elements into the clipboard", "status bar tip"));
 	m_copy  -> setStatusTip(tr("Copies selected elements", "status bar tip"));
 	m_paste -> setStatusTip(tr("Pastes elements from the clipboard into the sheet", "status bar tip"));
@@ -658,6 +674,7 @@ void QETDiagramEditor::setUpActions()
 
 		dv->diagram()->setEventInterface(
 					new DiagramEventAddPaste(dv->diagram(), start_pos, placement));
+		dv->setFocus(Qt::OtherFocusReason);
 	};
 	connect(m_paste, &QAction::triggered, [start_paste]() {
 		start_paste(DiagramEventAddPaste::UnderCursor);
@@ -796,6 +813,20 @@ void QETDiagramEditor::setUpActions()
 	connect(m_duplicate, &QAction::triggered, [this]() {
 		auto *dv = currentDiagramView();
 		if (!dv || !dv->diagram()) return;
+
+			//The copy on the mouse, put down with a click, when so set
+			//(Settings > General, off by default)
+		if (DiagramEventAddPaste::duplicateFollowsMouse()) {
+			if (dv->diagram()->isReadOnly() || dv->diagram()->selectedItems().isEmpty()) return;
+			const QPoint last_pos = dv->lastMousePos();
+			const QPoint view_pos = (last_pos.x() >= 0 && dv->viewport()->rect().contains(last_pos))
+					? last_pos
+					: dv->viewport()->rect().center();
+			dv->diagram()->setEventInterface(new DiagramEventAddPaste(
+				dv->diagram(), dv->mapToScene(view_pos), DiagramEventAddPaste::UnderCursor,
+				dv->diagram()->selectionFragment()));
+			return;
+		}
 
 			//Ask the first time only -- every later press reuses whatever
 			//was confirmed then, so the shortcut can be tapped repeatedly
@@ -1018,6 +1049,15 @@ void QETDiagramEditor::setUpActions()
 		QSettings().setValue(TextGrid::settings_key, action->data());
 		emit QETApp::instance()->textGridChanged();
 	});
+	m_text_grid_menu->addSeparator();
+	QAction *text_middle = m_text_grid_menu->addAction(tr("Snap the middle of the text"));
+	text_middle->setToolTip(tr("Puts the middle of a moved text on the grid instead of the top "
+							   "left corner of its frame, e.g. a terminal number centred on a grid line."));
+	text_middle->setCheckable(true);
+	text_middle->setChecked(QSettings().value(TextGrid::middle_key, false).toBool());
+	connect(text_middle, &QAction::toggled, this, [](bool on) {
+		QSettings().setValue(TextGrid::middle_key, on);
+	});
 	connect(QETApp::instance(), &QETApp::textGridChanged,
 			this, &QETDiagramEditor::updateTextGridButton);
 	updateTextGridButton();
@@ -1208,6 +1248,29 @@ void QETDiagramEditor::setUpActions()
 				dialog->show();
 			}
 		});
+	// The device types of the project and of the user's library
+	m_device_types = new QAction(tr("Device types..."), this);
+	m_device_types->setObjectName(QStringLiteral("deviceTypes"));
+	m_device_types->setStatusTip(tr("Make and change the device types of the project and of your library", "status bar tip"));
+	ShortcutManager::instance().registerAction(m_device_types, "diagrameditor.device_types", tr("Diagram editors"), QKeySequence());
+	connect(m_device_types, &QAction::triggered, this, [this]() {
+		if (ProjectView *view = currentProjectView()) {
+			DeviceTypesDialog dialog(view->project(), this);
+			dialog.exec();
+		}
+	});
+	// Devices not drawn the way their device type says
+	m_check_device_types = new QAction(tr("Check device types..."), this);
+	m_check_device_types->setObjectName(QStringLiteral("checkDeviceTypes"));
+	m_check_device_types->setStatusTip(tr("Lists the parts of each device's type which are not drawn, and the symbols beyond it", "status bar tip"));
+	ShortcutManager::instance().registerAction(m_check_device_types, "diagrameditor.check_device_types", tr("Diagram editors"), QKeySequence());
+	connect(m_check_device_types, &QAction::triggered, this, [this]() {
+		if (ProjectView *view = currentProjectView()) {
+			auto *dialog = new DeviceTypeCheckDialog(view->project(), this);
+			dialog->setAttribute(Qt::WA_DeleteOnClose);
+			dialog->show();
+		}
+	});
 	// Mixed potential types on one potential
 	m_check_potentials = new QAction(tr("Check potential types..."), this);
 	m_check_potentials->setObjectName(QStringLiteral("checkPotentialTypes"));
@@ -2303,6 +2366,8 @@ void QETDiagramEditor::setUpMenu()
 	menu_project -> addAction(m_clean_project);
 	menu_project->addAction(m_find_duplicate_labels);
 	menu_project->addAction(m_check_potentials);
+	menu_project->addAction(m_device_types);
+	menu_project->addAction(m_check_device_types);
 	menu_project->addAction(m_project_languages);
 	menu_project -> addSeparator();
 	menu_project -> addAction(m_csv_export);
@@ -3929,6 +3994,8 @@ void QETDiagramEditor::slot_updateActions()
 	m_project_edit_properties     -> setEnabled(opened_project);
 	m_find_duplicate_labels->setEnabled(opened_project);
 	m_check_potentials->setEnabled(opened_project);
+	m_device_types->setEnabled(opened_project);
+	m_check_device_types->setEnabled(opened_project);
 	m_project_languages->setEnabled(opened_project);
 	m_project_history             -> setEnabled(opened_project);
 	m_export_delivery             -> setEnabled(opened_project);
@@ -5660,19 +5727,26 @@ void QETDiagramEditor::slot_updateElementsFromCollections() {
 							"they were taken from. Replace them with the version "
 							"of the collection?", "", outdated.size())
 						 % QStringLiteral("\n\n")
-						 % tr("Placed elements are redrawn and keep their conductors, "
-							  "as long as their terminals have not moved. This "
-							  "action cannot be undone."),
+						 % (Element::updateFollowsMovedOrigin()
+							? tr("Placed elements are redrawn and keep their conductors, "
+								 "as long as their terminals have not moved or moved "
+								 "all together with the insertion point: such an element "
+								 "is moved back so its terminals stay where they are. "
+								 "This action cannot be undone.")
+							: tr("Placed elements are redrawn and keep their conductors, "
+								 "as long as their terminals have not moved. This "
+								 "action cannot be undone.")),
 						 QMessageBox::Yes | QMessageBox::Cancel, this);
 	question.setDetailedText(names.join(QLatin1Char('\n')));
 	if (question.exec() != QMessageBox::Yes) return;
 
+	const bool follow = Element::updateFollowsMovedOrigin();
 	for (const QETProject::OutdatedElement &element : outdated)
-		project->updateElement(element);
+		project->updateElement(element, follow);
 	project->setModified(true);
 
 	reloadElementDrawings(project, true, title,
-						  tr("%n elements updated.", "", outdated.size()));
+						  tr("%n elements updated.", "", outdated.size()), follow);
 }
 
 /**
@@ -5684,11 +5758,15 @@ void QETDiagramEditor::slot_updateElementsFromCollections() {
 	(see Element::reloadPicture())
 	@param title : title of the report
 	@param intro : first line of the report, may be empty
+	@param follow_moved_origin : move an element whose terminals all moved
+	with its insertion point, so they stay where they are, and redraw it
+	(see Element::followMovedOrigin())
 */
 void QETDiagramEditor::reloadElementDrawings(QETProject *project,
 											 bool adopt_frame,
 											 const QString &title,
-											 const QString &intro) {
+											 const QString &intro,
+											 bool follow_moved_origin) {
 	QList<Element *> elements;
 	QSet<QString> dropped_locations;
 	for (Diagram *diagram : project->diagrams())
@@ -5708,10 +5786,19 @@ void QETDiagramEditor::reloadElementDrawings(QETProject *project,
 
 	int reloaded = 0;
 	int unavailable = 0;
+	int moved = 0;
 	QStringList geometry_changed;
 	for (Element *elmt : elements)
 	{
-		switch (elmt->reloadPicture(adopt_frame))
+		Element::ReloadPictureResult result = elmt->reloadPicture(adopt_frame);
+		if (result == Element::ReloadPictureResult::GeometryChanged
+			&& follow_moved_origin && elmt->followMovedOrigin())
+		{
+			result = elmt->reloadPicture(adopt_frame);
+			if (result == Element::ReloadPictureResult::Reloaded)
+				++moved;
+		}
+		switch (result)
 		{
 			case Element::ReloadPictureResult::Reloaded:
 				++reloaded;
@@ -5732,6 +5819,10 @@ void QETDiagramEditor::reloadElementDrawings(QETProject *project,
 	}
 
 	QString message = tr("%n elements redrawn.", "", reloaded);
+	if (moved)
+		message += QStringLiteral(" ")
+				% tr("%n of them moved with their insertion point: their terminals "
+					 "and conductors stayed where they were.", "", moved);
 	if (!intro.isEmpty())
 		message = intro % QStringLiteral("\n") % message;
 
@@ -6160,7 +6251,8 @@ void QETDiagramEditor::updateTextGridButton()
 	const qreal divisor = QSettings().value(TextGrid::settings_key, 1).toReal();
 	for (QAction *action : m_text_grid_menu->actions())
 	{
-		if (qFuzzyCompare(action->data().toReal() + 1, divisor + 1))
+			//The divisors only, not the middle switch below them
+		if (action->actionGroup() && qFuzzyCompare(action->data().toReal() + 1, divisor + 1))
 		{
 			action->setChecked(true);
 			m_text_grid_button->setText(tr("Texts %1").arg(action->text()));

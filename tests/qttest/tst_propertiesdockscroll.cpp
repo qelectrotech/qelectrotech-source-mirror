@@ -1,8 +1,11 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 #include "qetapptest.h"
 
+#include "ElementsCollection/elementslocation.h"
 #include "PropertiesEditor/propertieseditordockwidget.h"
 #include "PropertiesEditor/propertieseditorwidget.h"
+#include "qetgraphicsitem/element.h"
+#include "ui/elementpropertieswidget.h"
 
 #include <QMainWindow>
 #include <QScrollArea>
@@ -119,6 +122,88 @@ class tst_propertiesdockscroll : public QObject
 			QTest::addColumn<bool>("own_scroll_area");
 			QTest::newRow("expanding") << false;
 			QTest::newRow("own scroll area") << true;
+		}
+
+			// The panel and the element editor's information tab both
+			// carry a bar for the same rows: two scroll bars, and the
+			// wheel over those rows went to the panel's while the one
+			// beside the rows stayed dead to it. Only the editor's own
+			// bar is to be left -- it has the way down its rows, and
+			// the panel's is out of the way then.
+		void onlyTheEditorsOwnBar()
+		{
+			Diagram *diagram = QetAppTest::diagram();
+			QVERIFY(diagram);
+			ElementsLocation location;
+			auto *element = new Element(location);
+			element->setPos(100, 100);
+			diagram->addItem(element);
+
+			QMainWindow window;
+			auto *dock = new PropertiesEditorDockWidget(&window);
+			auto *below = new QDockWidget(QStringLiteral("below"), &window);
+			below->setWidget(new QWidget(below));
+			below->widget()->setMinimumHeight(80);
+			window.addDockWidget(Qt::RightDockWidgetArea, dock);
+			window.addDockWidget(Qt::RightDockWidgetArea, below);
+			window.setCentralWidget(new QWidget(&window));
+			window.resize(600, 1000);
+			window.show();
+			QVERIFY(QTest::qWaitForWindowExposed(&window));
+
+			auto *editor = new ElementPropertiesWidget(element, dock);
+			dock->addEditor(editor);
+			QApplication::processEvents();
+			QTest::qWait(100);
+
+			auto *scroll = dock->findChild<QScrollArea *>(QStringLiteral("m_scroll_area"));
+			QVERIFY(scroll);
+			auto *info = editor->findChild<QScrollArea *>(QStringLiteral("scrollArea"));
+			QVERIFY2(info, "no scrollArea in the ElementInfoWidget");
+
+				// The panel made lower than the rows stand: where both
+				// bars used to show at once
+			window.resizeDocks({dock}, {280}, Qt::Vertical);
+			QApplication::processEvents();
+			QTest::qWait(100);
+
+				// The editor's own bar keeps the way down its rows
+			QVERIFY2(info->verticalScrollBar()->maximum() > 0,
+					 qPrintable(QStringLiteral(
+								 "the information tab has no way down: %1")
+								.arg(info->verticalScrollBar()->maximum())));
+
+				// and the panel's is out of the way: one bar, not two
+			QVERIFY2(!scroll->verticalScrollBar()->isVisible(),
+					 qPrintable(QStringLiteral(
+								 "two scroll bars: the panel still offers %1 of way down "
+									"(the tab: %2)")
+							.arg(scroll->verticalScrollBar()->maximum())
+							.arg(info->verticalScrollBar()->maximum())));
+
+			// The wheel over that tab reaches its bar, not the panel's
+			const int info_before = info->verticalScrollBar()->value();
+			const int panel_before = scroll->verticalScrollBar()->value();
+			const QPoint at = info->viewport()->mapToGlobal(QPoint(20, 60));
+			QWheelEvent wheel(QPointF(20, 60), at, QPoint(), QPoint(0, -120),
+					  Qt::NoButton, Qt::NoModifier, Qt::NoScrollPhase, false);
+			QCoreApplication::sendEvent(info->viewport(), &wheel);
+			QTest::qWait(30);
+			QVERIFY2(info->verticalScrollBar()->value() != info_before,
+					 qPrintable(QStringLiteral(
+								 "the wheel over the tab does not move the tab (%1 -> %2) "
+									"but the panel (%3 -> %4)")
+								.arg(info_before).arg(info->verticalScrollBar()->value())
+								.arg(panel_before).arg(scroll->verticalScrollBar()->value())));
+
+				// the panel still shrinks below its editors
+			QVERIFY2(dock->minimumSizeHint().height() < 200,
+					 qPrintable(QStringLiteral(
+								 "the panel grew a minimum of %1 and is no longer smaller "
+									"than its editors")
+								.arg(dock->minimumSizeHint().height())));
+
+			delete element;
 		}
 
 			// The wheel over a spin box without focus scrolls the dock

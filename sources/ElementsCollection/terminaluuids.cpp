@@ -272,3 +272,103 @@ int TerminalUuids::fillMissingInDefinition(const QDomElement &definition)
 {
 	return fillDefinition(definition);
 }
+
+namespace {
+struct PlacedTerminal
+{
+	QPointF pos;
+	QString orientation;
+	QDomElement element;
+};
+
+QList<PlacedTerminal> placedTerminals(const QDomElement &definition)
+{
+	QList<PlacedTerminal> terminals;
+	for (const QDomElement &t : definitionTerminals(definition))
+		terminals << PlacedTerminal{QPointF(t.attribute(QStringLiteral("x")).toDouble(),
+											t.attribute(QStringLiteral("y")).toDouble()),
+									t.attribute(QStringLiteral("orientation")), t};
+	return terminals;
+}
+
+bool samePoint(const QPointF &a, const QPointF &b)
+{
+	return qAbs(a.x() - b.x()) < 0.01 && qAbs(a.y() - b.y()) < 0.01;
+}
+
+	//The index in @p terminals of an unused one at @p pos with @p orientation, else -1
+int findTerminal(const QList<PlacedTerminal> &terminals, const QList<bool> &used,
+				 const QPointF &pos, const QString &orientation)
+{
+	for (int i = 0 ; i < terminals.size() ; ++i)
+		if (!used.at(i) && terminals.at(i).orientation == orientation
+			&& samePoint(terminals.at(i).pos, pos))
+			return i;
+	return -1;
+}
+}
+
+/**
+	@brief TerminalUuids::commonOffset
+	Whether every terminal of @p new_definition is a terminal of
+	@p old_definition moved by one and the same offset, with the same
+	orientation: the drawing was moved as a whole, which is what moving its
+	insertion point does. Two different offsets cannot both fit, so the
+	answer is unique.
+	@param old_definition, new_definition : two <definition>
+	@param offset : set to the offset, new place less old place
+	@return false if the terminals differ otherwise, or there are none
+*/
+bool TerminalUuids::commonOffset(const QDomElement &old_definition,
+								 const QDomElement &new_definition, QPointF *offset)
+{
+	const QList<PlacedTerminal> old_terminals = placedTerminals(old_definition);
+	const QList<PlacedTerminal> new_terminals = placedTerminals(new_definition);
+	if (old_terminals.isEmpty() || old_terminals.size() != new_terminals.size())
+		return false;
+
+	const PlacedTerminal &first = old_terminals.first();
+	for (const PlacedTerminal &candidate : new_terminals)
+	{
+		if (candidate.orientation != first.orientation)
+			continue;
+		const QPointF shift = candidate.pos - first.pos;
+		QList<bool> used(new_terminals.size(), false);
+		bool all = true;
+		for (const PlacedTerminal &t : old_terminals)
+		{
+			const int found = findTerminal(new_terminals, used, t.pos + shift, t.orientation);
+			if (found < 0) { all = false; break; }
+			used[found] = true;
+		}
+		if (all) {
+			if (offset) *offset = shift;
+			return true;
+		}
+	}
+	return false;
+}
+
+/**
+	@brief TerminalUuids::keepShifted
+	keep() for a drawing moved by @p offset (see commonOffset()): each
+	terminal of @p new_definition takes the uuid of the terminal of
+	@p old_definition it was moved from, so the wires saved against it find
+	it again.
+*/
+void TerminalUuids::keepShifted(const QDomElement &old_definition,
+								QDomElement &new_definition, const QPointF &offset)
+{
+	const QList<PlacedTerminal> old_terminals = placedTerminals(old_definition);
+	QList<bool> used(old_terminals.size(), false);
+	for (PlacedTerminal t : placedTerminals(new_definition))
+	{
+		const int found = findTerminal(old_terminals, used, t.pos - offset, t.orientation);
+		if (found < 0)
+			continue;
+		used[found] = true;
+		const QString uuid = old_terminals.at(found).element.attribute(QStringLiteral("uuid"));
+		if (!uuid.isEmpty())
+			t.element.setAttribute(QStringLiteral("uuid"), uuid);
+	}
+}

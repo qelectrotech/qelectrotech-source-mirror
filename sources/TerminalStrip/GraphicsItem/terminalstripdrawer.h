@@ -37,6 +37,7 @@ namespace TerminalStripDrawer
 		QUuid uuid;
 		QString name;
 		QString wire;
+		int slot{-1};
 
 		QString key() const
 		{
@@ -110,6 +111,8 @@ namespace TerminalStripDrawer
 			//Cable (hose) connected to the terminal, drawn under the strip.
 			virtual QString cable() const { return QString(); }
 			virtual QString cableWire() const { return QString(); }
+			virtual QStringList cableCoreTargets(const QString &, const QUuid &,
+												 int) const { return {}; }
 			virtual QVector<CableConnection> cableConnections() const
 			{
 				const QString name = cable();

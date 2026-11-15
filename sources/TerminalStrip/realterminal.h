@@ -82,6 +82,9 @@ class RealTerminal
 		QString Xref() const;
 		QString cable() const;
 		QString cableWire() const;
+		QStringList cableCoreTargets(const QString &cable_name,
+									 const QUuid &cable_uuid = {},
+									 int slot = -1) const;
 		QVector<TerminalStripDrawer::CableConnection> cableConnections() const;
 		bool cableIsAutomatic() const;
 		bool isShield() const;

@@ -18,6 +18,7 @@
 #include "realisticterminalstripdrawer.h"
 #include "terminalstripdrawerhelpers.h"
 #include <TerminalStrip/terminalcatalog.h>
+#include <utils/qetsettings.h>
 
 #include <QFontMetricsF>
 #include <QHash>
@@ -744,6 +745,11 @@ QRectF boundingRect(const AbstractTerminalStripInterface *strip,
 		: 0};
 	QRectF rect{0, -extra_top_, width_mm_ * s_,
 				length_ + extra_bottom_ + extra_top_};
+	if (strip && pattern.m_cable_wire_length > 0
+		&& QetSettings::stripCableCoreTargetsShown()) {
+		rect = rect.united(Helpers::coreTargetBoxBounds(
+			cableCells(*strip, pattern), pattern));
+	}
 	if (strip && pattern.m_cable_wire_length > 0) {
 		rect = rect.united(Helpers::upperCableBounds(
 			cableCells(*strip, pattern, true), pattern, extra_top_));

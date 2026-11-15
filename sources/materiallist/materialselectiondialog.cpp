@@ -480,10 +480,11 @@ void MaterialSelectionDialog::updateCount()
 */
 void MaterialSelectionDialog::updateApplyButton()
 {
-	QPushButton *button = ui->m_button_box->button(QDialogButtonBox::Ok);
-	if (button) {
-		button->setEnabled(!selectedRecord().values.isEmpty());
+	const bool has_selection = !selectedRecord().values.isEmpty();
+	if (QPushButton *button = ui->m_button_box->button(QDialogButtonBox::Ok)) {
+		button->setEnabled(has_selection);
 	}
+	ui->m_edit_entry_btn->setEnabled(has_selection);
 }
 
 /**
@@ -502,23 +503,25 @@ void MaterialSelectionDialog::searchChanged(const QString &text)
 	@brief MaterialSelectionDialog::selectedRecord
 	@return the selected entry, a null one when nothing is selected
 */
-MaterialRecord MaterialSelectionDialog::selectedRecord() const
+int MaterialSelectionDialog::selectedSourceRow() const
 {
 	if (!m_proxy || !ui->m_table_view->selectionModel()) {
-		return MaterialRecord();
+		return -1;
 	}
 
 	const QModelIndexList rows = ui->m_table_view->selectionModel()->selectedRows();
 	if (rows.isEmpty()) {
-		return MaterialRecord();
+		return -1;
 	}
 
 	const QModelIndex source = m_proxy->mapToSource(rows.first());
-	if (!source.isValid()) {
-		return MaterialRecord();
-	}
+	return source.isValid() ? source.row() : -1;
+}
 
-	return m_model->record(source.row());
+MaterialRecord MaterialSelectionDialog::selectedRecord() const
+{
+	const int row = selectedSourceRow();
+	return row >= 0 ? m_model->record(row) : MaterialRecord();
 }
 
 /**
@@ -650,5 +653,48 @@ void MaterialSelectionDialog::on_m_new_entry_btn_clicked()
 	{
 		ui->m_search_edit->clear();
 		selectRecord(record);
+	}
+}
+
+/**
+	@brief MaterialSelectionDialog::on_m_edit_entry_btn_clicked
+	Open the entry form pre-filled with the selected article, update it in
+	the material file on accept, and re-select the updated row.
+*/
+void MaterialSelectionDialog::on_m_edit_entry_btn_clicked()
+{
+	const int source_row = selectedSourceRow();
+	if (source_row < 0) {
+		return;
+	}
+
+	const MaterialRecord original = m_model->record(source_row);
+	QStringList columns = m_data.columns;
+	if (columns.isEmpty()) {
+		columns = MaterialList::defaultColumns();
+	}
+
+	MaterialEntryDialog entry_dialog(columns, original, this);
+	if (entry_dialog.exec() != QDialog::Accepted) {
+		return;
+	}
+
+	const MaterialRecord updated = entry_dialog.record();
+	QString error;
+	if (!MaterialList::updateRecord(m_path, source_row, original, updated, &error))
+	{
+		QET::QetMessageBox::critical(this,
+									 tr("Cannot write"),
+									 tr("Cannot write to the file:\n%1\n%2")
+										.arg(m_path, error));
+		return;
+	}
+
+	reload();
+
+	if (!selectRecord(updated))
+	{
+		ui->m_search_edit->clear();
+		selectRecord(updated);
 	}
 }

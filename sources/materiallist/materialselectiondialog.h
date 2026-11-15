@@ -110,10 +110,12 @@ class MaterialSelectionDialog : public QDialog
 
 	private slots:
 		void on_m_new_entry_btn_clicked();
+		void on_m_edit_entry_btn_clicked();
 		void searchChanged(const QString &text);
 
 	private:
 		void reload();
+		int selectedSourceRow() const;
 		void restoreViewState();
 		void saveViewState();
 		void resetSorting();

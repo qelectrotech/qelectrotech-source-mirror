@@ -91,10 +91,9 @@ else()
   set(qet_test_timeout_scale 1)
 endif()
 math(EXPR qet_probe_ctest_timeout "300 * ${qet_test_timeout_scale}")
-# Each probe test below links its probe with ninja in this build folder,
-# and two ninja runs at once would write its log and dependency files
-# together. The lock runs the probes one at a time; the other tests run
-# beside them.
+# Each probe test below links its probe with ninja in this build folder.
+# ninja_probe.py locks that build step, so two ninja runs never share the
+# folder; the probes themselves run side by side, each in its own folder.
 find_package(Python3 QUIET COMPONENTS Interpreter)
 if(Python3_Interpreter_FOUND AND CMAKE_GENERATOR STREQUAL "Ninja")
   add_test(NAME tst_handlersizeintegration
@@ -102,14 +101,14 @@ if(Python3_Interpreter_FOUND AND CMAKE_GENERATOR STREQUAL "Ninja")
       --build ${CMAKE_BINARY_DIR} --binary $<TARGET_FILE:qelectrotech>
       --source ${CMAKE_CURRENT_SOURCE_DIR}/handle_size_probe.cpp
       --fixture ${CMAKE_CURRENT_SOURCE_DIR}/fixtures/unlinked_contact_label.qet)
-  set_tests_properties(tst_handlersizeintegration PROPERTIES TIMEOUT ${qet_probe_ctest_timeout} RESOURCE_LOCK qet_probe_ninja
+  set_tests_properties(tst_handlersizeintegration PROPERTIES TIMEOUT ${qet_probe_ctest_timeout}
     ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
   add_test(NAME tst_attachedplainpaste
     COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/run_attached_plain_paste_probe.py
       --build ${CMAKE_BINARY_DIR} --binary $<TARGET_FILE:qelectrotech>
       --source ${CMAKE_CURRENT_SOURCE_DIR}/attached_plain_paste_probe.cpp
       --fixture ${CMAKE_CURRENT_SOURCE_DIR}/fixtures/unlinked_contact_label.qet)
-  set_tests_properties(tst_attachedplainpaste PROPERTIES TIMEOUT ${qet_probe_ctest_timeout} RESOURCE_LOCK qet_probe_ninja
+  set_tests_properties(tst_attachedplainpaste PROPERTIES TIMEOUT ${qet_probe_ctest_timeout}
     ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
   # The probe opens and saves the whole industrial example: about 10 minutes
   # in a Debug build with GCC, and five to eight times as long with MSVC's
@@ -126,7 +125,7 @@ if(Python3_Interpreter_FOUND AND CMAKE_GENERATOR STREQUAL "Ninja")
       --source ${CMAKE_CURRENT_SOURCE_DIR}/lazy_folios_probe.cpp
       --fixture ${CMAKE_CURRENT_SOURCE_DIR}/../../examples/industrial.qet
       --timeout ${qet_lazyfolios_timeout})
-  set_tests_properties(tst_lazyfolios PROPERTIES TIMEOUT ${qet_lazyfolios_ctest_timeout} RESOURCE_LOCK qet_probe_ninja
+  set_tests_properties(tst_lazyfolios PROPERTIES TIMEOUT ${qet_lazyfolios_ctest_timeout}
     ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
   # Deleting a cable, undoing the delete twice and then editing anything
   # has both cable commands tearing down the same cable. Runs under the
@@ -136,7 +135,7 @@ if(Python3_Interpreter_FOUND AND CMAKE_GENERATOR STREQUAL "Ninja")
       --build ${CMAKE_BINARY_DIR} --binary $<TARGET_FILE:qelectrotech>
       --source ${CMAKE_CURRENT_SOURCE_DIR}/cable_undo_probe.cpp
       --fixture ${CMAKE_CURRENT_SOURCE_DIR}/fixtures/unlinked_contact_label.qet)
-  set_tests_properties(tst_cableundointegration PROPERTIES TIMEOUT ${qet_probe_ctest_timeout} RESOURCE_LOCK qet_probe_ninja
+  set_tests_properties(tst_cableundointegration PROPERTIES TIMEOUT ${qet_probe_ctest_timeout}
     ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
   # The folio-wide crosshair follows the mouse on the grid, on screen
   # only, and goes when the mouse leaves or the option is off.
@@ -145,7 +144,7 @@ if(Python3_Interpreter_FOUND AND CMAKE_GENERATOR STREQUAL "Ninja")
       --build ${CMAKE_BINARY_DIR} --binary $<TARGET_FILE:qelectrotech>
       --source ${CMAKE_CURRENT_SOURCE_DIR}/crosshair_probe.cpp
       --fixture ${CMAKE_CURRENT_SOURCE_DIR}/fixtures/unlinked_contact_label.qet)
-  set_tests_properties(tst_crosshairintegration PROPERTIES TIMEOUT ${qet_probe_ctest_timeout} RESOURCE_LOCK qet_probe_ninja
+  set_tests_properties(tst_crosshairintegration PROPERTIES TIMEOUT ${qet_probe_ctest_timeout}
     ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
   # The label of a terminal strip at its first terminal: it moves with it,
   # goes to a new first terminal, follows a rename; not saved.
@@ -154,7 +153,7 @@ if(Python3_Interpreter_FOUND AND CMAKE_GENERATOR STREQUAL "Ninja")
       --build ${CMAKE_BINARY_DIR} --binary $<TARGET_FILE:qelectrotech>
       --source ${CMAKE_CURRENT_SOURCE_DIR}/strip_label_probe.cpp
       --fixture ${CMAKE_CURRENT_SOURCE_DIR}/fixtures/strip_labels.qet)
-  set_tests_properties(tst_striplabelintegration PROPERTIES TIMEOUT ${qet_probe_ctest_timeout} RESOURCE_LOCK qet_probe_ninja
+  set_tests_properties(tst_striplabelintegration PROPERTIES TIMEOUT ${qet_probe_ctest_timeout}
     ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
   # The pointer: a four-way arrow over what a drag moves; with the
   # crosshair, drawn on its grid point in place of the system's.
@@ -163,7 +162,7 @@ if(Python3_Interpreter_FOUND AND CMAKE_GENERATOR STREQUAL "Ninja")
       --build ${CMAKE_BINARY_DIR} --binary $<TARGET_FILE:qelectrotech>
       --source ${CMAKE_CURRENT_SOURCE_DIR}/move_pointer_probe.cpp
       --fixture ${CMAKE_CURRENT_SOURCE_DIR}/fixtures/unlinked_contact_label.qet)
-  set_tests_properties(tst_movepointerintegration PROPERTIES TIMEOUT ${qet_probe_ctest_timeout} RESOURCE_LOCK qet_probe_ninja
+  set_tests_properties(tst_movepointerintegration PROPERTIES TIMEOUT ${qet_probe_ctest_timeout}
     ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
   # A linked folio report shows a pointing hand and jumps to its other
   # end on a double click, on the arrow and on its label text; the end
@@ -173,7 +172,7 @@ if(Python3_Interpreter_FOUND AND CMAKE_GENERATOR STREQUAL "Ninja")
       --build ${CMAKE_BINARY_DIR} --binary $<TARGET_FILE:qelectrotech>
       --source ${CMAKE_CURRENT_SOURCE_DIR}/report_jump_probe.cpp
       --fixture ${CMAKE_CURRENT_SOURCE_DIR}/fixtures/linked_reports.qet)
-  set_tests_properties(tst_reportjumpintegration PROPERTIES TIMEOUT ${qet_probe_ctest_timeout} RESOURCE_LOCK qet_probe_ninja
+  set_tests_properties(tst_reportjumpintegration PROPERTIES TIMEOUT ${qet_probe_ctest_timeout}
     ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
   # "Place symbol texts": label and notes as one block at one of nine
   # points beside the drawing, aligned to hang on it; one undo step.
@@ -182,7 +181,7 @@ if(Python3_Interpreter_FOUND AND CMAKE_GENERATOR STREQUAL "Ninja")
       --build ${CMAKE_BINARY_DIR} --binary $<TARGET_FILE:qelectrotech>
       --source ${CMAKE_CURRENT_SOURCE_DIR}/symbol_text_placement_probe.cpp
       --fixture ${CMAKE_CURRENT_SOURCE_DIR}/fixtures/unlinked_contact_label.qet)
-  set_tests_properties(tst_symboltextplacementintegration PROPERTIES TIMEOUT ${qet_probe_ctest_timeout} RESOURCE_LOCK qet_probe_ninja
+  set_tests_properties(tst_symboltextplacementintegration PROPERTIES TIMEOUT ${qet_probe_ctest_timeout}
     ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
   # The outline and the click area of a fixed-width text are the lines
   # written, not the whole box.
@@ -191,7 +190,7 @@ if(Python3_Interpreter_FOUND AND CMAKE_GENERATOR STREQUAL "Ninja")
       --build ${CMAKE_BINARY_DIR} --binary $<TARGET_FILE:qelectrotech>
       --source ${CMAKE_CURRENT_SOURCE_DIR}/text_outline_probe.cpp
       --fixture ${CMAKE_CURRENT_SOURCE_DIR}/fixtures/unlinked_contact_label.qet)
-  set_tests_properties(tst_textoutlineintegration PROPERTIES TIMEOUT ${qet_probe_ctest_timeout} RESOURCE_LOCK qet_probe_ninja
+  set_tests_properties(tst_textoutlineintegration PROPERTIES TIMEOUT ${qet_probe_ctest_timeout}
     ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
   # A group of symbol texts keeps the point it is aligned on when a text
   # grows: the right edge when aligned right, the middle when centred.
@@ -200,7 +199,7 @@ if(Python3_Interpreter_FOUND AND CMAKE_GENERATOR STREQUAL "Ninja")
       --build ${CMAKE_BINARY_DIR} --binary $<TARGET_FILE:qelectrotech>
       --source ${CMAKE_CURRENT_SOURCE_DIR}/text_group_anchor_probe.cpp
       --fixture ${CMAKE_CURRENT_SOURCE_DIR}/fixtures/unlinked_contact_label.qet)
-  set_tests_properties(tst_textgroupanchorintegration PROPERTIES TIMEOUT ${qet_probe_ctest_timeout} RESOURCE_LOCK qet_probe_ninja
+  set_tests_properties(tst_textgroupanchorintegration PROPERTIES TIMEOUT ${qet_probe_ctest_timeout}
     ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
   # Width and height of a symbol's text, each fixed or not: a fixed
   # height cuts off the lines that do not fit; saved and undone.
@@ -209,7 +208,7 @@ if(Python3_Interpreter_FOUND AND CMAKE_GENERATOR STREQUAL "Ninja")
       --build ${CMAKE_BINARY_DIR} --binary $<TARGET_FILE:qelectrotech>
       --source ${CMAKE_CURRENT_SOURCE_DIR}/text_fixed_size_probe.cpp
       --fixture ${CMAKE_CURRENT_SOURCE_DIR}/fixtures/unlinked_contact_label.qet)
-  set_tests_properties(tst_textfixedsizeintegration PROPERTIES TIMEOUT ${qet_probe_ctest_timeout} RESOURCE_LOCK qet_probe_ninja
+  set_tests_properties(tst_textfixedsizeintegration PROPERTIES TIMEOUT ${qet_probe_ctest_timeout}
     ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
   # Automatic connections kept up to date: wires removed and found again
   # as terminals move out of and back into line, interruption points,
@@ -219,7 +218,7 @@ if(Python3_Interpreter_FOUND AND CMAKE_GENERATOR STREQUAL "Ninja")
       --build ${CMAKE_BINARY_DIR} --binary $<TARGET_FILE:qelectrotech>
       --source ${CMAKE_CURRENT_SOURCE_DIR}/auto_connect_probe.cpp
       --fixture ${CMAKE_CURRENT_SOURCE_DIR}/fixtures/auto_connect.qet)
-  set_tests_properties(tst_autoconnectintegration PROPERTIES TIMEOUT ${qet_probe_ctest_timeout} RESOURCE_LOCK qet_probe_ninja
+  set_tests_properties(tst_autoconnectintegration PROPERTIES TIMEOUT ${qet_probe_ctest_timeout}
     ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
   # Corners, T-junctions and folio reports placed along a drag, one on
   # each line it crosses, joined automatically, in one undo step.
@@ -228,7 +227,7 @@ if(Python3_Interpreter_FOUND AND CMAKE_GENERATOR STREQUAL "Ninja")
       --build ${CMAKE_BINARY_DIR} --binary $<TARGET_FILE:qelectrotech>
       --source ${CMAKE_CURRENT_SOURCE_DIR}/auto_connect_drag_probe.cpp
       --fixture ${CMAKE_CURRENT_SOURCE_DIR}/fixtures/auto_connect_drag.qet)
-  set_tests_properties(tst_autoconnectdragintegration PROPERTIES TIMEOUT ${qet_probe_ctest_timeout} RESOURCE_LOCK qet_probe_ninja
+  set_tests_properties(tst_autoconnectdragintegration PROPERTIES TIMEOUT ${qet_probe_ctest_timeout}
     ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
   # A drawing aid (an interruption point): light grey on screen, never
   # printed nor exported, hidden with View > Show, no label of its own.
@@ -237,7 +236,7 @@ if(Python3_Interpreter_FOUND AND CMAKE_GENERATOR STREQUAL "Ninja")
       --build ${CMAKE_BINARY_DIR} --binary $<TARGET_FILE:qelectrotech>
       --source ${CMAKE_CURRENT_SOURCE_DIR}/drawing_aid_probe.cpp
       --fixture ${CMAKE_CURRENT_SOURCE_DIR}/fixtures/auto_connect.qet)
-  set_tests_properties(tst_drawingaidintegration PROPERTIES TIMEOUT ${qet_probe_ctest_timeout} RESOURCE_LOCK qet_probe_ninja
+  set_tests_properties(tst_drawingaidintegration PROPERTIES TIMEOUT ${qet_probe_ctest_timeout}
     ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
 endif()
 if(Python3_Interpreter_FOUND AND CMAKE_GENERATOR STREQUAL "Ninja")
@@ -246,7 +245,7 @@ if(Python3_Interpreter_FOUND AND CMAKE_GENERATOR STREQUAL "Ninja")
       --build ${CMAKE_BINARY_DIR} --binary $<TARGET_FILE:qelectrotech>
       --source ${CMAKE_CURRENT_SOURCE_DIR}/image_dark_integration_probe.cpp
       --fixture ${CMAKE_CURRENT_SOURCE_DIR}/fixtures/unlinked_contact_label.qet)
-  set_tests_properties(tst_darkimageintegration PROPERTIES TIMEOUT ${qet_probe_ctest_timeout} RESOURCE_LOCK qet_probe_ninja
+  set_tests_properties(tst_darkimageintegration PROPERTIES TIMEOUT ${qet_probe_ctest_timeout}
     ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
   # A dark custom sheet shows the lines light, or yellow symbols and red
   # conductors; printing and exporting stay black on white.
@@ -255,7 +254,7 @@ if(Python3_Interpreter_FOUND AND CMAKE_GENERATOR STREQUAL "Ninja")
       --build ${CMAKE_BINARY_DIR} --binary $<TARGET_FILE:qelectrotech>
       --source ${CMAKE_CURRENT_SOURCE_DIR}/sheet_ink_probe.cpp
       --fixture ${CMAKE_CURRENT_SOURCE_DIR}/fixtures/coil_contact_wired.qet)
-  set_tests_properties(tst_sheetinkintegration PROPERTIES TIMEOUT ${qet_probe_ctest_timeout} RESOURCE_LOCK qet_probe_ninja
+  set_tests_properties(tst_sheetinkintegration PROPERTIES TIMEOUT ${qet_probe_ctest_timeout}
     ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
   # Dragging the left width handle of a symbol's text keeps its right
   # edge in place, the right handle its left edge; undo restores both.
@@ -264,7 +263,7 @@ if(Python3_Interpreter_FOUND AND CMAKE_GENERATOR STREQUAL "Ninja")
       --build ${CMAKE_BINARY_DIR} --binary $<TARGET_FILE:qelectrotech>
       --source ${CMAKE_CURRENT_SOURCE_DIR}/element_text_resize_probe.cpp
       --fixture ${CMAKE_CURRENT_SOURCE_DIR}/fixtures/unlinked_contact_label.qet)
-  set_tests_properties(tst_elementtextresizeintegration PROPERTIES TIMEOUT ${qet_probe_ctest_timeout} RESOURCE_LOCK qet_probe_ninja
+  set_tests_properties(tst_elementtextresizeintegration PROPERTIES TIMEOUT ${qet_probe_ctest_timeout}
     ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
   # The Sheet tab gives its free height to the title block widget and
   # the Template row keeps its own height -- on both pages, so a widget
@@ -274,7 +273,7 @@ if(Python3_Interpreter_FOUND AND CMAKE_GENERATOR STREQUAL "Ninja")
       --build ${CMAKE_BINARY_DIR} --binary $<TARGET_FILE:qelectrotech>
       --source ${CMAKE_CURRENT_SOURCE_DIR}/sheet_tab_layout_probe.cpp
       --fixture ${CMAKE_CURRENT_SOURCE_DIR}/fixtures/unlinked_contact_label.qet)
-  set_tests_properties(tst_sheettablayout PROPERTIES TIMEOUT ${qet_probe_ctest_timeout} RESOURCE_LOCK qet_probe_ninja
+  set_tests_properties(tst_sheettablayout PROPERTIES TIMEOUT ${qet_probe_ctest_timeout}
     ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
 endif()
 
@@ -425,6 +424,12 @@ add_test(NAME tst_terminalnamecheck COMMAND tst_terminalnamecheck)
 target_include_directories(tst_terminalnamecheck PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_terminalnamecheck PRIVATE Qt::Test)
 
+# symbolgridcheck.h is header-only: the grid rule of --check-elements --grid.
+add_executable(tst_symbolgridcheck tst_symbolgridcheck.cpp)
+add_test(NAME tst_symbolgridcheck COMMAND tst_symbolgridcheck)
+target_include_directories(tst_symbolgridcheck PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_symbolgridcheck PRIVATE Qt::Test)
+
 # symbolscale.h is header-only: which factors the element editor offers
 # for scaling an element without taking its terminals off the grid.
 add_executable(tst_symbolscale tst_symbolscale.cpp)
@@ -532,6 +537,30 @@ qet_add_app_test(tst_renumberwires tst_renumberwires.cpp)
 qet_add_app_test(tst_macrolabels tst_macrolabels.cpp)
 # qet_plc_io: one row per PLC I/O entry, with the slave linked to it.
 qet_add_app_test(tst_plcio tst_plcio.cpp)
+# Device types: parts and their ways to be drawn, kept by .qet, .qetdb and
+# the user's library of .qetdt files.
+qet_add_app_test(tst_devicetype tst_devicetype.cpp)
+# Is a device drawn the way its type says: parts not drawn, symbols beyond.
+qet_add_app_test(tst_devicetypecheck tst_devicetypecheck.cpp)
+# Project > Device types: the list of types and the editor of one
+qet_add_app_test(tst_devicetypeeditor tst_devicetypeeditor.cpp)
+# A contact linked to a device with a type takes a free part of the type
+qet_add_app_test(tst_devicetypelink tst_devicetypelink.cpp)
+# Asking which device type a master placed is
+qet_add_app_test(tst_devicetypechooser tst_devicetypechooser.cpp)
+# Giving a device another device type, its contacts carried over
+qet_add_app_test(tst_devicetypechange tst_devicetypechange.cpp)
+# The device types listed, full and brief; contacts without their device
+qet_add_app_test(tst_devicetypelist tst_devicetypelist.cpp)
+# Giving a placed symbol the terminals of a part of its device type.
+qet_add_app_test(tst_devicetypeassign tst_devicetypeassign.cpp)
+# Part data: unit price, labour time and size, kept by .qet and .qetdb,
+# columns of the parts list; every field the export offers is a column.
+qet_add_app_test(tst_partdata tst_partdata.cpp)
+# Axis lock and original position snap during paste placement.
+qet_add_app_test(tst_pasteaxislock tst_pasteaxislock.cpp)
+# Editing an existing entry in the materials list dialog.
+qet_add_app_test(tst_materiallistedit tst_materiallistedit.cpp)
 # A read-only project builds its lazy folios whole: shown, exported, written out.
 qet_add_app_test(tst_readonlyfolios tst_readonlyfolios.cpp)
 target_compile_definitions(tst_readonlyfolios PRIVATE
@@ -593,6 +622,10 @@ target_compile_definitions(tst_reopenprojects PRIVATE
 # be filled while its texts are being deleted -- which took the whole
 # application down with a real drawing.
 qet_add_app_test(tst_symbolteardown tst_symbolteardown.cpp)
+
+# A symbol which cannot be built leaves no dangling pending element
+# behind in the placing tool, and a symbol goes down without warnings.
+qet_add_app_test(tst_brokenelementplacement tst_brokenelementplacement.cpp)
 
 qet_add_app_test(tst_rotateselectionimage tst_rotateselectionimage.cpp)
 
@@ -679,6 +712,9 @@ qet_add_app_test(tst_touchingconductor tst_touchingconductor.cpp)
 # bounding rect covers the drawing, not only the frame.
 qet_add_app_test(tst_symboloutsideframe tst_symboloutsideframe.cpp)
 qet_add_app_test(tst_updateelements tst_updateelements.cpp)
+# Update elements from the collections, with the setting on: a symbol whose
+# insertion point moved is moved back, its terminals and conductors kept.
+qet_add_app_test(tst_updatefollowsorigin tst_updatefollowsorigin.cpp)
 # Editing a placed element: redrawn on save; optionally found and edited
 # in the collection it was taken from, which updates the open projects.
 qet_add_app_test(tst_editcollectionsource tst_editcollectionsource.cpp)
@@ -708,6 +744,11 @@ qet_add_app_test(tst_terminalcolor tst_terminalcolor.cpp)
 qet_add_app_test(tst_selectionframeradius tst_selectionframeradius.cpp)
 # Selected symbols framed clearly in the highlight colour, a setting.
 qet_add_app_test(tst_strongselection tst_strongselection.cpp)
+# Ctrl drag copies, Duplicate on the mouse: two settings, off by default.
+qet_add_app_test(tst_ctrldragcopy tst_ctrldragcopy.cpp)
+# Text grid, "Snap the middle of the text": the middle of a dragged text on
+# the grid instead of the corner of its frame; off by default.
+qet_add_app_test(tst_textgridmiddle tst_textgridmiddle.cpp)
 
 # The element editor's collections dock: an element dropped on the drawing
 # pastes its parts, centred on the drop and on the grid; double-clicked, the
@@ -795,6 +836,11 @@ qet_add_app_test(tst_wiredoubleclick tst_wiredoubleclick.cpp)
 
 # Copying a cable leaves the cable it was copied from whole.
 qet_add_app_test(tst_cablecopy tst_cablecopy.cpp)
+
+# The default font of one text of a cable, each of the five having one of its
+# own on the "Texte" page; what an installation picked before they were set
+# apart still reaches all five.
+qet_add_app_test(tst_cabletextfont tst_cabletextfont.cpp)
 
 # Adding a list table is one undo step.
 qet_add_app_test(tst_tableundo tst_tableundo.cpp)
@@ -2407,6 +2453,9 @@ qet_add_app_test(tst_potentialview tst_potentialview.cpp)
 # A core of a cable: section, colour and type are locked in the dialog and
 # show a small sign saying why, so an edit cannot write over the cable
 qet_add_app_test(tst_cablelockedfields tst_cablelockedfields.cpp)
+# IEC 60757 wire colour codes: a code picked from the list sets the colour
+# text and the drawing (green-yellow striped); typed text stays text.
+qet_add_app_test(tst_conductorcolorcodes tst_conductorcolorcodes.cpp)
 
 # Settings for every test. get_property(... TESTS) only sees the tests added
 # so far, so they wait for the end of this file: a test takes them wherever
@@ -2523,3 +2572,8 @@ endif()
 # The title block recorded for the screen shows what is drawn, and a change
 # of the folio's data reaches the screen
 qet_add_app_test(tst_titleblockcache tst_titleblockcache.cpp)
+# A properties dialog given its own key remembers its size apart from the
+# others of its editor (a PLC master's element dialog opens much wider)
+qet_add_app_test(tst_propertieseditordialog tst_propertieseditordialog.cpp)
+# A list table reopens at the width it was saved with
+qet_add_app_test(tst_tablereopen tst_tablereopen.cpp)
