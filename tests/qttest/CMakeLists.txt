@@ -559,6 +559,8 @@ qet_add_app_test(tst_devicetypeassign tst_devicetypeassign.cpp)
 qet_add_app_test(tst_partdata tst_partdata.cpp)
 # Axis lock and original position snap during paste placement.
 qet_add_app_test(tst_pasteaxislock tst_pasteaxislock.cpp)
+# Editing an existing entry in the materials list dialog.
+qet_add_app_test(tst_materiallistedit tst_materiallistedit.cpp)
 # A read-only project builds its lazy folios whole: shown, exported, written out.
 qet_add_app_test(tst_readonlyfolios tst_readonlyfolios.cpp)
 target_compile_definitions(tst_readonlyfolios PRIVATE
