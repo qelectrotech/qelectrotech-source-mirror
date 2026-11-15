@@ -917,7 +917,7 @@ void MaterialSelectionDialog::exportRecordsToCsv(const QList<MaterialRecord> &re
 		: QFileInfo(m_path).absolutePath();
 	const QString dest_path = QFileDialog::getSaveFileName(
 		this,
-		tr("Export Materials List"),
+		tr("Export Materials List (%n item(s) selected for export)", "", records.size()),
 		default_dir + QStringLiteral("/materials_export.csv"),
 		tr("CSV files (*.csv);;All files (*)"));
 	if (dest_path.isEmpty()) {
@@ -947,13 +947,14 @@ void MaterialSelectionDialog::exportRecordsToCsv(const QList<MaterialRecord> &re
 void MaterialSelectionDialog::on_m_export_btn_clicked()
 {
 	const QList<MaterialRecord> selected_records = selectedRecordsForExport();
+	if (!selected_records.isEmpty()) {
+		exportRecordsToCsv(selected_records);
+		return;
+	}
+
 	const QList<MaterialRecord> visible_records = visibleRecordsForExport();
 
 	QMenu menu(this);
-	QAction *export_selected = menu.addAction(
-		tr("Export Selected (%1)...").arg(selected_records.size()));
-	export_selected->setEnabled(!selected_records.isEmpty());
-
 	QAction *export_visible = menu.addAction(
 		tr("Export Visible (%1)...").arg(visible_records.size()));
 	export_visible->setEnabled(!visible_records.isEmpty());
@@ -967,9 +968,7 @@ void MaterialSelectionDialog::on_m_export_btn_clicked()
 	if (!chosen) {
 		return;
 	}
-	if (chosen == export_selected) {
-		exportRecordsToCsv(selected_records);
-	} else if (chosen == export_visible) {
+	if (chosen == export_visible) {
 		exportRecordsToCsv(visible_records);
 	} else if (chosen == export_all) {
 		exportRecordsToCsv(m_data.records);
