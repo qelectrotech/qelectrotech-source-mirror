@@ -39,6 +39,7 @@
 #include <QMimeData>
 #include <QPlainTextEdit>
 #include <QPushButton>
+#include <QScrollBar>
 #include <QSet>
 #include <QShortcut>
 #include <QStyledItemDelegate>
@@ -331,6 +332,18 @@ void MaterialSelectionDialog::populateFilterValues(const QString &keep_value)
 void MaterialSelectionDialog::rebuildTree()
 {
 	const QSignalBlocker blocker(ui->m_tree_widget);
+
+	QSet<QString> expanded_groups;
+	for (int i = 0; i < ui->m_tree_widget->topLevelItemCount(); ++i) {
+		QTreeWidgetItem *top = ui->m_tree_widget->topLevelItem(i);
+		if (top && top->data(0, SourceRowRole).toInt() < 0 && top->isExpanded()) {
+			expanded_groups.insert(top->text(0));
+		}
+	}
+	const int scroll_value = ui->m_tree_widget->verticalScrollBar()
+		? ui->m_tree_widget->verticalScrollBar()->value()
+		: 0;
+
 	ui->m_tree_widget->clear();
 
 	const QStringList tokens = ui->m_search_edit->text()
@@ -419,7 +432,18 @@ void MaterialSelectionDialog::rebuildTree()
 
 		if (!tokens.isEmpty() || !filter_val.isEmpty() || group_names.size() <= 3) {
 			ui->m_tree_widget->expandAll();
+		} else if (!expanded_groups.isEmpty()) {
+			for (int i = 0; i < ui->m_tree_widget->topLevelItemCount(); ++i) {
+				QTreeWidgetItem *top = ui->m_tree_widget->topLevelItem(i);
+				if (top && expanded_groups.contains(top->text(0))) {
+					top->setExpanded(true);
+				}
+			}
 		}
+	}
+
+	if (QScrollBar *vbar = ui->m_tree_widget->verticalScrollBar()) {
+		vbar->setValue(scroll_value);
 	}
 
 	updateCount(visible_count);
