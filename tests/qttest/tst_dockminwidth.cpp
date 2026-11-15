@@ -448,6 +448,41 @@ class tst_dockminwidth : public QObject
 			editor->removeDockWidget(dock);
 			delete dock;
 		}
+
+		/**
+			Qt shows a check box added to a page already on screen a
+			moment after it is added. One polished before then, as asking
+			it for its size hint does, gets its text put beside it
+			meanwhile: it is still shown, with its text.
+		*/
+		void checkBoxAddedToShownPageIsShown()
+		{
+			QETDiagramEditor *editor = QetAppTest::editor();
+			const QString long_text = QStringLiteral("A text far too long to stand on one line of a narrow panel");
+			auto *dock = new QDockWidget(QStringLiteral("Test"), editor);
+			auto *page = new QWidget(dock);
+			auto *page_layout = new QVBoxLayout(page);
+			dock->setWidget(page);
+			editor->addDockWidget(Qt::RightDockWidgetArea, dock);
+			dock->show();
+			QTest::qWait(100);
+
+			auto *box = new QCheckBox(long_text, page);
+			page_layout->addWidget(box);
+			QVERIFY(box->isHidden());
+			box->sizeHint();
+			QVERIFY(box->text().isEmpty());
+			QLabel *box_text = nullptr;
+			for (QLabel *l : page->findChildren<QLabel *>())
+				if (l->buddy() == box)
+					box_text = l;
+			QVERIFY(box_text);
+			QTRY_VERIFY(box->isVisible());
+			QVERIFY(box_text->isVisible());
+
+			editor->removeDockWidget(dock);
+			delete dock;
+		}
 };
 
 static void narrowDocks()

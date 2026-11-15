@@ -43,6 +43,15 @@
 namespace {
 	const char *const handled = "qetDockFitHandled";
 
+	/// @return true when @a widget was hidden on purpose. A widget that
+	/// waits for Qt to show it, as one just added to a page on screen,
+	/// is hidden too, but not on purpose
+	bool hiddenOnPurpose(const QWidget *widget)
+	{
+		return widget->isHidden()
+		    && widget->testAttribute(Qt::WA_WState_ExplicitShowHide);
+	}
+
 	/**
 		The text of a check box or a radio button set beside it, so that it
 		can wrap; a click on it toggles the button, as on its own text.
@@ -58,7 +67,7 @@ namespace {
 				setToolTip(button->toolTip());
 				setStatusTip(button->statusTip());
 				setEnabled(button->isEnabled());
-				setVisible(!button->isHidden());
+				setVisible(!hiddenOnPurpose(button));
 				button->installEventFilter(this);
 			}
 				/// The text of a button set later, with setText(), comes
@@ -129,7 +138,7 @@ namespace {
 		if (!layout || !holds(layout, button))
 			return;
 
-		const bool hidden = button->isHidden();
+		const bool hidden = hiddenOnPurpose(button);
 		auto *row = new QWidget(button->parentWidget());
 		auto *row_layout = new QHBoxLayout(row);
 		row_layout->setContentsMargins(0, 0, 0, 0);
