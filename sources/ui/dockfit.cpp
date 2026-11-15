@@ -40,6 +40,8 @@
 #include <QTabWidget>
 #include <QTreeView>
 
+#include <memory>
+
 namespace {
 	const char *const handled = "qetDockFitHandled";
 
@@ -137,11 +139,14 @@ namespace {
 			//The layout may be measuring the button right now, from the
 			//item it is replaced with: a button not yet polished is
 			//polished from its sizeHint(). That item is deleted once the
-			//measure is over, unless the button goes first: deleting the
-			//item would then read the deleted button
-		QLayoutItem *item = layout->replaceWidget(button, row);
-		QMetaObject::invokeMethod(button, [item] { delete item; },
-					  Qt::QueuedConnection);
+			//measure is over: the lambda keeps it in a unique_ptr, which
+			//deletes it when the call runs, or when Qt drops the call
+			//because the button was destroyed first
+		std::unique_ptr<QLayoutItem> item(
+			layout->replaceWidget(button, row));
+		QMetaObject::invokeMethod(button,
+			[item = std::move(item)]() mutable { item.reset(); },
+			Qt::QueuedConnection);
 		button->setText(QString());
 		button->setParent(row);
 		row_layout->addWidget(button, 0, Qt::AlignTop);
