@@ -514,6 +514,7 @@ void MaterialSelectionDialog::setEditMode(EditMode mode)
 	const bool editing = (mode != EditMode::View);
 
 	ui->m_edit_bar->setVisible(editing);
+	ui->m_button_box->setVisible(!editing);
 	if (mode == EditMode::New) {
 		ui->m_edit_mode_label->setText(tr("New entry"));
 	} else if (mode == EditMode::Edit) {

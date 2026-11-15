@@ -22,6 +22,7 @@
 #include <QApplication>
 #include <QClipboard>
 #include <QComboBox>
+#include <QDialogButtonBox>
 #include <QLineEdit>
 #include <QMimeData>
 #include <QPushButton>
@@ -277,14 +278,17 @@ void tst_materiallistedit::testInlineNewAndEditEntry()
 	auto *new_btn = dialog.findChild<QPushButton *>(QStringLiteral("m_new_entry_btn"));
 	auto *edit_btn = dialog.findChild<QPushButton *>(QStringLiteral("m_edit_entry_btn"));
 	auto *save_btn = dialog.findChild<QPushButton *>(QStringLiteral("m_save_entry_btn"));
-	QVERIFY(tree && details && new_btn && edit_btn && save_btn);
+	auto *button_box = dialog.findChild<QDialogButtonBox *>(QStringLiteral("m_button_box"));
+	QVERIFY(tree && details && new_btn && edit_btn && save_btn && button_box);
 
 	// Select existing item and edit it inline on the right
 	QTreeWidgetItem *child = tree->topLevelItem(0)->child(0);
 	tree->setCurrentItem(child);
 	QVERIFY(edit_btn->isEnabled());
+	QVERIFY(!button_box->isHidden());
 	QCOMPARE(details->columnCount(), 2);
 	edit_btn->click();
+	QVERIFY(button_box->isHidden());
 	QCOMPARE(details->columnCount(), 3);
 	QVERIFY(qobject_cast<QToolButton *>(details->cellWidget(1, 2)) != nullptr);
 
@@ -299,6 +303,7 @@ void tst_materiallistedit::testInlineNewAndEditEntry()
 	QVERIFY(price_row >= 0);
 	details->item(price_row, 1)->setText(QStringLiteral("12.50"));
 	save_btn->click();
+	QVERIFY(!button_box->isHidden());
 	QCOMPARE(details->columnCount(), 2);
 
 	QCOMPARE(dialog.selectedRecord().value(QStringLiteral("description")),
