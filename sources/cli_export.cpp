@@ -772,8 +772,9 @@ int exportWiring(QETProject &project, const QString &output)
 		//Said rather than left out: those rows end at the junction, which
 		//is what the export would otherwise not tell anyone about
 	if (unassigned_junctions > 0)
-		out << unassigned_junctions << " junction(s) have no source connection set, "
-			   "so their rows still end at the junction.\n";
+		out << unassigned_junctions << " junction(s) have rows that still "
+			   "end at a junction: no source connection set, or no way on "
+			   "to follow.\n";
 	return 0;
 }
 

@@ -105,8 +105,8 @@ WiringListDialog::WiringListDialog(QETProject *project, QWidget *parent) :
 			//Those rows end at the junction, because nothing says which
 			//way the wire runs through it: said rather than listed as if
 			//the way through were known (#1500)
-		said << tr("%n junction(s) have no source connection set, so their rows "
-			   "still end at the junction.",
+		said << tr("%n junction(s) have rows that still end at a junction: "
+			   "no source connection set, or no way on to follow.",
 			   "wiring list junction warning", unassigned_junctions);
 	}
 	summary->setText(said.join(QLatin1Char(' ')));

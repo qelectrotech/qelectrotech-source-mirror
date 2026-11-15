@@ -4,7 +4,7 @@
 
 	QElectroTech is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
-	the Free Software Foundation, either version 3 of the License, or
+	the Free Software Foundation, either version 2 of the License, or
 	(at your option) any later version.
 
 	QElectroTech is distributed in the hope that it will be useful,
@@ -492,6 +492,7 @@ private slots:
 	void aCornerWithoutARoleIsPassedOn();
 	void aJunctionWithOneWayOnIsPassedOn();
 	void aCornerFollowedByATKeepsEveryRow();
+	void aWireThatLeadsNowhereKeepsItsRow();
 	void aCornerWithItsRolesInTheOldBlockIsFollowed();
 	void aCornerWithASourceItDoesNotHaveIsFollowed();
 };
@@ -1194,6 +1195,80 @@ void tst_junctionchain::aCornerWithASourceItDoesNotHaveIsFollowed()
 	QCOMPARE(database.size(), 1);
 	QCOMPARE(database.first().from_element_label, QStringLiteral("-X1:1"));
 	QCOMPARE(database.first().to_element_label, QStringLiteral("7"));
+}
+
+
+/**
+ * The run of a wire ends where it ends: a wire hanging on the same
+ * connection as the run, and leading into a junction nothing can be told
+ * apart about, is not part of that run -- and it keeps its own row all the
+ * same. Dropping it because the walk passed over it would take a wire out
+ * of both lists without ever having written it, while the summary claims
+ * its row is still there (#1500).
+ */
+void tst_junctionchain::aWireThatLeadsNowhereKeepsItsRow()
+{
+	QVERIFY(define(QStringLiteral("open_junction"), junctionDefinition(false)));
+
+		//J: source wired to a terminal, target 1 carrying two wires --
+		//one on to a device, one on to J2, which is a junction nothing was
+		//ever set on and which has three wires, so there is a choice to be
+		//made there and the walk stops
+	Element *junction = place(QStringLiteral("chain_junction"), QString(),
+				  QPointF(400, 200));
+	Element *ambiguous = place(QStringLiteral("open_junction"), QString(),
+				   QPointF(600, 400));
+	Element *terminal = place(QStringLiteral("clamp"), QStringLiteral("-X1:1"),
+				   QPointF(100, 100));
+	Element *device = place(QStringLiteral("device"), QStringLiteral("7"),
+				QPointF(200, 600));
+	Element *left = place(QStringLiteral("device"), QStringLiteral("8"),
+			      QPointF(700, 200));
+	Element *right = place(QStringLiteral("device"), QStringLiteral("9"),
+			       QPointF(700, 600));
+	QVERIFY(junction && ambiguous && terminal && device && left && right);
+
+	QVERIFY(wire(connection(terminal), connection(junction, sourceUuid())));
+	QVERIFY(wire(connection(junction, firstTargetUuid()), connection(device)));
+	Conductor *dead_end = wire(connection(junction, firstTargetUuid()),
+				   connection(ambiguous, sourceUuid()));
+	QVERIFY(dead_end);
+	QVERIFY(wire(connection(ambiguous, firstTargetUuid()), connection(left)));
+	QVERIFY(wire(connection(ambiguous, secondTargetUuid()), connection(right)));
+
+	QString error;
+	int database_unassigned = 0;
+	const QVector<WiringListRow> database =
+		wiringListRows(m_project, &database_unassigned, &error);
+	QVERIFY2(error.isEmpty(), qPrintable(error));
+
+		//Four rows: the run from the terminal on to the device 7, the
+		//wire which leads nowhere and keeps its own row, and the two
+		//wires of the ambiguous junction (#1500)
+	QCOMPARE(database.size(), 4);
+
+		//The wire into the ambiguous junction is still listed, with both
+		//of its ends where it was drawn
+	const QString dead_end_uuid = dead_end->uuid().toString();
+	bool still_listed = false;
+	for (const WiringListRow &row : database)
+	{
+		if (row.conductor_uuid != dead_end_uuid) continue;
+		still_listed = true;
+		QCOMPARE(row.from_element_uuid, junction->uuid().toString());
+		QCOMPARE(row.to_element_uuid, ambiguous->uuid().toString());
+	}
+	QVERIFY2(still_listed, "the wire which leads nowhere was dropped from the list");
+
+		//Both junctions still have rows ending at them, and the summary
+		//says so
+	QCOMPARE(database_unassigned, 2);
+
+	int csv_unassigned = 0;
+	const WiringListExport exporter(m_project);
+	const QString csv = exporter.toCsvString(&csv_unassigned);
+	QCOMPARE(csv_unassigned, 2);
+	QCOMPARE(csv.split(QLatin1Char('\n'), Qt::SkipEmptyParts).size(), 5);
 }
 
 QET_APP_TEST_MAIN(tst_junctionchain)

@@ -363,8 +363,9 @@ void WiringListExport::toCsv()
             //Said rather than left out: those rows end at the junction,
             //which is what the export would otherwise not tell anyone about
         message += QLatin1Char('\n') + tr(
-            "Note: %n junction(s) have no source connection set, so their "
-            "rows still end at the junction.", nullptr, unassigned_junctions);
+            "Note: %n junction(s) have rows that still end at a junction: "
+            "no source connection set, or no way on to follow.",
+            nullptr, unassigned_junctions);
     }
     QMessageBox::information(m_parent, tr("Export successful"), message);
 }
@@ -681,11 +682,12 @@ void WiringListExport::resolveJunctionRuns(QList<ConductorData> &conductors,
 
         for (const int wire : on_connection.value(here))
         {
-            walked.append(wire);
             const auto far = farEnd(wire, element_uuid, terminal_uuid);
             const ElementInfo &reached = elementsInfo.value(far.first);
             if (!reached.isJunction) {
-                    //A real piece: this is where the run ends
+                    //A real piece: this is where the run ends, so this wire
+                    //belongs to the row written for it (#1500)
+                walked.append(wire);
                 stops.append(Stop{far.first, far.second, wire});
                 continue;
             }
@@ -711,11 +713,23 @@ void WiringListExport::resolveJunctionRuns(QList<ConductorData> &conductors,
                 next = junctionPassThrough(other);
             }
             if (next.isEmpty()) {
-                    //More than one way on, or none at all: the run ends
-                    //here and is counted rather than guessed (#1500)
+                    //More than one way on, or none at all: this wire leads
+                    //nowhere, so it keeps its own row -- it is not marked
+                    //as written (#1500)
                 continue;
             }
-            stops += walk(far.first, next, passed, walked);
+                //Walk on with a wire list of its own: a way which turns out
+                //to lead nowhere may not mark anything as written either,
+                //or the wire at its end would be dropped from the list
+                //without ever having been written (#1500)
+            QList<int> walked_here;
+            const QList<Stop> further = walk(far.first, next, passed, walked_here);
+            if (further.isEmpty()) {
+                continue;
+            }
+            walked.append(wire);
+            walked += walked_here;
+            stops += further;
         }
         return stops;
     };
@@ -770,9 +784,8 @@ void WiringListExport::resolveJunctionRuns(QList<ConductorData> &conductors,
                     //than listed as if the way through were known. One
                     //nothing was ever wired to has no row to get wrong and
                     //counts for nothing (#1500)
-                if (unassigned_junctions && wired.contains(it.key())) {
-                    ++(*unassigned_junctions);
-                }
+                //Whether that is said out loud is worked out below, for
+                //every junction at once (#1500)
                 continue;
             }
             chain_connections = wired_connections;
@@ -891,6 +904,32 @@ void WiringListExport::resolveJunctionRuns(QList<ConductorData> &conductors,
                 row.folio_index = std::min(from_wire.folio_index, to_wire.folio_index);
                 added.append(row);
             }
+        }
+    }
+
+        //Every junction whose rows still end at it, said out loud rather
+        //than left as if the way through had been found: nothing was
+        //written for it, or only some of its wires (#1500). One nothing
+        //was ever wired to has no row to get wrong and counts for nothing.
+    if (unassigned_junctions) {
+        *unassigned_junctions = 0;
+        for (auto it = elementsInfo.constBegin(); it != elementsInfo.constEnd(); ++it)
+        {
+            if (!it.value().isJunction || !wired.contains(it.key())) continue;
+            bool still_ending_there = false;
+            for (const QString &connection_uuid : wiredConnectionsOf(it.key()))
+            {
+                for (const int wire : on_connection.value(
+                         it.key() + QLatin1Char('|') + connection_uuid))
+                {
+                    if (!superseded.contains(wire)) {
+                        still_ending_there = true;
+                        break;
+                    }
+                }
+                if (still_ending_there) break;
+            }
+            if (still_ending_there) ++(*unassigned_junctions);
         }
     }
 
