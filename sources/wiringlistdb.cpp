@@ -4,7 +4,7 @@
 
 	QElectroTech is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
-	the Free Software Foundation, either version 3 of the License, or
+	the Free Software Foundation, either version 2 of the License, or
 	(at your option) any later version.
 
 	QElectroTech is distributed in the hope that it will be useful,
@@ -260,19 +260,28 @@ QVector<WiringListRow> wiringListRows(QETProject *project,
 		//A resolved row takes the place of the row it replaces -- its
 		//index is that row's -- so the list keeps the order the database
 		//gave it instead of collecting the resolved ones at the end
-	std::sort(conductors.begin(), conductors.end(),
+	std::stable_sort(conductors.begin(), conductors.end(),
 			  [](const ConductorData &a, const ConductorData &b) {
 				  return a.index < b.index;
 			  });
 
 	result.reserve(conductors.size());
+	QSet<QString> written_uuids;
 	for (const ConductorData &conductor : std::as_const(conductors))
 	{
 		const WiringListRow &replaced = rows.at(conductor.index);
 		WiringListRow row;
 			//The wire the row stands for: the one it kept, or the one
-			//it was written from
+			//it was written from. Two rows written from the same wire --
+			//which happens when one side of a run carries more wires than
+			//the other -- name no conductor at all rather than the same
+			//one twice (#1500)
 		row.conductor_uuid = replaced.conductor_uuid;
+		if (written_uuids.contains(row.conductor_uuid)) {
+			row.conductor_uuid.clear();
+		} else if (!row.conductor_uuid.isEmpty()) {
+			written_uuids.insert(row.conductor_uuid);
+		}
 		row.wire_number = replaced.wire_number;
 		row.from_element_uuid = conductor.el1_uuid;
 		row.from_element_label = conductor.element1_label;
