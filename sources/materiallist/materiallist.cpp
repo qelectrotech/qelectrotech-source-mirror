@@ -888,6 +888,77 @@ bool MaterialList::updateRecord(const QString &path, int row,
 	return writeFile(path, data, error);
 }
 
+/**
+	@brief MaterialList::removeRecords
+	Remove one or more existing entries from a material file.
+*/
+bool MaterialList::removeRecords(const QString &path,
+								 const QList<int> &rows,
+								 const QList<MaterialRecord> &originals,
+								 QString *error)
+{
+	if (error) {
+		error->clear();
+	}
+	if (rows.size() != originals.size() || rows.isEmpty()) {
+		return false;
+	}
+
+	MaterialListData data;
+	if (!load(path, &data, error)) {
+		return false;
+	}
+	if (data.columns.isEmpty())
+	{
+		if (error) {
+			*error = QCoreApplication::translate("MaterialList", "The file has no header: columns are missing.");
+		}
+		return false;
+	}
+
+	QList<int> to_remove;
+	for (int k = 0; k < rows.size(); ++k)
+	{
+		const int row = rows.at(k);
+		const MaterialRecord &original = originals.at(k);
+		int target_row = -1;
+		if (row >= 0 && row < data.records.size()
+			&& !to_remove.contains(row)
+			&& data.records.at(row) == original)
+		{
+			target_row = row;
+		}
+		else
+		{
+			for (int i = 0; i < data.records.size(); ++i)
+			{
+				if (!to_remove.contains(i) && data.records.at(i) == original)
+				{
+					target_row = i;
+					break;
+				}
+			}
+		}
+		if (target_row >= 0) {
+			to_remove.append(target_row);
+		}
+	}
+
+	if (to_remove.isEmpty())
+	{
+		if (error) {
+			*error = QCoreApplication::translate("MaterialList", "The selected entry no longer exists in the file.");
+		}
+		return false;
+	}
+
+	std::sort(to_remove.begin(), to_remove.end(), std::greater<int>());
+	for (int idx : std::as_const(to_remove)) {
+		data.records.removeAt(idx);
+	}
+	return writeFile(path, data, error);
+}
+
 namespace {
 int findByDesignation(const MaterialListData &data, const QString &designation)
 {

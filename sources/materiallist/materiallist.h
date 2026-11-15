@@ -119,6 +119,10 @@ class MaterialList
 								 const MaterialRecord &original,
 								 const MaterialRecord &updated,
 								 QString *error = nullptr);
+		static bool removeRecords(const QString &path,
+								  const QList<int> &rows,
+								  const QList<MaterialRecord> &originals,
+								  QString *error = nullptr);
 		static int countImportConflicts(const MaterialListData &existing,
 										const MaterialListData &incoming);
 		static bool importFromFile(const QString &target_path,

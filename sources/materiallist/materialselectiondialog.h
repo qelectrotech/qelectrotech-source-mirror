@@ -53,6 +53,7 @@ class MaterialSelectionDialog : public QDialog
 	private slots:
 		void on_m_new_entry_btn_clicked();
 		void on_m_edit_entry_btn_clicked();
+		void on_m_remove_entry_btn_clicked();
 		void on_m_import_btn_clicked();
 		void on_m_export_btn_clicked();
 		void on_m_settings_btn_clicked();
@@ -78,6 +79,7 @@ class MaterialSelectionDialog : public QDialog
 		void setEditMode(EditMode mode);
 		MaterialRecord detailsRecord() const;
 		int selectedSourceRow() const;
+		QList<int> selectedSourceRows() const;
 		bool selectRecord(const MaterialRecord &record);
 		void updateButtons();
 		void updateCount(int visible_count);
@@ -87,6 +89,7 @@ class MaterialSelectionDialog : public QDialog
 		void exportRecordsToCsv(const QList<MaterialRecord> &records);
 		void copyDetailsSelection();
 		void showDetailsContextMenu(const QPoint &pos);
+		void showTreeContextMenu(const QPoint &pos);
 
 		Ui::MaterialSelectionDialog *ui;
 		QString m_path;

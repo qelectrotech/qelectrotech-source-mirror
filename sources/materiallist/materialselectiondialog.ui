@@ -222,6 +222,19 @@
       </widget>
      </item>
      <item>
+      <widget class="QPushButton" name="m_remove_entry_btn">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="toolTip">
+        <string extracomment="button removing the selected row(s) from the material list file">Remove selected item(s) from the list</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item>
       <widget class="QPushButton" name="m_import_btn">
        <property name="toolTip">
         <string>Import entries from a CSV file into the materials list</string>

@@ -43,6 +43,7 @@ class tst_materiallistedit : public QObject
 		void testSplitViewTreeFilterAndDetails();
 		void testInlineNewAndEditEntry();
 		void testImportAndExportCsv();
+		void testRemoveEntry();
 };
 
 void tst_materiallistedit::testUpdateRecordPreservesRowsAndExtra()
@@ -412,6 +413,76 @@ void tst_materiallistedit::testImportAndExportCsv()
 
 	tree->setCurrentItem(tree->topLevelItem(0));
 	QVERIFY(!edit_btn->isEnabled());
+}
+
+void tst_materiallistedit::testRemoveEntry()
+{
+	QTemporaryDir dir;
+	QVERIFY(dir.isValid());
+	const QString csv_path = dir.filePath(QStringLiteral("remove_test.csv"));
+
+	{
+		QFile f(csv_path);
+		QVERIFY(f.open(QIODevice::WriteOnly | QIODevice::Text));
+		f.write("designation;description;manufacturer\n"
+				"A1;Desc 1;M1\n"
+				"A2;Desc 2;M2\n"
+				"A3;Desc 3;M3\n");
+	}
+
+	QString err;
+	MaterialListData initial;
+	QVERIFY2(MaterialList::load(csv_path, &initial, &err), qPrintable(err));
+	QCOMPARE(initial.records.size(), 3);
+
+	// Remove single middle record
+	QVERIFY2(MaterialList::removeRecords(csv_path, {1}, {initial.records.at(1)}, &err),
+			 qPrintable(err));
+	MaterialListData after_one;
+	QVERIFY2(MaterialList::load(csv_path, &after_one, &err), qPrintable(err));
+	QCOMPARE(after_one.records.size(), 2);
+	QCOMPARE(after_one.records.at(0).value(QStringLiteral("designation")), QStringLiteral("A1"));
+	QCOMPARE(after_one.records.at(1).value(QStringLiteral("designation")), QStringLiteral("A3"));
+
+	// Dialog UI checks: trash button & tree context menu
+	MaterialSelectionDialog dialog(csv_path);
+	auto *tree = dialog.findChild<QTreeWidget *>(QStringLiteral("m_tree_widget"));
+	auto *edit_btn = dialog.findChild<QPushButton *>(QStringLiteral("m_edit_entry_btn"));
+	auto *remove_btn = dialog.findChild<QPushButton *>(QStringLiteral("m_remove_entry_btn"));
+	QVERIFY(tree && edit_btn && remove_btn);
+	QCOMPARE(tree->contextMenuPolicy(), Qt::CustomContextMenu);
+	QVERIFY(!remove_btn->icon().isNull());
+	QVERIFY(!remove_btn->isEnabled());
+
+	// Group item selection keeps remove disabled
+	QTreeWidgetItem *group0 = tree->topLevelItem(0);
+	QVERIFY(group0 && group0->childCount() > 0);
+	tree->setCurrentItem(group0);
+	QVERIFY(!remove_btn->isEnabled());
+
+	// Single article selection enables both edit and remove
+	QTreeWidgetItem *item0 = group0->child(0);
+	tree->setCurrentItem(item0);
+	QVERIFY(edit_btn->isEnabled());
+	QVERIFY(remove_btn->isEnabled());
+
+	// Multi-selection enables remove while disabling single-row edit
+	QVERIFY(group0->childCount() >= 2);
+	QTreeWidgetItem *item1 = group0->child(1);
+	item1->setSelected(true);
+	QVERIFY(!edit_btn->isEnabled());
+	QVERIFY(remove_btn->isEnabled());
+
+	// Remove multiple records at once
+	QVERIFY2(MaterialList::removeRecords(
+				 csv_path,
+				 {0, 1},
+				 {after_one.records.at(0), after_one.records.at(1)},
+				 &err),
+			 qPrintable(err));
+	MaterialListData after_all;
+	QVERIFY2(MaterialList::load(csv_path, &after_all, &err), qPrintable(err));
+	QCOMPARE(after_all.records.size(), 0);
 }
 
 QET_APP_TEST_MAIN(tst_materiallistedit)

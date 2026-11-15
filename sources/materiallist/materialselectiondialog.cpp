@@ -166,6 +166,11 @@ MaterialSelectionDialog::MaterialSelectionDialog(const QString &path,
 	ui->m_tree_widget->header()->setSectionResizeMode(0, QHeaderView::ResizeToContents);
 	ui->m_tree_widget->header()->setStretchLastSection(true);
 	ui->m_tree_widget->sortByColumn(0, Qt::AscendingOrder);
+	ui->m_tree_widget->setContextMenuPolicy(Qt::CustomContextMenu);
+	connect(ui->m_tree_widget, &QTreeWidget::customContextMenuRequested,
+			this, &MaterialSelectionDialog::showTreeContextMenu);
+
+	ui->m_remove_entry_btn->setIcon(QET::Icons::EditDelete);
 
 	ui->m_details_table->setItemDelegateForColumn(1, new MaterialValueDelegate(ui->m_details_table));
 	ui->m_details_table->horizontalHeader()->setSectionResizeMode(0, QHeaderView::ResizeToContents);
@@ -577,12 +582,14 @@ void MaterialSelectionDialog::updateButtons()
 {
 	const bool in_view = (m_edit_mode == EditMode::View);
 	const bool has_selection = (selectedSourceRow() >= 0);
+	const bool has_any_selection = !selectedSourceRows().isEmpty();
 
 	if (QPushButton *ok_btn = ui->m_button_box->button(QDialogButtonBox::Ok)) {
 		ok_btn->setEnabled(in_view && has_selection);
 	}
 	ui->m_new_entry_btn->setEnabled(in_view);
 	ui->m_edit_entry_btn->setEnabled(in_view && has_selection);
+	ui->m_remove_entry_btn->setEnabled(in_view && has_any_selection);
 	ui->m_import_btn->setEnabled(in_view);
 	ui->m_export_btn->setEnabled(in_view && !m_data.records.isEmpty());
 	ui->m_settings_btn->setEnabled(in_view);
@@ -637,6 +644,24 @@ int MaterialSelectionDialog::selectedSourceRow() const
 	}
 	const int row = row_var.toInt();
 	return (row >= 0 && row < m_data.records.size()) ? row : -1;
+}
+
+QList<int> MaterialSelectionDialog::selectedSourceRows() const
+{
+	QList<int> rows;
+	const QList<QTreeWidgetItem *> items = ui->m_tree_widget->selectedItems();
+	for (QTreeWidgetItem *item : items) {
+		const QVariant row_var = item->data(0, SourceRowRole);
+		if (!row_var.isValid()) {
+			continue;
+		}
+		const int row = row_var.toInt();
+		if (row >= 0 && row < m_data.records.size() && !rows.contains(row)) {
+			rows.append(row);
+		}
+	}
+	std::sort(rows.begin(), rows.end());
+	return rows;
 }
 
 MaterialRecord MaterialSelectionDialog::selectedRecord() const
@@ -1084,4 +1109,74 @@ void MaterialSelectionDialog::showDetailsContextMenu(const QPoint &pos)
 	select_all_action->setEnabled(ui->m_details_table->rowCount() > 0);
 
 	menu.exec(ui->m_details_table->viewport()->mapToGlobal(pos));
+}
+
+void MaterialSelectionDialog::on_m_remove_entry_btn_clicked()
+{
+	const QList<int> rows = selectedSourceRows();
+	if (rows.isEmpty()) {
+		return;
+	}
+
+	QString prompt;
+	if (rows.size() == 1) {
+		const MaterialRecord &rec = m_data.records.at(rows.first());
+		const QString article = rec.value(QStringLiteral("designation"));
+		const QString desc = rec.value(QStringLiteral("description"));
+		const QString label = article.isEmpty() ? desc : article;
+		prompt = tr("Are you sure you want to remove \"%1\" from the material list?")
+					 .arg(label.isEmpty() ? tr("selected item") : label);
+	} else {
+		prompt = tr("Are you sure you want to remove %1 selected items from the material list?")
+					 .arg(rows.size());
+	}
+
+	const QMessageBox::StandardButton answer = QET::QetMessageBox::question(
+		this,
+		tr("Remove material entry"),
+		prompt,
+		QMessageBox::Yes | QMessageBox::No,
+		QMessageBox::No);
+	if (answer != QMessageBox::Yes) {
+		return;
+	}
+
+	QList<MaterialRecord> originals;
+	originals.reserve(rows.size());
+	for (int row : rows) {
+		originals.append(m_data.records.at(row));
+	}
+
+	QString error;
+	if (!MaterialList::removeRecords(m_path, rows, originals, &error)) {
+		QET::QetMessageBox::warning(
+			this,
+			tr("Remove material entry"),
+			error.isEmpty() ? tr("Unable to remove selected entry from the material list.") : error);
+		return;
+	}
+
+	reload();
+}
+
+void MaterialSelectionDialog::showTreeContextMenu(const QPoint &pos)
+{
+	if (m_edit_mode != EditMode::View) {
+		return;
+	}
+
+	QMenu menu(this);
+	QAction *new_action = menu.addAction(QET::Icons::Add, tr("New"),
+										 this, &MaterialSelectionDialog::on_m_new_entry_btn_clicked);
+	new_action->setEnabled(true);
+
+	QAction *edit_action = menu.addAction(QET::Icons::ElementEdit, tr("Edit"),
+										  this, &MaterialSelectionDialog::on_m_edit_entry_btn_clicked);
+	edit_action->setEnabled(selectedSourceRow() >= 0);
+
+	QAction *remove_action = menu.addAction(QET::Icons::EditDelete, tr("Remove"),
+											this, &MaterialSelectionDialog::on_m_remove_entry_btn_clicked);
+	remove_action->setEnabled(!selectedSourceRows().isEmpty());
+
+	menu.exec(ui->m_tree_widget->viewport()->mapToGlobal(pos));
 }
