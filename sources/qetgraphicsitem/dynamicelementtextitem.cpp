@@ -1143,9 +1143,16 @@ QVariant DynamicElementTextItem::itemChange(QGraphicsItem::GraphicsItemChange ch
 				m_report_formula = m_parent_element.data()->diagram()->project()->defaultReportProperties();
 				QETProject *project = m_parent_element.data()->diagram()->project();
 				if (m_parent_element.data()->linkType() & Element::AllReport) {
-					connect(project->dataBase(), &projectDataBase::dataBaseUpdated,
-							this, &DynamicElementTextItem::refreshRemoteEndpoint,
-							Qt::QueuedConnection);
+					connect(project->dataBase(),
+							&projectDataBase::dataBaseUpdated, this,
+							[this, project]() {
+						// Export can start as soon as loading returns.
+						const auto state = project->state();
+						const auto type = state == QETProject::ProjectParsingRunning
+								? Qt::DirectConnection : Qt::QueuedConnection;
+						QMetaObject::invokeMethod(this,
+								&DynamicElementTextItem::refreshRemoteEndpoint, type);
+					});
 					// The project forwards index changes once its stack exists.
 					connect(project, &QETProject::undoStackIndexChanged, this,
 							&DynamicElementTextItem::refreshRemoteEndpoint,

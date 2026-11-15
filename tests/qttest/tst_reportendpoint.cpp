@@ -118,8 +118,16 @@ private slots:
 		QVERIFY(project.undoStack());
 	}
 
-	void readsDestinationWithoutBuildingItsFolio()
+	void readsDestinationOnLoad_data()
 	{
+		QTest::addColumn<bool>("eager");
+		QTest::newRow("lazy") << false;
+		QTest::newRow("eager") << true;
+	}
+
+	void readsDestinationOnLoad()
+	{
+		QFETCH(bool, eager);
 		QETProject project;
 		auto *first = project.addNewDiagram();
 		auto *second = project.addNewDiagram();
@@ -148,7 +156,7 @@ private slots:
 		file.close();
 
 		const QByteArray previous = qgetenv("QET_EAGER_FOLIOS");
-		qputenv("QET_EAGER_FOLIOS", "0");
+		qputenv("QET_EAGER_FOLIOS", eager ? "1" : "0");
 		QETProject reopened(file.fileName());
 		if (previous.isNull()) {
 			qunsetenv("QET_EAGER_FOLIOS");
@@ -160,13 +168,13 @@ private slots:
 		auto *loaded = reopened.folios().first();
 		auto *remote = reopened.folios().last();
 		reopened.buildFolios({loaded});
-		QVERIFY(!remote->isLoaded());
+		QCOMPARE(remote->isLoaded(), eager);
 		for (auto *element : loaded->elements()) {
 			if (element->uuid() != out->uuid()) continue;
 			QCOMPARE(element->dynamicTextItems().size(), 1);
-			QTRY_COMPARE(element->dynamicTextItems().first()->toPlainText(),
-						 QStringLiteral("KM2:A1"));
-			QVERIFY(!remote->isLoaded());
+			QCOMPARE(element->dynamicTextItems().first()->toPlainText(),
+					 QStringLiteral("KM2:A1"));
+			QCOMPARE(remote->isLoaded(), eager);
 			return;
 		}
 		QFAIL("The source report was not loaded");
