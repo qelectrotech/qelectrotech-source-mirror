@@ -24,6 +24,7 @@
 #include <shownkinds.h>
 #include <qetproject.h>
 #include <dataBase/projectdatabase.h>
+#include <QSqlError>
 #include <QSqlQuery>
 #include <QPropertyUndoCommand/qpropertyundocommand.h>
 #include <diagram.h>
@@ -2090,8 +2091,8 @@ void DynamicElementTextItem::conductorPropertiesChanged()
 
 /**
 	@brief DynamicElementTextItem::remoteEndpoint
-	@return the device and pin reached by the opposite report's wire,
-	or an empty string when the endpoint is missing or ambiguous.
+	@return the device and pin reached across linked reports, or an empty
+	string when a path is missing, cyclic or reaches a different endpoint.
 */
 QString DynamicElementTextItem::remoteEndpoint() const
 {
@@ -2100,40 +2101,88 @@ QString DynamicElementTextItem::remoteEndpoint() const
 		|| !report->diagram() || !report->diagram()->project())
 		return {};
 
-	// Resolve one direct destination by UUID, even when its folio is unbuilt.
-	// Wires on the source side only establish that the report is connected.
+	const QString source = report->uuid().toString();
+	// Each row is a hop from a report through its partner and along a wire.
+	// UNION visits each hop once, even if several paths share it or loop.
 	const QString sql = QStringLiteral(
-		"WITH partner AS (SELECT linked_uuid FROM link "
-		"WHERE element_uuid = '%1'), "
-		"ends AS (SELECT terminal2_element_uuid AS device, terminal2_uuid AS pin "
-		"FROM conductor WHERE terminal1_element_uuid = (SELECT linked_uuid FROM partner) "
-		"UNION SELECT terminal1_element_uuid, terminal1_uuid "
-		"FROM conductor WHERE terminal2_element_uuid = (SELECT linked_uuid FROM partner)) "
-		"SELECT d.type, ei.label, t.name, "
+		"WITH RECURSIVE hops(report, device, pin) AS ("
+		"SELECT '', '%1', '' WHERE EXISTS (SELECT 1 FROM conductor "
+		"WHERE terminal1_element_uuid = '%1' OR terminal2_element_uuid = '%1') "
+		"UNION SELECT h.device, "
+		"CASE WHEN c.terminal1_element_uuid = p.linked_uuid "
+		"THEN c.terminal2_element_uuid ELSE c.terminal1_element_uuid END, "
+		"CASE WHEN c.terminal1_element_uuid = p.linked_uuid "
+		"THEN c.terminal2_uuid ELSE c.terminal1_uuid END "
+		"FROM hops h "
+		"JOIN element r ON r.uuid = h.device "
+		"AND r.type IN ('next_report', 'previous_report') "
+		"JOIN link p ON p.element_uuid = h.device "
+		"JOIN element other ON other.uuid = p.linked_uuid "
+		"AND other.type IN ('next_report', 'previous_report') "
+		"JOIN conductor c ON c.terminal1_element_uuid = p.linked_uuid "
+		"OR c.terminal2_element_uuid = p.linked_uuid "
+		"WHERE (SELECT count(*) FROM link WHERE element_uuid = h.device) = 1) "
+		"SELECT h.report, h.device, t.uuid, d.type, ei.label, t.name, "
 		"CASE WHEN d.type = 'slave' AND COALESCE(ei.label, '') = '' THEN ("
 		"SELECT CASE WHEN count(*) = 1 THEN max(mi.label) END FROM link l "
 		"JOIN element m ON m.uuid = l.linked_uuid AND m.type = 'master' "
 		"LEFT JOIN element_info mi ON mi.element_uuid = m.uuid "
 		"WHERE l.element_uuid = d.uuid) END "
-		"FROM ends e "
-		"JOIN element d ON d.uuid = e.device "
-		"LEFT JOIN element_info ei ON ei.element_uuid = e.device "
-		"JOIN terminal t ON t.element_uuid = e.device AND t.uuid = e.pin "
-		"WHERE (SELECT count(*) FROM partner) = 1 "
-		"AND EXISTS (SELECT 1 FROM conductor WHERE terminal1_element_uuid = '%1' "
-		"OR terminal2_element_uuid = '%1') "
-		"AND (SELECT count(*) FROM ends) = 1 "
-		"AND d.type NOT IN ('next_report', 'previous_report', "
-		"'conductor_definition')").arg(report->uuid().toString());
+		"FROM hops h "
+		"LEFT JOIN element d ON d.uuid = h.device "
+		"LEFT JOIN element_info ei ON ei.element_uuid = h.device "
+		"LEFT JOIN terminal t ON t.element_uuid = h.device AND t.uuid = h.pin "
+		"WHERE h.report <> ''").arg(source);
 	QSqlQuery query = report->diagram()->project()->dataBase()->newQuery(sql);
-	if (!query.next())
+	QHash<QString, QStringList> following;
+	QHash<QString, qsizetype> incoming{{source, 0}};
+	QString device_uuid, pin_uuid, type, label, pin;
+	while (query.next()) {
+		auto &next = following[query.value(0).toString()];
+		const QString device = query.value(1).toString();
+		const QString terminal = query.value(2).toString();
+		const QString kind = query.value(3).toString();
+		if (device.isEmpty() || terminal.isEmpty() || kind.isEmpty()
+			|| kind == QLatin1String("conductor_definition"))
+			return {};
+		if (kind == QLatin1String("next_report")
+			|| kind == QLatin1String("previous_report")) {
+			next.append(device);
+			++incoming[device];
+			continue;
+		}
+		if (!device_uuid.isEmpty()) {
+			if (device != device_uuid || terminal != pin_uuid)
+				return {};
+			continue;
+		}
+		device_uuid = device;
+		pin_uuid = terminal;
+		type = kind;
+		label = query.value(4).toString().trimmed();
+		pin = query.value(5).toString().trimmed();
+		if (label.isEmpty())
+			label = query.value(6).toString().trimmed();
+	}
+	if (label.isEmpty() || query.lastError().isValid())
 		return {};
-	const QString type = query.value(0).toString();
-	QString label = query.value(1).toString().trimmed();
-	const QString pin = query.value(2).toString().trimmed();
-	if (label.isEmpty())
-		label = query.value(3).toString().trimmed();
-	if (label.isEmpty())
+
+	// Every reached report needs a continuation. Remove reports in
+	// topological order to tell a shared continuation from a cycle.
+	QStringList ready;
+	for (auto it = incoming.cbegin(); it != incoming.cend(); ++it) {
+		if (!following.contains(it.key()))
+			return {};
+		if (it.value() == 0)
+			ready.append(it.key());
+	}
+	for (qsizetype i = 0; i < ready.size(); ++i) {
+		for (const QString &next : following.value(ready.at(i))) {
+			if (--incoming[next] == 0)
+				ready.append(next);
+		}
+	}
+	if (ready.size() != incoming.size())
 		return {};
 
 	// A strip terminal can already be labelled "X1:7". Its pin name may

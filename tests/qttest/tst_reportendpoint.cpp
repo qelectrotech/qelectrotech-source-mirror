@@ -126,18 +126,21 @@ private slots:
 		QTest::addColumn<QString>("label");
 		QTest::addColumn<QString>("terminal");
 		QTest::addColumn<QString>("expected");
+		QTest::addColumn<bool>("chained");
 		QTest::newRow("device-lazy") << false << QString("simple")
-				<< QString("KM2") << QString("A1") << QString("KM2:A1");
+				<< QString("KM2") << QString("A1") << QString("KM2:A1") << false;
 		QTest::newRow("device-eager") << true << QString("simple")
-				<< QString("KM2") << QString("A1") << QString("KM2:A1");
+				<< QString("KM2") << QString("A1") << QString("KM2:A1") << false;
 		QTest::newRow("strip-terminal-lazy") << false << QString("terminal")
-				<< QString("X5:7") << QString() << QString("X5:7");
+				<< QString("X5:7") << QString() << QString("X5:7") << false;
 		QTest::newRow("strip-terminal-named-pin") << true << QString("terminal")
-				<< QString("X5:7") << QString("2") << QString("X5:7");
+				<< QString("X5:7") << QString("2") << QString("X5:7") << false;
 		QTest::newRow("terminal-symbol") << false << QString("thumbnail")
-				<< QString("X5:7") << QString() << QString("X5:7");
+				<< QString("X5:7") << QString() << QString("X5:7") << false;
 		QTest::newRow("device-unnamed-pin") << false << QString("simple")
-				<< QString("KM2:7") << QString() << QString();
+				<< QString("KM2:7") << QString() << QString() << false;
+		QTest::newRow("chained-lazy") << false << QString("terminal")
+				<< QString("X5:7") << QString() << QString("X5:7") << true;
 	}
 
 	void readsDestinationOnLoad()
@@ -147,6 +150,7 @@ private slots:
 		QFETCH(QString, label);
 		QFETCH(QString, terminal);
 		QFETCH(QString, expected);
+		QFETCH(bool, chained);
 		QETProject project;
 		auto *first = project.addNewDiagram();
 		auto *second = project.addNewDiagram();
@@ -163,7 +167,18 @@ private slots:
 		auto *target_pin = pin(target, terminal);
 		QVERIFY(target_pin);
 		second->addItem(new Conductor(in->terminals().first(), target_pin));
-		out->linkToElement(in);
+		if (chained) {
+			auto *relay = project.addNewDiagram();
+			auto *relay_in = symbol(relay, "previous_report");
+			auto *relay_out = symbol(relay, "next_report");
+			QVERIFY(relay_in && relay_out);
+			relay->addItem(new Conductor(relay_in->terminals().first(),
+											relay_out->terminals().first()));
+			out->linkToElement(relay_in);
+			relay_out->linkToElement(in);
+		} else {
+			out->linkToElement(in);
+		}
 		auto *text = field(out, false);
 		text->setPlainText(QString());
 
@@ -184,9 +199,9 @@ private slots:
 			qputenv("QET_EAGER_FOLIOS", previous);
 		}
 		QCOMPARE(reopened.state(), QETProject::Ok);
-		QCOMPARE(reopened.folios().size(), 2);
+		QCOMPARE(reopened.folios().size(), chained ? 3 : 2);
 		auto *loaded = reopened.folios().first();
-		auto *remote = reopened.folios().last();
+		auto *remote = reopened.folios().at(1);
 		reopened.buildFolios({loaded});
 		QCOMPARE(remote->isLoaded(), eager);
 		for (auto *element : loaded->elements()) {
@@ -194,9 +209,88 @@ private slots:
 			QCOMPARE(element->dynamicTextItems().size(), 1);
 			QCOMPARE(element->dynamicTextItems().first()->toPlainText(), expected);
 			QCOMPARE(remote->isLoaded(), eager);
+			if (chained)
+				QVERIFY(!reopened.folios().last()->isLoaded());
 			return;
 		}
 		QFAIL("The source report was not loaded");
+	}
+
+	void checksEveryBranch()
+	{
+		QETProject project;
+		auto *first = project.addNewDiagram();
+		auto *middle = project.addNewDiagram();
+		auto *last = project.addNewDiagram();
+		auto *source = symbol(first, "simple");
+		auto *out = symbol(first, "next_report");
+		auto *in = symbol(middle, "previous_report");
+		auto *relay = symbol(middle, "next_report");
+		auto *branch = symbol(middle, "next_report");
+		auto *relay_in = symbol(last, "previous_report");
+		auto *branch_in = symbol(last, "previous_report");
+		auto *target = symbol(last, "simple");
+		QVERIFY(source && out && in && relay && branch && relay_in && branch_in && target);
+		auto info = target->elementInformations();
+		info.addValue("label", "KM2");
+		target->setElementInformations(info);
+		first->addItem(new Conductor(pin(source, "A1"), pin(out, "A1")));
+		middle->addItem(new Conductor(pin(in, "A1"), pin(relay, "A1")));
+		last->addItem(new Conductor(pin(relay_in, "A1"), pin(target, "A1")));
+		out->linkToElement(in);
+		relay->linkToElement(relay_in);
+		branch->linkToElement(branch_in);
+		auto *text = field(out, false);
+		auto *manual = new DynamicElementTextItem(out);
+		out->addDynamicTextItem(manual);
+		manual->setText(QStringLiteral("Manual destination"));
+		QTRY_COMPARE(text->toPlainText(), QString("KM2:A1"));
+
+		// A branch with no wire after its next report is still unresolved.
+		middle->addItem(new Conductor(pin(in, "A1"), pin(branch, "A1")));
+		QTRY_COMPARE(text->toPlainText(), QString());
+		last->addItem(new Conductor(pin(branch_in, "A1"), pin(target, "A1")));
+		QTRY_COMPARE(text->toPlainText(), QString("KM2:A1"));
+
+		// Electrical identity includes the physical pin, not just the device tag.
+		auto *different = new Conductor(pin(branch_in, "A1"), pin(target, "A2"));
+		last->addItem(different);
+		QTRY_COMPARE(text->toPlainText(), QString());
+		QCOMPARE(manual->toPlainText(), QString("Manual destination"));
+		DiagramContent deleted;
+		deleted.m_conductors_to_move.append(different);
+		project.undoStack()->push(new DeleteQGraphicsItemCommand(last, deleted));
+		QTRY_COMPARE(text->toPlainText(), QString("KM2:A1"));
+
+		auto renamed = info;
+		renamed.addValue("label", "KM3");
+		project.undoStack()->push(new ChangeElementInformationCommand(target, info, renamed));
+		QTRY_COMPARE(text->toPlainText(), QString("KM3:A1"));
+	}
+
+	void rejectsReportCycles()
+	{
+		QETProject project;
+		auto *first = project.addNewDiagram();
+		auto *second = project.addNewDiagram();
+		auto *out = symbol(first, "next_report");
+		auto *in = symbol(second, "previous_report");
+		auto *loop_out = symbol(second, "next_report");
+		auto *loop_in = symbol(first, "previous_report");
+		auto *target = symbol(second, "simple");
+		QVERIFY(out && in && loop_out && loop_in && target);
+		auto info = target->elementInformations();
+		info.addValue("label", "KM2");
+		target->setElementInformations(info);
+		out->linkToElement(in);
+		loop_out->linkToElement(loop_in);
+		first->addItem(new Conductor(pin(loop_in, "A1"), pin(out, "A1")));
+		second->addItem(new Conductor(pin(in, "A1"), pin(target, "A1")));
+		auto *text = field(out, false);
+		QTRY_COMPARE(text->toPlainText(), QString("KM2:A1"));
+
+		second->addItem(new Conductor(pin(in, "A1"), pin(loop_out, "A1")));
+		QTRY_COMPARE(text->toPlainText(), QString());
 	}
 
 	void followsContactMaster()
