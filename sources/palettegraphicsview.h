@@ -19,6 +19,8 @@
 #define PALETTE_GRAPHICS_VIEW_H
 
 #include <QGraphicsView>
+
+#include <vector>
 #include <QImage>
 #include <QPainter>
 
@@ -95,6 +97,16 @@ class PaletteGraphicsView : public QGraphicsView
 		/// kind's ink in that ink's own color, which the tint leaves as
 		/// it is, and a picked item a color that stands out in it.
 		static QET::Palette::SheetInk paintingInk(const QWidget *widget);
+		/// While a view paints inverted or tinted, keep the selection
+		/// frame \a rect, drawn with \a painter's transform, for after
+		/// the inversion and the tint, which would make it nearly the
+		/// sheet's color: @return true then, false when \a painter is
+		/// not such a view's, and the caller draws the frame itself.
+		static bool deferSelectionFrame(QPainter *painter, const QRectF &rect, bool strong, int radius = 10);
+		/// The frame of a selected or hovered item, \a strong in the
+		/// highlight color, light on a \a dark_sheet, its corners
+		/// rounded by \a radius
+		static void drawSelectionFrame(QPainter *painter, const QRectF &rect, bool strong, bool dark_sheet, int radius = 10);
 
 	protected:
 		bool eventFilter(QObject *watched, QEvent *event) override;
@@ -125,6 +137,7 @@ class PaletteGraphicsView : public QGraphicsView
 		void paintInverted(QPaintEvent *event);
 		void blitInverted(const QRect &area);
 		void drawRubberBand(QPainter &painter);
+		void drawSelectionFrames(QPainter &painter);
 		void flushLayer(bool invert, const QRect &bounds = QRect());
 		void drawTinted(int count, QGraphicsItem *items[],
 		                const QStyleOptionGraphicsItem options[]);
@@ -146,6 +159,12 @@ class PaletteGraphicsView : public QGraphicsView
 		QET::Palette::SheetInk m_ink;
 		/// The layer one kind of item is drawn on before it is tinted.
 		QImage m_tint_layer;
+		/// Selection frames kept by deferSelectionFrame() during a paint
+		struct SelectionFrame { QTransform transform; QRectF rect; bool strong; int radius; };
+		std::vector<SelectionFrame> m_selection_frames;
+		/// Whether the sheet shows dark, for the frames' color
+		bool m_dark_sheet = false;
+		static inline PaletteGraphicsView *s_deferring = nullptr;
 		static inline bool s_custom_bg = false;
 		static inline bool s_colored_ink = false;
 };

@@ -336,6 +336,17 @@ namespace QetSettings
 		settings.setValue("terminalstrip/wires_shown", shown);
 	}
 
+	bool stripCableCoreTargetsShown()
+	{
+		return QSettings().value("terminalstrip/cable_core_targets_shown", false)
+			.toBool();
+	}
+
+	void setStripCableCoreTargetsShown(bool shown)
+	{
+		QSettings().setValue("terminalstrip/cable_core_targets_shown", shown);
+	}
+
 	/**
 	* @brief stripSortedByLabel
 	* @return whether a terminal strip is sorted by the label of its

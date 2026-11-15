@@ -54,6 +54,7 @@ namespace ShownKinds
 		Pictures,
 		Tables,
 		CrossReferences,
+		DrawingAids,	///< symbols that only steer the drawing (interruption points)
 		KindCount
 	};
 

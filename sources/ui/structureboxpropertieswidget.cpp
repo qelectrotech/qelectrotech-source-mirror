@@ -21,6 +21,12 @@
 #include "../diagram.h"
 #include "../qetgraphicsitem/structureboxitem.h"
 
+#ifdef BUILD_WITHOUT_KF
+#	include "nokde/kcolorbutton.h"
+#else
+#	include <KColorButton>
+#endif
+
 #include <QFormLayout>
 #include <QDoubleSpinBox>
 #include <QLineEdit>
@@ -42,6 +48,9 @@ StructureBoxPropertiesWidget::StructureBoxPropertiesWidget(StructureBoxItem *ite
 	m_label_size->setDecimals(1);
 	m_label_size->setSuffix(tr(" pt"));
 	layout->addRow(tr("Size of its name"), m_label_size);
+	m_color = new KColorButton(this);
+	m_color->setObjectName(QStringLiteral("color"));
+	layout->addRow(tr("Colour"), m_color);
 		//An undo changes the size behind the editor's back
 	connect(m_item, &StructureBoxItem::labelSizeChanged, this, [this]() {
 		m_label_size->setValue(m_item->labelSize());
@@ -74,6 +83,12 @@ void StructureBoxPropertiesWidget::apply()
 								 m_label_size->value(), undo);
 		m_label_size_shown = m_label_size->value();
 	}
+	if (m_item->pen().color() != m_color->color()) {
+		if (!undo) undo = new QUndoCommand(tr("Modify a structure box"));
+		QPen pen = m_item->pen();
+		pen.setColor(m_color->color());
+		new QPropertyUndoCommand(m_item, "pen", QVariant::fromValue(m_item->pen()), QVariant::fromValue(pen), undo);
+	}
 	if (!undo) return;
 	if (m_item->diagram())
 		m_item->diagram()->undoStack().push(undo);
@@ -97,6 +112,7 @@ void StructureBoxPropertiesWidget::updateUi()
 	m_location_edit->setText(m_item->location());
 	m_prefix_edit->setText(m_item->prefix());
 	m_label_size->setValue(m_item->labelSize());
+	m_color->setColor(m_item->pen().color());
 	m_label_size_shown = m_label_size->value();
 }
 
@@ -122,6 +138,8 @@ bool StructureBoxPropertiesWidget::setLiveEdit(bool live_edit)
 			m_edit_connections << connect(edit, &QLineEdit::editingFinished,
 										  this, &StructureBoxPropertiesWidget::apply);
 		m_edit_connections << connect(m_label_size, &QDoubleSpinBox::editingFinished,
+									  this, &StructureBoxPropertiesWidget::apply);
+		m_edit_connections << connect(m_color, &KColorButton::changed,
 									  this, &StructureBoxPropertiesWidget::apply);
 	}
 	return true;

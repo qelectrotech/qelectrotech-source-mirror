@@ -60,7 +60,7 @@ if(APPLE)
   set(QET_DESKTOP_PATH            "share/applications/")
   set(QET_ICONS_PATH              "share/icons/hicolor/")
   set(QET_MAN_PATH                "man/")
-  set(ICON                        "ico/mac_icon/qelectrotech.icns")
+  set(ICON                        "ico/app/mac/qelectrotech.icns")
 endif()
 
 if(WIN32)

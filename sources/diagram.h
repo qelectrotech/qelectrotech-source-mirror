@@ -215,6 +215,7 @@ class Diagram : public QGraphicsScene
 
 	private:
 		void selectNextItem(bool forward);
+		void selectOnly(const std::function<bool(QGraphicsItem *)> &wanted);
 
 	public:
 		void correctTextPos(Element* elmt);
@@ -247,6 +248,9 @@ class Diagram : public QGraphicsScene
 	
 		// methods related to XML import/export
 		QDomDocument toXml(bool wholeContent = true, bool is_copy_command = false);
+			/// The selection as a copy would write it, cable lines
+			/// included, for a duplicate placed with the mouse
+		QString selectionFragment();
 		void writeHeader(QDomDocument &document, QDomElement &dom_root);
 		void appendValuesXml(QDomDocument &document, QDomElement &dom_root) const;
 			/// What this folio saves that no other table of the project
@@ -350,7 +354,7 @@ class Diagram : public QGraphicsScene
 			/// settings.
 		static bool gridSnap();
 		static void setGridSnap(bool snap);
-		static QPointF snapToTextGrid(const QPointF &p);
+		static QPointF snapToTextGrid(const QPointF &p, const QGraphicsItem *text = nullptr);
 			/// What a click, a selection rectangle and Select All pick
 			/// (the status bar's selection filter); All: everything, as
 			/// always before

@@ -51,8 +51,8 @@ class ElementProvider
 		QVector <QetGraphicsTableItem *> table(QetGraphicsTableItem *table = nullptr, QAbstractItemModel *model = nullptr);
 		QetGraphicsTableItem *tableFromUuid(const QUuid &uuid);
 		QVector<TerminalElement *> freeTerminal() const;
-			/// The free terminals that are terminal blocks: without the corners and
-			/// T-junctions, which are terminals for QElectroTech
+			/// The free terminals that are terminal blocks: without the corners,
+			/// T-junctions and drawing aids, which are terminals for QElectroTech
 			/// but join wires on the folio only
 		QVector<TerminalElement *> freeTerminalBlocks() const;
 		static bool joinsWiresOnly(const Element *element);

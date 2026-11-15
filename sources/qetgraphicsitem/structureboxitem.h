@@ -21,6 +21,7 @@
 #include "diagramtextitem.h"
 #include "qetshapeitem.h"
 
+#include <QColor>
 #include <QPointF>
 #include <QPointer>
 
@@ -82,6 +83,14 @@ class StructureBoxItem : public QetShapeItem
 
 		void editProperty() override;
 		QString name() const override;
+
+			/// The colour new boxes are drawn in: black unless set
+		static QColor newBoxColor();
+		static void setNewBoxColor(const QColor &color);
+			/// Whether the place is asked for as soon as a box is drawn:
+			/// off unless set
+		static bool askPlaceWhenDrawn();
+		static void setAskPlaceWhenDrawn(bool ask);
 
 			/// Whether @p e, a <shape>, is a structure box
 		static bool isStructureBoxXml(const QDomElement &e);
@@ -153,7 +162,6 @@ class StructureBoxLabelItem : public DiagramTextItem
 		explicit StructureBoxLabelItem(StructureBoxItem *box);
 		int type() const override { return Type; }
 		void fromXml(const QDomElement &) override {}
-		void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
 
 	protected:
 		void mousePressEvent(QGraphicsSceneMouseEvent *event) override;

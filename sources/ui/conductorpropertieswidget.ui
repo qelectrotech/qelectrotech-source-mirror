@@ -317,7 +317,27 @@
                </widget>
               </item>
               <item row="3" column="4">
-               <widget class="QLineEdit" name="m_wire_color_le"/>
+               <layout class="QHBoxLayout" name="m_wire_color_hl">
+                <property name="spacing">
+                 <number>2</number>
+                </property>
+                <item>
+                 <widget class="QLineEdit" name="m_wire_color_le"/>
+                </item>
+                <item>
+                 <widget class="QToolButton" name="m_wire_color_codes_tb">
+                  <property name="toolTip">
+                   <string>IEC 60757 colour codes</string>
+                  </property>
+                  <property name="text">
+                   <string>…</string>
+                  </property>
+                  <property name="popupMode">
+                   <enum>QToolButton::InstantPopup</enum>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
               </item>
               <item row="1" column="0">
                <widget class="QLabel" name="label_2">
@@ -839,6 +859,7 @@
   <tabstop>m_function_le</tabstop>
   <tabstop>m_tension_protocol_le</tabstop>
   <tabstop>m_wire_color_le</tabstop>
+  <tabstop>m_wire_color_codes_tb</tabstop>
   <tabstop>m_wire_section_le</tabstop>
   <tabstop>m_cable_le</tabstop>
   <tabstop>m_bus_le</tabstop>

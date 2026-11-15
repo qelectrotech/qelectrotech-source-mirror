@@ -13,7 +13,8 @@
 //   one undo step for all of it, mouse pressed once;
 // - a T-junction dragged across the same three lines splits each line;
 // - a folio report turned to face up, dragged across two free lines, ends
-//   each of them;
+//   each of them; without live connections, with "auto conductor", the
+//   same drag joins them once with ordinary wires;
 // - Escape during a drag gives up the drag and keeps the tool;
 // - the automatic wires do not show the placeholder text "_".
 #include <QApplication>
@@ -224,6 +225,37 @@ int main(int argc, char **argv)
 		const QList<Element *> reports = elementsOf(diagram, "verweis");
 		check(reports.size() == 2, "a drag places two folio reports, turned to face up");
 		check(joined(top[4], reports[0]) && joined(top[5], reports[1]), "each ends its line");
+
+		// Without automatic connections kept up to date, but with the
+		// project's "auto conductor" and the setting on (off by default):
+		// the drag places the same copies and joins them once, with
+		// ordinary wires.
+		diagram->undoStack().undo();
+		check(elementsOf(diagram, "verweis").isEmpty(), "undo takes the reports away");
+		project.setLiveAutoConnect(false);
+		project.setAutoConductor(true);
+		check(!AutoConnect::dragPlacesWithAutoConductor(), "placing along a drag with auto conductor is off by default");
+		AutoConnect::setDragPlacesWithAutoConductor(true);
+		const int wires_before = diagram->conductors().size();
+		{
+			ElementsLocation report("embed://import/verweis.elmt", &project);
+			DiagramEventAddElement tool(report, diagram);
+			QKeyEvent space(QEvent::KeyPress, Qt::Key_Space, Qt::NoModifier);
+			tool.keyPressEvent(&space);
+			drag(tool, QPointF(290, 500), QPointF(350, 500));
+		}
+		const QList<Element *> plain = elementsOf(diagram, "verweis");
+		check(plain.size() == 2, "without live connections, a drag still places two reports");
+		auto wired = [](Element *a, Element *b) {
+			for (Terminal *t : a->terminals())
+				for (Conductor *c : t->conductors())
+					if (!c->isAutomatic() && (c->terminal1->parentElement() == b || c->terminal2->parentElement() == b))
+						return true;
+			return false;
+		};
+		check(wired(top[4], plain[0]) && wired(top[5], plain[1])
+			  && diagram->conductors().size() == wires_before + 2,
+			  "each is joined to its line once, by an ordinary wire");
 
 		std::printf("CLICKS: corners %d mouse presses for 3 lines (by hand: 3 placed + 6 wires drawn = 9)\n", 1);
 		QETApp::unregisterProject(&project);

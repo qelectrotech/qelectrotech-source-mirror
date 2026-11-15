@@ -17,6 +17,8 @@
 */
 #include "terminalstripitem.h"
 #include <qetproject.h>
+#include <dataBase/projectdatabase.h>
+#include <utils/qetsettings.h>
 
 #include <diagram.h>
 #include <project/projectpropertieshandler.h>
@@ -279,6 +281,12 @@ void TerminalStripItem::connectStrip(TerminalStrip *strip)
 							<< connect(strip, &TerminalStrip::bridgeChanged, this, &TerminalStripItem::stripChanged)
 							<< connect(strip, &TerminalStrip::bridgeColorChanged, this, &TerminalStripItem::stripChanged)
 							<< connect(strip, &TerminalStrip::dataChanged, this, &TerminalStripItem::stripChanged);
+		if (auto *project = strip->project()) {
+			m_strip_connections << connect(project->dataBase(),
+				&projectDataBase::dataBaseUpdated, this, [this] {
+					if (QetSettings::stripCableCoreTargetsShown()) stripChanged();
+				}, Qt::QueuedConnection);
+		}
 	}
 }
 

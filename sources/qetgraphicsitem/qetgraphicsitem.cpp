@@ -19,6 +19,7 @@
 
 #include <diagram.h>
 #include "element.h"
+#include <diagramevent/diagrameventaddpaste.h>
 
 /**
 	@brief QetGraphicsItem::QetGraphicsItem
@@ -116,8 +117,14 @@ void QetGraphicsItem::mousePressEvent(QGraphicsSceneMouseEvent *event)
 	if (event->button() == Qt::LeftButton)
 	{
 		m_first_move = true;
+		m_deselect_on_release = false;
 		if (event->modifiers() & Qt::ControlModifier) {
-			setSelected(!isSelected());
+				//When a Ctrl drag copies, a selected item stays selected
+				//until the release, so the drag can still copy it
+			if (isSelected() && DiagramEventAddPaste::ctrlDragCopies())
+				m_deselect_on_release = true;
+			else
+				setSelected(!isSelected());
 		}
 	}
 
@@ -144,6 +151,22 @@ void QetGraphicsItem::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {
 	if (isSelected() && event->buttons() & Qt::LeftButton)
 	{
+			//Dragged with Ctrl held: a copy of the selection follows the
+			//mouse from here and is put down at the release, the
+			//selection itself stays where it is
+		if (diagram() && m_first_move && (event->modifiers() & Qt::ControlModifier)
+			&& DiagramEventAddPaste::ctrlDragCopies() && !diagram()->isReadOnly())
+		{
+			m_first_move = false;
+			m_deselect_on_release = false;
+			const QString fragment = diagram()->selectionFragment();
+			ungrabMouse();
+			diagram()->setEventInterface(new DiagramEventAddPaste(
+				diagram(), event->buttonDownScenePos(Qt::LeftButton),
+				DiagramEventAddPaste::InPlace, fragment));
+			event->accept();
+			return;
+		}
 			//Item is moving
 		if(diagram() && m_first_move) {
 				//It's the first movement, we signal it to parent diagram
@@ -188,6 +211,9 @@ void QetGraphicsItem::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 */
 void QetGraphicsItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
+	if (m_deselect_on_release && m_first_move)
+		setSelected(false);
+	m_deselect_on_release = false;
 	if (diagram()) {
 		diagram()->elementsMover().endMovement();
 		event->accept();

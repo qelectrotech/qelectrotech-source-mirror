@@ -3272,12 +3272,9 @@ void Diagram::selectAllConductors()
 {
 	if (items().isEmpty()) return;
 
-	blockSignals(true);
-	for (auto item : items()) {
-		item -> setSelected(dynamic_cast<Conductor *>(item) != nullptr);
-	}
-	blockSignals(false);
-	emit selectionChanged();
+	selectOnly([](QGraphicsItem *item) {
+		return dynamic_cast<Conductor *>(item) != nullptr;
+	});
 }
 
 /**
@@ -3289,12 +3286,9 @@ void Diagram::selectAllTextFields()
 {
 	if (items().isEmpty()) return;
 
-	blockSignals(true);
-	for (auto item : items()) {
-		item -> setSelected(dynamic_cast<DiagramTextItem *>(item) != nullptr);
-	}
-	blockSignals(false);
-	emit selectionChanged();
+	selectOnly([](QGraphicsItem *item) {
+		return dynamic_cast<DiagramTextItem *>(item) != nullptr;
+	});
 }
 
 /**
@@ -3313,10 +3307,35 @@ void Diagram::selectSameSymbols()
 	}
 	if (locations.isEmpty()) return;
 
-	blockSignals(true);
-	for (auto item : items()) {
+	selectOnly([&locations](QGraphicsItem *item) {
 		auto *element = qgraphicsitem_cast<Element *>(item);
-		item -> setSelected(element && locations.contains(element -> location().toString()));
+		return element && locations.contains(element -> location().toString());
+	});
+}
+
+/**
+	@brief Diagram::selectOnly
+	Select the items of this diagram @p wanted accepts, and nothing else,
+	then emit selectionChanged() once.
+	Deselecting first: a selected wire or text has handles, child items
+	that are deleted when it is deselected, so a list of the items taken
+	before would still hold them (see invertSelection()). The items are
+	listed only once nothing is selected; selecting only adds handles.
+	@param wanted
+*/
+void Diagram::selectOnly(const std::function<bool(QGraphicsItem *)> &wanted)
+{
+	blockSignals(true);
+	clearSelection();
+	const QList<QGraphicsItem *> all = items();
+	QList<QGraphicsItem *> chosen;
+	for (QGraphicsItem *item : all) {
+		if (wanted(item)) {
+			chosen << item;
+		}
+	}
+	for (QGraphicsItem *item : std::as_const(chosen)) {
+		item -> setSelected(true);
 	}
 	blockSignals(false);
 	emit selectionChanged();
@@ -3336,6 +3355,17 @@ void Diagram::setItemGroup(QGraphicsItem *item, const QUuid &group)
 		m_project->dataBase()->itemGroupChanged(item);
 	}
 	emit itemGroupChanged();
+}
+
+/**
+	@brief Diagram::selectionFragment
+	@return the selection as a copy writes it, cable lines included
+*/
+QString Diagram::selectionFragment()
+{
+	QDomDocument document = toXml(false, true);
+	CableCopy::write(this, document);
+	return document.toString();
 }
 
 /**
@@ -4205,21 +4235,30 @@ void Diagram::setGridSnap(bool snap)
 	Return the nearest point of p on the text grid, see TextGrid.
 	Ctrl held, or the snap switched off, rounds to the nearest pixel
 	instead, as snapToGrid() does.
-	@param p point to find the nearest snapped point
+	@param p : the position @a text is about to take, in its parent's
+	coordinates
+	@param text : the text being moved. With the "middle" setting on, the
+	middle of what it shows goes on the grid rather than the top left
+	corner of its frame, so a short text such as a terminal number stands
+	centred on a grid line. Without @a text, @a p itself is snapped.
 	@return
 */
-QPointF Diagram::snapToTextGrid(const QPointF &p)
+QPointF Diagram::snapToTextGrid(const QPointF &p, const QGraphicsItem *text)
 {
 	QSettings settings;
 	const qreal divisor =
 		!gridSnap() || QApplication::keyboardModifiers().testFlag(Qt::ControlModifier)
 			? 0
 			: settings.value(TextGrid::settings_key, 1).toReal();
+	const QPointF middle = text && divisor > 0
+			&& settings.value(TextGrid::middle_key, false).toBool()
+		? text->mapToParent(text->boundingRect().center()) - text->pos()
+		: QPointF();
 
-	return TextGrid::snap(p,
+	return TextGrid::snap(p + middle,
 						  FolioGrid::step(settings.value(FolioGrid::x_key), Diagram::xGrid),
 						  FolioGrid::step(settings.value(FolioGrid::y_key), Diagram::yGrid),
-						  divisor);
+						  divisor) - middle;
 }
 
 

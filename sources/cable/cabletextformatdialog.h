@@ -38,9 +38,11 @@ class QPushButton;
 	turned by a quarter along their own line.
 
 	Saying nothing is the normal case: the cable then follows what the
-	preferences offer on the "Textes" page, and OK keeps an answer of
-	its own only when he really changed something -- so that picking
-	another default later on still reaches this cable.
+	preferences offer for that very text on the "Textes" page -- each
+	of the five having a default of its own there since they were set
+	apart -- and OK keeps an answer of its own only when he really
+	changed something, so that picking another default later on still
+	reaches this cable.
 */
 class CableTextFormatDialog : public QDialog
 {
@@ -50,12 +52,14 @@ class CableTextFormatDialog : public QDialog
 		/**
 			@param format what this cable writes that text with right
 			now, an empty format when it merely follows the preferences
-			@param cores true for the colours of the cores: they have
-			no alignment and follow QETApp::cableCoreFont()
+			@param key the name of that text: "designation", "type",
+			"installation", "location", "length" or "cores" -- which
+			says whether it is the colours of the cores, they having
+			no alignment and following QETApp::cableCoreFont()
 			@param parent
 		*/
 		CableTextFormatDialog(const CableTextFormat &format,
-							  bool cores,
+							  const QString &key,
 							  QWidget *parent = nullptr);
 
 			///What the cable is to write that text with from now on
@@ -66,6 +70,10 @@ class CableTextFormatDialog : public QDialog
 		void updatePreview();
 		QFont chosenFont() const;
 
+			///The name of the text this window sets, "cores" for the
+			///colours of the cores
+		QString m_key;
+			///True when the text is the colours of the cores
 		bool m_cores = false;
 			///True when he asked to go back to following the preferences
 		bool m_reset_chosen = false;

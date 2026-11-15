@@ -12,7 +12,7 @@
 #include "qettesttimeout.h"
 
 // Where a placed symbol comes from and sits (type, x, y, orientation, the two
-// mirrors, z) is in the project database, one element_placement row per
+// mirrors, z, and its centre on the folio) is in the project database, one element_placement row per
 // symbol, whether its folio was built (QET_EAGER_FOLIOS=1) or read from the
 // document (lazy folios). QET-SQL-FORMAT S3d.
 //
@@ -79,7 +79,7 @@ class tst_elementplacementrows : public QObject
 	int m_run = 0;
 
 	// The rows of element_placement after opening the project, as
-	// "uuid|type|x|y|rotation|hmirror|vmirror|z".
+	// "uuid|type|x|y|rotation|hmirror|vmirror|z|centre_x|centre_y".
 	// @p source: a project file, or the one written here when empty.
 	// @p log: what the binary printed.
 	QStringList rows(bool eager, const QString &source = QString(), QString *log = nullptr)
@@ -99,8 +99,8 @@ class tst_elementplacementrows : public QObject
 		QFile s(js);
 		if (!s.open(QIODevice::WriteOnly)) return {};
 		s.write("qet.log('ROWS ' + JSON.stringify(qet.query("
-				"'SELECT element_uuid, type, x, y, rotation, horizontal_mirror, vertical_mirror, z "
-				"FROM element_placement ORDER BY element_uuid')));");
+				"'SELECT element_uuid, type, x, y, rotation, horizontal_mirror, vertical_mirror, z, "
+				"centre_x, centre_y FROM element_placement ORDER BY element_uuid')));");
 		s.close();
 
 		QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
@@ -131,7 +131,8 @@ class tst_elementplacementrows : public QObject
 				for (const QString &name : {QStringLiteral("element_uuid"), QStringLiteral("type"),
 											QStringLiteral("x"), QStringLiteral("y"),
 											QStringLiteral("rotation"), QStringLiteral("horizontal_mirror"),
-											QStringLiteral("vertical_mirror"), QStringLiteral("z")})
+											QStringLiteral("vertical_mirror"), QStringLiteral("z"),
+											QStringLiteral("centre_x"), QStringLiteral("centre_y")})
 					cells << text(o.value(name));
 				result << cells.join(QLatin1Char('|'));
 			}
@@ -153,14 +154,16 @@ private slots:
 		QVERIFY(QFile::exists(QStringLiteral(QET_TEST_BINARY_PATH)));
 	}
 
-	// Each symbol's place is a row, as its saved attributes give it
+	// Each symbol's place is a row, as its saved attributes give it. The
+	// centre: the frame is 30 x 50 (42 rounded up), its hotspot 15, 21, so
+	// the centre is 4 below the hotspot, then mirrored and turned with it
 	void placementIsARow()
 	{
 		const QStringList r = rows(true);
 		QCOMPARE(r.size(), 2);
 		const QString t = QStringLiteral("|embed://import/t/box.elmt|");
-		QCOMPARE(rowOf(r, uuid_a), uuid_a + t + QStringLiteral("100.5|-200|3|1|1|25.5"));
-		QCOMPARE(rowOf(r, uuid_b), uuid_b + t + QStringLiteral("300|200|1|0|1|10"));
+		QCOMPARE(rowOf(r, uuid_a), uuid_a + t + QStringLiteral("100.5|-200|3|1|1|25.5|96.5|-200"));
+		QCOMPARE(rowOf(r, uuid_b), uuid_b + t + QStringLiteral("300|200|1|0|1|10|304|200"));
 	}
 
 	// Opened with QET_EAGER_FOLIOS or not, the same rows (this project is

@@ -377,7 +377,9 @@ void DxfExport::write(Diagram *diagram, int width, int height,
 			continue;
 		}
 		if (Element *elmt = qgraphicsitem_cast<Element *>(qgi)) {
-			list_elements << elmt;
+				//A drawing aid is never exported
+			if (!elmt->isDrawingAid())
+				list_elements << elmt;
 		} else if (Conductor *f = qgraphicsitem_cast<Conductor *>(qgi)) {
 			list_conductors << f;
 		} else if (auto *mark = qgraphicsitem_cast<ConductorDefinitionMark *>(qgi)) {
@@ -387,7 +389,9 @@ void DxfExport::write(Diagram *diagram, int width, int height,
 			list_texts << iti;
 		} else if (DiagramImageItem *dii = qgraphicsitem_cast<DiagramImageItem *>(qgi)) {
 			list_images << dii;
-		} else if (QetShapeItem *dii = qgraphicsitem_cast<QetShapeItem *>(qgi)) {
+			//dynamic_cast: a structure box is a QetShapeItem with a type()
+			//of its own, which qgraphicsitem_cast does not match
+		} else if (QetShapeItem *dii = dynamic_cast<QetShapeItem *>(qgi)) {
 			list_shapes << dii;
 		} else if (DynamicElementTextItem *deti = qgraphicsitem_cast<DynamicElementTextItem *>(qgi)) {
 			list_texts << deti;

@@ -29,12 +29,11 @@
 
 #include <QApplication>
 #include <QDomDocument>
+#include <QSettings>
 #include <QFont>
 #include <QGraphicsScene>
 #include <QGraphicsSceneMouseEvent>
 #include <QLineF>
-#include <QPainter>
-#include <QTextDocument>
 
 #include <algorithm>
 
@@ -57,9 +56,8 @@ StructureBoxItem::StructureBoxItem(QPointF p1, QPointF p2, QGraphicsItem *parent
 			this, &StructureBoxItem::labelPosChanged);
 	connect(this, &QetShapeItem::geometryChanged,
 			this, &StructureBoxItem::placeLabel);
-	connect(this, &QetShapeItem::penChanged, this, [this]() {
-		m_label->setDefaultTextColor(pen().color());
-	});
+		//The name is drawn in the colour of the box's line
+	connect(this, &QetShapeItem::penChanged, this, &StructureBoxItem::refreshLabel);
 	refreshLabel();
 }
 
@@ -134,13 +132,11 @@ void StructureBoxItem::refreshTextsOf(Element *element)
 /**
 	@brief StructureBoxItem::refreshLabel
 	Its label says the box's designation, in the box's colour and size.
-	The font is the one the box's name was painted in before it was a
-	text of its own, so a box nobody has touched looks as it did.
 	A box with no designation has no label to click.
 */
 void StructureBoxItem::refreshLabel()
 {
-	QFont font = QApplication::font();
+	QFont font = m_label->font();
 	font.setPointSizeF(m_label_size);
 	m_label->setFont(font);
 	m_label->setDefaultTextColor(pen().color());
@@ -152,8 +148,9 @@ void StructureBoxItem::refreshLabel()
 
 /**
 	@brief StructureBoxItem::placeLabel
-	A label nobody has moved stands inside the top left corner, however
-	the box is resized.
+	A label nobody has moved stands above the top left corner, outside the
+	box, as a device's designation stands outside its frame; it stays there
+	however the box is resized.
 */
 void StructureBoxItem::placeLabel()
 {
@@ -162,11 +159,13 @@ void StructureBoxItem::placeLabel()
 }
 
 /**
-	@return where a label nobody has moved stands: inside the top left corner
+	@return where a label nobody has moved stands: above the top left
+	corner, outside the box
 */
 QPointF StructureBoxItem::cornerLabelPos() const
 {
-	return rect().normalized().topLeft() + QPointF(2, 2);
+	return rect().normalized().topLeft()
+			- QPointF(0, m_label->boundingRect().height());
 }
 
 /**
@@ -387,29 +386,6 @@ StructureBoxLabelItem::StructureBoxLabelItem(StructureBoxItem *box) :
 {
 	setFlag(QGraphicsItem::ItemIsSelectable, true);
 	setFlag(QGraphicsItem::ItemIsMovable, true);
-		//The old painted name stood right at rect + 2: no margin around it
-	document()->setDocumentMargin(0);
-}
-
-/**
-	@brief StructureBoxLabelItem::paint
-	A label at the corner is clipped by its box, as the painted name was;
-	one moved elsewhere is shown whole.
-*/
-void StructureBoxLabelItem::paint(QPainter *painter,
-								  const QStyleOptionGraphicsItem *option,
-								  QWidget *widget)
-{
-	if (!m_box->m_label_moved) {
-		const QRectF inside =
-				m_box->rect().normalized().adjusted(2, 2, -2, -2);
-		painter->save();
-		painter->setClipRect(mapRectFromParent(inside), Qt::IntersectClip);
-		DiagramTextItem::paint(painter, option, widget);
-		painter->restore();
-		return;
-	}
-	DiagramTextItem::paint(painter, option, widget);
 }
 
 /**
@@ -493,4 +469,26 @@ void StructureBoxLabelItem::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *even
 {
 	event->accept();
 	m_box->editProperty();
+}
+
+QColor StructureBoxItem::newBoxColor()
+{
+	const QColor color(QSettings().value(QStringLiteral("diagrameditor/structure_box_color"),
+										 QStringLiteral("#000000")).toString());
+	return color.isValid() ? color : QColor(Qt::black);
+}
+
+void StructureBoxItem::setNewBoxColor(const QColor &color)
+{
+	QSettings().setValue(QStringLiteral("diagrameditor/structure_box_color"), color.name());
+}
+
+bool StructureBoxItem::askPlaceWhenDrawn()
+{
+	return QSettings().value(QStringLiteral("diagrameditor/structure_box_ask_place"), false).toBool();
+}
+
+void StructureBoxItem::setAskPlaceWhenDrawn(bool ask)
+{
+	QSettings().setValue(QStringLiteral("diagrameditor/structure_box_ask_place"), ask);
 }

@@ -17,6 +17,8 @@
 */
 #include "palettegraphicsview.h"
 
+#include <QSettings>
+
 #include "qetpalette.h"
 #include "darkimagerendering.h"
 
@@ -181,12 +183,16 @@ void PaletteGraphicsView::paintInverted(QPaintEvent *event)
 		rasterScope.emplace(&context);
 
 	m_inverting = true;
+	m_selection_frames.clear();
+	m_dark_sheet = !customBackgroundColor() || !m_ink.isNull();
+	s_deferring = this;
 	paintingInverted(!customBackgroundColor());
 	const OptimizationFlags flags = optimizationFlags();
 	setOptimizationFlag(QGraphicsView::IndirectPainting, true);
 	QGraphicsView::paintEvent(event);
 	setOptimizationFlags(flags);
 	paintingInverted(false);
+	s_deferring = nullptr;
 	m_inverting = false;
 	m_ink = QET::Palette::SheetInk();
 
@@ -417,7 +423,66 @@ void PaletteGraphicsView::blitInverted(const QRect &area)
 
 	QPainter painter(viewport());
 	painter.drawImage(QPointF(pixels.topLeft()) / ratio, part);
+	painter.setClipRect(area);
+	drawSelectionFrames(painter);
+	painter.setClipping(false);
 	drawRubberBand(painter);
+}
+
+void PaletteGraphicsView::drawSelectionFrame(QPainter *painter, const QRectF &rect, bool strong, bool dark_sheet, int radius)
+{
+	painter->save();
+	if (strong)
+	{
+		QColor colour = QApplication::palette().color(QPalette::Highlight);
+			//A dark highlight would hardly show on a dark sheet
+		if (dark_sheet && colour.lightness() < 170)
+			colour = QColor::fromHsl(colour.hslHue(), colour.hslSaturation(), 170);
+		QPen pen(colour, 2);
+		pen.setCosmetic(true);
+		colour.setAlpha(40);
+		painter->setPen(pen);
+		painter->setBrush(colour);
+		painter->drawRoundedRect(rect, radius, radius);
+		painter->restore();
+		return;
+	}
+	QPen t;
+	t.setColor(dark_sheet ? QColor(200, 200, 200) : QColor(Qt::gray));
+	t.setStyle(Qt::DashDotLine);
+	t.setCosmetic(true);
+
+	painter->setPen(t);
+	painter->setBrush(Qt::NoBrush);
+	painter->drawRoundedRect(rect, radius, radius);
+	painter->restore();
+}
+
+bool PaletteGraphicsView::deferSelectionFrame(QPainter *painter, const QRectF &rect, bool strong, int radius)
+{
+		//The off-screen image, or the layer a kind of item is tinted on
+	if (!s_deferring || (painter->device() != &s_deferring->m_buffer
+	                     && painter->device() != &s_deferring->m_tint_layer))
+		return false;
+	s_deferring->m_selection_frames.push_back({painter->worldTransform(), rect, strong, radius});
+	return true;
+}
+
+/**
+	@brief PaletteGraphicsView::drawSelectionFrames
+	Draw the selection frames the items left for after the inversion
+	(see deferSelectionFrame()), in colors that stand out on the sheet.
+	@param painter a painter on the viewport
+*/
+void PaletteGraphicsView::drawSelectionFrames(QPainter &painter)
+{
+	for (const SelectionFrame &frame : m_selection_frames) {
+		painter.save();
+		painter.setWorldTransform(frame.transform);
+		drawSelectionFrame(&painter, frame.rect, frame.strong, m_dark_sheet, frame.radius);
+		painter.restore();
+	}
+	m_selection_frames.clear();
 }
 
 /**
