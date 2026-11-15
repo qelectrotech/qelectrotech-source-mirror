@@ -20,12 +20,14 @@
 #include "ui_materialselectiondialog.h"
 
 #include <qetapp.h>
+#include <qeticons.h>
 #include <qetinformation.h>
 #include <qetmessagebox.h>
 
 #include <QApplication>
 #include <QClipboard>
 #include <QComboBox>
+#include <QDialogButtonBox>
 #include <QFileDialog>
 #include <QFileInfo>
 #include <QFont>
@@ -35,12 +37,15 @@
 #include <QMenu>
 #include <QMessageBox>
 #include <QMimeData>
+#include <QPlainTextEdit>
 #include <QPushButton>
 #include <QSet>
 #include <QShortcut>
 #include <QStyledItemDelegate>
 #include <QTableWidgetItem>
+#include <QToolButton>
 #include <QTreeWidgetItem>
+#include <QVBoxLayout>
 
 #include <algorithm>
 
@@ -419,6 +424,21 @@ void MaterialSelectionDialog::populateDetails(const MaterialRecord &record)
 	ui->m_details_table->setRowCount(cols.size());
 
 	const bool editable = (m_edit_mode != EditMode::View);
+	ui->m_details_table->setColumnCount(editable ? 3 : 2);
+	if (editable)
+	{
+		ui->m_details_table->setHorizontalHeaderItem(2, new QTableWidgetItem(QString()));
+		ui->m_details_table->horizontalHeader()->setStretchLastSection(false);
+		ui->m_details_table->horizontalHeader()->setSectionResizeMode(0, QHeaderView::ResizeToContents);
+		ui->m_details_table->horizontalHeader()->setSectionResizeMode(1, QHeaderView::Stretch);
+		ui->m_details_table->horizontalHeader()->setSectionResizeMode(2, QHeaderView::ResizeToContents);
+	}
+	else
+	{
+		ui->m_details_table->horizontalHeader()->setSectionResizeMode(0, QHeaderView::ResizeToContents);
+		ui->m_details_table->horizontalHeader()->setSectionResizeMode(1, QHeaderView::Stretch);
+		ui->m_details_table->horizontalHeader()->setStretchLastSection(true);
+	}
 
 	for (int i = 0; i < cols.size(); ++i)
 	{
@@ -436,6 +456,48 @@ void MaterialSelectionDialog::populateDetails(const MaterialRecord &record)
 		}
 		value_item->setFlags(flags);
 		ui->m_details_table->setItem(i, 1, value_item);
+
+		if (editable)
+		{
+			auto *btn_item = new QTableWidgetItem();
+			btn_item->setFlags(Qt::ItemIsEnabled);
+			ui->m_details_table->setItem(i, 2, btn_item);
+
+			if (!QETInformation::isNumericInfoKey(column))
+			{
+				auto *multiline_btn = new QToolButton(ui->m_details_table);
+				multiline_btn->setIcon(QET::Icons::EditText);
+				multiline_btn->setAutoRaise(true);
+				multiline_btn->setFocusPolicy(Qt::NoFocus);
+				multiline_btn->setToolTip(tr("Edit on several lines"));
+				const QString field_label = field_item->text();
+				connect(multiline_btn, &QToolButton::clicked, this, [this, i, field_label]() {
+					QTableWidgetItem *item = ui->m_details_table->item(i, 1);
+					if (!item) {
+						return;
+					}
+					QDialog dialog(this);
+					dialog.setWindowTitle(field_label);
+
+					auto *edit = new QPlainTextEdit(&dialog);
+					edit->setPlainText(item->text());
+					auto *buttons = new QDialogButtonBox(
+						QDialogButtonBox::Ok | QDialogButtonBox::Cancel, &dialog);
+					connect(buttons, &QDialogButtonBox::accepted, &dialog, &QDialog::accept);
+					connect(buttons, &QDialogButtonBox::rejected, &dialog, &QDialog::reject);
+
+					auto *layout = new QVBoxLayout(&dialog);
+					layout->addWidget(edit);
+					layout->addWidget(buttons);
+					edit->setFocus();
+
+					if (dialog.exec() == QDialog::Accepted) {
+						item->setText(edit->toPlainText());
+					}
+				});
+				ui->m_details_table->setCellWidget(i, 2, multiline_btn);
+			}
+		}
 	}
 }
 
@@ -494,7 +556,6 @@ MaterialRecord MaterialSelectionDialog::detailsRecord() const
 		const QString column = field_item->data(ColumnKeyRole).toString();
 		QString value = value_item->text();
 		value.remove(QLatin1Char('\r'));
-		value.remove(QLatin1Char('\n'));
 		value = value.trimmed();
 		if (!value.isEmpty()) {
 			record.setValue(column, value);

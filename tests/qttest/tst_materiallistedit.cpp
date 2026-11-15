@@ -29,6 +29,7 @@
 #include <QTableWidget>
 #include <QTemporaryDir>
 #include <QTest>
+#include <QToolButton>
 #include <QTreeWidget>
 
 class tst_materiallistedit : public QObject
@@ -282,13 +283,17 @@ void tst_materiallistedit::testInlineNewAndEditEntry()
 	QTreeWidgetItem *child = tree->topLevelItem(0)->child(0);
 	tree->setCurrentItem(child);
 	QVERIFY(edit_btn->isEnabled());
+	QCOMPARE(details->columnCount(), 2);
 	edit_btn->click();
+	QCOMPARE(details->columnCount(), 3);
+	QVERIFY(qobject_cast<QToolButton *>(details->cellWidget(1, 2)) != nullptr);
 
-	details->item(1, 1)->setText(QStringLiteral("Main Switch"));
+	details->item(1, 1)->setText(QStringLiteral("Main Switch\n230V"));
 	save_btn->click();
+	QCOMPARE(details->columnCount(), 2);
 
 	QCOMPARE(dialog.selectedRecord().value(QStringLiteral("description")),
-			 QStringLiteral("Main Switch"));
+			 QStringLiteral("Main Switch\n230V"));
 
 	// Create a new entry inline on the right
 	new_btn->click();
@@ -304,7 +309,7 @@ void tst_materiallistedit::testInlineNewAndEditEntry()
 	QVERIFY(MaterialList::load(path, &reloaded));
 	QCOMPARE(reloaded.records.size(), 2);
 	QCOMPARE(reloaded.records.at(0).value(QStringLiteral("description")),
-			 QStringLiteral("Main Switch"));
+			 QStringLiteral("Main Switch\n230V"));
 	QCOMPARE(reloaded.records.at(1).value(QStringLiteral("designation")),
 			 QStringLiteral("ABB.2"));
 }
