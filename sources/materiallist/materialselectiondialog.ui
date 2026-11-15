@@ -89,6 +89,19 @@
       </widget>
      </item>
      <item>
+      <widget class="QPushButton" name="m_edit_entry_btn">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="toolTip">
+        <string extracomment="button editing the selected row in the material list file">Edit the selected item in the list</string>
+       </property>
+       <property name="text">
+        <string>Edit entry</string>
+       </property>
+      </widget>
+     </item>
+     <item>
       <spacer name="m_buttons_spacer">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>

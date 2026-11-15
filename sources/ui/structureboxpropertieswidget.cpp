@@ -21,7 +21,14 @@
 #include "../diagram.h"
 #include "../qetgraphicsitem/structureboxitem.h"
 
+#ifdef BUILD_WITHOUT_KF
+#	include "nokde/kcolorbutton.h"
+#else
+#	include <KColorButton>
+#endif
+
 #include <QFormLayout>
+#include <QDoubleSpinBox>
 #include <QLineEdit>
 
 StructureBoxPropertiesWidget::StructureBoxPropertiesWidget(StructureBoxItem *item, QWidget *parent) :
@@ -35,6 +42,14 @@ StructureBoxPropertiesWidget::StructureBoxPropertiesWidget(StructureBoxItem *ite
 	layout->addRow(tr("Plant (=)"), m_plant_edit);
 	layout->addRow(tr("Location (+)"), m_location_edit);
 	layout->addRow(tr("Prefix (-)"), m_prefix_edit);
+	m_label_size = new QDoubleSpinBox(this);
+	m_label_size->setObjectName(QStringLiteral("labelSize"));
+	m_label_size->setRange(1, 200);
+	m_label_size->setSuffix(tr(" pt"));
+	layout->addRow(tr("Size of its name"), m_label_size);
+	m_color = new KColorButton(this);
+	m_color->setObjectName(QStringLiteral("color"));
+	layout->addRow(tr("Colour"), m_color);
 
 	updateUi();
 }
@@ -54,6 +69,16 @@ void StructureBoxPropertiesWidget::apply()
 	change("plant",    m_item->plant(),    m_plant_edit->text());
 	change("location", m_item->location(), m_location_edit->text());
 	change("prefix",   m_item->prefix(),   m_prefix_edit->text());
+	if (!qFuzzyCompare(m_item->labelSize(), m_label_size->value())) {
+		if (!undo) undo = new QUndoCommand(tr("Modify a structure box"));
+		new QPropertyUndoCommand(m_item, "labelSize", m_item->labelSize(), m_label_size->value(), undo);
+	}
+	if (m_item->pen().color() != m_color->color()) {
+		if (!undo) undo = new QUndoCommand(tr("Modify a structure box"));
+		QPen pen = m_item->pen();
+		pen.setColor(m_color->color());
+		new QPropertyUndoCommand(m_item, "pen", QVariant::fromValue(m_item->pen()), QVariant::fromValue(pen), undo);
+	}
 	if (!undo) return;
 	if (m_item->diagram())
 		m_item->diagram()->undoStack().push(undo);
@@ -76,6 +101,8 @@ void StructureBoxPropertiesWidget::updateUi()
 	m_plant_edit->setText(m_item->plant());
 	m_location_edit->setText(m_item->location());
 	m_prefix_edit->setText(m_item->prefix());
+	m_label_size->setValue(m_item->labelSize());
+	m_color->setColor(m_item->pen().color());
 }
 
 /**
@@ -99,6 +126,10 @@ bool StructureBoxPropertiesWidget::setLiveEdit(bool live_edit)
 		for (QLineEdit *edit : {m_plant_edit, m_location_edit, m_prefix_edit})
 			m_edit_connections << connect(edit, &QLineEdit::editingFinished,
 										  this, &StructureBoxPropertiesWidget::apply);
+		m_edit_connections << connect(m_label_size, &QDoubleSpinBox::editingFinished,
+									  this, &StructureBoxPropertiesWidget::apply);
+		m_edit_connections << connect(m_color, &KColorButton::changed,
+									  this, &StructureBoxPropertiesWidget::apply);
 	}
 	return true;
 }

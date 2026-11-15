@@ -17,6 +17,7 @@
 */
 
 #include "qetproject.h"
+#include "ElementsCollection/terminaluuids.h"
 #include "TerminalStrip/terminalstriplabels.h"
 #include "container/qetcontainer.h"
 #include "container/qetcontainerdb.h"
@@ -2586,6 +2587,33 @@ void QETProject::setPlantAndLocationInherited(bool inherited)
 }
 
 /**
+	@brief QETProject::followDeviceTypes
+	@return true if placing and linking follow the device types: a contact
+	is linked only to a device whose type has a free part for it, and takes
+	that part's terminals; a master placed is asked its device type. Off
+	unless the project says otherwise, so a project saved without it
+	behaves as it always did.
+*/
+bool QETProject::followDeviceTypes() const
+{
+	return m_follow_device_types;
+}
+
+/**
+	@brief QETProject::setFollowDeviceTypes
+	@param follow : whether placing and linking follow the device types
+*/
+void QETProject::setFollowDeviceTypes(bool follow)
+{
+	if (follow == m_follow_device_types) {
+		return;
+	}
+	m_follow_device_types = follow;
+	storeSettings();
+	setModified(true);
+}
+
+/**
 	@brief QETProject::terminalLabelSplit
 	@return whether the terminals of this project draw their label split,
 	the label ("X1") and the terminal number ("1") each in their own text
@@ -2934,12 +2962,14 @@ QDomDocument QETProject::toXml(QHash<int, QByteArray> *kept_folios, QStringList 
 	writeWireHopsXml(project_root);
 	writeSymbolTextsXml(project_root);
 	writePlantLocationXml(project_root);
+	writeDeviceTypeRulesXml(project_root);
 	writeLanguagesXml(project_root);
 	writePotentialTypesXml(project_root);
 	writeTerminalLabelSplitXml(project_root);
 	writeWiringRulesXml(project_root);
 	writeChainedReportsXml(project_root);
 	writeConductorPlantCountersXml(project_root);
+	writeDeviceTypesXml(project_root);
 	writeOriginXml(project_root);
 
 	// Properties for news diagrams
@@ -3902,12 +3932,28 @@ QList<QETProject::OutdatedElement> QETProject::outdatedElements() const
 	Replace the embedded element of @p element by its source, keeping the
 	uuids of the terminals that did not move. Placed elements keep their
 	old drawing until they are reloaded (Element::reloadPicture()).
+
+	With @p follow_moved_origin, a source drawn the same but moved as a
+	whole (its insertion point moved, TerminalUuids::commonOffset()) gives
+	each terminal the uuid of the one it was moved from instead, for the
+	placed symbols moved with it (Element::followMovedOrigin()).
 */
-void QETProject::updateElement(const OutdatedElement &element)
+void QETProject::updateElement(const OutdatedElement &element, bool follow_moved_origin)
 {
 	ElementsLocation source = element.source;
 	ElementsLocation parent = element.embedded.parent();
+	const QDomElement old_definition = follow_moved_origin
+			? element.embedded.xml().cloneNode(true).toElement()
+			: QDomElement();
 	m_elements_collection->copy(source, parent);
+
+	if (!follow_moved_origin)
+		return;
+	QDomElement new_definition = element.embedded.xml();
+	QPointF offset;
+	if (TerminalUuids::commonOffset(old_definition, new_definition, &offset)
+		&& !offset.isNull())
+		TerminalUuids::keepShifted(old_definition, new_definition, offset);
 }
 
 /**
@@ -4146,12 +4192,14 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 	readWireHopsXml(xml_project);
 	readSymbolTextsXml(xml_project);
 	readPlantLocationXml(xml_project);
+	readDeviceTypeRulesXml(xml_project);
 	readLanguagesXml(xml_project);
 	readPotentialTypesXml(xml_project);
 	readTerminalLabelSplitXml(xml_project);
 	readWiringRulesXml(xml_project);
 	readChainedReportsXml(xml_project);
 	readConductorPlantCountersXml(xml_project);
+	readDeviceTypesXml(xml_project);
 	readOriginXml(xml_project);
 
 		//What this QET does not know of the project, kept for every format
@@ -4799,6 +4847,20 @@ void QETProject::readPlantLocationXml(QDomDocument &xml_project)
 }
 
 /**
+	@brief QETProject::readDeviceTypeRulesXml
+	Read the <devicetype_rules> element of the project, if any: a project
+	without it does not follow the device types (followDeviceTypes()).
+	@param xml_project : the xml description of the project
+*/
+void QETProject::readDeviceTypeRulesXml(QDomDocument &xml_project)
+{
+	const QDomElement rules = xml_project.documentElement()
+			.firstChildElement(QStringLiteral("devicetype_rules"));
+	m_follow_device_types = !rules.isNull()
+			&& rules.attribute(QStringLiteral("follow")) == QLatin1String("true");
+}
+
+/**
 	@brief QETProject::readTerminalLabelSplitXml
 	Read the <terminal_labelling> element of the project, if any. A
 	project without it was saved before the setting existed, or with it
@@ -5413,6 +5475,23 @@ void QETProject::writePlantLocationXml(QDomElement &xml_element)
 }
 
 /**
+	@brief QETProject::writeDeviceTypeRulesXml
+	Export whether placing and linking follow the device types, as a
+	<devicetype_rules> child of \a xml_element. Written only when on, so a
+	project with it off saves exactly as before.
+*/
+void QETProject::writeDeviceTypeRulesXml(QDomElement &xml_element)
+{
+	if (!m_follow_device_types) {
+		return;
+	}
+	QDomElement rules = xml_element.ownerDocument()
+			.createElement(QStringLiteral("devicetype_rules"));
+	rules.setAttribute(QStringLiteral("follow"), QStringLiteral("true"));
+	xml_element.appendChild(rules);
+}
+
+/**
 	@brief QETProject::writeTerminalLabelSplitXml
 	Export whether the terminals draw their label split, as a
 	<terminal_labelling> child of \a xml_element. Written only when on,
@@ -5564,6 +5643,60 @@ void QETProject::writeConductorPlantCountersXml(QDomElement &xml_element)
 	xml_element.appendChild(counters);
 }
 
+/**
+	@brief QETProject::setDeviceType
+	Keep @p type in the project, in place of one of the same name.
+*/
+void QETProject::setDeviceType(const DeviceType &type)
+{
+	if (type.isNull() || m_device_types.value(type.name) == type)
+		return;
+	m_device_types.insert(type.name, type);
+	storeSettings();
+	setModified(true);
+}
+
+void QETProject::removeDeviceType(const QString &name)
+{
+	if (!m_device_types.remove(name))
+		return;
+	storeSettings();
+	setModified(true);
+}
+
+/**
+	@brief QETProject::readDeviceTypesXml
+	Read <devicetypes>: the device types the project keeps.
+*/
+void QETProject::readDeviceTypesXml(QDomDocument &xml_project)
+{
+	m_device_types.clear();
+	const QDomElement types = xml_project.documentElement()
+			.firstChildElement(QStringLiteral("devicetypes"));
+	for (QDomElement t = types.firstChildElement(QStringLiteral("devicetype")) ; !t.isNull()
+		 ; t = t.nextSiblingElement(QStringLiteral("devicetype"))) {
+		const DeviceType type = DeviceType::fromXml(t);
+		if (!type.isNull())
+			m_device_types.insert(type.name, type);
+	}
+}
+
+/**
+	@brief QETProject::writeDeviceTypesXml
+	Write <devicetypes>, only when the project keeps one: a project without
+	device types is saved as before.
+*/
+void QETProject::writeDeviceTypesXml(QDomElement &xml_element)
+{
+	if (m_device_types.isEmpty())
+		return;
+	QDomDocument document = xml_element.ownerDocument();
+	QDomElement types = document.createElement(QStringLiteral("devicetypes"));
+	for (const DeviceType &type : std::as_const(m_device_types))
+		types.appendChild(type.toXml(document));
+	xml_element.appendChild(types);
+}
+
 bool QETProject::chainedReports() const
 {
 	return m_chained_reports;
@@ -5688,12 +5821,14 @@ void QETProject::storeSettings()
 	writeWireHopsXml(root);
 	writeSymbolTextsXml(root);
 	writePlantLocationXml(root);
+	writeDeviceTypeRulesXml(root);
 	writeLanguagesXml(root);
 	writePotentialTypesXml(root);
 	writeTerminalLabelSplitXml(root);
 	writeWiringRulesXml(root);
 	writeChainedReportsXml(root);
 	writeConductorPlantCountersXml(root);
+	writeDeviceTypesXml(root);
 	writeOriginXml(root);
 	QDomElement new_diagrams = document.createElement(QStringLiteral("newdiagrams"));
 	writeDefaultPropertiesXml(new_diagrams);

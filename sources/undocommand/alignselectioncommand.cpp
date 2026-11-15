@@ -48,7 +48,7 @@ namespace {
 		@return the items of @a dc that take part, symbols first so a
 		group with a symbol in it snaps on that symbol.
 	*/
-	QList<Entry> entriesOf(const DiagramContent &dc, qreal text_divisor)
+	QList<Entry> entriesOf(const DiagramContent &dc, qreal text_divisor, bool text_middle = false)
 	{
 		QList<Entry> entries;
 			//A symbol's edges are its own outline, without its texts, and
@@ -64,7 +64,8 @@ namespace {
 		}
 		for (IndependentTextItem *text : std::as_const(dc.m_text_fields))
 			entries << Entry{text, {text->sceneBoundingRect(), text->sceneBoundingRect().center()},
-					 text->pos(), text_divisor};
+					 text_middle ? text->sceneBoundingRect().center() : text->pos(),
+					 text_divisor};
 			//A shape's edges are the shape as drawn. What goes on the grid is
 			//the top-left corner of that box: a rectangle's corner, an
 			//ellipse's box, a line's end. Its pos() says nothing a user can
@@ -128,7 +129,8 @@ AlignSelectionCommand::AlignSelectionCommand(Diagram *diagram, Mode mode, QUndoC
 
 		//Each kind goes where dragging it would have left it: symbols,
 		//pictures and shapes on the folio grid, free texts on the text grid.
-	const QList<Entry> entries = entriesOf(dc, text_divisor);
+	const QList<Entry> entries = entriesOf(dc, text_divisor,
+									  settings.value(TextGrid::middle_key, false).toBool());
 	m_item_count = entries.size();
 
 	auto move = [this](QGraphicsObject *item, const QPointF &offset)

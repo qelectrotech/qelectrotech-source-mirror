@@ -38,6 +38,9 @@ class MaterialEntryDialog : public QDialog
 
 	public:
 		explicit MaterialEntryDialog(const QStringList &columns, QWidget *parent = nullptr);
+		MaterialEntryDialog(const QStringList &columns,
+							const MaterialRecord &initial,
+							QWidget *parent = nullptr);
 		~MaterialEntryDialog() override;
 
 		/** @brief the article described by the form */
@@ -47,8 +50,11 @@ class MaterialEntryDialog : public QDialog
 
 		//ATTRIBUTES
 	private:
+		void initUi(const QString &title, const QString &intro_text);
+
 		QStringList      m_columns;
 		QList<QLineEdit*> m_edits;
+		QStringList      m_extra;
 };
 
 #endif // MATERIALENTRYDIALOG_H

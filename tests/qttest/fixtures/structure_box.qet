@@ -33,7 +33,7 @@
             </element>
         </elements>
         <shapes>
-            <shape closed="0" is_movable="1" location="FIELD" plant="E1" prefix="" rx="0" ry="0" structure_box="true" type="Rectangle" uuid="{6c1a2b3d-1251-4c1e-9e57-3f0d0f0a7c41}" x1="20" x2="400" y1="20" y2="300" z="0">
+            <shape closed="0" is_movable="1" label_size="14" label_x="8.0" label_y="-24.0" location="FIELD" plant="E1" prefix="" rx="0" ry="0" structure_box="true" type="Rectangle" uuid="{6c1a2b3d-1251-4c1e-9e57-3f0d0f0a7c41}" x1="20" x2="400" y1="20" y2="300" z="0">
                 <pen color="#000000" style="DashLine" widthF="1"/>
                 <brush color="#000000" style="NoBrush"/>
             </shape>

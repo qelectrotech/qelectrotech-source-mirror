@@ -22,8 +22,11 @@
 #include <QList>
 #include <QToolButton>
 
+#include <functional>
+
 class QETDiagramEditor;
 class DiagramView;
+class ConductorProperties;
 
 /**
 	@brief The ConductorColorToolButton class
@@ -34,6 +37,11 @@ class DiagramView;
 	colour of the next conductor drawn this session, through the existing
 	LastUsedStyle mechanism. Either half is useful on its own -- with
 	nothing selected it only sets the pen for what comes next.
+
+	The list is the IEC 60757 colour codes (ConductorColorCodes): picking
+	one also writes the code in the wire's colour text, and green-yellow
+	is drawn striped. "Other color…" and the recent colours change the
+	drawn colour only.
 
 	This deliberately stores nothing in the project and nothing in
 	QSettings. It is the same session-scoped "what did I just use" idea
@@ -56,6 +64,8 @@ class ConductorColorToolButton : public QToolButton
 		DiagramView *currentView() const;
 		void rebuildMenu();
 		void applyColor(const QColor &color);
+		void applyCode(const QString &text);
+		void applyToSelection(const std::function<void (ConductorProperties &)> &change);
 		void chooseOtherColor();
 		void rememberRecent(const QColor &color);
 		void setSwatch(const QColor &color);

@@ -25,6 +25,7 @@ QFont LastUsedStyle::m_text_font;
 bool  LastUsedStyle::m_has_text_font = false;
 QColor LastUsedStyle::m_conductor_color;
 bool  LastUsedStyle::m_has_conductor_color = false;
+QString LastUsedStyle::m_conductor_color_code;
 
 /**
 	@return true if a shape pen was set this session
@@ -132,4 +133,27 @@ void LastUsedStyle::setConductorColor(const QColor &color)
 {
 	m_conductor_color = color;
 	m_has_conductor_color = true;
+	m_conductor_color_code.clear();
+}
+
+/**
+	@return the IEC 60757 colour code last applied to a conductor this
+	session, or an empty string when the last change was a plain colour
+*/
+QString LastUsedStyle::conductorColorCode()
+{
+	return m_conductor_color_code;
+}
+
+/**
+	@brief LastUsedStyle::setConductorColorCode
+	Record @a code, drawn in @a color, as the last-used conductor colour
+	for this session
+	@param code
+	@param color
+*/
+void LastUsedStyle::setConductorColorCode(const QString &code, const QColor &color)
+{
+	setConductorColor(color);
+	m_conductor_color_code = code;
 }

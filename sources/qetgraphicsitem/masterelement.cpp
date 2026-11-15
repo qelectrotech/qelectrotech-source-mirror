@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "masterelement.h"
+#include "../devicetype/devicetypelink.h"
 #include <qetproject.h>
 #include <diagram.h>
 #include <qetinformation.h>
@@ -333,6 +334,14 @@ ContactUsage MasterElement::contactCapacity() const
  */
 bool MasterElement::isFull() const
 {
+		//A device with a device type, in a project following the types:
+		//the type says what it has, so it is full once every slave part of
+		//the type is drawn, whatever max_slaves or the groups say
+	auto *self = const_cast<MasterElement *>(this);
+	if (DeviceTypeLink::limits(self)) {
+		return DeviceTypeLink::full(self);
+	}
+
 		//When the element declares contact groups, those groups are the
 		//slots: a slave occupies exactly one, and ContactGroupSelectionDialog
 		//offers exactly these. So the group count is the limit, and it is the

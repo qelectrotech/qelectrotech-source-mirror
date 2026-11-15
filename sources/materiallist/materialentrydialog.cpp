@@ -17,6 +17,7 @@
 */
 #include "materialentrydialog.h"
 #include <qet.h>
+#include <qetinformation.h>
 
 #include <qetmessagebox.h>
 
@@ -38,7 +39,35 @@ MaterialEntryDialog::MaterialEntryDialog(const QStringList &columns, QWidget *pa
 	QDialog(parent),
 	m_columns(columns)
 {
-	setWindowTitle(tr("New entry"));
+	initUi(tr("New entry"),
+		   tr("Fill in the item to add. Fields left empty stay empty in the file."));
+}
+
+/**
+	@brief MaterialEntryDialog::MaterialEntryDialog
+	Build the form pre-filled with an existing article for editing.
+	@param columns the columns of the file, in file order
+	@param initial existing record to edit
+	@param parent parent widget
+*/
+MaterialEntryDialog::MaterialEntryDialog(const QStringList &columns,
+										 const MaterialRecord &initial,
+										 QWidget *parent) :
+	QDialog(parent),
+	m_columns(columns),
+	m_extra(initial.extra)
+{
+	initUi(tr("Edit entry"),
+		   tr("Edit the item. Fields left empty stay empty in the file."));
+
+	for (int i = 0; i < m_columns.size() && i < m_edits.size(); ++i) {
+		m_edits.at(i)->setText(initial.value(m_columns.at(i)));
+	}
+}
+
+void MaterialEntryDialog::initUi(const QString &title, const QString &intro_text)
+{
+	setWindowTitle(title);
 
 		//Two fields per row : the form shows the whole article at once
 		//instead of stacking twenty lines in a narrow column.
@@ -47,9 +76,7 @@ MaterialEntryDialog::MaterialEntryDialog(const QStringList &columns, QWidget *pa
 
 	auto *main_layout = new QVBoxLayout(this);
 
-	auto *intro = new QLabel(
-		tr("Fill in the item to add. Fields left empty stay empty in "
-		   "the file."), this);
+	auto *intro = new QLabel(intro_text, this);
 	intro->setWordWrap(true);
 	main_layout->addWidget(intro);
 
@@ -69,6 +96,14 @@ MaterialEntryDialog::MaterialEntryDialog(const QStringList &columns, QWidget *pa
 
 		auto *edit = new QLineEdit(container);
 		edit->setClearButtonEnabled(true);
+			//A number the lists can add up: the same check as in the
+			//element information, so what the file gives an element is
+			//what could have been typed there
+		if (QETInformation::isNumericInfoKey(column)) {
+			edit->setValidator(new QETInformation::NumericInfoValidator(column, edit));
+			edit->setPlaceholderText(tr("e.g. 80.5"));
+			edit->setToolTip(tr("Decimal number with a dot as separator (e.g. 80.5)"));
+		}
 
 		label->setBuddy(edit);
 		const int row = i / 2;
@@ -112,6 +147,7 @@ MaterialEntryDialog::~MaterialEntryDialog() = default;
 MaterialRecord MaterialEntryDialog::record() const
 {
 	MaterialRecord record;
+	record.extra = m_extra;
 
 	for (int i = 0; i < m_columns.size() && i < m_edits.size(); ++i)
 	{
@@ -130,10 +166,23 @@ MaterialRecord MaterialEntryDialog::record() const
 /**
 	@brief MaterialEntryDialog::accept
 	Refuse an empty form: an article without any information is not worth
-	a line in the file.
+	a line in the file. Refuse a number left half typed ("12.") too.
 */
 void MaterialEntryDialog::accept()
 {
+	for (QLineEdit *edit : std::as_const(m_edits))
+	{
+		if (edit->validator() && !edit->text().isEmpty() && !edit->hasAcceptableInput())
+		{
+			QET::QetMessageBox::warning(this,
+										tr("Unfinished number"),
+										tr("Finish the number or empty the "
+										   "field."));
+			edit->setFocus();
+			return;
+		}
+	}
+
 	if (record().values.isEmpty())
 	{
 		QET::QetMessageBox::warning(this,

@@ -20,6 +20,8 @@
 
 #include "diagrameventaddshape.h"
 
+class StructureBoxItem;
+
 /**
 	@brief The DiagramEventAddStructureBox class
 	Manages the creation of a StructureBoxItem: reuses DiagramEventAddShape's
@@ -33,8 +35,13 @@ class DiagramEventAddStructureBox : public DiagramEventAddShape
 	public:
 		explicit DiagramEventAddStructureBox(Diagram *diagram);
 
+			/// Asks for the plant, location and prefix of @p box, just drawn.
+			/// Cancelled, the box stays empty. @return whether it was accepted
+		static bool askPlace(StructureBoxItem *box, QWidget *parent);
+
 	protected:
 		QetShapeItem *createShapeItem(QPointF p1, QPointF p2, QetShapeItem::ShapeType shape_type) override;
+		void shapeDrawn(QetShapeItem *shape) override;
 };
 
 #endif // DIAGRAMEVENTADDSTRUCTUREBOX_H

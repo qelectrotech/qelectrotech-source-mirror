@@ -16,10 +16,10 @@ has two themes, `qet` for light windows and `qet-dark` for dark ones.
 | `flags/` | Language flags | Damien Sorel's flag pack | No | Public domain |
 | `colors/` | Color swatches for the element editor | Contributed in 2020 | No | GPL-2.0-or-later |
 | `themes/` | The `qet` and `qet-dark` themes; `generated/` holds intermediate files | Built from the folders above | `misc/make_icon_themes.py` | Same as the source file |
-| `breeze-icons/` | App and file-type icons in the Breeze style | Nuri | No | CC-BY-ND-3.0 |
-| `256x256/` | QET logo for windows, the tray and the About menu; app icon | Nuri | No | CC-BY-ND-3.0 |
-| `mac_icon/`, `windows_icon/` | App and file-type icons for macOS and Windows | Nuri | No | CC-BY-ND-3.0 |
-| `splash.png` | Splash screen | Nuri | No | CC-BY-ND-3.0 |
+| `app/hicolor/` | App and file-type icons, in folders by pixel size; installed to `share/icons/hicolor/` on Linux | Nuri, in the Breeze style | No | CC-BY-ND-3.0 |
+| `app/256x256/` | QET logo for windows, the tray and the About menu; app icon | Nuri | No | CC-BY-ND-3.0 |
+| `app/mac/`, `app/windows/` | App and file-type icons for macOS and Windows | Nuri | No | CC-BY-ND-3.0 |
+| `app/splash.png` | Splash screen | Nuri | No | CC-BY-ND-3.0 |
 
 `icon-themes.qrc` lists the theme files for the Qt resource system and
 is written by `misc/make_icon_themes.py`. Do not edit it by hand.

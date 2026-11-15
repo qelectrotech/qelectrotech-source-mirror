@@ -56,6 +56,7 @@
 #include <QGuiApplication>
 #include <QCollator>
 #include <QScreen>
+#include <QSettings>
 #include <QTextDocument>
 #include <QTimer>
 #include <QPointer>
@@ -228,7 +229,29 @@ Element::~Element()
 		//would ask are gone before them. Without this the element is
 		//asked to fill texts which are already deleted, and the symbol
 		//takes the whole application with it when it is closed.
-	disconnect(nullptr, nullptr, this, nullptr);
+		//Qt has no call for "every sender": QObject::disconnect() with a
+		//null sender does nothing but warn, so each sender is cut by name.
+	const auto cut = [this](const QObject *sender) {
+		if (sender)
+			QObject::disconnect(sender, nullptr, this, nullptr);
+	};
+	QList<DynamicElementTextItem *> texts = m_dynamic_text_list;
+	for (ElementTextItemGroup *group : std::as_const(m_texts_group)) {
+		cut(group);
+		texts << group->texts();
+	}
+	for (DynamicElementTextItem *deti : std::as_const(texts)) {
+		cut(deti);
+		if (QTextDocument *document = deti->document()) {
+			cut(document);
+			cut(document->documentLayout());
+		}
+	}
+	for (Terminal *terminal : std::as_const(m_terminals)) {
+		cut(terminal);
+		for (Conductor *conductor : terminal->conductors())
+			cut(conductor);
+	}
 
 	qDeleteAll (m_dynamic_text_list);
 	m_dynamic_text_list.clear();
@@ -266,8 +289,15 @@ void Element::editProperty()
 {
 	if (diagram() && !diagram()->isReadOnly())
 	{
+		const ElementData data = elementData();
+		const bool plc = data.m_type == ElementData::Master
+				&& data.m_master_type == ElementData::PLC;
 		ElementPropertiesWidget *epw = new ElementPropertiesWidget(this);
-		PropertiesEditorDialog dialog(epw, QApplication::activeWindow());
+			// A PLC master's dialog opens wider (below): it keeps a size of
+			// its own, or every element's dialog would reopen that wide
+		PropertiesEditorDialog dialog(epw, QApplication::activeWindow(),
+									  plc ? QStringLiteral("ElementPropertiesWidgetPlc")
+										  : QString());
 		connect(epw,
 			&ElementPropertiesWidget::findEditClicked,
 			&dialog,
@@ -281,9 +311,7 @@ void Element::editProperty()
 		// size the dialog falls back to its (cramped) sizeHint, so open it
 		// at three times its natural width instead. The height stays at
 		// the natural one, and the width never exceeds the screen.
-		const ElementData data = elementData();
-		if (data.m_type == ElementData::Master
-			&& data.m_master_type == ElementData::PLC) {
+		if (plc) {
 			const QSize natural = dialog.sizeHint();
 			int width = natural.width() * 3;
 			if (QScreen *screen = QApplication::primaryScreen())
@@ -834,6 +862,8 @@ void Element::updateDrawnRect()
 	{
 		prepareGeometryChange();
 		m_drawn_rect = drawn;
+			//It moves the centre, which the store keeps
+		storePlacement();
 	}
 }
 
@@ -2608,6 +2638,7 @@ ElementPlacement Element::ownPlacement() const
 	placement.rotation = orientation();
 	placement.horizontal_mirror = m_horizontal_mirror;
 	placement.vertical_mirror = m_vertical_mirror;
+	placement.centre = sceneBoundingRect().center();
 	return placement;
 }
 
@@ -3659,7 +3690,88 @@ Element::ReloadPictureResult Element::reloadPicture(bool adopt_frame)
 	updateDrawnRect();
 	updateSymbolPictures(true);
 	update();
+		//A frame adopted moves the centre
+	if (adopt_frame) storePlacement();
 	return ReloadPictureResult::Reloaded;
+}
+
+/**
+	@brief Element::followMovedOrigin
+	The definition of this symbol was moved as a whole, its insertion point
+	moved: every terminal is where the old one was, moved by one offset
+	(TerminalUuids::commonOffset()). Move the symbol back by that offset,
+	turned as the symbol is, so its terminals stay where they are on the
+	folio and its conductors keep their ends; its texts stay too. Then
+	reloadPicture() takes the drawing over.
+
+	Not undoable, like the update of the definition that calls it.
+	@return false, and nothing moved, if the terminals differ otherwise or
+	did not move
+*/
+bool Element::followMovedOrigin()
+{
+	const QDomElement definition = m_location.xml();
+	if (definition.isNull() || m_terminals.isEmpty())
+		return false;
+
+	QList<QPointF> new_terminals;
+	for (QDomElement description = definition.firstChildElement(QStringLiteral("description")) ;
+		 !description.isNull() ;
+		 description = description.nextSiblingElement(QStringLiteral("description")))
+		for (QDomElement terminal = description.firstChildElement(QStringLiteral("terminal")) ;
+			 !terminal.isNull() ;
+			 terminal = terminal.nextSiblingElement(QStringLiteral("terminal")))
+			new_terminals << QPointF(terminal.attribute(QStringLiteral("x")).toDouble(),
+									 terminal.attribute(QStringLiteral("y")).toDouble());
+	if (new_terminals.size() != m_terminals.size())
+		return false;
+
+	QList<QPointF> live;
+	for (const Terminal *terminal : std::as_const(m_terminals))
+		live << mapFromScene(terminal->dockConductor());
+
+	const auto close = [](const QPointF &a, const QPointF &b) {
+		return qAbs(a.x() - b.x()) < 0.01 && qAbs(a.y() - b.y()) < 0.01;
+	};
+		//One offset at most takes every live terminal onto a new one
+	QPointF offset;
+	bool found = false;
+	for (const QPointF &candidate : std::as_const(new_terminals))
+	{
+		const QPointF shift = candidate - live.first();
+		QList<QPointF> left = new_terminals;
+		bool all = true;
+		for (const QPointF &point : std::as_const(live))
+		{
+			int i = 0;
+			while (i < left.size() && !close(left.at(i), point + shift)) ++i;
+			if (i == left.size()) { all = false; break; }
+			left.removeAt(i);
+		}
+		if (all) { offset = shift; found = true; break; }
+	}
+	if (!found || close(offset, QPointF()))
+		return false;
+
+	for (Terminal *terminal : std::as_const(m_terminals))
+		terminal->shiftInSymbol(offset);
+	for (DynamicElementTextItem *text : std::as_const(m_dynamic_text_list))
+		text->setPos(text->pos() + offset);
+	for (ElementTextItemGroup *group : std::as_const(m_texts_group))
+		group->setPos(group->pos() + offset);
+		//The offset as it shows on the folio, turned with the symbol
+	setPos(pos() - (mapToParent(offset) - mapToParent(QPointF())));
+	return true;
+}
+
+bool Element::updateFollowsMovedOrigin()
+{
+	return QSettings().value(QStringLiteral("diagrameditor/update_follows_moved_origin"), false).toBool();
+}
+
+void Element::setUpdateFollowsMovedOrigin(bool follows)
+{
+	QSettings().setValue(QStringLiteral("diagrameditor/update_follows_moved_origin"), follows);
 }
 
 /**
