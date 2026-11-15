@@ -828,6 +828,10 @@ qet_add_app_test(tst_cablelist tst_cablelist.cpp)
 # A wire dropped on a terminal that already has a wire is made.
 qet_add_app_test(tst_wireonusedterminal tst_wireonusedterminal.cpp)
 
+# An undone step of a symbol and its wires, dropped later, deletes the
+# wires without reading the symbol's deleted terminals.
+qet_add_app_test(tst_undonewires tst_undonewires.cpp)
+
 # Joining two potentials offers only the two potentials.
 qet_add_app_test(tst_potentialchoices tst_potentialchoices.cpp)
 
