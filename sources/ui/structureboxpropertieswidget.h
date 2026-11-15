@@ -49,6 +49,7 @@ class StructureBoxPropertiesWidget : public PropertiesEditorWidget
 		QLineEdit *m_prefix_edit;
 		QList<QMetaObject::Connection> m_edit_connections;
 		QDoubleSpinBox *m_label_size = nullptr;
+		double m_label_size_shown = 0;   ///< what updateUi() put in m_label_size
 };
 
 #endif // STRUCTUREBOXPROPERTIESWIDGET_H

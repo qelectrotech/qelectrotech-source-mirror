@@ -27,9 +27,14 @@
 #include "../qetxml.h"
 #include "../ui/structureboxpropertieswidget.h"
 
+#include <QApplication>
 #include <QDomDocument>
 #include <QFont>
+#include <QGraphicsScene>
 #include <QGraphicsSceneMouseEvent>
+#include <QLineF>
+#include <QPainter>
+#include <QTextDocument>
 
 #include <algorithm>
 
@@ -46,8 +51,10 @@ StructureBoxItem::StructureBoxItem(QPointF p1, QPointF p2, QGraphicsItem *parent
 	connect(this, &StructureBoxItem::identityChanged, this, [this]() { refreshSymbolTexts(diagram()); });
 	connect(this, &QetShapeItem::geometryChanged, this, [this]() { refreshSymbolTexts(diagram()); });
 	m_label = new StructureBoxLabelItem(this);
-	connect(m_label, &StructureBoxLabelItem::movedByUser, this, [this]() {m_label_moved = true;});
+	connect(m_label, &QGraphicsObject::xChanged, this, &StructureBoxItem::labelPosChanged);
+	connect(m_label, &QGraphicsObject::yChanged, this, &StructureBoxItem::labelPosChanged);
 	connect(this, &QetShapeItem::geometryChanged, this, &StructureBoxItem::placeLabel);
+	connect(this, &QetShapeItem::penChanged, this, [this]() {m_label->setDefaultTextColor(pen().color());});
 	refreshLabel();
 }
 
@@ -122,14 +129,19 @@ void StructureBoxItem::refreshTextsOf(Element *element)
 /**
 	@brief StructureBoxItem::refreshLabel
 	Its label says the box's designation, in the box's colour and size.
+	The font is the one the box's name was painted in before it was a
+	text of its own, so a box nobody has touched looks as it did.
+	A box with no designation has no label to click.
 */
 void StructureBoxItem::refreshLabel()
 {
-	QFont font = m_label->font();
+	QFont font = QApplication::font();
 	font.setPointSizeF(m_label_size);
 	m_label->setFont(font);
 	m_label->setDefaultTextColor(pen().color());
-	m_label->setPlainText(structureId());
+	const QString id = structureId();
+	m_label->setPlainText(id);
+	m_label->setVisible(!id.isEmpty());
 	placeLabel();
 }
 
@@ -141,7 +153,25 @@ void StructureBoxItem::refreshLabel()
 void StructureBoxItem::placeLabel()
 {
 	if (!m_label_moved)
-		m_label->setPos(rect().normalized().topLeft() + QPointF(2, 2));
+		m_label->setPos(cornerLabelPos());
+}
+
+/**
+	@return where a label nobody has moved stands: inside the top left corner
+*/
+QPointF StructureBoxItem::cornerLabelPos() const
+{
+	return rect().normalized().topLeft() + QPointF(2, 2);
+}
+
+/**
+	@brief StructureBoxItem::labelPosChanged
+	A label put back on the corner, by a drag or by an undo, follows the
+	corner again and is saved as never moved.
+*/
+void StructureBoxItem::labelPosChanged()
+{
+	m_label_moved = QLineF(m_label->pos(), cornerLabelPos()).length() > 0.01;
 }
 
 /**
@@ -154,7 +184,6 @@ QPointF StructureBoxItem::labelOffset() const
 
 void StructureBoxItem::setLabelOffset(const QPointF &offset)
 {
-	m_label_moved = true;
 	m_label->setPos(rect().normalized().topLeft() + offset);
 }
 
@@ -344,10 +373,40 @@ StructureBoxLabelItem::StructureBoxLabelItem(StructureBoxItem *box) :
 {
 	setFlag(QGraphicsItem::ItemIsSelectable, true);
 	setFlag(QGraphicsItem::ItemIsMovable, true);
+		//The old painted name stood right at rect + 2: no margin around it
+	document()->setDocumentMargin(0);
 }
 
+/**
+	@brief StructureBoxLabelItem::paint
+	A label at the corner is clipped by its box, as the painted name was;
+	one moved elsewhere is shown whole.
+*/
+void StructureBoxLabelItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
+{
+	if (!m_box->m_label_moved) {
+		painter->save();
+		painter->setClipRect(mapRectFromParent(m_box->rect().normalized().adjusted(2, 2, -2, -2)), Qt::IntersectClip);
+		DiagramTextItem::paint(painter, option, widget);
+		painter->restore();
+		return;
+	}
+	DiagramTextItem::paint(painter, option, widget);
+}
+
+/**
+	@brief StructureBoxLabelItem::mousePressEvent
+	Selected with its box and other items, a drag moves them all, as a
+	drag of the box would. Else it moves the label alone.
+*/
 void StructureBoxLabelItem::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
+	m_dragging = false;
+	m_move_box = event->button() == Qt::LeftButton && isSelected() && m_box->isSelected();
+	if (m_move_box) {
+		m_box->mousePressEvent(event);
+		return;
+	}
 	DiagramTextItem::mousePressEvent(event);
 	m_start = pos();
 	m_grab = pos() - parentItem()->mapFromScene(event->scenePos());
@@ -355,18 +414,39 @@ void StructureBoxLabelItem::mousePressEvent(QGraphicsSceneMouseEvent *event)
 
 void StructureBoxLabelItem::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {
+	if (m_move_box) {
+		m_box->mouseMoveEvent(event);
+		return;
+	}
 	if (!(event->buttons() & Qt::LeftButton)) {
 		event->ignore();
 		return;
 	}
-	setPos(parentItem()->mapFromScene(event->scenePos()) + m_grab);
 	event->accept();
+		//A locked box keeps its name where it is
+	if (!m_box->isMovable())
+		return;
+	if (!m_dragging) {
+		if ((event->scenePos() - event->buttonDownScenePos(Qt::LeftButton)).manhattanLength()
+			< QApplication::startDragDistance())
+			return;
+		m_dragging = true;
+	}
+		//On the text grid like every other text; Ctrl places it freely
+	const QPointF wanted = parentItem()->mapToScene(parentItem()->mapFromScene(event->scenePos()) + m_grab);
+	setPos(parentItem()->mapFromScene(Diagram::snapToTextGrid(wanted)));
 }
 
 void StructureBoxLabelItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
-	if (event->button() == Qt::LeftButton && pos() != m_start) {
-		emit movedByUser();
+	if (m_move_box) {
+		m_move_box = false;
+		m_box->mouseReleaseEvent(event);
+		return;
+	}
+	const bool moved = m_dragging && pos() != m_start;
+	m_dragging = false;
+	if (event->button() == Qt::LeftButton && moved) {
 		if (Diagram *folio = diagram()) {
 			auto *undo = new QPropertyUndoCommand(this, "pos", m_start, pos());
 			undo->setText(tr("Move the name of a structure box"));
