@@ -237,14 +237,14 @@ namespace {
 		"diagram_bg", "export-csv", "folder-only-this", "plasmagik",
 		"titleblock-bottom", "titleblock-right",
 		// Breeze art in full color
-		"configure-shortcuts", "document-open-recent", "image-x-eps",
+		"document-open-recent", "image-x-eps",
 		"preferences-desktop-user", "printer", "settings", "user-busy",
 		"user-online"};
 
 	/// Icons of kOffPalette whose outline falls short of 3:1 on one of
 	/// the two windows. Take an icon off the list once it reads.
 	const QStringList kLowContrast = {
-		"configure-shortcuts", "diagram_bg", "folder-only-this",
+		"diagram_bg", "folder-only-this",
 		"plasmagik", "preferences-desktop-user", "printer", "settings",
 		"terminalstrip", "user-busy", "user-online"};
 
