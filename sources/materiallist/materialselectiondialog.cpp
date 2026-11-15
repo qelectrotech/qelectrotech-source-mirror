@@ -1215,5 +1215,10 @@ void MaterialSelectionDialog::showTreeContextMenu(const QPoint &pos)
 											this, &MaterialSelectionDialog::on_m_remove_entry_btn_clicked);
 	remove_action->setEnabled(!selectedSourceRows().isEmpty());
 
+	menu.addSeparator();
+	QAction *export_action = menu.addAction(QET::Icons::DocumentExport, tr("Export..."),
+											this, &MaterialSelectionDialog::on_m_export_btn_clicked);
+	export_action->setEnabled(!m_data.records.isEmpty());
+
 	menu.exec(ui->m_tree_widget->viewport()->mapToGlobal(pos));
 }
