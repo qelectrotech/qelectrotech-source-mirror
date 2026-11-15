@@ -876,6 +876,131 @@ bool MaterialList::updateRecord(const QString &path, int row,
 	return writeFile(path, data, error);
 }
 
+namespace {
+int findByDesignation(const MaterialListData &data, const QString &designation)
+{
+	const QString needle = designation.trimmed();
+	if (needle.isEmpty()) {
+		return -1;
+	}
+	for (int i = 0; i < data.records.size(); ++i)
+	{
+		if (data.records.at(i).value(QStringLiteral("designation")).trimmed()
+				.compare(needle, Qt::CaseInsensitive) == 0)
+		{
+			return i;
+		}
+	}
+	return -1;
+}
+} // namespace
+
+/**
+	@brief MaterialList::countImportConflicts
+	Count how many records in @a incoming share a non-empty article number
+	(designation) with an existing record that has different field values.
+*/
+int MaterialList::countImportConflicts(const MaterialListData &existing,
+									   const MaterialListData &incoming)
+{
+	int conflicts = 0;
+	for (const MaterialRecord &rec : incoming.records)
+	{
+		const int idx = findByDesignation(existing, rec.value(QStringLiteral("designation")));
+		if (idx >= 0 && !(existing.records.at(idx) == rec)) {
+			++conflicts;
+		}
+	}
+	return conflicts;
+}
+
+/**
+	@brief MaterialList::importFromFile
+	Merge records from @a source_path into @a target_path according to @a policy.
+*/
+bool MaterialList::importFromFile(const QString &target_path,
+								  const QString &source_path,
+								  ImportConflictPolicy policy,
+								  ImportResult *result,
+								  QString *error)
+{
+	if (error) {
+		error->clear();
+	}
+	if (result) {
+		*result = ImportResult{};
+	}
+
+	MaterialListData incoming;
+	if (!load(source_path, &incoming, error)) {
+		return false;
+	}
+
+	MaterialListData target;
+	if (hasContent(target_path))
+	{
+		if (!load(target_path, &target, error)) {
+			return false;
+		}
+	}
+	else
+	{
+		target.columns = incoming.columns.isEmpty() ? defaultColumns() : incoming.columns;
+		target.separator = incoming.separator;
+	}
+
+	for (const QString &col : std::as_const(incoming.columns))
+	{
+		if (!target.columns.contains(col)) {
+			target.columns.append(col);
+		}
+	}
+
+	ImportResult counts;
+	for (const MaterialRecord &rec : std::as_const(incoming.records))
+	{
+		if (target.records.contains(rec))
+		{
+			++counts.skipped;
+			continue;
+		}
+
+		const int match_idx = findByDesignation(target, rec.value(QStringLiteral("designation")));
+		if (match_idx >= 0)
+		{
+			if (policy == ImportConflictPolicy::SkipExisting)
+			{
+				++counts.skipped;
+				continue;
+			}
+			if (policy == ImportConflictPolicy::UpdateExisting)
+			{
+				MaterialRecord merged = target.records.at(match_idx);
+				for (auto it = rec.values.constBegin(); it != rec.values.constEnd(); ++it) {
+					merged.values.insert(it.key(), it.value());
+				}
+				if (!rec.extra.isEmpty()) {
+					merged.extra = rec.extra;
+				}
+				target.records[match_idx] = merged;
+				++counts.updated;
+				continue;
+			}
+		}
+
+		target.records.append(rec);
+		++counts.added;
+	}
+
+	if (!writeFile(target_path, target, error)) {
+		return false;
+	}
+	if (result) {
+		*result = counts;
+	}
+	return true;
+}
+
 /**
 	@brief MaterialList::createFile
 	Create an empty material file holding only the header line.

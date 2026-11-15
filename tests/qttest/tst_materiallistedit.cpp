@@ -40,6 +40,7 @@ class tst_materiallistedit : public QObject
 		void testUpdateRecordFallbackWhenRowShifted();
 		void testSplitViewTreeFilterAndDetails();
 		void testInlineNewAndEditEntry();
+		void testImportAndExportCsv();
 };
 
 void tst_materiallistedit::testUpdateRecordPreservesRowsAndExtra()
@@ -306,6 +307,90 @@ void tst_materiallistedit::testInlineNewAndEditEntry()
 			 QStringLiteral("Main Switch"));
 	QCOMPARE(reloaded.records.at(1).value(QStringLiteral("designation")),
 			 QStringLiteral("ABB.2"));
+}
+
+void tst_materiallistedit::testImportAndExportCsv()
+{
+	QTemporaryDir dir;
+	QVERIFY(dir.isValid());
+	const QString target_path = dir.filePath(QStringLiteral("target.csv"));
+	const QString import_path = dir.filePath(QStringLiteral("import.csv"));
+
+	MaterialListData target;
+	target.columns = {
+		QStringLiteral("designation"),
+		QStringLiteral("description"),
+		QStringLiteral("manufacturer"),
+		QStringLiteral("category")
+	};
+	MaterialRecord r1;
+	r1.setValue(QStringLiteral("designation"), QStringLiteral("ART-1"));
+	r1.setValue(QStringLiteral("description"), QStringLiteral("Old Fuse"));
+	r1.setValue(QStringLiteral("manufacturer"), QStringLiteral("Siemens"));
+	r1.setValue(QStringLiteral("category"), QStringLiteral("Protection"));
+	target.records = {r1};
+	QVERIFY(MaterialList::writeFile(target_path, target));
+
+	MaterialListData incoming;
+	incoming.columns = {
+		QStringLiteral("designation"),
+		QStringLiteral("description"),
+		QStringLiteral("manufacturer"),
+		QStringLiteral("category"),
+		QStringLiteral("supplier")
+	};
+	MaterialRecord r1_updated;
+	r1_updated.setValue(QStringLiteral("designation"), QStringLiteral("ART-1"));
+	r1_updated.setValue(QStringLiteral("description"), QStringLiteral("New Fuse"));
+	r1_updated.setValue(QStringLiteral("manufacturer"), QStringLiteral("Siemens"));
+	r1_updated.setValue(QStringLiteral("category"), QStringLiteral("Protection"));
+	r1_updated.setValue(QStringLiteral("supplier"), QStringLiteral("Rexel"));
+
+	MaterialRecord r2;
+	r2.setValue(QStringLiteral("designation"), QStringLiteral("ART-2"));
+	r2.setValue(QStringLiteral("description"), QStringLiteral("Relay"));
+	r2.setValue(QStringLiteral("manufacturer"), QStringLiteral("ABB"));
+	r2.setValue(QStringLiteral("category"), QStringLiteral("Relays"));
+	incoming.records = {r1_updated, r2};
+	QVERIFY(MaterialList::writeFile(import_path, incoming));
+
+	QCOMPARE(MaterialList::countImportConflicts(target, incoming), 1);
+
+	MaterialList::ImportResult res;
+	QVERIFY(MaterialList::importFromFile(
+		target_path, import_path, MaterialList::ImportConflictPolicy::UpdateExisting, &res));
+	QCOMPARE(res.added, 1);
+	QCOMPARE(res.updated, 1);
+	QCOMPARE(res.skipped, 0);
+
+	MaterialListData merged;
+	QVERIFY(MaterialList::load(target_path, &merged));
+	QCOMPARE(merged.records.size(), 2);
+	QVERIFY(merged.columns.contains(QStringLiteral("supplier")));
+	QCOMPARE(merged.records.at(0).value(QStringLiteral("description")), QStringLiteral("New Fuse"));
+	QCOMPARE(merged.records.at(0).value(QStringLiteral("supplier")), QStringLiteral("Rexel"));
+	QCOMPARE(merged.records.at(1).value(QStringLiteral("designation")), QStringLiteral("ART-2"));
+
+	// Re-importing the exact same data skips everything
+	MaterialList::ImportResult res_skip;
+	QVERIFY(MaterialList::importFromFile(
+		target_path, import_path, MaterialList::ImportConflictPolicy::SkipExisting, &res_skip));
+	QCOMPARE(res_skip.added, 0);
+	QCOMPARE(res_skip.updated, 0);
+	QCOMPARE(res_skip.skipped, 2);
+
+	// Dialog exposes Import/Export buttons and disables Edit when a group is selected
+	MaterialSelectionDialog dialog(target_path);
+	auto *tree = dialog.findChild<QTreeWidget *>(QStringLiteral("m_tree_widget"));
+	auto *edit_btn = dialog.findChild<QPushButton *>(QStringLiteral("m_edit_entry_btn"));
+	auto *import_btn = dialog.findChild<QPushButton *>(QStringLiteral("m_import_btn"));
+	auto *export_btn = dialog.findChild<QPushButton *>(QStringLiteral("m_export_btn"));
+	QVERIFY(tree && edit_btn && import_btn && export_btn);
+	QVERIFY(import_btn->isEnabled());
+	QVERIFY(export_btn->isEnabled());
+
+	tree->setCurrentItem(tree->topLevelItem(0));
+	QVERIFY(!edit_btn->isEnabled());
 }
 
 QET_APP_TEST_MAIN(tst_materiallistedit)

@@ -123,7 +123,7 @@
           <bool>true</bool>
          </property>
          <property name="selectionMode">
-          <enum>QAbstractItemView::SingleSelection</enum>
+          <enum>QAbstractItemView::ExtendedSelection</enum>
          </property>
          <property name="uniformRowHeights">
           <bool>true</bool>
@@ -274,25 +274,32 @@
       </widget>
      </item>
      <item>
+      <widget class="QPushButton" name="m_import_btn">
+       <property name="toolTip">
+        <string>Import entries from a CSV file into the materials list</string>
+       </property>
+       <property name="text">
+        <string>Import...</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="m_export_btn">
+       <property name="toolTip">
+        <string>Export all, visible, or selected entries to a CSV file</string>
+       </property>
+       <property name="text">
+        <string>Export...</string>
+       </property>
+      </widget>
+     </item>
+     <item>
       <widget class="QPushButton" name="m_settings_btn">
        <property name="toolTip">
         <string>Open QElectroTech settings to configure the materials list file</string>
        </property>
        <property name="text">
         <string>Settings</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="m_edit_entry_btn">
-       <property name="enabled">
-        <bool>false</bool>
-       </property>
-       <property name="toolTip">
-        <string extracomment="button editing the selected row in the material list file">Edit the selected item in the list</string>
-       </property>
-       <property name="text">
-        <string>Edit entry</string>
        </property>
       </widget>
      </item>

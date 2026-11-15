@@ -26,13 +26,17 @@
 #include <QApplication>
 #include <QClipboard>
 #include <QComboBox>
+#include <QFileDialog>
+#include <QFileInfo>
 #include <QFont>
 #include <QHeaderView>
 #include <QLineEdit>
 #include <QMap>
 #include <QMenu>
+#include <QMessageBox>
 #include <QMimeData>
 #include <QPushButton>
+#include <QSet>
 #include <QShortcut>
 #include <QStyledItemDelegate>
 #include <QTableWidgetItem>
@@ -510,6 +514,8 @@ void MaterialSelectionDialog::updateButtons()
 	}
 	ui->m_new_entry_btn->setEnabled(in_view);
 	ui->m_edit_entry_btn->setEnabled(in_view && has_selection);
+	ui->m_import_btn->setEnabled(in_view);
+	ui->m_export_btn->setEnabled(in_view && !m_data.records.isEmpty());
 	ui->m_settings_btn->setEnabled(in_view);
 }
 
@@ -544,8 +550,8 @@ void MaterialSelectionDialog::treeItemDoubleClicked(QTreeWidgetItem *item, int)
 	if (m_edit_mode != EditMode::View || !item) {
 		return;
 	}
-	const int row = item->data(0, SourceRowRole).toInt();
-	if (row >= 0) {
+	const QVariant row_var = item->data(0, SourceRowRole);
+	if (row_var.isValid() && row_var.toInt() >= 0) {
 		accept();
 	}
 }
@@ -553,10 +559,14 @@ void MaterialSelectionDialog::treeItemDoubleClicked(QTreeWidgetItem *item, int)
 int MaterialSelectionDialog::selectedSourceRow() const
 {
 	const QList<QTreeWidgetItem *> items = ui->m_tree_widget->selectedItems();
-	if (items.isEmpty()) {
+	if (items.size() != 1) {
 		return -1;
 	}
-	const int row = items.first()->data(0, SourceRowRole).toInt();
+	const QVariant row_var = items.first()->data(0, SourceRowRole);
+	if (!row_var.isValid()) {
+		return -1;
+	}
+	const int row = row_var.toInt();
 	return (row >= 0 && row < m_data.records.size()) ? row : -1;
 }
 
@@ -730,6 +740,216 @@ void MaterialSelectionDialog::on_m_settings_btn_clicked()
 		m_path = configured;
 	}
 	reload();
+}
+
+QList<MaterialRecord> MaterialSelectionDialog::selectedRecordsForExport() const
+{
+	QList<MaterialRecord> result;
+	QSet<int> seen;
+
+	auto add_row = [&](const QTreeWidgetItem *item) {
+		if (!item) {
+			return;
+		}
+		const QVariant row_var = item->data(0, SourceRowRole);
+		if (!row_var.isValid()) {
+			return;
+		}
+		const int row = row_var.toInt();
+		if (row >= 0 && row < m_data.records.size() && !seen.contains(row)) {
+			seen.insert(row);
+			result.append(m_data.records.at(row));
+		}
+	};
+
+	const QList<QTreeWidgetItem *> selected = ui->m_tree_widget->selectedItems();
+	for (const QTreeWidgetItem *item : selected)
+	{
+		if (item->data(0, SourceRowRole).isValid()) {
+			add_row(item);
+		} else {
+			for (int i = 0; i < item->childCount(); ++i) {
+				add_row(item->child(i));
+			}
+		}
+	}
+	return result;
+}
+
+QList<MaterialRecord> MaterialSelectionDialog::visibleRecordsForExport() const
+{
+	QList<MaterialRecord> result;
+	QSet<int> seen;
+
+	auto collect = [&](auto &self, const QTreeWidgetItem *item) -> void {
+		if (!item) {
+			return;
+		}
+		const QVariant row_var = item->data(0, SourceRowRole);
+		if (row_var.isValid())
+		{
+			const int row = row_var.toInt();
+			if (row >= 0 && row < m_data.records.size() && !seen.contains(row)) {
+				seen.insert(row);
+				result.append(m_data.records.at(row));
+			}
+		}
+		for (int i = 0; i < item->childCount(); ++i) {
+			self(self, item->child(i));
+		}
+	};
+
+	for (int i = 0; i < ui->m_tree_widget->topLevelItemCount(); ++i) {
+		collect(collect, ui->m_tree_widget->topLevelItem(i));
+	}
+	return result;
+}
+
+void MaterialSelectionDialog::exportRecordsToCsv(const QList<MaterialRecord> &records)
+{
+	if (records.isEmpty()) {
+		return;
+	}
+
+	const QString default_dir = m_path.isEmpty()
+		? QFileInfo(MaterialList::defaultPath()).absolutePath()
+		: QFileInfo(m_path).absolutePath();
+	const QString dest_path = QFileDialog::getSaveFileName(
+		this,
+		tr("Export Materials List"),
+		default_dir + QStringLiteral("/materials_export.csv"),
+		tr("CSV files (*.csv);;All files (*)"));
+	if (dest_path.isEmpty()) {
+		return;
+	}
+
+	MaterialListData export_data;
+	export_data.columns = effectiveColumns();
+	export_data.separator = m_data.separator;
+	export_data.records = records;
+
+	QString error;
+	if (!MaterialList::writeFile(dest_path, export_data, &error)) {
+		QET::QetMessageBox::warning(
+			this,
+			tr("Export Materials List"),
+			error.isEmpty() ? tr("Unable to write the export file.") : error);
+		return;
+	}
+
+	QET::QetMessageBox::information(
+		this,
+		tr("Export Materials List"),
+		tr("Exported %n entry(s) to %1.", "", records.size()).arg(dest_path));
+}
+
+void MaterialSelectionDialog::on_m_export_btn_clicked()
+{
+	const QList<MaterialRecord> selected_records = selectedRecordsForExport();
+	const QList<MaterialRecord> visible_records = visibleRecordsForExport();
+
+	QMenu menu(this);
+	QAction *export_selected = menu.addAction(
+		tr("Export Selected (%1)...").arg(selected_records.size()));
+	export_selected->setEnabled(!selected_records.isEmpty());
+
+	QAction *export_visible = menu.addAction(
+		tr("Export Visible (%1)...").arg(visible_records.size()));
+	export_visible->setEnabled(!visible_records.isEmpty());
+
+	QAction *export_all = menu.addAction(
+		tr("Export All (%1)...").arg(m_data.records.size()));
+	export_all->setEnabled(!m_data.records.isEmpty());
+
+	QAction *chosen = menu.exec(
+		ui->m_export_btn->mapToGlobal(QPoint(0, ui->m_export_btn->height())));
+	if (!chosen) {
+		return;
+	}
+	if (chosen == export_selected) {
+		exportRecordsToCsv(selected_records);
+	} else if (chosen == export_visible) {
+		exportRecordsToCsv(visible_records);
+	} else if (chosen == export_all) {
+		exportRecordsToCsv(m_data.records);
+	}
+}
+
+void MaterialSelectionDialog::on_m_import_btn_clicked()
+{
+	const QString default_dir = m_path.isEmpty()
+		? QFileInfo(MaterialList::defaultPath()).absolutePath()
+		: QFileInfo(m_path).absolutePath();
+	const QString source_path = QFileDialog::getOpenFileName(
+		this,
+		tr("Import Materials List"),
+		default_dir,
+		tr("CSV files (*.csv);;All files (*)"));
+	if (source_path.isEmpty()) {
+		return;
+	}
+
+	MaterialListData incoming;
+	QString error;
+	if (!MaterialList::load(source_path, &incoming, &error)) {
+		QET::QetMessageBox::warning(
+			this,
+			tr("Import Materials List"),
+			error.isEmpty() ? tr("Unable to read the import file.") : error);
+		return;
+	}
+	if (incoming.records.isEmpty()) {
+		QET::QetMessageBox::information(
+			this,
+			tr("Import Materials List"),
+			tr("The selected file contains no entries."));
+		return;
+	}
+
+	auto policy = MaterialList::ImportConflictPolicy::SkipExisting;
+	const int conflicts = MaterialList::countImportConflicts(m_data, incoming);
+	if (conflicts > 0)
+	{
+		QMessageBox box(
+			QMessageBox::Question,
+			tr("Import Materials List"),
+			tr("%n imported entry(s) share an existing item number with different values.", "", conflicts),
+			QMessageBox::Cancel,
+			this);
+		QPushButton *update_btn = box.addButton(tr("Update existing"), QMessageBox::AcceptRole);
+		QPushButton *skip_btn = box.addButton(tr("Skip existing"), QMessageBox::RejectRole);
+		QPushButton *keep_btn = box.addButton(tr("Keep both"), QMessageBox::ActionRole);
+		box.setDefaultButton(update_btn);
+		box.exec();
+
+		if (box.clickedButton() == update_btn) {
+			policy = MaterialList::ImportConflictPolicy::UpdateExisting;
+		} else if (box.clickedButton() == skip_btn) {
+			policy = MaterialList::ImportConflictPolicy::SkipExisting;
+		} else if (box.clickedButton() == keep_btn) {
+			policy = MaterialList::ImportConflictPolicy::KeepBoth;
+		} else {
+			return;
+		}
+	}
+
+	MaterialList::ImportResult result;
+	if (!MaterialList::importFromFile(m_path, source_path, policy, &result, &error)) {
+		QET::QetMessageBox::warning(
+			this,
+			tr("Import Materials List"),
+			error.isEmpty() ? tr("Unable to save the imported entries.") : error);
+		return;
+	}
+
+	reload();
+	QET::QetMessageBox::information(
+		this,
+		tr("Import Materials List"),
+		tr("Import complete.\nAdded: %1\nUpdated: %2\nSkipped: %3")
+			.arg(result.added)
+			.arg(result.updated)
+			.arg(result.skipped));
 }
 
 void MaterialSelectionDialog::copyDetailsSelection()

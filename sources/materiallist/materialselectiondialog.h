@@ -53,6 +53,8 @@ class MaterialSelectionDialog : public QDialog
 	private slots:
 		void on_m_new_entry_btn_clicked();
 		void on_m_edit_entry_btn_clicked();
+		void on_m_import_btn_clicked();
+		void on_m_export_btn_clicked();
 		void on_m_settings_btn_clicked();
 		void on_m_save_entry_btn_clicked();
 		void on_m_cancel_entry_btn_clicked();
@@ -80,6 +82,9 @@ class MaterialSelectionDialog : public QDialog
 		void updateButtons();
 		void updateCount(int visible_count);
 		QStringList effectiveColumns() const;
+		QList<MaterialRecord> selectedRecordsForExport() const;
+		QList<MaterialRecord> visibleRecordsForExport() const;
+		void exportRecordsToCsv(const QList<MaterialRecord> &records);
 		void copyDetailsSelection();
 		void showDetailsContextMenu(const QPoint &pos);
 
