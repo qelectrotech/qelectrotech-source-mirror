@@ -557,6 +557,8 @@ qet_add_app_test(tst_devicetypeassign tst_devicetypeassign.cpp)
 # Part data: unit price, labour time and size, kept by .qet and .qetdb,
 # columns of the parts list; every field the export offers is a column.
 qet_add_app_test(tst_partdata tst_partdata.cpp)
+# Axis lock and original position snap during paste placement.
+qet_add_app_test(tst_pasteaxislock tst_pasteaxislock.cpp)
 # Editing an existing entry in the materials list dialog.
 qet_add_app_test(tst_materiallistedit tst_materiallistedit.cpp)
 # A read-only project builds its lazy folios whole: shown, exported, written out.

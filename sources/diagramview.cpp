@@ -2342,12 +2342,14 @@ bool DiagramView::event(QEvent *e) {
 
 		// fait en sorte que les raccourcis clavier arrivent prioritairement sur la
 		// vue plutot que de remonter vers les QMenu / QAction
-	if (
-		e -> type() == QEvent::ShortcutOverride &&
-		selectedItemHasFocus()
-	) {
-		e -> accept();
-		return(true);
+	if (e -> type() == QEvent::ShortcutOverride) {
+		auto *key_event = static_cast<QKeyEvent *>(e);
+		if (selectedItemHasFocus()
+		    || (m_diagram && m_diagram->eventInterface()
+		        && m_diagram->eventInterface()->handlesShortcutOverride(key_event))) {
+			e -> accept();
+			return(true);
+		}
 	}
 	return(QGraphicsView::event(e));
 }
