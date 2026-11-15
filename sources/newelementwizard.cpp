@@ -41,7 +41,7 @@ NewElementWizard::NewElementWizard(QWidget *parent, Qt::WindowFlags f) :
 	setOptions(options() & ~QWizard::NoCancelButton);
 
 #ifdef Q_OS_WIN
-	setWizardStyle(QWizard::AeroStyle);
+	setWizardStyle(QWizard::ModernStyle);
 #elif defined(Q_OS_MAC)
 	setWizardStyle(QWizard::MacStyle);
 #endif

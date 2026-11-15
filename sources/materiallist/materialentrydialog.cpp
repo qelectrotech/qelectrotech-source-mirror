@@ -39,7 +39,35 @@ MaterialEntryDialog::MaterialEntryDialog(const QStringList &columns, QWidget *pa
 	QDialog(parent),
 	m_columns(columns)
 {
-	setWindowTitle(tr("New entry"));
+	initUi(tr("New entry"),
+		   tr("Fill in the item to add. Fields left empty stay empty in the file."));
+}
+
+/**
+	@brief MaterialEntryDialog::MaterialEntryDialog
+	Build the form pre-filled with an existing article for editing.
+	@param columns the columns of the file, in file order
+	@param initial existing record to edit
+	@param parent parent widget
+*/
+MaterialEntryDialog::MaterialEntryDialog(const QStringList &columns,
+										 const MaterialRecord &initial,
+										 QWidget *parent) :
+	QDialog(parent),
+	m_columns(columns),
+	m_extra(initial.extra)
+{
+	initUi(tr("Edit entry"),
+		   tr("Edit the item. Fields left empty stay empty in the file."));
+
+	for (int i = 0; i < m_columns.size() && i < m_edits.size(); ++i) {
+		m_edits.at(i)->setText(initial.value(m_columns.at(i)));
+	}
+}
+
+void MaterialEntryDialog::initUi(const QString &title, const QString &intro_text)
+{
+	setWindowTitle(title);
 
 		//Two fields per row : the form shows the whole article at once
 		//instead of stacking twenty lines in a narrow column.
@@ -48,9 +76,7 @@ MaterialEntryDialog::MaterialEntryDialog(const QStringList &columns, QWidget *pa
 
 	auto *main_layout = new QVBoxLayout(this);
 
-	auto *intro = new QLabel(
-		tr("Fill in the item to add. Fields left empty stay empty in "
-		   "the file."), this);
+	auto *intro = new QLabel(intro_text, this);
 	intro->setWordWrap(true);
 	main_layout->addWidget(intro);
 
@@ -121,6 +147,7 @@ MaterialEntryDialog::~MaterialEntryDialog() = default;
 MaterialRecord MaterialEntryDialog::record() const
 {
 	MaterialRecord record;
+	record.extra = m_extra;
 
 	for (int i = 0; i < m_columns.size() && i < m_edits.size(); ++i)
 	{

@@ -329,15 +329,17 @@ void DeviceTypesDialog::copySelected()
 
 /**
 	@brief DeviceTypesDialog::listCsv
-	@return the device types of the tab shown, as a list of @p kind; the
-	brief list of the project's says how many symbols use each type
+	@return the device types of the tab shown, as a list of @p kind,
+	described in the language they are shown in; the brief list of the
+	project's says how many symbols use each type
 */
 QString DeviceTypesDialog::listCsv(DeviceTypeList::Kind kind) const
 {
 	QList<DeviceType> types;
 	for (const QString &name : names(inLibrary())) types << typeNamed(name, inLibrary());
 	const QHash<QString, int> used = DeviceTypeList::usedBy(m_project);
-	return DeviceTypeList::csv(types, kind, inLibrary() ? nullptr : &used);
+	return DeviceTypeList::csv(types, kind, inLibrary() ? nullptr : &used,
+							   QETApp::langFromSetting());
 }
 
 void DeviceTypesDialog::exportList(DeviceTypeList::Kind kind)

@@ -919,7 +919,8 @@ int exportLinks(QETProject &project, const QString &output)
 int exportDeviceTypeCheck(QETProject &project, const QString &output)
 {
 	const QHash<Element *, int> folio = folioIndex(project);
-	const auto devices = DeviceTypeCheck::check(&project);
+	QList<Element *> unlinked;
+	const auto devices = DeviceTypeCheck::check(&project, &unlinked);
 
 	QString csv("device;device_type;status;parts;symbols;not_drawn;beyond;missing;folio;extra\n");
 	int complete = 0, incomplete = 0, unknown = 0;
@@ -948,7 +949,6 @@ int exportDeviceTypeCheck(QETProject &project, const QString &output)
 			 % QString::number(DeviceTypeCheck::extraContacts(device)) % "\n";
 	}
 		//A contact linked to no master: a row of its own, status unlinked
-	const QList<Element *> unlinked = DeviceTypeCheck::unlinkedContacts(&project);
 	for (Element *contact : unlinked) {
 		csv += csvField(elementLabel(contact)) % ";"
 			 % csvField(DeviceTypeCheck::typeNameOf(contact->elementInformations()))

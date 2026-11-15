@@ -52,6 +52,30 @@ class tst_dxfcurves : public QObject
 	}
 
 private slots:
+		/// A structure box is a shape: --export-dxf writes it on the
+		/// shapes layer (it was left out, its type() not being a shape's)
+	void structureBoxesAreExported()
+	{
+		const QString project = QFINDTESTDATA("fixtures/structure_box.qet");
+		QVERIFY2(!project.isEmpty(), "fixture project not found");
+		QTemporaryDir dir;
+		QVERIFY(dir.isValid());
+		QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
+		env.insert(QStringLiteral("QT_QPA_PLATFORM"), QStringLiteral("offscreen"));
+		QProcess proc;
+		proc.setProcessEnvironment(env);
+		proc.start(QStringLiteral(QET_TEST_BINARY_PATH), {QStringLiteral("--export-dxf"), project, dir.path()});
+		QVERIFY2(proc.waitForFinished(QetTest::timeout(60000)), "--export-dxf timed out");
+		QCOMPARE(proc.exitCode(), 0);
+		QFile file(dir.filePath(QStringLiteral("01_diagram.dxf")));
+		QVERIFY(file.open(QIODevice::ReadOnly | QIODevice::Text));
+		const QStringList values = QString::fromUtf8(file.readAll()).split(QLatin1Char('\n'));
+		const QString shapes = QStringLiteral("QET_SHAPES");
+		QVERIFY(!(entities(values, QStringLiteral("LINE"), shapes)
+				  + entities(values, QStringLiteral("POLYLINE"), shapes)
+				  + entities(values, QStringLiteral("LWPOLYLINE"), shapes)).isEmpty());
+	}
+
 	void curvesAndTitleBlock()
 	{
 		const QString project = QFINDTESTDATA("fixtures/dxf_curves.qet");

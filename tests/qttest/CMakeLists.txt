@@ -557,6 +557,8 @@ qet_add_app_test(tst_devicetypeassign tst_devicetypeassign.cpp)
 # Part data: unit price, labour time and size, kept by .qet and .qetdb,
 # columns of the parts list; every field the export offers is a column.
 qet_add_app_test(tst_partdata tst_partdata.cpp)
+# Axis lock and original position snap during paste placement.
+qet_add_app_test(tst_pasteaxislock tst_pasteaxislock.cpp)
 # Split-view materials list dialog with inline editing and creation.
 qet_add_app_test(tst_materiallistedit tst_materiallistedit.cpp)
 # A read-only project builds its lazy folios whole: shown, exported, written out.
@@ -620,6 +622,10 @@ target_compile_definitions(tst_reopenprojects PRIVATE
 # be filled while its texts are being deleted -- which took the whole
 # application down with a real drawing.
 qet_add_app_test(tst_symbolteardown tst_symbolteardown.cpp)
+
+# A symbol which cannot be built leaves no dangling pending element
+# behind in the placing tool, and a symbol goes down without warnings.
+qet_add_app_test(tst_brokenelementplacement tst_brokenelementplacement.cpp)
 
 qet_add_app_test(tst_rotateselectionimage tst_rotateselectionimage.cpp)
 

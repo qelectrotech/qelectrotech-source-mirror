@@ -229,7 +229,29 @@ Element::~Element()
 		//would ask are gone before them. Without this the element is
 		//asked to fill texts which are already deleted, and the symbol
 		//takes the whole application with it when it is closed.
-	disconnect(nullptr, nullptr, this, nullptr);
+		//Qt has no call for "every sender": QObject::disconnect() with a
+		//null sender does nothing but warn, so each sender is cut by name.
+	const auto cut = [this](const QObject *sender) {
+		if (sender)
+			QObject::disconnect(sender, nullptr, this, nullptr);
+	};
+	QList<DynamicElementTextItem *> texts = m_dynamic_text_list;
+	for (ElementTextItemGroup *group : std::as_const(m_texts_group)) {
+		cut(group);
+		texts << group->texts();
+	}
+	for (DynamicElementTextItem *deti : std::as_const(texts)) {
+		cut(deti);
+		if (QTextDocument *document = deti->document()) {
+			cut(document);
+			cut(document->documentLayout());
+		}
+	}
+	for (Terminal *terminal : std::as_const(m_terminals)) {
+		cut(terminal);
+		for (Conductor *conductor : terminal->conductors())
+			cut(conductor);
+	}
 
 	qDeleteAll (m_dynamic_text_list);
 	m_dynamic_text_list.clear();

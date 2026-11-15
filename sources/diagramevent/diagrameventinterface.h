@@ -57,6 +57,7 @@ class DiagramEventInterface : public QObject
 		virtual void wheelEvent            (QGraphicsSceneWheelEvent *event);
 		virtual void keyPressEvent         (QKeyEvent *event);
 		virtual void keyReleaseEvent       (QKeyEvent *event);
+		virtual bool handlesShortcutOverride(QKeyEvent *event) const { Q_UNUSED(event); return false; }
 		virtual bool isRunning () const;
 		virtual void init();
 

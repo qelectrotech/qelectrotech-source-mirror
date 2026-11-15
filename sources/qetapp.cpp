@@ -2986,7 +2986,7 @@ void QETApp::parseArguments()
 void QETApp::initSplashScreen()
 {
 	if (non_interactive_execution_) return;
-	m_splash_screen = new QSplashScreen(QPixmap(":/ico/splash.png"));
+	m_splash_screen = new QSplashScreen(QPixmap(":/ico/app/splash.png"));
 	m_splash_screen -> show();
 	setSplashScreenStep(tr("Loading...", "splash screen caption"));
 }
