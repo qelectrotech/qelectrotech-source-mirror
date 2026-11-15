@@ -621,6 +621,10 @@ target_compile_definitions(tst_reopenprojects PRIVATE
 # application down with a real drawing.
 qet_add_app_test(tst_symbolteardown tst_symbolteardown.cpp)
 
+# A symbol which cannot be built leaves no dangling pending element
+# behind in the placing tool, and a symbol goes down without warnings.
+qet_add_app_test(tst_brokenelementplacement tst_brokenelementplacement.cpp)
+
 qet_add_app_test(tst_rotateselectionimage tst_rotateselectionimage.cpp)
 
 # Editing the information of several elements at once (#1439): kept, set
