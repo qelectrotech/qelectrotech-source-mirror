@@ -308,19 +308,17 @@ StructureBoxItem::Place StructureBoxItem::placeIn(
 */
 StructureBoxItem::Place StructureBoxItem::placeOf(const Element *element)
 {
-	return ownOrElse(element, [element]() {return referencePlace(element);});
-}
-
-/**
-	@brief StructureBoxItem::placeOf
-	The same, with the boxes looked for among @p folio_boxes
-*/
-StructureBoxItem::Place StructureBoxItem::placeOf(
-		const Element *element,
-		const QList<const StructureBoxItem *> &folio_boxes)
-{
-	return ownOrElse(element, [element, &folio_boxes]() {
-		return referencePlace(element, folio_boxes);});
+	if (!element)
+		return {};
+	const DiagramContext info = element->elementInformations();
+	Place place{info.value(QStringLiteral("plant")).toString(),
+				info.value(QStringLiteral("location")).toString()};
+	if (place.plant.isEmpty() || place.location.isEmpty()) {
+		const Place reference = referencePlace(element);
+		if (place.plant.isEmpty())    place.plant = reference.plant;
+		if (place.location.isEmpty()) place.location = reference.location;
+	}
+	return place;
 }
 
 /**
@@ -343,28 +341,6 @@ QList<const StructureBoxItem *> StructureBoxItem::boxesAmong(const QList<QGraphi
 		if (item->type() == StructureBoxItem::Type)
 			boxes << static_cast<const StructureBoxItem *>(item);
 	return boxes;
-}
-
-/**
-	@brief StructureBoxItem::ownOrElse
-	@return the element's own plant and location, an empty one taken from
-	@p reference
-*/
-StructureBoxItem::Place StructureBoxItem::ownOrElse(
-		const Element *element,
-		const std::function<Place()> &reference)
-{
-	if (!element)
-		return {};
-	const DiagramContext info = element->elementInformations();
-	Place place{info.value(QStringLiteral("plant")).toString(),
-				info.value(QStringLiteral("location")).toString()};
-	if (place.plant.isEmpty() || place.location.isEmpty()) {
-		const Place reference_place = reference();
-		if (place.plant.isEmpty())    place.plant = reference_place.plant;
-		if (place.location.isEmpty()) place.location = reference_place.location;
-	}
-	return place;
 }
 
 bool StructureBoxItem::isStructureBoxXml(const QDomElement &e)

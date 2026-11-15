@@ -395,9 +395,15 @@ void DeviceNavigatorDockWidget::buildData(QList<ElementInfo> &items)
 
 			// Plant & Location (Structure identifier): its own, else the
 			// structure box it is in, else its folio's
-			const StructureBoxItem::Place place = StructureBoxItem::placeOf(elmt, folioBoxes);
-			const QString plant = place.plant.trimmed();
-			const QString location = place.location.trimmed();
+			QString plant = dc.value(QStringLiteral("plant")).toString().trimmed();
+			QString location = dc.value(QStringLiteral("location")).toString().trimmed();
+			if (plant.isEmpty() || location.isEmpty()) {
+					//Trimmed first: a value of spaces is no value
+				const StructureBoxItem::Place reference =
+						StructureBoxItem::referencePlace(elmt, folioBoxes);
+				if (plant.isEmpty()) plant = reference.plant.trimmed();
+				if (location.isEmpty()) location = reference.location.trimmed();
+			}
 			info.plant = plant;
 			info.location = location;
 			info.hasStructure = (!plant.isEmpty() || !location.isEmpty());

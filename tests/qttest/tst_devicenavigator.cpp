@@ -37,6 +37,7 @@
 #include "factory/elementfactory.h"
 #include "qetgraphicsitem/structureboxitem.h"
 #include "qetresult.h"
+#include "dataBase/projectdatabase.h"
 
 #include <QDomDocument>
 #include <QTemporaryDir>
@@ -65,6 +66,7 @@ class tst_devicenavigator : public QObject
 		void testLazyLoadingOpensProjectWithoutBuildingFolios();
 		void testStructureBoxGivesThePlace();
 		void testStructureBoxOfAnUnbuiltFolio();
+		void testQuotedKeywordsStillBuildFolios();
 
 	private:
 		Element *symbol(Diagram *diagram);
@@ -903,6 +905,8 @@ void tst_devicenavigator::structureBoxFolio(Diagram *diagram)
 	place(QStringLiteral("K1"), QPointF(200, 200), QString());
 	place(QStringLiteral("K2"), QPointF(800, 800), QString());
 	place(QStringLiteral("K3"), QPointF(300, 300), QStringLiteral("DB50"));
+		//A location of spaces is no location: the box gives the place
+	place(QStringLiteral("K4"), QPointF(250, 250), QStringLiteral("  "));
 }
 
 void tst_devicenavigator::checkStructureBoxTree(DeviceNavigatorDockWidget &nav)
@@ -916,7 +920,7 @@ void tst_devicenavigator::checkStructureBoxTree(DeviceNavigatorDockWidget &nav)
 		for (int d = 0 ; d < root->child(s)->childCount() ; ++d)
 			shown[root->child(s)->text(0)] << root->child(s)->child(d)->text(0);
 	QMap<QString, QStringList> expected;
-	expected[QStringLiteral("=FACTORY +FIELD")] = {QStringLiteral("K1")};
+	expected[QStringLiteral("=FACTORY +FIELD")] = {QStringLiteral("K1"), QStringLiteral("K4")};
 	expected[QStringLiteral("=FACTORY +CP1")] = {QStringLiteral("K2")};
 	expected[QStringLiteral("=FACTORY +DB50")] = {QStringLiteral("K3")};
 	QCOMPARE(shown, expected);
@@ -957,6 +961,35 @@ void tst_devicenavigator::testStructureBoxOfAnUnbuiltFolio()
 	nav.reload();
 	QCOMPARE(project.unloadedFolioCount(), 1);
 	checkStructureBoxTree(nav);
+}
+
+void tst_devicenavigator::testQuotedKeywordsStillBuildFolios()
+{
+	QTemporaryDir dir;
+	QVERIFY(dir.isValid());
+	const QString path = dir.filePath(QStringLiteral("quoted.qet"));
+	{
+		QETProject project;
+		structureBoxFolio(project.addNewDiagram());
+		if (QTest::currentTestFailed()) return;
+		project.setFilePath(path);
+		const QETResult saved = project.write();
+		QVERIFY2(saved.isOk(), qPrintable(saved.errorMessage()));
+	}
+		//A word in quotes is a value, not a table. Only the structure boxes'
+		//own subquery ('shape' rows, filled from the document) may skip
+		//building the folios; a read of pictures or texts must still build them.
+	const auto unbuiltAfter = [&path](const QString &sql) {
+		QETProject project(path);
+		if (project.unloadedFolioCount() != 1) return -1;
+		QString error;
+		project.dataBase()->newQuery(sql, &error);
+		if (!error.isEmpty()) return -2;
+		return project.unloadedFolioCount();
+	};
+	QCOMPARE(unbuiltAfter(QStringLiteral("SELECT COUNT(*) FROM drawing_item WHERE section = 'image'")), 0);
+	QCOMPARE(unbuiltAfter(QStringLiteral("SELECT COUNT(*) FROM drawing_item WHERE section = 'independent_text'")), 0);
+	QCOMPARE(unbuiltAfter(QStringLiteral("SELECT COUNT(*) FROM drawing_item WHERE section = 'shape'")), 1);
 }
 
 QTEST_MAIN(tst_devicenavigator)

@@ -2836,11 +2836,12 @@ QSqlQuery projectDataBase::newQuery(const QString &query, QString *error) {
 		//laid-out size, a picture's pixels): with folios not built yet
 		//(lazy folios) a read of them builds those first, and so does a
 		//read of the view made of them. Every other table was filled from
-		//the document. A word in quotes is a value, not a table: the
-		//structure boxes' subquery (structurePlacesSql()) reads
+		//the document. The one value that does not count is 'shape' in
+		//quotes: the structure boxes' subquery (structurePlacesSql()) reads
 		//drawing_item rows of section 'shape', filled from the document.
+		//A quoted 'image' or 'independent_text' still needs the folios.
 	static const QRegularExpression drawing_tables(
-			QStringLiteral("(?<!')\\b(shape|independent_text|image|drawing_item_view)\\b(?!')"),
+			QStringLiteral("\\b(independent_text|image|drawing_item_view)\\b|(?<!')\\bshape\\b(?!')"),
 			QRegularExpression::CaseInsensitiveOption);
 	if (m_project && m_project->unloadedFolioCount() && drawing_tables.match(query).hasMatch()) {
 		m_project->loadFolios();
@@ -5303,7 +5304,9 @@ QStringList projectDataBase::publicViews()
 	each (plant, location) a symbol or a folio's title block has, with the
 	symbols in it (folio reports left out), the folios showing it and the
 	first of them. Empty plant and location are '' (the row of what has
-	neither), and structure_id is =plant+location.
+	neither), and structure_id is =plant+location. A folio counts under
+	every place it shows, so the folios of different rows are not to be
+	added up.
 
 */
 void projectDataBase::createPublicViews()

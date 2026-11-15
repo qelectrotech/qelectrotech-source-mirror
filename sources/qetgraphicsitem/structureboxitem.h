@@ -25,8 +25,6 @@
 #include <QPointF>
 #include <QPointer>
 
-#include <functional>
-
 class Element;
 class StructureBoxLabelItem;
 
@@ -124,8 +122,6 @@ class StructureBoxItem : public QetShapeItem
 			/// Where @p element is: its own plant and location, each one
 			/// taken from referencePlace() when it is empty.
 		static Place placeOf(const Element *element);
-		static Place placeOf(const Element *element,
-							 const QList<const StructureBoxItem *> &folio_boxes);
 			/// Work out again the texts of the symbols of @p diagram which
 			/// show a reference designation (%{structure_id...}) or a place
 			/// (%{plant}, %{location}): what a box or the folio gives them
@@ -148,8 +144,6 @@ class StructureBoxItem : public QetShapeItem
 		static QList<const StructureBoxItem *> boxesAmong(const QList<QGraphicsItem *> &items);
 		static Place placeIn(const Element *element,
 							 const QList<const StructureBoxItem *> &boxes);
-		static Place ownOrElse(const Element *element,
-							   const std::function<Place()> &reference);
 
 		QString m_plant, m_location, m_prefix;
 			/// The folio it was last on: the symbols it leaves are
