@@ -106,6 +106,7 @@ class DiagramView : public PaletteGraphicsView
 			/// keys or mouse); a press elsewhere on it, the insertion point
 		QPointer<Terminal> m_reference_terminal;
 		Terminal *referenceTerminal() const;
+		bool snapsPointer() const;
 		QGraphicsObject *handleNear(const QPoint &viewport_pos) const;
 		QMouseEvent *onCaughtHandle(QMouseEvent *e, std::unique_ptr<QMouseEvent> &shifted);
 		void hideCrosshair();
@@ -184,6 +185,11 @@ class DiagramView : public PaletteGraphicsView
 		static void setCrosshairShown(bool shown);
 		static bool pointerAids();
 		static void setPointerAids(bool on);
+			/// The pointer and the crosshair keep to the grid only while
+			/// something is placed or dragged, and follow the mouse
+			/// freely otherwise; one setting for every view, off by default
+		static bool gridOnlyWhilePlacing();
+		static void setGridOnlyWhilePlacing(bool on);
 			/// The shaded lines from a dragged symbol's terminals to the
 			/// terminals in line with them; on by default
 		static bool terminalHelpLinesShown();

@@ -1348,6 +1348,18 @@ void DiagramView::mouseMoveEvent(QMouseEvent *original)
 	QMouseEvent *e = onCaughtHandle(original, shifted);
 	const AcceptedBack accepted_back{e, original};
 	m_last_mouse_pos = e->pos();
+		//A placement started by a drop from the elements panel: on Windows
+		//and macOS, the end of the drag gives the keyboard focus back to
+		//the panel, despite the setFocus() of startElementPlacement(). Space,
+		//which rotates the pending element, then never reached the view
+		//before a first click (forum, pid=23632). Take the focus back as
+		//soon as the mouse moves over the folio during the placement.
+	if (e->buttons() == Qt::NoButton && m_diagram
+	    && m_diagram->eventInterfaceIsRunning() && !hasFocus()) {
+		if (!window()->isActiveWindow())
+			activateWindow();
+		setFocus(Qt::OtherFocusReason);
+	}
 	if (e->buttons() & Qt::LeftButton)
 		updateRubberBandMode(e->pos());
 		//The topmost item that is one of the folio's: the crosshair and
@@ -1530,7 +1542,8 @@ void DiagramView::updatePointer(const QPoint &viewport_pos, Qt::MouseButtons but
 			&& !(m_diagram && m_diagram->isReadOnly());
 
 	Pointer pointer = Pointer::System;
-	if (m_crosshair_visible && crosshairShown() && m_diagram
+		//Drawn only where it stands apart from the mouse: on a grid point
+	if (m_crosshair_visible && crosshairShown() && (snapsPointer() || isDimensionTool) && m_diagram
 			&& m_diagram->border_and_titleblock.insideBorderRect().contains(m_crosshair_pos)) {
 		if (isDimensionTool)
 			pointer = Pointer::Dimension;
@@ -2329,12 +2342,14 @@ bool DiagramView::event(QEvent *e) {
 
 		// fait en sorte que les raccourcis clavier arrivent prioritairement sur la
 		// vue plutot que de remonter vers les QMenu / QAction
-	if (
-		e -> type() == QEvent::ShortcutOverride &&
-		selectedItemHasFocus()
-	) {
-		e -> accept();
-		return(true);
+	if (e -> type() == QEvent::ShortcutOverride) {
+		auto *key_event = static_cast<QKeyEvent *>(e);
+		if (selectedItemHasFocus()
+		    || (m_diagram && m_diagram->eventInterface()
+		        && m_diagram->eventInterface()->handlesShortcutOverride(key_event))) {
+			e -> accept();
+			return(true);
+		}
 	}
 	return(QGraphicsView::event(e));
 }
@@ -2409,6 +2424,7 @@ namespace {
 		/// The settings, read once and then kept here for every view
 	int s_crosshair = -1;
 	int s_pointer_aids = -1;
+	int s_grid_only_placing = -1;
 	int s_terminal_help_lines = -1;
 	int s_zoom_step = -1;
 	int s_selection_rectangle = -1;
@@ -2522,6 +2538,47 @@ void DiagramView::setPointerAids(bool on)
 }
 
 /**
+	@brief DiagramView::gridOnlyWhilePlacing
+	@return true when the pointer and the crosshair keep to the grid only
+	while a tool places something or a press on an item drags it, and
+	follow the mouse freely otherwise, so that small items are easy to
+	grab. Off by default: they always keep to the grid, as before.
+*/
+bool DiagramView::gridOnlyWhilePlacing()
+{
+	if (s_grid_only_placing < 0) {
+		QSettings settings;
+		s_grid_only_placing = settings.value(QStringLiteral("diagrameditor/grid_only_placing"), false).toBool();
+	}
+	return s_grid_only_placing;
+}
+
+/**
+	@brief DiagramView::setGridOnlyWhilePlacing
+	@param on : see gridOnlyWhilePlacing(); kept in the settings, for
+	every view from the next mouse move.
+*/
+void DiagramView::setGridOnlyWhilePlacing(bool on)
+{
+	s_grid_only_placing = on;
+	QSettings settings;
+	settings.setValue(QStringLiteral("diagrameditor/grid_only_placing"), on);
+}
+
+/**
+	@brief DiagramView::snapsPointer
+	@return true when the crosshair and the drawn pointer go to the grid
+	point under the mouse now: always, or with gridOnlyWhilePlacing()
+	while a tool runs (placing a symbol, drawing a shape or a text) or a
+	press on an item drags it
+*/
+bool DiagramView::snapsPointer() const
+{
+	return !gridOnlyWhilePlacing() || m_event_interface || m_press_places
+			|| (m_diagram && m_diagram->eventInterfaceIsRunning());
+}
+
+/**
 	@brief DiagramView::terminalHelpLinesShown
 	@return true when a symbol being placed or dragged draws a shaded line
 	from each of its terminals to the terminal in line with it; on by
@@ -2602,14 +2659,17 @@ void DiagramView::moveCrosshair(const QPoint &viewport_pos)
 		hideCrosshair();
 		return;
 	}
-		//A handle near the mouse catches it before the grid does; not
-		//while a press drags something: the crosshair shows where it
-		//lands, not the handles it passes
-	QGraphicsObject *handle = m_grabbing_caught || m_press_places
+		//A handle near the mouse catches it before the grid does. Not
+		//while the pointer follows the mouse freely: it is where the mouse
+		//is, nothing to catch. Nor while a press drags something: the
+		//crosshair shows where it lands, not the handles it passes
+	const bool snaps = snapsPointer();
+	QGraphicsObject *handle = m_grabbing_caught || !snaps || m_press_places
 			? nullptr : handleNear(viewport_pos);
 	m_caught_handle = handle;
 	QPointF pos = handle ? handle->scenePos()
-			     : Diagram::snapToGrid(mapToScene(viewport_pos));
+			     : snaps ? Diagram::snapToGrid(mapToScene(viewport_pos))
+			     : mapToScene(viewport_pos);
 		//Dragging a symbol, or placing a new one: on its insertion point
 		//(its origin), the one point that lands on the grid, the same
 		//wherever the symbol was grabbed
@@ -3202,6 +3262,7 @@ QList<QAction *> DiagramView::contextMenuActions() const
 			list << qde->m_conductor_reset;
 			list << qde->m_select_same_symbols;
 			list << qde->m_show_as_dot;
+			list << qde->m_replace_symbols;
 			list << m_separators.at(1);
 			list << qde->m_selection_actions_group.actions();
 			list << qde->m_align_menu->menuAction();

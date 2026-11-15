@@ -136,6 +136,16 @@ private slots:
 		QCOMPARE(shape(&toolbar).count(QStringLiteral("|")), 3);
 	}
 
+		/// The structure box is drawn like the other shapes, so its tool
+		/// sits on the Add toolbar with them
+	void structureBoxOnAddToolbar()
+	{
+		const QStringList ids = DiagramToolbarSettings::defaultIds(QStringLiteral("adding"));
+		QVERIFY(ids.contains(QStringLiteral("diagrameditor.add_structure_box")));
+		QCOMPARE(ids.indexOf(QStringLiteral("diagrameditor.add_structure_box")),
+			 ids.indexOf(QStringLiteral("diagrameditor.add_generic_device")) + 1);
+	}
+
 	void fillSkipsUnknownAndStraySeparators()
 	{
 		const QString sep = DiagramToolbarSettings::separatorId();

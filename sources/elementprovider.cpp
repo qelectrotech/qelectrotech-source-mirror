@@ -277,7 +277,7 @@ QVector<TerminalElement *> ElementProvider::freeTerminal() const
 
 /**
  * @brief ElementProvider::joinsWiresOnly
- * @return true for a corner or a T-junction: a symbol of
+ * @return true for a corner, a T-junction or a drawing aid: a symbol of
  * the terminal kind that only joins wires on the folio and is no terminal
  * block. A T-junction is told by its three terminals (see
  * Element::dotPoint()); one with a label counts as a terminal block.
@@ -286,7 +286,7 @@ bool ElementProvider::joinsWiresOnly(const Element *element)
 {
 	if (!element)
 		return false;
-	if (element->isCorner())
+	if (element->isCorner() || element->isDrawingAid())
 		return true;
 	return element->dotPoint().has_value()
 			&& const_cast<Element *>(element)->actualLabel().isEmpty();

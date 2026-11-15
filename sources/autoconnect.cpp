@@ -27,6 +27,8 @@
 #include "undocommand/addgraphicsobjectcommand.h"
 #include "undocommand/deleteqgraphicsitemcommand.h"
 
+#include <QSettings>
+
 #include <algorithm>
 
 namespace {
@@ -43,6 +45,8 @@ struct State
 	QSet<Terminal *> used;
 		/// symbols the caller removes
 	QSet<Element *> leaving;
+		/// whether the wires made are automatic ones, kept up to date
+	bool automatic = true;
 };
 
 QPointF direction(Qet::Orientation o)
@@ -82,6 +86,18 @@ bool isFree(const State &s, const Terminal *t)
 }
 
 /**
+	@return the frame of @a e on the folio: the width and height its
+	definition gives, without the pixel the line width adds around the
+	drawing. A T-junction's line ends on its terminals, so with that pixel
+	its top terminal reached one step up and stopped a wire passing along
+	the grid line there.
+*/
+QRectF frameOf(const Element *e)
+{
+	return e->mapRectToScene(QRectF(-QPointF(e->hotspot()), QSizeF(e->size())));
+}
+
+/**
 	@return true when the body of a symbol not in @a ignore lies across the
 	straight, level or upright line from @a p to @a q
 */
@@ -91,15 +107,20 @@ bool bodyAcross(const Diagram *diagram, const QPointF &p, const QPointF &q,
 	const QRectF span = QRectF(p, q).normalized();
 	const QRectF search = span.adjusted(-1, -1, 1, 1);
 
-	for (QGraphicsItem *qgi : diagram->items(search, Qt::IntersectsItemBoundingRect))
+		//Every symbol, also one hidden with View > Show (a drawing aid):
+		//hiding it changes the view, not the connections. A search of the
+		//scene by area would leave hidden items out.
+	for (Element *e : diagram->elements())
 	{
-		auto *e = qgraphicsitem_cast<Element *>(qgi);
-		if (!e || ignore.contains(e))
+		if (ignore.contains(e) || !e->sceneBoundingRect().intersects(search))
+			continue;
+		const QRectF frame = frameOf(e);
+		if (!frame.intersects(search))
 			continue;
 
 			//Only the inside of the body stops the line: a symbol whose edge
 			//the line just touches, or runs along, leaves it free.
-		const QRectF body = e->sceneBoundingRect().adjusted(
+		const QRectF body = frame.adjusted(
 					kTolerance, kTolerance, -kTolerance, -kTolerance);
 		if (body.isEmpty())
 			continue;
@@ -218,8 +239,8 @@ void makeWire(State &s, Terminal *a, Terminal *b, QUndoCommand *parent)
 	auto *conductor = new Conductor(a, b);
 		//Automatic only where something keeps it up to date: an automatic
 		//wire cannot be selected, so in any other project nothing could
-		//ever remove it (#1837)
-	conductor->setAutomatic(AutoConnect::isOn(diagram));
+		//ever remove it (#1837); connectOnce() makes ordinary ones
+	conductor->setAutomatic(s.automatic && AutoConnect::isOn(diagram));
 	new AddGraphicsObjectCommand(conductor, diagram, QPointF(), parent);
 
 		//Same rule as a wire drawn by hand: the properties of the potential
@@ -370,6 +391,22 @@ int AutoConnect::connectWholeDiagram(Diagram *diagram, QUndoCommand *parent)
 	return made;
 }
 
+int AutoConnect::connectOnce(Diagram *diagram, const QList<Element *> &elements, QUndoCommand *parent)
+{
+	if (!diagram || !parent)
+		return 0;
+	State s;
+	s.diagram = diagram;
+	s.automatic = false;
+	QSet<Terminal *> candidates;
+	for (Element *e : elements)
+		for (Terminal *t : e->terminals())
+			candidates << t;
+	int made = 0;
+	connectAll(s, candidates, parent, &made);
+	return made;
+}
+
 Terminal *AutoConnect::partner(const Terminal *from)
 {
 	if (!from || !from->diagram())
@@ -478,4 +515,14 @@ QList<QLineF> AutoConnect::previewWires(const Diagram *diagram,
 			}
 		}
 	return wires;
+}
+
+bool AutoConnect::dragPlacesWithAutoConductor()
+{
+	return QSettings().value(QStringLiteral("diagrameditor/drag_places_auto_conductor"), false).toBool();
+}
+
+void AutoConnect::setDragPlacesWithAutoConductor(bool on)
+{
+	QSettings().setValue(QStringLiteral("diagrameditor/drag_places_auto_conductor"), on);
 }

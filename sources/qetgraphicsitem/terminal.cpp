@@ -1254,3 +1254,18 @@ QList<Terminal *> relatedPotentialTerminal (
 	return QList<Terminal *>();
 }
 
+
+/**
+	@brief Terminal::shiftInSymbol
+	Move the terminal by @p offset in the coordinates of its symbol, as its
+	definition moved it: the symbol's insertion point moved (see
+	Element::followMovedOrigin()). The attached conductors are not told:
+	the symbol moves back by the same offset right after.
+*/
+void Terminal::shiftInSymbol(const QPointF &offset)
+{
+	prepareGeometryChange();
+	d->m_pos += offset;
+	init();
+	update();
+}

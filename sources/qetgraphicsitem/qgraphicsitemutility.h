@@ -29,6 +29,11 @@ namespace QGIUtility
 	bool centerToParentBottom  (QGraphicsItem *item);
 	bool centerToBottomDiagram (QGraphicsItem *item_to_center, Element *element_to_follow, qreal offset = 0 );
 	void drawBoundingRectSelection(QGraphicsItem *item, QPainter *painter);
+		/// A selected symbol framed in the highlight colour, solid and
+		/// wider, on a light fill, rather than the thin grey dashes kept
+		/// for the hover. Off by default; kept in the settings.
+	bool strongSelection();
+	void setStrongSelection(bool strong);
 		/// Corner radius of the frame around a selected or highlighted
 		/// symbol: 10, as always, by default; 0 draws it square
 	int selectionFrameRadius();

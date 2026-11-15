@@ -103,6 +103,10 @@ class MaterialList
 		static bool load(const QString &path, MaterialListData *data, QString *error = nullptr);
 		static bool writeFile(const QString &path, const MaterialListData &data, QString *error = nullptr);
 		static bool appendRecord(const QString &path, const MaterialRecord &record, QString *error = nullptr);
+		static bool updateRecord(const QString &path, int row,
+								 const MaterialRecord &original,
+								 const MaterialRecord &updated,
+								 QString *error = nullptr);
 		static bool createFile(const QString &path, QString *error = nullptr);
 		static bool isEmptyFile(const QString &path);
 

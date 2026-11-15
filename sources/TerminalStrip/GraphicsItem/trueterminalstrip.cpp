@@ -148,6 +148,12 @@ namespace TerminalStripDrawer
 		return m_real ? m_real->cableWire() : QString();
 	}
 
+	QStringList TrueRealTerminal::cableCoreTargets(
+		const QString &name, const QUuid &uuid, int slot) const
+	{
+		return m_real ? m_real->cableCoreTargets(name, uuid, slot) : QStringList();
+	}
+
 	bool TrueRealTerminal::isShield() const
 	{
 		return m_real ? m_real->isShield() : false;

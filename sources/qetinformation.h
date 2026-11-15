@@ -39,6 +39,9 @@ namespace QETInformation
 {
 	/** Default information related to element **/
 	static QString ELMT_LABEL                        = "label";
+	inline const QString REPORT_REMOTE_ENDPOINT = QStringLiteral("remote_endpoint");
+	inline const QString REPORT_REMOTE_ENDPOINT_VAR = QStringLiteral("%{")
+		+ REPORT_REMOTE_ENDPOINT + QLatin1Char('}');
 		//The part of the label behind its last colon ("1" in "X1:1"),
 		//shown in a text field of its own when the terminal labelling
 		//is drawn split (@sa QETProject::terminalLabelSplit)
@@ -66,6 +69,7 @@ namespace QETInformation
 	static QString ELMT_SUPPLIER                     = "supplier";
 	static QString ELMT_QUANTITY                     = "quantity";
 	static QString ELMT_MODEL                        = "model";
+	static QString ELMT_DEVICE_TYPE                  = "device_type";
 	static QString ELMT_CATEGORY                     = "category";
 	static QString ELMT_VOLTAGE_RATING               = "voltage_rating";
 	static QString ELMT_CURRENT_RATING               = "current_rating";
@@ -74,6 +78,8 @@ namespace QETInformation
 	static QString ELMT_WIDTH						 = "width";
 	static QString ELMT_HEIGHT                       = "height";
 	static QString ELMT_DEPTH                        = "depth";
+	static QString ELMT_UNIT_PRICE                   = "unit_price";
+	static QString ELMT_LABOUR_TIME                  = "labour_time";
 	static QString ELMT_PLANT                        = "plant";
 	static QString ELMT_LOCATION                     = "location";
 	static QString ELMT_AUX1                         = "auxiliary1";
@@ -195,11 +201,12 @@ namespace QETInformation
 	bool usesTerminalConductorInfo(const QString &composite_text);
 	QString elementInfoToVar(const QString &info);
 
-	QRegularExpression numericInfoPattern();
+	bool isNumericInfoKey(const QString &key);
+	QRegularExpression numericInfoPattern(const QString &key = QString());
 	class NumericInfoValidator : public QRegularExpressionValidator
 	{
 	public:
-		explicit NumericInfoValidator(QObject *parent = nullptr);
+		explicit NumericInfoValidator(const QString &key, QObject *parent = nullptr);
 		State validate(QString &input, int &pos) const override;
 	};
 

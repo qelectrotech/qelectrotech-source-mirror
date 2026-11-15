@@ -975,7 +975,7 @@ void DynamicElementTextItem::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 				//DiagramTextItem::mouseMoveEvent() for independent texts.
 				//Without it this was the only text move in the editor that
 				//ignored the grid.
-			event->modifiers() == Qt::ControlModifier ? setPos(new_pos) : setPos(Diagram::snapToTextGrid(new_pos));
+			event->modifiers() == Qt::ControlModifier ? setPos(new_pos) : setPos(Diagram::snapToTextGrid(new_pos, this));
 
 			if(diagram())
 				diagram()->elementTextsMover().continueMovement(event);
@@ -1142,19 +1142,15 @@ QVariant DynamicElementTextItem::itemChange(QGraphicsItem::GraphicsItemChange ch
 			{
 				m_report_formula = m_parent_element.data()->diagram()->project()->defaultReportProperties();
 				QETProject *project = m_parent_element.data()->diagram()->project();
-				connect(project->dataBase(), &projectDataBase::dataBaseUpdated,
-						this, &DynamicElementTextItem::refreshRemoteEndpoint,
-						Qt::QueuedConnection);
-				// Eager loading creates texts before the project's undo stack.
-				QTimer::singleShot(0, this, [this]() {
-					if (!diagram() || !diagram()->project())
-						return;
-					connect(diagram()->project()->undoStack(),
-							&QUndoStack::indexChanged, this,
+				if (m_parent_element.data()->linkType() & Element::AllReport) {
+					connect(project->dataBase(), &projectDataBase::dataBaseUpdated,
+							this, &DynamicElementTextItem::refreshRemoteEndpoint,
+							Qt::QueuedConnection);
+					// The project forwards index changes once its stack exists.
+					connect(project, &QETProject::undoStackIndexChanged, this,
 							&DynamicElementTextItem::refreshRemoteEndpoint,
 							Qt::QueuedConnection);
-					refreshRemoteEndpoint();
-				});
+				}
 				m_report_formula_con = connect(m_parent_element.data()->diagram()->project(), &QETProject::reportPropertiesChanged, this, &DynamicElementTextItem::reportFormulaChanged);
 			}
 
@@ -1469,7 +1465,7 @@ void DynamicElementTextItem::handlerMouseReleaseEvent(QetGraphicsHandlerItem *ha
 void DynamicElementTextItem::elementInfoChanged()
 {
 	if (m_text_from == ElementInfo
-		&& m_info_name == QLatin1String("remote_endpoint")) {
+		&& m_info_name == QETInformation::REPORT_REMOTE_ENDPOINT) {
 		refreshRemoteEndpoint();
 		return;
 	}
@@ -1783,7 +1779,7 @@ void DynamicElementTextItem::updateReportFormulaConnection()
 */
 void DynamicElementTextItem::updateReportText()
 {
-	refreshRemoteEndpoint();
+	if (refreshRemoteEndpoint()) return;
 	if (!m_parent_element ||
 		(!(m_parent_element.data()->linkType() & Element::AllReport) &&
 		 m_parent_element.data()->linkType() != Element::ConductorDefinition))
@@ -1868,7 +1864,7 @@ void DynamicElementTextItem::updateReportText()
 void DynamicElementTextItem::updateLabel()
 {
 	if (m_text_from == CompositeText
-		&& m_composite_text.contains(QLatin1String("%{remote_endpoint}"))) {
+		&& m_composite_text.contains(QETInformation::REPORT_REMOTE_ENDPOINT_VAR)) {
 		refreshRemoteEndpoint();
 		return;
 	}
@@ -2062,7 +2058,7 @@ void DynamicElementTextItem::setPotentialConductor()
 */
 void DynamicElementTextItem::conductorPropertiesChanged()
 {
-	refreshRemoteEndpoint();
+	if (refreshRemoteEndpoint()) return;
 	if(m_parent_element && ((m_parent_element.data()->linkType() & Element::AllReport) || (m_parent_element.data()->linkType() == Element::ConductorDefinition) ||
 		m_parent_element.data()->linkType() == Element::ConductorDefinition))
 	{
@@ -2127,22 +2123,23 @@ QString DynamicElementTextItem::remoteEndpoint() const
 	return label + QLatin1Char(':') + pin;
 }
 
-void DynamicElementTextItem::refreshRemoteEndpoint()
+bool DynamicElementTextItem::refreshRemoteEndpoint()
 {
 	QString value;
 	if (m_text_from == ElementInfo
-		&& m_info_name == QLatin1String("remote_endpoint")) {
+		&& m_info_name == QETInformation::REPORT_REMOTE_ENDPOINT) {
 		value = remoteEndpoint();
 	} else if (m_text_from == CompositeText
-		&& m_composite_text.contains(QLatin1String("%{remote_endpoint}"))) {
+		&& m_composite_text.contains(QETInformation::REPORT_REMOTE_ENDPOINT_VAR)) {
 		value = reportReplacedCompositeText();
 	} else {
-		return;
+		return false;
 	}
 	if (toPlainText() != value) {
 		setPlainText(value);
 		emit plainTextChanged();
 	}
+	return true;
 }
 
 QString DynamicElementTextItem::reportReplacedCompositeText() const
@@ -2199,8 +2196,8 @@ QString DynamicElementTextItem::reportReplacedCompositeText() const
 		string = autonum::AssignVariables::replaceVariable(
 					string, m_parent_element.data()->elementInformations(),
 					m_parent_element.data());
-		if (string.contains(QLatin1String("%{remote_endpoint}")))
-			string.replace(QStringLiteral("%{remote_endpoint}"), remoteEndpoint());
+		if (string.contains(QETInformation::REPORT_REMOTE_ENDPOINT_VAR))
+			string.replace(QETInformation::REPORT_REMOTE_ENDPOINT_VAR, remoteEndpoint());
 	}
 	
 	return string;

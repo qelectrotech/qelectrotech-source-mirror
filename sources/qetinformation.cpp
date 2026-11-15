@@ -89,7 +89,7 @@ QHash<QString, QString> QETInformation::titleblockTranslatedKeyHashVar()
 QStringList QETInformation::folioReportInfoKeys()
 {
 	QStringList list = { ELMT_LABEL,
-						 QStringLiteral("remote_endpoint"),
+						 REPORT_REMOTE_ENDPOINT,
 						 COND_FUNCTION,
 						 COND_TENSION_PROTOCOL,
 						 COND_COLOR,
@@ -102,7 +102,7 @@ QHash<QString, QString> QETInformation::folioReportInfoKeyToVar()
 {
 	QHash <QString, QString> H_;
 	H_.insert(ELMT_LABEL,            infoToVar(ELMT_LABEL));
-	H_.insert(QStringLiteral("remote_endpoint"), QStringLiteral("%{remote_endpoint}"));
+	H_.insert(REPORT_REMOTE_ENDPOINT, REPORT_REMOTE_ENDPOINT_VAR);
 	H_.insert(COND_FUNCTION,         infoToVar(COND_FUNCTION));
 	H_.insert(COND_TENSION_PROTOCOL, infoToVar(COND_TENSION_PROTOCOL));
 	H_.insert(COND_COLOR,            infoToVar(COND_COLOR));
@@ -160,6 +160,7 @@ QStringList QETInformation::elementInfoKeys()
 						 ELMT_MANUFACTURER,
 						 ELMT_MANUFACTURER_REF,
 						 ELMT_MODEL,
+						 ELMT_DEVICE_TYPE,
 						 ELMT_CATEGORY,
 						 ELMT_VOLTAGE_RATING,
 						 ELMT_CURRENT_RATING,
@@ -171,6 +172,8 @@ QStringList QETInformation::elementInfoKeys()
 						 ELMT_WIDTH,
 						 ELMT_HEIGHT,
 						 ELMT_DEPTH,
+						 ELMT_UNIT_PRICE,
+						 ELMT_LABOUR_TIME,
 						 ELMT_AUX1,
 						 ELMT_DESCRIPTION_AUX1,
 						 ELMT_DESIGNATION_AUX1,
@@ -295,23 +298,43 @@ QString QETInformation::elementInfoToVar(const QString &info)
 }
 
 /**
+ * @brief QETInformation::isNumericInfoKey
+ * @param key an element information key
+ * @return true for the information which holds a plain number --
+ * width, height, depth, unit price, labour time -- and so is edited
+ * with a NumericInfoValidator, so a list can add it up later.
+ */
+bool QETInformation::isNumericInfoKey(const QString &key)
+{
+	return key == ELMT_WIDTH || key == ELMT_HEIGHT || key == ELMT_DEPTH
+			|| key == ELMT_UNIT_PRICE || key == ELMT_LABOUR_TIME;
+}
+
+/**
  * @brief QETInformation::numericInfoPattern
  * @return the pattern used to validate numeric elementInformation
- * fields (currently width/height/depth): digits with an optional "."
+ * fields (see isNumericInfoKey()): digits with an optional "."
  * as decimal separator, requiring at least one digit overall so a
  * lone "." can never be a complete, acceptable value on its own.
+ * A size in mm takes two decimals; a unit price or a labour time
+ * takes four, for a part bought by the reel (0.0045) or a job of a
+ * few minutes (0.125 h).
+ * @param key the information the value is for
  */
-QRegularExpression QETInformation::numericInfoPattern()
+QRegularExpression QETInformation::numericInfoPattern(const QString &key)
 {
+	if (key == ELMT_UNIT_PRICE || key == ELMT_LABOUR_TIME)
+		return QRegularExpression(QStringLiteral(R"(^[0-9]+$|^[0-9]*\.[0-9]{1,4}$)"));
 	return QRegularExpression(QStringLiteral(R"(^[0-9]+$|^[0-9]*\.[0-9]{1,2}$)"));
 }
 
 /**
 	@brief QETInformation::NumericInfoValidator::NumericInfoValidator
+	@param key the information the value is for, see numericInfoPattern()
 	@param parent
 */
-QETInformation::NumericInfoValidator::NumericInfoValidator(QObject *parent) :
-	QRegularExpressionValidator(numericInfoPattern(), parent)
+QETInformation::NumericInfoValidator::NumericInfoValidator(const QString &key, QObject *parent) :
+	QRegularExpressionValidator(numericInfoPattern(key), parent)
 {
 }
 
@@ -353,9 +376,10 @@ QString QETInformation::infoToVar(const QString &info)
  */
 QString QETInformation::translatedInfoKey(const QString &info)
 {
-	if (info == QLatin1String("remote_endpoint"))
+	if (info == REPORT_REMOTE_ENDPOINT)
 		return QObject::tr("Remote endpoint");
 	if      (info == ELMT_MODEL)                       return QObject::tr("Model");
+	else if (info == ELMT_DEVICE_TYPE)                 return QObject::tr("Device type");
 	else if (info == ELMT_CATEGORY)                    return QObject::tr("Category");
 	else if (info == ELMT_VOLTAGE_RATING)              return QObject::tr("Rated voltage");
 	else if (info == ELMT_CURRENT_RATING)              return QObject::tr("Rated current");
@@ -401,6 +425,8 @@ QString QETInformation::translatedInfoKey(const QString &info)
 	else if (info == ELMT_WIDTH)					   return QObject::tr("Width [mm]");
 	else if (info == ELMT_HEIGHT)                      return QObject::tr("Height [mm]");
 	else if (info == ELMT_DEPTH)                       return QObject::tr("Depth [mm]");
+	else if (info == ELMT_UNIT_PRICE)                  return QObject::tr("Unit price");
+	else if (info == ELMT_LABOUR_TIME)                 return QObject::tr("Labour time [h]");
 	else if (info == ELMT_LOCATION)                    return QObject::tr("Location (+)");
 	else if (info == COND_FUNCTION)                    return QObject::tr("Function");
 	else if (info == COND_TENSION_PROTOCOL)            return QObject::tr("Voltage / Protocol");
@@ -534,6 +560,8 @@ QStringList QETInformation::elementEditorElementInfoKeys()
 						 ELMT_WIDTH,
 						 ELMT_HEIGHT,
 						 ELMT_DEPTH,
+						 ELMT_UNIT_PRICE,
+						 ELMT_LABOUR_TIME,
 						 ELMT_AUX1,
 						 ELMT_DESCRIPTION_AUX1,
 						 ELMT_DESIGNATION_AUX1,

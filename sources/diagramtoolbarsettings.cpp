@@ -224,7 +224,8 @@ QStringList DiagramToolbarSettings::defaultIds(const QString &name)
 			QStringLiteral("diagrameditor.add_path"),
 			QStringLiteral("diagrameditor.add_fillet"),
 			QStringLiteral("diagrameditor.add_terminal_strip"),
-			QStringLiteral("diagrameditor.add_generic_device")};
+			QStringLiteral("diagrameditor.add_generic_device"),
+			QStringLiteral("diagrameditor.add_structure_box")};
 	}
 	if (name == QLatin1String("connections")) {
 			//ConnectionSymbols::commandId() of each kind

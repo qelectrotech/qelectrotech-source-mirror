@@ -1,6 +1,6 @@
 #!/bin/bash
 # Dependance : png2ico
-PNG_DIR="../breeze-icons"
+PNG_DIR="../hicolor"
 
 if [ -z "$(which icotool 2> /dev/null)" ]; then
 	echo "Error: icotool not found."

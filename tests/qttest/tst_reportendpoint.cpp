@@ -26,10 +26,13 @@
 #include "qetgraphicsitem/conductor.h"
 #include "qetgraphicsitem/dynamicelementtextitem.h"
 #include "qetgraphicsitem/terminal.h"
+#include "ui/dialogwaiting.h"
 #include "undocommand/changeelementinformationcommand.h"
 #include "undocommand/deleteqgraphicsitemcommand.h"
 #include "undocommand/linkelementcommand.h"
 #include <QDomDocument>
+#include <QFile>
+#include <QTemporaryDir>
 #include <QtTest>
 
 class tst_reportendpoint : public QObject
@@ -82,6 +85,92 @@ class tst_reportendpoint : public QObject
 
 private slots:
 	void initTestCase() { QETProject::setBackupEnabled(false); }
+
+	void opensWithProgressDialog_data()
+	{
+		QTest::addColumn<QString>("file");
+		QTest::addColumn<QByteArray>("eager");
+		QTest::newRow("fixture") << QFINDTESTDATA("fixtures/every_feature.qet")
+								<< QByteArray("0");
+		QTest::newRow("industrial") << QFINDTESTDATA("../../examples/industrial.qet")
+								   << QByteArray("1");
+		QTest::newRow("m_000") << QFINDTESTDATA("../../examples/m_000.qet")
+							  << QByteArray("1");
+	}
+
+	void opensWithProgressDialog()
+	{
+		QFETCH(QString, file);
+		QFETCH(QByteArray, eager);
+		QVERIFY(!file.isEmpty());
+		const QByteArray previous = qgetenv("QET_EAGER_FOLIOS");
+		qputenv("QET_EAGER_FOLIOS", eager);
+		DialogWaiting::instance()->show();
+		// The progress dialog processes events inside the constructor.
+		QETProject project(file);
+		DialogWaiting::dropInstance();
+		if (previous.isNull()) {
+			qunsetenv("QET_EAGER_FOLIOS");
+		} else {
+			qputenv("QET_EAGER_FOLIOS", previous);
+		}
+		QCOMPARE(project.state(), QETProject::Ok);
+		QVERIFY(project.undoStack());
+	}
+
+	void readsDestinationWithoutBuildingItsFolio()
+	{
+		QETProject project;
+		auto *first = project.addNewDiagram();
+		auto *second = project.addNewDiagram();
+		auto *source = symbol(first, "simple");
+		auto *target = symbol(second, "simple");
+		auto *out = symbol(first, "next_report");
+		auto *in = symbol(second, "previous_report");
+		QVERIFY(source && target && out && in);
+		auto info = target->elementInformations();
+		info.addValue("label", "KM2");
+		target->setElementInformations(info);
+		first->addItem(new Conductor(pin(source, "A1"),
+									 out->terminals().first()));
+		second->addItem(new Conductor(in->terminals().first(),
+									  pin(target, "A1")));
+		out->linkToElement(in);
+		auto *text = field(out, false);
+		text->setPlainText(QString());
+
+		QTemporaryDir directory;
+		QVERIFY(directory.isValid());
+		QFile file(directory.filePath("endpoint.qet"));
+		QVERIFY(file.open(QIODevice::WriteOnly));
+		const auto xml = project.toXml().toByteArray();
+		QCOMPARE(file.write(xml), xml.size());
+		file.close();
+
+		const QByteArray previous = qgetenv("QET_EAGER_FOLIOS");
+		qputenv("QET_EAGER_FOLIOS", "0");
+		QETProject reopened(file.fileName());
+		if (previous.isNull()) {
+			qunsetenv("QET_EAGER_FOLIOS");
+		} else {
+			qputenv("QET_EAGER_FOLIOS", previous);
+		}
+		QCOMPARE(reopened.state(), QETProject::Ok);
+		QCOMPARE(reopened.folios().size(), 2);
+		auto *loaded = reopened.folios().first();
+		auto *remote = reopened.folios().last();
+		reopened.buildFolios({loaded});
+		QVERIFY(!remote->isLoaded());
+		for (auto *element : loaded->elements()) {
+			if (element->uuid() != out->uuid()) continue;
+			QCOMPARE(element->dynamicTextItems().size(), 1);
+			QTRY_COMPARE(element->dynamicTextItems().first()->toPlainText(),
+						 QStringLiteral("KM2:A1"));
+			QVERIFY(!remote->isLoaded());
+			return;
+		}
+		QFAIL("The source report was not loaded");
+	}
 
 	void followsEditsAndUndo()
 	{

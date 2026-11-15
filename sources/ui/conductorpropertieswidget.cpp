@@ -18,11 +18,14 @@
 #include "conductorpropertieswidget.h"
 
 #include <conductorproperties.h>
+#include <conductorcolorcodes.h>
 #include <qetapp.h>
 #include <qtextorientationspinboxwidget.h>
 #include "ui_conductorpropertieswidget.h"
 
+#include <QCompleter>
 #include <QIcon>
+#include <QMenu>
 #include <QPainter>
 #include <QPixmap>
 
@@ -133,6 +136,7 @@ void ConductorPropertiesWidget::setProperties(
 		//The small sign beside each says why when the mouse rests on it
 	const bool from_cable = !m_properties.m_cable_uuid.isNull();
 	ui->m_wire_color_le->setDisabled(from_cable);
+	ui->m_wire_color_codes_tb->setDisabled(from_cable);
 	ui->m_wire_section_le->setDisabled(from_cable);
 	ui->m_conductor_type_le->setDisabled(from_cable);
 	ui->m_wire_color_locked_info->setVisible(from_cable);
@@ -402,6 +406,23 @@ void ConductorPropertiesWidget::initWidget()
 	connect(ui->m_color_kpb, &KColorButton::changed,
 		this, &ConductorPropertiesWidget::updateDashPatternPreview);
 
+		//The IEC 60757 colour codes: picked from the list, a code sets
+		//the drawn colour too; typed, it stays text like any other
+	auto *codes_menu = new QMenu(ui->m_wire_color_codes_tb);
+	QStringList code_list;
+	for (const auto &code : ConductorColorCodes::all())
+	{
+		code_list << code.code;
+		const QString text = code.code;
+		QAction *a = codes_menu->addAction(ConductorColorCodes::swatch(code),
+						   ConductorColorCodes::displayName(code));
+		connect(a, &QAction::triggered, this, [this, text]() { pickColorCode(text); });
+	}
+	ui->m_wire_color_codes_tb->setMenu(codes_menu);
+	auto *completer = new QCompleter(code_list, ui->m_wire_color_le);
+	completer->setCaseSensitivity(Qt::CaseInsensitive);
+	ui->m_wire_color_le->setCompleter(completer);
+
 	connect(ui->m_multiwires_gb, &QGroupBox::toggled, [this](bool toggle) {this->ui->m_singlewire_gb->setChecked(!toggle);});
 	connect(ui->m_singlewire_gb, &QGroupBox::toggled, [this](bool toggle) {this->ui->m_multiwires_gb->setChecked(!toggle);});
 	connect(ui->m_formula_le, &QLineEdit::textChanged, [this](QString text) {this->ui->m_text_le->setEnabled(!m_text_locked && text.isEmpty());});
@@ -413,6 +434,39 @@ void ConductorPropertiesWidget::initWidget()
 	ui->m_cable_le->setDisabled(true);
 	ui->m_bus_le->setDisabled(true);
 #endif
+}
+
+/**
+	@brief ConductorPropertiesWidget::pickColorCode
+	Show the IEC 60757 colour code \p text in the wire colour field, and
+	draw the wire in its colours: striped for green-yellow, plain
+	otherwise. Emits colorCodePicked() once, so a live editor makes one
+	change of it.
+	@param text
+*/
+void ConductorPropertiesWidget::pickColorCode(const QString &text)
+{
+	const ConductorColorCodes::Code *code = ConductorColorCodes::find(text);
+	if (!code) {
+		return;
+	}
+
+	ConductorProperties shown = properties();
+	ConductorColorCodes::apply(*code, shown);
+
+	const QSignalBlocker b1(ui->m_color_kpb);
+	const QSignalBlocker b2(ui->m_color_2_gb);
+	const QSignalBlocker b3(ui->m_color_2_kpb);
+	const QSignalBlocker b4(ui->m_dash_size_sb);
+	ui->m_wire_color_le->setText(code->code);
+	ui->m_color_kpb->setColor(shown.color);
+	ui->m_color_2_gb->setChecked(shown.m_bicolor);
+	ui->m_color_2_kpb->setColor(shown.m_color_2);
+	if (shown.m_bicolor) {
+		ui->m_dash_size_sb->setValue(shown.m_dash_size);
+	}
+	updateDashPatternPreview();
+	emit colorCodePicked();
 }
 
 /**

@@ -38,6 +38,10 @@ namespace TextGrid
 		/// QSettings key holding the divisor.
 	inline const QString settings_key{QStringLiteral("diagrameditor/text_grid_divisor")};
 
+		/// QSettings key: true puts a text's middle on the grid instead
+		/// of the top left corner of its frame. Off by default.
+	inline const QString middle_key{QStringLiteral("diagrameditor/text_grid_middle")};
+
 		/// "1:5" for 5. Not meaningful for 0.
 	inline QString ratioLabel(qreal divisor) {
 		return QStringLiteral("1:") + QString::number(divisor);

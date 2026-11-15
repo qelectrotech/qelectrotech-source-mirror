@@ -91,6 +91,9 @@
                     <names>
                         <name lang="en">Interruption point</name>
                     </names>
+                    <kindInformations>
+                        <kindInformation name="drawing_aid">true</kindInformation>
+                    </kindInformations>
                     <description>
                         <circle antialias="true" diameter="4" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-2" y="-2"/>
                     </description>

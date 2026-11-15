@@ -18,6 +18,7 @@
 #include "structureboxitem.h"
 
 #include "../PropertiesEditor/propertieseditordialog.h"
+#include "../QPropertyUndoCommand/qpropertyundocommand.h"
 #include "../autoNum/assignvariables.h"
 #include "../diagram.h"
 #include "element.h"
@@ -27,7 +28,9 @@
 #include "../ui/structureboxpropertieswidget.h"
 
 #include <QDomDocument>
-#include <QPainter>
+#include <QSettings>
+#include <QFont>
+#include <QGraphicsSceneMouseEvent>
 
 #include <algorithm>
 
@@ -43,6 +46,12 @@ StructureBoxItem::StructureBoxItem(QPointF p1, QPointF p2, QGraphicsItem *parent
 		//What the symbols inside take from it changed
 	connect(this, &StructureBoxItem::identityChanged, this, [this]() { refreshSymbolTexts(diagram()); });
 	connect(this, &QetShapeItem::geometryChanged, this, [this]() { refreshSymbolTexts(diagram()); });
+	m_label = new StructureBoxLabelItem(this);
+	connect(m_label, &StructureBoxLabelItem::movedByUser, this, [this]() {m_label_moved = true;});
+	connect(this, &QetShapeItem::geometryChanged, this, &StructureBoxItem::placeLabel);
+		//The name is drawn in the colour of the box's line
+	connect(this, &QetShapeItem::penChanged, this, &StructureBoxItem::refreshLabel);
+	refreshLabel();
 }
 
 /**
@@ -113,10 +122,59 @@ void StructureBoxItem::refreshTextsOf(Element *element)
 			refresh(text);
 }
 
+/**
+	@brief StructureBoxItem::refreshLabel
+	Its label says the box's designation, in the box's colour and size.
+*/
+void StructureBoxItem::refreshLabel()
+{
+	QFont font = m_label->font();
+	font.setPointSizeF(m_label_size);
+	m_label->setFont(font);
+	m_label->setDefaultTextColor(pen().color());
+	m_label->setPlainText(structureId());
+	placeLabel();
+}
+
+/**
+	@brief StructureBoxItem::placeLabel
+	A label nobody has moved stands above the top left corner, outside the
+	box, as a device's designation stands outside its frame; it stays there
+	however the box is resized.
+*/
+void StructureBoxItem::placeLabel()
+{
+	if (!m_label_moved)
+		m_label->setPos(rect().normalized().topLeft()
+						- QPointF(0, m_label->boundingRect().height()));
+}
+
+/**
+	@return where the label stands, from the box's top left corner
+*/
+QPointF StructureBoxItem::labelOffset() const
+{
+	return m_label->pos() - rect().normalized().topLeft();
+}
+
+void StructureBoxItem::setLabelOffset(const QPointF &offset)
+{
+	m_label_moved = true;
+	m_label->setPos(rect().normalized().topLeft() + offset);
+}
+
+void StructureBoxItem::setLabelSize(qreal size)
+{
+	if (qFuzzyCompare(m_label_size, size) || size <= 0) return;
+	m_label_size = size;
+	refreshLabel();
+}
+
 void StructureBoxItem::setPlant(const QString &plant)
 {
 	if (m_plant == plant) return;
 	m_plant = plant;
+	refreshLabel();
 	update();
 	emit identityChanged();
 }
@@ -125,6 +183,7 @@ void StructureBoxItem::setLocation(const QString &location)
 {
 	if (m_location == location) return;
 	m_location = location;
+	refreshLabel();
 	update();
 	emit identityChanged();
 }
@@ -133,6 +192,7 @@ void StructureBoxItem::setPrefix(const QString &prefix)
 {
 	if (m_prefix == prefix) return;
 	m_prefix = prefix;
+	refreshLabel();
 	update();
 	emit identityChanged();
 }
@@ -241,6 +301,12 @@ bool StructureBoxItem::fromXml(const QDomElement &e)
 	m_plant = e.attribute(QStringLiteral("plant"));
 	m_location = e.attribute(QStringLiteral("location"));
 	m_prefix = e.attribute(QStringLiteral("prefix"));
+	m_label_size = e.attribute(QStringLiteral("label_size"), QStringLiteral("8")).toDouble();
+	if (m_label_size <= 0) m_label_size = 8;
+	refreshLabel();
+	if (e.hasAttribute(QStringLiteral("label_x")))
+		setLabelOffset(QPointF(e.attribute(QStringLiteral("label_x")).toDouble(),
+							   e.attribute(QStringLiteral("label_y")).toDouble()));
 	update();
 	emit identityChanged();
 	return true;
@@ -253,6 +319,13 @@ QDomElement StructureBoxItem::toXml(QDomDocument &document) const
 	result.setAttribute(QStringLiteral("plant"), m_plant);
 	result.setAttribute(QStringLiteral("location"), m_location);
 	result.setAttribute(QStringLiteral("prefix"), m_prefix);
+	if (m_label_moved) {
+		const QPointF offset = labelOffset();
+		result.setAttribute(QStringLiteral("label_x"), QString::number(offset.x(), 'f', 1));
+		result.setAttribute(QStringLiteral("label_y"), QString::number(offset.y(), 'f', 1));
+	}
+	if (!qFuzzyCompare(m_label_size, 8.0))
+		result.setAttribute(QStringLiteral("label_size"), QString::number(m_label_size));
 	return result;
 }
 
@@ -270,20 +343,70 @@ QString StructureBoxItem::name() const
 	return tr("a structure box");
 }
 
-void StructureBoxItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
+StructureBoxLabelItem::StructureBoxLabelItem(StructureBoxItem *box) :
+	DiagramTextItem(box),
+	m_box(box)
 {
-	QetShapeItem::paint(painter, option, widget);
+	setFlag(QGraphicsItem::ItemIsSelectable, true);
+	setFlag(QGraphicsItem::ItemIsMovable, true);
+}
 
-	const QString id = structureId();
-	if (id.isEmpty())
+void StructureBoxLabelItem::mousePressEvent(QGraphicsSceneMouseEvent *event)
+{
+	DiagramTextItem::mousePressEvent(event);
+	m_start = pos();
+	m_grab = pos() - parentItem()->mapFromScene(event->scenePos());
+}
+
+void StructureBoxLabelItem::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
+{
+	if (!(event->buttons() & Qt::LeftButton)) {
+		event->ignore();
 		return;
+	}
+	setPos(parentItem()->mapFromScene(event->scenePos()) + m_grab);
+	event->accept();
+}
 
-	painter->save();
-	QFont font = painter->font();
-	font.setPointSizeF(8);
-	painter->setFont(font);
-	painter->setPen(pen().color());
-	const QRectF text_rect = rect().normalized().adjusted(2, 2, -2, -2);
-	painter->drawText(text_rect, Qt::AlignLeft | Qt::AlignTop, id);
-	painter->restore();
+void StructureBoxLabelItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
+{
+	if (event->button() == Qt::LeftButton && pos() != m_start) {
+		emit movedByUser();
+		if (Diagram *folio = diagram()) {
+			auto *undo = new QPropertyUndoCommand(this, "pos", m_start, pos());
+			undo->setText(tr("Move the name of a structure box"));
+			folio->undoStack().push(undo);
+		}
+		event->accept();
+		return;
+	}
+	QGraphicsTextItem::mouseReleaseEvent(event);
+}
+
+void StructureBoxLabelItem::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event)
+{
+	event->accept();
+	m_box->editProperty();
+}
+
+QColor StructureBoxItem::newBoxColor()
+{
+	const QColor color(QSettings().value(QStringLiteral("diagrameditor/structure_box_color"),
+										 QStringLiteral("#000000")).toString());
+	return color.isValid() ? color : QColor(Qt::black);
+}
+
+void StructureBoxItem::setNewBoxColor(const QColor &color)
+{
+	QSettings().setValue(QStringLiteral("diagrameditor/structure_box_color"), color.name());
+}
+
+bool StructureBoxItem::askPlaceWhenDrawn()
+{
+	return QSettings().value(QStringLiteral("diagrameditor/structure_box_ask_place"), false).toBool();
+}
+
+void StructureBoxItem::setAskPlaceWhenDrawn(bool ask)
+{
+	QSettings().setValue(QStringLiteral("diagrameditor/structure_box_ask_place"), ask);
 }
