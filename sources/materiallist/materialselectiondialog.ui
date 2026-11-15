@@ -201,10 +201,10 @@
      <item>
       <widget class="QPushButton" name="m_new_entry_btn">
        <property name="toolTip">
-        <string extracomment="button adding a new row to the material list file">Add a new item to the list</string>
+        <string extracomment="button adding a new row to the material list file">New — Add a new item to the list</string>
        </property>
        <property name="text">
-        <string>New</string>
+        <string/>
        </property>
       </widget>
      </item>
@@ -214,10 +214,10 @@
         <bool>false</bool>
        </property>
        <property name="toolTip">
-        <string extracomment="button editing the selected row in the material list file">Edit the selected item in the list</string>
+        <string extracomment="button editing the selected row in the material list file">Edit — Edit the selected item in the list</string>
        </property>
        <property name="text">
-        <string>Edit</string>
+        <string/>
        </property>
       </widget>
      </item>
@@ -227,7 +227,7 @@
         <bool>false</bool>
        </property>
        <property name="toolTip">
-        <string extracomment="button duplicating the selected row in the material list file">Duplicate the selected item in the list</string>
+        <string extracomment="button duplicating the selected row in the material list file">Duplicate — Duplicate the selected item in the list</string>
        </property>
        <property name="text">
         <string/>
@@ -240,7 +240,7 @@
         <bool>false</bool>
        </property>
        <property name="toolTip">
-        <string extracomment="button removing the selected row(s) from the material list file">Remove selected item(s) from the list</string>
+        <string extracomment="button removing the selected row(s) from the material list file">Remove — Remove selected item(s) from the list</string>
        </property>
        <property name="text">
         <string/>
@@ -250,30 +250,30 @@
      <item>
       <widget class="QPushButton" name="m_import_btn">
        <property name="toolTip">
-        <string>Import entries from a CSV file into the materials list</string>
+        <string>Import... — Import entries from a CSV file into the materials list</string>
        </property>
        <property name="text">
-        <string>Import...</string>
+        <string/>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QPushButton" name="m_export_btn">
        <property name="toolTip">
-        <string>Export all, visible, or selected entries to a CSV file</string>
+        <string>Export... — Export all, visible, or selected entries to a CSV file</string>
        </property>
        <property name="text">
-        <string>Export...</string>
+        <string/>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QPushButton" name="m_settings_btn">
        <property name="toolTip">
-        <string>Open QElectroTech settings to configure the materials list file</string>
+        <string>Settings — Open QElectroTech settings to configure the materials list file</string>
        </property>
        <property name="text">
-        <string>Settings</string>
+        <string/>
        </property>
       </widget>
      </item>
