@@ -53,6 +53,7 @@
 #	include <KColorButton>
 #endif
 #include <editor/elementscene.h>
+#include <devicetype/devicetypeplacement.h>
 #include <diagramevent/diagrameventaddpaste.h>
 #include <ElementsCollection/elementslocation.h>
 #include <QCoreApplication>
@@ -151,6 +152,7 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	ui->m_drag_places_auto_conductor_cb->setChecked(AutoConnect::dragPlacesWithAutoConductor());
 	ui->m_ctrl_drag_copies_cb->setChecked(DiagramEventAddPaste::ctrlDragCopies());
 	ui->m_duplicate_follows_mouse_cb->setChecked(DiagramEventAddPaste::duplicateFollowsMouse());
+	ui->m_ask_parts_after_head_cb->setChecked(DeviceTypePlacement::askAfterHead());
 	ui->m_junction_replaces_cb->setChecked(ConnectionSymbols::newJunctionReplacesOld());
 	ui->m_structure_box_color_kpb->setColor(StructureBoxItem::newBoxColor());
 	ui->m_structure_box_ask_place_cb->setChecked(StructureBoxItem::askPlaceWhenDrawn());
@@ -568,6 +570,7 @@ void GeneralConfigurationPage::applyConf()
 	AutoConnect::setDragPlacesWithAutoConductor(ui->m_drag_places_auto_conductor_cb->isChecked());
 	DiagramEventAddPaste::setCtrlDragCopies(ui->m_ctrl_drag_copies_cb->isChecked());
 	DiagramEventAddPaste::setDuplicateFollowsMouse(ui->m_duplicate_follows_mouse_cb->isChecked());
+	DeviceTypePlacement::setAskAfterHead(ui->m_ask_parts_after_head_cb->isChecked());
 	DiagramView::setTerminalHelpLinesShown(ui->m_terminal_help_lines_cb->isChecked());
 	DockFold::setEnabled(ui->m_dock_fold_cb->isChecked());
 	DockFit::setEnabled(ui->m_narrow_docks_cb->isChecked());

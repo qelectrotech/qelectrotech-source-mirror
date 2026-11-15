@@ -582,6 +582,16 @@
             </property>
            </widget>
           </item>
+          <item>
+           <widget class="QCheckBox" name="m_ask_parts_after_head_cb">
+            <property name="text">
+             <string>After placing a device's head, ask how to place the parts of its device type</string>
+            </property>
+            <property name="toolTip">
+             <string>One by one, each following the mouse; all side by side to the right of the head; or not now, which leaves them free in the Device Navigator. Unticked by default: placing the head places nothing more.</string>
+            </property>
+           </widget>
+          </item>
          </layout>
         </widget>
        </item>
