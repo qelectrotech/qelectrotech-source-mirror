@@ -52,6 +52,7 @@ namespace TerminalStripDrawer
 			bool shield{false};  ///< true if the terminal is the shield of the cable
 			QSharedPointer<AbstractRealTerminalInterface> terminal; ///< to ask where the cable goes
 			QUuid cable_uuid;
+			int cable_slot{-1};
 			QString key() const { return CableConnection{cable_uuid, cable, {}}.key(); }
 		};
 		int upperCableCount(const AbstractTerminalStripInterface &strip,
