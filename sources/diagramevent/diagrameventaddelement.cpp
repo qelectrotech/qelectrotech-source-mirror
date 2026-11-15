@@ -266,7 +266,10 @@ bool DiagramEventAddElement::buildElement()
 	m_element = ElementFactory::Instance() -> createElement(loc, nullptr, &state);
 		//The creation of element failed, we delete it
 	if (state) {
+			//Nothing must point at the deleted element: the mouse moves,
+			//Space and the destructor would all use it after it is gone
 		delete m_element;
+		m_element = nullptr;
 		return(false);
 	}
 		//Everything is good
