@@ -10,6 +10,7 @@
 #include "qetinformation.h"
 #include "qetproject.h"
 #include "ui/customelementinfopartwidget.h"
+#include "ui/elementinfopartwidget.h"
 #include "ui/elementinfowidget.h"
 
 #include <QDomDocument>
@@ -166,6 +167,60 @@ private slots:
 		QCOMPARE(composite->toPlainText(), QStringLiteral("[I0.0]"));
 		QVERIFY(savedInformation(project.toXml(), e->uuid())
 				.contains(QStringLiteral("I0.0")));
+	}
+
+		// The rows a PLC symbol and a link write themselves are not his
+		// to fill in: they follow the symbol's own I/O definition and the
+		// link, so an edit here was overwritten by the next load. They
+		// have no place in an overview of the element either.
+	void managedRowsAreNotOfferedInTheOverview()
+	{
+		QETProject project(QFINDTESTDATA("fixtures/every_feature.qet"));
+		QCOMPARE(project.state(), QETProject::Ok);
+		Element *e = firstSymbol(project);
+		QVERIFY(e);
+
+		ElementInfoWidget panel(e);
+		QStringList offered;
+		for (const ElementInfoPartWidget *part
+			 : panel.findChildren<ElementInfoPartWidget *>()) {
+			offered << part->key();
+		}
+
+			// The overview keeps what he does fill in ...
+		QVERIFY2(offered.contains(QETInformation::ELMT_LABEL),
+				 "The other properties are still offered");
+
+			// ... and leaves out what the symbol and the link write
+		for (const QString &key : {QETInformation::ELMT_PLC_TYPE,
+								   QETInformation::ELMT_PLC_ADDRESS,
+								   QETInformation::ELMT_PLC_FUNCTION,
+								   QETInformation::ELMT_PLC_COMMENT,
+								   QETInformation::ELMT_PLC_CROSSREF,
+								   QETInformation::ELMT_XREF}) {
+			QVERIFY2(!offered.contains(key),
+					 qPrintable(QStringLiteral(
+									"not a property of the element, yet offered: %1")
+									.arg(key)));
+		}
+
+		// A value of a row he can no longer see is given back untouched:
+		// taking the row out of the list may not take its value out of
+		// the element either
+		DiagramContext held = e->elementInformations();
+		held.addValue(QETInformation::ELMT_PLC_ADDRESS, QStringLiteral("I0.0"));
+		held.addValue(QETInformation::ELMT_XREF, QStringLiteral("B3"));
+		e->setElementInformations(held);
+		{
+			ElementInfoWidget again(e);
+			const DiagramContext given_back = again.currentInfo();
+			QVERIFY2(given_back.value(QETInformation::ELMT_PLC_ADDRESS)
+						 .toString() == QStringLiteral("I0.0"),
+					 "the value of a row that is no longer shown was lost");
+			QVERIFY2(given_back.value(QETInformation::ELMT_XREF)
+						 .toString() == QStringLiteral("B3"),
+					 "the value of a row that is no longer shown was lost");
+		}
 	}
 
 	void symbolEditorAddsAndRemovesThem()

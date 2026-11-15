@@ -42,10 +42,12 @@ namespace DeviceTypeList
 
 		/// How many symbols of @p project name each device type
 	QHash<QString, int> usedBy(QETProject *project);
-		/// The list of @p types, sorted by name; with @p used, a column
-		/// with the number of symbols using each type
+		/// The list of @p types, sorted by name, each described in @p lang
+		/// (DeviceType::text()); with @p used, a column with the number of
+		/// symbols using each type
 	QString csv(QList<DeviceType> types, Kind kind,
-				const QHash<QString, int> *used = nullptr);
+				const QHash<QString, int> *used = nullptr,
+				const QString &lang = QStringLiteral("en"));
 		/// The list written to the file @p path; false and @p error when
 		/// it cannot be written
 	bool write(const QString &path, const QString &csv, QString *error = nullptr);

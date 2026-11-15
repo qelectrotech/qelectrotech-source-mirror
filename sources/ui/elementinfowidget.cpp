@@ -337,6 +337,22 @@ void ElementInfoWidget::buildInterface()
 		keys.removeAll(article_key);
 	}
 
+		//Rows the symbol and the link write themselves: the PLC ones are
+		//taken from the symbol's own I/O definition when it is read, the
+		//cross reference from the link it belongs to. An edit here was
+		//overwritten by the next load, and they belong to a PLC module
+		//rather than to an overview of the element. Taking them out of
+		//the list keeps their values: currentInfo() starts from what the
+		//element already holds and only writes back the rows it shows.
+	for (const QString &key : {QETInformation::ELMT_PLC_TYPE,
+							   QETInformation::ELMT_PLC_ADDRESS,
+							   QETInformation::ELMT_PLC_FUNCTION,
+							   QETInformation::ELMT_PLC_COMMENT,
+							   QETInformation::ELMT_PLC_CROSSREF,
+							   QETInformation::ELMT_XREF}) {
+		keys.removeAll(key);
+	}
+
 	for (auto str : keys)
 	{
 		ElementInfoPartWidget *eipw = new ElementInfoPartWidget(str, QETInformation::translatedInfoKey(str), this);
@@ -602,7 +618,8 @@ DiagramContext ElementInfoWidget::currentInfo() const
 		}
 	}
 
-	const QStringList declared = m_element->elementData().m_custom_info_keys;
+	const QStringList declared = m_element ? m_element->elementData().m_custom_info_keys
+										   : QStringList();
 	for (const auto &custom : std::as_const(m_custom_eipw_list))
 	{
 			//A property the symbol defines is kept empty: the element
@@ -615,7 +632,7 @@ DiagramContext ElementInfoWidget::currentInfo() const
 	}
 
 	// Save the auto numbering lock status
-	if (m_element->elementData().m_type == ElementData::Terminal) {
+	if (m_element && m_element->elementData().m_type == ElementData::Terminal) {
 		info_.addValue(QStringLiteral("auto_num_locked"), ui->m_auto_num_locked_cb->isChecked() ? QStringLiteral("true") : QStringLiteral("false"));
 
 		if (m_potential_isolating_cb) {

@@ -194,6 +194,32 @@ if [ ! -f "$OFFSCREEN" ] ; then
     exit 1
 fi
 
+### keep only the SQLite SQL driver ################################
+# QET only uses QSQLITE (project database, .qetdb). macdeployqt deploys
+# every SQL driver of the Qt used, and the other ones need client
+# libraries QET does not ship: the official Qt (aqt) links libqsqlodbc
+# against /opt/homebrew/opt/libiodbc, absent from a clean Mac or a CI
+# runner, and the Homebrew Qt pulls libpq / mysql-client the same way.
+# Removing them before the fixups below avoids copying (or failing to
+# find) these libraries, and makes the bundle smaller.
+SQLDRIVERS_DIR="$BUNDLE/Contents/PlugIns/sqldrivers"
+if [ -d "$SQLDRIVERS_DIR" ]; then
+    echo
+    echo "______________________________________________________________"
+    echo "Remove the SQL drivers QET does not use:"
+    for drv in "$SQLDRIVERS_DIR"/*.dylib; do
+        [ -e "$drv" ] || continue
+        case "$(basename "$drv")" in
+            libqsqlite.dylib) echo "  Kept    : $(basename "$drv")" ;;
+            *)                echo "  Removed : $(basename "$drv")"; rm -f "$drv" ;;
+        esac
+    done
+    if [ ! -f "$SQLDRIVERS_DIR/libqsqlite.dylib" ]; then
+        echo "ERROR: libqsqlite.dylib not deployed by macdeployqt."
+        exit 1
+    fi
+fi
+
 ### fix Homebrew dependencies macdeployqt could not handle ##########
 # Recent Homebrew bottles (brotli, webp, sharpyuv...) reference their own
 # dependencies as @rpath/libX.dylib. macdeployqt only resolves @rpath in
@@ -327,7 +353,7 @@ chmod -R u+w "$BUNDLE"
 mkdir -p "$BUNDLE/Contents/Resources"
 cp -f "${current_dir}/misc/Info.plist" "$BUNDLE/Contents/Info.plist" \
     || { echo "ERROR: cannot install Info.plist"; exit 1; }
-cp -f "${current_dir}"/ico/mac_icon/*.icns "$BUNDLE/Contents/Resources/" \
+cp -f "${current_dir}"/ico/app/mac/*.icns "$BUNDLE/Contents/Resources/" \
     || { echo "ERROR: cannot install the .icns icons"; exit 1; }
 /usr/libexec/PlistBuddy -c "Set :CFBundleShortVersionString $VERSION r$HEAD" "$BUNDLE/Contents/Info.plist"
 /usr/libexec/PlistBuddy -c "Set :LSMinimumSystemVersion $OSX_MIN_TARGET" "$BUNDLE/Contents/Info.plist"

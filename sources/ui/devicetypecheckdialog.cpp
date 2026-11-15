@@ -22,6 +22,7 @@
 #include <diagramevent/diagrameventaddelement.h>
 #include <diagramview.h>
 #include <qet.h>
+#include <qetapp.h>
 #include <qetdiagrameditor.h>
 #include <qetgraphicsitem/element.h>
 #include <projectview.h>
@@ -136,7 +137,8 @@ void DeviceTypeCheckDialog::refresh()
 	updatePlaceButton();
 	if (!m_project) return;
 	buildFolios();
-	m_devices = DeviceTypeCheck::check(m_project);
+	QList<Element *> unlinked;
+	m_devices = DeviceTypeCheck::check(m_project, &unlinked);
 	const auto &devices = m_devices;
 
 	const auto where = [this](QTreeWidgetItem *row, Element *symbol) {
@@ -174,7 +176,7 @@ void DeviceTypeCheckDialog::refresh()
 		//: %1 is the device, such as "=P1+CP1-K12"
 		root->setText(0, tr("%1: %2 of %n parts drawn", nullptr, parts)
 					  .arg(device.designation).arg(parts - device.missing.size()));
-		root->setToolTip(0, device.type.text());
+		root->setToolTip(0, device.type.text(QETApp::langFromSetting()));
 		root->setIcon(0, style()->standardIcon(device.complete()
 						  ? QStyle::SP_DialogApplyButton : QStyle::SP_MessageBoxCritical));
 		for (int part : device.missing) {
@@ -206,7 +208,6 @@ void DeviceTypeCheckDialog::refresh()
 		}
 	}
 		//The contacts without their device
-	const QList<Element *> unlinked = DeviceTypeCheck::unlinkedContacts(m_project);
 	if (!unlinked.isEmpty()) {
 		auto *root = new QTreeWidgetItem(m_tree);
 		root->setIcon(0, style()->standardIcon(QStyle::SP_MessageBoxWarning));

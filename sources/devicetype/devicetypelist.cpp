@@ -62,7 +62,8 @@ namespace DeviceTypeList
 		return used;
 	}
 
-	QString csv(QList<DeviceType> types, Kind kind, const QHash<QString, int> *used)
+	QString csv(QList<DeviceType> types, Kind kind, const QHash<QString, int> *used,
+				const QString &lang)
 	{
 		std::sort(types.begin(), types.end(), [](const DeviceType &a, const DeviceType &b) {
 			return a.name.compare(b.name, Qt::CaseInsensitive) < 0;
@@ -74,7 +75,7 @@ namespace DeviceTypeList
 			if (used) head << QStringLiteral("symbols");
 			text += row(head);
 			for (const DeviceType &type : types) {
-				QStringList fields{type.name, type.text(), QString::number(type.parts.size())};
+				QStringList fields{type.name, type.text(lang), QString::number(type.parts.size())};
 				if (used) fields << QString::number(used->value(type.name));
 				text += row(fields);
 			}
@@ -86,7 +87,7 @@ namespace DeviceTypeList
 					 QStringLiteral("state"), QStringLiteral("symbol"), QStringLiteral("pins")});
 		for (const DeviceType &type : types) {
 			if (type.parts.isEmpty())
-				text += row({type.name, type.text(), QString(), QString(), QString(),
+				text += row({type.name, type.text(lang), QString(), QString(), QString(),
 							 QString(), QString(), QString()});
 			for (int i = 0 ; i < type.parts.size() ; ++i) {
 				const DeviceType::Part &part = type.parts.at(i);
@@ -96,7 +97,7 @@ namespace DeviceTypeList
 				if (ways.isEmpty()) ways << DeviceType::Symbol();
 				for (const DeviceType::Symbol &way : ways) {
 					const QString state = part.state.isEmpty() ? way.state : part.state;
-					text += row({type.name, type.text(), number, part.role, part.kind, state,
+					text += row({type.name, type.text(lang), number, part.role, part.kind, state,
 								 way.location, way.pins.join(QLatin1Char(' '))});
 				}
 			}

@@ -821,10 +821,13 @@ void tst_cabletarget::coreDestinationsFollowBranches()
 	info.remove(QStringLiteral("formula"));
 	info.addValue(QStringLiteral("label"), QStringLiteral("K1"));
 	coil->setElementInformations(info);
-	for (auto *pin : coil->terminals()) {
-		auto *branch = new Conductor(junction->terminals().first(), pin);
-		coil->diagram()->addItem(branch);
-	}
+		//A1 is wired to the junction already, so a branch to A2 only: a
+		//second wire between two terminals is refused, and the folio
+		//would delete it after the terminals it names
+	auto *branch = new Conductor(junction->terminals().first(),
+								 coil->terminals().last());
+	QVERIFY(branch->isValid());
+	coil->diagram()->addItem(branch);
 	auto *cable = m_project->newCable();
 	cable->setDesignation(QStringLiteral("W1"));
 	cable->setCoreCount(1);

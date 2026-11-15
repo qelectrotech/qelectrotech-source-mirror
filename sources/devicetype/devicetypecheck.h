@@ -47,7 +47,7 @@ class QETProject;
 	a symbol without terminals no part matches (a table of the contacts
 	beside a coil, a picture) is neither.
 	check() reads the whole project, building its lazy folios; changes
-	nothing.
+	nothing. The same pass gives the contacts without their device.
 */
 namespace DeviceTypeCheck
 {
@@ -78,17 +78,17 @@ namespace DeviceTypeCheck
 		/// The device type a symbol's informations name (its "device_type")
 	QString typeNameOf(const DiagramContext &info);
 
-	QVector<Device> check(QETProject *project);
+		/// The devices with a device type; with @p unlinked, the contacts
+		/// linked to no master (a contact without its device): those which
+		/// name a device type, or all of them when the project follows the
+		/// device types
+	QVector<Device> check(QETProject *project, QList<Element *> *unlinked = nullptr);
 	Device checkDevice(Element *element);
 	QString partText(const DeviceType::Part &part);
 
-		/// The contacts linked to no master (a contact without its
-		/// device): those which name a device type, or all of them when
-		/// the project follows the device types. Call after check(),
-		/// which builds the lazy folios.
-	QList<Element *> unlinkedContacts(QETProject *project);
 		/// How many more contacts are linked to the master of @p device
-		/// than its type has contacts for; 0 when not too many
+		/// than its type has room for: its contact parts, and any other
+		/// part a linked contact draws; 0 when not too many
 	int extraContacts(const Device &device);
 }
 
