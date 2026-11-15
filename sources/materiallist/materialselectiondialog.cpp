@@ -227,7 +227,14 @@ void MaterialSelectionDialog::done(int result)
 
 QStringList MaterialSelectionDialog::effectiveColumns() const
 {
-	return m_data.columns.isEmpty() ? MaterialList::defaultColumns() : m_data.columns;
+	QStringList cols = m_data.columns;
+	for (const QString &col : MaterialList::defaultColumns())
+	{
+		if (!cols.contains(col)) {
+			cols.append(col);
+		}
+	}
+	return cols;
 }
 
 void MaterialSelectionDialog::reload()

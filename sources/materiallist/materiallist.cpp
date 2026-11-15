@@ -809,6 +809,12 @@ bool MaterialList::appendRecord(const QString &path, const MaterialRecord &recor
 		data.separator = QLatin1Char(';');
 	}
 
+	for (const QString &col : defaultColumns())
+	{
+		if (!data.columns.contains(col) && !record.value(col).isEmpty()) {
+			data.columns.append(col);
+		}
+	}
 	data.records.append(record);
 	return writeFile(path, data, error);
 }
@@ -871,6 +877,12 @@ bool MaterialList::updateRecord(const QString &path, int row,
 	MaterialRecord replacement = updated;
 	if (replacement.extra.isEmpty() && !data.records.at(target_row).extra.isEmpty()) {
 		replacement.extra = data.records.at(target_row).extra;
+	}
+	for (const QString &col : defaultColumns())
+	{
+		if (!data.columns.contains(col) && !replacement.value(col).isEmpty()) {
+			data.columns.append(col);
+		}
 	}
 	data.records[target_row] = replacement;
 	return writeFile(path, data, error);

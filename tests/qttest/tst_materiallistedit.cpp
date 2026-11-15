@@ -174,7 +174,7 @@ void tst_materiallistedit::testSplitViewTreeFilterAndDetails()
 
 	QVERIFY(tree && details && group_combo && filter_field && filter_value && search && edit_btn && settings_btn);
 	QCOMPARE(group_combo->currentData().toString(), QStringLiteral("category"));
-	QCOMPARE(filter_field->count(), 6);
+	QCOMPARE(filter_field->count(), 1 + MaterialList::defaultColumns().size());
 	QCOMPARE(tree->topLevelItemCount(), 2);
 	QVERIFY(!edit_btn->isEnabled());
 	QVERIFY(!filter_value->isEnabled());
@@ -207,7 +207,7 @@ void tst_materiallistedit::testSplitViewTreeFilterAndDetails()
 	// Select Siemens item -> details table on the right updates
 	tree->setCurrentItem(group->child(0));
 	QVERIFY(edit_btn->isEnabled());
-	QCOMPARE(details->rowCount(), 5);
+	QCOMPARE(details->rowCount(), MaterialList::defaultColumns().size());
 	QCOMPARE(details->item(0, 1)->text(), QStringLiteral("ART-815"));
 	QCOMPARE(details->item(1, 1)->text(), QStringLiteral("Fuse"));
 	QCOMPARE(details->item(2, 1)->text(), QStringLiteral("Siemens"));
@@ -289,6 +289,15 @@ void tst_materiallistedit::testInlineNewAndEditEntry()
 	QVERIFY(qobject_cast<QToolButton *>(details->cellWidget(1, 2)) != nullptr);
 
 	details->item(1, 1)->setText(QStringLiteral("Main Switch\n230V"));
+	int price_row = -1;
+	for (int r = 0; r < details->rowCount(); ++r) {
+		if (details->item(r, 0)->data(Qt::UserRole).toString() == QLatin1String("unit_price")) {
+			price_row = r;
+			break;
+		}
+	}
+	QVERIFY(price_row >= 0);
+	details->item(price_row, 1)->setText(QStringLiteral("12.50"));
 	save_btn->click();
 	QCOMPARE(details->columnCount(), 2);
 
@@ -310,6 +319,8 @@ void tst_materiallistedit::testInlineNewAndEditEntry()
 	QCOMPARE(reloaded.records.size(), 2);
 	QCOMPARE(reloaded.records.at(0).value(QStringLiteral("description")),
 			 QStringLiteral("Main Switch\n230V"));
+	QCOMPARE(reloaded.records.at(0).value(QStringLiteral("unit_price")),
+			 QStringLiteral("12.50"));
 	QCOMPARE(reloaded.records.at(1).value(QStringLiteral("designation")),
 			 QStringLiteral("ABB.2"));
 }
