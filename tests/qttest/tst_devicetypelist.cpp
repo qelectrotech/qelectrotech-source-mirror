@@ -158,8 +158,9 @@ class tst_devicetypelist : public QObject
 		QCOMPARE(CLIExport::run({QStringLiteral("--export-device-types-brief"), path, brief}), 0);
 		QCOMPARE(CLIExport::run({QStringLiteral("--export-device-types"), path, full}), 0);
 		QFile brief_file(brief), full_file(full);
-		QVERIFY(brief_file.open(QIODevice::ReadOnly));
-		QVERIFY(full_file.open(QIODevice::ReadOnly));
+			//Written as text: on Windows their lines end in \r\n
+		QVERIFY(brief_file.open(QIODevice::ReadOnly | QIODevice::Text));
+		QVERIFY(full_file.open(QIODevice::ReadOnly | QIODevice::Text));
 		QCOMPARE(lines(QString::fromUtf8(brief_file.readAll())).value(1), QStringLiteral("RELAY-2NO;;3;1"));
 		QCOMPARE(lines(QString::fromUtf8(full_file.readAll())).size(), 4);
 	}
