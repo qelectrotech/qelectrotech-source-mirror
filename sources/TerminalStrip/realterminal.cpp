@@ -98,9 +98,13 @@ namespace
 
 		if (element->linkType() & Element::Junction) {
 			const auto reached = endsPastJunctions(terminal);
-				//One way on, as the drawing has it: a junction the wire
-				//reaches several ways from here names the first of them,
-				//the way the cable list picks its target
+				//Where the chain says the wire goes on to, and on through
+				//a second junction in the way: every wire on that one
+				//connection is the same node, so the first of them names
+				//it. Nothing comes back when the chain does not say -- a
+				//junction with more than one way on and no source set --
+				//and then the junction is named by what it is rather than
+				//by a guess (#1500)
 			if (!reached.isEmpty()) {
 				return endDesignation(reached.first());
 			}

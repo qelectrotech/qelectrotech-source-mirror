@@ -1263,10 +1263,12 @@ QList<Terminal *> relatedPotentialTerminal (
 	return QList<Terminal *>();
 }
 
-	//The walk itself, kept out of the way: the junctions already passed are
-	//carried along so a drawing which runs back to one stops instead of
-	//walking around for ever
-static QList<Terminal *> walkPastJunctions(Terminal *end, QSet<QUuid> &passed)
+	//The walk itself, kept out of the way: the junctions already passed on
+	//this path are carried along it, so a drawing which runs back to one
+	//stops instead of walking around for ever -- and two wires reaching the
+	//same junction by different paths are each followed, the way the lists
+	//follow them (#1500)
+static QList<Terminal *> walkPastJunctions(Terminal *end, QSet<QUuid> passed)
 {
 	if (!end || !end->parentElement()) {
 		return QList<Terminal *>();
@@ -1455,6 +1457,18 @@ bool sameUuid(const QString &a, const QString &b)
 } // namespace
 
 /**
+	@brief junctionPassThrough
+	@return the one other connection of a junction to go on to when there is
+	exactly one, and nothing when there are none or several: a junction with
+	a single way out of it has nothing to tell apart (#1500).
+	@param wired the other connections of that junction which carry a wire
+*/
+QString junctionPassThrough(const QStringList &wired)
+{
+	return wired.size() == 1 ? wired.first() : QString();
+}
+
+/**
 	@brief junctionChainRoles
 	@return the two connections of a chain around @a at: the one the wire
 	comes from, and the one it goes on to, either of them empty when there
@@ -1470,11 +1484,6 @@ bool sameUuid(const QString &a, const QString &b)
 	@param at the connection to read the chain at, empty for none
 	@return {the connection before, the connection after}, in chain order
 */
-QString junctionPassThrough(const QStringList &wired)
-{
-	return wired.size() == 1 ? wired.first() : QString();
-}
-
 QPair<QString, QString> junctionChainRoles(const QString &source, const QStringList &targets,
 					   const QString &at)
 {
