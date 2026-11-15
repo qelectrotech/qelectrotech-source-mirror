@@ -17,6 +17,7 @@
 #include <QDomDocument>
 #include <QFile>
 #include <QTemporaryDir>
+#include "../../sources/dataBase/projectdatabase.h"
 #include <QtTest>
 
 /**
@@ -108,6 +109,23 @@ class tst_devicetypelist : public QObject
 
   private slots:
 	void initTestCase() {QETProject::setBackupEnabled(false);}
+
+		//What QET writes is not an unknown block kept for a newer QET: kept,
+		//it would come back on save after the types were all deleted
+	void ownBlocksAreNotForeign()
+	{
+		Relay relay;
+		const QDomDocument document = relay.project.toXml();
+		const QStringList foreign = projectDataBase::foreignChildren(document.documentElement(), false);
+		QVERIFY2(foreign.isEmpty(), qPrintable(foreign.join(QLatin1Char('\n'))));
+		QDomDocument other;
+		QDomElement project = other.createElement(QStringLiteral("project"));
+		for (const QString &tag : {QStringLiteral("devicetype_rules"), QStringLiteral("conductor_plant_counters"),
+								   QStringLiteral("potentialtypes"), QStringLiteral("cell_origin"),
+								   QStringLiteral("a_newer_block")})
+			project.appendChild(other.createElement(tag));
+		QCOMPARE(projectDataBase::foreignChildren(project, false).size(), 1);
+	}
 
 	void briefAndFullLists()
 	{
