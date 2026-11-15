@@ -51,7 +51,7 @@ class StructureBoxItem : public QetShapeItem
 	Q_PROPERTY(QString plant READ plant WRITE setPlant NOTIFY identityChanged)
 	Q_PROPERTY(QString location READ location WRITE setLocation NOTIFY identityChanged)
 	Q_PROPERTY(QString prefix READ prefix WRITE setPrefix NOTIFY identityChanged)
-	Q_PROPERTY(qreal labelSize READ labelSize WRITE setLabelSize)
+	Q_PROPERTY(qreal labelSize READ labelSize WRITE setLabelSize NOTIFY labelSizeChanged)
 
 	public:
 		enum { Type = UserType + 1015 };
@@ -115,6 +115,8 @@ class StructureBoxItem : public QetShapeItem
 	signals:
 			/// Its plant, location or prefix changed
 		void identityChanged();
+			/// The size of its name changed, by an edit or an undo
+		void labelSizeChanged();
 
 
 	protected:

@@ -42,6 +42,11 @@ StructureBoxPropertiesWidget::StructureBoxPropertiesWidget(StructureBoxItem *ite
 	m_label_size->setDecimals(1);
 	m_label_size->setSuffix(tr(" pt"));
 	layout->addRow(tr("Size of its name"), m_label_size);
+		//An undo changes the size behind the editor's back
+	connect(m_item, &StructureBoxItem::labelSizeChanged, this, [this]() {
+		m_label_size->setValue(m_item->labelSize());
+		m_label_size_shown = m_label_size->value();
+	});
 
 	updateUi();
 }
@@ -65,7 +70,8 @@ void StructureBoxPropertiesWidget::apply()
 		//(8.333, or 0.5 below its range) is not changed by another edit
 	if (!qFuzzyCompare(m_label_size_shown, m_label_size->value())) {
 		if (!undo) undo = new QUndoCommand(tr("Modify a structure box"));
-		new QPropertyUndoCommand(m_item, "labelSize", m_item->labelSize(), m_label_size->value(), undo);
+		new QPropertyUndoCommand(m_item, "labelSize", m_item->labelSize(),
+								 m_label_size->value(), undo);
 		m_label_size_shown = m_label_size->value();
 	}
 	if (!undo) return;

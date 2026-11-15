@@ -31,6 +31,7 @@
 #include "ui/structureboxpropertieswidget.h"
 
 #include <QDomDocument>
+#include <QDoubleSpinBox>
 #include <QGraphicsSceneMouseEvent>
 #include <QTextDocument>
 #include <QLineEdit>
@@ -801,6 +802,87 @@ private slots:
 		QCOMPARE(b->labelOffset(), QPointF(2, 2));
 	}
 
+		//Two drags are two undo steps, and one dropped next to the corner
+		//puts the name back on it
+	void twoDragsAreTwoUndoStepsAndTheCornerTakesTheNameBack()
+	{
+		QETProject project;
+		Diagram *diagram = project.addNewDiagram();
+		StructureBoxItem *b = box(diagram, QRectF(100, 100, 200, 200), QStringLiteral("SILO"), QStringLiteral("J3"));
+		StructureBoxLabelItem *label = b->label();
+		const QPointF grab = label->mapToScene(QPointF(3, 3));
+		const int steps = diagram->undoStack().count();
+		dragLabel(label, grab, grab + QPointF(60, -40));
+		const QPointF first = b->labelOffset();
+		dragLabel(label, grab + QPointF(60, -40), grab + QPointF(100, 40));
+		QCOMPARE(diagram->undoStack().count(), steps + 2);
+		diagram->undoStack().undo();
+		QCOMPARE(b->labelOffset(), first);
+
+		dragLabel(label, grab + (first - QPointF(2, 2)), grab + QPointF(1, 2));
+		QCOMPARE(b->labelOffset(), QPointF(2, 2));
+		QDomDocument document;
+		QVERIFY(!b->toXml(document).hasAttribute(QStringLiteral("label_x")));
+	}
+
+		//XML read into a box on a folio (an undo of a shape change) puts a
+		//name saved at the corner back at the corner
+	void readingANameSavedAtTheCornerPutsItThere()
+	{
+		QETProject project;
+		Diagram *diagram = project.addNewDiagram();
+		StructureBoxItem *b = box(diagram, QRectF(100, 100, 200, 200), QStringLiteral("SILO"), QStringLiteral("J3"));
+		QDomDocument document;
+		const QDomElement at_corner = b->toXml(document);
+		b->setLabelOffset(QPointF(-5, -14));
+		QVERIFY(b->fromXml(at_corner));
+		QCOMPARE(b->labelOffset(), QPointF(2, 2));
+
+		QDomElement broken = b->toXml(document);
+		broken.setAttribute(QStringLiteral("label_size"), QStringLiteral("nan"));
+		QVERIFY(b->fromXml(broken));
+		QCOMPARE(b->labelSize(), 8.0);
+	}
+
+		//Ctrl on the name of a selected box takes the name alone out of
+		//the selection, as Ctrl does on anything else
+	void ctrlOnTheNameOfASelectedBoxTogglesTheNameOnly()
+	{
+		QETProject project;
+		Diagram *diagram = project.addNewDiagram();
+		StructureBoxItem *b = box(diagram, QRectF(100, 100, 200, 200), QStringLiteral("SILO"), QStringLiteral("J3"));
+		b->setSelected(true);
+		b->label()->setSelected(true);
+		const QPointF at = b->label()->mapToScene(QPointF(3, 3));
+		QGraphicsSceneMouseEvent press(QEvent::GraphicsSceneMousePress);
+		press.setButton(Qt::LeftButton);
+		press.setButtons(Qt::LeftButton);
+		press.setModifiers(Qt::ControlModifier);
+		press.setScenePos(at);
+		press.setButtonDownScenePos(Qt::LeftButton, at);
+		diagram->sendEvent(b->label(), &press);
+		QGraphicsSceneMouseEvent release(QEvent::GraphicsSceneMouseRelease);
+		release.setButton(Qt::LeftButton);
+		release.setModifiers(Qt::ControlModifier);
+		release.setScenePos(at);
+		release.setButtonDownScenePos(Qt::LeftButton, at);
+		diagram->sendEvent(b->label(), &release);
+		QVERIFY(b->isSelected());
+	}
+
+		//The fixture with a moved and sized name opens as it was saved
+	void theFixtureWithAMovedNameOpensAsSaved()
+	{
+		QETProject project(QFINDTESTDATA("fixtures/structure_box_label.qet"));
+		StructureBoxItem *b = nullptr;
+		for (QGraphicsItem *item : project.diagrams().first()->items())
+			if (item->type() == StructureBoxItem::Type)
+				b = static_cast<StructureBoxItem *>(item);
+		QVERIFY(b);
+		QCOMPARE(b->labelOffset(), QPointF(8, -24));
+		QCOMPARE(b->labelSize(), 14.0);
+	}
+
 	void aLockedBoxKeepsItsName()
 	{
 		QETProject project;
@@ -842,6 +924,27 @@ private slots:
 		editor.apply();
 		QCOMPARE(b->plant(), QStringLiteral("MILL"));
 		QCOMPARE(b->labelSize(), 0.5);
+	}
+
+		//After an undo the editor shows the size the box has, so typing
+		//the size it had before is a change again
+	void theSizeInTheEditorFollowsAnUndo()
+	{
+		QETProject project;
+		Diagram *diagram = project.addNewDiagram();
+		StructureBoxItem *b = box(diagram, QRectF(100, 100, 200, 200), QStringLiteral("SILO"), QStringLiteral("J3"));
+		StructureBoxPropertiesWidget editor(b);
+		auto *size = editor.findChild<QDoubleSpinBox *>(QStringLiteral("labelSize"));
+		QVERIFY(size);
+		size->setValue(12);
+		editor.apply();
+		QCOMPARE(b->labelSize(), 12.0);
+		diagram->undoStack().undo();
+		QCOMPARE(b->labelSize(), 8.0);
+		QCOMPARE(size->value(), 8.0);
+		size->setValue(12);
+		editor.apply();
+		QCOMPARE(b->labelSize(), 12.0);
 	}
 
 	void withoutAnElementOnlyItsOwnValuesCount()
