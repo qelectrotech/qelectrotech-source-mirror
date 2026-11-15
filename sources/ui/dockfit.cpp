@@ -90,8 +90,14 @@ namespace {
 			{
 				if (m_button && event->button() == Qt::LeftButton
 				    && isEnabled()
-				    && rect().contains(event->position().toPoint()))
+				    && rect().contains(event->position().toPoint())) {
+						//The click may delete this text, as a panel
+						//that rebuilds its page does: stop here then
+					const QPointer<ButtonText> self(this);
 					m_button->click();
+					if (!self)
+						return;
+				}
 				QLabel::mouseReleaseEvent(event);
 			}
 		private:

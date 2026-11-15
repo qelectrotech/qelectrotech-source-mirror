@@ -481,6 +481,45 @@ class tst_dockminwidth : public QObject
 			delete box;
 			QTest::mouseClick(box_text, Qt::LeftButton);
 			QTRY_VERIFY(box_text.isNull());
+			QCOMPARE(page_layout->count(), 0);
+
+			editor->removeDockWidget(dock);
+			delete dock;
+		}
+
+		/**
+			A click on a check box's text whose slot deletes the row the
+			text stands in, as a panel that rebuilds its page would, ends
+			there: nothing reads the deleted text afterwards.
+		*/
+		void textClickThatDeletesItsRowIsSafe()
+		{
+			QETDiagramEditor *editor = QetAppTest::editor();
+			const QString long_text = QStringLiteral("A text far too long to stand on one line of a narrow panel");
+			auto *dock = new QDockWidget(QStringLiteral("Test"), editor);
+			auto *page = new QWidget(dock);
+			auto *page_layout = new QVBoxLayout(page);
+			dock->setWidget(page);
+			editor->addDockWidget(Qt::RightDockWidgetArea, dock);
+			dock->show();
+			QTest::qWait(100);
+
+			auto *box = new QCheckBox(long_text, page);
+			page_layout->addWidget(box);
+			box->show();
+			QTRY_VERIFY(box->text().isEmpty());
+			QPointer<QLabel> box_text;
+			for (QLabel *l : page->findChildren<QLabel *>())
+				if (l->buddy() == box)
+					box_text = l;
+			QVERIFY(box_text);
+			QWidget *row = box_text->parentWidget();
+			QObject::connect(box, &QAbstractButton::clicked, page,
+					 [row] { delete row; });
+
+			QTest::mouseClick(box_text, Qt::LeftButton);
+			QVERIFY(box_text.isNull());
+			QCOMPARE(page_layout->count(), 0);
 
 			editor->removeDockWidget(dock);
 			delete dock;
