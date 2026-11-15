@@ -58,7 +58,7 @@ MasterElement::~MasterElement()
 void MasterElement::linkToElement(Element *elmt)
 {
 		// check if element is slave and if isn't already linked
-	if (elmt->linkType() == Slave && !connected_elements.contains(elmt))
+	if (elmt->linkType() == Slave && !linkedElements().contains(elmt))
 	{
 		connected_elements << elmt;
 		elmt->linkToElement(this);
@@ -295,7 +295,7 @@ ContactUsage MasterElement::contactUsage() const
 {
 	ContactUsage usage;
 
-	for (Element *elmt : connected_elements)
+	for (Element *elmt : linkedElements())
 	{
 		if (!elmt) {
 			continue;
@@ -355,7 +355,7 @@ bool MasterElement::isFull() const
 		//offered all five, which the user could only read as the dialog
 		//being broken.
 	if (!m_data.m_slave_contact_groups.isEmpty()) {
-		return connected_elements.size() >= m_data.m_slave_contact_groups.size();
+		return linkedElements().size() >= m_data.m_slave_contact_groups.size();
 	}
 
 	// Set default value to -1 (unlimited slaves)
@@ -376,7 +376,7 @@ bool MasterElement::isFull() const
 		// element's contact group table, and a slave occupies exactly one
 		// group however many contacts that group stands for. So the slots
 		// in use are the linked elements, not the contacts they carry.
-	return connected_elements.size() >= max_slaves;
+	return linkedElements().size() >= max_slaves;
 }
 
 /**

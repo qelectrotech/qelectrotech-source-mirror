@@ -425,14 +425,34 @@ void Element::jumpTo(Element *target)
 }
 
 /**
+	@brief Element::standsInProject
+	@return true while this element stands on a folio of its own project.
+
+	A folio taken out of the project is detached rather than destroyed
+	(RemoveDiagramCommand), so its elements stay alive for undo() and
+	keep their links. The elements which stayed may not go on counting
+	them meanwhile: they would be full of partners nobody can see, and
+	the panel would go on listing them.
+
+	folioIndex() is the cheap way to ask -- a list lookup, and unlike
+	diagrams() it does not build the folios which are still lazy.
+*/
+bool Element::standsInProject() const
+{
+	Diagram *d = diagram();
+	return d && d->project() && d->project()->folioIndex(d) >= 0;
+}
+
+/**
 	@brief Element::jumpTarget
 	@return the element a double click on this one jumps to: the other end
 	of a linked folio report, or nullptr.
 */
 Element *Element::jumpTarget() const
 {
-	if ((linkType() & AllReport) && !connected_elements.isEmpty())
-		return connected_elements.first();
+	const QList<Element *> linked = linkedElements();
+	if ((linkType() & AllReport) && !linked.isEmpty())
+		return linked.first();
 	return nullptr;
 }
 
@@ -1822,7 +1842,10 @@ QDomElement Element::toXml(
 			? diagram()->project()->dataBase() : nullptr;
 	if (!database || !database->savedLinks(this, &links)) {
 		links.clear();
-		for (Element *elmt : std::as_const(connected_elements))
+			//A partner whose folio is out of the project is not written:
+			//the file would name a symbol it does not hold, and the
+			//database drops those rows when the folio goes
+		for (Element *elmt : linkedElements())
 			links.append({elmt->uuid(), m_group_index_map.value(elmt, -1)});
 	}
 	if (!links.isEmpty()) {
@@ -2405,6 +2428,27 @@ void Element::setGroupIndexForElement(Element *elmt, int index)
 	} else {
 		m_group_index_map.remove(elmt);
 	}
+}
+
+/**
+ * @brief Element::linkedSlaveForIo
+ * @param io_idx index of a PLC contact group of this master
+ * @return the slave drawn in the contact group @p io_idx, or nullptr if
+ * no linked slave stands in it.
+ */
+Element *Element::linkedSlaveForIo(int io_idx) const
+{
+	if (io_idx < 0)
+		return nullptr;
+		//linkedElements() leaves out the partners whose folio left the
+		//project (standsInProject()), and with them the group index they
+		//keep in m_group_index_map: their contact group stays drawn as
+		//one no slave stands in, the way it is before it is linked
+	for (Element *slave : linkedElements()) {
+		if (m_group_index_map.value(slave, -1) == io_idx)
+			return slave;
+	}
+	return nullptr;
 }
 
 /**
@@ -4086,25 +4130,19 @@ void Element::drawPlcTable(QPainter *painter)
 						case COL_CROSSREF:
 						{
 							cell_text = io.crossRef;
-							for (auto it = m_group_index_map.constBegin();
-								 it != m_group_index_map.constEnd(); ++it) {
-								if (it.value() == io_idx) {
-									Element *slave = it.key();
-									if (slave && slave->diagram() && diagram()
-										&& diagram()->project())
-									{
-										XRefProperties xrp = diagram()->project()
-											->defaultXRefProperties("plc");
-										autonum::sequentialNumbers seq;
-										cell_text = autonum::AssignVariables
-											::formulaToLabel(
-												xrp.masterLabel(),
-												seq,
-												slave->diagram(),
-												slave);
-									}
-									break;
-								}
+							Element *slave = linkedSlaveForIo(io_idx);
+							if (slave && slave->diagram() && diagram()
+								&& diagram()->project())
+							{
+								XRefProperties xrp = diagram()->project()
+									->defaultXRefProperties("plc");
+								autonum::sequentialNumbers seq;
+								cell_text = autonum::AssignVariables
+									::formulaToLabel(
+										xrp.masterLabel(),
+										seq,
+										slave->diagram(),
+										slave);
 							}
 							break;
 						}

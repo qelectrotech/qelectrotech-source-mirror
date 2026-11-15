@@ -51,7 +51,7 @@ SlaveElement::~SlaveElement()
 void SlaveElement::linkToElement(Element *elmt)
 {
 		// check if element is master and if isn't already linked
-	if (elmt->linkType() == Master && !connected_elements.contains(elmt))
+	if (elmt->linkType() == Master && !linkedElements().contains(elmt))
 	{
 		if(!isFree())
 			unlinkAllElements();
