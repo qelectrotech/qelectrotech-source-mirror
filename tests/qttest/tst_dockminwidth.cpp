@@ -386,11 +386,14 @@ class tst_dockminwidth : public QObject
 		/**
 			A check box destroyed right after its text went beside it,
 			before the event loop runs again, still has the layout item
-			it was measured from deleted: the item is not leaked.
+			it was measured from deleted: the item is not leaked. It is
+			deleted while the check box is destroyed, not later, when
+			the check box would be gone.
 		*/
 		void checkBoxDestroyedFirstStillFreesItsItem()
 		{
 			QETDiagramEditor *editor = QetAppTest::editor();
+			const QString long_text = QStringLiteral("A text far too long to stand on one line of a narrow panel");
 			auto *dock = new QDockWidget(QStringLiteral("Test"), editor);
 			auto *page = new QWidget(dock);
 			auto *page_layout = new QVBoxLayout(page);
@@ -399,7 +402,7 @@ class tst_dockminwidth : public QObject
 			dock->show();
 			QTest::qWait(100);
 
-			auto *box = new QCheckBox(QStringLiteral("A text far too long to stand on one line of a narrow panel"), page);
+			auto *box = new QCheckBox(long_text, page);
 			auto *item = new MeasuredItem(box);
 			page_layout->addItem(item);
 			QVERIFY(!box->testAttribute(Qt::WA_WState_Polished));
@@ -408,7 +411,7 @@ class tst_dockminwidth : public QObject
 			QVERIFY(box->text().isEmpty());
 			QVERIFY(!MeasuredItem::s_deleted);
 			delete box;
-			QTRY_VERIFY(MeasuredItem::s_deleted);
+			QVERIFY(MeasuredItem::s_deleted);
 
 			editor->removeDockWidget(dock);
 			delete dock;

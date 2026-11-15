@@ -141,7 +141,11 @@ namespace {
 			//polished from its sizeHint(). That item is deleted once the
 			//measure is over: the lambda keeps it in a unique_ptr, which
 			//deletes it when the call runs, or when Qt drops the call
-			//because the button was destroyed first
+			//because the button was destroyed first. The call must stay
+			//on the button: Qt drops it inside the button's destructor,
+			//while the button data that the item's destructor reads
+			//still exists. Queued on another object, the item could be
+			//deleted after that data is freed
 		std::unique_ptr<QLayoutItem> item(
 			layout->replaceWidget(button, row));
 		QMetaObject::invokeMethod(button,
