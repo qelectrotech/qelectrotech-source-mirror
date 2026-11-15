@@ -160,11 +160,9 @@ MaterialSelectionDialog::MaterialSelectionDialog(const QString &path,
 	ui->m_group_combo->addItem(tr("None"), QString());
 	ui->m_group_combo->addItem(tr("Manufacturer"), QStringLiteral("manufacturer"));
 	ui->m_group_combo->addItem(tr("Category"), QStringLiteral("category"));
-	ui->m_group_combo->setCurrentIndex(1);
+	ui->m_group_combo->setCurrentIndex(2);
 
 	ui->m_filter_field_combo->addItem(tr("Off"), QString());
-	ui->m_filter_field_combo->addItem(tr("Manufacturer"), QStringLiteral("manufacturer"));
-	ui->m_filter_field_combo->addItem(tr("Category"), QStringLiteral("category"));
 
 	connect(ui->m_search_edit, &QLineEdit::textChanged,
 			this, &MaterialSelectionDialog::filterUpdated);
@@ -220,13 +218,30 @@ void MaterialSelectionDialog::reload()
 										.arg(m_path, error));
 	}
 
+	const QString current_filter_field = ui->m_filter_field_combo->currentData().toString();
 	const QString current_filter_val = ui->m_filter_value_combo->currentData().toString();
 	m_data = data;
 
+	populateFilterFields(current_filter_field);
 	populateFilterValues(current_filter_val);
 	rebuildTree();
 	populateDetails(selectedRecord());
 	updateButtons();
+}
+
+void MaterialSelectionDialog::populateFilterFields(const QString &keep_field)
+{
+	const QSignalBlocker blocker(ui->m_filter_field_combo);
+	ui->m_filter_field_combo->clear();
+	ui->m_filter_field_combo->addItem(tr("Off"), QString());
+
+	const QStringList cols = effectiveColumns();
+	for (const QString &col : cols) {
+		ui->m_filter_field_combo->addItem(MaterialList::translatedColumn(col), col);
+	}
+
+	const int idx = keep_field.isEmpty() ? 0 : ui->m_filter_field_combo->findData(keep_field);
+	ui->m_filter_field_combo->setCurrentIndex(idx >= 0 ? idx : 0);
 }
 
 void MaterialSelectionDialog::populateFilterValues(const QString &keep_value)
@@ -692,7 +707,7 @@ void MaterialSelectionDialog::on_m_cancel_entry_btn_clicked()
 void MaterialSelectionDialog::on_m_settings_btn_clicked()
 {
 	if (QETApp *app = QETApp::instance()) {
-		app->configureQET();
+		app->configureQETMaterialsList();
 	}
 
 	const QString configured = MaterialList::configuredPath();

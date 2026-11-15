@@ -2515,6 +2515,21 @@ void QETApp::openTitleBlockTemplateFiles(const QStringList &files_list) {
 */
 void QETApp::configureQET()
 {
+	openConfigDialog(false);
+}
+
+/**
+	@brief QETApp::configureQETMaterialsList
+	Open the QElectroTech configuration dialog directly on the materials
+	list settings tab.
+*/
+void QETApp::configureQETMaterialsList()
+{
+	openConfigDialog(true);
+}
+
+void QETApp::openConfigDialog(bool focus_materials_list)
+{
 	// determine the parent widget to use for the dialog
 	// determine le widget parent a utiliser pour le dialogue
 	QWidget *parent_widget = qApp->activeWindow();
@@ -2527,7 +2542,8 @@ void QETApp::configureQET()
 	// holds raw pointers derived from the current project list.  Same class of
 	// bug as ProjectPropertiesDialog — see issue #527.
 	cd.setWindowModality(Qt::ApplicationModal);
-	cd.addPage(new GeneralConfigurationPage());
+	auto *general_page = new GeneralConfigurationPage();
+	cd.addPage(general_page);
 	cd.addPage(new NewDiagramPage());
 	cd.addPage(new ExportConfigPage());
 	cd.addPage(new PrintConfigPage());
@@ -2539,6 +2555,10 @@ void QETApp::configureQET()
 #ifdef QET_SPACEMOUSE_SUPPORT
 	cd.addPage(new SpaceMouseConfigPage());
 #endif
+
+	if (focus_materials_list) {
+		general_page->focusMaterialsListSettings();
+	}
 
 	// associates the dialog with a possible parent widget
 	// associe le dialogue a un eventuel widget parent

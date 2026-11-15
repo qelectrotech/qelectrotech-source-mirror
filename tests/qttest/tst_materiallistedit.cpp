@@ -167,9 +167,22 @@ void tst_materiallistedit::testSplitViewTreeFilterAndDetails()
 	auto *settings_btn = dialog.findChild<QPushButton *>(QStringLiteral("m_settings_btn"));
 
 	QVERIFY(tree && details && group_combo && filter_field && filter_value && search && edit_btn && settings_btn);
+	QCOMPARE(group_combo->currentData().toString(), QStringLiteral("category"));
+	QCOMPARE(filter_field->count(), 6);
 	QCOMPARE(tree->topLevelItemCount(), 2);
 	QVERIFY(!edit_btn->isEnabled());
 	QVERIFY(!filter_value->isEnabled());
+
+	// Filter by any column, e.g. manufacturer_reference -> 5SY4116
+	const int ref_field_idx = filter_field->findData(QStringLiteral("manufacturer_reference"));
+	QVERIFY(ref_field_idx >= 0);
+	filter_field->setCurrentIndex(ref_field_idx);
+	QVERIFY(filter_value->isEnabled());
+	const int ref_val_idx = filter_value->findText(QStringLiteral("5SY4116"));
+	QVERIFY(ref_val_idx >= 0);
+	filter_value->setCurrentIndex(ref_val_idx);
+	QCOMPARE(tree->topLevelItemCount(), 1);
+	QCOMPARE(tree->topLevelItem(0)->child(0)->text(0), QStringLiteral("ART-815"));
 
 	// Filter by Manufacturer -> Siemens
 	const int mfr_field_idx = filter_field->findData(QStringLiteral("manufacturer"));

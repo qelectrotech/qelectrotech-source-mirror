@@ -69,6 +69,7 @@ class MaterialSelectionDialog : public QDialog
 		};
 
 		void reload();
+		void populateFilterFields(const QString &keep_field);
 		void populateFilterValues(const QString &keep_value);
 		void rebuildTree();
 		void populateDetails(const MaterialRecord &record);
