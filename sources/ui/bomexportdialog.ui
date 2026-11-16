@@ -54,6 +54,22 @@
        </widget>
       </item>
       <item>
+       <widget class="QCheckBox" name="m_costing">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="toolTip">
+         <string>Adds the unit price and labour time of each part, their totals for the quantity used, and a last line with the totals for the project. Parts with no price or labour time count as nothing.</string>
+        </property>
+        <property name="text">
+         <string>Add prices and labour time, with project totals</string>
+        </property>
+        <property name="checked">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
        <widget class="QCheckBox" name="m_no_junctions">
         <property name="toolTip">
          <string>Terminals with no label, designation, manufacturer or manufacturer reference</string>
