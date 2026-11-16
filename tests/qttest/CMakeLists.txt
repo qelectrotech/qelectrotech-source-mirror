@@ -551,6 +551,8 @@ qet_add_app_test(tst_devicetypelink tst_devicetypelink.cpp)
 qet_add_app_test(tst_devicetypechooser tst_devicetypechooser.cpp)
 # The label and the part asked when a symbol is placed
 qet_add_app_test(tst_placelabelpart tst_placelabelpart.cpp)
+# Finding a part by the words typed: exact, prefix, inside, rough, wildcard.
+qet_add_app_test(tst_partsearch tst_partsearch.cpp)
 # Giving a device another device type, its contacts carried over
 qet_add_app_test(tst_devicetypechange tst_devicetypechange.cpp)
 # The device types listed, full and brief; contacts without their device

@@ -24,7 +24,10 @@
 #include <QPointer>
 
 class Element;
+class QCompleter;
 class QLabel;
+class QModelIndex;
+class QStandardItemModel;
 class QLineEdit;
 class QUndoCommand;
 class DeviceType;
@@ -103,6 +106,8 @@ class PlaceLabelPartDialog : public QDialog
 
 	private:
 		void partEdited(const QString &text);
+		void suggest(const QString &text);
+		void suggestionChosen(const QModelIndex &index);
 		void choosePart();
 		void showPart();
 		static QString partNumberOf(const MaterialRecord &record);
@@ -111,6 +116,8 @@ class PlaceLabelPartDialog : public QDialog
 		QLineEdit *m_label = nullptr;
 		QLineEdit *m_part = nullptr;
 		QLabel *m_info = nullptr;
+		QCompleter *m_completer = nullptr;
+		QStandardItemModel *m_suggestions = nullptr;
 		MaterialListData m_data;
 		MaterialRecord m_record;
 };

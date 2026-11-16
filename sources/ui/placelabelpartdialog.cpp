@@ -33,6 +33,9 @@
 #include "../utils/qetsettings.h"
 #include "devicetypechooser.h"
 
+#include "../materiallist/partsearch.h"
+
+#include <QAbstractItemView>
 #include <QCompleter>
 #include <QDialogButtonBox>
 #include <QFormLayout>
@@ -43,11 +46,18 @@
 #include <QPushButton>
 #include <QRegularExpression>
 #include <QSet>
+#include <QScrollBar>
+#include <QStandardItemModel>
 #include <QUndoCommand>
 #include <QVBoxLayout>
 
 namespace
 {
+		/// How many parts the popup of the Part field lists
+	const int SuggestionCount = 15;
+		/// The role of a suggestion holding its part number
+	const int PartNumberRole = Qt::UserRole + 1;
+
 		/// The strip and the number of the last terminal placed in @p project:
 		/// kept on the project itself, so it goes with it
 	const char *LastTerminal = "placeLabelPartLastTerminal";
@@ -211,21 +221,16 @@ PlaceLabelPartDialog::PlaceLabelPartDialog(Element *symbol, QWidget *parent) :
 	QString path = MaterialList::configuredPath();
 	if (path.isEmpty()) path = MaterialList::defaultPath();
 	if (!MaterialList::isEmptyFile(path)) MaterialList::load(path, &m_data);
-	QStringList parts;
-	for (const MaterialRecord &record : std::as_const(m_data.records)) {
-		for (const QString &column : {QStringLiteral("manufacturer_reference"),
-									  QStringLiteral("machine_manufacturer_reference")}) {
-			const QString part = record.value(column).trimmed();
-			if (!part.isEmpty() && !parts.contains(part)) parts << part;
-		}
-	}
 	m_part = new QLineEdit(this);
 	m_part->setObjectName(QStringLiteral("placePart"));
-	auto *completer = new QCompleter(parts, m_part);
-	completer->setCaseSensitivity(Qt::CaseInsensitive);
-	completer->setFilterMode(Qt::MatchContains);
-	completer->setCompletionMode(QCompleter::PopupCompletion);
-	m_part->setCompleter(completer);
+		//The popup is ours: it lists the parts the words typed find, not
+		//the parts beginning with the text
+	m_suggestions = new QStandardItemModel(this);
+	m_completer = new QCompleter(m_suggestions, this);
+	m_completer->setWidget(m_part);
+	m_completer->setCompletionMode(QCompleter::PopupCompletion);
+	m_completer->setCaseSensitivity(Qt::CaseInsensitive);
+	m_completer->setMaxVisibleItems(SuggestionCount);
 	auto *choose = new QPushButton(tr("Choose..."), this);
 	choose->setObjectName(QStringLiteral("placePartChoose"));
 	choose->setAutoDefault(false);
@@ -245,9 +250,10 @@ PlaceLabelPartDialog::PlaceLabelPartDialog(Element *symbol, QWidget *parent) :
 	connect(buttons, &QDialogButtonBox::rejected, this, &PlaceLabelPartDialog::reject);
 	connect(choose, &QPushButton::clicked, this, &PlaceLabelPartDialog::choosePart);
 	connect(m_part, &QLineEdit::textEdited, this, &PlaceLabelPartDialog::partEdited);
+	connect(m_part, &QLineEdit::textEdited, this, &PlaceLabelPartDialog::suggest);
 	connect(m_label, &QLineEdit::textChanged, this, &PlaceLabelPartDialog::showPart);
-	connect(completer, QOverload<const QString &>::of(&QCompleter::activated),
-			this, &PlaceLabelPartDialog::partEdited);
+	connect(m_completer, QOverload<const QModelIndex &>::of(&QCompleter::activated),
+			this, &PlaceLabelPartDialog::suggestionChosen);
 	m_label->selectAll();
 	showPart();
 }
@@ -278,6 +284,59 @@ QString PlaceLabelPartDialog::partNumberOf(const MaterialRecord &record)
 		if (!value.isEmpty()) return value;
 	}
 	return QString();
+}
+
+/**
+	Lists in the popup of the Part field the parts the words typed find,
+	best first, as "NUMBER - description - manufacturer". Nothing is
+	listed when the text is a part number as it is: Return then accepts
+	the dialog at once.
+*/
+void PlaceLabelPartDialog::suggest(const QString &text)
+{
+	m_suggestions->clear();
+	const QString wanted = text.trimmed();
+	if (wanted.isEmpty() || !m_record.values.isEmpty()) {
+		m_completer->popup()->hide();
+		return;
+	}
+	const QList<int> found = PartSearch::rank(m_data.records, wanted, SuggestionCount);
+	for (int index : found) {
+		const MaterialRecord &record = m_data.records.at(index);
+		const QString number = PartSearch::partNumber(record);
+		QStringList columns{number};
+		const QString description = record.value(QStringLiteral("description")).trimmed();
+		const QString manufacturer = record.value(QStringLiteral("manufacturer")).trimmed();
+		if (!description.isEmpty()) columns << description;
+		if (!manufacturer.isEmpty()) columns << manufacturer;
+		auto *item = new QStandardItem(columns.join(QStringLiteral(" \u2014 ")));
+		item->setData(number, PartNumberRole);
+		m_suggestions->appendRow(item);
+	}
+	if (m_suggestions->rowCount() == 0) {
+		m_completer->popup()->hide();
+		return;
+	}
+	m_completer->setCompletionPrefix(QString());
+		//As wide as its lines, so the descriptions can be read
+	QAbstractItemView *popup = m_completer->popup();
+	const int wanted_width = popup->sizeHintForColumn(0)
+			+ popup->verticalScrollBar()->sizeHint().width()
+			+ 2 * popup->frameWidth() + 8;
+	QRect rect = m_part->rect();
+	rect.setWidth(qBound(m_part->width(), wanted_width, 720));
+	m_completer->complete(rect);
+}
+
+/**
+	A part of the popup is chosen: its number is the field's text
+*/
+void PlaceLabelPartDialog::suggestionChosen(const QModelIndex &index)
+{
+	const QString number = index.data(PartNumberRole).toString();
+	if (number.isEmpty()) return;
+	m_part->setText(number);
+	partEdited(number);
 }
 
 /**

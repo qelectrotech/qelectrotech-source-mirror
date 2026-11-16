@@ -21,6 +21,7 @@
 
 #include <QDomDocument>
 #include <QGraphicsSceneMouseEvent>
+#include <QCompleter>
 #include <QLineEdit>
 #include <QPushButton>
 #include <QTemporaryDir>
@@ -235,6 +236,53 @@ class tst_placelabelpart : public QObject
 			//A strip alone: its next free terminal
 		QCOMPARE(PlaceLabelPartDialog::resolvedLabel(next, QStringLiteral("X2")), QStringLiteral("X2:1"));
 		QCOMPARE(PlaceLabelPartDialog::resolvedLabel(next, QStringLiteral("X1:9")), QStringLiteral("X1:9"));
+	}
+
+	void aFullPartNumberThenReturnAccepts()
+	{
+		QETProject project;
+		Diagram *folio = project.addNewDiagram();
+		const QString lamp = define(project, QStringLiteral("lamp-ret"), QStringLiteral("simple"), QStringLiteral("simple"));
+		Element *symbol = place(project, folio, lamp, QStringLiteral("H"));
+		QVERIFY(symbol);
+		PlaceLabelPartDialog dialog(symbol);
+		dialog.show();
+		QVERIFY(QTest::qWaitForWindowExposed(&dialog));
+		QLineEdit *part = dialog.findChild<QLineEdit *>(QStringLiteral("placePart"));
+		QVERIFY(part);
+		part->setFocus();
+		QTest::keyClicks(part, QStringLiteral("AC-REL-24"));
+		QCOMPARE(dialog.record().value(QStringLiteral("manufacturer")), QStringLiteral("Acme"));
+		QTest::keyClick(part, Qt::Key_Return);
+		QCOMPARE(dialog.result(), int(QDialog::Accepted));
+		QCOMPARE(dialog.part(), QStringLiteral("AC-REL-24"));
+	}
+
+	void wordsTypedListTheirPartsInThePopup()
+	{
+		QETProject project;
+		Diagram *folio = project.addNewDiagram();
+		const QString lamp = define(project, QStringLiteral("lamp-pop"), QStringLiteral("simple"), QStringLiteral("simple"));
+		Element *symbol = place(project, folio, lamp, QStringLiteral("H"));
+		QVERIFY(symbol);
+		PlaceLabelPartDialog dialog(symbol);
+		dialog.show();
+		QVERIFY(QTest::qWaitForWindowExposed(&dialog));
+		QLineEdit *part = dialog.findChild<QLineEdit *>(QStringLiteral("placePart"));
+		part->setFocus();
+			//"relai" is roughly "relay": the part is offered, not chosen
+		QTest::keyClicks(part, QStringLiteral("relai acme"));
+		QVERIFY(dialog.record().values.isEmpty());
+		QCompleter *completer = dialog.findChild<QCompleter *>();
+		QVERIFY(completer);
+		QCOMPARE(completer->completionModel()->rowCount(), 1);
+		const QModelIndex row = completer->completionModel()->index(0, 0);
+		QVERIFY(row.data().toString().startsWith(QStringLiteral("AC-REL-24")));
+		QVERIFY(row.data().toString().contains(QStringLiteral("Power relay 24 V")));
+		QVERIFY(row.data().toString().endsWith(QStringLiteral("Acme")));
+		emit completer->activated(row);
+		QCOMPARE(dialog.part(), QStringLiteral("AC-REL-24"));
+		QCOMPARE(dialog.record().value(QStringLiteral("manufacturer")), QStringLiteral("Acme"));
 	}
 
 	void applyingAPartIsOneUndoStep()
