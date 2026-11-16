@@ -379,6 +379,9 @@ void PlaceLabelPartDialog::choosePart()
 	if (m_record.values.isEmpty()) return;
 	m_part->setText(partNumberOf(m_record));
 	showPart();
+		//Back in the Part field, Return accepts the dialog: on the
+		//Choose... button it would open the window again
+	m_part->setFocus();
 }
 
 void PlaceLabelPartDialog::showPart()

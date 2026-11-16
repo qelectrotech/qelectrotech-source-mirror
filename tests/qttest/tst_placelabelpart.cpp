@@ -21,12 +21,14 @@
 
 #include <QDomDocument>
 #include <QGraphicsSceneMouseEvent>
+#include <QApplication>
 #include <QCompleter>
 #include <QLineEdit>
 #include <QPushButton>
 #include <QTemporaryDir>
 #include <QScopeGuard>
 #include <QUndoCommand>
+#include <QTimer>
 #include <QUndoStack>
 #include <QtTest>
 
@@ -256,6 +258,31 @@ class tst_placelabelpart : public QObject
 		QTest::keyClick(part, Qt::Key_Return);
 		QCOMPARE(dialog.result(), int(QDialog::Accepted));
 		QCOMPARE(dialog.part(), QStringLiteral("AC-REL-24"));
+	}
+
+	void returnAcceptsAfterAPartIsChosen()
+	{
+		QETProject project;
+		Diagram *folio = project.addNewDiagram();
+		const QString lamp = define(project, QStringLiteral("lamp-choose"), QStringLiteral("simple"), QStringLiteral("simple"));
+		Element *symbol = place(project, folio, lamp, QStringLiteral("H"));
+		QVERIFY(symbol);
+		PlaceLabelPartDialog dialog(symbol);
+		dialog.show();
+		QVERIFY(QTest::qWaitForWindowExposed(&dialog));
+		QPushButton *choose = dialog.findChild<QPushButton *>(QStringLiteral("placePartChoose"));
+		QVERIFY(choose);
+			//The Find part window opens modal: pick its first part
+		QTimer::singleShot(200, [] {
+			if (QWidget *window = QApplication::activeModalWidget())
+				if (auto *find = qobject_cast<QDialog *>(window)) find->accept();
+		});
+		choose->setFocus();
+		choose->click();
+		QVERIFY(!dialog.record().values.isEmpty());
+		QCOMPARE(dialog.focusWidget(), dialog.findChild<QLineEdit *>(QStringLiteral("placePart")));
+		QTest::keyClick(dialog.focusWidget(), Qt::Key_Return);
+		QCOMPARE(dialog.result(), int(QDialog::Accepted));
 	}
 
 	void wordsTypedListTheirPartsInThePopup()
