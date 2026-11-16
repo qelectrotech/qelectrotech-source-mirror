@@ -98,9 +98,11 @@ as the Breeze art:
 The Scale=2 folders follow the table at twice their size. Five icons
 have a 32 pixel design, used in place of both smooth vectors.
 
-A settings page icon (PAGES) is colored art shown at 64 and 128 pixels:
-one SVG in the scalable folder serves it. The printer and settings pages
-use the Breeze art QET's PNGs were exported from (BREEZE_PAGES).
+A settings page icon (PAGES) is shown at 64 and 128 pixels: one SVG in
+the scalable folder serves it. Like any SVG, it has a dark copy when it
+is drawn in the text color, and none when it is colored art. The
+printer and settings pages use the Breeze art QET's PNGs were exported
+from (BREEZE_PAGES).
 
 An SVG is recolored for the dark theme through its text color (see
 dark_svg). A colored SVG, one without a text color, gets no dark copy
@@ -303,7 +305,7 @@ BREEZE = {
 # Sizes Breeze draws its action icons at, the folders of ico/breeze/.
 BREEZE_SIZES = [16, 22, 32]
 
-# Settings page icons: colored art shown at 64 and 128 pixels only, so one
+# Settings page icons: shown at 64 and 128 pixels only, so one
 # scalable SVG serves every size. QET name to Breeze name and the Breeze
 # size it is copied from (ico/breeze/<size>/<name>.svg). QET's PNGs of
 # these were exports of the same Breeze art.

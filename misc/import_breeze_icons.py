@@ -23,7 +23,7 @@ https://github.com/KDE/breeze-icons:
     python3 misc/make_icon_themes.py
 
 For each Breeze name in BREEZE it writes the art Breeze draws at 16, 22
-and 32 pixels, unchanged:
+and 32 pixels:
 
     ico/breeze/16/<name>.svg
     ico/breeze/22/<name>.svg
@@ -36,8 +36,12 @@ Many Breeze names are symbolic links to another file. The copy holds the
 linked file's content under the name BREEZE gives, so list the link's
 target in BREEZE and several QET icons share one copy. Every name needs
 22 pixel art; 16 and 32 are copied where Breeze has them.
+
+Each copy takes QET's colors in place of Breeze's (QET_COLORS): the ink
+and the red, green and blue of ico/README.md, "Drawing an icon".
 """
 
+import re
 import sys
 from pathlib import Path
 
@@ -46,6 +50,30 @@ from make_icon_themes import BREEZE, BREEZE_PAGES, BREEZE_SIZES, ICO  # noqa: E4
 
 CATEGORIES = ["actions", "places", "mimetypes", "status", "devices", "apps", "preferences"]
 OUT = ICO / "breeze"
+
+# Breeze's color and the QET color that replaces it. Breeze's red, green
+# and blue fall below 3:1 against one of QET's two window colors; QET's
+# reach it on both. Breeze's darker ink would stand out beside QET's.
+QET_COLORS = {
+    "#232629": "#4d4d4d",  # ink, ColorScheme-Text
+    "#da4453": "#db4b59",  # red, ColorScheme-NegativeText
+    "#27ae60": "#239d57",  # green, ColorScheme-PositiveText
+    "#3daee9": "#1892d2",  # blue, ColorScheme-Highlight
+}
+
+
+def with_qet_colors(text):
+    """text with every Breeze color of QET_COLORS replaced by QET's."""
+    for breeze, qet in QET_COLORS.items():
+        text = re.sub(re.escape(breeze), qet, text, flags=re.IGNORECASE)
+    return text
+
+
+def copy(source, target):
+    # Bytes in and out: the file keeps its line endings.
+    target.parent.mkdir(parents=True, exist_ok=True)
+    text = source.read_bytes().decode("utf-8")
+    target.write_bytes(with_qet_colors(text).encode("utf-8"))
 
 
 def find(checkout, name, size):
@@ -69,16 +97,14 @@ def main():
             source = find(checkout, name, size)
             if source:
                 target = OUT / str(size) / f"{name}.svg"
-                target.parent.mkdir(parents=True, exist_ok=True)
-                target.write_bytes(source.read_bytes())
+                copy(source, target)
                 wanted.add(target)
     for name, size in BREEZE_PAGES.values():
         source = find(checkout, name, size)
         if not source:
             sys.exit(f"{name}: no {size} pixel icon in {checkout}")
         target = OUT / str(size) / f"{name}.svg"
-        target.parent.mkdir(parents=True, exist_ok=True)
-        target.write_bytes(source.read_bytes())
+        copy(source, target)
         wanted.add(target)
     # Drop icons no longer listed, so ico/breeze/ holds only what the theme uses.
     for old in sorted(OUT.glob("*/*.svg")):
