@@ -20,79 +20,22 @@
 
 #include <materiallist/materiallist.h>
 
-#include <QAbstractTableModel>
 #include <QDialog>
-#include <QSortFilterProxyModel>
 
-class QModelIndex;
-class QItemSelectionModel;
-class QWheelEvent;
+class QTreeWidgetItem;
 
 namespace Ui {
 	class MaterialSelectionDialog;
 }
 
 /**
-	@brief Table model showing a material file.
+	@brief The dialog listing every article of the material file in a
+	split view: a searchable/filterable tree grouped by manufacturer on the
+	left, and a Field/Value inspector and editor on the right.
 
-	Every column of the file is a column of the model, named the way the
-	user reads it (translated), so the dialog stays a plain read only
-	table whatever the file contains.
-*/
-class MaterialTableModel : public QAbstractTableModel
-{
-	Q_OBJECT
-
-	public:
-		explicit MaterialTableModel(QObject *parent = nullptr);
-
-		void setMaterial(const QStringList &columns, const QList<MaterialRecord> &records);
-		QStringList columns() const {return m_columns;}
-		QList<MaterialRecord> records() const {return m_records;}
-		MaterialRecord record(int row) const;
-
-		int rowCount(const QModelIndex &parent = QModelIndex()) const override;
-		int columnCount(const QModelIndex &parent = QModelIndex()) const override;
-		QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
-		QVariant headerData(int section, Qt::Orientation orientation, int role = Qt::DisplayRole) const override;
-
-	private:
-		QStringList m_columns;
-		QList<MaterialRecord> m_records;
-};
-
-/**
-	@brief Filter keeping only the rows matching every word typed by the
-	user, whatever the column each word is found in.
-
-	"Hilfsschalter Schneider" keeps the rows holding both words, so adding
-	the manufacturer to the search narrows the result down, which is the
-	behaviour of a bill of material lookup.
-*/
-class MaterialFilterProxy : public QSortFilterProxyModel
-{
-	Q_OBJECT
-
-	public:
-		explicit MaterialFilterProxy(MaterialTableModel *model, QObject *parent = nullptr);
-
-		void setTokens(const QStringList &tokens);
-		QStringList tokens() const {return m_tokens;}
-
-	protected:
-		bool filterAcceptsRow(int source_row, const QModelIndex &source_parent) const override;
-
-	private:
-		MaterialTableModel *m_model = nullptr;
-		QStringList m_tokens;
-};
-
-/**
-	@brief The dialog listing every article of the material file, letting
-	the user search one and hand it back to the element properties.
-
-	Three buttons: apply the selected row, do nothing, or add a new row to
-	the file.
+	Bottom actions allow creating a new entry, editing the selected entry,
+	opening QElectroTech settings to configure the materials list file, or
+	applying the selected entry to the element.
 */
 class MaterialSelectionDialog : public QDialog
 {
@@ -106,31 +49,55 @@ class MaterialSelectionDialog : public QDialog
 		MaterialRecord selectedRecord() const;
 		void accept() override;
 		void done(int result) override;
-		bool eventFilter(QObject *watched, QEvent *event) override;
 
 	private slots:
 		void on_m_new_entry_btn_clicked();
 		void on_m_edit_entry_btn_clicked();
-		void searchChanged(const QString &text);
+		void on_m_duplicate_entry_btn_clicked();
+		void on_m_remove_entry_btn_clicked();
+		void on_m_import_btn_clicked();
+		void on_m_export_btn_clicked();
+		void on_m_settings_btn_clicked();
+		void on_m_save_entry_btn_clicked();
+		void on_m_cancel_entry_btn_clicked();
+		void filterFieldChanged();
+		void filterUpdated();
+		void treeSelectionChanged();
+		void treeItemDoubleClicked(QTreeWidgetItem *item, int column);
 
 	private:
+		enum class EditMode {
+			View,
+			New,
+			Edit
+		};
+
 		void reload();
+		void populateFilterFields(const QString &keep_field);
+		void populateFilterValues(const QString &keep_value);
+		void rebuildTree();
+		void populateDetails(const MaterialRecord &record);
+		void setEditMode(EditMode mode);
+		MaterialRecord detailsRecord() const;
 		int selectedSourceRow() const;
-		void restoreViewState();
-		void saveViewState();
-		void resetSorting();
-		void scrollTable(QWheelEvent *event);
-		void updateCount();
-		void updateApplyButton();
+		QList<int> selectedSourceRows() const;
 		bool selectRecord(const MaterialRecord &record);
+		void updateButtons();
+		void updateCount(int visible_count);
+		QStringList effectiveColumns() const;
+		QList<MaterialRecord> selectedRecordsForExport() const;
+		QList<MaterialRecord> visibleRecordsForExport() const;
+		void exportRecordsToCsv(const QList<MaterialRecord> &records);
+		void copyDetailsSelection();
+		void showDetailsContextMenu(const QPoint &pos);
+		void showTreeContextMenu(const QPoint &pos);
 
-		//ATTRIBUTES
-	private:
 		Ui::MaterialSelectionDialog *ui;
-		MaterialTableModel         *m_model = nullptr;
-		MaterialFilterProxy        *m_proxy = nullptr;
-		QString                     m_path;
-		MaterialListData            m_data;
+		QString m_path;
+		MaterialListData m_data;
+		EditMode m_edit_mode = EditMode::View;
+		int m_editing_row = -1;
+		MaterialRecord m_editing_original;
 };
 
 #endif // MATERIALSELECTIONDIALOG_H

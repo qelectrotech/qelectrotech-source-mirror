@@ -1119,6 +1119,23 @@ void GeneralConfigurationPage::on_m_material_list_create_pb_clicked()
 }
 
 /**
+	@brief GeneralConfigurationPage::focusMaterialsListSettings
+	Switch to the tab holding the materials list path and focus it.
+*/
+void GeneralConfigurationPage::focusMaterialsListSettings()
+{
+	for (int i = 0; i < ui->tabWidget->count(); ++i)
+	{
+		if (ui->tabWidget->widget(i)->isAncestorOf(ui->m_material_list_path_le))
+		{
+			ui->tabWidget->setCurrentIndex(i);
+			break;
+		}
+	}
+	ui->m_material_list_path_le->setFocus();
+}
+
+/**
 	@brief GeneralConfigurationPage::on_m_cable_type_list_browse_pb_clicked
 	Let the user pick an existing cable type file.
 */
