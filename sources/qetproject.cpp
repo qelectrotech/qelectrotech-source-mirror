@@ -2490,8 +2490,12 @@ bool QETProject::autoConductor() const
 */
 void QETProject::setAutoConductor(bool ac)
 {
-	if (ac != m_auto_conductor)
-		m_auto_conductor = ac;
+	if (ac == m_auto_conductor) {
+		return;
+	}
+	m_auto_conductor = ac;
+		//Kept with the project, so that it is not back on at next opening
+	storeSettings();
 }
 
 /**
@@ -2960,6 +2964,7 @@ QDomDocument QETProject::toXml(QHash<int, QByteArray> *kept_folios, QStringList 
 	// local, non-transmitted usage tracking (time spent on this project)
 	writeUsageXml(project_root);
 	writeWireHopsXml(project_root);
+	writeAutoConductorXml(project_root);
 	writeSymbolTextsXml(project_root);
 	writePlantLocationXml(project_root);
 	writeDeviceTypeRulesXml(project_root);
@@ -4190,6 +4195,7 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 		//Load the local, non-transmitted usage tracking
 	readUsageXml(xml_project);
 	readWireHopsXml(xml_project);
+	readAutoConductorXml(xml_project);
 	readSymbolTextsXml(xml_project);
 	readPlantLocationXml(xml_project);
 	readDeviceTypeRulesXml(xml_project);
@@ -4801,6 +4807,20 @@ void QETProject::readWireHopsXml(QDomDocument &xml_project)
 }
 
 /**
+	@brief QETProject::readAutoConductorXml
+	Read the <auto_conductor> element of the project, if any.
+	A project without it keeps the automatic creation of conductors on.
+	@param xml_project : the xml description of the project
+*/
+void QETProject::readAutoConductorXml(QDomDocument &xml_project)
+{
+	const QDomElement auto_conductor = xml_project.documentElement()
+			.firstChildElement(QStringLiteral("auto_conductor"));
+	m_auto_conductor = auto_conductor.isNull()
+			|| auto_conductor.attribute(QStringLiteral("enabled"), QStringLiteral("1")) != QLatin1String("0");
+}
+
+/**
 	@brief QETProject::readOriginXml
 	Read the <style> element and "origin" attribute of the project, if any.
 	A project without it draws origin top-left.
@@ -5231,6 +5251,23 @@ void QETProject::writeWireHopsXml(QDomElement &xml_element)
 			.createElement(QStringLiteral("wire_crossings"));
 	crossings.setAttribute(QStringLiteral("hop"), WireHops::toString(m_wire_hops));
 	xml_element.appendChild(crossings);
+}
+
+/**
+	@brief QETProject::writeAutoConductorXml
+	Export the automatic creation of conductors as an <auto_conductor> child
+	of \a xml_element. Written only when it is off, so a project that never
+	turned it off saves exactly as before.
+*/
+void QETProject::writeAutoConductorXml(QDomElement &xml_element)
+{
+	if (m_auto_conductor) {
+		return;
+	}
+	QDomElement auto_conductor = xml_element.ownerDocument()
+			.createElement(QStringLiteral("auto_conductor"));
+	auto_conductor.setAttribute(QStringLiteral("enabled"), QStringLiteral("0"));
+	xml_element.appendChild(auto_conductor);
 }
 
 /**
@@ -5819,6 +5856,7 @@ void QETProject::storeSettings()
 	writeProjectPropertiesXml(properties);
 	root.appendChild(properties);
 	writeWireHopsXml(root);
+	writeAutoConductorXml(root);
 	writeSymbolTextsXml(root);
 	writePlantLocationXml(root);
 	writeDeviceTypeRulesXml(root);

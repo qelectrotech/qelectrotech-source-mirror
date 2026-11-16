@@ -534,6 +534,7 @@ class QETProject : public QObject
 		void readBridgeXml(const QDomDocument &xml_project);
 		void readUsageXml(QDomDocument &xml_project);
 		void readWireHopsXml(QDomDocument &xml_project);
+		void readAutoConductorXml(QDomDocument &xml_project);
 		void readOriginXml(QDomDocument& xml_project);
 		void readSymbolTextsXml(QDomDocument &xml_project);
 		void readPlantLocationXml(QDomDocument &xml_project);
@@ -556,6 +557,7 @@ class QETProject : public QObject
 	private:
 		void writeUsageXml(QDomElement &);
 		void writeWireHopsXml(QDomElement &);
+		void writeAutoConductorXml(QDomElement &);
 		void writeOriginXml(QDomElement&);
 		void writeSymbolTextsXml(QDomElement &);
 		void writePlantLocationXml(QDomElement &);
