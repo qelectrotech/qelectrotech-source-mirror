@@ -53,8 +53,10 @@ class PartSearch
 		static int score(const MaterialRecord &record, const QStringList &words);
 			/// The indexes of @p records @p text finds, best first, then by
 			/// part number; all of them in list order for an empty text.
-			/// At most @p limit of them when it is not negative
-		static QList<int> rank(const QList<MaterialRecord> &records, const QString &text, int limit = -1);
+			/// At most @p limit of them when it is not negative. The parts
+			/// numbered as @p first come before the others of an equal rank
+		static QList<int> rank(const QList<MaterialRecord> &records, const QString &text, int limit = -1,
+							   const QStringList &first = QStringList());
 			/// The part number of @p record: its reference, the machine's
 			/// else, else its designation
 		static QString partNumber(const MaterialRecord &record);

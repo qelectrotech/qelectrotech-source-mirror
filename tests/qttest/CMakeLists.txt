@@ -553,6 +553,8 @@ qet_add_app_test(tst_devicetypechooser tst_devicetypechooser.cpp)
 qet_add_app_test(tst_placelabelpart tst_placelabelpart.cpp)
 # Finding a part by the words typed: exact, prefix, inside, rough, wildcard.
 qet_add_app_test(tst_partsearch tst_partsearch.cpp)
+# The Find part window: faceted filters, chips, reset, empty state, categories.
+qet_add_app_test(tst_findpart tst_findpart.cpp)
 # Giving a device another device type, its contacts carried over
 qet_add_app_test(tst_devicetypechange tst_devicetypechange.cpp)
 # The device types listed, full and brief; contacts without their device
