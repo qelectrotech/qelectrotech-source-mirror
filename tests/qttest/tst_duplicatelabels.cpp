@@ -13,6 +13,7 @@
 #include "qetapptest.h"
 #include "qetgraphicsitem/conductor.h"
 #include "qetgraphicsitem/element.h"
+#include "qetgraphicsitem/structureboxitem.h"
 #include "qetgraphicsitem/terminal.h"
 #include "qetgraphicsitem/terminalelement.h"
 #include "qetmessagebox.h"
@@ -398,6 +399,30 @@ class tst_duplicatelabels : public QObject
 				"DuplicateLabelsDialog",
 				"Duplicate component: %1 in %2")
 				.arg("K1", "+UV2"));
+	}
+
+	// A symbol in a structure box is in the box's place, as its texts and
+	// the parts list say: two F1 on one folio, one of them in +FIELD, are
+	// two devices. A box with no location of its own leaves the folio's.
+	void componentsInAStructureBoxAreInItsPlace()
+	{
+		QETProject project;
+		auto*	   folio = project.addNewDiagram();
+		setPlace(folio, "P1", "UV1");
+		auto* inside  = symbol(folio, "simple", "F1");
+		auto* outside = symbol(folio, "simple", "F1");
+		auto* field	  = new StructureBoxItem(
+			 inside->scenePos() - QPointF(40, 40),
+			 inside->scenePos() + QPointF(40, 40));
+		field->setLocation(QStringLiteral("FIELD"));
+		folio->addItem(field);
+		QCOMPARE(DuplicateLabels::place(inside), QString("=P1+FIELD"));
+		QCOMPARE(DuplicateLabels::place(outside), QString("=P1+UV1"));
+		QVERIFY(DuplicateLabels::find(&project).isEmpty());
+		field->setLocation({});
+		const auto groups = DuplicateLabels::find(&project);
+		QCOMPARE(groups.size(), 1);
+		QCOMPARE(groups.first().place, QString("=P1+UV1"));
 	}
 
 	void stripBridgesJoinSignals()

@@ -25,6 +25,7 @@
 #include "qet.h"
 #include "qetgraphicsitem/conductor.h"
 #include "qetgraphicsitem/element.h"
+#include "qetgraphicsitem/structureboxitem.h"
 #include "qetgraphicsitem/terminal.h"
 #include "qetgraphicsitem/terminalelement.h"
 #include "qetproject.h"
@@ -109,15 +110,15 @@ namespace DuplicateLabels
 	QString place(Element* element)
 	{
 		const auto info	   = element->elementInformations();
-		Diagram*   diagram = element->diagram();
 		QString	   plant =
 			info.value(QStringLiteral("plant")).toString().trimmed();
 		QString location =
 			info.value(QStringLiteral("location")).toString().trimmed();
-		if (plant.isEmpty() && diagram)
-			plant = diagram->border_and_titleblock.plant().trimmed();
-		if (location.isEmpty() && diagram)
-			location = diagram->border_and_titleblock.locmach().trimmed();
+		// Else the structure box it is in, else its folio: the place its
+		// texts and the parts list give it (%{plant}, %{location}).
+		const StructureBoxItem::Place reference = StructureBoxItem::referencePlace(element);
+		if (plant.isEmpty()) plant = reference.plant.trimmed();
+		if (location.isEmpty()) location = reference.location.trimmed();
 		// QET stores bare names; the prefixes keep a plant apart from a
 		// location of the same name.
 		if (! plant.isEmpty() && ! plant.startsWith(QLatin1Char('=')))
