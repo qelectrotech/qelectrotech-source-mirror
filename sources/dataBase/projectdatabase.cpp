@@ -9207,7 +9207,7 @@ QStringList projectDataBase::foreignChildren(const QDomElement &parent, bool fol
 	static const QSet<QString> project_known{
 		QStringLiteral("properties"), QStringLiteral("newdiagrams"), QStringLiteral("diagram"),
 		QStringLiteral("collection"), QStringLiteral("titleblocktemplates"), QStringLiteral("usage"),
-		QStringLiteral("wire_crossings"), QStringLiteral("symbol_texts"),
+		QStringLiteral("wire_crossings"), QStringLiteral("auto_conductor"), QStringLiteral("symbol_texts"),
 		QStringLiteral("plant_location"), QStringLiteral("languages"),
 		QStringLiteral("terminal_labelling"), QStringLiteral("wiring_rules"),
 		QStringLiteral("chained_reports"), QStringLiteral("style"),
