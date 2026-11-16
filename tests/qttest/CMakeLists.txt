@@ -2454,6 +2454,10 @@ qet_add_app_test(tst_potentialtypes tst_potentialtypes.cpp)
 # potential_view: one row per potential (wires, terminals, folios, wire
 # numbers, more than one number), as QElectroTech groups the wires.
 qet_add_app_test(tst_potentialview tst_potentialview.cpp)
+# Chained folio reports: what two reports must share to be chained
+# together is the project's choice -- the labels they carry, or the
+# function of the wires their terminals hold.
+qet_add_app_test(tst_chainedreportkey tst_chainedreportkey.cpp)
 
 # A core of a cable: section, colour and type are locked in the dialog and
 # show a small sign saying why, so an edit cannot write over the cable

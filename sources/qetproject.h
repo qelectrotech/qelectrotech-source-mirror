@@ -127,6 +127,7 @@ class QETProject : public QObject
 
 		void autoLinkReportElements();
 		void scheduleAutoLink();
+		void reportKeySourceChanged();
 
 	private:
 		QETProject(const QETProject &);
@@ -373,6 +374,16 @@ class QETProject : public QObject
 		bool chainedReports() const;
 		void setChainedReports(bool enable);
 		bool hasChainedReportsAttribute() const;
+			/// What two folio reports must share to be chained together
+			/// (reportMatchKey()): the label each of them carries, or the
+			/// function of the wire its terminal holds
+		enum class ReportLinkKey { Label, Function };
+		ReportLinkKey chainedReportsKey() const;
+		void setChainedReportsKey(ReportLinkKey key);
+			/// Take away every folio report link of this project
+		void dissolveReportLinks();
+			/// Draw every report's texts as its link state says
+		void refreshReportTexts();
 		bool terminalLabelSplit() const;
 		void setTerminalLabelSplit(bool split);
 		WiringRules::Settings wiringRules() const;
@@ -704,6 +715,8 @@ class QETProject : public QObject
 		void refreshDerivedPotentialTypes();
 		bool m_chained_reports = false;
 		bool m_has_chained_reports_attribute = false;
+			/// What pairs folio reports together, see ReportLinkKey
+		ReportLinkKey m_chained_reports_key = ReportLinkKey::Label;
 			/// Conductor numbering scheme -> plant -> the values its plant
 			/// counters last gave there (conductorPlantCounter())
 		QHash<QString, QHash<QString, QStringList>> m_conductor_plant_counters;

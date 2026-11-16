@@ -31,6 +31,7 @@
 #include <qet.h>
 #include <qeticons.h>
 #include <qetproject.h>
+#include <undocommand/reportlinkkeycommand.h>
 #include <wiringrules.h>
 #include <ui/wiringruleswarning.h>
 #include <qetgraphicsitem/element.h>
@@ -214,6 +215,18 @@ void ProjectMainConfigPage::applyProjectConf()
 		modified_project = true;
 	}
 
+	const bool by_function = chained_key_function_rb_ -> isChecked();
+	const QETProject::ReportLinkKey wanted_key = by_function
+			? QETProject::ReportLinkKey::Function
+			: QETProject::ReportLinkKey::Label;
+	if (m_project -> chainedReportsKey() != wanted_key) {
+			//The chains this project has were made with the other key:
+			//they go and are made again from the new one. One undo step
+			//carries the choice and the links it made and took away.
+		m_project -> undoStack() -> push(new ChangeReportLinkKeyCommand(m_project, wanted_key));
+		modified_project = true;
+	}
+
 	if (m_project -> terminalLabelSplit() != terminal_label_split_rb_ -> isChecked()) {
 		m_project -> setTerminalLabelSplit(terminal_label_split_rb_ -> isChecked());
 		modified_project = true;
@@ -315,6 +328,24 @@ void ProjectMainConfigPage::initWidgets()
 
 	chained_reports_cb_ = new QCheckBox(tr("Enable chained folio reports for report elements", "checkbox label"));
 	chained_reports_cb_ -> setToolTip(tr("Automatically chains folio report elements with the same label in a forward/backward sequence.", "tooltip"));
+
+		//What two folio reports must share to be chained together
+	chained_key_gb_ = new QGroupBox(tr("Chain folio report elements by", "group box title"));
+	chained_key_gb_ -> setToolTip(tr("What two folio report elements must share to be chained together: "
+									 "the label each of them carries, or the function of the wire its "
+									 "terminal holds. A report without a value of its own is never "
+									 "chained. Changing this dissolves the chains of this project and "
+									 "makes them again from the new key.", "tooltip"));
+	chained_key_label_rb_ = new QRadioButton(tr("Their label", "radio button label"));
+	chained_key_function_rb_ = new QRadioButton(tr("The function of their conductor", "radio button label"));
+	QVBoxLayout *chained_key_layout = new QVBoxLayout(chained_key_gb_);
+	chained_key_layout -> addWidget(chained_key_label_rb_);
+	chained_key_layout -> addWidget(chained_key_function_rb_);
+	auto update_chained_key_enabled = [this](bool on) {
+		chained_key_gb_ -> setEnabled(on && !(m_project -> isReadOnly()));
+	};
+	update_chained_key_enabled(chained_reports_cb_ -> isChecked());
+	connect(chained_reports_cb_, &QCheckBox::toggled, this, update_chained_key_enabled);
 
 		//How the terminals draw their label: a setting of this project,
 		//so the same file draws the same way on every machine which
@@ -430,6 +461,8 @@ void ProjectMainConfigPage::initLayout()
 
 	main_layout0 -> addWidget(chained_reports_cb_);
 	main_layout0 -> addSpacing(10);
+	main_layout0 -> addWidget(chained_key_gb_);
+	main_layout0 -> addSpacing(10);
 
 	QVBoxLayout *terminal_label_layout = new QVBoxLayout(terminal_label_gb_);
 	terminal_label_layout -> addWidget(terminal_label_combined_rb_);
@@ -483,6 +516,11 @@ void ProjectMainConfigPage::readValuesFromProject()
 	m_plant_location_cb -> setChecked(m_project -> plantAndLocationInherited());
 	m_follow_device_types_cb -> setChecked(m_project -> followDeviceTypes());
 	chained_reports_cb_ -> setChecked(m_project -> chainedReports());
+	if (m_project -> chainedReportsKey() == QETProject::ReportLinkKey::Function) {
+		chained_key_function_rb_ -> setChecked(true);
+	} else {
+		chained_key_label_rb_ -> setChecked(true);
+	}
 	if (m_project -> terminalLabelSplit()) {
 		terminal_label_split_rb_ -> setChecked(true);
 	} else {
@@ -550,6 +588,7 @@ void ProjectMainConfigPage::adjustReadOnly()
 	m_plant_location_cb -> setDisabled(is_read_only);
 	m_follow_device_types_cb -> setDisabled(is_read_only);
 	chained_reports_cb_ -> setDisabled(is_read_only);
+	chained_key_gb_ -> setDisabled(is_read_only || !(chained_reports_cb_ -> isChecked()));
 	terminal_label_gb_ -> setDisabled(is_read_only);
 	wiring_rules_gb_ -> setDisabled(is_read_only);
 	origin_cb_->setDisabled(is_read_only);

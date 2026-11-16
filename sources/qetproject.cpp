@@ -114,6 +114,15 @@ m_project_properties_handler{this}
 		//Read chained reports default from global settings (enabled for newly created projects when setting is on)
 	m_chained_reports = settings.value(QStringLiteral("project/enable-chained-reports"), false).toBool();
 	m_has_chained_reports_attribute = true;
+		//A new project chains its folio reports by the label each of them
+		//carries, or by the function of the wire its terminal holds, as
+		//the settings chose it. A project read keeps what its file says
+		//(readChainedReportsXml())
+	const QString chained_key = settings.value(
+				QStringLiteral("project/chained-reports-key"),
+				QStringLiteral("label")).toString();
+	m_chained_reports_key = chained_key == QLatin1String("function")
+			? ReportLinkKey::Function : ReportLinkKey::Label;
 
 	int size = settings.beginReadArray(QStringLiteral("diagrameditor/defaultguides"));
 	for (int i = 0; i < size; ++i) {
@@ -5559,6 +5568,8 @@ void QETProject::writeWiringRulesXml(QDomElement &xml_element)
 	@brief QETProject::readChainedReportsXml
 	Read the <chained_reports> element of the project, if any.
 	A project without it was saved before this feature existed.
+	The key attribute, when it is missing, says the label of the reports:
+	a project saved before this choice chains as it always did.
 	@param xml_project : the xml description of the project
 */
 void QETProject::readChainedReportsXml(QDomDocument &xml_project)
@@ -5568,15 +5579,21 @@ void QETProject::readChainedReportsXml(QDomDocument &xml_project)
 	if (!cr_elmt.isNull()) {
 		m_has_chained_reports_attribute = true;
 		m_chained_reports = (cr_elmt.attribute(QStringLiteral("enabled"), QStringLiteral("false")) == QLatin1String("true"));
+		m_chained_reports_key =
+				cr_elmt.attribute(QStringLiteral("key")) == QLatin1String("function")
+				? ReportLinkKey::Function : ReportLinkKey::Label;
 	} else {
 		m_has_chained_reports_attribute = false;
 		m_chained_reports = false;
+		m_chained_reports_key = ReportLinkKey::Label;
 	}
 }
 
 /**
 	@brief QETProject::writeChainedReportsXml
 	Save the chained reports setting into the project XML.
+	The key is written only when it is not the label: a project which
+	chains by label keeps the element it always had.
 	@param xml_element : the root project element
 */
 void QETProject::writeChainedReportsXml(QDomElement &xml_element)
@@ -5587,6 +5604,9 @@ void QETProject::writeChainedReportsXml(QDomElement &xml_element)
 	QDomElement cr_elmt = xml_element.ownerDocument()
 			.createElement(QStringLiteral("chained_reports"));
 	cr_elmt.setAttribute(QStringLiteral("enabled"), m_chained_reports ? QStringLiteral("true") : QStringLiteral("false"));
+	if (m_chained_reports_key == ReportLinkKey::Function) {
+		cr_elmt.setAttribute(QStringLiteral("key"), QStringLiteral("function"));
+	}
 	xml_element.appendChild(cr_elmt);
 }
 
@@ -5755,6 +5775,33 @@ void QETProject::setChainedReports(bool enable)
 bool QETProject::hasChainedReportsAttribute() const
 {
 	return m_has_chained_reports_attribute;
+}
+
+/**
+	@brief QETProject::chainedReportsKey
+	@return what two folio reports must share to be chained together
+	(ReportLinkKey)
+*/
+QETProject::ReportLinkKey QETProject::chainedReportsKey() const
+{
+	return m_chained_reports_key;
+}
+
+/**
+	@brief QETProject::setChainedReportsKey
+	Change what two folio reports must share to be chained together.
+	Only the choice is stored here: the chains it takes away and makes
+	again belong to ChangeReportLinkKeyCommand, which undoes them
+	together with it.
+	@param key the new key
+*/
+void QETProject::setChainedReportsKey(ReportLinkKey key)
+{
+	if (key == m_chained_reports_key) {
+		return;
+	}
+	m_chained_reports_key = key;
+	storeSettings();
 }
 
 /**
@@ -6520,6 +6567,39 @@ void QETProject::usedTitleBlockTemplateChanged(const QString &template_name) {
 #include "qetgraphicsitem/reportelement.h"
 #include "qetgraphicsitem/dynamicelementtextitem.h"
 #include "qetgraphicsitem/elementtextitemgroup.h"
+#include "qetgraphicsitem/terminal.h"
+#include "qetgraphicsitem/conductor.h"
+
+namespace {
+/**
+	@brief reportMatchKey
+	The string two folio reports must share to be chained together: the
+	label each of them carries, or the function of the wire its terminal
+	holds -- the wire the report reads its texts from
+	(DynamicElementTextItem::setPotentialConductor). A report without a
+	terminal, without a wire, or whose value is empty has no key and is
+	never chained.
+	@param report the report to read
+	@param key what this project chains by
+	@return the key of \a report, empty when it has none
+*/
+QString reportMatchKey(const ReportElement *report, QETProject::ReportLinkKey key)
+{
+	if (key == QETProject::ReportLinkKey::Label) {
+		return report->elementInformations()
+				.value(QStringLiteral("label")).toString().trimmed();
+	}
+	const QList<Terminal *> terminals = report->terminals();
+	if (terminals.isEmpty()) {
+		return QString();
+	}
+	const QList<Conductor *> conductors = terminals.first()->conductors();
+	if (conductors.isEmpty()) {
+		return QString();
+	}
+	return conductors.first()->properties().m_function.trimmed();
+}
+}
 
 void QETProject::scheduleAutoLink()
 {
@@ -6533,6 +6613,65 @@ void QETProject::scheduleAutoLink()
 	});
 }
 
+/**
+	@brief QETProject::reportKeySourceChanged
+	A wire of a folio report was added, taken away, or its function
+	was edited. When the function of that wire is what chains this
+	project (ReportLinkKey::Function), the chains are looked over again.
+*/
+void QETProject::reportKeySourceChanged()
+{
+	if (m_chained_reports && m_chained_reports_key == ReportLinkKey::Function) {
+		scheduleAutoLink();
+	}
+}
+
+/**
+	@brief QETProject::dissolveReportLinks
+	Take away every folio report link of this project. The chains a
+	project has were made with one key: when the project starts chaining
+	by another they do not describe what the new one pairs, so they go
+	and are made again from it.
+*/
+void QETProject::dissolveReportLinks()
+{
+	ElementProvider ep(this);
+	for (const QPointer<Element> &elmt_ptr : ep.find(ElementData::AllReport)) {
+		if (!elmt_ptr) {
+			continue;
+		}
+		if (!elmt_ptr->isFree()) {
+			elmt_ptr->unlinkAllElements();
+		}
+	}
+}
+
+/**
+	@brief QETProject::refreshReportTexts
+	Make sure every report shows the text matching its current link state.
+*/
+void QETProject::refreshReportTexts()
+{
+	ElementProvider ep(this);
+	for (const QPointer<Element> &elmt_ptr : ep.find(ElementData::AllReport)) {
+		if (!elmt_ptr) {
+			continue;
+		}
+		ReportElement *report = dynamic_cast<ReportElement*>(elmt_ptr.data());
+		if (!report) {
+			continue;
+		}
+		for (DynamicElementTextItem *deti : report->dynamicTextItems()) {
+			deti->refreshReportText();
+		}
+		for (ElementTextItemGroup *group : report->textGroups()) {
+			for (DynamicElementTextItem *deti : group->texts()) {
+				deti->refreshReportText();
+			}
+		}
+	}
+}
+
 void QETProject::autoLinkReportElements()
 {
 	if (!m_chained_reports) {
@@ -6542,29 +6681,26 @@ void QETProject::autoLinkReportElements()
 	ElementProvider ep(this);
 	const QVector<QPointer<Element>> all_report_elmts = ep.find(ElementData::AllReport);
 
-	QHash<QString, QList<ReportElement*>> freeReportsByLabel;
-	QList<ReportElement*> all_reports;
+	QHash<QString, QList<ReportElement*>> freeReports;
 
 	for (const auto &elmt_ptr : all_report_elmts) {
 		if (!elmt_ptr) continue;
 		ReportElement *report = dynamic_cast<ReportElement*>(elmt_ptr.data());
 		if (!report) continue;
 
-		all_reports.append(report);
-
 		// Only auto-link reports that are currently unlinked (isFree() == true)
-		// and have a non-empty label! Never overwrite existing or manual links.
+		// and have a non-empty key! Never overwrite existing or manual links.
 		if (report->isFree()) {
-			QString label = report->elementInformations().value(QStringLiteral("label")).toString().trimmed();
-			if (!label.isEmpty()) {
-				freeReportsByLabel[label].append(report);
+			const QString key = reportMatchKey(report, m_chained_reports_key);
+			if (!key.isEmpty()) {
+				freeReports[key].append(report);
 			}
 		}
 	}
 
 	bool linked_any = false;
 
-	for (auto it = freeReportsByLabel.begin(); it != freeReportsByLabel.end(); ++it) {
+	for (auto it = freeReports.begin(); it != freeReports.end(); ++it) {
 		QList<ReportElement*> &reports = it.value();
 		if (reports.size() < 2) continue;
 
@@ -6625,14 +6761,5 @@ void QETProject::autoLinkReportElements()
 	}
 
 	// Make sure every report shows the text matching its current link state.
-	for (ReportElement *report : std::as_const(all_reports)) {
-		for (DynamicElementTextItem *deti : report->dynamicTextItems()) {
-			deti->refreshReportText();
-		}
-		for (ElementTextItemGroup *group : report->textGroups()) {
-			for (DynamicElementTextItem *deti : group->texts()) {
-				deti->refreshReportText();
-			}
-		}
-	}
+	refreshReportTexts();
 }

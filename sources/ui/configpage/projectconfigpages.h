@@ -144,6 +144,9 @@ class ProjectMainConfigPage : public ProjectConfigPage {
 	QCheckBox *m_plant_location_cb;
 	QCheckBox *m_follow_device_types_cb;
 	QCheckBox *chained_reports_cb_;
+	QGroupBox *chained_key_gb_;
+	QRadioButton *chained_key_label_rb_;
+	QRadioButton *chained_key_function_rb_;
 	QGroupBox *terminal_label_gb_;
 	QRadioButton *terminal_label_combined_rb_;
 	QRadioButton *terminal_label_split_rb_;

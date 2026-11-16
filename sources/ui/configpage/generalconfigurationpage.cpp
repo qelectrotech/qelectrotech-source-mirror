@@ -228,6 +228,15 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	ui->m_save_label_paste->setChecked(settings.value("diagramcommands/erase-label-on-copy", true).toBool());
 	ui->m_autonumber_pasted->setChecked(settings.value("diagramcommands/autonumber-pasted-elements", true).toBool());
 	ui->m_enable_chained_reports->setChecked(settings.value("project/enable-chained-reports", false).toBool());
+	const QString chained_key =
+			settings.value("project/chained-reports-key", "label").toString();
+	ui->m_chained_key_function_rb->setChecked(chained_key == "function");
+	ui->m_chained_key_label_rb->setChecked(chained_key != "function");
+		//A key says nothing while nothing is chained
+	ui->m_chained_key_gb->setEnabled(ui->m_enable_chained_reports->isChecked());
+	connect(ui->m_enable_chained_reports, &QCheckBox::toggled,
+			ui->m_chained_key_gb, &QWidget::setEnabled,
+			Qt::UniqueConnection);
 	ui->m_enable_scripting->setChecked(QetSettings::scriptingEnabled());
 #ifdef QET_HAS_SCRIPTING
 	if (QetSettings::scriptingForcedByEnvironment()) {
@@ -477,6 +486,8 @@ void GeneralConfigurationPage::applyConf()
 	settings.setValue("diagramcommands/erase-label-on-copy", ui->m_save_label_paste->isChecked());
 	settings.setValue("diagramcommands/autonumber-pasted-elements", ui->m_autonumber_pasted->isChecked());
 	settings.setValue("project/enable-chained-reports", ui->m_enable_chained_reports->isChecked());
+	settings.setValue("project/chained-reports-key",
+			ui->m_chained_key_function_rb->isChecked() ? "function" : "label");
 
 		//SCRIPTING
 		//Left alone while the environment forces it on: the box is disabled
