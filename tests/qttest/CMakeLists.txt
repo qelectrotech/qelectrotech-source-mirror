@@ -542,6 +542,7 @@ qet_add_app_test(tst_plcio tst_plcio.cpp)
 qet_add_app_test(tst_devicetype tst_devicetype.cpp)
 # Is a device drawn the way its type says: parts not drawn, symbols beyond.
 qet_add_app_test(tst_devicetypecheck tst_devicetypecheck.cpp)
+qet_add_app_test(tst_placepartsafterhead tst_placepartsafterhead.cpp)
 # Project > Device types: the list of types and the editor of one
 qet_add_app_test(tst_devicetypeeditor tst_devicetypeeditor.cpp)
 # A contact linked to a device with a type takes a free part of the type
@@ -559,7 +560,7 @@ qet_add_app_test(tst_devicetypeassign tst_devicetypeassign.cpp)
 qet_add_app_test(tst_partdata tst_partdata.cpp)
 # Axis lock and original position snap during paste placement.
 qet_add_app_test(tst_pasteaxislock tst_pasteaxislock.cpp)
-# Editing an existing entry in the materials list dialog.
+# Split-view materials list dialog with inline editing and creation.
 qet_add_app_test(tst_materiallistedit tst_materiallistedit.cpp)
 # A read-only project builds its lazy folios whole: shown, exported, written out.
 qet_add_app_test(tst_readonlyfolios tst_readonlyfolios.cpp)
@@ -827,6 +828,10 @@ qet_add_app_test(tst_cablelist tst_cablelist.cpp)
 
 # A wire dropped on a terminal that already has a wire is made.
 qet_add_app_test(tst_wireonusedterminal tst_wireonusedterminal.cpp)
+
+# An undone step of a symbol and its wires, dropped later, deletes the
+# wires without reading the symbol's deleted terminals.
+qet_add_app_test(tst_undonewires tst_undonewires.cpp)
 
 # Joining two potentials offers only the two potentials.
 qet_add_app_test(tst_potentialchoices tst_potentialchoices.cpp)

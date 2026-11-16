@@ -247,20 +247,33 @@ QString StructureBoxItem::structureId() const
 */
 QList<const StructureBoxItem *> StructureBoxItem::enclosing(const Element *element)
 {
-	QList<QPair<qreal, const StructureBoxItem *>> found;
 	Diagram *diagram = element ? element->diagram() : nullptr;
 	if (!diagram)
 		return {};
-	const QPointF pos = element->sceneBoundingRect().center();
 		//By bounding rect, then the box's own rectangle: a box is not
 		//filled, so a hit test on its shape would only find its outline
 		//and miss every symbol drawn inside it.
-	const auto items = diagram->items(pos, Qt::IntersectsItemBoundingRect);
-	for (QGraphicsItem *item : items)
+	return enclosing(element, boxesAmong(diagram->items(
+			element->sceneBoundingRect().center(), Qt::IntersectsItemBoundingRect)));
+}
+
+/**
+	@brief StructureBoxItem::enclosing
+	@param element an element, possibly null
+	@param folio_boxes the boxes which may hold it: boxesOf() its folio
+	@return those of @p folio_boxes whose rectangle holds the centre of the
+	symbol, smallest (most specific) first
+*/
+QList<const StructureBoxItem *> StructureBoxItem::enclosing(
+		const Element *element,
+		const QList<const StructureBoxItem *> &folio_boxes)
+{
+	QList<QPair<qreal, const StructureBoxItem *>> found;
+	if (!element || !element->diagram())
+		return {};
+	const QPointF pos = element->sceneBoundingRect().center();
+	for (const StructureBoxItem *box : folio_boxes)
 	{
-		if (item->type() != StructureBoxItem::Type)
-			continue;
-		auto box = static_cast<const StructureBoxItem *>(item);
 		const QRectF r = box->mapRectToScene(box->rect().normalized());
 		if (!r.contains(pos))
 			continue;
@@ -281,13 +294,35 @@ QList<const StructureBoxItem *> StructureBoxItem::enclosing(const Element *eleme
 */
 StructureBoxItem::Place StructureBoxItem::referencePlace(const Element *element)
 {
+	return placeIn(element, enclosing(element));
+}
+
+/**
+	@brief StructureBoxItem::referencePlace
+	The same, with the boxes looked for among @p folio_boxes
+*/
+StructureBoxItem::Place StructureBoxItem::referencePlace(
+		const Element *element,
+		const QList<const StructureBoxItem *> &folio_boxes)
+{
+	return placeIn(element, enclosing(element, folio_boxes));
+}
+
+/**
+	@brief StructureBoxItem::placeIn
+	@return the place @p boxes, those around @p element smallest first,
+	give it over its folio's
+*/
+StructureBoxItem::Place StructureBoxItem::placeIn(
+		const Element *element,
+		const QList<const StructureBoxItem *> &boxes)
+{
 	Place place;
 	Diagram *diagram = element ? element->diagram() : nullptr;
 	if (diagram) {
 		place.plant = diagram->border_and_titleblock.plant();
 		place.location = diagram->border_and_titleblock.locmach();
 	}
-	const auto boxes = enclosing(element);
 	for (auto it = boxes.crbegin() ; it != boxes.crend() ; ++it) {
 		if (!(*it)->plant().isEmpty())    place.plant = (*it)->plant();
 		if (!(*it)->location().isEmpty()) place.location = (*it)->location();
@@ -314,6 +349,28 @@ StructureBoxItem::Place StructureBoxItem::placeOf(const Element *element)
 		if (place.location.isEmpty()) place.location = reference.location;
 	}
 	return place;
+}
+
+/**
+	@brief StructureBoxItem::boxesOf
+	@return the structure boxes drawn on @p diagram, possibly null
+*/
+QList<const StructureBoxItem *> StructureBoxItem::boxesOf(const Diagram *diagram)
+{
+	return diagram ? boxesAmong(diagram->items()) : QList<const StructureBoxItem *>();
+}
+
+/**
+	@brief StructureBoxItem::boxesAmong
+	@return the structure boxes among @p items
+*/
+QList<const StructureBoxItem *> StructureBoxItem::boxesAmong(const QList<QGraphicsItem *> &items)
+{
+	QList<const StructureBoxItem *> boxes;
+	for (QGraphicsItem *item : items)
+		if (item->type() == StructureBoxItem::Type)
+			boxes << static_cast<const StructureBoxItem *>(item);
+	return boxes;
 }
 
 bool StructureBoxItem::isStructureBoxXml(const QDomElement &e)

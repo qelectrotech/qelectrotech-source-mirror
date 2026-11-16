@@ -25,6 +25,7 @@
 
 #include <QElapsedTimer>
 #include <QGraphicsPathItem>
+#include <QPointer>
 #include <QSet>
 #include <QUuid>
 
@@ -271,6 +272,10 @@ class Conductor : public QGraphicsObject
 			/// Define whether and how the conductor should be highlighted
 		Highlight must_highlight_;
 		bool m_valid;
+			/// Null once its terminal is gone: a step that is undone and
+			/// then dropped can delete a symbol before the wires it added
+		QPointer<Terminal> m_terminal1_alive;
+		QPointer<Terminal> m_terminal2_alive;
 		bool m_freeze_label = false;
 			/// Made by AutoConnect: removed again when its ends leave the line
 		bool m_automatic = false;

@@ -21,15 +21,25 @@
 #include "../diagram.h"
 #include "../diagramevent/diagrameventaddelement.h"
 #include "../duplicatelabels.h"
+#include "../factory/elementfactory.h"
 #include "../qetgraphicsitem/element.h"
 #include "../qetgraphicsitem/structureboxitem.h"
 #include "../qetinformation.h"
 #include "../qetproject.h"
+#include "../undocommand/addgraphicsobjectcommand.h"
 #include "../undocommand/linkelementcommand.h"
 
+#include <QCursor>
 #include <QDomDocument>
+#include <QGraphicsView>
+#include <QMessageBox>
+#include <QPushButton>
 #include <QRegularExpression>
+#include <QSettings>
+#include <QTimer>
 #include <QUuid>
+
+#include <memory>
 
 namespace DeviceTypePlacement
 {
@@ -102,6 +112,13 @@ namespace DeviceTypePlacement
 			for (const QDomElement &t : terminals)
 				names << pins.at(distinct.indexOf(t.attribute(QStringLiteral("name"))));
 			return names;
+		}
+
+			/// Where the mouse is on @p diagram's first view; the origin without one
+		QPointF mouseOn(Diagram *diagram)
+		{
+			QGraphicsView *view = diagram->views().value(0);
+			return view ? view->mapToScene(view->mapFromGlobal(QCursor::pos())) : QPointF();
 		}
 
 		void setKinds(QDomDocument &document, QDomElement &definition, const QString &type,
@@ -308,5 +325,151 @@ namespace DeviceTypePlacement
 			finish(placed, device, part, way, undo);
 		});
 		return event;
+	}
+
+	/**
+		@return the parts of @p device not drawn yet which can be placed
+		here: a symbol of theirs is in the project. Not the PLC points.
+	*/
+	QList<int> freeParts(const DeviceTypeCheck::Device &device)
+	{
+		QList<int> parts;
+		if (!device.known()) return parts;
+		for (int part : device.missing)
+			if (!placeableWays(device, part).isEmpty()) parts << part;
+		return parts;
+	}
+
+	/**
+		@brief placeSideBySide
+		Places the free parts of @p device in a row to the right of its
+		head, on its folio, each in its first way, as one undoable step:
+		to be moved where they belong.
+		@return the symbols placed
+	*/
+	QList<Element *> placeSideBySide(const DeviceTypeCheck::Device &device)
+	{
+		QList<Element *> placed;
+		Element *head = headOf(device);
+		Diagram *diagram = head ? head->diagram() : nullptr;
+		if (!diagram || diagram->isReadOnly()) return placed;
+		const QList<int> parts = freeParts(device);
+		if (parts.isEmpty()) return placed;
+
+		//: %1 is the device's label, such as "-K1"
+		auto *undo = new QUndoCommand(QObject::tr("Place the parts of %1").arg(device.label));
+		qreal left = head->sceneBoundingRect().right() + 2 * Diagram::xGrid;
+		for (int part : parts) {
+			const int way = placeableWays(device, part).first();
+			const ElementsLocation location = symbolFor(device, part, way);
+			if (!location.exist()) continue;
+			int state = 0;
+			Element *element = ElementFactory::Instance()->createElement(location, nullptr, &state);
+			if (state || !element) {
+				delete element;
+				continue;
+			}
+			const QPointF pos = Diagram::snapToGrid(QPointF(left - element->boundingRect().left(),
+															head->pos().y()));
+			diagram->addItem(element);
+			element->setPos(pos);
+			new AddGraphicsObjectCommand(element, diagram, pos, undo);
+			finish(element, device, part, way, undo);
+			left = element->sceneBoundingRect().right() + 2 * Diagram::xGrid;
+			placed << element;
+		}
+		if (placed.isEmpty()) {
+			delete undo;
+			return placed;
+		}
+		diagram->undoStack().push(undo);
+		for (Element *element : std::as_const(placed))
+			element->freezeNewAddedElement();
+		return placed;
+	}
+
+	/**
+		@brief placeOneByOne
+		The first free part of @p device follows the mouse on @p diagram;
+		once dropped, the next one, until none is left or the placing is
+		given up (Escape, a right click), which leaves the rest free.
+		@return false when there is nothing to place
+	*/
+	bool placeOneByOne(const DeviceTypeCheck::Device &device, Diagram *diagram, QPointF pos)
+	{
+		const QList<int> parts = freeParts(device);
+		QPointer<Element> head = headOf(device);
+		if (parts.isEmpty() || !head || !diagram || diagram->project() != projectOf(device))
+			return false;
+		const int part = parts.first();
+		const int way = placeableWays(device, part).first();
+		DiagramEventAddElement *event = begin(device, part, way, diagram, pos);
+		if (!event) return false;
+
+		auto dropped = std::make_shared<bool>(false);
+		event->placeOnce([device, part, way, dropped](Element *placed, QUndoCommand *undo) {
+			finish(placed, device, part, way, undo);
+			*dropped = true;
+		});
+		QPointer<Diagram> folio = diagram;
+		QObject::connect(event, &DiagramEventInterface::finish, diagram, [head, folio, dropped]() {
+			if (!*dropped) return;
+				//Once the placing just ended is gone
+			QTimer::singleShot(0, folio, [head, folio]() {
+				if (head && folio && !folio->eventInterface())
+					placeOneByOne(DeviceTypeCheck::checkDevice(head), folio, mouseOn(folio));
+			});
+		});
+		diagram->setEventInterface(event);
+		return true;
+	}
+
+	/**
+		@brief offerParts
+		@p head has just been placed: with askAfterHead() on and parts of
+		its device type not drawn yet, ask how to go on with them.
+	*/
+	void offerParts(Element *head, QWidget *parent)
+	{
+		if (!askAfterHead() || !head || !head->diagram()) return;
+		const DeviceTypeCheck::Device device = DeviceTypeCheck::checkDevice(head);
+		if (device.symbols.value(0) != head) return;
+		const QList<int> parts = freeParts(device);
+		if (parts.isEmpty()) return;
+
+		QStringList texts;
+		for (int part : parts)
+			texts << DeviceTypeCheck::partText(device.type.parts.at(part));
+		QMessageBox box(QMessageBox::Question,
+						//: %1 is the device's label, such as "-K1"
+						QObject::tr("Parts of %1").arg(device.label),
+						//: %1 is the device's label, %2 its parts, as "power contacts 1 2 3 4 5 6, NO 13 14"
+						QObject::tr("%1 has parts not drawn yet: %2.\nHow do you want to place them?")
+						.arg(device.label, texts.join(QStringLiteral(", "))),
+						QMessageBox::NoButton, parent);
+		QPushButton *one = box.addButton(QObject::tr("One by one"), QMessageBox::AcceptRole);
+		one->setToolTip(QObject::tr("Each part follows the mouse until a click; Escape stops, the rest stay free"));
+		QPushButton *all = box.addButton(QObject::tr("All side by side"), QMessageBox::AcceptRole);
+		all->setToolTip(QObject::tr("All parts to the right of the head, to be moved where they belong"));
+		QPushButton *later = box.addButton(QObject::tr("Not now"), QMessageBox::RejectRole);
+		later->setToolTip(QObject::tr("The parts stay free in the Device Navigator"));
+		box.setDefaultButton(one);
+		box.exec();
+		if (!head || !head->diagram()) return;
+		if (box.clickedButton() == one)
+			placeOneByOne(DeviceTypeCheck::checkDevice(head), head->diagram(), mouseOn(head->diagram()));
+		else if (box.clickedButton() == all)
+			placeSideBySide(DeviceTypeCheck::checkDevice(head));
+	}
+
+		/// Ask how to place a device's parts after its head; off by default
+	bool askAfterHead()
+	{
+		return QSettings().value(QStringLiteral("diagrameditor/ask_parts_after_head"), false).toBool();
+	}
+
+	void setAskAfterHead(bool ask)
+	{
+		QSettings().setValue(QStringLiteral("diagrameditor/ask_parts_after_head"), ask);
 	}
 }

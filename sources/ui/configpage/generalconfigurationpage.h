@@ -39,6 +39,7 @@ class GeneralConfigurationPage : public ConfigPage
 		virtual void applyConf() override;
 		virtual QString title() const override;
 		virtual QIcon icon() const override;
+		void focusMaterialsListSettings();
 	
 	private slots:
 		void on_m_font_pb_clicked();

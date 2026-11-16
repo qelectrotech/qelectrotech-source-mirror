@@ -22,58 +22,184 @@
   <property name="modal">
    <bool>true</bool>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout">
+  <layout class="QVBoxLayout" name="verticalLayout" stretch="1,0">
    <item>
-    <layout class="QHBoxLayout" name="m_search_layout">
-     <item>
-      <widget class="QLabel" name="m_search_label">
-       <property name="text">
-        <string>Search:</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLineEdit" name="m_search_edit">
-       <property name="toolTip">
-        <string extracomment="placeholder of the search field of the material list; several words narrow the results down (AND)">Every word typed must appear somewhere in the row</string>
-       </property>
-       <property name="clearButtonEnabled">
-        <bool>true</bool>
-       </property>
-       <property name="placeholderText">
-        <string extracomment="placeholder of the search field of the material list">Search all columns</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
-   <item>
-    <widget class="QTableView" name="m_table_view">
-     <property name="editTriggers">
-      <set>QAbstractItemView::NoEditTriggers</set>
+    <widget class="QSplitter" name="m_splitter">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
      </property>
-     <property name="alternatingRowColors">
-      <bool>true</bool>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
      </property>
-     <property name="selectionBehavior">
-      <enum>QAbstractItemView::SelectRows</enum>
-     </property>
-     <property name="selectionMode">
-      <enum>QAbstractItemView::SingleSelection</enum>
-     </property>
-     <property name="sortingEnabled">
-      <bool>true</bool>
-     </property>
-     <property name="wordWrap">
+     <property name="childrenCollapsible">
       <bool>false</bool>
      </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QLabel" name="m_count_label">
-     <property name="text">
-      <string>Entries: 0</string>
-     </property>
+     <widget class="QWidget" name="m_left_widget" native="true">
+      <layout class="QVBoxLayout" name="m_left_layout">
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>4</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <item>
+        <layout class="QFormLayout" name="m_search_form_layout">
+         <item row="0" column="0">
+          <widget class="QLabel" name="m_search_label">
+           <property name="text">
+            <string>Search:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QLineEdit" name="m_search_edit">
+           <property name="toolTip">
+            <string extracomment="placeholder of the search field of the material list; several words narrow the results down (AND)">Every word typed must appear somewhere in the row</string>
+           </property>
+           <property name="clearButtonEnabled">
+            <bool>true</bool>
+           </property>
+           <property name="placeholderText">
+            <string extracomment="placeholder of the search field of the material list">Search all columns</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="m_group_label">
+           <property name="text">
+            <string>Group:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QComboBox" name="m_group_combo">
+           <property name="toolTip">
+            <string>Group list entries by manufacturer, category, or show a flat list</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="m_filter_label">
+           <property name="text">
+            <string>Filter:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <layout class="QHBoxLayout" name="m_filter_row_layout">
+           <item>
+            <widget class="QComboBox" name="m_filter_field_combo">
+             <property name="toolTip">
+              <string>Disable filtering or choose a field to filter by</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QComboBox" name="m_filter_value_combo">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+               <horstretch>1</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="toolTip">
+              <string>Select the value to filter by</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QTreeWidget" name="m_tree_widget">
+         <property name="alternatingRowColors">
+          <bool>true</bool>
+         </property>
+         <property name="selectionMode">
+          <enum>QAbstractItemView::ExtendedSelection</enum>
+         </property>
+         <property name="uniformRowHeights">
+          <bool>true</bool>
+         </property>
+         <property name="sortingEnabled">
+          <bool>true</bool>
+         </property>
+         <column>
+          <property name="text">
+           <string>Article number</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Description</string>
+          </property>
+         </column>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="m_count_label">
+         <property name="text">
+          <string>Entries: 0</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="m_right_widget" native="true">
+      <layout class="QVBoxLayout" name="m_right_layout">
+       <property name="leftMargin">
+        <number>4</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QTableWidget" name="m_details_table">
+         <property name="alternatingRowColors">
+          <bool>true</bool>
+         </property>
+         <property name="selectionMode">
+          <enum>QAbstractItemView::ExtendedSelection</enum>
+         </property>
+         <property name="selectionBehavior">
+          <enum>QAbstractItemView::SelectRows</enum>
+         </property>
+         <attribute name="verticalHeaderVisible">
+          <bool>false</bool>
+         </attribute>
+         <column>
+          <property name="text">
+           <string>Field</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Value</string>
+          </property>
+         </column>
+        </widget>
+       </item>
+      </layout>
+     </widget>
     </widget>
    </item>
    <item>
@@ -81,10 +207,10 @@
      <item>
       <widget class="QPushButton" name="m_new_entry_btn">
        <property name="toolTip">
-        <string extracomment="button adding a new row to the material list file">Add a new item to the list</string>
+        <string extracomment="button adding a new row to the material list file">New — Add a new item to the list</string>
        </property>
        <property name="text">
-        <string>New entry</string>
+        <string/>
        </property>
       </widget>
      </item>
@@ -94,10 +220,66 @@
         <bool>false</bool>
        </property>
        <property name="toolTip">
-        <string extracomment="button editing the selected row in the material list file">Edit the selected item in the list</string>
+        <string extracomment="button editing the selected row in the material list file">Edit — Edit the selected item in the list</string>
        </property>
        <property name="text">
-        <string>Edit entry</string>
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="m_duplicate_entry_btn">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="toolTip">
+        <string extracomment="button duplicating the selected row in the material list file">Duplicate — Duplicate the selected item in the list</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="m_remove_entry_btn">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="toolTip">
+        <string extracomment="button removing the selected row(s) from the material list file">Remove — Remove selected item(s) from the list</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="m_import_btn">
+       <property name="toolTip">
+        <string>Import... — Import entries from a CSV file into the materials list</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="m_export_btn">
+       <property name="toolTip">
+        <string>Export... — Export all, visible, or selected entries to a CSV file</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="m_settings_btn">
+       <property name="toolTip">
+        <string>Settings — Open QElectroTech settings to configure the materials list file</string>
+       </property>
+       <property name="text">
+        <string/>
        </property>
       </widget>
      </item>
@@ -113,6 +295,51 @@
         </size>
        </property>
       </spacer>
+     </item>
+     <item>
+      <widget class="QWidget" name="m_edit_bar" native="true">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <layout class="QHBoxLayout" name="m_edit_bar_layout">
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+        <item>
+         <widget class="QLabel" name="m_edit_mode_label">
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="m_save_entry_btn">
+          <property name="text">
+           <string>Save</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="m_cancel_entry_btn">
+          <property name="text">
+           <string>Cancel</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
      </item>
      <item>
       <widget class="QDialogButtonBox" name="m_button_box">

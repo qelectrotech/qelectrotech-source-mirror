@@ -18,16 +18,23 @@
 #include <QtTest>
 #include <QApplication>
 #include <QDir>
+#include <QDirIterator>
 #include <QFile>
+#include <QFileInfo>
 #include <QIcon>
 #include <QMainWindow>
+#include <QMap>
 #include <QMenu>
 #include <QPainter>
 #include <QRegularExpression>
+#include <QScopeGuard>
+#include <QSet>
 #include <QStyleFactory>
 #include <QStyleOption>
 #include <QToolBar>
 #include <QToolButton>
+
+#include <algorithm>
 
 #include "inkcontrast.h"
 #include "qeticons.h"
@@ -49,6 +56,10 @@
 	the enabled one, which is what was reversed on macOS before (GitHub
 	#466, #870). And the icons the elements panel draws in its 50 px
 	slots must stay small.
+
+	Every icon also follows ico/README.md, "Drawing an icon": it comes
+	from the theme by name, it is drawn in the palette, and its outline
+	reads at 3:1 on the window of both themes.
 */
 class tst_qeticons : public QObject
 {
@@ -75,6 +86,9 @@ class tst_qeticons : public QObject
 		void colourSquareKeepsItsColour();
 		void panelProjectIconStaysSmall();
 		void configPageIconsComeAtPageSize();
+		void iconsLoadFromTheTheme();
+		void iconsUseThePalette();
+		void iconsReadOnBothWindows();
 };
 
 namespace {
@@ -183,6 +197,92 @@ namespace {
 			palette.setColor(group, QPalette::HighlightedText, highlighted_text);
 		}
 		return palette;
+	}
+
+	/// The colors an icon is drawn in (ico/README.md, "Drawing an icon"):
+	/// the ink, the red, green and blue that carry a meaning, and white.
+	const QStringList kPalette = {"#4d4d4d", "#db4b59", "#239d57",
+				      "#1892d2", "#ffffff"};
+
+	/// Icons that show a real wire, terminal or conductor in its IEC
+	/// 60445 color. The palette check accepts their colors; the contrast
+	/// check still applies.
+	const QStringList kWireIcons = {};
+
+	/// Files the program still loads directly, until they move into the
+	/// theme: Itsego's format painter and dimension icons.
+	const QStringList kLoadedFromFile = {"dimension-chain.svg",
+					     "dimension-linear.svg",
+					     "format-apply.svg",
+					     "format-copy.svg"};
+
+	/// Logos keep their own colors: WCAG 1.4.11 does not cover logotypes.
+	const QStringList kLogos = {"qelectrotech", "qet", "qt"};
+
+	/// Icons drawn before the palette, to be recolored or redrawn. Take
+	/// an icon off the list once it is on the palette.
+	const QStringList kOffPalette = {
+		// Shades of the palette's colors
+		"application-pdf", "document-new", "edit-clear-locationbar-ltr",
+		"project", "project-close", "project-new", "project-properties",
+		"run-dxf",
+		// Red where the palette's blue marks a direction or a target
+		"east", "hotspot", "north", "south", "west",
+		// Wires and terminals, to take their IEC 60445 colors and move to
+		// kWireIcons
+		"autoconnect", "conductor", "conductor-edit", "conductor-reset",
+		"conductor2", "ground", "neutral", "phase", "terminal",
+		"terminalstrip",
+		// Shaded art traced from the former PNG icons
+		"diagram_bg", "export-csv", "folder-only-this", "plasmagik",
+		"titleblock-bottom", "titleblock-right",
+		// Breeze art in full color
+		"document-open-recent", "image-x-eps",
+		"preferences-desktop-user", "printer", "settings", "user-busy",
+		"user-online"};
+
+	/// Icons of kOffPalette whose outline falls short of 3:1 on one of
+	/// the two windows. Take an icon off the list once it reads.
+	const QStringList kLowContrast = {
+		"diagram_bg", "folder-only-this",
+		"plasmagik", "preferences-desktop-user", "printer", "settings",
+		"terminalstrip", "user-busy", "user-online"};
+
+	/**
+		Share of an icon's outline drawn in a color that reaches 3:1
+		against window. The outline is the visible pixels next to a
+		transparent one: what sets the icon apart from the window. A
+		pixel counts by its own color, not by its blend with the window
+		at an antialiased edge, as WCAG measures colors. The 0.05 below
+		3:1 absorbs the renderer's rounding: the palette's red, green and
+		blue reach 3.00 to 3.03:1.
+	*/
+	double outlineShareAt3to1(const QImage &icon, const QColor &window)
+	{
+		const QImage image = icon.convertToFormat(QImage::Format_ARGB32);
+		auto visible = [&image](int x, int y) {
+			return x >= 0 && y >= 0
+				&& x < image.width() && y < image.height()
+				&& qAlpha(image.pixel(x, y)) > 128;
+		};
+		int outline = 0, reads = 0;
+		for (int y = 0; y < image.height(); ++y)
+			for (int x = 0; x < image.width(); ++x)
+			{
+				if (!visible(x, y))
+					continue;
+				if (visible(x - 1, y) && visible(x + 1, y)
+				    && visible(x, y - 1) && visible(x, y + 1))
+					continue;
+				const QRgb pixel = image.pixel(x, y);
+				const QColor drawn(qRed(pixel), qGreen(pixel),
+						   qBlue(pixel));
+				++outline;
+				if (QET::Palette::contrastRatio(drawn, window)
+				    >= kIconRatio - 0.05)
+					++reads;
+			}
+		return outline ? double(reads) / outline : 0.0;
 	}
 }
 
@@ -832,6 +932,177 @@ void tst_qeticons::hoverInkReadsWithAnyAccent()
 	const double contrast = QET::Palette::contrastRatio(ink, face);
 	QVERIFY2(contrast >= kIconRatio,
 	         qPrintable(QString("hover ink %1 reads %2:1 on the face %3").arg(ink.name()).arg(contrast).arg(face.name())));
+}
+
+/**
+	Every icon of the program comes from the theme, by name, so it has a
+	dark version and follows the palette. Only the app and file-type
+	icons (ico/app/), the flags (ico/flags/) and the color swatches
+	(ico/colors/) load from a file: they show their own colors. Checked
+	on the sources: an icon loaded from a file looks the same at run time.
+	Only literal paths are seen, not a path built at run time. The files
+	of kLoadedFromFile load from a file until they move to the theme.
+*/
+void tst_qeticons::iconsLoadFromTheTheme()
+{
+	const QString qeticons = QFINDTESTDATA("../../sources/qeticons.cpp");
+	QVERIFY2(!qeticons.isEmpty(), "sources/qeticons.cpp not found");
+	const QDir sources = QFileInfo(qeticons).dir();
+	static const QRegularExpression path(R"re(:/ico/([A-Za-z0-9_./@-]+))re");
+	const QStringList folders = {"app/", "colors/", "flags/"};
+	QStringList from_file;
+	QSet<QString> listed_seen;
+	QDirIterator it(sources.path(), {"*.cpp", "*.h", "*.ui"}, QDir::Files,
+			QDirIterator::Subdirectories);
+	while (it.hasNext())
+	{
+		QFile file(it.next());
+		QVERIFY2(file.open(QIODevice::ReadOnly), qPrintable(file.fileName()));
+		const QString text = QString::fromUtf8(file.readAll());
+		for (auto match = path.globalMatch(text); match.hasNext();)
+		{
+			const QString icon = match.next().captured(1);
+			if (kLoadedFromFile.contains(icon))
+				listed_seen.insert(icon);
+			// "themes": the theme's search path, set in QETApp
+			if (icon == "themes" || kLoadedFromFile.contains(icon)
+			    || std::any_of(folders.cbegin(), folders.cend(),
+					   [&icon](const QString &folder) {
+						   return icon.startsWith(folder); }))
+				continue;
+			from_file << sources.relativeFilePath(file.fileName()) + ": " + icon;
+		}
+	}
+	QStringList moved;
+	for (const QString &icon : kLoadedFromFile)
+		if (!listed_seen.contains(icon))
+			moved << icon;
+	QVERIFY2(from_file.isEmpty(),
+		 qPrintable("icons loaded from a file, not from the theme:\n"
+			    + from_file.join('\n')));
+	QVERIFY2(moved.isEmpty(),
+		 qPrintable("in the theme now, take off kLoadedFromFile: "
+			    + moved.join(", ")));
+}
+
+/**
+	Every SVG of the light theme is drawn in the palette: the ink, red,
+	green, blue and white, written as #rgb, #rrggbb or #rrggbbaa. A color
+	named in words or with rgb() is outside it. The dark theme's copies
+	follow from the light ones. Logos keep their colors, and a PNG in the
+	theme can only be a logo, as its colors cannot be read. The icons of
+	kOffPalette predate the palette; one that is fixed must leave the
+	list, so the list only shrinks.
+*/
+void tst_qeticons::iconsUseThePalette()
+{
+	static const QRegularExpression hex(
+		R"re((?<!url\()(?<!href=")#([0-9a-fA-F]{8}|[0-9a-fA-F]{6}|[0-9a-fA-F]{3})\b)re");
+	static const QRegularExpression word(
+		R"re(\b(?:fill|stroke|stop-color|flood-color|color)\s*[:=]\s*"?([a-zA-Z]+)\b)re");
+	static const QRegularExpression rgb(R"re(\brgba?\()re");
+	const QStringList keywords = {"none", "currentcolor", "inherit",
+				      "transparent", "url"};
+	QMap<QString, QStringList> off;
+	QStringList png;
+	QDirIterator it(":/ico/themes/qet", QDir::Files, QDirIterator::Subdirectories);
+	while (it.hasNext())
+	{
+		const QString file = it.next();
+		const QString name = QFileInfo(file).completeBaseName();
+		if (kLogos.contains(name) || kWireIcons.contains(name))
+			continue;
+		if (file.endsWith(".png"))
+		{
+			png << file;
+			continue;
+		}
+		if (!file.endsWith(".svg"))
+			continue;
+		QFile svg(file);
+		QVERIFY2(svg.open(QIODevice::ReadOnly), qPrintable(file));
+		const QString text = QString::fromUtf8(svg.readAll());
+		QStringList colors;
+		for (auto match = hex.globalMatch(text); match.hasNext();)
+		{
+			QString color = match.next().captured(1).toLower().left(6);
+			if (color.size() == 3)
+				color = QString(color[0]) + color[0] + color[1] + color[1]
+					+ color[2] + color[2];
+			colors << '#' + color;
+		}
+		for (auto match = word.globalMatch(text); match.hasNext();)
+			colors << match.next().captured(1).toLower();
+		if (rgb.match(text).hasMatch())
+			colors << "rgb()";
+		for (const QString &color : std::as_const(colors))
+			if (!kPalette.contains(color) && !keywords.contains(color)
+			    && !off[name].contains(color))
+				off[name] << color;
+		if (off[name].isEmpty())
+			off.remove(name);
+	}
+	QStringList unlisted, fixed;
+	for (auto i = off.cbegin(); i != off.cend(); ++i)
+		if (!kOffPalette.contains(i.key()))
+			unlisted << i.key() + ": " + i.value().join(' ');
+	for (const QString &name : kOffPalette)
+		if (!off.contains(name))
+			fixed << name;
+	QVERIFY2(png.isEmpty(), qPrintable("PNG icons in the theme:\n" + png.join('\n')));
+	QVERIFY2(unlisted.isEmpty(),
+		 qPrintable("colors outside the palette:\n" + unlisted.join('\n')));
+	QVERIFY2(fixed.isEmpty(),
+		 qPrintable("on the palette now, take off kOffPalette: "
+			    + fixed.join(", ")));
+}
+
+/**
+	WCAG 2.2, success criterion 1.4.11, asks 3:1 against the adjacent
+	color for the parts of a graphic needed to recognize it. For an icon
+	on a toolbar that is its outline against the window. At 24 px, at
+	least half of each icon's outline must reach 3:1 on the window of
+	each theme. Logos are exempt; the icons of kLowContrast are listed
+	until they are fixed, and a fixed one must leave the list.
+*/
+void tst_qeticons::iconsReadOnBothWindows()
+{
+	const QList<QPair<QString, QColor>> themes = {
+		{"qet", QET::Palette::fusionLight().color(QPalette::Active,
+							  QPalette::Window)},
+		{"qet-dark", QET::Palette::fusionDark().color(QPalette::Active,
+							      QPalette::Window)}};
+	const auto light_again = qScopeGuard([] { QIcon::setThemeName("qet"); });
+	QSet<QString> low;
+	QStringList unlisted;
+	const QStringList names = iconNames("qet");
+	for (const auto &[theme, window] : themes)
+	{
+		QIcon::setThemeName(theme);
+		for (const QString &name : names)
+		{
+			if (kLogos.contains(name))
+				continue;
+				// 24 by 24 pixels whatever the screen's pixel ratio
+			const QImage image = QIcon::fromTheme(name)
+				.pixmap(QSize(24, 24), 1.0).toImage();
+			QVERIFY2(!image.isNull(), qPrintable(name));
+			const double share = outlineShareAt3to1(image, window);
+			if (share >= 0.5)
+				continue;
+			low.insert(name);
+			if (!kLowContrast.contains(name))
+				unlisted << QString("%1 in %2: %3% of the outline reads at 3:1")
+					    .arg(name, theme).arg(qRound(share * 100));
+		}
+	}
+	QStringList fixed;
+	for (const QString &name : kLowContrast)
+		if (!low.contains(name))
+			fixed << name;
+	QVERIFY2(unlisted.isEmpty(), qPrintable(unlisted.join('\n')));
+	QVERIFY2(fixed.isEmpty(),
+		 qPrintable("reads at 3:1 now, take off kLowContrast: " + fixed.join(", ")));
 }
 
 int main(int argc, char **argv)
