@@ -3088,10 +3088,10 @@ void Diagram::addItem(QGraphicsItem *item)
 			m_project->dataBase()->addConductor(conductor);
 				//The function of this wire can be what chains the folio
 				//reports it ends on
-			connect(conductor, &Conductor::propertiesChange,
+			connect(conductor, &Conductor::functionChanged,
 					m_project, &QETProject::reportKeySourceChanged,
 					Qt::UniqueConnection);
-			m_project->reportKeySourceChanged();
+			m_project->reportKeySourceChanged(conductor);
 			break;
 		}
 		case QetShapeItem::Type:
@@ -3139,7 +3139,7 @@ void Diagram::removeItem(QGraphicsItem *item)
 			refreshTerminalStrips();
 			m_project->dataBase()->removeConductor(conductor);
 				//The wire a folio report read its key from may be this one
-			m_project->reportKeySourceChanged();
+			m_project->reportKeySourceChanged(conductor);
 			break;
 		}
 		case QetShapeItem::Type:

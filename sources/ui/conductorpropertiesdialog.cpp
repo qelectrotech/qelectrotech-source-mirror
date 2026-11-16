@@ -74,6 +74,13 @@ void ConductorPropertiesDialog::PropertiesDialog(Conductor *conductor,
 	if (cpd.exec() == QDialog::Rejected
 			|| cpd.properties() == conductor->properties()) return;
 
+		//A name written over a potential stays on the folio it is written
+		//on: the folio report links of the potential go before anything is
+		//written, and the chaining makes them again with the new name
+	if (cpd.properties().m_function != conductor->properties().m_function) {
+		conductor->dissolveReportLinksInPotential();
+	}
+
 	QVariant old_value, new_value;
 	old_value.setValue(conductor->properties());
 	new_value.setValue(cpd.properties());

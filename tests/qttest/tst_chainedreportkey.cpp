@@ -64,6 +64,16 @@ class tst_chainedreportkey : public QObject
 		return qMakePair(go, come);
 	}
 
+	/// The symbol with this uuid
+	static Element *elementByUuid(QETProject &project, const QString &uuid)
+	{
+		for (Diagram *diagram : project.diagrams())
+			for (Element *element : diagram->elements())
+				if (element->uuid().toString() == uuid)
+					return element;
+		return nullptr;
+	}
+
 	/// Give @p element the label the reports are chained by
 	void setLabel(Element *element, const QString &label)
 	{
@@ -225,6 +235,178 @@ class tst_chainedreportkey : public QObject
 			QVERIFY(pair.first->isFree());
 			QVERIFY(wireReport(pair.first, QStringLiteral("K1")));
 			QVERIFY(wireReport(pair.second, QStringLiteral("K1")));
+			QTest::qWait(50);
+			QVERIFY(!pair.first->isFree());
+			QCOMPARE(pair.first->linkedElements().value(0), pair.second);
+		}
+
+		/// A wire given another function takes its report's chain with it:
+		/// the link the two had does not describe the drawing any more and
+		/// is made again from the new value
+		void functionKeyChainsAgainWhenAFunctionChanges()
+		{
+			QETProject project(fixture());
+			const auto pair = reports(project);
+			QVERIFY(pair.first && pair.second);
+			QVERIFY(wireReport(pair.first, QStringLiteral("K1")));
+			Conductor *second_wire = wireReport(pair.second, QStringLiteral("K1"));
+			QVERIFY(second_wire);
+			project.setChainedReportsKey(QETProject::ReportLinkKey::Function);
+			project.setChainedReports(true);
+			QVERIFY(!pair.first->isFree());
+
+			ConductorProperties properties = second_wire->properties();
+			properties.m_function = QStringLiteral("K2");
+			second_wire->setProperties(properties);
+			QTest::qWait(50);
+			QVERIFY(pair.first->isFree());
+			QVERIFY(pair.second->isFree());
+
+				//... and back again: the chain is made anew
+			properties.m_function = QStringLiteral("K1");
+			second_wire->setProperties(properties);
+			QTest::qWait(50);
+			QVERIFY(!pair.first->isFree());
+			QCOMPARE(pair.first->linkedElements().value(0), pair.second);
+		}
+
+		/// The wire carries the chain: taken away, the link it held goes
+		void functionKeyDropsTheLinkWhenTheWireGoes()
+		{
+			QETProject project(fixture());
+			const auto pair = reports(project);
+			QVERIFY(pair.first && pair.second);
+			Conductor *first_wire = wireReport(pair.first, QStringLiteral("K1"));
+			QVERIFY(first_wire);
+			QVERIFY(wireReport(pair.second, QStringLiteral("K1")));
+			project.setChainedReportsKey(QETProject::ReportLinkKey::Function);
+			project.setChainedReports(true);
+			QVERIFY(!pair.first->isFree());
+
+				//The way the editor deletes a wire
+			pair.first->diagram()->removeItem(first_wire);
+			delete first_wire;
+			QTest::qWait(50);
+			QVERIFY(pair.first->isFree());
+			QVERIFY(pair.second->isFree());
+		}
+
+		/// A name written over a potential stays on the folio it is
+		/// written on: the folio report link goes before the name is
+		/// written (the wires it joins need not carry the same name), and
+		/// the chaining looks for a link again afterwards
+		void functionRenameStaysOnItsOwnFolio()
+		{
+			QETProject project(fixture());
+			const auto pair = reports(project);
+			QVERIFY(pair.first && pair.second);
+			Conductor *first_wire = wireReport(pair.first, QStringLiteral("K2"));
+			Conductor *second_wire = wireReport(pair.second, QStringLiteral("K2"));
+			QVERIFY(first_wire && second_wire);
+				//The user links the two by hand
+			pair.first->linkToElement(pair.second);
+			QVERIFY(!pair.first->isFree());
+			project.setChainedReportsKey(QETProject::ReportLinkKey::Function);
+			project.setChainedReports(true);
+
+				//What the conductor dialog does when the user ticks
+				//"apply to all conductors of this potential"
+			ConductorProperties properties = first_wire->properties();
+			properties.m_function = QStringLiteral("K3");
+			first_wire->setPropertyToPotential(properties);
+			QTest::qWait(50);
+
+			QCOMPARE(first_wire->properties().m_function, QStringLiteral("K3"));
+			QCOMPARE(second_wire->properties().m_function, QStringLiteral("K2"));
+			QVERIFY(pair.first->isFree());
+			QVERIFY(pair.second->isFree());
+		}
+
+		/// The same for a link the chaining made: a name written over a
+		/// potential stays on its folio whatever the link came from, and
+		/// the chaining makes the links again from the names
+		void functionRenameStaysOnItsOwnFolioWithAChainedLink()
+		{
+			QETProject project(fixture());
+			const auto pair = reports(project);
+			QVERIFY(pair.first && pair.second);
+			Conductor *first_wire = wireReport(pair.first, QStringLiteral("K2"));
+			Conductor *second_wire = wireReport(pair.second, QStringLiteral("K2"));
+			QVERIFY(first_wire && second_wire);
+			project.setChainedReportsKey(QETProject::ReportLinkKey::Function);
+			project.setChainedReports(true);
+			QVERIFY(!pair.first->isFree());
+
+			ConductorProperties properties = first_wire->properties();
+			properties.m_function = QStringLiteral("K3");
+			first_wire->setPropertyToPotential(properties);
+			QTest::qWait(50);
+
+			QCOMPARE(first_wire->properties().m_function, QStringLiteral("K3"));
+			QCOMPARE(second_wire->properties().m_function, QStringLiteral("K2"));
+			QVERIFY(pair.first->isFree());
+			QVERIFY(pair.second->isFree());
+		}
+
+		/// A report that takes the name of a chain and sits between two
+		/// of its reports makes the chain go around it: the links of that
+		/// name are made again from the order of the folios
+		void functionRenameRearrangesTheChain()
+		{
+			QETProject project(QFINDTESTDATA("fixtures/chained_report_chain.qet"));
+			QCOMPARE(project.state(), QETProject::Ok);
+				//The report going to the next folio (folio 1) and the two
+				//coming from the previous one (folios 2 and 3)
+			Element *go = elementByUuid(project,
+					QStringLiteral("{139e1748-290b-4bfa-aa31-2d092f4aeb14}"));
+			Element *near = elementByUuid(project,
+					QStringLiteral("{f85d9f0e-0068-460e-a241-8da7ef1ae4e9}"));
+			Element *far = elementByUuid(project,
+					QStringLiteral("{c0a1e1de-0002-4000-8000-000000000001}"));
+			QVERIFY(go && near && far);
+
+			QVERIFY(wireReport(go, QStringLiteral("K1")));
+			Conductor *middle_wire = wireReport(near, QStringLiteral("K2"));
+			QVERIFY(middle_wire);
+			QVERIFY(wireReport(far, QStringLiteral("K1")));
+			project.setChainedReportsKey(QETProject::ReportLinkKey::Function);
+			project.setChainedReports(true);
+
+				//The chain runs from folio 1 to folio 3: the report in
+				//between is called something else
+			QVERIFY(!go->isFree());
+			QCOMPARE(go->linkedElements().value(0), far);
+			QVERIFY(near->isFree());
+
+				//The report in between takes the name of the chain
+			ConductorProperties properties = middle_wire->properties();
+			properties.m_function = QStringLiteral("K1");
+			middle_wire->setPropertyToPotential(properties);
+			QTest::qWait(50);
+
+				//The chain goes around it now: folio 1 to folio 2
+			QCOMPARE(go->linkedElements().value(0), near);
+			QVERIFY(far->isFree());
+		}
+
+		/// The wire's function is not what holds a chain together when the
+		/// project chains by the label: changing it leaves the link alone
+		void labelKeyKeepsTheLinkWhenAFunctionChanges()
+		{
+			QETProject project(fixture());
+			const auto pair = reports(project);
+			QVERIFY(pair.first && pair.second);
+			setLabel(pair.first, QStringLiteral("K1"));
+			setLabel(pair.second, QStringLiteral("K1"));
+			Conductor *first_wire = wireReport(pair.first, QStringLiteral("L1"));
+			QVERIFY(first_wire);
+			project.setChainedReportsKey(QETProject::ReportLinkKey::Label);
+			project.setChainedReports(true);
+			QVERIFY(!pair.first->isFree());
+
+			ConductorProperties properties = first_wire->properties();
+			properties.m_function = QStringLiteral("L2");
+			first_wire->setProperties(properties);
 			QTest::qWait(50);
 			QVERIFY(!pair.first->isFree());
 			QCOMPARE(pair.first->linkedElements().value(0), pair.second);

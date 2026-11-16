@@ -367,6 +367,15 @@ QUndoCommand *ConductorPropertiesEditorWidget::associatedUndo() const
 		if (c)
 			selected << c.data();
 
+		//A name written over a potential stays on the folio it is written
+		//on: the folio report links of the potential go before anything is
+		//written, and the chaining makes them again with the new name
+	if (edited.m_function != m_shown.m_function) {
+		for (Conductor *conductor : std::as_const(selected)) {
+			conductor->dissolveReportLinksInPotential();
+		}
+	}
+
 	QSet<Conductor *> function_separated;
 	const QList<Conductor *> targets = ConductorMultiEdit::targets(
 		selected, m_apply_all_cb && m_apply_all_cb->isChecked(),

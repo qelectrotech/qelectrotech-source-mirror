@@ -1967,9 +1967,46 @@ QPainterPath Conductor::path() const
 	to other conductor in the same potential,
 	the other values of property stay unmodified
 */
+/**
+	@brief Conductor::dissolveReportLinksInPotential
+	Take away every folio report link of the potential this wire is in.
+	A name written over a potential (Conductor::setPropertyToPotential)
+	stays on the folio it is written on: the wires a folio report joins
+	are one wire, but they need not carry the same name, and the chaining
+	makes the links again with the new name once the name is written
+	(QETProject::reportKeySourceChanged).
+*/
+void Conductor::dissolveReportLinksInPotential()
+{
+	QSet<Conductor *> potential = relatedPotentialConductors();
+	potential.insert(this);
+	QSet<Element *> done;
+	for (Conductor *conductor : std::as_const(potential))
+	{
+		for (Terminal *terminal : {conductor->terminal1, conductor->terminal2})
+		{
+			Element *elmt = terminal ? terminal->parentElement() : nullptr;
+			if (!elmt || done.contains(elmt)) {
+				continue;
+			}
+			done.insert(elmt);
+			if ((elmt->linkType() & ElementData::AllReport) && !elmt->isFree()) {
+				elmt->unlinkAllElements();
+			}
+		}
+	}
+}
+
 void Conductor::setPropertyToPotential(const ConductorProperties &property,
 					   bool only_text)
 {
+		//A name written over a potential stays on the folio it is written
+		//on: the folio report links of the potential go first, and the
+		//chaining makes them again with the new name
+		//(QETProject::reportKeySourceChanged)
+	if (property.m_function != properties().m_function) {
+		dissolveReportLinksInPotential();
+	}
 	setProperties(property);
 	QSet <Conductor *> potential_list = relatedPotentialConductors();
 
@@ -2011,6 +2048,7 @@ void Conductor::setProperties(const ConductorProperties &property)
 		//The run this conductor was part of, which may part now
 	const QList<Conductor *> old_run = cornerChain();
 	QString formula = m_properties.m_formula;
+	const QString function = m_properties.m_function;
 	m_properties = property;
 
 	if (!m_properties.m_formula.isEmpty())
@@ -2050,6 +2088,9 @@ void Conductor::setProperties(const ConductorProperties &property)
 	}
 
 	storeProperties();
+	if (m_properties.m_function != function) {
+		emit functionChanged(this);
+	}
 	emit propertiesChange();
 }
 

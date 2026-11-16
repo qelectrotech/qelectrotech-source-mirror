@@ -72,6 +72,7 @@ class QTimer;
 class TerminalStrip;
 class Cable;
 class Bridge;
+class Conductor;
 
 
 #include <QColor>
@@ -127,7 +128,7 @@ class QETProject : public QObject
 
 		void autoLinkReportElements();
 		void scheduleAutoLink();
-		void reportKeySourceChanged();
+		void reportKeySourceChanged(Conductor *conductor);
 
 	private:
 		QETProject(const QETProject &);

@@ -6615,15 +6615,69 @@ void QETProject::scheduleAutoLink()
 
 /**
 	@brief QETProject::reportKeySourceChanged
-	A wire of a folio report was added, taken away, or its function
-	was edited. When the function of that wire is what chains this
-	project (ReportLinkKey::Function), the chains are looked over again.
+	A wire of a folio report was added to its terminal, taken off it, or
+	the function of a wire took another value. When that function is what
+	chains this project (ReportLinkKey::Function) it is what holds a chain
+	together: a link whose two reports do not share it any more does not
+	describe the drawing and is made again -- what a changed label does in
+	a project chaining by the label (ChangeElementInformationCommand).
+	Only the reports @p conductor ends on are looked at: a link elsewhere
+	in the project is nobody's to take away. The chains of the names they
+	are in are made again: a report that took another name may sit between
+	two that were chained, and the chain has to go around it -- so every
+	link of those names goes, whoever made it.
+	@param conductor the wire that changed; every report is looked at when
+	it is null
 */
-void QETProject::reportKeySourceChanged()
+void QETProject::reportKeySourceChanged(Conductor *conductor)
 {
-	if (m_chained_reports && m_chained_reports_key == ReportLinkKey::Function) {
-		scheduleAutoLink();
+	if (!m_chained_reports || m_chained_reports_key != ReportLinkKey::Function) {
+		return;
 	}
+	QList<ReportElement *> touched;
+	if (conductor) {
+		for (Terminal *terminal : {conductor->terminal1, conductor->terminal2}) {
+			ReportElement *report = terminal
+					? dynamic_cast<ReportElement*>(
+						  terminal->parentElement()) : nullptr;
+			if (report && !touched.contains(report)) {
+				touched << report;
+			}
+		}
+	} else {
+		ElementProvider ep(this);
+		for (const QPointer<Element> &elmt_ptr : ep.find(ElementData::AllReport)) {
+			ReportElement *report = dynamic_cast<ReportElement*>(elmt_ptr.data());
+			if (report) {
+				touched << report;
+			}
+		}
+	}
+		//The names the chains are made again for: what these reports are
+		//called now, and what the partner of a linked one is called --
+		//the name it left
+	QSet<QString> names;
+	for (ReportElement *report : std::as_const(touched)) {
+		names << reportMatchKey(report, m_chained_reports_key);
+		ReportElement *partner = dynamic_cast<ReportElement*>(
+				report->linkedElements().value(0));
+		if (partner) {
+			names << reportMatchKey(partner, m_chained_reports_key);
+		}
+	}
+	names.remove(QString());
+	if (names.isEmpty()) {
+		return;
+	}
+	ElementProvider ep(this);
+	for (const QPointer<Element> &elmt_ptr : ep.find(ElementData::AllReport)) {
+		ReportElement *report = dynamic_cast<ReportElement*>(elmt_ptr.data());
+		if (report && !report->isFree()
+				&& names.contains(reportMatchKey(report, m_chained_reports_key))) {
+			report->unlinkAllElements();
+		}
+	}
+	scheduleAutoLink();
 }
 
 /**
