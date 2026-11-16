@@ -205,6 +205,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/ui/devicetypesdialog.cpp
   ${QET_DIR}/sources/ui/devicetypechooser.h
   ${QET_DIR}/sources/ui/devicetypechooser.cpp
+  ${QET_DIR}/sources/ui/placelabelpartdialog.h
+  ${QET_DIR}/sources/ui/placelabelpartdialog.cpp
   ${QET_DIR}/sources/ui/devicetypechangedialog.h
   ${QET_DIR}/sources/ui/devicetypechangedialog.cpp
   ${QET_DIR}/sources/ui/devicetypecheckdialog.cpp
