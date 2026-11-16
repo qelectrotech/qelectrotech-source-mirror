@@ -11,6 +11,7 @@ guide and this file disagree, the guide wins, so read it fresh for the task:
 - C++ code: [Code style](https://github.com/qelectrotech/qelectrotech-source-mirror/wiki/code_style)
 - Building: [Building from Source](https://github.com/qelectrotech/qelectrotech-source-mirror/wiki/building)
 - Testing: [CONTRIBUTING.md](CONTRIBUTING.md)
+- Icons: [Drawing an icon](ico/README.md#drawing-an-icon)
 
 ## The person decides
 

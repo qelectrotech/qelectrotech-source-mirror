@@ -353,6 +353,7 @@ class QETApp : public QObject
 		void openTitleBlockTemplate(const QString &);
 		void openTitleBlockTemplateFiles(const QStringList &);
 		void configureQET();
+		void configureQETMaterialsList();
 		void customizeQET(int tab = 0);
 			/// Save the settings to a file (discussion #610)
 		void exportConfiguration();
@@ -390,6 +391,7 @@ class QETApp : public QObject
 			const QList<QETTitleBlockTemplateEditor *> &
 		);
 		template <class T> void addWindowsListToMenu(QMenu *, const QList<T *> &);
+		void openConfigDialog(bool focus_materials_list);
 		static int projectIdFromString(const QString &);
 		static QETProject *projectFromString(const QString &);
 };

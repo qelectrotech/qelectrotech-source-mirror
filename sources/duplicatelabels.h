@@ -117,8 +117,9 @@ namespace DuplicateLabels
 						const autonum::FormulaContext& folio);
 
 	// Where a symbol is, as an IEC 81346 prefix such as "=P1+UV1": the
-	// element's own plant and location, else its folio's -- what the label
-	// formulas %M and %LM show. One label names one device per place.
+	// element's own plant and location, else the structure box it is in,
+	// else its folio's -- the place StructureBoxItem::placeOf() gives it.
+	// One label names one device per place.
 	QString place(Element* element);
 
 	Diagram* diagramOf(const QGraphicsObject* item);

@@ -76,6 +76,18 @@ struct MaterialListData
 class MaterialList
 {
 	public:
+		enum class ImportConflictPolicy {
+			SkipExisting,
+			UpdateExisting,
+			KeepBoth
+		};
+
+		struct ImportResult {
+			int added = 0;
+			int updated = 0;
+			int skipped = 0;
+		};
+
 		//Settings
 		static QString settingsKey();
 		static QString configuredPath();
@@ -107,6 +119,19 @@ class MaterialList
 								 const MaterialRecord &original,
 								 const MaterialRecord &updated,
 								 QString *error = nullptr);
+		static bool removeRecords(const QString &path,
+								  const QList<int> &rows,
+								  const QList<MaterialRecord> &originals,
+								  QString *error = nullptr);
+		static QString nextDuplicateDesignation(const QList<MaterialRecord> &records,
+												const QString &designation);
+		static int countImportConflicts(const MaterialListData &existing,
+										const MaterialListData &incoming);
+		static bool importFromFile(const QString &target_path,
+								   const QString &source_path,
+								   ImportConflictPolicy policy,
+								   ImportResult *result = nullptr,
+								   QString *error = nullptr);
 		static bool createFile(const QString &path, QString *error = nullptr);
 		static bool isEmptyFile(const QString &path);
 

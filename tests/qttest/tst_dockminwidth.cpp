@@ -29,6 +29,7 @@
 #include <QLineEdit>
 #include <QGridLayout>
 #include <QGroupBox>
+#include <QPointer>
 #include <QRadioButton>
 #include <QAbstractScrollArea>
 #include <QScrollArea>
@@ -38,16 +39,17 @@
 #include <QTemporaryDir>
 #include <QTreeWidget>
 #include <QVBoxLayout>
-#include <QWidgetItem>
+#include <QWidgetItemV2>
 
 /**
-	A layout item that, as Qt's own, asks its widget for its size hint
-	when measured, and notes whether it was deleted meanwhile
+	A layout item of the kind Qt's layouts make, which its widget knows
+	of, that asks its widget for its size hint when measured, and notes
+	whether it was deleted meanwhile
 */
-class MeasuredItem : public QWidgetItem
+class MeasuredItem : public QWidgetItemV2
 {
 	public:
-		using QWidgetItem::QWidgetItem;
+		using QWidgetItemV2::QWidgetItemV2;
 		~MeasuredItem() override { s_deleted = true; }
 		QSize sizeHint() const override
 		{
@@ -383,6 +385,40 @@ class tst_dockminwidth : public QObject
 		}
 
 		/**
+			A check box destroyed right after its text went beside it,
+			before the event loop runs again, still has the layout item
+			it was measured from deleted: the item is not leaked. It is
+			deleted while the check box is destroyed, not later, when
+			the check box would be gone.
+		*/
+		void checkBoxDestroyedFirstStillFreesItsItem()
+		{
+			QETDiagramEditor *editor = QetAppTest::editor();
+			const QString long_text = QStringLiteral("A text far too long to stand on one line of a narrow panel");
+			auto *dock = new QDockWidget(QStringLiteral("Test"), editor);
+			auto *page = new QWidget(dock);
+			auto *page_layout = new QVBoxLayout(page);
+			dock->setWidget(page);
+			editor->addDockWidget(Qt::RightDockWidgetArea, dock);
+			dock->show();
+			QTest::qWait(100);
+
+			auto *box = new QCheckBox(long_text, page);
+			auto *item = new MeasuredItem(box);
+			page_layout->addItem(item);
+			QVERIFY(!box->testAttribute(Qt::WA_WState_Polished));
+			MeasuredItem::s_deleted = false;
+			item->sizeHint();
+			QVERIFY(box->text().isEmpty());
+			QVERIFY(!MeasuredItem::s_deleted);
+			delete box;
+			QVERIFY(MeasuredItem::s_deleted);
+
+			editor->removeDockWidget(dock);
+			delete dock;
+		}
+
+		/**
 			A group's grid of check boxes first shown in a dock too narrow
 			for it, one half below the other, goes back side by side when
 			the dock widens: its check boxes are wrapped before the grid
@@ -444,6 +480,81 @@ class tst_dockminwidth : public QObject
 			editor->resizeDocks({dock}, {900}, Qt::Horizontal);
 			QTest::qWait(300);
 			QCOMPARE(column(), 2);
+
+			editor->removeDockWidget(dock);
+			delete dock;
+		}
+
+		/**
+			A wrapped check box destroyed on its own takes its text with
+			it: no label is left showing the text of a check box that is
+			gone, and a click on that text meanwhile reaches nothing.
+		*/
+		void checkBoxDestroyedTakesItsText()
+		{
+			QETDiagramEditor *editor = QetAppTest::editor();
+			const QString long_text = QStringLiteral("A text far too long to stand on one line of a narrow panel");
+			auto *dock = new QDockWidget(QStringLiteral("Test"), editor);
+			auto *page = new QWidget(dock);
+			auto *page_layout = new QVBoxLayout(page);
+			dock->setWidget(page);
+			editor->addDockWidget(Qt::RightDockWidgetArea, dock);
+			dock->show();
+			QTest::qWait(100);
+
+			auto *box = new QCheckBox(long_text, page);
+			page_layout->addWidget(box);
+			box->show();
+			QTRY_VERIFY(box->text().isEmpty());
+			QPointer<QLabel> box_text;
+			for (QLabel *l : page->findChildren<QLabel *>())
+				if (l->buddy() == box)
+					box_text = l;
+			QVERIFY(box_text);
+			QCOMPARE(box_text->text(), long_text);
+
+			delete box;
+			QTest::mouseClick(box_text, Qt::LeftButton);
+			QTRY_VERIFY(box_text.isNull());
+			QCOMPARE(page_layout->count(), 0);
+
+			editor->removeDockWidget(dock);
+			delete dock;
+		}
+
+		/**
+			A click on a check box's text whose slot deletes the row the
+			text stands in, as a panel that rebuilds its page would, ends
+			there: nothing reads the deleted text afterwards.
+		*/
+		void textClickThatDeletesItsRowIsSafe()
+		{
+			QETDiagramEditor *editor = QetAppTest::editor();
+			const QString long_text = QStringLiteral("A text far too long to stand on one line of a narrow panel");
+			auto *dock = new QDockWidget(QStringLiteral("Test"), editor);
+			auto *page = new QWidget(dock);
+			auto *page_layout = new QVBoxLayout(page);
+			dock->setWidget(page);
+			editor->addDockWidget(Qt::RightDockWidgetArea, dock);
+			dock->show();
+			QTest::qWait(100);
+
+			auto *box = new QCheckBox(long_text, page);
+			page_layout->addWidget(box);
+			box->show();
+			QTRY_VERIFY(box->text().isEmpty());
+			QPointer<QLabel> box_text;
+			for (QLabel *l : page->findChildren<QLabel *>())
+				if (l->buddy() == box)
+					box_text = l;
+			QVERIFY(box_text);
+			QWidget *row = box_text->parentWidget();
+			QObject::connect(box, &QAbstractButton::clicked, page,
+					 [row] { delete row; });
+
+			QTest::mouseClick(box_text, Qt::LeftButton);
+			QVERIFY(box_text.isNull());
+			QCOMPARE(page_layout->count(), 0);
 
 			editor->removeDockWidget(dock);
 			delete dock;

@@ -40,6 +40,8 @@
 #include <QTabWidget>
 #include <QTreeView>
 
+#include <memory>
+
 namespace {
 	const char *const handled = "qetDockFitHandled";
 
@@ -88,13 +90,22 @@ namespace {
 			}
 			void mouseReleaseEvent(QMouseEvent *event) override
 			{
-				if (event->button() == Qt::LeftButton && isEnabled()
-				    && rect().contains(event->position().toPoint()))
+				if (m_button && event->button() == Qt::LeftButton
+				    && isEnabled()
+				    && rect().contains(event->position().toPoint())) {
+						//The click may delete this text, as a panel
+						//that rebuilds its page does: stop here then
+					const QPointer<ButtonText> self(this);
 					m_button->click();
+					if (!self)
+						return;
+				}
 				QLabel::mouseReleaseEvent(event);
 			}
 		private:
-			QAbstractButton *m_button;
+				/// Null once the button is destroyed, until this
+				/// text goes with its row
+			QPointer<QAbstractButton> m_button;
 	};
 
 	/// @return true when @a widget lies inside a dock
@@ -135,11 +146,18 @@ namespace {
 			//The layout may be measuring the button right now, from the
 			//item it is replaced with: a button not yet polished is
 			//polished from its sizeHint(). That item is deleted once the
-			//measure is over, unless the button goes first: deleting the
-			//item would then read the deleted button
-		QLayoutItem *item = layout->replaceWidget(button, row);
-		QMetaObject::invokeMethod(button, [item] { delete item; },
-					  Qt::QueuedConnection);
+			//measure is over: the lambda keeps it in a unique_ptr, which
+			//deletes it when the call runs, or when Qt drops the call
+			//because the button was destroyed first. The call must stay
+			//on the button: Qt drops it inside the button's destructor,
+			//while the button data that the item's destructor reads
+			//still exists. Queued on another object, the item could be
+			//deleted after that data is freed
+		std::unique_ptr<QLayoutItem> item(
+			layout->replaceWidget(button, row));
+		QMetaObject::invokeMethod(button,
+			[item = std::move(item)]() mutable { item.reset(); },
+			Qt::QueuedConnection);
 			//In the row, not shown yet, the button stays hidden only if
 			//it was hidden with hide() or setVisible(false). One that
 			//waits for Qt to show it, as one just added to a panel on
@@ -151,6 +169,10 @@ namespace {
 		row_layout->addWidget(button, 0, Qt::AlignTop);
 		row_layout->addWidget(text, 1);
 		row->setProperty(handled, true);
+			//A button destroyed on its own takes its row and text with
+			//it, so no text is left beside an empty space
+		QObject::connect(button, &QObject::destroyed,
+				 row, &QObject::deleteLater);
 	}
 
 	/**
