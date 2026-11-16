@@ -8821,6 +8821,26 @@ que vous créez. entrées de texte et nombres sont
         <translation>Lorsque cette option est activée, les éléments de rapport (renvois de folio) avec le même label sont automatiquement chaînés d&apos;un folio à l&apos;autre. Les nouveaux projets l&apos;activeront automatiquement.</translation>
     </message>
     <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="717"/>
+        <source>Chain folio report elements by</source>
+        <translation type="unfinished">Chaîner les renvois de folio par</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="720"/>
+        <source>What two folio report elements must share to be chained together: the label each of them carries, or the function of the wire its terminal holds. A report without a value of its own is never chained. Newly created projects will start with this choice.</source>
+        <translation type="unfinished">Ce que deux renvois de folio doivent partager pour être chaînés : la désignation que chacun porte, ou la fonction du conducteur que sa borne tient. Un renvoi sans valeur propre n'est jamais chaîné. Les nouveaux projets commencent avec ce choix.</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="726"/>
+        <source>Their label</source>
+        <translation type="unfinished">leur désignation</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="733"/>
+        <source>The function of their conductor</source>
+        <translation type="unfinished">la fonction de leur conducteur</translation>
+    </message>
+    <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="24"/>
         <source>Appearance</source>
         <translation>Apparence</translation>
@@ -14005,6 +14025,30 @@ Donnez-leur une autre numérotation d&apos;abord.</numerusform>
         <source>Automatically chains folio report elements with the same label in a forward/backward sequence.</source>
         <comment>tooltip</comment>
         <translation>Chaîne automatiquement les éléments de renvoi de folio avec le même label dans une séquence avant/arrière.</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="331"/>
+        <source>Chain folio report elements by</source>
+        <comment>group box title</comment>
+        <translation type="unfinished">Chaîner les renvois de folio par</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="332"/>
+        <source>What two folio report elements must share to be chained together: the label each of them carries, or the function of the wire its terminal holds. A report without a value of its own is never chained. Changing this dissolves the chains of this project and makes them again from the new key.</source>
+        <comment>tooltip</comment>
+        <translation type="unfinished">Ce que deux renvois de folio doivent partager pour être chaînés : la désignation que chacun porte, ou la fonction du conducteur que sa borne tient. Un renvoi sans valeur propre n'est jamais chaîné. Un changement défait les chaînes de ce projet et les refait avec la nouvelle clé.</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="337"/>
+        <source>Their label</source>
+        <comment>radio button label</comment>
+        <translation type="unfinished">leur désignation</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="338"/>
+        <source>The function of their conductor</source>
+        <comment>radio button label</comment>
+        <translation type="unfinished">la fonction de leur conducteur</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="148"/>
@@ -20539,6 +20583,12 @@ the translated name of this folder could not be read, so its folder name is disp
         <source>Edit the cross reference</source>
         <comment>edite the cross reference</comment>
         <translation>Éditer les référence croisé</translation>
+    </message>
+    <message>
+        <location filename="../sources/undocommand/reportlinkkeycommand.cpp" line="37"/>
+        <source>Change what chains folio report elements together</source>
+        <comment>undo caption</comment>
+        <translation type="unfinished">Changer ce qui chaîne les renvois de folio ensemble</translation>
     </message>
     <message>
         <location filename="../sources/elementsmover.cpp" line="106"/>

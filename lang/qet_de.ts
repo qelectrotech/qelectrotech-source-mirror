@@ -8836,6 +8836,26 @@ Texte und Zahlen sind ebenso erlaubt.</translation>
         <translation>Wenn aktiviert, werden Folien-Verweise (Querverweise) über Folien hinweg mit gleichem Kennzeichen automatisch verkettet. Neu erstellte Projekte haben diese Funktion automatisch aktiv.</translation>
     </message>
     <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="717"/>
+        <source>Chain folio report elements by</source>
+        <translation type="unfinished">Verkettung der Folien-Verweise nach</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="720"/>
+        <source>What two folio report elements must share to be chained together: the label each of them carries, or the function of the wire its terminal holds. A report without a value of its own is never chained. Newly created projects will start with this choice.</source>
+        <translation type="unfinished">Was zwei Folien-Verweise gemeinsam haben müssen, damit sie verkettet werden: das Kennzeichen, das jeder trägt, oder die Funktion der Leitung an seinem Anschluss. Ein Verweis ohne eigenen Wert wird nie verkettet. Neu erstellte Projekte beginnen mit dieser Auswahl.</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="726"/>
+        <source>Their label</source>
+        <translation type="unfinished">ihrem Kennzeichen</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="733"/>
+        <source>The function of their conductor</source>
+        <translation type="unfinished">der Funktion ihrer Leitung</translation>
+    </message>
+    <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="24"/>
         <source>Appearance</source>
         <translation>Darstellung</translation>
@@ -13995,6 +14015,30 @@ Geben Sie ihnen zuerst eine andere Nummerierung.</numerusform>
         <source>Automatically chains folio report elements with the same label in a forward/backward sequence.</source>
         <comment>tooltip</comment>
         <translation>Verkettet Folien-Verweise mit gleichem Kennzeichen automatisch über die Folien hinweg.</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="331"/>
+        <source>Chain folio report elements by</source>
+        <comment>group box title</comment>
+        <translation type="unfinished">Verkettung der Folien-Verweise nach</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="332"/>
+        <source>What two folio report elements must share to be chained together: the label each of them carries, or the function of the wire its terminal holds. A report without a value of its own is never chained. Changing this dissolves the chains of this project and makes them again from the new key.</source>
+        <comment>tooltip</comment>
+        <translation type="unfinished">Was zwei Folien-Verweise gemeinsam haben müssen, damit sie verkettet werden: das Kennzeichen, das jeder trägt, oder die Funktion der Leitung an seinem Anschluss. Ein Verweis ohne eigenen Wert wird nie verkettet. Ändern löst die Verkettungen dieses Projekts auf und bildet sie nach dem neuen Schlüssel neu.</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="337"/>
+        <source>Their label</source>
+        <comment>radio button label</comment>
+        <translation type="unfinished">ihrem Kennzeichen</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="338"/>
+        <source>The function of their conductor</source>
+        <comment>radio button label</comment>
+        <translation type="unfinished">der Funktion ihrer Leitung</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="148"/>
@@ -20419,6 +20463,12 @@ Was möchten Sie tun?</translation>
         <source>Edit the cross reference</source>
         <comment>edite the cross reference</comment>
         <translation>Querverweise bearbeiten</translation>
+    </message>
+    <message>
+        <location filename="../sources/undocommand/reportlinkkeycommand.cpp" line="37"/>
+        <source>Change what chains folio report elements together</source>
+        <comment>undo caption</comment>
+        <translation type="unfinished">Ändern, was Folien-Verweise miteinander verkettet</translation>
     </message>
     <message>
         <location filename="../sources/conductorautonumerotation.cpp" line="103"/>
