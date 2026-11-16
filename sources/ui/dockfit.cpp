@@ -90,13 +90,22 @@ namespace {
 			}
 			void mouseReleaseEvent(QMouseEvent *event) override
 			{
-				if (event->button() == Qt::LeftButton && isEnabled()
-				    && rect().contains(event->position().toPoint()))
+				if (m_button && event->button() == Qt::LeftButton
+				    && isEnabled()
+				    && rect().contains(event->position().toPoint())) {
+						//The click may delete this text, as a panel
+						//that rebuilds its page does: stop here then
+					const QPointer<ButtonText> self(this);
 					m_button->click();
+					if (!self)
+						return;
+				}
 				QLabel::mouseReleaseEvent(event);
 			}
 		private:
-			QAbstractButton *m_button;
+				/// Null once the button is destroyed, until this
+				/// text goes with its row
+			QPointer<QAbstractButton> m_button;
 	};
 
 	/// @return true when @a widget lies inside a dock
@@ -157,6 +166,10 @@ namespace {
 		row_layout->addWidget(text, 1);
 		button->setVisible(!hidden);
 		row->setProperty(handled, true);
+			//A button destroyed on its own takes its row and text with
+			//it, so no text is left beside an empty space
+		QObject::connect(button, &QObject::destroyed,
+				 row, &QObject::deleteLater);
 	}
 
 	/**
