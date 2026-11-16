@@ -82,6 +82,13 @@ void TerminalStrip::setDescription(const QString &description) {
 	emit dataChanged();
 }
 
+void TerminalStrip::setKind(TerminalStripData::Kind kind) {
+	if (kind == m_data.m_kind)
+		return;
+	m_data.m_kind = kind;
+	emit dataChanged();
+}
+
 /**
  * @brief TerminalStrip::project
  * @return the project of this terminal strip or nullptr

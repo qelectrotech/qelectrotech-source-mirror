@@ -322,6 +322,34 @@ private slots:
 		QVERIFY2(d.isEmpty(), qPrintable(d));
 	}
 
+	// A strip with an information the database has no column for (the kind of
+	// a connector, like the manufacturer) is kept as XML and comes back exactly
+	void connectorStripKept()
+	{
+		QByteArray xml = read(QStringLiteral(QET_EXAMPLES_DIR "/industrial.qet"));
+		const QByteArray strips =
+			"<terminal_strips>"
+			"<terminal_strip><terminal_strip_data uuid=\"{11111111-0000-4000-8000-000000000001}\"><informations>"
+			"<information name=\"name\">J1</information><information name=\"kind\">socket</information>"
+			"</informations></terminal_strip_data>"
+			"<layout><physical_terminal><real_terminal element_uuid=\"{c2180165-8d35-44eb-83c4-100395451915}\"/></physical_terminal></layout>"
+			"</terminal_strip></terminal_strips>";
+		const int at = xml.indexOf("<collection");
+		QVERIFY(at > 0);
+		xml.insert(at, strips);
+		QDomDocument original;
+		QVERIFY(original.setContent(xml));
+		QString error;
+		const QList<QetZip::Entry> entries = QetContainer::split(original, QString(), &error);
+		QVERIFY2(!entries.isEmpty(), qPrintable(error));
+		QDomDocument back;
+		QVERIFY2(QetContainer::join(entries, &back, &error), qPrintable(error));
+		const QString d = difference(withoutComputed(original).documentElement(),
+									 back.documentElement(), QString());
+		QVERIFY2(d.isEmpty(), qPrintable(d));
+		QVERIFY(back.toString().contains(QStringLiteral("<information name=\"kind\">socket</information>")));
+	}
+
 	// The folio pictures leave the folios, once each
 	void picturesAreFiles()
 	{
