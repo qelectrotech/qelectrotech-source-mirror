@@ -208,7 +208,7 @@ private slots:
 		QCOMPARE(plan.rows.at(0).wires.size(), 1);
 		QCOMPARE(plan.rows.at(0).wires.first().first, QStringLiteral("H1:X1"));
 		for (int i = 1 ; i < 6 ; ++i) QVERIFY(plan.rows.at(i).wires.isEmpty());
-		QCOMPARE(plan.header(), QStringLiteral("XP1\nPlug PLUG-6\nPLUG, 3 PHASE + EARTH, 2 CONTROL PINS"));
+		QCOMPARE(plan.header(), QStringLiteral("XP1\nPlug\nPLUG-6"));
 			//The kind is the one the type says
 		QCOMPARE(ConnectorPinPlan::ofDevice(device).kind, QStringLiteral("Plug"));
 	}
@@ -239,7 +239,7 @@ private slots:
 		QVERIFY(head);
 		TerminalStripDrawer::DevicePinPlanStrip data(head);
 		QCOMPARE(data.physicalTerminal().size(), 6);
-		QVERIFY(data.name().startsWith(QStringLiteral("XP1\nPlug PLUG-6")));
+		QVERIFY(data.name().startsWith(QStringLiteral("XP1\nPlug\nPLUG-6")));
 		QStringList labels;
 		for (const auto &physical : data.physicalTerminal())
 			for (const auto &real : physical->realTerminals()) labels << real->label();

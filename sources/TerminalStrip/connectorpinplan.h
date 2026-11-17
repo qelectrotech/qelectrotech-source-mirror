@@ -72,7 +72,7 @@ namespace ConnectorPinPlan
 		QList<Row> rows;
 
 			/// What the header of the plan reads: the name, the kind and the
-			/// type, the description of the type
+			/// type, one on each line
 		QString header() const;
 		int spareCount() const;
 	};
