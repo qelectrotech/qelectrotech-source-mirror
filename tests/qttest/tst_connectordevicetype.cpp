@@ -30,6 +30,7 @@
 #include "qetapp.h"
 #include "qetgraphicsitem/element.h"
 #include "qetproject.h"
+#include "ui/devicetypechooser.h"
 #include "qetresult.h"
 #include "ui/devicetypecheckdialog.h"
 
@@ -425,6 +426,30 @@ private slots:
 		QCOMPARE(devices.size(), 1);
 		QCOMPARE(DeviceTypeCheck::freePins(devices.first()),
 				 (QStringList{QStringLiteral("L2"), QStringLiteral("C2")}));
+	}
+
+		//The chooser offers the types for a connector: one with parts of role
+		//terminal, and one drawn as a head with its pins that says so
+	void theChooserOffersConnectorTypes()
+	{
+		QETProject project;
+		project.setDeviceType(connectorType());
+		DeviceType head;
+		head.name = QStringLiteral("SOCKET-3P+E-2C");
+		head.informations << qMakePair(QStringLiteral("connector"), QStringLiteral("socket"));
+		head.parts << DeviceType::Part{QStringLiteral("simple"), QStringLiteral("simple"), {},
+			{{QStringLiteral("embed://import/pin.elmt"), {QStringLiteral("L1")}, {}}}};
+		project.setDeviceType(head);
+		DeviceType relay;
+		relay.name = QStringLiteral("RELAY");
+		relay.parts << DeviceType::Part{QStringLiteral("coil"), QStringLiteral("master"), {},
+			{{QStringLiteral("embed://import/pin.elmt"), {QStringLiteral("A1")}, {}}}};
+		project.setDeviceType(relay);
+		const QStringList offered = DeviceTypeChooser::connectorCandidates(&project, false);
+		QVERIFY(offered.contains(QStringLiteral("56P6")));
+		QVERIFY(offered.contains(QStringLiteral("SOCKET-3P+E-2C")));
+		QVERIFY(!offered.contains(QStringLiteral("RELAY")));
+		QVERIFY(DeviceTypeChooser::connectorCandidates(&project, true).contains(QStringLiteral("RELAY")));
 	}
 
 	void unknownTypeIsReported()
