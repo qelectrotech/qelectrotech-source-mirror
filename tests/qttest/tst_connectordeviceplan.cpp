@@ -224,7 +224,8 @@ private slots:
 		const auto plan = ConnectorPinPlan::ofDevice(DeviceTypeCheck::checkDevice(head));
 		QCOMPARE(plan.rows.size(), 6);
 		QCOMPARE(spareOf(plan), QStringList{QStringLiteral("C2")});
-		QCOMPARE(plan.rows.last().label, QStringLiteral("XP1:C2 (spare)"));
+		QCOMPARE(plan.rows.last().label, QStringLiteral("XP1:C2"));
+		QCOMPARE(plan.rows.last().xref, QStringLiteral("Spare"));
 		QCOMPARE(plan.kind, QStringLiteral("Socket"));
 	}
 
@@ -243,7 +244,7 @@ private slots:
 		QStringList labels;
 		for (const auto &physical : data.physicalTerminal())
 			for (const auto &real : physical->realTerminals()) labels << real->label();
-		QCOMPARE(labels.last(), QStringLiteral("XP1:C2 (spare)"));
+		QCOMPARE(labels.last(), QStringLiteral("XP1:C2"));
 
 		auto *item = new TerminalStripItem();
 		folio->addItem(item);
