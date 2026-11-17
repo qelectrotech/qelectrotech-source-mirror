@@ -833,6 +833,11 @@ qet_add_app_test(tst_connectordevicetype tst_connectordevicetype.cpp)
 # device type drawn nowhere as spare rows, given to the drawer as they are.
 qet_add_app_test(tst_connectorpinplan tst_connectorpinplan.cpp)
 
+# A connector drawn as a device (a head symbol with its pins): the same rows,
+# read from the terminals of its symbols and their wires; offered in the
+# dialog adding a plan, saved with the folio by the uuid of its head.
+qet_add_app_test(tst_connectordeviceplan tst_connectordeviceplan.cpp)
+
 # The strip graphic names where a cable goes at its far end -- Installation,
 # Location and Label of the first piece its wires land on past the strip, in
 # plan order, the same three fields the cable list computes for a target.

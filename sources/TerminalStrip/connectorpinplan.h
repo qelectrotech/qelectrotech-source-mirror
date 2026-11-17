@@ -24,8 +24,12 @@
 #include <QString>
 #include <QStringList>
 
+class DeviceType;
+class Element;
 class PhysicalTerminal;
+class QETProject;
 class TerminalStrip;
+namespace DeviceTypeCheck {struct Device;}
 
 /**
 	@brief The ConnectorPinPlan namespace
@@ -37,6 +41,12 @@ class TerminalStrip;
 	device type, one spare row for each pin of the type drawn nowhere (the
 	free pins). A pin is named by the label of its terminal after the colon:
 	X1:L1 is the pin L1.
+
+	A connector may also be drawn as a device: a head symbol with its pins
+	(L1 L2 L3 E) and child symbols for the other pins (C1, C2), as a device
+	type with master and slave parts says (the plug of a motor). ofDevice()
+	gives it the same rows, read from the terminals of its symbols and
+	their wires. Which device types are connector types: isConnectorType().
 */
 namespace ConnectorPinPlan
 {
@@ -73,6 +83,27 @@ namespace ConnectorPinPlan
 
 		/// The plan of the connector @p strip; no rows for a terminal strip
 	Plan ofStrip(const TerminalStrip *strip);
+
+		/// Whether @p type is the type of a connector drawn as a device: it
+		/// has a part of role terminal with named pins (the pins of a
+		/// connector of a strip), or its informations say "connector"
+		/// (a plug, or a socket, or anything for a connector of no kind
+		/// known); neither adds anything to a device type file
+	bool isConnectorType(const DeviceType &type);
+
+		/// The kind the device type says (informations "connector" =
+		/// plug or socket), translated; empty when it says none
+	QString kindOfType(const DeviceType &type);
+
+		/// The plan of a device of a connector type: a row for each pin of
+		/// its type, read from the terminals its symbols draw (the head,
+		/// then the children), and the pins no symbol draws as spare rows.
+		/// The pins its symbols draw which the type lacks follow.
+	Plan ofDevice(const DeviceTypeCheck::Device &device);
+
+		/// The head symbols of the devices of @p project which have a
+		/// connector type and are no connector of a strip
+	QList<Element *> connectorDevices(QETProject *project);
 }
 
 #endif // CONNECTORPINPLAN_H

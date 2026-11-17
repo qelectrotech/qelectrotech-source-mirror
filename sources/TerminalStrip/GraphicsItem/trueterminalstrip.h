@@ -21,6 +21,7 @@
 #include "terminalstripdrawer.h"
 #include <TerminalStrip/connectorpinplan.h>
 
+class Element;
 class TerminalStrip;
 class PhysicalTerminal;
 class RealTerminal;
@@ -40,6 +41,29 @@ namespace TerminalStripDrawer
 
 		private:
 			QPointer<TerminalStrip> m_strip;
+	};
+
+		/// The pin plan of a connector drawn as a device (a head with its
+		/// pins): the rows of ConnectorPinPlan::ofDevice
+	class DevicePinPlanStrip : public AbstractTerminalStripInterface
+	{
+		public:
+			DevicePinPlanStrip(Element *head);
+
+			QString installation() const override;
+			QString location() const override;
+			QString name() const override;
+			QVector<QSharedPointer<AbstractPhysicalTerminalInterface>> physicalTerminal() const override;
+				///The plan is worked out again at the next call: what is drawn changed
+			void refresh();
+
+		private:
+			const ConnectorPinPlan::Plan &plan() const;
+
+			QPointer<Element> m_head;
+			mutable ConnectorPinPlan::Plan m_plan;
+			mutable bool m_plan_valid { false };
+			mutable bool m_working { false };
 	};
 
 	class TruePhysicalTerminal : public AbstractPhysicalTerminalInterface

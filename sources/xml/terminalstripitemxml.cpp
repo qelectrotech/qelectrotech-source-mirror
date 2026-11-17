@@ -84,7 +84,26 @@ QVector<TerminalStripItem *> TerminalStripItemXml::fromXml(Diagram *diagram, con
  */
 QDomElement TerminalStripItemXml::toXml(TerminalStripItem *item, QDomDocument &document)
 {
-	if (item->terminalStrip())
+	if (!item->terminalStrip() && !item->deviceUuid().isNull())
+	{
+			//The pin plan of a connector drawn as a device : its head symbol
+			//instead of a strip
+		auto dom_element = document.createElement(STRIP_ITEM_TAG_NAME);
+
+		auto dom_device = document.createElement(QStringLiteral("device"));
+		dom_device.setAttribute(QStringLiteral("uuid"), item->deviceUuid().toString());
+		dom_element.appendChild(dom_device);
+
+		dom_element.appendChild(QETXML::qGraphicsItemPosToXml(item, document));
+
+		if (item->drawStyle() != TerminalStripLayoutPattern::DrawStyle::Schematic) {
+			dom_element.setAttribute(QStringLiteral("draw_style"),
+									 TerminalStripLayoutPattern::drawStyleToString(item->drawStyle()));
+		}
+
+		return dom_element;
+	}
+	else if (item->terminalStrip())
 	{
 		//Terminal strip item dom element
 		auto dom_element = document.createElement(STRIP_ITEM_TAG_NAME);
@@ -121,6 +140,15 @@ bool TerminalStripItemXml::fromXml(TerminalStripItem *item, QETProject *project,
 	if (xml_elmt.tagName() == STRIP_ITEM_TAG_NAME)
 	{
 		bool a{false};
+
+		const auto device_ = xml_elmt.firstChildElement(QStringLiteral("device"));
+		if (!device_.isNull())
+		{
+				//The head symbol may be on a folio not loaded yet : the item
+				//finds it again as soon as it is
+			item->m_pending_device_uuid = QUuid(device_.attribute(QStringLiteral("uuid")));
+			a = !item->m_pending_device_uuid.isNull();
+		}
 
 		const auto ts = xml_elmt.firstChildElement(QStringLiteral("terminal_strip"));
 		if (!ts.isNull())
