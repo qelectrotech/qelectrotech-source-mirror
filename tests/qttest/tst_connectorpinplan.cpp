@@ -151,7 +151,7 @@ private slots:
 		QCOMPARE(plan.rows.at(5).label, QStringLiteral("X1:C2 (spare)"));
 		QVERIFY(plan.rows.at(0).physical);
 		QVERIFY(!plan.rows.at(5).physical);
-		QCOMPARE(plan.header(), QStringLiteral("X1\nSocket 56P6\n56 series socket, 6 pin"));
+		QCOMPARE(plan.header(), QStringLiteral("X1\nSocket\n56P6"));
 	}
 
 		//The drawer's data source gives the same rows
@@ -166,7 +166,7 @@ private slots:
 		QCOMPARE(labels(data), (QStringList{QStringLiteral("X1:L1"), QStringLiteral("X1:L2"),
 											QStringLiteral("X1:L3"), QStringLiteral("X1:E"),
 											QStringLiteral("X1:C1 (spare)"), QStringLiteral("X1:C2 (spare)")}));
-		QVERIFY(data.name().startsWith(QStringLiteral("X1\nSocket 56P6")));
+		QVERIFY(data.name().startsWith(QStringLiteral("X1\nSocket\n56P6")));
 	}
 
 	void aPlugAndAConnectorWithoutAType()

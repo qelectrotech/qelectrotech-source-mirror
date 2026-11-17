@@ -31,14 +31,12 @@ namespace ConnectorPinPlan
 {
 	QString Plan::header() const
 	{
+			//One short line each: a description would wrap in the
+			//header's narrow box and lose its end
 		QStringList lines;
 		lines << name;
-		if (!kind.isEmpty() && !typeName.isEmpty())
-			//: %1 is the kind of a connector, Plug or Socket, %2 its device type
-			lines << QObject::tr("%1 %2", "kind and device type of a connector").arg(kind, typeName);
-		else if (!kind.isEmpty() || !typeName.isEmpty())
-			lines << kind + typeName;
-		if (!description.isEmpty()) lines << description;
+		if (!kind.isEmpty()) lines << kind;
+		if (!typeName.isEmpty()) lines << typeName;
 		return lines.join(QLatin1Char('\n'));
 	}
 
