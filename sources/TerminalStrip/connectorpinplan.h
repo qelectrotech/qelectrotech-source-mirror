@@ -43,9 +43,9 @@ namespace ConnectorPinPlan
 	struct Row
 	{
 		QString pin;            ///< L1
-		QString label;          ///< what the plan writes: X1:L1, or "X1:C2 (spare)"
+		QString label;          ///< what the plan writes: X1:L1
 		bool spare = false;     ///< a free pin of the device type, drawn nowhere
-		QString xref;           ///< where the pin is drawn, when it is not a terminal of a strip
+		QString xref;           ///< where the pin is drawn, when it is not a terminal of a strip; "Spare" for a spare row
 			///The wires on the pin, when it is not a terminal of a strip: what the
 			///other end is called, and what the wire is made of
 		QList<QPair<QString, QStringList>> wires;

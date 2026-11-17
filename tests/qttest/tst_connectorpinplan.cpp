@@ -148,7 +148,8 @@ private slots:
 		QCOMPARE(pins, (QStringList{QStringLiteral("L1"), QStringLiteral("L2"), QStringLiteral("L3"),
 									QStringLiteral("E"), QStringLiteral("C1"), QStringLiteral("C2")}));
 		QCOMPARE(spare, (QStringList{QStringLiteral("C1"), QStringLiteral("C2")}));
-		QCOMPARE(plan.rows.at(5).label, QStringLiteral("X1:C2 (spare)"));
+		QCOMPARE(plan.rows.at(5).label, QStringLiteral("X1:C2"));
+		QCOMPARE(plan.rows.at(5).xref, QStringLiteral("Spare"));
 		QVERIFY(plan.rows.at(0).physical);
 		QVERIFY(!plan.rows.at(5).physical);
 		QCOMPARE(plan.header(), QStringLiteral("X1\nSocket\n56P6"));
@@ -165,7 +166,7 @@ private slots:
 		QCOMPARE(data.physicalTerminal().size(), 6);
 		QCOMPARE(labels(data), (QStringList{QStringLiteral("X1:L1"), QStringLiteral("X1:L2"),
 											QStringLiteral("X1:L3"), QStringLiteral("X1:E"),
-											QStringLiteral("X1:C1 (spare)"), QStringLiteral("X1:C2 (spare)")}));
+											QStringLiteral("X1:C1"), QStringLiteral("X1:C2")}));
 		QVERIFY(data.name().startsWith(QStringLiteral("X1\nSocket\n56P6")));
 	}
 

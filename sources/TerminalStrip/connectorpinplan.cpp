@@ -86,8 +86,11 @@ namespace ConnectorPinPlan
 					Row row;
 					row.pin = pin;
 					row.spare = true;
-					//: %1 is a pin of a connector, such as "X1:C2": a pin of the device type drawn nowhere
-					row.label = QObject::tr("%1 (spare)").arg(plan.name + QLatin1Char(':') + pin);
+					row.label = plan.name + QLatin1Char(':') + pin;
+						//Where a drawn pin says where it is drawn, as the
+						//terminal strip editor says it of a spare terminal:
+						//the label's narrow box cut "(spare)" short
+					row.xref = QObject::tr("Spare", "a pin of a connector's device type drawn nowhere");
 					plan.rows << row;
 				}
 			}
