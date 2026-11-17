@@ -62,6 +62,7 @@ class TerminalStripEditor : public QWidget
         void clear();
 		void setManufacturerFilter(const QString &manufacturer);
 		void setKindCombo(TerminalStripData::Kind kind);
+		void updateDeviceTypeRow();
 		void spanMultiLevelTerminals();
 		void selectionChanged();
 		QSize setUpBridgeCellWidth();

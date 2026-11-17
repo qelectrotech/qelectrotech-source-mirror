@@ -151,7 +151,8 @@ private slots:
 							  "position,articles,designation,description,head_uuid,model");
 		QTest::newRow("qet_terminals") << QStringLiteral("qet_terminals")
 			<< QStringLiteral("strip_id,plant,location,strip,position,level,label,terminal_id,"
-							  "spare,folio_number,folio,element_uuid,strip_uuid,wires,connected_to,strip_kind");
+							  "spare,folio_number,folio,element_uuid,strip_uuid,wires,connected_to,strip_kind,"
+							  "strip_device_type");
 		QTest::newRow("qet_cables") << QStringLiteral("qet_cables")
 			<< QStringLiteral("structure_id,plant,location,designation,type,cores,drawn_cores,"
 							  "wired_cores,length,folios,folio_number,folio,cable_uuid");

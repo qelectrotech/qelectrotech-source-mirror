@@ -173,13 +173,30 @@ void DeviceTypeCheckDialog::refresh()
 			continue;
 		}
 		const int parts = int(device.type.parts.size());
-		//: %1 is the device, such as "=P1+CP1-K12"
-		root->setText(0, tr("%1: %2 of %n parts drawn", nullptr, parts)
-					  .arg(device.designation).arg(parts - device.missing.size()));
+		if (device.connector) {
+			int pins = 0;
+			for (int part : DeviceTypeCheck::pinParts(device.type))
+				pins += int(DeviceTypeCheck::pinsOf(device.type.parts.at(part)).size());
+			//: %1 is the connector, such as "=P1+CP1-X1"
+			root->setText(0, tr("%1: %2 of %n pins drawn", nullptr, pins)
+						  .arg(device.designation).arg(pins - DeviceTypeCheck::freePins(device).size()));
+		}
+		else {
+			//: %1 is the device, such as "=P1+CP1-K12"
+			root->setText(0, tr("%1: %2 of %n parts drawn", nullptr, parts)
+						  .arg(device.designation).arg(parts - device.missing.size()));
+		}
 		root->setToolTip(0, device.type.text(QETApp::langFromSetting()));
 		root->setIcon(0, style()->standardIcon(device.complete()
 						  ? QStyle::SP_DialogApplyButton : QStyle::SP_MessageBoxCritical));
-		for (int part : device.missing) {
+		if (device.connector) {
+			for (const QString &pin : DeviceTypeCheck::freePins(device)) {
+				auto *row = new QTreeWidgetItem(root);
+				//: %1 is the name of a pin of a connector, such as "C2"
+				row->setText(0, tr("Free pin: %1").arg(pin));
+			}
+		}
+		else for (int part : device.missing) {
 			auto *row = new QTreeWidgetItem(root);
 			//: %1 describes the part, such as "simple NO 13 14"
 			row->setText(0, tr("Not drawn: %1")
@@ -202,8 +219,20 @@ void DeviceTypeCheckDialog::refresh()
 			if (device.drawn.at(i) != DeviceTypeCheck::Beyond) continue;
 			Element *symbol = device.symbols.at(i).data();
 			auto *row = new QTreeWidgetItem(root);
-			//: %1 is the symbol's name
-			row->setText(0, tr("Beyond the type: %1").arg(symbol ? symbol->name() : QString()));
+			const QString pin = device.connector ? device.pinNames.value(i) : QString();
+			if (device.connector && device.doubled.contains(pin))
+				//: %1 is the name of a pin of a connector, such as "C1"
+				row->setText(0, tr("Pin %1 is drawn twice").arg(pin));
+			else if (device.connector && !pin.isEmpty())
+				//: %1 is a connector, such as "X1", %2 a pin name, such as "7"
+				row->setText(0, tr("%1 has no pin %2").arg(device.label, pin));
+			else if (device.connector)
+				//: %1 is a connector, such as "X1"
+				row->setText(0, tr("%1: a terminal drawn without a pin name").arg(device.label));
+			else {
+				//: %1 is the symbol's name
+				row->setText(0, tr("Beyond the type: %1").arg(symbol ? symbol->name() : QString()));
+			}
 			where(row, symbol);
 		}
 	}

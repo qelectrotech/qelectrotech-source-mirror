@@ -59,6 +59,9 @@ QDomElement TerminalStripData::toXml(QDomDocument &xml_document) const
 	if (m_kind != Kind::Terminals) {
 		info_elmt.appendChild(infoToXml(xml_document, QStringLiteral("kind"), kindToXml(m_kind)));
 	}
+	if (!m_device_type.isEmpty()) {
+		info_elmt.appendChild(infoToXml(xml_document, QStringLiteral("device_type"), m_device_type));
+	}
 
 	return root_elmt;
 }
@@ -88,6 +91,7 @@ bool TerminalStripData::fromXml(const QDomElement &xml_element)
 		else if (name == QLatin1String("description")) {m_description = value;}
 		else if (name == QLatin1String("manufacturer")) {m_manufacturer = value;}
 		else if (name == QLatin1String("kind"))         {m_kind = kindFromXml(value);}
+		else if (name == QLatin1String("device_type"))  {m_device_type = value;}
 	}
 
 	return true;
@@ -102,6 +106,7 @@ TerminalStripData &TerminalStripData::operator=(const TerminalStripData &other)
 	m_description = other.m_description;
 	m_manufacturer = other.m_manufacturer;
 	m_kind = other.m_kind;
+	m_device_type = other.m_device_type;
 	m_uuid = other.m_uuid;
 
 	return *this;
