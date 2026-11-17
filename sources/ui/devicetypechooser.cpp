@@ -73,9 +73,13 @@ namespace
 		return own.isNull() ? library().value(name) : own;
 	}
 
-		/// Whether @p type has pins: a part of role terminal
+		/// Whether @p type is one for a connector: a part of role terminal,
+		/// or an information "connector" (plug, socket), which a type drawn
+		/// as a head with its pins carries
 	bool hasPins(const DeviceType &type)
 	{
+		for (const auto &information : type.informations)
+			if (information.first == QLatin1String("connector")) return true;
 		for (const DeviceType::Part &part : type.parts)
 			if (part.role == QLatin1String("terminal")) return true;
 		return false;
