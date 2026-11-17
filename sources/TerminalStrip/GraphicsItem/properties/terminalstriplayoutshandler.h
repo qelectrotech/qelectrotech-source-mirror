@@ -36,6 +36,7 @@ class TerminalStripLayoutsHandler : public QObject
 	public:
 		TerminalStripLayoutsHandler();
 		QSharedPointer<TerminalStripLayoutPattern> defaultLayout();
+		QSharedPointer<TerminalStripLayoutPattern> connectorLayout();
 
 		void toXml(QDomElement &parent_element) const;
 		void fromXml(const QDomElement &parent_element);
@@ -47,6 +48,7 @@ class TerminalStripLayoutsHandler : public QObject
 	private:
 		QSet<QSharedPointer<TerminalStripLayoutPattern>> m_layout_set;
 		QSharedPointer<TerminalStripLayoutPattern> m_default_layout;
+		QSharedPointer<TerminalStripLayoutPattern> m_connector_layout;
 };
 
 #endif // TERMINALSTRIPLAYOUTSHANDLER_H

@@ -297,6 +297,8 @@ void TerminalStripItem::connectStrip(TerminalStrip *strip)
  */
 void TerminalStripItem::stripChanged()
 {
+		//The kind of the strip may have changed : terminal strip or connector
+	setDefaultLayout();
 	prepareGeometryChange();
 	update();
 }
@@ -310,6 +312,7 @@ void TerminalStripItem::refreshGeometry()
 void TerminalStripItem::setDefaultLayout()
 {
 	if (m_strip && m_strip->project()) {
-		m_drawer.setLayout(m_strip->project()->projectPropertiesHandler().terminalStripLayoutHandler().defaultLayout());
+		auto &handler = m_strip->project()->projectPropertiesHandler().terminalStripLayoutHandler();
+		m_drawer.setLayout(m_strip->isConnector() ? handler.connectorLayout() : handler.defaultLayout());
 	}
 }
