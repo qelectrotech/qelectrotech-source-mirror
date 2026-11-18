@@ -295,8 +295,10 @@ void ElementPropertiesWidget::editElement()
 	{
 		const ElementsLocation location = m_element.data()->location().forFindAndEdit();
 		m_diagram->findElementRequired(location);
-		QETApp::instance()->openElementLocations(QList<ElementsLocation>() << location);
+			//Close the properties dialog, if any, first: it is
+			//application modal, and would block the symbol editor
 		emit findEditClicked();
+		QETApp::instance()->openElementLocations(QList<ElementsLocation>() << location);
 	}
 }
 
