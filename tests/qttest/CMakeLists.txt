@@ -2578,7 +2578,8 @@ endif()
 # of the folio's data reaches the screen
 qet_add_app_test(tst_titleblockcache tst_titleblockcache.cpp)
 # A properties dialog given its own key remembers its size apart from the
-# others of its editor (a PLC master's element dialog opens much wider)
+# others of its editor (a PLC master's element dialog opens much wider).
+# It can be moved off the drawing on every system (bugtracker #275).
 qet_add_app_test(tst_propertieseditordialog tst_propertieseditordialog.cpp)
 # A list table reopens at the width it was saved with
 qet_add_app_test(tst_tablereopen tst_tablereopen.cpp)
