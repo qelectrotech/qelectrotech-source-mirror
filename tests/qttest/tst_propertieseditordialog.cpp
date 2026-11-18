@@ -41,56 +41,77 @@ class tst_propertieseditordialog : public QObject
 
 		/// On macOS, Qt shows a window modal dialog that has a parent, and
 		/// any Qt::Sheet, as a sheet fixed over its window
-		/// (QCocoaWindow::setVisible()). The parent is not checked, so the
-		/// result does not depend on which window is active.
-	static bool movable(const QDialog *dialog)
+		/// (QCocoaWindow::setVisible()), and a sheet cannot be moved. The
+		/// parent is not checked, so the result does not depend on which
+		/// window is active.
+	static bool opensAsSheet(const QDialog *dialog)
 	{
-		return dialog->windowModality() == Qt::ApplicationModal
-				&& dialog->windowType() != Qt::Sheet;
+		return dialog->windowModality() == Qt::WindowModal
+				|| dialog->windowType() == Qt::Sheet;
 	}
 
-	bool m_dialog_shown = false;
-	bool m_dialog_movable = false;
-
   private slots:
-	void dialogCanBeMoved()
+	void dialogIsNotASheet()
 	{
 		QWidget parent;
 		PropertiesEditorDialog dialog(new Editor, &parent);
-		QVERIFY(movable(&dialog));
+		QVERIFY(!opensAsSheet(&dialog));
 	}
 
 		//Double-clicking a symbol opens its dialog through
-		//Element::editProperty(), which set the dialog window modal again
-	void symbolDialogCanBeMoved()
+		//Element::editProperty(), which once set it window modal
+	void symbolDialogIsNotASheet()
 	{
 		Diagram *diagram = QetAppTest::diagram();
 		QVERIFY(diagram);
+		XmlElementCollection *collection =
+				diagram->project()->embeddedElementCollection();
 		QDomDocument definition;
 		definition.setContent(QStringLiteral(
-			R"(<definition type="element" link_type="simple" width="20" height="20" hotspot_x="10" hotspot_y="10">
-<names><name lang="en">box</name></names>
-<description><line x1="0" y1="-5" x2="0" y2="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/></description></definition>)"));
-		QVERIFY(diagram->project()->embeddedElementCollection()->addElementDefinition(
-			QStringLiteral("import"), QStringLiteral("box"), definition.documentElement()));
+			"<definition type='element' link_type='simple' width='20'"
+			" height='20' hotspot_x='10' hotspot_y='10'>"
+			"<names><name lang='en'>box</name></names>"
+			"<description><line x1='0' y1='-5' x2='0' y2='5'"
+			" style='line-style:normal;line-weight:normal;"
+			"filling:none;color:black'/></description></definition>"));
+		QVERIFY(collection->addElementDefinition(QStringLiteral("import"),
+				QStringLiteral("box"), definition.documentElement()));
 		int state = 0;
 		Element *element = ElementFactory::Instance()->createElement(
-			ElementsLocation(QStringLiteral("embed://import/box.elmt"), diagram->project()),
+			ElementsLocation(QStringLiteral("embed://import/box.elmt"),
+							 diagram->project()),
 			nullptr, &state);
 		QVERIFY(!state && element);
 		diagram->addItem(element);
 
-		QTimer::singleShot(0, this, [this]() {
-			auto *dialog = qobject_cast<QDialog *>(QApplication::activeModalWidget());
+			//Repeats until it has closed every modal dialog, so that
+			//editProperty() returns even if another dialog comes first
+		bool shown = false;
+		bool sheet = true;
+		QTimer closer;
+		closer.setInterval(20);
+		connect(&closer, &QTimer::timeout, &closer, [&]() {
+			auto *dialog = qobject_cast<QDialog *>(
+					QApplication::activeModalWidget());
 			if (!dialog)
 				return;
-			m_dialog_shown = true;
-			m_dialog_movable = movable(dialog);
+			if (qobject_cast<PropertiesEditorDialog *>(dialog)) {
+				shown = true;
+				sheet = opensAsSheet(dialog);
+			}
 			dialog->reject();
 		});
+		closer.start();
 		element->editProperty();
-		QVERIFY(m_dialog_shown);
-		QVERIFY(m_dialog_movable);
+		closer.stop();
+
+			//Leave the shared project as found
+		diagram->removeItem(element);
+		delete element;
+		QVERIFY(collection->removeElement(QStringLiteral("import/box.elmt")));
+
+		QVERIFY(shown);
+		QVERIFY(!sheet);
 	}
 
 	void ownKeyKeepsItsSizeApart()

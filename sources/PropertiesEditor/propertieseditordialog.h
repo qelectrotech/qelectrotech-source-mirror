@@ -53,7 +53,8 @@ class PropertiesEditorDialog : public QDialog
 			// drawing it edits. On macOS, Qt shows a window modal dialog
 			// that has a parent as a sheet, fixed over its window
 			// (QCocoaWindow::setVisible()), and a sheet cannot be moved
-			// (bugtracker #275).
+			// (bugtracker #275). Call exec(), not open(): open() makes the
+			// dialog window modal, and so a sheet again.
 			setWindowModality(Qt::ApplicationModal);
 
 			//Set dialog title
