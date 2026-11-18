@@ -321,6 +321,18 @@ class Element : public QetGraphicsItem
 		void initLink(const QList<Element *> &candidates);
 		QList<Element *> linkedElements () const;
 			/**
+				@brief Element::allLinkedElements
+				@return every partner this element keeps, the ones whose
+				folio left the project included, in the order it saves
+				them in.
+
+				linkedElements() is the list to show and to count, and it
+				leaves those away (standsInProject()). This one is the
+				list itself: undo() has to put back what was really
+				there, and the link commands act on it.
+			*/
+		QList<Element *> allLinkedElements () const;
+			/**
 				Whether this element still stands on a folio of its own
 				project.
 
@@ -543,6 +555,19 @@ inline QList <Element *> Element::linkedElements() const
 			sorted << elmt;
 	std::sort(sorted.begin(), sorted.end(), comparPos);
 	return sorted;
+}
+
+/**
+	@brief Element::allLinkedElements
+	@return every partner this element keeps, sorted by position like
+	linkedElements() returns them, the partners whose folio left the
+	project included.
+*/
+inline QList <Element *> Element::allLinkedElements () const
+{
+	QList <Element *> all = connected_elements;
+	std::sort(all.begin(), all.end(), comparPos);
+	return all;
 }
 
 #endif

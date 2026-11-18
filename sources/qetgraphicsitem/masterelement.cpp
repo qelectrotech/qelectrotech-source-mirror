@@ -58,7 +58,9 @@ MasterElement::~MasterElement()
 void MasterElement::linkToElement(Element *elmt)
 {
 		// check if element is slave and if isn't already linked
-	if (elmt->linkType() == Slave && !linkedElements().contains(elmt))
+		//The stored list, not linkedElements() -- @sa
+		//SlaveElement::linkToElement()
+	if (elmt->linkType() == Slave && !connected_elements.contains(elmt))
 	{
 		connected_elements << elmt;
 		elmt->linkToElement(this);
@@ -84,7 +86,8 @@ void MasterElement::linkToElement(Element *elmt)
 void MasterElement::unlinkAllElements()
 {
 		// if this element is free no need to do something
-	if (!isFree())
+		//("free" as in nothing stored -- @sa SlaveElement::unlinkAllElements)
+	if (!connected_elements.isEmpty())
 	{
 		foreach(Element *elmt, connected_elements)
 			unlinkElement(elmt);

@@ -143,6 +143,11 @@ void CrossRefItem::setUpConnection()
 		m_update_connection << connect(project,
 					       &QETProject::diagramRemoved,
 					       this, &CrossRefItem::updateLabel);
+			//A folio put back by undo() brings the contacts back
+			//with it, and the comb has to draw them again
+		m_update_connection << connect(project,
+					       &QETProject::diagramAdded,
+					       this, &CrossRefItem::updateLabel);
 		m_update_connection << connect(m_element,
 					       &Element::linkedElementChanged,
 					       this, &CrossRefItem::linkedChanged);

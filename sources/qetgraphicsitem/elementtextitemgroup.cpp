@@ -67,6 +67,14 @@ ElementTextItemGroup::ElementTextItemGroup(const QString &name,
 			&QETProject::XRefPropertiesChanged,
 			this,
 			&ElementTextItemGroup::updateXref);
+		//undo() puts a deleted folio back, and with it a master or a
+		//report this group draws: nothing else tells it to look again
+	if(parent->diagram())
+		connect(
+			parent->diagram()->project(),
+			&QETProject::diagramAdded,
+			this,
+			&ElementTextItemGroup::updateXref);
 }
 
 /**
