@@ -73,6 +73,27 @@ namespace QetSettings
 	void setAskLabelsPlacingMacro(bool ask);
 
 	/**
+		Whether the dialog that asks for a picture or a PDF starts in
+		the folder the last file was picked from instead of the pictures
+		or the documents folder. Off by default: the dialog then starts
+		where it always did.
+	*/
+	bool rememberLastImportDir();
+	void setRememberLastImportDir(bool remember);
+
+	/**
+		@brief Folder the last picture was picked from, empty when none
+		was picked yet. Recorded whatever rememberLastImportDir() says,
+		so that turning the setting on later already has a folder.
+	*/
+	QString lastImportPictureDir();
+	void setLastImportPictureDir(const QString &dir);
+		// The same for PDFs, kept apart from the pictures so that the
+		// two dialogs do not start in each other's folder.
+	QString lastImportPdfDir();
+	void setLastImportPdfDir(const QString &dir);
+
+	/**
 		Whether a terminal strip draws the wires which end at it: one
 		stub per terminal which has a wire of its own, going up from the
 		strip like its cables go down, naming where the wire lands and

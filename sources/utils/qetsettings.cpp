@@ -314,6 +314,66 @@ namespace QetSettings
 	}
 
 	/**
+	* @brief rememberLastImportDir
+	* @return whether the dialog that asks for a picture or a PDF starts
+	* in the folder the last file was picked from instead of the pictures
+	* or the documents folder (@sa setRememberLastImportDir), off unless
+	* the user turned it on
+	*/
+	bool rememberLastImportDir()
+	{
+		QSettings settings;
+		return settings.value("diagrameditor/remember_last_import_dir", false).toBool();
+	}
+
+	/**
+	* @brief setRememberLastImportDir
+	* Store whether the dialog that asks for a picture or a PDF starts in
+	* the folder the last file was picked from.
+	* @sa rememberLastImportDir
+	* @param remember
+	*/
+	void setRememberLastImportDir(bool remember)
+	{
+		QSettings settings;
+		settings.setValue("diagrameditor/remember_last_import_dir", remember);
+	}
+
+	/**
+	* @brief lastImportPictureDir
+	* @return the folder the last picture was picked from, empty when
+	* none was picked yet (@sa setLastImportPictureDir)
+	*/
+	QString lastImportPictureDir()
+	{
+		QSettings settings;
+		return settings.value("diagrameditor/last_picture_dir", QString()).toString();
+	}
+
+	void setLastImportPictureDir(const QString &dir)
+	{
+		QSettings settings;
+		settings.setValue("diagrameditor/last_picture_dir", dir);
+	}
+
+	/**
+	* @brief lastImportPdfDir
+	* @return the folder the last PDF was picked from, empty when none
+	* was picked yet (@sa setLastImportPdfDir)
+	*/
+	QString lastImportPdfDir()
+	{
+		QSettings settings;
+		return settings.value("diagrameditor/last_pdf_dir", QString()).toString();
+	}
+
+	void setLastImportPdfDir(const QString &dir)
+	{
+		QSettings settings;
+		settings.setValue("diagrameditor/last_pdf_dir", dir);
+	}
+
+	/**
 	* @brief stripWiresShown
 	* @return whether a terminal strip draws the wires which end at it
 	* (@sa setStripWiresShown), off unless the user turned it on

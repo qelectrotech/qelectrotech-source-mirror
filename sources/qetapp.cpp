@@ -1137,6 +1137,71 @@ QString QETApp::pictureDir()
 }
 
 /**
+	@brief QETApp::lastPictureDir
+	Return the directory where the dialog asking for a picture starts.
+	With the "remember the last folder" setting off, the default, this is
+	the pictures folder, as it always was. With it on, this is the folder
+	the last picture was picked from, as long as that folder still exists.
+	\~ @return The path of the directory to start the picture dialog in
+*/
+QString QETApp::lastPictureDir()
+{
+	if (QetSettings::rememberLastImportDir())
+	{
+		const QString stored = QetSettings::lastImportPictureDir();
+		if (!stored.isEmpty() && QDir(stored).exists()) {
+			return stored;
+		}
+	}
+	return pictureDir();
+}
+
+/**
+	@brief QETApp::lastPdfDir
+	Return the directory where the dialog asking for a PDF starts.
+	Same rule as QETApp::lastPictureDir(): the documents folder unless
+	the "remember the last folder" setting is on and a PDF was picked
+	from a folder that still exists.
+	\~ @return The path of the directory to start the PDF dialog in
+*/
+QString QETApp::lastPdfDir()
+{
+	if (QetSettings::rememberLastImportDir())
+	{
+		const QString stored = QetSettings::lastImportPdfDir();
+		if (!stored.isEmpty() && QDir(stored).exists()) {
+			return stored;
+		}
+	}
+	return documentDir();
+}
+
+/**
+	@brief QETApp::rememberPictureDir
+	Record the folder a picture was picked from, so the next picture
+	dialog starts there. The folder is recorded whether the "remember
+	the last folder" setting is on or off, so that turning the setting
+	on later already has a folder to start from.
+	@param file_path Path of the file the user picked
+*/
+void QETApp::rememberPictureDir(const QString &file_path)
+{
+	QetSettings::setLastImportPictureDir(QFileInfo(file_path).absolutePath());
+}
+
+/**
+	@brief QETApp::rememberPdfDir
+	Record the folder a PDF was picked from, so the next PDF dialog
+	starts there. Recorded whether the "remember the last folder" setting
+	is on or off, like QETApp::rememberPictureDir().
+	@param file_path Path of the file the user picked
+*/
+void QETApp::rememberPdfDir(const QString &file_path)
+{
+	QetSettings::setLastImportPdfDir(QFileInfo(file_path).absolutePath());
+}
+
+/**
 	@brief QETApp::realPath
 	Allows you to know the absolute path of the * .elmt file
 	corresponding to a symbolic path

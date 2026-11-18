@@ -702,6 +702,12 @@ qet_add_app_test(tst_bridgetool tst_bridgetool.cpp)
 # it selected and records no undo step (#1414); the key goes to the view.
 qet_add_app_test(tst_imagehandleescape tst_imagehandleescape.cpp)
 
+# "Remember the last folder a picture or a PDF was picked from" (a setting,
+# off by default): off, the dialog starts in the pictures or the documents
+# folder as it always did; on, where the last file was picked from, the two
+# folders kept apart, and the standard folder back when that one is gone.
+qet_add_app_test(tst_importdirs tst_importdirs.cpp)
+
 # The zoom step (a setting, off by default): zooming goes by a fixed number
 # of percent, also from between two steps and from a smooth mouse wheel.
 qet_add_app_test(tst_zoomstep tst_zoomstep.cpp)

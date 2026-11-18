@@ -2350,6 +2350,16 @@
         </widget>
        </item>
        <item>
+        <widget class="QCheckBox" name="m_remember_last_import_dir_cb">
+         <property name="toolTip">
+          <string>Off, the default: the dialog of "Add a picture" and "Add a PDF" starts in the pictures or the documents folder every time. On: it starts in the folder the last file was picked from, as long as that folder still exists.</string>
+         </property>
+         <property name="text">
+          <string>Remember the last folder a picture or a PDF was picked from</string>
+         </property>
+        </widget>
+       </item>
+       <item>
         <spacer name="verticalSpacer_6">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
