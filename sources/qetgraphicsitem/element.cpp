@@ -302,10 +302,6 @@ void Element::editProperty()
 			&ElementPropertiesWidget::findEditClicked,
 			&dialog,
 			&QDialog::reject);
-		//Must be windowModal, else when user do a drag and drop
-		//with the "text" tab of ElementPropertiesWidget,
-		//the ui freeze, until user press escape key
-		dialog.setWindowModality(Qt::WindowModal);
 
 		// A PLC master carries a 6-column IO table: without an explicit
 		// size the dialog falls back to its (cramped) sizeHint, so open it
