@@ -273,6 +273,37 @@ QVector<QMap<QString, QString>> CableList::rows(QETProject *project)
 					continue;
 				}
 
+					//A junction the cable runs through is not a piece it
+					//lands on: it is a connection point on the wire rather
+					//than a part of its own. endsPastJunctions() says where
+					//the chain leads -- through another junction in the way,
+					//when the run goes on through two of them -- and the
+					//cable lands there. A junction is never a landing of its
+					//own, and a chain the definition does not give leaves
+					//the landing out rather than naming a guess (#1500).
+				if (element->linkType() & Element::Junction) {
+					for (Terminal *reached : endsPastJunctions(terminal)) {
+						if (!reached || !reached->parentElement()) {
+							continue;
+						}
+						Element *reached_element = reached->parentElement();
+						if (reached_element->linkType() & Element::AllReport) {
+							continue;
+						}
+						CableEnd junction_end;
+						junction_end.diagram = reached_element->diagram();
+						junction_end.scene = reached->scenePos();
+						junction_end.element = reached_element;
+						junction_end.element_uuid = reached_element->uuid();
+						junction_end.tie = conductor->uuid().toString();
+							//Named the same way as any other arrival, so a
+							//strip reached through a chain still says strip
+						setPiece(junction_end);
+						arrivals[properties.m_cable_uuid].append(junction_end);
+					}
+					continue;
+				}
+
 				CableEnd end;
 				end.diagram = element->diagram();
 				end.scene = terminal->scenePos();

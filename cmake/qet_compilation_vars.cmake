@@ -211,6 +211,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/conductornumexport.cpp
   ${QET_DIR}/sources/wiringlistexport.h
   ${QET_DIR}/sources/wiringlistexport.cpp
+  ${QET_DIR}/sources/wiringlistdb.h
+  ${QET_DIR}/sources/wiringlistdb.cpp
   ${QET_DIR}/sources/wirehops.h
   ${QET_DIR}/sources/wirehops.cpp
   ${QET_DIR}/sources/wiringrules.h
@@ -721,6 +723,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/qetgraphicsitem/structureboxitem.h
   ${QET_DIR}/sources/qetgraphicsitem/qgraphicsitemutility.cpp
   ${QET_DIR}/sources/qetgraphicsitem/qgraphicsitemutility.h
+  ${QET_DIR}/sources/qetgraphicsitem/junctionelement.cpp
+  ${QET_DIR}/sources/qetgraphicsitem/junctionelement.h
   ${QET_DIR}/sources/qetgraphicsitem/reportelement.cpp
   ${QET_DIR}/sources/qetgraphicsitem/reportelement.h
   ${QET_DIR}/sources/qetgraphicsitem/simpleelement.cpp
