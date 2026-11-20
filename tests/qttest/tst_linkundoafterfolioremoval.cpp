@@ -27,11 +27,14 @@
 #include "qetapptest.h"
 #include "qetgraphicsitem/dynamicelementtextitem.h"
 #include "qetgraphicsitem/element.h"
+#include "qetgraphicsitem/elementtextitemgroup.h"
 #include "qetproject.h"
+#include "qetresult.h"
 #include "undocommand/linkelementcommand.h"
 #include "undocommand/removediagramcommand.h"
 
 #include <QFile>
+#include <memory>
 #include <QtTest>
 
 class tst_linkundoafterfolioremoval : public QObject
@@ -105,6 +108,47 @@ class tst_linkundoafterfolioremoval : public QObject
 			if (text->textFrom() == DynamicElementTextItem::ElementInfo)
 				return text->toPlainText();
 		return QString();
+	}
+
+	//A copy of examples/2612_ats_singlephase.qet in the temporary
+	//folder, for the same reason as copiedFixture()
+	QString copiedExample(const QString &name)
+	{
+		const QString path = m_dir.filePath(name);
+		if (!QFile::exists(path))
+			QFile::copy(QStringLiteral(QET_EXAMPLES_DIR
+						   "/2612_ats_singlephase.qet"),
+				    path);
+		return path;
+	}
+
+	//What a contact draws for its master, from its own texts and from
+	//its text groups: "(none)" when it draws nothing
+	static QString contactReference(Element *contact)
+	{
+		QStringList shown;
+		for (DynamicElementTextItem *text : contact->dynamicTextItems())
+			if (text->slaveXrefItem())
+				shown << text->slaveXrefItem()->toPlainText();
+		for (ElementTextItemGroup *group : contact->textGroups())
+			if (group->slaveXrefItem())
+				shown << group->slaveXrefItem()->toPlainText();
+		return shown.isEmpty() ? QStringLiteral("(none)")
+				       : shown.join(QLatin1Char('|'));
+	}
+
+	//How many functions run when @p project sends @p signal.
+	//QObject::receivers() is protected: a class that makes it public
+	//gives a pointer to it that any QObject can be called with.
+	struct ReceiversAccess : QObject
+	{
+		using QObject::receivers;
+	};
+	static int registered(QETProject &project, const char *signal)
+	{
+		int (QObject::*count)(const char *) const =
+				&ReceiversAccess::receivers;
+		return (project.*count)(signal);
 	}
 
 private slots:
@@ -286,6 +330,149 @@ private slots:
 				 qPrintable(QStringLiteral(
 					 "the report draws \"%1\" now, it drew \"%2\" before")
 							.arg(firstText(outgoing), before)));
+	}
+	//A contact draws where its master stands. Deleting the master's
+	//sheet takes that reference away and undo() brings it back. A
+	//contact whose master stays is renumbered both ways.
+	void contactReferencesComeBackWithTheSheet()
+	{
+		QETProject project(copiedExample(QStringLiteral("references.qet")));
+		QCOMPARE(project.state(), QETProject::Ok);
+
+		//The normally closed K2 contact on sheet 3 and its coil on
+		//sheet 1, and a contact on sheet 3 whose master is on sheet 3
+		Element *away = symbol(
+				project,
+				QStringLiteral("{249c6e27-152a-44b6-9ef4-2291a7d78d41}"));
+		Element *k2 = symbol(
+				project,
+				QStringLiteral("{23c999bc-c56d-4c0e-8135-98fae2085421}"));
+		Element *master = symbol(
+				project,
+				QStringLiteral("{205bc729-7e88-4c83-9867-23b8fd4c42c9}"));
+		QVERIFY(away);
+		QVERIFY(k2);
+		QVERIFY(master);
+		Element *staying = nullptr;
+		for (Element *element : away->diagram()->elements())
+			if (element->linkType() == Element::Slave
+					&& element->linkedElements().contains(master))
+				staying = element;
+		QVERIFY(staying);
+		QCOMPARE(contactReference(away), QStringLiteral("(1-I13)"));
+		QCOMPARE(contactReference(staying), QStringLiteral("(3-H21)"));
+
+		project.undoStack()->push(
+				new RemoveDiagramCommand(&project, k2->diagram()));
+		settle();
+		QCOMPARE(contactReference(away), QStringLiteral("(none)"));
+		QCOMPARE(contactReference(staying), QStringLiteral("(2-H21)"));
+
+		project.undoStack()->undo();
+		settle();
+		QCOMPARE(contactReference(away), QStringLiteral("(1-I13)"));
+		QCOMPARE(contactReference(staying), QStringLiteral("(3-H21)"));
+	}
+
+	void groupedContactReferenceComesBackWithTheSheet_data()
+	{
+		QTest::addColumn<bool>("from_file");
+		QTest::newRow("group made now") << false;
+		QTest::newRow("group read from the file") << true;
+	}
+
+	//The same contact with its label in a text group: the group draws
+	//the reference then, and it has to come back too, also for a group
+	//read from a saved project
+	void groupedContactReferenceComesBackWithTheSheet()
+	{
+		QFETCH(bool, from_file);
+		const QString contact_uuid =
+				QStringLiteral("{249c6e27-152a-44b6-9ef4-2291a7d78d41}");
+		const QString path = copiedExample(from_file
+				? QStringLiteral("group_from_file.qet")
+				: QStringLiteral("group_made_now.qet"));
+
+		auto project = std::make_unique<QETProject>(path);
+		QCOMPARE(project->state(), QETProject::Ok);
+		Element *contact = symbol(*project, contact_uuid);
+		QVERIFY(contact);
+		DynamicElementTextItem *label = nullptr;
+		for (DynamicElementTextItem *text : contact->dynamicTextItems())
+			if (text->textFrom() == DynamicElementTextItem::ElementInfo
+					&& text->infoName() == QLatin1String("label"))
+				label = text;
+		QVERIFY2(label, "the contact has no label text");
+		ElementTextItemGroup *group =
+				contact->addTextGroup(QStringLiteral("label"));
+		QVERIFY(group);
+		QVERIFY(contact->addTextToGroup(label, group));
+		settle();
+		QCOMPARE(contactReference(contact), QStringLiteral("(1-I13)"));
+
+		if (from_file) {
+			const QETResult written = project->write();
+			QVERIFY2(written.isOk(), qPrintable(written.errorMessage()));
+			project = std::make_unique<QETProject>(path);
+			QCOMPARE(project->state(), QETProject::Ok);
+			contact = symbol(*project, contact_uuid);
+			QVERIFY(contact);
+			QVERIFY2(contact->textGroup(QStringLiteral("label")),
+				 "the group was not read back");
+			settle();
+			QCOMPARE(contactReference(contact), QStringLiteral("(1-I13)"));
+		}
+
+		Element *k2 = symbol(
+				*project,
+				QStringLiteral("{23c999bc-c56d-4c0e-8135-98fae2085421}"));
+		QVERIFY(k2);
+		project->undoStack()->push(
+				new RemoveDiagramCommand(project.get(), k2->diagram()));
+		settle();
+		QCOMPARE(contactReference(contact), QStringLiteral("(none)"));
+
+		project->undoStack()->undo();
+		settle();
+		QCOMPARE(contactReference(contact), QStringLiteral("(1-I13)"));
+	}
+
+	//Every sheet added or deleted runs reportChanged() on each report
+	//text, which registers updateReportText() for the formula. It has
+	//to remove what it registered before: else, after ten sheet
+	//changes, the next one runs updateReportText() ten times per text.
+	void sheetChangesLeaveTheRegistrationsAsTheyWere()
+	{
+		QETProject project(copiedFixture(m_dir, QStringLiteral("cycles.qet")));
+		QCOMPARE(project.state(), QETProject::Ok);
+		Element *outgoing = nullptr;
+		Element *partner = nullptr;
+		Element *spare = nullptr;
+		fixtureReports(project, &outgoing, &partner, &spare);
+		QVERIFY(outgoing);
+		QVERIFY(partner);
+
+		Diagram *empty = project.addNewDiagram();
+		settle();
+		const char *added = SIGNAL(diagramAdded(QETProject*,Diagram*));
+		const char *removed = SIGNAL(diagramRemoved(QETProject*,Diagram*));
+		const int added_before = registered(project, added);
+		const int removed_before = registered(project, removed);
+
+		project.undoStack()->push(new RemoveDiagramCommand(&project, empty));
+		settle();
+		for (int i = 0 ; i < 10 ; ++i) {
+			project.undoStack()->undo();
+			settle();
+			project.undoStack()->redo();
+			settle();
+		}
+		project.undoStack()->undo();
+		settle();
+		QVERIFY(project.diagrams().contains(empty));
+
+		QCOMPARE(registered(project, added), added_before);
+		QCOMPARE(registered(project, removed), removed_before);
 	}
 };
 

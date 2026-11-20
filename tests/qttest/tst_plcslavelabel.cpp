@@ -442,6 +442,57 @@ text_from="CompositeText" uuid="%8" font="Liberation Sans,9,-1,5,50,0,0,0,0,0,Re
 		settle();
 		QCOMPARE(master->linkedSlaveForIo(0), contact);
 	}
+
+	// The contact's master is on a folio that is deleted, and the
+	// contact is linked to another master meanwhile. Undoing both
+	// steps puts the contact back on its first master, as on a
+	// project where no folio was deleted.
+	void relinkWhileTheMasterIsAwayUndoesBack()
+	{
+		QETProject project;
+		Diagram* folio = project.addNewDiagram();
+		Diagram* other = project.addNewDiagram();
+		QVERIFY(folio);
+		QVERIFY(other);
+		QVERIFY(folio != other);
+
+		Element* contact = symbol(folio, "plc_slave");
+		Element* second  = symbol(folio, "plc_master");
+		Element* master  = symbol(other, "plc_master");
+		QVERIFY(contact);
+		QVERIFY(second);
+		QVERIFY(master);
+
+		auto* link = new LinkElementCommand(contact);
+		link->setLink(master);
+		link->setGroupIndex(0);
+		project.undoStack()->push(link);
+		settle();
+		QVERIFY(contact->linkedElements().contains(master));
+
+		project.undoStack()->push(new RemoveDiagramCommand(&project, other));
+		settle();
+
+		auto* relink = new LinkElementCommand(contact);
+		relink->setLink(second);
+		relink->setGroupIndex(0);
+		project.undoStack()->push(relink);
+		settle();
+		QVERIFY(contact->linkedElements().contains(second));
+
+			// The relink, then the deletion
+		project.undoStack()->undo();
+		settle();
+		project.undoStack()->undo();
+		settle();
+
+		QVERIFY2(contact->linkedElements().contains(master),
+				 "undo left the contact without its first master");
+		QVERIFY2(master->linkedElements().contains(contact),
+				 "undo left the first master without its contact");
+		QVERIFY2(!contact->linkedElements().contains(second),
+				 "the contact is still on the master of the undone link");
+	}
 };
 
 QET_APP_TEST_MAIN(tst_plcslavelabel)
