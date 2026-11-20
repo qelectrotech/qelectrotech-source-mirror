@@ -71,44 +71,20 @@ namespace {
 	@param folders : every directory of the collection, as returned by
 		QetLabelsFile::scanFolders()
 	@param parent
-*/
-PrefixConfigurationDialog::PrefixConfigurationDialog(QetLabelsFile &labels, const QList<QStringList> &folders, QWidget *parent) :
-	QDialog(parent),
-	m_labels(labels),
-	m_folders(folders),
-	m_tree(new QTreeWidget(this))
-{
-	setUp();
-}
-
-/**
-	@brief PrefixConfigurationDialog::PrefixConfigurationDialog
-	@param labels : the loaded labels file the dialog edits
-	@param folders : every directory of the collection, as returned by
-		QetLabelsFile::scanFolders()
 	@param collection : the collection @a labels belongs to
 	@param user_labels_file : for the company collection, the
 		qet_labels.xml of the user collection. The prefix lookup reads it
 		first, so a folder it gives a prefix to does not get the company
 		one: the dialog shows that prefix beside the field.
-	@param parent
 */
-PrefixConfigurationDialog::PrefixConfigurationDialog(QetLabelsFile &labels, const QList<QStringList> &folders, Collection collection, const QString &user_labels_file, QWidget *parent) :
+PrefixConfigurationDialog::PrefixConfigurationDialog(QetLabelsFile &labels, const QList<QStringList> &folders, QWidget *parent,
+													 Collection collection, const QString &user_labels_file) :
 	QDialog(parent),
 	m_labels(labels),
 	m_folders(folders),
 	m_tree(new QTreeWidget(this)),
 	m_collection(collection),
 	m_user_labels_file(user_labels_file)
-{
-	setUp();
-}
-
-/**
-	@brief PrefixConfigurationDialog::setUp
-	Build the content of the dialog, shared by both constructors.
-*/
-void PrefixConfigurationDialog::setUp()
 {
 	if (m_collection == CompanyCollection) {
 		setWindowTitle(tr("Company collection prefixes", "title of the dialog configuring the prefixes of the company collection"));
@@ -277,6 +253,11 @@ void PrefixConfigurationDialog::buildTree()
 void PrefixConfigurationDialog::showUserPrefixes()
 {
 	if (m_collection != CompanyCollection || m_user_labels_file.isEmpty()) {
+		return;
+	}
+		//Both settings on the same folder: the file is the one edited here
+	if (QFileInfo(m_user_labels_file).absoluteFilePath()
+		== QFileInfo(m_labels.filePath()).absoluteFilePath()) {
 		return;
 	}
 

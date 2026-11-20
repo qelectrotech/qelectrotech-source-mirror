@@ -47,15 +47,14 @@ class PrefixConfigurationDialog : public QDialog
 			CompanyCollection
 		};
 
-		explicit PrefixConfigurationDialog(QetLabelsFile &labels, const QList<QStringList> &folders, QWidget *parent = nullptr);
-		PrefixConfigurationDialog(QetLabelsFile &labels, const QList<QStringList> &folders, Collection collection, const QString &user_labels_file, QWidget *parent = nullptr);
+		explicit PrefixConfigurationDialog(QetLabelsFile &labels, const QList<QStringList> &folders, QWidget *parent = nullptr,
+										   Collection collection = UserCollection, const QString &user_labels_file = QString());
 		~PrefixConfigurationDialog() override;
 
 	public slots:
 		void accept() override;
 
 	private:
-		void setUp();
 		void askWhatToDoWithOrphans();
 		void buildTree();
 		void showUserPrefixes();

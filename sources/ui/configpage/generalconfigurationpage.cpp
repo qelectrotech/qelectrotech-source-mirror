@@ -63,6 +63,7 @@
 #include <QFontDialog>
 #include <QMessageBox>
 #include <QSettings>
+#include <QTemporaryFile>
 #include <QToolButton>
 
 #include <utility>
@@ -989,27 +990,18 @@ void GeneralConfigurationPage::on_m_company_prefix_pb_clicked()
 }
 
 /**
-	@brief GeneralConfigurationPage::openPrefixDialog
-	Open the dialog where the prefixes of the folders of the user
-	collection, or of the company collection when @a company is true, are
-	configured, creating the qet_labels.xml of that collection when it
-	does not exist yet.
-	Nothing is written until that dialog is validated : cancelling it
-	leaves the collection exactly as it was.
-	The user collection folder is created when it is missing, as QET does
-	at start-up. A missing company folder is not : it is often a shared
-	drive, and one that is not mounted must not be replaced by an empty
-	local folder.
+	@brief GeneralConfigurationPage::shownCollectionDir
+	@return the folder of the user collection, or of the company collection
+	when @a company is true, that the page displays, even when the change
+	has not been applied yet : QETApp::customElementsDir() and
+	companyElementsDir() still answer with the previously saved path,
+	which is not what is shown when the combo has been put back on
+	"By default".
 */
-void GeneralConfigurationPage::openPrefixDialog(bool company)
+QString GeneralConfigurationPage::shownCollectionDir(bool company) const
 {
-		//The directory the page displays, even when the change has not
-		//been applied yet : QETApp::customElementsDir() and
-		//companyElementsDir() still answer with the previously saved path,
-		//which is not what is shown when the combo has been put back on
-		//"By default".
-	QComboBox *combo = company ? ui->m_company_elmt_path_cb
-							   : ui->m_custom_elmt_path_cb;
+	const QComboBox *combo = company ? ui->m_company_elmt_path_cb
+									 : ui->m_custom_elmt_path_cb;
 	QString directory;
 	switch (combo->currentIndex()) {
 	case 1:			//"Browse..." : the item itself holds the chosen path
@@ -1027,7 +1019,24 @@ void GeneralConfigurationPage::openPrefixDialog(bool company)
 		directory = company ? QETApp::companyElementsDir()
 							: QETApp::customElementsDir();
 	}
-	directory = QDir::cleanPath(directory);
+	return QDir::cleanPath(directory);
+}
+
+/**
+	@brief GeneralConfigurationPage::openPrefixDialog
+	Open the dialog where the prefixes of the folders of the user
+	collection, or of the company collection when @a company is true, are
+	configured, creating the qet_labels.xml of that collection when it
+	does not exist yet.
+	Nothing is written until that dialog is validated : cancelling it
+	leaves the collection exactly as it was.
+	A missing user collection folder is created. A missing company folder
+	is not : it may be a shared drive that is not reachable right now, and
+	the prefixes must not go to an empty local folder in its place.
+*/
+void GeneralConfigurationPage::openPrefixDialog(bool company)
+{
+	const QString directory = shownCollectionDir(company);
 
 	if (company) {
 		if (!QDir(directory).exists()) {
@@ -1045,23 +1054,34 @@ void GeneralConfigurationPage::openPrefixDialog(bool company)
 		return;
 	}
 
-		//The file is written through QSaveFile, which needs to create a
-		//file in the folder : say so now rather than when OK is pressed,
-		//after the prefixes have been typed. A company collection on a
-		//shared drive is often read-only.
-	const QFileInfo labels_info(QetLabelsFile::labelsFilePath(directory));
-	if (!QFileInfo(directory).isWritable()
-		|| (labels_info.exists() && !labels_info.isWritable())) {
+		//The file is written through QSaveFile, which creates a file in the
+		//folder: try that now rather than when OK is pressed, after the
+		//prefixes have been typed. A company collection on a shared drive
+		//is often read-only. QFileInfo::isWritable() is not asked: on
+		//Windows it only reads the read-only attribute, which Windows sets
+		//on many folders that can be written, and ignores the access
+		//rights of a share.
+	const QString labels_path = QetLabelsFile::labelsFilePath(directory);
+	bool writable = false;
+	{
+		QTemporaryFile probe(QDir(directory).filePath(QStringLiteral("qet_labels-XXXXXX.tmp")));
+		writable = probe.open();
+	}
+	if (writable && QFile::exists(labels_path)) {
+		QFile existing(labels_path);
+		writable = existing.open(QIODevice::ReadWrite);
+	}
+	if (!writable) {
 		QMessageBox::warning(this,
 							 tr("Prefix file cannot be written"),
 							 company
 							 ? tr("The prefixes of the company collection are kept in:\n%1\n"
 								  "This file or its folder cannot be written, so the prefixes cannot be changed here. "
 								  "Ask whoever manages the company collection, or change the file with write access.")
-							   .arg(labels_info.filePath())
+							   .arg(labels_path)
 							 : tr("The prefixes of the user collection are kept in:\n%1\n"
 								  "This file or its folder cannot be written, so the prefixes cannot be changed here.")
-							   .arg(labels_info.filePath()));
+							   .arg(labels_path));
 		return;
 	}
 
@@ -1112,19 +1132,14 @@ void GeneralConfigurationPage::openPrefixDialog(bool company)
 		}
 	}
 
-	if (company) {
-			//The prefix lookup reads the user file before the company
-			//one: the dialog shows the folders where that decides
-		const QString user_labels = QetLabelsFile::labelsFilePath(
-					QDir::cleanPath(QETApp::customElementsDir()));
-		PrefixConfigurationDialog dialog(labels, folders,
-										 PrefixConfigurationDialog::CompanyCollection,
-										 user_labels, this);
-		dialog.exec();
-	} else {
-		PrefixConfigurationDialog dialog(labels, folders, this);
-		dialog.exec();
-	}
+		//The prefix lookup reads the user file before the company one:
+		//the company dialog shows the folders where that decides
+	PrefixConfigurationDialog dialog(labels, folders, this,
+									 company ? PrefixConfigurationDialog::CompanyCollection
+											 : PrefixConfigurationDialog::UserCollection,
+									 company ? QetLabelsFile::labelsFilePath(shownCollectionDir(false))
+											 : QString());
+	dialog.exec();
 }
 
 /**

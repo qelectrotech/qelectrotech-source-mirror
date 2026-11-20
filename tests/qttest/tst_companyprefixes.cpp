@@ -1,15 +1,28 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 #include "ElementsCollection/qetlabelsfile.h"
 #include "qetapptest.h"
+#include "ui/configpage/generalconfigurationpage.h"
 #include "ui/prefixconfigurationdialog.h"
 
+#include <QApplication>
+#include <QComboBox>
+#include <QDialog>
 #include <QDir>
+#include <QFileDevice>
+#include <QFileInfo>
+#include <QPushButton>
+#include <QScopeGuard>
+#include <QTimer>
 #include <QFile>
 #include <QLabel>
 #include <QLineEdit>
 #include <QTemporaryDir>
 #include <QTest>
 #include <QTreeWidget>
+
+#ifdef Q_OS_UNIX
+#include <unistd.h>
+#endif
 
 /*
 	The prefix dialog also edits the qet_labels.xml of the company
@@ -26,6 +39,46 @@ class tst_companyprefixes : public QObject
 		QFile file(path);
 		QVERIFY(file.open(QIODevice::WriteOnly | QIODevice::Truncate));
 		file.write(content);
+	}
+
+		///Click @a button and return the title of the modal window it
+		///opens (closed right away), or an empty string when none opens
+	static QString titleOfModalOpenedBy(QPushButton *button)
+	{
+		QString title;
+		QTimer timer;
+		timer.setInterval(20);
+		QObject::connect(&timer, &QTimer::timeout, [&title, &timer]() {
+			if (QWidget *modal = QApplication::activeModalWidget()) {
+				title = modal->windowTitle();
+				timer.stop();
+				if (auto *dialog = qobject_cast<QDialog *>(modal)) {
+					dialog->reject();
+				} else {
+					modal->close();
+				}
+			}
+		});
+		timer.start();
+		QTimer::singleShot(5000, &timer, &QTimer::stop);
+		button->click();
+		timer.stop();
+		return title;
+	}
+
+		///Point the company path of @a page at @a path, the way picking
+		///it with "Browse..." does, without the folder picker
+	static bool setCompanyPath(GeneralConfigurationPage &page, const QString &path)
+	{
+		auto *combo = page.findChild<QComboBox *>("m_company_elmt_path_cb");
+		if (combo == nullptr) {
+			return false;
+		}
+		combo->blockSignals(true);
+		combo->setCurrentIndex(1);
+		combo->setItemData(1, path, Qt::DisplayRole);
+		combo->blockSignals(false);
+		return true;
 	}
 
 	static QTreeWidgetItem *itemWithTooltip(QTreeWidget *tree, const QString &tooltip)
@@ -85,7 +138,7 @@ class tst_companyprefixes : public QObject
 
 		QetLabelsFile labels;
 		QVERIFY(labels.load(company_dir.path()));
-		PrefixConfigurationDialog dialog(labels, QetLabelsFile::scanFolders(company_dir.path()),
+		PrefixConfigurationDialog dialog(labels, QetLabelsFile::scanFolders(company_dir.path()), nullptr,
 										 PrefixConfigurationDialog::CompanyCollection,
 										 user_file);
 		QCOMPARE(dialog.windowTitle(), QString("Company collection prefixes"));
@@ -127,15 +180,78 @@ class tst_companyprefixes : public QObject
 		QetLabelsFile labels;
 		QVERIFY(labels.load(company_dir.path()));
 			//no user file at all
-		PrefixConfigurationDialog company(labels, QetLabelsFile::scanFolders(company_dir.path()),
+		PrefixConfigurationDialog company(labels, QetLabelsFile::scanFolders(company_dir.path()), nullptr,
 										  PrefixConfigurationDialog::CompanyCollection,
 										  QDir(company_dir.path()).filePath("missing/qet_labels.xml"));
 		QCOMPARE(company.findChild<QTreeWidget *>()->columnCount(), 2);
+
+			//both settings on the same folder: its own prefixes are not
+			//shown as winning over themselves
+		writeFile(QetLabelsFile::labelsFilePath(company_dir.path()),
+				  "<labels><category name=\"abb\"><prefix>Q</prefix></category></labels>");
+		QetLabelsFile same;
+		QVERIFY(same.load(company_dir.path()));
+		PrefixConfigurationDialog same_dialog(same, QetLabelsFile::scanFolders(company_dir.path()), nullptr,
+											  PrefixConfigurationDialog::CompanyCollection,
+											  QetLabelsFile::labelsFilePath(company_dir.path()));
+		QCOMPARE(same_dialog.findChild<QTreeWidget *>()->columnCount(), 2);
 
 			//the user dialog keeps its title and its two columns
 		PrefixConfigurationDialog user(labels, QetLabelsFile::scanFolders(company_dir.path()));
 		QCOMPARE(user.windowTitle(), QString("User collection prefixes"));
 		QCOMPARE(user.findChild<QTreeWidget *>()->columnCount(), 2);
+	}
+
+	void pageButtonOpensCompanyDialog()
+	{
+		QTemporaryDir company_dir;
+		QVERIFY(QDir(company_dir.path()).mkpath("abb"));
+
+		GeneralConfigurationPage page;
+		QVERIFY(setCompanyPath(page, company_dir.path()));
+		auto *button = page.findChild<QPushButton *>("m_company_prefix_pb");
+		QVERIFY(button);
+		QCOMPARE(titleOfModalOpenedBy(button), QString("Company collection prefixes"));
+	}
+
+	void missingCompanyFolderIsNotCreated()
+	{
+		QTemporaryDir parent;
+		const QString missing = QDir(parent.path()).filePath("unmounted-share");
+
+		GeneralConfigurationPage page;
+		QVERIFY(setCompanyPath(page, missing));
+		auto *button = page.findChild<QPushButton *>("m_company_prefix_pb");
+		QVERIFY(button);
+		QCOMPARE(titleOfModalOpenedBy(button), QString("Folder not found"));
+		QVERIFY(!QDir(missing).exists());
+	}
+
+	void readOnlyCompanyFolderIsRefusedFirst()
+	{
+#ifdef Q_OS_UNIX
+		if (::geteuid() == 0) {
+			QSKIP("root can write a read-only folder");
+		}
+#endif
+		QTemporaryDir company_dir;
+		QVERIFY(QDir(company_dir.path()).mkpath("abb"));
+		const QFile::Permissions read_only = QFileDevice::ReadOwner | QFileDevice::ExeOwner;
+		QVERIFY(QFile::setPermissions(company_dir.path(), read_only));
+			//put back whatever happens, or the folder cannot be removed
+		const auto restore = qScopeGuard([&company_dir, read_only]() {
+			QFile::setPermissions(company_dir.path(), read_only | QFileDevice::WriteOwner);
+		});
+		if (QFileInfo(company_dir.path()).isWritable()) {
+			QSKIP("this file system ignores the permission");
+		}
+
+		GeneralConfigurationPage page;
+		QVERIFY(setCompanyPath(page, company_dir.path()));
+		auto *button = page.findChild<QPushButton *>("m_company_prefix_pb");
+		QVERIFY(button);
+		QCOMPARE(titleOfModalOpenedBy(button), QString("Prefix file cannot be written"));
+		QVERIFY(!QFile::exists(QetLabelsFile::labelsFilePath(company_dir.path())));
 	}
 };
 

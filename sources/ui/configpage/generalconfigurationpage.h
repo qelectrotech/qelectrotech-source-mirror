@@ -66,6 +66,7 @@ class GeneralConfigurationPage : public ConfigPage
 
 	private:
 		void fillLang();
+		QString shownCollectionDir(bool company) const;
 		void openPrefixDialog(bool company);
 			/**
 				One row of the texts of a cable on the "Texte" page:
