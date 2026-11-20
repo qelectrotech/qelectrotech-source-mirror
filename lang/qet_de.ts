@@ -10327,7 +10327,7 @@ Alle Einstellungen außer „Keine Rundung“ können je nach folgenden Faktoren
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="204"/>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="207"/>
         <source> grid squares</source>
-        <translation>Rasterfelder</translation>
+        <translation> Rasterfelder</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="210"/>
