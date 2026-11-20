@@ -8817,8 +8817,8 @@ que vous créez. entrées de texte et nombres sont
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="565"/>
-        <source>When enabled, report elements (cross-references) across folios with matching labels are automatically chained together. Newly created projects will have this enabled automatically.</source>
-        <translation>Lorsque cette option est activée, les éléments de rapport (renvois de folio) avec le même label sont automatiquement chaînés d&apos;un folio à l&apos;autre. Les nouveaux projets l&apos;activeront automatiquement.</translation>
+        <source>When enabled, report elements (cross-references) across folios with a matching name are automatically chained together. Newly created projects will have this enabled automatically.</source>
+        <translation>Lorsque cette option est activée, les éléments de rapport (renvois de folio) avec le même nom sont automatiquement chaînés d&apos;un folio à l&apos;autre. Les nouveaux projets l&apos;activeront automatiquement.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="717"/>
@@ -14022,9 +14022,9 @@ Donnez-leur une autre numérotation d&apos;abord.</numerusform>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="288"/>
-        <source>Automatically chains folio report elements with the same label in a forward/backward sequence.</source>
+        <source>Automatically chains folio report elements that share a name in a forward/backward sequence.</source>
         <comment>tooltip</comment>
-        <translation>Chaîne automatiquement les éléments de renvoi de folio avec le même label dans une séquence avant/arrière.</translation>
+        <translation>Chaîne automatiquement les éléments de renvoi de folio avec le même nom dans une séquence avant/arrière.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="331"/>

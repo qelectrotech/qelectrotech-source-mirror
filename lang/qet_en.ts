@@ -8812,8 +8812,8 @@ that you create. Text and number inputs are
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="565"/>
-        <source>When enabled, report elements (cross-references) across folios with matching labels are automatically chained together. Newly created projects will have this enabled automatically.</source>
-        <translation>When enabled, report elements (cross-references) across folios with matching labels are automatically chained together. Newly created projects will have this enabled automatically.</translation>
+        <source>When enabled, report elements (cross-references) across folios with a matching name are automatically chained together. Newly created projects will have this enabled automatically.</source>
+        <translation>When enabled, report elements (cross-references) across folios with a matching name are automatically chained together. Newly created projects will have this enabled automatically.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="717"/>
@@ -14010,9 +14010,9 @@ Give them another numbering first.</numerusform>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="288"/>
-        <source>Automatically chains folio report elements with the same label in a forward/backward sequence.</source>
+        <source>Automatically chains folio report elements that share a name in a forward/backward sequence.</source>
         <comment>tooltip</comment>
-        <translation>Automatically chains folio report elements with the same label in a forward/backward sequence.</translation>
+        <translation>Automatically chains folio report elements that share a name in a forward/backward sequence.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="331"/>

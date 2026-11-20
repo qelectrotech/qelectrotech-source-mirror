@@ -175,12 +175,8 @@ class Conductor : public QGraphicsObject
 		QSet<Conductor *> relatedPotentialConductors(
 				const bool all_diagram = true,
 				QList <Terminal *> *t_list=nullptr,
-				const bool ignore_function_separation = false);
-			/// Take away the folio report links of this wire's potential:
-			/// a name written over it follows the wires of one folio, and
-			/// the chaining makes the links again afterwards
-			/// (QETProject::reportKeySourceChanged)
-		void dissolveReportLinksInPotential();
+				const bool ignore_function_separation = false,
+				const bool stop_at_report_links = false);
 		QSet<Conductor *> functionSeparatedConductors(
 				const bool all_diagram = true);
 		QETDiagramEditor* diagramEditor() const;

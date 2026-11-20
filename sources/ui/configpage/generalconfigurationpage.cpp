@@ -230,8 +230,10 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	ui->m_enable_chained_reports->setChecked(settings.value("project/enable-chained-reports", false).toBool());
 	const QString chained_key =
 			settings.value("project/chained-reports-key", "label").toString();
-	ui->m_chained_key_function_rb->setChecked(chained_key == "function");
-	ui->m_chained_key_label_rb->setChecked(chained_key != "function");
+	ui->m_chained_key_function_rb->setChecked(
+				QETProject::reportLinkKeyFromString(chained_key)
+				== QETProject::ReportLinkKey::Function);
+	ui->m_chained_key_label_rb->setChecked(!ui->m_chained_key_function_rb->isChecked());
 		//A key says nothing while nothing is chained
 	ui->m_chained_key_gb->setEnabled(ui->m_enable_chained_reports->isChecked());
 	connect(ui->m_enable_chained_reports, &QCheckBox::toggled,
@@ -487,7 +489,10 @@ void GeneralConfigurationPage::applyConf()
 	settings.setValue("diagramcommands/autonumber-pasted-elements", ui->m_autonumber_pasted->isChecked());
 	settings.setValue("project/enable-chained-reports", ui->m_enable_chained_reports->isChecked());
 	settings.setValue("project/chained-reports-key",
-			ui->m_chained_key_function_rb->isChecked() ? "function" : "label");
+			QETProject::reportLinkKeyToString(
+				ui->m_chained_key_function_rb->isChecked()
+				? QETProject::ReportLinkKey::Function
+				: QETProject::ReportLinkKey::Label));
 
 		//SCRIPTING
 		//Left alone while the environment forces it on: the box is disabled

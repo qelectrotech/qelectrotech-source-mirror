@@ -8832,8 +8832,8 @@ Texte und Zahlen sind ebenso erlaubt.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="565"/>
-        <source>When enabled, report elements (cross-references) across folios with matching labels are automatically chained together. Newly created projects will have this enabled automatically.</source>
-        <translation>Wenn aktiviert, werden Folien-Verweise (Querverweise) über Folien hinweg mit gleichem Kennzeichen automatisch verkettet. Neu erstellte Projekte haben diese Funktion automatisch aktiv.</translation>
+        <source>When enabled, report elements (cross-references) across folios with a matching name are automatically chained together. Newly created projects will have this enabled automatically.</source>
+        <translation>Wenn aktiviert, werden Folien-Verweise (Querverweise) über Folien hinweg mit gleichem Namen automatisch verkettet. Neu erstellte Projekte haben diese Funktion automatisch aktiv.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="717"/>
@@ -14012,9 +14012,9 @@ Geben Sie ihnen zuerst eine andere Nummerierung.</numerusform>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="288"/>
-        <source>Automatically chains folio report elements with the same label in a forward/backward sequence.</source>
+        <source>Automatically chains folio report elements that share a name in a forward/backward sequence.</source>
         <comment>tooltip</comment>
-        <translation>Verkettet Folien-Verweise mit gleichem Kennzeichen automatisch über die Folien hinweg.</translation>
+        <translation>Verkettet Folien-Verweise mit gleichem Namen automatisch über die Folien hinweg.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="331"/>

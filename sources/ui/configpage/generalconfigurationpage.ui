@@ -707,7 +707,7 @@
              <string>Enable chained folio reports for report elements</string>
             </property>
             <property name="toolTip">
-             <string>When enabled, report elements (cross-references) across folios with matching labels are automatically chained together. Newly created projects will have this enabled automatically.</string>
+             <string>When enabled, report elements (cross-references) across folios with a matching name are automatically chained together. Newly created projects will have this enabled automatically.</string>
             </property>
            </widget>
           </item>

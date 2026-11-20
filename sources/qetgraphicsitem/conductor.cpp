@@ -1957,7 +1957,7 @@ QPainterPath Conductor::path() const
 }
 
 /**
-	@brief Conductor::setPropertiesToPotential
+	@brief Conductor::setPropertyToPotential
 	@param property
 	@param only_text
 	Set property to conductor and every conductors in
@@ -1966,51 +1966,31 @@ QPainterPath Conductor::path() const
 	function and tension/protocol is set
 	to other conductor in the same potential,
 	the other values of property stay unmodified
-*/
-/**
-	@brief Conductor::dissolveReportLinksInPotential
-	Take away every folio report link of the potential this wire is in.
-	A name written over a potential (Conductor::setPropertyToPotential)
-	stays on the folio it is written on: the wires a folio report joins
-	are one wire, but they need not carry the same name, and the chaining
-	makes the links again with the new name once the name is written
-	(QETProject::reportKeySourceChanged).
-*/
-void Conductor::dissolveReportLinksInPotential()
-{
-	QSet<Conductor *> potential = relatedPotentialConductors();
-	potential.insert(this);
-	QSet<Element *> done;
-	for (Conductor *conductor : std::as_const(potential))
-	{
-		for (Terminal *terminal : {conductor->terminal1, conductor->terminal2})
-		{
-			Element *elmt = terminal ? terminal->parentElement() : nullptr;
-			if (!elmt || done.contains(elmt)) {
-				continue;
-			}
-			done.insert(elmt);
-			if ((elmt->linkType() & ElementData::AllReport) && !elmt->isFree()) {
-				elmt->unlinkAllElements();
-			}
-		}
-	}
-}
 
+	A name written over the potential stays on the folio it is written on
+	in a project chaining its reports by the wire function
+	(QETProject::chainsByWireFunction): the folio report links of the
+	potential go before the name is written
+	(QETProject::dissolveReportLinksOfPotential) and the chaining makes
+	them again with the new name (QETProject::reportKeySourceChanged).
+	A project chaining by the label of its reports, or not at all, is
+	left as it was.
+*/
 void Conductor::setPropertyToPotential(const ConductorProperties &property,
 					   bool only_text)
 {
-		//A name written over a potential stays on the folio it is written
-		//on: the folio report links of the potential go first, and the
-		//chaining makes them again with the new name
-		//(QETProject::reportKeySourceChanged)
-	if (property.m_function != properties().m_function) {
-		dissolveReportLinksInPotential();
+	QETProject *project = diagram() ? diagram()->project() : nullptr;
+	const bool renames = property.m_function != properties().m_function;
+	const bool stop_at_report_links = renames && project
+			&& project->chainsByWireFunction();
+	if (stop_at_report_links) {
+		project->dissolveReportLinksOfPotential(this);
 	}
+	QSet <Conductor *> potential_list = relatedPotentialConductors(
+				true, nullptr, false, stop_at_report_links);
 	setProperties(property);
-	QSet <Conductor *> potential_list = relatedPotentialConductors();
 
-	foreach(Conductor *other_conductor, potential_list)
+	foreach (Conductor *other_conductor, potential_list)
 	{
 			//A core of a cable takes section, colour and type from its
 			//cable: no property of the potential is copied over it
@@ -2339,12 +2319,16 @@ void Conductor::displayedTextChanged()
 	function separation is enabled does not stop the search, and the
 	conductors of both its sides are returned as one potential. Only
 	functionSeparatedConductors() passes true.
+	@param stop_at_report_links : if true, a folio report does not join
+	its two wires: a name written over the potential stays on the folio
+	it was written on (QETProject::chainsByWireFunction)
 	@sa functionSeparatedConductors
 	@return  a QSet of conductor at the same potential.
 */
 QSet<Conductor *> Conductor::relatedPotentialConductors(const bool all_diagram,
 							QList <Terminal *> *t_list,
-							const bool ignore_function_separation)
+							const bool ignore_function_separation,
+							const bool stop_at_report_links)
 {
 	bool declar_t_list = false;
 	if (t_list == nullptr)
@@ -2368,7 +2352,8 @@ QSet<Conductor *> Conductor::relatedPotentialConductors(const bool all_diagram,
 				//Get the other terminals of the parent element of @terminal, who share the same potential
 				//This is use for element type "folio report" and "terminal element"
 			for (Terminal *t : relatedPotentialTerminal(terminal, all_diagram,
-								ignore_function_separation))
+								ignore_function_separation,
+								stop_at_report_links))
 			{
 				if (!t_list->contains(t))
 				{
@@ -2381,7 +2366,8 @@ QSet<Conductor *> Conductor::relatedPotentialConductors(const bool all_diagram,
 				//Get the conductors at the same potential for each conductors of other_conductors_list_t
 			for (Conductor *c : other_conductors_list_t) {
 				other_conductors += c->relatedPotentialConductors(all_diagram, t_list,
-								  ignore_function_separation);
+								  ignore_function_separation,
+								  stop_at_report_links);
 			}
 
 			other_conductors += QSet<Conductor*>(other_conductors_list_t.begin(),other_conductors_list_t.end());

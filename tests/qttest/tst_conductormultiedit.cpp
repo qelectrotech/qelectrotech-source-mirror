@@ -28,7 +28,18 @@ class FakeWire : public QObject
 
 		ConductorProperties properties() const { return m_properties; }
 		void setProperties(const ConductorProperties &p) { m_properties = p; }
-		QSet<FakeWire *> relatedPotentialConductors() const { return m_potential; }
+		QSet<FakeWire *> relatedPotentialConductors(
+				const bool all_diagram = true,
+				QList<FakeWire *> *t_list = nullptr,
+				const bool ignore_function_separation = false,
+				const bool stop_at_report_links = false) const
+		{
+			Q_UNUSED(all_diagram)
+			Q_UNUSED(t_list)
+			Q_UNUSED(ignore_function_separation)
+			Q_UNUSED(stop_at_report_links)
+			return m_potential;
+		}
 			// The wires of the other side of a function separated terminal
 			// element: same electrical node, but only the voltage /
 			// protocol crosses.

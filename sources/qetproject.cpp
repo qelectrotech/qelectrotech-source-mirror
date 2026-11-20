@@ -118,11 +118,9 @@ m_project_properties_handler{this}
 		//carries, or by the function of the wire its terminal holds, as
 		//the settings chose it. A project read keeps what its file says
 		//(readChainedReportsXml())
-	const QString chained_key = settings.value(
+	m_chained_reports_key = reportLinkKeyFromString(settings.value(
 				QStringLiteral("project/chained-reports-key"),
-				QStringLiteral("label")).toString();
-	m_chained_reports_key = chained_key == QLatin1String("function")
-			? ReportLinkKey::Function : ReportLinkKey::Label;
+				QStringLiteral("label")).toString());
 
 	int size = settings.beginReadArray(QStringLiteral("diagrameditor/defaultguides"));
 	for (int i = 0; i < size; ++i) {
@@ -5579,9 +5577,8 @@ void QETProject::readChainedReportsXml(QDomDocument &xml_project)
 	if (!cr_elmt.isNull()) {
 		m_has_chained_reports_attribute = true;
 		m_chained_reports = (cr_elmt.attribute(QStringLiteral("enabled"), QStringLiteral("false")) == QLatin1String("true"));
-		m_chained_reports_key =
-				cr_elmt.attribute(QStringLiteral("key")) == QLatin1String("function")
-				? ReportLinkKey::Function : ReportLinkKey::Label;
+		m_chained_reports_key = reportLinkKeyFromString(
+					cr_elmt.attribute(QStringLiteral("key")));
 	} else {
 		m_has_chained_reports_attribute = false;
 		m_chained_reports = false;
@@ -5605,7 +5602,8 @@ void QETProject::writeChainedReportsXml(QDomElement &xml_element)
 			.createElement(QStringLiteral("chained_reports"));
 	cr_elmt.setAttribute(QStringLiteral("enabled"), m_chained_reports ? QStringLiteral("true") : QStringLiteral("false"));
 	if (m_chained_reports_key == ReportLinkKey::Function) {
-		cr_elmt.setAttribute(QStringLiteral("key"), QStringLiteral("function"));
+		cr_elmt.setAttribute(QStringLiteral("key"),
+							 reportLinkKeyToString(m_chained_reports_key));
 	}
 	xml_element.appendChild(cr_elmt);
 }
@@ -5802,6 +5800,103 @@ void QETProject::setChainedReportsKey(ReportLinkKey key)
 	}
 	m_chained_reports_key = key;
 	storeSettings();
+}
+
+/**
+	@brief QETProject::reportLinkKeyToString
+	@return what a project writes in the file for this key: "function",
+	or "label" for the key a project has when it says nothing
+*/
+QString QETProject::reportLinkKeyToString(ReportLinkKey key)
+{
+	return key == ReportLinkKey::Function ? QStringLiteral("function")
+										  : QStringLiteral("label");
+}
+
+/**
+	@brief QETProject::reportLinkKeyFromString
+	@return the key a project chains its folio reports by, read from the
+	word its file or the settings keep for it
+*/
+QETProject::ReportLinkKey QETProject::reportLinkKeyFromString(const QString &name)
+{
+	return name == QLatin1String("function") ? ReportLinkKey::Function
+											 : ReportLinkKey::Label;
+}
+
+/**
+	@brief QETProject::chainsByWireFunction
+	@return true when this project chains its folio reports by the
+	function of the wire each of them holds (ReportLinkKey::Function)
+*/
+bool QETProject::chainsByWireFunction() const
+{
+	return m_chained_reports && m_chained_reports_key == ReportLinkKey::Function;
+}
+
+/**
+	@brief QETProject::dissolveReportLinksOfPotential
+	Take away every folio report link of the potential @p conductor is
+	in. A name written over a potential (Conductor::setPropertyToPotential)
+	stays on the folio it is written on: the wires a folio report joins
+	are one wire, but they need not carry the same name, and the chaining
+	makes the links again with the new name once the name is written
+	(QETProject::reportKeySourceChanged).
+	Nothing in a project chaining by the label of its reports, or not at
+	all: the links of such a project are made by hand and are nobody's to
+	take away, and nothing would make them again.
+	@param conductor the wire whose potential is walked
+*/
+void QETProject::dissolveReportLinksOfPotential(Conductor *conductor)
+{
+	if (!chainsByWireFunction() || !conductor) {
+		return;
+	}
+	const auto links = reportLinksOfPotential({conductor});
+	for (const auto &link : links) {
+		if (link.first && !link.first->isFree()) {
+			link.first->unlinkAllElements();
+		}
+	}
+}
+
+/**
+	@brief QETProject::reportLinksOfPotential
+	@return the folio report links of the potentials of @p wires: each
+	pair of reports a link joins, once. A report keeps one partner, so a
+	pair is all a link is (ReportElement::linkToElement)
+*/
+QList<QPair<Element *, Element *>> QETProject::reportLinksOfPotential(
+		const QList<Conductor *> &wires) const
+{
+	QList<QPair<Element *, Element *>> links;
+	QSet<Conductor *> potential;
+	QSet<Element *> done;
+	for (Conductor *conductor : wires) {
+		if (!conductor) {
+			continue;
+		}
+		potential.insert(conductor);
+		potential.unite(conductor->relatedPotentialConductors());
+	}
+	for (Conductor *wire : std::as_const(potential))
+	{
+		for (Terminal *terminal : {wire->terminal1, wire->terminal2})
+		{
+			Element *elmt = terminal ? terminal->parentElement() : nullptr;
+			if (!elmt || done.contains(elmt)) {
+				continue;
+			}
+			done.insert(elmt);
+			if ((elmt->linkType() & ElementData::AllReport) && !elmt->isFree()) {
+				Element *partner = elmt->linkedElements().value(0);
+				if (partner) {
+					links.append(qMakePair(elmt, partner));
+				}
+			}
+		}
+	}
+	return links;
 }
 
 /**
@@ -6631,9 +6726,32 @@ void QETProject::scheduleAutoLink()
 */
 void QETProject::reportKeySourceChanged(Conductor *conductor)
 {
-	if (!m_chained_reports || m_chained_reports_key != ReportLinkKey::Function) {
+	if (!chainsByWireFunction()) {
 		return;
 	}
+		//A project opening keeps the links its file has, whoever made
+		//them: the names of the wires say nothing about that until the
+		//user edits one of them
+	if (m_state == ProjectParsingRunning) {
+		return;
+	}
+		//The chains are looked over again at once: what the change leaves
+		//free is made again by the chaining in the next turn of the event
+		//loop, and an undo brings its links back after this has run
+	recheckReportKeys(conductor);
+}
+
+/**
+	@brief QETProject::recheckReportKeys
+	The chains of the names the changed wires carry are made again: a
+	report that took another name may sit between two that were chained,
+	and the chain has to go around it -- so every link of those names
+	goes, whoever made it.
+	@param conductor the wire that changed; every report is looked at when
+	it is null
+*/
+void QETProject::recheckReportKeys(Conductor *conductor)
+{
 	QList<ReportElement *> touched;
 	if (conductor) {
 		for (Terminal *terminal : {conductor->terminal1, conductor->terminal2}) {
@@ -6648,7 +6766,7 @@ void QETProject::reportKeySourceChanged(Conductor *conductor)
 		ElementProvider ep(this);
 		for (const QPointer<Element> &elmt_ptr : ep.find(ElementData::AllReport)) {
 			ReportElement *report = dynamic_cast<ReportElement*>(elmt_ptr.data());
-			if (report) {
+			if (report && !touched.contains(report)) {
 				touched << report;
 			}
 		}

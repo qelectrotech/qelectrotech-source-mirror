@@ -327,7 +327,7 @@ void ProjectMainConfigPage::initWidgets()
 											  "tooltip"));
 
 	chained_reports_cb_ = new QCheckBox(tr("Enable chained folio reports for report elements", "checkbox label"));
-	chained_reports_cb_ -> setToolTip(tr("Automatically chains folio report elements with the same label in a forward/backward sequence.", "tooltip"));
+	chained_reports_cb_ -> setToolTip(tr("Automatically chains folio report elements that share a name in a forward/backward sequence.", "tooltip"));
 
 		//What two folio reports must share to be chained together
 	chained_key_gb_ = new QGroupBox(tr("Chain folio report elements by", "group box title"));

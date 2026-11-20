@@ -16,6 +16,8 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "conductorpropertieseditorwidget.h"
+#include <undocommand/dissolvereportlinkscommand.h>
+#include <qetproject.h>
 
 #include <bridge/bridgemanager.h>
 
@@ -368,18 +370,19 @@ QUndoCommand *ConductorPropertiesEditorWidget::associatedUndo() const
 			selected << c.data();
 
 		//A name written over a potential stays on the folio it is written
-		//on: the folio report links of the potential go before anything is
-		//written, and the chaining makes them again with the new name
-	if (edited.m_function != m_shown.m_function) {
-		for (Conductor *conductor : std::as_const(selected)) {
-			conductor->dissolveReportLinksInPotential();
-		}
-	}
+		//on in a project chaining its reports by the wire function: the
+		//folio report links of the potential go first, and the chaining
+		//makes them again with the new name
+	const bool renames = edited.m_function != m_shown.m_function;
+	const Conductor *first = selected.value(0, nullptr);
+	QETProject *project = first && first->diagram() ? first->diagram()->project() : nullptr;
+	const bool stop_at_report_links = renames && project
+			&& project->chainsByWireFunction();
 
 	QSet<Conductor *> function_separated;
 	const QList<Conductor *> targets = ConductorMultiEdit::targets(
 		selected, m_apply_all_cb && m_apply_all_cb->isChecked(),
-		&function_separated);
+		&function_separated, stop_at_report_links);
 
 		//A bridge sits across the terminals it lands on, so the voltage
 		//of one of their wires reaches every wire of every terminal of it
@@ -401,7 +404,14 @@ QUndoCommand *ConductorPropertiesEditorWidget::associatedUndo() const
 		}
 	}
 
-	return ConductorMultiEdit::undo(all_targets, m_shown, edited, function_separated);
+		//The links go first and come back last: one undo step carries the
+		//edit and the links it took away
+	auto *undo = new QUndoCommand();
+	if (stop_at_report_links) {
+		new DissolveReportLinksCommand(selected, undo);
+	}
+	return ConductorMultiEdit::undo(all_targets, m_shown, edited,
+									function_separated, undo);
 }
 
 /**
