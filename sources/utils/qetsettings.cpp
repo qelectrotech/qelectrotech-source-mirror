@@ -313,64 +313,85 @@ namespace QetSettings
 		settings.setValue("diagrameditor/ask_labels_placing_macro", ask);
 	}
 
-	/**
-	* @brief rememberLastImportDir
-	* @return whether the dialog that asks for a picture or a PDF starts
-	* in the folder the last file was picked from instead of the pictures
-	* or the documents folder (@sa setRememberLastImportDir), off unless
-	* the user turned it on
-	*/
-	bool rememberLastImportDir()
-	{
-		QSettings settings;
-		return settings.value("diagrameditor/remember_last_import_dir", false).toBool();
+	namespace {
+		/**
+		* @brief lastDirKey
+		* @param which
+		* @return the settings key holding the folder the last file of
+		* @p which was picked from
+		*/
+		QString lastDirKey(QetSettings::FileDialog which)
+		{
+			switch (which) {
+				case QetSettings::FileDialog::Picture:
+					return "filedialogs/last_picture_dir";
+				case QetSettings::FileDialog::Pdf:
+					return "filedialogs/last_pdf_dir";
+				case QetSettings::FileDialog::File:
+					break;
+			}
+			return "filedialogs/last_file_dir";
+		}
 	}
 
 	/**
-	* @brief setRememberLastImportDir
-	* Store whether the dialog that asks for a picture or a PDF starts in
-	* the folder the last file was picked from.
-	* @sa rememberLastImportDir
+	* @brief rememberLastDir
+	* @return whether a dialog that asks for a file or a folder starts in
+	* the folder the last one was picked from instead of the pictures or
+	* the documents folder (@sa setRememberLastDir), off unless the user
+	* turned it on
+	*/
+	bool rememberLastDir()
+	{
+		QSettings settings;
+		return settings.value("filedialogs/remember_last_dir", false).toBool();
+	}
+
+	/**
+	* @brief setRememberLastDir
+	* Store whether a dialog that asks for a file or a folder starts in
+	* the folder the last one was picked from. Turning it off forgets the
+	* folders, so that nothing of the user's disk stays in the settings.
+	* @sa rememberLastDir
 	* @param remember
 	*/
-	void setRememberLastImportDir(bool remember)
+	void setRememberLastDir(bool remember)
 	{
 		QSettings settings;
-		settings.setValue("diagrameditor/remember_last_import_dir", remember);
+		settings.setValue("filedialogs/remember_last_dir", remember);
+		if (!remember) {
+			settings.remove("filedialogs/last_picture_dir");
+			settings.remove("filedialogs/last_pdf_dir");
+			settings.remove("filedialogs/last_file_dir");
+		}
 	}
 
 	/**
-	* @brief lastImportPictureDir
-	* @return the folder the last picture was picked from, empty when
-	* none was picked yet (@sa setLastImportPictureDir)
+	* @brief lastDir
+	* @param which
+	* @return the folder the last file of @p which was picked from, empty
+	* when none was picked yet or the setting is off (@sa setLastDir)
 	*/
-	QString lastImportPictureDir()
+	QString lastDir(FileDialog which)
 	{
+		if (!rememberLastDir()) return QString();
 		QSettings settings;
-		return settings.value("diagrameditor/last_picture_dir", QString()).toString();
-	}
-
-	void setLastImportPictureDir(const QString &dir)
-	{
-		QSettings settings;
-		settings.setValue("diagrameditor/last_picture_dir", dir);
+		return settings.value(lastDirKey(which), QString()).toString();
 	}
 
 	/**
-	* @brief lastImportPdfDir
-	* @return the folder the last PDF was picked from, empty when none
-	* was picked yet (@sa setLastImportPdfDir)
+	* @brief setLastDir
+	* Store the folder the last file of @p which was picked from.
+	* Nothing is stored while the setting is off.
+	* @sa lastDir
+	* @param which
+	* @param dir
 	*/
-	QString lastImportPdfDir()
+	void setLastDir(FileDialog which, const QString &dir)
 	{
+		if (!rememberLastDir()) return;
 		QSettings settings;
-		return settings.value("diagrameditor/last_pdf_dir", QString()).toString();
-	}
-
-	void setLastImportPdfDir(const QString &dir)
-	{
-		QSettings settings;
-		settings.setValue("diagrameditor/last_pdf_dir", dir);
+		settings.setValue(lastDirKey(which), dir);
 	}
 
 	/**

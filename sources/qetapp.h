@@ -109,8 +109,10 @@ class QETApp : public QObject
 		static QString pictureDir();
 		static QString lastPictureDir();
 		static QString lastPdfDir();
+		static QString lastFileDir(const QString &fallback);
 		static void rememberPictureDir(const QString &);
 		static void rememberPdfDir(const QString &);
+		static void rememberFileDir(const QString &);
 		static QString languagesPath();
 		static QString loadedQetTranslationFile();
 		static QString loadedQtTranslationFile();

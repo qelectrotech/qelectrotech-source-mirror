@@ -1136,69 +1136,109 @@ QString QETApp::pictureDir()
 	return picturedir;
 }
 
+namespace {
+	/**
+		Where the dialog of @p which kind starts: the folder its last
+		file was picked from while the "remember the last folder" setting
+		is on and that folder still exists, @p fallback otherwise.
+		\~ @return The path of the directory to start the dialog in
+	*/
+	QString lastDirFor(QetSettings::FileDialog which, const QString &fallback)
+	{
+		const QString stored = QetSettings::lastDir(which);
+		if (!stored.isEmpty() && QDir(stored).exists()) {
+			return stored;
+		}
+		return fallback;
+	}
+
+	/**
+		Record the folder @p path was picked from, so the next dialog of
+		@p which kind starts there. Nothing is recorded while the
+		"remember the last folder" setting is off, so a user who never
+		turned it on has no path of theirs in the settings file.
+		@param path File or folder the user picked
+	*/
+	void rememberDirFor(QetSettings::FileDialog which, const QString &path)
+	{
+		const QFileInfo info(path);
+		QetSettings::setLastDir(which, info.isDir() ? QDir(path).absolutePath() : info.absolutePath());
+	}
+}
+
 /**
 	@brief QETApp::lastPictureDir
-	Return the directory where the dialog asking for a picture starts.
-	With the "remember the last folder" setting off, the default, this is
-	the pictures folder, as it always was. With it on, this is the folder
-	the last picture was picked from, as long as that folder still exists.
+	Where the dialog that asks for a picture starts: the folder the last
+	picture was picked from while the "remember the last folder" setting
+	is on, the pictures folder otherwise.
 	\~ @return The path of the directory to start the picture dialog in
 */
 QString QETApp::lastPictureDir()
 {
-	if (QetSettings::rememberLastImportDir())
-	{
-		const QString stored = QetSettings::lastImportPictureDir();
-		if (!stored.isEmpty() && QDir(stored).exists()) {
-			return stored;
-		}
-	}
-	return pictureDir();
+	return lastDirFor(QetSettings::FileDialog::Picture, pictureDir());
 }
 
 /**
 	@brief QETApp::lastPdfDir
-	Return the directory where the dialog asking for a PDF starts.
-	Same rule as QETApp::lastPictureDir(): the documents folder unless
-	the "remember the last folder" setting is on and a PDF was picked
-	from a folder that still exists.
+	Where the dialog that asks for a PDF starts: the folder the last PDF
+	was picked from while the "remember the last folder" setting is on,
+	the documents folder otherwise.
 	\~ @return The path of the directory to start the PDF dialog in
 */
 QString QETApp::lastPdfDir()
 {
-	if (QetSettings::rememberLastImportDir())
-	{
-		const QString stored = QetSettings::lastImportPdfDir();
-		if (!stored.isEmpty() && QDir(stored).exists()) {
-			return stored;
-		}
-	}
-	return documentDir();
+	return lastDirFor(QetSettings::FileDialog::Pdf, documentDir());
+}
+
+/**
+	@brief QETApp::lastFileDir
+	Where a dialog that asks for any other file starts: the folder the
+	last such file was picked from while the "remember the last folder"
+	setting is on, @p fallback otherwise -- the folder the caller
+	started in before, so that turning the setting off leaves every
+	dialog exactly where it was.
+	@param fallback Directory to start in when nothing was picked yet
+	\~ @return The path of the directory to start the dialog in
+*/
+QString QETApp::lastFileDir(const QString &fallback)
+{
+	return lastDirFor(QetSettings::FileDialog::File, fallback);
 }
 
 /**
 	@brief QETApp::rememberPictureDir
 	Record the folder a picture was picked from, so the next picture
-	dialog starts there. The folder is recorded whether the "remember
-	the last folder" setting is on or off, so that turning the setting
-	on later already has a folder to start from.
+	dialog starts there. Nothing is recorded while the "remember the
+	last folder" setting is off.
 	@param file_path Path of the file the user picked
 */
 void QETApp::rememberPictureDir(const QString &file_path)
 {
-	QetSettings::setLastImportPictureDir(QFileInfo(file_path).absolutePath());
+	rememberDirFor(QetSettings::FileDialog::Picture, file_path);
 }
 
 /**
 	@brief QETApp::rememberPdfDir
 	Record the folder a PDF was picked from, so the next PDF dialog
-	starts there. Recorded whether the "remember the last folder" setting
-	is on or off, like QETApp::rememberPictureDir().
+	starts there. Nothing is recorded while the "remember the last
+	folder" setting is off.
 	@param file_path Path of the file the user picked
 */
 void QETApp::rememberPdfDir(const QString &file_path)
 {
-	QetSettings::setLastImportPdfDir(QFileInfo(file_path).absolutePath());
+	rememberDirFor(QetSettings::FileDialog::Pdf, file_path);
+}
+
+/**
+	@brief QETApp::rememberFileDir
+	Record the folder a file or a folder was picked from, so the next
+	dialog asking for one starts there. Nothing is recorded while the
+	"remember the last folder" setting is off.
+	@param path File or folder the user picked
+*/
+void QETApp::rememberFileDir(const QString &path)
+{
+	rememberDirFor(QetSettings::FileDialog::File, path);
 }
 
 /**
@@ -2825,11 +2865,12 @@ void QETApp::importConfiguration()
 	const QString path = QFileDialog::getOpenFileName(
 				parent_widget,
 				tr("Load settings...", "dialog title"),
-				QString(),
+				lastFileDir(QString()),
 				tr("QElectroTech settings (*.conf)", "file dialog filter"));
 	if (path.isEmpty()) {
 		return;
 	}
+	rememberFileDir(path);
 
 	QSettings file_settings(path, QSettings::IniFormat);
 	const QList<ConfigProfile::Part> parts = ConfigProfile::partsOf(file_settings);
