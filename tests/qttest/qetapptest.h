@@ -35,6 +35,7 @@
 #include <QAction>
 #include <QApplication>
 #include <QCoreApplication>
+#include <QDir>
 #include <QSettings>
 #include <QStandardPaths>
 #include <QTemporaryDir>
@@ -103,6 +104,9 @@ int run(int argc, char **argv, void (*prepare)() = nullptr)
 	QSettings::setDefaultFormat(QSettings::IniFormat);
 	QSettings::setPath(QSettings::IniFormat, QSettings::UserScope, home.filePath("settings"));
 	QSettings::setPath(QSettings::IniFormat, QSettings::SystemScope, home.filePath("settings"));
+		//QETApp keeps its standard folders unless the ones named exist
+	QDir().mkpath(home.filePath("config"));
+	QDir().mkpath(home.filePath("data"));
 	QETApp::applyDirectoryArguments(QETArguments(QList<QString>{
 		"--config-dir=" + home.filePath("config"),
 		"--data-dir=" + home.filePath("data")}));

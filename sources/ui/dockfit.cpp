@@ -140,11 +140,9 @@ namespace {
 		if (!layout || !holds(layout, button))
 			return;
 
-		const bool hidden = button->isHidden();
 		auto *row = new QWidget(button->parentWidget());
 		auto *row_layout = new QHBoxLayout(row);
 		row_layout->setContentsMargins(0, 0, 0, 0);
-		auto *text = new ButtonText(button, row);
 			//The layout may be measuring the button right now, from the
 			//item it is replaced with: a button not yet polished is
 			//polished from its sizeHint(). That item is deleted once the
@@ -160,11 +158,16 @@ namespace {
 		QMetaObject::invokeMethod(button,
 			[item = std::move(item)]() mutable { item.reset(); },
 			Qt::QueuedConnection);
-		button->setText(QString());
+			//In the row, not shown yet, the button stays hidden only if
+			//it was hidden with hide() or setVisible(false). One that
+			//waits for Qt to show it, as one just added to a panel on
+			//screen, is shown with the row. The text is made after the
+			//move, so that it takes the same visibility
 		button->setParent(row);
+		auto *text = new ButtonText(button, row);
+		button->setText(QString());
 		row_layout->addWidget(button, 0, Qt::AlignTop);
 		row_layout->addWidget(text, 1);
-		button->setVisible(!hidden);
 		row->setProperty(handled, true);
 			//A button destroyed on its own takes its row and text with
 			//it, so no text is left beside an empty space

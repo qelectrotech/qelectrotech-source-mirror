@@ -24,6 +24,8 @@
 #include <QAbstractButton>
 #include <QDialog>
 #include <QItemDelegate>
+#include <QPointF>
+#include <QUuid>
 
 class QTableWidget;
 class QTreeWidgetItem;
@@ -33,6 +35,7 @@ class QGroupBox;
 class QPushButton;
 class QLineEdit;
 class QScrollBar;
+class PartTerminal;
 
 namespace Ui {
 	class ElementPropertiesEditorWidget;
@@ -72,11 +75,30 @@ class ElementPropertiesEditorWidget : public QDialog
 
 		ElementData editedData() {return m_data;}
 
+			/// One connection of the symbol being edited: the uuid saved on
+			/// <terminal>, which is what a role is stored against; the name it
+			/// is drawn with and the side it sits on, which are only there so
+			/// the row reads as something; and the part itself, so a row can
+			/// point at the connection in the drawing
+		struct Connection
+		{
+			QUuid uuid;
+			QString name;
+			QPointF pos;
+				/// The side of the symbol it sits on: "n", "e", "s", "w"
+			QString side;
+			PartTerminal *item = nullptr;
+		};
+			/// The symbol's connections, so that a junction can ask which of
+			/// them the wire comes in at (@see populateJunctionRoles)
+		void setConnections(const QList<Connection> &connections);
+
 	private:
 		void upDateInterface();
 		void setUpInterface();
 		void updateTree();
 		void populateTree();
+		void populateJunctionRoles();
 		void setUpCustomInfo();
 		QTreeWidgetItem *addCustomInfoRow(const QString &key, const QString &value);
 		void addCustomInfo();
@@ -93,6 +115,8 @@ class ElementPropertiesEditorWidget : public QDialog
 	private slots:
 		void on_m_buttonBox_accepted();
 		void on_m_base_type_cb_currentIndexChanged(int index);
+		void junctionRoleChanged(int row);
+		void junctionConnectionChosen(int row);
 		void on_m_slave_groups_checkbox_toggled(bool checked);
 		void on_max_slaves_checkbox_toggled(bool checked);
 		void plcAddRow();
@@ -107,6 +131,8 @@ class ElementPropertiesEditorWidget : public QDialog
 	private:
 		Ui::ElementPropertiesEditorWidget *ui;
 		ElementData m_data;
+			/// The symbol's connections, while the dialog is open
+		QList<Connection> m_connections;
 
 		// PLC configuration widgets (created programmatically)
 		QGroupBox *m_plc_gb = nullptr;

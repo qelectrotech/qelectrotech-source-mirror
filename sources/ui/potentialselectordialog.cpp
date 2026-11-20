@@ -96,13 +96,17 @@ class NewConductorPotentialSelector : public AbstractPotentialSelector
 			if (!terminal->conductors().isEmpty())
 				conductor_in_potential = terminal->conductors().first();
 
-				//Terminal haven't got a conductor, but if parent element is a folio report or a terminal element, we search a potential
-				//through the report or in another terminal of the terminal element.
-			else if (terminal->parentElement()->linkType() & (Element::Terminale | Element::AllReport))
+				//Terminal haven't got a conductor, but if parent element is a folio report,
+				//a terminal element or a junction, we search a potential through the
+				//report, or in another terminal of that element: a junction passes a
+				//potential through its own terminals, the same as a terminal does (#1500)
+			else if (terminal->parentElement()->linkType()
+					 & (Element::Terminale | Element::Junction | Element::AllReport))
 			{
 				Element *elmt_ = terminal->parentElement();
 
-				if ((elmt_->linkType() & Element::Terminale) && !elmt_->terminals().isEmpty())
+				if ((elmt_->linkType() & (Element::Terminale | Element::Junction))
+					&& !elmt_->terminals().isEmpty())
 				{
 					foreach(Terminal *t, elmt_->terminals())
 					{
