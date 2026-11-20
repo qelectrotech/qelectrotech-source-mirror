@@ -352,8 +352,9 @@ void ConductorPropertiesEditorWidget::updateUi()
 	them all), as the modal dialog does
 	(ConductorPropertiesDialog::PropertiesDialog). A terminal element with
 	its function separation enabled is not crossed by any of that -- its
-	other side keeps its own text, function, color... -- but the voltage /
-	protocol still crosses (@see Conductor::functionSeparatedConductors).
+	other side keeps its own text, function, color... -- but what the node
+	itself describes still crosses: the voltage / protocol and the drawing
+	of the wire (@see Conductor::functionSeparatedConductors).
 */
 QUndoCommand *ConductorPropertiesEditorWidget::associatedUndo() const
 {
@@ -374,10 +375,11 @@ QUndoCommand *ConductorPropertiesEditorWidget::associatedUndo() const
 
 		//A bridge sits across the terminals it lands on, so the voltage
 		//of one of their wires reaches every wire of every terminal of it
-		//-- and only the voltage crosses a bridge, never the function. The
-		//same rule as the wires themselves, so those wires go with the
-		//edit the way a function separated one does.
+		//-- and only the voltage crosses a bridge, never the function and
+		//never the drawing, unlike a function separation. Those wires go
+		//with the edit the voltage-only way.
 	QList<Conductor *> all_targets = targets;
+	QSet<Conductor *> bridge_reached;
 	if (!targets.isEmpty() && targets.first()->diagram())
 	{
 		const auto over_bridges = BridgeManager::conductorsOverBridges(
@@ -387,12 +389,13 @@ QUndoCommand *ConductorPropertiesEditorWidget::associatedUndo() const
 			if (conductor && !all_targets.contains(conductor))
 			{
 				all_targets << conductor;
-				function_separated.insert(conductor);
+				bridge_reached.insert(conductor);
 			}
 		}
 	}
 
-	return ConductorMultiEdit::undo(all_targets, m_shown, edited, function_separated);
+	return ConductorMultiEdit::undo(all_targets, m_shown, edited,
+					function_separated, bridge_reached);
 }
 
 /**

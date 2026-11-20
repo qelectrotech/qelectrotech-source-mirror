@@ -58,8 +58,22 @@ void ConductorAutoNumerotation::numerate()
 {
 	if (!m_conductor) return;
 	if (conductor_list.size() >= 1 ) numeratePotential();
-	else if (m_conductor -> properties().type == ConductorProperties::Multi)
-		numerateNewConductor();
+	else
+	{
+			//This side of a function separated terminal element holds no
+			//wire to take anything from: what the separation lets through
+			//comes from the other side of it -- the voltage / protocol and
+			//the drawing, as if the terminal had no function separation.
+			//The wire's own text and number stay new (@see
+			//Conductor::applySeparatedNodeProperties)
+		ConductorProperties properties = m_conductor->properties();
+		m_conductor->applySeparatedNodeProperties(properties);
+		if (properties != m_conductor->properties()) {
+			m_conductor->setProperties(properties);
+		}
+		if (m_conductor->properties().type == ConductorProperties::Multi)
+			numerateNewConductor();
+	}
 }
 
 /**

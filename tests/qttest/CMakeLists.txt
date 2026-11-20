@@ -2470,6 +2470,11 @@ qet_add_app_test(tst_cablelockedfields tst_cablelockedfields.cpp)
 # text and the drawing (green-yellow striped); typed text stays text.
 qet_add_app_test(tst_conductorcolorcodes tst_conductorcolorcodes.cpp)
 
+# A function separated terminal block: a new wire on one side takes what
+# the separation lets through from the other -- the voltage / protocol and
+# the drawing -- and a new number of its own.
+qet_add_app_test(tst_functionseparation tst_functionseparation.cpp)
+
 # Settings for every test. get_property(... TESTS) only sees the tests added
 # so far, so they wait for the end of this file: a test takes them wherever
 # it is listed. cmake_language(DEFER) needs CMake 3.19, and without

@@ -2363,10 +2363,12 @@ QSet<Conductor *> Conductor::relatedPotentialConductors(const bool all_diagram,
 
 	Those conductors are deliberately not part of
 	relatedPotentialConductors(): no property may be copied over them
-	by default. One does cross that separation, though: the voltage /
-	protocol, which describes the electrical node itself. Callers that
-	push it over the whole potential use this method to reach the other
-	side (@see ConductorProperties::applyTensionProtocolChange).
+	by default. Only what the node itself describes crosses that
+	separation: the voltage / protocol and the drawing of the wire --
+	colour, line style and width (@see
+	ConductorProperties::applyNodePropertiesChange). Callers that push
+	those fields over the whole potential use this method to reach the
+	other side.
 
 	It is simply the potential computed with the separations ignored,
 	minus the potential that respects them.
@@ -2381,6 +2383,30 @@ QSet<Conductor *> Conductor::functionSeparatedConductors(const bool all_diagram)
 	separated.remove(this);
 
 	return separated;
+}
+
+/**
+	@brief Conductor::applySeparatedNodeProperties
+	Copy into @p properties the fields a function separated terminal
+	element lets through, taken from the conductors the other side of
+	the separation holds (@see functionSeparatedConductors): the voltage
+	/ protocol and the drawing of the wire, as if the terminal had no
+	function separation. A field those conductors do not agree on is
+	left as it is in @p properties.
+
+	A new conductor applies this when its own side of the separation
+	holds no wire to take anything from: what its own side says wins
+	over the other side, however far that side reaches, and only the
+	fields this side leaves empty come from across the separation.
+	@sa ConductorProperties::applyAgreedNodeProperties
+*/
+void Conductor::applySeparatedNodeProperties(ConductorProperties &properties)
+{
+	QList<ConductorProperties> separated;
+	for (Conductor *c : functionSeparatedConductors()) {
+		separated << c->properties();
+	}
+	properties.applyAgreedNodeProperties(separated);
 }
 
 /**

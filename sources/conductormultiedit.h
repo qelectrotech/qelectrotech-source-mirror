@@ -64,8 +64,9 @@ namespace ConductorMultiEdit
 		@param apply_all : true to add every conductor of their potentials
 		@param function_separated : set to the conductors that share the
 		potential of an edited one only by crossing a function separated
-		terminal element -- conductors undo() then gives the voltage /
-		protocol only, and no other property. nullptr, the default, leaves
+		terminal element -- conductors undo() then gives only what that
+		separation lets through, the voltage / protocol and the drawing
+		of the wire, and no other property. nullptr, the default, leaves
 		those conductors out of the returned list entirely.
 
 		A conductor the user picked themselves is never part of it: the
@@ -146,7 +147,12 @@ namespace ConductorMultiEdit
 		@param edited : the properties after the user's edit
 		@param function_separated : the targets of targets() that only a
 		function separated terminal element links to the edited
-		conductors: they get the voltage / protocol and nothing else
+		conductors: they get what the separation lets through -- the
+		voltage / protocol and the drawing of the wire -- and nothing
+		else (@see ConductorProperties::applyNodePropertiesChange)
+		@param bridge_reached : the targets that only a bridge links to
+		the edited conductors: they get the voltage / protocol and
+		nothing else, since only it crosses a bridge
 		(@see ConductorProperties::applyTensionProtocolChange)
 		@return one undo step giving each target the fields that differ
 		between shown and edited, or nullptr if no conductor changes
@@ -155,7 +161,8 @@ namespace ConductorMultiEdit
 	QUndoCommand *undo(const QList<T *> &targets,
 			   const ConductorProperties &shown,
 			   const ConductorProperties &edited,
-			   const QSet<T *> &function_separated = QSet<T *>())
+			   const QSet<T *> &function_separated = QSet<T *>(),
+			   const QSet<T *> &bridge_reached = QSet<T *>())
 	{
 		if (edited == shown)
 			return nullptr;
@@ -167,6 +174,8 @@ namespace ConductorMultiEdit
 			const ConductorProperties old_properties = conductor->properties();
 			ConductorProperties properties = old_properties;
 			if (function_separated.contains(conductor))
+				properties.applyNodePropertiesChange(shown, edited);
+			else if (bridge_reached.contains(conductor))
 				properties.applyTensionProtocolChange(shown, edited);
 			else
 				properties.applyChanges(shown, edited);

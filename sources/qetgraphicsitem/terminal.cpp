@@ -1182,8 +1182,9 @@ void Terminal::setMasterLabelIndex(int index)
 	enabled does not keep its terminals apart: they all count as one
 	potential, the way they do when the option is disabled. Only the
 	callers that need the conductors a separation hides -- so that the
-	one property still allowed to cross it, the voltage / protocol, can
-	be applied there (@see Conductor::functionSeparatedConductors) --
+	few properties still allowed to cross it, the voltage / protocol and
+	the drawing of the wire, can be applied there
+	(@see Conductor::functionSeparatedConductors) --
 	pass true; every other caller keeps the default.
 	@return the list of terminal at the same potential
 */
