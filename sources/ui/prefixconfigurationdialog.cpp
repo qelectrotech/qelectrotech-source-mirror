@@ -71,14 +71,26 @@ namespace {
 	@param folders : every directory of the collection, as returned by
 		QetLabelsFile::scanFolders()
 	@param parent
+	@param collection : the collection @a labels belongs to
+	@param user_labels_file : for the company collection, the
+		qet_labels.xml of the user collection. The prefix lookup reads it
+		first, so a folder it gives a prefix to does not get the company
+		one: the dialog shows that prefix beside the field.
 */
-PrefixConfigurationDialog::PrefixConfigurationDialog(QetLabelsFile &labels, const QList<QStringList> &folders, QWidget *parent) :
+PrefixConfigurationDialog::PrefixConfigurationDialog(QetLabelsFile &labels, const QList<QStringList> &folders, QWidget *parent,
+													 Collection collection, const QString &user_labels_file) :
 	QDialog(parent),
 	m_labels(labels),
 	m_folders(folders),
-	m_tree(new QTreeWidget(this))
+	m_tree(new QTreeWidget(this)),
+	m_collection(collection),
+	m_user_labels_file(user_labels_file)
 {
-	setWindowTitle(tr("User collection prefixes", "title of the dialog configuring the prefixes of the user collection"));
+	if (m_collection == CompanyCollection) {
+		setWindowTitle(tr("Company collection prefixes", "title of the dialog configuring the prefixes of the company collection"));
+	} else {
+		setWindowTitle(tr("User collection prefixes", "title of the dialog configuring the prefixes of the user collection"));
+	}
 	setModal(true);
 	resize(700, 500);
 
@@ -119,6 +131,13 @@ PrefixConfigurationDialog::PrefixConfigurationDialog(QetLabelsFile &labels, cons
 		//in the middle of a dialog the user has not seen yet.
 	askWhatToDoWithOrphans();
 	buildTree();
+
+	if (m_user_prefix_count > 0) {
+		hint->setText(hint->text() + QLatin1Char('\n')
+					  + tr("The last column shows the prefix the user collection gives a folder: "
+						   "the user collection is read first, so that prefix is the one used.",
+						   "hint of the company prefix dialog"));
+	}
 }
 
 PrefixConfigurationDialog::~PrefixConfigurationDialog()
@@ -219,8 +238,61 @@ void PrefixConfigurationDialog::buildTree()
 		m_tree->setItemWidget(parent_item, 1, edit);
 	}
 
+	showUserPrefixes();
 	m_tree->expandAll();
 	m_tree->setUpdatesEnabled(true);
+}
+
+/**
+	@brief PrefixConfigurationDialog::showUserPrefixes
+	In the dialog of the company collection, add a column with the prefix
+	the user collection gives a folder, when it gives one: the user file is
+	read first, so that prefix is the one the symbols get, whatever the
+	company field holds. Nothing is added when no folder is concerned.
+*/
+void PrefixConfigurationDialog::showUserPrefixes()
+{
+	if (m_collection != CompanyCollection || m_user_labels_file.isEmpty()) {
+		return;
+	}
+		//Both settings on the same folder: the file is the one edited here.
+		//The folders are compared, they exist when the files may not yet,
+		//and canonically, through links and the case of the drive letter.
+	const QString user_dir = QFileInfo(m_user_labels_file).absoluteDir().canonicalPath();
+	if (!user_dir.isEmpty()
+		&& user_dir == QFileInfo(m_labels.filePath()).absoluteDir().canonicalPath()) {
+		return;
+	}
+
+	int overridden = 0;
+	for (QTreeWidgetItemIterator iterator(m_tree) ; *iterator ; ++iterator) {
+		QTreeWidgetItem *item = *iterator;
+		const QStringList folder = item->data(0, Qt::UserRole).toStringList();
+		if (folder.isEmpty()) {
+			continue;
+		}
+		const QString user_prefix = QetLabelsFile::prefixForFolder(m_user_labels_file, folder);
+		if (user_prefix.isNull()) {
+			continue;
+		}
+		if (overridden == 0) {
+			m_tree->setColumnCount(3);
+			m_tree->setHeaderLabels(QStringList()
+									<< tr("Folder", "column header of the folder tree")
+									<< tr("Prefix", "column header of the prefix column")
+									<< tr("Used instead (user collection)", "column header: the prefix the user collection gives the folder, which wins over the company one"));
+			m_tree->header()->setSectionResizeMode(2, QHeaderView::ResizeToContents);
+		}
+		++overridden;
+		const QString shown = user_prefix.isEmpty()
+				? tr("no prefix", "the user collection explicitly gives the folder no prefix")
+				: user_prefix;
+		item->setText(2, shown);
+		item->setToolTip(2, tr("The user collection gives this folder the prefix \"%1\". "
+							   "The user collection is read first, so its symbols get that "
+							   "prefix, not the one set here.").arg(shown));
+	}
+	m_user_prefix_count = overridden;
 }
 
 /**

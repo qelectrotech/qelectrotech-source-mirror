@@ -26,6 +26,8 @@
 #include <QMutexLocker>
 #include <QSaveFile>
 
+#include <utility>
+
 /**
 	@brief QetLabelsFile::labelsFilePath
 	@param collection_dir : an elements collection directory
@@ -187,6 +189,48 @@ QString QetLabelsFile::prefixInDocument(const QDomDocument &document, const QStr
 		}
 	}
 	return prefix;
+}
+
+/**
+	@brief QetLabelsFile::prefixForFolder
+	The prefix the qet_labels.xml at @a filepath gives the symbols of the
+	collection folder @a relative_path (as returned by scanFolders()),
+	trying the two layouts the prefix lookup of a user or company file
+	tries, in the same order: the whole path from the top-level folder,
+	then the path without that top-level folder
+	(@see autonum::elementPrefixForLocation()).
+
+	Used to tell, in the prefix dialog of the company collection, which
+	folders the user collection gives a prefix too: the user file is read
+	first, so its prefix is the one the symbols get.
+
+	@return the prefix, possibly an explicit empty one, or a null QString
+		when the file does not describe that folder
+*/
+QString QetLabelsFile::prefixForFolder(const QString &filepath, const QStringList &relative_path)
+{
+		//prefixForPath() wants the deepest folder at index 1 and the
+		//outermost last, index 0 being the symbol file name it never reads
+	auto lookupPath = [](const QStringList &folders) {
+		QStringList path {QString()};
+		for (auto it = folders.crbegin() ; it != folders.crend() ; ++it) {
+			path << *it;
+		}
+		return path;
+	};
+
+	QList<QStringList> layouts {relative_path};
+	if (relative_path.size() > 1) {
+		layouts << relative_path.mid(1);
+	}
+	for (const QStringList &folders : std::as_const(layouts)) {
+		const QStringList path = lookupPath(folders);
+		const QString prefix = prefixForPath(filepath, path, path.size() - 1);
+		if (!prefix.isNull()) {
+			return prefix;
+		}
+	}
+	return QString();
 }
 
 /**

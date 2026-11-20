@@ -588,6 +588,9 @@ qet_add_app_test(tst_terminallist tst_terminallist.cpp)
 qet_add_app_test(tst_labelsfilecache tst_labelsfilecache.cpp)
 # The prefix dialog names the folders the way the collection panel does (#1802).
 qet_add_app_test(tst_prefixdialogtitles tst_prefixdialogtitles.cpp)
+# The prefix dialog also edits the company collection, and shows where the
+# user collection's prefix wins over it (#1918).
+qet_add_app_test(tst_companyprefixes tst_companyprefixes.cpp)
 # A quick second click on the same spot reaches the shape tools as a
 # double-click: it must still start the next line, rectangle or ellipse.
 qet_add_app_test(tst_shapequickclick tst_shapequickclick.cpp)

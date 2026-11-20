@@ -51,6 +51,7 @@ class GeneralConfigurationPage : public ConfigPage
 		void on_m_custom_tbt_path_cb_currentIndexChanged(int index);
 		void on_m_user_macros_path_cb_currentIndexChanged(int index);
 		void on_m_prefix_pb_clicked();
+		void on_m_company_prefix_pb_clicked();
 		void on_m_material_list_browse_pb_clicked();
 		void on_m_material_list_create_pb_clicked();
 		void on_m_cable_type_list_browse_pb_clicked();
@@ -65,6 +66,8 @@ class GeneralConfigurationPage : public ConfigPage
 
 	private:
 		void fillLang();
+		QString shownCollectionDir(bool company) const;
+		void openPrefixDialog(bool company);
 			/**
 				One row of the texts of a cable on the "Texte" page:
 				the name the text goes by in the settings and in the
