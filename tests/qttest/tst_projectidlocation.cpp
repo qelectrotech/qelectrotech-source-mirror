@@ -49,8 +49,7 @@ class tst_projectidlocation : public QObject
 			QETProject project;
 			const bool registered_as_id = registerAs(&project, id);
 			const auto registered = qScopeGuard([&project]() {QETApp::unregisterProject(&project);});
-			if (!registered_as_id)
-				QSKIP("project ids already past this one in this run");
+			QVERIFY2(registered_as_id, "could not register the project with this id");
 
 			QDomDocument definition;
 			QVERIFY(definition.setContent(QStringLiteral(
