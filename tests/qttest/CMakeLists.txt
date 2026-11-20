@@ -2596,3 +2596,8 @@ qet_add_app_test(tst_titleblockcache tst_titleblockcache.cpp)
 qet_add_app_test(tst_propertieseditordialog tst_propertieseditordialog.cpp)
 # A list table reopens at the width it was saved with
 qet_add_app_test(tst_tablereopen tst_tablereopen.cpp)
+
+# An embedded symbol's location written as "project<id>+embed://..." was read
+# back only for one-digit ids: from the eleventh project opened, editing an
+# embedded symbol or placing one silently failed (#1958).
+qet_add_app_test(tst_projectidlocation tst_projectidlocation.cpp)
