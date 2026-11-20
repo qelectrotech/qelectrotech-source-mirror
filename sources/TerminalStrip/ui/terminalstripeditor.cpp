@@ -34,6 +34,7 @@
 #include <TerminalStrip/terminalcolor.h>
 #include <TerminalStrip/terminalcatalog.h>
 #include <TerminalStrip/realterminal.h>
+#include <TerminalStrip/GraphicsItem/terminalstripdrawer.h>
 #include <qetinformation.h>
 #include <cable/cable.h>
 
@@ -51,6 +52,8 @@
 #include <QRegularExpression>
 #include <QPushButton>
 #include <QSpinBox>
+#include <QScrollArea>
+#include <QMap>
 #include <QVBoxLayout>
 
 #include <algorithm>
@@ -67,6 +70,7 @@ TerminalStripEditor::TerminalStripEditor(QETProject *project, QWidget *parent) :
 	m_project{project}
 {
 	ui->setupUi(this);
+	ui->m_cable_sides_pb->setEnabled(false);
 
 	auto delegate_ = new TerminalStripModelDelegate{this};
 	ui->m_table_widget->setItemDelegate(delegate_);
@@ -217,6 +221,8 @@ void TerminalStripEditor::reloadOnCableChange()
  */
 void TerminalStripEditor::setCurrentStrip(TerminalStrip *strip_)
 {
+	ui->m_cable_sides_pb->setEnabled(strip_ && m_project &&
+									!m_project->isReadOnly());
 	if (strip_ == m_current_strip) {
 		return;
 	}
@@ -1325,6 +1331,67 @@ void TerminalStripEditor::clearSelectedTexts()
 		if (cellAcceptText(index)) {
 			m_model->setData(index, QString(), Qt::EditRole);
 		}
+	}
+}
+
+void TerminalStripEditor::on_m_cable_sides_pb_clicked()
+{
+	if (!m_current_strip || !m_project || m_project->isReadOnly()) return;
+	const auto strip = m_current_strip;
+	QMap<QString, QString> names;
+	for (const auto &terminal : strip->realTerminals()) {
+		for (const auto &cable : terminal->cableConnections()) {
+			names.insert(cable.key(), cable.name);
+		}
+	}
+
+	QDialog dialog(this);
+	dialog.setWindowTitle(tr("Cable sides"));
+	auto *layout = new QVBoxLayout(&dialog);
+	QMap<QString, QComboBox *> choices;
+	if (names.isEmpty()) {
+		layout->addWidget(new QLabel(tr("This strip has no cables."), &dialog));
+	} else {
+		auto *scroll = new QScrollArea(&dialog);
+		auto *form_widget = new QWidget(scroll);
+		auto *form = new QFormLayout(form_widget);
+		for (auto it = names.cbegin(); it != names.cend(); ++it) {
+			auto *side = new QComboBox(form_widget);
+			side->addItem(tr("Below"), false);
+			side->addItem(tr("Above"), true);
+			side->setCurrentIndex(strip->cableAbove(it.key()) ? 1 : 0);
+			auto *label = new QLabel(it.value(), form_widget);
+			label->setTextFormat(Qt::PlainText);
+			label->setBuddy(side);
+			form->addRow(label, side);
+			choices.insert(it.key(), side);
+		}
+		scroll->setWidget(form_widget);
+		scroll->setWidgetResizable(true);
+		layout->addWidget(scroll);
+		dialog.resize(360, qMin(420, form_widget->sizeHint().height() + 85));
+	}
+	auto *buttons = new QDialogButtonBox(QDialogButtonBox::Ok |
+									   QDialogButtonBox::Cancel, &dialog);
+	connect(buttons, &QDialogButtonBox::accepted, &dialog, &QDialog::accept);
+	connect(buttons, &QDialogButtonBox::rejected, &dialog, &QDialog::reject);
+	layout->addWidget(buttons);
+	if (dialog.exec() != QDialog::Accepted || !strip || !m_project ||
+		strip != m_current_strip || m_project->isReadOnly()) return;
+
+	auto data = strip->data();
+	bool changed = false;
+	for (auto it = choices.cbegin(); it != choices.cend(); ++it) {
+		const bool above = it.value()->currentData().toBool();
+		if (above != data.cableAbove(it.key())) {
+			data.setCableAbove(it.key(), above);
+			changed = true;
+		}
+	}
+	if (changed) {
+		auto *command = new ChangeTerminalStripData(strip, data, nullptr);
+		command->setText(tr("Change the sides of terminal strip cables"));
+		m_project->undoStack()->push(command);
 	}
 }
 

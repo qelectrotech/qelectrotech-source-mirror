@@ -81,6 +81,7 @@ class TerminalStrip : public QObject
 		QETProject *project() const;
 
 		TerminalStripData data() const;
+		bool cableAbove(const QString &key) const { return m_data.cableAbove(key); }
 		void setData(const TerminalStripData &data);
 		void terminalDataChanged();
 
