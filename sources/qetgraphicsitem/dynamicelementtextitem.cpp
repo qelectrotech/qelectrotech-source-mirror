@@ -1704,7 +1704,16 @@ void DynamicElementTextItem::removeConnectionForReportFormula(const QString &for
 	}
 	
 	if (other_diagram && (string.contains("%f") || string.contains("%id")))
+	{
+			//Every signal setConnectionForReportFormula() registers
+			//here has to come off again as well: Qt keeps every
+			//connect() it is given, so a report text set up over and
+			//over -- once per sheet change since it watches those
+			//signals -- would run this one more time each round
 		disconnect(other_diagram->project(), &QETProject::projectDiagramsOrderChanged, this, &DynamicElementTextItem::updateReportText);
+		disconnect(other_diagram->project(), &QETProject::diagramRemoved, this, &DynamicElementTextItem::updateReportText);
+		disconnect(other_diagram->project(), &QETProject::diagramAdded, this, &DynamicElementTextItem::updateReportText);
+	}
 	if (other_diagram && string.contains("%T"))
 		disconnect(&other_diagram->border_and_titleblock, &BorderTitleBlock::informationChanged, this, &DynamicElementTextItem::updateReportText);
 	if (string.contains("%l"))
@@ -2337,6 +2346,14 @@ void DynamicElementTextItem::updateXref()
 		m_Xref_item = nullptr;
 	}
 	
+		//Take the connections with them: this list is only
+		//bookkeeping, and emptying it leaves every one of them
+		//running -- the next time this block registers them, they
+		//are registered a second time (and a third, and so on),
+		//and the ones to a master this text no longer has keep it
+		//reacting to that master
+	for(const QMetaObject::Connection& c : m_update_slave_Xref_connection)
+		disconnect(c);
 	m_update_slave_Xref_connection.clear();
 
 	if(m_slave_Xref_item)
