@@ -244,6 +244,12 @@ private slots:
 		box->setLocation(QStringLiteral("F1"));
 		QCOMPARE(coil_field->toPlainText(), QStringLiteral("-K1"));
 		QCOMPARE(contact_field->toPlainText(), QStringLiteral("+F1-K1"));
+
+			//So does a change of the coil's title block
+		coil_folio->removeItem(box);
+		delete box;
+		setFolio(coil_folio, QStringLiteral("PLANT2"), QStringLiteral("CP1"));
+		QCOMPARE(contact_field->toPlainText(), QStringLiteral("=PLANT2+CP1-K1"));
 	}
 
 		//Saved only when not the label only, so such a project saves as before
