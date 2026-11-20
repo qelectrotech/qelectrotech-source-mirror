@@ -126,9 +126,9 @@ class StructureBoxItem : public QetShapeItem
 			/// show a reference designation (%{structure_id...}) or a place
 			/// (%{plant}, %{location}): what a box or the folio gives them
 			/// changed, or the boxes were loaded after them
-		static void refreshSymbolTexts(Diagram *diagram);
+		static void refreshSymbolTexts(Diagram *diagram, bool label_fields = false);
 			/// The same for the texts of @p element alone: it moved
-		static void refreshTextsOf(Element *element);
+		static void refreshTextsOf(Element *element, bool label_fields = false);
 
 	signals:
 			/// Its plant, location or prefix changed

@@ -2591,6 +2591,39 @@ void QETProject::setPlantAndLocationInherited(bool inherited)
 }
 
 /**
+	@brief QETProject::designationDisplay
+	@return what the label field of a symbol shows: its label only, as
+	before the setting existed; or its IEC 81346 reference designation,
+	short (=plant+location-label without the parts its structure box or
+	folio already gives, as %{structure_id}) or full (as
+	%{structure_id_full}). A text written with %{label} keeps the label
+	only, so a text which builds the designation itself does not show it
+	twice. Label only unless the project says otherwise.
+*/
+QETProject::DesignationDisplay QETProject::designationDisplay() const {
+	return m_designation_display;
+}
+
+/**
+	@brief QETProject::setDesignationDisplay
+	Set what the label field of a symbol shows, and work out again the
+	texts of the built folios. A folio not built yet reads the setting
+	when its texts are made.
+	@param display
+*/
+void QETProject::setDesignationDisplay(DesignationDisplay display)
+{
+	if (display == m_designation_display) {
+		return;
+	}
+	m_designation_display = display;
+	storeSettings();
+	for (Diagram *diagram : builtFolios()) {
+		StructureBoxItem::refreshSymbolTexts(diagram, true);
+	}
+}
+
+/**
 	@brief QETProject::followDeviceTypes
 	@return true if placing and linking follow the device types: a contact
 	is linked only to a device whose type has a free part for it, and takes
@@ -2967,6 +3000,7 @@ QDomDocument QETProject::toXml(QHash<int, QByteArray> *kept_folios, QStringList 
 	writeAutoConductorXml(project_root);
 	writeSymbolTextsXml(project_root);
 	writePlantLocationXml(project_root);
+	writeDesignationDisplayXml(project_root);
 	writeDeviceTypeRulesXml(project_root);
 	writeLanguagesXml(project_root);
 	writePotentialTypesXml(project_root);
@@ -4198,6 +4232,7 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 	readAutoConductorXml(xml_project);
 	readSymbolTextsXml(xml_project);
 	readPlantLocationXml(xml_project);
+	readDesignationDisplayXml(xml_project);
 	readDeviceTypeRulesXml(xml_project);
 	readLanguagesXml(xml_project);
 	readPotentialTypesXml(xml_project);
@@ -4867,6 +4902,27 @@ void QETProject::readPlantLocationXml(QDomDocument &xml_project)
 }
 
 /**
+	@brief QETProject::readDesignationDisplayXml
+	Read the <designation_display> element of the project, if any. A
+	project without it was saved before the setting existed, or with the
+	label only, and its symbols show their label only.
+	@param xml_project : the xml description of the project
+*/
+void QETProject::readDesignationDisplayXml(QDomDocument &xml_project)
+{
+	const QString shown = xml_project.documentElement()
+			.firstChildElement(QStringLiteral("designation_display"))
+			.attribute(QStringLiteral("shown"));
+	if (shown == QLatin1String("full")) {
+		m_designation_display = DesignationDisplay::Full;
+	} else if (shown == QLatin1String("short")) {
+		m_designation_display = DesignationDisplay::Short;
+	} else {
+		m_designation_display = DesignationDisplay::Label;
+	}
+}
+
+/**
 	@brief QETProject::readDeviceTypeRulesXml
 	Read the <devicetype_rules> element of the project, if any: a project
 	without it does not follow the device types (followDeviceTypes()).
@@ -5512,6 +5568,25 @@ void QETProject::writePlantLocationXml(QDomElement &xml_element)
 }
 
 /**
+	@brief QETProject::writeDesignationDisplayXml
+	Export what the label field of a symbol shows, as a
+	<designation_display> child of \a xml_element. Written only when it is
+	not the label only, so such a project saves exactly as before.
+*/
+void QETProject::writeDesignationDisplayXml(QDomElement &xml_element)
+{
+	if (m_designation_display == DesignationDisplay::Label) {
+		return;
+	}
+	QDomElement display = xml_element.ownerDocument()
+			.createElement(QStringLiteral("designation_display"));
+	display.setAttribute(QStringLiteral("shown"),
+						 m_designation_display == DesignationDisplay::Full
+						 ? QStringLiteral("full") : QStringLiteral("short"));
+	xml_element.appendChild(display);
+}
+
+/**
 	@brief QETProject::writeDeviceTypeRulesXml
 	Export whether placing and linking follow the device types, as a
 	<devicetype_rules> child of \a xml_element. Written only when on, so a
@@ -5859,6 +5934,7 @@ void QETProject::storeSettings()
 	writeAutoConductorXml(root);
 	writeSymbolTextsXml(root);
 	writePlantLocationXml(root);
+	writeDesignationDisplayXml(root);
 	writeDeviceTypeRulesXml(root);
 	writeLanguagesXml(root);
 	writePotentialTypesXml(root);

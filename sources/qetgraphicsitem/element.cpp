@@ -3512,15 +3512,55 @@ bool Element::labelShown() const
 }
 
 /**
+	@brief Element::designationForDisplay
+	@return @p label as the label field of this element shows it, by
+	QETProject::designationDisplay(): the label alone; or the IEC 81346
+	reference designation =plant+location-label of this element, the
+	plant and location being its own, else those of its structure box or
+	folio (StructureBoxItem::placeOf()). The short form leaves out the
+	=plant and the +location that the place where the field is drawn
+	already gives: its structure box, else its folio. That place is the
+	one of @p drawn_on when given (a contact showing its coil's label on
+	another folio), else of this element. An empty label stays empty.
+*/
+QString Element::designationForDisplay(const QString &label, const Element *drawn_on) const
+{
+	const Diagram *d = diagram();
+	if (label.isEmpty() || !d || !d->project()) {
+		return label;
+	}
+	const QETProject::DesignationDisplay display = d->project()->designationDisplay();
+	if (display == QETProject::DesignationDisplay::Label) {
+		return label;
+	}
+
+	const StructureBoxItem::Place place = StructureBoxItem::placeOf(this);
+	if (display == QETProject::DesignationDisplay::Full) {
+		return autonum::AssignVariables::buildStructureId(place.plant, place.location, label);
+	}
+
+	const Element *reference_element = drawn_on && drawn_on->diagram() ? drawn_on : this;
+	const StructureBoxItem::Place reference = StructureBoxItem::referencePlace(reference_element);
+	return autonum::AssignVariables::buildStructureId(
+				place.plant != reference.plant ? place.plant : QString(),
+				place.location != reference.location ? place.location : QString(),
+				label);
+}
+
+/**
 	@brief Element::infoForDisplay
 	@return what a text field bound to @p info_name must show: the label
 	and the terminal number follow how the labelling is drawn, every
 	other information is the stored one. @sa labelForDisplay
+	The label is shown as the project says, alone or as a reference
+	designation (@sa designationForDisplay). @p drawn_on is the element
+	the field is drawn on, when it is not this one: a contact drawing the
+	label of its coil.
 */
-QString Element::infoForDisplay(const QString &info_name)
+QString Element::infoForDisplay(const QString &info_name, const Element *drawn_on)
 {
 	if (info_name == QETInformation::ELMT_LABEL) {
-		return labelForDisplay();
+		return designationForDisplay(labelForDisplay(), drawn_on);
 	}
 	if (info_name == QETInformation::ELMT_TERMINAL_NUMBER) {
 		return terminalNumberForDisplay();

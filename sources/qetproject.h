@@ -344,6 +344,11 @@ class QETProject : public QObject
 		void setUprightSymbolTexts(bool upright);
 		bool plantAndLocationInherited() const;
 		void setPlantAndLocationInherited(bool inherited);
+			/// What the label field of a symbol shows: its label only, or
+			/// its IEC 81346 reference designation, short or full
+		enum class DesignationDisplay {Label, Short, Full};
+		DesignationDisplay designationDisplay() const;
+		void setDesignationDisplay(DesignationDisplay display);
 		bool followDeviceTypes() const;
 		void setFollowDeviceTypes(bool follow);
 		const ProjectLanguages &languages() const {return m_languages;}
@@ -538,6 +543,7 @@ class QETProject : public QObject
 		void readOriginXml(QDomDocument& xml_project);
 		void readSymbolTextsXml(QDomDocument &xml_project);
 		void readPlantLocationXml(QDomDocument &xml_project);
+		void readDesignationDisplayXml(QDomDocument &xml_project);
 		void readDeviceTypeRulesXml(QDomDocument &xml_project);
 		void readLanguagesXml(QDomDocument &xml_project);
 		void readPotentialTypesXml(QDomDocument &xml_project);
@@ -561,6 +567,7 @@ class QETProject : public QObject
 		void writeOriginXml(QDomElement&);
 		void writeSymbolTextsXml(QDomElement &);
 		void writePlantLocationXml(QDomElement &);
+		void writeDesignationDisplayXml(QDomElement &);
 		void writeDeviceTypeRulesXml(QDomElement &);
 		void writeLanguagesXml(QDomElement &);
 		void writePotentialTypesXml(QDomElement &);
@@ -691,6 +698,9 @@ class QETProject : public QObject
 			/// %{plant} and %{location} give the place a symbol takes, see
 			/// plantAndLocationInherited()
 		bool m_plant_location_inherited = false;
+			/// What the label field of a symbol shows (the label only for
+			/// a project saved without it), see designationDisplay()
+		DesignationDisplay m_designation_display = DesignationDisplay::Label;
 			/// Placing and linking follow the device types, see
 			/// followDeviceTypes()
 		bool m_follow_device_types = false;
