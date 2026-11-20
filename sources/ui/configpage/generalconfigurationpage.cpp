@@ -1030,15 +1030,18 @@ QString GeneralConfigurationPage::shownCollectionDir(bool company) const
 	does not exist yet.
 	Nothing is written until that dialog is validated : cancelling it
 	leaves the collection exactly as it was.
-	A missing user collection folder is created. A missing company folder
-	is not : it may be a shared drive that is not reachable right now, and
-	the prefixes must not go to an empty local folder in its place.
+	A missing user collection folder is created, and so is the default
+	company folder. A company folder chosen with "Browse..." is not : it
+	may be a shared drive that is not reachable right now, and the
+	prefixes must not go to an empty local folder in its place.
 */
 void GeneralConfigurationPage::openPrefixDialog(bool company)
 {
 	const QString directory = shownCollectionDir(company);
 
-	if (company) {
+	const bool may_create = !company
+			|| ui->m_company_elmt_path_cb->currentIndex() == 0;
+	if (!may_create) {
 		if (!QDir(directory).exists()) {
 			QMessageBox::warning(this,
 								 tr("Folder not found"),
@@ -1049,40 +1052,36 @@ void GeneralConfigurationPage::openPrefixDialog(bool company)
 	} else if (!QDir(directory).exists() && !QDir().mkpath(directory)) {
 		QMessageBox::warning(this,
 							 tr("Folder not found"),
-							 tr("The user collection folder:\n%1\ndoes not exist and could not be created.")
-							 .arg(directory));
+							 company
+							 ? tr("The company collection folder:\n%1\ndoes not exist and could not be created.")
+							   .arg(directory)
+							 : tr("The user collection folder:\n%1\ndoes not exist and could not be created.")
+							   .arg(directory));
 		return;
 	}
 
-		//The file is written through QSaveFile, which creates a file in the
+		//A company collection on a shared drive is often read-only. The
+		//file is written through QSaveFile, which creates a file in the
 		//folder: try that now rather than when OK is pressed, after the
-		//prefixes have been typed. A company collection on a shared drive
-		//is often read-only. QFileInfo::isWritable() is not asked: on
-		//Windows it only reads the read-only attribute, which Windows sets
-		//on many folders that can be written, and ignores the access
-		//rights of a share.
-	const QString labels_path = QetLabelsFile::labelsFilePath(directory);
-	bool writable = false;
-	{
-		QTemporaryFile probe(QDir(directory).filePath(QStringLiteral("qet_labels-XXXXXX.tmp")));
-		writable = probe.open();
-	}
-	if (writable && QFile::exists(labels_path)) {
-		QFile existing(labels_path);
-		writable = existing.open(QIODevice::ReadWrite);
-	}
-	if (!writable) {
-		QMessageBox::warning(this,
-							 tr("Prefix file cannot be written"),
-							 company
-							 ? tr("The prefixes of the company collection are kept in:\n%1\n"
-								  "This file or its folder cannot be written, so the prefixes cannot be changed here. "
-								  "Ask whoever manages the company collection, or change the file with write access.")
-							   .arg(labels_path)
-							 : tr("The prefixes of the user collection are kept in:\n%1\n"
-								  "This file or its folder cannot be written, so the prefixes cannot be changed here.")
-							   .arg(labels_path));
-		return;
+		//prefixes have been typed. A failed save is still reported then.
+		//QFileInfo::isWritable() is not asked: on Windows it only reads
+		//the read-only attribute, which Windows sets on many folders that
+		//can be written, and ignores the access rights of a share.
+	if (company) {
+		bool writable = false;
+		{
+			QTemporaryFile probe(QDir(directory).filePath(QStringLiteral("qet_labels-XXXXXX.tmp")));
+			writable = probe.open();
+		}
+		if (!writable) {
+			QMessageBox::warning(this,
+								 tr("Prefix file cannot be written"),
+								 tr("The prefixes of the company collection are kept in:\n%1\n"
+									"This folder cannot be written, so the prefixes cannot be changed here. "
+									"Ask whoever manages the company collection, or change the file with write access.")
+								 .arg(QetLabelsFile::labelsFilePath(directory)));
+			return;
+		}
 	}
 
 	const QList<QStringList> folders = QetLabelsFile::scanFolders(directory);

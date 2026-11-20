@@ -134,9 +134,9 @@ PrefixConfigurationDialog::PrefixConfigurationDialog(QetLabelsFile &labels, cons
 
 	if (m_user_prefix_count > 0) {
 		hint->setText(hint->text() + QLatin1Char('\n')
-					  + tr("%n folder(s) also have a prefix in the user collection, shown in the last column: "
+					  + tr("The last column shows the prefix the user collection gives a folder: "
 						   "the user collection is read first, so that prefix is the one used.",
-						   "hint of the company prefix dialog", m_user_prefix_count));
+						   "hint of the company prefix dialog"));
 	}
 }
 
@@ -255,9 +255,12 @@ void PrefixConfigurationDialog::showUserPrefixes()
 	if (m_collection != CompanyCollection || m_user_labels_file.isEmpty()) {
 		return;
 	}
-		//Both settings on the same folder: the file is the one edited here
-	if (QFileInfo(m_user_labels_file).absoluteFilePath()
-		== QFileInfo(m_labels.filePath()).absoluteFilePath()) {
+		//Both settings on the same folder: the file is the one edited here.
+		//The folders are compared, they exist when the files may not yet,
+		//and canonically, through links and the case of the drive letter.
+	const QString user_dir = QFileInfo(m_user_labels_file).absoluteDir().canonicalPath();
+	if (!user_dir.isEmpty()
+		&& user_dir == QFileInfo(m_labels.filePath()).absoluteDir().canonicalPath()) {
 		return;
 	}
 

@@ -154,7 +154,7 @@ class tst_companyprefixes : public QObject
 
 		bool hint_found = false;
 		for (QLabel *label : dialog.findChildren<QLabel *>()) {
-			hint_found |= label->text().contains("1 folder");
+			hint_found |= label->text().contains("The last column shows");
 		}
 		QVERIFY(hint_found);
 
