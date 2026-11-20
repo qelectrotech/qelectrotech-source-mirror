@@ -971,34 +971,73 @@ void GeneralConfigurationPage::on_m_user_macros_path_cb_currentIndexChanged(int 
 /**
 	@brief GeneralConfigurationPage::on_m_prefix_pb_clicked
 	Open the dialog where the prefixes of the user collection folders are
+	configured. @see openPrefixDialog()
+*/
+void GeneralConfigurationPage::on_m_prefix_pb_clicked()
+{
+	openPrefixDialog(false);
+}
+
+/**
+	@brief GeneralConfigurationPage::on_m_company_prefix_pb_clicked
+	Open the dialog where the prefixes of the company collection folders
+	are configured (#1918). @see openPrefixDialog()
+*/
+void GeneralConfigurationPage::on_m_company_prefix_pb_clicked()
+{
+	openPrefixDialog(true);
+}
+
+/**
+	@brief GeneralConfigurationPage::openPrefixDialog
+	Open the dialog where the prefixes of the folders of the user
+	collection, or of the company collection when @a company is true, are
 	configured, creating the qet_labels.xml of that collection when it
 	does not exist yet.
 	Nothing is written until that dialog is validated : cancelling it
 	leaves the collection exactly as it was.
+	The user collection folder is created when it is missing, as QET does
+	at start-up. A missing company folder is not : it is often a shared
+	drive, and one that is not mounted must not be replaced by an empty
+	local folder.
 */
-void GeneralConfigurationPage::on_m_prefix_pb_clicked()
+void GeneralConfigurationPage::openPrefixDialog(bool company)
 {
 		//The directory the page displays, even when the change has not
-		//been applied yet : QETApp::customElementsDir() still answers with
-		//the previously saved path, which is not what is shown when the
-		//combo has been put back on "Par defaut".
+		//been applied yet : QETApp::customElementsDir() and
+		//companyElementsDir() still answer with the previously saved path,
+		//which is not what is shown when the combo has been put back on
+		//"By default".
+	QComboBox *combo = company ? ui->m_company_elmt_path_cb
+							   : ui->m_custom_elmt_path_cb;
 	QString directory;
-	switch (ui->m_custom_elmt_path_cb->currentIndex()) {
-	case 1:			//"Parcourir..." : the item itself holds the chosen path
-		directory = ui->m_custom_elmt_path_cb->itemData(1, Qt::DisplayRole).toString();
+	switch (combo->currentIndex()) {
+	case 1:			//"Browse..." : the item itself holds the chosen path
+		directory = combo->itemData(1, Qt::DisplayRole).toString();
 		break;
-	case 0:			//"Par defaut" : where a default custom collection lives
-		directory = QETApp::dataDir() + QStringLiteral("/elements/");
+	case 0:			//"By default" : where a default collection lives
+		directory = QETApp::dataDir()
+				+ (company ? QStringLiteral("/elements-company/")
+						   : QStringLiteral("/elements/"));
 		break;
 	default:
 		break;
 	}
 	if (directory.isEmpty()) {
-		directory = QETApp::customElementsDir();
+		directory = company ? QETApp::companyElementsDir()
+							: QETApp::customElementsDir();
 	}
 	directory = QDir::cleanPath(directory);
 
-	if (!QDir(directory).exists() && !QDir().mkpath(directory)) {
+	if (company) {
+		if (!QDir(directory).exists()) {
+			QMessageBox::warning(this,
+								 tr("Folder not found"),
+								 tr("The company collection folder:\n%1\ndoes not exist or cannot be reached.")
+								 .arg(directory));
+			return;
+		}
+	} else if (!QDir(directory).exists() && !QDir().mkpath(directory)) {
 		QMessageBox::warning(this,
 							 tr("Folder not found"),
 							 tr("The user collection folder:\n%1\ndoes not exist and could not be created.")
@@ -1006,12 +1045,35 @@ void GeneralConfigurationPage::on_m_prefix_pb_clicked()
 		return;
 	}
 
+		//The file is written through QSaveFile, which needs to create a
+		//file in the folder : say so now rather than when OK is pressed,
+		//after the prefixes have been typed. A company collection on a
+		//shared drive is often read-only.
+	const QFileInfo labels_info(QetLabelsFile::labelsFilePath(directory));
+	if (!QFileInfo(directory).isWritable()
+		|| (labels_info.exists() && !labels_info.isWritable())) {
+		QMessageBox::warning(this,
+							 tr("Prefix file cannot be written"),
+							 company
+							 ? tr("The prefixes of the company collection are kept in:\n%1\n"
+								  "This file or its folder cannot be written, so the prefixes cannot be changed here. "
+								  "Ask whoever manages the company collection, or change the file with write access.")
+							   .arg(labels_info.filePath())
+							 : tr("The prefixes of the user collection are kept in:\n%1\n"
+								  "This file or its folder cannot be written, so the prefixes cannot be changed here.")
+							   .arg(labels_info.filePath()));
+		return;
+	}
+
 	const QList<QStringList> folders = QetLabelsFile::scanFolders(directory);
 	if (folders.isEmpty()) {
 		QMessageBox::information(this,
 								 tr("No subfolder"),
-								 tr("The user collection:\n%1\nhas no subfolder, so there is no prefix to configure.")
-								 .arg(directory));
+								 company
+								 ? tr("The company collection:\n%1\nhas no subfolder, so there is no prefix to configure.")
+								   .arg(directory)
+								 : tr("The user collection:\n%1\nhas no subfolder, so there is no prefix to configure.")
+								   .arg(directory));
 		return;
 	}
 
@@ -1050,8 +1112,19 @@ void GeneralConfigurationPage::on_m_prefix_pb_clicked()
 		}
 	}
 
-	PrefixConfigurationDialog dialog(labels, folders, this);
-	dialog.exec();
+	if (company) {
+			//The prefix lookup reads the user file before the company
+			//one: the dialog shows the folders where that decides
+		const QString user_labels = QetLabelsFile::labelsFilePath(
+					QDir::cleanPath(QETApp::customElementsDir()));
+		PrefixConfigurationDialog dialog(labels, folders,
+										 PrefixConfigurationDialog::CompanyCollection,
+										 user_labels, this);
+		dialog.exec();
+	} else {
+		PrefixConfigurationDialog dialog(labels, folders, this);
+		dialog.exec();
+	}
 }
 
 /**
