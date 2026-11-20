@@ -29,8 +29,14 @@
 #include "../cable/cable.h"
 #include "../cable/cablepart.h"
 #include "../qeticons.h"
+#include "../qetapp.h"
+#include "../qetdiagrameditor.h"
+#include "../projectview.h"
+#include "../devicetype/devicetypeplacement.h"
+#include "../diagramevent/diagrameventaddelement.h"
 
 #include <QTimer>
+#include <QCursor>
 #include <QMenu>
 #include <QHeaderView>
 #include <QFont>
@@ -428,6 +434,14 @@ void DeviceNavigatorDockWidget::buildData(QList<ElementInfo> &items)
 			QString bmk = elmt->actualLabel().trimmed();
 			if (bmk.isEmpty()) {
 				bmk = dc.value(QStringLiteral("label")).toString().trimmed();
+			}
+				// A contact without a label of its own is of its master's device
+			if (bmk.isEmpty() && info.isSlave && !elmt->linkedElements().isEmpty()) {
+				if (Element *master = elmt->linkedElements().first()) {
+					bmk = master->actualLabel().trimmed();
+					if (bmk.isEmpty())
+						bmk = master->elementInformations().value(QStringLiteral("label")).toString().trimmed();
+				}
 			}
 			if (bmk.isEmpty()) {
 				bmk = tr("<unnamed>");
@@ -894,6 +908,7 @@ void DeviceNavigatorDockWidget::reload()
 	ui->m_table_widget->blockSignals(true);
 
 	buildData(m_cached_items);
+	buildTypedDevices();
 	populateTree(m_cached_items, treeState);
 	populateTable(m_cached_items, tableState);
 	applyFilters();
@@ -952,6 +967,7 @@ void DeviceNavigatorDockWidget::populateTree(const QList<ElementInfo> &items, co
 		structKeys.append(noStructureName);
 	}
 
+	QSet<int> listedTypedDevices;
 	for (const QString &structName : structKeys) {
 		auto *structItem = new QTreeWidgetItem(projectItem);
 		structItem->setText(0, structName);
@@ -1046,6 +1062,19 @@ void DeviceNavigatorDockWidget::populateTree(const QList<ElementInfo> &items, co
 				} else {
 					funcItem->setIcon(0, QET::Icons::GenericDevice);
 				}
+			}
+
+				// The parts of its device type not drawn yet, once per device
+				// under the node of its head (its master, else its first symbol)
+			for (const ElementInfo &info : deviceElements) {
+				const int typed = typedDeviceOf(info.elementUuid);
+				if (typed < 0 || listedTypedDevices.contains(typed)) continue;
+				const auto &symbols = m_typed_devices.at(typed).symbols;
+				if (symbols.isEmpty() || !symbols.first()
+					|| symbols.first()->uuid() != info.elementUuid)
+					continue;
+				listedTypedDevices.insert(typed);
+				addFreeParts(deviceItem, typed, info);
 			}
 		}
 	}
@@ -1155,7 +1184,12 @@ void DeviceNavigatorDockWidget::applyFilters()
 	// 1. Filter Tree Widget
 	std::function<bool(QTreeWidgetItem*)> filterItem = [&](QTreeWidgetItem *item) -> bool {
 		int type = item->data(0, NodeTypeRole).toInt();
-		if (type == FunctionNode) {
+		if (type == DeviceNode && activeScheme.onlyFreeParts
+			&& !item->data(0, HasFreePartsRole).toBool()) {
+			item->setHidden(true);
+			return false;
+		}
+		if (type == FunctionNode || type == FreePartNode) {
 			QString bmk = item->data(0, BmkRole).toString();
 			QString full = item->text(0);
 			QString structure = item->data(0, StructureRole).toString();
@@ -1216,6 +1250,10 @@ void DeviceNavigatorDockWidget::applyFilters()
 		bool isThumbnail = bmkItem->data(IsThumbnailRole).toBool();
 
 		bool visible = matchesFilter(bmk, full, structStr, hasStructure, isMaster, isSlave, isTerminal, isCable, isReport, isConductorDef, isThumbnail);
+		if (visible && activeScheme.onlyFreeParts) {
+			const int typed = typedDeviceOf(QUuid(bmkItem->data(ElementUuidRole).toString()));
+			visible = typed >= 0 && !m_typed_devices.at(typed).missing.isEmpty();
+		}
 		ui->m_table_widget->setRowHidden(r, !visible);
 	}
 }
@@ -1353,6 +1391,10 @@ void DeviceNavigatorDockWidget::onItemDoubleClicked(QTreeWidgetItem *item, int c
 	if (!item) return;
 
 	int type = item->data(0, NodeTypeRole).toInt();
+	if (type == FreePartNode) {
+		placeFreePart(item);
+		return;
+	}
 	if (type == FunctionNode || type == DeviceNode) {
 		QString uuidStr = item->data(0, ElementUuidRole).toString();
 		QString diagUuidStr = item->data(0, DiagramUuidRole).toString();
@@ -1445,7 +1487,16 @@ void DeviceNavigatorDockWidget::onCustomContextMenu(const QPoint &pos)
 	QUuid diagUuid(diagUuidStr);
 
 	QMenu menu(this);
-	addContextMenuActions(menu, elmtUuid, diagUuid);
+	if (item->data(0, NodeTypeRole).toInt() == FreePartNode) {
+		QAction *place = menu.addAction(tr("Place on the current folio"), this,
+										[this, item]() { placeFreePart(item); });
+		place->setEnabled(!item->data(0, PartRole).isNull()
+						  && item->flags().testFlag(Qt::ItemIsEnabled));
+		menu.addSeparator();
+		menu.addAction(tr("Refresh"), this, &DeviceNavigatorDockWidget::reload);
+	} else {
+		addContextMenuActions(menu, elmtUuid, diagUuid);
+	}
 	menu.exec(ui->m_tree_widget->viewport()->mapToGlobal(pos));
 }
 
@@ -1519,4 +1570,126 @@ void DeviceNavigatorDockWidget::onFilterConfigClicked()
 		}
 		reload();
 	}
+}
+
+/**
+	@brief DeviceNavigatorDockWidget::buildTypedDevices
+	The devices with a device type, read from the folios built so far.
+	A project with folios not built yet lists no free parts: a part drawn
+	on such a folio would look free.
+*/
+void DeviceNavigatorDockWidget::buildTypedDevices()
+{
+	m_typed_devices.clear();
+	m_typed_device_of.clear();
+	if (!m_project || m_project->deviceTypes().isEmpty()
+		|| m_project->unloadedFolioCount())
+		return;
+	m_typed_devices = DeviceTypeCheck::checkBuilt(m_project);
+	for (int i = 0; i < m_typed_devices.size(); ++i)
+		for (const auto &symbol : std::as_const(m_typed_devices.at(i).symbols))
+			if (symbol) m_typed_device_of.insert(symbol->uuid(), i);
+}
+
+/**
+	@return the index in m_typed_devices of the device the symbol
+	@p elementUuid is of; -1 when it has no device type
+*/
+int DeviceNavigatorDockWidget::typedDeviceOf(const QUuid &elementUuid) const
+{
+	return m_typed_device_of.value(elementUuid, -1);
+}
+
+/**
+	@brief DeviceNavigatorDockWidget::addFreeParts
+	Lists under @p deviceItem the parts of its device type not drawn yet,
+	after its symbols. A part which cannot be placed from here (a PLC
+	point, a part with no symbol) is listed greyed out, saying why.
+*/
+void DeviceNavigatorDockWidget::addFreeParts(QTreeWidgetItem *deviceItem, int device,
+											 const ElementInfo &first)
+{
+	const DeviceTypeCheck::Device &typed = m_typed_devices.at(device);
+	if (!typed.known() || typed.missing.isEmpty()) return;
+	deviceItem->setData(0, HasFreePartsRole, true);
+	for (int part : typed.missing) {
+		const DeviceType::Part &definition = typed.type.parts.at(part);
+		const bool master = definition.role == QLatin1String("master");
+		auto *item = new QTreeWidgetItem(deviceItem);
+		item->setText(0, tr("free: %1").arg(DeviceTypeCheck::partText(definition)));
+		item->setData(0, NodeTypeRole, FreePartNode);
+		item->setData(0, BmkRole, first.bmk);
+		item->setData(0, StructureRole, first.structure);
+		item->setData(0, HasStructureRole, first.hasStructure);
+		item->setData(0, TypedDeviceRole, device);
+		item->setData(0, PartRole, part);
+		item->setData(0, IsMasterRole, master);
+		item->setData(0, IsSlaveRole, !master);
+		item->setIcon(0, master ? QET::Icons::ElementMaster : QET::Icons::ElementSlave);
+		QFont font = item->font(0);
+		font.setItalic(true);
+		item->setFont(0, font);
+		if (DeviceTypePlacement::placeableWays(typed, part).isEmpty()) {
+			item->setFlags(item->flags() & ~Qt::ItemIsEnabled);
+			item->setToolTip(0, definition.kind == QLatin1String("plc")
+							 ? tr("Place PLC points with the PLC Manager.")
+							 : tr("The project does not have a symbol for this part."));
+		} else {
+			item->setToolTip(0, tr("Not drawn yet. Double-click to place it on the current folio."));
+		}
+	}
+}
+
+/**
+	@brief DeviceNavigatorDockWidget::placeFreePart
+	The symbol of the free part of @p item follows the mouse on @p folio,
+	by default the folio shown; once placed it is linked to its device, as
+	from Project > Check device types. A part with several ways of being
+	drawn (NO, NC, changeover) asks which, unless @p way says.
+	@return false when it cannot be placed there
+*/
+bool DeviceNavigatorDockWidget::placeFreePart(QTreeWidgetItem *item, Diagram *folio, int way)
+{
+	if (!item || !m_project || item->data(0, NodeTypeRole).toInt() != FreePartNode)
+		return false;
+	const int device = item->data(0, TypedDeviceRole).toInt();
+	const int part = item->data(0, PartRole).toInt();
+	if (device < 0 || device >= m_typed_devices.size()) return false;
+	const DeviceTypeCheck::Device &typed = m_typed_devices.at(device);
+	const QList<int> ways = DeviceTypePlacement::placeableWays(typed, part);
+	if (ways.isEmpty()) return false;
+	if (way < 0) {
+		way = ways.first();
+		if (ways.size() > 1) {
+			QMenu menu(this);
+			for (int candidate : ways)
+				menu.addAction(DeviceTypePlacement::wayText(typed.type.parts.at(part), candidate))
+						->setData(candidate);
+			QAction *chosen = menu.exec(QCursor::pos());
+			if (!chosen) return false;
+			way = chosen->data().toInt();
+		}
+	} else if (!ways.contains(way)) {
+		return false;
+	}
+
+	DiagramView *view = nullptr;
+	QETDiagramEditor *editor = QETApp::diagramEditorAncestorOf(this);
+	if (!folio && editor) {
+		editor->activateProject(m_project);
+		if (ProjectView *project_view = editor->currentProjectView())
+			view = project_view->currentDiagram();
+		if (view) folio = view->diagram();
+	}
+	if (!folio || folio->project() != m_project) return false;
+	QPointF pos;
+	if (view) pos = view->mapToScene(view->viewport()->rect().center());
+
+	DiagramEventAddElement *placing = DeviceTypePlacement::begin(typed, part, way, folio, pos);
+	if (!placing) return false;
+	connect(placing, &DiagramEventInterface::finish, this,
+			&DeviceNavigatorDockWidget::scheduleReload, Qt::QueuedConnection);
+	folio->setEventInterface(placing);
+	if (view) view->setFocus();
+	return true;
 }

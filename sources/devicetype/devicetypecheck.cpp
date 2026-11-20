@@ -311,6 +311,14 @@ namespace DeviceTypeCheck
 		return list;
 	}
 
+	QVector<Device> checkBuilt(QETProject *project)
+	{
+		QVector<Device> list;
+		for (const Device &device : devices(project, nullptr))
+			if (!device.typeName.isEmpty()) list << device;
+		return list;
+	}
+
 	/**
 		@return the device @p element is a symbol of; no designation when it
 		belongs to none (a folio report, a symbol without label). Reads the
