@@ -88,7 +88,7 @@ bool AlignmentTextDialog::event(QEvent *event)
 		//the dialog lose focus and close.
 	if(event->type() == QEvent::Show && m_first_show)
 	{
-		QTimer::singleShot(50, [this](){ui->top_left->setFocus();});
+		QTimer::singleShot(50, this, [this](){ui->top_left->setFocus();});
 		m_first_show = false;
 	}
 	
