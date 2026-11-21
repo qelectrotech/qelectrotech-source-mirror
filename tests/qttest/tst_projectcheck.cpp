@@ -1,0 +1,244 @@
+/*
+	Copyright 2006-2026 The QElectroTech Team
+	This file is part of QElectroTech.
+
+	QElectroTech is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 2 of the License, or
+	(at your option) any later version.
+
+	QElectroTech is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+
+	You should have received a copy of the GNU General Public License
+	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
+*/
+#include "qetapptest.h"
+#include "diagram.h"
+#include "devicetype/devicetypecheck.h"
+#include "projectcheck.h"
+#include "qetgraphicsitem/conductor.h"
+#include "qetgraphicsitem/element.h"
+#include "qetgraphicsitem/terminal.h"
+#include "qetproject.h"
+#include "ui/checkpaneldockwidget.h"
+#include "wiringrules.h"
+
+#include <QDomDocument>
+#include <QFile>
+#include <QScopeGuard>
+#include <QTemporaryDir>
+#include <QTreeWidget>
+
+/**
+	The Check panel (#1878 B1): every check QElectroTech has, run at once,
+	with one shape of finding each can be shown from.
+*/
+class tst_projectcheck : public QObject
+{
+	Q_OBJECT
+
+	QTemporaryDir m_dir;
+
+	QString copy(const QString &fixture)
+	{
+		const QString path = m_dir.filePath(fixture);
+		QFile::remove(path);
+		if (!QFile::copy(QFINDTESTDATA(QStringLiteral("fixtures/") + fixture), path)) return {};
+		QFile::setPermissions(path, QFile::ReadOwner | QFile::WriteOwner);
+		return path;
+	}
+
+	static ProjectCheck::Result run(QETProject &project, ProjectCheck::Kind kind)
+	{
+		project.loadFolios();
+		return ProjectCheck::run(&project, kind);
+	}
+
+	/// The terminals of the project's symbols with more than @p limit
+	/// wires, counted on the folios, not in the database. A folio report
+	/// has the same limit while one_wire_per_report is off
+	static int overLimit(QETProject &project, int limit)
+	{
+		int count = 0;
+		for (Diagram *diagram : project.diagrams())
+			for (Element *element : diagram->elements())
+				for (Terminal *terminal : element->terminals())
+					if (terminal->conductors().size() > limit) ++count;
+		return count;
+	}
+
+	private slots:
+		/// A limit of 1 lists exactly the terminals the folios show with
+		/// two wires or more; no limit gives a note and no finding
+		void wiresPerTerminalMatchesTheFolios()
+		{
+			const bool master = WiringRules::masterEnabled();
+			const auto restore = qScopeGuard([master]() { WiringRules::setMasterEnabled(master); });
+			const QString path = copy(QStringLiteral("shared_symbol_uuid_0200.qet"));
+			QVERIFY(!path.isEmpty());
+			QETProject project(path);
+			project.loadFolios();
+
+			WiringRules::setMasterEnabled(true);
+			WiringRules::Settings none;
+			none.own = true;
+			project.setWiringRules(none);
+			auto result = ProjectCheck::run(&project, ProjectCheck::Kind::WiresPerTerminal);
+			QVERIFY(!result.note.isEmpty());
+			QVERIFY(result.findings.isEmpty());
+
+			WiringRules::Settings one = none;
+			one.max_wires = 1;
+			project.setWiringRules(one);
+			result = ProjectCheck::run(&project, ProjectCheck::Kind::WiresPerTerminal);
+			QVERIFY(result.note.isEmpty());
+			const int expected = overLimit(project, 1);
+			QVERIFY2(expected > 0, "the fixture has no terminal with two wires");
+			QCOMPARE(int(result.findings.size()), expected);
+			for (const auto &finding : result.findings) {
+				QCOMPARE(finding.places.size(), 1);
+				QVERIFY(!finding.places.first().element.isNull());
+				QVERIFY(!finding.places.first().folio.isEmpty());
+			}
+
+			// The master switch off: no limit at all
+			WiringRules::setMasterEnabled(false);
+			result = ProjectCheck::run(&project, ProjectCheck::Kind::WiresPerTerminal);
+			QVERIFY(!result.note.isEmpty());
+		}
+
+		/// A symbol whose definition names two terminals alike is found
+		/// once, with every placed copy of it; the fixture as shipped has none
+		void terminalNamesFindsARepeatedName()
+		{
+			const QString path = copy(QStringLiteral("every_feature.qet"));
+			QVERIFY(!path.isEmpty());
+			{
+				QETProject project(path);
+				QVERIFY(run(project, ProjectCheck::Kind::TerminalNames).findings.isEmpty());
+			}
+
+				// Name two terminals of the first embedded symbol which has two "X9"
+			QFile file(path);
+			QVERIFY(file.open(QIODevice::ReadOnly));
+			QDomDocument document;
+			QVERIFY(bool(document.setContent(&file)));
+			file.close();
+			QString definition_name;
+			const QDomNodeList definitions = document.elementsByTagName(QStringLiteral("definition"));
+			for (int i = 0 ; i < definitions.count() && definition_name.isEmpty() ; ++i) {
+				QDomElement definition = definitions.at(i).toElement();
+				if (definition.attribute(QStringLiteral("type")) != QLatin1String("element")) continue;
+				const QDomNodeList terminals = definition.elementsByTagName(QStringLiteral("terminal"));
+				if (terminals.count() < 2) continue;
+				terminals.at(0).toElement().setAttribute(QStringLiteral("name"), QStringLiteral("X9"));
+				terminals.at(1).toElement().setAttribute(QStringLiteral("name"), QStringLiteral("X9"));
+				definition_name = definition.parentNode().toElement().attribute(QStringLiteral("name"));
+			}
+			QVERIFY(!definition_name.isEmpty());
+			QVERIFY(file.open(QIODevice::WriteOnly | QIODevice::Truncate));
+			file.write(document.toByteArray());
+			file.close();
+
+			QETProject project(path);
+			const auto result = run(project, ProjectCheck::Kind::TerminalNames);
+			QCOMPARE(result.findings.size(), 1);
+			QVERIFY2(result.findings.first().text.contains(QStringLiteral("X9")),
+					 qPrintable(result.findings.first().text));
+			int placed = 0;
+			for (Diagram *diagram : project.diagrams())
+				for (Element *element : diagram->elements())
+					if (element->location().path().endsWith(definition_name)) ++placed;
+			QCOMPARE(int(result.findings.first().places.size()), placed);
+		}
+
+		/// The device type findings are the devices the check finds not
+		/// complete, or with too many contacts
+		void deviceTypesMatchesTheCheck()
+		{
+			const QString path = copy(QStringLiteral("device_types.qet"));
+			QVERIFY(!path.isEmpty());
+			QETProject project(path);
+			const auto result = run(project, ProjectCheck::Kind::DeviceTypes);
+			QList<Element *> unlinked;
+			int expected = 0;
+			for (const auto &device : DeviceTypeCheck::check(&project, &unlinked))
+				if (!device.complete() || DeviceTypeCheck::extraContacts(device)) ++expected;
+			if (!unlinked.isEmpty()) ++expected;
+			QCOMPARE(int(result.findings.size()), expected);
+		}
+
+		/// Every check runs on every fixture without a crash, and every
+		/// place which says it can be shown names something to show
+		void everyCheckRunsOnEveryFixture_data()
+		{
+			QTest::addColumn<QString>("fixture");
+			for (const char *name : {"every_feature.qet", "device_types.qet", "structure_box.qet",
+									 "linked_reports.qet", "strip_labels.qet"})
+				QTest::newRow(name) << QString::fromLatin1(name);
+		}
+		void everyCheckRunsOnEveryFixture()
+		{
+			QFETCH(QString, fixture);
+			const QString path = copy(fixture);
+			QVERIFY(!path.isEmpty());
+			QETProject project(path);
+			for (auto kind : ProjectCheck::kinds()) {
+				QVERIFY(!ProjectCheck::title(kind).isEmpty());
+				const auto result = run(project, kind);
+				QCOMPARE(result.kind, kind);
+				for (const auto &finding : result.findings) {
+					QVERIFY(!finding.text.isEmpty());
+					for (const auto &place : finding.places)
+						if (place.canShow())
+							QVERIFY(place.item || !place.element.isNull() || !place.wires.isEmpty());
+				}
+			}
+		}
+
+		/// The panel lists one row per check, counts the findings, and
+		/// a finding's row selects its symbol on its folio
+		void panelRunsAndShows()
+		{
+			const bool master = WiringRules::masterEnabled();
+			const auto restore = qScopeGuard([master]() { WiringRules::setMasterEnabled(master); });
+			WiringRules::setMasterEnabled(true);
+			const QString path = copy(QStringLiteral("shared_symbol_uuid_0200.qet"));
+			QVERIFY(!path.isEmpty());
+			QETProject project(path);
+			WiringRules::Settings one;
+			one.own = true;
+			one.max_wires = 1;
+			project.setWiringRules(one);
+
+			CheckPanelDockWidget panel;
+			panel.setProject(&project);
+			QCOMPARE(panel.tree()->topLevelItemCount(), 0);
+			panel.run();
+			QCOMPARE(panel.tree()->topLevelItemCount(), int(ProjectCheck::kinds().size()));
+			QVERIFY(panel.findingCount() >= overLimit(project, 1));
+
+			const int wires_row = int(ProjectCheck::kinds().indexOf(ProjectCheck::Kind::WiresPerTerminal));
+			QTreeWidgetItem *check = panel.tree()->topLevelItem(wires_row);
+			QVERIFY(check->childCount() > 0);
+			QTreeWidgetItem *finding = check->child(0);
+			QVERIFY(!finding->text(1).isEmpty());
+			QVERIFY(panel.showRow(finding));
+			int selected = 0;
+			for (Diagram *diagram : project.diagrams())
+				selected += int(diagram->selectedItems().size());
+			QCOMPARE(selected, 1);
+			QVERIFY(!panel.showRow(check));     // a check's own row shows nothing
+
+			// Another project clears the results
+			panel.setProject(nullptr);
+			QCOMPARE(panel.tree()->topLevelItemCount(), 0);
+			QCOMPARE(panel.findingCount(), 0);
+		}
+};
+
+QET_APP_TEST_MAIN(tst_projectcheck)
+#include "tst_projectcheck.moc"

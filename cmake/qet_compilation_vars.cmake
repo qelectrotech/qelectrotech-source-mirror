@@ -196,6 +196,10 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/conductorautonumerotation.h
   ${QET_DIR}/sources/duplicatelabels.h
   ${QET_DIR}/sources/duplicatelabels.cpp
+  ${QET_DIR}/sources/projectcheck.h
+  ${QET_DIR}/sources/projectcheck.cpp
+  ${QET_DIR}/sources/ui/checkpaneldockwidget.h
+  ${QET_DIR}/sources/ui/checkpaneldockwidget.cpp
   ${QET_DIR}/sources/ui/duplicatelabelsdialog.h
   ${QET_DIR}/sources/ui/duplicatelabelsdialog.cpp
   ${QET_DIR}/sources/ui/reportsdialog.h
