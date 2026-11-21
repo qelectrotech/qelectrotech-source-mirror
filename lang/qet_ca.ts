@@ -1167,12 +1167,12 @@ Nota: Aquestes opcions NO permeten ni bloquegen les numeracions automàtiques, n
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="62"/>
         <source>Adds the unit price and labour time of each part, their totals for the quantity used, and a last line with the totals for the project. Parts with no price or labour time count as nothing.</source>
-        <translation type="unfinished"></translation>
+        <translation>Afegeix el preu unitari i el temps de mà d&apos;obra de cada peça, els seus totals per a la quantitat utilitzada i una darrera fila amb els totals del projecte. Les peces sense preu ni temps de mà d&apos;obra compten com a zero.</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="65"/>
         <source>Add prices and labour time, with project totals</source>
-        <translation type="unfinished"></translation>
+        <translation>Afegeix els preus i el temps de mà d&apos;obra, amb els totals del projecte</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="75"/>
@@ -1221,7 +1221,7 @@ Nota: Aquestes opcions NO permeten ni bloquegen les numeracions automàtiques, n
         <location filename="../sources/ui/bomexportdialog.cpp" line="177"/>
         <source>Total</source>
         <comment>last line of the parts list with prices</comment>
-        <translation type="unfinished"></translation>
+        <translation>Total</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="187"/>
@@ -1261,22 +1261,22 @@ Nota: Aquestes opcions NO permeten ni bloquegen les numeracions automàtiques, n
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="194"/>
         <source>Unit price</source>
-        <translation type="unfinished"></translation>
+        <translation>Preu unitari</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="195"/>
         <source>Total price</source>
-        <translation type="unfinished"></translation>
+        <translation>Preu total</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="196"/>
         <source>Labour time [h]</source>
-        <translation type="unfinished"></translation>
+        <translation>Temps de mà d&apos;obra [h]</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="197"/>
         <source>Total labour [h]</source>
-        <translation type="unfinished"></translation>
+        <translation>Total mà d&apos;obra [h]</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="223"/>
@@ -2880,7 +2880,7 @@ Voleu tornar-los a numerar també?</numerusform>
     <message>
         <location filename="../sources/conductorcolorcodes.cpp" line="47"/>
         <source>Green-yellow</source>
-        <translation type="unfinished"></translation>
+        <translation>Verd-groc</translation>
     </message>
     <message>
         <location filename="../sources/conductorcolorcodes.cpp" line="48"/>
@@ -2900,7 +2900,7 @@ Voleu tornar-los a numerar també?</numerusform>
     <message>
         <location filename="../sources/conductorcolorcodes.cpp" line="51"/>
         <source>Yellow</source>
-        <translation type="unfinished">Groc</translation>
+        <translation>Groc</translation>
     </message>
     <message>
         <location filename="../sources/conductorcolorcodes.cpp" line="52"/>
@@ -2915,22 +2915,22 @@ Voleu tornar-los a numerar també?</numerusform>
     <message>
         <location filename="../sources/conductorcolorcodes.cpp" line="54"/>
         <source>Pink</source>
-        <translation type="unfinished"></translation>
+        <translation>Rosa</translation>
     </message>
     <message>
         <location filename="../sources/conductorcolorcodes.cpp" line="55"/>
         <source>Turquoise</source>
-        <translation type="unfinished"></translation>
+        <translation>Turquesa</translation>
     </message>
     <message>
         <location filename="../sources/conductorcolorcodes.cpp" line="56"/>
         <source>Gold</source>
-        <translation type="unfinished"></translation>
+        <translation>Or</translation>
     </message>
     <message>
         <location filename="../sources/conductorcolorcodes.cpp" line="57"/>
         <source>Silver</source>
-        <translation type="unfinished"></translation>
+        <translation>Plata</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorcolortoolbutton.cpp" line="52"/>
@@ -3277,12 +3277,12 @@ Bloquejat per l&apos;opció «Mostra un text de potencial per full» d&apos;aque
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="330"/>
         <source>IEC 60757 colour codes</source>
-        <translation type="unfinished"></translation>
+        <translation>Codis de colors CEI 60757</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="333"/>
         <source>…</source>
-        <translation type="unfinished">…</translation>
+        <translation>…</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="352"/>
@@ -3926,27 +3926,27 @@ Voleu continuar?</translation>
     <message>
         <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="1491"/>
         <source>Place on the current folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Col·loca al full actual</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="1619"/>
         <source>free: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>lliure: %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="1635"/>
         <source>Place PLC points with the PLC Manager.</source>
-        <translation type="unfinished"></translation>
+        <translation>Col·loca els punts de PLC amb el gestor de PLC.</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="1636"/>
         <source>The project does not have a symbol for this part.</source>
-        <translation type="unfinished"></translation>
+        <translation>El projecte no té cap símbol per a aquesta part.</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="1638"/>
         <source>Not drawn yet. Double-click to place it on the current folio.</source>
-        <translation type="unfinished"></translation>
+        <translation>Encara no dibuixada. Fes doble clic per col·locar-la al full actual.</translation>
     </message>
 </context>
 <context>
@@ -4079,12 +4079,12 @@ Voleu continuar?</translation>
     <message>
         <location filename="../sources/ui/devicenavigatorfilterdialog.ui" line="234"/>
         <source>Only the devices with a part of their device type which is not drawn yet</source>
-        <translation type="unfinished"></translation>
+        <translation>Només els aparells amb una part del seu tipus d&apos;aparell encara sense dibuixar</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatorfilterdialog.ui" line="237"/>
         <source>Only devices with free parts</source>
-        <translation type="unfinished"></translation>
+        <translation>Només els aparells amb parts lliures</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatorfilterdialog.ui" line="258"/>
@@ -4168,33 +4168,33 @@ Voleu continuar?</translation>
         <location filename="../sources/ui/devicetypechangedialog.cpp" line="43"/>
         <source>Change the device type to %1</source>
         <extracomment>%1 is a device type&apos;s name, such as &quot;CONTR10&quot;</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Canvia el tipus d&apos;aparell a %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypechangedialog.cpp" line="45"/>
         <source>Choose, for each symbol of the device, the part of the new device type it draws. It takes that part&apos;s terminals. A symbol left beyond the type stays as it is.</source>
-        <translation type="unfinished"></translation>
+        <translation>Tria, per a cada símbol de l&apos;aparell, la part del nou tipus d&apos;aparell que dibuixa. Pren els borns d&apos;aquesta part. Un símbol deixat fora del tipus es queda tal qual.</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypechangedialog.cpp" line="53"/>
         <source>Symbol</source>
-        <translation type="unfinished">Símbol</translation>
+        <translation>Símbol</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypechangedialog.cpp" line="53"/>
         <source>Part of the new type</source>
-        <translation type="unfinished"></translation>
+        <translation>Part del nou tipus</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypechangedialog.cpp" line="62"/>
         <source>Beyond the type</source>
-        <translation type="unfinished"></translation>
+        <translation>Fora del tipus</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypechangedialog.cpp" line="65"/>
         <source>%1: %2</source>
         <extracomment>%1 is a part&apos;s number in the type, %2 how it reads (&quot;contact NO 13 14&quot;)</extracomment>
-        <translation type="unfinished">%1: %2</translation>
+        <translation>%1: %2</translation>
     </message>
 </context>
 <context>
@@ -4202,180 +4202,180 @@ Voleu continuar?</translation>
     <message>
         <location filename="../sources/ui/devicetypecheckdialog.cpp" line="52"/>
         <source>Check device types</source>
-        <translation type="unfinished"></translation>
+        <translation>Comprova els tipus d&apos;aparell</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypecheckdialog.cpp" line="59"/>
         <source>A device takes the device type named on its Parts tab. Click a device or a symbol to select and show it on its sheet. Double-click a part not drawn to place it on the current folio. Refresh after editing the project.</source>
-        <translation type="unfinished"></translation>
+        <translation>Un aparell pren el tipus d&apos;aparell indicat a la seva pestanya Parts. Fes clic en un aparell o un símbol per seleccionar-lo i mostrar-lo al seu full. Fes doble clic en una part sense dibuixar per col·locar-la al full actual. Actualitza després de modificar el projecte.</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypecheckdialog.cpp" line="66"/>
         <source>Also list the complete devices</source>
-        <translation type="unfinished"></translation>
+        <translation>Llista també els aparells complets</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypecheckdialog.cpp" line="71"/>
         <source>Device / part</source>
-        <translation type="unfinished"></translation>
+        <translation>Aparell / part</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypecheckdialog.cpp" line="71"/>
         <source>Device type</source>
-        <translation type="unfinished"></translation>
+        <translation>Tipus d&apos;aparell</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypecheckdialog.cpp" line="71"/>
         <source>Sheet</source>
-        <translation type="unfinished">Full</translation>
+        <translation>Full</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypecheckdialog.cpp" line="71"/>
         <source>Position</source>
-        <translation type="unfinished">Posició</translation>
+        <translation>Posició</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypecheckdialog.cpp" line="88"/>
         <source>Refresh</source>
-        <translation type="unfinished">Actualitza</translation>
+        <translation>Actualitza</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypecheckdialog.cpp" line="90"/>
         <source>Place on the current folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Col·loca al full actual</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypecheckdialog.cpp" line="92"/>
         <source>Place the selected part: the symbol follows the mouse until you click</source>
-        <translation type="unfinished"></translation>
+        <translation>Col·loca la part seleccionada: el símbol segueix el ratolí fins al clic</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypecheckdialog.cpp" line="111"/>
         <source>Reading the folios...</source>
-        <translation type="unfinished">S&apos;estan llegint els fulls...</translation>
+        <translation>Llegint els fulls...</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypecheckdialog.cpp" line="125"/>
         <source>Reading folio %1 of %2...</source>
-        <translation type="unfinished">S&apos;està llegint el full %1 de %2...</translation>
+        <translation>Llegint el full %1 de %2...</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypecheckdialog.cpp" line="147"/>
         <source>%1 — %2</source>
-        <translation type="unfinished">%1 — %2</translation>
+        <translation>%1 — %2</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypecheckdialog.cpp" line="171"/>
         <source>%1: the project has no device type %2</source>
         <extracomment>%1 is the device, such as &quot;=P1+CP1-K12&quot;; %2 its device type</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>%1: el projecte no té cap tipus d&apos;aparell %2</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/devicetypecheckdialog.cpp" line="177"/>
         <source>%1: %2 of %n parts drawn</source>
         <extracomment>%1 is the device, such as &quot;=P1+CP1-K12&quot;</extracomment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%1: %2 de %n part dibuixada</numerusform>
+            <numerusform>%1: %2 de %n parts dibuixades</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypecheckdialog.cpp" line="185"/>
         <source>Not drawn: %1</source>
         <extracomment>%1 describes the part, such as &quot;simple NO 13 14&quot;</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>No dibuixada: %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypecheckdialog.cpp" line="190"/>
         <source>Place PLC points with the PLC Manager.</source>
-        <translation type="unfinished"></translation>
+        <translation>Col·loca els punts de PLC amb el gestor de PLC.</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypecheckdialog.cpp" line="191"/>
         <source>The project does not have a symbol for this part.</source>
-        <translation type="unfinished"></translation>
+        <translation>El projecte no té cap símbol per a aquesta part.</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypecheckdialog.cpp" line="193"/>
         <source>Double-click to place it on the current folio.</source>
-        <translation type="unfinished"></translation>
+        <translation>Fes doble clic per col·locar-la al full actual.</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/devicetypecheckdialog.cpp" line="199"/>
         <source>%n contact(s) more than the device type has</source>
         <extracomment>%n counts the contacts linked to the device&apos;s master beyond the ones its type has</extracomment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n contacte més dels que té el tipus d&apos;aparell</numerusform>
+            <numerusform>%n contactes més dels que té el tipus d&apos;aparell</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypecheckdialog.cpp" line="206"/>
         <source>Beyond the type: %1</source>
         <extracomment>%1 is the symbol&apos;s name</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Fora del tipus: %1</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/devicetypecheckdialog.cpp" line="215"/>
         <source>%n contact(s) linked to no master</source>
         <extracomment>%n counts the contacts linked to no master</extracomment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n contacte no enllaçat a cap mestre</numerusform>
+            <numerusform>%n contactes no enllaçats a cap mestre</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypecheckdialog.cpp" line="216"/>
         <source>A contact belongs to a device once it is linked to the device&apos;s master.</source>
-        <translation type="unfinished"></translation>
+        <translation>Un contacte pertany a un aparell tan bon punt està enllaçat al mestre de l&apos;aparell.</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypecheckdialog.cpp" line="223"/>
         <source>%1 %2</source>
         <extracomment>%1 is the symbol&apos;s name, %2 its label</extracomment>
-        <translation type="unfinished">%1 %2</translation>
+        <translation>%1 %2</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/devicetypecheckdialog.cpp" line="230"/>
         <source>%n device(s) with a device type: %1 complete, %2 incomplete, %3 of a type the project does not have.</source>
         <extracomment>%n counts the devices which have a device type</extracomment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n aparell amb un tipus d&apos;aparell: %1 complet(s), %2 incomplet(s), %3 d&apos;un tipus que el projecte no té.</numerusform>
+            <numerusform>%n aparells amb un tipus d&apos;aparell: %1 complet(s), %2 incomplet(s), %3 d&apos;un tipus que el projecte no té.</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/devicetypecheckdialog.cpp" line="236"/>
         <source>%n with too many contacts.</source>
         <extracomment>%n counts the devices whose master has more contacts linked than their type has</extracomment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n amb massa contactes.</numerusform>
+            <numerusform>%n amb massa contactes.</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/devicetypecheckdialog.cpp" line="239"/>
         <source>%n contact(s) linked to no master.</source>
         <extracomment>%n counts the contacts linked to no master</extracomment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n contacte no enllaçat a cap mestre.</numerusform>
+            <numerusform>%n contactes no enllaçats a cap mestre.</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypecheckdialog.cpp" line="300"/>
         <source>Open a folio of this project to place the part.</source>
-        <translation type="unfinished"></translation>
+        <translation>Obre un full d&apos;aquest projecte per col·locar la part.</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypecheckdialog.cpp" line="310"/>
         <source>This part cannot be placed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Aquesta part no es pot col·locar.</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypecheckdialog.cpp" line="330"/>
         <source>This symbol no longer exists. Refresh the results.</source>
-        <translation type="unfinished"></translation>
+        <translation>Aquest símbol ja no existeix. Actualitza els resultats.</translation>
     </message>
 </context>
 <context>
@@ -4383,39 +4383,39 @@ Voleu continuar?</translation>
     <message>
         <location filename="../sources/ui/devicetypechooser.cpp" line="112"/>
         <source>Device type</source>
-        <translation type="unfinished"></translation>
+        <translation>Tipus d&apos;aparell</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypechooser.cpp" line="117"/>
         <source>Which device type is this device? Its parts are then checked against it.</source>
-        <translation type="unfinished"></translation>
+        <translation>Quin és el tipus d&apos;aparell d&apos;aquest aparell? Les seves parts es comproven després respecte a aquest tipus.</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypechooser.cpp" line="119"/>
         <source>Which device type is %1? Its parts are then checked against it.</source>
         <extracomment>%1 is the device&apos;s label, such as &quot;-K1&quot;</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Quin és el tipus d&apos;aparell de %1? Les seves parts es comproven després respecte a aquest tipus.</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypechooser.cpp" line="124"/>
         <source>Filter, * for any characters</source>
-        <translation type="unfinished"></translation>
+        <translation>Filtre, * per a qualsevol caràcter</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypechooser.cpp" line="130"/>
         <source>Show every device type, not only those this symbol can draw</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostra tots els tipus d&apos;aparell, no només els que aquest símbol pot dibuixar</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypechooser.cpp" line="203"/>
         <source>%1 - %2</source>
         <extracomment>%1 is a device type&apos;s name, %2 its description</extracomment>
-        <translation type="unfinished">%1 - %2</translation>
+        <translation>%1 - %2</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypechooser.cpp" line="204"/>
         <source>%1 - %2 (your library)</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 - %2 (la teva biblioteca)</translation>
     </message>
 </context>
 <context>
@@ -4423,232 +4423,232 @@ Voleu continuar?</translation>
     <message>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="71"/>
         <source>Master</source>
-        <translation type="unfinished">Mestre</translation>
+        <translation>Mestre</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="72"/>
         <source>Slave</source>
-        <translation type="unfinished">Esclau</translation>
+        <translation>Esclau</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="73"/>
         <source>Simple</source>
-        <translation type="unfinished"></translation>
+        <translation>Simple</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="74"/>
         <source>Terminal</source>
-        <translation type="unfinished">Born</translation>
+        <translation>Born</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="80"/>
         <source>Coil</source>
-        <translation type="unfinished">Bobina</translation>
+        <translation>Bobina</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="81"/>
         <source>Protection</source>
-        <translation type="unfinished">Protecció</translation>
+        <translation>Protecció</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="82"/>
         <source>Commutator</source>
-        <translation type="unfinished">Commutador</translation>
+        <translation>Commutador</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="83"/>
         <source>PLC</source>
-        <translation type="unfinished">PLC</translation>
+        <translation>PLC</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="84"/>
         <source>Simple contact</source>
-        <translation type="unfinished"></translation>
+        <translation>Contacte simple</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="85"/>
         <source>Power contact</source>
-        <translation type="unfinished"></translation>
+        <translation>Contacte de potència</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="86"/>
         <source>Delay on</source>
-        <translation type="unfinished"></translation>
+        <translation>Retard a la connexió</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="87"/>
         <source>Delay off</source>
-        <translation type="unfinished"></translation>
+        <translation>Retard a la desconnexió</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="88"/>
         <source>Delay on and off</source>
-        <translation type="unfinished"></translation>
+        <translation>Retard a la connexió i a la desconnexió</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="94"/>
         <source>NO</source>
-        <translation type="unfinished"></translation>
+        <translation>NO</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="95"/>
         <source>NC</source>
-        <translation type="unfinished"></translation>
+        <translation>NC</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="96"/>
         <source>Changeover</source>
-        <translation type="unfinished"></translation>
+        <translation>Commutat</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="121"/>
         <source>Device type</source>
-        <translation type="unfinished"></translation>
+        <translation>Tipus d&apos;aparell</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="127"/>
         <source>The name devices give in their Device type field, such as CONTR10</source>
-        <translation type="unfinished"></translation>
+        <translation>El nom que els aparells posen al seu camp Tipus d&apos;aparell, com CONTR10</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="128"/>
         <source>Name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Nom:</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="131"/>
         <source>Description:</source>
-        <translation type="unfinished">Descripció:</translation>
+        <translation>Descripció:</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="134"/>
         <source>Given to the symbols of its devices</source>
-        <translation type="unfinished"></translation>
+        <translation>Donada als símbols dels seus aparells</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="138"/>
         <source>Information</source>
-        <translation type="unfinished"></translation>
+        <translation>Informació</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="138"/>
         <source>Value</source>
-        <translation type="unfinished">Valor</translation>
+        <translation>Valor</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="144"/>
         <source>Add</source>
-        <translation type="unfinished"></translation>
+        <translation>Afegeix</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="145"/>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="182"/>
         <source>Remove</source>
-        <translation type="unfinished">Elimina</translation>
+        <translation>Elimina</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="154"/>
         <source>Parts</source>
-        <translation type="unfinished">Parts</translation>
+        <translation>Parts</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="157"/>
         <source>One row per way to draw a part. Rows with the same part number are the ways one part may be drawn, such as a contact as NO, NC or changeover. The first master part is the device&apos;s head.</source>
-        <translation type="unfinished"></translation>
+        <translation>Una fila per cada manera de dibuixar una part. Les files amb el mateix número de part són les maneres en què es pot dibuixar una mateixa part, com un contacte en NO, NC o commutat. La primera part mestre és el cap de l&apos;aparell.</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="164"/>
         <source>Part</source>
-        <translation type="unfinished"></translation>
+        <translation>Part</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="164"/>
         <source>Role</source>
-        <translation type="unfinished"></translation>
+        <translation>Rol</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="164"/>
         <source>Kind</source>
-        <translation type="unfinished"></translation>
+        <translation>Gènere</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="164"/>
         <source>State</source>
-        <translation type="unfinished"></translation>
+        <translation>Estat</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="165"/>
         <source>Symbol</source>
-        <translation type="unfinished">Símbol</translation>
+        <translation>Símbol</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="165"/>
         <source>Pins</source>
-        <translation type="unfinished"></translation>
+        <translation>Pins</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="178"/>
         <source>Add a part</source>
-        <translation type="unfinished"></translation>
+        <translation>Afegeix una part</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="180"/>
         <source>Add a way to draw it</source>
-        <translation type="unfinished"></translation>
+        <translation>Afegeix una manera de dibuixar-la</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="181"/>
         <source>Another way to draw the selected part, such as the same contact as NC</source>
-        <translation type="unfinished"></translation>
+        <translation>Una altra manera de dibuixar la part seleccionada, com el mateix contacte en NC</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="183"/>
         <source>Up</source>
-        <translation type="unfinished">Superior</translation>
+        <translation>Amunt</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="184"/>
         <source>Down</source>
-        <translation type="unfinished">Avall</translation>
+        <translation>Avall</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="185"/>
         <source>Choose the symbol...</source>
-        <translation type="unfinished"></translation>
+        <translation>Tria el símbol...</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="352"/>
         <source>Give the device type a name.</source>
-        <translation type="unfinished"></translation>
+        <translation>Posa un nom al tipus d&apos;aparell.</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="355"/>
         <source>A device type named %1 already exists.</source>
         <extracomment>%1 is a device type&apos;s name, such as &quot;CONTR10&quot;</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Ja existeix un tipus d&apos;aparell anomenat %1.</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="357"/>
         <source>A device type needs at least one part.</source>
-        <translation type="unfinished"></translation>
+        <translation>Un tipus d&apos;aparell necessita almenys una part.</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="362"/>
         <source>Part %1 has no role.</source>
         <extracomment>%1 is a part&apos;s number in the device type</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>La part %1 no té rol.</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="368"/>
         <source>Part %1: the symbol %2 cannot be found.</source>
         <extracomment>%1 is a part&apos;s number, %2 the symbol it names</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Part %1: no es troba el símbol %2.</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="371"/>
         <source>Part %1: %2 pins for a symbol with %3 terminals.</source>
         <extracomment>%1 is a part&apos;s number, %2 its pins, %3 the symbol&apos;s terminals</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Part %1: %2 pins per a un símbol de %3 borns.</translation>
     </message>
 </context>
 <context>
@@ -4656,150 +4656,150 @@ Voleu continuar?</translation>
     <message>
         <location filename="../sources/ui/devicetypesdialog.cpp" line="50"/>
         <source>Name</source>
-        <translation type="unfinished">Nom</translation>
+        <translation>Nom</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypesdialog.cpp" line="50"/>
         <source>Description</source>
-        <translation type="unfinished">Descripció</translation>
+        <translation>Descripció</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypesdialog.cpp" line="51"/>
         <source>Parts</source>
-        <translation type="unfinished">Parts</translation>
+        <translation>Parts</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypesdialog.cpp" line="52"/>
         <source>Symbols</source>
-        <translation type="unfinished">Símbols</translation>
+        <translation>Símbols</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypesdialog.cpp" line="72"/>
         <source>Device types</source>
-        <translation type="unfinished"></translation>
+        <translation>Tipus d&apos;aparell</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypesdialog.cpp" line="75"/>
         <source>A device type says what a kind of device is made of. The project keeps the types its devices use; your library keeps the ones you make and share. A device takes a type in its Device type field on the Parts tab.</source>
-        <translation type="unfinished"></translation>
+        <translation>Un tipus d&apos;aparell diu de què està fet un gènere d&apos;aparell. El projecte guarda els tipus que fan servir els seus aparells; la teva biblioteca guarda els que crees i comparteixes. Un aparell pren un tipus al seu camp Tipus d&apos;aparell, a la pestanya Parts.</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypesdialog.cpp" line="86"/>
         <source>This project</source>
-        <translation type="unfinished"></translation>
+        <translation>Aquest projecte</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypesdialog.cpp" line="87"/>
         <source>Your library</source>
-        <translation type="unfinished"></translation>
+        <translation>La teva biblioteca</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypesdialog.cpp" line="91"/>
         <source>New...</source>
-        <translation type="unfinished">Nou...</translation>
+        <translation>Nou...</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypesdialog.cpp" line="92"/>
         <source>Duplicate...</source>
-        <translation type="unfinished"></translation>
+        <translation>Duplica...</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypesdialog.cpp" line="93"/>
         <source>Edit...</source>
-        <translation type="unfinished"></translation>
+        <translation>Edita...</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypesdialog.cpp" line="94"/>
         <source>Delete</source>
-        <translation type="unfinished">Suprimeix</translation>
+        <translation>Suprimeix</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypesdialog.cpp" line="97"/>
         <source>Export list</source>
-        <translation type="unfinished"></translation>
+        <translation>Exporta la llista</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypesdialog.cpp" line="99"/>
         <source>Save the device types of this tab as a CSV list</source>
-        <translation type="unfinished"></translation>
+        <translation>Desa els tipus d&apos;aparell d&apos;aquesta pestanya com a llista CSV</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypesdialog.cpp" line="101"/>
         <source>Full list (every part and its terminals)...</source>
-        <translation type="unfinished"></translation>
+        <translation>Llista completa (cada part i els seus borns)...</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypesdialog.cpp" line="103"/>
         <source>Brief list (name and description)...</source>
-        <translation type="unfinished"></translation>
+        <translation>Llista breu (nom i descripció)...</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypesdialog.cpp" line="303"/>
         <source>Delete the device type %1 from your library? This cannot be undone.</source>
         <extracomment>%1 is a device type&apos;s name, such as &quot;CONTR10&quot;</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Suprimir el tipus d&apos;aparell %1 de la teva biblioteca? Aquesta acció no es pot desfer.</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypesdialog.cpp" line="304"/>
         <source>Delete the device type %1 from the project? Its devices keep their Device type field and are listed as of a type the project does not have.</source>
-        <translation type="unfinished"></translation>
+        <translation>Suprimir el tipus d&apos;aparell %1 del projecte? Els seus aparells conserven el camp Tipus d&apos;aparell i es llisten com d&apos;un tipus que el projecte no té.</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypesdialog.cpp" line="306"/>
         <source>Delete a device type</source>
-        <translation type="unfinished"></translation>
+        <translation>Suprimeix un tipus d&apos;aparell</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypesdialog.cpp" line="320"/>
         <source>The project already has a device type %1. Replace it?</source>
-        <translation type="unfinished"></translation>
+        <translation>El projecte ja té un tipus d&apos;aparell %1. El substitueixo?</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypesdialog.cpp" line="321"/>
         <source>Your library already has a device type %1. Replace it?</source>
-        <translation type="unfinished"></translation>
+        <translation>La teva biblioteca ja té un tipus d&apos;aparell %1. El substitueixo?</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypesdialog.cpp" line="322"/>
         <source>Copy a device type</source>
-        <translation type="unfinished"></translation>
+        <translation>Copia un tipus d&apos;aparell</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypesdialog.cpp" line="348"/>
         <location filename="../sources/ui/devicetypesdialog.cpp" line="355"/>
         <source>Export the list of device types</source>
-        <translation type="unfinished"></translation>
+        <translation>Exporta la llista de tipus d&apos;aparell</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypesdialog.cpp" line="349"/>
         <source>device_types.csv</source>
-        <translation type="unfinished"></translation>
+        <translation>device_types.csv</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypesdialog.cpp" line="350"/>
         <source>device_types_brief.csv</source>
-        <translation type="unfinished"></translation>
+        <translation>device_types_brief.csv</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypesdialog.cpp" line="351"/>
         <source>CSV files (*.csv)</source>
-        <translation type="unfinished">Fitxers CSV (*.csv)</translation>
+        <translation>Fitxers CSV (*.csv)</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypesdialog.cpp" line="357"/>
         <source>Cannot write %1: %2</source>
         <extracomment>%1 is a file, %2 why it cannot be written</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>No es pot escriure %1: %2</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypesdialog.cpp" line="367"/>
         <source>Copy to the project</source>
-        <translation type="unfinished"></translation>
+        <translation>Copia al projecte</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypesdialog.cpp" line="367"/>
         <source>Copy to your library</source>
-        <translation type="unfinished"></translation>
+        <translation>Copia a la teva biblioteca</translation>
     </message>
 </context>
 <context>
@@ -4845,7 +4845,7 @@ Voleu continuar?</translation>
     <message>
         <location filename="../sources/diagram.cpp" line="358"/>
         <source>a structure box</source>
-        <translation type="unfinished"></translation>
+        <translation>una caixa d&apos;estructura</translation>
     </message>
     <message>
         <location filename="../sources/diagram.cpp" line="359"/>
@@ -5160,25 +5160,25 @@ Voleu continuar?</translation>
         <location filename="../sources/diagramevent/diagrameventaddpaste.cpp" line="349"/>
         <source>Original position (X+Y locked)</source>
         <comment>status bar lock state</comment>
-        <translation type="unfinished"></translation>
+        <translation>Posició original (X+Y bloquejades)</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddpaste.cpp" line="351"/>
         <source>Original X locked (move along Y)</source>
         <comment>status bar lock state</comment>
-        <translation type="unfinished"></translation>
+        <translation>X original bloquejada (moviment segons Y)</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddpaste.cpp" line="353"/>
         <source>Original Y locked (move along X)</source>
         <comment>status bar lock state</comment>
-        <translation type="unfinished"></translation>
+        <translation>Y original bloquejada (moviment segons X)</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddpaste.cpp" line="356"/>
         <source>Click to place, Esc or right-click to cancel. [%1]: lock X, [%2]: lock Y, [%1]+[%2]: original position</source>
         <comment>status bar tip while positioning a paste</comment>
-        <translation type="unfinished"></translation>
+        <translation>Fes clic per col·locar, Esc o clic dret per cancel·lar. [%1]: bloqueja X, [%2]: bloqueja Y, [%1]+[%2]: posició original</translation>
     </message>
 </context>
 <context>
@@ -5242,22 +5242,22 @@ Voleu continuar?</translation>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddstructurebox.cpp" line="62"/>
         <source>New structure box</source>
-        <translation type="unfinished"></translation>
+        <translation>Nova caixa d&apos;estructura</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddstructurebox.cpp" line="70"/>
         <source>Plant (=)</source>
-        <translation type="unfinished">Instal·lació (=)</translation>
+        <translation>Instal·lació (=)</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddstructurebox.cpp" line="71"/>
         <source>Location (+)</source>
-        <translation type="unfinished">Localització (+)</translation>
+        <translation>Localització (+)</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddstructurebox.cpp" line="72"/>
         <source>Prefix (-)</source>
-        <translation type="unfinished">Prefix (-)</translation>
+        <translation>Prefix (-)</translation>
     </message>
 </context>
 <context>
@@ -6892,169 +6892,169 @@ Hold Shift and drag to move this text on its own</source>
     <message>
         <location filename="../sources/ui/elementarticleswidget.cpp" line="170"/>
         <source>Article %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Article %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementarticleswidget.cpp" line="433"/>
         <location filename="../sources/ui/elementarticleswidget.cpp" line="442"/>
         <location filename="../sources/ui/elementarticleswidget.cpp" line="460"/>
         <source>Change the device type</source>
-        <translation type="unfinished"></translation>
+        <translation>Canvia el tipus d&apos;aparell</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementarticleswidget.cpp" line="435"/>
         <source>The part number of this device names the device type %1. Change it to %2 anyway?</source>
         <extracomment>%1 and %2 are device types&apos; names, such as &quot;CONTR10&quot;</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>La referència d&apos;aquest aparell indica el tipus d&apos;aparell %1. El canvio igualment a %2?</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementarticleswidget.cpp" line="443"/>
         <source>Copy the existing contacts to the new device type automatically?</source>
-        <translation type="unfinished"></translation>
+        <translation>Copio automàticament els contactes existents al nou tipus d&apos;aparell?</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementarticleswidget.cpp" line="494"/>
         <location filename="../sources/ui/elementarticleswidget.cpp" line="517"/>
         <source>Set this symbol from the device type</source>
-        <translation type="unfinished"></translation>
+        <translation>Defineix aquest símbol a partir del tipus d&apos;aparell</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementarticleswidget.cpp" line="495"/>
         <source>Every part of this device type is already drawn.</source>
-        <translation type="unfinished"></translation>
+        <translation>Cada part d&apos;aquest tipus d&apos;aparell ja està dibuixada.</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementarticleswidget.cpp" line="581"/>
         <source>Device type %1 of your library: the project keeps a copy once applied.</source>
         <extracomment>%1 is a device type&apos;s name, such as &quot;CONTR10&quot;</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Tipus d&apos;aparell %1 de la teva biblioteca: el projecte en conserva una còpia un cop aplicat.</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementarticleswidget.cpp" line="583"/>
         <source>No device type %1 in the project or your library.</source>
-        <translation type="unfinished"></translation>
+        <translation>Cap tipus d&apos;aparell %1 al projecte ni a la teva biblioteca.</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/elementarticleswidget.cpp" line="590"/>
         <source>%1 (%n part(s))</source>
         <extracomment>%1 is the type&apos;s text, %n its number of parts</extracomment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%1 (%n part)</numerusform>
+            <numerusform>%1 (%n parts)</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/elementarticleswidget.cpp" line="593"/>
         <source>%1: %2 of %n part(s) drawn</source>
         <extracomment>%1 is the type&apos;s text, %2 the parts drawn, %n all of its parts</extracomment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%1: %2 de %n part dibuixada</numerusform>
+            <numerusform>%1: %2 de %n parts dibuixades</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/ui/elementarticleswidget.cpp" line="599"/>
         <source>Not drawn: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>No dibuixada: %1</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/elementarticleswidget.cpp" line="601"/>
         <source>%n symbol(s) beyond the type</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n símbol fora del tipus</numerusform>
+            <numerusform>%n símbols fora del tipus</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/ui/elementarticleswidget.cpp" line="677"/>
         <source>Article</source>
-        <translation type="unfinished"></translation>
+        <translation>Article</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementarticleswidget.cpp" line="677"/>
         <source>Quantity</source>
-        <translation type="unfinished">Quantitat</translation>
+        <translation>Quantitat</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementarticleswidget.cpp" line="700"/>
         <source>Add article</source>
-        <translation type="unfinished"></translation>
+        <translation>Afegeix un article</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementarticleswidget.cpp" line="702"/>
         <source>Remove</source>
-        <translation type="unfinished">Elimina</translation>
+        <translation>Elimina</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementarticleswidget.cpp" line="732"/>
         <source>List…</source>
-        <translation type="unfinished"></translation>
+        <translation>Llista…</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementarticleswidget.cpp" line="732"/>
         <location filename="../sources/ui/elementarticleswidget.cpp" line="735"/>
         <source>Choose from materials list…</source>
-        <translation type="unfinished"></translation>
+        <translation>Tria de la llista de materials…</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementarticleswidget.cpp" line="851"/>
         <source>What this device is made of: its device type, from the project or your library</source>
-        <translation type="unfinished"></translation>
+        <translation>De què està fet aquest aparell: el seu tipus d&apos;aparell, del projecte o de la teva biblioteca</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementarticleswidget.cpp" line="867"/>
         <source>Set this symbol from the device type...</source>
-        <translation type="unfinished"></translation>
+        <translation>Defineix aquest símbol a partir del tipus d&apos;aparell...</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementarticleswidget.cpp" line="869"/>
         <source>Choose which part of the device type this symbol draws: it takes that part&apos;s terminals.</source>
-        <translation type="unfinished"></translation>
+        <translation>Tria quina part del tipus d&apos;aparell dibuixa aquest símbol: pren els borns d&apos;aquesta part.</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementarticleswidget.cpp" line="871"/>
         <source>Change the device type...</source>
-        <translation type="unfinished"></translation>
+        <translation>Canvia el tipus d&apos;aparell...</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementarticleswidget.cpp" line="873"/>
         <source>Give the device another device type: its symbols take the parts of the new one.</source>
-        <translation type="unfinished"></translation>
+        <translation>Dóna un altre tipus d&apos;aparell a l&apos;aparell: els seus símbols prenen les parts del nou tipus.</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementarticleswidget.cpp" line="1043"/>
         <source>Empty article</source>
-        <translation type="unfinished"></translation>
+        <translation>Article buit</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementarticleswidget.cpp" line="1047"/>
         <source>Main article (empty)</source>
-        <translation type="unfinished"></translation>
+        <translation>Article principal (buit)</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementarticleswidget.cpp" line="1154"/>
         <source>Add another article slot (up to %1)</source>
-        <translation type="unfinished"></translation>
+        <translation>Afegeix una altra ranura d&apos;article (fins a %1)</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementarticleswidget.cpp" line="1155"/>
         <source>All %1 native article slots are already shown</source>
-        <translation type="unfinished"></translation>
+        <translation>Les %1 ranures d&apos;article natives ja es mostren</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementarticleswidget.cpp" line="1161"/>
         <source>Clear and remove the selected auxiliary article</source>
-        <translation type="unfinished"></translation>
+        <translation>Buida i elimina l&apos;article auxiliar seleccionat</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementarticleswidget.cpp" line="1162"/>
         <source>Clear the fields of Article 1</source>
-        <translation type="unfinished"></translation>
+        <translation>Buida els camps de l&apos;Article 1</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementarticleswidget.cpp" line="1264"/>
         <source>No materials list</source>
-        <translation type="unfinished">Cap llista de materials</translation>
+        <translation>Cap llista de materials</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementarticleswidget.cpp" line="1265"/>
@@ -7063,29 +7063,29 @@ Hold Shift and drag to move this text on its own</source>
 
 Create it?</source>
         <comment>message asking to create the material file</comment>
-        <translation type="unfinished">No hi ha cap fitxer de llista de materials en aquesta ubicació:
+        <translation>No hi ha cap fitxer de llista de materials en aquesta ubicació:
 %1
 
-Voleu crear-lo?</translation>
+Vols crear-lo?</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementarticleswidget.cpp" line="1279"/>
         <source>Cannot create</source>
-        <translation type="unfinished">No es pot crear</translation>
+        <translation>No es pot crear</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementarticleswidget.cpp" line="1280"/>
         <source>Cannot create the file:
 %1
 %2</source>
-        <translation type="unfinished">No es pot crear el fitxer:
+        <translation>No es pot crear el fitxer:
 %1
 %2</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementarticleswidget.h" line="62"/>
         <source>Parts</source>
-        <translation type="unfinished">Parts</translation>
+        <translation>Parts</translation>
     </message>
 </context>
 <context>
@@ -7413,7 +7413,7 @@ Voleu crear-lo?</translation>
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="91"/>
         <source>A drawing aid (an interruption point) has no label: it is not printed, and is left out of every list.</source>
-        <translation type="unfinished"></translation>
+        <translation>Una ajuda de dibuix (un punt d&apos;interrupció) no té etiqueta: no s&apos;imprimeix i queda exclosa de totes les llistes.</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="697"/>
@@ -7724,22 +7724,22 @@ Voleu continuar?</translation>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="319"/>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="355"/>
         <source>Junction</source>
-        <translation type="unfinished"></translation>
+        <translation>Unió</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="325"/>
         <source>Which connection the wire comes in at, and which ones it goes on to. Nothing is assigned until you choose it.</source>
-        <translation type="unfinished"></translation>
+        <translation>Per quina connexió arriba el fil, i cap a quines continua. No s&apos;assigna res fins que no ho triïs.</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="348"/>
         <source>Connection</source>
-        <translation type="unfinished"></translation>
+        <translation>Connexió</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="353"/>
         <source>Role</source>
-        <translation type="unfinished"></translation>
+        <translation>Rol</translation>
     </message>
     <message>
         <source>Potential separation</source>
@@ -7993,47 +7993,47 @@ Voleu continuar?</translation>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="853"/>
         <source>top</source>
-        <translation type="unfinished"></translation>
+        <translation>dalt</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="854"/>
         <source>right</source>
-        <translation type="unfinished"></translation>
+        <translation>dreta</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="855"/>
         <source>bottom</source>
-        <translation type="unfinished"></translation>
+        <translation>baix</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="856"/>
         <source>left</source>
-        <translation type="unfinished"></translation>
+        <translation>esquerra</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="876"/>
         <source>Not assigned</source>
-        <translation type="unfinished"></translation>
+        <translation>No assignada</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="878"/>
         <source>Source</source>
-        <translation type="unfinished">Font</translation>
+        <translation>Origen</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="879"/>
         <source>Target 1</source>
-        <translation type="unfinished"></translation>
+        <translation>Destí 1</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="880"/>
         <source>Target 2</source>
-        <translation type="unfinished"></translation>
+        <translation>Destí 2</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="881"/>
         <source>Target 3</source>
-        <translation type="unfinished"></translation>
+        <translation>Destí 3</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1199"/>
@@ -10152,7 +10152,7 @@ Les entrades de text i nombres també
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1492"/>
         <source>Designation:</source>
         <extracomment>one of the five texts of a cable, one row each in the preferences; the same names the cable properties dialog uses</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Designació:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1512"/>
@@ -10162,7 +10162,7 @@ Les entrades de text i nombres també
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1684"/>
         <source>Font of this text written along the cable line; a cable which has its own keeps it.</source>
         <extracomment>tooltip of the font button of one text of a cable in the preferences</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Tipus de lletra d&apos;aquest text escrit al llarg de la línia del cable; un cable que en té un de propi el conserva.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1522"/>
@@ -10173,31 +10173,31 @@ Les entrades de text i nombres també
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1740"/>
         <source>Set this text back to the default font of the cable texts</source>
         <extracomment>tooltip of the reset button beside a text of a cable in the preferences</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Torna aquest text al tipus de lletra per defecte dels textos de cable</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1535"/>
         <source>Type:</source>
         <extracomment>one of the five texts of a cable, one row each in the preferences; the same names the cable properties dialog uses</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Tipus:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1578"/>
         <source>Plant (=):</source>
         <extracomment>one of the five texts of a cable, one row each in the preferences; the same names the cable properties dialog uses</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Instal·lació (=):</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1621"/>
         <source>Location (+):</source>
         <extracomment>one of the five texts of a cable, one row each in the preferences; the same names the cable properties dialog uses</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Localització (+):</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1664"/>
         <source>Length:</source>
         <extracomment>one of the five texts of a cable, one row each in the preferences; the same names the cable properties dialog uses</extracomment>
-        <translation type="unfinished">Longitud :</translation>
+        <translation>Longitud:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1833"/>
@@ -10337,12 +10337,12 @@ Les entrades de text i nombres també
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="239"/>
         <source>Show the destination terminal of each cable core in terminal strip plans</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostra el born de destí de cada ànima del cable als plans de bloc de borns</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="242"/>
         <source>Show the destination device and terminal for each connected core in the cable&apos;s destination box.</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostra l&apos;aparell i el born de destí de cada ànima connectada al quadre de destí del cable.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="252"/>
@@ -10352,22 +10352,22 @@ Les entrades de text i nombres també
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="261"/>
         <source>Colour of new structure boxes</source>
-        <translation type="unfinished"></translation>
+        <translation>Color de les noves caixes d&apos;estructura</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="268"/>
         <source>A structure box is drawn in this colour, its name too, so that it is told apart from wires and drawn shapes. Each box can take another colour in its properties. Black by default.</source>
-        <translation type="unfinished"></translation>
+        <translation>Una caixa d&apos;estructura es dibuixa amb aquest color, igual que el seu nom, per distingir-la dels fils i de les formes dibuixades. Cada caixa pot prendre un altre color a les seves propietats. Negre per defecte.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="284"/>
         <source>As soon as a structure box is drawn, its plant, location and prefix are asked for. Cancelled, the box stays empty. Unticked by default: they are entered afterwards in its properties.</source>
-        <translation type="unfinished"></translation>
+        <translation>Tan bon punt es dibuixa una caixa d&apos;estructura, es demanen la seva instal·lació, localització i prefix. Si es cancel·la, la caixa queda buida. Desmarcat per defecte: s&apos;introdueixen després a les seves propietats.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="287"/>
         <source>Ask for the place of a structure box when it is drawn</source>
-        <translation type="unfinished"></translation>
+        <translation>Demana la situació d&apos;una caixa d&apos;estructura quan es dibuixa</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="311"/>
@@ -10382,17 +10382,17 @@ Les entrades de text i nombres també
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="368"/>
         <source>Zoom when following a cross reference:</source>
-        <translation type="unfinished"></translation>
+        <translation>Zoom en seguir una referència creuada:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="384"/>
         <source>A jump along a cross reference or a folio report shows its target in the middle of the view, at this zoom at least; closer views stay as they are.</source>
-        <translation type="unfinished"></translation>
+        <translation>Un salt al llarg d&apos;una referència creuada o d&apos;un reenviament de full mostra la seva destinació al centre de la vista, amb almenys aquest zoom; les vistes més properes es queden tal qual.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="387"/>
         <source>Whole folio</source>
-        <translation type="unfinished">Full sencer</translation>
+        <translation>Full sencer</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="439"/>
@@ -10402,7 +10402,7 @@ Les entrades de text i nombres també
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="498"/>
         <source>Frame selected symbols clearly, in the highlight colour</source>
-        <translation type="unfinished"></translation>
+        <translation>Emmarca clarament els símbols seleccionats, amb el color de ressaltat</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="508"/>
@@ -10412,42 +10412,42 @@ Les entrades de text i nombres també
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="524"/>
         <source>The pointer and the crosshair jump from grid point to grid point only while something is placed or dragged; otherwise they follow the mouse, so small items are easy to grab. What is placed still lands on the grid.</source>
-        <translation type="unfinished"></translation>
+        <translation>El punter i la retícula salten d&apos;un punt de la quadrícula a un altre només mentre es col·loca o es mou un objecte; si no, segueixen el ratolí, de manera que els objectes petits són fàcils d&apos;agafar. El que es col·loca sempre cau a la quadrícula.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="527"/>
         <source>Pointer on the grid only while placing</source>
-        <translation type="unfinished"></translation>
+        <translation>Punter a la quadrícula només durant la col·locació</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="564"/>
         <source>In a project with &quot;auto conductor&quot; but without automatic connections: dragging a corner, T-junction or folio report being placed puts one on every wire the drag crosses, each joined once by an ordinary wire.</source>
-        <translation type="unfinished"></translation>
+        <translation>En un projecte amb «creació automàtica de conductors» però sense connexions automàtiques: arrossegar una cantonada, una unió en T o un reenviament de full en curs de col·locació en posa una a cada fil que travessa, cadascuna unida un cop per un fil ordinari.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="567"/>
         <source>With &quot;auto conductor&quot;, a drag places a connection symbol on every wire it crosses</source>
-        <translation type="unfinished"></translation>
+        <translation>Amb la «creació automàtica de conductors», un arrossegament col·loca un símbol de connexió a cada fil travessat</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="574"/>
         <source>Dragging with Ctrl held copies the selection</source>
-        <translation type="unfinished"></translation>
+        <translation>Arrossegar mantenint Ctrl copia la selecció</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="581"/>
         <source>Duplicate: the copy follows the mouse until a click</source>
-        <translation type="unfinished"></translation>
+        <translation>Duplica: la còpia segueix el ratolí fins al clic</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="588"/>
         <source>After placing a device&apos;s head, ask how to place the parts of its device type</source>
-        <translation type="unfinished"></translation>
+        <translation>Després de col·locar el cap d&apos;un aparell, pregunta com col·locar les parts del seu tipus d&apos;aparell</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="591"/>
         <source>One by one, each following the mouse; all side by side to the right of the head; or not now, which leaves them free in the Device Navigator. Unticked by default: placing the head places nothing more.</source>
-        <translation type="unfinished"></translation>
+        <translation>Una a una, cadascuna seguint el ratolí; totes una al costat de l&apos;altra a la dreta del cap; o ara no, cosa que les deixa lliures al navegador d&apos;aparells. Desmarcat per defecte: col·locar el cap no en col·loca res més.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="657"/>
@@ -10584,7 +10584,7 @@ button opening the dialog where the folder prefixes of the company collection ar
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="992"/>
         <source>Create or change the prefix of the company collection&apos;s folders (qet_labels.xml file)</source>
         <extracomment>tooltip of the button opening the prefix configuration dialog of the company collection</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Crea o edita el prefix de les carpetes de la col·lecció d&apos;empresa (fitxer qet_labels.xml)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1100"/>
@@ -10643,12 +10643,12 @@ hint shown when no cable type file is configured yet</extracomment>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1231"/>
         <source>Updating the elements moves a symbol whose insertion point moved</source>
-        <translation type="unfinished"></translation>
+        <translation>L&apos;actualització d&apos;elements mou un símbol el punt d&apos;inserció del qual s&apos;ha desplaçat</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1234"/>
         <source>Project &gt; Update elements from the collections: when a symbol&apos;s drawing was moved as a whole, its insertion point set elsewhere, each placed symbol is moved back by the same offset, so its terminals, conductors and texts stay where they are. Unticked by default: such a symbol keeps its old drawing and is listed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Projecte &gt; Actualitza els elements des de les col·leccions: quan el dibuix d&apos;un símbol s&apos;ha desplaçat en bloc, amb el punt d&apos;inserció posat en un altre lloc, cada símbol col·locat es torna a moure del mateix desplaçament, de manera que els seus borns, conductors i textos es queden on són. Desmarcat per defecte: un símbol així conserva el seu dibuix antic i es llista.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1241"/>
@@ -11198,14 +11198,18 @@ Podeu especificar el valor per defecte d&apos;aquest camp per als elements que c
         <source>The company collection folder:
 %1
 does not exist or cannot be reached.</source>
-        <translation type="unfinished"></translation>
+        <translation>La carpeta de la col·lecció d&apos;empresa:
+%1
+no existeix o no és accessible.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1056"/>
         <source>The company collection folder:
 %1
 does not exist and could not be created.</source>
-        <translation type="unfinished"></translation>
+        <translation>La carpeta de la col·lecció d&apos;empresa:
+%1
+no existeix i no s&apos;ha pogut crear.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1058"/>
@@ -11219,14 +11223,16 @@ no existeix i no s&apos;ha pogut crear.</translation>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1078"/>
         <source>Prefix file cannot be written</source>
-        <translation type="unfinished"></translation>
+        <translation>No es pot escriure el fitxer de prefixos</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1079"/>
         <source>The prefixes of the company collection are kept in:
 %1
 This folder cannot be written, so the prefixes cannot be changed here. Ask whoever manages the company collection, or change the file with write access.</source>
-        <translation type="unfinished"></translation>
+        <translation>Els prefixos de la col·lecció d&apos;empresa es guarden a:
+%1
+Aquesta carpeta no és escrivible, de manera que els prefixos no es poden modificar aquí. Demana-ho a qui gestiona la col·lecció d&apos;empresa, o edita el fitxer amb accés d&apos;escriptura.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1090"/>
@@ -11238,7 +11244,9 @@ This folder cannot be written, so the prefixes cannot be changed here. Ask whoev
         <source>The company collection:
 %1
 has no subfolder, so there is no prefix to configure.</source>
-        <translation type="unfinished"></translation>
+        <translation>La col·lecció d&apos;empresa:
+%1
+no té cap subcarpeta, de manera que no hi ha cap prefix per configurar.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1094"/>
@@ -11387,27 +11395,27 @@ Qualsevol configuració que no sigui «Sense arrodoniment» pot provocar errors 
     <message>
         <location filename="../sources/genericdevice/genericdevice.cpp" line="126"/>
         <source>Digital inputs</source>
-        <translation type="unfinished"></translation>
+        <translation>Entrades digitals</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevice.cpp" line="127"/>
         <source>Digital outputs</source>
-        <translation type="unfinished"></translation>
+        <translation>Sortides digitals</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevice.cpp" line="128"/>
         <source>Analog inputs</source>
-        <translation type="unfinished"></translation>
+        <translation>Entrades analògiques</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevice.cpp" line="129"/>
         <source>Analog outputs</source>
-        <translation type="unfinished"></translation>
+        <translation>Sortides analògiques</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevice.cpp" line="132"/>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation>Cap</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevice.cpp" line="161"/>
@@ -11626,12 +11634,12 @@ Qualsevol configuració que no sigui «Sense arrodoniment» pot provocar errors 
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="348"/>
         <source>PLC inputs and outputs:</source>
-        <translation type="unfinished"></translation>
+        <translation>Entrades i sortides del PLC:</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="352"/>
         <source>Marking a side makes the device a PLC: its terminals become the PLC&apos;s inputs or outputs, in the order they are listed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Marcar un costat fa de l&apos;aparell un PLC: els seus borns esdevenen les entrades o sortides del PLC, en l&apos;ordre en què es llisten.</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="369"/>
@@ -12539,7 +12547,7 @@ Si us plau, feu servir l&apos;editor avançat per a això.</translation>
     <message>
         <location filename="../sources/itemdescription.cpp" line="52"/>
         <source>Junction</source>
-        <translation type="unfinished"></translation>
+        <translation>Unió</translation>
     </message>
     <message>
         <location filename="../sources/itemdescription.cpp" line="53"/>
@@ -12619,12 +12627,12 @@ Si us plau, feu servir l&apos;editor avançat per a això.</translation>
     <message>
         <location filename="../sources/itemdescription.cpp" line="123"/>
         <source>Structure box</source>
-        <translation type="unfinished"></translation>
+        <translation>Caixa d&apos;estructura</translation>
     </message>
     <message>
         <location filename="../sources/itemdescription.cpp" line="124"/>
         <source>Structure box %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Caixa d&apos;estructura %1</translation>
     </message>
     <message>
         <location filename="../sources/itemdescription.cpp" line="127"/>
@@ -12929,7 +12937,7 @@ Primer porteu-los a un sol bloc de borns.</translation>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="697"/>
         <source>This device has no free contact of this kind: every part of its device type is drawn.</source>
-        <translation type="unfinished"></translation>
+        <translation>Aquest aparell no té cap contacte lliure d&apos;aquest tipus: cada part del seu tipus d&apos;aparell està dibuixada.</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="747"/>
@@ -13236,12 +13244,12 @@ Amb el servidor MCP qet: llegeix-la amb qet_recording_read, escriu un script que
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="315"/>
         <source>That link cannot be made</source>
-        <translation type="unfinished">No es pot fer aquest enllaç</translation>
+        <translation>Aquest enllaç no és possible</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="316"/>
         <source>This device has no free contact of this kind: every part of its device type is drawn.</source>
-        <translation type="unfinished"></translation>
+        <translation>Aquest aparell no té cap contacte lliure d&apos;aquest tipus: cada part del seu tipus d&apos;aparell està dibuixada.</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="349"/>
@@ -13313,22 +13321,22 @@ Voleu enllaçar igualment aquest contacte esclau?</translation>
     <message>
         <location filename="../sources/materiallist/materialentrydialog.cpp" line="60"/>
         <source>Edit entry</source>
-        <translation type="unfinished">Edita l&apos;entrada</translation>
+        <translation>Edita l&apos;entrada</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialentrydialog.cpp" line="61"/>
         <source>Edit the item. Fields left empty stay empty in the file.</source>
-        <translation type="unfinished"></translation>
+        <translation>Edita l&apos;article. Els camps deixats buits romanen buits al fitxer.</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialentrydialog.cpp" line="104"/>
         <source>e.g. 80.5</source>
-        <translation type="unfinished">p. ex. 80.5</translation>
+        <translation>p. ex. 80.5</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialentrydialog.cpp" line="105"/>
         <source>Decimal number with a dot as separator (e.g. 80.5)</source>
-        <translation type="unfinished">Nombre decimal amb un punt com a separador (p. ex. 80.5)</translation>
+        <translation>Nombre decimal amb punt com a separador (p. ex. 80.5)</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialentrydialog.cpp" line="122"/>
@@ -13343,12 +13351,12 @@ Voleu enllaçar igualment aquest contacte esclau?</translation>
     <message>
         <location filename="../sources/materiallist/materialentrydialog.cpp" line="178"/>
         <source>Unfinished number</source>
-        <translation type="unfinished"></translation>
+        <translation>Nombre inacabat</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialentrydialog.cpp" line="179"/>
         <source>Finish the number or empty the field.</source>
-        <translation type="unfinished"></translation>
+        <translation>Acaba el nombre o buida el camp.</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialentrydialog.cpp" line="189"/>
@@ -13384,12 +13392,12 @@ Voleu enllaçar igualment aquest contacte esclau?</translation>
     <message>
         <location filename="../sources/materiallist/materiallist.cpp" line="874"/>
         <source>The entry to edit no longer exists in the file.</source>
-        <translation type="unfinished"></translation>
+        <translation>L&apos;entrada a editar ja no existeix al fitxer.</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materiallist.cpp" line="952"/>
         <source>The selected entry no longer exists in the file.</source>
-        <translation type="unfinished"></translation>
+        <translation>L&apos;entrada seleccionada ja no existeix al fitxer.</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materiallist.cpp" line="1105"/>
@@ -13424,37 +13432,37 @@ Voleu enllaçar igualment aquest contacte esclau?</translation>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.ui" line="79"/>
         <source>Group:</source>
-        <translation type="unfinished"></translation>
+        <translation>Grup:</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.ui" line="86"/>
         <source>Group list entries by manufacturer, category, or show a flat list</source>
-        <translation type="unfinished"></translation>
+        <translation>Agrupa les entrades de la llista per fabricant, per categoria, o mostra una llista plana</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.ui" line="93"/>
         <source>Filter:</source>
-        <translation type="unfinished">Filtre:</translation>
+        <translation>Filtre:</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.ui" line="102"/>
         <source>Disable filtering or choose a field to filter by</source>
-        <translation type="unfinished"></translation>
+        <translation>Desactiva el filtratge o tria un camp pel qual filtrar</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.ui" line="118"/>
         <source>Select the value to filter by</source>
-        <translation type="unfinished"></translation>
+        <translation>Selecciona el valor pel qual filtrar</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.ui" line="142"/>
         <source>Article number</source>
-        <translation type="unfinished">Número d&apos;article</translation>
+        <translation>Referència</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.ui" line="147"/>
         <source>Description</source>
-        <translation type="unfinished">Descripció</translation>
+        <translation>Descripció</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.ui" line="155"/>
@@ -13464,56 +13472,56 @@ Voleu enllaçar igualment aquest contacte esclau?</translation>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.ui" line="191"/>
         <source>Field</source>
-        <translation type="unfinished"></translation>
+        <translation>Camp</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.ui" line="196"/>
         <source>Value</source>
-        <translation type="unfinished">Valor</translation>
+        <translation>Valor</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.ui" line="210"/>
         <source>New — Add a new item to the list</source>
         <extracomment>button adding a new row to the material list file</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Nou — Afegeix un article nou a la llista</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.ui" line="223"/>
         <source>Edit — Edit the selected item in the list</source>
         <extracomment>button editing the selected row in the material list file</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Edita — Edita l&apos;article seleccionat a la llista</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.ui" line="236"/>
         <source>Duplicate — Duplicate the selected item in the list</source>
         <extracomment>button duplicating the selected row in the material list file</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Duplica — Duplica l&apos;article seleccionat a la llista</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.ui" line="249"/>
         <source>Remove — Remove selected item(s) from the list</source>
         <extracomment>button removing the selected row(s) from the material list file</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Elimina — Elimina els articles seleccionats de la llista</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.ui" line="259"/>
         <source>Import... — Import entries from a CSV file into the materials list</source>
-        <translation type="unfinished"></translation>
+        <translation>Importa... — Importa entrades d&apos;un fitxer CSV a la llista de materials</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.ui" line="269"/>
         <source>Export... — Export all, visible, or selected entries to a CSV file</source>
-        <translation type="unfinished"></translation>
+        <translation>Exporta... — Exporta totes les entrades, les visibles o les seleccionades a un fitxer CSV</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.ui" line="279"/>
         <source>Settings — Open QElectroTech settings to configure the materials list file</source>
-        <translation type="unfinished"></translation>
+        <translation>Paràmetres — Obre els paràmetres de QElectroTech per configurar el fitxer de la llista de materials</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.ui" line="330"/>
         <source>Save</source>
-        <translation type="unfinished">Desa</translation>
+        <translation>Desa</translation>
     </message>
     <message>
         <source>Add a new item to the list</source>
@@ -13539,28 +13547,28 @@ Voleu enllaçar igualment aquest contacte esclau?</translation>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="85"/>
         <source>e.g. 80.5</source>
-        <translation type="unfinished">p. ex. 80.5</translation>
+        <translation>p. ex. 80.5</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="196"/>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation>Cap</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="197"/>
         <source>Manufacturer</source>
-        <translation type="unfinished">Fabricant</translation>
+        <translation>Fabricant</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="198"/>
         <source>Category</source>
-        <translation type="unfinished">Categoria</translation>
+        <translation>Categoria</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="201"/>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="279"/>
         <source>Off</source>
-        <translation type="unfinished">Desactivat</translation>
+        <translation>Desactivat</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="259"/>
@@ -13580,13 +13588,13 @@ Voleu enllaçar igualment aquest contacte esclau?</translation>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="298"/>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="304"/>
         <source>All</source>
-        <translation type="unfinished">Totes</translation>
+        <translation>Tots</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="325"/>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="385"/>
         <source>(Empty)</source>
-        <translation type="unfinished"></translation>
+        <translation>(Buit)</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="456"/>
@@ -13601,12 +13609,12 @@ Voleu enllaçar igualment aquest contacte esclau?</translation>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="514"/>
         <source>Edit on several lines</source>
-        <translation type="unfinished">Edita en diverses línies</translation>
+        <translation>Edita en diverses línies</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="556"/>
         <source>Editing entry</source>
-        <translation type="unfinished"></translation>
+        <translation>Edició de l&apos;entrada</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="753"/>
@@ -13621,22 +13629,22 @@ Voleu enllaçar igualment aquest contacte esclau?</translation>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="804"/>
         <source>Unfinished number</source>
-        <translation type="unfinished"></translation>
+        <translation>Nombre inacabat</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="805"/>
         <source>Finish the number or empty the field.</source>
-        <translation type="unfinished"></translation>
+        <translation>Acaba el nombre o buida el camp.</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="817"/>
         <source>Nothing filled in</source>
-        <translation type="unfinished">No s&apos;ha omplert res</translation>
+        <translation>Res introduït</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="818"/>
         <source>Fill in at least one field to create an entry.</source>
-        <translation type="unfinished">Ompliu almenys un camp per crear una entrada.</translation>
+        <translation>Omple almenys un camp per crear una entrada.</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="830"/>
@@ -13655,45 +13663,45 @@ Voleu enllaçar igualment aquest contacte esclau?</translation>
     <message numerus="yes">
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="944"/>
         <source>Export Materials List (%n item(s) selected for export)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Exporta la llista de materials (%n article seleccionat per exportar)</numerusform>
+            <numerusform>Exporta la llista de materials (%n articles seleccionats per exportar)</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="946"/>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="1011"/>
         <source>CSV files (*.csv);;All files (*)</source>
-        <translation type="unfinished"></translation>
+        <translation>Fitxers CSV (*.csv);;Tots els fitxers (*)</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="960"/>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="967"/>
         <source>Export Materials List</source>
-        <translation type="unfinished"></translation>
+        <translation>Exporta la llista de materials</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="961"/>
         <source>Unable to write the export file.</source>
-        <translation type="unfinished"></translation>
+        <translation>No es pot escriure el fitxer d&apos;exportació.</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="968"/>
         <source>Exported %n entry(s) to %1.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n entrada exportada a %1.</numerusform>
+            <numerusform>%n entrades exportades a %1.</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="983"/>
         <source>Export Visible (%1)...</source>
-        <translation type="unfinished"></translation>
+        <translation>Exporta les visibles (%1)...</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="987"/>
         <source>Export All (%1)...</source>
-        <translation type="unfinished"></translation>
+        <translation>Exporta-ho tot (%1)...</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="1009"/>
@@ -13703,45 +13711,45 @@ Voleu enllaçar igualment aquest contacte esclau?</translation>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="1064"/>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="1072"/>
         <source>Import Materials List</source>
-        <translation type="unfinished"></translation>
+        <translation>Importa una llista de materials</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="1022"/>
         <source>Unable to read the import file.</source>
-        <translation type="unfinished"></translation>
+        <translation>No es pot llegir el fitxer d&apos;importació.</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="1029"/>
         <source>The selected file contains no entries.</source>
-        <translation type="unfinished"></translation>
+        <translation>El fitxer seleccionat no conté cap entrada.</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="1040"/>
         <source>%n imported entry(s) share an existing item number with different values.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n entrada importada té el mateix número d&apos;article que un article existent, amb valors diferents.</numerusform>
+            <numerusform>%n entrades importades tenen el mateix número d&apos;article que un article existent, amb valors diferents.</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="1043"/>
         <source>Update existing</source>
-        <translation type="unfinished"></translation>
+        <translation>Actualitza l&apos;existent</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="1044"/>
         <source>Skip existing</source>
-        <translation type="unfinished"></translation>
+        <translation>Ignora l&apos;existent</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="1045"/>
         <source>Keep both</source>
-        <translation type="unfinished"></translation>
+        <translation>Conserva&apos;ls tots dos</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="1065"/>
         <source>Unable to save the imported entries.</source>
-        <translation type="unfinished"></translation>
+        <translation>No es poden desar les entrades importades.</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="1073"/>
@@ -13749,78 +13757,81 @@ Voleu enllaçar igualment aquest contacte esclau?</translation>
 Added: %1
 Updated: %2
 Skipped: %3</source>
-        <translation type="unfinished"></translation>
+        <translation>Importació acabada.
+Afegides: %1
+Actualitzades: %2
+Ignorades: %3</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="1133"/>
         <source>Copy</source>
-        <translation type="unfinished">Copia</translation>
+        <translation>Copia</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="1137"/>
         <source>Select All</source>
-        <translation type="unfinished">Selecciona-ho tot</translation>
+        <translation>Selecciona-ho tot</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="1161"/>
         <source>Duplicate material entry</source>
-        <translation type="unfinished"></translation>
+        <translation>Duplica l&apos;entrada de material</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="1162"/>
         <source>Unable to duplicate selected entry in the material list.</source>
-        <translation type="unfinished"></translation>
+        <translation>No es pot duplicar l&apos;entrada seleccionada a la llista de materials.</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="1183"/>
         <source>Are you sure you want to remove &quot;%1&quot; from the material list?</source>
-        <translation type="unfinished"></translation>
+        <translation>Segur que vols suprimir «%1» de la llista de materials?</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="1184"/>
         <source>selected item</source>
-        <translation type="unfinished"></translation>
+        <translation>article seleccionat</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="1186"/>
         <source>Are you sure you want to remove %1 selected items from the material list?</source>
-        <translation type="unfinished"></translation>
+        <translation>Segur que vols suprimir els %1 articles seleccionats de la llista de materials?</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="1192"/>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="1210"/>
         <source>Remove material entry</source>
-        <translation type="unfinished"></translation>
+        <translation>Suprimeix l&apos;entrada de material</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="1211"/>
         <source>Unable to remove selected entry from the material list.</source>
-        <translation type="unfinished"></translation>
+        <translation>No es pot suprimir l&apos;entrada seleccionada de la llista de materials.</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="1225"/>
         <source>New</source>
-        <translation type="unfinished"></translation>
+        <translation>Nou</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="1229"/>
         <source>Edit</source>
-        <translation type="unfinished"></translation>
+        <translation>Edita</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="1233"/>
         <source>Duplicate</source>
-        <translation type="unfinished">Duplica</translation>
+        <translation>Duplica</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="1237"/>
         <source>Remove</source>
-        <translation type="unfinished">Elimina</translation>
+        <translation>Elimina</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="1242"/>
         <source>Export...</source>
-        <translation type="unfinished">Exporta...</translation>
+        <translation>Exporta...</translation>
     </message>
 </context>
 <context>
@@ -14498,77 +14509,77 @@ Voleu importar-les? Els elements rebran llavors els números següents, a partir
     <message>
         <location filename="../sources/print/pdfpagesetupdialog.cpp" line="57"/>
         <source>PDF page layout</source>
-        <translation type="unfinished"></translation>
+        <translation>Disposició de la pàgina PDF</translation>
     </message>
     <message>
         <location filename="../sources/print/pdfpagesetupdialog.cpp" line="60"/>
         <source>Paper</source>
-        <translation type="unfinished"></translation>
+        <translation>Paper</translation>
     </message>
     <message>
         <location filename="../sources/print/pdfpagesetupdialog.cpp" line="77"/>
         <source>Custom</source>
-        <translation type="unfinished"></translation>
+        <translation>Personalitzat</translation>
     </message>
     <message>
         <location filename="../sources/print/pdfpagesetupdialog.cpp" line="91"/>
         <source>Size:</source>
-        <translation type="unfinished">Mida:</translation>
+        <translation>Mida:</translation>
     </message>
     <message>
         <location filename="../sources/print/pdfpagesetupdialog.cpp" line="92"/>
         <source>Width:</source>
-        <translation type="unfinished"></translation>
+        <translation>Amplada:</translation>
     </message>
     <message>
         <location filename="../sources/print/pdfpagesetupdialog.cpp" line="93"/>
         <source>Height:</source>
-        <translation type="unfinished">Alçada :</translation>
+        <translation>Alçada:</translation>
     </message>
     <message>
         <location filename="../sources/print/pdfpagesetupdialog.cpp" line="96"/>
         <source>Orientation</source>
-        <translation type="unfinished">Orientació</translation>
+        <translation>Orientació</translation>
     </message>
     <message>
         <location filename="../sources/print/pdfpagesetupdialog.cpp" line="97"/>
         <source>Portrait</source>
-        <translation type="unfinished">Retrat</translation>
+        <translation>Retrat</translation>
     </message>
     <message>
         <location filename="../sources/print/pdfpagesetupdialog.cpp" line="99"/>
         <source>Landscape</source>
-        <translation type="unfinished">Apaïsat</translation>
+        <translation>Apaïsat</translation>
     </message>
     <message>
         <location filename="../sources/print/pdfpagesetupdialog.cpp" line="110"/>
         <source>Margins</source>
-        <translation type="unfinished"></translation>
+        <translation>Marges</translation>
     </message>
     <message>
         <location filename="../sources/print/pdfpagesetupdialog.cpp" line="118"/>
         <source>Left:</source>
-        <translation type="unfinished"></translation>
+        <translation>Esquerra:</translation>
     </message>
     <message>
         <location filename="../sources/print/pdfpagesetupdialog.cpp" line="120"/>
         <source>Right:</source>
-        <translation type="unfinished"></translation>
+        <translation>Dreta:</translation>
     </message>
     <message>
         <location filename="../sources/print/pdfpagesetupdialog.cpp" line="122"/>
         <source>Top:</source>
-        <translation type="unfinished"></translation>
+        <translation>Superior:</translation>
     </message>
     <message>
         <location filename="../sources/print/pdfpagesetupdialog.cpp" line="124"/>
         <source>Bottom:</source>
-        <translation type="unfinished"></translation>
+        <translation>Inferior:</translation>
     </message>
     <message>
         <location filename="../sources/print/pdfpagesetupdialog.cpp" line="141"/>
         <source>Margins are not used while &quot;Use the whole page&quot; is ticked.</source>
-        <translation type="unfinished"></translation>
+        <translation>Els marges no s&apos;utilitzen mentre «Utilitza tota la pàgina» estigui marcat.</translation>
     </message>
 </context>
 <context>
@@ -15077,7 +15088,7 @@ Les variables següents són incompatibles:
         <location filename="../sources/ui/prefixconfigurationdialog.cpp" line="90"/>
         <source>Company collection prefixes</source>
         <comment>title of the dialog configuring the prefixes of the company collection</comment>
-        <translation type="unfinished"></translation>
+        <translation>Prefixos de la col·lecció d&apos;empresa</translation>
     </message>
     <message>
         <location filename="../sources/ui/prefixconfigurationdialog.cpp" line="92"/>
@@ -15120,7 +15131,7 @@ Un camp buit vol dir que la carpeta pren el prefix de la seva carpeta pare.</tra
         <location filename="../sources/ui/prefixconfigurationdialog.cpp" line="137"/>
         <source>The last column shows the prefix the user collection gives a folder: the user collection is read first, so that prefix is the one used.</source>
         <comment>hint of the company prefix dialog</comment>
-        <translation type="unfinished"></translation>
+        <translation>L&apos;última columna mostra el prefix que la col·lecció d&apos;usuari dóna a una carpeta: la col·lecció d&apos;usuari es llegeix primer, de manera que s&apos;utilitza aquest prefix.</translation>
     </message>
     <message>
         <location filename="../sources/ui/prefixconfigurationdialog.cpp" line="162"/>
@@ -15165,18 +15176,18 @@ voleu conservar-les o suprimir-les?</numerusform>
         <location filename="../sources/ui/prefixconfigurationdialog.cpp" line="283"/>
         <source>Used instead (user collection)</source>
         <comment>column header: the prefix the user collection gives the folder, which wins over the company one</comment>
-        <translation type="unfinished"></translation>
+        <translation>Utilitzat en el seu lloc (col·lecció d&apos;usuari)</translation>
     </message>
     <message>
         <location filename="../sources/ui/prefixconfigurationdialog.cpp" line="288"/>
         <source>no prefix</source>
         <comment>the user collection explicitly gives the folder no prefix</comment>
-        <translation type="unfinished"></translation>
+        <translation>cap prefix</translation>
     </message>
     <message>
         <location filename="../sources/ui/prefixconfigurationdialog.cpp" line="291"/>
         <source>The user collection gives this folder the prefix &quot;%1&quot;. The user collection is read first, so its symbols get that prefix, not the one set here.</source>
-        <translation type="unfinished"></translation>
+        <translation>La col·lecció d&apos;usuari dóna a aquesta carpeta el prefix «%1». La col·lecció d&apos;usuari es llegeix primer: els seus símbols reben aquest prefix, no el definit aquí.</translation>
     </message>
     <message>
         <location filename="../sources/ui/prefixconfigurationdialog.cpp" line="334"/>
@@ -15829,25 +15840,25 @@ Primer doneu-los una altra numeració.</numerusform>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="298"/>
         <source>Elements without their own plant or location show those of their structure box or folio</source>
         <comment>checkbox label</comment>
-        <translation type="unfinished"></translation>
+        <translation>Els elements sense instal·lació ni localització pròpies mostren les de la seva caixa d&apos;estructura o del seu full</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="301"/>
         <source>The variables %{plant} and %{location} of an element that has none of its own give the plant and location of the structure box around it, else of its folio, as %{structure_id_full} does. Uncheck to show only the element&apos;s own, as before.</source>
         <comment>tooltip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Les variables %{plant} i %{location} d&apos;un element que no en té de pròpies donen la instal·lació i la localització de la caixa d&apos;estructura que l&apos;envolta, altrament del seu full, com fa %{structure_id_full}. Desmarca-ho per mostrar només les pròpies de l&apos;element, com abans.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="308"/>
         <source>Follow device types when placing and linking</source>
         <comment>checkbox label</comment>
-        <translation type="unfinished"></translation>
+        <translation>Segueix els tipus d&apos;aparell en col·locar i enllaçar</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="311"/>
         <source>A contact is linked only to a device whose type has a free part for it, and takes that part&apos;s terminals; a master symbol placed is asked its device type. Uncheck to place and link as before.</source>
         <comment>tooltip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Un contacte només s&apos;enllaça a un aparell el tipus del qual té una part lliure per a ell, i pren els borns d&apos;aquesta part; a un símbol mestre col·locat se li demana el tipus d&apos;aparell. Desmarca-ho per col·locar i enllaçar com abans.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="316"/>
@@ -17152,24 +17163,24 @@ Opcions disponibles:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="621"/>
         <source>Lock X axis (paste mode)</source>
-        <translation type="unfinished"></translation>
+        <translation>Bloqueja l&apos;eix X (mode enganxar)</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="622"/>
         <source>Locks the X coordinate while positioning a paste, so items move only along Y</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Bloqueja la coordenada X mentre es posiciona un enganxament, de manera que els objectes només es mouen segons Y</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="628"/>
         <source>Lock Y axis (paste mode)</source>
-        <translation type="unfinished"></translation>
+        <translation>Bloqueja l&apos;eix Y (mode enganxar)</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="629"/>
         <source>Locks the Y coordinate while positioning a paste, so items move only along X</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Bloqueja la coordenada Y mentre es posiciona un enganxament, de manera que els objectes només es mouen segons X</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="689"/>
@@ -17240,13 +17251,13 @@ Opcions disponibles:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="798"/>
         <source>Replace the symbols...</source>
-        <translation type="unfinished"></translation>
+        <translation>Substitueix els símbols...</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="799"/>
         <source>Replaces the selected symbols by a symbol from a collection, keeping their place, label and wires</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Substitueix els símbols seleccionats per un símbol d&apos;una col·lecció, conservant-ne el lloc, l&apos;etiqueta i els fils</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="890"/>
@@ -17345,12 +17356,12 @@ Manteniu premuda la tecla Ctrl mentre moveu per col·locar lliurement.</translat
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1053"/>
         <source>Snap the middle of the text</source>
-        <translation type="unfinished"></translation>
+        <translation>Imanta el centre del text</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1054"/>
         <source>Puts the middle of a moved text on the grid instead of the top left corner of its frame, e.g. a terminal number centred on a grid line.</source>
-        <translation type="unfinished"></translation>
+        <translation>Posa el centre d&apos;un text mogut a la quadrícula en lloc de la cantonada superior esquerra del seu quadre, p. ex. un número de born centrat en una línia de la quadrícula.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1066"/>
@@ -17425,7 +17436,7 @@ Manteniu premuda la tecla Ctrl mentre moveu per col·locar lliurement.</translat
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1115"/>
         <source>Drawing aids</source>
-        <translation type="unfinished"></translation>
+        <translation>Ajudes de dibuix</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1132"/>
@@ -17496,24 +17507,24 @@ Manteniu premuda la tecla Ctrl mentre moveu per col·locar lliurement.</translat
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1252"/>
         <source>Device types...</source>
-        <translation type="unfinished"></translation>
+        <translation>Tipus d&apos;aparell...</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1254"/>
         <source>Make and change the device types of the project and of your library</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Crea i edita els tipus d&apos;aparell del projecte i de la teva biblioteca</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1263"/>
         <source>Check device types...</source>
-        <translation type="unfinished"></translation>
+        <translation>Comprova els tipus d&apos;aparell...</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1265"/>
         <source>Lists the parts of each device&apos;s type which are not drawn, and the symbols beyond it</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Llista les parts del tipus de cada aparell que no estan dibuixades, i els símbols fora del tipus</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1275"/>
@@ -18201,12 +18212,12 @@ Manteniu premuda la tecla Ctrl mentre moveu per col·locar lliurement.</translat
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2005"/>
         <source>Add a structure box</source>
-        <translation type="unfinished"></translation>
+        <translation>Afegeix una caixa d&apos;estructura</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2006"/>
         <source>Adds a structure box (plant, location, prefix) to the current sheet: the symbols inside it take its plant and location</source>
-        <translation type="unfinished"></translation>
+        <translation>Afegeix una caixa d&apos;estructura (instal·lació, localització, prefix) al full actual: els símbols que conté prenen la seva instal·lació i localització</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2060"/>
@@ -18244,7 +18255,7 @@ Manteniu premuda la tecla Ctrl mentre moveu per col·locar lliurement.</translat
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2266"/>
         <source>Paste special</source>
-        <translation type="unfinished"></translation>
+        <translation>Enganxa especial</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2284"/>
@@ -18254,12 +18265,12 @@ Manteniu premuda la tecla Ctrl mentre moveu per col·locar lliurement.</translat
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2301"/>
         <source>Rotate and mirror</source>
-        <translation type="unfinished"></translation>
+        <translation>Gira i emmiralla</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2307"/>
         <source>Texts</source>
-        <translation type="unfinished">Textos</translation>
+        <translation>Textos</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2420"/>
@@ -18607,7 +18618,7 @@ També podeu numerar els cables automàticament més endavant: la regla es pot d
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="5731"/>
         <source>Placed elements are redrawn and keep their conductors, as long as their terminals have not moved or moved all together with the insertion point: such an element is moved back so its terminals stay where they are. This action cannot be undone.</source>
-        <translation type="unfinished"></translation>
+        <translation>Els elements col·locats es tornen a dibuixar i conserven els seus conductors, mentre els seus borns no s&apos;hagin mogut o s&apos;hagin mogut tots junts amb el punt d&apos;inserció: un element així es reposiciona perquè els seus borns es quedin on són. Aquesta acció no es pot desfer.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="5736"/>
@@ -18625,9 +18636,9 @@ També podeu numerar els cables automàticament més endavant: la regla es pot d
     <message numerus="yes">
         <location filename="../sources/qetdiagrameditor.cpp" line="5824"/>
         <source>%n of them moved with their insertion point: their terminals and conductors stayed where they were.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n d&apos;ells s&apos;ha mogut amb el seu punt d&apos;inserció: els seus borns i conductors s&apos;han quedat on eren.</numerusform>
+            <numerusform>%n d&apos;ells s&apos;han mogut amb el seu punt d&apos;inserció: els seus borns i conductors s&apos;han quedat on eren.</numerusform>
         </translation>
     </message>
     <message numerus="yes">
@@ -18667,14 +18678,14 @@ També podeu numerar els cables automàticament més endavant: la regla es pot d
         <location filename="../sources/qetdiagrameditor.cpp" line="6348"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="6354"/>
         <source>Replace the symbols</source>
-        <translation type="unfinished"></translation>
+        <translation>Substitueix els símbols</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/qetdiagrameditor.cpp" line="6355"/>
         <source>%n wire(s) found no terminal on the new symbol and were removed. Undo brings them back.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n fil no ha trobat cap born al símbol nou i s&apos;ha suprimit. Desfer-ho el restaura.</numerusform>
+            <numerusform>%n fils no han trobat cap born al símbol nou i s&apos;han suprimit. Desfer-ho els restaura.</numerusform>
         </translation>
     </message>
     <message numerus="yes">
@@ -22626,7 +22637,7 @@ the translated name of this folder could not be read, so its folder name is disp
     <message>
         <location filename="../sources/qetinformation.cpp" line="378"/>
         <source>Device type</source>
-        <translation type="unfinished"></translation>
+        <translation>Tipus d&apos;aparell</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="379"/>
@@ -22681,12 +22692,12 @@ the translated name of this folder could not be read, so its folder name is disp
     <message>
         <location filename="../sources/qetinformation.cpp" line="424"/>
         <source>Unit price</source>
-        <translation type="unfinished"></translation>
+        <translation>Preu unitari</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="425"/>
         <source>Labour time [h]</source>
-        <translation type="unfinished"></translation>
+        <translation>Temps de mà d&apos;obra [h]</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="431"/>
@@ -24746,7 +24757,7 @@ Per activar-la: Configura QElectroTech &gt; General &gt; Projectes, o definiu la
     <message>
         <location filename="../sources/ui/devicenavigatorfilterdialog.cpp" line="71"/>
         <source>Devices with free parts</source>
-        <translation type="unfinished"></translation>
+        <translation>Aparells amb parts lliures</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/resetsymboltextscommand.cpp" line="42"/>
@@ -24757,179 +24768,180 @@ Per activar-la: Configura QElectroTech &gt; General &gt; Projectes, o definiu la
         <location filename="../sources/ui/devicetypechooser.cpp" line="223"/>
         <source>Give the device type %1</source>
         <extracomment>%1 is a device type&apos;s name, such as &quot;CONTR10&quot;</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Dóna el tipus d&apos;aparell %1</translation>
     </message>
     <message>
         <location filename="../sources/devicetype/devicetypeassign.cpp" line="136"/>
         <source>%1: keep this drawing</source>
         <comment>a part of a device type</comment>
-        <translation type="unfinished"></translation>
+        <translation>%1: conserva aquest dibuix</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/devicetype/devicetypeassign.cpp" line="139"/>
         <source>This drawing has %n terminal(s), which do not fit this part.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Aquest dibuix té %n born, que no correspon a aquesta part.</numerusform>
+            <numerusform>Aquest dibuix té %n borns, que no corresponen a aquesta part.</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/devicetype/devicetypeassign.cpp" line="144"/>
         <source>%1: use the type&apos;s drawing</source>
         <comment>a part of a device type</comment>
-        <translation type="unfinished"></translation>
+        <translation>%1: utilitza el dibuix del tipus</translation>
     </message>
     <message>
         <location filename="../sources/devicetype/devicetypeassign.cpp" line="169"/>
         <source>This folio cannot be changed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Aquest full no es pot modificar.</translation>
     </message>
     <message>
         <location filename="../sources/devicetype/devicetypeassign.cpp" line="177"/>
         <source>The device type gives no usable drawing for this part.</source>
-        <translation type="unfinished"></translation>
+        <translation>El tipus d&apos;aparell no dóna cap dibuix utilitzable per a aquesta part.</translation>
     </message>
     <message>
         <location filename="../sources/devicetype/devicetypeassign.cpp" line="184"/>
         <source>The drawing of this part could not be read.</source>
-        <translation type="unfinished"></translation>
+        <translation>No s&apos;ha pogut llegir el dibuix d&apos;aquesta part.</translation>
     </message>
     <message>
         <location filename="../sources/devicetype/devicetypeassign.cpp" line="190"/>
         <source>This drawing has other terminals than the symbol, and the symbol is wired: disconnect its wires first.</source>
-        <translation type="unfinished"></translation>
+        <translation>Aquest dibuix té altres borns que el símbol, i el símbol està cablejat: desconnecta&apos;n primer els fils.</translation>
     </message>
     <message>
         <location filename="../sources/devicetype/devicetypeassign.cpp" line="197"/>
         <source>A terminal of this symbol belongs to a bridge or a strip, so it cannot be replaced.</source>
-        <translation type="unfinished"></translation>
+        <translation>Un born d&apos;aquest símbol pertany a un pont o a un bloc de borns, de manera que no es pot substituir.</translation>
     </message>
     <message>
         <location filename="../sources/devicetype/devicetypeassign.cpp" line="241"/>
         <source>Give a symbol the terminals of its part</source>
-        <translation type="unfinished"></translation>
+        <translation>Dóna a un símbol els borns de la seva part</translation>
     </message>
     <message>
         <location filename="../sources/devicetype/devicetypelink.cpp" line="114"/>
         <source>This device has no free contact of this kind.</source>
-        <translation type="unfinished"></translation>
+        <translation>Aquest aparell no té cap contacte lliure d&apos;aquest tipus.</translation>
     </message>
     <message>
         <location filename="../sources/devicetype/devicetypelink.cpp" line="140"/>
         <source>The free part&apos;s terminals do not fit this symbol.</source>
-        <translation type="unfinished"></translation>
+        <translation>Els borns de la part lliure no corresponen a aquest símbol.</translation>
     </message>
     <message>
         <location filename="../sources/devicetype/devicetypechange.cpp" line="114"/>
         <source>folio %1, %2</source>
         <extracomment>%1 is a folio&apos;s number, %2 a position on it such as &quot;C5&quot;</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>full %1, %2</translation>
     </message>
     <message>
         <location filename="../sources/devicetype/devicetypechange.cpp" line="120"/>
         <source>%1 (%2)</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 (%2)</translation>
     </message>
     <message>
         <location filename="../sources/devicetype/devicetypechange.cpp" line="130"/>
         <source>This device cannot be changed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Aquest aparell no es pot modificar.</translation>
     </message>
     <message>
         <location filename="../sources/devicetype/devicetypechange.cpp" line="135"/>
         <source>Change the device type to %1</source>
         <extracomment>%1 is a device type&apos;s name, such as &quot;CONTR10&quot;</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Canvia el tipus d&apos;aparell a %1</translation>
     </message>
     <message>
         <location filename="../sources/devicetype/devicetypeplacement.cpp" line="360"/>
         <source>Place the parts of %1</source>
         <extracomment>%1 is the device&apos;s label, such as &quot;-K1&quot;</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Col·loca les parts de %1</translation>
     </message>
     <message>
         <location filename="../sources/devicetype/devicetypeplacement.cpp" line="445"/>
         <source>Parts of %1</source>
         <extracomment>%1 is the device&apos;s label, such as &quot;-K1&quot;</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Parts de %1</translation>
     </message>
     <message>
         <location filename="../sources/devicetype/devicetypeplacement.cpp" line="447"/>
         <source>%1 has parts not drawn yet: %2.
 How do you want to place them?</source>
         <extracomment>%1 is the device&apos;s label, %2 its parts, as &quot;power contacts 1 2 3 4 5 6, NO 13 14&quot;</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>%1 té parts encara sense dibuixar: %2.
+Com les vols col·locar?</translation>
     </message>
     <message>
         <location filename="../sources/devicetype/devicetypeplacement.cpp" line="450"/>
         <source>One by one</source>
-        <translation type="unfinished"></translation>
+        <translation>Una a una</translation>
     </message>
     <message>
         <location filename="../sources/devicetype/devicetypeplacement.cpp" line="451"/>
         <source>Each part follows the mouse until a click; Escape stops, the rest stay free</source>
-        <translation type="unfinished"></translation>
+        <translation>Cada part segueix el ratolí fins al clic; Esc s&apos;atura, les altres queden lliures</translation>
     </message>
     <message>
         <location filename="../sources/devicetype/devicetypeplacement.cpp" line="452"/>
         <source>All side by side</source>
-        <translation type="unfinished"></translation>
+        <translation>Totes una al costat de l&apos;altra</translation>
     </message>
     <message>
         <location filename="../sources/devicetype/devicetypeplacement.cpp" line="453"/>
         <source>All parts to the right of the head, to be moved where they belong</source>
-        <translation type="unfinished"></translation>
+        <translation>Totes les parts a la dreta del cap, per moure-les on han d&apos;anar</translation>
     </message>
     <message>
         <location filename="../sources/devicetype/devicetypeplacement.cpp" line="454"/>
         <source>Not now</source>
-        <translation type="unfinished"></translation>
+        <translation>Ara no</translation>
     </message>
     <message>
         <location filename="../sources/devicetype/devicetypeplacement.cpp" line="455"/>
         <source>The parts stay free in the Device Navigator</source>
-        <translation type="unfinished"></translation>
+        <translation>Les parts queden lliures al navegador d&apos;aparells</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/setdevicetypecommand.cpp" line="32"/>
         <location filename="../sources/undocommand/setdevicetypecommand.cpp" line="68"/>
         <source>Add the device type %1 to the project</source>
         <extracomment>%1 is a device type&apos;s name, such as &quot;CONTR10&quot;</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Afegeix el tipus d&apos;aparell %1 al projecte</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/setdevicetypecommand.cpp" line="66"/>
         <source>Delete the device type %1</source>
         <extracomment>%1 is a device type&apos;s name, such as &quot;CONTR10&quot;</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Suprimeix el tipus d&apos;aparell %1</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/setdevicetypecommand.cpp" line="70"/>
         <source>Edit the device type %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Edita el tipus d&apos;aparell %1</translation>
     </message>
     <message>
         <location filename="../sources/replacesymbols.cpp" line="146"/>
         <source>A terminal to replace is bridged or belongs to a multi-level terminal.</source>
-        <translation type="unfinished"></translation>
+        <translation>Un born a substituir està pontat o pertany a un born multinivell.</translation>
     </message>
     <message>
         <location filename="../sources/replacesymbols.cpp" line="154"/>
         <source>The symbol could not be added to the project.</source>
-        <translation type="unfinished"></translation>
+        <translation>No s&apos;ha pogut afegir el símbol al projecte.</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/replacesymbols.cpp" line="158"/>
         <source>Replace %n symbol(s)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Substitueix %n símbol</numerusform>
+            <numerusform>Substitueix %n símbols</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/replacesymbols.cpp" line="174"/>
         <source>The symbol could not be loaded.</source>
-        <translation type="unfinished"></translation>
+        <translation>No s&apos;ha pogut carregar el símbol.</translation>
     </message>
 </context>
 <context>
@@ -27194,7 +27206,7 @@ The other fields are not used.</source>
     <message>
         <location filename="../sources/qetgraphicsitem/structureboxitem.cpp" line="400"/>
         <source>a structure box</source>
-        <translation type="unfinished"></translation>
+        <translation>una caixa d&apos;estructura</translation>
     </message>
 </context>
 <context>
@@ -27202,7 +27214,7 @@ The other fields are not used.</source>
     <message>
         <location filename="../sources/qetgraphicsitem/structureboxitem.cpp" line="434"/>
         <source>Move the name of a structure box</source>
-        <translation type="unfinished"></translation>
+        <translation>Mou el nom d&apos;una caixa d&apos;estructura</translation>
     </message>
 </context>
 <context>
@@ -27210,44 +27222,44 @@ The other fields are not used.</source>
     <message>
         <location filename="../sources/ui/structureboxpropertieswidget.cpp" line="42"/>
         <source>Plant (=)</source>
-        <translation type="unfinished">Instal·lació (=)</translation>
+        <translation>Instal·lació (=)</translation>
     </message>
     <message>
         <location filename="../sources/ui/structureboxpropertieswidget.cpp" line="43"/>
         <source>Location (+)</source>
-        <translation type="unfinished">Localització (+)</translation>
+        <translation>Localització (+)</translation>
     </message>
     <message>
         <location filename="../sources/ui/structureboxpropertieswidget.cpp" line="44"/>
         <source>Prefix (-)</source>
-        <translation type="unfinished">Prefix (-)</translation>
+        <translation>Prefix (-)</translation>
     </message>
     <message>
         <location filename="../sources/ui/structureboxpropertieswidget.cpp" line="48"/>
         <source> pt</source>
-        <translation type="unfinished"> pt</translation>
+        <translation> pt</translation>
     </message>
     <message>
         <location filename="../sources/ui/structureboxpropertieswidget.cpp" line="49"/>
         <source>Size of its name</source>
-        <translation type="unfinished"></translation>
+        <translation>Mida del seu nom</translation>
     </message>
     <message>
         <location filename="../sources/ui/structureboxpropertieswidget.cpp" line="52"/>
         <source>Colour</source>
-        <translation type="unfinished">Color</translation>
+        <translation>Color</translation>
     </message>
     <message>
         <location filename="../sources/ui/structureboxpropertieswidget.cpp" line="66"/>
         <location filename="../sources/ui/structureboxpropertieswidget.cpp" line="73"/>
         <location filename="../sources/ui/structureboxpropertieswidget.cpp" line="77"/>
         <source>Modify a structure box</source>
-        <translation type="unfinished"></translation>
+        <translation>Edita una caixa d&apos;estructura</translation>
     </message>
     <message>
         <location filename="../sources/ui/structureboxpropertieswidget.h" line="43"/>
         <source>Edit the properties of a structure box</source>
-        <translation type="unfinished"></translation>
+        <translation>Edita les propietats d&apos;una caixa d&apos;estructura</translation>
     </message>
 </context>
 <context>
@@ -30519,22 +30531,22 @@ Ctrl+Retorn valida la cel·la, Esc descarta el text.</translation>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriptreedockwidget.cpp" line="70"/>
         <source>Expand all</source>
-        <translation type="unfinished">Desplega-ho tot</translation>
+        <translation>Desplega-ho tot</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriptreedockwidget.cpp" line="71"/>
         <source>Unfold every plant, location and terminal strip of the tree</source>
-        <translation type="unfinished"></translation>
+        <translation>Desplega cada instal·lació, localització i bloc de borns de l&apos;arbre</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriptreedockwidget.cpp" line="73"/>
         <source>Collapse all</source>
-        <translation type="unfinished">Plega-ho tot</translation>
+        <translation>Plega-ho tot</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriptreedockwidget.cpp" line="74"/>
         <source>Fold every plant, location and terminal strip of the tree</source>
-        <translation type="unfinished"></translation>
+        <translation>Plega cada instal·lació, localització i bloc de borns de l&apos;arbre</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriptreedockwidget.cpp" line="355"/>
@@ -30549,7 +30561,7 @@ Ctrl+Retorn valida la cel·la, Esc descarta el text.</translation>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriptreedockwidget.cpp" line="478"/>
         <source>(no label) %1, folio %2</source>
-        <translation type="unfinished"></translation>
+        <translation>(sense etiqueta) %1, full %2</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriptreedockwidget.ui" line="14"/>
@@ -31824,7 +31836,7 @@ associar el nom &quot;volta&quot; amb el valor &quot;1745&quot; substituirà %{v
         <location filename="../sources/ui/wiringlistdialog.cpp" line="89"/>
         <source>The wiring list could not be read: %1</source>
         <comment>wiring list read error</comment>
-        <translation type="unfinished"></translation>
+        <translation>No s&apos;ha pogut llegir la llista de cablejat: %1</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/wiringlistdialog.cpp" line="92"/>
@@ -31848,9 +31860,9 @@ associar el nom &quot;volta&quot; amb el valor &quot;1745&quot; substituirà %{v
         <location filename="../sources/ui/wiringlistdialog.cpp" line="108"/>
         <source>%n junction(s) have rows that still end at a junction: no source connection set, or no way on to follow.</source>
         <comment>wiring list junction warning</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n unió té línies que encara acaben en una unió: cap connexió d&apos;origen definida, o cap camí a seguir.</numerusform>
+            <numerusform>%n unions tenen línies que encara acaben en una unió: cap connexió d&apos;origen definida, o cap camí a seguir.</numerusform>
         </translation>
     </message>
 </context>
@@ -31885,9 +31897,9 @@ associar el nom &quot;volta&quot; amb el valor &quot;1745&quot; substituirà %{v
     <message numerus="yes">
         <location filename="../sources/wiringlistexport.cpp" line="365"/>
         <source>Note: %n junction(s) have rows that still end at a junction: no source connection set, or no way on to follow.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Nota: %n unió té línies que encara acaben en una unió: cap connexió d&apos;origen definida, o cap camí a seguir.</numerusform>
+            <numerusform>Nota: %n unions tenen línies que encara acaben en una unió: cap connexió d&apos;origen definida, o cap camí a seguir.</numerusform>
         </translation>
     </message>
     <message>
