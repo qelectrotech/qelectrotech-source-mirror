@@ -17,6 +17,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "ElementsCollection/elementslocation.h"
+#include "dataBase/projectdatabase.h"
 #include "ElementsCollection/xmlelementcollection.h"
 #include "diagram.h"
 #include "factory/elementfactory.h"
@@ -29,6 +30,7 @@
 #include "titleblockproperties.h"
 
 #include <QDomDocument>
+#include <QSqlQuery>
 #include <QTemporaryDir>
 #include <QUuid>
 #include <QtTest>
@@ -210,6 +212,108 @@ private slots:
 
 		setFolio(diagram, QStringLiteral("FACTORY"), QStringLiteral("CP2"));
 		QCOMPARE(field->toPlainText(), QStringLiteral("=FACTORY+CP2-K1"));
+	}
+
+		//Item C7 of #1878: the prefix of a structure box is the product
+		//above the symbols in it (-A1-K1), the boxes nesting (-B2-A1-K1)
+	void aBoxPrefixIsTheProductAboveTheLabel()
+	{
+		QETProject project;
+		Diagram *diagram = project.addNewDiagram();
+		setFolio(diagram, QStringLiteral("FACTORY"), QStringLiteral("CP1"));
+		auto *outer = new StructureBoxItem(QPointF(0, 0), QPointF(800, 800));
+		auto *inner = new StructureBoxItem(QPointF(0, 0), QPointF(400, 400));
+		diagram->addItem(outer);
+		diagram->addItem(inner);
+		Element *deep = symbol(diagram);    // in both boxes
+		Element *middle = symbol(diagram);  // in the outer one only
+		Element *none = symbol(diagram);    // in no box
+		QVERIFY(deep && middle && none);
+		deep->setPos(200, 200);
+		middle->setPos(600, 600);
+		none->setPos(1200, 1200);
+		for (Element *e : {deep, middle, none})
+			setInfo(e, QStringLiteral("K1"));
+		DynamicElementTextItem *deep_field = labelField(deep);
+		DynamicElementTextItem *middle_field = labelField(middle);
+		DynamicElementTextItem *none_field = labelField(none);
+		DynamicElementTextItem *deep_text = composite(deep, QStringLiteral("%{structure_id_full}"));
+
+			//No prefix anywhere: as before
+		project.setDesignationDisplay(Display::Full);
+		QCOMPARE(deep_field->toPlainText(), QStringLiteral("=FACTORY+CP1-K1"));
+
+			//A box typed with its sign or without it, an empty one skipped
+		outer->setPrefix(QStringLiteral("B2"));
+		inner->setPrefix(QStringLiteral("-A1"));
+		QCOMPARE(deep_field->toPlainText(), QStringLiteral("=FACTORY+CP1-B2-A1-K1"));
+		QCOMPARE(deep_text->toPlainText(), QStringLiteral("=FACTORY+CP1-B2-A1-K1"));
+		QCOMPARE(middle_field->toPlainText(), QStringLiteral("=FACTORY+CP1-B2-K1"));
+		QCOMPARE(none_field->toPlainText(), QStringLiteral("=FACTORY+CP1-K1"));
+		inner->setPrefix(QString());
+		QCOMPARE(deep_field->toPlainText(), QStringLiteral("=FACTORY+CP1-B2-K1"));
+		inner->setPrefix(QStringLiteral("A1"));
+
+			//The short form leaves out what the box it is drawn in gives;
+			//the label itself is untouched
+		project.setDesignationDisplay(Display::Short);
+		QCOMPARE(deep_field->toPlainText(), QStringLiteral("-K1"));
+		QCOMPARE(none_field->toPlainText(), QStringLiteral("-K1"));
+		project.setDesignationDisplay(Display::Label);
+		QCOMPARE(deep_field->toPlainText(), QStringLiteral("K1"));
+		QCOMPARE(deep->elementInformations().value(QStringLiteral("label")).toString(),
+				 QStringLiteral("K1"));
+
+			//A label typed in full is not doubled, and -A10 is not -A1
+		project.setDesignationDisplay(Display::Full);
+		setInfo(deep, QStringLiteral("-B2-A1-K1"));
+		QCOMPARE(deep_field->toPlainText(), QStringLiteral("=FACTORY+CP1-B2-A1-K1"));
+		setInfo(deep, QStringLiteral("A10"));
+		QCOMPARE(deep_field->toPlainText(), QStringLiteral("=FACTORY+CP1-B2-A1-A10"));
+		setInfo(deep, QString());
+		QCOMPARE(deep_field->toPlainText(), QString());
+		setInfo(deep, QStringLiteral("K1"));
+
+			//The database says what the texts say
+		project.dataBase()->updateDB();
+		for (Element *e : {deep, middle, none}) {
+			QString error;
+			QSqlQuery query = project.dataBase()->newQuery(QStringLiteral(
+				"SELECT structure_id FROM qet_devices WHERE device_uuid = '%1'")
+					.arg(e->uuid().toString()), &error);
+			QVERIFY2(error.isEmpty(), qPrintable(error));
+			QVERIFY(query.next());
+			QCOMPARE(query.value(0).toString(),
+					 e->designationForDisplay(QStringLiteral("K1")));
+		}
+		QCOMPARE(deep->designationForDisplay(QStringLiteral("-B2-A1-K1")),
+				 QStringLiteral("=FACTORY+CP1-B2-A1-K1"));
+	}
+
+		//A contact on another folio shows its coil with the levels of the
+		//box the coil is in, which its own folio does not give it
+	void aContactShowsTheBoxProductOfItsCoil()
+	{
+		QETProject project;
+		Diagram *coil_folio = project.addNewDiagram();
+		Diagram *contact_folio = project.addNewDiagram();
+		setFolio(coil_folio, QStringLiteral("FACTORY"), QStringLiteral("CP1"));
+		setFolio(contact_folio, QStringLiteral("FACTORY"), QStringLiteral("CP1"));
+		auto *box = new StructureBoxItem(QPointF(0, 0), QPointF(400, 400));
+		coil_folio->addItem(box);
+		box->setPrefix(QStringLiteral("A1"));
+		Element *coil = symbol(coil_folio, QStringLiteral("master"));
+		Element *contact = symbol(contact_folio, QStringLiteral("slave"));
+		QVERIFY(coil && contact);
+		coil->setPos(200, 200);
+		setInfo(coil, QStringLiteral("K1"));
+		DynamicElementTextItem *coil_field = labelField(coil);
+		DynamicElementTextItem *contact_field = labelField(contact);
+		coil->linkToElement(contact);
+
+		project.setDesignationDisplay(Display::Short);
+		QCOMPARE(coil_field->toPlainText(), QStringLiteral("-K1"));
+		QCOMPARE(contact_field->toPlainText(), QStringLiteral("-A1-K1"));
 	}
 
 		//A contact shows its coil's designation; the short form leaves out

@@ -337,11 +337,14 @@ namespace autonum
 			//Field by field: an empty plant or location of a box is the one
 			//of the next box around it, then of the folio. A box that only
 			//says +FIELD keeps the =plant of its folio.
-		QString reference_plant, reference_location;
+		QString reference_plant, reference_location, product_value;
 		if (elmt && elmt->diagram()) {
 			const StructureBoxItem::Place reference = StructureBoxItem::referencePlace(elmt);
 			reference_plant = reference.plant;
 			reference_location = reference.location;
+				//The levels above the label are the boxes' alone: a symbol
+				//has no product level of its own to override them
+			product_value = reference.product;
 		} else if (diagram) {
 			reference_plant = diagram->border_and_titleblock.plant();
 			reference_location = diagram->border_and_titleblock.locmach();
@@ -360,7 +363,7 @@ namespace autonum
 
 			//Full IEC 81346 reference designation (=plant+location-label),
 			//each segment omitted when its underlying value is empty.
-		QString structure_id_full = buildStructureId(plant_value, location_value, label_value);
+		QString structure_id_full = buildStructureId(plant_value, location_value, product_value, label_value);
 
 			//Reduced form relative to the reference point (IEC 81346's own
 			//allowance for dropping higher-level parts already implied by
@@ -369,6 +372,9 @@ namespace autonum
 		QString structure_id = buildStructureId(
 			plant_value != reference_plant ? plant_value : QString(),
 			location_value != reference_location ? location_value : QString(),
+				//The symbol is in the boxes that give it its levels, so
+				//the reference point already has all of them
+			QString(),
 			label_value);
 
 		str.replace("%{label}", label_value);
@@ -574,6 +580,36 @@ namespace autonum
 		if (!suffix.isEmpty())
 			id += withSign(QLatin1Char('-'), suffix);
 		return id;
+	}
+
+	/**
+		@brief AssignVariables::buildStructureId
+		@sa the declaration
+	*/
+	QString AssignVariables::buildStructureId(const QString &plant, const QString &location,
+											  const QString &product, const QString &label)
+	{
+		QString id = buildStructureId(plant, location, QString());
+		if (label.isEmpty())
+			return id;
+		const QString signed_label = withSign(QLatin1Char('-'), label);
+			//Typed in full already: "-A1-K1", or "-A1" itself, inside A1.
+			//Not "-A10" inside A1: the level ends at the next sign.
+		const bool has_levels = !product.isEmpty()
+				&& signed_label.startsWith(product)
+				&& (signed_label.size() == product.size()
+					|| signed_label.at(product.size()) == QLatin1Char('-'));
+		return id + (has_levels ? QString() : product) + signed_label;
+	}
+
+	/**
+		@brief AssignVariables::addProductLevel
+		@sa the declaration
+	*/
+	QString AssignVariables::addProductLevel(const QString &chain, const QString &prefix)
+	{
+		const QString level = prefix.trimmed();
+		return level.isEmpty() ? chain : chain + withSign(QLatin1Char('-'), level);
 	}
 
 	void AssignVariables::assignTitleBlockVar()
