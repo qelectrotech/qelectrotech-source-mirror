@@ -80,6 +80,25 @@ namespace ProjectReports
 			}
 			return value;
 		}
+
+			/// A field holding a plain number, else NULL: as the parts
+			/// list's costing reads a price (BomExport::groupedQuery()),
+			/// so "45 mm" or "1,2,3" is no size rather than a wrong one
+		QString number(const QString &field)
+		{
+			const QString value = QStringLiteral("REPLACE(TRIM(%1), ',', '.')").arg(field);
+			return QStringLiteral(
+				"CASE WHEN %1 GLOB '*[0-9]*' AND %1 NOT GLOB '*[^0-9.]*' "
+				"AND %1 NOT GLOB '*.*.*' THEN CAST(%1 AS REAL) END").arg(value);
+		}
+
+			/// @p value written with at most @p places decimals, no trailing zeros
+		QString decimal(const QString &value, int places)
+		{
+			return QStringLiteral(
+				"CASE WHEN %1 IS NULL THEN NULL "
+				"ELSE RTRIM(RTRIM(PRINTF('%.%2f', %1), '0'), '.') END").arg(value).arg(places);
+		}
 	}
 
 	QString Place::text() const
@@ -226,6 +245,70 @@ namespace ProjectReports
 						 {QStringLiteral("function"), Text::tr("Function")},
 						 {QStringLiteral("folio_number"), Text::tr("Sheet")},
 						 {QStringLiteral("position"), Text::tr("Position")}};
+			list << r;
+		}
+		{
+				//How much mounting space the parts of each place take
+				//(#1878 A5): width x height of each part, from its part
+				//data (Width [mm], Height [mm]), times its quantity read
+				//as the parts list reads it (BomExport::groupedQuery()).
+				//A device counts once, as in the parts list: a coil and
+				//its contacts are one part, with or without a label, and
+				//the largest size any of its symbols gives is its size, so
+				//part data copied onto a contact is not counted twice. It
+				//is in the place of its head (the coil), and left out with
+				//it when the head is left out of the parts list. Any other
+				//symbol without a label is a part of its own. Folio reports
+				//are not parts. A part with a part number but no size is
+				//counted apart, so a total that misses some parts says so.
+			Report r;
+			r.id = QStringLiteral("space");
+			r.title = Text::tr("Panel space list");
+			r.source = QStringLiteral(
+				"(WITH symbol AS (SELECT d.device_uuid, d.kind, d.structure_id, "
+					"COALESCE(d.plant, '') AS plant, COALESCE(d.location, '') AS location, "
+					"COALESCE(d.label, '') AS label, d.folio_number, d.position, "
+					"(SELECT l.linked_uuid FROM link l JOIN element m ON m.uuid = l.linked_uuid "
+					"WHERE l.element_uuid = d.device_uuid AND m.type = 'master' LIMIT 1) AS master_uuid, "
+					"%1 AS w, %2 AS h, %3 AS depth, "
+					"CAST(REPLACE(COALESCE(NULLIF(TRIM(ei.quantity), ''), '1'), ',', '.') AS REAL) AS q, "
+					"TRIM(COALESCE(ei.manufacturer_reference, '')) AS article, "
+					"COALESCE(LOWER(TRIM(ei.exclude_from_bom)), '') IN ('true', '1', 'yes', 'on') AS excluded "
+					"FROM qet_devices d LEFT JOIN element_info ei ON ei.element_uuid = d.device_uuid "
+					"WHERE COALESCE(d.kind, '') NOT IN ('next_report', 'previous_report')), "
+				"member AS (SELECT s.*, "
+					"CASE WHEN s.master_uuid IS NOT NULL THEN "
+						"CASE WHEN COALESCE(m.label, '') = '' THEN 'symbol:' || s.master_uuid ELSE m.structure_id END "
+					"WHEN s.label = '' THEN 'symbol:' || s.device_uuid ELSE s.structure_id END AS device, "
+					"CASE WHEN s.kind = 'master' THEN 0 WHEN s.master_uuid IS NULL THEN 1 ELSE 2 END AS rank, "
+					"CASE WHEN NOT s.excluded AND s.w > 0 AND s.h > 0 AND s.q > 0 "
+						"THEN s.w * s.h * s.q END AS area "
+					"FROM symbol s LEFT JOIN qet_devices m ON m.device_uuid = s.master_uuid), "
+				"part AS (SELECT plant, location, excluded, "
+					"MAX(area) OVER (PARTITION BY device) AS area, "
+					"MAX(CASE WHEN NOT excluded THEN depth END) OVER (PARTITION BY device) AS depth, "
+					"MAX(NOT excluded AND article <> '') OVER (PARTITION BY device) AS has_article, "
+					"ROW_NUMBER() OVER (PARTITION BY device "
+						"ORDER BY rank, folio_number, position, device_uuid) AS n FROM member), "
+				"place AS (SELECT plant, location, COUNT(area) AS sized, "
+					"SUM(area IS NULL AND has_article) AS unsized, "
+					"TOTAL(area) AS area, MAX(depth) AS depth "
+					"FROM part WHERE n = 1 AND NOT excluded GROUP BY plant, location) "
+					//The place's name as every other list writes it
+				"SELECT p.*, COALESCE(k.structure_id, '') AS structure_id FROM place p "
+				"LEFT JOIN qet_locations k ON k.plant = p.plant AND k.location = p.location "
+				"WHERE p.sized > 0 OR p.unsized > 0)")
+					.arg(number(QStringLiteral("ei.width")), number(QStringLiteral("ei.height")),
+						 number(QStringLiteral("ei.depth")));
+				//A designation of the place starts so: "=P+L-K1"
+			r.places = {QStringLiteral("(structure_id || '-')")};
+			r.order = QStringLiteral("plant, location");
+			r.columns = {{QStringLiteral("CASE WHEN structure_id = '' THEN %1 ELSE structure_id END")
+							  .arg(quoted(Text::tr("(no place)"))), Text::tr("Place")},
+						 {QStringLiteral("sized"), Text::tr("Parts with a size")},
+						 {decimal(QStringLiteral("area / 1000000.0"), 6), Text::tr("Area [m²]")},
+						 {decimal(QStringLiteral("depth"), 1), Text::tr("Deepest [mm]")},
+						 {QStringLiteral("unsized"), Text::tr("Parts without a size")}};
 			list << r;
 		}
 		return list;
