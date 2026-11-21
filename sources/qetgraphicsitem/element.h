@@ -209,7 +209,10 @@ class Element : public QetGraphicsItem
 		QString conductorTextForDisplay();
 		QString conductorInfoForDisplay(const QString &info_name);
 		void addDisplayValues(DiagramContext &dc);
-		QString infoForDisplay(const QString &info_name);
+		QString infoForDisplay(const QString &info_name,
+							   const Element *drawn_on = nullptr);
+		QString designationForDisplay(const QString &label,
+									  const Element *drawn_on = nullptr) const;
 		bool hasTerminalNumberText() const;
 		bool labelShown() const;
 			/**

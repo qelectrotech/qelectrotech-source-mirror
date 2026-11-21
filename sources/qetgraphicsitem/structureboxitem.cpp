@@ -24,6 +24,7 @@
 #include "element.h"
 #include "dynamicelementtextitem.h"
 #include "elementtextitemgroup.h"
+#include "../qetproject.h"
 #include "../qetxml.h"
 #include "../ui/structureboxpropertieswidget.h"
 
@@ -81,13 +82,13 @@ QVariant StructureBoxItem::itemChange(GraphicsItemChange change, const QVariant 
 	Work out again every text of the symbols of @p diagram that shows a
 	reference designation or a place (refreshTextsOf()).
 */
-void StructureBoxItem::refreshSymbolTexts(Diagram *diagram)
+void StructureBoxItem::refreshSymbolTexts(Diagram *diagram, bool label_fields)
 {
 	if (!diagram) {
 		return;
 	}
 	for (Element *element : diagram->elements()) {
-		refreshTextsOf(element);
+		refreshTextsOf(element, label_fields);
 	}
 }
 
@@ -98,13 +99,28 @@ void StructureBoxItem::refreshSymbolTexts(Diagram *diagram)
 	the boxes around the symbol (enclosing()) and its folio, and so do
 	%{plant} and %{location} when the project inherits them
 	(QETProject::plantAndLocationInherited()). A symbol does not watch them.
+	So does its label field when the project shows it as a reference
+	designation (QETProject::designationDisplay()), or @p label_fields
+	asks for it (the setting has just changed), and the label fields of
+	the elements linked to it: a contact showing its coil's.
 */
-void StructureBoxItem::refreshTextsOf(Element *element)
+void StructureBoxItem::refreshTextsOf(Element *element, bool label_fields)
 {
 	if (!element || !element->diagram()) {
 		return;
 	}
-	const auto refresh = [](DynamicElementTextItem *text) {
+	const QETProject *project = element->diagram()->project();
+	const bool designation = label_fields || (project
+			&& project->designationDisplay() != QETProject::DesignationDisplay::Label);
+	const auto isLabelField = [](const DynamicElementTextItem *text) {
+		return text->textFrom() == DynamicElementTextItem::ElementInfo
+				&& text->infoName() == QLatin1String("label");
+	};
+	const auto refresh = [designation, isLabelField](DynamicElementTextItem *text) {
+		if (designation && isLabelField(text)) {
+			text->refreshConductorText();
+			return;
+		}
 		if (text->textFrom() != DynamicElementTextItem::CompositeText) {
 			return;
 		}
@@ -120,6 +136,25 @@ void StructureBoxItem::refreshTextsOf(Element *element)
 	for (ElementTextItemGroup *group : element->textGroups())
 		for (DynamicElementTextItem *text : group->texts())
 			refresh(text);
+
+	if (!designation) {
+		return;
+	}
+	for (Element *linked : element->linkedElements()) {
+		if (!linked || linked == element) {
+			continue;
+		}
+		const auto refreshLabel = [isLabelField](DynamicElementTextItem *text) {
+			if (isLabelField(text)) {
+				text->refreshConductorText();
+			}
+		};
+		for (DynamicElementTextItem *text : linked->dynamicTextItems())
+			refreshLabel(text);
+		for (ElementTextItemGroup *group : linked->textGroups())
+			for (DynamicElementTextItem *text : group->texts())
+				refreshLabel(text);
+	}
 }
 
 /**

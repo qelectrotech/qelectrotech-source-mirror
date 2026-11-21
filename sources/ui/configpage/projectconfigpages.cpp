@@ -205,6 +205,13 @@ void ProjectMainConfigPage::applyProjectConf()
 		modified_project = true;
 	}
 
+	const auto designation_display = static_cast<QETProject::DesignationDisplay>(
+				m_designation_display_cb -> currentData().toInt());
+	if (m_project -> designationDisplay() != designation_display) {
+		m_project -> setDesignationDisplay(designation_display);
+		modified_project = true;
+	}
+
 	if (m_project -> followDeviceTypes() != m_follow_device_types_cb -> isChecked()) {
 		m_project -> setFollowDeviceTypes(m_follow_device_types_cb -> isChecked());
 		modified_project = true;
@@ -316,6 +323,26 @@ void ProjectMainConfigPage::initWidgets()
 										 "else of its folio, as %{structure_id_full} does. Uncheck to show only "
 										 "the element's own, as before.",
 										 "tooltip"));
+
+		//What the label field of an element shows
+	m_designation_display_label = new QLabel(tr("Element labels show:", "label when configuring"));
+	m_designation_display_cb = new QComboBox();
+	m_designation_display_cb -> setObjectName(QStringLiteral("designationDisplay"));
+	m_designation_display_cb -> addItem(tr("The label only (K1)", "designation display"),
+										static_cast<int>(QETProject::DesignationDisplay::Label));
+	m_designation_display_cb -> addItem(tr("Short reference designation, IEC 81346 (=+-), without "
+										   "what the folio or structure box already gives",
+										   "designation display"),
+										static_cast<int>(QETProject::DesignationDisplay::Short));
+	m_designation_display_cb -> addItem(tr("Full reference designation, IEC 81346 (=A1+B2-K1)",
+										   "designation display"),
+										static_cast<int>(QETProject::DesignationDisplay::Full));
+	m_designation_display_cb -> setToolTip(tr("What the label field of each element shows. The "
+											  "plant and location are the element's own, else those of "
+											  "its structure box or folio. Only the drawing changes: the "
+											  "label stays as typed, and a text written with %{label} "
+											  "still shows the label only.",
+											  "tooltip"));
 
 		//Placing and linking follow the device types
 	m_follow_device_types_cb = new QCheckBox(tr("Follow device types when placing and linking",
@@ -456,6 +483,13 @@ void ProjectMainConfigPage::initLayout()
 	main_layout0 -> addWidget(m_plant_location_cb);
 	main_layout0 -> addSpacing(10);
 
+	QHBoxLayout *designation_display_layout = new QHBoxLayout();
+	designation_display_layout -> addWidget(m_designation_display_label);
+	designation_display_layout -> addWidget(m_designation_display_cb);
+	designation_display_layout -> addStretch();
+	main_layout0 -> addLayout(designation_display_layout);
+	main_layout0 -> addSpacing(10);
+
 	main_layout0 -> addWidget(m_follow_device_types_cb);
 	main_layout0 -> addSpacing(10);
 
@@ -514,6 +548,8 @@ void ProjectMainConfigPage::readValuesFromProject()
 	wire_hops_cb_ -> setCurrentIndex(qMax(0, wire_hops_index));
 	upright_symbol_texts_cb_ -> setChecked(m_project -> uprightSymbolTexts());
 	m_plant_location_cb -> setChecked(m_project -> plantAndLocationInherited());
+	m_designation_display_cb -> setCurrentIndex(qMax(0, m_designation_display_cb -> findData(
+			static_cast<int>(m_project -> designationDisplay()))));
 	m_follow_device_types_cb -> setChecked(m_project -> followDeviceTypes());
 	chained_reports_cb_ -> setChecked(m_project -> chainedReports());
 	if (m_project -> chainedReportsKey() == QETProject::ReportLinkKey::Function) {
@@ -586,6 +622,7 @@ void ProjectMainConfigPage::adjustReadOnly()
 	wire_hops_cb_ -> setDisabled(is_read_only);
 	upright_symbol_texts_cb_ -> setDisabled(is_read_only);
 	m_plant_location_cb -> setDisabled(is_read_only);
+	m_designation_display_cb -> setDisabled(is_read_only);
 	m_follow_device_types_cb -> setDisabled(is_read_only);
 	chained_reports_cb_ -> setDisabled(is_read_only);
 	chained_key_gb_ -> setDisabled(is_read_only || !(chained_reports_cb_ -> isChecked()));

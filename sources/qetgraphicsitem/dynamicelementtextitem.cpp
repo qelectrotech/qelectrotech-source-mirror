@@ -1505,7 +1505,7 @@ void DynamicElementTextItem::elementInfoChanged()
 			setupFormulaConnection();
 
 			if (element) {
-				final_text = label_element->infoForDisplay(m_info_name);
+				final_text = label_element->infoForDisplay(m_info_name, parentElement());
 			}
 		}
 		else {
@@ -1863,7 +1863,7 @@ void DynamicElementTextItem::updateLabel()
 		
 
 		if(m_text_from == ElementInfo && element) {
-			QString new_label = label_element->infoForDisplay(m_info_name);
+			QString new_label = label_element->infoForDisplay(m_info_name, parentElement());
 			if (toPlainText() != new_label) {
 				setPlainText(new_label);
 			}
