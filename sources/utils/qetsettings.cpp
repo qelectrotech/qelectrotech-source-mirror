@@ -393,6 +393,17 @@ namespace QetSettings
 		QSettings settings;
 		settings.setValue(lastDirKey(which), dir);
 	}
+	bool askLabelAndPartPlacingSymbol()
+	{
+		QSettings settings;
+		return settings.value("diagrameditor/ask_label_and_part_placing_symbol", false).toBool();
+	}
+
+	void setAskLabelAndPartPlacingSymbol(bool ask)
+	{
+		QSettings settings;
+		settings.setValue("diagrameditor/ask_label_and_part_placing_symbol", ask);
+	}
 
 	/**
 	* @brief stripWiresShown

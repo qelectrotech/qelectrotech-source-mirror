@@ -51,9 +51,16 @@ SlaveElement::~SlaveElement()
 void SlaveElement::linkToElement(Element *elmt)
 {
 		// check if element is master and if isn't already linked
+		//The stored list, not linkedElements(): a master whose folio
+		//is away is left out of that one, so the check would never see
+		//the link it is standing in -- and these two functions call
+		//each other, which ends in a stack overflow
 	if (elmt->linkType() == Master && !connected_elements.contains(elmt))
 	{
-		if(!isFree())
+		//The stored partners, not the ones to show: taking another
+		//master has to drop what is kept here, whichever folio it
+		//stands on, or it stays behind as a dangling pointer
+		if(!connected_elements.isEmpty())
 			unlinkAllElements();
 
 		connected_elements << elmt;
@@ -70,7 +77,10 @@ void SlaveElement::linkToElement(Element *elmt)
 void SlaveElement::unlinkAllElements()
 {
 		// if this element is free no need to do something
-	if (!isFree())
+		//("free" as in nothing stored: a partner whose folio is away
+		//still has to be unlinked here, or the element it points at
+		//is freed while this list goes on holding it)
+	if (!connected_elements.isEmpty())
 	{
 		foreach(Element *elmt, connected_elements)
 			unlinkElement(elmt);

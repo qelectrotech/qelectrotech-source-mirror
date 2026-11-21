@@ -34,6 +34,8 @@
 #include <QLineEdit>
 #include <QTimer>
 #include <QSqlQuery>
+#include <QRegularExpression>
+#include <QSqlRecord>
 #include <QTemporaryDir>
 #include <QUuid>
 #include <QtTest>
@@ -256,6 +258,39 @@ private slots:
 		dialog.accept();
 		QCOMPARE(dialog.result(), int(QDialog::Accepted));
 		QCOMPARE(dialog.record().values.value(QStringLiteral("unit_price")), QStringLiteral("12.5"));
+	}
+
+		//A view with a column twice: SQLite names the second copy
+		//"name:1", which the parts list export and the scripts then see
+	void noViewHasAColumnTwice()
+	{
+		QETProject project;
+		project.addNewDiagram();
+		project.dataBase()->updateDB();
+		QStringList views = projectDataBase::publicViews();
+		views << QStringLiteral("element_nomenclature_view");
+		QStringList duplicates;
+		for (const QString &view : std::as_const(views)) {
+			QString error;
+			QSqlQuery query = project.dataBase()->newQuery(
+				QStringLiteral("SELECT * FROM \"%1\" LIMIT 0").arg(view), &error);
+			QVERIFY2(error.isEmpty(), qPrintable(error));
+			QStringList names;
+			for (int i = 0 ; i < query.record().count() ; ++i)
+				names << query.record().fieldName(i);
+			QVERIFY2(!names.isEmpty(), qPrintable(view + QStringLiteral(" has no columns")));
+			QStringList seen;
+			for (const QString &name : std::as_const(names)) {
+					//SQLite renames the second copy to "name:1"
+				static const QRegularExpression renamed(QStringLiteral(":\\d+$"));
+				const QString base = QString(name).remove(renamed);
+				if (base != name || seen.contains(base, Qt::CaseInsensitive))
+					duplicates << view + QLatin1Char('.') + name;
+				seen << base;
+			}
+		}
+		QVERIFY2(duplicates.isEmpty(), qPrintable(QStringLiteral("column twice: ")
+												  + duplicates.join(QStringLiteral(", "))));
 	}
 };
 

@@ -140,7 +140,8 @@ QString BomExport::defaultQuery(bool include_slaves, bool include_junctions)
 	one (#1883). Written with at most four decimals, like the fields
 	themselves.
 	@param options
-	@return the SQL, to run on element_nomenclature_view
+	@return the SQL, to run on element_nomenclature_view (and qet_cables
+	when options.cables says so)
 */
 QString BomExport::groupedQuery(const GroupedOptions &options)
 {
@@ -189,6 +190,23 @@ QString BomExport::groupedQuery(const GroupedOptions &options)
 			source += QStringLiteral(" UNION ALL ")
 					+ part(QStringLiteral("_auxiliary%1").arg(i));
 		}
+	}
+		//A cable is bought like any other part: one of it per cable, named
+		//by its type, listed under its own designation. Only a cable with a
+		//part number is one -- a cable says nothing else about being ordered,
+		//and a parts list of every drawn cable with nothing to order it by
+		//would only be noise. Its length is free text, so it is not added up.
+	if (options.cables)
+	{
+		source += QStringLiteral(
+			" UNION ALL SELECT TRIM(COALESCE(manufacturer, '')) AS manufacturer, "
+			"TRIM(article) AS article, "
+			"COALESCE(NULLIF(TRIM(type), ''), designation, '') AS name, "
+			"designation AS label, '' AS unit, 1.0 AS qty, ")
+			//A cable has no price or time of its own either
+			+ (options.costing ? QStringLiteral("NULL AS price, NULL AS labour, ") : QString())
+			+ QStringLiteral("'cable:' || cable_uuid AS item_key "
+			"FROM qet_cables WHERE TRIM(COALESCE(article, '')) <> ''");
 	}
 
 		//How many of an element one line counts: its quantity field, or

@@ -19,9 +19,11 @@
 #define ADDTERMINALSTRIPITEMDIALOG_H
 
 #include <QDialog>
+#include <QList>
 #include <QPointer>
 
 class Diagram;
+class Element;
 class QETDiagramEditor;
 class QETProject;
 class TerminalStrip;
@@ -33,6 +35,7 @@ namespace Ui {
 class AddTerminalStripItemDialog : public QDialog
 {
 		Q_OBJECT
+		friend class tst_connectordeviceplan;
 
 	public:
 		static void openDialog(Diagram *diagram, QWidget *parent = nullptr);
@@ -41,11 +44,14 @@ class AddTerminalStripItemDialog : public QDialog
 		explicit AddTerminalStripItemDialog(QETProject *project, QWidget *parent = nullptr);
 		~AddTerminalStripItemDialog();
 		TerminalStrip *selectedTerminalStrip() const;
+		Element *selectedDevice() const;
 		int selectedDrawStyle() const;
 		void fillComboBox();
 
 	private:
 		QPointer<QETProject> m_project;
+		int m_strip_count{0};
+		QList<QPointer<Element>> m_devices;	//Connectors drawn as a device, after the strips in the combo box
 		Ui::AddTerminalStripItemDialog *ui;
 };
 

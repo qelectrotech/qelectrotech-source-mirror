@@ -150,6 +150,14 @@ struct CableProperties
 	QString location;
 		///Length, typed in by hand
 	QString length;
+		/**
+			Who makes the cable and the number it is ordered by -- the
+			same two fields an element has, under the same names, so the
+			parts list counts a cable like any other part. Neither is
+			drawn: they are what is bought, not what is read on the sheet.
+		*/
+	QString manufacturer;
+	QString manufacturer_reference;
 
 		///What of that is written next to the trunk line of the drawing
 	bool show_designation = true;
@@ -185,6 +193,8 @@ struct CableProperties
 				&& installation == other.installation
 				&& location == other.location
 				&& length == other.length
+				&& manufacturer == other.manufacturer
+				&& manufacturer_reference == other.manufacturer_reference
 				&& show_designation == other.show_designation
 				&& show_type == other.show_type
 				&& show_installation == other.show_installation
@@ -273,6 +283,11 @@ class Cable : public QObject
 		void setLocation(const QString &location);
 		QString length() const;
 		void setLength(const QString &length);
+		QString manufacturer() const;
+		void setManufacturer(const QString &manufacturer);
+			///The part number the cable is ordered by
+		QString manufacturerReference() const;
+		void setManufacturerReference(const QString &reference);
 
 			///Every field of the cable, and what of it is drawn on the sheet
 		CableProperties properties() const;
@@ -336,6 +351,8 @@ class Cable : public QObject
 		QString m_installation;
 		QString m_location;
 		QString m_length;
+		QString m_manufacturer;
+		QString m_manufacturer_reference;
 		QString m_type;
 		int m_core_count = 0;
 		QStringList m_core_colors;

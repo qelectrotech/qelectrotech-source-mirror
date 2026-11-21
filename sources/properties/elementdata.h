@@ -46,7 +46,8 @@ class ElementData : public PropertiesInterface
 			Slave          = 16,
 			Terminal       = 32,
 			Thumbnail      = 64,
-			ConductorDefinition = 128};
+			ConductorDefinition = 128,
+			Junction       = 256};
 		Q_ENUM(Type)
 		Q_DECLARE_FLAGS(Types, Type)
 

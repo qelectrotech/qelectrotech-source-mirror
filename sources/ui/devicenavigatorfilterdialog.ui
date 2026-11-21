@@ -229,6 +229,16 @@
         </widget>
        </item>
        <item>
+        <widget class="QCheckBox" name="m_cb_free_parts">
+         <property name="toolTip">
+          <string>Only the devices with a part of their device type which is not drawn yet</string>
+         </property>
+         <property name="text">
+          <string>Only devices with free parts</string>
+         </property>
+        </widget>
+       </item>
+       <item>
         <spacer name="typesSpacer">
          <property name="orientation">
           <enum>Qt::Vertical</enum>

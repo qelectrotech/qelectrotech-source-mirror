@@ -58,6 +58,7 @@ class QetLabelsFile
 			static QList<QStringList> scanFolders(const QString &collection_dir);
 			static QString prefixForPath(const QString &filepath, const QStringList &path, int dirLevel);
 			static QString prefixInDocument(const QDomDocument &document, const QStringList &path, int dirLevel);
+			static QString prefixForFolder(const QString &filepath, const QStringList &relative_path);
 			
 			bool load(const QString &collection_dir);
 			QString prefix(const QStringList &relative_path) const;

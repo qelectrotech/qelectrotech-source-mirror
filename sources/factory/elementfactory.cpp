@@ -17,6 +17,7 @@
 */
 #include "elementfactory.h"
 
+#include <qetgraphicsitem/junctionelement.h>
 #include <qetgraphicsitem/masterelement.h>
 #include <qetgraphicsitem/reportelement.h>
 #include <qetgraphicsitem/simpleelement.h>
@@ -58,6 +59,8 @@ Element * ElementFactory::createElement(const ElementsLocation &location, QGraph
 			return (new SlaveElement    (location, qgi, state));
 		if (link_type == QLatin1String("terminal"))
 			return (new TerminalElement (location, qgi, state));
+		if (link_type == QLatin1String("junction"))
+			return (new JunctionElement (location, qgi, state));
 	}
 
 		//default if nothing match for link_type

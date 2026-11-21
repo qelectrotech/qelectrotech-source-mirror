@@ -28,6 +28,9 @@ class TerminalStripData : public PropertiesInterface
 		friend class TerminalStripEditor;
 
 	public:
+			///Kind of strip : a terminal strip, or one side of a connector (plug = male, socket = female)
+		enum class Kind { Terminals, Plug, Socket };
+
 		TerminalStripData();
 		TerminalStripData(const TerminalStripData &other);
 
@@ -41,6 +44,16 @@ class TerminalStripData : public PropertiesInterface
 
 		TerminalStripData &operator= (const TerminalStripData &other);
 
+		Kind kind() const {return m_kind;}
+		void setKind(Kind kind) {m_kind = kind;}
+
+			///Device type of a connector : the name of a device type of the project, empty = none
+		QString deviceType() const {return m_device_type;}
+		void setDeviceType(const QString &name) {m_device_type = name;}
+
+		static QString kindToXml(Kind kind);
+		static Kind kindFromXml(const QString &value);
+
 	private :
 		static QDomElement infoToXml(QDomDocument &xml_doc, const QString &name, const QString &value);
 
@@ -50,6 +63,8 @@ class TerminalStripData : public PropertiesInterface
 				m_comment,
 				m_description,
 				m_manufacturer;	//Manufacturer of the terminals proposed in the editor, empty = all
+		Kind m_kind = Kind::Terminals;
+		QString m_device_type;	//Device type of a connector, its pins are the terminal parts of the type
 		QUuid m_uuid = QUuid::createUuid();
 
 };

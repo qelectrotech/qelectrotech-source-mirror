@@ -19,7 +19,9 @@
 #define TRUETERMINALSTRIP_H
 
 #include "terminalstripdrawer.h"
+#include <TerminalStrip/connectorpinplan.h>
 
+class Element;
 class TerminalStrip;
 class PhysicalTerminal;
 class RealTerminal;
@@ -39,6 +41,29 @@ namespace TerminalStripDrawer
 
 		private:
 			QPointer<TerminalStrip> m_strip;
+	};
+
+		/// The pin plan of a connector drawn as a device (a head with its
+		/// pins): the rows of ConnectorPinPlan::ofDevice
+	class DevicePinPlanStrip : public AbstractTerminalStripInterface
+	{
+		public:
+			DevicePinPlanStrip(Element *head);
+
+			QString installation() const override;
+			QString location() const override;
+			QString name() const override;
+			QVector<QSharedPointer<AbstractPhysicalTerminalInterface>> physicalTerminal() const override;
+				///The plan is worked out again at the next call: what is drawn changed
+			void refresh();
+
+		private:
+			const ConnectorPinPlan::Plan &plan() const;
+
+			QPointer<Element> m_head;
+			mutable ConnectorPinPlan::Plan m_plan;
+			mutable bool m_plan_valid { false };
+			mutable bool m_working { false };
 	};
 
 	class TruePhysicalTerminal : public AbstractPhysicalTerminalInterface
@@ -78,6 +103,33 @@ namespace TerminalStripDrawer
 
 		private:
 			QSharedPointer<RealTerminal> m_real;
+	};
+
+		/// A row of a pin plan which is no terminal of the strip: a spare pin
+		/// of a connector's device type, or a pin read from a symbol
+	class PinPlanRowTerminal : public AbstractRealTerminalInterface
+	{
+		public:
+			PinPlanRowTerminal(const ConnectorPinPlan::Row &row);
+			QString label() const override;
+			bool isBridged() const override;
+			AbstractBridgeInterface* bridge() const override;
+			QString xref() const override;
+			QVector<Wire> wires() const override;
+			bool hasWire() const override;
+
+		private:
+			ConnectorPinPlan::Row m_row;
+	};
+
+	class PinPlanRowPhysicalTerminal : public AbstractPhysicalTerminalInterface
+	{
+		public:
+			PinPlanRowPhysicalTerminal(const ConnectorPinPlan::Row &row);
+			QVector<QSharedPointer<AbstractRealTerminalInterface>> realTerminals() const override;
+
+		private:
+			ConnectorPinPlan::Row m_row;
 	};
 
 	class TrueBridge : public AbstractBridgeInterface

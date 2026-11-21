@@ -115,6 +115,8 @@ class CablePropertiesWidget : public QWidget
 						  QSpinBox **dy);
 			///Open the window setting one text, then say so if it changed
 		void editFormat(const QString &key);
+			///One row of the form for a field which is not drawn
+		QLineEdit *addPlainField(QGridLayout *grid, int row, const QString &name);
 			///Let the button say which size that text is written with
 		void refreshFormatButton(const QString &key);
 			///The font this text is really written with right now
@@ -137,6 +139,9 @@ class CablePropertiesWidget : public QWidget
 		QLineEdit *m_installation = nullptr;
 		QLineEdit *m_location = nullptr;
 		QLineEdit *m_length = nullptr;
+			///What the cable is bought as: never drawn, so no tick
+		QLineEdit *m_manufacturer = nullptr;
+		QLineEdit *m_manufacturer_reference = nullptr;
 		QCheckBox *m_show_designation = nullptr;
 		QCheckBox *m_show_type = nullptr;
 		QCheckBox *m_show_installation = nullptr;

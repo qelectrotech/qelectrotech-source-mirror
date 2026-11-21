@@ -27,7 +27,10 @@
 #include <qetgraphicsitem/qetgraphicsitem.h>
 
 class Diagram;
+class Element;
+class QETProject;
 class TerminalStrip;
+namespace TerminalStripDrawer {class DevicePinPlanStrip;}
 
 class TerminalStripItem : public QetGraphicsItem
 {
@@ -41,6 +44,13 @@ class TerminalStripItem : public QetGraphicsItem
 
 		void setTerminalStrip(TerminalStrip *strip);
 		QPointer<TerminalStrip> terminalStrip() const;
+			///Draw the pin plan of a connector drawn as a device (a head
+			///symbol with its pins) instead of a terminal strip
+		void setDevice(Element *head);
+		QPointer<Element> device() const;
+			///The uuid of the device of the plan, even when it is not on a
+			///folio loaded yet; null for the plan of a terminal strip
+		QUuid deviceUuid() const;
 
 		enum {Type = UserType + 1011};
 		int type() const override {return Type;}
@@ -82,12 +92,17 @@ class TerminalStripItem : public QetGraphicsItem
 
 	private:
 		void setDefaultLayout();
+		void connectDevice(Element *head);
+		QETProject *project() const;
 		QString xrefToolTip(const TerminalStripDrawer::hoverTerminal &terminal) const;
 		void connectStrip(TerminalStrip *strip);
 		void stripChanged();
 
 	private:
 		QPointer<TerminalStrip> m_strip;
+		QPointer<Element> m_device;
+		QSharedPointer<TerminalStripDrawer::DevicePinPlanStrip> m_device_plan;
+		QUuid m_pending_device_uuid;
 		QList<QMetaObject::Connection> m_strip_connections;
         TerminalStripDrawer::TerminalStripDrawer m_drawer;
         QUuid m_pending_strip_uuid;

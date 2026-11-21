@@ -326,6 +326,37 @@ bool MaterialList::isArticleBound(const QString &column)
 }
 
 /**
+	@brief MaterialList::elementInfoFor
+	What applying @p record to @p block writes into an element's
+	informations: for each column of the block the record holds, the
+	element information it feeds. An empty cell is left out unless its
+	column is article-bound (see isArticleBound()), and so is whatever
+	QElectroTech has no element information for.
+	@param record an entry of the material file
+	@param block 0 for the main article, 1 to 4 for an auxiliary article
+	@return the element information keys with their values
+*/
+QHash<QString, QString> MaterialList::elementInfoFor(const MaterialRecord &record, int block)
+{
+	QHash<QString, QString> infos;
+	for (const QString &column : columnsForBlock(block)) {
+		if (!record.values.contains(column)) {
+			continue;
+		}
+		const QString value = record.value(column);
+		if (value.isEmpty() && !isArticleBound(column)) {
+			continue;
+		}
+		const QString key = elementInfoKey(column, block);
+		if (key.isEmpty() || !QETInformation::elementInfoKeys().contains(key)) {
+			continue;
+		}
+		infos.insert(key, value);
+	}
+	return infos;
+}
+
+/**
 	@brief MaterialList::translatedColumn
 	@param column a column of the material file
 	@return that column named the way it is shown to the user, in the
