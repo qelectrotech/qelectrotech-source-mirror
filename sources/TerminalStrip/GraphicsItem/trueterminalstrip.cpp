@@ -21,6 +21,8 @@
 #include <TerminalStrip/terminalstrip.h>
 #include <TerminalStrip/terminalstripbridge.h>
 #include <autoNum/assignvariables.h>
+#include <devicetype/devicetypecheck.h>
+#include <qetgraphicsitem/element.h>
 
 #include "terminalstripdrawer.h"
 
@@ -56,7 +58,10 @@ namespace TerminalStripDrawer
 
 	QString TrueTerminalStrip::name() const
 	{
-		if (m_strip) {
+			//A connector says what it is in the header of its plan
+		if (m_strip && m_strip->isConnector()) {
+			return ConnectorPinPlan::ofStrip(m_strip).header();
+		} else if (m_strip) {
 			return m_strip->name();
 		} else {
 			return QString();
@@ -66,12 +71,67 @@ namespace TerminalStripDrawer
 	QVector<QSharedPointer<AbstractPhysicalTerminalInterface>> TrueTerminalStrip::physicalTerminal() const
 	{
 		QVector<QSharedPointer<AbstractPhysicalTerminalInterface>> vector_;
-		if (m_strip) {
+			//A connector is drawn with the pins of its device type
+			//which are drawn nowhere, as spare rows after its terminals
+		if (m_strip && m_strip->isConnector()) {
+			for (const auto &row : ConnectorPinPlan::ofStrip(m_strip).rows) {
+				if (row.physical) {
+					vector_.append(QSharedPointer<AbstractPhysicalTerminalInterface>{ new TruePhysicalTerminal(row.physical) });
+				} else {
+					vector_.append(QSharedPointer<AbstractPhysicalTerminalInterface>{ new PinPlanRowPhysicalTerminal(row) });
+				}
+			}
+		} else if (m_strip) {
 			for (const auto &phy : m_strip->physicalTerminal()) {
 				vector_.append(QSharedPointer<AbstractPhysicalTerminalInterface>{ new TruePhysicalTerminal(phy) });
 			}
 		}
 
+		return vector_;
+	}
+
+	DevicePinPlanStrip::DevicePinPlanStrip(Element *head) :
+		m_head { head }
+	{}
+
+	QString DevicePinPlanStrip::installation() const {
+		return QString();
+	}
+
+	QString DevicePinPlanStrip::location() const {
+		return QString();
+	}
+
+	QString DevicePinPlanStrip::name() const {
+		return plan().header();
+	}
+
+		//Worked out once for the many calls of a paint: it reads the whole project
+	const ConnectorPinPlan::Plan &DevicePinPlanStrip::plan() const
+	{
+			//Working the plan out asks the scene for the items at a place, which
+			//asks this item for its size, which asks for the plan : the answer
+			//of the moment (the last plan) is good enough for that one
+		if (!m_plan_valid && !m_working) {
+			m_working = true;
+			m_plan = m_head ? ConnectorPinPlan::ofDevice(DeviceTypeCheck::checkDevice(m_head))
+							: ConnectorPinPlan::Plan();
+			m_working = false;
+			m_plan_valid = true;
+		}
+		return m_plan;
+	}
+
+	void DevicePinPlanStrip::refresh() {
+		m_plan_valid = false;
+	}
+
+	QVector<QSharedPointer<AbstractPhysicalTerminalInterface>> DevicePinPlanStrip::physicalTerminal() const
+	{
+		QVector<QSharedPointer<AbstractPhysicalTerminalInterface>> vector_;
+		for (const auto &row : plan().rows) {
+			vector_.append(QSharedPointer<AbstractPhysicalTerminalInterface>{ new PinPlanRowPhysicalTerminal(row) });
+		}
 		return vector_;
 	}
 
@@ -218,6 +278,49 @@ namespace TerminalStripDrawer
 			list << new TrueBridge(bridge);
 		}
 		return list;
+	}
+
+	PinPlanRowTerminal::PinPlanRowTerminal(const ConnectorPinPlan::Row &row) :
+		m_row { row }
+	{}
+
+	QString PinPlanRowTerminal::label() const {
+		return m_row.label;
+	}
+
+	bool PinPlanRowTerminal::isBridged() const {
+		return false;
+	}
+
+	AbstractBridgeInterface* PinPlanRowTerminal::bridge() const {
+		return nullptr;
+	}
+
+	QString PinPlanRowTerminal::xref() const {
+		return m_row.xref;
+	}
+
+	QVector<PinPlanRowTerminal::Wire> PinPlanRowTerminal::wires() const
+	{
+		QVector<Wire> result;
+		for (const auto &wire : m_row.wires) {
+			result.append({wire.first, wire.second});
+		}
+		return result;
+	}
+
+	bool PinPlanRowTerminal::hasWire() const {
+		return !m_row.wires.isEmpty();
+	}
+
+	PinPlanRowPhysicalTerminal::PinPlanRowPhysicalTerminal(const ConnectorPinPlan::Row &row) :
+		m_row { row }
+	{}
+
+	QVector<QSharedPointer<AbstractRealTerminalInterface>> PinPlanRowPhysicalTerminal::realTerminals() const
+	{
+		return QVector<QSharedPointer<AbstractRealTerminalInterface>> {
+			QSharedPointer<AbstractRealTerminalInterface> { new PinPlanRowTerminal{ m_row } }};
 	}
 
     TrueBridge::TrueBridge(QSharedPointer<TerminalStripBridge> bridge) :

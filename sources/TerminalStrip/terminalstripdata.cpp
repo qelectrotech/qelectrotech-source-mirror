@@ -55,6 +55,13 @@ QDomElement TerminalStripData::toXml(QDomDocument &xml_document) const
 	if (!m_manufacturer.isEmpty()) {
 		info_elmt.appendChild(infoToXml(xml_document, QStringLiteral("manufacturer"), m_manufacturer));
 	}
+		//Only written for a connector, so a project without connector is saved as before
+	if (m_kind != Kind::Terminals) {
+		info_elmt.appendChild(infoToXml(xml_document, QStringLiteral("kind"), kindToXml(m_kind)));
+	}
+	if (!m_device_type.isEmpty()) {
+		info_elmt.appendChild(infoToXml(xml_document, QStringLiteral("device_type"), m_device_type));
+	}
 
 	return root_elmt;
 }
@@ -83,6 +90,8 @@ bool TerminalStripData::fromXml(const QDomElement &xml_element)
 		else if (name == QLatin1String("comment"))     {m_comment = value;}
 		else if (name == QLatin1String("description")) {m_description = value;}
 		else if (name == QLatin1String("manufacturer")) {m_manufacturer = value;}
+		else if (name == QLatin1String("kind"))         {m_kind = kindFromXml(value);}
+		else if (name == QLatin1String("device_type"))  {m_device_type = value;}
 	}
 
 	return true;
@@ -96,9 +105,37 @@ TerminalStripData &TerminalStripData::operator=(const TerminalStripData &other)
 	m_comment = other.m_comment;
 	m_description = other.m_description;
 	m_manufacturer = other.m_manufacturer;
+	m_kind = other.m_kind;
+	m_device_type = other.m_device_type;
 	m_uuid = other.m_uuid;
 
 	return *this;
+}
+
+/**
+ * @brief TerminalStripData::kindToXml
+ * @param kind
+ * @return The string stored in the xml for \p kind
+ */
+QString TerminalStripData::kindToXml(Kind kind)
+{
+	switch (kind) {
+		case Kind::Plug:   return QStringLiteral("plug");
+		case Kind::Socket: return QStringLiteral("socket");
+		default:           return QStringLiteral("terminals");
+	}
+}
+
+/**
+ * @brief TerminalStripData::kindFromXml
+ * @param value
+ * @return The kind matching \p value, Kind::Terminals if unknown
+ */
+TerminalStripData::Kind TerminalStripData::kindFromXml(const QString &value)
+{
+	if (value == QLatin1String("plug"))   return Kind::Plug;
+	if (value == QLatin1String("socket")) return Kind::Socket;
+	return Kind::Terminals;
 }
 
 QDomElement TerminalStripData::infoToXml(QDomDocument &xml_doc, const QString &name, const QString &value)

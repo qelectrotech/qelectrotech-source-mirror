@@ -28,10 +28,13 @@
 #include "qetgraphicsitem/structureboxitem.h"
 #include "qetproject.h"
 #include "qetresult.h"
+#include "textgrid.h"
 #include "titleblockproperties.h"
 #include "ui/structureboxpropertieswidget.h"
 
 #include <QDomDocument>
+#include <QGraphicsSceneMouseEvent>
+#include <QDoubleSpinBox>
 #include <QLineEdit>
 #include <QSqlQuery>
 #include <QSettings>
@@ -891,6 +894,226 @@ private slots:
 		});
 		QVERIFY(!DiagramEventAddStructureBox::askPlace(empty, nullptr));
 		QVERIFY(empty->structureId().isEmpty());       //cancelled: the box stays empty
+	}
+
+		//A drag of the name, as the scene delivers it
+	static void dragLabel(StructureBoxLabelItem *label, const QPointF &from, const QPointF &to)
+	{
+		QGraphicsSceneMouseEvent press(QEvent::GraphicsSceneMousePress);
+		press.setButton(Qt::LeftButton);
+		press.setButtons(Qt::LeftButton);
+		press.setScenePos(from);
+		press.setButtonDownScenePos(Qt::LeftButton, from);
+		label->scene()->sendEvent(label, &press);
+		QGraphicsSceneMouseEvent move(QEvent::GraphicsSceneMouseMove);
+		move.setButtons(Qt::LeftButton);
+		move.setScenePos(to);
+		move.setButtonDownScenePos(Qt::LeftButton, from);
+		label->scene()->sendEvent(label, &move);
+		QGraphicsSceneMouseEvent release(QEvent::GraphicsSceneMouseRelease);
+		release.setButton(Qt::LeftButton);
+		release.setScenePos(to);
+		release.setButtonDownScenePos(Qt::LeftButton, from);
+		label->scene()->sendEvent(label, &release);
+	}
+
+	void aDragMovesTheNameInOneUndoStepAndUndoPutsItBack()
+	{
+		QETProject project;
+		Diagram *diagram = project.addNewDiagram();
+		StructureBoxItem *b = box(diagram, QRectF(100, 100, 200, 200), QStringLiteral("SILO"), QStringLiteral("J3"));
+		const QPointF corner = b->labelOffset();   //above the top left corner
+		StructureBoxLabelItem *label = b->label();
+		const QPointF grab = label->mapToScene(QPointF(3, 3));
+		const int steps = diagram->undoStack().count();
+
+			//A click that wobbles a pixel is not a move
+		dragLabel(label, grab, grab + QPointF(1, 0));
+		QCOMPARE(diagram->undoStack().count(), steps);
+		QCOMPARE(b->labelOffset(), corner);
+
+		dragLabel(label, grab, grab + QPointF(60, -40));
+		QCOMPARE(diagram->undoStack().count(), steps + 1);
+		QVERIFY(b->labelOffset() != corner);
+		QDomDocument document;
+		QVERIFY(b->toXml(document).hasAttribute(QStringLiteral("label_x")));
+
+			//Back at the corner: it follows the corner again, saved as never moved
+		diagram->undoStack().undo();
+		QCOMPARE(b->labelOffset(), corner);
+		QVERIFY(!b->toXml(document).hasAttribute(QStringLiteral("label_x")));
+		b->setRect(QRectF(40, 40, 300, 300));
+		QCOMPARE(b->labelOffset(), corner);
+	}
+
+		//Two drags are two undo steps, and one dropped next to the corner
+		//puts the name back on it
+	void twoDragsAreTwoUndoStepsAndTheCornerTakesTheNameBack()
+	{
+		QETProject project;
+		Diagram *diagram = project.addNewDiagram();
+		StructureBoxItem *b = box(diagram, QRectF(100, 100, 200, 200), QStringLiteral("SILO"), QStringLiteral("J3"));
+		const QPointF corner = b->labelOffset();   //above the top left corner
+		StructureBoxLabelItem *label = b->label();
+		const QPointF grab = label->mapToScene(QPointF(3, 3));
+		const int steps = diagram->undoStack().count();
+		dragLabel(label, grab, grab + QPointF(60, -40));
+		const QPointF first = b->labelOffset();
+		dragLabel(label, grab + QPointF(60, -40), grab + QPointF(100, 40));
+		QCOMPARE(diagram->undoStack().count(), steps + 2);
+		diagram->undoStack().undo();
+		QCOMPARE(b->labelOffset(), first);
+
+		dragLabel(label, grab + (first - corner), grab + QPointF(1, 2));
+		QCOMPARE(b->labelOffset(), corner);
+		QDomDocument document;
+		QVERIFY(!b->toXml(document).hasAttribute(QStringLiteral("label_x")));
+	}
+
+		//XML read into a box on a folio (an undo of a shape change) puts a
+		//name saved at the corner back at the corner
+	void readingANameSavedAtTheCornerPutsItThere()
+	{
+		QETProject project;
+		Diagram *diagram = project.addNewDiagram();
+		StructureBoxItem *b = box(diagram, QRectF(100, 100, 200, 200), QStringLiteral("SILO"), QStringLiteral("J3"));
+		const QPointF corner = b->labelOffset();   //above the top left corner
+		QDomDocument document;
+		const QDomElement at_corner = b->toXml(document);
+		b->setLabelOffset(QPointF(-5, -14));
+		QVERIFY(b->fromXml(at_corner));
+		QCOMPARE(b->labelOffset(), corner);
+
+		QDomElement broken = b->toXml(document);
+		broken.setAttribute(QStringLiteral("label_size"), QStringLiteral("nan"));
+		QVERIFY(b->fromXml(broken));
+		QCOMPARE(b->labelSize(), 8.0);
+	}
+
+		//Ctrl on the name of a selected box takes the name alone out of
+		//the selection, as Ctrl does on anything else
+	void ctrlOnTheNameOfASelectedBoxTogglesTheNameOnly()
+	{
+		QETProject project;
+		Diagram *diagram = project.addNewDiagram();
+		StructureBoxItem *b = box(diagram, QRectF(100, 100, 200, 200), QStringLiteral("SILO"), QStringLiteral("J3"));
+		b->setSelected(true);
+		b->label()->setSelected(true);
+		const QPointF at = b->label()->mapToScene(QPointF(3, 3));
+		QGraphicsSceneMouseEvent press(QEvent::GraphicsSceneMousePress);
+		press.setButton(Qt::LeftButton);
+		press.setButtons(Qt::LeftButton);
+		press.setModifiers(Qt::ControlModifier);
+		press.setScenePos(at);
+		press.setButtonDownScenePos(Qt::LeftButton, at);
+		diagram->sendEvent(b->label(), &press);
+		QGraphicsSceneMouseEvent release(QEvent::GraphicsSceneMouseRelease);
+		release.setButton(Qt::LeftButton);
+		release.setModifiers(Qt::ControlModifier);
+		release.setScenePos(at);
+		release.setButtonDownScenePos(Qt::LeftButton, at);
+		diagram->sendEvent(b->label(), &release);
+		QVERIFY(b->isSelected());
+		QVERIFY(!b->label()->isSelected());
+	}
+
+		//With "the middle of a text on the grid" set, the name of a box
+		//snaps by its middle, as every other text does
+	void theNameSnapsByItsMiddleWhenTheTextGridSaysSo()
+	{
+		QETProject project;
+		Diagram *diagram = project.addNewDiagram();
+		StructureBoxItem *b = box(diagram, QRectF(100, 100, 200, 200), QStringLiteral("SILO"), QStringLiteral("J3"));
+		const auto onGrid = [](const QPointF &p) {
+			const auto on = [](qreal v) { return qAbs(v / 10 - qRound(v / 10)) < 1e-6; };
+			return on(p.x()) && on(p.y());
+		};
+		QSettings().setValue(TextGrid::settings_key, 1);
+		QSettings().setValue(TextGrid::middle_key, true);
+		const QPointF grab = b->label()->mapToScene(QPointF(3, 3));
+		dragLabel(b->label(), grab, grab + QPointF(63, -47));
+		const bool middle_on_grid = onGrid(b->label()->sceneBoundingRect().center());
+		QSettings().remove(TextGrid::middle_key);
+		QSettings().remove(TextGrid::settings_key);
+		QVERIFY(middle_on_grid);
+	}
+
+		//The fixture with a moved and sized name opens as it was saved
+	void theFixtureWithAMovedNameOpensAsSaved()
+	{
+		QETProject project(QFINDTESTDATA("fixtures/structure_box_label.qet"));
+		StructureBoxItem *b = nullptr;
+		for (QGraphicsItem *item : project.diagrams().first()->items())
+			if (item->type() == StructureBoxItem::Type)
+				b = static_cast<StructureBoxItem *>(item);
+		QVERIFY(b);
+		QCOMPARE(b->labelOffset(), QPointF(8, -24));
+		QCOMPARE(b->labelSize(), 14.0);
+	}
+
+	void aLockedBoxKeepsItsName()
+	{
+		QETProject project;
+		Diagram *diagram = project.addNewDiagram();
+		StructureBoxItem *b = box(diagram, QRectF(100, 100, 200, 200), QStringLiteral("SILO"), QStringLiteral("J3"));
+		const QPointF corner = b->labelOffset();   //above the top left corner
+		b->setMovable(false);
+		const QPointF grab = b->label()->mapToScene(QPointF(3, 3));
+		const int steps = diagram->undoStack().count();
+		dragLabel(b->label(), grab, grab + QPointF(60, -40));
+		QCOMPARE(b->labelOffset(), corner);
+		QCOMPARE(diagram->undoStack().count(), steps);
+	}
+
+	void theNameTakesTheLineColourAndIsGoneWithoutADesignation()
+	{
+		QETProject project;
+		Diagram *diagram = project.addNewDiagram();
+		StructureBoxItem *b = box(diagram, QRectF(100, 100, 200, 200), {}, {});
+		QVERIFY(!b->label()->isVisible());     //nothing to click where nothing is written
+		b->setPlant(QStringLiteral("SILO"));
+		QVERIFY(b->label()->isVisible());
+		QPen pen = b->pen();
+		pen.setColor(Qt::red);
+		b->setPen(pen);
+		QCOMPARE(b->label()->defaultTextColor(), QColor(Qt::red));
+	}
+
+		//A size the spin box cannot show is not changed by editing the plant
+	void editingThePlantKeepsANameSizeTheBoxCannotShow()
+	{
+		QETProject project;
+		Diagram *diagram = project.addNewDiagram();
+		StructureBoxItem *b = box(diagram, QRectF(100, 100, 200, 200), QStringLiteral("SILO"), QStringLiteral("J3"));
+		b->setLabelSize(0.5);
+		StructureBoxPropertiesWidget editor(b);
+		for (QLineEdit *edit : editor.findChildren<QLineEdit *>()) {
+			if (edit->text() == QLatin1String("SILO")) edit->setText(QStringLiteral("MILL"));
+		}
+		editor.apply();
+		QCOMPARE(b->plant(), QStringLiteral("MILL"));
+		QCOMPARE(b->labelSize(), 0.5);
+	}
+
+		//After an undo the editor shows the size the box has, so typing
+		//the size it had before is a change again
+	void theSizeInTheEditorFollowsAnUndo()
+	{
+		QETProject project;
+		Diagram *diagram = project.addNewDiagram();
+		StructureBoxItem *b = box(diagram, QRectF(100, 100, 200, 200), QStringLiteral("SILO"), QStringLiteral("J3"));
+		StructureBoxPropertiesWidget editor(b);
+		auto *size = editor.findChild<QDoubleSpinBox *>(QStringLiteral("labelSize"));
+		QVERIFY(size);
+		size->setValue(12);
+		editor.apply();
+		QCOMPARE(b->labelSize(), 12.0);
+		diagram->undoStack().undo();
+		QCOMPARE(b->labelSize(), 8.0);
+		QCOMPARE(size->value(), 8.0);
+		size->setValue(12);
+		editor.apply();
+		QCOMPARE(b->labelSize(), 12.0);
 	}
 
 	void locationsAreTheStructure()

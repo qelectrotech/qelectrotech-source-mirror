@@ -5059,9 +5059,8 @@ void projectDataBase::createElementNomenclatureView()
 					 "ei.depth AS depth,"
 					 "ei.unit_price AS unit_price,"
 					 "ei.labour_time AS labour_time,"
-						//The device type field (#1884): offered too
-					 "ei.device_type AS device_type,"
-						//The device type is offered by the export too
+						//The device type: the field of #1884, which the
+						//parts list export offers too
 					 "ei.device_type AS device_type,"
 					
 					 "d.pos AS diagram_position,"
@@ -5293,8 +5292,9 @@ QStringList projectDataBase::publicViews()
 	themselves (cable_value, what Cable::toXml() writes): designation, type,
 	the number of cores its type has, the cores drawn and the ones of them
 	wired to a conductor, its length, the folios it is drawn on and the
-	first of them. Its plant and location are its own, else the ones of
-	that first folio, and structure_id composes them with the designation
+	first of them, then its manufacturer and part number (article, as in
+	qet_devices) after cable_uuid. Its plant and location are its own,
+	else the ones of that first folio, and structure_id composes them with the designation
 	(=plant+location-designation) like a device's.
 
 	qet_terminals is the terminals of each terminal strip, one row per
@@ -5305,7 +5305,10 @@ QStringList projectDataBase::publicViews()
 	symbol drawing it -- its label, its own structure_id and folio -- or
 	spare = 1 for a terminal drawn nowhere. A terminal symbol in no strip
 	is not in it: qet_devices lists every symbol, those of kind 'terminal'
-	included.
+	included. strip_kind is what the strip is: 'terminals' for a terminal
+	strip, 'plug' or 'socket' for the male or female side of a connector
+	(its terminals are then its pins). strip_device_type is the device type
+	of a connector (its name, empty for none), and the last column.
 	qet_locations is the project's structure as a query, never kept by hand:
 	each (plant, location) a symbol or a folio's title block has, with the
 	symbols in it (folio reports left out), the folios showing it and the
@@ -5451,7 +5454,9 @@ QStringList projectDataBase::publicViewStatements()
 			"strip AS (SELECT s.strip_uuid, "
 				"MAX(CASE WHEN i.name = 'installation' THEN i.value END) AS plant, "
 				"MAX(CASE WHEN i.name = 'location' THEN i.value END) AS location, "
-				"MAX(CASE WHEN i.name = 'name' THEN i.value END) AS name "
+				"MAX(CASE WHEN i.name = 'name' THEN i.value END) AS name, "
+				"MAX(CASE WHEN i.name = 'kind' THEN i.value END) AS kind, "
+				"MAX(CASE WHEN i.name = 'device_type' THEN i.value END) AS device_type "
 				"FROM (SELECT DISTINCT strip_uuid FROM terminal_strip_value) s "
 				"LEFT JOIN info i ON i.strip_uuid = s.strip_uuid GROUP BY s.strip_uuid), "
 				//A strip of one physical terminal writes it without [0]
@@ -5467,11 +5472,13 @@ QStringList projectDataBase::publicViewStatements()
 				"GROUP BY strip_uuid, section, ord), "
 				//What is on each terminal: its wires' numbers and what they reach
 			"ends AS (SELECT from_device_uuid AS element, wire_number AS number, "
-				"to_structure_id || CASE WHEN COALESCE(to_terminal, '') <> '' "
-				"THEN ':' || to_terminal ELSE '' END AS other FROM qet_wires "
+				"to_structure_id || CASE WHEN COALESCE(to_terminal, '') = '' "
+				"OR substr(to_structure_id, -length(to_terminal) - 1) = ':' || to_terminal "
+				"THEN '' ELSE ':' || to_terminal END AS other FROM qet_wires "
 				"UNION ALL SELECT to_device_uuid, wire_number, "
-				"from_structure_id || CASE WHEN COALESCE(from_terminal, '') <> '' "
-				"THEN ':' || from_terminal ELSE '' END FROM qet_wires), "
+				"from_structure_id || CASE WHEN COALESCE(from_terminal, '') = '' "
+				"OR substr(from_structure_id, -length(from_terminal) - 1) = ':' || from_terminal "
+				"THEN '' ELSE ':' || from_terminal END FROM qet_wires), "
 			"numbers AS (SELECT element, group_concat(number, ', ') AS wires FROM "
 				"(SELECT DISTINCT element, number FROM ends WHERE COALESCE(number, '') <> '') "
 				"GROUP BY element), "
@@ -5483,7 +5490,9 @@ QStringList projectDataBase::publicViewStatements()
 			+ QStringLiteral(" AS strip_id, COALESCE(s.plant, '') AS plant, "
 			"COALESCE(s.location, '') AS location, s.name AS strip, t.position, t.level, "
 			"d.label, d.structure_id AS terminal_id, t.spare, d.folio_number, d.folio, "
-			"t.element_uuid, t.strip_uuid, n.wires, r.connected_to "
+			"t.element_uuid, t.strip_uuid, n.wires, r.connected_to, "
+			"COALESCE(s.kind, 'terminals') AS strip_kind, "
+			"COALESCE(s.device_type, '') AS strip_device_type "
 			"FROM terminal t JOIN strip s ON s.strip_uuid = t.strip_uuid "
 			"LEFT JOIN qet_devices d ON d.device_uuid = t.element_uuid "
 			"LEFT JOIN numbers n ON n.element = t.element_uuid "
@@ -5498,7 +5507,9 @@ QStringList projectDataBase::publicViewStatements()
 				"MAX(CASE WHEN name = 'location' THEN value END) AS location, "
 				"MAX(CASE WHEN name = 'type' THEN value END) AS type, "
 				"MAX(CASE WHEN name = 'cores' THEN CAST(value AS INTEGER) END) AS cores, "
-				"MAX(CASE WHEN name = 'length' THEN value END) AS length "
+				"MAX(CASE WHEN name = 'length' THEN value END) AS length, "
+				"MAX(CASE WHEN name = 'manufacturer' THEN value END) AS manufacturer, "
+				"MAX(CASE WHEN name = 'manufacturer_reference' THEN value END) AS article "
 				"FROM cable_value WHERE section = 'cable' GROUP BY cable_uuid), "
 			"core AS (SELECT cable_uuid, COUNT(DISTINCT ord) AS drawn_cores, "
 				"COUNT(DISTINCT CASE WHEN name = 'conductor' AND value <> '' THEN ord END) AS wired_cores "
@@ -5522,7 +5533,7 @@ QStringList projectDataBase::publicViewStatements()
 			+ QStringLiteral(" AS structure_id, eff_plant AS plant, eff_location AS location, "
 			"designation, type, COALESCE(cores, 0) AS cores, COALESCE(k.drawn_cores, 0) AS drawn_cores, "
 			"COALESCE(k.wired_cores, 0) AS wired_cores, length, folios, folio_number, folio, "
-			"p.cable_uuid FROM placed p LEFT JOIN core k ON k.cable_uuid = p.cable_uuid "
+			"p.cable_uuid, manufacturer, article FROM placed p LEFT JOIN core k ON k.cable_uuid = p.cable_uuid "
 			"ORDER BY structure_id, p.cable_uuid"),
 			//After qet_devices, which it reads: one row per entry of a PLC's
 			//I/O table, with the slave linked to it where one is drawn
@@ -9215,7 +9226,8 @@ QStringList projectDataBase::foreignChildren(const QDomElement &parent, bool fol
 		QStringLiteral("properties"), QStringLiteral("newdiagrams"), QStringLiteral("diagram"),
 		QStringLiteral("collection"), QStringLiteral("titleblocktemplates"), QStringLiteral("usage"),
 		QStringLiteral("wire_crossings"), QStringLiteral("auto_conductor"), QStringLiteral("symbol_texts"),
-		QStringLiteral("plant_location"), QStringLiteral("languages"),
+		QStringLiteral("plant_location"), QStringLiteral("designation_display"),
+		QStringLiteral("languages"),
 		QStringLiteral("terminal_labelling"), QStringLiteral("wiring_rules"),
 		QStringLiteral("chained_reports"), QStringLiteral("style"),
 		QStringLiteral("terminal_strip_layout"), QStringLiteral("terminal_strips"),

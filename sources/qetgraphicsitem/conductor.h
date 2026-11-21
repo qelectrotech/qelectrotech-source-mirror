@@ -59,6 +59,11 @@ class Conductor : public QGraphicsObject
 
 	signals:
 		void propertiesChange();
+			/// The function of this wire changed: a project chaining its
+			/// folio reports by that function looks its chains over again.
+			/// The wire is given with it, so only the reports it ends on
+			/// are looked at (QETProject::reportKeySourceChanged())
+		void functionChanged(Conductor *conductor);
 	
 	public:
 		Conductor(Terminal *, Terminal *);
@@ -170,7 +175,8 @@ class Conductor : public QGraphicsObject
 		QSet<Conductor *> relatedPotentialConductors(
 				const bool all_diagram = true,
 				QList <Terminal *> *t_list=nullptr,
-				const bool ignore_function_separation = false);
+				const bool ignore_function_separation = false,
+				const bool stop_at_report_links = false);
 		QSet<Conductor *> functionSeparatedConductors(
 				const bool all_diagram = true);
 		void applySeparatedNodeProperties(ConductorProperties &properties);

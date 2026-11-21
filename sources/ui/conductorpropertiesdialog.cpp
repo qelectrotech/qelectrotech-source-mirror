@@ -19,6 +19,7 @@
 #include "conductorpropertiesdialog.h"
 
 #include <QPropertyUndoCommand/qpropertyundocommand.h>
+#include <undocommand/dissolvereportlinkscommand.h>
 #include <bridge/bridgemanager.h>
 #include <diagram.h>
 #include <qetgraphicsitem/conductor.h>
@@ -78,14 +79,30 @@ void ConductorPropertiesDialog::PropertiesDialog(Conductor *conductor,
 	old_value.setValue(conductor->properties());
 	new_value.setValue(cpd.properties());
 
-	QPropertyUndoCommand *undo = new QPropertyUndoCommand(conductor, "properties", old_value, new_value);
-	undo->setText(tr("Edit conductor properties", "undo caption"));
+		//A name written over a potential stays on the folio it is written
+		//on in a project chaining its reports by the wire function: the
+		//folio report links of the potential go first, and the chaining
+		//makes them again with the new name
+	const bool renames = cpd.properties().m_function
+			!= conductor->properties().m_function;
+	QETProject *project = conductor->diagram() ? conductor->diagram()->project() : nullptr;
+	const bool stop_at_report_links = renames && project
+			&& project->chainsByWireFunction();
+	const QSet<Conductor *> potential = conductor->relatedPotentialConductors(
+				true, nullptr, false, stop_at_report_links);
 
-	if (!conductor->relatedPotentialConductors().isEmpty() && cpd.applyAll())
+	QUndoCommand *undo = new QUndoCommand();
+	undo->setText(tr("Edit conductor properties", "undo caption"));
+	if (stop_at_report_links) {
+		new DissolveReportLinksCommand({conductor}, undo);
+	}
+	new QPropertyUndoCommand(conductor, "properties", old_value, new_value, undo);
+
+	if (!potential.isEmpty() && cpd.applyAll())
 	{
 		undo->setText(tr("Edit the properties of several conductors", "undo caption"));
 
-		foreach (Conductor *potential_conductor, conductor->relatedPotentialConductors())
+		foreach (Conductor *potential_conductor, potential)
 		{
 				//A core of a cable keeps its own properties: what the
 				//cable says about it is not overwritten by an edit made

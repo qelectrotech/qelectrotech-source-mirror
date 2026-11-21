@@ -253,7 +253,7 @@ void ElementsLocation::setPath(const QString &path)
 	}
 	else if (tmp_path.startsWith("project"))
 	{
-		QRegularExpression re ("^project(?<project_id>[0-9])\\+(?<collection_path>embed://*.*)$");
+		QRegularExpression re ("^project(?<project_id>[0-9]+)\\+(?<collection_path>embed://*.*)$");
 		if (!re.isValid()) return;
 		QRegularExpressionMatch match = re.match(tmp_path);
 		if (!match.hasMatch()) return;

@@ -93,12 +93,6 @@ namespace MacroLabels
 			if (!location.isEmpty()) place += QLatin1Char('+') + location;
 			return place;
 		}
-
-		QString placeOf(Diagram *folio)
-		{
-			return placeOf(folio->border_and_titleblock.plant().trimmed(),
-						   folio->border_and_titleblock.locmach().trimmed());
-		}
 	}
 
 	/**
@@ -189,32 +183,58 @@ namespace MacroLabels
 	}
 
 	/**
+		@return the place of @p folio: =plant+location
+	*/
+	QString placeOf(Diagram *folio)
+	{
+		return placeOf(folio->border_and_titleblock.plant().trimmed(),
+					   folio->border_and_titleblock.locmach().trimmed());
+	}
+
+	/**
+		@return the designations (=plant+location-label) the devices of
+		@p folio's project hold. A label typed with its sign ("-K1") is
+		the same designation as "K1"; the ones typed so are also put in
+		@p typed_with_sign, without it, when given.
+	*/
+	QSet<QString> taken(Diagram *folio, QSet<QString> *typed_with_sign)
+	{
+		QSet<QString> taken;
+		if (!folio || !folio->project()) return taken;
+		QETProject *project = folio->project();
+		project->dataBase()->updateDB();
+		QSqlQuery query = project->dataBase()->newQuery(QStringLiteral("SELECT label, plant, location FROM qet_devices"));
+		while (query.next()) {
+			QString label = query.value(0).toString().trimmed();
+			if (label.startsWith(QLatin1Char('-'))) {
+				label.remove(0, 1);
+				if (typed_with_sign) typed_with_sign->insert(label);
+			}
+			if (label.isEmpty()) continue;
+			taken.insert(placeOf(query.value(1).toString().trimmed(),
+								 query.value(2).toString().trimmed())
+						 + QLatin1Char('-') + label);
+		}
+		return taken;
+	}
+
+	/**
 		@brief propose
 		Fills the value of each device label with the next one free on
 		@p folio; the labels of the macro do not take each other's.
 	*/
 	void propose(QList<Field> &fields, Diagram *folio)
 	{
-		QSet<QString> taken;
+		QSet<QString> taken_designations;
 		QString place;
 		if (folio) {
 			place = placeOf(folio);
-			if (QETProject *project = folio->project()) {
-				project->dataBase()->updateDB();
-				QSqlQuery query = project->dataBase()->newQuery(QStringLiteral("SELECT label, plant, location FROM qet_devices"));
-				while (query.next()) {
-					const QString label = query.value(0).toString().trimmed();
-					if (label.isEmpty()) continue;
-					taken.insert(placeOf(query.value(1).toString().trimmed(),
-										 query.value(2).toString().trimmed())
-								 + QLatin1Char('-') + label);
-				}
-			}
+			taken_designations = taken(folio);
 		}
 		for (Field &field : fields) {
 			if (field.kind != Field::Label) continue;
-			field.value = nextFree(field.saved, place, taken);
-			taken.insert(place + QLatin1Char('-') + field.value);
+			field.value = nextFree(field.saved, place, taken_designations);
+			taken_designations.insert(place + QLatin1Char('-') + field.value);
 		}
 	}
 

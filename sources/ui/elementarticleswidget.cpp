@@ -1304,18 +1304,10 @@ void ElementArticlesWidget::applyMaterialRecord(const MaterialRecord &record, in
 		disableLiveEdit();
 	}
 
-	for (const QString &column : MaterialList::columnsForBlock(block)) {
-		if (!record.values.contains(column)) {
-			continue;
-		}
-		const QString value = record.value(column);
-		if (value.isEmpty() && !MaterialList::isArticleBound(column)) {
-			continue;
-		}
-		const QString key = MaterialList::elementInfoKey(column, block);
-		if (key.isEmpty() || !QETInformation::elementInfoKeys().contains(key)) {
-			continue;
-		}
+	const QHash<QString, QString> infos = MaterialList::elementInfoFor(record, block);
+	for (auto it = infos.cbegin(); it != infos.cend(); ++it) {
+		const QString &key = it.key();
+		const QString &value = it.value();
 		if (ElementInfoPartWidget *part = partForKey(key)) {
 			part->setText(value);
 			m_pending_extra_info.remove(key);

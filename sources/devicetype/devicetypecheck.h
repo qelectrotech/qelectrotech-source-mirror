@@ -46,6 +46,13 @@ class QETProject;
 	What is left are the parts not drawn and the symbols beyond the type;
 	a symbol without terminals no part matches (a table of the contacts
 	beside a coil, a picture) is neither.
+	A connector (a terminal strip of kind plug or socket) which has a device
+	type is one device too, and not a strip checked terminal by terminal:
+	the parts of its type of role terminal are its pins, named by their
+	symbol's pins (pinParts()). A pin drawn which the type lacks is beyond it, a pin
+	drawn twice is listed in Device::doubled (its second drawing is beyond
+	the type), and the pins not drawn are the parts missing. Terminal
+	strips, and connectors without a type, are checked as before.
 	check() reads the whole project, building its lazy folios; changes
 	nothing. The same pass gives the contacts without their device.
 */
@@ -66,6 +73,9 @@ namespace DeviceTypeCheck
 		QList<QPointer<Element>> symbols;   ///< its symbols, the head first
 		QList<int> drawn;               ///< per symbol, the part it draws; Beyond, NotAPart
 		QList<int> missing;             ///< the parts not drawn, in the type's order
+		bool connector = false;         ///< a connector with a device type: one device, its pins
+		QStringList pinNames;           ///< connector: per symbol, the pin it draws (X1:L1 is L1)
+		QStringList doubled;            ///< connector: the pins drawn more than once
 
 		bool known() const {return !type.isNull();}
 		bool complete() const {return known() && missing.isEmpty() && !drawn.contains(Beyond);}
@@ -83,8 +93,22 @@ namespace DeviceTypeCheck
 		/// name a device type, or all of them when the project follows the
 		/// device types
 	QVector<Device> check(QETProject *project, QList<Element *> *unlinked = nullptr);
+		/// The devices with a device type on the folios built so far:
+		/// builds none, as checkDevice()
+	QVector<Device> checkBuilt(QETProject *project);
 	Device checkDevice(Element *element);
 	QString partText(const DeviceType::Part &part);
+
+		/// The names of the pins of a connector's type part: its first symbol's pins
+	QStringList pinsOf(const DeviceType::Part &part);
+
+		/// The parts of @p type which name the pins of a connector: the
+		/// parts of role terminal, or, when it has none (a type made for
+		/// a plug drawn as a head and its pins), every part with named pins
+	QList<int> pinParts(const DeviceType &type);
+
+		/// The pins of a connector which are not drawn, in the type's order
+	QStringList freePins(const Device &device);
 
 		/// How many more contacts are linked to the master of @p device
 		/// than its type has room for: its contact parts, and any other

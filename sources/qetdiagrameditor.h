@@ -290,6 +290,7 @@ class QETDiagramEditor : public QETMainWindow
 		QAction* m_check_potentials = nullptr;
 		QAction *m_check_device_types = nullptr;
 		QAction *m_device_types = nullptr;
+		QAction *m_reports = nullptr;
 		QAction* m_project_languages = nullptr;
 
 		QAction

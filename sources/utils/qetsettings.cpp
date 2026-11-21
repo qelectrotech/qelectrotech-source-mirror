@@ -313,6 +313,18 @@ namespace QetSettings
 		settings.setValue("diagrameditor/ask_labels_placing_macro", ask);
 	}
 
+	bool askLabelAndPartPlacingSymbol()
+	{
+		QSettings settings;
+		return settings.value("diagrameditor/ask_label_and_part_placing_symbol", false).toBool();
+	}
+
+	void setAskLabelAndPartPlacingSymbol(bool ask)
+	{
+		QSettings settings;
+		settings.setValue("diagrameditor/ask_label_and_part_placing_symbol", ask);
+	}
+
 	/**
 	* @brief stripWiresShown
 	* @return whether a terminal strip draws the wires which end at it

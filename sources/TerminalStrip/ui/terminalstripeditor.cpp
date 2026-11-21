@@ -36,6 +36,7 @@
 #include <TerminalStrip/realterminal.h>
 #include <qetinformation.h>
 #include <cable/cable.h>
+#include <ui/devicetypechooser.h>
 
 #include <QApplication>
 #include <QCheckBox>
@@ -70,6 +71,33 @@ TerminalStripEditor::TerminalStripEditor(QETProject *project, QWidget *parent) :
 
 	auto delegate_ = new TerminalStripModelDelegate{this};
 	ui->m_table_widget->setItemDelegate(delegate_);
+
+		//What the strip is: a terminal strip, or one side of a connector
+	ui->m_kind_cb->addItem(tr("Terminal strip"), static_cast<int>(TerminalStripData::Kind::Terminals));
+	ui->m_kind_cb->addItem(tr("Plug"), static_cast<int>(TerminalStripData::Kind::Plug));
+	ui->m_kind_cb->setItemData(1, tr("A plug: the male side of a connector"), Qt::ToolTipRole);
+	ui->m_kind_cb->addItem(tr("Socket"), static_cast<int>(TerminalStripData::Kind::Socket));
+	ui->m_kind_cb->setItemData(2, tr("A socket: the female side of a connector"), Qt::ToolTipRole);
+
+		//The device type of a connector : its pins. Only a connector has one
+	ui->m_device_type_choose_pb->setToolTip(tr("The device type says the pins of this connector: "
+											   "the check of the device types reports a pin it does not have, "
+											   "a pin drawn twice and the pins not drawn."));
+	connect(ui->m_kind_cb, &QComboBox::currentIndexChanged, this, &TerminalStripEditor::updateDeviceTypeRow);
+	connect(ui->m_device_type_choose_pb, &QPushButton::clicked, this, [this]()
+	{
+		if (!m_project) return;
+		DeviceTypeChooser chooser(m_project, ui->m_name_le->text(), this, ui->m_device_type_le->text());
+		if (chooser.exec() == QDialog::Accepted && !chooser.chosen().isEmpty()) {
+			ui->m_device_type_le->setText(chooser.chosen());
+			DeviceTypeChooser::remember(chooser.chosen());
+		}
+	});
+	connect(ui->m_device_type_clear_pb, &QPushButton::clicked, this, [this]()
+	{
+		ui->m_device_type_le->clear();
+	});
+	updateDeviceTypeRow();
 
 		//Manufacturer of the terminals proposed in the Width column
 	ui->m_manufacturer_cb->addItem(tr("All manufacturers"), QString());
@@ -238,6 +266,8 @@ void TerminalStripEditor::setCurrentStrip(TerminalStrip *strip_)
 		ui->m_name_le         ->setText(strip_->name());
 		ui->m_comment_le      ->setText(strip_->comment());
 		ui->m_description_te  ->setPlainText(strip_->description());
+		setKindCombo(strip_->kind());
+		ui->m_device_type_le  ->setText(strip_->deviceType());
 		setManufacturerFilter(strip_->manufacturer());
 		ui->m_move_to_cb->addItem(tr("Independent terminals"), QUuid());
 
@@ -307,6 +337,8 @@ void TerminalStripEditor::reload()
 		ui->m_name_le         ->setText(m_current_strip->name());
 		ui->m_comment_le      ->setText(m_current_strip->comment());
 		ui->m_description_te  ->setPlainText(m_current_strip->description());
+		setKindCombo(m_current_strip->kind());
+		ui->m_device_type_le  ->setText(m_current_strip->deviceType());
 	}
 	if (m_model)
 	{
@@ -334,7 +366,18 @@ void TerminalStripEditor::apply()
 		data.m_name         = ui->m_name_le->text();
 		data.m_comment      = ui->m_comment_le->text();
 		data.m_description  = ui->m_description_te->toPlainText();
+		data.m_kind         = static_cast<TerminalStripData::Kind>(ui->m_kind_cb->currentData().toInt());
 		data.m_manufacturer = ui->m_manufacturer_cb->currentData().toString();
+			//Only a connector has a device type
+		data.m_device_type  = data.m_kind == TerminalStripData::Kind::Terminals
+				? QString() : ui->m_device_type_le->text();
+		if (data.m_device_type != m_current_strip->deviceType()) {
+				//A type of the user's library becomes a type of the project
+			auto *copy = new QUndoCommand(tr("Add a device type"));
+			DeviceTypeChooser::copyToProject(m_project, data.m_device_type, copy);
+			if (copy->childCount()) m_project->undoStack()->push(copy);
+			else delete copy;
+		}
 
 		m_project->undoStack()->push(new ChangeTerminalStripData(m_current_strip, data, nullptr));
 
@@ -411,6 +454,8 @@ void TerminalStripEditor::clear()
     ui->m_name_le         ->clear();
     ui->m_comment_le      ->clear();
     ui->m_description_te  ->clear();
+    setKindCombo(TerminalStripData::Kind::Terminals);
+    ui->m_device_type_le  ->clear();
     m_current_strip.clear();
 
     ui->m_table_widget->setModel(nullptr);
@@ -420,6 +465,31 @@ void TerminalStripEditor::clear()
     }
     setManufacturerFilter(QString());
     applyRowFilter();	//Only clears the count of the filter bar
+}
+
+/**
+ * @brief TerminalStripEditor::setKindCombo
+ * Select \p kind in the kind combo box
+ * @param kind
+ */
+void TerminalStripEditor::setKindCombo(TerminalStripData::Kind kind)
+{
+	const auto index_ = ui->m_kind_cb->findData(static_cast<int>(kind));
+	ui->m_kind_cb->setCurrentIndex(index_ > 0 ? index_ : 0);
+}
+
+/**
+ * @brief TerminalStripEditor::updateDeviceTypeRow
+ * The device type is a connector's : hidden for a terminal strip
+ */
+void TerminalStripEditor::updateDeviceTypeRow()
+{
+	const bool connector = static_cast<TerminalStripData::Kind>(
+				ui->m_kind_cb->currentData().toInt()) != TerminalStripData::Kind::Terminals;
+	ui->m_device_type_label->setVisible(connector);
+	ui->m_device_type_le->setVisible(connector);
+	ui->m_device_type_choose_pb->setVisible(connector);
+	ui->m_device_type_clear_pb->setVisible(connector);
 }
 
 /**

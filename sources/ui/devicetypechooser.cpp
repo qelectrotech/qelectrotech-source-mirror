@@ -67,11 +67,22 @@ namespace
 		return element && element->diagram() ? element->diagram()->project() : nullptr;
 	}
 
-	DeviceType typeNamed(Element *symbol, const QString &name)
+	DeviceType typeNamed(QETProject *project, const QString &name)
 	{
-		QETProject *project = projectOf(symbol);
 		const DeviceType own = project ? project->deviceType(name) : DeviceType();
 		return own.isNull() ? library().value(name) : own;
+	}
+
+		/// Whether @p type is one for a connector: a part of role terminal,
+		/// or an information "connector" (plug, socket), which a type drawn
+		/// as a head with its pins carries
+	bool hasPins(const DeviceType &type)
+	{
+		for (const auto &information : type.informations)
+			if (information.first == QLatin1String("connector")) return true;
+		for (const DeviceType::Part &part : type.parts)
+			if (part.role == QLatin1String("terminal")) return true;
+		return false;
 	}
 
 		/// Whether @p symbol can draw the head of @p type: a way of its first
@@ -107,16 +118,35 @@ namespace
 DeviceTypeChooser::DeviceTypeChooser(Element *symbol, QWidget *parent, const QString &current) :
 	QDialog(parent),
 	m_symbol(symbol),
+	m_project(projectOf(symbol)),
 	m_current(current)
+{
+	const QString label = symbol ? symbol->elementInformations()
+								   .value(QETInformation::ELMT_LABEL).toString() : QString();
+	setUp(label.isEmpty()
+		? tr("Which device type is this device? Its parts are then checked against it.")
+		//: %1 is the device's label, such as "-K1"
+		: tr("Which device type is %1? Its parts are then checked against it.").arg(label));
+}
+
+DeviceTypeChooser::DeviceTypeChooser(QETProject *project, const QString &connector,
+									 QWidget *parent, const QString &current) :
+	QDialog(parent),
+	m_project(project),
+	m_connector(true),
+	m_current(current)
+{
+	setUp(connector.isEmpty()
+		? tr("Which device type is this connector? Its pins are then checked against it.")
+		//: %1 is the connector's name, such as "X1"
+		: tr("Which device type is %1? Its pins are then checked against it.").arg(connector));
+}
+
+void DeviceTypeChooser::setUp(const QString &help_text)
 {
 	setWindowTitle(tr("Device type"));
 	auto *layout = new QVBoxLayout(this);
-	const QString label = symbol ? symbol->elementInformations()
-								   .value(QETInformation::ELMT_LABEL).toString() : QString();
-	auto *help = new QLabel(label.isEmpty()
-		? tr("Which device type is this device? Its parts are then checked against it.")
-		//: %1 is the device's label, such as "-K1"
-		: tr("Which device type is %1? Its parts are then checked against it.").arg(label), this);
+	auto *help = new QLabel(help_text, this);
 	help->setWordWrap(true);
 	layout->addWidget(help);
 	m_filter = new QLineEdit(this);
@@ -127,7 +157,8 @@ DeviceTypeChooser::DeviceTypeChooser(Element *symbol, QWidget *parent, const QSt
 	m_list = new QListWidget(this);
 	m_list->setObjectName(QStringLiteral("deviceTypeChoices"));
 	layout->addWidget(m_list, 1);
-	m_all = new QCheckBox(tr("Show every device type, not only those this symbol can draw"), this);
+	m_all = new QCheckBox(m_connector ? tr("Show every device type, not only those with pins")
+									  : tr("Show every device type, not only those this symbol can draw"), this);
 	layout->addWidget(m_all);
 	auto *buttons = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel, this);
 	layout->addWidget(buttons);
@@ -182,19 +213,52 @@ QStringList DeviceTypeChooser::candidates(Element *symbol, bool all)
 	return names;
 }
 
+QStringList DeviceTypeChooser::connectorCandidates(QETProject *project, bool all)
+{
+	QStringList project_names, library_names;
+	if (project)
+		for (const DeviceType &type : project->deviceTypes())
+			if (all || hasPins(type)) project_names << type.name;
+	for (auto it = library().cbegin() ; it != library().cend() ; ++it)
+		if (!project_names.contains(it.key()) && (all || hasPins(it.value())))
+			library_names << it.key();
+	project_names.sort(Qt::CaseInsensitive);
+	library_names.sort(Qt::CaseInsensitive);
+	QStringList names;
+	for (const QString &name : recent())
+		if (project_names.contains(name) || library_names.contains(name)) names << name;
+	for (const QString &name : project_names + library_names)
+		if (!names.contains(name)) names << name;
+	return names;
+}
+
+/**
+	@brief DeviceTypeChooser::copyToProject
+	Adds to @p parent the command copying the type @p name of the library into
+	@p project, when the project has not got it
+*/
+void DeviceTypeChooser::copyToProject(QETProject *project, const QString &name, QUndoCommand *parent)
+{
+	if (!project || name.isEmpty() || !project->deviceType(name).isNull()) return;
+	const DeviceType from_library = library().value(name);
+	if (!from_library.isNull()) new SetDeviceTypeCommand(project, from_library, parent);
+}
+
 void DeviceTypeChooser::fill()
 {
 	m_list->clear();
-	if (!m_symbol) return;
+	if (!m_symbol && !m_connector) return;
 	const QString lang = QETApp::langFromSetting();
 	const QRegularExpression filter(QRegularExpression::wildcardToRegularExpression(
 										QStringLiteral("*") + m_filter->text().trimmed() + QStringLiteral("*"),
 										QRegularExpression::UnanchoredWildcardConversion),
 									QRegularExpression::CaseInsensitiveOption);
-	QETProject *project = projectOf(m_symbol);
-	for (const QString &name : candidates(m_symbol, m_all->isChecked())) {
+	QETProject *project = m_project.data();
+	const QStringList names = m_connector ? connectorCandidates(project, m_all->isChecked())
+										  : candidates(m_symbol, m_all->isChecked());
+	for (const QString &name : names) {
 		if (name == m_current) continue;
-		const DeviceType type = typeNamed(m_symbol, name);
+		const DeviceType type = typeNamed(project, name);
 		const QString text = type.text(lang);
 		if (!filter.match(name).hasMatch() && !filter.match(text).hasMatch()) continue;
 		const bool own = project && !project->deviceType(name).isNull();

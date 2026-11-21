@@ -21,6 +21,7 @@
 #include "qetmessagebox.h"
 #include "qetproject.h"
 #include "undocommand/linkelementcommand.h"
+#include "undocommand/removediagramcommand.h"
 
 #include <QFile>
 #include <QTemporaryDir>
@@ -346,6 +347,151 @@ text_from="CompositeText" uuid="%8" font="Liberation Sans,9,-1,5,50,0,0,0,0,0,Re
 		QVERIFY2(
 			shownLabel(contact) == QStringLiteral("-K1-2"),
 			"the contact's text must follow its master directly");
+	}
+
+	// The contact's folio is gone. The master must let go of it, or it
+	// goes on counting a contact that is not there any more -- it stays
+	// full, takes no new one, and the panel keeps listing the dead one.
+	// The folio is detached, not destroyed: undo() puts it back, so the
+	// link itself may not be thrown away, only not counted while its
+	// folio is away.
+	void masterLetsGoOfAContactWhoseFolioIsGone()
+	{
+		QETProject project;
+		Diagram* folio = project.addNewDiagram();
+		Diagram* other = project.addNewDiagram();
+		QVERIFY(folio);
+		QVERIFY(other);
+		QVERIFY(folio != other);
+
+		Element* master  = symbol(folio, "plc_master");
+		Element* contact = symbol(other, "plc_slave");
+		QVERIFY(master);
+		QVERIFY(contact);
+		QCOMPARE(master->linkType(), Element::Master);
+		QCOMPARE(contact->linkType(), Element::Slave);
+
+		auto* link = new LinkElementCommand(contact);
+		link->setLink(master);
+		link->setGroupIndex(0);
+		project.undoStack()->push(link);
+		settle();
+		QVERIFY(contact->linkedElements().contains(master));
+		QVERIFY2(master->linkedElements().contains(contact),
+				 "the master has to know its contact first");
+
+			// The folio the contact stands on is removed: detached
+			// from the project, still alive for undo. Pushed the way
+			// the Delete sheet command does it -- QETProject::
+			// removeDiagram() would take the same thing out without
+			// putting it on the undo stack at all
+		project.undoStack()->push(new RemoveDiagramCommand(&project, other));
+		settle();
+
+		QVERIFY2(!master->linkedElements().contains(contact),
+				 "the master still lists a contact whose folio is gone");
+		QVERIFY2(master->linkedElements().isEmpty(),
+				 "the master still holds something after its contact's folio went");
+
+			// undo() puts the folio back, and the link with it: nothing
+			// may have been thrown away
+		project.undoStack()->undo();
+		settle();
+		QVERIFY2(master->linkedElements().contains(contact),
+				 "undo did not bring the contact back to its master");
+	}
+
+	// The PLC table draws a contact over the master's contact groups.
+	// Its folio is gone: the table may not go on naming a contact on a
+	// page the project does not hold, with that page's old number.
+	// Nothing is unlinked, so undo() gets the contact back unchanged.
+	void plcTableLetsGoOfAContactWhoseFolioIsGone()
+	{
+		QETProject project;
+		Diagram* folio = project.addNewDiagram();
+		Diagram* other = project.addNewDiagram();
+		QVERIFY(folio);
+		QVERIFY(other);
+		QVERIFY(folio != other);
+
+		Element* master  = symbol(folio, "plc_master");
+		Element* contact = symbol(other, "plc_slave");
+		QVERIFY(master);
+		QVERIFY(contact);
+		QCOMPARE(master->elementData().plcMasterData().ios.size(), 1);
+
+		auto* link = new LinkElementCommand(contact);
+		link->setLink(master);
+		link->setGroupIndex(0);
+		project.undoStack()->push(link);
+		settle();
+		QCOMPARE(master->groupIndexForElement(contact), 0);
+		QCOMPARE(master->linkedSlaveForIo(0), contact);
+
+			// The folio the contact stands on is taken out of the
+			// project, the way the Delete sheet command does it
+		project.undoStack()->push(new RemoveDiagramCommand(&project, other));
+		settle();
+
+		QVERIFY2(master->linkedSlaveForIo(0) == nullptr,
+				 "the PLC table still draws a contact whose folio is gone");
+
+			// The contact is not unlinked, only not drawn: undo() brings
+			// its folio back and with it the contact in the table
+		project.undoStack()->undo();
+		settle();
+		QCOMPARE(master->linkedSlaveForIo(0), contact);
+	}
+
+	// The contact's master is on a folio that is deleted, and the
+	// contact is linked to another master meanwhile. Undoing both
+	// steps puts the contact back on its first master, as on a
+	// project where no folio was deleted.
+	void relinkWhileTheMasterIsAwayUndoesBack()
+	{
+		QETProject project;
+		Diagram* folio = project.addNewDiagram();
+		Diagram* other = project.addNewDiagram();
+		QVERIFY(folio);
+		QVERIFY(other);
+		QVERIFY(folio != other);
+
+		Element* contact = symbol(folio, "plc_slave");
+		Element* second  = symbol(folio, "plc_master");
+		Element* master  = symbol(other, "plc_master");
+		QVERIFY(contact);
+		QVERIFY(second);
+		QVERIFY(master);
+
+		auto* link = new LinkElementCommand(contact);
+		link->setLink(master);
+		link->setGroupIndex(0);
+		project.undoStack()->push(link);
+		settle();
+		QVERIFY(contact->linkedElements().contains(master));
+
+		project.undoStack()->push(new RemoveDiagramCommand(&project, other));
+		settle();
+
+		auto* relink = new LinkElementCommand(contact);
+		relink->setLink(second);
+		relink->setGroupIndex(0);
+		project.undoStack()->push(relink);
+		settle();
+		QVERIFY(contact->linkedElements().contains(second));
+
+			// The relink, then the deletion
+		project.undoStack()->undo();
+		settle();
+		project.undoStack()->undo();
+		settle();
+
+		QVERIFY2(contact->linkedElements().contains(master),
+				 "undo left the contact without its first master");
+		QVERIFY2(master->linkedElements().contains(contact),
+				 "undo left the first master without its contact");
+		QVERIFY2(!contact->linkedElements().contains(second),
+				 "the contact is still on the master of the undone link");
 	}
 };
 

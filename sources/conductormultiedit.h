@@ -68,6 +68,10 @@ namespace ConductorMultiEdit
 		separation lets through, the voltage / protocol and the drawing
 		of the wire, and no other property. nullptr, the default, leaves
 		those conductors out of the returned list entirely.
+		@param stop_at_report_links : true when the edit renames the wires
+		in a project chaining its folio reports by the wire function: a
+		folio report does not join its two wires then, so a name written
+		over a potential stays on its folio
 
 		A conductor the user picked themselves is never part of it: the
 		selection is the edit reaching that conductor, so it takes the
@@ -79,7 +83,8 @@ namespace ConductorMultiEdit
 	*/
 	template <typename T>
 	QList<T *> targets(const QList<T *> &selected, bool apply_all,
-			   QSet<T *> *function_separated = nullptr)
+			   QSet<T *> *function_separated = nullptr,
+			   bool stop_at_report_links = false)
 	{
 		QList<T *> list;
 		QSet<T *> seen;
@@ -111,7 +116,8 @@ namespace ConductorMultiEdit
 			}
 			if (!apply_all || (!fresh && !chosen.contains(conductor)))
 				continue;
-			const QSet<T *> potential = conductor->relatedPotentialConductors();
+			const QSet<T *> potential = conductor->relatedPotentialConductors(
+						true, nullptr, false, stop_at_report_links);
 			for (T *other : potential)
 			{
 				potential_reached.insert(other);
@@ -154,6 +160,10 @@ namespace ConductorMultiEdit
 		the edited conductors: they get the voltage / protocol and
 		nothing else, since only it crosses a bridge
 		(@see ConductorProperties::applyTensionProtocolChange)
+		@param parent : the undo step to make, its children, instead of
+		a new one -- a caller with something of its own to undo with the
+		edit (DissolveReportLinksCommand) makes the step first and gives
+		it here
 		@return one undo step giving each target the fields that differ
 		between shown and edited, or nullptr if no conductor changes
 	*/
@@ -162,12 +172,13 @@ namespace ConductorMultiEdit
 			   const ConductorProperties &shown,
 			   const ConductorProperties &edited,
 			   const QSet<T *> &function_separated = QSet<T *>(),
+			   QUndoCommand *parent = nullptr,
 			   const QSet<T *> &bridge_reached = QSet<T *>())
 	{
 		if (edited == shown)
 			return nullptr;
 
-		auto *undo = new QUndoCommand();
+		auto *undo = parent ? parent : new QUndoCommand();
 		int changed = 0;
 		for (T *conductor : targets)
 		{

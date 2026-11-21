@@ -29,6 +29,7 @@
 
 class TerminalStrip;
 class Element;
+class Terminal;
 class TerminalElement;
 class PhysicalTerminal;
 class TerminalStripBridge;
@@ -96,6 +97,9 @@ class RealTerminal
 			///with the empty ones left out). A terminal with a twin
 			///sleeve carries two wires and gets two entries.
 		QVector<QPair<QString, QStringList>> wires() const;
+			///The same for one terminal @p pin of any symbol: the wires
+			///of a pin of a connector drawn as a head with its pins
+		static QVector<QPair<QString, QStringList>> wiresOfPin(Terminal *pin);
 			///Whether this terminal has a wire of its own at all
 		bool hasWire() const;
 		QColor color() const;

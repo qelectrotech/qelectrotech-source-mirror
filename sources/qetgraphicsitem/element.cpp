@@ -421,14 +421,34 @@ void Element::jumpTo(Element *target)
 }
 
 /**
+	@brief Element::standsInProject
+	@return true while this element stands on a folio of its own project.
+
+	A folio taken out of the project is detached rather than destroyed
+	(RemoveDiagramCommand), so its elements stay alive for undo() and
+	keep their links. The elements which stayed may not go on counting
+	them meanwhile: they would be full of partners nobody can see, and
+	the panel would go on listing them.
+
+	folioIndex() is the cheap way to ask -- a list lookup, and unlike
+	diagrams() it does not build the folios which are still lazy.
+*/
+bool Element::standsInProject() const
+{
+	Diagram *d = diagram();
+	return d && d->project() && d->project()->folioIndex(d) >= 0;
+}
+
+/**
 	@brief Element::jumpTarget
 	@return the element a double click on this one jumps to: the other end
 	of a linked folio report, or nullptr.
 */
 Element *Element::jumpTarget() const
 {
-	if ((linkType() & AllReport) && !connected_elements.isEmpty())
-		return connected_elements.first();
+	const QList<Element *> linked = linkedElements();
+	if ((linkType() & AllReport) && !linked.isEmpty())
+		return linked.first();
 	return nullptr;
 }
 
@@ -1818,7 +1838,10 @@ QDomElement Element::toXml(
 			? diagram()->project()->dataBase() : nullptr;
 	if (!database || !database->savedLinks(this, &links)) {
 		links.clear();
-		for (Element *elmt : std::as_const(connected_elements))
+			//A partner whose folio is out of the project is not written:
+			//the file would name a symbol it does not hold, and the
+			//database drops those rows when the folio goes
+		for (Element *elmt : linkedElements())
 			links.append({elmt->uuid(), m_group_index_map.value(elmt, -1)});
 	}
 	if (!links.isEmpty()) {
@@ -2403,6 +2426,27 @@ void Element::setGroupIndexForElement(Element *elmt, int index)
 	} else {
 		m_group_index_map.remove(elmt);
 	}
+}
+
+/**
+ * @brief Element::linkedSlaveForIo
+ * @param io_idx index of a PLC contact group of this master
+ * @return the slave drawn in the contact group @p io_idx, or nullptr if
+ * no linked slave stands in it.
+ */
+Element *Element::linkedSlaveForIo(int io_idx) const
+{
+	if (io_idx < 0)
+		return nullptr;
+		//linkedElements() leaves out the partners whose folio left the
+		//project (standsInProject()), and with them the group index they
+		//keep in m_group_index_map: their contact group stays drawn as
+		//one no slave stands in, the way it is before it is linked
+	for (Element *slave : linkedElements()) {
+		if (m_group_index_map.value(slave, -1) == io_idx)
+			return slave;
+	}
+	return nullptr;
 }
 
 /**
@@ -3512,15 +3556,55 @@ bool Element::labelShown() const
 }
 
 /**
+	@brief Element::designationForDisplay
+	@return @p label as the label field of this element shows it, by
+	QETProject::designationDisplay(): the label alone; or the IEC 81346
+	reference designation =plant+location-label of this element, the
+	plant and location being its own, else those of its structure box or
+	folio (StructureBoxItem::placeOf()). The short form leaves out the
+	=plant and the +location that the place where the field is drawn
+	already gives: its structure box, else its folio. That place is the
+	one of @p drawn_on when given (a contact showing its coil's label on
+	another folio), else of this element. An empty label stays empty.
+*/
+QString Element::designationForDisplay(const QString &label, const Element *drawn_on) const
+{
+	const Diagram *d = diagram();
+	if (label.isEmpty() || !d || !d->project()) {
+		return label;
+	}
+	const QETProject::DesignationDisplay display = d->project()->designationDisplay();
+	if (display == QETProject::DesignationDisplay::Label) {
+		return label;
+	}
+
+	const StructureBoxItem::Place place = StructureBoxItem::placeOf(this);
+	if (display == QETProject::DesignationDisplay::Full) {
+		return autonum::AssignVariables::buildStructureId(place.plant, place.location, label);
+	}
+
+	const Element *reference_element = drawn_on && drawn_on->diagram() ? drawn_on : this;
+	const StructureBoxItem::Place reference = StructureBoxItem::referencePlace(reference_element);
+	return autonum::AssignVariables::buildStructureId(
+				place.plant != reference.plant ? place.plant : QString(),
+				place.location != reference.location ? place.location : QString(),
+				label);
+}
+
+/**
 	@brief Element::infoForDisplay
 	@return what a text field bound to @p info_name must show: the label
 	and the terminal number follow how the labelling is drawn, every
 	other information is the stored one. @sa labelForDisplay
+	The label is shown as the project says, alone or as a reference
+	designation (@sa designationForDisplay). @p drawn_on is the element
+	the field is drawn on, when it is not this one: a contact drawing the
+	label of its coil.
 */
-QString Element::infoForDisplay(const QString &info_name)
+QString Element::infoForDisplay(const QString &info_name, const Element *drawn_on)
 {
 	if (info_name == QETInformation::ELMT_LABEL) {
-		return labelForDisplay();
+		return designationForDisplay(labelForDisplay(), drawn_on);
 	}
 	if (info_name == QETInformation::ELMT_TERMINAL_NUMBER) {
 		return terminalNumberForDisplay();
@@ -4084,25 +4168,19 @@ void Element::drawPlcTable(QPainter *painter)
 						case COL_CROSSREF:
 						{
 							cell_text = io.crossRef;
-							for (auto it = m_group_index_map.constBegin();
-								 it != m_group_index_map.constEnd(); ++it) {
-								if (it.value() == io_idx) {
-									Element *slave = it.key();
-									if (slave && slave->diagram() && diagram()
-										&& diagram()->project())
-									{
-										XRefProperties xrp = diagram()->project()
-											->defaultXRefProperties("plc");
-										autonum::sequentialNumbers seq;
-										cell_text = autonum::AssignVariables
-											::formulaToLabel(
-												xrp.masterLabel(),
-												seq,
-												slave->diagram(),
-												slave);
-									}
-									break;
-								}
+							Element *slave = linkedSlaveForIo(io_idx);
+							if (slave && slave->diagram() && diagram()
+								&& diagram()->project())
+							{
+								XRefProperties xrp = diagram()->project()
+									->defaultXRefProperties("plc");
+								autonum::sequentialNumbers seq;
+								cell_text = autonum::AssignVariables
+									::formulaToLabel(
+										xrp.masterLabel(),
+										seq,
+										slave->diagram(),
+										slave);
 							}
 							break;
 						}
