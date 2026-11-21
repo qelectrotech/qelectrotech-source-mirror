@@ -36,8 +36,8 @@ class QETProject;
 	places it is about, each of which can be shown on its folio.
 
 	Duplicate labels and device types read the built folios: the caller
-	builds the lazy ones first (needsFolios()). The others read the project
-	database only. A check reports; it changes nothing in the project.
+	builds the lazy ones first. The others read the project database only.
+	A check reports; it changes nothing in the project.
 */
 class ProjectCheck
 {
@@ -83,8 +83,6 @@ class ProjectCheck
 		static QString title(Kind kind);
 			/// Where the check's own window is, with its options
 		static QString toolTip(Kind kind);
-			/// The check reads the built folios
-		static bool needsFolios(Kind kind);
 		static Result run(QETProject *project, Kind kind);
 
 	private:

@@ -25,6 +25,7 @@
 #include "../qetgraphicsitem/conductor.h"
 #include "../qetgraphicsitem/element.h"
 #include "../qetproject.h"
+#include "../dataBase/projectdatabase.h"
 
 #include <QApplication>
 #include <QHBoxLayout>
@@ -34,6 +35,7 @@
 #include <QPushButton>
 #include <QScopeGuard>
 #include <QSet>
+#include <QSqlQuery>
 #include <QStyle>
 #include <QTreeWidget>
 #include <QVBoxLayout>
@@ -222,21 +224,23 @@ bool CheckPanelDockWidget::showRow(QTreeWidgetItem *row)
 				}
 		}
 	} else if (!place.wires.isEmpty()) {
-		if (m_project->unloadedFolioCount()) {
-			QApplication::setOverrideCursor(Qt::WaitCursor);
-			const auto restore = qScopeGuard([]() { QApplication::restoreOverrideCursor(); });
-			m_project->loadFolios();
-		}
+			// The folio of the first wire, from the database: only that
+			// folio is built, and only its wires are looked at
 		const QSet<QUuid> uuids(place.wires.begin(), place.wires.end());
-			// The wires of the first folio which has some
-		for (Diagram *folio : m_project->diagrams()) {
-			for (Conductor *conductor : folio->content().conductors())
+		QSqlQuery query = m_project->dataBase()->newQuery();
+		query.prepare(QStringLiteral("SELECT diagram_uuid FROM conductor WHERE uuid = :uuid"));
+		for (const QUuid &wire : place.wires) {
+			query.bindValue(QStringLiteral(":uuid"), wire.toString());
+			if (query.exec() && query.next()) {
+				diagram = m_project->diagramByUuid(QUuid(query.value(0).toString()));
+				if (diagram) break;
+			}
+		}
+		if (diagram) {
+			m_project->buildFolioToShow(diagram);
+			for (Conductor *conductor : diagram->content().conductors())
 				if (uuids.contains(conductor->uuid()))
 					targets << conductor;
-			if (!targets.isEmpty()) {
-				diagram = folio;
-				break;
-			}
 		}
 	}
 	if (!diagram || targets.isEmpty()) {

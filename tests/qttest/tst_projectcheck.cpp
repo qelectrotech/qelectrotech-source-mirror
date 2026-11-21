@@ -238,6 +238,41 @@ class tst_projectcheck : public QObject
 			QCOMPARE(panel.tree()->topLevelItemCount(), 0);
 			QCOMPARE(panel.findingCount(), 0);
 		}
+
+		/// A potential-types finding, read from the database, selects its
+		/// wires on their folio, found by uuid
+		void panelShowsWiresOfAPotential()
+		{
+			const QString path = copy(QStringLiteral("every_feature.qet"));
+			QVERIFY(!path.isEmpty());
+			QETProject project(path);
+			project.loadFolios();
+			Conductor *wire = nullptr;
+			for (Diagram *diagram : project.diagrams())
+				for (Conductor *conductor : diagram->conductors())
+					if (!wire && !conductor->relatedPotentialConductors().isEmpty())
+						wire = conductor;
+			QVERIFY(wire);
+			Conductor *other = *wire->relatedPotentialConductors().constBegin();
+			const auto typeOf = [](Conductor *w, const QString &type) {
+				ConductorProperties p = w->properties();
+				p.m_potential_type = type;
+				w->setProperties(p);
+			};
+			typeOf(wire, QStringLiteral("N"));
+			typeOf(other, QStringLiteral("PE"));
+
+			CheckPanelDockWidget panel;
+			panel.setProject(&project);
+			panel.run();
+			const int row = int(ProjectCheck::kinds().indexOf(ProjectCheck::Kind::PotentialTypes));
+			QTreeWidgetItem *check = panel.tree()->topLevelItem(row);
+			QCOMPARE(check->childCount(), 1);
+			for (Diagram *diagram : project.diagrams()) diagram->clearSelection();
+			QVERIFY(panel.showRow(check->child(0)));
+			QVERIFY(wire->isSelected() || other->isSelected());
+			QVERIFY(!wire->diagram()->selectedItems().isEmpty());
+		}
 };
 
 QET_APP_TEST_MAIN(tst_projectcheck)

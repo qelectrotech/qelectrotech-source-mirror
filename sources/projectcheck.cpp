@@ -33,13 +33,34 @@
 
 namespace {
 
-	/// "3 — Power": the folio's number and title
+	/// "A-03 — Power": the folio as its title block numbers it (as the
+	/// device navigator shows it), else its place in the project, and its
+	/// title
 	QString folioText(QETProject *project, Diagram *diagram)
 	{
 		if (!project || !diagram) return QString();
-		return QStringLiteral("%1 — %2").arg(project->folioIndex(diagram) + 1)
-										 .arg(diagram->title());
+		QString folio = diagram->border_and_titleblock.finalfolio().trimmed();
+		if (folio.isEmpty())
+			folio = QString::number(project->folioIndex(diagram) + 1);
+		return QStringLiteral("%1 — %2").arg(folio, diagram->title());
 	}
+
+	/// folioText() of the folios read from the database, once each
+	class FolioTexts
+	{
+		public:
+			explicit FolioTexts(QETProject *project) : m_project(project) {}
+			QString operator()(const QUuid &diagram)
+			{
+				auto found = m_texts.constFind(diagram);
+				if (found == m_texts.constEnd())
+					found = m_texts.insert(diagram, folioText(m_project, m_project->diagramByUuid(diagram)));
+				return found.value();
+			}
+		private:
+			QETProject *m_project;
+			QHash<QUuid, QString> m_texts;
+	};
 
 	/// A place for a built item: its folio and the cell its middle is in
 	ProjectCheck::Place itemPlace(QETProject *project, QGraphicsObject *item,
@@ -57,7 +78,7 @@ namespace {
 	}
 
 	/// A place for a symbol read from the database, built or not
-	ProjectCheck::Place symbolPlace(QETProject *project, const QUuid &element,
+	ProjectCheck::Place symbolPlace(FolioTexts &folios, const QUuid &element,
 									const QUuid &diagram, const QString &cell,
 									const QString &text)
 	{
@@ -65,7 +86,7 @@ namespace {
 		place.text = text;
 		place.element = element;
 		place.diagram = diagram;
-		place.folio = folioText(project, project->diagramByUuid(diagram));
+		place.folio = folios(diagram);
 		place.cell = cell;
 		return place;
 	}
@@ -116,11 +137,6 @@ QString ProjectCheck::toolTip(Kind kind)
 					  "which a wiring list cannot tell apart.");
 	}
 	return QString();
-}
-
-bool ProjectCheck::needsFolios(Kind kind)
-{
-	return kind == Kind::DuplicateLabels || kind == Kind::DeviceTypes;
 }
 
 ProjectCheck::Result ProjectCheck::run(QETProject *project, Kind kind)
@@ -242,15 +258,15 @@ ProjectCheck::Result ProjectCheck::deviceTypes(QETProject *project)
 				pins += int(DeviceTypeCheck::pinsOf(device.type.parts.at(part)).size());
 			//: %1 is the connector, such as "=P1+CP1-X1"
 			finding.text = tr("%1: %2 of %n pins drawn", nullptr, pins)
-						   .arg(device.designation)
-						   .arg(pins - DeviceTypeCheck::freePins(device).size());
+						   .arg(device.designation,
+								QString::number(pins - DeviceTypeCheck::freePins(device).size()));
 			for (const QString &pin : DeviceTypeCheck::freePins(device))
 				finding.places << detail(tr("Free pin: %1").arg(pin));
 		} else {
 			const int parts = int(device.type.parts.size());
 			//: %1 is the device, such as "=P1+CP1-K12"
 			finding.text = tr("%1: %2 of %n parts drawn", nullptr, parts)
-						   .arg(device.designation).arg(parts - device.missing.size());
+						   .arg(device.designation, QString::number(parts - device.missing.size()));
 			for (int part : device.missing)
 				//: %1 describes the part, such as "simple NO 13 14"
 				finding.places << detail(tr("Not drawn: %1")
@@ -304,6 +320,10 @@ ProjectCheck::Result ProjectCheck::wiresPerTerminal(QETProject *project)
 	result.kind = Kind::WiresPerTerminal;
 	const auto rules = project->wiringRules();
 	const bool master = WiringRules::masterEnabled();
+	if (!master) {
+		result.note = tr("The wiring rules are switched off in Settings > Configure QElectroTech.");
+		return result;
+	}
 	const int limit = WiringRules::limit(rules, master, false);
 	const int report_limit = WiringRules::limit(rules, master, true);
 	if (limit <= 0 && report_limit <= 0) {
@@ -311,6 +331,12 @@ ProjectCheck::Result ProjectCheck::wiresPerTerminal(QETProject *project)
 		return result;
 	}
 
+		// Two terminals at one point which their symbol gives no uuid
+		// have one id (Terminal::stableUuid()) and so one row: their wires
+		// cannot be told apart, and terminal_index is NULL for them. The
+		// limit counts each terminal's own wires, so they are left out
+		// rather than counted together. terminal_index counts from 0.
+	FolioTexts folios(project);
 	QSqlQuery query = project->dataBase()->newQuery(QStringLiteral(
 		"WITH ends AS ("
 		" SELECT terminal1_uuid AS tu, terminal1_element_uuid AS eu FROM conductor"
@@ -320,6 +346,7 @@ ProjectCheck::Result ProjectCheck::wiresPerTerminal(QETProject *project)
 		"FROM ends JOIN element e ON e.uuid = ends.eu "
 		"LEFT JOIN terminal t ON t.uuid = ends.tu AND t.element_uuid = ends.eu "
 		"LEFT JOIN element_info i ON i.element_uuid = e.uuid "
+		"WHERE t.terminal_index IS NOT NULL "
 		"GROUP BY ends.eu, ends.tu HAVING COUNT(*) > 1 "
 		"ORDER BY (SELECT pos FROM diagram WHERE uuid = e.diagram_uuid), e.pos, i.label"));
 	while (query.next()) {
@@ -330,20 +357,16 @@ ProjectCheck::Result ProjectCheck::wiresPerTerminal(QETProject *project)
 		const int wires = query.value(7).toInt();
 		if (max <= 0 || wires <= max) continue;
 		QString terminal = query.value(5).toString().trimmed();
-			// terminal_index counts from 0 in a fixed order of the
-			// symbol's terminals; NULL when two share one point
-		if (terminal.isEmpty() && !query.value(6).isNull())
+		if (terminal.isEmpty())
 			//: %1 numbers the terminals of a symbol, from 1
 			terminal = tr("terminal %1").arg(query.value(6).toInt() + 1);
-		else if (terminal.isEmpty())
-			terminal = tr("a terminal");
 		const QString label = query.value(4).toString().trimmed();
 		Finding finding;
 		//: %1 is the symbol's label and terminal, such as "-K1:A1"; %2 and %3 count wires
 		finding.text = tr("%1: %2 wires, the limit is %3")
-					   .arg(label.isEmpty() ? terminal : label + QLatin1Char(':') + terminal)
-					   .arg(wires).arg(max);
-		finding.places << symbolPlace(project, QUuid(query.value(0).toString()),
+					   .arg(label.isEmpty() ? terminal : label + QLatin1Char(':') + terminal,
+							QString::number(wires), QString::number(max));
+		finding.places << symbolPlace(folios, QUuid(query.value(0).toString()),
 									  QUuid(query.value(1).toString()),
 									  query.value(2).toString(), label);
 		result.findings << finding;
@@ -362,22 +385,11 @@ ProjectCheck::Result ProjectCheck::terminalNames(QETProject *project)
 {
 	Result result;
 	result.kind = Kind::TerminalNames;
-	QSqlQuery query = project->dataBase()->newQuery(QStringLiteral(
-		"SELECT e.definition, e.uuid, e.diagram_uuid, e.pos, i.label "
-		"FROM element e LEFT JOIN element_info i ON i.element_uuid = e.uuid "
-		"ORDER BY (SELECT pos FROM diagram WHERE uuid = e.diagram_uuid), e.pos"));
-	QStringList order;
-	QHash<QString, QList<Place>> placed;
-	while (query.next()) {
-		const QString definition = query.value(0).toString();
-		if (definition.isEmpty()) continue;
-		if (!placed.contains(definition)) order << definition;
-		placed[definition] << symbolPlace(project, QUuid(query.value(1).toString()),
-										  QUuid(query.value(2).toString()),
-										  query.value(3).toString(),
-										  query.value(4).toString());
-	}
-	for (const QString &definition : std::as_const(order)) {
+	QSqlQuery definitions = project->dataBase()->newQuery(QStringLiteral(
+		"SELECT DISTINCT definition FROM element WHERE definition <> '' ORDER BY definition"));
+	FolioTexts folios(project);
+	while (definitions.next()) {
+		const QString definition = definitions.value(0).toString();
 		const ElementsLocation location = DeviceTypeCheck::symbolLocation(definition, project);
 		const QDomNodeList terminals = location.xml().elementsByTagName(QStringLiteral("terminal"));
 		QStringList names;
@@ -389,7 +401,20 @@ ProjectCheck::Result ProjectCheck::terminalNames(QETProject *project)
 		//: %1 is the symbol's name; %2 the names, such as "L (2), N (2)"
 		finding.text = tr("%1: terminals of one name: %2")
 					   .arg(location.name(), TerminalNameCheck::describe(repeated));
-		finding.places = placed.value(definition);
+			// Every placed copy of the symbol, in folio order
+		QSqlQuery placed = project->dataBase()->newQuery();
+		placed.prepare(QStringLiteral(
+			"SELECT e.uuid, e.diagram_uuid, e.pos, i.label "
+			"FROM element e LEFT JOIN element_info i ON i.element_uuid = e.uuid "
+			"WHERE e.definition = :definition "
+			"ORDER BY (SELECT pos FROM diagram WHERE uuid = e.diagram_uuid), e.pos"));
+		placed.bindValue(QStringLiteral(":definition"), definition);
+		if (placed.exec())
+			while (placed.next())
+				finding.places << symbolPlace(folios, QUuid(placed.value(0).toString()),
+											  QUuid(placed.value(1).toString()),
+											  placed.value(2).toString(),
+											  placed.value(3).toString());
 		result.findings << finding;
 	}
 	return result;
