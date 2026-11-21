@@ -2088,11 +2088,12 @@ void QETElementEditor::on_m_import_dxf_triggered()
 	{
 		QString file_path{QFileDialog::getOpenFileName(this,
 													   QObject::tr("Import a dxf file"),
-													   QETApp::documentDir(),
+													   QETApp::lastFileDir(QETApp::documentDir()),
 													   "DXF (*.dxf)")};
 		if (file_path.isEmpty()) {
 			return;
 		}
+		QETApp::rememberFileDir(file_path);
 
 		QMessageBox::information(this, tr("Warning"), tr("Importing a large dxf can take time \n"
 															   "please wait while importing..."));
@@ -2136,11 +2137,12 @@ void QETElementEditor::on_m_import_scaled_element_triggered()
 	{
 		QString file_path{QFileDialog::getOpenFileName(this,
 													   tr("Import an element to resize"),
-													   QETApp::documentDir(),
+													   QETApp::lastFileDir(QETApp::documentDir()),
 													   tr("QElectroTech elements (*.elmt)"))};
 		if (file_path.isEmpty()) {
 			return;
 		}
+		QETApp::rememberFileDir(file_path);
 
 		const QByteArray array_{ElementScaler(file_path, this)};
 		if (array_.isEmpty()) {

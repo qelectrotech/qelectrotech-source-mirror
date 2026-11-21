@@ -560,6 +560,11 @@ void ElementsMover::endMovement()
 				else
 				{
 					conductor -> setProperties(m_diagram -> defaultConductorProperties);
+						//An empty side of a function separated terminal
+						//element takes what the separation lets through
+						//from its other side (@see Conductor::
+						//applySeparatedNodePropertiesIfEmpty)
+					conductor->applySeparatedNodePropertiesIfEmpty();
 					//Autonum the new conductor, the undo command associated for this, have for parent undo_object
 					ConductorAutoNumerotation can  (conductor, m_diagram, undo_object);
 					can.numerate();

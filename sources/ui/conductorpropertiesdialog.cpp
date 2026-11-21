@@ -44,8 +44,10 @@ ConductorPropertiesDialog::ConductorPropertiesDialog(
 	m_cpw = new ConductorPropertiesWidget(conductor->properties());
 	m_cpw -> setHiddenOneTextPerFolio(true);
 	m_cpw->setHiddenAvailableAutonum(true);
-	if (conductor->diagram() && conductor->diagram()->project())
+	if (conductor->diagram() && conductor->diagram()->project()) {
 		m_cpw->setPotentialTypes(conductor->diagram()->project()->potentialTypes());
+		m_cpw->setProject(conductor->diagram()->project());
+	}
 	if (conductor -> diagram() -> defaultConductorProperties.m_one_text_per_folio == true &&
 		conductor -> relatedPotentialConductors().size()) {
 		m_cpw->setDisabledShowText();
@@ -117,12 +119,14 @@ void ConductorPropertiesDialog::PropertiesDialog(Conductor *conductor,
 
 		//A function separated terminal element (element information
 		//potential_isolating) keeps the two sides of the terminal apart:
-		//every property but one stays local to the side it was edited on.
-		//The voltage / protocol still crosses, because it describes the
-		//electrical node and not one side of it.
+		//every property but what the node itself describes stays local to
+		//the side it was edited on. The voltage / protocol and the drawing
+		//of the wire still cross, because the node is drawn the same on
+		//both sides of it.
+	QSet<Conductor *> separated_reached;
 	if (cpd.applyAll())
 	{
-			//Only an edit that really changed the voltage / protocol passes
+			//Only an edit that really changed one of those fields passes
 			//it on, so the comparison is the edit itself -- what the dialog
 			//was filled with, against what the user left in it -- and never
 			//the far wire's own value, which differs from it just as often
@@ -131,8 +135,9 @@ void ConductorPropertiesDialog::PropertiesDialog(Conductor *conductor,
 		const ConductorProperties shown = conductor->properties();
 		foreach (Conductor *separated_conductor, conductor->functionSeparatedConductors())
 		{
+			separated_reached.insert(separated_conductor);
 			ConductorProperties separated_properties = separated_conductor->properties();
-			separated_properties.applyTensionProtocolChange(
+			separated_properties.applyNodePropertiesChange(
 						shown,
 						cpd.properties());
 			if (separated_properties == separated_conductor->properties())
@@ -148,10 +153,10 @@ void ConductorPropertiesDialog::PropertiesDialog(Conductor *conductor,
 
 		//A bridge sits across the terminals it lands on, so the voltage
 		//of one of their wires reaches every wire of every terminal of it
-		//-- and only the voltage crosses a bridge, never the function: a
-		//separated function stays separated however many bridges sit on
-		//it. The same rule as the wires themselves: what reaches the
-		//potential reaches what the bridge joins to it.
+		//-- and only the voltage crosses a bridge, never the function and
+		//never the drawing: a separated function stays separated however
+		//many bridges sit on it. A wire the function separation already
+		//reached keeps the wider change it got from there.
 	if (cpd.applyAll())
 	{
 		const ConductorProperties shown_for_bridge = conductor->properties();
@@ -159,7 +164,7 @@ void ConductorPropertiesDialog::PropertiesDialog(Conductor *conductor,
 					conductor->diagram()->project(), QList<Conductor *>{conductor});
 		for (Conductor *over : over_bridges)
 		{
-			if (!over || over == conductor) {
+			if (!over || over == conductor || separated_reached.contains(over)) {
 				continue;
 			}
 			ConductorProperties over_properties = over->properties();

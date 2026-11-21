@@ -840,6 +840,16 @@
            </widget>
           </item>
           <item>
+           <widget class="QCheckBox" name="m_folios_by_group_cb">
+            <property name="text">
+             <string>List folios by group and sub-group in the Projects panel</string>
+            </property>
+            <property name="toolTip">
+             <string>A folio with no group of its own is listed under its plant and location. A level is shown only where it splits the folios, so a project without groups stays a flat list.</string>
+            </property>
+           </widget>
+          </item>
+          <item>
            <widget class="QCheckBox" name="m_macro_ask_labels_cb">
             <property name="text">
              <string>Ask for the device labels when placing a macro</string>
@@ -2402,6 +2412,16 @@
         </widget>
        </item>
        <item>
+        <widget class="QCheckBox" name="m_remember_last_dir_cb">
+         <property name="toolTip">
+          <string>Off, the default: every dialog starts where it always did -- the pictures folder for a picture, the documents folder for a PDF, and for the others the folder it always opened in. On: it starts in the folder the last file was picked from; pictures and PDFs keep a folder of their own, and a folder that no longer exists sends the dialog back to the standard one. Saving and exporting are not affected.</string>
+         </property>
+         <property name="text">
+          <string>Remember the last folder a file was picked from</string>
+         </property>
+        </widget>
+       </item>
+       <item>
         <spacer name="verticalSpacer_6">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
@@ -2442,6 +2462,7 @@
   <tabstop>m_offer_backups</tabstop>
   <tabstop>m_border_0</tabstop>
   <tabstop>m_new_folio_group_cb</tabstop>
+  <tabstop>m_folios_by_group_cb</tabstop>
   <tabstop>m_macro_ask_labels_cb</tabstop>
   <tabstop>m_symbol_ask_label_part_cb</tabstop>
   <tabstop>m_strip_sort_by_label</tabstop>

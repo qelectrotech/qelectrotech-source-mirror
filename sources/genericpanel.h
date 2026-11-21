@@ -89,6 +89,11 @@ class GenericPanel : public QTreeWidget {
 						   QETProject *,
 						   PanelOptions = AddAllChild,
 						   bool = false);
+	void layoutFolioItems(QTreeWidgetItem *, QETProject *,
+			      PanelOptions = AddAllChild);
+	public:
+	static QList<QStringList> folioGroupPaths(const QList<Diagram *> &);
+	protected:
 	
 	// diagram-related methods
 	public:
@@ -227,5 +232,7 @@ class GenericPanel : public QTreeWidget {
 	QHash<TitleBlockTemplateLocation, QTreeWidgetItem *> tb_templates_;
 
 	QTreeWidgetItem *m_selected_item = nullptr;
+		/// projects whose folio rows wait to be laid out again (#1878 C9)
+	QSet<QETProject *> m_layout_pending;
 };
 #endif

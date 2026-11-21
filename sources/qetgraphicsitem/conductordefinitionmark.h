@@ -19,6 +19,9 @@
 #define CONDUCTORDEFINITIONMARK_H
 
 #include <QGraphicsObject>
+#include <QStringList>
+
+#include "properties/definitionmarkstyle.h"
 
 class Conductor;
 
@@ -32,6 +35,10 @@ class Conductor;
 	conductor's properties, and is dragged along the conductor with the
 	mouse; it never leaves it. A conductor shows one when its properties
 	ask for it (ConductorProperties::m_definition_mark).
+
+	What it looks like -- the shapes and texts drawn around it -- is the
+	project's DefinitionMarkStyle; the slanted stroke above is what a
+	project that customized nothing draws.
 */
 class ConductorDefinitionMark : public QGraphicsObject
 {
@@ -65,10 +72,17 @@ class ConductorDefinitionMark : public QGraphicsObject
 		void mouseReleaseEvent(QGraphicsSceneMouseEvent *event) override;
 		void hoverEnterEvent(QGraphicsSceneHoverEvent *event) override;
 		void hoverLeaveEvent(QGraphicsSceneHoverEvent *event) override;
+		QVariant itemChange(GraphicsItemChange change,
+				    const QVariant &value) override;
 
 	private:
 		QList<QPointF> points() const;
 		void place(qreal distance);
+		void watchProject();
+		void watchConductor();
+		void updateRect();
+		DefinitionMarkStyle style() const;
+		DefinitionMarkStyle::RenderContext renderContext() const;
 		QRectF colorRect() const;
 		QRectF sectionRect() const;
 		QRectF textRect(const QString &text, bool first_side) const;
@@ -80,6 +94,20 @@ class ConductorDefinitionMark : public QGraphicsObject
 		qreal m_distance_before_drag = -1;
 		bool m_vertical = false;
 		bool m_hovered = false;
+			/// The words of the style's texts, their formulas
+			/// resolved for this conductor
+		QStringList m_texts;
+			/// The turn the drawing takes where the conductor
+			/// runs up and down (DefinitionMarkStyle::
+			/// m_vertical_turn), in degrees
+		qreal m_turn = 0;
+			/// What is drawn, worked out once in refresh() and
+			/// place(): the scene asks for the geometry far more
+			/// often than it changes
+		DefinitionMarkStyle m_style;
+		DefinitionMarkStyle::RenderContext m_context;
+		QRectF m_rect;
+		QPainterPath m_shape;
 };
 
 #endif // CONDUCTORDEFINITIONMARK_H

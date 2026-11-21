@@ -531,6 +531,9 @@ qet_add_app_test(tst_folioautonumcopy tst_folioautonumcopy.cpp)
 # A folio's group and sub-group: named, or its plant and location; title
 # block variables, kept by .qet and .qetdb, absent from older files.
 qet_add_app_test(tst_foliogroup tst_foliogroup.cpp)
+# The project panel lists folios as a tree by folio group and sub-group
+# (#1878 C9); a level shows only where it splits the folios.
+qet_add_app_test(tst_foliotree tst_foliotree.cpp)
 # "number format 1 - Plant": a conductor numbering part counting each plant
 # (=) on its own; counts kept by .qet and .qetdb.
 qet_add_app_test(tst_plantcounter tst_plantcounter.cpp)
@@ -683,6 +686,7 @@ qet_add_app_test(tst_titleblockbulkformat tst_titleblockbulkformat.cpp)
 
 # %T in a report or cross reference formula is the target folio's title.
 qet_add_app_test(tst_reportfoliotitle tst_reportfoliotitle.cpp)
+qet_add_app_test(tst_reportendpoint tst_reportendpoint.cpp)
 
 # The cable cells of a terminal strip are worked out from the cables of
 # the project: wired shows the cable and its core read only, unwired keeps
@@ -729,6 +733,12 @@ qet_add_app_test(tst_bridgetool tst_bridgetool.cpp)
 # Escape during a picture's resize, rotate or pivot drag puts it back, keeps
 # it selected and records no undo step (#1414); the key goes to the view.
 qet_add_app_test(tst_imagehandleescape tst_imagehandleescape.cpp)
+
+# "Remember the last folder a picture or a PDF was picked from" (a setting,
+# off by default): off, the dialog starts in the pictures or the documents
+# folder as it always did; on, where the last file was picked from, the two
+# folders kept apart, and the standard folder back when that one is gone.
+qet_add_app_test(tst_importdirs tst_importdirs.cpp)
 
 # The zoom step (a setting, off by default): zooming goes by a fixed number
 # of percent, also from between two steps and from a smooth mouse wheel.
@@ -2520,6 +2530,11 @@ qet_add_app_test(tst_cablelockedfields tst_cablelockedfields.cpp)
 # IEC 60757 wire colour codes: a code picked from the list sets the colour
 # text and the drawing (green-yellow striped); typed text stays text.
 qet_add_app_test(tst_conductorcolorcodes tst_conductorcolorcodes.cpp)
+
+# A function separated terminal block: a new wire on one side takes what
+# the separation lets through from the other -- the voltage / protocol and
+# the drawing -- and a new number of its own.
+qet_add_app_test(tst_functionseparation tst_functionseparation.cpp)
 
 # Settings for every test. get_property(... TESTS) only sees the tests added
 # so far, so they wait for the end of this file: a test takes them wherever

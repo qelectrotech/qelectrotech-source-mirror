@@ -52,6 +52,10 @@ class ConductorCreator
 		QList<Terminal *> m_terminals_list;
 		ConductorProperties m_properties;
 		autonum::sequentialNumbers m_sequential_number;
+			/// Whether m_properties was taken from a potential the
+			/// selected terminals are already on: what its own side of a
+			/// function separation says then wins over the other side.
+		bool m_properties_from_potential = false;
 		
 };
 

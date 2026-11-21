@@ -125,7 +125,9 @@ namespace DuplicateLabels
 			plant.prepend(QLatin1Char('='));
 		if (! location.isEmpty() && ! location.startsWith(QLatin1Char('+')))
 			location.prepend(QLatin1Char('+'));
-		return plant + location;
+			// The product levels its boxes give it: -K1 in box -A1 and -K1
+			// in box -B2 are two devices
+		return plant + location + reference.product;
 	}
 
 	Diagram* diagramOf(const QGraphicsObject* item)

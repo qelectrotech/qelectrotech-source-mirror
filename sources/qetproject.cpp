@@ -122,6 +122,13 @@ m_project_properties_handler{this}
 				QStringLiteral("project/chained-reports-key"),
 				QStringLiteral("label")).toString());
 
+		//A new project draws its definition marks the way the last
+		//customized drawing chose it for new projects (the "Use for
+		//new projects" box of its editor), the standard drawing when
+		//nothing was ever chosen. Every project saved after that
+		//keeps its own style (readDefinitionMarkStyleXml())
+	m_definition_mark_style.fromSettings(settings, QStringLiteral("diagrameditor/default"));
+
 	int size = settings.beginReadArray(QStringLiteral("diagrameditor/defaultguides"));
 	for (int i = 0; i < size; ++i) {
 		settings.setArrayIndex(i);
@@ -477,6 +484,8 @@ void QETProject::init()
 		//no event loop runs during a --run script. The database is the
 		//context: it is gone before the stack's clear() in the teardown.
 	connect(m_undo_stack, &QUndoStack::indexChanged, &m_data_base, &projectDataBase::commitWorkingCopy);
+	connect(m_undo_stack, &QUndoStack::indexChanged,
+			this, &QETProject::undoStackIndexChanged);
 	connect(&m_titleblocks_collection, &TitleBlockTemplatesCollection::changed, this, backup_needed);
 	connect(&m_titleblocks_collection, &TitleBlockTemplatesCollection::aboutToRemove, this, backup_needed);
 	connect(m_elements_collection, &XmlElementCollection::elementAdded, this, backup_needed);
@@ -3013,6 +3022,7 @@ QDomDocument QETProject::toXml(QHash<int, QByteArray> *kept_folios, QStringList 
 	writePotentialTypesXml(project_root);
 	writeTerminalLabelSplitXml(project_root);
 	writeWiringRulesXml(project_root);
+	writeDefinitionMarkStyleXml(project_root);
 	writeChainedReportsXml(project_root);
 	writeConductorPlantCountersXml(project_root);
 	writeDeviceTypesXml(project_root);
@@ -4245,6 +4255,7 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 	readPotentialTypesXml(xml_project);
 	readTerminalLabelSplitXml(xml_project);
 	readWiringRulesXml(xml_project);
+	readDefinitionMarkStyleXml(xml_project);
 	readChainedReportsXml(xml_project);
 	readConductorPlantCountersXml(xml_project);
 	readDeviceTypesXml(xml_project);
@@ -5558,6 +5569,54 @@ void QETProject::writeSymbolTextsXml(QDomElement &xml_element)
 }
 
 /**
+	@brief QETProject::readDefinitionMarkStyleXml
+	Read the <definition_mark_style> element of the project, if any. A
+	project without it was saved before the customized drawing existed:
+	its definition marks are drawn the way they always were.
+	@param xml_project : the xml description of the project
+*/
+void QETProject::readDefinitionMarkStyleXml(QDomDocument &xml_project)
+{
+	m_definition_mark_style.fromXml(xml_project.documentElement()
+			.firstChildElement(QStringLiteral("definition_mark_style")));
+}
+
+/**
+	@brief QETProject::writeDefinitionMarkStyleXml
+	Export how the definition marks are drawn, as a
+	<definition_mark_style> child of \a xml_element. Written only when
+	the project turned the customized drawing on, so a project that draws
+	them the standard way saves exactly as before.
+*/
+void QETProject::writeDefinitionMarkStyleXml(QDomElement &xml_element)
+{
+	if (m_definition_mark_style.isStandard()) {
+		return;
+	}
+	QDomDocument document = xml_element.ownerDocument();
+	QDomElement style = document.createElement(QStringLiteral("definition_mark_style"));
+	m_definition_mark_style.toXml(style);
+	xml_element.appendChild(style);
+}
+
+/**
+	@brief QETProject::setDefinitionMarkStyle
+	Set how the definition marks of this project's conductors are drawn,
+	and redraw them.
+	@param style
+*/
+void QETProject::setDefinitionMarkStyle(const DefinitionMarkStyle &style)
+{
+	if (style == m_definition_mark_style) {
+		return;
+	}
+	m_definition_mark_style = style;
+	storeSettings();
+	setModified(true);
+	emit definitionMarkStyleChanged();
+}
+
+/**
 	@brief QETProject::writePlantLocationXml
 	Export whether %{plant} and %{location} give the plant and location a
 	symbol takes, as a <plant_location> child of \a xml_element. Written
@@ -6082,6 +6141,7 @@ void QETProject::storeSettings()
 	writePotentialTypesXml(root);
 	writeTerminalLabelSplitXml(root);
 	writeWiringRulesXml(root);
+	writeDefinitionMarkStyleXml(root);
 	writeChainedReportsXml(root);
 	writeConductorPlantCountersXml(root);
 	writeDeviceTypesXml(root);
