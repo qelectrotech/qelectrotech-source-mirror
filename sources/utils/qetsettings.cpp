@@ -425,6 +425,26 @@ namespace QetSettings
 	}
 
 	/**
+	* @brief foliosListedByGroup
+	* @return whether the Projects panel lists a project's folios as a tree,
+	* under their group and then their sub-group (GenericPanel::
+	* folioGroupPaths(), #1878 C9). Off by default: the folios are then
+	* listed flat, as before.
+	* @sa setFoliosListedByGroup
+	*/
+	bool foliosListedByGroup()
+	{
+		QSettings settings;
+		return settings.value("diagrameditor/folios_listed_by_group", false).toBool();
+	}
+
+	void setFoliosListedByGroup(bool listed)
+	{
+		QSettings settings;
+		settings.setValue("diagrameditor/folios_listed_by_group", listed);
+	}
+
+	/**
 	* @brief houseStyle
 	* @return this installation's drawing conventions, in the user's own
 	* words -- empty when nobody has set any.

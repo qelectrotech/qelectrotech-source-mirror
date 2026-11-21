@@ -531,6 +531,9 @@ qet_add_app_test(tst_folioautonumcopy tst_folioautonumcopy.cpp)
 # A folio's group and sub-group: named, or its plant and location; title
 # block variables, kept by .qet and .qetdb, absent from older files.
 qet_add_app_test(tst_foliogroup tst_foliogroup.cpp)
+# The project panel lists folios as a tree by folio group and sub-group
+# (#1878 C9); a level shows only where it splits the folios.
+qet_add_app_test(tst_foliotree tst_foliotree.cpp)
 # "number format 1 - Plant": a conductor numbering part counting each plant
 # (=) on its own; counts kept by .qet and .qetdb.
 qet_add_app_test(tst_plantcounter tst_plantcounter.cpp)

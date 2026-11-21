@@ -840,6 +840,16 @@
            </widget>
           </item>
           <item>
+           <widget class="QCheckBox" name="m_folios_by_group_cb">
+            <property name="text">
+             <string>List folios by group and sub-group in the Projects panel</string>
+            </property>
+            <property name="toolTip">
+             <string>A folio with no group of its own is listed under its plant and location. A level is shown only where it splits the folios, so a project without groups stays a flat list.</string>
+            </property>
+           </widget>
+          </item>
+          <item>
            <widget class="QCheckBox" name="m_macro_ask_labels_cb">
             <property name="text">
              <string>Ask for the device labels when placing a macro</string>
@@ -2442,6 +2452,7 @@
   <tabstop>m_offer_backups</tabstop>
   <tabstop>m_border_0</tabstop>
   <tabstop>m_new_folio_group_cb</tabstop>
+  <tabstop>m_folios_by_group_cb</tabstop>
   <tabstop>m_macro_ask_labels_cb</tabstop>
   <tabstop>m_symbol_ask_label_part_cb</tabstop>
   <tabstop>m_strip_sort_by_label</tabstop>
