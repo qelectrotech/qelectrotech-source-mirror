@@ -221,6 +221,7 @@ PlaceLabelPartDialog::PlaceLabelPartDialog(Element *symbol, QWidget *parent) :
 	QString path = MaterialList::configuredPath();
 	if (path.isEmpty()) path = MaterialList::defaultPath();
 	if (!MaterialList::isEmptyFile(path)) MaterialList::load(path, &m_data);
+	m_used = usedParts(symbol);
 	m_part = new QLineEdit(this);
 	m_part->setObjectName(QStringLiteral("placePart"));
 		//The popup is ours: it lists the parts the words typed find, not
@@ -300,7 +301,7 @@ void PlaceLabelPartDialog::suggest(const QString &text)
 		m_completer->popup()->hide();
 		return;
 	}
-	const QList<int> found = PartSearch::rank(m_data.records, wanted, SuggestionCount);
+	const QList<int> found = PartSearch::rank(m_data.records, wanted, SuggestionCount, m_used);
 	for (int index : found) {
 		const MaterialRecord &record = m_data.records.at(index);
 		const QString number = PartSearch::partNumber(record);
@@ -309,6 +310,8 @@ void PlaceLabelPartDialog::suggest(const QString &text)
 		const QString manufacturer = record.value(QStringLiteral("manufacturer")).trimmed();
 		if (!description.isEmpty()) columns << description;
 		if (!manufacturer.isEmpty()) columns << manufacturer;
+		if (m_used.contains(number, Qt::CaseInsensitive))
+			columns[0] = QString(QChar(0x2605)) + QLatin1Char(' ') + number;
 		auto *item = new QStandardItem(columns.join(QStringLiteral(" \u2014 ")));
 		item->setData(number, PartNumberRole);
 		m_suggestions->appendRow(item);
@@ -372,7 +375,7 @@ void PlaceLabelPartDialog::choosePart()
 		return;
 	}
 	const QString label = m_symbol ? resolvedLabel(m_symbol, m_label->text()) : QString();
-	FindPartDialog dialog(m_data, m_symbol, label, QStringList(), this);
+	FindPartDialog dialog(m_data, m_symbol, label, m_used, this);
 	if (m_record.values.isEmpty()) dialog.setSearchText(m_part->text().trimmed());
 	if (dialog.exec() != QDialog::Accepted) return;
 	m_record = dialog.selectedRecord();
@@ -426,6 +429,33 @@ void PlaceLabelPartDialog::accept()
 		}
 	}
 	QDialog::accept();
+}
+
+/**
+	@return the part numbers the elements of @p symbol's project carry,
+	@p symbol apart: the parts already used in the project
+*/
+QStringList PlaceLabelPartDialog::usedParts(Element *symbol)
+{
+	QStringList parts;
+	QETProject *project = projectOf(symbol);
+	if (!project) return parts;
+	QSet<QString> seen;
+	for (Diagram *diagram : project->diagrams()) {
+		for (Element *element : diagram->elements()) {
+			if (element == symbol) continue;
+			const DiagramContext info = element->elementInformations();
+			for (const QString &key : {QETInformation::ELMT_MANUFACTURER_REF,
+									   QETInformation::ELMT_MACHINE_MANUFACTURER_REF}) {
+				const QString part = info.value(key).toString().trimmed();
+				if (!part.isEmpty() && !seen.contains(part.toLower())) {
+					seen << part.toLower();
+					parts << part;
+				}
+			}
+		}
+	}
+	return parts;
 }
 
 /**

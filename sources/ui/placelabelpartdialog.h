@@ -63,6 +63,9 @@ class PlaceLabelPartDialog : public QDialog
 			/// setting is on, and it is a master, a simple symbol or a terminal
 		static bool asksFor(Element *symbol);
 		static QString proposedLabel(Element *symbol);
+			/// The part numbers already used in @p symbol's project, other
+			/// than by @p symbol itself
+		static QStringList usedParts(Element *symbol);
 			/// What @p text typed for @p symbol's label means: a strip
 			/// name alone, for a terminal, is the strip's next free terminal
 		static QString resolvedLabel(Element *symbol, const QString &text);
@@ -119,6 +122,7 @@ class PlaceLabelPartDialog : public QDialog
 		QCompleter *m_completer = nullptr;
 		QStandardItemModel *m_suggestions = nullptr;
 		MaterialListData m_data;
+		QStringList m_used;
 		MaterialRecord m_record;
 };
 

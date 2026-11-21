@@ -1,8 +1,16 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
+#include "ElementsCollection/elementslocation.h"
+#include "ElementsCollection/xmlelementcollection.h"
+#include "devicetype/devicetype.h"
+#include "diagram.h"
+#include "factory/elementfactory.h"
 #include "materiallist/findpartdialog.h"
 #include "materiallist/partcategory.h"
 #include "materiallist/partsearch.h"
 #include "qetapptest.h"
+#include "qetgraphicsitem/element.h"
+#include "qetproject.h"
+#include "ui/placelabelpartdialog.h"
 
 #include <QCheckBox>
 #include <QComboBox>
@@ -13,6 +21,7 @@
 #include <QStackedWidget>
 #include <QToolButton>
 #include <QTreeWidget>
+#include <QDomDocument>
 #include <QtTest>
 
 /**
@@ -78,7 +87,110 @@ class tst_findpart : public QObject
 		button->click();
 	}
 
+	static QString define(QETProject &project, const QString &name)
+	{
+		QDomDocument document;
+		document.setContent(QStringLiteral(
+			"<definition type=\"element\" link_type=\"simple\" width=\"80\" height=\"60\" hotspot_x=\"10\" hotspot_y=\"20\">"
+			"<uuid uuid=\"%1\"/><names><name lang=\"en\">%2</name></names>"
+			"<description><line x1=\"0\" y1=\"-10\" x2=\"0\" y2=\"10\"/>"
+			"<terminal x=\"0\" y=\"20\" orientation=\"s\" uuid=\"%3\" name=\"A1\"/></description></definition>")
+				.arg(QUuid::createUuid().toString(), name, QUuid::createUuid().toString()));
+		project.embeddedElementCollection()->addElementDefinition(QStringLiteral("import"), name, document.documentElement());
+		return QStringLiteral("embed://import/") + name + QStringLiteral(".elmt");
+	}
+
+	static Element *place(QETProject &project, Diagram *folio, const QString &location)
+	{
+		int state = 0;
+		Element *symbol = ElementFactory::Instance()->createElement(ElementsLocation(location, &project), nullptr, &state);
+		if (!symbol || state) return nullptr;
+		folio->addItem(symbol);
+		return symbol;
+	}
+
+	static MaterialListData typed()
+	{
+		MaterialListData data;
+		data.records << part(QStringLiteral("C-1"), QStringLiteral("Coil one"), QStringLiteral("Acme"), QStringLiteral("SUIT-COIL"))
+					 << part(QStringLiteral("C-2"), QStringLiteral("Coil two"), QStringLiteral("Acme"), QStringLiteral("SUIT-COIL"))
+					 << part(QStringLiteral("L-1"), QStringLiteral("Lamp"), QStringLiteral("Acme"), QStringLiteral("SUIT-LAMP"))
+					 << part(QStringLiteral("N-1"), QStringLiteral("Nothing"), QStringLiteral("Acme"));
+		return data;
+	}
+
   private slots:
+	void suitsFollowsTheDeviceTypesOfTheSymbol()
+	{
+		QETProject project;
+		Diagram *folio = project.addNewDiagram();
+		const QString coil = define(project, QStringLiteral("suit-coil"));
+		const QString lamp = define(project, QStringLiteral("suit-lamp"));
+		const QString other = define(project, QStringLiteral("suit-none"));
+		DeviceType coil_type;
+		coil_type.name = QStringLiteral("SUIT-COIL");
+		coil_type.parts << DeviceType::Part{QStringLiteral("master"), QStringLiteral("coil"), QString(),
+											{{coil, {QStringLiteral("A1")}, {}}}};
+		DeviceType lamp_type;
+		lamp_type.name = QStringLiteral("SUIT-LAMP");
+		lamp_type.parts << DeviceType::Part{QStringLiteral("simple"), QStringLiteral("simple"), QString(),
+											{{lamp, {QStringLiteral("A1")}, {}}}};
+		project.setDeviceType(coil_type);
+		project.setDeviceType(lamp_type);
+		Element *coil_symbol = place(project, folio, coil);
+		Element *none_symbol = place(project, folio, other);
+		QVERIFY(coil_symbol && none_symbol);
+
+		const MaterialListData data = typed();
+		QCOMPARE(FindPartDialog::suitingRows(data, coil_symbol), (QSet<int>{0, 1}));
+		QVERIFY(FindPartDialog::suitingRows(data, none_symbol).isEmpty());
+		QVERIFY(FindPartDialog::suitingRows(data, nullptr).isEmpty());
+
+		{
+			FindPartDialog dialog(data, coil_symbol, QStringLiteral("K1"), QStringList());
+			auto *suits = dialog.findChild<QCheckBox *>(QStringLiteral("findPartSuits"));
+			QVERIFY(suits && suits->isEnabled() && suits->isChecked());
+			QCOMPARE(dialog.resultCount(), 2);
+			QCOMPARE(chips(dialog), 1);
+			suits->setChecked(false);
+			QCOMPARE(dialog.resultCount(), 4);
+			QCOMPARE(chips(dialog), 0);
+		}
+			//A symbol no device type lists keeps every part
+		FindPartDialog dialog(data, none_symbol, QString(), QStringList());
+		auto *suits = dialog.findChild<QCheckBox *>(QStringLiteral("findPartSuits"));
+		QVERIFY(!suits->isChecked() && !suits->isEnabled());
+		QCOMPARE(dialog.resultCount(), 4);
+		QCOMPARE(chips(dialog), 0);
+	}
+
+	void usedPartsAreStarredAndFirst()
+	{
+		QETProject project;
+		Diagram *folio = project.addNewDiagram();
+		const QString lamp = define(project, QStringLiteral("used-lamp"));
+		Element *first = place(project, folio, lamp);
+		Element *second = place(project, folio, lamp);
+		QVERIFY(first && second);
+		DiagramContext info = first->elementInformations();
+		info.addValue(QStringLiteral("manufacturer_reference"), QStringLiteral("N-1"));
+		first->setElementInformations(info);
+		QCOMPARE(PlaceLabelPartDialog::usedParts(second), QStringList{QStringLiteral("N-1")});
+		QVERIFY(PlaceLabelPartDialog::usedParts(first).isEmpty());
+
+		const MaterialListData data = typed();
+		FindPartDialog::Filter all;
+		QCOMPARE(FindPartDialog::matches(data, all, {QStringLiteral("n-1")}).first(), 3);
+		QCOMPARE(FindPartDialog::matches(data, all).first(), 0);
+
+		FindPartDialog dialog(data, second, QString(), PlaceLabelPartDialog::usedParts(second));
+		auto *list = dialog.findChild<QTreeWidget *>(QStringLiteral("findPartList"));
+		QVERIFY(list->topLevelItem(0)->text(0).startsWith(QChar(0x2605)));
+		QVERIFY(list->topLevelItem(0)->text(0).endsWith(QStringLiteral("N-1")));
+		QCOMPARE(dialog.partNumber(), QStringLiteral("N-1"));
+		QVERIFY(!list->topLevelItem(1)->text(0).startsWith(QChar(0x2605)));
+	}
+
 	void categoryOfMapsKeysNamesAndKeywords()
 	{
 		const auto category = [](const QString &type, const QString &description, const QString &column = QString()) {
