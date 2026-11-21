@@ -699,13 +699,45 @@
         </widget>
        </item>
        <item row="7" column="0">
-        <widget class="QCheckBox" name="m_enable_chained_reports">
-         <property name="text">
-          <string>Enable chained folio reports for report elements</string>
-         </property>
-         <property name="toolTip">
-          <string>When enabled, report elements (cross-references) across folios with matching labels are automatically chained together. Newly created projects will have this enabled automatically.</string>
-         </property>
+        <widget class="QWidget" name="m_chained_widget">
+         <layout class="QVBoxLayout" name="m_chained_layout">
+          <item>
+           <widget class="QCheckBox" name="m_enable_chained_reports">
+            <property name="text">
+             <string>Enable chained folio reports for report elements</string>
+            </property>
+            <property name="toolTip">
+             <string>When enabled, report elements (cross-references) across folios with a matching name are automatically chained together. Newly created projects will have this enabled automatically.</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QGroupBox" name="m_chained_key_gb">
+            <property name="title">
+             <string>Chain folio report elements by</string>
+            </property>
+            <property name="toolTip">
+             <string>What two folio report elements must share to be chained together: the label each of them carries, or the function of the wire its terminal holds. A report without a value of its own is never chained. Newly created projects will start with this choice.</string>
+            </property>
+            <layout class="QVBoxLayout" name="m_chained_key_layout">
+             <item>
+              <widget class="QRadioButton" name="m_chained_key_label_rb">
+               <property name="text">
+                <string>Their label</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QRadioButton" name="m_chained_key_function_rb">
+               <property name="text">
+                <string>The function of their conductor</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
         </widget>
        </item>
        <item row="9" column="0">

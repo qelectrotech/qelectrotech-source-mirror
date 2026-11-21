@@ -174,7 +174,8 @@ inline int Terminal::conductorsCount() const
 
 QList<Terminal *> relatedPotentialTerminal (const Terminal *terminal,
 						const bool all_diagram = true,
-						const bool ignore_function_separation = false);
+						const bool ignore_function_separation = false,
+						const bool stop_at_report_links = false);
 
 /**
 	@brief The roles of a junction: which of its connections the wire comes
