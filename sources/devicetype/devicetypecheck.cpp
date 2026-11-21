@@ -24,6 +24,7 @@
 #include "../qetgraphicsitem/terminal.h"
 #include "../qetinformation.h"
 #include "../qetproject.h"
+#include "../TerminalStrip/terminalstrip.h"
 
 #include <QHash>
 #include <QSet>
@@ -215,6 +216,54 @@ namespace DeviceTypeCheck
 			}
 		}
 
+			/// The pin a connector's symbol draws: X1:L1 is the pin L1 of X1
+		QString pinOf(Element *element)
+		{
+			const QString label = DuplicateLabels::identifier(
+						DuplicateLabels::displayedLabel(element));
+			const int colon = label.indexOf(QLatin1Char(':'));
+			return colon < 0 ? QString() : label.mid(colon + 1).trimmed();
+		}
+
+			/// A connector with a device type is one device: each symbol is
+			/// a pin, matched to the part of the type having that pin
+		void matchConnector(Device &device)
+		{
+			device.connector = true;
+			device.drawn.clear();
+			device.missing.clear();
+			device.pinNames.clear();
+			device.doubled.clear();
+			const auto &parts = device.type.parts;
+			const QList<int> named = DeviceTypeCheck::pinParts(device.type);
+			QHash<QString, int> part_of;
+			for (int p : named)
+				for (const QString &pin : DeviceTypeCheck::pinsOf(parts.at(p)))
+					if (!part_of.contains(pin)) part_of.insert(pin, p);
+			QSet<QString> taken;
+			for (const auto &symbol : std::as_const(device.symbols)) {
+				const QString pin = pinOf(symbol.data());
+				device.pinNames << pin;
+				if (!part_of.contains(pin)) {
+					device.drawn << Beyond;
+				} else if (taken.contains(pin)) {
+					if (!device.doubled.contains(pin)) device.doubled << pin;
+					device.drawn << Beyond;
+				} else {
+					taken.insert(pin);
+					device.drawn << part_of.value(pin);
+				}
+			}
+			for (int p : named) {
+				for (const QString &pin : DeviceTypeCheck::pinsOf(parts.at(p))) {
+					if (!taken.contains(pin)) {
+						device.missing << p;
+						break;
+					}
+				}
+			}
+		}
+
 			/// The devices of the project, or only the one named by @p only;
 			/// with @p unlinked, the contacts linked to no master, in the
 			/// same pass over the folios
@@ -270,8 +319,21 @@ namespace DeviceTypeCheck
 				list = one;
 			}
 
+				//The connectors which have a device type, by name
+			QHash<QString, QString> connector_type;
+			for (TerminalStrip *strip : project->terminalStrip())
+				if (strip->isConnector() && !strip->deviceType().isEmpty()
+					&& !connector_type.contains(strip->name()))
+					connector_type.insert(strip->name(), strip->deviceType());
+
 			Types types(project);
 			for (Device &device : list) {
+				if (isStrip(device) && connector_type.contains(device.label)) {
+					device.typeName = connector_type.value(device.label);
+					device.type = project->deviceType(device.typeName);
+					if (device.known()) matchConnector(device);
+					continue;
+				}
 				for (const auto &symbol : std::as_const(device.symbols)) {
 					device.typeName = typeNameOf(symbol->elementInformations());
 					if (!device.typeName.isEmpty()) break;
@@ -329,6 +391,38 @@ namespace DeviceTypeCheck
 		if (!element || !element->diagram()) return Device();
 		const auto list = devices(element->diagram()->project(), element);
 		return list.isEmpty() ? Device() : list.first();
+	}
+
+	QStringList pinsOf(const DeviceType::Part &part)
+	{
+		QStringList pins;
+		if (!part.symbols.isEmpty())
+			for (const QString &pin : part.symbols.first().pins)
+				if (!pin.trimmed().isEmpty()) pins << pin.trimmed();
+		return pins;
+	}
+
+	QList<int> pinParts(const DeviceType &type)
+	{
+		QList<int> terminals, any;
+		for (int p = 0 ; p < type.parts.size() ; ++p) {
+			if (pinsOf(type.parts.at(p)).isEmpty()) continue;
+			any << p;
+			if (type.parts.at(p).role == QLatin1String("terminal")) terminals << p;
+		}
+		return terminals.isEmpty() ? any : terminals;
+	}
+
+	QStringList freePins(const Device &device)
+	{
+		QSet<QString> drawn;
+		for (int i = 0 ; i < device.drawn.size() ; ++i)
+			if (device.drawn.at(i) != Beyond) drawn.insert(device.pinNames.value(i));
+		QStringList pins;
+		for (int part : device.missing)
+			for (const QString &pin : pinsOf(device.type.parts.at(part)))
+				if (!drawn.contains(pin)) pins << pin;
+		return pins;
 	}
 
 	int extraContacts(const Device &device)

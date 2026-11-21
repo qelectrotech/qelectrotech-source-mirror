@@ -850,6 +850,11 @@ qet_add_app_test(tst_terminalstriporder tst_terminalstriporder.cpp)
 # strip's xml, .qet, .qetz and .qetdb, told by qet_terminals, set by the editor.
 qet_add_app_test(tst_terminalstripkind tst_terminalstripkind.cpp)
 
+# A connector's device type: its pins are the type's parts of role terminal.
+# The check of the device types reads the connector as one device (a pin the
+# type lacks, a pin drawn twice, the free pins); strips are checked as before.
+qet_add_app_test(tst_connectordevicetype tst_connectordevicetype.cpp)
+
 # The strip graphic names where a cable goes at its far end -- Installation,
 # Location and Label of the first piece its wires land on past the strip, in
 # plan order, the same three fields the cable list computes for a target.

@@ -5307,7 +5307,8 @@ QStringList projectDataBase::publicViews()
 	is not in it: qet_devices lists every symbol, those of kind 'terminal'
 	included. strip_kind is what the strip is: 'terminals' for a terminal
 	strip, 'plug' or 'socket' for the male or female side of a connector
-	(its terminals are then its pins). It is the last column.
+	(its terminals are then its pins). strip_device_type is the device type
+	of a connector (its name, empty for none), and the last column.
 	qet_locations is the project's structure as a query, never kept by hand:
 	each (plant, location) a symbol or a folio's title block has, with the
 	symbols in it (folio reports left out), the folios showing it and the
@@ -5454,7 +5455,8 @@ QStringList projectDataBase::publicViewStatements()
 				"MAX(CASE WHEN i.name = 'installation' THEN i.value END) AS plant, "
 				"MAX(CASE WHEN i.name = 'location' THEN i.value END) AS location, "
 				"MAX(CASE WHEN i.name = 'name' THEN i.value END) AS name, "
-				"MAX(CASE WHEN i.name = 'kind' THEN i.value END) AS kind "
+				"MAX(CASE WHEN i.name = 'kind' THEN i.value END) AS kind, "
+				"MAX(CASE WHEN i.name = 'device_type' THEN i.value END) AS device_type "
 				"FROM (SELECT DISTINCT strip_uuid FROM terminal_strip_value) s "
 				"LEFT JOIN info i ON i.strip_uuid = s.strip_uuid GROUP BY s.strip_uuid), "
 				//A strip of one physical terminal writes it without [0]
@@ -5489,7 +5491,8 @@ QStringList projectDataBase::publicViewStatements()
 			"COALESCE(s.location, '') AS location, s.name AS strip, t.position, t.level, "
 			"d.label, d.structure_id AS terminal_id, t.spare, d.folio_number, d.folio, "
 			"t.element_uuid, t.strip_uuid, n.wires, r.connected_to, "
-			"COALESCE(s.kind, 'terminals') AS strip_kind "
+			"COALESCE(s.kind, 'terminals') AS strip_kind, "
+			"COALESCE(s.device_type, '') AS strip_device_type "
 			"FROM terminal t JOIN strip s ON s.strip_uuid = t.strip_uuid "
 			"LEFT JOIN qet_devices d ON d.device_uuid = t.element_uuid "
 			"LEFT JOIN numbers n ON n.element = t.element_uuid "
