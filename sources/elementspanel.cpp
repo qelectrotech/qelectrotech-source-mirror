@@ -154,22 +154,31 @@ QTreeWidgetItem *ElementsPanel::addProject(QETProject *project,
 									   qtwi_project
 	);
 
+		// the folios' rows, in project order: some may sit under folio
+		// group rows (#1878 C9)
+	const QList<QTreeWidgetItem *> folio_items =
+			childItems(qtwi_project, QET::Diagram, true);
+
 	if (first_add){
 		qtwi_project -> setExpanded(true);
+			// folio group rows open too: they were made before the
+			// project's row was in the tree, where expanding does nothing
+		for (QTreeWidgetItem *group_qtwi :
+			 childItems(qtwi_project, QET::FolioGroup, true))
+			group_qtwi -> setExpanded(true);
 		// on adding a project select first diagram, once the project item is attached
-		if (qtwi_project -> treeWidget()) {
-			setCurrentItem(qtwi_project -> child(0));
-			qtwi_project -> child(0)->setSelected(true);
+		if (qtwi_project -> treeWidget() && !folio_items.isEmpty()) {
+			setCurrentItem(folio_items.first());
+			folio_items.first()->setSelected(true);
 		}
 	}
 	else {
 		// 2. Check whether we can restore the previous selection
 		bool restored = false;
 		if (current_diagram) {
-			// Browse the children of the project node to find our diagram
-			for (int i = 0; i < qtwi_project->childCount(); ++i) {
-				QTreeWidgetItem *child = qtwi_project->child(i);
-				if (child->type() == QET::Diagram && valueForItem<Diagram *>(child) == current_diagram) {
+			// Browse the folios of the project node to find our diagram
+			for (QTreeWidgetItem *child : folio_items) {
+				if (valueForItem<Diagram *>(child) == current_diagram) {
 					setCurrentItem(child);
 					child->setSelected(true);
 					restored = true;
@@ -179,10 +188,10 @@ QTreeWidgetItem *ElementsPanel::addProject(QETProject *project,
 		}
 
 		// 3. Fallback: Only if NOTHING could be restored (e.g., actually adding a new page)
-		if (!restored && qtwi_project->childCount() >= 2) {
+		if (!restored && !folio_items.isEmpty()) {
 			// on adding an diagram to project select the last diagram
-			setCurrentItem(qtwi_project->child(qtwi_project->childCount()-2));
-			qtwi_project->child(qtwi_project->childCount()-2)->setSelected(true);
+			setCurrentItem(folio_items.last());
+			folio_items.last()->setSelected(true);
 		}
 	}
 
@@ -431,7 +440,7 @@ void ElementsPanel::projectWasClosed(QETProject *project) {
 		disconnect(project->embeddedTitleBlockTemplatesCollection(), nullptr, this, nullptr);
 	}
 	if (QTreeWidgetItem *item_to_remove = itemForProject(project)) {
-		for (QTreeWidgetItem *sheet : childItems(item_to_remove, QET::Diagram))
+		for (QTreeWidgetItem *sheet : childItems(item_to_remove, QET::Diagram, true))
 			disconnect(valueForItem<Diagram *>(sheet), nullptr, this, nullptr);
 		GenericPanel::deleteItem(item_to_remove);
 	}
@@ -513,7 +522,8 @@ void ElementsPanel::requestForItem(QTreeWidgetItem *clickedItem)
 	if(clickedItem->type() == QET::Diagram){
 		Diagram *diagram = valueForItem<Diagram *>(clickedItem);
 			// if we click on diagramItem in annother project we need the other project
-		emit(requestForProject(projectForItem(clickedItem->parent())));
+		//(its row may sit under a folio group row, not the project's)
+		emit(requestForProject(diagram->project()));
 			// required for keyPressEvent
 			// after emit the focus is on the diagram editor, we put it back to elementsPanel
 		this->setFocus();
