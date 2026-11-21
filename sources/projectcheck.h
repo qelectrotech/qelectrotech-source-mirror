@@ -48,6 +48,7 @@ class ProjectCheck
 			DuplicateLabels,   ///< DuplicateLabels::find()
 			PotentialTypes,    ///< projectDataBase::potentialTypeMismatches()
 			OpenWireEnds,      ///< projectDataBase::openWireEnds()
+			UnwiredSymbols,    ///< symbols none of whose terminals has a wire
 			DeviceTypes,       ///< DeviceTypeCheck::check()
 			WiresPerTerminal,  ///< terminals with more wires than WiringRules::limit()
 			TerminalNames      ///< symbols with two terminals of one name (TerminalNameCheck)
@@ -91,6 +92,7 @@ class ProjectCheck
 		static Result duplicateLabels(QETProject *project);
 		static Result potentialTypes(QETProject *project);
 		static Result openWireEnds(QETProject *project);
+		static Result unwiredSymbols(QETProject *project);
 		static Result deviceTypes(QETProject *project);
 		static Result wiresPerTerminal(QETProject *project);
 		static Result terminalNames(QETProject *project);

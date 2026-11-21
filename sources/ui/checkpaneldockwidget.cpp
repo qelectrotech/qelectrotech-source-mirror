@@ -26,17 +26,20 @@
 #include "../qetgraphicsitem/element.h"
 #include "../qetproject.h"
 #include "../dataBase/projectdatabase.h"
+#include "../utils/qetsettings.h"
 
 #include <QApplication>
 #include <QHBoxLayout>
 #include <QHeaderView>
 #include <QLabel>
+#include <QMenu>
 #include <QProgressDialog>
 #include <QPushButton>
 #include <QScopeGuard>
 #include <QSet>
 #include <QSqlQuery>
 #include <QStyle>
+#include <QToolButton>
 #include <QTreeWidget>
 #include <QVBoxLayout>
 
@@ -53,6 +56,36 @@ CheckPanelDockWidget::CheckPanelDockWidget(QWidget *parent) :
 	m_run->setObjectName(QStringLiteral("checkPanelRun"));
 	m_run->setToolTip(tr("Run every check on the current project"));
 	top->addWidget(m_run);
+
+	auto *options = new QToolButton(body);
+	options->setObjectName(QStringLiteral("checkPanelOptions"));
+	options->setText(tr("Options"));
+	options->setPopupMode(QToolButton::InstantPopup);
+	m_options = new QMenu(options);
+	m_options->addSection(tr("Symbols with no wire"));
+	const auto option = [this](const QString &name, const QString &text, bool checked,
+							   void (*save)(bool)) {
+		QAction *action = m_options->addAction(text);
+		action->setObjectName(name);
+		action->setCheckable(true);
+		action->setChecked(checked);
+		connect(action, &QAction::toggled, this, [this, save](bool on) {
+			save(on);
+			if (m_finding_count || m_tree->topLevelItemCount())
+				m_summary->setText(tr("The options changed. Run the checks again."));
+		});
+	};
+	option(QStringLiteral("unwiredSkipWirelessFolios"), tr("Leave out folios with no wire"),
+		   QetSettings::unwiredSymbolsSkipWirelessFolios(),
+		   &QetSettings::setUnwiredSymbolsSkipWirelessFolios);
+	option(QStringLiteral("unwiredSkipStripTerminals"), tr("Leave out strip terminals"),
+		   QetSettings::unwiredSymbolsSkipStripTerminals(),
+		   &QetSettings::setUnwiredSymbolsSkipStripTerminals);
+	option(QStringLiteral("unwiredSkipContacts"), tr("Leave out auxiliary contacts"),
+		   QetSettings::unwiredSymbolsSkipContacts(),
+		   &QetSettings::setUnwiredSymbolsSkipContacts);
+	options->setMenu(m_options);
+	top->addWidget(options);
 	m_summary = new QLabel(body);
 	m_summary->setWordWrap(true);
 	top->addWidget(m_summary, 1);
@@ -80,6 +113,11 @@ CheckPanelDockWidget::CheckPanelDockWidget(QWidget *parent) :
 
 void CheckPanelDockWidget::setProject(QETProject *project)
 {
+	if (m_building) {
+		m_pending = project;
+		m_has_pending = true;
+		return;
+	}
 	if (project == m_project) return;
 	disconnect(m_destroyed);
 	m_project = project;
@@ -134,7 +172,23 @@ void CheckPanelDockWidget::run()
 		m_summary->setText(tr("No project is open."));
 		return;
 	}
+	if (m_building) return;
+	m_building = true;
 	buildFolios();
+	m_building = false;
+		// The current project changed while its folios were built: the
+		// results would be the old one's
+	if (m_has_pending) {
+		m_has_pending = false;
+		if (m_pending != m_project) {
+			setProject(m_pending);
+			return;
+		}
+	}
+	if (!m_project) {
+		clear(tr("No project is open."));
+		return;
+	}
 	QApplication::setOverrideCursor(Qt::WaitCursor);
 	const auto restore = qScopeGuard([]() { QApplication::restoreOverrideCursor(); });
 

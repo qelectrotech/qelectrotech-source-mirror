@@ -27,6 +27,7 @@
 
 class QETProject;
 class QLabel;
+class QMenu;
 class QPushButton;
 class QTreeWidget;
 class QTreeWidgetItem;
@@ -37,6 +38,8 @@ class QTreeWidgetItem;
 	current project when asked and lists the findings, grouped by check.
 	Double-clicking a finding shows it on its folio. The results are not
 	kept up to date while the project is edited: Run checks again.
+	Options holds the choices of the checks which have some (what symbols
+	with no wire leaves out), kept in the settings.
 */
 class CheckPanelDockWidget : public QDockWidget
 {
@@ -51,6 +54,7 @@ class CheckPanelDockWidget : public QDockWidget
 			/// The number of findings of the last run
 		int findingCount() const {return m_finding_count;}
 		QTreeWidget *tree() const {return m_tree;}
+		QMenu *optionsMenu() const {return m_options;}
 
 	public slots:
 		void run();
@@ -61,9 +65,15 @@ class CheckPanelDockWidget : public QDockWidget
 		void buildFolios();
 
 		QPointer<QETProject> m_project;
+			/// While the folios are built (events are processed), a new
+			/// project waits here; run() takes it when the build is done
+		bool m_building = false;
+		bool m_has_pending = false;
+		QPointer<QETProject> m_pending;
 		QMetaObject::Connection m_destroyed;
 		QPushButton *m_run = nullptr;
 		QLabel *m_summary = nullptr;
+		QMenu *m_options = nullptr;
 		QTreeWidget *m_tree = nullptr;
 		QHash<QTreeWidgetItem *, ProjectCheck::Place> m_places;
 		int m_finding_count = 0;

@@ -104,7 +104,8 @@ namespace {
 QList<ProjectCheck::Kind> ProjectCheck::kinds()
 {
 	return {Kind::DuplicateLabels, Kind::PotentialTypes, Kind::OpenWireEnds,
-			Kind::DeviceTypes, Kind::WiresPerTerminal, Kind::TerminalNames};
+			Kind::UnwiredSymbols, Kind::DeviceTypes, Kind::WiresPerTerminal,
+			Kind::TerminalNames};
 }
 
 QString ProjectCheck::title(Kind kind)
@@ -113,6 +114,7 @@ QString ProjectCheck::title(Kind kind)
 		case Kind::DuplicateLabels: return tr("Duplicate signals and components");
 		case Kind::PotentialTypes: return tr("Potential types");
 		case Kind::OpenWireEnds: return tr("Open wire ends");
+		case Kind::UnwiredSymbols: return tr("Symbols with no wire");
 		case Kind::DeviceTypes: return tr("Device types");
 		case Kind::WiresPerTerminal: return tr("Wires per terminal");
 		case Kind::TerminalNames: return tr("Terminal names");
@@ -132,6 +134,9 @@ QString ProjectCheck::toolTip(Kind kind)
 			return tr("Wires that run to an unlinked folio report, into a junction "
 					  "on one side only, or reach one symbol terminal. "
 					  "Project > Check open wire ends... lists them too.");
+		case Kind::UnwiredSymbols:
+			return tr("Symbols none of whose terminals has a wire. Folio reports "
+					  "are never listed; Options chooses what else is left out.");
 		case Kind::DeviceTypes:
 			return tr("Devices not drawn the way their device type says. "
 					  "Project > Check device types... can place the missing parts.");
@@ -156,6 +161,7 @@ ProjectCheck::Result ProjectCheck::run(QETProject *project, Kind kind)
 		case Kind::DuplicateLabels: return duplicateLabels(project);
 		case Kind::PotentialTypes: return potentialTypes(project);
 		case Kind::OpenWireEnds: return openWireEnds(project);
+		case Kind::UnwiredSymbols: return unwiredSymbols(project);
 		case Kind::DeviceTypes: return deviceTypes(project);
 		case Kind::WiresPerTerminal: return wiresPerTerminal(project);
 		case Kind::TerminalNames: return terminalNames(project);
@@ -253,6 +259,71 @@ ProjectCheck::Result ProjectCheck::openWireEnds(QETProject *project)
 		Place place = symbolPlace(folios, end.element, end.folio, end.position, what);
 		place.wires = end.wires;
 		finding.places << place;
+		result.findings << finding;
+	}
+	return result;
+}
+
+/**
+	@brief ProjectCheck::unwiredSymbols
+	The symbols with terminals none of which has a wire (#1878 B3): drawn
+	over a wire without joining it, or left behind. Folio reports are never
+	listed (a report without a wire is not wired yet, not misdrawn), nor a
+	symbol with no terminal (a frame, a title); the QetSettings
+	unwiredSymbolsSkip... options leave out more. Read from the database:
+	the terminals of each symbol from its definition, once, since the
+	terminal table has a row only for a terminal a wire ends on.
+*/
+ProjectCheck::Result ProjectCheck::unwiredSymbols(QETProject *project)
+{
+	Result result;
+	result.kind = Kind::UnwiredSymbols;
+
+	QStringList skipped_types{QStringLiteral("next_report"), QStringLiteral("previous_report")};
+	if (QetSettings::unwiredSymbolsSkipStripTerminals())
+		skipped_types << QStringLiteral("terminal");
+	if (QetSettings::unwiredSymbolsSkipContacts())
+		skipped_types << QStringLiteral("slave");
+	const QString wireless = QetSettings::unwiredSymbolsSkipWirelessFolios()
+		? QStringLiteral("AND e.diagram_uuid IN (SELECT diagram_uuid FROM conductor) ")
+		: QString();
+
+	QSqlQuery query = project->dataBase()->newQuery();
+	query.prepare(QStringLiteral(
+		"WITH wired(uuid) AS (SELECT terminal1_element_uuid FROM conductor "
+		"UNION SELECT terminal2_element_uuid FROM conductor) "
+		"SELECT e.uuid, e.diagram_uuid, e.pos, e.definition, i.label "
+		"FROM element e "
+		"LEFT JOIN wired w ON w.uuid = e.uuid "
+		"LEFT JOIN element_info i ON i.element_uuid = e.uuid "
+		"WHERE w.uuid IS NULL AND e.definition <> '' "
+		"AND COALESCE(e.type, '') NOT IN ('%1') %2"
+		"ORDER BY (SELECT pos FROM diagram WHERE uuid = e.diagram_uuid), e.pos")
+		.arg(skipped_types.join(QStringLiteral("', '")), wireless));
+	if (!query.exec()) return result;
+
+		// A definition's name, empty when it has no terminal
+	QHash<QString, QString> names;
+	FolioTexts folios(project);
+	while (query.next()) {
+		const QString definition = query.value(3).toString();
+		auto name = names.constFind(definition);
+		if (name == names.constEnd()) {
+			const ElementsLocation location = DeviceTypeCheck::symbolLocation(definition, project);
+			const bool has_terminal = !location.xml()
+				.elementsByTagName(QStringLiteral("terminal")).isEmpty();
+			name = names.insert(definition, has_terminal ? location.name() : QString());
+		}
+		if (name.value().isEmpty()) continue;
+		const QString label = query.value(4).toString();
+		Finding finding;
+		finding.text = label.isEmpty()
+			? name.value()
+			//: %1 is the symbol's label, %2 its name, such as "QF1: Circuit breaker"
+			: tr("%1: %2").arg(label, name.value());
+		finding.places << symbolPlace(folios, QUuid(query.value(0).toString()),
+									  QUuid(query.value(1).toString()),
+									  query.value(2).toString(), label);
 		result.findings << finding;
 	}
 	return result;

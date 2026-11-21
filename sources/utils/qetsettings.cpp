@@ -405,6 +405,59 @@ namespace QetSettings
 	}
 
 	/**
+	* @brief unwiredSymbolsSkipWirelessFolios
+	* @return whether the Check panel's symbols with no wire leaves out
+	* the folios that have no wire at all: panel layouts, terminal plans,
+	* cover sheets. On by default.
+	*/
+	bool unwiredSymbolsSkipWirelessFolios()
+	{
+		QSettings settings;
+		return settings.value("check_panel/unwired_skip_wireless_folios", true).toBool();
+	}
+
+	void setUnwiredSymbolsSkipWirelessFolios(bool skip)
+	{
+		QSettings settings;
+		settings.setValue("check_panel/unwired_skip_wireless_folios", skip);
+	}
+
+	/**
+	* @brief unwiredSymbolsSkipStripTerminals
+	* @return whether the Check panel's symbols with no wire leaves out
+	* strip terminals, since a spare terminal has no wire. On by default.
+	*/
+	bool unwiredSymbolsSkipStripTerminals()
+	{
+		QSettings settings;
+		return settings.value("check_panel/unwired_skip_strip_terminals", true).toBool();
+	}
+
+	void setUnwiredSymbolsSkipStripTerminals(bool skip)
+	{
+		QSettings settings;
+		settings.setValue("check_panel/unwired_skip_strip_terminals", skip);
+	}
+
+	/**
+	* @brief unwiredSymbolsSkipContacts
+	* @return whether the Check panel's symbols with no wire leaves out
+	* auxiliary contacts, which may be spares shown for the cross
+	* reference. Off by default.
+	*/
+	bool unwiredSymbolsSkipContacts()
+	{
+		QSettings settings;
+		return settings.value("check_panel/unwired_skip_contacts", false).toBool();
+	}
+
+	void setUnwiredSymbolsSkipContacts(bool skip)
+	{
+		QSettings settings;
+		settings.setValue("check_panel/unwired_skip_contacts", skip);
+	}
+
+	/**
 	* @brief newFolioTakesPreviousGroup
 	* @return whether a new folio starts with the group and sub-group of the
 	* folio it comes after (QETProject::addNewDiagram()), so a run of folios

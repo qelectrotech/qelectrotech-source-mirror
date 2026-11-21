@@ -26,12 +26,15 @@
 #include "qetproject.h"
 #include "ui/checkpaneldockwidget.h"
 #include "ui/openwireendsdialog.h"
+#include "utils/qetsettings.h"
 #include "wiringrules.h"
 
 #include <QDomDocument>
 #include <QFile>
 #include <QScopeGuard>
+#include <QSet>
 #include <QTemporaryDir>
+#include <QTimer>
 #include <QTreeWidget>
 
 /**
@@ -71,6 +74,43 @@ class tst_projectcheck : public QObject
 					if (terminal->conductors().size() > limit) ++count;
 		return count;
 	}
+
+		/// The symbols with terminals but no wire, found on the folios,
+		/// with the panel's options: what unwiredSymbols() must list
+		static QSet<QUuid> unwired(QETProject &project, bool wireless, bool strip, bool contacts)
+		{
+			QSet<QUuid> found;
+			for (Diagram *diagram : project.diagrams()) {
+				if (wireless && diagram->conductors().isEmpty()) continue;
+				for (Element *element : diagram->elements()) {
+					if (element->terminals().isEmpty()) continue;
+					if (element->linkType() & Element::AllReport) continue;
+					if (strip && element->linkType() == Element::Terminale) continue;
+					if (contacts && element->linkType() == Element::Slave) continue;
+					bool wired = false;
+					for (Terminal *terminal : element->terminals())
+						wired |= !terminal->conductors().isEmpty();
+					if (!wired) found << element->uuid();
+				}
+			}
+			return found;
+		}
+
+		/// Set the three options of symbols with no wire
+		static void setUnwiredOptions(bool wireless, bool strip, bool contacts)
+		{
+			QetSettings::setUnwiredSymbolsSkipWirelessFolios(wireless);
+			QetSettings::setUnwiredSymbolsSkipStripTerminals(strip);
+			QetSettings::setUnwiredSymbolsSkipContacts(contacts);
+		}
+
+		static QSet<QUuid> listed(const ProjectCheck::Result &result)
+		{
+			QSet<QUuid> uuids;
+			for (const auto &finding : result.findings)
+				for (const auto &place : finding.places) uuids << place.element;
+			return uuids;
+		}
 
 	private slots:
 		/// A limit of 1 lists exactly the terminals the folios show with
@@ -218,6 +258,117 @@ class tst_projectcheck : public QObject
 			QVERIFY(report->terminals().first()->conductors().first()->isSelected());
 		}
 
+		/// Symbols with no wire lists what the folios show, one finding
+		/// each, with every combination of its three options
+		void unwiredSymbolsMatchesTheFolios_data()
+		{
+			QTest::addColumn<QString>("fixture");
+			for (const char *name : {"every_feature.qet", "device_types.qet", "structure_box.qet",
+									 "linked_reports.qet", "strip_labels.qet", "bridge_tracks.qet"})
+				QTest::newRow(name) << QString::fromLatin1(name);
+		}
+		void unwiredSymbolsMatchesTheFolios()
+		{
+			QFETCH(QString, fixture);
+			const auto restore = qScopeGuard([]() { setUnwiredOptions(true, true, false); });
+			const QString path = copy(fixture);
+			QVERIFY(!path.isEmpty());
+			QETProject project(path);
+			project.loadFolios();
+			for (int options = 0 ; options < 8 ; ++options) {
+				const bool wireless = options & 1, strip = options & 2, contacts = options & 4;
+				setUnwiredOptions(wireless, strip, contacts);
+				const auto result = ProjectCheck::run(&project, ProjectCheck::Kind::UnwiredSymbols);
+				const QSet<QUuid> expected = unwired(project, wireless, strip, contacts);
+				qInfo("%s options %d: %d", qPrintable(fixture), options, int(expected.size()));
+				QCOMPARE(int(result.findings.size()), int(expected.size()));
+				QCOMPARE(listed(result), expected);
+			}
+		}
+
+		/// A symbol whose wires are taken out of the file is found, its
+		/// row selects it; on a folio with no wire left, it is left out
+		/// until that option is off
+		void unwiredSymbolsFindsAPlantedSymbol()
+		{
+			const auto restore = qScopeGuard([]() { setUnwiredOptions(true, true, false); });
+			setUnwiredOptions(true, true, false);
+			const QString path = copy(QStringLiteral("every_feature.qet"));
+			QVERIFY(!path.isEmpty());
+			QUuid planted;
+			QUuid alone_folio;
+			{
+				QETProject project(path);
+				project.loadFolios();
+				QVERIFY(ProjectCheck::run(&project, ProjectCheck::Kind::UnwiredSymbols).findings.isEmpty());
+					// A plain symbol with a wire, on a folio with a wire
+					// it is not on: that wire stays
+				for (Diagram *diagram : project.diagrams())
+					for (Element *element : diagram->elements()) {
+						if (!planted.isNull() || element->linkType() != Element::Simple) continue;
+						bool own = false, other = false;
+						for (Conductor *conductor : diagram->conductors()) {
+							const bool mine = conductor->terminal1->parentElement() == element
+											  || conductor->terminal2->parentElement() == element;
+							(mine ? own : other) = true;
+						}
+						if (own && other) planted = element->uuid();
+					}
+			}
+			QVERIFY2(!planted.isNull(), "the fixture has no plain symbol to plant");
+
+			QFile file(path);
+			QVERIFY(file.open(QIODevice::ReadOnly));
+			QDomDocument document;
+			QVERIFY(bool(document.setContent(&file)));
+			file.close();
+			const QDomNodeList conductors = document.elementsByTagName(QStringLiteral("conductor"));
+			QList<QDomElement> gone;
+			for (int i = 0 ; i < conductors.count() ; ++i) {
+				const QDomElement conductor = conductors.at(i).toElement();
+				if (QUuid(conductor.attribute(QStringLiteral("element1"))) == planted
+					|| QUuid(conductor.attribute(QStringLiteral("element2"))) == planted)
+					gone << conductor;
+			}
+			QVERIFY2(!gone.isEmpty(), "the planted symbol's wires do not name it");
+			for (QDomElement &conductor : gone) conductor.parentNode().removeChild(conductor);
+			QVERIFY(file.open(QIODevice::WriteOnly | QIODevice::Truncate));
+			file.write(document.toByteArray());
+			file.close();
+
+			QETProject project(path);
+			project.loadFolios();
+			const auto result = ProjectCheck::run(&project, ProjectCheck::Kind::UnwiredSymbols);
+				// With the symbol at the other end of its wire, if that was its only one
+			QCOMPARE(listed(result), unwired(project, true, true, false));
+			QVERIFY(listed(result).contains(planted));
+			int row = -1;
+			for (int i = 0 ; i < result.findings.size() ; ++i)
+				if (result.findings.at(i).places.first().element == planted) row = i;
+
+			CheckPanelDockWidget panel;
+			panel.setProject(&project);
+			panel.run();
+			const int check = int(ProjectCheck::kinds().indexOf(ProjectCheck::Kind::UnwiredSymbols));
+			QTreeWidgetItem *finding = panel.tree()->topLevelItem(check)->child(row);
+			QVERIFY(finding);
+			QVERIFY(!finding->text(1).isEmpty());
+			QVERIFY(panel.showRow(finding));
+			Element *shown = nullptr;
+			for (Diagram *diagram : project.diagrams())
+				for (QGraphicsItem *item : diagram->selectedItems())
+					if (auto *element = qgraphicsitem_cast<Element *>(item)) shown = element;
+			QVERIFY(shown);
+			QCOMPARE(shown->uuid(), planted);
+
+				// The options menu saves its choice
+			QAction *wireless = panel.optionsMenu()->findChild<QAction *>(QStringLiteral("unwiredSkipWirelessFolios"));
+			QVERIFY(wireless);
+			QVERIFY(wireless->isChecked());
+			wireless->setChecked(false);
+			QVERIFY(!QetSettings::unwiredSymbolsSkipWirelessFolios());
+		}
+
 		/// Every check runs on every fixture without a crash, and every
 		/// place which says it can be shown names something to show
 		void everyCheckRunsOnEveryFixture_data()
@@ -284,6 +435,35 @@ class tst_projectcheck : public QObject
 			panel.setProject(nullptr);
 			QCOMPARE(panel.tree()->topLevelItemCount(), 0);
 			QCOMPARE(panel.findingCount(), 0);
+		}
+
+		/// Another project made current while the folios are built (the
+		/// progress dialog processes events) clears the panel; the old
+		/// project's results are not listed
+		void panelFollowsAProjectChangedWhileBuilding()
+		{
+			const QString path = copy(QStringLiteral("every_feature.qet"));
+			QVERIFY(!path.isEmpty());
+			const QString other_path = copy(QStringLiteral("device_types.qet"));
+			QVERIFY(!other_path.isEmpty());
+			QETProject project(path);
+			QETProject other(other_path);
+			QVERIFY2(project.unloadedFolioCount() > 0, "the folios are built already");
+			CheckPanelDockWidget panel;
+			panel.setProject(&project);
+			QTimer::singleShot(0, &panel, [&panel, &other]() { panel.setProject(&other); });
+			panel.run();
+			QCOMPARE(panel.project(), &other);
+			QCOMPARE(panel.tree()->topLevelItemCount(), 0);
+			QCOMPARE(panel.findingCount(), 0);
+
+				// The same, to no project (a copy whose folios are not built)
+			QETProject again(path);
+			panel.setProject(&again);
+			QTimer::singleShot(0, &panel, [&panel]() { panel.setProject(nullptr); });
+			panel.run();
+			QCOMPARE(panel.project(), nullptr);
+			QCOMPARE(panel.tree()->topLevelItemCount(), 0);
 		}
 
 		/// A potential-types finding, read from the database, selects its
