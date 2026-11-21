@@ -1125,7 +1125,20 @@ QVariant DynamicElementTextItem::itemChange(QGraphicsItem::GraphicsItemChange ch
 		{
 			connect(m_parent_element.data(), &Element::linkedElementChanged, this, &DynamicElementTextItem::masterChanged);
 			if(m_parent_element.data()->diagram())
+			{
 				connect(m_parent_element.data()->diagram()->project(), &QETProject::XRefPropertiesChanged, this, &DynamicElementTextItem::updateXref);
+					//undo() puts a deleted folio back, and with it
+					//the master this text draws its label of. The
+					//link itself did not change, only whether its
+					//master stands on a folio of the project again,
+					//so nothing else tells this text to look once
+					//more -- it went blank when the folio went.
+				connect(m_parent_element.data()->diagram()->project(), &QETProject::diagramAdded, this, &DynamicElementTextItem::masterChanged);
+					//The other way round: the master's folio goes
+					//away, and this text may not go on drawing a
+					//label whose link is not there any more
+				connect(m_parent_element.data()->diagram()->project(), &QETProject::diagramRemoved, this, &DynamicElementTextItem::masterChanged);
+			}
 				//The parent is already linked, wa call master changed for init the connection
 			if(!m_parent_element.data()->linkedElements().isEmpty())
 				masterChanged();
@@ -1142,6 +1155,16 @@ QVariant DynamicElementTextItem::itemChange(QGraphicsItem::GraphicsItemChange ch
 
 			//Add connection to keep up to date the status of the element linked to the parent folio report of this text.
 			connect(m_parent_element.data(), &Element::linkedElementChanged, this, &DynamicElementTextItem::reportChanged);
+				//The folio this report points at can come back the
+				//same way, and then the report has to look again
+			if (m_parent_element.data()->diagram())
+			{
+				connect(m_parent_element.data()->diagram()->project(), &QETProject::diagramAdded, this, &DynamicElementTextItem::reportChanged);
+					//And the partner's folio going away: this text
+					//may not go on naming a report that is not
+					//linked to it any more
+				connect(m_parent_element.data()->diagram()->project(), &QETProject::diagramRemoved, this, &DynamicElementTextItem::reportChanged);
+			}
 			//The parent is already linked, we call reportChanged for init the connection
 			if(!m_parent_element.data()->linkedElements().isEmpty())
 				reportChanged();
@@ -1159,7 +1182,12 @@ QVariant DynamicElementTextItem::itemChange(QGraphicsItem::GraphicsItemChange ch
 		{
 			connect(m_parent_element.data(), &Element::linkedElementChanged, this, &DynamicElementTextItem::updateXref);
 			if(m_parent_element.data()->diagram())
+			{
 				connect(m_parent_element.data()->diagram()->project(), &QETProject::XRefPropertiesChanged, this, &DynamicElementTextItem::updateXref);
+					//A slave's folio put back by undo() brings the
+					//contacts back, and the comb draws them again
+				connect(m_parent_element.data()->diagram()->project(), &QETProject::diagramAdded, this, &DynamicElementTextItem::updateXref);
+			}
 			//Also call updateXref for a master without any linked slave:
 			//when the contact comb must show every contact group the master
 			//defines, the cross ref is expected the moment the element lands
@@ -1646,6 +1674,9 @@ void DynamicElementTextItem::setConnectionForReportFormula(const QString &formul
 	{
 		connect(other_diagram->project(), &QETProject::projectDiagramsOrderChanged, this, &DynamicElementTextItem::updateReportText);
 		connect(other_diagram->project(), &QETProject::diagramRemoved, this, &DynamicElementTextItem::updateReportText);
+			//A folio put back by undo() renumbers the sheets the
+			//same way taking one out does, so it is looked at too
+		connect(other_diagram->project(), &QETProject::diagramAdded, this, &DynamicElementTextItem::updateReportText);
 	}
 	if (other_diagram && string.contains("%T"))
 		connect(&other_diagram->border_and_titleblock, &BorderTitleBlock::informationChanged, this, &DynamicElementTextItem::updateReportText);
@@ -1673,7 +1704,16 @@ void DynamicElementTextItem::removeConnectionForReportFormula(const QString &for
 	}
 	
 	if (other_diagram && (string.contains("%f") || string.contains("%id")))
+	{
+			//Every signal setConnectionForReportFormula() registers
+			//here has to come off again as well: Qt keeps every
+			//connect() it is given, so a report text set up over and
+			//over -- once per sheet change since it watches those
+			//signals -- would run this one more time each round
 		disconnect(other_diagram->project(), &QETProject::projectDiagramsOrderChanged, this, &DynamicElementTextItem::updateReportText);
+		disconnect(other_diagram->project(), &QETProject::diagramRemoved, this, &DynamicElementTextItem::updateReportText);
+		disconnect(other_diagram->project(), &QETProject::diagramAdded, this, &DynamicElementTextItem::updateReportText);
+	}
 	if (other_diagram && string.contains("%T"))
 		disconnect(&other_diagram->border_and_titleblock, &BorderTitleBlock::informationChanged, this, &DynamicElementTextItem::updateReportText);
 	if (string.contains("%l"))
@@ -2306,6 +2346,14 @@ void DynamicElementTextItem::updateXref()
 		m_Xref_item = nullptr;
 	}
 	
+		//Take the connections with them: this list is only
+		//bookkeeping, and emptying it leaves every one of them
+		//running -- the next time this block registers them, they
+		//are registered a second time (and a third, and so on),
+		//and the ones to a master this text no longer has keep it
+		//reacting to that master
+	for(const QMetaObject::Connection& c : m_update_slave_Xref_connection)
+		disconnect(c);
 	m_update_slave_Xref_connection.clear();
 
 	if(m_slave_Xref_item)

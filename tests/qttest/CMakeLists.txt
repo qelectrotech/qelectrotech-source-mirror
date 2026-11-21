@@ -703,6 +703,13 @@ qet_add_app_test(tst_symbolcustominfo tst_symbolcustominfo.cpp)
 # way a contact of a coil shows the coil's.
 qet_add_app_test(tst_plcslavelabel tst_plcslavelabel.cpp)
 
+# Deleting a folio and then linking one of its symbols to another symbol:
+# undo twice brings the folio back and the symbol with the partner it had
+# before, which it used to lose entirely.
+qet_add_app_test(tst_linkundoafterfolioremoval tst_linkundoafterfolioremoval.cpp)
+target_compile_definitions(tst_linkundoafterfolioremoval PRIVATE
+  QET_EXAMPLES_DIR="${QET_DIR}/examples")
+
 # The bridge drawn over terminals: what a bridge holds (colour, how many
 # terminals it may take, its sections), which terminals a line about to be
 # drawn crosses, and which parallel track a new bridge takes at them --
