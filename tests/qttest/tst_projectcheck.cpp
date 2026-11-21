@@ -18,12 +18,14 @@
 #include "qetapptest.h"
 #include "diagram.h"
 #include "devicetype/devicetypecheck.h"
+#include "dataBase/projectdatabase.h"
 #include "projectcheck.h"
 #include "qetgraphicsitem/conductor.h"
 #include "qetgraphicsitem/element.h"
 #include "qetgraphicsitem/terminal.h"
 #include "qetproject.h"
 #include "ui/checkpaneldockwidget.h"
+#include "ui/openwireendsdialog.h"
 #include "wiringrules.h"
 
 #include <QDomDocument>
@@ -169,6 +171,51 @@ class tst_projectcheck : public QObject
 				if (!device.complete() || DeviceTypeCheck::extraContacts(device)) ++expected;
 			if (!unlinked.isEmpty()) ++expected;
 			QCOMPARE(int(result.findings.size()), expected);
+		}
+
+		/// The open wire ends are B2's, worded as its window words them: a
+		/// folio report unlinked here is found, and its row selects the
+		/// report and its wire on its folio
+		void openWireEndsFindsAnUnlinkedReport()
+		{
+			const QString path = copy(QStringLiteral("every_feature.qet"));
+			QVERIFY(!path.isEmpty());
+			QETProject project(path);
+			QVERIFY(run(project, ProjectCheck::Kind::OpenWireEnds).findings.isEmpty());
+
+			Element *report = nullptr;
+			for (Diagram *diagram : project.diagrams())
+				for (Element *element : diagram->elements())
+					if (!report && (element->linkType() & Element::AllReport)
+						&& !element->linkedElements().isEmpty()
+						&& !element->terminals().isEmpty()
+						&& !element->terminals().first()->conductors().isEmpty())
+						report = element;
+			QVERIFY2(report, "the fixture has no linked report with a wire");
+			report->unlinkAllElements();
+
+			const auto ends = project.dataBase()->openWireEnds();
+			const auto result = ProjectCheck::run(&project, ProjectCheck::Kind::OpenWireEnds);
+			QVERIFY(!result.findings.isEmpty());
+			QCOMPARE(int(result.findings.size()), int(ends.size()));
+			int row = -1;
+			for (int i = 0 ; i < ends.size() ; ++i) {
+				QVERIFY(result.findings.at(i).text.startsWith(OpenWireEndsDialog::problemText(ends.at(i))));
+				QCOMPARE(result.findings.at(i).places.first().wires, ends.at(i).wires);
+				if (ends.at(i).element == report->uuid()) row = i;
+			}
+			QVERIFY2(row >= 0, "the unlinked report is not found");
+
+			CheckPanelDockWidget panel;
+			panel.setProject(&project);
+			panel.run();
+			const int check = int(ProjectCheck::kinds().indexOf(ProjectCheck::Kind::OpenWireEnds));
+			QTreeWidgetItem *finding = panel.tree()->topLevelItem(check)->child(row);
+			QVERIFY(finding);
+			for (Diagram *diagram : project.diagrams()) diagram->clearSelection();
+			QVERIFY(panel.showRow(finding));
+			QVERIFY(report->isSelected());
+			QVERIFY(report->terminals().first()->conductors().first()->isSelected());
 		}
 
 		/// Every check runs on every fixture without a crash, and every

@@ -47,6 +47,7 @@ class ProjectCheck
 		enum class Kind {
 			DuplicateLabels,   ///< DuplicateLabels::find()
 			PotentialTypes,    ///< projectDataBase::potentialTypeMismatches()
+			OpenWireEnds,      ///< projectDataBase::openWireEnds()
 			DeviceTypes,       ///< DeviceTypeCheck::check()
 			WiresPerTerminal,  ///< terminals with more wires than WiringRules::limit()
 			TerminalNames      ///< symbols with two terminals of one name (TerminalNameCheck)
@@ -61,7 +62,8 @@ class ProjectCheck
 			QPointer<QGraphicsObject> item;  ///< a built item
 			QUuid element;                   ///< a symbol, when item is not given
 			QUuid diagram;                   ///< the symbol's folio
-			QList<QUuid> wires;              ///< wires, found when shown
+			QList<QUuid> wires;              ///< wires, found when shown, on
+											 ///< the folio diagram if given
 			bool canShow() const {return item || !element.isNull() || !wires.isEmpty();}
 		};
 
@@ -88,6 +90,7 @@ class ProjectCheck
 	private:
 		static Result duplicateLabels(QETProject *project);
 		static Result potentialTypes(QETProject *project);
+		static Result openWireEnds(QETProject *project);
 		static Result deviceTypes(QETProject *project);
 		static Result wiresPerTerminal(QETProject *project);
 		static Result terminalNames(QETProject *project);

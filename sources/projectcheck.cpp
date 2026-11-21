@@ -25,6 +25,7 @@
 #include "ElementsCollection/elementslocation.h"
 #include "qetgraphicsitem/element.h"
 #include "qetproject.h"
+#include "ui/openwireendsdialog.h"
 #include "utils/qetsettings.h"
 #include "wiringrules.h"
 
@@ -102,8 +103,8 @@ namespace {
 
 QList<ProjectCheck::Kind> ProjectCheck::kinds()
 {
-	return {Kind::DuplicateLabels, Kind::PotentialTypes, Kind::DeviceTypes,
-			Kind::WiresPerTerminal, Kind::TerminalNames};
+	return {Kind::DuplicateLabels, Kind::PotentialTypes, Kind::OpenWireEnds,
+			Kind::DeviceTypes, Kind::WiresPerTerminal, Kind::TerminalNames};
 }
 
 QString ProjectCheck::title(Kind kind)
@@ -111,6 +112,7 @@ QString ProjectCheck::title(Kind kind)
 	switch (kind) {
 		case Kind::DuplicateLabels: return tr("Duplicate signals and components");
 		case Kind::PotentialTypes: return tr("Potential types");
+		case Kind::OpenWireEnds: return tr("Open wire ends");
 		case Kind::DeviceTypes: return tr("Device types");
 		case Kind::WiresPerTerminal: return tr("Wires per terminal");
 		case Kind::TerminalNames: return tr("Terminal names");
@@ -126,6 +128,10 @@ QString ProjectCheck::toolTip(Kind kind)
 		case Kind::PotentialTypes:
 			return tr("Wires of different potential types joined on one potential. "
 					  "Project > Check potential types... lists them too.");
+		case Kind::OpenWireEnds:
+			return tr("Wires that run to an unlinked folio report, into a junction "
+					  "on one side only, or reach one symbol terminal. "
+					  "Project > Check open wire ends... lists them too.");
 		case Kind::DeviceTypes:
 			return tr("Devices not drawn the way their device type says. "
 					  "Project > Check device types... can place the missing parts.");
@@ -149,6 +155,7 @@ ProjectCheck::Result ProjectCheck::run(QETProject *project, Kind kind)
 	switch (kind) {
 		case Kind::DuplicateLabels: return duplicateLabels(project);
 		case Kind::PotentialTypes: return potentialTypes(project);
+		case Kind::OpenWireEnds: return openWireEnds(project);
 		case Kind::DeviceTypes: return deviceTypes(project);
 		case Kind::WiresPerTerminal: return wiresPerTerminal(project);
 		case Kind::TerminalNames: return terminalNames(project);
@@ -217,6 +224,34 @@ ProjectCheck::Result ProjectCheck::potentialTypes(QETProject *project)
 		Place place;
 		place.text = tr("%n wire(s)", nullptr, int(mismatch.wires.size()));
 		place.wires = mismatch.wires;
+		finding.places << place;
+		result.findings << finding;
+	}
+	return result;
+}
+
+/**
+	@brief ProjectCheck::openWireEnds
+	projectDataBase::openWireEnds() (#1878 B2), worded as its own window
+	words it. Read from the database: the report, junction or symbol and
+	the wires on its folio are found when the finding is opened.
+*/
+ProjectCheck::Result ProjectCheck::openWireEnds(QETProject *project)
+{
+	Result result;
+	result.kind = Kind::OpenWireEnds;
+	FolioTexts folios(project);
+	for (const auto &end : project->dataBase()->openWireEnds()) {
+		Finding finding;
+		finding.text = OpenWireEndsDialog::problemText(end);
+		const QString what = end.terminal.isEmpty()
+			? end.label
+			: QStringLiteral("%1:%2").arg(end.label, end.terminal);
+		if (!what.isEmpty())
+			//: %1 is the problem, %2 the report, junction or symbol terminal
+			finding.text = tr("%1: %2").arg(finding.text, what);
+		Place place = symbolPlace(folios, end.element, end.folio, end.position, what);
+		place.wires = end.wires;
 		finding.places << place;
 		result.findings << finding;
 	}

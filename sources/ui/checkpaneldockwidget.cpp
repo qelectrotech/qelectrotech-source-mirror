@@ -213,34 +213,35 @@ bool CheckPanelDockWidget::showRow(QTreeWidgetItem *row)
 		diagram = DuplicateLabels::diagramOf(place.item);
 		if (diagram && m_project->folioIndex(diagram) >= 0)
 			targets << place.item.data();
-	} else if (!place.element.isNull()) {
-		diagram = m_project->diagramByUuid(place.diagram);
-		if (diagram) {
-			m_project->buildFolioToShow(diagram);
-			for (Element *element : diagram->elements())
-				if (element && element->uuid() == place.element) {
-					targets << element;
-					break;
+	} else if (place.canShow()) {
+			// The place's folio, else the folio of its first wire, from
+			// the database: only that folio is built and looked at
+		if (!place.diagram.isNull())
+			diagram = m_project->diagramByUuid(place.diagram);
+		if (!diagram && !place.wires.isEmpty()) {
+			QSqlQuery query = m_project->dataBase()->newQuery();
+			query.prepare(QStringLiteral("SELECT diagram_uuid FROM conductor WHERE uuid = :uuid"));
+			for (const QUuid &wire : place.wires) {
+				query.bindValue(QStringLiteral(":uuid"), wire.toString());
+				if (query.exec() && query.next()) {
+					diagram = m_project->diagramByUuid(QUuid(query.value(0).toString()));
+					if (diagram) break;
 				}
-		}
-	} else if (!place.wires.isEmpty()) {
-			// The folio of the first wire, from the database: only that
-			// folio is built, and only its wires are looked at
-		const QSet<QUuid> uuids(place.wires.begin(), place.wires.end());
-		QSqlQuery query = m_project->dataBase()->newQuery();
-		query.prepare(QStringLiteral("SELECT diagram_uuid FROM conductor WHERE uuid = :uuid"));
-		for (const QUuid &wire : place.wires) {
-			query.bindValue(QStringLiteral(":uuid"), wire.toString());
-			if (query.exec() && query.next()) {
-				diagram = m_project->diagramByUuid(QUuid(query.value(0).toString()));
-				if (diagram) break;
 			}
 		}
 		if (diagram) {
 			m_project->buildFolioToShow(diagram);
-			for (Conductor *conductor : diagram->content().conductors())
-				if (uuids.contains(conductor->uuid()))
-					targets << conductor;
+			if (!place.element.isNull())
+				for (Element *element : diagram->elements())
+					if (element && element->uuid() == place.element) {
+						targets << element;
+						break;
+					}
+			const QSet<QUuid> uuids(place.wires.begin(), place.wires.end());
+			if (!uuids.isEmpty())
+				for (Conductor *conductor : diagram->content().conductors())
+					if (uuids.contains(conductor->uuid()))
+						targets << conductor;
 		}
 	}
 	if (!diagram || targets.isEmpty()) {
