@@ -1109,6 +1109,8 @@ set(QET_SRC_FILES
 
   ${QET_DIR}/sources/materiallist/materialentrydialog.cpp
   ${QET_DIR}/sources/materiallist/materialentrydialog.h
+  ${QET_DIR}/sources/materiallist/partsearch.cpp
+  ${QET_DIR}/sources/materiallist/partsearch.h
   ${QET_DIR}/sources/materiallist/materiallist.cpp
   ${QET_DIR}/sources/materiallist/materiallist.h
   ${QET_DIR}/sources/materiallist/materialselectiondialog.cpp
