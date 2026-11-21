@@ -313,6 +313,86 @@ namespace QetSettings
 		settings.setValue("diagrameditor/ask_labels_placing_macro", ask);
 	}
 
+	namespace {
+		/**
+		* @brief lastDirKey
+		* @param which
+		* @return the settings key holding the folder the last file of
+		* @p which was picked from
+		*/
+		QString lastDirKey(QetSettings::FileDialog which)
+		{
+			switch (which) {
+				case QetSettings::FileDialog::Picture:
+					return "filedialogs/last_picture_dir";
+				case QetSettings::FileDialog::Pdf:
+					return "filedialogs/last_pdf_dir";
+				case QetSettings::FileDialog::File:
+					break;
+			}
+			return "filedialogs/last_file_dir";
+		}
+	}
+
+	/**
+	* @brief rememberLastDir
+	* @return whether a dialog that asks for a file or a folder starts in
+	* the folder the last one was picked from instead of the pictures or
+	* the documents folder (@sa setRememberLastDir), off unless the user
+	* turned it on
+	*/
+	bool rememberLastDir()
+	{
+		QSettings settings;
+		return settings.value("filedialogs/remember_last_dir", false).toBool();
+	}
+
+	/**
+	* @brief setRememberLastDir
+	* Store whether a dialog that asks for a file or a folder starts in
+	* the folder the last one was picked from. Turning it off forgets the
+	* folders, so that nothing of the user's disk stays in the settings.
+	* @sa rememberLastDir
+	* @param remember
+	*/
+	void setRememberLastDir(bool remember)
+	{
+		QSettings settings;
+		settings.setValue("filedialogs/remember_last_dir", remember);
+		if (!remember) {
+			settings.remove("filedialogs/last_picture_dir");
+			settings.remove("filedialogs/last_pdf_dir");
+			settings.remove("filedialogs/last_file_dir");
+		}
+	}
+
+	/**
+	* @brief lastDir
+	* @param which
+	* @return the folder the last file of @p which was picked from, empty
+	* when none was picked yet or the setting is off (@sa setLastDir)
+	*/
+	QString lastDir(FileDialog which)
+	{
+		if (!rememberLastDir()) return QString();
+		QSettings settings;
+		return settings.value(lastDirKey(which), QString()).toString();
+	}
+
+	/**
+	* @brief setLastDir
+	* Store the folder the last file of @p which was picked from.
+	* Nothing is stored while the setting is off.
+	* @sa lastDir
+	* @param which
+	* @param dir
+	*/
+	void setLastDir(FileDialog which, const QString &dir)
+	{
+		if (!rememberLastDir()) return;
+		QSettings settings;
+		settings.setValue(lastDirKey(which), dir);
+	}
 	bool askLabelAndPartPlacingSymbol()
 	{
 		QSettings settings;

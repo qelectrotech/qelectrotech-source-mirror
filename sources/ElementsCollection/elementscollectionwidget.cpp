@@ -878,11 +878,12 @@ void ElementsCollectionWidget::importEdz()
 	}
 
 	const QString edz_path = QFileDialog::getOpenFileName(
-		this, tr("Import an EPLAN part"), QString(),
+		this, tr("Import an EPLAN part"), QETApp::lastFileDir(QString()),
 		tr("EPLAN parts (*.edz)"));
 	if (edz_path.isEmpty()) {
 		return;
 	}
+	QETApp::rememberFileDir(edz_path);
 
 	EdzImporter importer;
 	if (!importer.importToDirectory(edz_path, feci->fileSystemPath())) {

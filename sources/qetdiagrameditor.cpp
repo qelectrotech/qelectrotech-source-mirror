@@ -5910,10 +5910,11 @@ void QETDiagramEditor::slot_runScript() {
 	const QString script_path = QFileDialog::getOpenFileName(
 		this,
 		tr("Run a script"),
-		QString(),
+		QETApp::lastFileDir(QString()),
 		tr("JavaScript scripts (*.js);;All files (*)")
 	);
 	if (script_path.isEmpty()) return;
+	QETApp::rememberFileDir(script_path);
 
 	QetScripting::runOnProject(script_path, project, currentDiagramView());
 }

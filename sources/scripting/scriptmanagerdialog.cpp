@@ -17,6 +17,7 @@
 */
 #include "scriptmanagerdialog.h"
 
+#include "qetapp.h"
 #include "scriptlibrary.h"
 #include <qetmessagebox.h>
 
@@ -339,9 +340,10 @@ void ScriptManagerDialog::testScript()
 void ScriptManagerDialog::chooseIcon()
 {
 	const QString source = QFileDialog::getOpenFileName(
-		this, tr("Script icon"), QString(),
+		this, tr("Script icon"), QETApp::lastFileDir(QString()),
 		tr("Images (*.svg *.png)"));
 	if (source.isEmpty()) return;
+	QETApp::rememberFileDir(source);
 	QDir dir(ScriptLibrary::folder());
 	dir.mkpath(QStringLiteral("."));
 	const QString name = QFileInfo(source).fileName();
