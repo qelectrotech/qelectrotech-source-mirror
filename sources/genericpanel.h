@@ -51,7 +51,8 @@ class GenericPanel : public QTreeWidget {
 		Item = Qt::UserRole + 1,
 		AliasItem,
 		Parent,
-		PanelFlags
+		PanelFlags,
+		FolioGroupPath ///< on a folio row: the group rows it sits under
 	};
 	
 	// Constructors, destructor
@@ -89,6 +90,11 @@ class GenericPanel : public QTreeWidget {
 						   QETProject *,
 						   PanelOptions = AddAllChild,
 						   bool = false);
+	void layoutFolioItems(QTreeWidgetItem *, QETProject *,
+			      PanelOptions = AddAllChild);
+	public:
+	static QList<QStringList> folioGroupPaths(const QList<Diagram *> &);
+	protected:
 	
 	// diagram-related methods
 	public:

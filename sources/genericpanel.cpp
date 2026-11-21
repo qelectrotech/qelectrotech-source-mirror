@@ -21,10 +21,13 @@
 #include "qetapp.h"
 #include "qeticons.h"
 #include "qetproject.h"
+#include "bordertitleblock.h"
 #include "titleblock/templatelocation.h"
 #include "titleblock/templatescollection.h"
 
 #include <QTreeWidgetItem>
+
+#include <functional>
 
 /**
 	Constructor
@@ -252,20 +255,12 @@ QTreeWidgetItem *GenericPanel::fillProjectItem(QTreeWidgetItem *project_qtwi,
 				project,&QETProject::projectDiagramsOrderChanged,
 				this,&GenericPanel::projectDiagramsOrderChanged);
 		} else {
-			// remove diagrams unknown to the project (presumably removed)
+			// remove diagrams unknown to the project (presumably removed),
+			// including those under a folio group row
 			removeObsoleteItems(project -> folios(),
-					    project_qtwi, QET::Diagram, false);
+					    project_qtwi, QET::Diagram, true);
 		}
-		int index = 0;
-			//A folio's entry shows its own data (title, folio label):
-			//folios(), which does not build the folios' items
-		foreach (Diagram *diagram, project -> folios()) {
-			QTreeWidgetItem *diagram_qtwi = addDiagram(diagram,
-								   nullptr,
-								   options);
-			project_qtwi -> insertChild(index, diagram_qtwi);
-			++ index;
-		}
+		layoutFolioItems(project_qtwi, project, options);
 	}
 	
 	if (options & AddChildTemplatesCollection) {
@@ -281,6 +276,186 @@ QTreeWidgetItem *GenericPanel::fillProjectItem(QTreeWidgetItem *project_qtwi,
 	}
 
 	return(fillItem(project_qtwi, options, freshly_created));
+}
+
+/**
+	@brief GenericPanel::folioGroupPaths
+	Where each folio sits in the project panel: the group and sub-group
+	rows above it, outermost first (#1878 C9). A folio's group and
+	sub-group are the ones its title block resolves (its own, else its
+	plant and location, as %{folio_group} and %{folio_subgroup}).
+
+	A level is shown only where it splits folios apart: when every folio
+	has the same group (all empty, or all "=A1"), there is no group row,
+	and likewise for the sub-groups of one group. A folio with an empty
+	group or sub-group sits directly under the row above. So a project
+	that uses no groups, or puts every folio in the same place, is
+	listed flat as before.
+	@param folios : the project's folios, in project order
+	@return one path per folio, in the same order; each entry is a level
+	tag ('g' group, 's' sub-group) followed by the name
+*/
+QList<QStringList> GenericPanel::folioGroupPaths(const QList<Diagram *> &folios)
+{
+	QStringList groups, subgroups;
+		//The rule of TitleBlockProperties::resolvedFolioGroup() and
+		//resolvedFolioSubgroup(), read field by field: this runs for every
+		//folio each time one folio's title block changes
+	for (Diagram *diagram : folios) {
+		const BorderTitleBlock &tb = diagram -> border_and_titleblock;
+		const QString group = tb.folioGroup();
+		const QString subgroup = tb.folioSubgroup();
+		groups    << (group.isEmpty() ? tb.plant() : group).trimmed();
+		subgroups << (subgroup.isEmpty() ? tb.locmach() : subgroup).trimmed();
+	}
+
+	const bool show_groups = QSet<QString>(groups.cbegin(), groups.cend())
+				 .size() > 1;
+
+		// sub-groups are compared among the folios of one group
+	QHash<QString, QSet<QString>> subgroups_per_group;
+	for (int i = 0 ; i < folios.size() ; ++ i) {
+		const QString bucket = show_groups ? groups.at(i) : QString();
+		subgroups_per_group[bucket].insert(subgroups.at(i));
+	}
+
+	QList<QStringList> paths;
+	for (int i = 0 ; i < folios.size() ; ++ i) {
+		QStringList path;
+		const QString bucket = show_groups ? groups.at(i) : QString();
+		if (show_groups && !groups.at(i).isEmpty())
+			path << QStringLiteral("g") + groups.at(i);
+		if (subgroups_per_group.value(bucket).size() > 1
+			&& !subgroups.at(i).isEmpty())
+			path << QStringLiteral("s") + subgroups.at(i);
+		paths << path;
+	}
+	return paths;
+}
+
+/**
+	@brief GenericPanel::layoutFolioItems
+	Put the rows of the folios of \a project under \a project_qtwi, in
+	project order, under group and sub-group rows where the folios are
+	grouped (@see folioGroupPaths()). Group rows come in the order of
+	their first folio. Rows of groups that are folded stay folded.
+	@param project_qtwi
+	@param project
+	@param options
+*/
+void GenericPanel::layoutFolioItems(QTreeWidgetItem *project_qtwi,
+				    QETProject *project,
+				    PanelOptions options)
+{
+		//A folio's entry shows its own data (title, folio label):
+		//folios(), which does not build the folios' items
+	const QList<Diagram *> folios = project -> folios();
+	const QList<QStringList> paths = folioGroupPaths(folios);
+
+		// the rows as they should be, and as they are: one entry per row,
+		// depth first. When nothing moved, leave the rows alone (labels
+		// were brought up to date by addDiagram()), so the current row and
+		// the selection stay as they are
+	QStringList wanted;
+	{
+		QSet<QString> seen;
+		for (int i = 0 ; i < folios.size() ; ++ i) {
+			QString key;
+			for (const QString &level : paths.at(i)) {
+				key += QLatin1Char('\x1f') + level;
+				if (!seen.contains(key)) {
+					seen.insert(key);
+					wanted << QStringLiteral("row") + key;
+				}
+			}
+			wanted << QStringLiteral("folio %1%2").arg(
+				reinterpret_cast<quintptr>(folios.at(i))).arg(key);
+		}
+	}
+	QStringList current;
+	bool all_present = true;
+	for (Diagram *diagram : folios) {
+		QTreeWidgetItem *diagram_qtwi = diagrams_.value(diagram);
+		if (!diagram_qtwi || !diagram_qtwi -> parent())
+			all_present = false;
+	}
+	if (all_present) {
+		std::function<void(QTreeWidgetItem *, const QString &)> walk =
+			[&](QTreeWidgetItem *item, const QString &key) {
+			for (int i = 0 ; i < item -> childCount() ; ++ i) {
+				QTreeWidgetItem *child = item -> child(i);
+				if (child -> type() == QET::FolioGroup) {
+					const QString row_key =
+						child -> data(0, GenericPanel::Item).toString();
+					current << QStringLiteral("row") + row_key;
+					walk(child, row_key);
+				} else if (child -> type() == QET::Diagram) {
+					current << QStringLiteral("folio %1%2").arg(
+						reinterpret_cast<quintptr>(
+							valueForItem<Diagram *>(child))).arg(key);
+				}
+			}
+		};
+		walk(project_qtwi, QString());
+		if (current == wanted) {
+			for (Diagram *diagram : folios) {
+				addDiagram(diagram, nullptr, options);
+			}
+			return;
+		}
+	}
+
+		// remember which group rows were folded, then take the rows apart
+	QSet<QString> folded;
+	for (QTreeWidgetItem *group_qtwi :
+		 childItems(project_qtwi, QET::FolioGroup, true)) {
+		if (!group_qtwi -> isExpanded())
+			folded.insert(group_qtwi -> data(0, GenericPanel::Item)
+					      .toString());
+	}
+	QList<QTreeWidgetItem *> diagram_qtwis;
+	for (Diagram *diagram : folios) {
+		QTreeWidgetItem *diagram_qtwi = addDiagram(diagram, nullptr, options);
+		if (QTreeWidgetItem *parent = diagram_qtwi -> parent())
+			parent -> removeChild(diagram_qtwi);
+		diagram_qtwis << diagram_qtwi;
+	}
+		// the group rows now hold no folio: deleting them deletes nothing else
+	for (QTreeWidgetItem *group_qtwi :
+		 childItems(project_qtwi, QET::FolioGroup, false)) {
+		delete group_qtwi;
+	}
+
+	QHash<QString, QTreeWidgetItem *> group_rows;
+	int index = 0; // next place among the project's own children
+	for (int i = 0 ; i < folios.size() ; ++ i) {
+		QTreeWidgetItem *parent = project_qtwi;
+		QString key;
+		for (const QString &level : paths.at(i)) {
+			key += QLatin1Char('\x1f') + level;
+			QTreeWidgetItem *row = group_rows.value(key);
+			if (!row) {
+				row = makeItem(QET::FolioGroup, nullptr, level.mid(1));
+				row -> setData(0, GenericPanel::Item, key);
+				row -> setToolTip(0, level.startsWith(QLatin1Char('g'))
+					? tr("Folio group: %1").arg(level.mid(1))
+					: tr("Folio sub-group: %1").arg(level.mid(1)));
+				if (parent == project_qtwi)
+					project_qtwi -> insertChild(index ++, row);
+				else
+					parent -> addChild(row);
+				row -> setExpanded(!folded.contains(key));
+				group_rows.insert(key, row);
+			}
+			parent = row;
+		}
+		QTreeWidgetItem *diagram_qtwi = diagram_qtwis.at(i);
+		diagram_qtwi -> setData(0, GenericPanel::FolioGroupPath, key);
+		if (parent == project_qtwi)
+			project_qtwi -> insertChild(index ++, diagram_qtwi);
+		else
+			parent -> addChild(diagram_qtwi);
+	}
 }
 
 /**
@@ -744,10 +919,10 @@ void GenericPanel::diagramAdded(QETProject *project, Diagram *diagram) {
 	if (diagram) {
 		QTreeWidgetItem *projectItem = itemForProject(project);
 		if (projectItem) {
-			for (int i = 0; i < projectItem->childCount(); ++i) {
-				QTreeWidgetItem *child = projectItem->child(i);
-				if (child && child->type() == QET::Diagram
-				    && valueForItem<Diagram *>(child) == diagram) {
+				// the folio may sit under a folio group row
+			for (QTreeWidgetItem *child :
+				 childItems(projectItem, QET::Diagram, true)) {
+				if (valueForItem<Diagram *>(child) == diagram) {
 					clearSelection();
 					setCurrentItem(child);
 					child->setSelected(true);
@@ -780,36 +955,21 @@ void GenericPanel::projectDiagramsOrderChanged(QETProject *project,
 					       int from,
 					       int to)
 {
+	Q_UNUSED(from)
 	// get the item representing the provided project
 	QTreeWidgetItem *qtwi_project = itemForProject(project);
 	if (!qtwi_project) return;
-	
-	// get the item representing the moved diagram
-	QTreeWidgetItem *moved_qtwi_diagram = qtwi_project -> child(from);
-	if (!moved_qtwi_diagram) return;
-	
-	// remove the QTWI then insert it back at the adequate location
-	qtwi_project -> removeChild (moved_qtwi_diagram);
-	qtwi_project -> insertChild (to, moved_qtwi_diagram);
-	
-	// update the QTWI labels because they may display the folio index
-	for (int i = qMin(from, to); i < qMax(from, to) + 1; i++)
-	{
-		QTreeWidgetItem *qtwi_diagram = qtwi_project -> child(i);
-		if (!qtwi_diagram) continue;
 
-		Diagram *diagram = valueForItem<Diagram *>(qtwi_diagram);
-		if (diagram)
-			updateDiagramItem(qtwi_diagram, diagram);
-	}
-	
+		// put the rows in the new order, under their folio group rows if
+		// any (#1878 C9). The project's own refresh may have done it
+		// already, then this changes nothing
+	const QList<Diagram *> folios = project -> folios();
+	layoutFolioItems(qtwi_project, project);
+
 		// select the moved diagram
-	if(m_selected_item){
-		setCurrentItem(moved_qtwi_diagram);
-	}
-	else{
-		setCurrentItem(qtwi_project -> child(from));
-	}
+	if (to >= 0 && to < folios.size())
+		if (QTreeWidgetItem *moved = diagrams_.value(folios.at(to)))
+			setCurrentItem(moved);
 	m_selected_item = nullptr;
 
 	emit(panelContentChanged());
@@ -822,6 +982,27 @@ void GenericPanel::projectDiagramsOrderChanged(QETProject *project,
 */
 void GenericPanel::diagramTitleChanged(Diagram *diagram) {
 	GenericPanel::addDiagram(diagram);
+
+		// a new group or sub-group moves the folio to another row; it may
+		// also make a level appear or go for every folio (#1878 C9)
+	//
+	// When any folio's row changes, this folio's does too: a level
+	// appears or goes only when this folio's group or sub-group makes or
+	// ends a split, and then its own row changes with it.
+	QETProject *project = diagram ? diagram -> project() : nullptr;
+	QTreeWidgetItem *diagram_qtwi = diagrams_.value(diagram);
+	if (project && diagram_qtwi && itemForProject(project)) {
+		const QList<Diagram *> folios = project -> folios();
+		const int i = folios.indexOf(diagram);
+		if (i >= 0) {
+			const QStringList path = folioGroupPaths(folios).at(i);
+			QString key;
+			for (const QString &level : path)
+				key += QLatin1Char('\x1f') + level;
+			if (diagram_qtwi -> data(0, FolioGroupPath).toString() != key)
+				addProject(project, nullptr, AddChildDiagrams);
+		}
+	}
 	emit(panelContentChanged());
 }
 
@@ -870,6 +1051,7 @@ QString GenericPanel::defaultText(QET::ItemType type) {
 			return("title block templates collection");
 		case QET::Diagram: return("diagram");
 		case QET::Project: return("project");
+		case QET::FolioGroup: return("folio group");
 		default: return(QString());
 	}
 	return(QString());
@@ -889,6 +1071,8 @@ QIcon GenericPanel::defaultIcon(QET::ItemType type) {
 		return(QET::Icons::Diagram);
 	} else if (type == QET::Project) {
 		return(QIcon(QET::Icons::ProjectFileGP.pixmap(QSize(16, 16))));
+	} else if (type == QET::FolioGroup) {
+		return(QET::Icons::Folder);
 	}
 	return(QIcon());
 }
