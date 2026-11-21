@@ -26,6 +26,7 @@
 class QTextOrientationSpinBoxWidget;
 class QComboBox;
 class QPushButton;
+class QETProject;
 
 namespace Ui {
 	class ConductorPropertiesWidget;
@@ -50,6 +51,7 @@ class ConductorPropertiesWidget : public QWidget
 		void addAutonumWidget (QWidget *widget);
 		void setHiddenOneTextPerFolio   (const bool &hide);
 		void setPotentialTypes(const PotentialTypes &types);
+		void setProject(QETProject *project);
 		void setDisabledShowText        (const bool &disable = true);
 		void setHiddenAvailableAutonum (const bool &hide);
 		void setMixedTextFields(const QList<ConductorMultiEdit::TextField> &mixed);
@@ -80,12 +82,17 @@ class ConductorPropertiesWidget : public QWidget
 		void on_m_earth_cb_toggled(bool checked);
 		void on_m_neutral_cb_toggled(bool checked);
 		void on_m_update_preview_pb_clicked();
+		void on_m_definition_mark_customize_pb_clicked();
 
 	private:
 		Ui::ConductorPropertiesWidget *ui;
 		ConductorProperties m_properties;
 		QTextOrientationSpinBoxWidget *m_verti_select, *m_horiz_select;
 		bool m_text_locked = false;
+			/// The project whose definition mark style the
+			/// "Customize..." button edits; null where there is
+			/// none to edit
+		QETProject *m_project = nullptr;
 };
 
 #endif // CONDUCTORPROPERTIESWIDGET_H

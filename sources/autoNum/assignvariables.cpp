@@ -269,6 +269,8 @@ namespace autonum
 			context.wire_tension_protocol = cndr->properties().m_tension_protocol;
 			context.wire_color = cndr->properties().m_wire_color;
 			context.wire_section = cndr->properties().m_wire_section;
+			context.wire_type = cndr->properties().m_conductor_type;
+			context.wire_cable = cndr->properties().m_cable;
 		}
 		return formulaToLabel(std::move(formula), seqStruct, context);
 	}
@@ -542,6 +544,8 @@ namespace autonum
 			m_assigned_label.replace("%wv", m_context.wire_tension_protocol);
 			m_assigned_label.replace("%wc", m_context.wire_color);
 			m_assigned_label.replace("%ws", m_context.wire_section);
+			m_assigned_label.replace("%wt", m_context.wire_type);
+			m_assigned_label.replace("%wb", m_context.wire_cable);
 		}
 
 		assignTitleBlockVar();

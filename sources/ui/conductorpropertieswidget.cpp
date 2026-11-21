@@ -21,6 +21,7 @@
 #include <conductorcolorcodes.h>
 #include <qetapp.h>
 #include <qtextorientationspinboxwidget.h>
+#include "definitionmarkstyleeditor.h"
 #include "ui_conductorpropertieswidget.h"
 
 #include <QCompleter>
@@ -290,6 +291,33 @@ void ConductorPropertiesWidget::selectPotentialType(const QString &name)
 }
 
 /**
+	@brief ConductorPropertiesWidget::setProject
+	Offer the "Customize..." button of the stroke with colour and
+	section, which edits the way \p project draws it. Without this call
+	the button stays hidden, which is what the application defaults page,
+	having no project to edit, shows.
+	@param project
+*/
+void ConductorPropertiesWidget::setProject(QETProject *project)
+{
+	m_project = project;
+	ui->m_definition_mark_customize_pb->setVisible(project != nullptr);
+}
+
+/**
+	@brief ConductorPropertiesWidget::on_m_definition_mark_customize_pb_clicked
+	Edit how the project draws the stroke with colour and section
+*/
+void ConductorPropertiesWidget::on_m_definition_mark_customize_pb_clicked()
+{
+	if (!m_project) {
+		return;
+	}
+	DefinitionMarkStyleEditor editor(m_project, this);
+	editor.exec();
+}
+
+/**
 	@brief ConductorPropertiesWidget::setHiddenOneTextPerFolio
 	@param hide
 */
@@ -384,6 +412,9 @@ void ConductorPropertiesWidget::initWidget()
 		//Shown by setPotentialTypes(), for a project that draws from them
 	ui->m_potential_type_cb->hide();
 	ui->m_potential_type_label->hide();
+		//Shown by setProject(), which knows the project whose drawing
+		//the button edits
+	ui->m_definition_mark_customize_pb->hide();
 	m_verti_select = QETApp::createTextOrientationSpinBoxWidget();
 	ui -> m_text_angle_gl -> addWidget(m_verti_select, 2, 0, Qt::AlignHCenter);
 	m_horiz_select = QETApp::createTextOrientationSpinBoxWidget();
