@@ -2426,12 +2426,13 @@ void QETDiagramEditor::setUpMenu()
 	menu_project -> addAction(m_project_add_diagram);
 	menu_project -> addAction(m_remove_diagram_from_project);
 	menu_project -> addAction(m_clean_project);
-	menu_project->addAction(m_check_project);
 	menu_project->addAction(m_find_duplicate_labels);
 	menu_project->addAction(m_check_potentials);
 	menu_project->addAction(m_device_types);
 	menu_project->addAction(m_check_device_types);
 	menu_project->addAction(m_part_types);
+		//Every check above at once, in the Check panel
+	menu_project->addAction(m_check_project);
 	menu_project->addAction(m_project_languages);
 	menu_project -> addSeparator();
 	menu_project -> addAction(m_csv_export);
