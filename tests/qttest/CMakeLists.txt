@@ -838,6 +838,10 @@ qet_add_app_test(tst_linepivotresize tst_linepivotresize.cpp)
 # creates cannot come out in another order than the sort it then pushes.
 qet_add_app_test(tst_terminalstriporder tst_terminalstriporder.cpp)
 
+# A terminal strip's kind (terminal strip, plug or socket): kept by the
+# strip's xml, .qet, .qetz and .qetdb, told by qet_terminals, set by the editor.
+qet_add_app_test(tst_terminalstripkind tst_terminalstripkind.cpp)
+
 # The strip graphic names where a cable goes at its far end -- Installation,
 # Location and Label of the first piece its wires land on past the strip, in
 # plan order, the same three fields the cable list computes for a target.

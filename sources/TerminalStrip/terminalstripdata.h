@@ -28,6 +28,9 @@ class TerminalStripData : public PropertiesInterface
 		friend class TerminalStripEditor;
 
 	public:
+			///Kind of strip : a terminal strip, or one side of a connector (plug = male, socket = female)
+		enum class Kind { Terminals, Plug, Socket };
+
 		TerminalStripData();
 		TerminalStripData(const TerminalStripData &other);
 
@@ -41,6 +44,12 @@ class TerminalStripData : public PropertiesInterface
 
 		TerminalStripData &operator= (const TerminalStripData &other);
 
+		Kind kind() const {return m_kind;}
+		void setKind(Kind kind) {m_kind = kind;}
+
+		static QString kindToXml(Kind kind);
+		static Kind kindFromXml(const QString &value);
+
 	private :
 		static QDomElement infoToXml(QDomDocument &xml_doc, const QString &name, const QString &value);
 
@@ -50,6 +59,7 @@ class TerminalStripData : public PropertiesInterface
 				m_comment,
 				m_description,
 				m_manufacturer;	//Manufacturer of the terminals proposed in the editor, empty = all
+		Kind m_kind = Kind::Terminals;
 		QUuid m_uuid = QUuid::createUuid();
 
 };

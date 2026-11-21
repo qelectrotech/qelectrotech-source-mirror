@@ -71,6 +71,13 @@ TerminalStripEditor::TerminalStripEditor(QETProject *project, QWidget *parent) :
 	auto delegate_ = new TerminalStripModelDelegate{this};
 	ui->m_table_widget->setItemDelegate(delegate_);
 
+		//What the strip is: a terminal strip, or one side of a connector
+	ui->m_kind_cb->addItem(tr("Terminal strip"), static_cast<int>(TerminalStripData::Kind::Terminals));
+	ui->m_kind_cb->addItem(tr("Plug"), static_cast<int>(TerminalStripData::Kind::Plug));
+	ui->m_kind_cb->setItemData(1, tr("A plug: the male side of a connector"), Qt::ToolTipRole);
+	ui->m_kind_cb->addItem(tr("Socket"), static_cast<int>(TerminalStripData::Kind::Socket));
+	ui->m_kind_cb->setItemData(2, tr("A socket: the female side of a connector"), Qt::ToolTipRole);
+
 		//Manufacturer of the terminals proposed in the Width column
 	ui->m_manufacturer_cb->addItem(tr("All manufacturers"), QString());
 	for (const auto &name_ : TerminalCatalog::manufacturers()) {
@@ -238,6 +245,7 @@ void TerminalStripEditor::setCurrentStrip(TerminalStrip *strip_)
 		ui->m_name_le         ->setText(strip_->name());
 		ui->m_comment_le      ->setText(strip_->comment());
 		ui->m_description_te  ->setPlainText(strip_->description());
+		setKindCombo(strip_->kind());
 		setManufacturerFilter(strip_->manufacturer());
 		ui->m_move_to_cb->addItem(tr("Independent terminals"), QUuid());
 
@@ -307,6 +315,7 @@ void TerminalStripEditor::reload()
 		ui->m_name_le         ->setText(m_current_strip->name());
 		ui->m_comment_le      ->setText(m_current_strip->comment());
 		ui->m_description_te  ->setPlainText(m_current_strip->description());
+		setKindCombo(m_current_strip->kind());
 	}
 	if (m_model)
 	{
@@ -334,6 +343,7 @@ void TerminalStripEditor::apply()
 		data.m_name         = ui->m_name_le->text();
 		data.m_comment      = ui->m_comment_le->text();
 		data.m_description  = ui->m_description_te->toPlainText();
+		data.m_kind         = static_cast<TerminalStripData::Kind>(ui->m_kind_cb->currentData().toInt());
 		data.m_manufacturer = ui->m_manufacturer_cb->currentData().toString();
 
 		m_project->undoStack()->push(new ChangeTerminalStripData(m_current_strip, data, nullptr));
@@ -411,6 +421,7 @@ void TerminalStripEditor::clear()
     ui->m_name_le         ->clear();
     ui->m_comment_le      ->clear();
     ui->m_description_te  ->clear();
+    setKindCombo(TerminalStripData::Kind::Terminals);
     m_current_strip.clear();
 
     ui->m_table_widget->setModel(nullptr);
@@ -420,6 +431,17 @@ void TerminalStripEditor::clear()
     }
     setManufacturerFilter(QString());
     applyRowFilter();	//Only clears the count of the filter bar
+}
+
+/**
+ * @brief TerminalStripEditor::setKindCombo
+ * Select \p kind in the kind combo box
+ * @param kind
+ */
+void TerminalStripEditor::setKindCombo(TerminalStripData::Kind kind)
+{
+	const auto index_ = ui->m_kind_cb->findData(static_cast<int>(kind));
+	ui->m_kind_cb->setCurrentIndex(index_ > 0 ? index_ : 0);
 }
 
 /**
