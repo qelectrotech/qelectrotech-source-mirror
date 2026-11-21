@@ -27,6 +27,8 @@
 #include "undocommand/deleteqgraphicsitemcommand.h"
 #include "ui/openwireendsdialog.h"
 
+#include <QLocale>
+#include <QScopeGuard>
 #include <QSqlError>
 #include <QSqlQuery>
 #include <QTreeWidget>
@@ -237,12 +239,17 @@ class tst_openwireends : public QObject
 			QVERIFY(OpenWireEnds::check(db).isEmpty());
 		}
 
-		/// Cells sort as row then column: A9 before A10, A10 before B1
+		/// Cells sort as row then column: A9 before A10, A10 before B1,
+		/// B1 before AA1. In the C locale too, where CI runs: QCollator's
+		/// numeric mode did nothing there and A10 came first
 		void cellsInRowColumnOrder()
 		{
+			const QLocale before;
+			QLocale::setDefault(QLocale::c());
+			const auto restore = qScopeGuard([&before] { QLocale::setDefault(before); });
 			QSqlDatabase db = newDatabase();
 			symbol(db, QStringLiteral("K1"), QStringLiteral("simple"), 1);
-			for (const char *cell : {"B1", "A10", "A9"}) {
+			for (const char *cell : {"AA1", "B1", "A10", "A9"}) {
 				const QString name = QStringLiteral("R") + QString::fromLatin1(cell);
 				symbol(db, name, QStringLiteral("next_report"), 1, QString::fromLatin1(cell));
 				wire(db, QStringLiteral("W") + name, QStringLiteral("K1"), 1, name, 1);
@@ -251,7 +258,7 @@ class tst_openwireends : public QObject
 			QStringList cells;
 			for (const auto &f : found)
 				cells << f.position;
-			QCOMPARE(cells, (QStringList{"A9", "A10", "B1"}));
+			QCOMPARE(cells, (QStringList{"A9", "A10", "B1", "AA1"}));
 		}
 
 		/// A real project, through the undo command a user's delete goes

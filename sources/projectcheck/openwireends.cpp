@@ -21,7 +21,6 @@
 #include <dataBase/projectdatabase.h>
 #include <properties/elementdata.h>
 
-#include <QCollator>
 #include <QHash>
 #include <QSet>
 #include <QSqlQuery>
@@ -47,6 +46,34 @@ struct FolioRow
 };
 
 using TerminalKey = std::pair<QString, QString>;   //element uuid, terminal uuid
+
+	/// A cell as its row letters and its column number. Compared by hand,
+	/// not with QCollator: its numeric mode does nothing in the C locale,
+	/// where A10 would come before A9
+int compareCells(const QString &a, const QString &b)
+{
+	const auto split = [](const QString &cell) {
+		int digits = cell.size();
+		while (digits > 0 && cell.at(digits - 1).isDigit())
+			--digits;
+		const qlonglong column = digits < cell.size() ? QStringView(cell).mid(digits).toLongLong() : -1;
+		return std::make_pair(cell.left(digits), column);
+	};
+	const auto [row_a, column_a] = split(a);
+	const auto [row_b, column_b] = split(b);
+	if (row_a.size() != row_b.size())   //Z before AA
+		return row_a.size() < row_b.size() ? -1 : 1;
+	if (const int order = row_a.compare(row_b))
+		return order;
+	if (column_a != column_b)
+		return column_a < column_b ? -1 : 1;
+	return 0;
+}
+
+QUuid firstWire(const QList<QUuid> &wires)
+{
+	return wires.isEmpty() ? QUuid() : *std::min_element(wires.begin(), wires.end());
+}
 
 } // namespace
 
@@ -180,7 +207,11 @@ QList<OpenWireEnds::Finding> OpenWireEnds::check(const QSqlDatabase &db)
 			continue;
 		Finding f;
 		if (it->ends.isEmpty()) {
+				//No symbol to show: the potential's first folio
 			f.folio = it->folios.value(0);
+			for (const QUuid &folio : it->folios)
+				if (folios.value(folio.toString()).number < folios.value(f.folio.toString()).number)
+					f.folio = folio;
 		} else {
 			const TerminalKey end = *it->ends.constBegin();
 			f = finding(Kind::OneEnd, end.first);
@@ -200,15 +231,18 @@ QList<OpenWireEnds::Finding> OpenWireEnds::check(const QSqlDatabase &db)
 		f.folioNumber = folio.number;
 		f.folioTitle = folio.title;
 	}
-		//Cells as row then column, so A9 comes before A10
-	QCollator cells;
-	cells.setNumericMode(true);
-	std::stable_sort(found.begin(), found.end(), [&cells](const Finding &a, const Finding &b) {
+		//Cells as row then column, so A9 comes before A10; the rest only
+		//so the rows come in the same order on every run
+	std::sort(found.begin(), found.end(), [](const Finding &a, const Finding &b) {
 		if (a.folioNumber != b.folioNumber)
 			return a.folioNumber < b.folioNumber;
-		if (const int order = cells.compare(a.position, b.position))
+		if (const int order = compareCells(a.position, b.position))
 			return order < 0;
-		return a.kind < b.kind;
+		if (a.kind != b.kind)
+			return a.kind < b.kind;
+		if (a.element != b.element)
+			return a.element < b.element;
+		return firstWire(a.wires) < firstWire(b.wires);
 	});
 	return found;
 }
