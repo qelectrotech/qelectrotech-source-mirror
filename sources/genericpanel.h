@@ -51,8 +51,7 @@ class GenericPanel : public QTreeWidget {
 		Item = Qt::UserRole + 1,
 		AliasItem,
 		Parent,
-		PanelFlags,
-		FolioGroupPath ///< on a folio row: the group rows it sits under
+		PanelFlags
 	};
 	
 	// Constructors, destructor
@@ -233,5 +232,7 @@ class GenericPanel : public QTreeWidget {
 	QHash<TitleBlockTemplateLocation, QTreeWidgetItem *> tb_templates_;
 
 	QTreeWidgetItem *m_selected_item = nullptr;
+		/// projects whose folio rows wait to be laid out again (#1878 C9)
+	QSet<QETProject *> m_layout_pending;
 };
 #endif

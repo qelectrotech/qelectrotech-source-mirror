@@ -22,9 +22,12 @@
 #include "qeticons.h"
 #include "qetproject.h"
 #include "bordertitleblock.h"
+#include "utils/qetsettings.h"
 #include "titleblock/templatelocation.h"
 #include "titleblock/templatescollection.h"
 
+#include <QPointer>
+#include <QTimer>
 #include <QTreeWidgetItem>
 
 #include <functional>
@@ -305,8 +308,8 @@ QList<QStringList> GenericPanel::folioGroupPaths(const QList<Diagram *> &folios)
 		const BorderTitleBlock &tb = diagram -> border_and_titleblock;
 		const QString group = tb.folioGroup();
 		const QString subgroup = tb.folioSubgroup();
-		groups    << (group.isEmpty() ? tb.plant() : group).trimmed();
-		subgroups << (subgroup.isEmpty() ? tb.locmach() : subgroup).trimmed();
+		groups    << (group.isEmpty() ? tb.plant() : group);
+		subgroups << (subgroup.isEmpty() ? tb.locmach() : subgroup);
 	}
 
 	const bool show_groups = QSet<QString>(groups.cbegin(), groups.cend())
@@ -350,7 +353,10 @@ void GenericPanel::layoutFolioItems(QTreeWidgetItem *project_qtwi,
 		//A folio's entry shows its own data (title, folio label):
 		//folios(), which does not build the folios' items
 	const QList<Diagram *> folios = project -> folios();
-	const QList<QStringList> paths = folioGroupPaths(folios);
+		// the tree is a setting, off by default: the folios are then flat
+	const QList<QStringList> paths = QetSettings::foliosListedByGroup()
+		? folioGroupPaths(folios)
+		: QList<QStringList>(folios.size());
 
 		// the rows as they should be, and as they are: one entry per row,
 		// depth first. When nothing moved, leave the rows alone (labels
@@ -405,6 +411,18 @@ void GenericPanel::layoutFolioItems(QTreeWidgetItem *project_qtwi,
 		}
 	}
 
+		// remember the current and selected folios: taking their rows out
+		// of the tree loses both
+	QTreeWidgetItem *current_qtwi = currentItem();
+	Diagram *current_folio = (current_qtwi && current_qtwi -> type() == QET::Diagram)
+		? valueForItem<Diagram *>(current_qtwi) : nullptr;
+	QList<Diagram *> selected_folios;
+	for (Diagram *diagram : folios) {
+		QTreeWidgetItem *diagram_qtwi = diagrams_.value(diagram);
+		if (diagram_qtwi && diagram_qtwi -> isSelected())
+			selected_folios << diagram;
+	}
+
 		// remember which group rows were folded, then take the rows apart
 	QSet<QString> folded;
 	for (QTreeWidgetItem *group_qtwi :
@@ -450,12 +468,18 @@ void GenericPanel::layoutFolioItems(QTreeWidgetItem *project_qtwi,
 			parent = row;
 		}
 		QTreeWidgetItem *diagram_qtwi = diagram_qtwis.at(i);
-		diagram_qtwi -> setData(0, GenericPanel::FolioGroupPath, key);
 		if (parent == project_qtwi)
 			project_qtwi -> insertChild(index ++, diagram_qtwi);
 		else
 			parent -> addChild(diagram_qtwi);
 	}
+
+	if (current_folio)
+		if (QTreeWidgetItem *diagram_qtwi = diagrams_.value(current_folio))
+			setCurrentItem(diagram_qtwi, 0, QItemSelectionModel::NoUpdate);
+	for (Diagram *diagram : selected_folios)
+		if (QTreeWidgetItem *diagram_qtwi = diagrams_.value(diagram))
+			diagram_qtwi -> setSelected(true);
 }
 
 /**
@@ -983,25 +1007,22 @@ void GenericPanel::projectDiagramsOrderChanged(QETProject *project,
 void GenericPanel::diagramTitleChanged(Diagram *diagram) {
 	GenericPanel::addDiagram(diagram);
 
-		// a new group or sub-group moves the folio to another row; it may
-		// also make a level appear or go for every folio (#1878 C9)
-	//
-	// When any folio's row changes, this folio's does too: a level
-	// appears or goes only when this folio's group or sub-group makes or
-	// ends a split, and then its own row changes with it.
+		// a new group, sub-group, plant or location may move this folio,
+		// or another one when a level appears or goes (#1878 C9). Lay the
+		// rows out once, after the change: renumbering sends this for
+		// every folio in a row
 	QETProject *project = diagram ? diagram -> project() : nullptr;
-	QTreeWidgetItem *diagram_qtwi = diagrams_.value(diagram);
-	if (project && diagram_qtwi && itemForProject(project)) {
-		const QList<Diagram *> folios = project -> folios();
-		const int i = folios.indexOf(diagram);
-		if (i >= 0) {
-			const QStringList path = folioGroupPaths(folios).at(i);
-			QString key;
-			for (const QString &level : path)
-				key += QLatin1Char('\x1f') + level;
-			if (diagram_qtwi -> data(0, FolioGroupPath).toString() != key)
-				addProject(project, nullptr, AddChildDiagrams);
-		}
+	if (project && QetSettings::foliosListedByGroup()
+		&& !m_layout_pending.contains(project)) {
+		m_layout_pending << project;
+		QPointer<QETProject> guarded(project);
+		QTimer::singleShot(0, this, [this, guarded, project]() {
+			m_layout_pending.remove(project);
+			if (!guarded) return;
+			if (QTreeWidgetItem *project_qtwi = itemForProject(guarded))
+				layoutFolioItems(project_qtwi, guarded);
+			emit(panelContentChanged());
+		});
 	}
 	emit(panelContentChanged());
 }

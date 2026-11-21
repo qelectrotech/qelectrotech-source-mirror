@@ -24,6 +24,7 @@
 #include "qetdiagrameditor.h"
 #include "qetproject.h"
 #include "titleblockproperties.h"
+#include "utils/qetsettings.h"
 
 #include <QPointer>
 #include <QTemporaryDir>
@@ -31,7 +32,8 @@
 
 /**
 	The project panel lists a project's folios as a tree by folio group
-	and sub-group (discussion #1878, C9). A level only shows where it
+	and sub-group (discussion #1878, C9), when the setting is on (off by
+	default: flat, as before). A level only shows where it
 	splits folios apart, so a project without groups, or with every folio
 	in the same place, is listed flat as before. A folio given another
 	group moves to its row at once; reordering, clicking and closing work
@@ -107,6 +109,86 @@ private slots:
 		QVERIFY(m_panel_widget);
 		m_panel = &m_panel_widget->elementsPanel();
 		m_panel->reload();
+		QetSettings::setFoliosListedByGroup(true);
+	}
+
+	void cleanupTestCase()
+	{
+		QetSettings::setFoliosListedByGroup(false);
+	}
+
+	void offByDefaultIsFlat()
+	{
+		QetSettings::setFoliosListedByGroup(false);
+		QPointer<QETProject> project = newProject({"One", "Two"});
+		QVERIFY(project);
+		setFolio(project->diagrams().at(0), "One", "A");
+		setFolio(project->diagrams().at(1), "Two", "B");
+		QTreeWidgetItem *project_item = m_panel->itemForProject(project);
+		QCoreApplication::processEvents();
+		QCOMPARE(rows(project_item), QStringList({"One", "Two"}));
+
+			//turned on: the panel is reloaded after the settings dialog
+		QetSettings::setFoliosListedByGroup(true);
+		m_panel->reload();
+		QCOMPARE(rows(project_item), QStringList({"A", "  One", "B", "  Two"}));
+		project->setModified(false);
+		m_panel->projectWasClosed(project);
+	}
+
+	void anotherFolioMoves()
+	{
+			//a change to one folio can move another one: here the
+			//sub-group level of A goes, and Two leaves its "+1" row
+		QPointer<QETProject> project = newProject({"One", "Two", "Three"});
+		QVERIFY(project);
+		const QList<Diagram *> f = project->diagrams();
+		setFolio(f.at(0), "One", "A");
+		setFolio(f.at(1), "Two", "A", "+1");
+		setFolio(f.at(2), "Three", "B");
+		QTreeWidgetItem *project_item = m_panel->itemForProject(project);
+		QTRY_COMPARE(rows(project_item), QStringList({
+			"A", "  One", "  +1", "    Two", "B", "  Three"}));
+		setFolio(f.at(0), "One", "A", "+1");
+		QTRY_COMPARE(rows(project_item), QStringList({
+			"A", "  One", "  Two", "B", "  Three"}));
+
+			//and a whole level: one group for all, the group rows go; the
+			//sub-groups ("+1", "+1", none) still split
+		setFolio(f.at(2), "Three", "A");
+		QTRY_COMPARE(rows(project_item), QStringList({
+			"+1", "  One", "  Two", "Three"}));
+		project->setModified(false);
+		m_panel->projectWasClosed(project);
+	}
+
+	void selectionIsKept()
+	{
+			//several folios selected; a group change moves rows, the
+			//selection stays on the same folios
+		QPointer<QETProject> project = newProject({"One", "Two", "Three"});
+		QVERIFY(project);
+		const QList<Diagram *> f = project->diagrams();
+		setFolio(f.at(0), "One", "A");
+		setFolio(f.at(1), "Two", "B");
+		setFolio(f.at(2), "Three", "A");
+		QTreeWidgetItem *project_item = m_panel->itemForProject(project);
+		QTRY_COMPARE(rows(project_item), QStringList({
+			"A", "  One", "  Three", "B", "  Two"}));
+		m_panel->clearSelection();
+		m_panel->setCurrentItem(m_panel->getItemForDiagram(f.at(2)));
+		m_panel->getItemForDiagram(f.at(0))->setSelected(true);
+		m_panel->getItemForDiagram(f.at(2))->setSelected(true);
+		setFolio(f.at(1), "Two", "A");
+		setFolio(f.at(2), "Three", "B");
+		QTRY_COMPARE(rows(project_item), QStringList({
+			"A", "  One", "  Two", "B", "  Three"}));
+		QCOMPARE(m_panel->selectedDiagrams().size(), 2);
+		QVERIFY(m_panel->selectedDiagrams().contains(f.at(0)));
+		QVERIFY(m_panel->selectedDiagrams().contains(f.at(2)));
+		QCOMPARE(m_panel->currentItem(), m_panel->getItemForDiagram(f.at(2)));
+		project->setModified(false);
+		m_panel->projectWasClosed(project);
 	}
 
 	void aLevelShowsOnlyWhereItSplits()
@@ -159,7 +241,7 @@ private slots:
 
 		QTreeWidgetItem *project_item = m_panel->itemForProject(project);
 		QVERIFY(project_item);
-		QCOMPARE(rows(project_item), QStringList({
+		QTRY_COMPARE(rows(project_item), QStringList({
 			"Cover",
 			"Power",
 			"  +CP1",
@@ -183,7 +265,7 @@ private slots:
 		QTreeWidgetItem *control = m_panel->getItemForDiagram(f.at(3))->parent();
 		control->setExpanded(false);
 		setFolio(f.at(4), "Parts list", "Control");
-		QCOMPARE(rows(project_item), QStringList({
+		QTRY_COMPARE(rows(project_item), QStringList({
 			"Cover",
 			"Power",
 			"  +CP1",
@@ -201,7 +283,7 @@ private slots:
 			//no group left: flat again, no group row anywhere
 		for (Diagram *d : f)
 			setFolio(d, d->title(), QString());
-		QCOMPARE(rows(project_item), QStringList({
+		QTRY_COMPARE(rows(project_item), QStringList({
 			"Cover", "Supply", "Motor", "PLC", "Parts list"}));
 
 		project->setModified(false);
@@ -238,6 +320,9 @@ private slots:
 		int group_rows = 0;
 		for (QTreeWidgetItem *item : groups) {
 			if (item->type() != QET::FolioGroup) continue;
+			QTreeWidgetItem *top = item;
+			while (top->parent()) top = top->parent();
+			if (top != project_item) continue; //another test's project
 			++group_rows;
 			QVERIFY2(item->isExpanded(), qPrintable(item->text(0)));
 		}
@@ -272,7 +357,7 @@ private slots:
 		setFolio(f.at(1), "Two", "B");
 		setFolio(f.at(2), "Three", "A");
 		QTreeWidgetItem *project_item = m_panel->itemForProject(project);
-		QCOMPARE(rows(project_item), QStringList({
+		QTRY_COMPARE(rows(project_item), QStringList({
 			"A", "  One", "  Three", "B", "  Two"}));
 
 			//"Three" to the top: group A still first, Three before One

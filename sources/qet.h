@@ -109,7 +109,7 @@ namespace QET {
 		Diagram                           =   32,
 		Project                           =   64,
 		All                               =  127,
-		FolioGroup                        =  128 ///< a folio group or sub-group row in the project panel
+		FolioGroup                        =  128 ///< a folio group or sub-group row in the project panel; not in All, which no panel item type is tested against
 	};
 	
 	/**
