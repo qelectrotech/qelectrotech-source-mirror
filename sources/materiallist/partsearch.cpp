@@ -18,6 +18,7 @@
 #include "partsearch.h"
 
 #include <QRegularExpression>
+#include <QSet>
 #include <algorithm>
 
 namespace
@@ -185,17 +186,27 @@ QString PartSearch::partNumber(const MaterialRecord &record)
 	return QString();
 }
 
-QList<int> PartSearch::rank(const QList<MaterialRecord> &records, const QString &text, int limit)
+QList<int> PartSearch::rank(const QList<MaterialRecord> &records, const QString &text, int limit,
+							const QStringList &first)
 {
 	const QStringList wanted = words(text);
+	QSet<QString> firsts;
+	for (const QString &number : first) firsts << number.trimmed().toLower();
+	const auto is_first = [&firsts](const MaterialRecord &record) {
+		return !firsts.isEmpty() && firsts.contains(partNumber(record).trimmed().toLower());
+	};
 	QList<QPair<int, int>> found;   // score, index
 	for (int i = 0 ; i < records.size() ; ++i) {
 		const int s = wanted.isEmpty() ? 0 : score(records.at(i), wanted);
 		if (s >= 0) found << qMakePair(s, i);
 	}
-	if (!wanted.isEmpty()) {
-		std::stable_sort(found.begin(), found.end(), [&records](const QPair<int, int> &x, const QPair<int, int> &y) {
+	if (!wanted.isEmpty() || !firsts.isEmpty()) {
+		const bool by_number = !wanted.isEmpty();
+		std::stable_sort(found.begin(), found.end(), [&](const QPair<int, int> &x, const QPair<int, int> &y) {
 			if (x.first != y.first) return x.first > y.first;
+			const bool fx = is_first(records.at(x.second)), fy = is_first(records.at(y.second));
+			if (fx != fy) return fx;
+			if (!by_number) return false;
 			return QString::compare(partNumber(records.at(x.second)), partNumber(records.at(y.second)),
 									Qt::CaseInsensitive) < 0;
 		});

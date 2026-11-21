@@ -23,7 +23,7 @@
 #include "../devicetype/devicetypeplacement.h"
 #include "../diagram.h"
 #include "../diagramevent/macrolabels.h"
-#include "../materiallist/materialselectiondialog.h"
+#include "../materiallist/findpartdialog.h"
 #include "../qetgraphicsitem/element.h"
 #include "../qetgraphicsitem/structureboxitem.h"
 #include "../qetgraphicsitem/terminal.h"
@@ -358,21 +358,30 @@ void PlaceLabelPartDialog::partEdited(const QString &text)
 	showPart();
 }
 
+/**
+	"Choose...": the Find part window, searching what is typed in the
+	field when it is not a part number as it is
+*/
 void PlaceLabelPartDialog::choosePart()
 {
-	QString path = MaterialList::configuredPath();
-	if (path.isEmpty()) path = MaterialList::defaultPath();
-	if (MaterialList::isEmptyFile(path)) {
+	if (m_data.records.isEmpty()) {
+		QString path = MaterialList::configuredPath();
+		if (path.isEmpty()) path = MaterialList::defaultPath();
 		QMessageBox::information(this, tr("No materials list"),
 			tr("There is no materials list file at this location:\n%1").arg(path));
 		return;
 	}
-	MaterialSelectionDialog dialog(path, this);
+	const QString label = m_symbol ? resolvedLabel(m_symbol, m_label->text()) : QString();
+	FindPartDialog dialog(m_data, m_symbol, label, QStringList(), this);
+	if (m_record.values.isEmpty()) dialog.setSearchText(m_part->text().trimmed());
 	if (dialog.exec() != QDialog::Accepted) return;
 	m_record = dialog.selectedRecord();
 	if (m_record.values.isEmpty()) return;
 	m_part->setText(partNumberOf(m_record));
 	showPart();
+		//Back in the Part field, Return accepts the dialog: on the
+		//Choose... button it would open the window again
+	m_part->setFocus();
 }
 
 void PlaceLabelPartDialog::showPart()
