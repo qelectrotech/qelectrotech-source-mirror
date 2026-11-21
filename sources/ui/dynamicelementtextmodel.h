@@ -152,6 +152,10 @@ class DynamicTextItemDelegate : public QStyledItemDelegate
 			QWidget *editor,
 			QAbstractItemModel *model,
 			const QModelIndex &index) const override;
+	void updateEditorGeometry(
+			QWidget *editor,
+			const QStyleOptionViewItem &option,
+			const QModelIndex &index) const override;
 
 	protected:
 	bool eventFilter(QObject *object, QEvent *event) override;

@@ -25,6 +25,7 @@
 #include <qetinformation.h>
 #include <ui/alignmenttextdialog.h>
 #include <ui/compositetexteditdialog.h>
+#include <utils/dialogplacement.h>
 #include "qetelementeditor.h"
 #include <editor/elementscene.h>
 #include "ui_dynamictextfieldeditor.h"
@@ -488,6 +489,7 @@ void DynamicTextFieldEditor::on_m_composite_text_pb_clicked()
 void DynamicTextFieldEditor::on_m_alignment_pb_clicked()
 {
 	AlignmentTextDialog atd(m_text_field.data() -> alignment(), this);
+	DialogPlacement::placeBelow(&atd, ui->m_alignment_pb);
 	atd.exec();
 
 	for (int i = 0; i < m_parts.length(); i++) {

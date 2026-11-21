@@ -28,6 +28,7 @@
 #include <qeticons.h>
 #include <qetinformation.h>
 #include <undocommand/addelementtextcommand.h>
+#include <utils/dialogplacement.h>
 #include "alignmenttextdialog.h"
 #include "compositetexteditdialog.h"
 
@@ -2019,6 +2020,26 @@ void DynamicTextItemDelegate::setModelData(
 	}
 	
 	QStyledItemDelegate::setModelData(editor, model, index);
+}
+
+/**
+	@brief DynamicTextItemDelegate::updateEditorGeometry
+	The alignment and composite text editors are dialogs, windows of their
+	own: the default geometry, the cell's position inside the table,
+	would put them near the corner of the screen. They open under their
+	cell instead.
+*/
+void DynamicTextItemDelegate::updateEditorGeometry(
+		QWidget *editor,
+		const QStyleOptionViewItem &option,
+		const QModelIndex &index) const
+{
+	if (editor->isWindow()) {
+		DialogPlacement::placeBelow(editor, editor->parentWidget(),
+									option.rect);
+		return;
+	}
+	QStyledItemDelegate::updateEditorGeometry(editor, option, index);
 }
 
 bool DynamicTextItemDelegate::eventFilter(QObject *object, QEvent *event)

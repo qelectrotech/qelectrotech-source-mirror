@@ -22,6 +22,7 @@
 #include <editor/graphicspart/partterminal.h>
 #include <QPropertyUndoCommand/qpropertyundocommand.h>
 #include <ui/alignmenttextdialog.h>
+#include <utils/dialogplacement.h>
 
 #include <QColorDialog>
 #include <QFontDialog>
@@ -412,6 +413,7 @@ void TerminalEditor::labelAlignClicked()
 {
 	Qt::Alignment align = m_part->labelHAlignment() | m_part->labelVAlignment();
 	AlignmentTextDialog dialog(align, this);
+	DialogPlacement::placeBelow(&dialog, ui->m_align_pb);
 	if (dialog.exec() == QDialog::Accepted) {
 		Qt::Alignment new_align = dialog.alignment();
 		Qt::Alignment new_h = new_align & Qt::AlignHorizontal_Mask;

@@ -19,6 +19,7 @@
 
 #include <QPropertyUndoCommand/qpropertyundocommand.h>
 #include <ui/alignmenttextdialog.h>
+#include <utils/dialogplacement.h>
 #include <editor/graphicspart/parttext.h>
 
 #include <cassert>
@@ -370,11 +371,12 @@ void TextEditor::setUpWidget(QWidget *parent)
 	QPushButton *alignment_pb = new QPushButton(tr("Alignment"), parent);
 	alignment_pb->setToolTip(tr("ext anchor point and alignment of "
 								"lines relative to one another"));
-	connect(alignment_pb, &QPushButton::clicked, [this]() {
+	connect(alignment_pb, &QPushButton::clicked, [this, alignment_pb]() {
 		if (m_text.isNull()) {
 			return;
 		}
 		AlignmentTextDialog atd(m_text->alignment(), this);
+		DialogPlacement::placeBelow(&atd, alignment_pb);
 		if (atd.exec() != QDialog::Accepted) {
 			return;
 		}

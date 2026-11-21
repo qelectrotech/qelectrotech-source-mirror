@@ -1,0 +1,26 @@
+{
+	"synchronousWindowSystemEvents": false,
+	"windowFrameMargins": true,
+	"screens": [
+		{
+			"name": "left",
+			"x": 0,
+			"y": 0,
+			"width": 1280,
+			"height": 1024,
+			"logicalDpi": 96,
+			"logicalBaseDpi": 96,
+			"dpr": 1
+		},
+		{
+			"name": "right",
+			"x": 1280,
+			"y": 0,
+			"width": 1280,
+			"height": 1024,
+			"logicalDpi": 96,
+			"logicalBaseDpi": 96,
+			"dpr": 1
+		}
+	]
+}
