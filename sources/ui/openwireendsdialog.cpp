@@ -64,10 +64,9 @@ OpenWireEndsDialog::OpenWireEndsDialog(QETProject *project, QWidget *parent) :
 		m_tree->header()->setSectionResizeMode(column, QHeaderView::ResizeToContents);
 	m_tree->header()->setStretchLastSection(true);
 	layout->addWidget(m_tree);
-	connect(m_tree, &QTreeWidget::itemClicked, this,
-		[this](QTreeWidgetItem *row, int) { showFinding(row); });
-	connect(m_tree, &QTreeWidget::itemActivated, this,
-		[this](QTreeWidgetItem *row, int) { showFinding(row); });
+		//Once per row picked, by the mouse or the arrow keys
+	connect(m_tree, &QTreeWidget::currentItemChanged, this,
+		[this](QTreeWidgetItem *row) { showFinding(row); });
 	auto *buttons = new QDialogButtonBox(QDialogButtonBox::Close, this);
 	auto *refresh_button = buttons->addButton(tr("Refresh"), QDialogButtonBox::ActionRole);
 	connect(refresh_button, &QPushButton::clicked, this, &OpenWireEndsDialog::refresh);
@@ -102,7 +101,7 @@ void OpenWireEndsDialog::refresh()
 	if (!m_project) {
 		return;
 	}
-	const auto findings = OpenWireEnds::check(m_project->dataBase()->database());
+	const auto findings = m_project->dataBase()->openWireEnds();
 	for (const auto &finding : findings) {
 		auto *row = new QTreeWidgetItem(m_tree);
 		row->setText(0, problemText(finding));
@@ -119,65 +118,79 @@ void OpenWireEndsDialog::refresh()
 	if (findings.isEmpty()) {
 		m_summary->setText(tr("Every wire leads somewhere."));
 	} else {
-		m_summary->setText(tr("%n wire end(s) lead nowhere.", nullptr, findings.size()));
+		m_summary->setText(tr("%n place(s) where wires lead nowhere.", nullptr, findings.size()));
 	}
 }
 
-// The wires and symbol are looked up by uuid on the folios, once, when a
-// row is clicked; the check itself reads the database only.
+// Only the folios of the row are built and searched, once, when it is
+// picked; the check itself reads the database only.
 void OpenWireEndsDialog::showFinding(QTreeWidgetItem *row)
 {
 	if (!m_project || !m_findings.contains(row)) {
 		return;
 	}
-	if (m_project->unloadedFolioCount()) {
+	const OpenWireEnds::Finding finding = m_findings.value(row);
+	QList<QUuid> folio_uuids = finding.folios;
+	if (!finding.folio.isNull() && !folio_uuids.contains(finding.folio)) {
+		folio_uuids.prepend(finding.folio);
+	}
+	QList<Diagram *> folios;
+	for (Diagram *diagram : m_project->diagrams()) {
+			//What an earlier row selected, wherever it is
+		if (diagram->isLoaded()) {
+			diagram->clearSelection();
+		}
+		if (folio_uuids.contains(diagram->uuid())) {
+			folios << diagram;
+		}
+	}
+	{
 		QApplication::setOverrideCursor(Qt::WaitCursor);
 		const auto restore = qScopeGuard([]() { QApplication::restoreOverrideCursor(); });
-		m_project->loadFolios();
+		m_project->buildFolios(folios);
 	}
-	const OpenWireEnds::Finding finding = m_findings.value(row);
 	const auto uuids = QSet<QUuid>(finding.wires.begin(), finding.wires.end());
-	Diagram *first = nullptr;
-	QRectF bounds;
-	for (Diagram *diagram : m_project->diagrams()) {
-		QList<QGraphicsItem *> found;
+	QList<std::pair<Diagram *, QList<QGraphicsItem *>>> found;
+	Diagram *shown = nullptr;
+	for (Diagram *diagram : std::as_const(folios)) {
+		QList<QGraphicsItem *> items;
 		for (Conductor *conductor : diagram->content().conductors()) {
 			if (uuids.contains(conductor->uuid())) {
-				found << conductor;
+				items << conductor;
 			}
 		}
 		if (!finding.element.isNull()) {
 			for (Element *element : diagram->elements()) {
 				if (element->uuid() == finding.element) {
-					found << element;
+					items << element;
 				}
 			}
 		}
-		if (found.isEmpty()) {
+		if (items.isEmpty()) {
 			continue;
 		}
-		if (!first || diagram->uuid() == finding.folio) {
-			if (first) {
-				first->clearSelection();
-			}
-			first = diagram;
-			bounds = QRectF();
-			diagram->showMe();
-			diagram->clearSelection();
+		if (!shown || diagram->uuid() == finding.folio) {
+			shown = diagram;
 		}
-		for (QGraphicsItem *item : found) {
+		found.append({diagram, items});
+	}
+	if (!shown) {
+		m_summary->setText(tr("These wires no longer exist. Refresh the results."));
+		return;
+	}
+		//Shown first, so the window follows what is selected on it
+	shown->showMe();
+	QRectF bounds;
+	for (const auto &[diagram, items] : std::as_const(found)) {
+		for (QGraphicsItem *item : items) {
 			item->setSelected(true);
-			if (diagram == first) {
+			if (diagram == shown) {
 				bounds |= item->sceneBoundingRect();
 			}
 		}
 	}
-	if (!first) {
-		m_summary->setText(tr("These wires no longer exist. Refresh the results."));
-		return;
-	}
 	bounds.adjust(-100, -100, 100, 100);
-	for (QGraphicsView *view : first->views()) {
+	for (QGraphicsView *view : shown->views()) {
 		if (auto *diagram_view = qobject_cast<DiagramView *>(view)) {
 			diagram_view->zoomToRect(bounds);
 		}

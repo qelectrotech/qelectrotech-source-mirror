@@ -21,6 +21,7 @@
 #include <dataBase/projectdatabase.h>
 #include <properties/elementdata.h>
 
+#include <QCollator>
 #include <QHash>
 #include <QSet>
 #include <QSqlQuery>
@@ -137,21 +138,24 @@ QList<OpenWireEnds::Finding> OpenWireEnds::check(const QSqlDatabase &db)
 	struct Potential {
 		QSet<TerminalKey> ends;
 		QList<QUuid> wires;
-		QString firstFolio;
+		QList<QUuid> folios;
 		bool flagged = false;
 	};
 	QHash<int, Potential> potentials;
+	QHash<QString, int> group_of_element;   //a flagged report or junction -> its potential
 	for (const WireRow &wire : std::as_const(wires)) {
 		const auto group = groups.group_of.constFind(QUuid(wire.uuid));
 		if (group == groups.group_of.constEnd())
 			continue;
 		Potential &potential = potentials[group.value()];
-		if (potential.wires.isEmpty())
-			potential.firstFolio = wire.folio;
 		potential.wires << QUuid(wire.uuid);
+		const QUuid folio(wire.folio);
+		if (!potential.folios.contains(folio))
+			potential.folios << folio;
 		for (const TerminalKey &end : {wire.end1, wire.end2}) {
 			if (flagged.contains(end.first)) {
 				potential.flagged = true;
+				group_of_element.insert(end.first, group.value());
 				continue;
 			}
 			const ElementData::Type kind = elements.value(end.first).kind;
@@ -160,35 +164,34 @@ QList<OpenWireEnds::Finding> OpenWireEnds::check(const QSqlDatabase &db)
 		}
 	}
 
+		//The report's or junction's wires are those of its potential
 	for (Finding &f : found) {
-			//The report's or junction's wires are those of its potential
-		for (const WireRow &wire : std::as_const(wires))
-			if (QUuid(wire.end1.first) == f.element || QUuid(wire.end2.first) == f.element) {
-				const auto group = groups.group_of.constFind(QUuid(wire.uuid));
-				if (group != groups.group_of.constEnd())
-					f.wires = potentials.value(group.value()).wires;
-				break;
-			}
+		const auto group = group_of_element.constFind(f.element.toString());
+		if (group != group_of_element.constEnd()) {
+			f.wires = potentials.value(group.value()).wires;
+			f.folios = potentials.value(group.value()).folios;
+		}
 	}
 
+	QSqlQuery terminal_name(db);
+	terminal_name.prepare(QStringLiteral("SELECT name FROM terminal WHERE uuid = :uuid AND element_uuid = :element"));
 	for (auto it = potentials.constBegin() ; it != potentials.constEnd() ; ++it) {
 		if (it->flagged || it->ends.size() > 1)
 			continue;
 		Finding f;
 		if (it->ends.isEmpty()) {
-			f.folio = QUuid(it->firstFolio);
+			f.folio = it->folios.value(0);
 		} else {
 			const TerminalKey end = *it->ends.constBegin();
 			f = finding(Kind::OneEnd, end.first);
-			QSqlQuery query(db);
-			query.prepare(QStringLiteral("SELECT name FROM terminal WHERE uuid = :uuid AND element_uuid = :element"));
-			query.bindValue(QStringLiteral(":uuid"), end.second);
-			query.bindValue(QStringLiteral(":element"), end.first);
-			if (query.exec() && query.next())
-				f.terminal = query.value(0).toString();
+			terminal_name.bindValue(QStringLiteral(":uuid"), end.second);
+			terminal_name.bindValue(QStringLiteral(":element"), end.first);
+			if (terminal_name.exec() && terminal_name.next())
+				f.terminal = terminal_name.value(0).toString();
 		}
 		f.kind = Kind::OneEnd;
 		f.wires = it->wires;
+		f.folios = it->folios;
 		found << f;
 	}
 
@@ -197,11 +200,14 @@ QList<OpenWireEnds::Finding> OpenWireEnds::check(const QSqlDatabase &db)
 		f.folioNumber = folio.number;
 		f.folioTitle = folio.title;
 	}
-	std::stable_sort(found.begin(), found.end(), [](const Finding &a, const Finding &b) {
+		//Cells as row then column, so A9 comes before A10
+	QCollator cells;
+	cells.setNumericMode(true);
+	std::stable_sort(found.begin(), found.end(), [&cells](const Finding &a, const Finding &b) {
 		if (a.folioNumber != b.folioNumber)
 			return a.folioNumber < b.folioNumber;
-		if (a.position != b.position)
-			return a.position < b.position;
+		if (const int order = cells.compare(a.position, b.position))
+			return order < 0;
 		return a.kind < b.kind;
 	});
 	return found;

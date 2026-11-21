@@ -72,8 +72,11 @@ class tst_openwireends : public QObject
 
 	static void exec(QSqlDatabase &db, const QString &sql)
 	{
+			//A fixture that cannot be built stops the run: a slot going on
+			//with rows missing could pass for the wrong reason
 		QSqlQuery q(db);
-		QVERIFY2(q.exec(sql), qPrintable(q.lastError().text() + QStringLiteral(": ") + sql));
+		if (!q.exec(sql))
+			qFatal("%s", qPrintable(q.lastError().text() + QStringLiteral(": ") + sql));
 	}
 
 		/// A symbol @p name of @p type with terminals named 1, 2...
@@ -234,6 +237,23 @@ class tst_openwireends : public QObject
 			QVERIFY(OpenWireEnds::check(db).isEmpty());
 		}
 
+		/// Cells sort as row then column: A9 before A10, A10 before B1
+		void cellsInRowColumnOrder()
+		{
+			QSqlDatabase db = newDatabase();
+			symbol(db, QStringLiteral("K1"), QStringLiteral("simple"), 1);
+			for (const char *cell : {"B1", "A10", "A9"}) {
+				const QString name = QStringLiteral("R") + QString::fromLatin1(cell);
+				symbol(db, name, QStringLiteral("next_report"), 1, QString::fromLatin1(cell));
+				wire(db, QStringLiteral("W") + name, QStringLiteral("K1"), 1, name, 1);
+			}
+			const auto found = OpenWireEnds::check(db);
+			QStringList cells;
+			for (const auto &f : found)
+				cells << f.position;
+			QCOMPARE(cells, (QStringList{"A9", "A10", "B1"}));
+		}
+
 		/// A real project, through the undo command a user's delete goes
 		/// through: the wires on the far side of a linked folio report are
 		/// deleted, and the near side is found as a potential with one end;
@@ -243,7 +263,7 @@ class tst_openwireends : public QObject
 			QETProject project(QStringLiteral(QET_EXAMPLES_DIR "/industrial.qet"));
 			QVERIFY(project.state() == QETProject::Ok);
 			project.loadFolios();
-			const auto before = OpenWireEnds::check(project.dataBase()->database());
+			const auto before = project.dataBase()->openWireEnds();
 			QCOMPARE(count(before, OpenWireEnds::Kind::OneEnd), 0);
 
 				//A linked report whose partner has wires, on a folio of its own
@@ -267,7 +287,7 @@ class tst_openwireends : public QObject
 			folio->undoStack().push(new DeleteQGraphicsItemCommand(folio, DiagramContent(folio, true)));
 			QVERIFY(far->conductors().isEmpty());
 
-			const auto after = OpenWireEnds::check(project.dataBase()->database());
+			const auto after = project.dataBase()->openWireEnds();
 			QCOMPARE(count(after, OpenWireEnds::Kind::OneEnd), potentials + 1);
 			const auto planted = std::find_if(after.begin(), after.end(),
 				[](const OpenWireEnds::Finding &f) { return f.kind == OpenWireEnds::Kind::OneEnd; });
@@ -275,8 +295,40 @@ class tst_openwireends : public QObject
 			QVERIFY(!planted->wires.isEmpty());
 			QVERIFY(planted->folio != folio->uuid());
 
+				//Picking the row selects its wires and symbol, and only what
+				//the row names: the selection made for the delete is gone
+			OpenWireEndsDialog dialog(&project);
+			auto *rows = dialog.findChild<QTreeWidget *>(QStringLiteral("openWireEndsRows"));
+			QVERIFY(rows);
+			QTreeWidgetItem *planted_row = nullptr;
+			for (int i = 0 ; i < rows->topLevelItemCount() ; ++i)
+				if (rows->topLevelItem(i)->text(0) == OpenWireEndsDialog::problemText(*planted))
+					planted_row = rows->topLevelItem(i);
+			QVERIFY(planted_row);
+				//A stray selection on a folio the row does not name
+			Element *stray = nullptr;
+			for (Diagram *diagram : project.diagrams())
+				if (diagram != folio && diagram->uuid() != planted->folio && !diagram->elements().isEmpty()) {
+					stray = diagram->elements().first();
+					break;
+				}
+			QVERIFY(stray);
+			stray->setSelected(true);
+			rows->setCurrentItem(planted_row);
+			QSet<QUuid> selected;
+			for (Diagram *diagram : project.diagrams())
+				for (QGraphicsItem *item : diagram->selectedItems()) {
+					if (auto *c = dynamic_cast<Conductor *>(item))
+						selected << c->uuid();
+					else if (auto *e = dynamic_cast<Element *>(item))
+						selected << e->uuid();
+				}
+			QSet<QUuid> expected(planted->wires.begin(), planted->wires.end());
+			expected << planted->element;
+			QCOMPARE(selected, expected);
+
 			folio->undoStack().undo();
-			QCOMPARE(count(OpenWireEnds::check(project.dataBase()->database()), OpenWireEnds::Kind::OneEnd),
+			QCOMPARE(count(project.dataBase()->openWireEnds(), OpenWireEnds::Kind::OneEnd),
 					 potentials);
 		}
 
@@ -296,7 +348,7 @@ class tst_openwireends : public QObject
 			QETProject opened(project);
 			QVERIFY(opened.state() == QETProject::Ok);
 			const int unloaded = opened.unloadedFolioCount();
-			const auto found = OpenWireEnds::check(opened.dataBase()->database());
+			const auto found = opened.dataBase()->openWireEnds();
 			QCOMPARE(opened.unloadedFolioCount(), unloaded);
 			fprintf(stderr, "OPENWIREENDS %s reports=%d junctions=%d potentials=%d\n",
 					qPrintable(QFileInfo(project).fileName()),

@@ -33,9 +33,11 @@
 	through its folio reports and junctions as potentialGroupsOf() follows
 	it, reaches one symbol terminal or none.
 
-	check() reads the conductor, element and link tables of the project
-	database alone, so it builds no folio and gives the same answer for a
-	.qetdb read by itself. It changes nothing.
+	check() reads the conductor, element and link tables of @p db alone,
+	so it builds no folio and gives the same answer for a .qetdb read by
+	itself. It changes nothing. On an open project, call
+	projectDataBase::openWireEnds(), which first writes the links, texts
+	and positions the database still holds back.
 */
 namespace OpenWireEnds
 {
@@ -56,6 +58,7 @@ namespace OpenWireEnds
 		QString folioTitle;
 		QString position;         ///< the cell of element on its folio, as A3
 		QList<QUuid> wires;       ///< the wires of the potential
+		QList<QUuid> folios;      ///< the folios those wires are on
 	};
 
 		/// Every finding of the project in @p db, in folio order. A report

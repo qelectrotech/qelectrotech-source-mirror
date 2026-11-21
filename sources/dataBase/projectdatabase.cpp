@@ -2391,6 +2391,14 @@ QList<projectDataBase::PotentialMismatch> projectDataBase::potentialTypeMismatch
 	return potentialTypeMismatchesOf(m_data_base);
 }
 
+QList<OpenWireEnds::Finding> projectDataBase::openWireEnds()
+{
+	flushLinks();
+	flushElementTexts();
+	flushElementPositions();
+	return OpenWireEnds::check(m_data_base);
+}
+
 /**
 	@brief projectDataBase::linkedSymbols
 	@return the symbols @p element is linked to, read from the link table
