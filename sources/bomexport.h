@@ -47,6 +47,9 @@ namespace BomExport
 		bool costing = false;
 			/// The name of that last line
 		QString total_label = QStringLiteral("Total");
+			/// The cables which have a part number are parts too, one
+			/// each, read from qet_cables
+		bool cables = true;
 	};
 	QString groupedQuery(const GroupedOptions &options = GroupedOptions());
 		/// One CSV record: every field quoted, ';' between them, '\n'

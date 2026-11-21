@@ -92,6 +92,8 @@ class tst_groupedbom : public QObject
 				"description_auxiliary3, quantity_auxiliary3, unity_auxiliary3, "
 				"manufacturer_auxiliary4, manufacturer_reference_auxiliary4, designation_auxiliary4, "
 				"description_auxiliary4, quantity_auxiliary4, unity_auxiliary4)")));
+			QVERIFY(q.exec(QStringLiteral(
+				"CREATE TABLE qet_cables (designation, type, manufacturer, article, cable_uuid)")));
 		}
 
 		void cleanup()
@@ -157,6 +159,28 @@ class tst_groupedbom : public QObject
 			BomExport::GroupedOptions o;
 			QCOMPARE(run(o).size(), 2);
 			o.auxiliaries = false;
+			QCOMPARE(run(o).size(), 1);
+		}
+
+		void cablesWithAPartNumberAreParts()
+		{
+			QSqlQuery q(m_db);
+			QVERIFY(q.exec(QStringLiteral(
+				"INSERT INTO qet_cables VALUES "
+				"('W1', 'INSTRUMENT 12PR', 'Maker A', 'CAB-0001 ', '{1}'), "
+				"('W2', 'INSTRUMENT 12PR', 'Maker A', 'CAB-0001', '{2}'), "
+				"('W3', 'CONTROL 6C+E', '', '', '{3}'), "
+				"('W4', '', '', 'BFAP05AA006', '{4}')")));
+			add("K1", "ABB", "A9", "Contactor");
+			BomExport::GroupedOptions o;
+			o.numbering = false;
+				// quantity, name, part_number, references, manufacturer, unit
+			const QList<QStringList> rows = run(o);
+			QCOMPARE(rows.size(), 3);
+			QCOMPARE(rows.at(0), (QStringList{"1", "W4", "BFAP05AA006", "W4", "", ""}));
+			QCOMPARE(rows.at(1), (QStringList{"1", "Contactor", "A9", "K1", "ABB", ""}));
+			QCOMPARE(rows.at(2), (QStringList{"2", "INSTRUMENT 12PR", "CAB-0001", "W1,W2", "Maker A", ""}));
+			o.cables = false;
 			QCOMPARE(run(o).size(), 1);
 		}
 

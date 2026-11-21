@@ -213,6 +213,47 @@ void Cable::setLength(const QString &length)
 }
 
 /**
+	@brief Cable::manufacturer
+	@return who makes the cable
+*/
+QString Cable::manufacturer() const
+{
+	return m_manufacturer;
+}
+
+/**
+	@brief Cable::setManufacturer
+	@param manufacturer
+*/
+void Cable::setManufacturer(const QString &manufacturer)
+{
+	if (m_manufacturer == manufacturer) return;
+	m_manufacturer = manufacturer;
+	emit changed();
+}
+
+/**
+	@brief Cable::manufacturerReference
+	@return the part number the cable is ordered by -- what the parts
+	list counts it under, like the manufacturer_reference of an element
+*/
+QString Cable::manufacturerReference() const
+{
+	return m_manufacturer_reference;
+}
+
+/**
+	@brief Cable::setManufacturerReference
+	@param reference
+*/
+void Cable::setManufacturerReference(const QString &reference)
+{
+	if (m_manufacturer_reference == reference) return;
+	m_manufacturer_reference = reference;
+	emit changed();
+}
+
+/**
 	@brief Cable::properties
 	@return every field the user fills in, together with what of it he
 	want to see drawn next to the trunk line
@@ -226,6 +267,8 @@ CableProperties Cable::properties() const
 	properties.installation = m_installation;
 	properties.location = m_location;
 	properties.length = m_length;
+	properties.manufacturer = m_manufacturer;
+	properties.manufacturer_reference = m_manufacturer_reference;
 	properties.show_designation = m_show_designation;
 	properties.show_type = m_show_type;
 	properties.show_installation = m_show_installation;
@@ -254,6 +297,8 @@ void Cable::setProperties(const CableProperties &properties)
 	m_installation = properties.installation;
 	m_location = properties.location;
 	m_length = properties.length;
+	m_manufacturer = properties.manufacturer;
+	m_manufacturer_reference = properties.manufacturer_reference;
 	m_show_designation = properties.show_designation;
 	m_show_type = properties.show_type;
 	m_show_installation = properties.show_installation;
@@ -702,6 +747,12 @@ QDomElement Cable::toXml(QDomDocument &document) const
 	if (!m_length.isEmpty()) {
 		root.setAttribute(QLatin1String("length"), m_length);
 	}
+	if (!m_manufacturer.isEmpty()) {
+		root.setAttribute(QLatin1String("manufacturer"), m_manufacturer);
+	}
+	if (!m_manufacturer_reference.isEmpty()) {
+		root.setAttribute(QLatin1String("manufacturer_reference"), m_manufacturer_reference);
+	}
 		//Only what was switched off is written: a cable written before
 		//these existed shows everything, like the ones written from now
 	if (!m_show_designation) {
@@ -834,6 +885,8 @@ void Cable::fromXml(const QDomElement &element)
 	m_installation = element.attribute(QLatin1String("installation"));
 	m_location = element.attribute(QLatin1String("location"));
 	m_length = element.attribute(QLatin1String("length"));
+	m_manufacturer = element.attribute(QLatin1String("manufacturer"));
+	m_manufacturer_reference = element.attribute(QLatin1String("manufacturer_reference"));
 	m_show_designation = element.attribute(
 		QLatin1String("show_designation"), QLatin1String("1")).toInt() != 0;
 	m_show_type = element.attribute(

@@ -17,6 +17,7 @@
 */
 // SPDX-License-Identifier: GPL-2.0-or-later
 #include "cable/cable.h"
+#include "bomexport.h"
 #include "cablelist/cablelistrows.h"
 #include "ElementsCollection/elementslocation.h"
 #include "ElementsCollection/xmlelementcollection.h"
@@ -224,6 +225,56 @@ class tst_cablelist : public QObject
 		QCOMPARE(rows.size(), 1);
 		QCOMPARE(rows.first().value(QStringLiteral("bmk_start")), QStringLiteral("-X1"));
 		QCOMPARE(rows.first().value(QStringLiteral("bmk_end")), QStringLiteral("-M1"));
+	}
+
+		//A cable's manufacturer and part number: kept by the file, read by
+		//qet_cables, and counted by the grouped parts list like a part
+	void partNumberIsKeptAndCounted()
+	{
+		QETProject project;
+		project.addNewDiagram();
+		Cable *w1 = cable(project, QStringLiteral("W1"));
+		CableProperties properties = w1->properties();
+		properties.manufacturer = QStringLiteral("Maker A");
+		properties.manufacturer_reference = QStringLiteral("CAB-0001");
+		w1->setProperties(properties);
+		w1->setType(QStringLiteral("INSTRUMENT 12PR"));
+		cable(project, QStringLiteral("W2"))->setManufacturerReference(QStringLiteral("CAB-0001"));
+		cable(project, QStringLiteral("W3"));
+
+		QDomDocument document;
+		Cable copy(&project);
+		copy.fromXml(w1->toXml(document));
+		QCOMPARE(copy.manufacturer(), QStringLiteral("Maker A"));
+		QCOMPARE(copy.manufacturerReference(), QStringLiteral("CAB-0001"));
+		QCOMPARE(copy.properties(), w1->properties());
+
+		project.dataBase()->updateDB();
+		QString error;
+		QSqlQuery query = project.dataBase()->newQuery(QStringLiteral(
+			"SELECT designation, manufacturer, article FROM qet_cables"), &error);
+		QVERIFY2(error.isEmpty(), qPrintable(error));
+		QStringList rows;
+		while (query.next())
+			rows << query.value(0).toString() + "|" + query.value(1).toString()
+					+ "|" + query.value(2).toString();
+		QCOMPARE(rows, QStringList({QStringLiteral("W1|Maker A|CAB-0001"),
+									QStringLiteral("W2||CAB-0001"),
+									QStringLiteral("W3||")}));
+
+		BomExport::GroupedOptions options;
+		options.numbering = false;
+		query = project.dataBase()->newQuery(BomExport::groupedQuery(options), &error);
+		QVERIFY2(error.isEmpty(), qPrintable(error));
+		rows.clear();
+		while (query.next()) {
+			QStringList row;
+			for (int i = 0 ; i < 5 ; ++i) row << query.value(i).toString();
+			rows << row.join(QLatin1Char('|'));
+		}
+			//W2 says nothing of its maker, so it is not merged with W1
+		QCOMPARE(rows, QStringList({QStringLiteral("1|W2|CAB-0001|W2|"),
+									QStringLiteral("1|INSTRUMENT 12PR|CAB-0001|W1|Maker A")}));
 	}
 };
 

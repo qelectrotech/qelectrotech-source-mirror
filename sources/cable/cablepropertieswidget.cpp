@@ -84,6 +84,15 @@ CablePropertiesWidget::CablePropertiesWidget(QWidget *parent) :
 	addField(grid, row++, QStringLiteral("length"),
 			 tr("Length"), &m_length, &m_show_length);
 
+		//What the cable is bought as. It is not written on the drawing,
+		//so these rows have no tick and no font: the parts list is where
+		//they are read.
+	m_manufacturer = addPlainField(grid, row++, tr("Manufacturer"));
+	m_manufacturer_reference = addPlainField(grid, row++, tr("Part number"));
+	m_manufacturer_reference->setToolTip(
+		tr("The number this cable is ordered by. The parts list counts "
+		   "the cable under it, like the part number of an element."));
+
 		//The colours of the cores: one setting for every one of them at
 		//once, since they are written in one row along the line and are
 		//read as one row.
@@ -156,6 +165,31 @@ void CablePropertiesWidget::addField(QGridLayout *grid,
 
 	*edit = field;
 	*tick = check;
+}
+
+/**
+	@brief CablePropertiesWidget::addPlainField
+	Build one row of the form for a field which is not drawn: a name
+	and a line edit, with neither the tick nor the font button.
+	@param grid the form being built
+	@param row where to put it
+	@param name what the field holds
+	@return the line edit
+*/
+QLineEdit *CablePropertiesWidget::addPlainField(QGridLayout *grid,
+												 int row,
+												 const QString &name)
+{
+	auto *label = new QLabel(name, this);
+	auto *field = new QLineEdit(this);
+	field->setClearButtonEnabled(true);
+	connect(field, &QLineEdit::editingFinished,
+			this, &CablePropertiesWidget::propertiesEdited);
+	connect(field, &QLineEdit::textChanged,
+			this, &CablePropertiesWidget::propertiesTyped);
+	grid->addWidget(label, row, 0, Qt::AlignRight | Qt::AlignVCenter);
+	grid->addWidget(field, row, 2);
+	return field;
 }
 
 /**
@@ -333,6 +367,8 @@ CableProperties CablePropertiesWidget::properties() const
 	properties.installation = m_installation->text().trimmed();
 	properties.location = m_location->text().trimmed();
 	properties.length = m_length->text().trimmed();
+	properties.manufacturer = m_manufacturer->text().trimmed();
+	properties.manufacturer_reference = m_manufacturer_reference->text().trimmed();
 	properties.show_designation = m_show_designation->isChecked();
 	properties.show_type = m_show_type->isChecked();
 	properties.show_installation = m_show_installation->isChecked();
@@ -364,6 +400,8 @@ void CablePropertiesWidget::setProperties(const CableProperties &properties)
 	m_installation->setText(properties.installation);
 	m_location->setText(properties.location);
 	m_length->setText(properties.length);
+	m_manufacturer->setText(properties.manufacturer);
+	m_manufacturer_reference->setText(properties.manufacturer_reference);
 	m_show_designation->setChecked(properties.show_designation);
 	m_show_type->setChecked(properties.show_type);
 	m_show_installation->setChecked(properties.show_installation);
