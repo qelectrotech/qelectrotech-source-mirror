@@ -489,7 +489,7 @@
         <location filename="../sources/TerminalStrip/ui/addterminalstripitemdialog.cpp" line="128"/>
         <source>%1 (connector)</source>
         <extracomment>%1 is the label of a connector drawn as a device, such as &quot;-XP1&quot;</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>%1 (роз&apos;єм)</translation>
     </message>
 </context>
 <context>
@@ -1183,12 +1183,12 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="62"/>
         <source>Adds the unit price and labour time of each part, their totals for the quantity used, and a last line with the totals for the project. Parts with no price or labour time count as nothing.</source>
-        <translation type="unfinished"></translation>
+        <translation>Додає до кожної позиції ціну за одиницю та час роботи, їхні суми для використаної кількості й останній рядок із підсумками проєкту. Позиції без ціни або часу роботи враховуються як нуль.</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="65"/>
         <source>Add prices and labour time, with project totals</source>
-        <translation type="unfinished"></translation>
+        <translation>Додати ціни та час роботи з підсумками проєкту</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="75"/>
@@ -1253,7 +1253,7 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
         <location filename="../sources/ui/bomexportdialog.cpp" line="177"/>
         <source>Total</source>
         <comment>last line of the parts list with prices</comment>
-        <translation type="unfinished"></translation>
+        <translation>Разом</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="187"/>
@@ -1293,22 +1293,22 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="194"/>
         <source>Unit price</source>
-        <translation type="unfinished"></translation>
+        <translation>Ціна за одиницю</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="195"/>
         <source>Total price</source>
-        <translation type="unfinished"></translation>
+        <translation>Загальна ціна</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="196"/>
         <source>Labour time [h]</source>
-        <translation type="unfinished"></translation>
+        <translation>Час роботи [год]</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="197"/>
         <source>Total labour [h]</source>
-        <translation type="unfinished"></translation>
+        <translation>Загальний час роботи [год]</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="223"/>
@@ -2120,12 +2120,12 @@ If you confirm, the other cable will lose these cores. Do you want to continue?<
     <message>
         <location filename="../sources/cablelist/cablelistrows.cpp" line="195"/>
         <source>Manufacturer</source>
-        <translation type="unfinished">Виробник</translation>
+        <translation>Виробник</translation>
     </message>
     <message>
         <location filename="../sources/cablelist/cablelistrows.cpp" line="196"/>
         <source>Part number</source>
-        <translation type="unfinished">Артикул</translation>
+        <translation>Артикул</translation>
     </message>
 </context>
 <context>
@@ -2467,17 +2467,17 @@ Do you want to renumber them too?</source>
     <message>
         <location filename="../sources/cable/cablepropertieswidget.cpp" line="90"/>
         <source>Manufacturer</source>
-        <translation type="unfinished">Виробник</translation>
+        <translation>Виробник</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertieswidget.cpp" line="91"/>
         <source>Part number</source>
-        <translation type="unfinished">Артикул</translation>
+        <translation>Артикул</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertieswidget.cpp" line="93"/>
         <source>The number this cable is ordered by. The parts list counts the cable under it, like the part number of an element.</source>
-        <translation type="unfinished"></translation>
+        <translation>Номер, за яким замовляється цей кабель. Список частин враховує кабель за цим номером, як і артикул елемента.</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertieswidget.cpp" line="99"/>
@@ -2941,7 +2941,7 @@ Do you want to renumber them too?</source>
     <message>
         <location filename="../sources/conductorcolorcodes.cpp" line="47"/>
         <source>Green-yellow</source>
-        <translation type="unfinished"></translation>
+        <translation>Зелено-жовтий</translation>
     </message>
     <message>
         <location filename="../sources/conductorcolorcodes.cpp" line="48"/>
@@ -2961,7 +2961,7 @@ Do you want to renumber them too?</source>
     <message>
         <location filename="../sources/conductorcolorcodes.cpp" line="51"/>
         <source>Yellow</source>
-        <translation type="unfinished">Жовтий</translation>
+        <translation>Жовтий</translation>
     </message>
     <message>
         <location filename="../sources/conductorcolorcodes.cpp" line="52"/>
@@ -2976,22 +2976,22 @@ Do you want to renumber them too?</source>
     <message>
         <location filename="../sources/conductorcolorcodes.cpp" line="54"/>
         <source>Pink</source>
-        <translation type="unfinished"></translation>
+        <translation>Рожевий</translation>
     </message>
     <message>
         <location filename="../sources/conductorcolorcodes.cpp" line="55"/>
         <source>Turquoise</source>
-        <translation type="unfinished"></translation>
+        <translation>Бірюзовий</translation>
     </message>
     <message>
         <location filename="../sources/conductorcolorcodes.cpp" line="56"/>
         <source>Gold</source>
-        <translation type="unfinished"></translation>
+        <translation>Золотий</translation>
     </message>
     <message>
         <location filename="../sources/conductorcolorcodes.cpp" line="57"/>
         <source>Silver</source>
-        <translation type="unfinished"></translation>
+        <translation>Сріблястий</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorcolortoolbutton.cpp" line="52"/>
@@ -3269,12 +3269,12 @@ Do you want to renumber them too?</source>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="330"/>
         <source>IEC 60757 colour codes</source>
-        <translation type="unfinished"></translation>
+        <translation>Кольорові коди IEC 60757</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="333"/>
         <source>…</source>
-        <translation type="unfinished">…</translation>
+        <translation>…</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="345"/>
@@ -3990,27 +3990,27 @@ Continue?</source>
     <message>
         <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="1491"/>
         <source>Place on the current folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Розмістити на поточному аркуші</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="1619"/>
         <source>free: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>вільно: %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="1635"/>
         <source>Place PLC points with the PLC Manager.</source>
-        <translation type="unfinished"></translation>
+        <translation>Розміщуйте точки ПЛК за допомогою менеджера ПЛК.</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="1636"/>
         <source>The project does not have a symbol for this part.</source>
-        <translation type="unfinished"></translation>
+        <translation>У проєкті немає символу для цієї частини.</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatordockwidget.cpp" line="1638"/>
         <source>Not drawn yet. Double-click to place it on the current folio.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ще не намальовано. Двічі клацніть, щоб розмістити її на поточному аркуші.</translation>
     </message>
 </context>
 <context>
@@ -4143,12 +4143,12 @@ Continue?</source>
     <message>
         <location filename="../sources/ui/devicenavigatorfilterdialog.ui" line="234"/>
         <source>Only the devices with a part of their device type which is not drawn yet</source>
-        <translation type="unfinished"></translation>
+        <translation>Лише пристрої, у яких частину типу пристрою ще не намальовано</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatorfilterdialog.ui" line="237"/>
         <source>Only devices with free parts</source>
-        <translation type="unfinished"></translation>
+        <translation>Лише пристрої з вільними частинами</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicenavigatorfilterdialog.ui" line="258"/>
@@ -4232,33 +4232,33 @@ Continue?</source>
         <location filename="../sources/ui/devicetypechangedialog.cpp" line="43"/>
         <source>Change the device type to %1</source>
         <extracomment>%1 is a device type&apos;s name, such as &quot;CONTR10&quot;</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Змінити тип пристрою на %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypechangedialog.cpp" line="45"/>
         <source>Choose, for each symbol of the device, the part of the new device type it draws. It takes that part&apos;s terminals. A symbol left beyond the type stays as it is.</source>
-        <translation type="unfinished"></translation>
+        <translation>Для кожного символу пристрою виберіть частину нового типу пристрою, яку він малює. Він успадковує виводи цієї частини. Символ, залишений поза типом, не змінюється.</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypechangedialog.cpp" line="53"/>
         <source>Symbol</source>
-        <translation type="unfinished">Символ</translation>
+        <translation>Символ</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypechangedialog.cpp" line="53"/>
         <source>Part of the new type</source>
-        <translation type="unfinished"></translation>
+        <translation>Частина нового типу</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypechangedialog.cpp" line="62"/>
         <source>Beyond the type</source>
-        <translation type="unfinished"></translation>
+        <translation>Поза типом</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypechangedialog.cpp" line="65"/>
         <source>%1: %2</source>
         <extracomment>%1 is a part&apos;s number in the type, %2 how it reads (&quot;contact NO 13 14&quot;)</extracomment>
-        <translation type="unfinished">%1: %2</translation>
+        <translation>%1: %2</translation>
     </message>
 </context>
 <context>
@@ -4266,220 +4266,220 @@ Continue?</source>
     <message>
         <location filename="../sources/ui/devicetypecheckdialog.cpp" line="52"/>
         <source>Check device types</source>
-        <translation type="unfinished"></translation>
+        <translation>Перевірити типи пристроїв</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypecheckdialog.cpp" line="59"/>
         <source>A device takes the device type named on its Parts tab. Click a device or a symbol to select and show it on its sheet. Double-click a part not drawn to place it on the current folio. Refresh after editing the project.</source>
-        <translation type="unfinished"></translation>
+        <translation>Пристрій отримує тип пристрою, указаний на його вкладці «Частини». Клацніть пристрій або символ, щоб виділити його та показати на його аркуші. Двічі клацніть ненамальовану частину, щоб розмістити її на поточному аркуші. Оновіть після зміни проєкту.</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypecheckdialog.cpp" line="66"/>
         <source>Also list the complete devices</source>
-        <translation type="unfinished"></translation>
+        <translation>Показувати також повні пристрої</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypecheckdialog.cpp" line="71"/>
         <source>Device / part</source>
-        <translation type="unfinished"></translation>
+        <translation>Пристрій / частина</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypecheckdialog.cpp" line="71"/>
         <source>Device type</source>
-        <translation type="unfinished"></translation>
+        <translation>Тип пристрою</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypecheckdialog.cpp" line="71"/>
         <source>Sheet</source>
-        <translation type="unfinished">Аркуш</translation>
+        <translation>Аркуш</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypecheckdialog.cpp" line="71"/>
         <source>Position</source>
-        <translation type="unfinished"></translation>
+        <translation>Положення</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypecheckdialog.cpp" line="88"/>
         <source>Refresh</source>
-        <translation type="unfinished">Оновити</translation>
+        <translation>Оновити</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypecheckdialog.cpp" line="90"/>
         <source>Place on the current folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Розмістити на поточному аркуші</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypecheckdialog.cpp" line="92"/>
         <source>Place the selected part: the symbol follows the mouse until you click</source>
-        <translation type="unfinished"></translation>
+        <translation>Розмістити вибрану частину: символ слідує за мишею до клацання</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypecheckdialog.cpp" line="111"/>
         <source>Reading the folios...</source>
-        <translation type="unfinished">Читання аркушів...</translation>
+        <translation>Читання аркушів...</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypecheckdialog.cpp" line="125"/>
         <source>Reading folio %1 of %2...</source>
-        <translation type="unfinished">Читання аркуша %1 з %2...</translation>
+        <translation>Читання аркуша %1 з %2...</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypecheckdialog.cpp" line="147"/>
         <source>%1 — %2</source>
-        <translation type="unfinished">%1 — %2</translation>
+        <translation>%1 — %2</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypecheckdialog.cpp" line="171"/>
         <source>%1: the project has no device type %2</source>
         <extracomment>%1 is the device, such as &quot;=P1+CP1-K12&quot;; %2 its device type</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>%1: у проєкті немає типу пристрою %2</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/devicetypecheckdialog.cpp" line="181"/>
         <source>%1: %2 of %n pins drawn</source>
         <extracomment>%1 is the connector, such as &quot;=P1+CP1-X1&quot;</extracomment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%1: намальовано %2 з %n піна</numerusform>
+            <numerusform>%1: намальовано %2 з %n пінів</numerusform>
+            <numerusform>%1: намальовано %2 з %n пінів</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/devicetypecheckdialog.cpp" line="186"/>
         <source>%1: %2 of %n parts drawn</source>
         <extracomment>%1 is the device, such as &quot;=P1+CP1-K12&quot;</extracomment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%1: намальовано %2 з %n частини</numerusform>
+            <numerusform>%1: намальовано %2 з %n частин</numerusform>
+            <numerusform>%1: намальовано %2 з %n частин</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypecheckdialog.cpp" line="196"/>
         <source>Free pin: %1</source>
         <extracomment>%1 is the name of a pin of a connector, such as &quot;C2&quot;</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Вільний пін: %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypecheckdialog.cpp" line="202"/>
         <source>Not drawn: %1</source>
         <extracomment>%1 describes the part, such as &quot;simple NO 13 14&quot;</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Не намальовано: %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypecheckdialog.cpp" line="207"/>
         <source>Place PLC points with the PLC Manager.</source>
-        <translation type="unfinished"></translation>
+        <translation>Розміщуйте точки ПЛК за допомогою менеджера ПЛК.</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypecheckdialog.cpp" line="208"/>
         <source>The project does not have a symbol for this part.</source>
-        <translation type="unfinished"></translation>
+        <translation>У проєкті немає символу для цієї частини.</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypecheckdialog.cpp" line="210"/>
         <source>Double-click to place it on the current folio.</source>
-        <translation type="unfinished"></translation>
+        <translation>Двічі клацніть, щоб розмістити її на поточному аркуші.</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/devicetypecheckdialog.cpp" line="216"/>
         <source>%n contact(s) more than the device type has</source>
         <extracomment>%n counts the contacts linked to the device&apos;s master beyond the ones its type has</extracomment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n контакт більше, ніж має тип пристрою</numerusform>
+            <numerusform>%n контакти більше, ніж має тип пристрою</numerusform>
+            <numerusform>%n контактів більше, ніж має тип пристрою</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypecheckdialog.cpp" line="225"/>
         <source>Pin %1 is drawn twice</source>
         <extracomment>%1 is the name of a pin of a connector, such as &quot;C1&quot;</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Пін %1 намальовано двічі</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypecheckdialog.cpp" line="228"/>
         <source>%1 has no pin %2</source>
         <extracomment>%1 is a connector, such as &quot;X1&quot;, %2 a pin name, such as &quot;7&quot;</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>У %1 немає піна %2</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypecheckdialog.cpp" line="231"/>
         <source>%1: a terminal drawn without a pin name</source>
         <extracomment>%1 is a connector, such as &quot;X1&quot;</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>%1: намальовано вивід без назви піна</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypecheckdialog.cpp" line="234"/>
         <source>Beyond the type: %1</source>
         <extracomment>%1 is the symbol&apos;s name</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Поза типом: %1</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/devicetypecheckdialog.cpp" line="244"/>
         <source>%n contact(s) linked to no master</source>
         <extracomment>%n counts the contacts linked to no master</extracomment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n контакт не пов&apos;язано з жодним головним</numerusform>
+            <numerusform>%n контакти не пов&apos;язано з жодним головним</numerusform>
+            <numerusform>%n контактів не пов&apos;язано з жодним головним</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypecheckdialog.cpp" line="245"/>
         <source>A contact belongs to a device once it is linked to the device&apos;s master.</source>
-        <translation type="unfinished"></translation>
+        <translation>Контакт належить пристрою, щойно його пов&apos;язано з головним елементом пристрою.</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypecheckdialog.cpp" line="252"/>
         <source>%1 %2</source>
         <extracomment>%1 is the symbol&apos;s name, %2 its label</extracomment>
-        <translation type="unfinished">%1 %2</translation>
+        <translation>%1 %2</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/devicetypecheckdialog.cpp" line="259"/>
         <source>%n device(s) with a device type: %1 complete, %2 incomplete, %3 of a type the project does not have.</source>
         <extracomment>%n counts the devices which have a device type</extracomment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n пристрій із типом пристрою: %1 повних, %2 неповних, %3 типу, якого немає в проєкті.</numerusform>
+            <numerusform>%n пристрої із типом пристрою: %1 повних, %2 неповних, %3 типу, якого немає в проєкті.</numerusform>
+            <numerusform>%n пристроїв із типом пристрою: %1 повних, %2 неповних, %3 типу, якого немає в проєкті.</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/devicetypecheckdialog.cpp" line="265"/>
         <source>%n with too many contacts.</source>
         <extracomment>%n counts the devices whose master has more contacts linked than their type has</extracomment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n із надто великою кількістю контактів.</numerusform>
+            <numerusform>%n із надто великою кількістю контактів.</numerusform>
+            <numerusform>%n із надто великою кількістю контактів.</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/devicetypecheckdialog.cpp" line="268"/>
         <source>%n contact(s) linked to no master.</source>
         <extracomment>%n counts the contacts linked to no master</extracomment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n контакт не пов&apos;язано з жодним головним.</numerusform>
+            <numerusform>%n контакти не пов&apos;язано з жодним головним.</numerusform>
+            <numerusform>%n контактів не пов&apos;язано з жодним головним.</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypecheckdialog.cpp" line="329"/>
         <source>Open a folio of this project to place the part.</source>
-        <translation type="unfinished"></translation>
+        <translation>Відкрийте аркуш цього проєкту, щоб розмістити частину.</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypecheckdialog.cpp" line="339"/>
         <source>This part cannot be placed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Цю частину неможливо розмістити.</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypecheckdialog.cpp" line="359"/>
         <source>This symbol no longer exists. Refresh the results.</source>
-        <translation type="unfinished"></translation>
+        <translation>Цього символу більше не існує. Оновіть результати.</translation>
     </message>
 </context>
 <context>
@@ -4487,55 +4487,55 @@ Continue?</source>
     <message>
         <location filename="../sources/ui/devicetypechooser.cpp" line="147"/>
         <source>Device type</source>
-        <translation type="unfinished"></translation>
+        <translation>Тип пристрою</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypechooser.cpp" line="127"/>
         <source>Which device type is this device? Its parts are then checked against it.</source>
-        <translation type="unfinished"></translation>
+        <translation>Який тип пристрою в цього пристрою? Його частини потім перевіряються на відповідність йому.</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypechooser.cpp" line="129"/>
         <source>Which device type is %1? Its parts are then checked against it.</source>
         <extracomment>%1 is the device&apos;s label, such as &quot;-K1&quot;</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Який тип пристрою в %1? Його частини потім перевіряються на відповідність йому.</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypechooser.cpp" line="140"/>
         <source>Which device type is this connector? Its pins are then checked against it.</source>
-        <translation type="unfinished"></translation>
+        <translation>Який тип пристрою в цього роз&apos;єму? Його піни потім перевіряються на відповідність йому.</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypechooser.cpp" line="142"/>
         <source>Which device type is %1? Its pins are then checked against it.</source>
         <extracomment>%1 is the connector&apos;s name, such as &quot;X1&quot;</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Який тип пристрою в %1? Його піни потім перевіряються на відповідність йому.</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypechooser.cpp" line="154"/>
         <source>Filter, * for any characters</source>
-        <translation type="unfinished"></translation>
+        <translation>Фільтр, * означає будь-які символи</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypechooser.cpp" line="160"/>
         <source>Show every device type, not only those with pins</source>
-        <translation type="unfinished"></translation>
+        <translation>Показати всі типи пристроїв, а не лише ті, що мають піни</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypechooser.cpp" line="161"/>
         <source>Show every device type, not only those this symbol can draw</source>
-        <translation type="unfinished"></translation>
+        <translation>Показати всі типи пристроїв, а не лише ті, які може малювати цей символ</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypechooser.cpp" line="267"/>
         <source>%1 - %2</source>
         <extracomment>%1 is a device type&apos;s name, %2 its description</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>%1 - %2</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypechooser.cpp" line="268"/>
         <source>%1 - %2 (your library)</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 - %2 (ваша бібліотека)</translation>
     </message>
 </context>
 <context>
@@ -4543,232 +4543,232 @@ Continue?</source>
     <message>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="71"/>
         <source>Master</source>
-        <translation type="unfinished"></translation>
+        <translation>Головний</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="72"/>
         <source>Slave</source>
-        <translation type="unfinished"></translation>
+        <translation>Підпорядкований</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="73"/>
         <source>Simple</source>
-        <translation type="unfinished">Простий</translation>
+        <translation>Простий</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="74"/>
         <source>Terminal</source>
-        <translation type="unfinished"></translation>
+        <translation>Вивід</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="80"/>
         <source>Coil</source>
-        <translation type="unfinished">Котушка</translation>
+        <translation>Котушка</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="81"/>
         <source>Protection</source>
-        <translation type="unfinished">Захист</translation>
+        <translation>Захист</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="82"/>
         <source>Commutator</source>
-        <translation type="unfinished">Перемикач</translation>
+        <translation>Перемикач</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="83"/>
         <source>PLC</source>
-        <translation type="unfinished">ПЛК</translation>
+        <translation>ПЛК</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="84"/>
         <source>Simple contact</source>
-        <translation type="unfinished"></translation>
+        <translation>Простий контакт</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="85"/>
         <source>Power contact</source>
-        <translation type="unfinished"></translation>
+        <translation>Силовий контакт</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="86"/>
         <source>Delay on</source>
-        <translation type="unfinished"></translation>
+        <translation>Затримка на вмикання</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="87"/>
         <source>Delay off</source>
-        <translation type="unfinished"></translation>
+        <translation>Затримка на вимикання</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="88"/>
         <source>Delay on and off</source>
-        <translation type="unfinished"></translation>
+        <translation>Затримка на вмикання та вимикання</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="94"/>
         <source>NO</source>
-        <translation type="unfinished"></translation>
+        <translation>НВ</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="95"/>
         <source>NC</source>
-        <translation type="unfinished"></translation>
+        <translation>НЗ</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="96"/>
         <source>Changeover</source>
-        <translation type="unfinished"></translation>
+        <translation>Перемикний</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="121"/>
         <source>Device type</source>
-        <translation type="unfinished"></translation>
+        <translation>Тип пристрою</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="127"/>
         <source>The name devices give in their Device type field, such as CONTR10</source>
-        <translation type="unfinished"></translation>
+        <translation>Назва, яку пристрої вказують у полі «Тип пристрою», наприклад CONTR10</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="128"/>
         <source>Name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Назва:</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="131"/>
         <source>Description:</source>
-        <translation type="unfinished">Опис:</translation>
+        <translation>Опис:</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="134"/>
         <source>Given to the symbols of its devices</source>
-        <translation type="unfinished"></translation>
+        <translation>Надається символам його пристроїв</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="138"/>
         <source>Information</source>
-        <translation type="unfinished">Інформація</translation>
+        <translation>Інформація</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="138"/>
         <source>Value</source>
-        <translation type="unfinished">Значення</translation>
+        <translation>Значення</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="144"/>
         <source>Add</source>
-        <translation type="unfinished">Додати</translation>
+        <translation>Додати</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="145"/>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="182"/>
         <source>Remove</source>
-        <translation type="unfinished">Видалити</translation>
+        <translation>Видалити</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="154"/>
         <source>Parts</source>
-        <translation type="unfinished">Частини</translation>
+        <translation>Частини</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="157"/>
         <source>One row per way to draw a part. Rows with the same part number are the ways one part may be drawn, such as a contact as NO, NC or changeover. The first master part is the device&apos;s head.</source>
-        <translation type="unfinished"></translation>
+        <translation>Один рядок на кожен спосіб малювання частини. Рядки з однаковим номером частини — це способи, якими можна намалювати одну й ту саму частину, наприклад контакт як НВ, НЗ або перемикний. Перша головна частина — це голова пристрою.</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="164"/>
         <source>Part</source>
-        <translation type="unfinished"></translation>
+        <translation>Частина</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="164"/>
         <source>Role</source>
-        <translation type="unfinished"></translation>
+        <translation>Роль</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="164"/>
         <source>Kind</source>
-        <translation type="unfinished"></translation>
+        <translation>Рід</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="164"/>
         <source>State</source>
-        <translation type="unfinished"></translation>
+        <translation>Стан</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="165"/>
         <source>Symbol</source>
-        <translation type="unfinished">Символ</translation>
+        <translation>Символ</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="165"/>
         <source>Pins</source>
-        <translation type="unfinished"></translation>
+        <translation>Піни</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="178"/>
         <source>Add a part</source>
-        <translation type="unfinished"></translation>
+        <translation>Додати частину</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="180"/>
         <source>Add a way to draw it</source>
-        <translation type="unfinished"></translation>
+        <translation>Додати спосіб її малювання</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="181"/>
         <source>Another way to draw the selected part, such as the same contact as NC</source>
-        <translation type="unfinished"></translation>
+        <translation>Інший спосіб малювання вибраної частини, наприклад той самий контакт як НЗ</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="183"/>
         <source>Up</source>
-        <translation type="unfinished">Зверху</translation>
+        <translation>Вгору</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="184"/>
         <source>Down</source>
-        <translation type="unfinished">Вниз</translation>
+        <translation>Вниз</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="185"/>
         <source>Choose the symbol...</source>
-        <translation type="unfinished"></translation>
+        <translation>Вибрати символ...</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="352"/>
         <source>Give the device type a name.</source>
-        <translation type="unfinished"></translation>
+        <translation>Дайте назву типу пристрою.</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="355"/>
         <source>A device type named %1 already exists.</source>
         <extracomment>%1 is a device type&apos;s name, such as &quot;CONTR10&quot;</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Тип пристрою з назвою %1 уже існує.</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="357"/>
         <source>A device type needs at least one part.</source>
-        <translation type="unfinished"></translation>
+        <translation>Тип пристрою потребує принаймні однієї частини.</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="362"/>
         <source>Part %1 has no role.</source>
         <extracomment>%1 is a part&apos;s number in the device type</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Частина %1 не має ролі.</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="368"/>
         <source>Part %1: the symbol %2 cannot be found.</source>
         <extracomment>%1 is a part&apos;s number, %2 the symbol it names</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Частина %1: символ %2 не знайдено.</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypeeditor.cpp" line="371"/>
         <source>Part %1: %2 pins for a symbol with %3 terminals.</source>
         <extracomment>%1 is a part&apos;s number, %2 its pins, %3 the symbol&apos;s terminals</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Частина %1: %2 пінів для символу з %3 виводами.</translation>
     </message>
 </context>
 <context>
@@ -4776,150 +4776,150 @@ Continue?</source>
     <message>
         <location filename="../sources/ui/devicetypesdialog.cpp" line="50"/>
         <source>Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Назва</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypesdialog.cpp" line="50"/>
         <source>Description</source>
-        <translation type="unfinished">Опис</translation>
+        <translation>Опис</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypesdialog.cpp" line="51"/>
         <source>Parts</source>
-        <translation type="unfinished">Частини</translation>
+        <translation>Частини</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypesdialog.cpp" line="52"/>
         <source>Symbols</source>
-        <translation type="unfinished">Символи</translation>
+        <translation>Символи</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypesdialog.cpp" line="72"/>
         <source>Device types</source>
-        <translation type="unfinished"></translation>
+        <translation>Типи пристроїв</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypesdialog.cpp" line="75"/>
         <source>A device type says what a kind of device is made of. The project keeps the types its devices use; your library keeps the ones you make and share. A device takes a type in its Device type field on the Parts tab.</source>
-        <translation type="unfinished"></translation>
+        <translation>Тип пристрою описує, з чого складається вид пристрою. Проєкт зберігає типи, які використовують його пристрої; ваша бібліотека зберігає ті, які ви створюєте й надаєте у спільне користування. Пристрій отримує тип у своєму полі «Тип пристрою» на вкладці «Частини».</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypesdialog.cpp" line="86"/>
         <source>This project</source>
-        <translation type="unfinished"></translation>
+        <translation>Цей проєкт</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypesdialog.cpp" line="87"/>
         <source>Your library</source>
-        <translation type="unfinished"></translation>
+        <translation>Ваша бібліотека</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypesdialog.cpp" line="91"/>
         <source>New...</source>
-        <translation type="unfinished">Створити...</translation>
+        <translation>Новий...</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypesdialog.cpp" line="92"/>
         <source>Duplicate...</source>
-        <translation type="unfinished"></translation>
+        <translation>Дублювати...</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypesdialog.cpp" line="93"/>
         <source>Edit...</source>
-        <translation type="unfinished"></translation>
+        <translation>Редагувати...</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypesdialog.cpp" line="94"/>
         <source>Delete</source>
-        <translation type="unfinished">Видалити</translation>
+        <translation>Видалити</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypesdialog.cpp" line="97"/>
         <source>Export list</source>
-        <translation type="unfinished"></translation>
+        <translation>Експортувати список</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypesdialog.cpp" line="99"/>
         <source>Save the device types of this tab as a CSV list</source>
-        <translation type="unfinished"></translation>
+        <translation>Зберегти типи пристроїв цієї вкладки як список CSV</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypesdialog.cpp" line="101"/>
         <source>Full list (every part and its terminals)...</source>
-        <translation type="unfinished"></translation>
+        <translation>Повний список (кожна частина та її виводи)...</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypesdialog.cpp" line="103"/>
         <source>Brief list (name and description)...</source>
-        <translation type="unfinished"></translation>
+        <translation>Короткий список (назва й опис)...</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypesdialog.cpp" line="303"/>
         <source>Delete the device type %1 from your library? This cannot be undone.</source>
         <extracomment>%1 is a device type&apos;s name, such as &quot;CONTR10&quot;</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Видалити тип пристрою %1 з вашої бібліотеки? Цю дію неможливо скасувати.</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypesdialog.cpp" line="304"/>
         <source>Delete the device type %1 from the project? Its devices keep their Device type field and are listed as of a type the project does not have.</source>
-        <translation type="unfinished"></translation>
+        <translation>Видалити тип пристрою %1 з проєкту? Його пристрої зберігають поле «Тип пристрою» та відображаються як пристрої типу, якого немає в проєкті.</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypesdialog.cpp" line="306"/>
         <source>Delete a device type</source>
-        <translation type="unfinished"></translation>
+        <translation>Видалити тип пристрою</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypesdialog.cpp" line="320"/>
         <source>The project already has a device type %1. Replace it?</source>
-        <translation type="unfinished"></translation>
+        <translation>У проєкті вже є тип пристрою %1. Замінити його?</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypesdialog.cpp" line="321"/>
         <source>Your library already has a device type %1. Replace it?</source>
-        <translation type="unfinished"></translation>
+        <translation>У вашій бібліотеці вже є тип пристрою %1. Замінити його?</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypesdialog.cpp" line="322"/>
         <source>Copy a device type</source>
-        <translation type="unfinished"></translation>
+        <translation>Копіювати тип пристрою</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypesdialog.cpp" line="348"/>
         <location filename="../sources/ui/devicetypesdialog.cpp" line="355"/>
         <source>Export the list of device types</source>
-        <translation type="unfinished"></translation>
+        <translation>Експортувати список типів пристроїв</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypesdialog.cpp" line="349"/>
         <source>device_types.csv</source>
-        <translation type="unfinished"></translation>
+        <translation>device_types.csv</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypesdialog.cpp" line="350"/>
         <source>device_types_brief.csv</source>
-        <translation type="unfinished"></translation>
+        <translation>device_types_brief.csv</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypesdialog.cpp" line="351"/>
         <source>CSV files (*.csv)</source>
-        <translation type="unfinished"></translation>
+        <translation>Файли CSV (*.csv)</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypesdialog.cpp" line="357"/>
         <source>Cannot write %1: %2</source>
         <extracomment>%1 is a file, %2 why it cannot be written</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Неможливо записати %1: %2</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypesdialog.cpp" line="367"/>
         <source>Copy to the project</source>
-        <translation type="unfinished"></translation>
+        <translation>Копіювати в проєкт</translation>
     </message>
     <message>
         <location filename="../sources/ui/devicetypesdialog.cpp" line="367"/>
         <source>Copy to your library</source>
-        <translation type="unfinished"></translation>
+        <translation>Копіювати у вашу бібліотеку</translation>
     </message>
 </context>
 <context>
@@ -4965,7 +4965,7 @@ Continue?</source>
     <message>
         <location filename="../sources/diagram.cpp" line="358"/>
         <source>a structure box</source>
-        <translation type="unfinished"></translation>
+        <translation>рамка структури</translation>
     </message>
     <message>
         <location filename="../sources/diagram.cpp" line="359"/>
@@ -5285,25 +5285,25 @@ Continue?</source>
         <location filename="../sources/diagramevent/diagrameventaddpaste.cpp" line="349"/>
         <source>Original position (X+Y locked)</source>
         <comment>status bar lock state</comment>
-        <translation type="unfinished"></translation>
+        <translation>Початкове положення (X+Y заблоковано)</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddpaste.cpp" line="351"/>
         <source>Original X locked (move along Y)</source>
         <comment>status bar lock state</comment>
-        <translation type="unfinished"></translation>
+        <translation>Початковий X заблоковано (рух уздовж Y)</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddpaste.cpp" line="353"/>
         <source>Original Y locked (move along X)</source>
         <comment>status bar lock state</comment>
-        <translation type="unfinished"></translation>
+        <translation>Початковий Y заблоковано (рух уздовж X)</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddpaste.cpp" line="356"/>
         <source>Click to place, Esc or right-click to cancel. [%1]: lock X, [%2]: lock Y, [%1]+[%2]: original position</source>
         <comment>status bar tip while positioning a paste</comment>
-        <translation type="unfinished"></translation>
+        <translation>Клацніть, щоб розмістити, Esc або права кнопка миші, щоб скасувати. [%1]: блокує X, [%2]: блокує Y, [%1]+[%2]: початкове положення</translation>
     </message>
 </context>
 <context>
@@ -5367,22 +5367,22 @@ Continue?</source>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddstructurebox.cpp" line="62"/>
         <source>New structure box</source>
-        <translation type="unfinished"></translation>
+        <translation>Нова рамка структури</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddstructurebox.cpp" line="70"/>
         <source>Plant (=)</source>
-        <translation type="unfinished">Установка(=)</translation>
+        <translation>Установка (=)</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddstructurebox.cpp" line="71"/>
         <source>Location (+)</source>
-        <translation type="unfinished">Локалізація (+)</translation>
+        <translation>Розташування (+)</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddstructurebox.cpp" line="72"/>
         <source>Prefix (-)</source>
-        <translation type="unfinished">Префікс (-)</translation>
+        <translation>Префікс (-)</translation>
     </message>
 </context>
 <context>
@@ -7019,172 +7019,172 @@ Hold Shift and drag to move this text on its own</source>
     <message>
         <location filename="../sources/ui/elementarticleswidget.cpp" line="170"/>
         <source>Article %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Позиція %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementarticleswidget.cpp" line="433"/>
         <location filename="../sources/ui/elementarticleswidget.cpp" line="442"/>
         <location filename="../sources/ui/elementarticleswidget.cpp" line="460"/>
         <source>Change the device type</source>
-        <translation type="unfinished"></translation>
+        <translation>Змінити тип пристрою</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementarticleswidget.cpp" line="435"/>
         <source>The part number of this device names the device type %1. Change it to %2 anyway?</source>
         <extracomment>%1 and %2 are device types&apos; names, such as &quot;CONTR10&quot;</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Артикул цього пристрою вказує тип пристрою %1. Усе одно змінити на %2?</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementarticleswidget.cpp" line="443"/>
         <source>Copy the existing contacts to the new device type automatically?</source>
-        <translation type="unfinished"></translation>
+        <translation>Автоматично скопіювати наявні контакти в новий тип пристрою?</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementarticleswidget.cpp" line="494"/>
         <location filename="../sources/ui/elementarticleswidget.cpp" line="517"/>
         <source>Set this symbol from the device type</source>
-        <translation type="unfinished"></translation>
+        <translation>Задати цей символ на основі типу пристрою</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementarticleswidget.cpp" line="495"/>
         <source>Every part of this device type is already drawn.</source>
-        <translation type="unfinished"></translation>
+        <translation>Кожну частину цього типу пристрою вже намальовано.</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementarticleswidget.cpp" line="581"/>
         <source>Device type %1 of your library: the project keeps a copy once applied.</source>
         <extracomment>%1 is a device type&apos;s name, such as &quot;CONTR10&quot;</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Тип пристрою %1 з вашої бібліотеки: після застосування проєкт зберігає його копію.</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementarticleswidget.cpp" line="583"/>
         <source>No device type %1 in the project or your library.</source>
-        <translation type="unfinished"></translation>
+        <translation>Типу пристрою %1 немає ні в проєкті, ні у вашій бібліотеці.</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/elementarticleswidget.cpp" line="590"/>
         <source>%1 (%n part(s))</source>
         <extracomment>%1 is the type&apos;s text, %n its number of parts</extracomment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%1 (%n частина)</numerusform>
+            <numerusform>%1 (%n частини)</numerusform>
+            <numerusform>%1 (%n частин)</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/elementarticleswidget.cpp" line="593"/>
         <source>%1: %2 of %n part(s) drawn</source>
         <extracomment>%1 is the type&apos;s text, %2 the parts drawn, %n all of its parts</extracomment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%1: намальовано %2 з %n частини</numerusform>
+            <numerusform>%1: намальовано %2 з %n частин</numerusform>
+            <numerusform>%1: намальовано %2 з %n частин</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/ui/elementarticleswidget.cpp" line="599"/>
         <source>Not drawn: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Не намальовано: %1</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/elementarticleswidget.cpp" line="601"/>
         <source>%n symbol(s) beyond the type</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n символ поза типом</numerusform>
+            <numerusform>%n символи поза типом</numerusform>
+            <numerusform>%n символів поза типом</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/ui/elementarticleswidget.cpp" line="677"/>
         <source>Article</source>
-        <translation type="unfinished"></translation>
+        <translation>Позиція</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementarticleswidget.cpp" line="677"/>
         <source>Quantity</source>
-        <translation type="unfinished">Кількість</translation>
+        <translation>Кількість</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementarticleswidget.cpp" line="700"/>
         <source>Add article</source>
-        <translation type="unfinished"></translation>
+        <translation>Додати позицію</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementarticleswidget.cpp" line="702"/>
         <source>Remove</source>
-        <translation type="unfinished">Видалити</translation>
+        <translation>Видалити</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementarticleswidget.cpp" line="732"/>
         <source>List…</source>
-        <translation type="unfinished"></translation>
+        <translation>Список…</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementarticleswidget.cpp" line="732"/>
         <location filename="../sources/ui/elementarticleswidget.cpp" line="735"/>
         <source>Choose from materials list…</source>
-        <translation type="unfinished"></translation>
+        <translation>Вибрати зі списку матеріалів…</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementarticleswidget.cpp" line="851"/>
         <source>What this device is made of: its device type, from the project or your library</source>
-        <translation type="unfinished"></translation>
+        <translation>З чого складається цей пристрій: його тип пристрою з проєкту або з вашої бібліотеки</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementarticleswidget.cpp" line="867"/>
         <source>Set this symbol from the device type...</source>
-        <translation type="unfinished"></translation>
+        <translation>Задати цей символ на основі типу пристрою...</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementarticleswidget.cpp" line="869"/>
         <source>Choose which part of the device type this symbol draws: it takes that part&apos;s terminals.</source>
-        <translation type="unfinished"></translation>
+        <translation>Виберіть, яку частину типу пристрою малює цей символ: він успадковує виводи цієї частини.</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementarticleswidget.cpp" line="871"/>
         <source>Change the device type...</source>
-        <translation type="unfinished"></translation>
+        <translation>Змінити тип пристрою...</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementarticleswidget.cpp" line="873"/>
         <source>Give the device another device type: its symbols take the parts of the new one.</source>
-        <translation type="unfinished"></translation>
+        <translation>Надати пристрою інший тип пристрою: його символи отримують частини нового типу.</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementarticleswidget.cpp" line="1043"/>
         <source>Empty article</source>
-        <translation type="unfinished"></translation>
+        <translation>Порожня позиція</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementarticleswidget.cpp" line="1047"/>
         <source>Main article (empty)</source>
-        <translation type="unfinished"></translation>
+        <translation>Основна позиція (порожня)</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementarticleswidget.cpp" line="1154"/>
         <source>Add another article slot (up to %1)</source>
-        <translation type="unfinished"></translation>
+        <translation>Додати ще одне місце для позиції (до %1)</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementarticleswidget.cpp" line="1155"/>
         <source>All %1 native article slots are already shown</source>
-        <translation type="unfinished"></translation>
+        <translation>Усі %1 вбудованих місць для позицій уже показано</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementarticleswidget.cpp" line="1161"/>
         <source>Clear and remove the selected auxiliary article</source>
-        <translation type="unfinished"></translation>
+        <translation>Очистити та видалити вибрану допоміжну позицію</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementarticleswidget.cpp" line="1162"/>
         <source>Clear the fields of Article 1</source>
-        <translation type="unfinished"></translation>
+        <translation>Очистити поля Позиції 1</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementarticleswidget.cpp" line="1264"/>
         <source>No materials list</source>
-        <translation type="unfinished">Немає списку матеріалів</translation>
+        <translation>Немає списку матеріалів</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementarticleswidget.cpp" line="1265"/>
@@ -7193,7 +7193,7 @@ Hold Shift and drag to move this text on its own</source>
 
 Create it?</source>
         <comment>message asking to create the material file</comment>
-        <translation type="unfinished">У цьому місці немає файлу списку матеріалів:
+        <translation>У цьому місці немає файлу списку матеріалів:
 %1
 
 Створити його?</translation>
@@ -7201,21 +7201,21 @@ Create it?</source>
     <message>
         <location filename="../sources/ui/elementarticleswidget.cpp" line="1279"/>
         <source>Cannot create</source>
-        <translation type="unfinished">Неможливо створити</translation>
+        <translation>Неможливо створити</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementarticleswidget.cpp" line="1280"/>
         <source>Cannot create the file:
 %1
 %2</source>
-        <translation type="unfinished">Не вдалося створити файл:
+        <translation>Неможливо створити файл:
 %1
 %2</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementarticleswidget.h" line="62"/>
         <source>Parts</source>
-        <translation type="unfinished">Частини</translation>
+        <translation>Частини</translation>
     </message>
 </context>
 <context>
@@ -7539,7 +7539,7 @@ Create it?</source>
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="91"/>
         <source>A drawing aid (an interruption point) has no label: it is not printed, and is left out of every list.</source>
-        <translation type="unfinished"></translation>
+        <translation>Допоміжний елемент креслення (точка розриву) не має мітки: він не друкується та виключений з усіх списків.</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="697"/>
@@ -7850,22 +7850,22 @@ Continue?</source>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="319"/>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="355"/>
         <source>Junction</source>
-        <translation type="unfinished"></translation>
+        <translation>Вузол</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="325"/>
         <source>Which connection the wire comes in at, and which ones it goes on to. Nothing is assigned until you choose it.</source>
-        <translation type="unfinished"></translation>
+        <translation>Яким з&apos;єднанням провід надходить і до яких продовжується далі. Нічого не призначається, доки ви цього не виберете.</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="348"/>
         <source>Connection</source>
-        <translation type="unfinished"></translation>
+        <translation>З&apos;єднання</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="353"/>
         <source>Role</source>
-        <translation type="unfinished"></translation>
+        <translation>Роль</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="365"/>
@@ -8120,47 +8120,47 @@ Continue?</source>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="853"/>
         <source>top</source>
-        <translation type="unfinished"></translation>
+        <translation>вгорі</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="854"/>
         <source>right</source>
-        <translation type="unfinished"></translation>
+        <translation>праворуч</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="855"/>
         <source>bottom</source>
-        <translation type="unfinished"></translation>
+        <translation>внизу</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="856"/>
         <source>left</source>
-        <translation type="unfinished"></translation>
+        <translation>ліворуч</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="876"/>
         <source>Not assigned</source>
-        <translation type="unfinished"></translation>
+        <translation>Не призначено</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="878"/>
         <source>Source</source>
-        <translation type="unfinished">Джерело</translation>
+        <translation>Джерело</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="879"/>
         <source>Target 1</source>
-        <translation type="unfinished"></translation>
+        <translation>Ціль 1</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="880"/>
         <source>Target 2</source>
-        <translation type="unfinished"></translation>
+        <translation>Ціль 2</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="881"/>
         <source>Target 3</source>
-        <translation type="unfinished"></translation>
+        <translation>Ціль 3</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1199"/>
@@ -9593,124 +9593,124 @@ QElectroTech не може автоматично визначити поход�
     <message>
         <location filename="../sources/materiallist/findpartdialog.cpp" line="109"/>
         <source>Find part</source>
-        <translation type="unfinished"></translation>
+        <translation>Знайти частину</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/findpartdialog.cpp" line="110"/>
         <source>Find part for %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Знайти частину для %1</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/findpartdialog.cpp" line="117"/>
         <source>Type words: part number, description, manufacturer...</source>
-        <translation type="unfinished"></translation>
+        <translation>Введіть слова: артикул, опис, виробник...</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/findpartdialog.cpp" line="121"/>
         <location filename="../sources/materiallist/findpartdialog.cpp" line="182"/>
         <source>Category</source>
-        <translation type="unfinished">Категорія</translation>
+        <translation>Категорія</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/findpartdialog.cpp" line="121"/>
         <location filename="../sources/materiallist/findpartdialog.cpp" line="181"/>
         <source>Manufacturer</source>
-        <translation type="unfinished">Виробник</translation>
+        <translation>Виробник</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/findpartdialog.cpp" line="121"/>
         <source>Device type</source>
-        <translation type="unfinished"></translation>
+        <translation>Тип пристрою</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/findpartdialog.cpp" line="122"/>
         <source>Voltage</source>
-        <translation type="unfinished"></translation>
+        <translation>Напруга</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/findpartdialog.cpp" line="122"/>
         <source>Current</source>
-        <translation type="unfinished"></translation>
+        <translation>Струм</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/findpartdialog.cpp" line="122"/>
         <source>Supplier</source>
-        <translation type="unfinished">Постачальник</translation>
+        <translation>Постачальник</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/findpartdialog.cpp" line="145"/>
         <source>Suits this symbol</source>
-        <translation type="unfinished"></translation>
+        <translation>Підходить до цього символу</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/findpartdialog.cpp" line="151"/>
         <source>No device type lists this symbol: every part is offered</source>
-        <translation type="unfinished"></translation>
+        <translation>Жоден тип пристрою не містить цього символу: пропонуються всі частини</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/findpartdialog.cpp" line="152"/>
         <source>Reset filters</source>
-        <translation type="unfinished"></translation>
+        <translation>Скинути фільтри</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/findpartdialog.cpp" line="155"/>
         <source>Show all parts</source>
-        <translation type="unfinished"></translation>
+        <translation>Показати всі частини</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/findpartdialog.cpp" line="181"/>
         <source>Part number</source>
-        <translation type="unfinished">Артикул</translation>
+        <translation>Артикул</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/findpartdialog.cpp" line="181"/>
         <source>Description</source>
-        <translation type="unfinished">Опис</translation>
+        <translation>Опис</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/findpartdialog.cpp" line="182"/>
         <source>Rating</source>
-        <translation type="unfinished"></translation>
+        <translation>Номінальне значення</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/findpartdialog.cpp" line="197"/>
         <source>No parts match.</source>
-        <translation type="unfinished"></translation>
+        <translation>Жодна частина не підходить.</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/findpartdialog.cpp" line="208"/>
         <source>Clear filters</source>
-        <translation type="unfinished"></translation>
+        <translation>Очистити фільтри</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/findpartdialog.cpp" line="211"/>
         <source>Search all parts</source>
-        <translation type="unfinished"></translation>
+        <translation>Шукати в усіх частинах</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/findpartdialog.cpp" line="407"/>
         <source>%1 of %2 parts</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 з %2 частин</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/findpartdialog.cpp" line="409"/>
         <source>Filters on: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Активні фільтри: %1</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/findpartdialog.cpp" line="432"/>
         <source>All</source>
-        <translation type="unfinished">Все</translation>
+        <translation>Усі</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/findpartdialog.cpp" line="457"/>
         <source>Remove this filter</source>
-        <translation type="unfinished"></translation>
+        <translation>Прибрати цей фільтр</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/findpartdialog.cpp" line="481"/>
         <source>Already used in this project</source>
-        <translation type="unfinished"></translation>
+        <translation>Уже використано в цьому проєкті</translation>
     </message>
 </context>
 <context>
@@ -10322,27 +10322,27 @@ that you create. Text and number inputs are
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="710"/>
         <source>When enabled, report elements (cross-references) across folios with a matching name are automatically chained together. Newly created projects will have this enabled automatically.</source>
-        <translation type="unfinished"></translation>
+        <translation>Якщо ввімкнено, елементи посилань на аркуш (перехресні посилання) з кількох аркушів зі збіжною назвою автоматично об&apos;єднуються в ланцюжок. Нові проєкти матимуть це автоматично ввімкненим.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="717"/>
         <source>Chain folio report elements by</source>
-        <translation type="unfinished"></translation>
+        <translation>Об&apos;єднувати посилання на аркуш у ланцюжок за</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="720"/>
         <source>What two folio report elements must share to be chained together: the label each of them carries, or the function of the wire its terminal holds. A report without a value of its own is never chained. Newly created projects will start with this choice.</source>
-        <translation type="unfinished"></translation>
+        <translation>Що мають спільного два посилання на аркуш, щоб їх об&apos;єднали в ланцюжок: мітка кожного з них або функція проводу, який тримає його вивід. Посилання без власного значення ніколи не об&apos;єднується. Нові проєкти почнуть із цього вибору.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="726"/>
         <source>Their label</source>
-        <translation type="unfinished"></translation>
+        <translation>Їхня мітка</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="733"/>
         <source>The function of their conductor</source>
-        <translation type="unfinished"></translation>
+        <translation>Функція їхнього провідника</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="838"/>
@@ -10398,7 +10398,7 @@ that you create. Text and number inputs are
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1534"/>
         <source>Designation:</source>
         <extracomment>one of the five texts of a cable, one row each in the preferences; the same names the cable properties dialog uses</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Позначення:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1554"/>
@@ -10408,7 +10408,7 @@ that you create. Text and number inputs are
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1726"/>
         <source>Font of this text written along the cable line; a cable which has its own keeps it.</source>
         <extracomment>tooltip of the font button of one text of a cable in the preferences</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Шрифт цього тексту, написаного вздовж лінії кабелю; кабель, який має власний шрифт, зберігає його.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1564"/>
@@ -10419,31 +10419,31 @@ that you create. Text and number inputs are
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1782"/>
         <source>Set this text back to the default font of the cable texts</source>
         <extracomment>tooltip of the reset button beside a text of a cable in the preferences</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Повернути цьому тексту типовий шрифт текстів кабелю</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1577"/>
         <source>Type:</source>
         <extracomment>one of the five texts of a cable, one row each in the preferences; the same names the cable properties dialog uses</extracomment>
-        <translation type="unfinished">Тип: </translation>
+        <translation>Тип:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1620"/>
         <source>Plant (=):</source>
         <extracomment>one of the five texts of a cable, one row each in the preferences; the same names the cable properties dialog uses</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Установка (=):</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1663"/>
         <source>Location (+):</source>
         <extracomment>one of the five texts of a cable, one row each in the preferences; the same names the cable properties dialog uses</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Розташування (+):</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1706"/>
         <source>Length:</source>
         <extracomment>one of the five texts of a cable, one row each in the preferences; the same names the cable properties dialog uses</extracomment>
-        <translation type="unfinished">Довжина</translation>
+        <translation>Довжина:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1856"/>
@@ -10603,32 +10603,32 @@ that you create. Text and number inputs are
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="239"/>
         <source>Show the destination terminal of each cable core in terminal strip plans</source>
-        <translation type="unfinished"></translation>
+        <translation>Показувати цільовий вивід кожної жили кабелю на планах клемних колодок</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="242"/>
         <source>Show the destination device and terminal for each connected core in the cable&apos;s destination box.</source>
-        <translation type="unfinished"></translation>
+        <translation>Показувати пристрій і цільовий вивід кожної підключеної жили в цільовій рамці кабелю.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="261"/>
         <source>Colour of new structure boxes</source>
-        <translation type="unfinished"></translation>
+        <translation>Колір нових рамок структури</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="268"/>
         <source>A structure box is drawn in this colour, its name too, so that it is told apart from wires and drawn shapes. Each box can take another colour in its properties. Black by default.</source>
-        <translation type="unfinished"></translation>
+        <translation>Рамка структури малюється цим кольором, як і її назва, щоб відрізняти її від проводів і намальованих фігур. Кожна рамка може мати інший колір у своїх властивостях. За замовчуванням чорний.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="284"/>
         <source>As soon as a structure box is drawn, its plant, location and prefix are asked for. Cancelled, the box stays empty. Unticked by default: they are entered afterwards in its properties.</source>
-        <translation type="unfinished"></translation>
+        <translation>Щойно рамку структури намальовано, запитуються її установка, розташування та префікс. Якщо скасувати, рамка залишається порожньою. За замовчуванням вимкнено: їх вводять пізніше у властивостях рамки.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="287"/>
         <source>Ask for the place of a structure box when it is drawn</source>
-        <translation type="unfinished"></translation>
+        <translation>Запитувати розташування рамки структури під час її малювання</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="311"/>
@@ -10643,17 +10643,17 @@ that you create. Text and number inputs are
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="368"/>
         <source>Zoom when following a cross reference:</source>
-        <translation type="unfinished"></translation>
+        <translation>Масштаб під час переходу за перехресним посиланням:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="384"/>
         <source>A jump along a cross reference or a folio report shows its target in the middle of the view, at this zoom at least; closer views stay as they are.</source>
-        <translation type="unfinished"></translation>
+        <translation>Перехід за перехресним посиланням або посиланням на аркуш показує його ціль посередині вигляду принаймні з таким масштабом; ближчі вигляди залишаються без змін.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="387"/>
         <source>Whole folio</source>
-        <translation type="unfinished">Увесь аркуш</translation>
+        <translation>Весь аркуш</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="439"/>
@@ -10663,7 +10663,7 @@ that you create. Text and number inputs are
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="498"/>
         <source>Frame selected symbols clearly, in the highlight colour</source>
-        <translation type="unfinished"></translation>
+        <translation>Чітко обводити вибрані символи кольором підсвічування</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="508"/>
@@ -10673,42 +10673,42 @@ that you create. Text and number inputs are
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="524"/>
         <source>The pointer and the crosshair jump from grid point to grid point only while something is placed or dragged; otherwise they follow the mouse, so small items are easy to grab. What is placed still lands on the grid.</source>
-        <translation type="unfinished"></translation>
+        <translation>Вказівник і перехрестя стрибають між точками сітки лише під час розміщення або переміщення об&apos;єкта; в інших випадках вони слідують за мишею, тож дрібні об&apos;єкти легко захопити. Те, що розміщується, завжди потрапляє на сітку.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="527"/>
         <source>Pointer on the grid only while placing</source>
-        <translation type="unfinished"></translation>
+        <translation>Вказівник на сітці лише під час розміщення</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="564"/>
         <source>In a project with &quot;auto conductor&quot; but without automatic connections: dragging a corner, T-junction or folio report being placed puts one on every wire the drag crosses, each joined once by an ordinary wire.</source>
-        <translation type="unfinished"></translation>
+        <translation>У проєкті з «автоматичним створенням провідників», але без автоматичних з&apos;єднань: перетягування кута, Т-вузла або посилання на аркуш під час розміщення ставить по одному на кожен перетятий провід, кожен з&apos;єднаний один раз звичайним проводом.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="567"/>
         <source>With &quot;auto conductor&quot;, a drag places a connection symbol on every wire it crosses</source>
-        <translation type="unfinished"></translation>
+        <translation>За «автоматичного створення провідників» перетягування розміщує символ з&apos;єднання на кожному перетятому проводі</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="574"/>
         <source>Dragging with Ctrl held copies the selection</source>
-        <translation type="unfinished"></translation>
+        <translation>Перетягування із затиснутим Ctrl копіює виділене</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="581"/>
         <source>Duplicate: the copy follows the mouse until a click</source>
-        <translation type="unfinished"></translation>
+        <translation>Дублювати: копія слідує за мишею до клацання</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="588"/>
         <source>After placing a device&apos;s head, ask how to place the parts of its device type</source>
-        <translation type="unfinished"></translation>
+        <translation>Після розміщення голови пристрою запитувати, як розмістити частини його типу пристрою</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="591"/>
         <source>One by one, each following the mouse; all side by side to the right of the head; or not now, which leaves them free in the Device Navigator. Unticked by default: placing the head places nothing more.</source>
-        <translation type="unfinished"></translation>
+        <translation>По одній, кожна слідує за мишею; усі поруч праворуч від голови; або не зараз, тоді вони лишаються вільними в навігаторі пристроїв. За замовчуванням вимкнено: розміщення голови нічого більше не розміщує.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="660"/>
@@ -10818,12 +10818,12 @@ that you create. Text and number inputs are
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="855"/>
         <source>Ask the label and the part of a symbol when it is placed</source>
-        <translation type="unfinished"></translation>
+        <translation>Запитувати мітку та частину символу під час його розміщення</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="858"/>
         <source>One small dialog per symbol: its label (the next free one is proposed) and its part number, which brings the device type. Unchecked, a symbol is placed without asking.</source>
-        <translation type="unfinished"></translation>
+        <translation>Невелике діалогове вікно для кожного символу: його мітка (пропонується наступна вільна) і його артикул, який приносить тип пристрою. Якщо вимкнено, символ розміщується без запитів.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="868"/>
@@ -10854,7 +10854,7 @@ button opening the dialog where the folder prefixes of the company collection ar
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1034"/>
         <source>Create or change the prefix of the company collection&apos;s folders (qet_labels.xml file)</source>
         <extracomment>tooltip of the button opening the prefix configuration dialog of the company collection</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Створити або змінити префікс папок корпоративної колекції (файл qet_labels.xml)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1051"/>
@@ -10928,12 +10928,12 @@ hint shown when no cable type file is configured yet</extracomment>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1273"/>
         <source>Updating the elements moves a symbol whose insertion point moved</source>
-        <translation type="unfinished"></translation>
+        <translation>Оновлення елементів переміщує символ, точка вставки якого зсунулася</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1276"/>
         <source>Project &gt; Update elements from the collections: when a symbol&apos;s drawing was moved as a whole, its insertion point set elsewhere, each placed symbol is moved back by the same offset, so its terminals, conductors and texts stay where they are. Unticked by default: such a symbol keeps its old drawing and is listed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Проєкт &gt; Оновити елементи з колекцій: коли малюнок символу було зсунуто цілком, а точку вставки розміщено деінде, кожен розміщений символ повертається на той самий зсув, тож його виводи, провідники й тексти залишаються на місці. За замовчуванням вимкнено: такий символ зберігає старий малюнок і потрапляє до списку.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1283"/>
@@ -11473,14 +11473,18 @@ hint shown when no cable type file is configured yet</extracomment>
         <source>The company collection folder:
 %1
 does not exist or cannot be reached.</source>
-        <translation type="unfinished"></translation>
+        <translation>Папка корпоративної колекції:
+%1
+не існує або недоступна.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1074"/>
         <source>The company collection folder:
 %1
 does not exist and could not be created.</source>
-        <translation type="unfinished"></translation>
+        <translation>Папка корпоративної колекції:
+%1
+не існує, і її не вдалося створити.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1076"/>
@@ -11494,14 +11498,16 @@ does not exist and could not be created.</source>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1096"/>
         <source>Prefix file cannot be written</source>
-        <translation type="unfinished"></translation>
+        <translation>Неможливо записати файл префіксів</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1097"/>
         <source>The prefixes of the company collection are kept in:
 %1
 This folder cannot be written, so the prefixes cannot be changed here. Ask whoever manages the company collection, or change the file with write access.</source>
-        <translation type="unfinished"></translation>
+        <translation>Префікси корпоративної колекції зберігаються в:
+%1
+У цю папку не можна записувати, тому тут префікси змінити неможливо. Зверніться до особи, яка керує корпоративною колекцією, або відредагуйте файл із правом запису.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1108"/>
@@ -11513,7 +11519,9 @@ This folder cannot be written, so the prefixes cannot be changed here. Ask whoev
         <source>The company collection:
 %1
 has no subfolder, so there is no prefix to configure.</source>
-        <translation type="unfinished"></translation>
+        <translation>У корпоративній колекції:
+%1
+немає підпапок, тож немає префіксу для налаштування.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="1112"/>
@@ -11662,27 +11670,27 @@ Any setting other than “No rounding” may cause rendering errors in the proje
     <message>
         <location filename="../sources/genericdevice/genericdevice.cpp" line="126"/>
         <source>Digital inputs</source>
-        <translation type="unfinished"></translation>
+        <translation>Цифрові входи</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevice.cpp" line="127"/>
         <source>Digital outputs</source>
-        <translation type="unfinished"></translation>
+        <translation>Цифрові виходи</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevice.cpp" line="128"/>
         <source>Analog inputs</source>
-        <translation type="unfinished"></translation>
+        <translation>Аналогові входи</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevice.cpp" line="129"/>
         <source>Analog outputs</source>
-        <translation type="unfinished"></translation>
+        <translation>Аналогові виходи</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevice.cpp" line="132"/>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation>Немає</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevice.cpp" line="161"/>
@@ -11902,12 +11910,12 @@ Any setting other than “No rounding” may cause rendering errors in the proje
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="348"/>
         <source>PLC inputs and outputs:</source>
-        <translation type="unfinished"></translation>
+        <translation>Входи та виходи ПЛК:</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="352"/>
         <source>Marking a side makes the device a PLC: its terminals become the PLC&apos;s inputs or outputs, in the order they are listed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Позначення сторони робить пристрій ПЛК: його виводи стають входами або виходами ПЛК у тому порядку, в якому вони перелічені.</translation>
     </message>
     <message>
         <location filename="../sources/genericdevice/genericdevicewizard.cpp" line="369"/>
@@ -12813,7 +12821,7 @@ Please use the advanced editor for this.</source>
     <message>
         <location filename="../sources/itemdescription.cpp" line="52"/>
         <source>Junction</source>
-        <translation type="unfinished"></translation>
+        <translation>Вузол</translation>
     </message>
     <message>
         <location filename="../sources/itemdescription.cpp" line="53"/>
@@ -12893,12 +12901,12 @@ Please use the advanced editor for this.</source>
     <message>
         <location filename="../sources/itemdescription.cpp" line="123"/>
         <source>Structure box</source>
-        <translation type="unfinished"></translation>
+        <translation>Рамка структури</translation>
     </message>
     <message>
         <location filename="../sources/itemdescription.cpp" line="124"/>
         <source>Structure box %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Рамка структури %1</translation>
     </message>
     <message>
         <location filename="../sources/itemdescription.cpp" line="127"/>
@@ -13209,7 +13217,7 @@ Bring them into one terminal strip first.</source>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="697"/>
         <source>This device has no free contact of this kind: every part of its device type is drawn.</source>
-        <translation type="unfinished"></translation>
+        <translation>У цього пристрою немає вільного контакту такого роду: кожну частину його типу пристрою намальовано.</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="747"/>
@@ -13514,12 +13522,12 @@ With the qet MCP server: read it with qet_recording_read, write a script that do
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="315"/>
         <source>That link cannot be made</source>
-        <translation type="unfinished">Цей зв&apos;язок неможливо створити</translation>
+        <translation>Цей зв&apos;язок неможливий</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="316"/>
         <source>This device has no free contact of this kind: every part of its device type is drawn.</source>
-        <translation type="unfinished"></translation>
+        <translation>У цього пристрою немає вільного контакту такого роду: кожну частину його типу пристрою намальовано.</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="349"/>
@@ -13591,22 +13599,22 @@ Do you still want to link this slave contact?</source>
     <message>
         <location filename="../sources/materiallist/materialentrydialog.cpp" line="60"/>
         <source>Edit entry</source>
-        <translation type="unfinished">Редагувати запис</translation>
+        <translation>Редагувати запис</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialentrydialog.cpp" line="61"/>
         <source>Edit the item. Fields left empty stay empty in the file.</source>
-        <translation type="unfinished"></translation>
+        <translation>Редагувати позицію. Поля, залишені порожніми, залишаються порожніми у файлі.</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialentrydialog.cpp" line="104"/>
         <source>e.g. 80.5</source>
-        <translation type="unfinished">напр. 80.5</translation>
+        <translation>напр. 80.5</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialentrydialog.cpp" line="105"/>
         <source>Decimal number with a dot as separator (e.g. 80.5)</source>
-        <translation type="unfinished">Десяткове число з крапкою як роздільником (напр. 80.5)</translation>
+        <translation>Десяткове число з крапкою як роздільником (напр. 80.5)</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialentrydialog.cpp" line="122"/>
@@ -13621,12 +13629,12 @@ Do you still want to link this slave contact?</source>
     <message>
         <location filename="../sources/materiallist/materialentrydialog.cpp" line="178"/>
         <source>Unfinished number</source>
-        <translation type="unfinished"></translation>
+        <translation>Незавершене число</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialentrydialog.cpp" line="179"/>
         <source>Finish the number or empty the field.</source>
-        <translation type="unfinished"></translation>
+        <translation>Завершіть число або очистьте поле.</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialentrydialog.cpp" line="189"/>
@@ -13662,12 +13670,12 @@ Do you still want to link this slave contact?</source>
     <message>
         <location filename="../sources/materiallist/materiallist.cpp" line="905"/>
         <source>The entry to edit no longer exists in the file.</source>
-        <translation type="unfinished"></translation>
+        <translation>Запису, який потрібно редагувати, більше немає у файлі.</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materiallist.cpp" line="983"/>
         <source>The selected entry no longer exists in the file.</source>
-        <translation type="unfinished"></translation>
+        <translation>Вибраного запису більше немає у файлі.</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materiallist.cpp" line="1136"/>
@@ -13702,37 +13710,37 @@ Do you still want to link this slave contact?</source>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.ui" line="79"/>
         <source>Group:</source>
-        <translation type="unfinished"></translation>
+        <translation>Група:</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.ui" line="86"/>
         <source>Group list entries by manufacturer, category, or show a flat list</source>
-        <translation type="unfinished"></translation>
+        <translation>Групувати записи списку за виробником, за категорією або показати плоский список</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.ui" line="93"/>
         <source>Filter:</source>
-        <translation type="unfinished">Фільтр:</translation>
+        <translation>Фільтр:</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.ui" line="102"/>
         <source>Disable filtering or choose a field to filter by</source>
-        <translation type="unfinished"></translation>
+        <translation>Вимкнути фільтрування або вибрати поле для фільтрування</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.ui" line="118"/>
         <source>Select the value to filter by</source>
-        <translation type="unfinished"></translation>
+        <translation>Виберіть значення для фільтрування</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.ui" line="142"/>
         <source>Article number</source>
-        <translation type="unfinished">Номер позиції</translation>
+        <translation>Артикул</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.ui" line="147"/>
         <source>Description</source>
-        <translation type="unfinished">Опис</translation>
+        <translation>Опис</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.ui" line="155"/>
@@ -13742,56 +13750,56 @@ Do you still want to link this slave contact?</source>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.ui" line="191"/>
         <source>Field</source>
-        <translation type="unfinished"></translation>
+        <translation>Поле</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.ui" line="196"/>
         <source>Value</source>
-        <translation type="unfinished">Значення</translation>
+        <translation>Значення</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.ui" line="210"/>
         <source>New — Add a new item to the list</source>
         <extracomment>button adding a new row to the material list file</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Новий — додає нову позицію до списку</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.ui" line="223"/>
         <source>Edit — Edit the selected item in the list</source>
         <extracomment>button editing the selected row in the material list file</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Редагувати — редагує вибрану позицію у списку</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.ui" line="236"/>
         <source>Duplicate — Duplicate the selected item in the list</source>
         <extracomment>button duplicating the selected row in the material list file</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Дублювати — дублює вибрану позицію у списку</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.ui" line="249"/>
         <source>Remove — Remove selected item(s) from the list</source>
         <extracomment>button removing the selected row(s) from the material list file</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Видалити — видаляє вибрані позиції зі списку</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.ui" line="259"/>
         <source>Import... — Import entries from a CSV file into the materials list</source>
-        <translation type="unfinished"></translation>
+        <translation>Імпортувати... — імпортує записи з файлу CSV у список матеріалів</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.ui" line="269"/>
         <source>Export... — Export all, visible, or selected entries to a CSV file</source>
-        <translation type="unfinished"></translation>
+        <translation>Експортувати... — експортує всі записи, видимі або вибрані у файл CSV</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.ui" line="279"/>
         <source>Settings — Open QElectroTech settings to configure the materials list file</source>
-        <translation type="unfinished"></translation>
+        <translation>Налаштування — відкриває налаштування QElectroTech, щоб налаштувати файл списку матеріалів</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.ui" line="330"/>
         <source>Save</source>
-        <translation type="unfinished">Зберегти</translation>
+        <translation>Зберегти</translation>
     </message>
     <message>
         <source>Add a new item to the list</source>
@@ -13817,28 +13825,28 @@ Do you still want to link this slave contact?</source>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="85"/>
         <source>e.g. 80.5</source>
-        <translation type="unfinished">напр. 80.5</translation>
+        <translation>напр. 80.5</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="196"/>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation>Немає</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="197"/>
         <source>Manufacturer</source>
-        <translation type="unfinished">Виробник</translation>
+        <translation>Виробник</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="198"/>
         <source>Category</source>
-        <translation type="unfinished">Категорія</translation>
+        <translation>Категорія</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="201"/>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="279"/>
         <source>Off</source>
-        <translation type="unfinished">Вимк.</translation>
+        <translation>Вимкнено</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="259"/>
@@ -13858,13 +13866,13 @@ Do you still want to link this slave contact?</source>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="298"/>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="304"/>
         <source>All</source>
-        <translation type="unfinished">Все</translation>
+        <translation>Усі</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="325"/>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="385"/>
         <source>(Empty)</source>
-        <translation type="unfinished"></translation>
+        <translation>(Порожньо)</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="456"/>
@@ -13879,12 +13887,12 @@ Do you still want to link this slave contact?</source>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="514"/>
         <source>Edit on several lines</source>
-        <translation type="unfinished">Редагувати в кілька рядків</translation>
+        <translation>Редагувати в кількох рядках</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="556"/>
         <source>Editing entry</source>
-        <translation type="unfinished"></translation>
+        <translation>Редагування запису</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="753"/>
@@ -13899,22 +13907,22 @@ Do you still want to link this slave contact?</source>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="804"/>
         <source>Unfinished number</source>
-        <translation type="unfinished"></translation>
+        <translation>Незавершене число</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="805"/>
         <source>Finish the number or empty the field.</source>
-        <translation type="unfinished"></translation>
+        <translation>Завершіть число або очистьте поле.</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="817"/>
         <source>Nothing filled in</source>
-        <translation type="unfinished">Нічого не заповнено</translation>
+        <translation>Нічого не введено</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="818"/>
         <source>Fill in at least one field to create an entry.</source>
-        <translation type="unfinished">Заповніть принаймні одне поле, щоб створити запис.</translation>
+        <translation>Заповніть принаймні одне поле, щоб створити запис.</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="830"/>
@@ -13933,47 +13941,47 @@ Do you still want to link this slave contact?</source>
     <message numerus="yes">
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="944"/>
         <source>Export Materials List (%n item(s) selected for export)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Експортувати список матеріалів (вибрано для експорту: %n)</numerusform>
+            <numerusform>Експортувати список матеріалів (вибрано для експорту: %n)</numerusform>
+            <numerusform>Експортувати список матеріалів (вибрано для експорту: %n)</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="946"/>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="1011"/>
         <source>CSV files (*.csv);;All files (*)</source>
-        <translation type="unfinished"></translation>
+        <translation>Файли CSV (*.csv);;Усі файли (*)</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="960"/>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="967"/>
         <source>Export Materials List</source>
-        <translation type="unfinished"></translation>
+        <translation>Експортувати список матеріалів</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="961"/>
         <source>Unable to write the export file.</source>
-        <translation type="unfinished"></translation>
+        <translation>Неможливо записати файл експорту.</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="968"/>
         <source>Exported %n entry(s) to %1.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Експортовано %n запис до %1.</numerusform>
+            <numerusform>Експортовано %n записи до %1.</numerusform>
+            <numerusform>Експортовано %n записів до %1.</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="983"/>
         <source>Export Visible (%1)...</source>
-        <translation type="unfinished"></translation>
+        <translation>Експортувати видимі (%1)...</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="987"/>
         <source>Export All (%1)...</source>
-        <translation type="unfinished"></translation>
+        <translation>Експортувати все (%1)...</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="1009"/>
@@ -13983,46 +13991,46 @@ Do you still want to link this slave contact?</source>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="1064"/>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="1072"/>
         <source>Import Materials List</source>
-        <translation type="unfinished"></translation>
+        <translation>Імпортувати список матеріалів</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="1022"/>
         <source>Unable to read the import file.</source>
-        <translation type="unfinished"></translation>
+        <translation>Неможливо прочитати файл імпорту.</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="1029"/>
         <source>The selected file contains no entries.</source>
-        <translation type="unfinished"></translation>
+        <translation>Вибраний файл не містить жодного запису.</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="1040"/>
         <source>%n imported entry(s) share an existing item number with different values.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n імпортований запис має той самий артикул, що й наявна позиція, але інші значення.</numerusform>
+            <numerusform>%n імпортовані записи мають той самий артикул, що й наявна позиція, але інші значення.</numerusform>
+            <numerusform>%n імпортованих записів мають той самий артикул, що й наявна позиція, але інші значення.</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="1043"/>
         <source>Update existing</source>
-        <translation type="unfinished"></translation>
+        <translation>Оновити наявні</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="1044"/>
         <source>Skip existing</source>
-        <translation type="unfinished"></translation>
+        <translation>Ігнорувати наявні</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="1045"/>
         <source>Keep both</source>
-        <translation type="unfinished"></translation>
+        <translation>Зберегти обидва</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="1065"/>
         <source>Unable to save the imported entries.</source>
-        <translation type="unfinished"></translation>
+        <translation>Неможливо зберегти імпортовані записи.</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="1073"/>
@@ -14030,78 +14038,81 @@ Do you still want to link this slave contact?</source>
 Added: %1
 Updated: %2
 Skipped: %3</source>
-        <translation type="unfinished"></translation>
+        <translation>Імпорт завершено.
+Додано: %1
+Оновлено: %2
+Ігноровано: %3</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="1133"/>
         <source>Copy</source>
-        <translation type="unfinished">Копіювати</translation>
+        <translation>Копіювати</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="1137"/>
         <source>Select All</source>
-        <translation type="unfinished">Виділити все</translation>
+        <translation>Вибрати все</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="1161"/>
         <source>Duplicate material entry</source>
-        <translation type="unfinished"></translation>
+        <translation>Дублювати запис матеріалу</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="1162"/>
         <source>Unable to duplicate selected entry in the material list.</source>
-        <translation type="unfinished"></translation>
+        <translation>Неможливо дублювати вибраний запис у списку матеріалів.</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="1183"/>
         <source>Are you sure you want to remove &quot;%1&quot; from the material list?</source>
-        <translation type="unfinished"></translation>
+        <translation>Справді видалити «%1» зі списку матеріалів?</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="1184"/>
         <source>selected item</source>
-        <translation type="unfinished"></translation>
+        <translation>вибрана позиція</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="1186"/>
         <source>Are you sure you want to remove %1 selected items from the material list?</source>
-        <translation type="unfinished"></translation>
+        <translation>Справді видалити %1 вибраних позицій зі списку матеріалів?</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="1192"/>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="1210"/>
         <source>Remove material entry</source>
-        <translation type="unfinished"></translation>
+        <translation>Видалити запис матеріалу</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="1211"/>
         <source>Unable to remove selected entry from the material list.</source>
-        <translation type="unfinished"></translation>
+        <translation>Неможливо видалити вибраний запис зі списку матеріалів.</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="1225"/>
         <source>New</source>
-        <translation type="unfinished"></translation>
+        <translation>Новий</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="1229"/>
         <source>Edit</source>
-        <translation type="unfinished"></translation>
+        <translation>Редагувати</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="1233"/>
         <source>Duplicate</source>
-        <translation type="unfinished">Дублювати</translation>
+        <translation>Дублювати</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="1237"/>
         <source>Remove</source>
-        <translation type="unfinished">Видалити</translation>
+        <translation>Видалити</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/materialselectiondialog.cpp" line="1242"/>
         <source>Export...</source>
-        <translation type="unfinished">Експорт...</translation>
+        <translation>Експортувати...</translation>
     </message>
 </context>
 <context>
@@ -14661,142 +14672,142 @@ Skipped: %3</source>
     <message>
         <location filename="../sources/materiallist/partcategory.cpp" line="37"/>
         <source>Power cable</source>
-        <translation type="unfinished"></translation>
+        <translation>Силовий кабель</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/partcategory.cpp" line="38"/>
         <source>Instrument cable</source>
-        <translation type="unfinished"></translation>
+        <translation>Інструментальний кабель</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/partcategory.cpp" line="39"/>
         <source>Control cable</source>
-        <translation type="unfinished"></translation>
+        <translation>Кабель керування</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/partcategory.cpp" line="40"/>
         <source>Data cable</source>
-        <translation type="unfinished"></translation>
+        <translation>Кабель передачі даних</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/partcategory.cpp" line="41"/>
         <source>Contactor</source>
-        <translation type="unfinished"></translation>
+        <translation>Контактор</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/partcategory.cpp" line="42"/>
         <source>Relay</source>
-        <translation type="unfinished"></translation>
+        <translation>Реле</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/partcategory.cpp" line="43"/>
         <source>Power supply</source>
-        <translation type="unfinished"></translation>
+        <translation>Блок живлення</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/partcategory.cpp" line="44"/>
         <source>Fuse</source>
-        <translation type="unfinished">Запобіжник</translation>
+        <translation>Запобіжник</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/partcategory.cpp" line="45"/>
         <source>Overload</source>
-        <translation type="unfinished"></translation>
+        <translation>Реле перевантаження</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/partcategory.cpp" line="46"/>
         <source>Circuit breaker</source>
-        <translation type="unfinished"></translation>
+        <translation>Автоматичний вимикач</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/partcategory.cpp" line="47"/>
         <source>Motor starter</source>
-        <translation type="unfinished"></translation>
+        <translation>Пускач двигуна</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/partcategory.cpp" line="48"/>
         <source>Terminal</source>
-        <translation type="unfinished"></translation>
+        <translation>Вивід</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/partcategory.cpp" line="49"/>
         <source>Connector</source>
-        <translation type="unfinished"></translation>
+        <translation>Роз&apos;єм</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/partcategory.cpp" line="50"/>
         <source>PLC</source>
-        <translation type="unfinished">ПЛК</translation>
+        <translation>ПЛК</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/partcategory.cpp" line="51"/>
         <source>Sensor</source>
-        <translation type="unfinished"></translation>
+        <translation>Датчик</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/partcategory.cpp" line="52"/>
         <source>Switch</source>
-        <translation type="unfinished"></translation>
+        <translation>Вимикач</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/partcategory.cpp" line="53"/>
         <source>Push button</source>
-        <translation type="unfinished"></translation>
+        <translation>Кнопка</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/partcategory.cpp" line="54"/>
         <source>Pilot light</source>
-        <translation type="unfinished"></translation>
+        <translation>Сигнальна лампа</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/partcategory.cpp" line="55"/>
         <source>Motor</source>
-        <translation type="unfinished"></translation>
+        <translation>Двигун</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/partcategory.cpp" line="56"/>
         <source>Transformers</source>
-        <translation type="unfinished"></translation>
+        <translation>Трансформатори</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/partcategory.cpp" line="57"/>
         <source>Enclosure</source>
-        <translation type="unfinished"></translation>
+        <translation>Шафа</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/partcategory.cpp" line="58"/>
         <source>Drive</source>
-        <translation type="unfinished"></translation>
+        <translation>Привід</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/partcategory.cpp" line="59"/>
         <source>Valve</source>
-        <translation type="unfinished"></translation>
+        <translation>Клапан</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/partcategory.cpp" line="60"/>
         <source>Busbar and link</source>
-        <translation type="unfinished"></translation>
+        <translation>Шина та перемичка</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/partcategory.cpp" line="61"/>
         <source>Rail and trunking</source>
-        <translation type="unfinished"></translation>
+        <translation>Рейка та кабельний канал</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/partcategory.cpp" line="62"/>
         <source>Marking</source>
-        <translation type="unfinished"></translation>
+        <translation>Маркування</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/partcategory.cpp" line="63"/>
         <source>Accessory</source>
-        <translation type="unfinished"></translation>
+        <translation>Аксесуар</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/partcategory.cpp" line="64"/>
         <source>Other</source>
-        <translation type="unfinished">Інший</translation>
+        <translation>Інше</translation>
     </message>
 </context>
 <context>
@@ -14924,77 +14935,77 @@ Import them? The elements will then receive the next numbers, starting from 1. O
     <message>
         <location filename="../sources/print/pdfpagesetupdialog.cpp" line="57"/>
         <source>PDF page layout</source>
-        <translation type="unfinished"></translation>
+        <translation>Макет сторінки PDF</translation>
     </message>
     <message>
         <location filename="../sources/print/pdfpagesetupdialog.cpp" line="60"/>
         <source>Paper</source>
-        <translation type="unfinished"></translation>
+        <translation>Папір</translation>
     </message>
     <message>
         <location filename="../sources/print/pdfpagesetupdialog.cpp" line="77"/>
         <source>Custom</source>
-        <translation type="unfinished"></translation>
+        <translation>Власний</translation>
     </message>
     <message>
         <location filename="../sources/print/pdfpagesetupdialog.cpp" line="91"/>
         <source>Size:</source>
-        <translation type="unfinished">Розмір:</translation>
+        <translation>Розмір:</translation>
     </message>
     <message>
         <location filename="../sources/print/pdfpagesetupdialog.cpp" line="92"/>
         <source>Width:</source>
-        <translation type="unfinished">Ширина: </translation>
+        <translation>Ширина:</translation>
     </message>
     <message>
         <location filename="../sources/print/pdfpagesetupdialog.cpp" line="93"/>
         <source>Height:</source>
-        <translation type="unfinished"></translation>
+        <translation>Висота:</translation>
     </message>
     <message>
         <location filename="../sources/print/pdfpagesetupdialog.cpp" line="96"/>
         <source>Orientation</source>
-        <translation type="unfinished">Орієнтація</translation>
+        <translation>Орієнтація</translation>
     </message>
     <message>
         <location filename="../sources/print/pdfpagesetupdialog.cpp" line="97"/>
         <source>Portrait</source>
-        <translation type="unfinished">Книжна</translation>
+        <translation>Книжна</translation>
     </message>
     <message>
         <location filename="../sources/print/pdfpagesetupdialog.cpp" line="99"/>
         <source>Landscape</source>
-        <translation type="unfinished">Альбомна</translation>
+        <translation>Альбомна</translation>
     </message>
     <message>
         <location filename="../sources/print/pdfpagesetupdialog.cpp" line="110"/>
         <source>Margins</source>
-        <translation type="unfinished"></translation>
+        <translation>Поля</translation>
     </message>
     <message>
         <location filename="../sources/print/pdfpagesetupdialog.cpp" line="118"/>
         <source>Left:</source>
-        <translation type="unfinished"></translation>
+        <translation>Ліве:</translation>
     </message>
     <message>
         <location filename="../sources/print/pdfpagesetupdialog.cpp" line="120"/>
         <source>Right:</source>
-        <translation type="unfinished"></translation>
+        <translation>Праве:</translation>
     </message>
     <message>
         <location filename="../sources/print/pdfpagesetupdialog.cpp" line="122"/>
         <source>Top:</source>
-        <translation type="unfinished"></translation>
+        <translation>Верхнє:</translation>
     </message>
     <message>
         <location filename="../sources/print/pdfpagesetupdialog.cpp" line="124"/>
         <source>Bottom:</source>
-        <translation type="unfinished"></translation>
+        <translation>Нижнє:</translation>
     </message>
     <message>
         <location filename="../sources/print/pdfpagesetupdialog.cpp" line="141"/>
         <source>Margins are not used while &quot;Use the whole page&quot; is ticked.</source>
-        <translation type="unfinished"></translation>
+        <translation>Поля не використовуються, доки позначено «Використовувати всю сторінку».</translation>
     </message>
 </context>
 <context>
@@ -15049,60 +15060,61 @@ Import them? The elements will then receive the next numbers, starting from 1. O
     <message>
         <location filename="../sources/ui/placelabelpartdialog.cpp" line="211"/>
         <source>Label and part</source>
-        <translation type="unfinished"></translation>
+        <translation>Мітка та частина</translation>
     </message>
     <message>
         <location filename="../sources/ui/placelabelpartdialog.cpp" line="219"/>
         <source>Label</source>
-        <translation type="unfinished">Мітка</translation>
+        <translation>Мітка</translation>
     </message>
     <message>
         <location filename="../sources/ui/placelabelpartdialog.cpp" line="235"/>
         <source>Choose...</source>
-        <translation type="unfinished"></translation>
+        <translation>Вибрати...</translation>
     </message>
     <message>
         <location filename="../sources/ui/placelabelpartdialog.cpp" line="241"/>
         <source>Part number</source>
-        <translation type="unfinished">Артикул</translation>
+        <translation>Артикул</translation>
     </message>
     <message>
         <location filename="../sources/ui/placelabelpartdialog.cpp" line="373"/>
         <source>No materials list</source>
-        <translation type="unfinished">Немає списку матеріалів</translation>
+        <translation>Немає списку матеріалів</translation>
     </message>
     <message>
         <location filename="../sources/ui/placelabelpartdialog.cpp" line="374"/>
         <source>There is no materials list file at this location:
 %1</source>
-        <translation type="unfinished"></translation>
+        <translation>У цьому місці немає файлу списку матеріалів:
+%1</translation>
     </message>
     <message>
         <location filename="../sources/ui/placelabelpartdialog.cpp" line="396"/>
         <location filename="../sources/ui/placelabelpartdialog.cpp" line="402"/>
         <source>Device type: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Тип пристрою: %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/placelabelpartdialog.cpp" line="400"/>
         <source>Place: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Розмістити: %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/placelabelpartdialog.cpp" line="404"/>
         <source>No free part of %1 for this symbol</source>
-        <translation type="unfinished"></translation>
+        <translation>Немає вільної частини %1 для цього символу</translation>
     </message>
     <message>
         <location filename="../sources/ui/placelabelpartdialog.cpp" line="406"/>
         <source>Part: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Частина: %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/placelabelpartdialog.cpp" line="424"/>
         <source>Terminal %1 already exists. Use it again?</source>
         <extracomment>%1 is a terminal&apos;s label, such as &quot;X1:3&quot;</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Вивід %1 уже існує. Використати його знову?</translation>
     </message>
 </context>
 <context>
@@ -15567,7 +15579,7 @@ The following variables are incompatible:
         <location filename="../sources/ui/prefixconfigurationdialog.cpp" line="90"/>
         <source>Company collection prefixes</source>
         <comment>title of the dialog configuring the prefixes of the company collection</comment>
-        <translation type="unfinished"></translation>
+        <translation>Префікси корпоративної колекції</translation>
     </message>
     <message>
         <location filename="../sources/ui/prefixconfigurationdialog.cpp" line="92"/>
@@ -15610,7 +15622,7 @@ An empty field means the folder takes the prefix of its parent folder.</source>
         <location filename="../sources/ui/prefixconfigurationdialog.cpp" line="137"/>
         <source>The last column shows the prefix the user collection gives a folder: the user collection is read first, so that prefix is the one used.</source>
         <comment>hint of the company prefix dialog</comment>
-        <translation type="unfinished"></translation>
+        <translation>В останньому стовпці показано префікс, який колекція користувача дає папці: колекція користувача читається першою, тому використовується саме цей префікс.</translation>
     </message>
     <message>
         <location filename="../sources/ui/prefixconfigurationdialog.cpp" line="162"/>
@@ -15657,18 +15669,18 @@ keep them or delete them?</source>
         <location filename="../sources/ui/prefixconfigurationdialog.cpp" line="283"/>
         <source>Used instead (user collection)</source>
         <comment>column header: the prefix the user collection gives the folder, which wins over the company one</comment>
-        <translation type="unfinished"></translation>
+        <translation>Використовується замість цього (колекція користувача)</translation>
     </message>
     <message>
         <location filename="../sources/ui/prefixconfigurationdialog.cpp" line="288"/>
         <source>no prefix</source>
         <comment>the user collection explicitly gives the folder no prefix</comment>
-        <translation type="unfinished"></translation>
+        <translation>без префіксу</translation>
     </message>
     <message>
         <location filename="../sources/ui/prefixconfigurationdialog.cpp" line="291"/>
         <source>The user collection gives this folder the prefix &quot;%1&quot;. The user collection is read first, so its symbols get that prefix, not the one set here.</source>
-        <translation type="unfinished"></translation>
+        <translation>Колекція користувача дає цій папці префікс «%1». Колекція користувача читається першою: її символи отримують цей префікс, а не той, що задано тут.</translation>
     </message>
     <message>
         <location filename="../sources/ui/prefixconfigurationdialog.cpp" line="334"/>
@@ -16336,55 +16348,55 @@ Give them another numbering first.</source>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="318"/>
         <source>Elements without their own plant or location show those of their structure box or folio</source>
         <comment>checkbox label</comment>
-        <translation type="unfinished"></translation>
+        <translation>Елементи без власної установки та розташування показують установку й розташування своєї рамки структури або аркуша</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="321"/>
         <source>The variables %{plant} and %{location} of an element that has none of its own give the plant and location of the structure box around it, else of its folio, as %{structure_id_full} does. Uncheck to show only the element&apos;s own, as before.</source>
         <comment>tooltip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Змінні %{plant} і %{location} елемента, який не має власних, дають установку та розташування рамки структури, що його оточує, а інакше — його аркуша, як це робить %{structure_id_full}. Зніміть позначку, щоб показувати лише власні значення елемента, як раніше.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="328"/>
         <source>Element labels show:</source>
         <comment>label when configuring</comment>
-        <translation type="unfinished"></translation>
+        <translation>Мітки елементів показують:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="331"/>
         <source>The label only (K1)</source>
         <comment>designation display</comment>
-        <translation type="unfinished"></translation>
+        <translation>Лише мітку (K1)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="333"/>
         <source>Short reference designation, IEC 81346 (=+-), without what the folio or structure box already gives</source>
         <comment>designation display</comment>
-        <translation type="unfinished"></translation>
+        <translation>Скорочене довідкове позначення, IEC 81346 (=+-), без того, що вже дає аркуш або рамка структури</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="337"/>
         <source>Full reference designation, IEC 81346 (=A1+B2-K1)</source>
         <comment>designation display</comment>
-        <translation type="unfinished"></translation>
+        <translation>Повне довідкове позначення, IEC 81346 (=A1+B2-K1)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="340"/>
         <source>What the label field of each element shows. The plant and location are the element&apos;s own, else those of its structure box or folio. Only the drawing changes: the label stays as typed, and a text written with %{label} still shows the label only.</source>
         <comment>tooltip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Що показує поле мітки кожного елемента. Установка й розташування беруться з елемента, а інакше з його рамки структури або аркуша. Змінюється лише малюнок: мітка залишається такою, як введена, а текст, написаний із %{label}, і далі показує лише мітку.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="348"/>
         <source>Follow device types when placing and linking</source>
         <comment>checkbox label</comment>
-        <translation type="unfinished"></translation>
+        <translation>Враховувати типи пристроїв під час розміщення та зв&apos;язування</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="351"/>
         <source>A contact is linked only to a device whose type has a free part for it, and takes that part&apos;s terminals; a master symbol placed is asked its device type. Uncheck to place and link as before.</source>
         <comment>tooltip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Контакт зв&apos;язується лише з пристроєм, тип якого має для нього вільну частину, і успадковує виводи цієї частини; для розміщеного головного символу запитується його тип пристрою. Зніміть позначку, щоб розміщувати й зв&apos;язувати, як раніше.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="356"/>
@@ -16396,31 +16408,31 @@ Give them another numbering first.</source>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="357"/>
         <source>Automatically chains folio report elements that share a name in a forward/backward sequence.</source>
         <comment>tooltip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Автоматично об&apos;єднує в ланцюжок посилання на аркуш, що мають спільну назву, у послідовності туди й назад.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="360"/>
         <source>Chain folio report elements by</source>
         <comment>group box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Об&apos;єднувати посилання на аркуш у ланцюжок за</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="361"/>
         <source>What two folio report elements must share to be chained together: the label each of them carries, or the function of the wire its terminal holds. A report without a value of its own is never chained. Changing this dissolves the chains of this project and makes them again from the new key.</source>
         <comment>tooltip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Що мають спільного два посилання на аркуш, щоб їх об&apos;єднали в ланцюжок: мітка кожного з них або функція проводу, який тримає його вивід. Посилання без власного значення ніколи не об&apos;єднується. Зміна цього розпускає ланцюжки цього проєкту й будує їх заново за новим ключем.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="366"/>
         <source>Their label</source>
         <comment>radio button label</comment>
-        <translation type="unfinished"></translation>
+        <translation>Їхня мітка</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="367"/>
         <source>The function of their conductor</source>
         <comment>radio button label</comment>
-        <translation type="unfinished"></translation>
+        <translation>Функція їхнього провідника</translation>
     </message>
     <message>
         <source>Automatically chains folio report elements with the same label in a forward/backward sequence.</source>
@@ -16801,33 +16813,33 @@ Give them another numbering first.</source>
     <message>
         <location filename="../sources/reports/projectreports.cpp" line="106"/>
         <source>Parts list</source>
-        <translation type="unfinished"></translation>
+        <translation>Список частин</translation>
     </message>
     <message>
         <location filename="../sources/reports/projectreports.cpp" line="110"/>
         <source>Device</source>
-        <translation type="unfinished">Пристрій</translation>
+        <translation>Пристрій</translation>
     </message>
     <message>
         <location filename="../sources/reports/projectreports.cpp" line="111"/>
         <source>Description</source>
-        <translation type="unfinished">Опис</translation>
+        <translation>Опис</translation>
     </message>
     <message>
         <location filename="../sources/reports/projectreports.cpp" line="112"/>
         <source>Model</source>
-        <translation type="unfinished">Модель</translation>
+        <translation>Модель</translation>
     </message>
     <message>
         <location filename="../sources/reports/projectreports.cpp" line="113"/>
         <location filename="../sources/reports/projectreports.cpp" line="222"/>
         <source>Part number</source>
-        <translation type="unfinished">Артикул</translation>
+        <translation>Артикул</translation>
     </message>
     <message>
         <location filename="../sources/reports/projectreports.cpp" line="114"/>
         <source>Symbols</source>
-        <translation type="unfinished">Символи</translation>
+        <translation>Символи</translation>
     </message>
     <message>
         <location filename="../sources/reports/projectreports.cpp" line="115"/>
@@ -16837,172 +16849,172 @@ Give them another numbering first.</source>
         <location filename="../sources/reports/projectreports.cpp" line="211"/>
         <location filename="../sources/reports/projectreports.cpp" line="227"/>
         <source>Sheet</source>
-        <translation type="unfinished">Аркуш</translation>
+        <translation>Аркуш</translation>
     </message>
     <message>
         <location filename="../sources/reports/projectreports.cpp" line="116"/>
         <location filename="../sources/reports/projectreports.cpp" line="176"/>
         <location filename="../sources/reports/projectreports.cpp" line="228"/>
         <source>Position</source>
-        <translation type="unfinished"></translation>
+        <translation>Положення</translation>
     </message>
     <message>
         <location filename="../sources/reports/projectreports.cpp" line="122"/>
         <source>Wire list</source>
-        <translation type="unfinished"></translation>
+        <translation>Список проводів</translation>
     </message>
     <message>
         <location filename="../sources/reports/projectreports.cpp" line="126"/>
         <location filename="../sources/reports/projectreports.cpp" line="207"/>
         <source>Wire</source>
-        <translation type="unfinished">Провід</translation>
+        <translation>Провід</translation>
     </message>
     <message>
         <location filename="../sources/reports/projectreports.cpp" line="127"/>
         <location filename="../sources/reports/projectreports.cpp" line="208"/>
         <source>Section</source>
-        <translation type="unfinished"></translation>
+        <translation>Переріз</translation>
     </message>
     <message>
         <location filename="../sources/reports/projectreports.cpp" line="128"/>
         <source>Colour</source>
-        <translation type="unfinished">Колір</translation>
+        <translation>Колір</translation>
     </message>
     <message>
         <location filename="../sources/reports/projectreports.cpp" line="129"/>
         <location filename="../sources/reports/projectreports.cpp" line="209"/>
         <source>From</source>
-        <translation type="unfinished"></translation>
+        <translation>Від</translation>
     </message>
     <message>
         <location filename="../sources/reports/projectreports.cpp" line="130"/>
         <location filename="../sources/reports/projectreports.cpp" line="210"/>
         <source>To</source>
-        <translation type="unfinished"></translation>
+        <translation>До</translation>
     </message>
     <message>
         <location filename="../sources/reports/projectreports.cpp" line="131"/>
         <location filename="../sources/reports/projectreports.cpp" line="190"/>
         <location filename="../sources/reports/projectreports.cpp" line="205"/>
         <source>Cable</source>
-        <translation type="unfinished">Кабель</translation>
+        <translation>Кабель</translation>
     </message>
     <message>
         <location filename="../sources/reports/projectreports.cpp" line="140"/>
         <source>Potential list</source>
-        <translation type="unfinished"></translation>
+        <translation>Список потенціалів</translation>
     </message>
     <message>
         <location filename="../sources/reports/projectreports.cpp" line="160"/>
         <source>Wire numbers</source>
-        <translation type="unfinished"></translation>
+        <translation>Номери проводів</translation>
     </message>
     <message>
         <location filename="../sources/reports/projectreports.cpp" line="161"/>
         <source>Names</source>
-        <translation type="unfinished"></translation>
+        <translation>Назви</translation>
     </message>
     <message>
         <location filename="../sources/reports/projectreports.cpp" line="162"/>
         <source>Pins</source>
-        <translation type="unfinished"></translation>
+        <translation>Піни</translation>
     </message>
     <message>
         <location filename="../sources/reports/projectreports.cpp" line="163"/>
         <location filename="../sources/reports/projectreports.cpp" line="179"/>
         <source>Connected</source>
-        <translation type="unfinished"></translation>
+        <translation>Підключено</translation>
     </message>
     <message>
         <location filename="../sources/reports/projectreports.cpp" line="164"/>
         <source>First sheet</source>
-        <translation type="unfinished"></translation>
+        <translation>Перший аркуш</translation>
     </message>
     <message>
         <location filename="../sources/reports/projectreports.cpp" line="165"/>
         <source>Sheets</source>
-        <translation type="unfinished">Аркуші</translation>
+        <translation>Аркуші</translation>
     </message>
     <message>
         <location filename="../sources/reports/projectreports.cpp" line="171"/>
         <source>Terminal list</source>
-        <translation type="unfinished"></translation>
+        <translation>Список виводів</translation>
     </message>
     <message>
         <location filename="../sources/reports/projectreports.cpp" line="175"/>
         <source>Strip</source>
-        <translation type="unfinished"></translation>
+        <translation>Колодка</translation>
     </message>
     <message>
         <location filename="../sources/reports/projectreports.cpp" line="177"/>
         <source>Terminal</source>
-        <translation type="unfinished"></translation>
+        <translation>Вивід</translation>
     </message>
     <message>
         <location filename="../sources/reports/projectreports.cpp" line="178"/>
         <source>Wires</source>
-        <translation type="unfinished"></translation>
+        <translation>Проводи</translation>
     </message>
     <message>
         <location filename="../sources/reports/projectreports.cpp" line="186"/>
         <source>Cable list</source>
-        <translation type="unfinished">Список кабелів</translation>
+        <translation>Список кабелів</translation>
     </message>
     <message>
         <location filename="../sources/reports/projectreports.cpp" line="191"/>
         <location filename="../sources/reports/projectreports.cpp" line="225"/>
         <source>Type</source>
-        <translation type="unfinished">Тип</translation>
+        <translation>Тип</translation>
     </message>
     <message>
         <location filename="../sources/reports/projectreports.cpp" line="192"/>
         <source>Cores</source>
-        <translation type="unfinished">Жили</translation>
+        <translation>Жили</translation>
     </message>
     <message>
         <location filename="../sources/reports/projectreports.cpp" line="193"/>
         <source>Wired</source>
-        <translation type="unfinished"></translation>
+        <translation>З&apos;єднано</translation>
     </message>
     <message>
         <location filename="../sources/reports/projectreports.cpp" line="194"/>
         <source>Length</source>
-        <translation type="unfinished">Довжина</translation>
+        <translation>Довжина</translation>
     </message>
     <message>
         <location filename="../sources/reports/projectreports.cpp" line="201"/>
         <source>Cable core list</source>
-        <translation type="unfinished"></translation>
+        <translation>Список жил кабелів</translation>
     </message>
     <message>
         <location filename="../sources/reports/projectreports.cpp" line="206"/>
         <source>Core</source>
-        <translation type="unfinished"></translation>
+        <translation>Жила</translation>
     </message>
     <message>
         <location filename="../sources/reports/projectreports.cpp" line="217"/>
         <source>PLC input and output list</source>
-        <translation type="unfinished"></translation>
+        <translation>Список входів і виходів ПЛК</translation>
     </message>
     <message>
         <location filename="../sources/reports/projectreports.cpp" line="221"/>
         <source>PLC</source>
-        <translation type="unfinished">ПЛК</translation>
+        <translation>ПЛК</translation>
     </message>
     <message>
         <location filename="../sources/reports/projectreports.cpp" line="223"/>
         <source>Entry</source>
-        <translation type="unfinished"></translation>
+        <translation>Вхід</translation>
     </message>
     <message>
         <location filename="../sources/reports/projectreports.cpp" line="224"/>
         <source>Address</source>
-        <translation type="unfinished">Адреса</translation>
+        <translation>Адреса</translation>
     </message>
     <message>
         <location filename="../sources/reports/projectreports.cpp" line="226"/>
         <source>Function</source>
-        <translation type="unfinished"></translation>
+        <translation>Функція</translation>
     </message>
 </context>
 <context>
@@ -17958,24 +17970,24 @@ Available options:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="622"/>
         <source>Lock X axis (paste mode)</source>
-        <translation type="unfinished"></translation>
+        <translation>Заблокувати вісь X (режим вставлення)</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="623"/>
         <source>Locks the X coordinate while positioning a paste, so items move only along Y</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Блокує координату X під час позиціонування вставки, тож об&apos;єкти рухаються лише вздовж Y</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="629"/>
         <source>Lock Y axis (paste mode)</source>
-        <translation type="unfinished"></translation>
+        <translation>Заблокувати вісь Y (режим вставлення)</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="630"/>
         <source>Locks the Y coordinate while positioning a paste, so items move only along X</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Блокує координату Y під час позиціонування вставки, тож об&apos;єкти рухаються лише вздовж X</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="636"/>
@@ -18076,13 +18088,13 @@ Available options:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="799"/>
         <source>Replace the symbols...</source>
-        <translation type="unfinished"></translation>
+        <translation>Замінити символи...</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="800"/>
         <source>Replaces the selected symbols by a symbol from a collection, keeping their place, label and wires</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Замінює вибрані символи символом з колекції, зберігаючи їхнє місце, мітку та проводи</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="811"/>
@@ -18226,12 +18238,12 @@ Hold Ctrl while moving to place freely.</source>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1054"/>
         <source>Snap the middle of the text</source>
-        <translation type="unfinished"></translation>
+        <translation>Прив&apos;язувати середину тексту</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1055"/>
         <source>Puts the middle of a moved text on the grid instead of the top left corner of its frame, e.g. a terminal number centred on a grid line.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ставить середину переміщуваного тексту на сітку замість лівого верхнього кута його рамки, напр. номер виводу, відцентрований на лінії сітки.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1067"/>
@@ -18306,7 +18318,7 @@ Hold Ctrl while moving to place freely.</source>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1116"/>
         <source>Drawing aids</source>
-        <translation type="unfinished"></translation>
+        <translation>Допоміжні елементи креслення</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1133"/>
@@ -18388,35 +18400,35 @@ Hold Ctrl while moving to place freely.</source>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1253"/>
         <source>Device types...</source>
-        <translation type="unfinished"></translation>
+        <translation>Типи пристроїв...</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1255"/>
         <source>Make and change the device types of the project and of your library</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Створювати й редагувати типи пристроїв проєкту та вашої бібліотеки</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1264"/>
         <source>Reports...</source>
-        <translation type="unfinished"></translation>
+        <translation>Звіти...</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1266"/>
         <source>Shows the project&apos;s lists and exports them to CSV or PDF</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Показує списки проєкту та експортує їх у CSV або PDF</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1276"/>
         <source>Check device types...</source>
-        <translation type="unfinished"></translation>
+        <translation>Перевірити типи пристроїв...</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1278"/>
         <source>Lists the parts of each device&apos;s type which are not drawn, and the symbols beyond it</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Показує частини типу кожного пристрою, які не намальовано, та символи поза типом</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1288"/>
@@ -19385,12 +19397,12 @@ Hold Ctrl while moving to place freely.</source>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2018"/>
         <source>Add a structure box</source>
-        <translation type="unfinished"></translation>
+        <translation>Додати рамку структури</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2019"/>
         <source>Adds a structure box (plant, location, prefix) to the current sheet: the symbols inside it take its plant and location</source>
-        <translation type="unfinished"></translation>
+        <translation>Додає рамку структури (установка, розташування, префікс) до поточного аркуша: символи в ній успадковують її установку та розташування</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2073"/>
@@ -19428,7 +19440,7 @@ Hold Ctrl while moving to place freely.</source>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2279"/>
         <source>Paste special</source>
-        <translation type="unfinished"></translation>
+        <translation>Спеціальне вставлення</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2297"/>
@@ -19438,12 +19450,12 @@ Hold Ctrl while moving to place freely.</source>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2314"/>
         <source>Rotate and mirror</source>
-        <translation type="unfinished"></translation>
+        <translation>Повернути та віддзеркалити</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2320"/>
         <source>Texts</source>
-        <translation type="unfinished">Тексти</translation>
+        <translation>Тексти</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2434"/>
@@ -19801,7 +19813,7 @@ You can also number the cables automatically later: the rule is set at any time 
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="5746"/>
         <source>Placed elements are redrawn and keep their conductors, as long as their terminals have not moved or moved all together with the insertion point: such an element is moved back so its terminals stay where they are. This action cannot be undone.</source>
-        <translation type="unfinished"></translation>
+        <translation>Розміщені елементи перемальовуються й зберігають свої провідники, якщо їхні виводи не зсунулися або зсунулися всі разом із точкою вставки: такий елемент повертається назад, щоб його виводи залишилися на місці. Цю дію неможливо скасувати.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="5751"/>
@@ -19820,10 +19832,10 @@ You can also number the cables automatically later: the rule is set at any time 
     <message numerus="yes">
         <location filename="../sources/qetdiagrameditor.cpp" line="5839"/>
         <source>%n of them moved with their insertion point: their terminals and conductors stayed where they were.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Разом із точкою вставки переміщено: %n. Їхні виводи та провідники залишилися на місці.</numerusform>
+            <numerusform>Разом із точкою вставки переміщено: %n. Їхні виводи та провідники залишилися на місці.</numerusform>
+            <numerusform>Разом із точкою вставки переміщено: %n. Їхні виводи та провідники залишилися на місці.</numerusform>
         </translation>
     </message>
     <message numerus="yes">
@@ -19864,15 +19876,15 @@ You can also number the cables automatically later: the rule is set at any time 
         <location filename="../sources/qetdiagrameditor.cpp" line="6363"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="6369"/>
         <source>Replace the symbols</source>
-        <translation type="unfinished"></translation>
+        <translation>Замінити символи</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/qetdiagrameditor.cpp" line="6370"/>
         <source>%n wire(s) found no terminal on the new symbol and were removed. Undo brings them back.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n провід не знайшов виводу на новому символі й був видалений. Скасування відновлює його.</numerusform>
+            <numerusform>%n проводи не знайшли виводу на новому символі й були видалені. Скасування відновлює їх.</numerusform>
+            <numerusform>%n проводів не знайшли виводу на новому символі й були видалені. Скасування відновлює їх.</numerusform>
         </translation>
     </message>
     <message numerus="yes">
@@ -23530,7 +23542,7 @@ Do you want to replace it ?</source>
         <location filename="../sources/qetinformation.cpp" line="378"/>
         <location filename="../sources/materiallist/findpartdialog.cpp" line="67"/>
         <source>Device type</source>
-        <translation type="unfinished"></translation>
+        <translation>Тип пристрою</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="389"/>
@@ -23565,12 +23577,12 @@ Do you want to replace it ?</source>
     <message>
         <location filename="../sources/qetinformation.cpp" line="424"/>
         <source>Unit price</source>
-        <translation type="unfinished"></translation>
+        <translation>Ціна за одиницю</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="425"/>
         <source>Labour time [h]</source>
-        <translation type="unfinished"></translation>
+        <translation>Час роботи [год]</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="431"/>
@@ -24213,7 +24225,7 @@ Do you want to replace it ?</source>
     <message>
         <location filename="../sources/TerminalStrip/GraphicsItem/properties/terminalstriplayoutshandler.cpp" line="48"/>
         <source>Connector layout</source>
-        <translation type="unfinished"></translation>
+        <translation>Розкладка роз&apos;єму</translation>
     </message>
     <message>
         <location filename="../sources/qet_elementscaler/qet_elementscaler.cpp" line="43"/>
@@ -25624,7 +25636,7 @@ To enable it: Configure QElectroTech &gt; General &gt; Projects, or set the QET_
     <message>
         <location filename="../sources/ui/devicenavigatorfilterdialog.cpp" line="71"/>
         <source>Devices with free parts</source>
-        <translation type="unfinished"></translation>
+        <translation>Пристрої з вільними частинами</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/resetsymboltextscommand.cpp" line="42"/>
@@ -25635,260 +25647,261 @@ To enable it: Configure QElectroTech &gt; General &gt; Projects, or set the QET_
         <location filename="../sources/ui/devicetypechooser.cpp" line="287"/>
         <source>Give the device type %1</source>
         <extracomment>%1 is a device type&apos;s name, such as &quot;CONTR10&quot;</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Надати тип пристрою %1</translation>
     </message>
     <message>
         <location filename="../sources/devicetype/devicetypeassign.cpp" line="136"/>
         <source>%1: keep this drawing</source>
         <comment>a part of a device type</comment>
-        <translation type="unfinished"></translation>
+        <translation>%1: зберегти цей малюнок</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/devicetype/devicetypeassign.cpp" line="139"/>
         <source>This drawing has %n terminal(s), which do not fit this part.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Цей малюнок має %n вивід, який не відповідає цій частині.</numerusform>
+            <numerusform>Цей малюнок має %n виводи, які не відповідають цій частині.</numerusform>
+            <numerusform>Цей малюнок має %n виводів, які не відповідають цій частині.</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/devicetype/devicetypeassign.cpp" line="144"/>
         <source>%1: use the type&apos;s drawing</source>
         <comment>a part of a device type</comment>
-        <translation type="unfinished"></translation>
+        <translation>%1: використати малюнок типу</translation>
     </message>
     <message>
         <location filename="../sources/devicetype/devicetypeassign.cpp" line="169"/>
         <source>This folio cannot be changed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Цей аркуш неможливо змінити.</translation>
     </message>
     <message>
         <location filename="../sources/devicetype/devicetypeassign.cpp" line="177"/>
         <source>The device type gives no usable drawing for this part.</source>
-        <translation type="unfinished"></translation>
+        <translation>Тип пристрою не дає жодного придатного малюнка для цієї частини.</translation>
     </message>
     <message>
         <location filename="../sources/devicetype/devicetypeassign.cpp" line="184"/>
         <source>The drawing of this part could not be read.</source>
-        <translation type="unfinished"></translation>
+        <translation>Не вдалося прочитати малюнок цієї частини.</translation>
     </message>
     <message>
         <location filename="../sources/devicetype/devicetypeassign.cpp" line="190"/>
         <source>This drawing has other terminals than the symbol, and the symbol is wired: disconnect its wires first.</source>
-        <translation type="unfinished"></translation>
+        <translation>Цей малюнок має інші виводи, ніж символ, а символ підключено проводами: спершу від&apos;єднайте його проводи.</translation>
     </message>
     <message>
         <location filename="../sources/devicetype/devicetypeassign.cpp" line="197"/>
         <source>A terminal of this symbol belongs to a bridge or a strip, so it cannot be replaced.</source>
-        <translation type="unfinished"></translation>
+        <translation>Вивід цього символу належить перемичці або клемній колодці, тому його неможливо замінити.</translation>
     </message>
     <message>
         <location filename="../sources/devicetype/devicetypeassign.cpp" line="241"/>
         <source>Give a symbol the terminals of its part</source>
-        <translation type="unfinished"></translation>
+        <translation>Надати символу виводи його частини</translation>
     </message>
     <message>
         <location filename="../sources/devicetype/devicetypelink.cpp" line="114"/>
         <source>This device has no free contact of this kind.</source>
-        <translation type="unfinished"></translation>
+        <translation>У цього пристрою немає вільного контакту такого роду.</translation>
     </message>
     <message>
         <location filename="../sources/devicetype/devicetypelink.cpp" line="140"/>
         <source>The free part&apos;s terminals do not fit this symbol.</source>
-        <translation type="unfinished"></translation>
+        <translation>Виводи вільної частини не відповідають цьому символу.</translation>
     </message>
     <message>
         <location filename="../sources/devicetype/devicetypechange.cpp" line="114"/>
         <source>folio %1, %2</source>
         <extracomment>%1 is a folio&apos;s number, %2 a position on it such as &quot;C5&quot;</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>аркуш %1, %2</translation>
     </message>
     <message>
         <location filename="../sources/devicetype/devicetypechange.cpp" line="120"/>
         <source>%1 (%2)</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 (%2)</translation>
     </message>
     <message>
         <location filename="../sources/devicetype/devicetypechange.cpp" line="130"/>
         <source>This device cannot be changed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Цей пристрій неможливо змінити.</translation>
     </message>
     <message>
         <location filename="../sources/devicetype/devicetypechange.cpp" line="135"/>
         <source>Change the device type to %1</source>
         <extracomment>%1 is a device type&apos;s name, such as &quot;CONTR10&quot;</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Змінити тип пристрою на %1</translation>
     </message>
     <message>
         <location filename="../sources/devicetype/devicetypeplacement.cpp" line="360"/>
         <source>Place the parts of %1</source>
         <extracomment>%1 is the device&apos;s label, such as &quot;-K1&quot;</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Розмістити частини %1</translation>
     </message>
     <message>
         <location filename="../sources/devicetype/devicetypeplacement.cpp" line="445"/>
         <source>Parts of %1</source>
         <extracomment>%1 is the device&apos;s label, such as &quot;-K1&quot;</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Частини %1</translation>
     </message>
     <message>
         <location filename="../sources/devicetype/devicetypeplacement.cpp" line="447"/>
         <source>%1 has parts not drawn yet: %2.
 How do you want to place them?</source>
         <extracomment>%1 is the device&apos;s label, %2 its parts, as &quot;power contacts 1 2 3 4 5 6, NO 13 14&quot;</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>У %1 є ще ненамальовані частини: %2.
+Як ви хочете їх розмістити?</translation>
     </message>
     <message>
         <location filename="../sources/devicetype/devicetypeplacement.cpp" line="450"/>
         <source>One by one</source>
-        <translation type="unfinished"></translation>
+        <translation>По одній</translation>
     </message>
     <message>
         <location filename="../sources/devicetype/devicetypeplacement.cpp" line="451"/>
         <source>Each part follows the mouse until a click; Escape stops, the rest stay free</source>
-        <translation type="unfinished"></translation>
+        <translation>Кожна частина слідує за мишею до клацання; Esc зупиняє, решта залишаються вільними</translation>
     </message>
     <message>
         <location filename="../sources/devicetype/devicetypeplacement.cpp" line="452"/>
         <source>All side by side</source>
-        <translation type="unfinished"></translation>
+        <translation>Усі поруч</translation>
     </message>
     <message>
         <location filename="../sources/devicetype/devicetypeplacement.cpp" line="453"/>
         <source>All parts to the right of the head, to be moved where they belong</source>
-        <translation type="unfinished"></translation>
+        <translation>Усі частини праворуч від голови, щоб перемістити їх туди, де вони мають бути</translation>
     </message>
     <message>
         <location filename="../sources/devicetype/devicetypeplacement.cpp" line="454"/>
         <source>Not now</source>
-        <translation type="unfinished"></translation>
+        <translation>Не зараз</translation>
     </message>
     <message>
         <location filename="../sources/devicetype/devicetypeplacement.cpp" line="455"/>
         <source>The parts stay free in the Device Navigator</source>
-        <translation type="unfinished"></translation>
+        <translation>Частини залишаються вільними в навігаторі пристроїв</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/setdevicetypecommand.cpp" line="32"/>
         <location filename="../sources/undocommand/setdevicetypecommand.cpp" line="68"/>
         <source>Add the device type %1 to the project</source>
         <extracomment>%1 is a device type&apos;s name, such as &quot;CONTR10&quot;</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Додати тип пристрою %1 до проєкту</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/setdevicetypecommand.cpp" line="66"/>
         <source>Delete the device type %1</source>
         <extracomment>%1 is a device type&apos;s name, such as &quot;CONTR10&quot;</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Видалити тип пристрою %1</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/setdevicetypecommand.cpp" line="70"/>
         <source>Edit the device type %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Редагувати тип пристрою %1</translation>
     </message>
     <message>
         <location filename="../sources/replacesymbols.cpp" line="146"/>
         <source>A terminal to replace is bridged or belongs to a multi-level terminal.</source>
-        <translation type="unfinished"></translation>
+        <translation>Вивід, який потрібно замінити, з&apos;єднано перемичкою або він належить до багаторівневого виводу.</translation>
     </message>
     <message>
         <location filename="../sources/replacesymbols.cpp" line="154"/>
         <source>The symbol could not be added to the project.</source>
-        <translation type="unfinished"></translation>
+        <translation>Не вдалося додати символ до проєкту.</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/replacesymbols.cpp" line="158"/>
         <source>Replace %n symbol(s)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Замінити %n символ</numerusform>
+            <numerusform>Замінити %n символи</numerusform>
+            <numerusform>Замінити %n символів</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/replacesymbols.cpp" line="174"/>
         <source>The symbol could not be loaded.</source>
-        <translation type="unfinished"></translation>
+        <translation>Не вдалося завантажити символ.</translation>
     </message>
     <message>
         <location filename="../sources/reports/projectreports.cpp" line="305"/>
         <source>The project has no database.</source>
-        <translation type="unfinished"></translation>
+        <translation>У проєкті немає бази даних.</translation>
     </message>
     <message>
         <location filename="../sources/reports/projectreports.cpp" line="365"/>
         <source>Cannot write the file.</source>
-        <translation type="unfinished"></translation>
+        <translation>Неможливо записати файл.</translation>
     </message>
     <message>
         <location filename="../sources/reports/projectreports.cpp" line="463"/>
         <source>Page %1 of %2</source>
         <comment>project report</comment>
-        <translation type="unfinished"></translation>
+        <translation>Сторінка %1 з %2</translation>
     </message>
     <message>
         <location filename="../sources/ui/placelabelpartdialog.cpp" line="575"/>
         <location filename="../sources/ui/placelabelpartdialog.cpp" line="676"/>
         <source>Set the label and the part</source>
-        <translation type="unfinished"></translation>
+        <translation>Задати мітку та частину</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/connectorpinplan.cpp" line="67"/>
         <location filename="../sources/TerminalStrip/connectorpinplan.cpp" line="121"/>
         <source>Plug</source>
-        <translation type="unfinished"></translation>
+        <translation>Вилка</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/connectorpinplan.cpp" line="67"/>
         <location filename="../sources/TerminalStrip/connectorpinplan.cpp" line="122"/>
         <source>Socket</source>
-        <translation type="unfinished"></translation>
+        <translation>Розетка</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/connectorpinplan.cpp" line="97"/>
         <location filename="../sources/TerminalStrip/connectorpinplan.cpp" line="172"/>
         <source>Spare</source>
         <comment>a pin of a connector&apos;s device type drawn nowhere</comment>
-        <translation type="unfinished">Резерв</translation>
+        <translation>Резерв</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/dissolvereportlinkscommand.cpp" line="36"/>
         <source>Take away the folio report links of a potential</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>Прибрати посилання на аркуш із потенціалу</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/reportlinkkeycommand.cpp" line="37"/>
         <source>Change what chains folio report elements together</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>Змінити, що об&apos;єднує посилання на аркуш у ланцюжок</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/findpartdialog.cpp" line="63"/>
         <source>Search: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Пошук: %1</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/findpartdialog.cpp" line="65"/>
         <source>Suits this symbol</source>
-        <translation type="unfinished"></translation>
+        <translation>Підходить до цього символу</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/findpartdialog.cpp" line="68"/>
         <source>Voltage</source>
-        <translation type="unfinished"></translation>
+        <translation>Напруга</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/findpartdialog.cpp" line="68"/>
         <source>Current</source>
-        <translation type="unfinished"></translation>
+        <translation>Струм</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/findpartdialog.cpp" line="73"/>
         <source>%1: %2</source>
         <extracomment>%1 is a filter (&quot;Category&quot;), %2 its value (&quot;Relay&quot;)</extracomment>
-        <translation type="unfinished">%1: %2</translation>
+        <translation>%1: %2</translation>
     </message>
 </context>
 <context>
@@ -27009,105 +27022,106 @@ Create your own text using the following variables:
     <message>
         <location filename="../sources/ui/reportsdialog.cpp" line="48"/>
         <source>Reports</source>
-        <translation type="unfinished"></translation>
+        <translation>Звіти</translation>
     </message>
     <message>
         <location filename="../sources/ui/reportsdialog.cpp" line="53"/>
         <source>List:</source>
-        <translation type="unfinished"></translation>
+        <translation>Список:</translation>
     </message>
     <message>
         <location filename="../sources/ui/reportsdialog.cpp" line="58"/>
         <source>Place:</source>
-        <translation type="unfinished"></translation>
+        <translation>Область:</translation>
     </message>
     <message>
         <location filename="../sources/ui/reportsdialog.cpp" line="75"/>
         <source>Refresh</source>
-        <translation type="unfinished">Оновити</translation>
+        <translation>Оновити</translation>
     </message>
     <message>
         <location filename="../sources/ui/reportsdialog.cpp" line="76"/>
         <source>Export to CSV...</source>
-        <translation type="unfinished"></translation>
+        <translation>Експортувати в CSV...</translation>
     </message>
     <message>
         <location filename="../sources/ui/reportsdialog.cpp" line="78"/>
         <source>Export to PDF...</source>
-        <translation type="unfinished"></translation>
+        <translation>Експортувати в PDF...</translation>
     </message>
     <message>
         <location filename="../sources/ui/reportsdialog.cpp" line="90"/>
         <source>Whole project</source>
-        <translation type="unfinished"></translation>
+        <translation>Увесь проєкт</translation>
     </message>
     <message>
         <location filename="../sources/ui/reportsdialog.cpp" line="105"/>
         <source>Reading the folios...</source>
-        <translation type="unfinished">Читання аркушів...</translation>
+        <translation>Читання аркушів...</translation>
     </message>
     <message>
         <location filename="../sources/ui/reportsdialog.cpp" line="119"/>
         <source>Reading folio %1 of %2...</source>
-        <translation type="unfinished">Читання аркуша %1 з %2...</translation>
+        <translation>Читання аркуша %1 з %2...</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/reportsdialog.cpp" line="150"/>
         <source>%n row(s).</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n рядок.</numerusform>
+            <numerusform>%n рядки.</numerusform>
+            <numerusform>%n рядків.</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/ui/reportsdialog.cpp" line="165"/>
         <source>Export the list</source>
-        <translation type="unfinished"></translation>
+        <translation>Експортувати список</translation>
     </message>
     <message>
         <location filename="../sources/ui/reportsdialog.cpp" line="174"/>
         <source>CSV files (*.csv)</source>
-        <translation type="unfinished"></translation>
+        <translation>Файли CSV (*.csv)</translation>
     </message>
     <message>
         <location filename="../sources/ui/reportsdialog.cpp" line="179"/>
         <source>Export to CSV</source>
-        <translation type="unfinished">Експорт в формат CSV</translation>
+        <translation>Експортувати в CSV</translation>
     </message>
     <message>
         <location filename="../sources/ui/reportsdialog.cpp" line="179"/>
         <location filename="../sources/ui/reportsdialog.cpp" line="200"/>
         <source>Cannot write the file:
 %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Неможливо записати файл:
+%1</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/reportsdialog.cpp" line="182"/>
         <source>%n row(s) written to %1.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Записано %n рядок до %1.</numerusform>
+            <numerusform>Записано %n рядки до %1.</numerusform>
+            <numerusform>Записано %n рядків до %1.</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/ui/reportsdialog.cpp" line="188"/>
         <source>PDF files (*.pdf)</source>
-        <translation type="unfinished">Файли PDF (*.pdf)</translation>
+        <translation>Файли PDF (*.pdf)</translation>
     </message>
     <message>
         <location filename="../sources/ui/reportsdialog.cpp" line="200"/>
         <source>Export to PDF</source>
-        <translation type="unfinished">Експорт у PDF</translation>
+        <translation>Експортувати в PDF</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/reportsdialog.cpp" line="203"/>
         <source>%n page(s) written to %1.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Записано %n сторінку до %1.</numerusform>
+            <numerusform>Записано %n сторінки до %1.</numerusform>
+            <numerusform>Записано %n сторінок до %1.</numerusform>
         </translation>
     </message>
 </context>
@@ -28263,7 +28277,7 @@ The other fields are not used.</source>
     <message>
         <location filename="../sources/qetgraphicsitem/structureboxitem.cpp" line="472"/>
         <source>a structure box</source>
-        <translation type="unfinished"></translation>
+        <translation>рамка структури</translation>
     </message>
 </context>
 <context>
@@ -28271,7 +28285,7 @@ The other fields are not used.</source>
     <message>
         <location filename="../sources/qetgraphicsitem/structureboxitem.cpp" line="551"/>
         <source>Move the name of a structure box</source>
-        <translation type="unfinished"></translation>
+        <translation>Перемістити назву рамки структури</translation>
     </message>
 </context>
 <context>
@@ -28279,44 +28293,44 @@ The other fields are not used.</source>
     <message>
         <location filename="../sources/ui/structureboxpropertieswidget.cpp" line="42"/>
         <source>Plant (=)</source>
-        <translation type="unfinished">Установка(=)</translation>
+        <translation>Установка (=)</translation>
     </message>
     <message>
         <location filename="../sources/ui/structureboxpropertieswidget.cpp" line="43"/>
         <source>Location (+)</source>
-        <translation type="unfinished">Локалізація (+)</translation>
+        <translation>Розташування (+)</translation>
     </message>
     <message>
         <location filename="../sources/ui/structureboxpropertieswidget.cpp" line="44"/>
         <source>Prefix (-)</source>
-        <translation type="unfinished">Префікс (-)</translation>
+        <translation>Префікс (-)</translation>
     </message>
     <message>
         <location filename="../sources/ui/structureboxpropertieswidget.cpp" line="49"/>
         <source> pt</source>
-        <translation type="unfinished"> пт</translation>
+        <translation> пт</translation>
     </message>
     <message>
         <location filename="../sources/ui/structureboxpropertieswidget.cpp" line="50"/>
         <source>Size of its name</source>
-        <translation type="unfinished"></translation>
+        <translation>Розмір її назви</translation>
     </message>
     <message>
         <location filename="../sources/ui/structureboxpropertieswidget.cpp" line="53"/>
         <source>Colour</source>
-        <translation type="unfinished">Колір</translation>
+        <translation>Колір</translation>
     </message>
     <message>
         <location filename="../sources/ui/structureboxpropertieswidget.cpp" line="72"/>
         <location filename="../sources/ui/structureboxpropertieswidget.cpp" line="81"/>
         <location filename="../sources/ui/structureboxpropertieswidget.cpp" line="87"/>
         <source>Modify a structure box</source>
-        <translation type="unfinished"></translation>
+        <translation>Редагувати рамку структури</translation>
     </message>
     <message>
         <location filename="../sources/ui/structureboxpropertieswidget.h" line="43"/>
         <source>Edit the properties of a structure box</source>
-        <translation type="unfinished"></translation>
+        <translation>Редагувати властивості рамки структури</translation>
     </message>
 </context>
 <context>
@@ -30916,22 +30930,22 @@ The other fields are not used.</source>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="346"/>
         <source>Kind:</source>
-        <translation type="unfinished"></translation>
+        <translation>Вид:</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="356"/>
         <source>Device type:</source>
-        <translation type="unfinished"></translation>
+        <translation>Тип пристрою:</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="372"/>
         <source>Choose...</source>
-        <translation type="unfinished"></translation>
+        <translation>Вибрати...</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="379"/>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation>Немає</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="388"/>
@@ -30965,32 +30979,32 @@ The other fields are not used.</source>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="76"/>
         <source>Terminal strip</source>
-        <translation type="unfinished"></translation>
+        <translation>Клемна колодка</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="77"/>
         <source>Plug</source>
-        <translation type="unfinished"></translation>
+        <translation>Вилка</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="78"/>
         <source>A plug: the male side of a connector</source>
-        <translation type="unfinished"></translation>
+        <translation>Вилка: «чоловіча» сторона роз&apos;єму</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="79"/>
         <source>Socket</source>
-        <translation type="unfinished"></translation>
+        <translation>Розетка</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="80"/>
         <source>A socket: the female side of a connector</source>
-        <translation type="unfinished"></translation>
+        <translation>Розетка: «жіноча» сторона роз&apos;єму</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="83"/>
         <source>The device type says the pins of this connector: the check of the device types reports a pin it does not have, a pin drawn twice and the pins not drawn.</source>
-        <translation type="unfinished"></translation>
+        <translation>Тип пристрою задає піни цього роз&apos;єму: перевірка типів пристроїв повідомляє про пін, якого в нього немає, про пін, намальований двічі, та про ненамальовані піни.</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="123"/>
@@ -31010,7 +31024,7 @@ The other fields are not used.</source>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="376"/>
         <source>Add a device type</source>
-        <translation type="unfinished"></translation>
+        <translation>Додати тип пристрою</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="682"/>
@@ -31652,22 +31666,22 @@ Ctrl+Enter повертає клітинку, Escape відкидає текст
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriptreedockwidget.cpp" line="70"/>
         <source>Expand all</source>
-        <translation type="unfinished">Розгорнути все</translation>
+        <translation>Розгорнути все</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriptreedockwidget.cpp" line="71"/>
         <source>Unfold every plant, location and terminal strip of the tree</source>
-        <translation type="unfinished"></translation>
+        <translation>Розгортає кожну установку, розташування та клемну колодку дерева</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriptreedockwidget.cpp" line="73"/>
         <source>Collapse all</source>
-        <translation type="unfinished">Згорнути все</translation>
+        <translation>Згорнути все</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriptreedockwidget.cpp" line="74"/>
         <source>Fold every plant, location and terminal strip of the tree</source>
-        <translation type="unfinished"></translation>
+        <translation>Згортає кожну установку, розташування та клемну колодку дерева</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriptreedockwidget.cpp" line="355"/>
@@ -31682,7 +31696,7 @@ Ctrl+Enter повертає клітинку, Escape відкидає текст
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriptreedockwidget.cpp" line="478"/>
         <source>(no label) %1, folio %2</source>
-        <translation type="unfinished"></translation>
+        <translation>(без мітки) %1, аркуш %2</translation>
     </message>
 </context>
 <context>
@@ -32947,7 +32961,7 @@ The following variables can be used:
         <location filename="../sources/ui/wiringlistdialog.cpp" line="89"/>
         <source>The wiring list could not be read: %1</source>
         <comment>wiring list read error</comment>
-        <translation type="unfinished"></translation>
+        <translation>Не вдалося прочитати список монтажу: %1</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/wiringlistdialog.cpp" line="92"/>
@@ -32973,10 +32987,10 @@ The following variables can be used:
         <location filename="../sources/ui/wiringlistdialog.cpp" line="108"/>
         <source>%n junction(s) have rows that still end at a junction: no source connection set, or no way on to follow.</source>
         <comment>wiring list junction warning</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n вузол має лінії, які досі закінчуються на вузлі: не задано вихідного з&apos;єднання або немає шляху для слідування.</numerusform>
+            <numerusform>%n вузли мають лінії, які досі закінчуються на вузлі: не задано вихідного з&apos;єднання або немає шляху для слідування.</numerusform>
+            <numerusform>%n вузлів мають лінії, які досі закінчуються на вузлі: не задано вихідного з&apos;єднання або немає шляху для слідування.</numerusform>
         </translation>
     </message>
 </context>
@@ -33011,10 +33025,10 @@ The following variables can be used:
     <message numerus="yes">
         <location filename="../sources/wiringlistexport.cpp" line="365"/>
         <source>Note: %n junction(s) have rows that still end at a junction: no source connection set, or no way on to follow.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Примітка: %n вузол має лінії, які досі закінчуються на вузлі: не задано вихідного з&apos;єднання або немає шляху для слідування.</numerusform>
+            <numerusform>Примітка: %n вузли мають лінії, які досі закінчуються на вузлі: не задано вихідного з&apos;єднання або немає шляху для слідування.</numerusform>
+            <numerusform>Примітка: %n вузлів мають лінії, які досі закінчуються на вузлі: не задано вихідного з&apos;єднання або немає шляху для слідування.</numerusform>
         </translation>
     </message>
     <message>

@@ -291,6 +291,7 @@ class QETDiagramEditor : public QETMainWindow
 		QAction* m_find_duplicate_labels = nullptr;
 		QAction* m_check_potentials = nullptr;
 		QAction *m_check_project = nullptr;
+		QAction* m_check_open_wire_ends = nullptr;
 		QAction *m_check_device_types = nullptr;
 		QAction *m_device_types = nullptr;
 		QAction *m_part_types = nullptr;

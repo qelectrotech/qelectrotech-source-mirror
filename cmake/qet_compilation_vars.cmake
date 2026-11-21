@@ -1016,6 +1016,10 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/ui/projectlanguagesdialog.h
   ${QET_DIR}/sources/ui/potentialcheckdialog.cpp
   ${QET_DIR}/sources/ui/potentialcheckdialog.h
+  ${QET_DIR}/sources/ui/openwireendsdialog.cpp
+  ${QET_DIR}/sources/ui/openwireendsdialog.h
+  ${QET_DIR}/sources/projectcheck/openwireends.cpp
+  ${QET_DIR}/sources/projectcheck/openwireends.h
   ${QET_DIR}/sources/ui/potentialsourceswidget.cpp
   ${QET_DIR}/sources/ui/potentialsourceswidget.h
   ${QET_DIR}/sources/ui/potentialtypeswidget.cpp

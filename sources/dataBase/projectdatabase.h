@@ -41,6 +41,7 @@
 #include <borderproperties.h>
 #include <conductorproperties.h>
 #include <properties/potentialtypes.h>
+#include <projectcheck/openwireends.h>
 #include "conductorlayout.h"
 #include "conductorpath.h"
 #include "elementplacement.h"
@@ -501,6 +502,9 @@ class projectDataBase : public QObject
 			QList<QUuid> wires;     ///< the typed wires of the potential; all its wires when two sources disagree
 		};
 		QList<PotentialMismatch> potentialTypeMismatches();
+			/// The wires that lead nowhere (OpenWireEnds::check()), after
+			/// writing the links, texts and positions still held back
+		QList<OpenWireEnds::Finding> openWireEnds();
 			/// The types wires take from the source terminals of placed
 			/// symbols (PotentialTypes::Mode::AtSource): wire -> type, for
 			/// each potential whose sources all name one type, and the
