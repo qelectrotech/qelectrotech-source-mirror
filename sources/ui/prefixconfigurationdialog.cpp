@@ -329,6 +329,7 @@ void PrefixConfigurationDialog::accept()
 		m_labels.removeOrphans(m_folders);
 	}
 
+	const bool converted = m_labels.wasConverted();
 	if (!m_labels.save()) {
 		QMessageBox::critical(this,
 							  tr("Cannot save"),
@@ -337,7 +338,14 @@ void PrefixConfigurationDialog::accept()
 		return;
 	}
 
-	if (!m_labels.backupPath().isEmpty()) {
+	if (converted && !m_labels.backupPath().isEmpty()) {
+		QMessageBox::information(this,
+								 tr("Prefix file updated"),
+								 tr("The file %1 now has <labels> as its outer "
+									"element. Every folder keeps its prefix.\n"
+									"Its previous version was kept as:\n%2")
+								 .arg(m_labels.filePath(), m_labels.backupPath()));
+	} else if (!m_labels.backupPath().isEmpty()) {
 		QMessageBox::information(this,
 								 tr("Damaged file replaced"),
 								 tr("The file %1 could not be read: it has been replaced.\nIts copy was kept as:\n%2")
