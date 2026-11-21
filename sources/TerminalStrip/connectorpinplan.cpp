@@ -17,13 +17,17 @@
 */
 #include "connectorpinplan.h"
 
+#include "../autoNum/assignvariables.h"
 #include "../devicetype/devicetypecheck.h"
 #include "../qetapp.h"
+#include "../qetgraphicsitem/element.h"
+#include "../qetgraphicsitem/terminal.h"
 #include "../qetproject.h"
 #include "physicalterminal.h"
 #include "realterminal.h"
 #include "terminalstrip.h"
 
+#include <QHash>
 #include <QObject>
 #include <QSet>
 
@@ -96,5 +100,104 @@ namespace ConnectorPinPlan
 			}
 		}
 		return plan;
+	}
+
+	bool isConnectorType(const DeviceType &type)
+	{
+		if (type.isNull()) return false;
+		for (const auto &information : type.informations)
+			if (information.first == QLatin1String("connector")) return true;
+		for (const auto &part : type.parts)
+			if (part.role == QLatin1String("terminal") && !DeviceTypeCheck::pinsOf(part).isEmpty())
+				return true;
+		return false;
+	}
+
+	QString kindOfType(const DeviceType &type)
+	{
+		for (const auto &information : type.informations) {
+			if (information.first != QLatin1String("connector")) continue;
+			const QString value = information.second.trimmed().toLower();
+			if (value == QLatin1String("plug")) return QObject::tr("Plug");
+			if (value == QLatin1String("socket")) return QObject::tr("Socket");
+		}
+		return QString();
+	}
+
+	Plan ofDevice(const DeviceTypeCheck::Device &device)
+	{
+		Plan plan;
+		if (!device.known()) return plan;
+		plan.name = device.label;
+		plan.kind = kindOfType(device.type);
+		plan.typeName = device.type.name;
+		plan.description = device.type.text(QETApp::langFromSetting());
+
+			//The terminals the symbols draw, by the name of their pin
+		struct Pin {Element *symbol; Terminal *terminal;};
+		QHash<QString, QList<Pin>> drawn;
+		QStringList order;
+		for (const auto &symbol : device.symbols) {
+			if (!symbol) continue;
+			for (Terminal *terminal : symbol->terminals()) {
+				const QString pin = terminal->baseName().trimmed();
+				if (pin.isEmpty()) continue;
+				if (!drawn.contains(pin)) order << pin;
+				drawn[pin].append({symbol.data(), terminal});
+			}
+		}
+
+		const auto drawnRow = [&plan](const QString &pin, const Pin &at) {
+			Row row;
+			row.pin = pin;
+			row.label = plan.name + QLatin1Char(':') + pin;
+			row.xref = autonum::AssignVariables::genericXref(at.symbol);
+			for (const auto &wire : RealTerminal::wiresOfPin(at.terminal))
+				row.wires.append(wire);
+			return row;
+		};
+
+		QSet<QString> typed;
+		for (int part : DeviceTypeCheck::pinParts(device.type)) {
+			for (const QString &pin : DeviceTypeCheck::pinsOf(device.type.parts.at(part))) {
+				if (typed.contains(pin)) continue;
+				typed.insert(pin);
+				if (drawn.contains(pin)) {
+					plan.rows << drawnRow(pin, drawn.value(pin).first());
+				} else {
+					Row row;
+					row.pin = pin;
+					row.spare = true;
+					row.label = plan.name + QLatin1Char(':') + pin;
+					row.xref = QObject::tr("Spare", "a pin of a connector's device type drawn nowhere");
+					plan.rows << row;
+				}
+			}
+		}
+			//What is drawn beyond the type: a pin it lacks, a pin drawn twice
+		for (const QString &pin : std::as_const(order)) {
+			const auto &list = drawn.value(pin);
+			for (int i = typed.contains(pin) ? 1 : 0 ; i < list.size() ; ++i)
+				plan.rows << drawnRow(pin, list.at(i));
+		}
+		return plan;
+	}
+
+	QList<Element *> connectorDevices(QETProject *project)
+	{
+		QList<Element *> heads;
+		if (!project) return heads;
+		bool any = false;
+		for (const DeviceType &type : project->deviceTypes())
+			if (isConnectorType(type)) any = true;
+		if (!any) return heads;
+		for (const auto &device : DeviceTypeCheck::check(project)) {
+			if (device.connector || !device.known() || device.symbols.isEmpty()
+				|| !isConnectorType(device.type) || !device.symbols.first()
+				|| (device.symbols.first()->linkType() & Element::Terminale))
+				continue;
+			heads << device.symbols.first().data();
+		}
+		return heads;
 	}
 }

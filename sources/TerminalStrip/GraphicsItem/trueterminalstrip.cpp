@@ -21,6 +21,8 @@
 #include <TerminalStrip/terminalstrip.h>
 #include <TerminalStrip/terminalstripbridge.h>
 #include <autoNum/assignvariables.h>
+#include <devicetype/devicetypecheck.h>
+#include <qetgraphicsitem/element.h>
 
 #include "terminalstripdrawer.h"
 
@@ -85,6 +87,51 @@ namespace TerminalStripDrawer
 			}
 		}
 
+		return vector_;
+	}
+
+	DevicePinPlanStrip::DevicePinPlanStrip(Element *head) :
+		m_head { head }
+	{}
+
+	QString DevicePinPlanStrip::installation() const {
+		return QString();
+	}
+
+	QString DevicePinPlanStrip::location() const {
+		return QString();
+	}
+
+	QString DevicePinPlanStrip::name() const {
+		return plan().header();
+	}
+
+		//Worked out once for the many calls of a paint: it reads the whole project
+	const ConnectorPinPlan::Plan &DevicePinPlanStrip::plan() const
+	{
+			//Working the plan out asks the scene for the items at a place, which
+			//asks this item for its size, which asks for the plan : the answer
+			//of the moment (the last plan) is good enough for that one
+		if (!m_plan_valid && !m_working) {
+			m_working = true;
+			m_plan = m_head ? ConnectorPinPlan::ofDevice(DeviceTypeCheck::checkDevice(m_head))
+							: ConnectorPinPlan::Plan();
+			m_working = false;
+			m_plan_valid = true;
+		}
+		return m_plan;
+	}
+
+	void DevicePinPlanStrip::refresh() {
+		m_plan_valid = false;
+	}
+
+	QVector<QSharedPointer<AbstractPhysicalTerminalInterface>> DevicePinPlanStrip::physicalTerminal() const
+	{
+		QVector<QSharedPointer<AbstractPhysicalTerminalInterface>> vector_;
+		for (const auto &row : plan().rows) {
+			vector_.append(QSharedPointer<AbstractPhysicalTerminalInterface>{ new PinPlanRowPhysicalTerminal(row) });
+		}
 		return vector_;
 	}
 

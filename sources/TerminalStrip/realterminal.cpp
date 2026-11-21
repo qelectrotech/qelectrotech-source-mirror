@@ -811,6 +811,29 @@ QVector<QPair<QString, QStringList>> RealTerminal::wires() const
 }
 
 /**
+ * @brief RealTerminal::wiresOfPin
+ * @param pin : a terminal of a symbol
+ * @return one entry per wire of @p pin which is no core of a cable, as
+ * wires() gives them: (what the far end is called, what the wire is made of)
+ */
+QVector<QPair<QString, QStringList>> RealTerminal::wiresOfPin(Terminal *pin)
+{
+	QVector<QPair<QString, QStringList>> result;
+	if (!pin) {
+		return result;
+	}
+	for (const Conductor *conductor : pin->conductors())
+	{
+		if (isCableCore(conductor->ownProperties()) || !conductor->terminal1 || !conductor->terminal2) {
+			continue;
+		}
+		Terminal *far_end = conductor->terminal1 == pin ? conductor->terminal2 : conductor->terminal1;
+		result.append({endDesignation(far_end), definitionOf(conductor)});
+	}
+	return result;
+}
+
+/**
  * @brief RealTerminal::hasWire
  * @return true when this terminal has a wire of its own which is no core
  * of a cable -- a cable is drawn under the strip with the rest of itself
