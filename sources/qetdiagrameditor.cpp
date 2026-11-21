@@ -104,6 +104,7 @@
 #include "ui/devicetypesdialog.h"
 #include "ui/reportsdialog.h"
 #include "ui/potentialcheckdialog.h"
+#include "ui/openwireendsdialog.h"
 #include "ui/duplicateoffsetdialog.h"
 #include "ui/jumptoelementdialog.h"
 #include "ui/diagrampropertieseditordockwidget.h"
@@ -1284,6 +1285,18 @@ void QETDiagramEditor::setUpActions()
 			dialog->show();
 		}
 	});
+	// Wires that lead nowhere (#1878 B2)
+	m_check_open_wire_ends = new QAction(tr("Check open wire ends..."), this);
+	m_check_open_wire_ends->setObjectName(QStringLiteral("checkOpenWireEnds"));
+	m_check_open_wire_ends->setStatusTip(tr("Lists the wires that run to an unlinked folio report, into a junction on one side only, or reach one symbol terminal", "status bar tip"));
+	ShortcutManager::instance().registerAction(m_check_open_wire_ends, "diagrameditor.check_open_wire_ends", tr("Diagram editors"), QKeySequence());
+	connect(m_check_open_wire_ends, &QAction::triggered, this, [this]() {
+		if (ProjectView *view = currentProjectView()) {
+			auto *dialog = new OpenWireEndsDialog(view->project(), this);
+			dialog->setAttribute(Qt::WA_DeleteOnClose);
+			dialog->show();
+		}
+	});
 	// Mixed potential types on one potential
 	m_check_potentials = new QAction(tr("Check potential types..."), this);
 	m_check_potentials->setObjectName(QStringLiteral("checkPotentialTypes"));
@@ -2379,6 +2392,7 @@ void QETDiagramEditor::setUpMenu()
 	menu_project -> addAction(m_clean_project);
 	menu_project->addAction(m_find_duplicate_labels);
 	menu_project->addAction(m_check_potentials);
+	menu_project->addAction(m_check_open_wire_ends);
 	menu_project->addAction(m_device_types);
 	menu_project->addAction(m_check_device_types);
 	menu_project->addAction(m_project_languages);
@@ -4008,6 +4022,7 @@ void QETDiagramEditor::slot_updateActions()
 	m_project_edit_properties     -> setEnabled(opened_project);
 	m_find_duplicate_labels->setEnabled(opened_project);
 	m_check_potentials->setEnabled(opened_project);
+	m_check_open_wire_ends->setEnabled(opened_project);
 	m_device_types->setEnabled(opened_project);
 	m_check_device_types->setEnabled(opened_project);
 	m_reports->setEnabled(opened_project);

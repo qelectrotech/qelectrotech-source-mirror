@@ -2502,6 +2502,11 @@ qet_add_app_test(tst_potentialtypes tst_potentialtypes.cpp)
 # potential_view: one row per potential (wires, terminals, folios, wire
 # numbers, more than one number), as QElectroTech groups the wires.
 qet_add_app_test(tst_potentialview tst_potentialview.cpp)
+# Check open wire ends (#1878 B2): wires that run to an unlinked folio
+# report, into a junction on one side only, or reach one symbol terminal.
+qet_add_app_test(tst_openwireends tst_openwireends.cpp)
+target_compile_definitions(tst_openwireends PRIVATE
+  QET_EXAMPLES_DIR="${QET_DIR}/examples")
 # Chained folio reports: what two reports must share to be chained
 # together is the project's choice -- the labels they carry, or the
 # function of the wires their terminals hold.
