@@ -118,7 +118,7 @@ void OpenWireEndsDialog::refresh()
 	if (findings.isEmpty()) {
 		m_summary->setText(tr("Every wire leads somewhere."));
 	} else {
-		m_summary->setText(tr("%n place(s) where wires lead nowhere.", nullptr, findings.size()));
+		m_summary->setText(tr("%n place(s) where wires stop and go nowhere.", nullptr, findings.size()));
 	}
 }
 
