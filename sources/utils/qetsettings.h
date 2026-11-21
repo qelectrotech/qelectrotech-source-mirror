@@ -79,6 +79,34 @@ namespace QetSettings
 	void setAskLabelAndPartPlacingSymbol(bool ask);
 
 	/**
+		Which remembered folder a dialog that asks for a file starts in.
+		Pictures and PDFs keep a folder each, every other file and folder
+		dialog shares the third, so that a picture picked for a sheet
+		does not send the script dialog to a picture folder.
+	*/
+	enum class FileDialog { Picture, Pdf, File };
+
+	/**
+		Whether a dialog that asks for a file or a folder starts in the
+		folder the last one was picked from instead of the pictures or
+		the documents folder. Off by default: the dialogs then start
+		where they always did. Turning it off forgets the folders, so
+		that nothing of the user's disk stays in the settings file.
+	*/
+	bool rememberLastDir();
+	void setRememberLastDir(bool remember);
+
+	/**
+		@brief Folder the last file of @p which was picked from, empty
+		when none was picked yet or rememberLastDir() is off.
+		Recorded only while the setting is on: a user who never turned
+		it on gets no path of theirs stored.
+		@sa setLastDir
+	*/
+	QString lastDir(FileDialog which);
+	void setLastDir(FileDialog which, const QString &dir);
+
+	/**
 		Whether a terminal strip draws the wires which end at it: one
 		stub per terminal which has a wire of its own, going up from the
 		strip like its cables go down, naming where the wire lands and

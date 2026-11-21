@@ -18,6 +18,7 @@
 */
 #include <properties/projectlanguages.h>
 #include "projectlanguagesdialog.h"
+#include "qetapp.h"
 
 #include <QComboBox>
 #include <QDialogButtonBox>
@@ -224,8 +225,9 @@ void ProjectLanguagesDialog::exportCsv()
 
 void ProjectLanguagesDialog::importCsv()
 {
-	const QString path = QFileDialog::getOpenFileName(this, tr("Import CSV"), QString(), tr("CSV files (*.csv)"));
+	const QString path = QFileDialog::getOpenFileName(this, tr("Import CSV"), QETApp::lastFileDir(QString()), tr("CSV files (*.csv)"));
 	if (path.isEmpty()) return;
+	QETApp::rememberFileDir(path);
 	QFile file(path);
 	if (!file.open(QIODevice::ReadOnly)) {
 		QMessageBox::warning(this, tr("Import CSV"), tr("Could not read %1.").arg(path));
