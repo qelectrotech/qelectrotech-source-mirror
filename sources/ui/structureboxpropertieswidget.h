@@ -51,6 +51,7 @@ class StructureBoxPropertiesWidget : public PropertiesEditorWidget
 		QList<QMetaObject::Connection> m_edit_connections;
 		QDoubleSpinBox *m_label_size = nullptr;
 		KColorButton *m_color = nullptr;
+		double m_label_size_shown = 0;   ///< what updateUi() put in m_label_size
 };
 
 #endif // STRUCTUREBOXPROPERTIESWIDGET_H
