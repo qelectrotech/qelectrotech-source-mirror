@@ -20,6 +20,7 @@
 #include <QPropertyUndoCommand/qpropertyundocommand.h>
 #include <conductorsegment.h>
 #include <diagram.h>
+#include <qetproject.h>
 #include "conductor.h"
 #include "conductortextitem.h"
 #include <shownkinds.h>
@@ -45,6 +46,8 @@ ConductorDefinitionMark::ConductorDefinitionMark(Conductor *conductor) :
 	setAcceptHoverEvents(true);
 	setCursor(Qt::SizeAllCursor);
 	setToolTip(tr("Drag along the conductor to move the colour and section"));
+	watchProject();
+	watchConductor();
 	refresh();
 }
 
@@ -145,22 +148,147 @@ QList<QPointF> ConductorDefinitionMark::points() const
 }
 
 /**
-	Put the mark where the conductor's properties say, and take over their
-	colour and section
+	Put the mark where the conductor's properties say, take over their
+	colour and section, and resolve the formulas of a customized style's
+	texts for this conductor. What is drawn is worked out here and kept:
+	the scene asks for the geometry far more often than it changes.
 */
 void ConductorDefinitionMark::refresh()
 {
+	m_style = style();
+	m_context = renderContext();
 	const qreal wanted = m_conductor->ownProperties().m_definition_mark_at;
 	const QList<QPointF> list = points();
+	m_texts.clear();
+	if (m_style.m_enabled) {
+			//The wire's own values as they stand now: what a
+			//formula is resolved against through properties()
+			//comes from the store, which is told about them once
+			//the conductor is done refreshing
+		const ConductorProperties own = m_conductor->ownProperties();
+		autonum::sequentialNumbers numbers = m_conductor->sequenceNum();
+		for (const DefinitionMarkStyle::TextItem &text : m_style.m_texts) {
+			QString words = autonum::AssignVariables::formulaToLabel(
+					text.m_formula, numbers,
+					m_conductor->diagram());
+			words.replace("%wf", own.m_function);
+			words.replace("%wv", own.m_tension_protocol);
+			words.replace("%wc", own.m_wire_color);
+			words.replace("%ws", own.m_wire_section);
+			words.replace("%wt", own.m_conductor_type);
+			words.replace("%wb", own.m_cable);
+			m_texts << words;
+		}
+	}
 	place(wanted < 0 ? defaultDistance(list) : qBound<qreal>(0, wanted, 1) * length(list));
 }
 
 void ConductorDefinitionMark::place(qreal distance)
 {
-	prepareGeometryChange();
 	m_distance = distance;
-	setPos(pointAt(points(), distance, &m_vertical));
+	const QList<QPointF> list = points();
+	setPos(pointAt(list, distance, &m_vertical));
+	m_turn = m_vertical ? m_style.m_vertical_turn : 0;
+	updateRect();
 	update();
+}
+
+/**
+	Work out where everything is drawn and where the mark can be hit,
+	before the geometry changes
+*/
+void ConductorDefinitionMark::updateRect()
+{
+	prepareGeometryChange();
+	m_shape = QPainterPath();
+	if (m_style.m_enabled) {
+		m_rect = m_style.boundingRect(m_context, m_texts, m_turn);
+		m_shape.addRect(m_rect);
+		return;
+	}
+	m_rect = QRectF(-half_stroke - 1, -half_stroke - 1,
+			2 * half_stroke + 2, 2 * half_stroke + 2)
+		.united(colorRect()).united(sectionRect());
+	m_shape.addRect(QRectF(-half_stroke - 2, -half_stroke - 2,
+			       2 * half_stroke + 4, 2 * half_stroke + 4));
+	m_shape.addRect(colorRect());
+	m_shape.addRect(sectionRect());
+}
+
+/**
+	Follow the project the mark's conductor is on: when it draws its
+	definition marks another way from now on, the mark is drawn again.
+	Called again whenever the mark joins a scene -- a mark made before
+	its conductor reached the folio (paste, undo of a delete) meets its
+	project only then.
+*/
+void ConductorDefinitionMark::watchProject()
+{
+	if (Diagram *diagram = m_conductor->diagram())
+		if (QETProject *project = diagram->project())
+			connect(project, &QETProject::definitionMarkStyleChanged,
+				this, &ConductorDefinitionMark::refresh,
+				Qt::UniqueConnection);
+}
+
+/**
+	Follow the wire's own properties: its colours, its font and the
+	words of the mark's texts come from them
+*/
+void ConductorDefinitionMark::watchConductor()
+{
+	connect(m_conductor, &Conductor::propertiesChange,
+		this, &ConductorDefinitionMark::refresh,
+		Qt::UniqueConnection);
+}
+
+/**
+	@brief ConductorDefinitionMark::itemChange
+	The scene the mark belongs to can bring the project whose drawing it
+	is drawn with; watch it as soon as there is one.
+	@param change
+	@param value
+	@return
+*/
+QVariant ConductorDefinitionMark::itemChange(GraphicsItemChange change,
+					     const QVariant &value)
+{
+	if (change == ItemSceneHasChanged) {
+		watchProject();
+		watchConductor();
+		refresh();
+	}
+	return QGraphicsObject::itemChange(change, value);
+}
+
+/**
+	@return the way the project draws its definition marks; the standard
+	one for a conductor that is on no project yet
+*/
+DefinitionMarkStyle ConductorDefinitionMark::style() const
+{
+	if (Diagram *diagram = m_conductor->diagram())
+		if (QETProject *project = diagram->project())
+			return project->definitionMarkStyle();
+	return DefinitionMarkStyle();
+}
+
+/**
+	@return what the shapes and texts take from this conductor when
+	their own values say nothing
+*/
+DefinitionMarkStyle::RenderContext ConductorDefinitionMark::renderContext() const
+{
+	const ConductorProperties p = m_conductor->ownProperties();
+	DefinitionMarkStyle::RenderContext context;
+	context.conductor_color = p.color;
+	if (Diagram *diagram = m_conductor->diagram())
+		if (!diagram->drawColoredConductors())
+			context.conductor_color = Qt::black;
+	context.conductor_width = qMax<qreal>(1, p.cond_size);
+	context.text_color = m_conductor->textItem()->defaultTextColor();
+	context.font = m_conductor->textItem()->font();
+	return context;
 }
 
 /**
@@ -214,19 +342,12 @@ void ConductorDefinitionMark::drawText(QPainter *painter, const QRectF &rect,
 
 QRectF ConductorDefinitionMark::boundingRect() const
 {
-	return QRectF(-half_stroke - 1, -half_stroke - 1,
-		      2 * half_stroke + 2, 2 * half_stroke + 2)
-		.united(colorRect()).united(sectionRect());
+	return m_rect;
 }
 
 QPainterPath ConductorDefinitionMark::shape() const
 {
-	QPainterPath path;
-	path.addRect(QRectF(-half_stroke - 2, -half_stroke - 2,
-			    2 * half_stroke + 4, 2 * half_stroke + 4));
-	path.addRect(colorRect());
-	path.addRect(sectionRect());
-	return path;
+	return m_shape;
 }
 
 void ConductorDefinitionMark::paint(QPainter *painter,
@@ -235,6 +356,18 @@ void ConductorDefinitionMark::paint(QPainter *painter,
 {
 	Q_UNUSED(option)
 	Q_UNUSED(widget)
+	if (m_style.m_enabled) {
+		painter->save();
+		painter->setRenderHint(QPainter::Antialiasing, true);
+		m_style.paint(painter, m_context, m_texts, m_turn);
+		if (m_hovered) {
+			painter->setPen(QPen(QColor(0x60, 0x90, 0xd0), 0, Qt::DashLine));
+			painter->setBrush(Qt::NoBrush);
+			painter->drawRect(boundingRect().adjusted(0.5, 0.5, -0.5, -0.5));
+		}
+		painter->restore();
+		return;
+	}
 	const ConductorProperties p = m_conductor->ownProperties();
 	painter->save();
 	painter->setRenderHint(QPainter::Antialiasing, true);

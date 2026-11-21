@@ -254,7 +254,17 @@
                 </property>
                </widget>
               </item>
-              <item row="10" column="0" colspan="5">
+              <item row="10" column="3" colspan="3">
+               <widget class="QPushButton" name="m_definition_mark_customize_pb">
+                <property name="toolTip">
+                 <string>Choose the shapes and texts drawn at the stroke. The drawing is saved with the project as soon as you accept its editor, even if this dialog is cancelled then.</string>
+                </property>
+                <property name="text">
+                 <string>Customize...</string>
+                </property>
+               </widget>
+              </item>
+              <item row="11" column="0" colspan="5">
                <widget class="QCheckBox" name="m_definition_mark_hides_text_cb">
                 <property name="toolTip">
                  <string>With the stroke shown, the conductor's own text is hidden: the stroke already gives the colour and the section.</string>

@@ -83,12 +83,16 @@ namespace autonum
 		bool has_element = false;
 		DiagramPosition element_position;
 		QString element_prefix;
-			/// a conductor's %wf, %wv, %wc and %ws
+			/// a conductor's %wf, %wv, %wc, %ws, %wt and %wb
 		bool has_conductor = false;
 		QString wire_function;
 		QString wire_tension_protocol;
 		QString wire_color;
 		QString wire_section;
+			/// the kind of wire it is made of (H07V-K...), %wt
+		QString wire_type;
+			/// the cable it is a core of, %wb
+		QString wire_cable;
 	};
 
 	/**
