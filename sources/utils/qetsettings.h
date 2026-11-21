@@ -63,6 +63,17 @@ namespace QetSettings
 	bool duplicateLabelsSignalsByPlant();
 	void setDuplicateLabelsSignalsByPlant(bool by_plant);
 
+		// What the Check panel's "symbols with no wire" leaves out, besides
+		// folio reports: folios with no wire at all (layouts, terminal
+		// plans; on by default), strip terminals (on by default) and
+		// auxiliary contacts (off by default).
+	bool unwiredSymbolsSkipWirelessFolios();
+	void setUnwiredSymbolsSkipWirelessFolios(bool skip);
+	bool unwiredSymbolsSkipStripTerminals();
+	void setUnwiredSymbolsSkipStripTerminals(bool skip);
+	bool unwiredSymbolsSkipContacts();
+	void setUnwiredSymbolsSkipContacts(bool skip);
+
 		// Whether a new folio takes the group and sub-group of the folio
 		// before it. Off by default.
 	bool newFolioTakesPreviousGroup();
