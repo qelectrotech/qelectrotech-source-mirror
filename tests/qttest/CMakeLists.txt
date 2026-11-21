@@ -855,6 +855,10 @@ qet_add_app_test(tst_terminalstripkind tst_terminalstripkind.cpp)
 # type lacks, a pin drawn twice, the free pins); strips are checked as before.
 qet_add_app_test(tst_connectordevicetype tst_connectordevicetype.cpp)
 
+# The plan of a connector as data: one row for each pin, the pins of its
+# device type drawn nowhere as spare rows, given to the drawer as they are.
+qet_add_app_test(tst_connectorpinplan tst_connectorpinplan.cpp)
+
 # The strip graphic names where a cable goes at its far end -- Installation,
 # Location and Label of the first piece its wires land on past the strip, in
 # plan order, the same three fields the cable list computes for a target.

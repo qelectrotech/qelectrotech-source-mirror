@@ -19,6 +19,7 @@
 #define TRUETERMINALSTRIP_H
 
 #include "terminalstripdrawer.h"
+#include <TerminalStrip/connectorpinplan.h>
 
 class TerminalStrip;
 class PhysicalTerminal;
@@ -78,6 +79,33 @@ namespace TerminalStripDrawer
 
 		private:
 			QSharedPointer<RealTerminal> m_real;
+	};
+
+		/// A row of a pin plan which is no terminal of the strip: a spare pin
+		/// of a connector's device type, or a pin read from a symbol
+	class PinPlanRowTerminal : public AbstractRealTerminalInterface
+	{
+		public:
+			PinPlanRowTerminal(const ConnectorPinPlan::Row &row);
+			QString label() const override;
+			bool isBridged() const override;
+			AbstractBridgeInterface* bridge() const override;
+			QString xref() const override;
+			QVector<Wire> wires() const override;
+			bool hasWire() const override;
+
+		private:
+			ConnectorPinPlan::Row m_row;
+	};
+
+	class PinPlanRowPhysicalTerminal : public AbstractPhysicalTerminalInterface
+	{
+		public:
+			PinPlanRowPhysicalTerminal(const ConnectorPinPlan::Row &row);
+			QVector<QSharedPointer<AbstractRealTerminalInterface>> realTerminals() const override;
+
+		private:
+			ConnectorPinPlan::Row m_row;
 	};
 
 	class TrueBridge : public AbstractBridgeInterface
