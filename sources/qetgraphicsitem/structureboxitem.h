@@ -47,11 +47,12 @@ class StructureBoxLabelItem;
 */
 class StructureBoxItem : public QetShapeItem
 {
+	friend class StructureBoxLabelItem;
 	Q_OBJECT
 	Q_PROPERTY(QString plant READ plant WRITE setPlant NOTIFY identityChanged)
 	Q_PROPERTY(QString location READ location WRITE setLocation NOTIFY identityChanged)
 	Q_PROPERTY(QString prefix READ prefix WRITE setPrefix NOTIFY identityChanged)
-	Q_PROPERTY(qreal labelSize READ labelSize WRITE setLabelSize)
+	Q_PROPERTY(qreal labelSize READ labelSize WRITE setLabelSize NOTIFY labelSizeChanged)
 
 	public:
 		enum { Type = UserType + 1015 };
@@ -126,13 +127,15 @@ class StructureBoxItem : public QetShapeItem
 			/// show a reference designation (%{structure_id...}) or a place
 			/// (%{plant}, %{location}): what a box or the folio gives them
 			/// changed, or the boxes were loaded after them
-		static void refreshSymbolTexts(Diagram *diagram);
+		static void refreshSymbolTexts(Diagram *diagram, bool label_fields = false);
 			/// The same for the texts of @p element alone: it moved
-		static void refreshTextsOf(Element *element);
+		static void refreshTextsOf(Element *element, bool label_fields = false);
 
 	signals:
 			/// Its plant, location or prefix changed
 		void identityChanged();
+			/// The size of its name changed, by an edit or an undo
+		void labelSizeChanged();
 
 
 	protected:
@@ -141,6 +144,8 @@ class StructureBoxItem : public QetShapeItem
 	private:
 		void refreshLabel();
 		void placeLabel();
+		QPointF cornerLabelPos() const;
+		void labelPosChanged();
 		static QList<const StructureBoxItem *> boxesAmong(const QList<QGraphicsItem *> &items);
 		static Place placeIn(const Element *element,
 							 const QList<const StructureBoxItem *> &boxes);
@@ -150,7 +155,9 @@ class StructureBoxItem : public QetShapeItem
 			/// refreshed once it is gone
 		QPointer<Diagram> m_folio;
 		StructureBoxLabelItem *m_label = nullptr;
-		bool m_label_moved = false;     ///< else it keeps to the box's corner
+			/// Not at the corner: it stays where it is put. Worked out from
+			/// where it stands, so undoing a move puts it back to the corner.
+		bool m_label_moved = false;
 		qreal m_label_size = 8;
 };
 
@@ -169,9 +176,6 @@ class StructureBoxLabelItem : public DiagramTextItem
 		int type() const override { return Type; }
 		void fromXml(const QDomElement &) override {}
 
-	signals:
-		void movedByUser();
-
 	protected:
 		void mousePressEvent(QGraphicsSceneMouseEvent *event) override;
 		void mouseMoveEvent(QGraphicsSceneMouseEvent *event) override;
@@ -182,6 +186,8 @@ class StructureBoxLabelItem : public DiagramTextItem
 		StructureBoxItem *m_box;
 		QPointF m_grab;
 		QPointF m_start;
+		bool m_dragging = false;      ///< past the drag distance: a click is not a move
+		bool m_move_box = false;      ///< part of a selection with its box: the box drives
 };
 
 #endif // STRUCTUREBOXITEM_H

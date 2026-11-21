@@ -28,8 +28,8 @@ class QTreeWidget;
 /**
 	@brief The PrefixConfigurationDialog class
 	
-	Shows the whole directory tree of the user elements collection, one
-	text field per directory, filled with the prefix that directory
+	Shows the whole directory tree of the user or the company elements
+	collection, one text field per directory, filled with the prefix that directory
 	already has in qet_labels.xml (empty when it has none, which means it
 	inherits the prefix of its parent directory).
 	
@@ -41,7 +41,14 @@ class PrefixConfigurationDialog : public QDialog
 	Q_OBJECT
 
 	public:
-		explicit PrefixConfigurationDialog(QetLabelsFile &labels, const QList<QStringList> &folders, QWidget *parent = nullptr);
+			///The collection whose qet_labels.xml the dialog edits
+		enum Collection {
+			UserCollection,
+			CompanyCollection
+		};
+
+		explicit PrefixConfigurationDialog(QetLabelsFile &labels, const QList<QStringList> &folders, QWidget *parent = nullptr,
+										   Collection collection = UserCollection, const QString &user_labels_file = QString());
 		~PrefixConfigurationDialog() override;
 
 	public slots:
@@ -50,6 +57,7 @@ class PrefixConfigurationDialog : public QDialog
 	private:
 		void askWhatToDoWithOrphans();
 		void buildTree();
+		void showUserPrefixes();
 	
 	protected:
 		bool eventFilter(QObject *watched, QEvent *event) override;
@@ -60,6 +68,11 @@ class PrefixConfigurationDialog : public QDialog
 		QList<QStringList> m_folders;
 		QTreeWidget *m_tree;
 		bool m_remove_orphans = false;
+		Collection m_collection = UserCollection;
+			///the qet_labels.xml of the user collection, read before the
+			///company one: only used by the company dialog
+		QString m_user_labels_file;
+		int m_user_prefix_count = 0;
 };
 
 #endif // PREFIXCONFIGURATIONDIALOG_H

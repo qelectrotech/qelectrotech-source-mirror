@@ -63,6 +63,7 @@
 #include <QFontDialog>
 #include <QMessageBox>
 #include <QSettings>
+#include <QTemporaryFile>
 #include <QToolButton>
 
 #include <utility>
@@ -209,6 +210,7 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	ui->m_strip_sort_by_label->setChecked(QetSettings::stripSortedByLabel());
 	ui->m_new_folio_group_cb->setChecked(QetSettings::newFolioTakesPreviousGroup());
 	ui->m_macro_ask_labels_cb->setChecked(QetSettings::askLabelsPlacingMacro());
+	ui->m_symbol_ask_label_part_cb->setChecked(QetSettings::askLabelAndPartPlacingSymbol());
 	ui->m_conductor_properties_panel->setChecked(settings.value("diagrameditor/conductor_properties_panel", false).toBool());
 	ui->m_wiring_rules_cb->setChecked(WiringRules::masterEnabled());
 	{
@@ -228,6 +230,17 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	ui->m_save_label_paste->setChecked(settings.value("diagramcommands/erase-label-on-copy", true).toBool());
 	ui->m_autonumber_pasted->setChecked(settings.value("diagramcommands/autonumber-pasted-elements", true).toBool());
 	ui->m_enable_chained_reports->setChecked(settings.value("project/enable-chained-reports", false).toBool());
+	const QString chained_key =
+			settings.value("project/chained-reports-key", "label").toString();
+	ui->m_chained_key_function_rb->setChecked(
+				QETProject::reportLinkKeyFromString(chained_key)
+				== QETProject::ReportLinkKey::Function);
+	ui->m_chained_key_label_rb->setChecked(!ui->m_chained_key_function_rb->isChecked());
+		//A key says nothing while nothing is chained
+	ui->m_chained_key_gb->setEnabled(ui->m_enable_chained_reports->isChecked());
+	connect(ui->m_enable_chained_reports, &QCheckBox::toggled,
+			ui->m_chained_key_gb, &QWidget::setEnabled,
+			Qt::UniqueConnection);
 	ui->m_enable_scripting->setChecked(QetSettings::scriptingEnabled());
 #ifdef QET_HAS_SCRIPTING
 	if (QetSettings::scriptingForcedByEnvironment()) {
@@ -477,6 +490,11 @@ void GeneralConfigurationPage::applyConf()
 	settings.setValue("diagramcommands/erase-label-on-copy", ui->m_save_label_paste->isChecked());
 	settings.setValue("diagramcommands/autonumber-pasted-elements", ui->m_autonumber_pasted->isChecked());
 	settings.setValue("project/enable-chained-reports", ui->m_enable_chained_reports->isChecked());
+	settings.setValue("project/chained-reports-key",
+			QETProject::reportLinkKeyToString(
+				ui->m_chained_key_function_rb->isChecked()
+				? QETProject::ReportLinkKey::Function
+				: QETProject::ReportLinkKey::Label));
 
 		//SCRIPTING
 		//Left alone while the environment forces it on: the box is disabled
@@ -513,6 +531,7 @@ void GeneralConfigurationPage::applyConf()
 	settings.setValue("diagrameditor/conductor_properties_panel", ui->m_conductor_properties_panel->isChecked());
 	QetSettings::setNewFolioTakesPreviousGroup(ui->m_new_folio_group_cb->isChecked());
 	QetSettings::setAskLabelsPlacingMacro(ui->m_macro_ask_labels_cb->isChecked());
+	QetSettings::setAskLabelAndPartPlacingSymbol(ui->m_symbol_ask_label_part_cb->isChecked());
 	if (ui->m_terminal_conductor_color->isChecked() != Terminal::takesConductorColor()) {
 		Terminal::setTakesConductorColor(ui->m_terminal_conductor_color->isChecked());
 		for (QETProject *project : QETApp::registeredProjects())
@@ -971,47 +990,127 @@ void GeneralConfigurationPage::on_m_user_macros_path_cb_currentIndexChanged(int 
 /**
 	@brief GeneralConfigurationPage::on_m_prefix_pb_clicked
 	Open the dialog where the prefixes of the user collection folders are
-	configured, creating the qet_labels.xml of that collection when it
-	does not exist yet.
-	Nothing is written until that dialog is validated : cancelling it
-	leaves the collection exactly as it was.
+	configured. @see openPrefixDialog()
 */
 void GeneralConfigurationPage::on_m_prefix_pb_clicked()
 {
-		//The directory the page displays, even when the change has not
-		//been applied yet : QETApp::customElementsDir() still answers with
-		//the previously saved path, which is not what is shown when the
-		//combo has been put back on "Par defaut".
+	openPrefixDialog(false);
+}
+
+/**
+	@brief GeneralConfigurationPage::on_m_company_prefix_pb_clicked
+	Open the dialog where the prefixes of the company collection folders
+	are configured (#1918). @see openPrefixDialog()
+*/
+void GeneralConfigurationPage::on_m_company_prefix_pb_clicked()
+{
+	openPrefixDialog(true);
+}
+
+/**
+	@brief GeneralConfigurationPage::shownCollectionDir
+	@return the folder of the user collection, or of the company collection
+	when @a company is true, that the page displays, even when the change
+	has not been applied yet : QETApp::customElementsDir() and
+	companyElementsDir() still answer with the previously saved path,
+	which is not what is shown when the combo has been put back on
+	"By default".
+*/
+QString GeneralConfigurationPage::shownCollectionDir(bool company) const
+{
+	const QComboBox *combo = company ? ui->m_company_elmt_path_cb
+									 : ui->m_custom_elmt_path_cb;
 	QString directory;
-	switch (ui->m_custom_elmt_path_cb->currentIndex()) {
-	case 1:			//"Parcourir..." : the item itself holds the chosen path
-		directory = ui->m_custom_elmt_path_cb->itemData(1, Qt::DisplayRole).toString();
+	switch (combo->currentIndex()) {
+	case 1:			//"Browse..." : the item itself holds the chosen path
+		directory = combo->itemData(1, Qt::DisplayRole).toString();
 		break;
-	case 0:			//"Par defaut" : where a default custom collection lives
-		directory = QETApp::dataDir() + QStringLiteral("/elements/");
+	case 0:			//"By default" : where a default collection lives
+		directory = QETApp::dataDir()
+				+ (company ? QStringLiteral("/elements-company/")
+						   : QStringLiteral("/elements/"));
 		break;
 	default:
 		break;
 	}
 	if (directory.isEmpty()) {
-		directory = QETApp::customElementsDir();
+		directory = company ? QETApp::companyElementsDir()
+							: QETApp::customElementsDir();
 	}
-	directory = QDir::cleanPath(directory);
+	return QDir::cleanPath(directory);
+}
 
-	if (!QDir(directory).exists() && !QDir().mkpath(directory)) {
+/**
+	@brief GeneralConfigurationPage::openPrefixDialog
+	Open the dialog where the prefixes of the folders of the user
+	collection, or of the company collection when @a company is true, are
+	configured, creating the qet_labels.xml of that collection when it
+	does not exist yet.
+	Nothing is written until that dialog is validated : cancelling it
+	leaves the collection exactly as it was.
+	A missing user collection folder is created, and so is the default
+	company folder. A company folder chosen with "Browse..." is not : it
+	may be a shared drive that is not reachable right now, and the
+	prefixes must not go to an empty local folder in its place.
+*/
+void GeneralConfigurationPage::openPrefixDialog(bool company)
+{
+	const QString directory = shownCollectionDir(company);
+
+	const bool may_create = !company
+			|| ui->m_company_elmt_path_cb->currentIndex() == 0;
+	if (!may_create) {
+		if (!QDir(directory).exists()) {
+			QMessageBox::warning(this,
+								 tr("Folder not found"),
+								 tr("The company collection folder:\n%1\ndoes not exist or cannot be reached.")
+								 .arg(directory));
+			return;
+		}
+	} else if (!QDir(directory).exists() && !QDir().mkpath(directory)) {
 		QMessageBox::warning(this,
 							 tr("Folder not found"),
-							 tr("The user collection folder:\n%1\ndoes not exist and could not be created.")
-							 .arg(directory));
+							 company
+							 ? tr("The company collection folder:\n%1\ndoes not exist and could not be created.")
+							   .arg(directory)
+							 : tr("The user collection folder:\n%1\ndoes not exist and could not be created.")
+							   .arg(directory));
 		return;
+	}
+
+		//A company collection on a shared drive is often read-only. The
+		//file is written through QSaveFile, which creates a file in the
+		//folder: try that now rather than when OK is pressed, after the
+		//prefixes have been typed. A failed save is still reported then.
+		//QFileInfo::isWritable() is not asked: on Windows it only reads
+		//the read-only attribute, which Windows sets on many folders that
+		//can be written, and ignores the access rights of a share.
+	if (company) {
+		bool writable = false;
+		{
+			QTemporaryFile probe(QDir(directory).filePath(QStringLiteral("qet_labels-XXXXXX.tmp")));
+			writable = probe.open();
+		}
+		if (!writable) {
+			QMessageBox::warning(this,
+								 tr("Prefix file cannot be written"),
+								 tr("The prefixes of the company collection are kept in:\n%1\n"
+									"This folder cannot be written, so the prefixes cannot be changed here. "
+									"Ask whoever manages the company collection, or change the file with write access.")
+								 .arg(QetLabelsFile::labelsFilePath(directory)));
+			return;
+		}
 	}
 
 	const QList<QStringList> folders = QetLabelsFile::scanFolders(directory);
 	if (folders.isEmpty()) {
 		QMessageBox::information(this,
 								 tr("No subfolder"),
-								 tr("The user collection:\n%1\nhas no subfolder, so there is no prefix to configure.")
-								 .arg(directory));
+								 company
+								 ? tr("The company collection:\n%1\nhas no subfolder, so there is no prefix to configure.")
+								   .arg(directory)
+								 : tr("The user collection:\n%1\nhas no subfolder, so there is no prefix to configure.")
+								   .arg(directory));
 		return;
 	}
 
@@ -1050,7 +1149,13 @@ void GeneralConfigurationPage::on_m_prefix_pb_clicked()
 		}
 	}
 
-	PrefixConfigurationDialog dialog(labels, folders, this);
+		//The prefix lookup reads the user file before the company one:
+		//the company dialog shows the folders where that decides
+	PrefixConfigurationDialog dialog(labels, folders, this,
+									 company ? PrefixConfigurationDialog::CompanyCollection
+											 : PrefixConfigurationDialog::UserCollection,
+									 company ? QetLabelsFile::labelsFilePath(shownCollectionDir(false))
+											 : QString());
 	dialog.exec();
 }
 

@@ -49,17 +49,13 @@ class PropertiesEditorDialog : public QDialog
 							   const QString &geometry_key = QString()) :
 		QDialog (parent)
 		{
-			// Without this, a QWidget-modal QDialog with a parent falls
-			// back to macOS's automatic sheet presentation, which some
-			// Qt/Cocoa versions render stuck centered on screen and
-			// non-draggable rather than as a proper attached sheet
-			// (bugtracker #275). Other dialogs in this codebase already
-			// opt in explicitly (see ElementDialog, DiagramPropertiesDialog)
-			// -- this one was missing it.
-			setWindowModality(Qt::WindowModal);
-#ifdef Q_OS_MACOS
-			setWindowFlags(Qt::Sheet);
-#endif
+			// Application modal, so that the dialog can be moved off the
+			// drawing it edits. On macOS, Qt shows a window modal dialog
+			// that has a parent as a sheet, fixed over its window
+			// (QCocoaWindow::setVisible()), and a sheet cannot be moved
+			// (bugtracker #275). Call exec(), not open(): open() makes the
+			// dialog window modal, and so a sheet again.
+			setWindowModality(Qt::ApplicationModal);
 
 			//Set dialog title
 			setWindowTitle(editor->title());

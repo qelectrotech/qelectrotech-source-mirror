@@ -143,6 +143,11 @@ void CrossRefItem::setUpConnection()
 		m_update_connection << connect(project,
 					       &QETProject::diagramRemoved,
 					       this, &CrossRefItem::updateLabel);
+			//A folio put back by undo() brings the contacts back
+			//with it, and the comb has to draw them again
+		m_update_connection << connect(project,
+					       &QETProject::diagramAdded,
+					       this, &CrossRefItem::updateLabel);
 		m_update_connection << connect(m_element,
 					       &Element::linkedElementChanged,
 					       this, &CrossRefItem::linkedChanged);
@@ -1989,14 +1994,11 @@ void CrossRefItem::drawAsPlcTable(QPainter &painter)
 			qreal ry = header_h + row * row_h;
 			cx = block_x;
 
-			// Get linked slave element for this IO (via group index)
+			// Get linked slave element for this IO (via group index),
+			// the same one Element::drawPlcTable draws in the cell
 			QString cross_ref_text = io.crossRef;
-			for (Element *slave : m_element->linkedElements()) {
-				if (m_element->groupIndexForElement(slave) == io_idx) {
-					cross_ref_text = elementPositionText(slave);
-					break;
-				}
-			}
+			if (Element *slave = m_element->linkedSlaveForIo(io_idx))
+				cross_ref_text = elementPositionText(slave);
 
 			for (int col : visible_cols) {
 				QRectF cell_rect(cx, ry, col_widths[col], row_h);
@@ -2038,12 +2040,8 @@ void CrossRefItem::drawAsPlcTable(QPainter &painter)
 
 				// Store hover map for cross-reference cells
 				if (col == COL_CROSSREF && m_update_map && !cross_ref_text.isEmpty()) {
-					for (Element *slave : m_element->linkedElements()) {
-						if (m_element->groupIndexForElement(slave) == io_idx) {
-							m_hovered_contacts_map.insert(slave, cell_rect);
-							break;
-						}
-					}
+					if (Element *slave = m_element->linkedSlaveForIo(io_idx))
+						m_hovered_contacts_map.insert(slave, cell_rect);
 				}
 
 				cx += col_widths[col];

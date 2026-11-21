@@ -57,7 +57,7 @@ void ReportElement::linkToElement(Element * elmt)
 
 		//ensure elmt isn't already linked
 	bool i = true;
-	if (!this -> isFree() && (connected_elements.first() == elmt))
+	if (!connected_elements.isEmpty() && (connected_elements.first() == elmt))
 		i = false;
 
 		//ensure elmt is an inverse report of this element
@@ -76,7 +76,7 @@ void ReportElement::linkToElement(Element * elmt)
 */
 void ReportElement::unlinkAllElements()
 {
-	if (isFree())
+	if (connected_elements.isEmpty())
 		return;
 
 	const QList <Element *> tmp_elmt = connected_elements;

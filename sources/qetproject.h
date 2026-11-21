@@ -36,6 +36,7 @@
 #include "wirehops.h"
 #include "wiringrules.h"
 #include "diagram.h"
+#include <QPointer>
 #include "autoNum/assignvariables.h"
 #include "container/qetcontainerdb.h"
 #include "container/qetzreader.h"
@@ -72,6 +73,7 @@ class QTimer;
 class TerminalStrip;
 class Cable;
 class Bridge;
+class Conductor;
 
 
 #include <QColor>
@@ -127,6 +129,8 @@ class QETProject : public QObject
 
 		void autoLinkReportElements();
 		void scheduleAutoLink();
+		void reportKeySourceChanged(Conductor *conductor);
+		void recheckReportKeys(Conductor *conductor);
 
 	private:
 		QETProject(const QETProject &);
@@ -344,6 +348,11 @@ class QETProject : public QObject
 		void setUprightSymbolTexts(bool upright);
 		bool plantAndLocationInherited() const;
 		void setPlantAndLocationInherited(bool inherited);
+			/// What the label field of a symbol shows: its label only, or
+			/// its IEC 81346 reference designation, short or full
+		enum class DesignationDisplay {Label, Short, Full};
+		DesignationDisplay designationDisplay() const;
+		void setDesignationDisplay(DesignationDisplay display);
 		bool followDeviceTypes() const;
 		void setFollowDeviceTypes(bool follow);
 		const ProjectLanguages &languages() const {return m_languages;}
@@ -373,6 +382,36 @@ class QETProject : public QObject
 		bool chainedReports() const;
 		void setChainedReports(bool enable);
 		bool hasChainedReportsAttribute() const;
+			/// What two folio reports must share to be chained together
+			/// (reportMatchKey()): the label each of them carries, or the
+			/// function of the wire its terminal holds
+		enum class ReportLinkKey { Label, Function };
+			/// What a project writes for its key in the file, and reads
+		static QString reportLinkKeyToString(ReportLinkKey key);
+		static ReportLinkKey reportLinkKeyFromString(const QString &name);
+		ReportLinkKey chainedReportsKey() const;
+		void setChainedReportsKey(ReportLinkKey key);
+			/// Whether this project chains its folio reports by the
+			/// function of the wire each of them holds: what is new in
+			/// this change happens only then
+		bool chainsByWireFunction() const;
+			/// Take away the folio report links of the potential
+			/// @p conductor is in, when this project chains by the wire
+			/// function: a name written over the potential stays on its
+			/// folio, and the chaining makes the links again
+			/// (reportKeySourceChanged). Nothing in a project chaining by
+			/// the label, or not at all: its links are nobody's to take
+			/// away (Conductor::setPropertyToPotential)
+		void dissolveReportLinksOfPotential(Conductor *conductor);
+			/// The folio report links of the potentials of @p wires: each
+			/// pair of reports a link joins, in the order they are found
+			/// (DissolveReportLinksCommand)
+		QList<QPair<Element *, Element *>> reportLinksOfPotential(
+				const QList<Conductor *> &wires) const;
+			/// Take away every folio report link of this project
+		void dissolveReportLinks();
+			/// Draw every report's texts as its link state says
+		void refreshReportTexts();
 		bool terminalLabelSplit() const;
 		void setTerminalLabelSplit(bool split);
 		WiringRules::Settings wiringRules() const;
@@ -538,6 +577,7 @@ class QETProject : public QObject
 		void readOriginXml(QDomDocument& xml_project);
 		void readSymbolTextsXml(QDomDocument &xml_project);
 		void readPlantLocationXml(QDomDocument &xml_project);
+		void readDesignationDisplayXml(QDomDocument &xml_project);
 		void readDeviceTypeRulesXml(QDomDocument &xml_project);
 		void readLanguagesXml(QDomDocument &xml_project);
 		void readPotentialTypesXml(QDomDocument &xml_project);
@@ -561,6 +601,7 @@ class QETProject : public QObject
 		void writeOriginXml(QDomElement&);
 		void writeSymbolTextsXml(QDomElement &);
 		void writePlantLocationXml(QDomElement &);
+		void writeDesignationDisplayXml(QDomElement &);
 		void writeDeviceTypeRulesXml(QDomElement &);
 		void writeLanguagesXml(QDomElement &);
 		void writePotentialTypesXml(QDomElement &);
@@ -691,6 +732,9 @@ class QETProject : public QObject
 			/// %{plant} and %{location} give the place a symbol takes, see
 			/// plantAndLocationInherited()
 		bool m_plant_location_inherited = false;
+			/// What the label field of a symbol shows (the label only for
+			/// a project saved without it), see designationDisplay()
+		DesignationDisplay m_designation_display = DesignationDisplay::Label;
 			/// Placing and linking follow the device types, see
 			/// followDeviceTypes()
 		bool m_follow_device_types = false;
@@ -704,6 +748,8 @@ class QETProject : public QObject
 		void refreshDerivedPotentialTypes();
 		bool m_chained_reports = false;
 		bool m_has_chained_reports_attribute = false;
+			/// What pairs folio reports together, see ReportLinkKey
+		ReportLinkKey m_chained_reports_key = ReportLinkKey::Label;
 			/// Conductor numbering scheme -> plant -> the values its plant
 			/// counters last gave there (conductorPlantCounter())
 		QHash<QString, QHash<QString, QStringList>> m_conductor_plant_counters;

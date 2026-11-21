@@ -18,6 +18,7 @@
 #include "diagrameventaddelement.h"
 #include "../devicetype/devicetypeplacement.h"
 #include "../ui/devicetypechooser.h"
+#include "../ui/placelabelpartdialog.h"
 #include <qetproject.h>
 #include <conductorautonumerotation.h>
 #include <diagram.h>
@@ -434,10 +435,21 @@ void DiagramEventAddElement::addElement()
 	m_diagram -> undoStack().push(undo_object);
 	element->freezeNewAddedElement();
 
+		//The label and the part of a symbol just placed, when the setting
+		//says so (PlaceLabelPartDialog); it goes on with the device type
+		//question when the part did not bring a type
+	if (!m_placed && PlaceLabelPartDialog::asksFor(element))
+	{
+		QPointer<Element> placed = element;
+		QWidget *view = m_diagram->views().value(0);
+		QTimer::singleShot(0, element, [placed, view]() {
+			if (placed) PlaceLabelPartDialog::askFor(placed, view);
+		});
+	}
 		//A master placed in a project following the device types: which
 		//type is it? Asked once the placing is pushed (DeviceTypeChooser).
 		//Then, when asked for, how to go on with the parts of its type
-	if (!m_placed && m_diagram->project()
+	else if (!m_placed && m_diagram->project()
 		&& (m_diagram->project()->followDeviceTypes() || DeviceTypePlacement::askAfterHead())
 		&& (element->linkType() & Element::Master))
 	{

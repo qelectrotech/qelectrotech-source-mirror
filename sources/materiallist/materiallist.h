@@ -20,6 +20,7 @@
 
 #include <QByteArray>
 #include <QChar>
+#include <QHash>
 #include <QList>
 #include <QMap>
 #include <QSize>
@@ -108,6 +109,7 @@ class MaterialList
 		static QStringList columnsForBlock(int block);
 		static QString elementInfoKey(const QString &column, int block);
 		static bool isArticleBound(const QString &column);
+		static QHash<QString, QString> elementInfoFor(const MaterialRecord &record, int block);
 		static QString translatedColumn(const QString &column);
 		static QStringList translatedHeader(const QStringList &columns);
 

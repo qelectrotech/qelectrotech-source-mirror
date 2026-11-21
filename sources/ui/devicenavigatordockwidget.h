@@ -19,13 +19,16 @@
 #define DEVICENAVIGATORDOCKWIDGET_H
 
 #include "devicenavigatorfilterdialog.h"
+#include "../devicetype/devicetypecheck.h"
 
 #include <QDockWidget>
+#include <QHash>
 #include <QList>
 #include <QMetaObject>
 #include <QPointer>
 #include <QSet>
 #include <QUuid>
+#include <QVector>
 
 class QETProject;
 class Diagram;
@@ -75,7 +78,8 @@ class DeviceNavigatorDockWidget : public QDockWidget
 		ProjectNode	  = 1000,
 		StructureNode = 1001,
 		DeviceNode	  = 1002,
-		FunctionNode  = 1003
+		FunctionNode  = 1003,
+		FreePartNode  = 1004 ///< a part of the device's type not drawn yet
 	};
 
 	enum Roles
@@ -92,7 +96,10 @@ class DeviceNavigatorDockWidget : public QDockWidget
 		IsReportRole	   = Qt::UserRole + 10,
 		IsConductorDefRole = Qt::UserRole + 11,
 		IsThumbnailRole	   = Qt::UserRole + 12,
-		HasStructureRole   = Qt::UserRole + 13
+		HasStructureRole   = Qt::UserRole + 13,
+		TypedDeviceRole	   = Qt::UserRole + 14,
+		PartRole		   = Qt::UserRole + 15,
+		HasFreePartsRole   = Qt::UserRole + 16
 	};
 
 	explicit DeviceNavigatorDockWidget(QWidget* parent = nullptr);
@@ -100,6 +107,7 @@ class DeviceNavigatorDockWidget : public QDockWidget
 
 	void		setProject(QETProject* project);
 	QETProject* project() const;
+	bool		placeFreePart(QTreeWidgetItem* item, Diagram* folio = nullptr, int way = -1);
 
   protected:
 	void showEvent(QShowEvent* event) override;
@@ -162,6 +170,9 @@ class DeviceNavigatorDockWidget : public QDockWidget
 	void restoreTreeState(const TreeState& state);
 	void restoreTableState(const TableState& state);
 	void applyFilters();
+	void buildTypedDevices();
+	int	 typedDeviceOf(const QUuid& elementUuid) const;
+	void addFreeParts(QTreeWidgetItem* deviceItem, int device, const ElementInfo& first);
 	void jumpToElement(Element* element);
 	void jumpToUuid(const QUuid& elementUuid, const QUuid& diagramUuid);
 	void
@@ -181,6 +192,9 @@ class DeviceNavigatorDockWidget : public QDockWidget
 	QPointer<Element>				   m_last_highlighted_element;
 	QList<DeviceNavigatorFilterScheme> m_filter_schemes;
 	bool							   m_dirty = false;
+		/// The devices with a device type, and which one each symbol is of
+	QVector<DeviceTypeCheck::Device>   m_typed_devices;
+	QHash<QUuid, int>				   m_typed_device_of;
 };
 
 #endif // DEVICENAVIGATORDOCKWIDGET_H

@@ -135,6 +135,13 @@ void SmartDeviceTest::defaultQueryAndCsv()
 			"(label, designation, manufacturer, manufacturer_reference, "
 			"element_type, diagram_position, position) "
 			"VALUES ('', '', '', 'PT 2,5', 'terminal', 1, 7)")));
+		//A junction is a connection point on a wire, never a part to
+		//order: it carries a label here like any other row, and every
+		//count below must stay what it is (#1500).
+		QVERIFY(raw.exec(QStringLiteral(
+			"INSERT INTO element_nomenclature_view "
+			"(label, element_type, diagram_position, position) "
+			"VALUES ('J1', 'junction', 1, 8)")));
 		auto count = [&db](const QString &sql) {
 			QSqlQuery q(db);
 			if (!q.exec(sql))

@@ -71,6 +71,10 @@ namespace QetSettings
 		// next free ones. Off by default. A macro with a '?' always asks.
 	bool askLabelsPlacingMacro();
 	void setAskLabelsPlacingMacro(bool ask);
+		// Whether placing a master, simple or terminal symbol asks its
+		// label and its part number. Off by default.
+	bool askLabelAndPartPlacingSymbol();
+	void setAskLabelAndPartPlacingSymbol(bool ask);
 
 	/**
 		Whether a terminal strip draws the wires which end at it: one

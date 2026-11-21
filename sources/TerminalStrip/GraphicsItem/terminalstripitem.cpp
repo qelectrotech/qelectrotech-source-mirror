@@ -28,6 +28,7 @@
 #include <TerminalStrip/physicalterminal.h>
 #include <TerminalStrip/realterminal.h>
 #include <TerminalStrip/ui/terminalstripeditorwindow.h>
+#include <qetgraphicsitem/element.h>
 #include "trueterminalstrip.h"
 
 TerminalStripItem::TerminalStripItem(QPointer<TerminalStrip> strip,
@@ -49,6 +50,33 @@ TerminalStripItem::TerminalStripItem(QGraphicsItem *parent) :
 {
 	setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
 	setAcceptHoverEvents(true);
+}
+
+/**
+ * @brief TerminalStripItem::setDevice
+ * Draw the pin plan of the device whose head symbol is @a head, a
+ * connector drawn as a head with its pins (see ConnectorPinPlan::ofDevice)
+ * @param head
+ */
+void TerminalStripItem::setDevice(Element *head)
+{
+	m_device = head;
+	m_pending_device_uuid = QUuid();
+	m_device_plan = QSharedPointer<TerminalStripDrawer::DevicePinPlanStrip>::create(head);
+	m_drawer.setStrip(m_device_plan);
+	connectDevice(head);
+	setDefaultLayout();
+	prepareGeometryChange();
+	update();
+}
+
+QPointer<Element> TerminalStripItem::device() const {
+	return m_device;
+}
+
+QUuid TerminalStripItem::deviceUuid() const
+{
+	return m_device ? m_device->uuid() : m_pending_device_uuid;
 }
 
 void TerminalStripItem::setTerminalStrip(TerminalStrip *strip)
@@ -76,6 +104,11 @@ void TerminalStripItem::paint(QPainter *painter, const QStyleOptionGraphicsItem 
 {
 	Q_UNUSED(option)
 	Q_UNUSED(widget)
+
+		//The device is on a folio which was not loaded when this plan was
+	if (!m_pending_device_uuid.isNull()) {
+		QMetaObject::invokeMethod(this, &TerminalStripItem::refreshPending, Qt::QueuedConnection);
+	}
 
 	m_drawer.paint(painter);
 
@@ -217,11 +250,33 @@ void TerminalStripItem::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event)
 		} else {
 			TerminalStripEditorWindow::edit(m_strip);
 		}
+	} else if (m_device) {
+			//The plan of a device : go to its head
+		setSelected(false);
+		ungrabMouse();
+		QetGraphicsItem::showItem(m_device);
 	}
 }
 
 void TerminalStripItem::refreshPending()
 {
+	if (!m_pending_device_uuid.isNull() && diagram() && diagram()->project())
+	{
+		auto *project_ = diagram()->project();
+		for (Diagram *diagram_ : project_->diagrams()) {
+			for (Element *element_ : diagram_->elements()) {
+				if (element_->uuid() == m_pending_device_uuid) {
+					setDevice(element_);
+					return;
+				}
+			}
+		}
+			//Nowhere : the device was deleted, the plan is empty
+		if (project_->unloadedFolioCount() == 0) {
+			m_pending_device_uuid = QUuid();
+		}
+	}
+
 	if (!m_pending_strip_uuid.isNull()
 		&& diagram()
 		&& diagram()->project())
@@ -297,6 +352,11 @@ void TerminalStripItem::connectStrip(TerminalStrip *strip)
  */
 void TerminalStripItem::stripChanged()
 {
+	if (m_device_plan) {
+		m_device_plan->refresh();
+	}
+		//The kind of the strip may have changed : terminal strip or connector
+	setDefaultLayout();
 	prepareGeometryChange();
 	update();
 }
@@ -310,6 +370,33 @@ void TerminalStripItem::refreshGeometry()
 void TerminalStripItem::setDefaultLayout()
 {
 	if (m_strip && m_strip->project()) {
-		m_drawer.setLayout(m_strip->project()->projectPropertiesHandler().terminalStripLayoutHandler().defaultLayout());
+		auto &handler = m_strip->project()->projectPropertiesHandler().terminalStripLayoutHandler();
+		m_drawer.setLayout(m_strip->isConnector() ? handler.connectorLayout() : handler.defaultLayout());
+	} else if (m_device && project()) {
+		m_drawer.setLayout(project()->projectPropertiesHandler().terminalStripLayoutHandler().connectorLayout());
+	}
+}
+
+QETProject *TerminalStripItem::project() const {
+	return m_device && m_device->diagram() ? m_device->diagram()->project() : nullptr;
+}
+
+/**
+ * @brief TerminalStripItem::connectDevice
+ * Redraw this item when the project's data changed : the wires of the pins
+ * of @a head, the pins drawn...
+ * @param head
+ */
+void TerminalStripItem::connectDevice(Element *head)
+{
+	for (const auto &connection_ : std::as_const(m_strip_connections)) {
+		disconnect(connection_);
+	}
+	m_strip_connections.clear();
+
+	if (head && head->diagram() && head->diagram()->project()) {
+		m_strip_connections << connect(head->diagram()->project()->dataBase(),
+			&projectDataBase::dataBaseUpdated, this, &TerminalStripItem::stripChanged,
+			Qt::QueuedConnection);
 	}
 }

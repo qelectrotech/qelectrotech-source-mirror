@@ -1957,7 +1957,7 @@ QPainterPath Conductor::path() const
 }
 
 /**
-	@brief Conductor::setPropertiesToPotential
+	@brief Conductor::setPropertyToPotential
 	@param property
 	@param only_text
 	Set property to conductor and every conductors in
@@ -1966,14 +1966,31 @@ QPainterPath Conductor::path() const
 	function and tension/protocol is set
 	to other conductor in the same potential,
 	the other values of property stay unmodified
+
+	A name written over the potential stays on the folio it is written on
+	in a project chaining its reports by the wire function
+	(QETProject::chainsByWireFunction): the folio report links of the
+	potential go before the name is written
+	(QETProject::dissolveReportLinksOfPotential) and the chaining makes
+	them again with the new name (QETProject::reportKeySourceChanged).
+	A project chaining by the label of its reports, or not at all, is
+	left as it was.
 */
 void Conductor::setPropertyToPotential(const ConductorProperties &property,
 					   bool only_text)
 {
+	QETProject *project = diagram() ? diagram()->project() : nullptr;
+	const bool renames = property.m_function != properties().m_function;
+	const bool stop_at_report_links = renames && project
+			&& project->chainsByWireFunction();
+	if (stop_at_report_links) {
+		project->dissolveReportLinksOfPotential(this);
+	}
+	QSet <Conductor *> potential_list = relatedPotentialConductors(
+				true, nullptr, false, stop_at_report_links);
 	setProperties(property);
-	QSet <Conductor *> potential_list = relatedPotentialConductors();
 
-	foreach(Conductor *other_conductor, potential_list)
+	foreach (Conductor *other_conductor, potential_list)
 	{
 			//A core of a cable takes section, colour and type from its
 			//cable: no property of the potential is copied over it
@@ -2011,6 +2028,7 @@ void Conductor::setProperties(const ConductorProperties &property)
 		//The run this conductor was part of, which may part now
 	const QList<Conductor *> old_run = cornerChain();
 	QString formula = m_properties.m_formula;
+	const QString function = m_properties.m_function;
 	m_properties = property;
 
 	if (!m_properties.m_formula.isEmpty())
@@ -2050,6 +2068,9 @@ void Conductor::setProperties(const ConductorProperties &property)
 	}
 
 	storeProperties();
+	if (m_properties.m_function != function) {
+		emit functionChanged(this);
+	}
 	emit propertiesChange();
 }
 
@@ -2298,12 +2319,16 @@ void Conductor::displayedTextChanged()
 	function separation is enabled does not stop the search, and the
 	conductors of both its sides are returned as one potential. Only
 	functionSeparatedConductors() passes true.
+	@param stop_at_report_links : if true, a folio report does not join
+	its two wires: a name written over the potential stays on the folio
+	it was written on (QETProject::chainsByWireFunction)
 	@sa functionSeparatedConductors
 	@return  a QSet of conductor at the same potential.
 */
 QSet<Conductor *> Conductor::relatedPotentialConductors(const bool all_diagram,
 							QList <Terminal *> *t_list,
-							const bool ignore_function_separation)
+							const bool ignore_function_separation,
+							const bool stop_at_report_links)
 {
 	bool declar_t_list = false;
 	if (t_list == nullptr)
@@ -2325,9 +2350,10 @@ QSet<Conductor *> Conductor::relatedPotentialConductors(const bool all_diagram,
 			QList <Conductor *> other_conductors_list_t = terminal->conductors();
 
 				//Get the other terminals of the parent element of @terminal, who share the same potential
-				//This is use for element type "folio report" and "terminal element"
+				//This is use for element type "folio report", "terminal element" and "junction"
 			for (Terminal *t : relatedPotentialTerminal(terminal, all_diagram,
-								ignore_function_separation))
+								ignore_function_separation,
+								stop_at_report_links))
 			{
 				if (!t_list->contains(t))
 				{
@@ -2340,7 +2366,8 @@ QSet<Conductor *> Conductor::relatedPotentialConductors(const bool all_diagram,
 				//Get the conductors at the same potential for each conductors of other_conductors_list_t
 			for (Conductor *c : other_conductors_list_t) {
 				other_conductors += c->relatedPotentialConductors(all_diagram, t_list,
-								  ignore_function_separation);
+								  ignore_function_separation,
+								  stop_at_report_links);
 			}
 
 			other_conductors += QSet<Conductor*>(other_conductors_list_t.begin(),other_conductors_list_t.end());

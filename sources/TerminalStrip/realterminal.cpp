@@ -81,6 +81,10 @@ namespace
 		 * a terminal of a strip by its strip and its position on it
 		 * ("X1:7"), anything else by its element and its terminal
 		 * ("K1:A1").
+		 *
+		 * A wire ending on a junction is named by what the junction leads
+		 * to instead: the junction is a connection point on the wire, so it
+		 * is never where the wire is going (#1500).
 		 */
 	QString endDesignation(Terminal *terminal)
 	{
@@ -90,6 +94,20 @@ namespace
 		Element *element = terminal->parentElement();
 		if (!element) {
 			return QString();
+		}
+
+		if (element->linkType() & Element::Junction) {
+			const auto reached = endsPastJunctions(terminal);
+				//Where the chain says the wire goes on to, and on through
+				//a second junction in the way: every wire on that one
+				//connection is the same node, so the first of them names
+				//it. Nothing comes back when the chain does not say -- a
+				//junction with more than one way on and no source set --
+				//and then the junction is named by what it is rather than
+				//by a guess (#1500)
+			if (!reached.isEmpty()) {
+				return endDesignation(reached.first());
+			}
 		}
 
 		auto *terminal_element = qobject_cast<TerminalElement *>(element);
@@ -673,6 +691,66 @@ QVector<QString> RealTerminal::cableTarget() const
 	return QVector<QString>();
 }
 
+namespace {
+	/**
+	 * What to write beside the stub of @a at, whose wire ends on a
+	 * junction: the connections of the chain the junction's definition
+	 * gives, in the order the wiring list writes them -- what it comes
+	 * from first, then where it goes on to. A connection with a wire on
+	 * both sides of the chain comes back with two entries, and the stub
+	 * writes one line each, the same way a terminal with two wires of its
+	 * own already does.
+	 *
+	 * A junction whose definition says nothing gives nothing: the stub is
+	 * left unnamed rather than named by a guess (#1500).
+	 *
+	 * @return one entry per way the wire continues from @a at, empty when
+	 * there is none to name
+	 */
+	static QStringList junctionChainLabels(Terminal *at)
+	{
+			//The chain, read by the reader the cable list and the target
+			//cell use too, so the three can never disagree about which way
+			//a wire runs (#1500)
+		const auto neighbours = junctionChainNeighbours(at);
+		if (!neighbours.first && !neighbours.second) {
+				//Not a junction, no role in the chain, or no source set
+			return QStringList();
+		}
+
+			//What the wire is called at the far end of @a connection
+		const auto labelAt = [](Terminal *connection) {
+			if (!connection) {
+				return QString();
+			}
+			for (const Conductor *conductor : connection->conductors())
+			{
+				if (!conductor || !conductor->terminal1 || !conductor->terminal2) {
+					continue;
+				}
+				Terminal *far = conductor->terminal1 == connection
+						? conductor->terminal2 : conductor->terminal1;
+				if (far) {
+					return endDesignation(far);
+				}
+			}
+			return QString();
+		};
+
+			//What it comes from first, where it goes on to next
+		QStringList labels;
+		const QString from = labelAt(neighbours.first);
+		if (!from.isEmpty()) {
+			labels << from;
+		}
+		const QString to = labelAt(neighbours.second);
+		if (!to.isEmpty()) {
+			labels << to;
+		}
+		return labels;
+	}
+}
+
 /**
  * @brief RealTerminal::wires
  * @return one entry per wire of this terminal which is no core of a
@@ -697,6 +775,59 @@ QVector<QPair<QString, QStringList>> RealTerminal::wires() const
 			? conductor->terminal1 : conductor->terminal2;
 		Terminal *far_end = attached == conductor->terminal1
 			? conductor->terminal2 : conductor->terminal1;
+
+			//A wire ending on a junction goes on through it and is named
+			//by the chain it runs in: one stub per way it continues, the
+			//way a terminal with two wires of its own writes one stub each
+			//(#1500). No source set leaves the stub unnamed rather than
+			//named by a guess.
+		if (far_end && far_end->parentElement()
+			&& (far_end->parentElement()->linkType() & Element::Junction))
+		{
+				//The junction end, not this terminal's own: the chain is
+				//read from the junction the wire ends on
+			const QStringList chain = junctionChainLabels(far_end);
+			if (chain.isEmpty())
+			{
+				result.append({QString(), definitionOf(conductor)});
+			}
+			else
+			{
+					//Every stub of the chain carries the same wire, so
+					//every one of them says what that wire is made of --
+					//the way the two stubs of a terminal with two wires of
+					//its own each do
+				const QStringList definition = definitionOf(conductor);
+				for (const QString &connection : chain)
+				{
+					result.append({connection, definition});
+				}
+			}
+			continue;
+		}
+		result.append({endDesignation(far_end), definitionOf(conductor)});
+	}
+	return result;
+}
+
+/**
+ * @brief RealTerminal::wiresOfPin
+ * @param pin : a terminal of a symbol
+ * @return one entry per wire of @p pin which is no core of a cable, as
+ * wires() gives them: (what the far end is called, what the wire is made of)
+ */
+QVector<QPair<QString, QStringList>> RealTerminal::wiresOfPin(Terminal *pin)
+{
+	QVector<QPair<QString, QStringList>> result;
+	if (!pin) {
+		return result;
+	}
+	for (const Conductor *conductor : pin->conductors())
+	{
+		if (isCableCore(conductor->ownProperties()) || !conductor->terminal1 || !conductor->terminal2) {
+			continue;
+		}
+		Terminal *far_end = conductor->terminal1 == pin ? conductor->terminal2 : conductor->terminal1;
 		result.append({endDesignation(far_end), definitionOf(conductor)});
 	}
 	return result;
@@ -824,6 +955,27 @@ QVector<QString> RealTerminal::automaticCableTarget() const
 					continue;
 				}
 				if (own_.contains(element_->uuid())) {
+					continue;
+				}
+				//A junction the cable runs through is not where it
+				//lands: it is a connection point on the wire rather
+				//than a piece of its own. endsPastJunctions() says where
+				//the chain leads -- through another junction in the way,
+				//when the run goes on through two of them -- the same
+				//rule the cable list applies, so the strip and the list
+				//can never disagree (#1500)
+				if (element_->linkType() & Element::Junction) {
+					for (Terminal *reached : endsPastJunctions(terminal_)) {
+						if (!reached || !reached->parentElement()) {
+							continue;
+						}
+						Element *reached_element = reached->parentElement();
+						if ((reached_element->linkType() & Element::AllReport)
+							|| own_.contains(reached_element->uuid())) {
+							continue;
+						}
+						landed_.insert(reached_element->uuid(), reached_element);
+					}
 					continue;
 				}
 				landed_.insert(element_->uuid(), element_);

@@ -1744,6 +1744,7 @@ QString QetScriptApi::elementLinkType(int folioIndex, const QString &elementUuid
 		case Element::Master:         return QStringLiteral("master");
 		case Element::Slave:          return QStringLiteral("slave");
 		case Element::Terminale:      return QStringLiteral("terminal");
+		case Element::Junction:       return QStringLiteral("junction");
 		default:                      return QStringLiteral("unknown");
 	}
 }

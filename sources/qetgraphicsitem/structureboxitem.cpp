@@ -24,13 +24,17 @@
 #include "element.h"
 #include "dynamicelementtextitem.h"
 #include "elementtextitemgroup.h"
+#include "../qetproject.h"
 #include "../qetxml.h"
 #include "../ui/structureboxpropertieswidget.h"
 
+#include <QApplication>
 #include <QDomDocument>
 #include <QSettings>
 #include <QFont>
+#include <QGraphicsScene>
 #include <QGraphicsSceneMouseEvent>
+#include <QLineF>
 
 #include <algorithm>
 
@@ -47,8 +51,12 @@ StructureBoxItem::StructureBoxItem(QPointF p1, QPointF p2, QGraphicsItem *parent
 	connect(this, &StructureBoxItem::identityChanged, this, [this]() { refreshSymbolTexts(diagram()); });
 	connect(this, &QetShapeItem::geometryChanged, this, [this]() { refreshSymbolTexts(diagram()); });
 	m_label = new StructureBoxLabelItem(this);
-	connect(m_label, &StructureBoxLabelItem::movedByUser, this, [this]() {m_label_moved = true;});
-	connect(this, &QetShapeItem::geometryChanged, this, &StructureBoxItem::placeLabel);
+	connect(m_label, &QGraphicsObject::xChanged,
+			this, &StructureBoxItem::labelPosChanged);
+	connect(m_label, &QGraphicsObject::yChanged,
+			this, &StructureBoxItem::labelPosChanged);
+	connect(this, &QetShapeItem::geometryChanged,
+			this, &StructureBoxItem::placeLabel);
 		//The name is drawn in the colour of the box's line
 	connect(this, &QetShapeItem::penChanged, this, &StructureBoxItem::refreshLabel);
 	refreshLabel();
@@ -81,13 +89,13 @@ QVariant StructureBoxItem::itemChange(GraphicsItemChange change, const QVariant 
 	Work out again every text of the symbols of @p diagram that shows a
 	reference designation or a place (refreshTextsOf()).
 */
-void StructureBoxItem::refreshSymbolTexts(Diagram *diagram)
+void StructureBoxItem::refreshSymbolTexts(Diagram *diagram, bool label_fields)
 {
 	if (!diagram) {
 		return;
 	}
 	for (Element *element : diagram->elements()) {
-		refreshTextsOf(element);
+		refreshTextsOf(element, label_fields);
 	}
 }
 
@@ -98,13 +106,28 @@ void StructureBoxItem::refreshSymbolTexts(Diagram *diagram)
 	the boxes around the symbol (enclosing()) and its folio, and so do
 	%{plant} and %{location} when the project inherits them
 	(QETProject::plantAndLocationInherited()). A symbol does not watch them.
+	So does its label field when the project shows it as a reference
+	designation (QETProject::designationDisplay()), or @p label_fields
+	asks for it (the setting has just changed), and the label fields of
+	the elements linked to it: a contact showing its coil's.
 */
-void StructureBoxItem::refreshTextsOf(Element *element)
+void StructureBoxItem::refreshTextsOf(Element *element, bool label_fields)
 {
 	if (!element || !element->diagram()) {
 		return;
 	}
-	const auto refresh = [](DynamicElementTextItem *text) {
+	const QETProject *project = element->diagram()->project();
+	const bool designation = label_fields || (project
+			&& project->designationDisplay() != QETProject::DesignationDisplay::Label);
+	const auto isLabelField = [](const DynamicElementTextItem *text) {
+		return text->textFrom() == DynamicElementTextItem::ElementInfo
+				&& text->infoName() == QLatin1String("label");
+	};
+	const auto refresh = [designation, isLabelField](DynamicElementTextItem *text) {
+		if (designation && isLabelField(text)) {
+			text->refreshConductorText();
+			return;
+		}
 		if (text->textFrom() != DynamicElementTextItem::CompositeText) {
 			return;
 		}
@@ -120,11 +143,31 @@ void StructureBoxItem::refreshTextsOf(Element *element)
 	for (ElementTextItemGroup *group : element->textGroups())
 		for (DynamicElementTextItem *text : group->texts())
 			refresh(text);
+
+	if (!designation) {
+		return;
+	}
+	for (Element *linked : element->linkedElements()) {
+		if (!linked || linked == element) {
+			continue;
+		}
+		const auto refreshLabel = [isLabelField](DynamicElementTextItem *text) {
+			if (isLabelField(text)) {
+				text->refreshConductorText();
+			}
+		};
+		for (DynamicElementTextItem *text : linked->dynamicTextItems())
+			refreshLabel(text);
+		for (ElementTextItemGroup *group : linked->textGroups())
+			for (DynamicElementTextItem *text : group->texts())
+				refreshLabel(text);
+	}
 }
 
 /**
 	@brief StructureBoxItem::refreshLabel
 	Its label says the box's designation, in the box's colour and size.
+	A box with no designation has no label to click.
 */
 void StructureBoxItem::refreshLabel()
 {
@@ -132,7 +175,9 @@ void StructureBoxItem::refreshLabel()
 	font.setPointSizeF(m_label_size);
 	m_label->setFont(font);
 	m_label->setDefaultTextColor(pen().color());
-	m_label->setPlainText(structureId());
+	const QString id = structureId();
+	m_label->setPlainText(id);
+	m_label->setVisible(!id.isEmpty());
 	placeLabel();
 }
 
@@ -145,8 +190,27 @@ void StructureBoxItem::refreshLabel()
 void StructureBoxItem::placeLabel()
 {
 	if (!m_label_moved)
-		m_label->setPos(rect().normalized().topLeft()
-						- QPointF(0, m_label->boundingRect().height()));
+		m_label->setPos(cornerLabelPos());
+}
+
+/**
+	@return where a label nobody has moved stands: above the top left
+	corner, outside the box
+*/
+QPointF StructureBoxItem::cornerLabelPos() const
+{
+	return rect().normalized().topLeft()
+			- QPointF(0, m_label->boundingRect().height());
+}
+
+/**
+	@brief StructureBoxItem::labelPosChanged
+	A label put back on the corner, by a drag or by an undo, follows the
+	corner again and is saved as never moved.
+*/
+void StructureBoxItem::labelPosChanged()
+{
+	m_label_moved = QLineF(m_label->pos(), cornerLabelPos()).length() > 0.01;
 }
 
 /**
@@ -159,15 +223,16 @@ QPointF StructureBoxItem::labelOffset() const
 
 void StructureBoxItem::setLabelOffset(const QPointF &offset)
 {
-	m_label_moved = true;
 	m_label->setPos(rect().normalized().topLeft() + offset);
 }
 
 void StructureBoxItem::setLabelSize(qreal size)
 {
-	if (qFuzzyCompare(m_label_size, size) || size <= 0) return;
+	if (qFuzzyCompare(m_label_size, size) || !(size > 0) || !qIsFinite(size))
+		return;
 	m_label_size = size;
 	refreshLabel();
+	emit labelSizeChanged();
 }
 
 void StructureBoxItem::setPlant(const QString &plant)
@@ -358,12 +423,19 @@ bool StructureBoxItem::fromXml(const QDomElement &e)
 	m_plant = e.attribute(QStringLiteral("plant"));
 	m_location = e.attribute(QStringLiteral("location"));
 	m_prefix = e.attribute(QStringLiteral("prefix"));
-	m_label_size = e.attribute(QStringLiteral("label_size"), QStringLiteral("8")).toDouble();
-	if (m_label_size <= 0) m_label_size = 8;
+	m_label_size = e.attribute(QStringLiteral("label_size"),
+							   QStringLiteral("8")).toDouble();
+	if (!(m_label_size > 0) || !qIsFinite(m_label_size))
+		m_label_size = 8;
 	refreshLabel();
+		//Read into a box already on a folio (an undo), a name saved at the
+		//corner goes back to the corner
 	if (e.hasAttribute(QStringLiteral("label_x")))
 		setLabelOffset(QPointF(e.attribute(QStringLiteral("label_x")).toDouble(),
 							   e.attribute(QStringLiteral("label_y")).toDouble()));
+	else
+		m_label->setPos(cornerLabelPos());
+	emit labelSizeChanged();
 	update();
 	emit identityChanged();
 	return true;
@@ -408,8 +480,22 @@ StructureBoxLabelItem::StructureBoxLabelItem(StructureBoxItem *box) :
 	setFlag(QGraphicsItem::ItemIsMovable, true);
 }
 
+/**
+	@brief StructureBoxLabelItem::mousePressEvent
+	Selected with its box, a drag moves the whole selection, as a drag of
+	the box would; Ctrl still adds or takes the label alone. Else it
+	moves the label alone.
+*/
 void StructureBoxLabelItem::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
+	m_dragging = false;
+	m_move_box = event->button() == Qt::LeftButton
+			&& !(event->modifiers() & Qt::ControlModifier)
+			&& isSelected() && m_box->isSelected();
+	if (m_move_box) {
+		m_box->mousePressEvent(event);
+		return;
+	}
 	DiagramTextItem::mousePressEvent(event);
 	m_start = pos();
 	m_grab = pos() - parentItem()->mapFromScene(event->scenePos());
@@ -417,21 +503,53 @@ void StructureBoxLabelItem::mousePressEvent(QGraphicsSceneMouseEvent *event)
 
 void StructureBoxLabelItem::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {
+	if (m_move_box) {
+		m_box->mouseMoveEvent(event);
+		return;
+	}
 	if (!(event->buttons() & Qt::LeftButton)) {
 		event->ignore();
 		return;
 	}
-	setPos(parentItem()->mapFromScene(event->scenePos()) + m_grab);
 	event->accept();
+		//A locked box keeps its name where it is
+	if (!m_box->isMovable())
+		return;
+	if (!m_dragging) {
+		const QPointF dragged =
+				event->scenePos() - event->buttonDownScenePos(Qt::LeftButton);
+		if (dragged.manhattanLength() < QApplication::startDragDistance())
+			return;
+		m_dragging = true;
+	}
+		//On the text grid like every other text, its middle there when the
+		//text grid says so; Ctrl places it freely
+	const QPointF wanted = parentItem()->mapToScene(
+			parentItem()->mapFromScene(event->scenePos()) + m_grab);
+	setPos(parentItem()->mapFromScene(Diagram::snapToTextGrid(wanted, this)));
 }
 
 void StructureBoxLabelItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
-	if (event->button() == Qt::LeftButton && pos() != m_start) {
-		emit movedByUser();
+	if (m_move_box) {
+		m_move_box = false;
+		m_box->mouseReleaseEvent(event);
+		return;
+	}
+		//The corner is off the text grid: dropped next to it, the name
+		//goes back to it and follows it again
+	if (m_dragging
+		&& QLineF(pos(), m_box->cornerLabelPos()).length() < 4)
+		setPos(m_box->cornerLabelPos());
+	const bool moved = m_dragging && pos() != m_start;
+	m_dragging = false;
+	if (event->button() == Qt::LeftButton && moved) {
 		if (Diagram *folio = diagram()) {
-			auto *undo = new QPropertyUndoCommand(this, "pos", m_start, pos());
-			undo->setText(tr("Move the name of a structure box"));
+				//A parent command: two drags are two undo steps, never
+				//merged as the steps of one QPropertyUndoCommand are
+			auto *undo = new QUndoCommand(
+					tr("Move the name of a structure box"));
+			new QPropertyUndoCommand(this, "pos", m_start, pos(), undo);
 			folio->undoStack().push(undo);
 		}
 		event->accept();

@@ -34,6 +34,25 @@ QSharedPointer<TerminalStripLayoutPattern> TerminalStripLayoutsHandler::defaultL
 }
 
 /**
+ * @brief TerminalStripLayoutsHandler::connectorLayout
+ * The default layout of the plan of a connector (a plug or a socket).
+ * It is the default layout with a wider header, which says the name, the
+ * kind and the device type of the connector, one on each line. It is worked
+ * out, never saved: only its font follows the default layout's.
+ * @return the layout shared by the plans of the connectors
+ */
+QSharedPointer<TerminalStripLayoutPattern> TerminalStripLayoutsHandler::connectorLayout()
+{
+	if (m_connector_layout.isNull()) {
+		m_connector_layout = QSharedPointer<TerminalStripLayoutPattern>::create();
+		m_connector_layout->m_name = QObject::tr("Connector layout");
+		m_connector_layout->m_header_rect = QRectF{0, 30, 110, 146};
+	}
+	m_connector_layout->setFont(m_default_layout->font());
+	return m_connector_layout;
+}
+
+/**
  * @brief TerminalStripLayoutsHandler::toXml
  * Append the default layout (font included) as a child of @a parent_element
  * @param parent_element
