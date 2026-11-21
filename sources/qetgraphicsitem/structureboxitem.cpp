@@ -487,10 +487,11 @@ void StructureBoxLabelItem::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 			return;
 		m_dragging = true;
 	}
-		//On the text grid like every other text; Ctrl places it freely
+		//On the text grid like every other text, its middle there when the
+		//text grid says so; Ctrl places it freely
 	const QPointF wanted = parentItem()->mapToScene(
 			parentItem()->mapFromScene(event->scenePos()) + m_grab);
-	setPos(parentItem()->mapFromScene(Diagram::snapToTextGrid(wanted)));
+	setPos(parentItem()->mapFromScene(Diagram::snapToTextGrid(wanted, this)));
 }
 
 void StructureBoxLabelItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)

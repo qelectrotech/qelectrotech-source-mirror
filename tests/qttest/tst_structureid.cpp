@@ -28,6 +28,7 @@
 #include "qetgraphicsitem/structureboxitem.h"
 #include "qetproject.h"
 #include "qetresult.h"
+#include "textgrid.h"
 #include "titleblockproperties.h"
 #include "ui/structureboxpropertieswidget.h"
 
@@ -1013,6 +1014,28 @@ private slots:
 		release.setButtonDownScenePos(Qt::LeftButton, at);
 		diagram->sendEvent(b->label(), &release);
 		QVERIFY(b->isSelected());
+		QVERIFY(!b->label()->isSelected());
+	}
+
+		//With "the middle of a text on the grid" set, the name of a box
+		//snaps by its middle, as every other text does
+	void theNameSnapsByItsMiddleWhenTheTextGridSaysSo()
+	{
+		QETProject project;
+		Diagram *diagram = project.addNewDiagram();
+		StructureBoxItem *b = box(diagram, QRectF(100, 100, 200, 200), QStringLiteral("SILO"), QStringLiteral("J3"));
+		const auto onGrid = [](const QPointF &p) {
+			const auto on = [](qreal v) { return qAbs(v / 10 - qRound(v / 10)) < 1e-6; };
+			return on(p.x()) && on(p.y());
+		};
+		QSettings().setValue(TextGrid::settings_key, 1);
+		QSettings().setValue(TextGrid::middle_key, true);
+		const QPointF grab = b->label()->mapToScene(QPointF(3, 3));
+		dragLabel(b->label(), grab, grab + QPointF(63, -47));
+		const bool middle_on_grid = onGrid(b->label()->sceneBoundingRect().center());
+		QSettings().remove(TextGrid::middle_key);
+		QSettings().remove(TextGrid::settings_key);
+		QVERIFY(middle_on_grid);
 	}
 
 		//The fixture with a moved and sized name opens as it was saved
