@@ -555,6 +555,8 @@ qet_add_app_test(tst_devicetypeeditor tst_devicetypeeditor.cpp)
 qet_add_app_test(tst_devicetypelink tst_devicetypelink.cpp)
 # Asking which device type a master placed is
 qet_add_app_test(tst_devicetypechooser tst_devicetypechooser.cpp)
+# The label and the part asked when a symbol is placed
+qet_add_app_test(tst_placelabelpart tst_placelabelpart.cpp)
 # Giving a device another device type, its contacts carried over
 qet_add_app_test(tst_devicetypechange tst_devicetypechange.cpp)
 # The device types listed, full and brief; contacts without their device

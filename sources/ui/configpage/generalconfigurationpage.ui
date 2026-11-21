@@ -849,6 +849,16 @@
             </property>
            </widget>
           </item>
+          <item>
+           <widget class="QCheckBox" name="m_symbol_ask_label_part_cb">
+            <property name="text">
+             <string>Ask the label and the part of a symbol when it is placed</string>
+            </property>
+            <property name="toolTip">
+             <string>One small dialog per symbol: its label (the next free one is proposed) and its part number, which brings the device type. Unchecked, a symbol is placed without asking.</string>
+            </property>
+           </widget>
+          </item>
          </layout>
         </widget>
        </item>
@@ -2433,6 +2443,7 @@
   <tabstop>m_border_0</tabstop>
   <tabstop>m_new_folio_group_cb</tabstop>
   <tabstop>m_macro_ask_labels_cb</tabstop>
+  <tabstop>m_symbol_ask_label_part_cb</tabstop>
   <tabstop>m_strip_sort_by_label</tabstop>
   <tabstop>m_wiring_rules_cb</tabstop>
   <tabstop>m_wiring_max_wires_sb</tabstop>
