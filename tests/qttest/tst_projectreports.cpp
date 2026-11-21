@@ -224,7 +224,7 @@ class tst_projectreports : public QObject
 		part(k5, {{"width", "10"}, {"height", "10"}});
 		part(contact, {{"width", "10"}, {"height", "10"}});
 		contact->linkToElement(k5);
-		QVERIFY(contact->isFree() == false);
+		QVERIFY(!contact->isFree());
 			//The same without labels: still one part
 		Element *coil = symbol(factory, QString(), QStringLiteral("master"));
 		Element *its_contact = symbol(factory, QString(), QStringLiteral("slave"));
@@ -256,6 +256,11 @@ class tst_projectreports : public QObject
 		QVERIFY(s1);
 		part(s1, {{"width", "45 mm"}, {"height", "90"}, {"manufacturer_reference", "C"}});
 
+			//Shown to the mm2: a 5 x 5 part alone is 0.000025, not 0
+		Element *s9 = symbol(silo, QStringLiteral("S9"));
+		QVERIFY(s9);
+		part(s9, {{"width", "5"}, {"height", "5"}});
+
 		const auto space = ProjectReports::report(QStringLiteral("space"));
 		const auto table = ProjectReports::read(&project, space);
 		QVERIFY2(table.error.isEmpty(), qPrintable(table.error));
@@ -263,8 +268,8 @@ class tst_projectreports : public QObject
 		QCOMPARE(table.rows.at(0), QStringList({QStringLiteral("=FACTORY+CP1"), QStringLiteral("4"),
 												QStringLiteral("0.0134"), QStringLiteral("120"),
 												QStringLiteral("1")}));
-		QCOMPARE(table.rows.at(1), QStringList({QStringLiteral("=SILO+P_1"), QStringLiteral("0"),
-												QStringLiteral("0"), QString(), QStringLiteral("1")}));
+		QCOMPARE(table.rows.at(1), QStringList({QStringLiteral("=SILO+P_1"), QStringLiteral("1"),
+												QStringLiteral("0.000025"), QString(), QStringLiteral("1")}));
 		QCOMPARE(column(ProjectReports::read(&project, space, {QStringLiteral("SILO"), {}}), 0),
 				 QStringList({QStringLiteral("=SILO+P_1")}));
 		QCOMPARE(column(ProjectReports::read(&project, space, {QStringLiteral("FACTORY"), QStringLiteral("CP1")}), 0),

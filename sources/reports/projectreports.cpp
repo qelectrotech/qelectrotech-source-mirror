@@ -306,7 +306,7 @@ namespace ProjectReports
 			r.columns = {{QStringLiteral("CASE WHEN structure_id = '' THEN %1 ELSE structure_id END")
 							  .arg(quoted(Text::tr("(no place)"))), Text::tr("Place")},
 						 {QStringLiteral("sized"), Text::tr("Parts with a size")},
-						 {decimal(QStringLiteral("area / 1000000.0"), 4), Text::tr("Area [m²]")},
+						 {decimal(QStringLiteral("area / 1000000.0"), 6), Text::tr("Area [m²]")},
 						 {decimal(QStringLiteral("depth"), 1), Text::tr("Deepest [mm]")},
 						 {QStringLiteral("unsized"), Text::tr("Parts without a size")}};
 			list << r;
