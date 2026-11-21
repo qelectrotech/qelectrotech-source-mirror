@@ -484,6 +484,8 @@ void QETProject::init()
 		//no event loop runs during a --run script. The database is the
 		//context: it is gone before the stack's clear() in the teardown.
 	connect(m_undo_stack, &QUndoStack::indexChanged, &m_data_base, &projectDataBase::commitWorkingCopy);
+	connect(m_undo_stack, &QUndoStack::indexChanged,
+			this, &QETProject::undoStackIndexChanged);
 	connect(&m_titleblocks_collection, &TitleBlockTemplatesCollection::changed, this, backup_needed);
 	connect(&m_titleblocks_collection, &TitleBlockTemplatesCollection::aboutToRemove, this, backup_needed);
 	connect(m_elements_collection, &XmlElementCollection::elementAdded, this, backup_needed);
