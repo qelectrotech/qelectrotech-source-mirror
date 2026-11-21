@@ -4914,6 +4914,8 @@ static QString effectiveStructureSql(const QString &own, const QString &folio)
 	contains the centre of the element (element_placement centre_x,
 	centre_y; x, y in a file saved before them), as
 	StructureBoxItem::enclosing() tests it.
+	product is the prefixes of all the boxes around it, the largest first,
+	each with its sign ("-B2-A1"), as StructureBoxItem::placeIn() builds it.
 	NULL where no box gives a value: the views then take the folio's.
 	Written into each view that reads it, not a view of its own: a .qetdb
 	then holds no view an older QElectroTech does not know.
@@ -4926,16 +4928,16 @@ QString projectDataBase::structurePlacesSql()
 					 real ? QStringLiteral("CAST(value AS REAL)") : QStringLiteral("value"));
 	};
 	return QStringLiteral(
-		"(WITH box_rows AS (SELECT folio_uuid, %1 AS plant, %2 AS location, "
+		"(WITH box_rows AS (SELECT folio_uuid, %1 AS plant, %2 AS location, %10 AS prefix, "
 			"%3 AS x1, %4 AS x2, %5 AS y1, %6 AS y2, "
 			"COALESCE(%7, 0) AS px, COALESCE(%8, 0) AS py "
 			"FROM drawing_item WHERE section = 'shape' GROUP BY item_uuid, folio_uuid "
 			"HAVING %9 = 'true'), "
-		"boxes AS (SELECT folio_uuid, plant, location, "
+		"boxes AS (SELECT folio_uuid, plant, location, prefix, "
 			"MIN(x1, x2) + px AS x_min, MAX(x1, x2) + px AS x_max, "
 			"MIN(y1, y2) + py AS y_min, MAX(y1, y2) + py AS y_max, "
 			"ABS(x2 - x1) * ABS(y2 - y1) AS area FROM box_rows), "
-		"hits AS (SELECT e.uuid AS element_uuid, b.plant, b.location, b.area "
+		"hits AS (SELECT e.uuid AS element_uuid, b.plant, b.location, b.prefix, b.area "
 			"FROM element e JOIN element_placement p ON p.element_uuid = e.uuid "
 			"JOIN boxes b ON b.folio_uuid = e.diagram_uuid "
 			"AND COALESCE(p.centre_x, p.x) BETWEEN b.x_min AND b.x_max "
@@ -4944,11 +4946,19 @@ QString projectDataBase::structurePlacesSql()
 			"FIRST_VALUE(NULLIF(plant, '')) OVER (PARTITION BY element_uuid "
 				"ORDER BY COALESCE(plant, '') = '', area) AS plant, "
 			"FIRST_VALUE(NULLIF(location, '')) OVER (PARTITION BY element_uuid "
-				"ORDER BY COALESCE(location, '') = '', area) AS location "
+				"ORDER BY COALESCE(location, '') = '', area) AS location, "
+				//The prefixes of every box around it, the largest first, each
+				//with its sign: the product levels above its label
+			"GROUP_CONCAT(CASE WHEN COALESCE(TRIM(prefix), '') = '' THEN NULL "
+				"WHEN substr(TRIM(prefix), 1, 1) = '-' THEN TRIM(prefix) "
+				"ELSE '-' || TRIM(prefix) END, '') OVER (PARTITION BY element_uuid "
+				"ORDER BY area DESC, prefix ROWS BETWEEN UNBOUNDED PRECEDING "
+				"AND UNBOUNDED FOLLOWING) AS product "
 		"FROM hits)")
 			.arg(pivot("plant", false), pivot("location", false),
 				 pivot("x1", true), pivot("x2", true), pivot("y1", true), pivot("y2", true),
-				 pivot("posX", true), pivot("posY", true), pivot("structure_box", false));
+				 pivot("posX", true), pivot("posY", true), pivot("structure_box", false))
+			.arg(pivot("prefix", false));
 }
 
 /**
@@ -4957,7 +4967,7 @@ QString projectDataBase::structurePlacesSql()
 	when it is empty, as AssignVariables::replaceVariable() composes it.
 */
 static QString structureIdSql(const QString &plant, const QString &location,
-							  const QString &label)
+							  const QString &label, const QString &product = QString())
 {
 	const auto part = [](const QString &sign, const QString &value) {
 			//A value typed with its sign ("-K1") keeps one sign, as
@@ -4967,10 +4977,22 @@ static QString structureIdSql(const QString &plant, const QString &location,
 							  "ELSE '%1' || %2 END")
 				.arg(sign, value);
 	};
+		//The label with the product levels above it (the prefixes of the
+		//structure boxes, "-B2-A1"), as AssignVariables::buildStructureId()
+		//does: not doubled when the label starts with them, and none
+		//without a label
+	const QString signed_label = QStringLiteral(
+			"CASE WHEN substr(%1, 1, 1) = '-' THEN %1 ELSE '-' || %1 END").arg(label);
+	const QString label_part = product.isEmpty() ? part(QStringLiteral("-"), label)
+		: QStringLiteral("CASE WHEN COALESCE(%1, '') = '' THEN '' "
+						 "WHEN COALESCE(%2, '') <> '' AND (%3 = %2 "
+						 "OR substr(%3, 1, length(%2) + 1) = %2 || '-') THEN %3 "
+						 "ELSE COALESCE(%2, '') || %3 END")
+			.arg(label, product, signed_label);
 	return QStringLiteral("(%1 || %2 || %3)")
 			.arg(part(QStringLiteral("="), plant),
 				 part(QStringLiteral("+"), location),
-				 part(QStringLiteral("-"), label));
+				 label_part);
 }
 
 /**
@@ -5372,7 +5394,7 @@ QStringList projectDataBase::publicViewStatements()
 			"e.definition AS symbol, e.uuid AS device_uuid, e.diagram_uuid AS folio_uuid, ")
 			+ structureIdSql(effectiveStructureSql(QStringLiteral("ei.plant"), QStringLiteral("es.plant"), QStringLiteral("di.plant")),
 							 effectiveStructureSql(QStringLiteral("ei.location"), QStringLiteral("es.location"), QStringLiteral("di.locmach")),
-							 QStringLiteral("ei.label"))
+							 QStringLiteral("ei.label"), QStringLiteral("es.product"))
 			+ QStringLiteral(" AS structure_id, ei.model AS model "
 			"FROM element e LEFT JOIN element_info ei ON ei.element_uuid = e.uuid "
 			"LEFT JOIN ") + structurePlacesSql() + QStringLiteral(" es ON es.element_uuid = e.uuid")
@@ -5392,11 +5414,11 @@ QStringList projectDataBase::publicViewStatements()
 			"t2.element_uuid AS to_device_uuid, ")
 			+ structureIdSql(effectiveStructureSql(QStringLiteral("ei1.plant"), QStringLiteral("es1.plant"), QStringLiteral("di.plant")),
 							 effectiveStructureSql(QStringLiteral("ei1.location"), QStringLiteral("es1.location"), QStringLiteral("di.locmach")),
-							 QStringLiteral("ei1.label"))
+							 QStringLiteral("ei1.label"), QStringLiteral("es1.product"))
 			+ QStringLiteral(" AS from_structure_id, ")
 			+ structureIdSql(effectiveStructureSql(QStringLiteral("ei2.plant"), QStringLiteral("es2.plant"), QStringLiteral("di.plant")),
 							 effectiveStructureSql(QStringLiteral("ei2.location"), QStringLiteral("es2.location"), QStringLiteral("di.locmach")),
-							 QStringLiteral("ei2.label"))
+							 QStringLiteral("ei2.label"), QStringLiteral("es2.product"))
 			+ QStringLiteral(" AS to_structure_id "
 			"FROM conductor c "
 			"LEFT JOIN terminal t1 ON t1.uuid = c.terminal1_uuid AND t1.element_uuid = c.terminal1_element_uuid "

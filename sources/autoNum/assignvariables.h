@@ -118,6 +118,23 @@ namespace autonum
 			*/
 			static QString buildStructureId(const QString &plant, const QString &location, const QString &suffix);
 
+			/**
+				@brief buildStructureId
+				The same, with the product levels above @p label: the
+				prefixes of the structure boxes the symbol is in, outermost
+				first, each with its "-" sign ("-B2-A1"). The designation is
+				then "=plant+location-B2-A1-label". A label already typed
+				with these levels in front ("-A1-K1" in box A1) is not
+				doubled, and an empty label gives no "-" part at all.
+				@param product the levels above the label, e.g. "-B2-A1", or empty
+			*/
+			static QString buildStructureId(const QString &plant, const QString &location,
+											const QString &product, const QString &label);
+
+			/// @return @p chain with the level @p prefix added to it, with
+			/// its "-" sign; @p chain itself when @p prefix is empty
+			static QString addProductLevel(const QString &chain, const QString &prefix);
+
 		private:
 			AssignVariables(const QString& formula, const sequentialNumbers& seqStruct, const FormulaContext &context);
 			void assignTitleBlockVar();

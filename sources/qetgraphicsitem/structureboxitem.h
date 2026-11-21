@@ -95,11 +95,15 @@ class StructureBoxItem : public QetShapeItem
 			/// Whether @p e, a <shape>, is a structure box
 		static bool isStructureBoxXml(const QDomElement &e);
 
-			/// A plant (=) and a location (+)
+			/// A plant (=) and a location (+), and the product levels (-)
+			/// above the symbols there: the prefixes of the boxes around,
+			/// outermost first, each with its sign ("-B2-A1"); empty
+			/// when no box has one
 		struct Place
 		{
 			QString plant;
 			QString location;
+			QString product;
 		};
 
 			/// The boxes @p element lies in, the smallest first. "In" means
@@ -116,7 +120,9 @@ class StructureBoxItem : public QetShapeItem
 		static QList<const StructureBoxItem *> boxesOf(const Diagram *diagram);
 			/// Where the boxes around @p element and its folio put it: field
 			/// by field, an empty plant or location of a box is the next
-			/// box's, then the folio's. The element's own values are not read.
+			/// box's, then the folio's. The product is the prefixes of all
+			/// the boxes around it, an empty one skipped. The element's own
+			/// values are not read.
 		static Place referencePlace(const Element *element);
 		static Place referencePlace(const Element *element,
 									const QList<const StructureBoxItem *> &folio_boxes);

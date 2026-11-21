@@ -346,7 +346,8 @@ StructureBoxItem::Place StructureBoxItem::referencePlace(
 /**
 	@brief StructureBoxItem::placeIn
 	@return the place @p boxes, those around @p element smallest first,
-	give it over its folio's
+	give it over its folio's; the product is the prefixes of @p boxes,
+	the largest first
 */
 StructureBoxItem::Place StructureBoxItem::placeIn(
 		const Element *element,
@@ -361,6 +362,7 @@ StructureBoxItem::Place StructureBoxItem::placeIn(
 	for (auto it = boxes.crbegin() ; it != boxes.crend() ; ++it) {
 		if (!(*it)->plant().isEmpty())    place.plant = (*it)->plant();
 		if (!(*it)->location().isEmpty()) place.location = (*it)->location();
+		place.product = autonum::AssignVariables::addProductLevel(place.product, (*it)->prefix());
 	}
 	return place;
 }
@@ -369,7 +371,7 @@ StructureBoxItem::Place StructureBoxItem::placeIn(
 	@brief StructureBoxItem::placeOf
 	@param element an element, possibly null
 	@return the element's own plant and location, an empty one taken from
-	referencePlace()
+	referencePlace(), and the product levels of its boxes
 */
 StructureBoxItem::Place StructureBoxItem::placeOf(const Element *element)
 {
@@ -377,12 +379,12 @@ StructureBoxItem::Place StructureBoxItem::placeOf(const Element *element)
 		return {};
 	const DiagramContext info = element->elementInformations();
 	Place place{info.value(QStringLiteral("plant")).toString(),
-				info.value(QStringLiteral("location")).toString()};
-	if (place.plant.isEmpty() || place.location.isEmpty()) {
-		const Place reference = referencePlace(element);
-		if (place.plant.isEmpty())    place.plant = reference.plant;
-		if (place.location.isEmpty()) place.location = reference.location;
-	}
+				info.value(QStringLiteral("location")).toString(), QString()};
+	const Place reference = referencePlace(element);
+	if (place.plant.isEmpty())    place.plant = reference.plant;
+	if (place.location.isEmpty()) place.location = reference.location;
+		//A symbol has no product levels of its own, only its boxes'
+	place.product = reference.product;
 	return place;
 }
 
