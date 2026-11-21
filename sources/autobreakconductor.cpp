@@ -186,6 +186,7 @@ QSet<Terminal *> autoBreakConductors(
 		for (const auto &m : matches) {
 			Conductor *new_c = new Conductor(m.connect_to, t);
 			new AddGraphicsObjectCommand(new_c, diagram, QPointF(), parent);
+			new_c->applySeparatedNodePropertiesIfEmpty();
 			ConductorAutoNumerotation can(new_c, diagram, parent);
 			can.numerate();
 			if (diagram->freezeNewConductors() || diagram->project()->isFreezeNewConductors())
@@ -223,6 +224,7 @@ QSet<Terminal *> autoBreakConductors(
 		if (other_terminal) {
 			Conductor *new_c2 = new Conductor(best_other, other_terminal);
 			new AddGraphicsObjectCommand(new_c2, diagram, QPointF(), parent);
+			new_c2->applySeparatedNodePropertiesIfEmpty();
 			ConductorAutoNumerotation can2(new_c2, diagram, parent);
 			can2.numerate();
 			if (diagram->freezeNewConductors() || diagram->project()->isFreezeNewConductors())

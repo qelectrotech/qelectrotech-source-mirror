@@ -2437,6 +2437,38 @@ void Conductor::applySeparatedNodeProperties(ConductorProperties &properties)
 }
 
 /**
+	@brief Conductor::applySeparatedNodePropertiesIfEmpty
+	The rule for a wire being created, in one call: what a function
+	separated terminal element lets through is taken from the other side
+	of the separation (@see applySeparatedNodeProperties), but only when
+	this wire's own side holds no wire to take anything from: what its
+	own side says wins over the other side, however far that side
+	reaches.
+
+	Only wires being created are meant: a pasted wire keeping the
+	properties it was copied with, or a wire being renumbered or split,
+	has something of its own and is left alone. That is why this is not
+	part of ConductorAutoNumerotation::numerate(), which runs on such
+	wires too.
+
+	A caller creating several wires in one gesture that join one
+	potential (ConductorCreator) calls applySeparatedNodeProperties()
+	with its own idea of "nothing of its own" instead: the wires of the
+	gesture would see each other here.
+*/
+void Conductor::applySeparatedNodePropertiesIfEmpty()
+{
+	if (!relatedPotentialConductors().isEmpty()) {
+		return;
+	}
+	ConductorProperties properties = this->properties();
+	applySeparatedNodeProperties(properties);
+	if (properties != this->properties()) {
+		setProperties(properties);
+	}
+}
+
+/**
 	@brief Conductor::diagramEditor
 	@return The parent diagram editor or nullptr;
 */

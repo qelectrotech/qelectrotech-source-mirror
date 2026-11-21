@@ -180,6 +180,7 @@ class Conductor : public QGraphicsObject
 		QSet<Conductor *> functionSeparatedConductors(
 				const bool all_diagram = true);
 		void applySeparatedNodeProperties(ConductorProperties &properties);
+		void applySeparatedNodePropertiesIfEmpty();
 		QETDiagramEditor* diagramEditor() const;
 		void editProperty ();
 

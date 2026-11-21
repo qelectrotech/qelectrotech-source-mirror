@@ -773,6 +773,11 @@ void Terminal::mouseReleaseEvent(QGraphicsSceneMouseEvent *e)
 	}
 	else
 	{
+			//This side of a function separated terminal element holds no
+			//wire to take anything from: what the separation lets through
+			//comes from the other side of it (@see
+			//Conductor::applySeparatedNodePropertiesIfEmpty)
+		new_conductor->applySeparatedNodePropertiesIfEmpty();
 		//Autonum it
 		ConductorAutoNumerotation can (new_conductor, diagram(), undo);
 		can.numerate();

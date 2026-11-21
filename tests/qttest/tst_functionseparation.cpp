@@ -23,6 +23,7 @@
 	// -- and a new number of its own.
 #include "qetapptest.h"
 #include "ElementsCollection/xmlelementcollection.h"
+#include "conductorautonumerotation.h"
 #include "factory/elementfactory.h"
 #include "qetgraphicsitem/conductor.h"
 #include "qetgraphicsitem/element.h"
@@ -272,6 +273,46 @@ class tst_functionseparation : public QObject
 			QCOMPARE(static_cast<int>(fresh->properties().style),
 				 static_cast<int>(Qt::DashLine));
 			QVERIFY(fresh->properties().text != QStringLiteral("101"));
+		}
+
+			// The numbering of a wire that already exists speaks of the
+			// number alone: multi-paste runs it on its pasted wires, and
+			// a pasted wire keeps the voltage and the drawing it was
+			// copied with (#review)
+		void renumberingAnExistingWireKeepsItsProperties()
+		{
+			Element *block = place(QStringLiteral("block"), {100, 1100});
+			Element *left = place(QStringLiteral("load"), {40, 1100});
+			Element *right = place(QStringLiteral("load"), {200, 1100});
+			QVERIFY(block && left && right);
+			separate(block);
+
+			drawWire(named(left, QStringLiteral("w")),
+				 named(block, QStringLiteral("1")));
+			Conductor *far = wire(named(block, QStringLiteral("1")));
+			QVERIFY(far);
+			ConductorProperties far_p = far->properties();
+			far_p.m_tension_protocol = QStringLiteral("24 V DC");
+			far_p.color = QColor(255, 0, 0);
+			far->setProperties(far_p);
+
+			drawWire(named(block, QStringLiteral("2")),
+				 named(right, QStringLiteral("w")));
+			Conductor *own = wire(named(block, QStringLiteral("2")));
+			QVERIFY(own);
+			ConductorProperties own_p = own->properties();
+			own_p.m_tension_protocol = QStringLiteral("0 V");
+			own_p.color = QColor(0, 0, 255);
+			own->setProperties(own_p);
+
+				//What multi-paste does to a pasted wire of the far side
+				//of a separation: the number goes on, the voltage and
+				//the drawing stay what the wire says
+			ConductorAutoNumerotation can(own, m_diagram);
+			can.numerate();
+			QCOMPARE(own->properties().m_tension_protocol,
+				 QStringLiteral("0 V"));
+			QCOMPARE(own->properties().color, QColor(0, 0, 255));
 		}
 };
 
