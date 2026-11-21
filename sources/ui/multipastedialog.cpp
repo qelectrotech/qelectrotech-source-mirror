@@ -144,6 +144,12 @@ void MultiPasteDialog::on_m_button_box_accepted()
 						Conductor *conductor = new Conductor(pair.first, pair.second);
 						m_diagram->undoStack().push(new AddGraphicsObjectCommand(conductor, m_diagram, QPointF()));
 
+							//An empty side of a function separated terminal
+							//element takes what the separation lets through
+							//from its other side (@see Conductor::
+							//applySeparatedNodePropertiesIfEmpty)
+						conductor->applySeparatedNodePropertiesIfEmpty();
+
 						//Autonum the new conductor, the undo command associated for this, have for parent undo_object
 						ConductorAutoNumerotation can  (conductor, m_diagram);
 						can.numerate();

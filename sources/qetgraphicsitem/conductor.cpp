@@ -2390,10 +2390,12 @@ QSet<Conductor *> Conductor::relatedPotentialConductors(const bool all_diagram,
 
 	Those conductors are deliberately not part of
 	relatedPotentialConductors(): no property may be copied over them
-	by default. One does cross that separation, though: the voltage /
-	protocol, which describes the electrical node itself. Callers that
-	push it over the whole potential use this method to reach the other
-	side (@see ConductorProperties::applyTensionProtocolChange).
+	by default. Only what the node itself describes crosses that
+	separation: the voltage / protocol and the drawing of the wire --
+	colour, line style and width (@see
+	ConductorProperties::applyNodePropertiesChange). Callers that push
+	those fields over the whole potential use this method to reach the
+	other side.
 
 	It is simply the potential computed with the separations ignored,
 	minus the potential that respects them.
@@ -2408,6 +2410,62 @@ QSet<Conductor *> Conductor::functionSeparatedConductors(const bool all_diagram)
 	separated.remove(this);
 
 	return separated;
+}
+
+/**
+	@brief Conductor::applySeparatedNodeProperties
+	Copy into @p properties the fields a function separated terminal
+	element lets through, taken from the conductors the other side of
+	the separation holds (@see functionSeparatedConductors): the voltage
+	/ protocol and the drawing of the wire, as if the terminal had no
+	function separation. A field those conductors do not agree on is
+	left as it is in @p properties.
+
+	A new conductor applies this when its own side of the separation
+	holds no wire to take anything from: what its own side says wins
+	over the other side, however far that side reaches, and only the
+	fields this side leaves empty come from across the separation.
+	@sa ConductorProperties::applyAgreedNodeProperties
+*/
+void Conductor::applySeparatedNodeProperties(ConductorProperties &properties)
+{
+	QList<ConductorProperties> separated;
+	for (Conductor *c : functionSeparatedConductors()) {
+		separated << c->properties();
+	}
+	properties.applyAgreedNodeProperties(separated);
+}
+
+/**
+	@brief Conductor::applySeparatedNodePropertiesIfEmpty
+	The rule for a wire being created, in one call: what a function
+	separated terminal element lets through is taken from the other side
+	of the separation (@see applySeparatedNodeProperties), but only when
+	this wire's own side holds no wire to take anything from: what its
+	own side says wins over the other side, however far that side
+	reaches.
+
+	Only wires being created are meant: a pasted wire keeping the
+	properties it was copied with, or a wire being renumbered or split,
+	has something of its own and is left alone. That is why this is not
+	part of ConductorAutoNumerotation::numerate(), which runs on such
+	wires too.
+
+	A caller creating several wires in one gesture that join one
+	potential (ConductorCreator) calls applySeparatedNodeProperties()
+	with its own idea of "nothing of its own" instead: the wires of the
+	gesture would see each other here.
+*/
+void Conductor::applySeparatedNodePropertiesIfEmpty()
+{
+	if (!relatedPotentialConductors().isEmpty()) {
+		return;
+	}
+	ConductorProperties properties = this->properties();
+	applySeparatedNodeProperties(properties);
+	if (properties != this->properties()) {
+		setProperties(properties);
+	}
 }
 
 /**
