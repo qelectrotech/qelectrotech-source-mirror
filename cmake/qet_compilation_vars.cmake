@@ -213,6 +213,10 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/ui/placelabelpartdialog.cpp
   ${QET_DIR}/sources/ui/devicetypechangedialog.h
   ${QET_DIR}/sources/ui/devicetypechangedialog.cpp
+  ${QET_DIR}/sources/ui/parttypesdialog.h
+  ${QET_DIR}/sources/ui/parttypesdialog.cpp
+  ${QET_DIR}/sources/materiallist/parttypes.h
+  ${QET_DIR}/sources/materiallist/parttypes.cpp
   ${QET_DIR}/sources/ui/devicetypecheckdialog.cpp
   ${QET_DIR}/sources/conductornumexport.cpp
   ${QET_DIR}/sources/wiringlistexport.h
