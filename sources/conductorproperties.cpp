@@ -1000,11 +1000,10 @@ void ConductorProperties::applyChanges(const ConductorProperties &before,
 	@brief ConductorProperties::applyTensionProtocolChange
 	Copy into this the voltage / protocol when it differs between before
 	and after, and leave every other attribute as it is. This is the one
-	property a function separated terminal element lets through
-	(@see Conductor::functionSeparatedConductors): the voltage /
-	protocol describes the electrical node itself, while the text, the
-	function, the wire color... describe one side of the separation and
-	stay local to it.
+	property a bridge carries over the wires it sits on (@see
+	BridgeManager::writeInformation): the voltage / protocol describes
+	the electrical node itself, while the text, the function, the wire
+	color... describe one wire and stay local to it.
 
 	Both arguments describe one edit -- what was shown to the user, and
 	what the user made of it -- so that only an edit which really
@@ -1020,6 +1019,83 @@ void ConductorProperties::applyTensionProtocolChange(const ConductorProperties &
 {
 	if (before.m_tension_protocol != after.m_tension_protocol)
 		m_tension_protocol = after.m_tension_protocol;
+}
+
+/**
+	@brief ConductorProperties::applyNodePropertiesChange
+	Copy into this the fields a function separated terminal element lets
+	through, when they differ between before and after, and leave every
+	other attribute as it is (@see Conductor::functionSeparatedConductors):
+	the voltage / protocol, which describes the electrical node itself,
+	and the drawing of the wire -- colour, line style and width -- which
+	the node draws the same on both sides of the separation. The text,
+	the function, the wire color... describe one side of the separation
+	and stay local to it.
+
+	Both arguments describe one edit, as for
+	applyTensionProtocolChange(): only an edit which really changed one
+	of those fields passes it on.
+	@param before : the properties as they were shown to the user
+	@param after : the properties after the user's edit
+*/
+void ConductorProperties::applyNodePropertiesChange(const ConductorProperties &before,
+						    const ConductorProperties &after)
+{
+	const auto take = [](auto &mine, const auto &was, const auto &now) {
+		if (was != now)
+			mine = now;
+	};
+
+	take(m_tension_protocol, before.m_tension_protocol, after.m_tension_protocol);
+	take(color,                  before.color,                  after.color);
+	take(m_bicolor,              before.m_bicolor,              after.m_bicolor);
+	take(m_color_2,              before.m_color_2,              after.m_color_2);
+	take(style,                  before.style,                  after.style);
+	take(m_dash_size,            before.m_dash_size,            after.m_dash_size);
+	take(m_dash_pattern.enabled, before.m_dash_pattern.enabled, after.m_dash_pattern.enabled);
+	take(m_dash_pattern.dash,    before.m_dash_pattern.dash,    after.m_dash_pattern.dash);
+	take(m_dash_pattern.gap,     before.m_dash_pattern.gap,     after.m_dash_pattern.gap);
+	take(m_dash_pattern.dot,     before.m_dash_pattern.dot,     after.m_dash_pattern.dot);
+	take(m_dash_pattern.dot_gap, before.m_dash_pattern.dot_gap, after.m_dash_pattern.dot_gap);
+	take(cond_size,              before.cond_size,              after.cond_size);
+}
+
+/**
+	@brief ConductorProperties::applyAgreedNodeProperties
+	Copy into this the fields a function separated terminal element lets
+	through (@see applyNodePropertiesChange) that every properties of
+	@p list agrees on; a field they do not agree on is left as it is.
+
+	A new conductor whose own side of the separation holds no wire takes
+	those fields from the wires the other side holds this way: as if the
+	terminal had no function separation, the drawing and the voltage of
+	the node cross, while the wire's own text and number stay new
+	(@see Conductor::applySeparatedNodeProperties).
+	@param list : the properties to take the fields from
+*/
+void ConductorProperties::applyAgreedNodeProperties(const QList<ConductorProperties> &list)
+{
+	if (list.isEmpty()) {
+		return;
+	}
+	const ConductorProperties &first = list.first();
+	const auto take = [&first, &list](auto &mine, auto field) {
+		for (const ConductorProperties &p : list) {
+			if (p.*field != first.*field) {
+				return;
+			}
+		}
+		mine = first.*field;
+	};
+
+	take(m_tension_protocol, &ConductorProperties::m_tension_protocol);
+	take(color,                  &ConductorProperties::color);
+	take(m_bicolor,              &ConductorProperties::m_bicolor);
+	take(m_color_2,              &ConductorProperties::m_color_2);
+	take(style,                  &ConductorProperties::style);
+	take(m_dash_size,            &ConductorProperties::m_dash_size);
+	take(m_dash_pattern,         &ConductorProperties::m_dash_pattern);
+	take(cond_size,              &ConductorProperties::cond_size);
 }
 
 /**

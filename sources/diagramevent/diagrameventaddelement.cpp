@@ -411,6 +411,11 @@ void DiagramEventAddElement::addElement()
 		Conductor *conductor = new Conductor(pair.first, pair.second);
 		new AddGraphicsObjectCommand(conductor, m_diagram, QPointF(), undo_object);
 
+			//An empty side of a function separated terminal element takes
+			//what the separation lets through from its other side (@see
+			//Conductor::applySeparatedNodePropertiesIfEmpty)
+		conductor->applySeparatedNodePropertiesIfEmpty();
+
 			//Autonum the new conductor, the undo command associated for this, have for parent undo_object
 		ConductorAutoNumerotation can  (conductor, m_diagram, undo_object);
 		can.numerate();

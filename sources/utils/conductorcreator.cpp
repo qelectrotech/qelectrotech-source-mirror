@@ -63,6 +63,17 @@ ConductorCreator::ConductorCreator(Diagram *d, QList<Terminal *> terminals_list)
 		}
 		Conductor *cond = new Conductor(pair.first, pair.second);
 		cond->setProperties(m_properties);
+			//No potential was found for these terminals: a function
+			//separated terminal element they are on keeps its own side's
+			//properties to that side, and what the separation lets through
+			//comes from the other side of it -- the voltage / protocol and
+			//the drawing, as if the terminal had no function separation
+			//(@see Conductor::applySeparatedNodeProperties)
+		if (!m_properties_from_potential) {
+			ConductorProperties properties = cond->properties();
+			cond->applySeparatedNodeProperties(properties);
+			cond->setProperties(properties);
+		}
 		cond->setSequenceNum(m_sequential_number);
 		d->undoStack().push(new AddGraphicsObjectCommand(cond, d));
 		
@@ -189,6 +200,7 @@ bool ConductorCreator::setUpPropertieToUse()
 		//we get one of them
 	if (!potentials.isEmpty())
 	{
+		m_properties_from_potential = true;
 		const QList<ConductorProperties> cp_list = distinctProperties(potentials);
 		if (cp_list.size() >= 2)
 		{
