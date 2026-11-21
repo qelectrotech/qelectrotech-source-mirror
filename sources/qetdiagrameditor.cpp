@@ -102,6 +102,8 @@
 #include "ui/duplicatelabelsdialog.h"
 #include "ui/devicetypecheckdialog.h"
 #include "ui/devicetypesdialog.h"
+#include "materiallist/materiallist.h"
+#include "ui/parttypesdialog.h"
 #include "ui/reportsdialog.h"
 #include "ui/potentialcheckdialog.h"
 #include "ui/duplicateoffsetdialog.h"
@@ -1273,6 +1275,16 @@ void QETDiagramEditor::setUpActions()
 		}
 	});
 	// Devices not drawn the way their device type says
+	m_part_types = new QAction(tr("Parts without a device type..."), this);
+	m_part_types->setObjectName(QStringLiteral("partTypes"));
+	m_part_types->setStatusTip(tr("Lists the parts of your material list which do not say their device type"));
+	ShortcutManager::instance().registerAction(m_part_types, "diagrameditor.part_types", tr("Diagram editors"), QKeySequence());
+	connect(m_part_types, &QAction::triggered, this, [this]() {
+		QString path = MaterialList::configuredPath();
+		if (path.isEmpty()) path = MaterialList::defaultPath();
+		PartTypesDialog dialog(currentProject(), path, this);
+		dialog.exec();
+	});
 	m_check_device_types = new QAction(tr("Check device types..."), this);
 	m_check_device_types->setObjectName(QStringLiteral("checkDeviceTypes"));
 	m_check_device_types->setStatusTip(tr("Lists the parts of each device's type which are not drawn, and the symbols beyond it", "status bar tip"));
@@ -2381,6 +2393,7 @@ void QETDiagramEditor::setUpMenu()
 	menu_project->addAction(m_check_potentials);
 	menu_project->addAction(m_device_types);
 	menu_project->addAction(m_check_device_types);
+	menu_project->addAction(m_part_types);
 	menu_project->addAction(m_project_languages);
 	menu_project -> addSeparator();
 	menu_project -> addAction(m_csv_export);
@@ -4010,6 +4023,7 @@ void QETDiagramEditor::slot_updateActions()
 	m_check_potentials->setEnabled(opened_project);
 	m_device_types->setEnabled(opened_project);
 	m_check_device_types->setEnabled(opened_project);
+	m_part_types->setEnabled(opened_project);
 	m_reports->setEnabled(opened_project);
 	m_project_languages->setEnabled(opened_project);
 	m_project_history             -> setEnabled(opened_project);
