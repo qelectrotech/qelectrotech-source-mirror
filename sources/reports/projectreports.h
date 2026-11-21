@@ -70,6 +70,8 @@ namespace ProjectReports
 	QList<Report> all();
 	Report report(const QString &id);
 	QList<Place> places(QETProject *project);
+	QString locationsSql();
+	Table locations(QETProject *project);
 	QString sql(const Report &report, const Place &place = Place());
 	Table read(QETProject *project, const Report &report, const Place &place = Place());
 

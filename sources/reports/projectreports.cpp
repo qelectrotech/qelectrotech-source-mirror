@@ -29,6 +29,7 @@
 #include <QPainter>
 #include <QPdfWriter>
 #include <QSaveFile>
+#include <QSqlError>
 #include <QSqlQuery>
 #include <QSqlRecord>
 #include <QTextStream>
@@ -346,6 +347,46 @@ namespace ProjectReports
 				list << Place{plant, location};
 		}
 		return list;
+	}
+
+	/**
+		@return the query behind the plants and locations screen: qet_locations
+		with nothing added, so the screen and the database cannot disagree.
+		The columns are, in order: plant, location, designation, symbols,
+		folios, the position of the first folio.
+	*/
+	QString locationsSql()
+	{
+		return QStringLiteral(
+			"SELECT plant, location, structure_id, symbols, folios, first_folio_number "
+			"FROM qet_locations ORDER BY plant, location");
+	}
+
+	/**
+		@return every plant and location of @p project with how many symbols
+		and folios each holds. A symbol or folio with neither is the row whose
+		plant and location are both empty.
+	*/
+	Table locations(QETProject *project)
+	{
+		Table table;
+		table.headers = {Text::tr("Plant"), Text::tr("Location"), Text::tr("Designation"),
+						 Text::tr("Symbols"), Text::tr("Folios"), Text::tr("First folio")};
+		if (!project || !project->dataBase()) {
+			table.error = Text::tr("The project has no database.");
+			return table;
+		}
+		project->dataBase()->updateDB();
+		QSqlQuery query = project->dataBase()->newQuery(locationsSql());
+		while (query.next()) {
+			QStringList row;
+			for (int i = 0 ; i < 6 ; ++i)
+				row << query.value(i).toString();
+			table.rows << row;
+		}
+		if (query.lastError().isValid())
+			table.error = query.lastError().text();
+		return table;
 	}
 
 	/**

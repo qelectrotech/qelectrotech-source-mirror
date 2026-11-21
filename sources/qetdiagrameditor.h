@@ -296,6 +296,7 @@ class QETDiagramEditor : public QETMainWindow
 		QAction *m_device_types = nullptr;
 		QAction *m_part_types = nullptr;
 		QAction *m_reports = nullptr;
+		QAction *m_plants_locations = nullptr;
 		QAction* m_project_languages = nullptr;
 
 		QAction

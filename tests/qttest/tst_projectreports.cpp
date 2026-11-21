@@ -26,6 +26,7 @@
 #include "qetgraphicsitem/terminal.h"
 #include "qetproject.h"
 #include "reports/projectreports.h"
+#include "ui/plantslocationsdialog.h"
 #include "ui/reportsdialog.h"
 
 #include <QComboBox>
@@ -34,6 +35,7 @@
 #include <QLabel>
 #include <QTableWidget>
 #include <QTemporaryDir>
+#include <QSqlQuery>
 #include <QtTest>
 
 /**
@@ -189,6 +191,51 @@ class tst_projectreports : public QObject
 		for (const auto &place : places) texts << place.text();
 		QCOMPARE(texts, QStringList({QStringLiteral("=FACTORY"), QStringLiteral("=FACTORY+CP1"),
 									 QStringLiteral("=SILO"), QStringLiteral("=SILO+P_1")}));
+	}
+
+	void plantsAndLocationsWithCounts()
+	{
+		QETProject project;
+		build(project);
+			//A folio and a symbol with no plant and no location
+		Diagram *loose = project.addNewDiagram();
+		QVERIFY(symbol(loose, QStringLiteral("Q1")));
+		const auto table = ProjectReports::locations(&project);
+		QVERIFY2(table.error.isEmpty(), qPrintable(table.error));
+		QCOMPARE(table.headers.size(), 6);
+			//The screen is the view, row for row
+		QSqlQuery view = project.dataBase()->newQuery(QStringLiteral(
+				"SELECT COUNT(*) FROM qet_locations"));
+		QVERIFY(view.next());
+		QCOMPARE(table.rows.size(), view.value(0).toInt());
+		QCOMPARE(table.rows.size(), 3);
+			//Plant, location, designation, symbols, folios, first folio
+		QCOMPARE(table.rows.at(0), QStringList({QString(), QString(), QString(),
+												QStringLiteral("1"), QStringLiteral("1"), QStringLiteral("3")}));
+		QCOMPARE(table.rows.at(1).mid(0, 2), QStringList({QStringLiteral("FACTORY"), QStringLiteral("CP1")}));
+		QCOMPARE(table.rows.at(1).at(2), QStringLiteral("=FACTORY+CP1"));
+		QCOMPARE(table.rows.at(1).mid(3), QStringList({QStringLiteral("2"), QStringLiteral("1"), QStringLiteral("1")}));
+		QCOMPARE(table.rows.at(2).mid(3), QStringList({QStringLiteral("2"), QStringLiteral("1"), QStringLiteral("2")}));
+	}
+
+	void plantsAndLocationsDialog()
+	{
+		QETProject project;
+		build(project);
+		PlantsLocationsDialog dialog(&project);
+		auto *table = dialog.findChild<QTableWidget *>(QStringLiteral("placesTable"));
+		QVERIFY(table);
+		QCOMPARE(table->rowCount(), 2);
+		QCOMPARE(table->item(1, 0)->text(), QStringLiteral("SILO"));
+			//Double-click asks for that place's first folio
+		QSignalSpy spy(&dialog, &PlantsLocationsDialog::showFolio);
+		table->itemDoubleClicked(table->item(1, 1));
+		QCOMPARE(spy.count(), 1);
+		QCOMPARE(spy.first().first().toInt(), 2);
+			//An empty project is an empty table, not an error
+		QETProject empty;
+		PlantsLocationsDialog none(&empty);
+		QCOMPARE(none.findChild<QTableWidget *>(QStringLiteral("placesTable"))->rowCount(), 0);
 	}
 
 	void panelSpacePerPlace()

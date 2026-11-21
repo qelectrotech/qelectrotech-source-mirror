@@ -106,6 +106,7 @@
 #include "materiallist/materiallist.h"
 #include "ui/parttypesdialog.h"
 #include "ui/reportsdialog.h"
+#include "ui/plantslocationsdialog.h"
 #include "ui/potentialcheckdialog.h"
 #include "ui/openwireendsdialog.h"
 #include "ui/duplicateoffsetdialog.h"
@@ -1300,6 +1301,22 @@ void QETDiagramEditor::setUpActions()
 			dialog->show();
 		}
 	});
+	// The project's plants and locations with their counts
+	m_plants_locations = new QAction(tr("Plants and locations..."), this);
+	m_plants_locations->setObjectName(QStringLiteral("plantsLocations"));
+	m_plants_locations->setStatusTip(tr("Lists the project's plants and locations with their symbol and folio counts", "status bar tip"));
+	ShortcutManager::instance().registerAction(m_plants_locations, "diagrameditor.plants_locations", tr("Diagram editors"), QKeySequence());
+	connect(m_plants_locations, &QAction::triggered, this, [this]() {
+		if (ProjectView *view = currentProjectView()) {
+			auto *dialog = new PlantsLocationsDialog(view->project(), this);
+			dialog->setAttribute(Qt::WA_DeleteOnClose);
+			connect(dialog, &PlantsLocationsDialog::showFolio, view, [view](int position) {
+				if (!view->project()) return;
+				view->showDiagram(view->project()->folios().value(position - 1));
+			});
+			dialog->show();
+		}
+	});
 	// Devices not drawn the way their device type says
 	m_part_types = new QAction(tr("Parts without a device type..."), this);
 	m_part_types->setObjectName(QStringLiteral("partTypes"));
@@ -2455,6 +2472,7 @@ void QETDiagramEditor::setUpMenu()
 	menu_project -> addAction(m_project_export_wiring_list);
 	menu_project -> addAction(m_project_wiring_list_view);
 	menu_project -> addAction(m_reports);
+	menu_project -> addAction(m_plants_locations);
 	menu_project -> addAction(m_reload_element_drawings);
 	menu_project -> addAction(m_update_elements_from_collections);
 	menu_project -> addAction(m_reset_symbol_texts);
@@ -4089,6 +4107,7 @@ void QETDiagramEditor::slot_updateActions()
 	m_check_device_types->setEnabled(opened_project);
 	m_part_types->setEnabled(opened_project);
 	m_reports->setEnabled(opened_project);
+	m_plants_locations->setEnabled(opened_project);
 	m_project_languages->setEnabled(opened_project);
 	m_project_history             -> setEnabled(opened_project);
 	m_export_delivery             -> setEnabled(opened_project);

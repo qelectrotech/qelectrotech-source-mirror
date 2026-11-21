@@ -205,6 +205,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/ui/duplicatelabelsdialog.cpp
   ${QET_DIR}/sources/ui/reportsdialog.h
   ${QET_DIR}/sources/ui/reportsdialog.cpp
+  ${QET_DIR}/sources/ui/plantslocationsdialog.h
+  ${QET_DIR}/sources/ui/plantslocationsdialog.cpp
   ${QET_DIR}/sources/reports/projectreports.h
   ${QET_DIR}/sources/reports/projectreports.cpp
   ${QET_DIR}/sources/ui/devicetypecheckdialog.h
