@@ -174,6 +174,13 @@ void ConductorPropertiesEditorWidget::setConductors(
 		   "selection properties panel", count));
 	m_count_label->setVisible(count > 1);
 
+		//The "Customize..." button of the stroke with colour and
+		//section edits the drawing of the project these conductors
+		//are on
+	m_cpw->setProject(sorted.first()->diagram()
+			  ? sorted.first()->diagram()->project()
+			  : nullptr);
+
 	setEnabled(true);
 	updateUi();
 }

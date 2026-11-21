@@ -29,6 +29,7 @@
 #include "dataBase/qetdbfile.h"
 #include "properties/projectlanguages.h"
 #include "properties/potentialtypes.h"
+#include "properties/definitionmarkstyle.h"
 #include "properties/reportproperties.h"
 #include "properties/xrefproperties.h"
 #include "titleblock/templatescollection.h"
@@ -350,6 +351,11 @@ class QETProject : public QObject
 		void setLanguages(const ProjectLanguages &languages);
 		const PotentialTypes &potentialTypes() const {return m_potential_types;}
 		void setPotentialTypes(const PotentialTypes &potential_types);
+			/// How the definition marks of this project's conductors
+			/// are drawn; carried by the project, so it looks the
+			/// same wherever it is opened
+		const DefinitionMarkStyle &definitionMarkStyle() const {return m_definition_mark_style;}
+		void setDefinitionMarkStyle(const DefinitionMarkStyle &style);
 			/// The type @p wire takes from the source terminals of its
 			/// potential, in the mode that draws from them; empty otherwise
 		QString derivedPotentialType(const QUuid &wire);
@@ -482,6 +488,9 @@ class QETProject : public QObject
 		void autoNumContextUpdated();
 		void folioAutoNumRemoved();
 		void defaultTitleBlockPropertiesChanged();
+			/// The definition marks of this project are drawn
+			/// another way from now on
+		void definitionMarkStyleChanged();
 		void conductorAutoNumChanged();
 			/// A cable joined or left this project. Views over the
 			/// cables -- the cable list table -- listen to both to work
@@ -546,6 +555,7 @@ class QETProject : public QObject
 		void readDeviceTypesXml(QDomDocument &xml_project);
 		void readTerminalLabelSplitXml(QDomDocument &xml_project);
 		void readWiringRulesXml(QDomDocument &xml_project);
+		void readDefinitionMarkStyleXml(QDomDocument &xml_project);
 
 		void writeProjectPropertiesXml(QDomElement &);
 		void writeDefaultPropertiesXml(QDomElement &);
@@ -569,6 +579,7 @@ class QETProject : public QObject
 		void writeDeviceTypesXml(QDomElement &);
 		void writeTerminalLabelSplitXml(QDomElement &);
 		void writeWiringRulesXml(QDomElement &);
+		void writeDefinitionMarkStyleXml(QDomElement &);
 		void addDiagram(Diagram *diagram, int pos = -1);
 		void detachDiagram(Diagram *diagram);
 		void writeBackup();
@@ -698,6 +709,9 @@ class QETProject : public QObject
 		ProjectLanguages m_languages;
 			/// The potential types and whether conductors are drawn from them
 		PotentialTypes m_potential_types;
+			/// How the definition marks of this project's conductors
+			/// are drawn (definitionMarkStyle())
+		DefinitionMarkStyle m_definition_mark_style;
 			/// The types wires take from the sources, see derivedPotentialType()
 		QHash<QUuid, QString> m_derived_potential_types;
 		bool m_derived_potential_types_due = false;

@@ -75,6 +75,7 @@ DiagramPropertiesDialog::DiagramPropertiesDialog(Diagram *diagram, QWidget *pare
 		//Conductor widget
 	m_cpw = new ConductorPropertiesWidget(conductors, this);
 	m_cpw -> setReadOnly(diagram_is_read_only);
+	m_cpw -> setProject(diagram->project());
 
 	QComboBox *autonum_combobox = m_cpw->autonumComboBox();
 	autonum_combobox->addItems(diagram->project()->conductorAutoNum().keys());
