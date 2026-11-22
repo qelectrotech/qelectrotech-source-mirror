@@ -116,6 +116,7 @@ set(QET_RES_FILES
   ${QET_DIR}/sources/ui/linksingleelementwidget.ui
   ${QET_DIR}/sources/ui/marginseditdialog.ui
   ${QET_DIR}/sources/ui/masterpropertieswidget.ui
+  ${QET_DIR}/sources/ui/terminalpropertieswidget.ui
   ${QET_DIR}/sources/ui/multipastedialog.ui
   ${QET_DIR}/sources/ui/potentialselectordialog.ui
   ${QET_DIR}/sources/ui/reportpropertiewidget.ui
@@ -1015,6 +1016,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/ui/marginseditdialog.h
   ${QET_DIR}/sources/ui/masterpropertieswidget.cpp
   ${QET_DIR}/sources/ui/masterpropertieswidget.h
+  ${QET_DIR}/sources/ui/terminalpropertieswidget.cpp
+  ${QET_DIR}/sources/ui/terminalpropertieswidget.h
   ${QET_DIR}/sources/ui/plclinkwidget.cpp
   ${QET_DIR}/sources/ui/plclinkwidget.h
   ${QET_DIR}/sources/ui/multipastedialog.cpp
