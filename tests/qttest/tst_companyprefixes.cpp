@@ -371,6 +371,34 @@ class tst_companyprefixes : public QObject
 		QVERIFY(!labels.wasConverted());
 	}
 
+		///Both layouts in one outer element, with different prefixes:
+		///once the dialog adds devices/Actoren/ABB, it would inherit K
+		///instead of the Q the lookup gives today. No <labels> file the
+		///dialog writes can hold both, so the file stays broken
+	void categoryRootWithBothLayoutsStaysBroken()
+	{
+		QTemporaryDir collection;
+		QVERIFY(collection.isValid());
+		QVERIFY(QDir(collection.path()).mkpath("devices/Actoren/ABB"));
+		const QString file = QetLabelsFile::labelsFilePath(collection.path());
+			//devices/Actoren/ABB: the first layout stops at Actoren, so
+			//the lookup takes Q from the second one
+		writeFile(file,
+				  "<category name=\"x\">"
+				  "<category name=\"devices\"><category name=\"Actoren\">"
+				  "<prefix>K</prefix></category></category>"
+				  "<category name=\"Actoren\"><category name=\"ABB\">"
+				  "<prefix>Q</prefix></category></category>"
+				  "</category>");
+		QCOMPARE(QetLabelsFile::prefixForFolder(file, {"devices", "Actoren", "ABB"}),
+				 QString("Q"));
+
+		QetLabelsFile labels;
+		QVERIFY(labels.load(collection.path()));
+		QVERIFY(labels.isBroken());
+		QVERIFY(!labels.wasConverted());
+	}
+
 		///A <labels> file whose folders leave out their top-level folder,
 		///the way the shipped collections write theirs: the lookup reads
 		///them, so the dialog shows them under each top-level folder that
@@ -438,6 +466,37 @@ class tst_companyprefixes : public QObject
 		QetLabelsFile reread;
 		QVERIFY(reread.load(collection.path()));
 		QVERIFY(!reread.wasConverted());
+	}
+
+		///A short-path folder that is also a top-level folder is copied
+		///under the other top-level folders too, and the folders inside
+		///a short-path folder are not listed as unknown entries
+	void shortPathsNamedAfterATopFolder()
+	{
+		QTemporaryDir collection;
+		QVERIFY(collection.isValid());
+		QVERIFY(QDir(collection.path()).mkpath("Actoren"));
+		QVERIFY(QDir(collection.path()).mkpath("devices/Actoren"));
+		QVERIFY(QDir(collection.path()).mkpath("devices/Sensoren/ABB"));
+		const QString file = QetLabelsFile::labelsFilePath(collection.path());
+		writeFile(file,
+				  "<labels>"
+				  "<category name=\"Actoren\"><prefix>KF</prefix></category>"
+				  "<category name=\"Sensoren\"><category name=\"ABB\">"
+				  "<prefix>B</prefix></category></category>"
+				  "</labels>");
+		QCOMPARE(QetLabelsFile::prefixForFolder(file, {"devices", "Actoren"}),
+				 QString("KF"));
+
+		QetLabelsFile labels;
+		QVERIFY(labels.load(collection.path()));
+		QVERIFY(!labels.isBroken());
+		QVERIFY(labels.wasConverted());
+		QCOMPARE(labels.prefix({"Actoren"}), QString("KF"));
+		QCOMPARE(labels.prefix({"devices", "Actoren"}), QString("KF"));
+		QCOMPARE(labels.prefix({"devices", "Sensoren", "ABB"}), QString("B"));
+		QCOMPARE(labels.orphanPaths(QetLabelsFile::scanFolders(collection.path())),
+				 QStringList());
 	}
 
 		///A <labels> file written the way the dialog writes it, and one

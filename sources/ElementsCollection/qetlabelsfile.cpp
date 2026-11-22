@@ -526,11 +526,11 @@ bool QetLabelsFile::placeShortPaths(const QDomDocument &document,
 		 !child.isNull() ;
 		 child = child.nextSiblingElement(QStringLiteral("category"))) {
 		const QString name = child.attribute(QStringLiteral("name"));
-		if (tops.contains(name)) {
-			continue;
-		}
+			//A child named after a top-level folder is also read as a
+			//folder of that name inside the other top-level folders
 		for (const QString &top : std::as_const(tops)) {
-			if (!existing.contains(top + QLatin1Char('/') + name)) {
+			if (top == name
+				|| !existing.contains(top + QLatin1Char('/') + name)) {
 				continue;
 			}
 			QDomElement top_category = directChildCategory(root, top);
@@ -554,12 +554,20 @@ bool QetLabelsFile::placeShortPaths(const QDomDocument &document,
 	@return true when every folder of @a folders gets the same prefix from
 		@a after as from @a before. Unless @a strict, a folder not
 		described and one described with no prefix count as the same.
+		The dialog adds every folder before it saves (@see
+		ensureStructure()), and a folder added with no prefix inherits
+		its parent's instead of being read in the other layout : a
+		folder that has a prefix in @a before must keep it then too.
 */
 bool QetLabelsFile::keepsEveryPrefix(const QDomDocument &before,
 									 const QDomDocument &after,
 									 const QList<QStringList> &folders,
 									 bool strict)
 {
+	QetLabelsFile saved;
+	saved.m_document = after.cloneNode(true).toDocument();
+	saved.ensureStructure(folders);
+
 	for (const QStringList &folder : folders) {
 		const QString old_prefix = prefixForFolderInDocument(before, folder);
 		const QString new_prefix = prefixForFolderInDocument(after, folder);
@@ -567,6 +575,11 @@ bool QetLabelsFile::keepsEveryPrefix(const QDomDocument &before,
 					  || old_prefix != new_prefix)
 				   : old_prefix.isEmpty() != new_prefix.isEmpty()
 					 || (!old_prefix.isEmpty() && old_prefix != new_prefix)) {
+			return false;
+		}
+		if (!old_prefix.isEmpty()
+			&& prefixForFolderInDocument(saved.m_document, folder)
+			   != old_prefix) {
 			return false;
 		}
 	}
