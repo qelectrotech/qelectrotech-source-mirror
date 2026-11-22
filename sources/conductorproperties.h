@@ -163,6 +163,9 @@ class ConductorProperties
 				  const ConductorProperties &after);
 		void applyTensionProtocolChange(const ConductorProperties &before,
 					      const ConductorProperties &after);
+		void applyNodePropertiesChange(const ConductorProperties &before,
+					      const ConductorProperties &after);
+		void applyAgreedNodeProperties(const QList<ConductorProperties> &list);
 
 		static ConductorProperties defaultProperties();
 

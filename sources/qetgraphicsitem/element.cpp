@@ -3561,9 +3561,11 @@ bool Element::labelShown() const
 	QETProject::designationDisplay(): the label alone; or the IEC 81346
 	reference designation =plant+location-label of this element, the
 	plant and location being its own, else those of its structure box or
-	folio (StructureBoxItem::placeOf()). The short form leaves out the
-	=plant and the +location that the place where the field is drawn
-	already gives: its structure box, else its folio. That place is the
+	folio (StructureBoxItem::placeOf()), and the prefixes of its structure
+	boxes as the product levels above the label (=plant+location-B2-A1-label).
+	The short form leaves out the =plant, the +location and the product
+	levels that the place where the field is drawn already gives: its
+	structure box, else its folio. That place is the
 	one of @p drawn_on when given (a contact showing its coil's label on
 	another folio), else of this element. An empty label stays empty.
 */
@@ -3580,7 +3582,8 @@ QString Element::designationForDisplay(const QString &label, const Element *draw
 
 	const StructureBoxItem::Place place = StructureBoxItem::placeOf(this);
 	if (display == QETProject::DesignationDisplay::Full) {
-		return autonum::AssignVariables::buildStructureId(place.plant, place.location, label);
+		return autonum::AssignVariables::buildStructureId(
+					place.plant, place.location, place.product, label);
 	}
 
 	const Element *reference_element = drawn_on && drawn_on->diagram() ? drawn_on : this;
@@ -3588,6 +3591,7 @@ QString Element::designationForDisplay(const QString &label, const Element *draw
 	return autonum::AssignVariables::buildStructureId(
 				place.plant != reference.plant ? place.plant : QString(),
 				place.location != reference.location ? place.location : QString(),
+				place.product != reference.product ? place.product : QString(),
 				label);
 }
 

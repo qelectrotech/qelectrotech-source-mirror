@@ -83,12 +83,16 @@ namespace autonum
 		bool has_element = false;
 		DiagramPosition element_position;
 		QString element_prefix;
-			/// a conductor's %wf, %wv, %wc and %ws
+			/// a conductor's %wf, %wv, %wc, %ws, %wt and %wb
 		bool has_conductor = false;
 		QString wire_function;
 		QString wire_tension_protocol;
 		QString wire_color;
 		QString wire_section;
+			/// the kind of wire it is made of (H07V-K...), %wt
+		QString wire_type;
+			/// the cable it is a core of, %wb
+		QString wire_cable;
 	};
 
 	/**
@@ -117,6 +121,23 @@ namespace autonum
 				@return the assembled designation, e.g. "=E1+A2-K3"
 			*/
 			static QString buildStructureId(const QString &plant, const QString &location, const QString &suffix);
+
+			/**
+				@brief buildStructureId
+				The same, with the product levels above @p label: the
+				prefixes of the structure boxes the symbol is in, outermost
+				first, each with its "-" sign ("-B2-A1"). The designation is
+				then "=plant+location-B2-A1-label". A label already typed
+				with these levels in front ("-A1-K1" in box A1) is not
+				doubled, and an empty label gives no "-" part at all.
+				@param product the levels above the label, e.g. "-B2-A1", or empty
+			*/
+			static QString buildStructureId(const QString &plant, const QString &location,
+											const QString &product, const QString &label);
+
+			/// @return @p chain with the level @p prefix added to it, with
+			/// its "-" sign; @p chain itself when @p prefix is empty
+			static QString addProductLevel(const QString &chain, const QString &prefix);
 
 		private:
 			AssignVariables(const QString& formula, const sequentialNumbers& seqStruct, const FormulaContext &context);

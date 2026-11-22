@@ -165,6 +165,117 @@ class tst_conductorapplychanges : public QObject
 			QCOMPARE(second.text, QStringLiteral("102"));
 			QCOMPARE(second.m_cable, QStringLiteral("W2"));
 		}
+
+		// The fields a function separated terminal element lets through:
+		// the voltage / protocol and the drawing of the wire cross to the
+		// other side of the separation, every other edit stays on its own
+		// side (ConductorProperties::applyNodePropertiesChange).
+	static bool crossesSeparation(int index)
+	{
+		static const QList<const char *> fields_that_cross {
+			"color", "bicolor", "color_2", "dash_size", "style",
+			"tension_protocol", "cond_size"};
+		return fields_that_cross.contains(fields().at(index).first);
+	}
+
+	void eachFieldAloneAcrossSeparation_data()
+	{
+		QTest::addColumn<int>("index");
+		QTest::addColumn<bool>("crosses");
+		const auto list = fields();
+		for (int i = 0; i < list.size(); ++i)
+			QTest::newRow(list.at(i).first) << i << crossesSeparation(i);
+	}
+
+		// As eachFieldAlone(), but the edit crosses a function separation:
+		// a field that does not cross leaves the other side exactly as it
+		// was, whatever the edit holds.
+	void eachFieldAloneAcrossSeparation()
+	{
+		QFETCH(int, index);
+		QFETCH(bool, crosses);
+		const Setter set = fields().at(index).second;
+
+		const ConductorProperties before = all(0);
+		ConductorProperties after = before;
+		set(after, 1);
+		QVERIFY(after != before);
+
+		ConductorProperties other = all(1);
+		set(other, 2);
+		const ConductorProperties kept = other;
+
+		other.applyNodePropertiesChange(before, after);
+		if (crosses) {
+			ConductorProperties expected = kept;
+			set(expected, 1);
+			QVERIFY(other == expected);
+		} else {
+			QVERIFY(other == kept);
+		}
+	}
+
+		// The dash pattern is one of those fields, taken as a whole
+	void dashPatternCrossesTheSeparation()
+	{
+		ConductorProperties before;
+		before.text = QStringLiteral("101");
+		ConductorProperties after = before;
+		after.m_dash_pattern.enabled = true;
+		after.m_dash_pattern.dash = 12.5;
+		after.m_dash_pattern.gap = 7.5;
+
+		ConductorProperties other;
+		other.text = QStringLiteral("102");
+		other.m_function = QStringLiteral("fn");
+		const ConductorProperties kept = other;
+		other.applyNodePropertiesChange(before, after);
+
+		QVERIFY(other.m_dash_pattern.enabled);
+		QCOMPARE(other.m_dash_pattern.dash, 12.5);
+		QCOMPARE(other.m_dash_pattern.gap, 7.5);
+		QCOMPARE(other.text, QStringLiteral("102"));
+		QCOMPARE(other.m_function, QStringLiteral("fn"));
+		QVERIFY(other != kept);
+	}
+
+		// A new wire takes the fields the wires across a separation agree
+		// on, and keeps its own where they disagree; the fields which never
+		// cross stay its own whatever they agree on
+	void agreedNodePropertiesAreTaken()
+	{
+		ConductorProperties one = all(1);
+		ConductorProperties two = all(1);
+		two.color = QColor(9, 9, 9);
+		two.text = QStringLiteral("far");
+
+		ConductorProperties target;
+		target.m_function = QStringLiteral("own");
+		const ConductorProperties kept = target;
+		target.applyAgreedNodeProperties({one, two});
+
+		QCOMPARE(target.m_tension_protocol, one.m_tension_protocol);
+		QCOMPARE(target.cond_size, one.cond_size);
+		QCOMPARE(static_cast<int>(target.style),
+			 static_cast<int>(one.style));
+		QCOMPARE(target.color, kept.color);
+		QCOMPARE(target.text, kept.text);
+		QCOMPARE(target.m_function, QStringLiteral("own"));
+
+			// Nothing to take from: nothing changes
+		ConductorProperties empty_target = all(2);
+		const ConductorProperties empty_kept = empty_target;
+		empty_target.applyAgreedNodeProperties({});
+		QVERIFY(empty_target == empty_kept);
+
+			// One wire only: every crossing field it agrees with itself
+			// on is taken, and the text is not one of them
+		ConductorProperties single = all(0);
+		single.applyAgreedNodeProperties({one});
+		QCOMPARE(single.color, one.color);
+		QCOMPARE(single.m_tension_protocol, one.m_tension_protocol);
+		QCOMPARE(single.text, QStringLiteral("text0"));
+	}
 };
 
 QTEST_GUILESS_MAIN(tst_conductorapplychanges)

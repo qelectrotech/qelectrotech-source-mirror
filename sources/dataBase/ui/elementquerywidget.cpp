@@ -890,10 +890,11 @@ void ElementQueryWidget::on_m_export_reports_pb_clicked()
 void ElementQueryWidget::on_m_import_reports_pb_clicked()
 {
 	const QString file_path = QFileDialog::getOpenFileName(
-			this, tr("Import reports"), QString(), tr("JSON files (*.json)"));
+			this, tr("Import reports"), QETApp::lastFileDir(QString()), tr("JSON files (*.json)"));
 	if (file_path.isEmpty()) {
 		return;
 	}
+	QETApp::rememberFileDir(file_path);
 
 	QFile source(file_path);
 	if (!source.open(QFile::ReadOnly)) {

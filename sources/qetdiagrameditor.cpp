@@ -49,6 +49,7 @@
 #include "QWidgetAnimation/qwidgetanimation.h"
 #include "autoNum/ui/autonumberingdockwidget.h"
 #include "ui/devicenavigatordockwidget.h"
+#include "ui/checkpaneldockwidget.h"
 #include "ui/toolmenu.h"
 #include "conductornumexport.h"
 #include "diagramcommands.h"
@@ -105,6 +106,7 @@
 #include "materiallist/materiallist.h"
 #include "ui/parttypesdialog.h"
 #include "ui/reportsdialog.h"
+#include "ui/plantslocationsdialog.h"
 #include "ui/potentialcheckdialog.h"
 #include "ui/openwireendsdialog.h"
 #include "ui/duplicateoffsetdialog.h"
@@ -342,6 +344,7 @@ QETDiagramEditor::QETDiagramEditor(const QStringList &files, QWidget *parent) :
 	setUpSelectionPropertiesEditor();
 	setUpAutonumberingWidget();
 	setUpDeviceNavigatorDock();
+	setUpCheckPanelDock();
 
 	setUpActions();
 	setUpToolBar();
@@ -548,6 +551,29 @@ void QETDiagramEditor::setUpDeviceNavigatorDock()
 	connect(m_device_navigator_dock, &QDockWidget::visibilityChanged, this, [this](bool visible) {
 		if (visible && currentProject() && m_device_navigator_dock) {
 			m_device_navigator_dock->setProject(currentProject());
+		}
+	});
+}
+
+/**
+	@brief QETDiagramEditor::setUpCheckPanelDock
+	The Check panel (#1878 B1), below the folios, hidden until it is asked
+	for: Project > Check project, or the Display menu.
+*/
+void QETDiagramEditor::setUpCheckPanelDock()
+{
+	m_check_panel_dock = new CheckPanelDockWidget(this);
+	m_check_panel_dock->setAllowedAreas(Qt::AllDockWidgetAreas);
+	m_check_panel_dock->setFeatures(
+		QDockWidget::DockWidgetClosable |
+		QDockWidget::DockWidgetMovable |
+		QDockWidget::DockWidgetFloatable);
+	addDockWidget(Qt::BottomDockWidgetArea, m_check_panel_dock);
+	m_check_panel_dock->hide();
+
+	connect(m_check_panel_dock, &QDockWidget::visibilityChanged, this, [this](bool visible) {
+		if (visible && m_check_panel_dock) {
+			m_check_panel_dock->setProject(currentProject());
 		}
 	});
 }
@@ -1275,6 +1301,22 @@ void QETDiagramEditor::setUpActions()
 			dialog->show();
 		}
 	});
+	// The project's plants and locations with their counts
+	m_plants_locations = new QAction(tr("Plants and locations..."), this);
+	m_plants_locations->setObjectName(QStringLiteral("plantsLocations"));
+	m_plants_locations->setStatusTip(tr("Lists the project's plants and locations with their symbol and folio counts", "status bar tip"));
+	ShortcutManager::instance().registerAction(m_plants_locations, "diagrameditor.plants_locations", tr("Diagram editors"), QKeySequence());
+	connect(m_plants_locations, &QAction::triggered, this, [this]() {
+		if (ProjectView *view = currentProjectView()) {
+			auto *dialog = new PlantsLocationsDialog(view->project(), this);
+			dialog->setAttribute(Qt::WA_DeleteOnClose);
+			connect(dialog, &PlantsLocationsDialog::showFolio, view, [view](int position) {
+				if (!view->project()) return;
+				view->showDiagram(view->project()->folios().value(position - 1));
+			});
+			dialog->show();
+		}
+	});
 	// Devices not drawn the way their device type says
 	m_part_types = new QAction(tr("Parts without a device type..."), this);
 	m_part_types->setObjectName(QStringLiteral("partTypes"));
@@ -1296,6 +1338,18 @@ void QETDiagramEditor::setUpActions()
 			dialog->setAttribute(Qt::WA_DeleteOnClose);
 			dialog->show();
 		}
+	});
+	// Every check at once, in the Check panel
+	m_check_project = new QAction(tr("Check project"), this);
+	m_check_project->setObjectName(QStringLiteral("checkProject"));
+	m_check_project->setStatusTip(tr("Runs every check on the project and lists the findings in the Check panel", "status bar tip"));
+	ShortcutManager::instance().registerAction(m_check_project, "diagrameditor.check_project", tr("Diagram editors"), QKeySequence());
+	connect(m_check_project, &QAction::triggered, this, [this]() {
+		if (!currentProject() || !m_check_panel_dock) return;
+		m_check_panel_dock->show();
+		m_check_panel_dock->raise();
+		m_check_panel_dock->setProject(currentProject());
+		m_check_panel_dock->run();
 	});
 	// Wires that lead nowhere (#1878 B2)
 	m_check_open_wire_ends = new QAction(tr("Check open wire ends..."), this);
@@ -2408,6 +2462,8 @@ void QETDiagramEditor::setUpMenu()
 	menu_project->addAction(m_device_types);
 	menu_project->addAction(m_check_device_types);
 	menu_project->addAction(m_part_types);
+		//Every check above at once, in the Check panel
+	menu_project->addAction(m_check_project);
 	menu_project->addAction(m_project_languages);
 	menu_project -> addSeparator();
 	menu_project -> addAction(m_csv_export);
@@ -2416,6 +2472,7 @@ void QETDiagramEditor::setUpMenu()
 	menu_project -> addAction(m_project_export_wiring_list);
 	menu_project -> addAction(m_project_wiring_list_view);
 	menu_project -> addAction(m_reports);
+	menu_project -> addAction(m_plants_locations);
 	menu_project -> addAction(m_reload_element_drawings);
 	menu_project -> addAction(m_update_elements_from_collections);
 	menu_project -> addAction(m_reset_symbol_texts);
@@ -2460,6 +2517,9 @@ void QETDiagramEditor::setUpMenu()
 	if (m_device_navigator_dock) {
 		m_device_navigator_dock->toggleViewAction()->setStatusTip(tr("Show or hide the device navigator"));
 	}
+	if (m_check_panel_dock) {
+		m_check_panel_dock->toggleViewAction()->setStatusTip(tr("Show or hide the Check panel"));
+	}
 
 
 	// menu Affichage
@@ -2485,6 +2545,9 @@ void QETDiagramEditor::setUpMenu()
 	menu_affichage -> addAction(m_background_color_button->darkModeAction());
 	if (m_device_navigator_dock) {
 		menu_affichage -> addAction(m_device_navigator_dock->toggleViewAction());
+	}
+	if (m_check_panel_dock) {
+		menu_affichage -> addAction(m_check_panel_dock->toggleViewAction());
 	}
 	menu_affichage -> addSeparator();
 	menu_affichage -> addActions(m_zoom_actions_group.actions());
@@ -3263,6 +3326,9 @@ bool QETDiagramEditor::addProject(QETProject *project, bool update_panel)
 		if (m_device_navigator_dock && m_device_navigator_dock->isVisible()) {
 			m_device_navigator_dock->setProject(project);
 		}
+		if (m_check_panel_dock && m_check_panel_dock->isVisible()) {
+			m_check_panel_dock->setProject(project);
+		}
 	}
 
 	return(true);
@@ -4035,11 +4101,13 @@ void QETDiagramEditor::slot_updateActions()
 	m_project_edit_properties     -> setEnabled(opened_project);
 	m_find_duplicate_labels->setEnabled(opened_project);
 	m_check_potentials->setEnabled(opened_project);
+	m_check_project->setEnabled(opened_project);
 	m_check_open_wire_ends->setEnabled(opened_project);
 	m_device_types->setEnabled(opened_project);
 	m_check_device_types->setEnabled(opened_project);
 	m_part_types->setEnabled(opened_project);
 	m_reports->setEnabled(opened_project);
+	m_plants_locations->setEnabled(opened_project);
 	m_project_languages->setEnabled(opened_project);
 	m_project_history             -> setEnabled(opened_project);
 	m_export_delivery             -> setEnabled(opened_project);
@@ -5279,6 +5347,9 @@ void QETDiagramEditor::subWindowActivated(QMdiSubWindow *subWindows)
 	if (m_device_navigator_dock && m_device_navigator_dock->isVisible()) {
 		m_device_navigator_dock->setProject(currentProject());
 	}
+	if (m_check_panel_dock && m_check_panel_dock->isVisible()) {
+		m_check_panel_dock->setProject(currentProject());
+	}
 }
 
 /**
@@ -5925,10 +5996,11 @@ void QETDiagramEditor::slot_runScript() {
 	const QString script_path = QFileDialog::getOpenFileName(
 		this,
 		tr("Run a script"),
-		QString(),
+		QETApp::lastFileDir(QString()),
 		tr("JavaScript scripts (*.js);;All files (*)")
 	);
 	if (script_path.isEmpty()) return;
+	QETApp::rememberFileDir(script_path);
 
 	QetScripting::runOnProject(script_path, project, currentDiagramView());
 }

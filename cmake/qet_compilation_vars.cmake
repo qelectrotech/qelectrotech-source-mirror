@@ -101,6 +101,7 @@ set(QET_RES_FILES
   ${QET_DIR}/sources/ui/conductorpropertiesdialog.ui
   ${QET_DIR}/sources/ui/conductorpropertieswidget.ui
   ${QET_DIR}/sources/ui/configsaveloaderwidget.ui
+  ${QET_DIR}/sources/ui/definitionmarkstyleeditor.ui
   ${QET_DIR}/sources/ui/diagramcontextwidget.ui
   ${QET_DIR}/sources/ui/diagrameditorhandlersizewidget.ui
   ${QET_DIR}/sources/ui/dialogwaiting.ui
@@ -196,12 +197,20 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/conductorautonumerotation.h
   ${QET_DIR}/sources/duplicatelabels.h
   ${QET_DIR}/sources/duplicatelabels.cpp
+  ${QET_DIR}/sources/projectcheck.h
+  ${QET_DIR}/sources/projectcheck.cpp
+  ${QET_DIR}/sources/ui/checkpaneldockwidget.h
+  ${QET_DIR}/sources/ui/checkpaneldockwidget.cpp
   ${QET_DIR}/sources/ui/duplicatelabelsdialog.h
   ${QET_DIR}/sources/ui/duplicatelabelsdialog.cpp
   ${QET_DIR}/sources/ui/reportsdialog.h
   ${QET_DIR}/sources/ui/reportsdialog.cpp
+  ${QET_DIR}/sources/ui/plantslocationsdialog.h
+  ${QET_DIR}/sources/ui/plantslocationsdialog.cpp
   ${QET_DIR}/sources/reports/projectreports.h
   ${QET_DIR}/sources/reports/projectreports.cpp
+  ${QET_DIR}/sources/placerename.h
+  ${QET_DIR}/sources/placerename.cpp
   ${QET_DIR}/sources/ui/devicetypecheckdialog.h
   ${QET_DIR}/sources/ui/devicetypeeditor.h
   ${QET_DIR}/sources/ui/devicetypeeditor.cpp
@@ -673,6 +682,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/project/projectusagetracker.cpp
   ${QET_DIR}/sources/project/projectusagetracker.h
 
+  ${QET_DIR}/sources/properties/definitionmarkstyle.cpp
+  ${QET_DIR}/sources/properties/definitionmarkstyle.h
   ${QET_DIR}/sources/properties/deviceinformation.cpp
   ${QET_DIR}/sources/properties/deviceinformation.h
   ${QET_DIR}/sources/properties/elementdata.cpp
@@ -940,6 +951,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/ui/conductorpropertieswidget.h
   ${QET_DIR}/sources/ui/configsaveloaderwidget.cpp
   ${QET_DIR}/sources/ui/configsaveloaderwidget.h
+  ${QET_DIR}/sources/ui/definitionmarkstyleeditor.cpp
+  ${QET_DIR}/sources/ui/definitionmarkstyleeditor.h
   ${QET_DIR}/sources/ui/diagramcontextwidget.cpp
   ${QET_DIR}/sources/ui/diagramcontextwidget.h
   ${QET_DIR}/sources/ui/diagrameditorhandlersizewidget.cpp
