@@ -2520,6 +2520,12 @@ qet_add_app_test(tst_potentialtypes tst_potentialtypes.cpp)
 # choice beside the function type, saved and loaded apart from it, unset in
 # every symbol written before the list existed.
 qet_add_app_test(tst_terminalform tst_terminalform.cpp)
+# The stage of a terminal within its block (0 at the foot, the PE of a
+# multi-level one): saved with the strip, kept in order foot first, and a
+# number which does not continue the block before it starts a new one.
+qet_add_app_test(tst_terminalstage tst_terminalstage.cpp)
+target_compile_definitions(tst_terminalstage PRIVATE
+  QET_ELEMENTS_DIR="${QET_DIR}/elements")
 # The Check panel (#1878 B1): every check at once, each finding shown on
 # its folio; wires over the limit and repeated terminal names are new.
 qet_add_app_test(tst_projectcheck tst_projectcheck.cpp)

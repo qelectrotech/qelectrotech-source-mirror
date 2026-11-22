@@ -159,6 +159,12 @@ namespace TerminalStripDrawer
 			virtual QString catalogEntry() const { return QString(); }
 			//A separator plate is mounted after the terminal (drawn by the realistic styles)
 			virtual bool hasSeparatorAfter() const { return false; }
+			//The stage of the terminal within its block: 0 at the foot (the
+			//PE of a multi-level one), the ones above count up. The realistic
+			//styles work the size of a level column and the row it stands in
+			//out of it, so that the stages of two terminals of the strip stand
+			//at the same height whatever the number of levels they have.
+			virtual int stage() const { return 0; }
     };
 
 	class AbstractPhysicalTerminalInterface

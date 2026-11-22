@@ -83,6 +83,12 @@ struct PhysicalGeometry
 		//column, level_count the number of levels of its terminal.
 	int level{0};
 	int level_count{1};
+		//The stage of this level within its block: 0 at the foot, the
+		//ones above count up. The size of the column and the row it
+		//stands in are worked out of it, so that the stages of two
+		//terminals of the strip stand at the same height whatever the
+		//number of levels their terminals have.
+	int stage{0};
 };
 
 /**
@@ -139,6 +145,7 @@ QVector<PhysicalGeometry> geometry(const AbstractTerminalStripInterface *strip)
 			g_.physical_index = physical_index_;
 			g_.real_indexes = {indexes_.at(k)};
 			g_.level = k;
+			g_.stage = reals_.at(k)->stage();
 			g_.level_count = static_cast<int>(reals_.size());
 				//The separator plate is mounted after the whole terminal
 			g_.separator_after = separator_after_ && k == reals_.size() - 1;
@@ -631,7 +638,7 @@ struct BridgePoint
 			for (int k = 0 ; k < levels_ ; ++k)
 			{
 				const auto &real_t{g_.reals.at(k)};
-				const auto insets = levelInsets(pattern, g_.level);
+				const auto insets = levelInsets(pattern, g_.stage);
 				Helpers::appendCableCells(cells, strip, real_t,
 					QRectF{x_ + w_ * k / levels_, length_ * insets.first,
 						   w_ / levels_, length_ * (1 - insets.first - insets.second)},
@@ -690,7 +697,7 @@ struct BridgePoint
 					cell_.x = level_x + level_w * (cables + i + 0.5)
 						/ (cables + wires.size());
 					cell_.top = pattern.m_realistic_length_mm * s_
-								* levelInsets(pattern, g_.level).first;
+								* levelInsets(pattern, g_.stage).first;
 					cell_.target = wires.at(i).target;
 					cell_.definition = wires.at(i).definition;
 					cells.append(cell_);
@@ -827,7 +834,7 @@ void paint(QPainter *painter,
 	const auto columns_{geometry(&strip)};
 	int max_levels_{1};
 	for (const auto &g_ : columns_) {
-		max_levels_ = std::max(max_levels_, g_.level_count);
+		max_levels_ = std::max(max_levels_, g_.stage + 1);
 	}
 
 	for (const auto &g_ : columns_)
@@ -835,7 +842,7 @@ void paint(QPainter *painter,
 		const qreal w_{g_.width_mm * s_};
 			//A level after the first one is shorter, at its top and at
 			//its bottom, as in the schematic style
-		const auto insets_{levelInsets(pattern, g_.level)};
+		const auto insets_{levelInsets(pattern, g_.stage)};
 		const QRectF body_{x_, length_ * insets_.first, w_,
 						   length_ * (1 - insets_.first - insets_.second)};
 		const auto first_{g_.reals.first()};
@@ -894,7 +901,7 @@ void paint(QPainter *painter,
 		painter->setBrush(band_color);
 		painter->drawRect(QRectF{x_, length_ * bandTop(max_levels_), w_, length_ * (band_bottom - bandTop(max_levels_))});
 		painter->setBrush(channel_color);
-		const auto row_{levelRow(g_.level, max_levels_)};
+		const auto row_{levelRow(g_.stage, max_levels_)};
 		painter->drawRect(QRectF{x_ + w_ * 0.15, length_ * (row_.first + 0.1 * row_.second),
 								 w_ * 0.7, length_ * row_.second * 0.8});
 		painter->restore();
@@ -1017,7 +1024,7 @@ void paint(QPainter *painter,
 					continue;
 				}
 					//The row of the level of this terminal in the rail
-				const auto row_{levelRow(g_.level, max_levels_)};
+				const auto row_{levelRow(g_.stage, max_levels_)};
 				const qreal channel_h_{length_ * row_.second / 4};
 					//A bar which was never worked out a track sits in
 					//the middle of the row, where it stood before the

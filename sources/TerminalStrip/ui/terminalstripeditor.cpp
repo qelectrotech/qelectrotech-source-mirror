@@ -443,7 +443,7 @@ void TerminalStripEditor::apply()
 						m_project->undoStack()->push(new ChangeSpareTerminalDataCommand(real_t, current_data));
 					}
 				}
-				if (data_.level_ != real_t->level())
+				if (data_.level_ != real_t->stage())
 					m_project->undoStack()->push(new ChangeTerminalLevel(m_current_strip, data_.real_terminal, data_.level_));
 			}
 		}

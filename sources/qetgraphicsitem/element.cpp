@@ -44,6 +44,7 @@
 #include <undocommand/setautonumcontextcommand.h>
 #include "crossrefitem.h"
 #include "terminalelement.h"
+#include "TerminalStrip/realterminal.h"
 #include <TerminalStrip/terminalstrip.h>
 #include "dynamicelementtextitem.h"
 #include "elementtextitemgroup.h"
@@ -1704,6 +1705,18 @@ bool Element::fromXml(QDomElement &e,
 			m_data.setTerminalLED(
 						QETXML::boolFromString(
 							elmt_type.attribute(QStringLiteral("terminal_led")), false));
+
+				//The stage the terminal was given with its symbol, so
+				//that a copy of it comes back with the stage it had
+			bool stage_ok = false;
+			const int stage = elmt_type.attribute(QStringLiteral("stage")).toInt(&stage_ok);
+			if (stage_ok) {
+				if (auto *terminal = qobject_cast<TerminalElement *>(this)) {
+					if (auto real_terminal = terminal->realTerminal()) {
+						real_terminal->setStage(stage);
+					}
+				}
+			}
 		}
 	}
 
@@ -2775,6 +2788,21 @@ void Element::appendDataXml(QDomDocument &document, QDomElement &element) const
 								QETXML::boolToString(m_data.terminalLed()));
 		element_type.setAttribute(QStringLiteral("terminal_form"),
 								m_data.terminalFormToString(m_data.terminalForm()));
+			//The stage of the terminal within its block, kept with the
+			//symbol: a copy of a symbol is on no strip, and has to come
+			//back with the stage it was given
+			//Only a stage which was chosen travels with the symbol: the
+			//number of the position is written by the layout of the strip
+			//alone, and writing it twice made a save which was not
+			//idempotent (a save which changes the file it just wrote)
+		if (const auto *terminal = qobject_cast<const TerminalElement *>(this)) {
+			if (const auto real_terminal = terminal->realTerminal()) {
+				if (real_terminal->hasStage()) {
+					element_type.setAttribute(QStringLiteral("stage"),
+											  QString::number(real_terminal->stage()));
+				}
+			}
+		}
 
 		properties.appendChild(element_type);
 		element.appendChild(properties);

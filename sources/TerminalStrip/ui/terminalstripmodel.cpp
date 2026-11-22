@@ -867,7 +867,7 @@ static modelRealTerminalData bridgeWalkStep(const QSharedPointer<RealTerminal> &
 	modelRealTerminalData mrtd;
 	if (!real_t.isNull())
 	{
-		mrtd.level_ = real_t->level();
+		mrtd.level_ = real_t->stage();
 		mrtd.bridged_ = real_t->isBridged();
 		mrtd.real_terminal = real_t.toWeakRef();
 	}

@@ -474,6 +474,12 @@ QDomElement RealTerminal::toXml(QDomDocument &parent_document) const
 		root_elmt.setAttribute(QStringLiteral("element_uuid"), m_element->uuid().toString());
 	}
 
+		//The stage chosen by hand, when there is one: terminals written
+		//before it existed keep the number of their position
+	if (m_stage >= 0) {
+		root_elmt.setAttribute(QStringLiteral("stage"), QString::number(m_stage));
+	}
+
 	return root_elmt;
 }
 
@@ -523,6 +529,35 @@ int RealTerminal::level() const
 	}
 
 	return -1;
+}
+
+/**
+ * @brief RealTerminal::stage
+ * @return the stage of the terminal within its block, or its position
+ * in the block when no stage was chosen yet
+ */
+int RealTerminal::stage() const
+{
+	return m_stage >= 0 ? m_stage : level();
+}
+
+/**
+ * @brief RealTerminal::setStage
+ * Give the terminal its \p stage within its block
+ * @param stage : -1 takes the stage away, the position is the number again
+ */
+void RealTerminal::setStage(int stage)
+{
+	m_stage = stage;
+}
+
+/**
+ * @brief RealTerminal::hasStage
+ * @return true when a stage was chosen for this terminal
+ */
+bool RealTerminal::hasStage() const
+{
+	return m_stage >= 0;
 }
 
 /**

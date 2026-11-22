@@ -45,62 +45,72 @@
     <widget class="QComboBox" name="m_form_cb"/>
    </item>
    <item row="3" column="0">
+    <widget class="QLabel" name="label_stage">
+     <property name="text">
+      <string>Stage</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="1">
+    <widget class="QComboBox" name="m_stage_cb"/>
+   </item>
+   <item row="4" column="0">
     <widget class="QLabel" name="label_section">
      <property name="text">
       <string>Section (mm²)</string>
      </property>
     </widget>
    </item>
-   <item row="3" column="1">
+   <item row="4" column="1">
     <widget class="QComboBox" name="m_section_cb">
      <property name="editable">
       <bool>true</bool>
      </property>
     </widget>
    </item>
-   <item row="4" column="0">
+   <item row="5" column="0">
     <widget class="QLabel" name="label_width">
      <property name="text">
       <string>Width (mm)</string>
      </property>
     </widget>
    </item>
-   <item row="4" column="1">
+   <item row="5" column="1">
     <widget class="QComboBox" name="m_width_cb">
      <property name="editable">
       <bool>true</bool>
      </property>
     </widget>
    </item>
-   <item row="5" column="0">
+   <item row="6" column="0">
     <widget class="QLabel" name="label_manufacturer">
      <property name="text">
       <string>Manufacturer</string>
      </property>
     </widget>
    </item>
-   <item row="5" column="1">
+   <item row="6" column="1">
     <widget class="QComboBox" name="m_manufacturer_cb">
      <property name="editable">
       <bool>true</bool>
      </property>
     </widget>
    </item>
-   <item row="6" column="0">
+   <item row="7" column="0">
     <widget class="QLabel" name="label_color">
      <property name="text">
       <string>Color</string>
      </property>
     </widget>
    </item>
-   <item row="6" column="1">
+   <item row="7" column="1">
     <widget class="QComboBox" name="m_color_cb">
      <property name="editable">
       <bool>true</bool>
      </property>
     </widget>
    </item>
-   <item row="7" column="0" colspan="2">
+   <item row="8" column="0" colspan="2">
     <widget class="QCheckBox" name="m_led_cb">
      <property name="text">
       <string>LED</string>

@@ -51,7 +51,7 @@ struct modelRealTerminalData
 			modelRealTerminalData mrtd;
 			if (!real_t.isNull())
 			{
-				mrtd.level_ = real_t->level();
+				mrtd.level_ = real_t->stage();
 				mrtd.label_ = real_t->label();
 				mrtd.Xref_ = real_t->Xref();
 				mrtd.cable_ = real_t->cable();

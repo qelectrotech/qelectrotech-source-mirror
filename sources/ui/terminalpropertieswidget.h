@@ -21,6 +21,7 @@
 #include "abstractelementpropertieseditorwidget.h"
 
 class QUndoCommand;
+class TerminalElement;
 
 namespace Ui {
 	class TerminalPropertiesWidget;
@@ -56,7 +57,12 @@ class TerminalPropertiesWidget : public AbstractElementPropertiesEditorWidget
 		void enableLiveEdit() override;
 		void disableLiveEdit() override;
 
+	private slots:
+		void updateStageControl();
+
 	private:
+		TerminalElement *terminalElement() const;
+
 		Ui::TerminalPropertiesWidget *ui;
 		bool m_live_edit = false;
 };

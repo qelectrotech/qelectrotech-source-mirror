@@ -211,21 +211,22 @@ void TerminalStripEditorWindow::importFreeTerminals(bool move_placed)
 
 	const auto title_ = move_placed ? tr("Re-group all terminals")
 									: tr("Assign free terminals");
-	const auto text_ = move_placed
+	const auto stages_ = tr("\n\nTerminals whose stages continue one "
+						   "another are joined into one block.");
+	const auto text_ = (move_placed
 		? tr("Free terminals will be added to the terminal strips named "
 			 "after their labels, and every terminal whose label prefix "
 			 "or plant and location no longer match its strip will be "
 			 "moved to the right strip.\n\n"
 			 "Terminals you placed by hand in a strip whose name does "
 			 "not match their label will be moved too. Existing strips "
-			 "are never re-sorted.\n\n"
-			 "This action can be undone with a single Undo.")
+			 "are never re-sorted.")
 		: tr("Every free terminal will be added to the terminal strip "
 			 "named after its label (\"X1:2\" goes to the strip \"X1\"), "
 			 "creating the strips when needed.\n\n"
 			 "Terminals that already belong to a strip are not touched "
-			 "and no strip is re-sorted.\n\n"
-			 "This action can be undone with a single Undo.");
+			 "and no strip is re-sorted.")
+		) + stages_ + tr("\n\nThis action can be undone with a single Undo.");
 
 	if (QMessageBox::question(this, title_, text_,
 							  QMessageBox::Yes | QMessageBox::No,
