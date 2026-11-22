@@ -18,11 +18,14 @@
 #ifndef PLANTSLOCATIONSDIALOG_H
 #define PLANTSLOCATIONSDIALOG_H
 
+#include "../placerename.h"
+
 #include <QDialog>
 #include <QPointer>
 
 class QETProject;
 class QLabel;
+class QPushButton;
 class QTableWidget;
 class QTableWidgetItem;
 
@@ -45,13 +48,22 @@ class PlantsLocationsDialog : public QDialog
 
 	public slots:
 		void refresh();
+		void renamePlant() {renameSelected(false);}
+		void renameLocation() {renameSelected(true);}
+		bool applyRename(const PlaceRename::Request &request,
+						 PlaceRename::CounterPolicy policy = PlaceRename::CounterPolicy::MergeHigher);
 
 	private:
 		void rowActivated(QTableWidgetItem *item);
+		void renameSelected(bool location);
+		void updateButtons();
+		void buildFolios();
 
 		QPointer<QETProject> m_project;
 		QLabel *m_summary;
 		QTableWidget *m_table;
+		QPushButton *m_rename_plant;
+		QPushButton *m_rename_location;
 };
 
 #endif // PLANTSLOCATIONSDIALOG_H
