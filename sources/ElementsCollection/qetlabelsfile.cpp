@@ -336,6 +336,17 @@ bool QetLabelsFile::load(const QString &collection_dir)
 				m_broken_reason = tr("the root element <%1> is not <labels>.")
 						.arg(root_tag);
 			}
+		} else if (well_formed) {
+				//The shipped collections write each folder without its
+				//top-level folder. The prefix lookup reads a user file
+				//written that way too : move those folders under their
+				//top-level folder, where the dialog reads them.
+			QDomDocument converted;
+			if (placeShortPaths(document, scanFolders(collection_dir),
+								converted)) {
+				document = converted;
+				m_converted = true;
+			}
 		}
 		file.close();
 	} else {
@@ -450,6 +461,85 @@ bool QetLabelsFile::convertForeignRoot(const QDomDocument &document,
 		if (top_category.hasChildNodes()) {
 			labels.appendChild(top_category);
 		}
+	}
+
+	for (const QStringList &folder : folders) {
+		const QString before = prefixForFolderInDocument(document, folder);
+		const QString after = prefixForFolderInDocument(converted, folder);
+		if (before.isEmpty() != after.isEmpty()
+			|| (!before.isEmpty() && before != after)) {
+			return false;
+		}
+	}
+	return true;
+}
+
+/**
+	@brief QetLabelsFile::placeShortPaths
+	Write in @a converted the \<labels\> file @a document with every
+	child of its root that is named after a folder inside a top-level
+	folder, rather than after a top-level folder, moved under each
+	top-level folder that has a folder of that name : the place the
+	dialog reads it from. The prefix lookup reads such a child both
+	ways (@see prefixForFolder()).
+
+	A child named after a top-level folder is left where it is, and so
+	is a child named after no folder at all : the dialog asks what to do
+	with it.
+
+	@param folders : the folders of the collection, from scanFolders()
+	@return true when at least one child was moved and every folder of
+		@a folders gets the same prefix from @a converted as from
+		@a document, a folder not described counting as one described
+		with no prefix.
+*/
+bool QetLabelsFile::placeShortPaths(const QDomDocument &document,
+									const QList<QStringList> &folders,
+									QDomDocument &converted)
+{
+	converted = document.cloneNode(true).toDocument();
+	QDomElement root = converted.documentElement();
+
+	QStringList tops;
+	QSet<QString> existing;
+	for (const QStringList &folder : folders) {
+		existing.insert(folder.join(QLatin1Char('/')));
+		if (folder.size() == 1) {
+			tops << folder.first();
+		}
+	}
+
+	QList<QDomElement> placed;
+	for (QDomElement child = root.firstChildElement(QStringLiteral("category")) ;
+		 !child.isNull() ;
+		 child = child.nextSiblingElement(QStringLiteral("category"))) {
+		const QString name = child.attribute(QStringLiteral("name"));
+		if (tops.contains(name)) {
+			continue;
+		}
+		for (const QString &top : std::as_const(tops)) {
+			if (!existing.contains(top + QLatin1Char('/') + name)) {
+				continue;
+			}
+			QDomElement top_category = directChildCategory(root, top);
+			if (top_category.isNull()) {
+				top_category = converted.createElement(QStringLiteral("category"));
+				top_category.setAttribute(QStringLiteral("name"), top);
+				root.appendChild(top_category);
+			} else if (!directChildCategory(top_category, name).isNull()) {
+				continue;
+			}
+			top_category.appendChild(child.cloneNode(true));
+			if (!placed.contains(child)) {
+				placed << child;
+			}
+		}
+	}
+	if (placed.isEmpty()) {
+		return false;
+	}
+	for (QDomElement &child : placed) {
+		root.removeChild(child);
 	}
 
 	for (const QStringList &folder : folders) {

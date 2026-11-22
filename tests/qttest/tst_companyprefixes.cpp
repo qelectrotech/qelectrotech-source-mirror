@@ -367,6 +367,103 @@ class tst_companyprefixes : public QObject
 		QVERIFY(labels.isBroken());
 		QVERIFY(!labels.wasConverted());
 	}
+
+		///A <labels> file whose folders leave out their top-level folder,
+		///the way the shipped collections write theirs: the lookup reads
+		///them, so the dialog shows them under each top-level folder that
+		///has that folder. The rest of the file stays as it was
+	void shortPathsAreMovedUnderTheirFolder()
+	{
+		QTemporaryDir collection;
+		QVERIFY(collection.isValid());
+		QVERIFY(QDir(collection.path()).mkpath("devices/Actoren"));
+		QVERIFY(QDir(collection.path()).mkpath("devices/Sensoren"));
+		QVERIFY(QDir(collection.path()).mkpath("other/Actoren"));
+		const QString file = QetLabelsFile::labelsFilePath(collection.path());
+		const QByteArray content =
+				"<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
+				"<labels><!--written by hand-->"
+				"<category name=\"devices\"><prefix>D</prefix></category>"
+				"<category name=\"Actoren\"><prefix>KF</prefix></category>"
+				"<category name=\"Gone\"><prefix>Z</prefix></category>"
+				"</labels>\n";
+		writeFile(file, content);
+		QCOMPARE(QetLabelsFile::prefixForFolder(file, {"other", "Actoren"}),
+				 QString("KF"));
+
+		QetLabelsFile labels;
+		QVERIFY(labels.load(collection.path()));
+		QVERIFY(!labels.isBroken());
+		QVERIFY(labels.wasConverted());
+		QCOMPARE(labels.prefix({"devices"}), QString("D"));
+		QCOMPARE(labels.prefix({"devices", "Actoren"}), QString("KF"));
+		QCOMPARE(labels.prefix({"other", "Actoren"}), QString("KF"));
+		const auto folders = QetLabelsFile::scanFolders(collection.path());
+		QCOMPARE(labels.orphanPaths(folders), QStringList {"Gone"});
+
+			//Nothing changed: nothing is written, no copy is made
+		QVERIFY(labels.save());
+		QVERIFY(labels.backupPath().isEmpty());
+		{
+			QFile unchanged(file);
+			QVERIFY(unchanged.open(QIODevice::ReadOnly));
+			QCOMPARE(unchanged.readAll(), content);
+		}
+
+		labels.setPrefix({"devices", "Sensoren"}, "B");
+		QVERIFY(labels.save());
+		QVERIFY(!labels.backupPath().isEmpty());
+		{
+			QFile backup(labels.backupPath());
+			QVERIFY(backup.open(QIODevice::ReadOnly));
+			QCOMPARE(backup.readAll(), content);
+			QFile saved(file);
+			QVERIFY(saved.open(QIODevice::ReadOnly));
+			QVERIFY(saved.readAll().contains("written by hand"));
+		}
+		QCOMPARE(QetLabelsFile::prefixForFolder(file, {"devices", "Actoren"}),
+				 QString("KF"));
+		QCOMPARE(QetLabelsFile::prefixForFolder(file, {"other", "Actoren"}),
+				 QString("KF"));
+		QCOMPARE(QetLabelsFile::prefixForFolder(file, {"devices", "Sensoren"}),
+				 QString("B"));
+
+		QetLabelsFile reread;
+		QVERIFY(reread.load(collection.path()));
+		QVERIFY(!reread.wasConverted());
+	}
+
+		///A <labels> file written the way the dialog writes it, and one
+		///no <labels> file can match, are both read as they are
+	void shortPathsLeftAloneWhenNothingToMove_data()
+	{
+		QTest::addColumn<QByteArray>("content");
+		QTest::newRow("full paths")
+				<< QByteArray("<labels><category name=\"devices\">"
+							  "<category name=\"Actoren\"><prefix>KF</prefix>"
+							  "</category></category></labels>");
+			//devices/Actoren/ABB: the first layout stops at Actoren, so
+			//the lookup takes Q from the second one
+		QTest::newRow("both layouts")
+				<< QByteArray("<labels><category name=\"devices\">"
+							  "<category name=\"Actoren\"><prefix>K</prefix>"
+							  "</category></category>"
+							  "<category name=\"Actoren\"><category name=\"ABB\">"
+							  "<prefix>Q</prefix></category></category></labels>");
+	}
+
+	void shortPathsLeftAloneWhenNothingToMove()
+	{
+		QFETCH(QByteArray, content);
+		QTemporaryDir collection;
+		QVERIFY(collection.isValid());
+		QVERIFY(QDir(collection.path()).mkpath("devices/Actoren/ABB"));
+		writeFile(QetLabelsFile::labelsFilePath(collection.path()), content);
+		QetLabelsFile labels;
+		QVERIFY(labels.load(collection.path()));
+		QVERIFY(!labels.isBroken());
+		QVERIFY(!labels.wasConverted());
+	}
 };
 
 QET_APP_TEST_MAIN(tst_companyprefixes)
