@@ -222,7 +222,6 @@ void PlantsLocationsDialog::renameSelected(bool location)
 		QMessageBox::warning(this, windowTitle(), why);
 		return;
 	}
-	buildFolios();
 	if (PlaceRename::targetExists(m_project, request)
 			&& QMessageBox::question(this, windowTitle(),
 				tr("\"%1\" already exists. The two will become one. Continue?")
