@@ -101,6 +101,10 @@ class QetLabelsFile
 			static bool placeShortPaths(const QDomDocument &document,
 										const QList<QStringList> &folders,
 										QDomDocument &converted);
+			static bool keepsEveryPrefix(const QDomDocument &before,
+										 const QDomDocument &after,
+										 const QList<QStringList> &folders,
+										 bool strict);
 			QString backupBrokenFile();
 			static void scanRec(const QString &path, const QStringList &relative_path, QList<QStringList> &out);
 			static QDomElement directChildCategory(const QDomElement &parent, const QString &name);

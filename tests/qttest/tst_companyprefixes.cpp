@@ -371,7 +371,8 @@ class tst_companyprefixes : public QObject
 		///A <labels> file whose folders leave out their top-level folder,
 		///the way the shipped collections write theirs: the lookup reads
 		///them, so the dialog shows them under each top-level folder that
-		///has that folder. The rest of the file stays as it was
+		///has that folder. The rest of the file stays as it was, those
+		///folders included: the lookup reads them for other collections
 	void shortPathsAreMovedUnderTheirFolder()
 	{
 		QTemporaryDir collection;
@@ -427,6 +428,9 @@ class tst_companyprefixes : public QObject
 				 QString("KF"));
 		QCOMPARE(QetLabelsFile::prefixForFolder(file, {"devices", "Sensoren"}),
 				 QString("B"));
+			//The lookup also reads Actoren for the other collections
+		QCOMPARE(QetLabelsFile::prefixForFolder(file, {"acme", "Actoren"}),
+				 QString("KF"));
 
 		QetLabelsFile reread;
 		QVERIFY(reread.load(collection.path()));
