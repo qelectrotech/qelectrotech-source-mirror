@@ -512,6 +512,54 @@ class tst_textdialogs : public QObject
 					 bottomRight);
 		}
 
+			//In the properties dialog, a point waits in the tab for
+			//Apply. Opened again, the dialog shows that point, and closing
+			//it keeps the point.
+		void textsTabAlignmentReopened()
+		{
+			QETProject project(QFINDTESTDATA("fixtures/every_feature.qet"));
+			Element *element = firstSymbol(project);
+			QVERIFY(element);
+			auto *text = new DynamicElementTextItem(element);
+			element->addDynamicTextItem(text);
+			text->setAlignment(topLeft);
+
+			DynamicElementTextModel model(element);
+			DynamicTextItemDelegate delegate;
+			QTreeView view;
+			view.setModel(&model);
+			view.setItemDelegate(&delegate);
+			view.show();
+			QVERIFY(QTest::qWaitForWindowExposed(&view));
+
+			const QModelIndex cell = cellOf(
+						model, text, DynamicElementTextModel::txtAlignment);
+			QVERIFY(cell.isValid());
+			view.expandAll();
+			view.edit(cell);
+			QPointer<QDialog> dialog = editorOf(view, "AlignmentTextDialog");
+			QVERIFY(dialog);
+			QVERIFY(QTest::qWaitForWindowExposed(dialog));
+			pick(dialog, "bottom_right");
+			QVERIFY(leave(dialog, Exit::Close));
+			settle();
+
+			view.edit(cell);
+			dialog = editorOf(view, "AlignmentTextDialog");
+			QVERIFY(dialog);
+			QVERIFY(QTest::qWaitForWindowExposed(dialog));
+			auto *point = dialog->findChild<QRadioButton *>(
+						QStringLiteral("bottom_right"));
+			QVERIFY(point);
+			QVERIFY(point->isChecked());
+			QVERIFY(leave(dialog, Exit::Close));
+			settle();
+			QCOMPARE(model.data(cell, Qt::UserRole + 2).value<Qt::Alignment>(),
+					 bottomRight);
+				//The folio changes only at Apply
+			QCOMPARE(text->alignment(), topLeft);
+		}
+
 			//The selection properties panel applies each change to the
 			//folio at once: the text moves while the dialog is open
 		void selectionPanelAlignment()

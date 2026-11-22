@@ -1782,7 +1782,10 @@ QWidget *DynamicTextItemDelegate::createEditor(
 			if(!deti)
 				break;
 			
-			AlignmentTextDialog *atd = new AlignmentTextDialog(deti->alignment(), parent);
+				//On the point of the cell, which may be waiting for Apply
+			AlignmentTextDialog *atd = new AlignmentTextDialog(
+						index.data(Qt::UserRole+2).value<Qt::Alignment>(),
+						parent);
 			atd->setObjectName("alignment_text");
 				//Save each point when it is picked, as the spin boxes
 				//of this view do: the dialog stays open to try another
