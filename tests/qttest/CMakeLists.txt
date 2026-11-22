@@ -711,6 +711,9 @@ set(two_screens "${CMAKE_CURRENT_SOURCE_DIR}/fixtures/two_screens.json")
 set_tests_properties(tst_dialogplacement PROPERTIES ENVIRONMENT
   "QT_QPA_PLATFORM=offscreen:configfile=${two_screens}")
 
+# The text alignment dialog applies a point as soon as it is picked (#1973).
+qet_add_app_test(tst_textdialogs tst_textdialogs.cpp)
+
 # A symbol can define its own custom properties (discussion #561): every
 # placed copy has them, filled in or not, an empty one adds nothing to
 # the saved project, and a typed name becomes a key every version opens.

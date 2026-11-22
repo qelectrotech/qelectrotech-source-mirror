@@ -375,17 +375,32 @@ void TextEditor::setUpWidget(QWidget *parent)
 		if (m_text.isNull()) {
 			return;
 		}
+		QList<Qt::Alignment> old_alignments;
+		for (PartText *part_text : std::as_const(m_parts)) {
+			old_alignments << part_text->alignment();
+		}
 		AlignmentTextDialog atd(m_text->alignment(), this);
 		DialogPlacement::placeBelow(&atd, alignment_pb);
-		if (atd.exec() != QDialog::Accepted) {
+		// Each point picked shows at once. Closing the dialog makes
+		// one Undo step for each text, from where it was to the end.
+		bool picked = false;
+		connect(&atd, &AlignmentTextDialog::alignmentChanged, this,
+				[this, &picked](Qt::Alignment alignment) {
+			picked = true;
+			for (PartText *part_text : std::as_const(m_parts)) {
+				part_text->setAlignment(alignment);
+			}
+		});
+		atd.exec();
+		if (!picked) {
 			return;
 		}
 		for (int i = 0; i < m_parts.length(); i++) {
 			PartText *part_text = m_parts[i];
-			if (atd.alignment() != part_text->alignment()) {
+			if (atd.alignment() != old_alignments[i]) {
 				QPropertyUndoCommand *undo = new QPropertyUndoCommand(
 					part_text, "alignment",
-					QVariant(part_text->alignment()),
+					QVariant(old_alignments[i]),
 					QVariant(atd.alignment()));
 				undo->setText(tr("Modify the alignment of a text field"));
 				undoStack().push(undo);

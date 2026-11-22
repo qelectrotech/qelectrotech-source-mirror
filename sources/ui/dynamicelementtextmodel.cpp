@@ -1780,6 +1780,11 @@ QWidget *DynamicTextItemDelegate::createEditor(
 			
 			AlignmentTextDialog *atd = new AlignmentTextDialog(deti->alignment(), parent);
 			atd->setObjectName("alignment_text");
+				//Save each point when it is picked, as the spin boxes
+				//of this view do: the dialog stays open to try another
+			auto *self = const_cast<DynamicTextItemDelegate *>(this);
+			connect(atd, &AlignmentTextDialog::alignmentChanged, self,
+					[self, atd]() { emit self->commitData(atd); });
 			return atd;
 		}
 		case DynamicElementTextModel::size:

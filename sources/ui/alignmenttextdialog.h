@@ -34,6 +34,9 @@ class AlignmentTextDialog : public QDialog
 	
 		Qt::Alignment alignment() const;
 	
+	signals:
+		void alignmentChanged(Qt::Alignment alignment);
+	
 	protected:
 		bool event(QEvent *event);
 	

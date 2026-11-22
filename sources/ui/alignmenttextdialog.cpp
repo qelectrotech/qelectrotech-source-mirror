@@ -44,6 +44,17 @@ AlignmentTextDialog::AlignmentTextDialog(Qt::Alignment alignment, QWidget *paren
 		ui->bottom->setChecked(true);
 	else if(alignment == (Qt::AlignBottom|Qt::AlignRight))
 		ui->bottom_right->setChecked(true);
+
+		//A point applies as soon as it is picked, by a click or an arrow
+		//key. The dialog stays open, to try another point. A click on
+		//the checked point applies it too: it aligns texts that differ.
+	const QList<QRadioButton *> points = findChildren<QRadioButton *>();
+	for (QRadioButton *point : points)
+	{
+		connect(point, &QRadioButton::clicked, this, [this]() {
+			emit alignmentChanged(this->alignment());
+		});
+	}
 }
 
 AlignmentTextDialog::~AlignmentTextDialog()
@@ -86,7 +97,14 @@ bool AlignmentTextDialog::event(QEvent *event)
 		//the dialog lose focus and close.
 	if(event->type() == QEvent::Show && m_first_show)
 	{
-		QTimer::singleShot(50, this, [this](){ui->top_left->setFocus();});
+			//On the checked point: the arrow keys move from there
+		QTimer::singleShot(50, this, [this]() {
+			QRadioButton *point = ui->top_left;
+			for (QRadioButton *rb : findChildren<QRadioButton *>())
+				if (rb->isChecked())
+					point = rb;
+			point->setFocus();
+		});
 		m_first_show = false;
 	}
 	
