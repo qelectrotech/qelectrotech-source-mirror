@@ -270,6 +270,73 @@ class tst_placerename : public QObject
 		QCOMPARE(project.defaultTitleBlockProperties().author, QStringLiteral("second"));
 	}
 
+	static StructureBoxItem *box(Diagram *diagram, const QRectF &rect,
+								 const QString &plant, const QString &location)
+	{
+		auto *b = new StructureBoxItem(rect.topLeft(), rect.bottomRight());
+		b->setPlant(plant);
+		b->setLocation(location);
+		diagram->addItem(b);
+		return b;
+	}
+
+	void anInnerBoxBelongsToTheBoxAroundIt()
+	{
+		QETProject project;
+		Diagram *folio = project.addNewDiagram();
+		setPlace(folio, QStringLiteral("FACTORY"), QString());
+			//The outer box puts everything inside it in SILO; the inner one
+			//has no plant, so it lies in SILO/CP1, not FACTORY/CP1
+		box(folio, QRectF(0, 0, 400, 400), QStringLiteral("SILO"), QStringLiteral("A"));
+		StructureBoxItem *inner = box(folio, QRectF(100, 100, 100, 100), QString(), QStringLiteral("CP1"));
+
+		QVERIFY(!run(project, loc(QStringLiteral("FACTORY"), QStringLiteral("CP1"), QStringLiteral("CP2"))));
+		QCOMPARE(inner->location(), QStringLiteral("CP1"));
+		QVERIFY(run(project, loc(QStringLiteral("SILO"), QStringLiteral("CP1"), QStringLiteral("CP2"))));
+		QCOMPARE(inner->location(), QStringLiteral("CP2"));
+		QVERIFY(inner->plant().isEmpty());
+		project.undoStack()->undo();
+		QCOMPARE(inner->location(), QStringLiteral("CP1"));
+	}
+
+	void aSymbolInAPlantBoxBelongsToThatPlant()
+	{
+		QETProject project;
+		Diagram *folio = project.addNewDiagram();
+		setPlace(folio, QStringLiteral("FACTORY"), QStringLiteral("CP1"));
+		Element *k1 = symbol(folio, QStringLiteral("K1"), QString(), QStringLiteral("CP1"));
+		QVERIFY(k1);
+		box(folio, QRectF(k1->pos() - QPointF(60, 60), QSizeF(120, 120)), QStringLiteral("SILO"), QString());
+		const QString before = places(project).join(QLatin1Char(' '));
+		QVERIFY2(before.contains(QStringLiteral("SILO/CP1")), qPrintable(before));
+
+			//The symbol's own CP1 is SILO's: FACTORY/CP1 leaves it alone
+		QVERIFY(run(project, loc(QStringLiteral("FACTORY"), QStringLiteral("CP1"), QStringLiteral("CP2"))));
+		QCOMPARE(folio->border_and_titleblock.locmach(), QStringLiteral("CP2"));
+		QCOMPARE(k1->elementInformations().value(QStringLiteral("location")).toString(), QStringLiteral("CP1"));
+		QVERIFY(run(project, loc(QStringLiteral("SILO"), QStringLiteral("CP1"), QStringLiteral("CP3"))));
+		QCOMPARE(k1->elementInformations().value(QStringLiteral("location")).toString(), QStringLiteral("CP3"));
+	}
+
+	void aLocationCanMergeIntoAnother()
+	{
+		QETProject project;
+		Diagram *a = project.addNewDiagram();
+		Diagram *b = project.addNewDiagram();
+		setPlace(a, QStringLiteral("FACTORY"), QStringLiteral("CP1"));
+		setPlace(b, QStringLiteral("FACTORY"), QStringLiteral("CP2"));
+		QVERIFY(symbol(a, QStringLiteral("K1")));
+		QVERIFY(symbol(b, QStringLiteral("K2")));
+		const QStringList before = places(project);
+		QCOMPARE(before.size(), 2);
+		const auto request = loc(QStringLiteral("FACTORY"), QStringLiteral("CP1"), QStringLiteral("CP2"));
+		QVERIFY(PlaceRename::targetExists(&project, request));
+		QVERIFY(run(project, request));
+		QCOMPARE(places(project), QStringList({QStringLiteral("FACTORY/CP2/2/2")}));
+		project.undoStack()->undo();
+		QCOMPARE(places(project), before);
+	}
+
 	void movesWireCounters()
 	{
 		using PlaceRename::CounterPolicy;

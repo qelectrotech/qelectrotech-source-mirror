@@ -35,7 +35,7 @@ class StructureBoxItem;
 	It changes what the project stores (folio title blocks, structure boxes,
 	the plant and location typed in a symbol, the defaults for new folios,
 	the plant counters of the wire numbering) and nothing it works out from
-	them. See PLANTS-LOCATIONS-SCOPE.md, "R0".
+	them.
 */
 namespace PlaceRename
 {

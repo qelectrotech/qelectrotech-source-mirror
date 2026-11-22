@@ -30,6 +30,8 @@
 
 #include <QCoreApplication>
 #include <QPointer>
+#include <QRectF>
+#include <algorithm>
 #include <QSqlQuery>
 #include <QUndoCommand>
 
@@ -99,6 +101,41 @@ namespace
 			bool m_defaults;
 			QList<CounterChange> m_counters;
 	};
+
+	struct BoxPlace
+	{
+		QString plant;
+		QString location;
+	};
+
+		/// Where @p box itself lies: its folio's place, then the larger boxes
+		/// around it from the outermost in, then its own fields, each only
+		/// when not empty. The rule referencePlace() applies to a symbol.
+	BoxPlace placeOfBox(const StructureBoxItem *box,
+						const QList<const StructureBoxItem *> &boxes,
+						const TitleBlockProperties &block)
+	{
+		const QRectF mine = box->mapRectToScene(box->rect().normalized());
+		const qreal area = mine.width() * mine.height();
+		QList<QPair<qreal, const StructureBoxItem *>> outer;
+		for (const StructureBoxItem *other : boxes) {
+			if (other == box) continue;
+			const QRectF r = other->mapRectToScene(other->rect().normalized());
+			const qreal other_area = r.width() * r.height();
+			if (other_area > area && r.contains(mine.center()))
+				outer.append({other_area, other});
+		}
+		std::stable_sort(outer.begin(), outer.end(),
+						 [](const auto &a, const auto &b) {return a.first > b.first;});
+		BoxPlace place{block.plant, block.locmach};
+		for (const auto &entry : std::as_const(outer)) {
+			if (!entry.second->plant().isEmpty()) place.plant = entry.second->plant();
+			if (!entry.second->location().isEmpty()) place.location = entry.second->location();
+		}
+		if (!box->plant().isEmpty()) place.plant = box->plant();
+		if (!box->location().isEmpty()) place.location = box->location();
+		return place;
+	}
 
 	bool foliosReady(QETProject *project)
 	{
@@ -216,9 +253,10 @@ namespace PlaceRename
 					if (box->plant() == request.plant)
 						plan.boxes << const_cast<StructureBoxItem *>(box);
 				} else {
-						//An empty plant of a box is its folio's
-					const QString plant = box->plant().isEmpty() ? block.plant : box->plant();
-					if (plant == request.plant && box->location() == request.location)
+						//Only a box that holds the location itself is edited; one
+					//with none takes it from the box or folio around it
+					if (box->location() == request.location
+							&& placeOfBox(box, boxes, block).plant == request.plant)
 						plan.boxes << const_cast<StructureBoxItem *>(box);
 				}
 			}

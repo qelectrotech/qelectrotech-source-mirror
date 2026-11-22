@@ -17,7 +17,7 @@
 */
 #include "plantslocationsdialog.h"
 
-#include "reports/projectreports.h"
+#include "../reports/projectreports.h"
 
 #include <qet.h>
 #include <qetproject.h>
