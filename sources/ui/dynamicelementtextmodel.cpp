@@ -35,6 +35,7 @@
 #include <QColorDialog>
 #include <QComboBox>
 #include <QHash>
+#include <QKeyEvent>
 #include <QModelIndex>
 #include <QStandardItem>
 #include <QTimer>
@@ -1764,6 +1765,9 @@ QWidget *DynamicTextItemDelegate::createEditor(
 			
 			CompositeTextEditDialog *cted = new CompositeTextEditDialog(deti, parent);
 			cted->setObjectName("composite_text");
+				//Modal, as the alignment dialog: a click elsewhere in the
+				//view would close it, and only OK saves the text
+			cted->setModal(true);
 			return cted;
 		}
 		case DynamicElementTextModel::txtAlignment:
@@ -1978,6 +1982,10 @@ void DynamicTextItemDelegate::setModelData(
 				{
 					
 					CompositeTextEditDialog *cted = static_cast<CompositeTextEditDialog *>(editor);
+						//The view also saves this dialog when Cancel or the
+						//close button hides it: only OK changes the text
+					if (cted->result() != QDialog::Accepted)
+						return;
 					
 					QString edited_text = cted->plainText();
 					QString assigned_text;
@@ -2085,7 +2093,25 @@ bool DynamicTextItemDelegate::eventFilter(QObject *object, QEvent *event)
 		QComboBox *qcb = static_cast<QComboBox *>(object);
 		connect(qcb, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), [this,qcb](){emit commitData(qcb);});
 	}
-	
+
+	//The view closes an editor at Return or Tab, which the text box of
+	//the composite text dialog leaves to it with Ctrl. Only OK saves that
+	//dialog, so the typed text would be lost: keep the dialog open.
+	if (object->objectName() == "composite_text"
+		&& event->type() == QEvent::KeyPress)
+	{
+		switch (static_cast<QKeyEvent *>(event)->key())
+		{
+			case Qt::Key_Return:
+			case Qt::Key_Enter:
+			case Qt::Key_Tab:
+			case Qt::Key_Backtab:
+				return false;
+			default:
+				break;
+		}
+	}
+
 	return QStyledItemDelegate::eventFilter(object, event);
 }
 

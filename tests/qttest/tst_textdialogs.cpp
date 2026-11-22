@@ -29,11 +29,13 @@
 #include "qetgraphicsitem/element.h"
 #include "qetproject.h"
 #include "ui/alignmenttextdialog.h"
+#include "ui/compositetexteditdialog.h"
 #include "ui/dynamicelementtextitemeditor.h"
 #include "ui/dynamicelementtextmodel.h"
 
 #include <QDialogButtonBox>
 #include <QElapsedTimer>
+#include <QPlainTextEdit>
 #include <QPointer>
 #include <QPushButton>
 #include <QRadioButton>
@@ -54,6 +56,10 @@
 	text, a text field and a terminal, Undo returns to where the dialog
 	started, in one step for each property changed. In the Texts tab of a
 	symbol, the point is saved at once.
+
+	The composite text dialog of the Texts tab saves the text only with
+	OK. A click elsewhere in the tab, Ctrl+Return or Ctrl+Tab leaves it
+	open.
 */
 class tst_textdialogs : public QObject
 {
@@ -65,7 +71,7 @@ class tst_textdialogs : public QObject
 	static constexpr Qt::Alignment topLeft = Qt::AlignTop | Qt::AlignLeft;
 
 		//The ways out of a dialog
-	enum class Exit { Close, Escape, TitleBar };
+	enum class Exit { Ok, Cancel, Close, Escape, TitleBar };
 
 		//The ways to close the alignment dialog
 	static QList<QPair<const char *, Exit>> closes()
@@ -89,10 +95,15 @@ class tst_textdialogs : public QObject
 	{
 		auto *box = dialog->findChild<QDialogButtonBox *>();
 		switch (way_out) {
+			case Exit::Ok:
+			case Exit::Cancel:
 			case Exit::Close:
 			{
-				QPushButton *button = box
-						? box->button(QDialogButtonBox::Close) : nullptr;
+				const QDialogButtonBox::StandardButton which =
+						way_out == Exit::Ok ? QDialogButtonBox::Ok
+						: way_out == Exit::Cancel ? QDialogButtonBox::Cancel
+												  : QDialogButtonBox::Close;
+				QPushButton *button = box ? box->button(which) : nullptr;
 				if (!button)
 					return false;
 				button->click();
@@ -548,6 +559,164 @@ class tst_textdialogs : public QObject
 			QCOMPARE(stack.count(), commands + 1);
 			stack.undo();
 			QCOMPARE(text->alignment(), topLeft);
+		}
+
+		void textsTabCompositeText_data()
+		{
+			QTest::addColumn<int>("way_out");
+			QTest::addColumn<bool>("applied");
+			QTest::newRow("OK") << int(Exit::Ok) << true;
+			QTest::newRow("Cancel") << int(Exit::Cancel) << false;
+			QTest::newRow("Esc") << int(Exit::Escape) << false;
+			QTest::newRow("title bar") << int(Exit::TitleBar) << false;
+		}
+		void textsTabCompositeText()
+		{
+			QFETCH(int, way_out);
+			QFETCH(bool, applied);
+			QETProject project(QFINDTESTDATA("fixtures/every_feature.qet"));
+			Element *element = firstSymbol(project);
+			QVERIFY(element);
+			auto *text = new DynamicElementTextItem(element);
+			element->addDynamicTextItem(text);
+			text->setCompositeText(QStringLiteral("before"));
+			text->setTextFrom(DynamicElementTextItem::CompositeText);
+
+			DynamicElementTextModel model(element);
+			DynamicTextItemDelegate delegate;
+			QTreeView view;
+			view.setModel(&model);
+			view.setItemDelegate(&delegate);
+			view.show();
+			QVERIFY(QTest::qWaitForWindowExposed(&view));
+
+			const QModelIndex cell = cellOf(
+						model, text, DynamicElementTextModel::compositeText);
+			QVERIFY(cell.isValid());
+			view.expandAll();
+			view.edit(cell);
+			QDialog *dialog = editorOf(view, "CompositeTextEditDialog");
+			QVERIFY(dialog);
+			QVERIFY(QTest::qWaitForWindowExposed(dialog));
+			auto *edit = dialog->findChild<QPlainTextEdit *>();
+			QVERIFY(edit);
+			edit->setPlainText(QStringLiteral("after"));
+			const bool left = leave(dialog, Exit(way_out));
+			if (!left)
+				dialog->reject();
+			settle();
+			QVERIFY(left);
+
+			QCOMPARE(model.data(cell, Qt::UserRole + 2).toString(),
+					 applied ? QStringLiteral("after")
+							 : QStringLiteral("before"));
+		}
+
+			//Keys that close an editor of the view leave this dialog open
+		void textsTabCompositeTextKeys_data()
+		{
+			QTest::addColumn<int>("key");
+			QTest::newRow("Ctrl+Return") << int(Qt::Key_Return);
+			QTest::newRow("Ctrl+Tab") << int(Qt::Key_Tab);
+		}
+		void textsTabCompositeTextKeys()
+		{
+			QFETCH(int, key);
+			QETProject project(QFINDTESTDATA("fixtures/every_feature.qet"));
+			Element *element = firstSymbol(project);
+			QVERIFY(element);
+			auto *text = new DynamicElementTextItem(element);
+			element->addDynamicTextItem(text);
+			text->setCompositeText(QStringLiteral("before"));
+			text->setTextFrom(DynamicElementTextItem::CompositeText);
+
+			DynamicElementTextModel model(element);
+			DynamicTextItemDelegate delegate;
+			QTreeView view;
+			view.setModel(&model);
+			view.setItemDelegate(&delegate);
+			view.show();
+			QVERIFY(QTest::qWaitForWindowExposed(&view));
+
+			const QModelIndex cell = cellOf(
+						model, text, DynamicElementTextModel::compositeText);
+			QVERIFY(cell.isValid());
+			view.expandAll();
+			view.edit(cell);
+			QPointer<QDialog> dialog =
+					editorOf(view, "CompositeTextEditDialog");
+			QVERIFY(dialog);
+			QVERIFY(QTest::qWaitForWindowExposed(dialog));
+			auto *edit = dialog->findChild<QPlainTextEdit *>();
+			QVERIFY(edit);
+			edit->setPlainText(QStringLiteral("after"));
+			QTest::keyClick(edit, Qt::Key(key), Qt::ControlModifier);
+			settle();
+			QVERIFY(dialog);
+			QVERIFY(dialog->isVisible());
+			QCOMPARE(model.data(cell, Qt::UserRole + 2).toString(),
+					 QStringLiteral("before"));
+
+			QVERIFY(leave(dialog, Exit::Ok));
+			settle();
+			QCOMPARE(model.data(cell, Qt::UserRole + 2).toString(),
+					 QStringLiteral("after"));
+		}
+
+		void textsTabCompositeTextIsModal()
+		{
+			QETProject project(QFINDTESTDATA("fixtures/every_feature.qet"));
+			Element *element = firstSymbol(project);
+			QVERIFY(element);
+			auto *text = new DynamicElementTextItem(element);
+			element->addDynamicTextItem(text);
+			text->setCompositeText(QStringLiteral("before"));
+			text->setTextFrom(DynamicElementTextItem::CompositeText);
+
+			DynamicElementTextModel model(element);
+			DynamicTextItemDelegate delegate;
+			QTreeView view;
+			view.setModel(&model);
+			view.setItemDelegate(&delegate);
+			view.resize(500, 600);
+			view.show();
+			QVERIFY(QTest::qWaitForWindowExposed(&view));
+
+			const QModelIndex cell = cellOf(
+						model, text, DynamicElementTextModel::compositeText);
+			const QModelIndex other = cellOf(
+						model, text, DynamicElementTextModel::size);
+			QVERIFY(cell.isValid() && other.isValid());
+			view.expandAll();
+			view.setCurrentIndex(cell);
+			view.edit(cell);
+			QPointer<QDialog> dialog =
+					editorOf(view, "CompositeTextEditDialog");
+			QVERIFY(dialog);
+			QVERIFY(QTest::qWaitForWindowExposed(dialog));
+			auto *edit = dialog->findChild<QPlainTextEdit *>();
+			QVERIFY(edit);
+			edit->setPlainText(QStringLiteral("after"));
+
+				//Before, a click on another cell closed the dialog. Now it
+				//cannot reach the view, and the dialog waits for an answer.
+				//A click on the window, unlike one on a widget, goes
+				//through the window system, which blocks it as for a user.
+			QCOMPARE(QApplication::activeModalWidget(), dialog.data());
+			QTest::mouseClick(view.windowHandle(), Qt::LeftButton, {},
+							  view.viewport()->mapTo(
+								  &view, view.visualRect(other).center()));
+			settle();
+			QVERIFY(dialog);
+			QVERIFY(dialog->isVisible());
+			QCOMPARE(view.currentIndex(), cell);
+			QCOMPARE(model.data(cell, Qt::UserRole + 2).toString(),
+					 QStringLiteral("before"));
+
+			QVERIFY(leave(dialog, Exit::Ok));
+			settle();
+			QCOMPARE(model.data(cell, Qt::UserRole + 2).toString(),
+					 QStringLiteral("after"));
 		}
 };
 

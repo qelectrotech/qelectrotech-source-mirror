@@ -717,6 +717,8 @@ set_tests_properties(tst_dialogplacement PROPERTIES ENVIRONMENT
   "QT_QPA_PLATFORM=offscreen:configfile=${two_screens}")
 
 # The text alignment dialog applies a point as soon as it is picked (#1973).
+# The composite text dialog of the Texts tab saves its text only with OK
+# (#1979).
 qet_add_app_test(tst_textdialogs tst_textdialogs.cpp)
 
 # A symbol can define its own custom properties (discussion #561): every
