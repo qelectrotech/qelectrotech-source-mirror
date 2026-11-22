@@ -70,6 +70,7 @@ struct modelRealTerminalData
 				mrtd.catalog_entry_ = real_t->catalogEntry();
 				mrtd.type_ = real_t->type();
 				mrtd.function_ = real_t->function();
+				mrtd.form_ = real_t->form();
 				mrtd.element_ = real_t->element();
 				mrtd.real_terminal = real_t.toWeakRef();
 				mrtd.bridged_ = real_t->isBridged();
@@ -103,6 +104,7 @@ struct modelRealTerminalData
 		bool spare_ = false;	//Spare terminal, on no folio (RealTerminal::isSpare())
 
 		ElementData::TerminalType type_ = ElementData::TerminalType::TTGeneric;
+		ElementData::TerminalForm form_{};
 		ElementData::TerminalFunction function_ = ElementData::TerminalFunction::TFGeneric;
 		QPointer<Element> element_;
 

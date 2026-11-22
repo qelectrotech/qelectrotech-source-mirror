@@ -319,6 +319,9 @@ void ElementPropertiesEditorWidget::upDateInterface()
 		ui->m_terminal_func_cb->setCurrentIndex(
 					ui->m_terminal_func_cb->findData(
 						m_data.m_terminal_function));
+		ui->m_terminal_form_cb->setCurrentIndex(
+					ui->m_terminal_form_cb->findData(
+						m_data.m_terminal_form));
 
 		const DiagramContext &info = m_data.m_informations;
 		ui->m_auto_num_locked_cb->setChecked(
@@ -390,6 +393,19 @@ void ElementPropertiesEditorWidget::setUpInterface()
 	ui->m_terminal_func_cb->addItem(tr("Generic"), ElementData::TFGeneric);
 	ui->m_terminal_func_cb->addItem(tr("Phase"),     ElementData::TFPhase);
 	ui->m_terminal_func_cb->addItem(tr("Neutral"),    ElementData::TFNeutral);
+
+		//The form the terminal is built as (feed-through, multi-level...),
+		//a second choice beside the function type
+	ui->m_terminal_form_cb->addItem(ElementData::translatedTerminalForm(ElementData::TFormNone),         ElementData::TFormNone);
+	ui->m_terminal_form_cb->addItem(ElementData::translatedTerminalForm(ElementData::TFormFeedThrough2), ElementData::TFormFeedThrough2);
+	ui->m_terminal_form_cb->addItem(ElementData::translatedTerminalForm(ElementData::TFormFeedThrough3), ElementData::TFormFeedThrough3);
+	ui->m_terminal_form_cb->addItem(ElementData::translatedTerminalForm(ElementData::TFormFeedThrough4), ElementData::TFormFeedThrough4);
+	ui->m_terminal_form_cb->addItem(ElementData::translatedTerminalForm(ElementData::TFormMultiLevel),   ElementData::TFormMultiLevel);
+	ui->m_terminal_form_cb->addItem(ElementData::translatedTerminalForm(ElementData::TFormSectionable),  ElementData::TFormSectionable);
+	ui->m_terminal_form_cb->addItem(ElementData::translatedTerminalForm(ElementData::TFormFuse),         ElementData::TFormFuse);
+	ui->m_terminal_form_cb->addItem(ElementData::translatedTerminalForm(ElementData::TFormBlock),        ElementData::TFormBlock);
+	ui->m_terminal_form_cb->addItem(ElementData::translatedTerminalForm(ElementData::TFormSensorActuator), ElementData::TFormSensorActuator);
+	ui->m_terminal_form_cb->addItem(ElementData::translatedTerminalForm(ElementData::TFormPluggable),    ElementData::TFormPluggable);
 
 	//Disable the edition of the first column of the information tree
 	//by this little workaround
@@ -992,6 +1008,7 @@ void ElementPropertiesEditorWidget::on_m_buttonBox_accepted()
 	{
 		m_data.m_terminal_type = ui->m_terminal_type_cb->currentData().value<ElementData::TerminalType>();
 		m_data.m_terminal_function = ui->m_terminal_func_cb->currentData().value<ElementData::TerminalFunction>();
+		m_data.m_terminal_form = ui->m_terminal_form_cb->currentData().value<ElementData::TerminalForm>();
 	}
 
 		//A junction's roles belong to the symbol and not to this one copy of

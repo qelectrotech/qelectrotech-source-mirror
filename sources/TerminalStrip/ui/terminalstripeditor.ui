@@ -33,7 +33,7 @@
           <property name="topMargin">
            <number>0</number>
           </property>
-          <item row="8" column="1" colspan="2">
+          <item row="9" column="1" colspan="2">
            <widget class="QComboBox" name="m_led_cb">
             <item>
              <property name="text">
@@ -67,7 +67,7 @@
             </property>
            </widget>
           </item>
-          <item row="14" column="1" colspan="2">
+          <item row="15" column="1" colspan="2">
            <widget class="KColorCombo" name="m_bridge_color_cb"/>
           </item>
           <item row="5" column="0">
@@ -90,7 +90,7 @@
             </property>
            </widget>
           </item>
-          <item row="14" column="0">
+          <item row="15" column="0">
            <widget class="QLabel" name="label_10">
             <property name="text">
              <string>Bridge color :</string>
@@ -155,6 +155,67 @@
            </widget>
           </item>
           <item row="8" column="0">
+           <widget class="QLabel" name="label_terminal_form">
+            <property name="text">
+             <string>Form</string>
+            </property>
+           </widget>
+          </item>
+          <item row="8" column="1" colspan="2">
+           <widget class="QComboBox" name="m_form_cb">
+            <item>
+             <property name="text">
+              <string>Not specified</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>2-conductor feed-through terminal</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>3-conductor feed-through terminal</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>4-conductor feed-through terminal</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Multi-level terminal</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Sectionable terminal</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Fuse terminal</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Terminal block</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Sensor/actuator terminal</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Pluggable terminal</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item row="9" column="0">
            <widget class="QLabel" name="label_9">
             <property name="text">
              <string>LED :</string>
@@ -164,7 +225,7 @@
             </property>
            </widget>
           </item>
-          <item row="9" column="0">
+          <item row="10" column="0">
            <widget class="QLabel" name="label_cable">
             <property name="text">
              <string>Cable :</string>
@@ -174,14 +235,14 @@
             </property>
            </widget>
           </item>
-          <item row="9" column="1" colspan="2">
+          <item row="10" column="1" colspan="2">
            <widget class="QLineEdit" name="m_cable_le">
             <property name="toolTip">
              <string>Name of the cable of the selected terminals</string>
             </property>
            </widget>
           </item>
-          <item row="10" column="1" colspan="2">
+          <item row="11" column="1" colspan="2">
            <widget class="QPushButton" name="m_cable_apply_pb">
             <property name="toolTip">
              <string>Set the cable name to all the selected terminals</string>
@@ -191,28 +252,28 @@
             </property>
            </widget>
           </item>
-          <item row="11" column="0" colspan="3">
+          <item row="12" column="0" colspan="3">
            <widget class="Line" name="line_2">
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
             </property>
            </widget>
           </item>
-          <item row="15" column="0">
+          <item row="16" column="0">
            <widget class="QLabel" name="m_manufacturer_label">
             <property name="text">
              <string>Manufacturer :</string>
             </property>
            </widget>
           </item>
-          <item row="15" column="1" colspan="2">
+          <item row="16" column="1" colspan="2">
            <widget class="QComboBox" name="m_manufacturer_cb">
             <property name="toolTip">
              <string>Manufacturer of the terminals proposed in the Width column</string>
             </property>
            </widget>
           </item>
-          <item row="16" column="1" colspan="2">
+          <item row="17" column="1" colspan="2">
            <widget class="QPushButton" name="m_add_spare_pb">
             <property name="toolTip">
              <string>Add spare terminals, on no folio, after the selected terminal</string>
@@ -222,7 +283,7 @@
             </property>
            </widget>
           </item>
-          <item row="17" column="1" colspan="2">
+          <item row="18" column="1" colspan="2">
            <widget class="QPushButton" name="m_cable_sides_pb">
             <property name="text">
              <string>Cable sides...</string>
@@ -316,14 +377,14 @@
             </property>
            </widget>
           </item>
-          <item row="12" column="1" colspan="2">
+          <item row="13" column="1" colspan="2">
            <widget class="QPushButton" name="m_bridge_terminals_pb">
             <property name="text">
              <string>Bridging the terminals</string>
             </property>
            </widget>
           </item>
-          <item row="13" column="1" colspan="2">
+          <item row="14" column="1" colspan="2">
            <widget class="QPushButton" name="m_unbridge_terminals_pb">
             <property name="text">
              <string>Unbridge the terminals</string>

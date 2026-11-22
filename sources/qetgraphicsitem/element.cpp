@@ -1697,6 +1697,10 @@ bool Element::fromXml(QDomElement &e,
 						m_data.terminalFunctionFromString(
 							elmt_type.attribute(QStringLiteral("terminal_function"))));
 
+			m_data.setTerminalForm(
+						m_data.terminalFormFromString(
+							elmt_type.attribute(QStringLiteral("terminal_form"))));
+
 			m_data.setTerminalLED(
 						QETXML::boolFromString(
 							elmt_type.attribute(QStringLiteral("terminal_led")), false));
@@ -2769,6 +2773,8 @@ void Element::appendDataXml(QDomDocument &document, QDomElement &element) const
 								m_data.terminalFunctionToString(m_data.terminalFunction()));
 		element_type.setAttribute(QStringLiteral("terminal_led"),
 								QETXML::boolToString(m_data.terminalLed()));
+		element_type.setAttribute(QStringLiteral("terminal_form"),
+								m_data.terminalFormToString(m_data.terminalForm()));
 
 		properties.appendChild(element_type);
 		element.appendChild(properties);

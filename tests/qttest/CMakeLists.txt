@@ -2516,6 +2516,10 @@ qet_add_app_test(tst_dragtextswithoutshift tst_dragtextswithoutshift.cpp)
 # Potential types (#1539): a project that asks for it draws a conductor in the
 # colour, line style and width of its potential type.
 qet_add_app_test(tst_potentialtypes tst_potentialtypes.cpp)
+# The form of a terminal (through terminal, multi-level one...): a second
+# choice beside the function type, saved and loaded apart from it, unset in
+# every symbol written before the list existed.
+qet_add_app_test(tst_terminalform tst_terminalform.cpp)
 # The Check panel (#1878 B1): every check at once, each finding shown on
 # its folio; wires over the limit and repeated terminal names are new.
 qet_add_app_test(tst_projectcheck tst_projectcheck.cpp)

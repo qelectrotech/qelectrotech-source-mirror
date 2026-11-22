@@ -306,6 +306,13 @@ QDomElement ElementData::kindInfoToXml(QDomDocument &document)
 		auto func_txt = document.createTextNode(terminalFunctionToString(m_terminal_function));
 		xml_func.appendChild(func_txt);
 		returned_elmt.appendChild(xml_func);
+
+			//form
+		auto xml_form = document.createElement(QStringLiteral("kindInformation"));
+		xml_form.setAttribute(QStringLiteral("name"), QStringLiteral("form"));
+		auto form_txt = document.createTextNode(terminalFormToString(m_terminal_form));
+		xml_form.appendChild(form_txt);
+		returned_elmt.appendChild(xml_form);
 	}
 
 	for (const auto &other : std::as_const(m_other_kind_informations)) {
@@ -601,6 +608,42 @@ ElementData::TerminalType ElementData::terminalType() const
 }
 
 /**
+ * @brief ElementData::setTerminalForm
+ * Override the terminal form by \p t_form
+ * @param t_form
+ */
+void ElementData::setTerminalForm(ElementData::TerminalForm t_form)
+{
+	if (t_form == m_terminal_form) {
+		m_terminal_form_is_override = false;
+	} else {
+		m_override_terminal_form = t_form;
+		m_terminal_form_is_override = true;
+	}
+}
+
+/**
+ * @brief ElementData::terminalForm
+ * @return the terminal form, or the overrided one if set
+ */
+ElementData::TerminalForm ElementData::terminalForm() const
+{
+	return m_terminal_form_is_override ?
+				m_override_terminal_form :
+				m_terminal_form;
+}
+
+/**
+ * @brief ElementData::terminalFormIsOverrided
+ * @return true if the form of the terminal differs from the one of
+ * the symbol it comes from
+ */
+bool ElementData::terminalFormIsOverrided() const
+{
+	return m_terminal_form_is_override;
+}
+
+/**
  * @brief ElementData::setTerminalFunction
  * Override the terminal function by \p t_function
  * @param t_function
@@ -660,6 +703,7 @@ bool ElementData::terminalPropertiesIsOverrided() const
 {
 	if (m_terminal_type_is_override
 		|| m_terminal_function_is_override
+		|| m_terminal_form_is_override
 		|| m_terminal_led_is_override) {
 		return true;
 	}
@@ -719,6 +763,19 @@ bool ElementData::operator==(const ElementData &data) const
 				return false;
 			}
 		} else if (data.m_terminal_type != m_terminal_type) {
+			return false;
+		}
+
+			//Check terminal form or overrided terminal form
+		if (data.m_terminal_form_is_override != m_terminal_form_is_override) {
+			return false;
+		}
+
+		if (m_terminal_form_is_override) {
+			if (data.m_override_terminal_form != m_override_terminal_form) {
+				return false;
+			}
+		} else if (data.m_terminal_form != m_terminal_form) {
 			return false;
 		}
 
@@ -1053,6 +1110,84 @@ QString ElementData::translatedTerminalType(ElementData::TerminalType type)
 	return QObject::tr("Generic", "generic terminal element type");
 }
 
+QString ElementData::terminalFormToString(ElementData::TerminalForm form)
+{
+	switch (form) {
+		case ElementData::TFormNone:
+			return QStringLiteral("none");
+		case ElementData::TFormFeedThrough2:
+			return QStringLiteral("feed_through_2");
+		case ElementData::TFormFeedThrough3:
+			return QStringLiteral("feed_through_3");
+		case ElementData::TFormFeedThrough4:
+			return QStringLiteral("feed_through_4");
+		case ElementData::TFormMultiLevel:
+			return QStringLiteral("multi_level");
+		case ElementData::TFormSectionable:
+			return QStringLiteral("sectionable");
+		case ElementData::TFormFuse:
+			return QStringLiteral("fuse");
+		case ElementData::TFormBlock:
+			return QStringLiteral("block");
+		case ElementData::TFormSensorActuator:
+			return QStringLiteral("sensor_actuator");
+		case ElementData::TFormPluggable:
+			return QStringLiteral("pluggable");
+	}
+	return QStringLiteral("none");
+}
+
+ElementData::TerminalForm ElementData::terminalFormFromString(const QString &string)
+{
+	if (string == QLatin1String("feed_through_2")) {
+		return ElementData::TFormFeedThrough2;
+	} else if (string == QLatin1String("feed_through_3")) {
+		return ElementData::TFormFeedThrough3;
+	} else if (string == QLatin1String("feed_through_4")) {
+		return ElementData::TFormFeedThrough4;
+	} else if (string == QLatin1String("multi_level")) {
+		return ElementData::TFormMultiLevel;
+	} else if (string == QLatin1String("sectionable")) {
+		return ElementData::TFormSectionable;
+	} else if (string == QLatin1String("fuse")) {
+		return ElementData::TFormFuse;
+	} else if (string == QLatin1String("block")) {
+		return ElementData::TFormBlock;
+	} else if (string == QLatin1String("sensor_actuator")) {
+		return ElementData::TFormSensorActuator;
+	} else if (string == QLatin1String("pluggable")) {
+		return ElementData::TFormPluggable;
+	}
+	return ElementData::TFormNone;
+}
+
+QString ElementData::translatedTerminalForm(ElementData::TerminalForm form)
+{
+	switch (form) {
+		case ElementData::TFormNone:
+			return QObject::tr("Not specified", "no terminal form chosen");
+		case ElementData::TFormFeedThrough2:
+			return QObject::tr("2-conductor feed-through terminal", "terminal form");
+		case ElementData::TFormFeedThrough3:
+			return QObject::tr("3-conductor feed-through terminal", "terminal form");
+		case ElementData::TFormFeedThrough4:
+			return QObject::tr("4-conductor feed-through terminal", "terminal form");
+		case ElementData::TFormMultiLevel:
+			return QObject::tr("Multi-level terminal", "terminal form");
+		case ElementData::TFormSectionable:
+			return QObject::tr("Sectionable terminal", "terminal form");
+		case ElementData::TFormFuse:
+			return QObject::tr("Fuse terminal", "terminal form");
+		case ElementData::TFormBlock:
+			return QObject::tr("Terminal block", "terminal form");
+		case ElementData::TFormSensorActuator:
+			return QObject::tr("Sensor/actuator terminal", "terminal form");
+		case ElementData::TFormPluggable:
+			return QObject::tr("Pluggable terminal", "terminal form");
+	}
+	return QObject::tr("Not specified", "no terminal form chosen");
+}
+
 QString ElementData::terminalFunctionToString(ElementData::TerminalFunction function)
 {
 	switch (function) {
@@ -1109,7 +1244,8 @@ void ElementData::kindInfoFromXml(const QDomElement &xml_element)
 				known = name == QLatin1String("type") || name == QLatin1String("state")
 					|| name == QLatin1String("number");
 			else if (m_type == ElementData::Terminal)
-				known = name == QLatin1String("type") || name == QLatin1String("function");
+				known = name == QLatin1String("type") || name == QLatin1String("function")
+					|| name == QLatin1String("form");
 			if (!known)
 				m_other_kind_informations << qMakePair(name, dom_elmt.text());
 		}
@@ -1147,6 +1283,8 @@ void ElementData::kindInfoFromXml(const QDomElement &xml_element)
 					m_terminal_type = terminalTypeFromString(dom_elmt.text());
 				} else if (name == QLatin1String("function")) {
 					m_terminal_function = terminalFunctionFromString(dom_elmt.text());
+				} else if (name == QLatin1String("form")) {
+					m_terminal_form = terminalFormFromString(dom_elmt.text());
 				}
 			}
 		}

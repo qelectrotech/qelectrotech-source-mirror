@@ -1223,6 +1223,19 @@ ElementData::TerminalFunction RealTerminal::function() const {
 }
 
 /**
+ * @brief RealTerminal::form
+ * @return what the terminal is built as (feed-through, multi-level...)
+ * or TFormNone when there is no data behind it
+ */
+ElementData::TerminalForm RealTerminal::form() const {
+	if (hasData()) {
+		return terminalData().terminalForm();
+	} else {
+		return ElementData::TFormNone;
+	}
+}
+
+/**
  * @brief RealTerminal::isLed
  * @return
  */

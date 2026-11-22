@@ -140,6 +140,7 @@ class RealTerminal
 
 		ElementData::TerminalType type() const;
 		ElementData::TerminalFunction function() const;
+		ElementData::TerminalForm form() const;
 
 		bool isLed() const;
 		bool isElement() const;
