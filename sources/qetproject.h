@@ -379,6 +379,9 @@ class QETProject : public QObject
 		QStringList conductorPlantCounter(const QString &scheme, const QString &plant) const;
 		void setConductorPlantCounter(const QString &scheme, const QString &plant,
 									  const QStringList &values);
+			/// Every plant counter: numbering scheme, then plant
+		QHash<QString, QHash<QString, QStringList>> conductorPlantCounters() const
+				{return m_conductor_plant_counters;}
 		void renameConductorPlantCounters(const QString &from, const QString &to);
 			/// The device types this project keeps (<devicetypes>), by name
 		QList<DeviceType> deviceTypes() const {return m_device_types.values();}
