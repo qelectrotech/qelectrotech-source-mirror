@@ -18,6 +18,8 @@
 #ifndef PLACESUGGESTIONS_H
 #define PLACESUGGESTIONS_H
 
+#include <QList>
+#include <QPair>
 #include <QString>
 #include <QStringList>
 
@@ -34,8 +36,17 @@ class QLineEdit;
 */
 namespace PlaceSuggestions
 {
-	QStringList plants(QETProject *project);
-	QStringList locations(QETProject *project, const QString &plant = QString());
+		/// Every plant and location the project has, one pair per place. A
+		/// symbol of @p except_element (a uuid as text) is left out, so a
+		/// name only that symbol holds is not offered back to it.
+	QList<QPair<QString, QString>> places(QETProject *project,
+										  const QString &except_element = QString());
+	QStringList plants(const QList<QPair<QString, QString>> &places);
+	QStringList locations(const QList<QPair<QString, QString>> &places,
+						  const QString &plant = QString());
+	QStringList plants(QETProject *project, const QString &except_element = QString());
+	QStringList locations(QETProject *project, const QString &plant = QString(),
+						  const QString &except_element = QString());
 	QStringList merged(const QStringList &first, const QStringList &second);
 
 	void setSuggestions(QLineEdit *edit, const QStringList &suggestions);

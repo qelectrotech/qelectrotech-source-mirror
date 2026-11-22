@@ -174,6 +174,46 @@ class tst_placesuggestions : public QObject
 		QVERIFY(!none_location.completer());
 	}
 
+	void aSymbolIsNotOfferedItsOwnName()
+	{
+		QETProject project;
+		build(project);
+			//The only holder of the plant "Pump house" is this symbol
+		Element *pump = symbol(project.folios().first(), QStringLiteral("P1"));
+		QVERIFY(pump);
+		auto info = pump->elementInformations();
+		info.addValue(QStringLiteral("plant"), QStringLiteral("Pump house"));
+		pump->setElementInformations(info);
+		const QString uuid = pump->uuid().toString();
+		QVERIFY(PlaceSuggestions::plants(&project).contains(QStringLiteral("Pump house")));
+		QVERIFY(!PlaceSuggestions::plants(&project, uuid).contains(QStringLiteral("Pump house")));
+		QVERIFY(PlaceSuggestions::plants(&project, uuid).contains(QStringLiteral("FACTORY")));
+		ElementInfoWidget panel(pump);
+		for (auto *part : panel.findChildren<ElementInfoPartWidget *>())
+			if (part->key() == QLatin1String("plant")) {
+				const QStringList offered = listOf(part->findChild<QLineEdit *>());
+				QVERIFY(!offered.contains(QStringLiteral("Pump house")));
+				QVERIFY(offered.contains(QStringLiteral("FACTORY")));
+			}
+	}
+
+	void anEmptiedListKeepsItsCompleter()
+	{
+		QLineEdit edit;
+		QVERIFY(!edit.completer());
+		PlaceSuggestions::setSuggestions(&edit, {});
+		QVERIFY(!edit.completer());
+		PlaceSuggestions::setSuggestions(&edit, {QStringLiteral("a")});
+		QCompleter *first = edit.completer();
+		QVERIFY(first);
+		PlaceSuggestions::setSuggestions(&edit, {});
+		QCOMPARE(edit.completer(), first);
+		QVERIFY(listOf(&edit).isEmpty());
+		PlaceSuggestions::setSuggestions(&edit, {QStringLiteral("b")});
+		QCOMPARE(edit.completer(), first);
+		QCOMPARE(listOf(&edit), QStringList({QStringLiteral("b")}));
+	}
+
 	void folioPropertiesOffersThePlaces()
 	{
 		QETProject project;

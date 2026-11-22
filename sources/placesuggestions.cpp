@@ -20,14 +20,18 @@
 #include "dataBase/projectdatabase.h"
 #include "qetproject.h"
 
+#include <QDebug>
 #include <QAbstractItemView>
 #include <QApplication>
 #include <QCompleter>
 #include <QLineEdit>
 #include <QMouseEvent>
 #include <QPointer>
+#include <QSqlError>
 #include <QSqlQuery>
 #include <QStringListModel>
+
+#include <memory>
 
 namespace
 {
@@ -69,21 +73,6 @@ namespace
 		private:
 			QPointer<QAbstractItemView> m_popup;
 	};
-
-		/// One column of qet_locations: distinct, not empty, one spelling of
-		/// names which differ only in case
-	QStringList column(QETProject *project, const QString &where)
-	{
-		if (!project || !project->dataBase()) return {};
-		project->dataBase()->updateDB();
-		QSqlQuery query = project->dataBase()->newQuery(where);
-		QStringList list;
-		while (query.next()) {
-			const QString name = query.value(0).toString().trimmed();
-			if (!name.isEmpty()) list << name;
-		}
-		return PlaceSuggestions::merged(list, {});
-	}
 }
 
 namespace PlaceSuggestions
@@ -104,34 +93,69 @@ namespace PlaceSuggestions
 	}
 
 	/**
-		@return the plants of @p project, sorted
+		@return the places of @p project: where its symbols and folios are,
+		as the database views work them out (what qet_locations counts),
+		without a symbol of @p except_element
 	*/
-	QStringList plants(QETProject *project)
+	QList<QPair<QString, QString>> places(QETProject *project,
+										  const QString &except_element)
 	{
-		return column(project, QStringLiteral(
-				"SELECT DISTINCT plant FROM qet_locations ORDER BY plant COLLATE NOCASE"));
-	}
-
-	/**
-		@return the locations of plant @p plant in @p project, sorted; of
-		every plant when @p plant is empty
-	*/
-	QStringList locations(QETProject *project, const QString &plant)
-	{
-		if (plant.trimmed().isEmpty())
-			return column(project, QStringLiteral(
-					"SELECT DISTINCT location FROM qet_locations ORDER BY location COLLATE NOCASE"));
-		if (!project || !project->dataBase()) return {};
+		QList<QPair<QString, QString>> list;
+		if (!project || !project->dataBase()) return list;
 		project->dataBase()->updateDB();
 		QSqlQuery query(project->dataBase()->database());
 		query.prepare(QStringLiteral(
-				"SELECT DISTINCT location FROM qet_locations "
-				"WHERE plant = :plant COLLATE NOCASE ORDER BY location COLLATE NOCASE"));
-		query.bindValue(QStringLiteral(":plant"), plant.trimmed());
+				"SELECT COALESCE(plant, ''), COALESCE(location, '') FROM qet_devices "
+				"WHERE COALESCE(kind, '') NOT IN ('next_report', 'previous_report') "
+				"AND device_uuid != :except "
+				"UNION SELECT COALESCE(plant, ''), COALESCE(location, '') FROM qet_folios"));
+		//A null string would bind as NULL, and "!= NULL" matches nothing
+		query.bindValue(QStringLiteral(":except"),
+						except_element.isEmpty() ? QStringLiteral("") : except_element);
+		if (!query.exec()) {
+			qWarning() << "PlaceSuggestions::places" << query.lastError().text();
+			return list;
+		}
+		while (query.next())
+			list.append({query.value(0).toString().trimmed(),
+						 query.value(1).toString().trimmed()});
+		return list;
+	}
+
+	/**
+		@return the plants among @p places, sorted, each once
+	*/
+	QStringList plants(const QList<QPair<QString, QString>> &places)
+	{
 		QStringList list;
-		if (query.exec())
-			while (query.next()) list << query.value(0).toString().trimmed();
+		for (const auto &place : places) list << place.first;
 		return merged(list, {});
+	}
+
+	/**
+		@return the locations of plant @p plant among @p places, sorted; of
+		every plant when @p plant is empty
+	*/
+	QStringList locations(const QList<QPair<QString, QString>> &places,
+						  const QString &plant)
+	{
+		const QString wanted = plant.trimmed();
+		QStringList list;
+		for (const auto &place : places)
+			if (wanted.isEmpty() || place.first.compare(wanted, Qt::CaseInsensitive) == 0)
+				list << place.second;
+		return merged(list, {});
+	}
+
+	QStringList plants(QETProject *project, const QString &except_element)
+	{
+		return plants(places(project, except_element));
+	}
+
+	QStringList locations(QETProject *project, const QString &plant,
+						  const QString &except_element)
+	{
+		return locations(places(project, except_element), plant);
 	}
 
 	/**
@@ -141,12 +165,10 @@ namespace PlaceSuggestions
 	void setSuggestions(QLineEdit *edit, const QStringList &suggestions)
 	{
 		if (!edit) return;
-		if (suggestions.isEmpty()) {
-			edit->setCompleter(nullptr);
-			return;
-		}
 		QCompleter *completer = edit->completer();
 		auto *model = completer ? qobject_cast<QStringListModel *>(completer->model()) : nullptr;
+			//An emptied list keeps its completer, with nothing to offer
+		if (!model && suggestions.isEmpty()) return;
 		if (!model) {
 			model = new QStringListModel(edit);
 			completer = new QCompleter(model, edit);
@@ -166,11 +188,11 @@ namespace PlaceSuggestions
 	void attach(QLineEdit *plant_edit, QLineEdit *location_edit, QETProject *project)
 	{
 		if (!project || !plant_edit || !location_edit) return;
-		setSuggestions(plant_edit, plants(project));
-		QPointer<QETProject> guard(project);
-		const auto refill = [guard, plant_edit, location_edit]() {
-			if (!guard) return;
-			setSuggestions(location_edit, locations(guard, plant_edit->text()));
+			//One read of the database: typing only filters it
+		const auto all = std::make_shared<const QList<QPair<QString, QString>>>(places(project));
+		setSuggestions(plant_edit, plants(*all));
+		const auto refill = [all, plant_edit, location_edit]() {
+			setSuggestions(location_edit, locations(*all, plant_edit->text()));
 		};
 		refill();
 		QObject::connect(plant_edit, &QLineEdit::textChanged, location_edit, refill);

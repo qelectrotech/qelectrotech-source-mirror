@@ -516,9 +516,9 @@ void ElementInfoWidget::populateSuggestions(Element *element,
 			//The places of the project too: a plant that only a folio or a
 			//structure box holds is not in any symbol's own information
 		if (key == QETInformation::ELMT_PLANT)
-			values = PlaceSuggestions::merged(values, PlaceSuggestions::plants(project));
+			values = PlaceSuggestions::merged(values, PlaceSuggestions::plants(project, uuid));
 		else if (key == QETInformation::ELMT_LOCATION)
-			values = PlaceSuggestions::merged(values, PlaceSuggestions::locations(project));
+			values = PlaceSuggestions::merged(values, PlaceSuggestions::locations(project, QString(), uuid));
 		eipw->setSuggestions(values);
 	}
 }
