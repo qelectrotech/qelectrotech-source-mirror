@@ -333,13 +333,18 @@ class tst_companyprefixes : public QObject
 		QCOMPARE(labels.prefix({"other"}), QString());
 
 		labels.ensureStructure(QetLabelsFile::scanFolders(collection.path()));
+		labels.setPrefix({"other", "Sensoren"}, "B");
 		QVERIFY(labels.save());
+		QVERIFY(!labels.backupPath().isEmpty());
 		QCOMPARE(QetLabelsFile::prefixForFolder(file, {"devices", "Actoren"}),
 				 QString("KF"));
 		QCOMPARE(QetLabelsFile::prefixForFolder(file, {"other", "Actoren"}),
 				 QString("KF"));
 		QCOMPARE(QetLabelsFile::prefixForFolder(file, {"other", "Sensoren"}),
-				 QString(""));
+				 QString("B"));
+			//The lookup also reads Actoren for the other collections
+		QCOMPARE(QetLabelsFile::prefixForFolder(file, {"acme", "Actoren"}),
+				 QString("KF"));
 	}
 
 		///When no <labels> file gives every folder the prefix the lookup
@@ -348,20 +353,18 @@ class tst_companyprefixes : public QObject
 	{
 		QTemporaryDir collection;
 		QVERIFY(collection.isValid());
-		QVERIFY(QDir(collection.path()).mkpath("devices/Actoren/ABB"));
+		QVERIFY(QDir(collection.path()).mkpath("devices/Actoren"));
 		const QString file = QetLabelsFile::labelsFilePath(collection.path());
-			//devices/Actoren/ABB: the first layout stops at Actoren, so
-			//the lookup takes Q from the second one. One file cannot
-			//hold both
+			//devices/Actoren: the first layout stops at devices, so the
+			//lookup takes the second one, where Actoren has no prefix.
+			//Under devices, Actoren would inherit D instead
 		writeFile(file,
 				  "<category name=\"x\">"
-				  "<category name=\"devices\"><category name=\"Actoren\">"
-				  "<prefix>K</prefix></category></category>"
-				  "<category name=\"Actoren\"><category name=\"ABB\">"
-				  "<prefix>Q</prefix></category></category>"
+				  "<category name=\"devices\"><prefix>D</prefix></category>"
+				  "<category name=\"Actoren\"/>"
 				  "</category>");
-		QCOMPARE(QetLabelsFile::prefixForFolder(file, {"devices", "Actoren", "ABB"}),
-				 QString("Q"));
+		QVERIFY(QetLabelsFile::prefixForFolder(file, {"devices", "Actoren"})
+				.isEmpty());
 		QetLabelsFile labels;
 		QVERIFY(labels.load(collection.path()));
 		QVERIFY(labels.isBroken());

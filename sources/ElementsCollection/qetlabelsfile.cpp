@@ -411,7 +411,8 @@ QString QetLabelsFile::prefixForFolderInDocument(
 	both as a top-level folder and as a folder inside any top-level
 	folder. So every child of the root is placed under each top-level
 	folder that has a folder of that name, or used as that top-level
-	folder when it is named after one.
+	folder when it is named after one. The others are also kept under
+	\<labels\> : the lookup reads them for the other collections too.
 
 	@param folders : the folders of the collection, from scanFolders()
 	@return true when every folder of @a folders gets the same prefix
@@ -465,6 +466,21 @@ bool QetLabelsFile::convertForeignRoot(const QDomDocument &document,
 		}
 		if (top_category.hasChildNodes()) {
 			labels.appendChild(top_category);
+		}
+	}
+		//The lookup also reads the other children for the symbols of the
+		//other collections, which folders does not list
+	QStringList tops;
+	for (const QStringList &folder : folders) {
+		if (folder.size() == 1) {
+			tops << folder.first();
+		}
+	}
+	for (QDomElement child = root.firstChildElement(QStringLiteral("category")) ;
+		 !child.isNull() ;
+		 child = child.nextSiblingElement(QStringLiteral("category"))) {
+		if (!tops.contains(child.attribute(QStringLiteral("name")))) {
+			labels.appendChild(converted.importNode(child, true));
 		}
 	}
 
