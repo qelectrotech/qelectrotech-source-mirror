@@ -23,6 +23,7 @@
 #include "diagramcontent.h"
 #include "qetgraphicsitem/conductor.h"
 #include "qetgraphicsitem/element.h"
+#include "qetgraphicsitem/terminal.h"
 #include "qetproject.h"
 #include "undocommand/deleteqgraphicsitemcommand.h"
 #include "ui/openwireendsdialog.h"
@@ -273,19 +274,36 @@ class tst_openwireends : public QObject
 			const auto before = project.dataBase()->openWireEnds();
 			QCOMPARE(count(before, OpenWireEnds::Kind::OneEnd), 0);
 
-				//A linked report whose partner has wires, on a folio of its own
-			Element *far = nullptr;
+				//A pair of linked reports on two folios, each with one wire
+				//to a symbol terminal that has no other wire: deleting the
+				//far wire leaves the near one a potential with one end, and
+				//no other potential changes. Any linked report will not do:
+				//a near wire that runs on to another report carries the
+				//potential further, and nothing new is found. Picked in
+				//uuid order, as the scene's item order differs between runs
+			const auto lone_wire_to_symbol = [](Element *report) -> bool {
+				if (report->conductors().size() != 1)
+					return false;
+				Conductor *wire = report->conductors().first();
+				Terminal *other = wire->terminal1->parentElement() == report ? wire->terminal2
+																			 : wire->terminal1;
+				const ElementData::Type kind = other->parentElement()->elementData().m_type;
+				return !(kind & (ElementData::AllReport | ElementData::Junction | ElementData::Terminal))
+						&& other->conductors().size() == 1;
+			};
+			QList<Element *> candidates;
 			for (Diagram *diagram : project.diagrams())
 				for (Element *element : diagram->elements())
 					if ((element->elementData().m_type & ElementData::AllReport)
-							&& !element->linkedElements().isEmpty()
-							&& !element->conductors().isEmpty()
-							&& !element->linkedElements().first()->conductors().isEmpty()
-							&& element->linkedElements().first()->diagram() != diagram) {
-						far = element;
-						break;
-					}
-			QVERIFY(far);
+							&& element->linkedElements().size() == 1
+							&& element->linkedElements().first()->linkedElements().size() == 1
+							&& element->linkedElements().first()->diagram() != diagram
+							&& lone_wire_to_symbol(element)
+							&& lone_wire_to_symbol(element->linkedElements().first()))
+						candidates << element;
+			QVERIFY(!candidates.isEmpty());
+			Element *far = *std::min_element(candidates.begin(), candidates.end(),
+				[](Element *a, Element *b) { return a->uuid() < b->uuid(); });
 			Diagram *folio = far->diagram();
 			folio->clearSelection();
 			for (Conductor *conductor : far->conductors())
