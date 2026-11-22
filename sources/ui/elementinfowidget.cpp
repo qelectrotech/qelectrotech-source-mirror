@@ -40,6 +40,7 @@
 #include <devicetype/devicetype.h>
 #include "customelementinfopartwidget.h"
 #include "elementinfopartwidget.h"
+#include "placesuggestions.h"
 
 /**
 	@brief ElementInfoWidget::ElementInfoWidget
@@ -512,6 +513,12 @@ void ElementInfoWidget::populateSuggestions(Element *element,
 					values << type;
 			values.sort(Qt::CaseInsensitive);
 		}
+			//The places of the project too: a plant that only a folio or a
+			//structure box holds is not in any symbol's own information
+		if (key == QETInformation::ELMT_PLANT)
+			values = PlaceSuggestions::merged(values, PlaceSuggestions::plants(project));
+		else if (key == QETInformation::ELMT_LOCATION)
+			values = PlaceSuggestions::merged(values, PlaceSuggestions::locations(project));
 		eipw->setSuggestions(values);
 	}
 }
