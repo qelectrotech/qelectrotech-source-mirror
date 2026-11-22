@@ -251,6 +251,25 @@ class tst_placerename : public QObject
 		QCOMPARE(project.defaultTitleBlockProperties().plant, QStringLiteral("E1"));
 	}
 
+	void undoLeavesOtherDefaultsAlone()
+	{
+		QETProject project;
+		Diagram *folio = project.addNewDiagram();
+		setPlace(folio, QStringLiteral("A"), QString());
+		auto defaults = project.defaultTitleBlockProperties();
+		defaults.plant = QStringLiteral("A");
+		defaults.author = QStringLiteral("first");
+		project.setDefaultTitleBlockProperties(defaults);
+		QVERIFY(run(project, plant(QStringLiteral("A"), QStringLiteral("B"))));
+			//Another default changes before the rename is undone
+		defaults = project.defaultTitleBlockProperties();
+		defaults.author = QStringLiteral("second");
+		project.setDefaultTitleBlockProperties(defaults);
+		project.undoStack()->undo();
+		QCOMPARE(project.defaultTitleBlockProperties().plant, QStringLiteral("A"));
+		QCOMPARE(project.defaultTitleBlockProperties().author, QStringLiteral("second"));
+	}
+
 	void movesWireCounters()
 	{
 		using PlaceRename::CounterPolicy;

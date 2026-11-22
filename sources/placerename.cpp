@@ -49,20 +49,21 @@ namespace
 		QStringList new_values;
 	};
 
-		/// The new-folio title block and the plant counters
+		/// The new-folio title block's plant or location, and the plant
+		/// counters. Only that one field of the defaults is written back, so
+		/// an undo cannot revert another default changed since
 	class ProjectDataCommand : public QUndoCommand
 	{
 		public:
-			ProjectDataCommand(QETProject *project,
-							   const TitleBlockProperties &old_defaults,
-							   const TitleBlockProperties &new_defaults,
-							   bool defaults,
-							   const QList<CounterChange> &counters,
+			ProjectDataCommand(QETProject *project, bool location,
+							   const QString &old_name, const QString &new_name,
+							   bool defaults, const QList<CounterChange> &counters,
 							   QUndoCommand *parent = nullptr) :
 				QUndoCommand(parent),
 				m_project(project),
-				m_old_defaults(old_defaults),
-				m_new_defaults(new_defaults),
+				m_location(location),
+				m_old_name(old_name),
+				m_new_name(new_name),
 				m_defaults(defaults),
 				m_counters(counters)
 			{
@@ -75,8 +76,11 @@ namespace
 			void apply(bool redo)
 			{
 				if (!m_project) return;
-				if (m_defaults)
-					m_project->setDefaultTitleBlockProperties(redo ? m_new_defaults : m_old_defaults);
+				if (m_defaults) {
+					TitleBlockProperties defaults = m_project->defaultTitleBlockProperties();
+					(m_location ? defaults.locmach : defaults.plant) = redo ? m_new_name : m_old_name;
+					m_project->setDefaultTitleBlockProperties(defaults);
+				}
 					//A plant leaves before the other arrives, so a counter
 					//moved onto a name is not removed by the one leaving it
 				for (const CounterChange &c : std::as_const(m_counters))
@@ -89,8 +93,9 @@ namespace
 			}
 
 			QPointer<QETProject> m_project;
-			TitleBlockProperties m_old_defaults;
-			TitleBlockProperties m_new_defaults;
+			bool m_location;
+			QString m_old_name;
+			QString m_new_name;
 			bool m_defaults;
 			QList<CounterChange> m_counters;
 	};
@@ -320,13 +325,10 @@ namespace PlaceRename
 			new ChangeStoredElementInformationCommand(project, uuid, old_info, new_info, parent);
 		}
 
-		const TitleBlockProperties old_defaults = project->defaultTitleBlockProperties();
-		TitleBlockProperties new_defaults = old_defaults;
-		(request.rename_location ? new_defaults.locmach : new_defaults.plant) = request.new_name;
 		const QList<CounterChange> counters = counterChanges(project, request, policy);
 		if (plan.defaults || !counters.isEmpty())
-			new ProjectDataCommand(project, old_defaults, new_defaults,
-								   plan.defaults, counters, parent);
+			new ProjectDataCommand(project, request.rename_location, what,
+								   request.new_name, plan.defaults, counters, parent);
 		return parent;
 	}
 }

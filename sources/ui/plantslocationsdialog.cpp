@@ -17,7 +17,7 @@
 */
 #include "plantslocationsdialog.h"
 
-#include "../reports/projectreports.h"
+#include "reports/projectreports.h"
 
 #include <qet.h>
 #include <qetproject.h>
@@ -244,7 +244,10 @@ void PlantsLocationsDialog::renameSelected(bool location)
 		else if (box.clickedButton() == keep_old) policy = PlaceRename::CounterPolicy::KeepOld;
 		else if (box.clickedButton() != merge) return;
 	}
-	if (!applyRename(request, policy))
+	if (!applyRename(request, policy)) {
 		QMessageBox::information(this, windowTitle(),
-				tr("The project does not store \"%1\" anywhere that can be renamed.").arg(old_name));
+				m_project->unloadedFolioCount()
+				? tr("Not every folio could be read, so nothing was renamed.")
+				: tr("The project does not store \"%1\" anywhere that can be renamed.").arg(old_name));
+	}
 }

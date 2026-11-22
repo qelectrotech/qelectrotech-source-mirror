@@ -18,7 +18,7 @@
 #ifndef PLANTSLOCATIONSDIALOG_H
 #define PLANTSLOCATIONSDIALOG_H
 
-#include "../placerename.h"
+#include "placerename.h"
 
 #include <QDialog>
 #include <QPointer>
