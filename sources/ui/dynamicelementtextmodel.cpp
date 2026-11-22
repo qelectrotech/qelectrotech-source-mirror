@@ -1487,6 +1487,11 @@ void DynamicElementTextModel::setConnection(DynamicElementTextItem *deti, bool s
 		connection_list << connect(deti, &DynamicElementTextItem::textWidthChanged,[deti,this](){this->updateDataFromText(deti, textWidth);});
 		connection_list << connect(deti, &DynamicElementTextItem::textHeightChanged,[deti,this](){this->updateDataFromText(deti, textHeight);});
 		connection_list << connect(deti, &DynamicElementTextItem::compositeTextChanged, [deti, this]() {this->updateDataFromText(deti, compositeText);});
+		connection_list << connect(
+					deti, &DynamicElementTextItem::alignmentChanged,
+					[deti, this]() {
+						this->updateDataFromText(deti, txtAlignment);
+					});
 		m_hash_text_connect.insert(deti, connection_list);
 	}
 	else
@@ -1626,6 +1631,15 @@ void DynamicElementTextModel::updateDataFromText(DynamicElementTextItem *deti,
 		case textHeight:
 		{
 			setSizeItems(qsi, deti);
+			break;
+		}
+		case txtAlignment:
+		{
+				//A text in a group has no alignment row
+			if (qsi->child(align_txt_row, 1))
+				qsi->child(align_txt_row, 1)->setData(
+							QVariant::fromValue(deti->alignment()),
+							Qt::UserRole+2);
 			break;
 		}
 	default:break;

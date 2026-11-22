@@ -609,6 +609,57 @@ class tst_textdialogs : public QObject
 			QCOMPARE(text->alignment(), topLeft);
 		}
 
+			//Undo also brings the panel back to the old point, so that a
+			//change to another field does not apply the undone one again
+		void selectionPanelAlignmentUndo()
+		{
+			QETProject project(QFINDTESTDATA("fixtures/every_feature.qet"));
+			Element *element = firstSymbol(project);
+			QVERIFY(element);
+			QVERIFY(element->diagram());
+			auto *text = new DynamicElementTextItem(element);
+			element->addDynamicTextItem(text);
+			text->setAlignment(topLeft);
+
+			DynamicElementTextItemEditor editor(element);
+			editor.setLiveEdit(true);
+			editor.show();
+			QVERIFY(QTest::qWaitForWindowExposed(&editor));
+			auto *view = editor.findChild<QTreeView *>();
+			QVERIFY(view);
+			auto *model = qobject_cast<DynamicElementTextModel *>(
+						view->model());
+			QVERIFY(model);
+			const QModelIndex cell = cellOf(
+						*model, text, DynamicElementTextModel::txtAlignment);
+			const QModelIndex size = cellOf(
+						*model, text, DynamicElementTextModel::size);
+			QVERIFY(cell.isValid() && size.isValid());
+			QUndoStack &stack = element->diagram()->undoStack();
+
+			view->expandAll();
+			view->edit(cell);
+			QPointer<QDialog> dialog = editorOf(*view, "AlignmentTextDialog");
+			QVERIFY(dialog);
+			QVERIFY(QTest::qWaitForWindowExposed(dialog));
+			pick(dialog, "bottom_right");
+			QVERIFY(leave(dialog, Exit::Close));
+			settle();
+			QCOMPARE(text->alignment(), bottomRight);
+
+			stack.undo();
+			QCOMPARE(text->alignment(), topLeft);
+			QCOMPARE(model->data(cell, Qt::UserRole + 2)
+						 .value<Qt::Alignment>(),
+					 topLeft);
+
+			const int index = stack.index();
+			model->setData(size, model->data(size, Qt::EditRole).toInt() + 2,
+						   Qt::EditRole);
+			QCOMPARE(stack.index(), index + 1);
+			QCOMPARE(text->alignment(), topLeft);
+		}
+
 		void textsTabCompositeText_data()
 		{
 			QTest::addColumn<int>("way_out");
