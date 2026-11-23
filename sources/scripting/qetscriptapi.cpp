@@ -85,6 +85,7 @@
 #include <borderproperties.h>
 #include <titleblock/templatescollection.h>
 #include <diagramcommands.h>
+#include <placerename.h>
 #include <symboltextplacement.h>
 #include <qetgraphicsitem/terminal.h>
 #include <qetgraphicsitem/terminalelement.h>
@@ -3104,6 +3105,85 @@ bool QetScriptApi::setFolioProperty(int folioIndex, const QString &property, con
 	if (*field == value) return true;
 	*field = value;
 	m_project->undoStack()->push(new ChangeTitleBlockCommand(diagram, old_p, new_p));
+	return true;
+}
+
+/**
+	@brief QetScriptApi::renamePlant
+	Rename a plant in the whole project, in one undo step, as Project >
+	Plants and locations > Rename plant does.
+	@param merge : the new name may already be a plant, the two becoming
+	one; false refuses that, as the screen asks before it merges
+	@param counters : when both plants have wire counters, which to keep:
+	"higher" (the higher number of each), "new" or "old"
+	@return false, with the reason logged, when nothing was renamed
+*/
+bool QetScriptApi::renamePlant(const QString &plant, const QString &newName,
+							   bool merge, const QString &counters)
+{
+	PlaceRename::Request request;
+	request.plant = plant;
+	request.new_name = newName;
+	PlaceRename::CounterPolicy policy = PlaceRename::CounterPolicy::MergeHigher;
+	if (counters == QLatin1String("new")) {
+		policy = PlaceRename::CounterPolicy::KeepNew;
+	} else if (counters == QLatin1String("old")) {
+		policy = PlaceRename::CounterPolicy::KeepOld;
+	} else if (counters != QLatin1String("higher")) {
+		log(QStringLiteral("qet.renamePlant: counters must be \"higher\", \"new\" or \"old\", not '%1'")
+			.arg(counters));
+		return false;
+	}
+	return rename(QStringLiteral("renamePlant"), request, merge, policy);
+}
+
+/**
+	@brief QetScriptApi::renameLocation
+	Rename the location @p location of @p plant in the whole project, in one
+	undo step. @p merge is as for renamePlant().
+*/
+bool QetScriptApi::renameLocation(const QString &plant, const QString &location,
+								  const QString &newName, bool merge)
+{
+	PlaceRename::Request request;
+	request.plant = plant;
+	request.location = location;
+	request.new_name = newName;
+	request.rename_location = true;
+	return rename(QStringLiteral("renameLocation"), request, merge,
+				  PlaceRename::CounterPolicy::MergeHigher);
+}
+
+/**
+	@brief QetScriptApi::rename
+	What renamePlant() and renameLocation() share. Every folio is built
+	first: a structure box exists only on a built folio.
+*/
+bool QetScriptApi::rename(const QString &name, const PlaceRename::Request &request,
+						  bool merge, PlaceRename::CounterPolicy policy)
+{
+	if (!m_project) return false;
+	if (m_project->isReadOnly()) {
+		log(QStringLiteral("qet.%1: project is read-only").arg(name));
+		return false;
+	}
+	QString why;
+	if (!PlaceRename::isValid(request, &why)) {
+		log(QStringLiteral("qet.%1: %2").arg(name, why));
+		return false;
+	}
+	m_project->diagrams();
+	if (!merge && PlaceRename::targetExists(m_project, request)) {
+		log(QStringLiteral("qet.%1: '%2' already exists; pass merge true to make the two one")
+			.arg(name, request.new_name));
+		return false;
+	}
+	QUndoCommand *command = PlaceRename::command(m_project, request, policy);
+	if (!command) {
+		log(QStringLiteral("qet.%1: the project stores no such name").arg(name));
+		return false;
+	}
+	m_project->undoStack()->push(command);
 	return true;
 }
 

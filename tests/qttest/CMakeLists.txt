@@ -1714,6 +1714,18 @@ if(QET_HAS_SCRIPTING)
     "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
     "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
 
+  # Renaming a plant or a location from a script (#1878 C10, stage L4): the
+  # same single undo step as the screen, merging only when the script says so.
+  add_executable(
+    tst_scriptplacerename
+    tst_scriptplacerename.cpp)
+  add_test(NAME tst_scriptplacerename COMMAND tst_scriptplacerename)
+  add_dependencies(tst_scriptplacerename qelectrotech)
+  target_link_libraries(tst_scriptplacerename PRIVATE Qt::Test)
+  target_compile_definitions(tst_scriptplacerename PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\""
+    "QET_EXAMPLES_DIR=\"${QET_DIR}/examples\"")
+
   # A project can keep the texts of its turned symbols horizontal: the
   # DXF of a turned folio of tremie_vibrante.qet with the setting off and on.
   add_executable(
