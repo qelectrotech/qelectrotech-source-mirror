@@ -38,6 +38,7 @@
 #include <qetxml.h>
 
 #include <QPainterPath>
+#include <QCoreApplication>
 #include <algorithm>
 
 namespace {
@@ -188,6 +189,45 @@ QList<BridgeCrossing> BridgeManager::crossedTerminals(Diagram *diagram, const QL
 	}
 
 	return crossings;
+}
+
+/**
+	@brief BridgeManager::stageProblem
+	@param crossings the terminals a drawn line crosses
+	@return why those terminals cannot be joined by a bridge, or an
+	empty string when they can: a bridge lies at one stage only, so a
+	line crossing terminals of different stages cannot be built --
+	a comb cannot sit at two heights of the cabinet at once.
+*/
+QString BridgeManager::stageProblem(const QList<BridgeCrossing> &crossings)
+{
+	QSet<int> stages;
+	for (const BridgeCrossing &crossing : crossings)
+	{
+		if (crossing.reference || !crossing.element) {
+			continue;
+		}
+		const auto terminal = qobject_cast<TerminalElement *>(crossing.element);
+		if (!terminal || !terminal->realTerminal() || !terminal->parentTerminalStrip()) {
+			continue;	//Not a terminal of a strip: no stage to compare
+		}
+		stages.insert(terminal->realTerminal()->stage());
+	}
+
+	if (stages.size() < 2) {
+		return QString();
+	}
+
+	QList<int> sorted = stages.values();
+	std::sort(sorted.begin(), sorted.end());
+	QStringList names;
+	for (const int stage : std::as_const(sorted)) {
+		names << QString::number(stage);
+	}
+	return QCoreApplication::translate("BridgeManager",
+		"The line crosses terminals of different stages (%1). "
+		"A bridge lies at one stage only: draw it along one stage.")
+		.arg(names.join(QLatin1String(", ")));
 }
 
 /**
