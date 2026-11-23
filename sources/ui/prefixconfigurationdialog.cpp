@@ -341,8 +341,9 @@ void PrefixConfigurationDialog::accept()
 	if (converted && !m_labels.backupPath().isEmpty()) {
 		QMessageBox::information(this,
 								 tr("Prefix file updated"),
-								 tr("The file %1 now has <labels> as its outer "
-									"element. Every folder keeps its prefix.\n"
+								 tr("The file %1 has been rewritten in the "
+									"form this dialog uses. Every folder "
+									"keeps its prefix.\n"
 									"Its previous version was kept as:\n%2")
 								 .arg(m_labels.filePath(), m_labels.backupPath()));
 	} else if (!m_labels.backupPath().isEmpty()) {
