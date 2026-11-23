@@ -19,6 +19,7 @@
 
 #include "../QPropertyUndoCommand/qpropertyundocommand.h"
 #include "../diagram.h"
+#include "placesuggestions.h"
 #include "../qetgraphicsitem/structureboxitem.h"
 
 #ifdef BUILD_WITHOUT_KF
@@ -42,6 +43,10 @@ StructureBoxPropertiesWidget::StructureBoxPropertiesWidget(StructureBoxItem *ite
 	layout->addRow(tr("Plant (=)"), m_plant_edit);
 	layout->addRow(tr("Location (+)"), m_location_edit);
 	layout->addRow(tr("Prefix (-)"), m_prefix_edit);
+	m_plant_edit->setObjectName(QStringLiteral("plantEdit"));
+	m_location_edit->setObjectName(QStringLiteral("locationEdit"));
+	if (m_item && m_item->diagram())
+		PlaceSuggestions::attach(m_plant_edit, m_location_edit, m_item->diagram()->project());
 	m_label_size = new QDoubleSpinBox(this);
 	m_label_size->setObjectName(QStringLiteral("labelSize"));
 	m_label_size->setRange(1, 200);

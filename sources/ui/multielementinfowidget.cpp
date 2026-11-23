@@ -18,6 +18,7 @@
 #include "multielementinfowidget.h"
 
 #include <dataBase/projectdatabase.h>
+#include <placesuggestions.h>
 #include <diagram.h>
 #include <qet.h>
 #include <qeticons.h>
@@ -655,6 +656,8 @@ void MultiElementInfoWidget::updateSuggestions()
 		//Only a column of element_info can be queried; the key becomes
 		//part of the SQL text, so it is checked against that list.
 	const QStringList columns = QETInformation::elementInfoKeys();
+		//Read once for the plant and the location rows together
+	const auto places = PlaceSuggestions::places(project, QString());
 	for (Row *row : std::as_const(m_rows))
 	{
 		if (row->key == QETInformation::ELMT_LABEL || !columns.contains(row->key)) {
@@ -672,6 +675,11 @@ void MultiElementInfoWidget::updateSuggestions()
 		while (query.next()) {
 			values << query.value(0).toString();
 		}
+			//Places that only a folio or a structure box holds
+		if (row->key == QETInformation::ELMT_PLANT)
+			values = PlaceSuggestions::merged(values, PlaceSuggestions::plants(places));
+		else if (row->key == QETInformation::ELMT_LOCATION)
+			values = PlaceSuggestions::merged(values, PlaceSuggestions::locations(places, QString()));
 
 		if (values.isEmpty()) {
 			row->edit->setCompleter(nullptr);
