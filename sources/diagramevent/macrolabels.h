@@ -19,9 +19,11 @@
 #define MACROLABELS_H
 
 #include <QDomElement>
+#include <QHash>
 #include <QList>
 #include <QSet>
 #include <QString>
+#include <QStringList>
 
 class Diagram;
 
@@ -31,18 +33,24 @@ class Diagram;
 	devices, and every text holding a question mark, the macro's way of
 	saying "fill this in". A device label is proposed as the next one free
 	in the place of the folio: a macro with K1 placed twice gives K1 and K2.
+	A question mark followed by a name (?motor_kw) is one value, asked
+	once however many texts hold it.
 */
 namespace MacroLabels
 {
 	struct Field
 	{
-		enum Kind {Label, Text};
+		enum Kind {Label, Text, Value};
 		Kind kind = Label;
-		QString saved;      ///< what the macro holds
+			/// what the macro holds: a label, a whole text, or ?name
+		QString saved;
 		QString value;      ///< what to put in its place
 	};
 
 	QList<Field> fields(const QDomElement &macro_root);
+	QStringList namedValues(const QString &text);
+	QString withValues(const QString &text,
+					   const QHash<QString, QString> &values);
 	QString placeOf(Diagram *folio);
 	QSet<QString> taken(Diagram *folio, QSet<QString> *typed_with_sign = nullptr);
 	QString nextFree(const QString &label, const QString &place, const QSet<QString> &taken);
