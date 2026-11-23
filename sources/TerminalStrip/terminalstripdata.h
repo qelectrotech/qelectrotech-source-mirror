@@ -21,6 +21,7 @@
 #include <properties/propertiesinterface.h>
 
 #include <QUuid>
+#include <QSet>
 
 class TerminalStripData : public PropertiesInterface
 {
@@ -44,6 +45,9 @@ class TerminalStripData : public PropertiesInterface
 
 		TerminalStripData &operator= (const TerminalStripData &other);
 
+		bool cableAbove(const QString &key) const;
+		void setCableAbove(const QString &key, bool above);
+
 		Kind kind() const {return m_kind;}
 		void setKind(Kind kind) {m_kind = kind;}
 
@@ -66,6 +70,7 @@ class TerminalStripData : public PropertiesInterface
 		Kind m_kind = Kind::Terminals;
 		QString m_device_type;	//Device type of a connector, its pins are the terminal parts of the type
 		QUuid m_uuid = QUuid::createUuid();
+		QSet<QString> m_upper_cables;
 
 };
 

@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "realterminal.h"
+#include "GraphicsItem/terminalstripdrawer.h"
 #include "terminalstrip.h"
 #include <qetgraphicsitem/terminalelement.h>
 #include "physicalterminal.h"
@@ -36,6 +37,7 @@
 
 #include <QHash>
 #include <QSet>
+#include <algorithm>
 
 namespace
 {
@@ -47,9 +49,9 @@ namespace
 		 * the conductors of the element is enough.
 		 * Each pair is (cable designation, core colour or number).
 		 */
-	QList<QPair<QString, QString>> wiredCores(Element *element)
+	QVector<TerminalStripDrawer::CableConnection> wiredCores(Element *element)
 	{
-		QList<QPair<QString, QString>> cores;
+		QVector<TerminalStripDrawer::CableConnection> cores;
 		if (!element || !element->diagram()) {
 			return cores;
 		}
@@ -67,9 +69,14 @@ namespace
 				if (wire.isEmpty() && properties.m_cable_slot >= 0) {
 					wire = QString::number(properties.m_cable_slot + 1);
 				}
-				const QPair<QString, QString> core(cable->designation(), wire);
-				if (!cores.contains(core)) {
-					cores.append(core);
+				const auto duplicate = std::any_of(cores.cbegin(), cores.cend(),
+					[cable, &properties](const auto &core) {
+						return core.uuid == cable->uuid()
+							&& core.slot == properties.m_cable_slot;
+					});
+				if (!duplicate) {
+					cores.append({cable->uuid(), cable->designation(), wire,
+								  properties.m_cable_slot});
 				}
 			}
 		}
@@ -558,8 +565,8 @@ QString RealTerminal::cable() const
 	{
 		QStringList cables;
 		for (const auto &core : cores) {
-			if (!cables.contains(core.first)) {
-				cables.append(core.first);
+			if (!cables.contains(core.name)) {
+				cables.append(core.name);
 			}
 		}
 		return cables.join(QStringLiteral(", "));
@@ -592,7 +599,7 @@ QString RealTerminal::cableWire() const
 	{
 		QStringList wires;
 		for (const auto &core : cores) {
-			wires.append(core.second);
+			wires.append(core.wire);
 		}
 		return wires.join(QStringLiteral(", "));
 	}
@@ -634,6 +641,19 @@ QStringList RealTerminal::cableCoreTargets(const QString &cable_name,
 	return lines;
 }
 
+QVector<TerminalStripDrawer::CableConnection> RealTerminal::cableConnections() const
+{
+	auto cores = wiredCores(m_element.data());
+	if (cores.isEmpty() && hasData()) {
+		const auto info = terminalData().m_informations;
+		const auto name = info.value(cableInfoKey()).toString();
+		if (!name.isEmpty()) {
+			cores.append({QUuid(), name, info.value(cableWireInfoKey()).toString()});
+		}
+	}
+	return cores;
+}
+
 /**
  * @brief RealTerminal::isShield
  * @return true if this terminal is the shield of the cable
@@ -661,9 +681,9 @@ bool RealTerminal::isShield() const {
  * field and never breaks anything.
  * @return the lines to write in the box under the cable
  */
-QVector<QString> RealTerminal::cableTarget() const
+QVector<QString> RealTerminal::cableTarget(const QUuid &cable_uuid) const
 {
-	const auto automatic_{automaticCableTarget()};
+	const auto automatic_{automaticCableTarget(cable_uuid)};
 	if (!automatic_.isEmpty()) {
 		return automatic_;
 	}
@@ -869,7 +889,7 @@ bool RealTerminal::cableTargetIsAutomatic() const
  * its name among the cables of the project.
  * @return the lines to write in the box under the cable
  */
-QVector<QString> RealTerminal::automaticCableTarget() const
+QVector<QString> RealTerminal::automaticCableTarget(QUuid cable_uuid_) const
 {
 	if (m_spare || m_element.isNull()) {
 		return QVector<QString>();
@@ -881,21 +901,23 @@ QVector<QString> RealTerminal::automaticCableTarget() const
 	QETProject *project_{strip_->project()};
 
 		//The cable the wires drawn to this terminal are part of
-	QUuid cable_uuid_;
-	for (Terminal *terminal_ : m_element->terminals())
+	if (cable_uuid_.isNull())
 	{
-		if (!terminal_) {
-			continue;
-		}
-		for (Conductor *conductor_ : terminal_->conductors())
+		for (Terminal *terminal_ : m_element->terminals())
 		{
-			if (conductor_ && !conductor_->properties().m_cable_uuid.isNull()) {
-				cable_uuid_ = conductor_->properties().m_cable_uuid;
+			if (!terminal_) {
+				continue;
+			}
+			for (Conductor *conductor_ : terminal_->conductors())
+			{
+				if (conductor_ && !conductor_->properties().m_cable_uuid.isNull()) {
+					cable_uuid_ = conductor_->properties().m_cable_uuid;
+					break;
+				}
+			}
+			if (!cable_uuid_.isNull()) {
 				break;
 			}
-		}
-		if (!cable_uuid_.isNull()) {
-			break;
 		}
 	}
 	if (cable_uuid_.isNull())
