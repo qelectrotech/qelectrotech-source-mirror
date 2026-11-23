@@ -102,6 +102,7 @@ namespace TerminalStripDrawer
 			QColor stripeColor() const override;
 			qreal widthMm() const override;
 			int stage() const override;
+			ElementData::TerminalForm form() const override;
 			QString catalogEntry() const override;
 			bool hasSeparatorAfter() const override;
 

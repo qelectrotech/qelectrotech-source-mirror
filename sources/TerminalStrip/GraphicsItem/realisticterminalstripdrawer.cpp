@@ -40,6 +40,9 @@ constexpr qreal group_marker_width_mm{11.0};
 constexpr qreal separator_width_mm{1.5};
 	//Biggest radius of a wire entry (mm), for the wide terminals
 constexpr qreal max_entry_radius_mm{1.9};
+	//Share of the reference width a sensor/actuator terminal is drawn
+	//with when its own width is unknown: those terminals are slim
+constexpr qreal sensor_width_factor{0.6};
 
 	//Vertical layout of a terminal, in fraction of its length (top = 0, bottom = 1).
 	//The wire entries are in [entries_top, band_top] and [band_bottom, 1 - entries_top],
@@ -136,6 +139,11 @@ QVector<PhysicalGeometry> geometry(const AbstractTerminalStripInterface *strip)
 		}
 		if (width_mm_ <= 0) {
 			width_mm_ = Helpers::referenceTerminalWidthMm();
+				//A sensor/actuator terminal is a slim thing: without a
+				//width of its own it is drawn thinner than the rest
+			if (reals_.first()->form() == ElementData::TFormSensorActuator) {
+				width_mm_ *= sensor_width_factor;
+			}
 		}
 		for (int k = 0 ; k < reals_.size() ; ++k)
 		{
@@ -531,10 +539,20 @@ void drawGroupMarker(QPainter *painter, const QRectF &rect, const QString &text)
  * @param screw : true for a screw clamp
  */
 void drawWireEntry(QPainter *painter, const QPointF &center, qreal width, qreal row_h,
-				   qreal max_r, qreal outer, const QColor &fill, bool screw)
+				   qreal max_r, qreal outer, const QColor &fill, bool screw,
+				   bool rectangle)
 {
 	painter->save();
-	if (!screw)
+	if (rectangle)
+	{
+			//The opening of a plug, where a hole would be: a tall
+			//rectangle reaching further up than the hole would
+		const qreal r_{std::min({width * 0.32, row_h * 0.3, max_r})};
+		painter->setBrush(Qt::black);
+		painter->drawRect(QRectF{center.x() - r_, center.y() - r_ * 1.875,
+								 2 * r_, r_ * 2.625});
+	}
+	else if (!screw)
 	{
 		const qreal r_{std::min({width * 0.32, row_h * 0.3, max_r})};
 		painter->setBrush(Qt::black);
@@ -570,7 +588,8 @@ void drawWireEntry(QPainter *painter, const QPointF &center, qreal width, qreal 
  * @param max_r : biggest radius of a wire entry
  */
 void drawEntriesHalf(QPainter *painter, const QRectF &body, qreal outer, qreal inner,
-					 int levels, qreal max_r, const QColor &fill, bool screw)
+					 int levels, qreal max_r, const QColor &fill, bool screw,
+					 bool rectangle)
 {
 	const qreal row_h_{(inner - outer) / levels};	//Negative for the bottom half
 	const qreal abs_row_h_{std::abs(row_h_)};
@@ -593,7 +612,8 @@ void drawEntriesHalf(QPainter *painter, const QRectF &body, qreal outer, qreal i
 		painter->restore();
 
 		drawWireEntry(painter, QPointF{body.center().x(), a_ + 0.67 * row_h_},
-					  body.width(), abs_row_h_, max_r, row_h_ > 0 ? -1 : 1, fill, screw);
+					  body.width(), abs_row_h_, max_r, row_h_ > 0 ? -1 : 1, fill, screw,
+					  rectangle);
 	}
 }
 
@@ -875,10 +895,15 @@ void paint(QPainter *painter,
 		}
 		painter->restore();
 
-			//Wire entries : one row by level, at the top and at the bottom
+			//Wire entries : the count comes from the form of the terminal --
+			//a 2-conductor through terminal has one hole on each side, as it
+			//always had; the opening under a pluggable terminal is a
+			//rectangle rather than a hole
+		const auto rows_ = Helpers::entryRowsForForm(first_->form());
+		const bool plug_ = first_->form() == ElementData::TFormPluggable;
 		const qreal max_r_{max_entry_radius_mm * s_};
-		drawEntriesHalf(painter, body_, body_.top() + length_ * entries_top, length_ * bandTop(max_levels_), levels_, max_r_, fill_, screw_);
-		drawEntriesHalf(painter, body_, body_.bottom() - length_ * entries_top, length_ * band_bottom, levels_, max_r_, fill_, screw_);
+		drawEntriesHalf(painter, body_, body_.top() + length_ * entries_top, length_ * bandTop(max_levels_), rows_.first, max_r_, fill_, screw_, false);
+		drawEntriesHalf(painter, body_, body_.bottom() - length_ * entries_top, length_ * band_bottom, rows_.second, max_r_, fill_, screw_, plug_);
 
 			//The levels of one terminal are one part : a stronger line at
 			//the outer sides of the terminal, a thin one between its levels
@@ -907,7 +932,10 @@ void paint(QPainter *painter,
 		painter->restore();
 
 			//Specific parts of some types of terminal
-		const auto type_{first_->type()};
+			//The part of the terminal is worked out of its form when the
+			//function says nothing about it: a fuse terminal draws its
+			//holder and a sectionable one its knife either way
+		const auto type_{Helpers::effectiveType(first_->type(), first_->form())};
 		switch (type_)
 		{
 			case ElementData::TTFuse:
@@ -925,7 +953,7 @@ void paint(QPainter *painter,
 
 			//Symbol of the type (fuse, led...), at the bottom of the band
 			//A test terminal with levels have its test sockets in place of the symbol
-		const bool have_symbol_{(first_->type() != ElementData::TTGeneric || first_->isLed())
+		const bool have_symbol_{(type_ != ElementData::TTGeneric || first_->isLed())
 								&& !(type_ == ElementData::TTTestSocket && levels_ > 1)};
 		const qreal tag_top_{length_ * 0.455};
 		const bool sockets_in_band_{type_ == ElementData::TTTestSocket && levels_ > 1};
@@ -936,7 +964,7 @@ void paint(QPainter *painter,
 				//Black on the orange knife, white on the dark band and on the fuse holder
 			painter->setPen(QPen(type_ == ElementData::TTSectional ? QColor(Qt::black) : QColor(Qt::white), 0.5));
 			Helpers::drawTypeSymbol(painter, QRectF{x_, length_ * 0.54, w_, length_ * 0.055},
-									first_->type(), first_->isLed());
+									type_, first_->isLed());
 			painter->restore();
 		}
 
@@ -945,7 +973,7 @@ void paint(QPainter *painter,
 		for (const auto &real_t : g_.reals) {
 			numbers_ << Helpers::terminalNumber(real_t->label());
 		}
-		const bool sectional_{first_->type() == ElementData::TTSectional};
+		const bool sectional_{type_ == ElementData::TTSectional};
 		const QRectF tag_{x_ + std::min(0.6 * s_, w_ * 0.12), tag_top_,
 						  w_ - 2 * std::min(0.6 * s_, w_ * 0.12), tag_bottom_ - tag_top_};
 		painter->save();

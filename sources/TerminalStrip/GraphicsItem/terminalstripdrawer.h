@@ -107,6 +107,10 @@ namespace TerminalStripDrawer
 			//Type and led are only used to draw the symbol of the terminal.
 			//They are not pure virtual, so an implementation can ignore them.
 			virtual ElementData::TerminalType type() const { return ElementData::TTGeneric; }
+			//Form of the terminal (through terminal, multi-level...), the second
+			//choice of the Terminal page beside the type: what the terminal is
+			//built as, and what the strip draws because of it
+		virtual ElementData::TerminalForm form() const { return ElementData::TFormNone; }
 			virtual bool isLed() const { return false; }
 			//Cable (hose) connected to the terminal, drawn under the strip.
 			virtual QString cable() const { return QString(); }
