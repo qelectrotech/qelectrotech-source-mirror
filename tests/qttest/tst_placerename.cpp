@@ -455,6 +455,32 @@ class tst_placerename : public QObject
 		QVERIFY(!PlaceRename::targetExists(&project, plant(QStringLiteral("A"), QStringLiteral("C"))));
 		QVERIFY(!PlaceRename::targetExists(&project, loc(QStringLiteral("A"), QStringLiteral("L1"), QStringLiteral("L2"))));
 	}
+
+	void knowsAPlantOnlyAnUnbuiltFolioGives()
+	{
+		QTemporaryDir dir;
+		QVERIFY(dir.isValid());
+		const QString path = dir.filePath(QStringLiteral("lazy.qet"));
+		{
+			QETProject project;
+			Diagram *a = project.addNewDiagram();
+			Diagram *b = project.addNewDiagram();
+			setPlace(a, QStringLiteral("A"), QStringLiteral("L1"));
+			QVERIFY(symbol(a, QStringLiteral("K1")));
+				//B's folio has no plant: only the box around K2 gives "BOXED"
+			Element *k2 = symbol(b, QStringLiteral("K2"));
+			QVERIFY(k2);
+			box(b, QRectF(k2->pos() - QPointF(60, 60), QSizeF(120, 120)),
+				QStringLiteral("BOXED"), QStringLiteral("L9"));
+			project.setFilePath(path);
+			QVERIFY(project.write().isOk());
+		}
+		QETProject again(path);
+		QCOMPARE(again.state(), QETProject::Ok);
+			//Folios are not built: this is what the dialog asks before it builds
+		QVERIFY(again.unloadedFolioCount() > 0);
+		QVERIFY(PlaceRename::targetExists(&again, plant(QStringLiteral("A"), QStringLiteral("BOXED"))));
+	}
 };
 
 QET_APP_TEST_MAIN(tst_placerename)
