@@ -1091,7 +1091,10 @@ void ProjectView::loadDiagrams()
 		//(tabChanged()), not here: a tab needs only the folio's own data
 	setDisplayFallbackWidget(m_project -> folios().isEmpty());
 
-	auto dialog = DialogWaiting::instance();
+		//Only the dialog of a project being read: asking for one here made
+		//a dialog nobody closed, for every new project
+	auto dialog = DialogWaiting::hasInstance() ? DialogWaiting::instance()
+											   : nullptr;
 	if(dialog)
 	{
 		dialog->setTitle( tr("<p align=\"center\"><b>Opening the project "

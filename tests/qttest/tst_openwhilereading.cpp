@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "qetapptest.h"
+#include "ui/dialogwaiting.h"
 
 #include <QDialog>
 #include <QTimer>
@@ -33,6 +34,14 @@ class tst_openwhilereading : public QObject
 	Q_OBJECT
 
 	QTemporaryDir m_dir;
+
+		/// A copy of the fixture, named @p name
+	QString copy(const QString &name)
+	{
+		const QString path = m_dir.filePath(name);
+		QFile::copy(QFINDTESTDATA("fixtures/every_feature.qet"), path);
+		return path;
+	}
 
 	private slots:
 		void fileHandedOverWaits()
@@ -63,18 +72,67 @@ class tst_openwhilereading : public QObject
 			bool read_inside = false;
 			QObject in_this_test;
 			QTimer::singleShot(0, &in_this_test, [&]() {
-				handed_over = true;
+				handed_over = DialogWaiting::hasInstance();
 				QETApp::instance()->openFiles(
 					QETArguments(QStringList{second}));
 				read_inside = QETApp::diagramEditorForFile(second);
 			});
 			QVERIFY(editor->openAndAddProject(first, false));
 
-				//Else this test proves nothing
+				//The reading was going on, else this test proves nothing
 			QVERIFY(handed_over);
 			QVERIFY(!read_inside);
 			QVERIFY(QETApp::diagramEditorForFile(first));
 			QTRY_VERIFY(QETApp::diagramEditorForFile(second));
+		}
+
+			/// A project opened straight away from inside a reading, as
+			/// the last session's projects or a script can be: it shares
+			/// the progress dialog and leaves it to the first reading
+		void openedInsideSharesTheDialog()
+		{
+			QETDiagramEditor *editor = QetAppTest::editor();
+			QVERIFY(editor);
+			const QString outer = copy("outer.qet");
+			const QString inner = copy("inner.qet");
+
+			bool opened_inside = false;
+			bool dialog_left_up = false;
+			QObject in_this_test;
+			QTimer::singleShot(0, &in_this_test, [&]() {
+				if (!DialogWaiting::hasInstance()) return;
+				opened_inside = editor->openAndAddProject(inner, false);
+				dialog_left_up = DialogWaiting::hasInstance();
+			});
+			QVERIFY(editor->openAndAddProject(outer, false));
+
+			QVERIFY(opened_inside);
+			QVERIFY(dialog_left_up);
+			QVERIFY(!DialogWaiting::hasInstance());
+			QVERIFY(QETApp::diagramEditorForFile(outer));
+			QVERIFY(QETApp::diagramEditorForFile(inner));
+		}
+
+			/// A new project shows no progress dialog and leaves none, so a
+			/// project handed over afterwards opens at once
+		void newProjectLeavesNoDialog()
+		{
+			QETDiagramEditor *editor = QetAppTest::editor();
+			QVERIFY(editor);
+			QVERIFY(!DialogWaiting::hasInstance());
+			editor->newProject();
+			QVERIFY(!DialogWaiting::hasInstance());
+
+			const QString later = copy("later.qet");
+			QTimer closer;
+			connect(&closer, &QTimer::timeout, this, []() {
+				if (auto *box = qobject_cast<QDialog *>(
+						QApplication::activeModalWidget()))
+					box->reject();
+			});
+			closer.start(20);
+			QETApp::instance()->openFiles(QETArguments(QStringList{later}));
+			QVERIFY(QETApp::diagramEditorForFile(later));
 		}
 };
 

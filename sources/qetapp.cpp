@@ -2401,7 +2401,9 @@ void QETApp::openFiles(const QETArguments &args) {
 		//which then resumes with the dialog the second one has closed, and
 		//crashes (#1978). It is opened once the dialog is gone
 	if (!projects.isEmpty() && DialogWaiting::hasInstance()) {
-		m_waiting_projects << projects;
+		for (const QString &project : std::as_const(projects))
+			if (!m_waiting_projects.contains(project))
+				m_waiting_projects << project;
 		projects.clear();
 		connect(DialogWaiting::instance(), &QObject::destroyed,
 			this, &QETApp::openWaitingProjects,
