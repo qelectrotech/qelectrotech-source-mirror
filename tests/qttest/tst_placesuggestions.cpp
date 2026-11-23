@@ -27,6 +27,7 @@
 #include "qetproject.h"
 #include "ui/elementinfopartwidget.h"
 #include "ui/elementinfowidget.h"
+#include "ui/multielementinfowidget.h"
 #include "ui/structureboxpropertieswidget.h"
 #include "ui/titleblockpropertieswidget.h"
 
@@ -189,12 +190,14 @@ class tst_placesuggestions : public QObject
 		QVERIFY(!PlaceSuggestions::plants(&project, uuid).contains(QStringLiteral("Pump house")));
 		QVERIFY(PlaceSuggestions::plants(&project, uuid).contains(QStringLiteral("FACTORY")));
 		ElementInfoWidget panel(pump);
+		ElementInfoPartWidget *plantPart = nullptr;
 		for (auto *part : panel.findChildren<ElementInfoPartWidget *>())
-			if (part->key() == QLatin1String("plant")) {
-				const QStringList offered = listOf(part->findChild<QLineEdit *>());
-				QVERIFY(!offered.contains(QStringLiteral("Pump house")));
-				QVERIFY(offered.contains(QStringLiteral("FACTORY")));
-			}
+			if (part->key() == QLatin1String("plant"))
+				plantPart = part;
+		QVERIFY(plantPart);
+		const QStringList offered = listOf(plantPart->findChild<QLineEdit *>());
+		QVERIFY(!offered.contains(QStringLiteral("Pump house")));
+		QVERIFY(offered.contains(QStringLiteral("FACTORY")));
 	}
 
 	void anEmptiedListKeepsItsCompleter()
@@ -251,6 +254,25 @@ class tst_placesuggestions : public QObject
 		QVERIFY(listOf(plant).contains(QStringLiteral("FACTORY")));
 		QVERIFY(listOf(location).contains(QStringLiteral("Z")));
 		QVERIFY(listOf(location).contains(QStringLiteral("CP2")));
+	}
+
+	void severalSymbolsOfferThePlacesToo()
+	{
+		QETProject project;
+		build(project);
+		Element *k9 = symbol(project.folios().first(), QStringLiteral("K9"));
+		Element *p1 = symbol(project.folios().first(), QStringLiteral("P1"));
+		QVERIFY(k9 && p1);
+		MultiElementInfoWidget panel(QList<Element *>{k9, p1});
+		bool yard = false, cp2 = false;
+		for (auto *edit : panel.findChildren<QLineEdit *>()) {
+			const QStringList offered = listOf(edit);
+			yard = yard || offered.contains(QStringLiteral("YARD"));
+			cp2 = cp2 || offered.contains(QStringLiteral("CP2"));
+		}
+			//YARD is given only by a structure box, not by any symbol
+		QVERIFY(yard);
+		QVERIFY(cp2);
 	}
 
 	void structureBoxPropertiesOffersThePlaces()
