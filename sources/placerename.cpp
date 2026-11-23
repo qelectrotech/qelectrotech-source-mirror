@@ -28,10 +28,11 @@
 #include "undocommand/changeelementinformationcommand.h"
 #include "undocommand/changetitleblockcommand.h"
 
+#include <algorithm>
+
 #include <QCoreApplication>
 #include <QPointer>
 #include <QRectF>
-#include <algorithm>
 #include <QSqlQuery>
 #include <QUndoCommand>
 
