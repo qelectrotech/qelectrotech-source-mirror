@@ -326,12 +326,11 @@ namespace MacroLabels
 				const QString saved = info.text().trimmed();
 				if (name == QLatin1String(FormulaKey)) {
 					formula = info;
-				} else if (name == QLatin1String(LabelKey) && device_labels.contains(saved)) {
-						//A device label: numbered, never read for ?names
-					if (labels.contains(saved)) {
-						setText(info, labels.value(saved));
-						relabelled = true;
-					}
+				} else if (name == QLatin1String(LabelKey) && labels.contains(saved)) {
+					setText(info, labels.value(saved));
+					relabelled = true;
+				} else if (name == QLatin1String(LabelKey) && device_labels.contains(saved) && !texts.contains(saved)) {
+						//A device label is numbered, never read for ?names
 				} else {
 					answer(info);
 				}
@@ -343,21 +342,21 @@ namespace MacroLabels
 				answer(text);
 			}
 		}
-		QHash<QString, QString> escaped_values;
-		for (auto it = values.cbegin() ; it != values.cend() ; ++it)
-			escaped_values.insert(it.key(), escaped(it.value()));
 		for (QDomElement &input : children(diagram.firstChildElement(QStringLiteral("inputs")), "input")) {
-				//Held as HTML: the answers are escaped for it
-			const QString saved = plain(input.attribute(QStringLiteral("text"))).trimmed();
-			const QString html = texts.contains(saved) ? escaped(texts.value(saved)) : input.attribute(QStringLiteral("text"));
-			const QString text = withValues(html, escaped_values);
-			if (text != input.attribute(QStringLiteral("text"))) input.setAttribute(QStringLiteral("text"), text);
+				//Held as HTML: answered on its plain text, as fields() read it,
+				//and written back escaped
+			const QString saved = plain(input.attribute(QStringLiteral("text")));
+			const QString text = answered(saved);
+			if (text != saved) input.setAttribute(QStringLiteral("text"), escaped(text));
 		}
 		for (QDomElement &conductor : children(diagram.firstChildElement(QStringLiteral("conductors")), "conductor")) {
 			for (const char *attribute : ConductorTexts) {
 				const QString saved = conductor.attribute(QLatin1String(attribute));
 				const QString text = answered(saved);
-				if (text != saved) conductor.setAttribute(QLatin1String(attribute), text);
+				if (text == saved) continue;
+				conductor.setAttribute(QLatin1String(attribute), text);
+					//An answered number no longer follows a formula
+				if (qstrcmp(attribute, "num") == 0) conductor.removeAttribute(QStringLiteral("formula"));
 			}
 		}
 	}

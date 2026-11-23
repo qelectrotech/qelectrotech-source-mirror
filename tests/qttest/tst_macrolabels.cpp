@@ -182,6 +182,7 @@ class tst_macrolabels : public QObject
 		QDomElement wires = doc.createElement(QStringLiteral("conductors"));
 		QDomElement wire = doc.createElement(QStringLiteral("conductor"));
 		wire.setAttribute(QStringLiteral("num"), QStringLiteral("?wire"));
+		wire.setAttribute(QStringLiteral("formula"), QStringLiteral("%autonum"));
 		wire.setAttribute(QStringLiteral("conductor_section"), QStringLiteral("?section mm2"));
 		wires.appendChild(wire);
 		QDomElement diagram = diagramOf(r);
@@ -195,6 +196,40 @@ class tst_macrolabels : public QObject
 		MacroLabels::apply(diagram, fields);
 		QCOMPARE(wire.attribute(QStringLiteral("num")), QStringLiteral("L1"));
 		QCOMPARE(wire.attribute(QStringLiteral("conductor_section")), QStringLiteral("2.5 mm2"));
+			//An answered number no longer follows its formula
+		QVERIFY(!wire.hasAttribute(QStringLiteral("formula")));
+	}
+
+	void aStyledFreeTextIsAnswered()
+	{
+			//Part of the name in bold: the HTML never holds "?motor_kw" whole;
+			//a link's ?lang is markup, not a question
+		QDomDocument doc;
+		QDomElement r = root(macroText(), doc);
+		QDomElement input = diagramOf(r).firstChildElement(QStringLiteral("inputs")).firstChildElement(QStringLiteral("input"));
+		input.setAttribute(QStringLiteral("text"), QStringLiteral("<p><a href=\"x?lang=en\">?<b>motor</b>_kw</a></p>"));
+		auto fields = MacroLabels::fields(r);
+		QCOMPARE(fields.size(), 2);
+		QCOMPARE(fields.at(1).saved, QStringLiteral("?motor_kw"));
+		fields[1].value = QStringLiteral("7.5");
+		QDomElement diagram = diagramOf(r);
+		MacroLabels::apply(diagram, fields);
+		QCOMPARE(input.attribute(QStringLiteral("text")), QStringLiteral("7.5"));
+	}
+
+	void aReportSharingADeviceLabelKeepsItsAnswer()
+	{
+		QDomDocument doc;
+		QString text = macroText(QStringLiteral("K?"));
+		text.replace(QStringLiteral(">SIG1<"), QStringLiteral(">K?<"));
+		QDomElement r = root(text, doc);
+		auto fields = MacroLabels::fields(r);
+		QCOMPARE(fields.size(), 2);
+		QCOMPARE(fields.at(1).kind, MacroLabels::Field::Text);
+		fields[1].value = QStringLiteral("SIG1");   //the device label is kept
+		QDomElement diagram = diagramOf(r);
+		MacroLabels::apply(diagram, fields);
+		QVERIFY(doc.toString().contains(QLatin1String(">SIG1<")));
 	}
 
 	void nextFreeLabel_data()
