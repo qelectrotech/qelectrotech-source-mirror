@@ -64,9 +64,14 @@ namespace ConductorMultiEdit
 		@param apply_all : true to add every conductor of their potentials
 		@param function_separated : set to the conductors that share the
 		potential of an edited one only by crossing a function separated
-		terminal element -- conductors undo() then gives the voltage /
-		protocol only, and no other property. nullptr, the default, leaves
+		terminal element -- conductors undo() then gives only what that
+		separation lets through, the voltage / protocol and the drawing
+		of the wire, and no other property. nullptr, the default, leaves
 		those conductors out of the returned list entirely.
+		@param stop_at_report_links : true when the edit renames the wires
+		in a project chaining its folio reports by the wire function: a
+		folio report does not join its two wires then, so a name written
+		over a potential stays on its folio
 
 		A conductor the user picked themselves is never part of it: the
 		selection is the edit reaching that conductor, so it takes the
@@ -78,7 +83,8 @@ namespace ConductorMultiEdit
 	*/
 	template <typename T>
 	QList<T *> targets(const QList<T *> &selected, bool apply_all,
-			   QSet<T *> *function_separated = nullptr)
+			   QSet<T *> *function_separated = nullptr,
+			   bool stop_at_report_links = false)
 	{
 		QList<T *> list;
 		QSet<T *> seen;
@@ -110,7 +116,8 @@ namespace ConductorMultiEdit
 			}
 			if (!apply_all || (!fresh && !chosen.contains(conductor)))
 				continue;
-			const QSet<T *> potential = conductor->relatedPotentialConductors();
+			const QSet<T *> potential = conductor->relatedPotentialConductors(
+						true, nullptr, false, stop_at_report_links);
 			for (T *other : potential)
 			{
 				potential_reached.insert(other);
@@ -146,8 +153,17 @@ namespace ConductorMultiEdit
 		@param edited : the properties after the user's edit
 		@param function_separated : the targets of targets() that only a
 		function separated terminal element links to the edited
-		conductors: they get the voltage / protocol and nothing else
+		conductors: they get what the separation lets through -- the
+		voltage / protocol and the drawing of the wire -- and nothing
+		else (@see ConductorProperties::applyNodePropertiesChange)
+		@param bridge_reached : the targets that only a bridge links to
+		the edited conductors: they get the voltage / protocol and
+		nothing else, since only it crosses a bridge
 		(@see ConductorProperties::applyTensionProtocolChange)
+		@param parent : the undo step to make, its children, instead of
+		a new one -- a caller with something of its own to undo with the
+		edit (DissolveReportLinksCommand) makes the step first and gives
+		it here
 		@return one undo step giving each target the fields that differ
 		between shown and edited, or nullptr if no conductor changes
 	*/
@@ -155,18 +171,22 @@ namespace ConductorMultiEdit
 	QUndoCommand *undo(const QList<T *> &targets,
 			   const ConductorProperties &shown,
 			   const ConductorProperties &edited,
-			   const QSet<T *> &function_separated = QSet<T *>())
+			   const QSet<T *> &function_separated = QSet<T *>(),
+			   QUndoCommand *parent = nullptr,
+			   const QSet<T *> &bridge_reached = QSet<T *>())
 	{
 		if (edited == shown)
 			return nullptr;
 
-		auto *undo = new QUndoCommand();
+		auto *undo = parent ? parent : new QUndoCommand();
 		int changed = 0;
 		for (T *conductor : targets)
 		{
 			const ConductorProperties old_properties = conductor->properties();
 			ConductorProperties properties = old_properties;
 			if (function_separated.contains(conductor))
+				properties.applyNodePropertiesChange(shown, edited);
+			else if (bridge_reached.contains(conductor))
 				properties.applyTensionProtocolChange(shown, edited);
 			else
 				properties.applyChanges(shown, edited);

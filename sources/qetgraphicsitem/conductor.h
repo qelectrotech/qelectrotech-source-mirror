@@ -25,6 +25,7 @@
 
 #include <QElapsedTimer>
 #include <QGraphicsPathItem>
+#include <QPointer>
 #include <QSet>
 #include <QUuid>
 
@@ -58,6 +59,11 @@ class Conductor : public QGraphicsObject
 
 	signals:
 		void propertiesChange();
+			/// The function of this wire changed: a project chaining its
+			/// folio reports by that function looks its chains over again.
+			/// The wire is given with it, so only the reports it ends on
+			/// are looked at (QETProject::reportKeySourceChanged())
+		void functionChanged(Conductor *conductor);
 	
 	public:
 		Conductor(Terminal *, Terminal *);
@@ -169,9 +175,12 @@ class Conductor : public QGraphicsObject
 		QSet<Conductor *> relatedPotentialConductors(
 				const bool all_diagram = true,
 				QList <Terminal *> *t_list=nullptr,
-				const bool ignore_function_separation = false);
+				const bool ignore_function_separation = false,
+				const bool stop_at_report_links = false);
 		QSet<Conductor *> functionSeparatedConductors(
 				const bool all_diagram = true);
+		void applySeparatedNodeProperties(ConductorProperties &properties);
+		void applySeparatedNodePropertiesIfEmpty();
 		QETDiagramEditor* diagramEditor() const;
 		void editProperty ();
 
@@ -271,6 +280,10 @@ class Conductor : public QGraphicsObject
 			/// Define whether and how the conductor should be highlighted
 		Highlight must_highlight_;
 		bool m_valid;
+			/// Null once its terminal is gone: a step that is undone and
+			/// then dropped can delete a symbol before the wires it added
+		QPointer<Terminal> m_terminal1_alive;
+		QPointer<Terminal> m_terminal2_alive;
 		bool m_freeze_label = false;
 			/// Made by AutoConnect: removed again when its ends leave the line
 		bool m_automatic = false;

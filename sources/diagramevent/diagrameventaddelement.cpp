@@ -16,7 +16,9 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "diagrameventaddelement.h"
+#include "../devicetype/devicetypeplacement.h"
 #include "../ui/devicetypechooser.h"
+#include "../ui/placelabelpartdialog.h"
 #include <qetproject.h>
 #include <conductorautonumerotation.h>
 #include <diagram.h>
@@ -409,6 +411,11 @@ void DiagramEventAddElement::addElement()
 		Conductor *conductor = new Conductor(pair.first, pair.second);
 		new AddGraphicsObjectCommand(conductor, m_diagram, QPointF(), undo_object);
 
+			//An empty side of a function separated terminal element takes
+			//what the separation lets through from its other side (@see
+			//Conductor::applySeparatedNodePropertiesIfEmpty)
+		conductor->applySeparatedNodePropertiesIfEmpty();
+
 			//Autonum the new conductor, the undo command associated for this, have for parent undo_object
 		ConductorAutoNumerotation can  (conductor, m_diagram, undo_object);
 		can.numerate();
@@ -433,15 +440,29 @@ void DiagramEventAddElement::addElement()
 	m_diagram -> undoStack().push(undo_object);
 	element->freezeNewAddedElement();
 
+		//The label and the part of a symbol just placed, when the setting
+		//says so (PlaceLabelPartDialog); it goes on with the device type
+		//question when the part did not bring a type
+	if (!m_placed && PlaceLabelPartDialog::asksFor(element))
+	{
+		QPointer<Element> placed = element;
+		QWidget *view = m_diagram->views().value(0);
+		QTimer::singleShot(0, element, [placed, view]() {
+			if (placed) PlaceLabelPartDialog::askFor(placed, view);
+		});
+	}
 		//A master placed in a project following the device types: which
-		//type is it? Asked once the placing is pushed (DeviceTypeChooser)
-	if (!m_placed && m_diagram->project() && m_diagram->project()->followDeviceTypes()
+		//type is it? Asked once the placing is pushed (DeviceTypeChooser).
+		//Then, when asked for, how to go on with the parts of its type
+	else if (!m_placed && m_diagram->project()
+		&& (m_diagram->project()->followDeviceTypes() || DeviceTypePlacement::askAfterHead())
 		&& (element->linkType() & Element::Master))
 	{
 		QPointer<Element> placed = element;
 		QWidget *view = m_diagram->views().value(0);
 		QTimer::singleShot(0, element, [placed, view]() {
 			if (placed) DeviceTypeChooser::askFor(placed, view);
+			if (placed) DeviceTypePlacement::offerParts(placed, view);
 		});
 	}
 

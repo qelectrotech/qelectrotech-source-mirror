@@ -47,6 +47,8 @@ struct DeviceNavigatorFilterScheme
 	bool	showConductorDefs = false;
 	bool	showThumbnails	  = true;
 	bool	showOthers		  = true;
+		/// Only the devices with a part of their device type not drawn
+	bool	onlyFreeParts	  = false;
 	int structureMode = 0; // 0 = All, 1 = With structure, 2 = Without structure
 	QString structurePattern;
 

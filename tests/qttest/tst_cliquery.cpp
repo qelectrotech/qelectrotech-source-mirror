@@ -151,10 +151,11 @@ private slots:
 							  "position,articles,designation,description,head_uuid,model");
 		QTest::newRow("qet_terminals") << QStringLiteral("qet_terminals")
 			<< QStringLiteral("strip_id,plant,location,strip,position,level,label,terminal_id,"
-							  "spare,folio_number,folio,element_uuid,strip_uuid,wires,connected_to");
+							  "spare,folio_number,folio,element_uuid,strip_uuid,wires,connected_to,strip_kind,"
+							  "strip_device_type");
 		QTest::newRow("qet_cables") << QStringLiteral("qet_cables")
 			<< QStringLiteral("structure_id,plant,location,designation,type,cores,drawn_cores,"
-							  "wired_cores,length,folios,folio_number,folio,cable_uuid");
+							  "wired_cores,length,folios,folio_number,folio,cable_uuid,manufacturer,article");
 		QTest::newRow("qet_plc_io") << QStringLiteral("qet_plc_io")
 			<< QStringLiteral("structure_id,plant,location,plc,article,entry,address,type,function,"
 							  "comment,plc_folio_number,folio_number,folio,position,plc_uuid,slave_uuid");
@@ -162,6 +163,8 @@ private slots:
 			<< QStringLiteral("structure_id,plant,location,designation,position,core,wire_number,"
 							  "section,colour,from_structure_id,from_terminal,to_structure_id,"
 							  "to_terminal,folio_number,folio,cable_uuid,wire_uuid");
+		QTest::newRow("qet_locations") << QStringLiteral("qet_locations")
+			<< QStringLiteral("plant,location,structure_id,symbols,folios,first_folio_number");
 	}
 
 	void viewColumns()
@@ -261,7 +264,7 @@ private slots:
 			db.setDatabaseName(path);
 			QVERIFY(db.open());
 			QSqlQuery query(db);
-			for (const char *view : {"qet_folios", "qet_devices", "qet_wires", "qet_links", "qet_device_list", "qet_terminals", "qet_cables", "qet_plc_io", "qet_cable_cores"})
+			for (const char *view : {"qet_folios", "qet_devices", "qet_wires", "qet_links", "qet_device_list", "qet_terminals", "qet_cables", "qet_plc_io", "qet_cable_cores", "qet_locations"})
 				QVERIFY(query.exec(QStringLiteral("DROP VIEW IF EXISTS %1").arg(QLatin1String(view))));
 			db.close();
 		}

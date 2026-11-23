@@ -28,10 +28,21 @@ class FakeWire : public QObject
 
 		ConductorProperties properties() const { return m_properties; }
 		void setProperties(const ConductorProperties &p) { m_properties = p; }
-		QSet<FakeWire *> relatedPotentialConductors() const { return m_potential; }
+		QSet<FakeWire *> relatedPotentialConductors(
+				const bool all_diagram = true,
+				QList<FakeWire *> *t_list = nullptr,
+				const bool ignore_function_separation = false,
+				const bool stop_at_report_links = false) const
+		{
+			Q_UNUSED(all_diagram)
+			Q_UNUSED(t_list)
+			Q_UNUSED(ignore_function_separation)
+			Q_UNUSED(stop_at_report_links)
+			return m_potential;
+		}
 			// The wires of the other side of a function separated terminal
-			// element: same electrical node, but only the voltage /
-			// protocol crosses.
+			// element: same electrical node, but only what the node
+			// describes crosses -- the voltage / protocol and the drawing.
 		QSet<FakeWire *> functionSeparatedConductors() const { return m_separated; }
 		QPointF pos() const { return m_pos; }
 
@@ -121,9 +132,10 @@ class tst_conductormultiedit : public QObject
 		}
 
 			// A function separated terminal element: the other side of the
-			// terminal is reached too, but only the voltage / protocol
-			// crosses it -- not the function, not the number.
-		void functionSeparatedGetsVoltageProtocolOnly()
+			// terminal is reached too, but only what the node itself
+			// describes crosses it -- the voltage / protocol and the drawing
+			// of the wire, not the function, not the number.
+		void functionSeparatedGetsNodePropertiesOnly()
 		{
 			FakeWire a("1", "fnA", "", {}), b("2", "fnB", "", {}),
 				 c("3", "fnC", "", {});
@@ -145,6 +157,9 @@ class tst_conductormultiedit : public QObject
 			ConductorProperties after = edited(shown,
 				&ConductorProperties::m_function, "PWR");
 			after.m_tension_protocol = "24V";
+			after.color = QColor(255, 0, 0);
+			after.style = Qt::DashLine;
+			after.cond_size = 3;
 
 			QUndoStack stack;
 			stack.push(ConductorMultiEdit::undo(t, shown, after, separated));
@@ -159,10 +174,18 @@ class tst_conductormultiedit : public QObject
 			QCOMPARE(c.m_properties.m_function, QStringLiteral("fnC"));
 			QCOMPARE(c.m_properties.text, QStringLiteral("3"));
 			QCOMPARE(c.m_properties.m_tension_protocol, QStringLiteral("24V"));
+			QCOMPARE(c.m_properties.color, QColor(255, 0, 0));
+			QCOMPARE(static_cast<int>(c.m_properties.style),
+				 static_cast<int>(Qt::DashLine));
+			QCOMPARE(c.m_properties.cond_size, 3.0);
 
 			stack.undo();
 			QVERIFY(c.properties().m_tension_protocol.isEmpty());
 			QCOMPARE(c.m_properties.m_function, QStringLiteral("fnC"));
+			QCOMPARE(c.m_properties.color, QColor(Qt::black));
+			QCOMPARE(static_cast<int>(c.m_properties.style),
+				 static_cast<int>(Qt::SolidLine));
+			QCOMPARE(c.m_properties.cond_size, 1.0);
 		}
 
 			// The explicitly picked side of a separation: selecting one
@@ -226,15 +249,17 @@ class tst_conductormultiedit : public QObject
 			QCOMPARE(c.m_properties.m_function, QStringLiteral("PWR"));
 		}
 
-			// The far side only takes the voltage when the edit changed it:
-			// editing the function of a 24 V wire must leave the 0 V one
-			// at 0 V, not drag it along (#review)
-		void separatedWireKeepsVoltageWhenNotEdited()
+			// The far side only takes what the edit changed: editing the
+			// function of a 24 V wire must leave the 0 V one at 0 V and the
+			// blue one blue, not drag them along (#review)
+		void separatedWireKeepsNodePropertiesWhenNotEdited()
 		{
 			FakeWire a("1", "fnA", "", {}), c("3", "fnC", "", {});
 			FakeWire::separate({&a}, {&c});
 			a.m_properties.m_tension_protocol = "24V";
 			c.m_properties.m_tension_protocol = "0V";
+			a.m_properties.color = QColor(255, 0, 0);
+			c.m_properties.color = QColor(0, 0, 255);
 
 			QSet<FakeWire *> separated;
 			const Wires t = ConductorMultiEdit::targets(Wires {&a}, true,
@@ -247,12 +272,18 @@ class tst_conductormultiedit : public QObject
 				&ConductorProperties::m_function, "PWR"), separated));
 			QCOMPARE(c.m_properties.m_function, QStringLiteral("fnC"));
 			QCOMPARE(c.m_properties.m_tension_protocol, QStringLiteral("0V"));
+			QCOMPARE(c.m_properties.color, QColor(0, 0, 255));
 
-				//Now the voltage changes too: it crosses, and only it
+				//Now the voltage and the colour change too: they
+				//cross, and only they
 			const ConductorProperties shown_now = a.properties();
-			stack.push(ConductorMultiEdit::undo(t, shown_now, edited(shown_now,
-				&ConductorProperties::m_tension_protocol, "30V"), separated));
+			ConductorProperties edited_now = edited(shown_now,
+				&ConductorProperties::m_tension_protocol, "30V");
+			edited_now.color = QColor(0, 255, 0);
+			stack.push(ConductorMultiEdit::undo(t, shown_now, edited_now,
+								     separated));
 			QCOMPARE(c.m_properties.m_tension_protocol, QStringLiteral("30V"));
+			QCOMPARE(c.m_properties.color, QColor(0, 255, 0));
 			QCOMPARE(c.m_properties.m_function, QStringLiteral("fnC"));
 			QCOMPARE(a.m_properties.m_tension_protocol, QStringLiteral("30V"));
 		}

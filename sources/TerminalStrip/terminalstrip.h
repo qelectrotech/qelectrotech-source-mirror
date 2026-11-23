@@ -75,6 +75,12 @@ class TerminalStrip : public QObject
 		QString comment() const {return m_data.m_comment;}
 		void setDescription(const QString &description);
 		QString description() const {return m_data.m_description;}
+		void setKind(TerminalStripData::Kind kind);
+		TerminalStripData::Kind kind() const {return m_data.m_kind;}
+			///Device type of a connector (the name of a type of the project), empty = none
+		void setDeviceType(const QString &name);
+		QString deviceType() const {return m_data.m_device_type;}
+		bool isConnector() const {return m_data.m_kind != TerminalStripData::Kind::Terminals;}
 			///Manufacturer of the terminals proposed by the editor, empty = all
 		QString manufacturer() const {return m_data.m_manufacturer;}
 		QUuid uuid() const {return m_data.m_uuid;}

@@ -582,6 +582,16 @@
             </property>
            </widget>
           </item>
+          <item>
+           <widget class="QCheckBox" name="m_ask_parts_after_head_cb">
+            <property name="text">
+             <string>After placing a device's head, ask how to place the parts of its device type</string>
+            </property>
+            <property name="toolTip">
+             <string>One by one, each following the mouse; all side by side to the right of the head; or not now, which leaves them free in the Device Navigator. Unticked by default: placing the head places nothing more.</string>
+            </property>
+           </widget>
+          </item>
          </layout>
         </widget>
        </item>
@@ -689,13 +699,45 @@
         </widget>
        </item>
        <item row="7" column="0">
-        <widget class="QCheckBox" name="m_enable_chained_reports">
-         <property name="text">
-          <string>Enable chained folio reports for report elements</string>
-         </property>
-         <property name="toolTip">
-          <string>When enabled, report elements (cross-references) across folios with matching labels are automatically chained together. Newly created projects will have this enabled automatically.</string>
-         </property>
+        <widget class="QWidget" name="m_chained_widget">
+         <layout class="QVBoxLayout" name="m_chained_layout">
+          <item>
+           <widget class="QCheckBox" name="m_enable_chained_reports">
+            <property name="text">
+             <string>Enable chained folio reports for report elements</string>
+            </property>
+            <property name="toolTip">
+             <string>When enabled, report elements (cross-references) across folios with a matching name are automatically chained together. Newly created projects will have this enabled automatically.</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QGroupBox" name="m_chained_key_gb">
+            <property name="title">
+             <string>Chain folio report elements by</string>
+            </property>
+            <property name="toolTip">
+             <string>What two folio report elements must share to be chained together: the label each of them carries, or the function of the wire its terminal holds. A report without a value of its own is never chained. Newly created projects will start with this choice.</string>
+            </property>
+            <layout class="QVBoxLayout" name="m_chained_key_layout">
+             <item>
+              <widget class="QRadioButton" name="m_chained_key_label_rb">
+               <property name="text">
+                <string>Their label</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QRadioButton" name="m_chained_key_function_rb">
+               <property name="text">
+                <string>The function of their conductor</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
         </widget>
        </item>
        <item row="9" column="0">
@@ -798,12 +840,32 @@
            </widget>
           </item>
           <item>
+           <widget class="QCheckBox" name="m_folios_by_group_cb">
+            <property name="text">
+             <string>List folios by group and sub-group in the Projects panel</string>
+            </property>
+            <property name="toolTip">
+             <string>A folio with no group of its own is listed under its plant and location. A level is shown only where it splits the folios, so a project without groups stays a flat list.</string>
+            </property>
+           </widget>
+          </item>
+          <item>
            <widget class="QCheckBox" name="m_macro_ask_labels_cb">
             <property name="text">
              <string>Ask for the device labels when placing a macro</string>
             </property>
             <property name="toolTip">
              <string>Proposes the next free labels, which Accept All takes. Unchecked, a macro keeps its saved labels.</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="m_symbol_ask_label_part_cb">
+            <property name="text">
+             <string>Ask the label and the part of a symbol when it is placed</string>
+            </property>
+            <property name="toolTip">
+             <string>One small dialog per symbol: its label (the next free one is proposed) and its part number, which brings the device type. Unchecked, a symbol is placed without asking.</string>
             </property>
            </widget>
           </item>
@@ -973,6 +1035,16 @@
             </property>
             <property name="text">
              <string extracomment="button opening the dialog where the folder prefixes of the user collection are configured">Configure prefixes…</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="2">
+           <widget class="QPushButton" name="m_company_prefix_pb">
+            <property name="toolTip">
+             <string extracomment="tooltip of the button opening the prefix configuration dialog of the company collection">Create or change the prefix of the company collection's folders (qet_labels.xml file)</string>
+            </property>
+            <property name="text">
+             <string extracomment="button opening the dialog where the folder prefixes of the company collection are configured">Configure prefixes…</string>
             </property>
            </widget>
           </item>
@@ -2340,6 +2412,16 @@
         </widget>
        </item>
        <item>
+        <widget class="QCheckBox" name="m_remember_last_dir_cb">
+         <property name="toolTip">
+          <string>Off, the default: every dialog starts where it always did -- the pictures folder for a picture, the documents folder for a PDF, and for the others the folder it always opened in. On: it starts in the folder the last file was picked from; pictures and PDFs keep a folder of their own, and a folder that no longer exists sends the dialog back to the standard one. Saving and exporting are not affected.</string>
+         </property>
+         <property name="text">
+          <string>Remember the last folder a file was picked from</string>
+         </property>
+        </widget>
+       </item>
+       <item>
         <spacer name="verticalSpacer_6">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
@@ -2380,7 +2462,9 @@
   <tabstop>m_offer_backups</tabstop>
   <tabstop>m_border_0</tabstop>
   <tabstop>m_new_folio_group_cb</tabstop>
+  <tabstop>m_folios_by_group_cb</tabstop>
   <tabstop>m_macro_ask_labels_cb</tabstop>
+  <tabstop>m_symbol_ask_label_part_cb</tabstop>
   <tabstop>m_strip_sort_by_label</tabstop>
   <tabstop>m_wiring_rules_cb</tabstop>
   <tabstop>m_wiring_max_wires_sb</tabstop>

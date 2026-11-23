@@ -30,6 +30,9 @@ Since 0.100, development has centered on a new headless command-line workflow, t
 - MSI nightlies now inject the Git revision count into the MSI version's Build field, fixing the long-standing regression where `MajorUpgrade` never triggered because the version string never changed — nightlies had to be uninstalled by hand before.
 - The old `Lancer QET.bat` wrapper was removed in favor of handling launch natively in `QElectroTech.wxs`.
 - NSIS installer updated to the 3.x line, with a bundled Fonts directory and corrected language tables.
+- **Conductor stroke with colour and section, drawn your way**
+- A conductor can show its colour and section at a slanted stroke across the wire. The drawing of that stroke is now the project's own: shapes (line, circle, rectangle) and texts around it, laid out in a "Customize..." editor with a live preview, saved with the project so it looks the same wherever the project is opened.
+- The stroke's texts are formulas with the wire's variables, including the new `%wt` (conductor type) and `%wb` (cable), also available in conductor auto-numbering formulas. Where the conductor runs up and down, the drawing turns 90, 180 or 270 degrees as chosen in the editor.
 
 ## Detailed Changes
 
@@ -77,6 +80,7 @@ Since 0.100, development has centered on a new headless command-line workflow, t
 ## Upgrade / Migration Notes
 
 - No project file format changes are expected to break compatibility with 0.100 projects.
+- The new `<definition_mark_style>` element carries a customized drawing of a conductor's stroke with colour and section. Older QET versions ignore it: a project re-saved with one loses its customized drawing (it is drawn the standard way again). Projects that customized nothing save exactly as before.
 - Users relying on Windows nightlies should note that upgrades will now uninstall the previous nightly automatically, instead of requiring a manual uninstall first.
 
 ## How to get help / report bugs

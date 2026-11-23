@@ -25,6 +25,10 @@
 #include <QMutex>
 #include <QMutexLocker>
 #include <QSaveFile>
+#include <QSet>
+
+#include <algorithm>
+#include <utility>
 
 /**
 	@brief QetLabelsFile::labelsFilePath
@@ -190,6 +194,48 @@ QString QetLabelsFile::prefixInDocument(const QDomDocument &document, const QStr
 }
 
 /**
+	@brief QetLabelsFile::prefixForFolder
+	The prefix the qet_labels.xml at @a filepath gives the symbols of the
+	collection folder @a relative_path (as returned by scanFolders()),
+	trying the two layouts the prefix lookup of a user or company file
+	tries, in the same order: the whole path from the top-level folder,
+	then the path without that top-level folder
+	(@see autonum::elementPrefixForLocation()).
+
+	Used to tell, in the prefix dialog of the company collection, which
+	folders the user collection gives a prefix too: the user file is read
+	first, so its prefix is the one the symbols get.
+
+	@return the prefix, possibly an explicit empty one, or a null QString
+		when the file does not describe that folder
+*/
+QString QetLabelsFile::prefixForFolder(const QString &filepath, const QStringList &relative_path)
+{
+		//prefixForPath() wants the deepest folder at index 1 and the
+		//outermost last, index 0 being the symbol file name it never reads
+	auto lookupPath = [](const QStringList &folders) {
+		QStringList path {QString()};
+		for (auto it = folders.crbegin() ; it != folders.crend() ; ++it) {
+			path << *it;
+		}
+		return path;
+	};
+
+	QList<QStringList> layouts {relative_path};
+	if (relative_path.size() > 1) {
+		layouts << relative_path.mid(1);
+	}
+	for (const QStringList &folders : std::as_const(layouts)) {
+		const QStringList path = lookupPath(folders);
+		const QString prefix = prefixForPath(filepath, path, path.size() - 1);
+		if (!prefix.isNull()) {
+			return prefix;
+		}
+	}
+	return QString();
+}
+
+/**
 	@brief QetLabelsFile::parse
 	Read @a device into @a document and, when it cannot be read as XML,
 	tell what is wrong with it in @a reason.
@@ -234,6 +280,10 @@ bool QetLabelsFile::parse(QIODevice &device, QDomDocument &document, QString *re
 	Nothing is written : 
 	- when the file does not exist yet, an empty \<labels\> document is
 	  kept in memory and will only be created on the first save()
+	- when the folders of a \<labels\> file leave out their top-level
+	  folder, or the file has another root element, it is read the way
+	  the prefix lookup reads it, if every folder keeps its prefix that
+	  way : wasConverted() then tells save() to keep a copy of the file
 	- when the file exists but cannot be read, is not well formed or does
 	  not have \<labels\> as its root element, nothing is written : an
 	  empty document is used instead, and a copy of the unusable file is
@@ -253,6 +303,7 @@ bool QetLabelsFile::load(const QString &collection_dir)
 	m_file_exists = false;
 	m_force_save = false;
 	m_broken = false;
+	m_converted = false;
 	m_document = QDomDocument();
 
 	if (collection_dir.isEmpty()) {
@@ -273,11 +324,34 @@ bool QetLabelsFile::load(const QString &collection_dir)
 	bool well_formed = false;
 	if (file.open(QFile::ReadOnly | QFile::Text)) {
 		well_formed = parse(file, document, &m_broken_reason);
-		if (well_formed
-			&& document.documentElement().tagName() != QLatin1String("labels")) {
-			well_formed = false;
-			m_broken_reason = tr("the root element <%1> is not <labels>.")
-					.arg(document.documentElement().tagName());
+		const QString root_tag = document.documentElement().tagName();
+		if (well_formed && root_tag != QLatin1String("labels")) {
+				//A file written by hand often has its top-level folder,
+				//<category name="devices">, as outer element (#1802).
+				//The prefix lookup reads it all the same : when the
+				//same file inside <labels> gives every folder the same
+				//prefix, use that, and keep a copy when it is saved.
+			QDomDocument converted;
+			if (convertForeignRoot(document, scanFolders(collection_dir),
+								   converted)) {
+				document = converted;
+				m_converted = true;
+			} else {
+				well_formed = false;
+				m_broken_reason = tr("the root element <%1> is not <labels>.")
+						.arg(root_tag);
+			}
+		} else if (well_formed) {
+				//The shipped collections write each folder without its
+				//top-level folder. The prefix lookup reads a user file
+				//written that way too : copy those folders under their
+				//top-level folder, where the dialog reads them.
+			QDomDocument converted;
+			if (placeShortPaths(document, scanFolders(collection_dir),
+								converted)) {
+				document = converted;
+				m_converted = true;
+			}
 		}
 		file.close();
 	} else {
@@ -298,6 +372,217 @@ bool QetLabelsFile::load(const QString &collection_dir)
 		m_force_save = true;
 	}
 	m_snapshot = serialize(m_document);
+	return true;
+}
+
+/**
+	@brief QetLabelsFile::prefixForFolderInDocument
+	Same as prefixForFolder(), on @a document instead of a file.
+*/
+QString QetLabelsFile::prefixForFolderInDocument(
+		const QDomDocument &document, const QStringList &relative_path)
+{
+	QList<QStringList> layouts {relative_path};
+	if (relative_path.size() > 1) {
+		layouts << relative_path.mid(1);
+	}
+	for (const QStringList &folders : std::as_const(layouts)) {
+		QStringList path {QString()};
+		for (auto it = folders.crbegin() ; it != folders.crend() ; ++it) {
+			path << *it;
+		}
+		const QString prefix =
+				prefixInDocument(document, path, path.size() - 1);
+		if (!prefix.isNull()) {
+			return prefix;
+		}
+	}
+	return QString();
+}
+
+/**
+	@brief QetLabelsFile::convertForeignRoot
+	Write in @a converted the file @a document, whose root element is not
+	\<labels\>, the way the prefix dialog reads a file: a \<labels\> root
+	whose children are the top-level folders of the collection.
+
+	The prefix lookup never reads the root element itself, neither its
+	name nor its own \<prefix\>, and it tries each child of the root
+	both as a top-level folder and as a folder inside any top-level
+	folder. So every child of the root is placed under each top-level
+	folder that has a folder of that name, or used as that top-level
+	folder when it is named after one. The others are also kept under
+	\<labels\> : the lookup reads them for the other collections too.
+
+	@param folders : the folders of the collection, from scanFolders()
+	@return true when every folder of @a folders gets the same prefix
+		from @a converted as from @a document. A folder the document
+		does not describe and one it describes with no prefix count as
+		the same : the dialog describes every folder when it saves.
+*/
+bool QetLabelsFile::convertForeignRoot(const QDomDocument &document,
+									   const QList<QStringList> &folders,
+									   QDomDocument &converted)
+{
+	const QDomElement root = document.documentElement();
+	converted = QDomDocument();
+	QDomElement labels;
+	for (QDomNode node = document.firstChild() ; !node.isNull() ;
+		 node = node.nextSibling()) {
+		if (node == root) {
+			labels = converted.createElement(QStringLiteral("labels"));
+			converted.appendChild(labels);
+		} else {
+			converted.appendChild(converted.importNode(node, true));
+		}
+	}
+
+	QSet<QString> existing;
+	for (const QStringList &folder : folders) {
+		existing.insert(folder.join(QLatin1Char('/')));
+	}
+
+	for (const QStringList &folder : folders) {
+		if (folder.size() != 1) {
+			continue;
+		}
+		const QString top = folder.first();
+		QDomElement top_category = directChildCategory(root, top);
+		top_category = top_category.isNull()
+				? converted.createElement(QStringLiteral("category"))
+				: converted.importNode(top_category, true).toElement();
+		top_category.setAttribute(QStringLiteral("name"), top);
+
+		for (QDomElement child = root.firstChildElement(QStringLiteral("category")) ;
+			 !child.isNull() ;
+			 child = child.nextSiblingElement(QStringLiteral("category"))) {
+			const QString name = child.attribute(QStringLiteral("name"));
+			if (name == top
+				|| !existing.contains(top + QLatin1Char('/') + name)
+				|| !directChildCategory(top_category, name).isNull()) {
+				continue;
+			}
+			top_category.appendChild(converted.importNode(child, true));
+		}
+		if (top_category.hasChildNodes()) {
+			labels.appendChild(top_category);
+		}
+	}
+		//The lookup also reads the other children for the symbols of the
+		//other collections, which folders does not list
+	QStringList tops;
+	for (const QStringList &folder : folders) {
+		if (folder.size() == 1) {
+			tops << folder.first();
+		}
+	}
+	for (QDomElement child = root.firstChildElement(QStringLiteral("category")) ;
+		 !child.isNull() ;
+		 child = child.nextSiblingElement(QStringLiteral("category"))) {
+		if (!tops.contains(child.attribute(QStringLiteral("name")))) {
+			labels.appendChild(converted.importNode(child, true));
+		}
+	}
+
+	return keepsEveryPrefix(document, converted, folders, false);
+}
+
+/**
+	@brief QetLabelsFile::placeShortPaths
+	Write in @a converted the \<labels\> file @a document with a copy of
+	every child of its root that is named after a folder inside a
+	top-level folder, rather than after a top-level folder, under each
+	top-level folder that has a folder of that name and does not
+	describe it yet : the place the dialog reads it from. The prefix
+	lookup reads such a child both ways (@see prefixForFolder()).
+
+	The child itself stays where it is : the lookup also reads it for
+	the symbols of the other collections, which @a folders does not
+	list. orphanPaths() does not report it.
+
+	@param folders : the folders of the collection, from scanFolders()
+	@return true when at least one copy was made and every folder of
+		@a folders gets exactly the same prefix from @a converted as from
+		@a document, an explicit empty one included.
+*/
+bool QetLabelsFile::placeShortPaths(const QDomDocument &document,
+									const QList<QStringList> &folders,
+									QDomDocument &converted)
+{
+	converted = document.cloneNode(true).toDocument();
+	QDomElement root = converted.documentElement();
+
+	QStringList tops;
+	QSet<QString> existing;
+	for (const QStringList &folder : folders) {
+		existing.insert(folder.join(QLatin1Char('/')));
+		if (folder.size() == 1) {
+			tops << folder.first();
+		}
+	}
+
+	bool copied = false;
+	for (QDomElement child = root.firstChildElement(QStringLiteral("category")) ;
+		 !child.isNull() ;
+		 child = child.nextSiblingElement(QStringLiteral("category"))) {
+		const QString name = child.attribute(QStringLiteral("name"));
+			//A child named after a top-level folder is also read as a
+			//folder of that name inside the other top-level folders
+		for (const QString &top : std::as_const(tops)) {
+			if (top == name
+				|| !existing.contains(top + QLatin1Char('/') + name)) {
+				continue;
+			}
+			QDomElement top_category = directChildCategory(root, top);
+			if (top_category.isNull()) {
+				top_category = converted.createElement(QStringLiteral("category"));
+				top_category.setAttribute(QStringLiteral("name"), top);
+				root.appendChild(top_category);
+			} else if (!directChildCategory(top_category, name).isNull()) {
+				continue;
+			}
+			top_category.appendChild(child.cloneNode(true));
+			copied = true;
+		}
+	}
+
+	return copied && keepsEveryPrefix(document, converted, folders, true);
+}
+
+/**
+	@brief QetLabelsFile::keepsEveryPrefix
+	@return true when every folder of @a folders gets the same prefix from
+		@a after as from @a before. Unless @a strict, a folder not
+		described and one described with no prefix count as the same.
+		The dialog adds every folder before it saves (@see
+		ensureStructure()), and a folder added with no prefix inherits
+		its parent's instead of being read in the other layout : a
+		folder that has a prefix in @a before must keep it then too.
+*/
+bool QetLabelsFile::keepsEveryPrefix(const QDomDocument &before,
+									 const QDomDocument &after,
+									 const QList<QStringList> &folders,
+									 bool strict)
+{
+	QetLabelsFile saved;
+	saved.m_document = after.cloneNode(true).toDocument();
+	saved.ensureStructure(folders);
+
+	for (const QStringList &folder : folders) {
+		const QString old_prefix = prefixForFolderInDocument(before, folder);
+		const QString new_prefix = prefixForFolderInDocument(after, folder);
+		if (strict ? (old_prefix.isNull() != new_prefix.isNull()
+					  || old_prefix != new_prefix)
+				   : old_prefix.isEmpty() != new_prefix.isEmpty()
+					 || (!old_prefix.isEmpty() && old_prefix != new_prefix)) {
+			return false;
+		}
+		if (!old_prefix.isEmpty()
+			&& prefixForFolderInDocument(saved.m_document, folder)
+			   != old_prefix) {
+			return false;
+		}
+	}
 	return true;
 }
 
@@ -554,6 +839,20 @@ QStringList QetLabelsFile::orphanPaths(const QList<QStringList> &folders) const
 	if (!root.isNull()) {
 		collectOrphans(root, QString(), folders_key, orphans);
 	}
+		//A child of the root named after a folder inside a top-level
+		//folder is read by the prefix lookup, for the symbols of every
+		//collection (@see placeShortPaths()) : it is not an orphan
+	QSet<QString> inner_names;
+	for (const QStringList &folder : folders) {
+		if (folder.size() == 2) {
+			inner_names.insert(folder.last());
+		}
+	}
+	orphans.erase(std::remove_if(orphans.begin(), orphans.end(),
+								 [&](const QDomElement &element) {
+		return element.parentNode() == root
+				&& inner_names.contains(element.attribute(QStringLiteral("name")));
+	}), orphans.end());
 
 	QStringList out;
 	for (const QDomElement &element : orphans) {
@@ -655,12 +954,12 @@ bool QetLabelsFile::save()
 		return false;
 	}
 
-	if (m_force_save && m_file_exists) {
-			//The file on disk could not be read : copy it aside before it
-			//is replaced. Doing it here, and not when it is loaded, means
-			//no copy is left behind when the user chooses to repair the
-			//file instead of rebuilding it - or simply changes their mind
-			//and cancels.
+	if ((m_force_save || m_converted) && m_file_exists) {
+			//The file on disk could not be read, or had no <labels>
+			//around it : copy it aside before it is replaced. Doing it
+			//here, and not when it is loaded, means no copy is left
+			//behind when the user chooses to repair the file instead of
+			//rebuilding it - or simply changes their mind and cancels.
 		m_backup_path = backupBrokenFile();
 		if (m_backup_path.isEmpty()) {
 			m_error = tr("The file %1 could not be copied beside itself before being replaced:\nnothing has been changed.")
@@ -686,6 +985,7 @@ bool QetLabelsFile::save()
 
 	m_file_exists = true;
 	m_force_save = false;
+	m_converted = false;
 	m_snapshot = content;
 	return true;
 }

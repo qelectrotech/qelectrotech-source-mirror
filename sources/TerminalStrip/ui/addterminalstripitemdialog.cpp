@@ -21,7 +21,9 @@
 #include <undocommand/addgraphicsobjectcommand.h>
 #include <TerminalStrip/terminalstrip.h>
 #include <TerminalStrip/GraphicsItem/terminalstripitem.h>
+#include <TerminalStrip/connectorpinplan.h>
 #include <diagram.h>
+#include <qetgraphicsitem/element.h>
 
 #include <qet.h>
 
@@ -32,11 +34,16 @@ void AddTerminalStripItemDialog::openDialog(Diagram *diagram, QWidget *parent)
 	if (d.exec())
 	{
 		const auto strip_{d.selectedTerminalStrip()};
-		if (strip_)
+		const auto device_{d.selectedDevice()};
+		if (strip_ || device_)
 		{
-			auto item_ = new TerminalStripItem(strip_);
+			auto item_ = strip_ ? new TerminalStripItem(strip_) : new TerminalStripItem();
 			item_->setDrawStyle(static_cast<TerminalStripLayoutPattern::DrawStyle>(d.selectedDrawStyle()));
 			diagram->addItem(item_);
+			if (!strip_) {
+					//A connector drawn as a device : its pin plan
+				item_->setDevice(device_);
+			}
 			item_->setPos(50, 50);
 
 			diagram->project()->undoStack()->push(new AddGraphicsObjectCommand(item_, diagram, QPointF{50, 50}));
@@ -86,6 +93,17 @@ TerminalStrip *AddTerminalStripItemDialog::selectedTerminalStrip() const
  * as an int value of TerminalStripLayoutPattern::DrawStyle.
  * The index of the combo box is the value of the enum.
  */
+/**
+ * @brief AddTerminalStripItemDialog::selectedDevice
+ * @return The head symbol of the selected connector drawn as a device,
+ * or nullptr if a terminal strip, or nothing, is selected.
+ */
+Element *AddTerminalStripItemDialog::selectedDevice() const
+{
+	const auto index_{ui->m_terminal_strip_cb->currentIndex() - m_strip_count};
+	return index_ >= 0 && index_ < m_devices.size() ? m_devices.at(index_).data() : nullptr;
+}
+
 int AddTerminalStripItemDialog::selectedDrawStyle() const {
 	return std::clamp(ui->m_draw_style_cb->currentIndex(), 0, 2);
 }
@@ -98,6 +116,17 @@ void AddTerminalStripItemDialog::fillComboBox()
 		{
 			const auto text{strip_->installation() + " " + strip_->location() + " " + strip_->name()};
 			ui->m_terminal_strip_cb->addItem(text, strip_->uuid());
+		}
+		m_strip_count = ui->m_terminal_strip_cb->count();
+
+			//The connectors drawn as a device (a head symbol with its
+			//pins), after the strips: their pin plan is drawn the same way
+		for (Element *head_ : ConnectorPinPlan::connectorDevices(m_project))
+		{
+			const auto label_{head_->elementInformations().value(QStringLiteral("label")).toString()};
+			//: %1 is the label of a connector drawn as a device, such as "-XP1"
+			ui->m_terminal_strip_cb->addItem(tr("%1 (connector)").arg(label_), head_->uuid());
+			m_devices << head_;
 		}
 	}
 }

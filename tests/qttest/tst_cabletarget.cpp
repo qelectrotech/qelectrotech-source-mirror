@@ -863,11 +863,17 @@ void tst_cabletarget::cableSideFollowsUndoAndReload()
 	QVERIFY(!strip->cableAbove(key));
 
 	auto data = strip->data();
+	data.setKind(TerminalStripData::Kind::Socket);
+	data.setDeviceType(QStringLiteral("Test connector"));
 	data.setCableAbove(key, true);
 	m_project->undoStack()->push(new ChangeTerminalStripData(strip, data, nullptr));
 	QVERIFY(strip->cableAbove(key));
+	QCOMPARE(strip->data().kind(), TerminalStripData::Kind::Socket);
+	QCOMPARE(strip->data().deviceType(), QStringLiteral("Test connector"));
 	m_project->undoStack()->undo();
 	QVERIFY(!strip->cableAbove(key));
+	QCOMPARE(strip->data().kind(), TerminalStripData::Kind::Terminals);
+	QVERIFY(strip->data().deviceType().isEmpty());
 	m_project->undoStack()->redo();
 	QVERIFY(strip->cableAbove(key));
 	cable->setDesignation(QStringLiteral("W101"));
@@ -887,6 +893,9 @@ void tst_cabletarget::cableSideFollowsUndoAndReload()
 		QVERIFY(!reopened.terminalStrip().isEmpty());
 		QVERIFY2(reopened.terminalStrip().first()->cableAbove(key),
 				 qPrintable(suffix));
+		const auto saved_data = reopened.terminalStrip().first()->data();
+		QCOMPARE(saved_data.kind(), TerminalStripData::Kind::Socket);
+		QCOMPARE(saved_data.deviceType(), QStringLiteral("Test connector"));
 	}
 
 	// When all cables use the default side, nothing new is serialized.

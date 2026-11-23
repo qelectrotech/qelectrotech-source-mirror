@@ -67,6 +67,14 @@ ElementTextItemGroup::ElementTextItemGroup(const QString &name,
 			&QETProject::XRefPropertiesChanged,
 			this,
 			&ElementTextItemGroup::updateXref);
+		//undo() puts a deleted folio back, and with it a master or a
+		//report this group draws: nothing else tells it to look again
+	if(parent->diagram())
+		connect(
+			parent->diagram()->project(),
+			&QETProject::diagramAdded,
+			this,
+			&ElementTextItemGroup::updateXref);
 }
 
 /**
@@ -1048,6 +1056,12 @@ void ElementTextItemGroup::updateXref()
 		delete m_Xref_item;
 		m_Xref_item = nullptr;	
 	}
+		//Take the connections with them, the way
+		//DynamicElementTextItem::clearFormulaConnection() does:
+		//emptying this list leaves them running, and the next
+		//registration would be a second one
+	for(const QMetaObject::Connection& c : m_update_slave_Xref_connection)
+		disconnect(c);
 	m_update_slave_Xref_connection.clear();
 
 	if(m_slave_Xref_item)

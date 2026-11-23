@@ -40,6 +40,7 @@
 #include <devicetype/devicetype.h>
 #include "customelementinfopartwidget.h"
 #include "elementinfopartwidget.h"
+#include "placesuggestions.h"
 
 /**
 	@brief ElementInfoWidget::ElementInfoWidget
@@ -477,6 +478,8 @@ void ElementInfoWidget::populateSuggestions(Element *element,
 		//the SQL text.
 	const QStringList columns = QETInformation::elementInfoKeys();
 	const QString uuid = element->uuid().toString();
+		//Read once for the plant and the location fields together
+	const auto places = PlaceSuggestions::places(project, uuid);
 
 	for (ElementInfoPartWidget *eipw : widgets)
 	{
@@ -512,6 +515,12 @@ void ElementInfoWidget::populateSuggestions(Element *element,
 					values << type;
 			values.sort(Qt::CaseInsensitive);
 		}
+			//The places of the project too: a plant that only a folio or a
+			//structure box holds is not in any symbol's own information
+		if (key == QETInformation::ELMT_PLANT)
+			values = PlaceSuggestions::merged(values, PlaceSuggestions::plants(places));
+		else if (key == QETInformation::ELMT_LOCATION)
+			values = PlaceSuggestions::merged(values, PlaceSuggestions::locations(places, QString()));
 		eipw->setSuggestions(values);
 	}
 }
@@ -682,6 +691,15 @@ void ElementInfoWidget::setupSchemeRow()
 		return;
 	}
 
+		//A junction is never numbered: no numbering to choose, no formula to
+		//show, and no number to freeze -- it carries no label, because a label
+		//on it would name nothing (#1500). setupNumberRow() follows this row,
+		//so it stays away too.
+	if (m_element->linkType() == Element::Junction) {
+		formula->setDisabled(true);
+		return;
+	}
+
 	m_scheme_row = new QWidget(this);
 	auto *layout = new QHBoxLayout(m_scheme_row);
 	layout->setContentsMargins(0, 0, 0, 0);
@@ -719,6 +737,10 @@ void ElementInfoWidget::setupFreezeRow()
 {
 	ElementInfoPartWidget *label = infoPartWidgetForKey(QETInformation::ELMT_LABEL);
 	if (!label || !m_element) {
+		return;
+	}
+		//Nothing to freeze: a junction carries no label (#1500)
+	if (m_element->linkType() == Element::Junction) {
 		return;
 	}
 	m_freeze_cb = new QCheckBox(tr("Freeze name"), this);

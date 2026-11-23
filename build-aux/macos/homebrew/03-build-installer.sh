@@ -602,22 +602,30 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-echo "-- Re-signing dylibs inside DMG..."
-find "$MOUNT_POINT/$BUNDLE/Contents/Frameworks" -name "*.dylib" | while read lib; do
-    codesign --force --sign "$IDENTITY" $SIGN_OPTS "$lib"
-done
-find "$MOUNT_POINT/$BUNDLE/Contents/Frameworks" -maxdepth 1 -name "*.framework" | while read fw; do
-    codesign --force --sign "$IDENTITY" $SIGN_OPTS "$fw"
-done
-find "$MOUNT_POINT/$BUNDLE/Contents/PlugIns" \( -name "*.dylib" -o -name "*.so" \) | while read lib; do
-    codesign --force --sign "$IDENTITY" $SIGN_OPTS "$lib"
-done
-codesign --force --sign "$IDENTITY" $SIGN_OPTS \
-    --entitlements "${current_dir}/misc/qelectrotech.entitlements" \
-    "$MOUNT_POINT/$BUNDLE/Contents/MacOS/$APPNAME"
-codesign --force --sign "$IDENTITY" $SIGN_OPTS \
-    --entitlements "${current_dir}/misc/qelectrotech.entitlements" \
-    "$MOUNT_POINT/$BUNDLE"
+# The bundle is already signed and verified above: re-sign it inside the
+# DMG only with a real identity. With the ad hoc signature (QET_SIGN=0, CI),
+# codesign fails here with "internal error in Code Signing subsystem" on the
+# mounted HFS+ image (macos-15 runner, Xcode 16.4).
+if [[ $QET_SIGN = 1 ]] ; then
+    echo "-- Re-signing dylibs inside DMG..."
+    find "$MOUNT_POINT/$BUNDLE/Contents/Frameworks" -name "*.dylib" | while read lib; do
+        codesign --force --sign "$IDENTITY" $SIGN_OPTS "$lib"
+    done
+    find "$MOUNT_POINT/$BUNDLE/Contents/Frameworks" -maxdepth 1 -name "*.framework" | while read fw; do
+        codesign --force --sign "$IDENTITY" $SIGN_OPTS "$fw"
+    done
+    find "$MOUNT_POINT/$BUNDLE/Contents/PlugIns" \( -name "*.dylib" -o -name "*.so" \) | while read lib; do
+        codesign --force --sign "$IDENTITY" $SIGN_OPTS "$lib"
+    done
+    codesign --force --sign "$IDENTITY" $SIGN_OPTS \
+        --entitlements "${current_dir}/misc/qelectrotech.entitlements" \
+        "$MOUNT_POINT/$BUNDLE/Contents/MacOS/$APPNAME"
+    codesign --force --sign "$IDENTITY" $SIGN_OPTS \
+        --entitlements "${current_dir}/misc/qelectrotech.entitlements" \
+        "$MOUNT_POINT/$BUNDLE"
+else
+    echo "QET_SIGN=0 : ad hoc signature kept as is, no re-signing inside the DMG."
+fi
 
 echo "Verifying bundle signature inside DMG..."
 codesign --verify --deep --strict --verbose=2 "$MOUNT_POINT/$BUNDLE"

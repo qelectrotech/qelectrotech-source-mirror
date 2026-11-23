@@ -1285,7 +1285,8 @@ QString QetScriptApi::conductorProperty(int folioIndex, const QString &elementUu
 	produce a file no GUI action could have produced.
 
 	One thing stops at a terminal element with its function separation
-	enabled: every property but the voltage / protocol, which still
+	enabled: every property but what the node itself describes -- the
+	voltage / protocol and the drawing of the wire -- which still
 	crosses it (@see Conductor::functionSeparatedConductors).
 	@return true if anything was changed, or if it already held that value
 */
@@ -1340,17 +1341,17 @@ bool QetScriptApi::applyConductorProperties(Conductor *conductor, const Conducto
 		new_value.setValue(properties);
 		m_project->undoStack()->push(new QPropertyUndoCommand(c, "properties", old_value, new_value));
 	}
-		//The other side of a function separated terminal element gets the
-		//voltage / protocol only: it is the one property that still
-		//describes the electrical node rather than one side of it. And it
-		//only arrives when this call really changed it -- before / after
-		//is the edit, not the far wire's own value, which differs from it
-		//just as often as not and would then be overwritten by every call,
-		//colour included.
+		//The other side of a function separated terminal element gets
+		//only what the separation lets through -- the voltage / protocol
+		//and the drawing of the wire, the properties of the node rather
+		//than of one side of it. And they only arrive when this call
+		//really changed them -- before / after is the edit, not the far
+		//wire's own value, which differs from it just as often as not and
+		//would then be overwritten by every call, colour included.
 	for (Conductor *c : conductor->functionSeparatedConductors(true))
 	{
 		ConductorProperties separated_properties = c->properties();
-		separated_properties.applyTensionProtocolChange(before, properties);
+		separated_properties.applyNodePropertiesChange(before, properties);
 		if (separated_properties == c->properties())
 			continue;
 
@@ -1744,6 +1745,7 @@ QString QetScriptApi::elementLinkType(int folioIndex, const QString &elementUuid
 		case Element::Master:         return QStringLiteral("master");
 		case Element::Slave:          return QStringLiteral("slave");
 		case Element::Terminale:      return QStringLiteral("terminal");
+		case Element::Junction:       return QStringLiteral("junction");
 		default:                      return QStringLiteral("unknown");
 	}
 }

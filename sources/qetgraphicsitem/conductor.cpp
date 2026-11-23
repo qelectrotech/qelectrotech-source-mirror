@@ -119,6 +119,8 @@ Conductor::Conductor(Terminal *p1, Terminal* p2) :
 	has_to_save_profile(false),
 	must_highlight_(Conductor::None)
 {
+	m_terminal1_alive = p1;
+	m_terminal2_alive = p2;
 		//set Zvalue at 11 to be upper than the DiagramImageItem and element
 	setZValue(11);
 	m_previous_z_value = zValue();
@@ -185,8 +187,10 @@ Conductor::~Conductor()
 {
 	conductorGeometryChanged();
 	removeHandler();
-	terminal1->removeConductor(this);
-	terminal2->removeConductor(this);
+		//An undone step that is dropped deletes its symbols before the
+		//wires it added to them: their terminals may be gone already
+	if (m_terminal1_alive) terminal1->removeConductor(this);
+	if (m_terminal2_alive) terminal2->removeConductor(this);
 	deleteSegments();
 }
 
@@ -1953,7 +1957,7 @@ QPainterPath Conductor::path() const
 }
 
 /**
-	@brief Conductor::setPropertiesToPotential
+	@brief Conductor::setPropertyToPotential
 	@param property
 	@param only_text
 	Set property to conductor and every conductors in
@@ -1962,14 +1966,31 @@ QPainterPath Conductor::path() const
 	function and tension/protocol is set
 	to other conductor in the same potential,
 	the other values of property stay unmodified
+
+	A name written over the potential stays on the folio it is written on
+	in a project chaining its reports by the wire function
+	(QETProject::chainsByWireFunction): the folio report links of the
+	potential go before the name is written
+	(QETProject::dissolveReportLinksOfPotential) and the chaining makes
+	them again with the new name (QETProject::reportKeySourceChanged).
+	A project chaining by the label of its reports, or not at all, is
+	left as it was.
 */
 void Conductor::setPropertyToPotential(const ConductorProperties &property,
 					   bool only_text)
 {
+	QETProject *project = diagram() ? diagram()->project() : nullptr;
+	const bool renames = property.m_function != properties().m_function;
+	const bool stop_at_report_links = renames && project
+			&& project->chainsByWireFunction();
+	if (stop_at_report_links) {
+		project->dissolveReportLinksOfPotential(this);
+	}
+	QSet <Conductor *> potential_list = relatedPotentialConductors(
+				true, nullptr, false, stop_at_report_links);
 	setProperties(property);
-	QSet <Conductor *> potential_list = relatedPotentialConductors();
 
-	foreach(Conductor *other_conductor, potential_list)
+	foreach (Conductor *other_conductor, potential_list)
 	{
 			//A core of a cable takes section, colour and type from its
 			//cable: no property of the potential is copied over it
@@ -2007,6 +2028,7 @@ void Conductor::setProperties(const ConductorProperties &property)
 		//The run this conductor was part of, which may part now
 	const QList<Conductor *> old_run = cornerChain();
 	QString formula = m_properties.m_formula;
+	const QString function = m_properties.m_function;
 	m_properties = property;
 
 	if (!m_properties.m_formula.isEmpty())
@@ -2046,6 +2068,9 @@ void Conductor::setProperties(const ConductorProperties &property)
 	}
 
 	storeProperties();
+	if (m_properties.m_function != function) {
+		emit functionChanged(this);
+	}
 	emit propertiesChange();
 }
 
@@ -2294,12 +2319,16 @@ void Conductor::displayedTextChanged()
 	function separation is enabled does not stop the search, and the
 	conductors of both its sides are returned as one potential. Only
 	functionSeparatedConductors() passes true.
+	@param stop_at_report_links : if true, a folio report does not join
+	its two wires: a name written over the potential stays on the folio
+	it was written on (QETProject::chainsByWireFunction)
 	@sa functionSeparatedConductors
 	@return  a QSet of conductor at the same potential.
 */
 QSet<Conductor *> Conductor::relatedPotentialConductors(const bool all_diagram,
 							QList <Terminal *> *t_list,
-							const bool ignore_function_separation)
+							const bool ignore_function_separation,
+							const bool stop_at_report_links)
 {
 	bool declar_t_list = false;
 	if (t_list == nullptr)
@@ -2321,9 +2350,10 @@ QSet<Conductor *> Conductor::relatedPotentialConductors(const bool all_diagram,
 			QList <Conductor *> other_conductors_list_t = terminal->conductors();
 
 				//Get the other terminals of the parent element of @terminal, who share the same potential
-				//This is use for element type "folio report" and "terminal element"
+				//This is use for element type "folio report", "terminal element" and "junction"
 			for (Terminal *t : relatedPotentialTerminal(terminal, all_diagram,
-								ignore_function_separation))
+								ignore_function_separation,
+								stop_at_report_links))
 			{
 				if (!t_list->contains(t))
 				{
@@ -2336,7 +2366,8 @@ QSet<Conductor *> Conductor::relatedPotentialConductors(const bool all_diagram,
 				//Get the conductors at the same potential for each conductors of other_conductors_list_t
 			for (Conductor *c : other_conductors_list_t) {
 				other_conductors += c->relatedPotentialConductors(all_diagram, t_list,
-								  ignore_function_separation);
+								  ignore_function_separation,
+								  stop_at_report_links);
 			}
 
 			other_conductors += QSet<Conductor*>(other_conductors_list_t.begin(),other_conductors_list_t.end());
@@ -2359,10 +2390,12 @@ QSet<Conductor *> Conductor::relatedPotentialConductors(const bool all_diagram,
 
 	Those conductors are deliberately not part of
 	relatedPotentialConductors(): no property may be copied over them
-	by default. One does cross that separation, though: the voltage /
-	protocol, which describes the electrical node itself. Callers that
-	push it over the whole potential use this method to reach the other
-	side (@see ConductorProperties::applyTensionProtocolChange).
+	by default. Only what the node itself describes crosses that
+	separation: the voltage / protocol and the drawing of the wire --
+	colour, line style and width (@see
+	ConductorProperties::applyNodePropertiesChange). Callers that push
+	those fields over the whole potential use this method to reach the
+	other side.
 
 	It is simply the potential computed with the separations ignored,
 	minus the potential that respects them.
@@ -2377,6 +2410,62 @@ QSet<Conductor *> Conductor::functionSeparatedConductors(const bool all_diagram)
 	separated.remove(this);
 
 	return separated;
+}
+
+/**
+	@brief Conductor::applySeparatedNodeProperties
+	Copy into @p properties the fields a function separated terminal
+	element lets through, taken from the conductors the other side of
+	the separation holds (@see functionSeparatedConductors): the voltage
+	/ protocol and the drawing of the wire, as if the terminal had no
+	function separation. A field those conductors do not agree on is
+	left as it is in @p properties.
+
+	A new conductor applies this when its own side of the separation
+	holds no wire to take anything from: what its own side says wins
+	over the other side, however far that side reaches, and only the
+	fields this side leaves empty come from across the separation.
+	@sa ConductorProperties::applyAgreedNodeProperties
+*/
+void Conductor::applySeparatedNodeProperties(ConductorProperties &properties)
+{
+	QList<ConductorProperties> separated;
+	for (Conductor *c : functionSeparatedConductors()) {
+		separated << c->properties();
+	}
+	properties.applyAgreedNodeProperties(separated);
+}
+
+/**
+	@brief Conductor::applySeparatedNodePropertiesIfEmpty
+	The rule for a wire being created, in one call: what a function
+	separated terminal element lets through is taken from the other side
+	of the separation (@see applySeparatedNodeProperties), but only when
+	this wire's own side holds no wire to take anything from: what its
+	own side says wins over the other side, however far that side
+	reaches.
+
+	Only wires being created are meant: a pasted wire keeping the
+	properties it was copied with, or a wire being renumbered or split,
+	has something of its own and is left alone. That is why this is not
+	part of ConductorAutoNumerotation::numerate(), which runs on such
+	wires too.
+
+	A caller creating several wires in one gesture that join one
+	potential (ConductorCreator) calls applySeparatedNodeProperties()
+	with its own idea of "nothing of its own" instead: the wires of the
+	gesture would see each other here.
+*/
+void Conductor::applySeparatedNodePropertiesIfEmpty()
+{
+	if (!relatedPotentialConductors().isEmpty()) {
+		return;
+	}
+	ConductorProperties properties = this->properties();
+	applySeparatedNodeProperties(properties);
+	if (properties != this->properties()) {
+		setProperties(properties);
+	}
 }
 
 /**

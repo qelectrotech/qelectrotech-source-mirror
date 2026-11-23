@@ -31,6 +31,7 @@
 #include <qet.h>
 #include <qeticons.h>
 #include <qetproject.h>
+#include <undocommand/reportlinkkeycommand.h>
 #include <wiringrules.h>
 #include <ui/wiringruleswarning.h>
 #include <qetgraphicsitem/element.h>
@@ -204,6 +205,13 @@ void ProjectMainConfigPage::applyProjectConf()
 		modified_project = true;
 	}
 
+	const auto designation_display = static_cast<QETProject::DesignationDisplay>(
+				m_designation_display_cb -> currentData().toInt());
+	if (m_project -> designationDisplay() != designation_display) {
+		m_project -> setDesignationDisplay(designation_display);
+		modified_project = true;
+	}
+
 	if (m_project -> followDeviceTypes() != m_follow_device_types_cb -> isChecked()) {
 		m_project -> setFollowDeviceTypes(m_follow_device_types_cb -> isChecked());
 		modified_project = true;
@@ -211,6 +219,18 @@ void ProjectMainConfigPage::applyProjectConf()
 
 	if (m_project -> chainedReports() != chained_reports_cb_ -> isChecked()) {
 		m_project -> setChainedReports(chained_reports_cb_ -> isChecked());
+		modified_project = true;
+	}
+
+	const bool by_function = chained_key_function_rb_ -> isChecked();
+	const QETProject::ReportLinkKey wanted_key = by_function
+			? QETProject::ReportLinkKey::Function
+			: QETProject::ReportLinkKey::Label;
+	if (m_project -> chainedReportsKey() != wanted_key) {
+			//The chains this project has were made with the other key:
+			//they go and are made again from the new one. One undo step
+			//carries the choice and the links it made and took away.
+		m_project -> undoStack() -> push(new ChangeReportLinkKeyCommand(m_project, wanted_key));
 		modified_project = true;
 	}
 
@@ -304,6 +324,26 @@ void ProjectMainConfigPage::initWidgets()
 										 "the element's own, as before.",
 										 "tooltip"));
 
+		//What the label field of an element shows
+	m_designation_display_label = new QLabel(tr("Element labels show:", "label when configuring"));
+	m_designation_display_cb = new QComboBox();
+	m_designation_display_cb -> setObjectName(QStringLiteral("designationDisplay"));
+	m_designation_display_cb -> addItem(tr("The label only (K1)", "designation display"),
+										static_cast<int>(QETProject::DesignationDisplay::Label));
+	m_designation_display_cb -> addItem(tr("Short reference designation, IEC 81346 (=+-), without "
+										   "what the folio or structure box already gives",
+										   "designation display"),
+										static_cast<int>(QETProject::DesignationDisplay::Short));
+	m_designation_display_cb -> addItem(tr("Full reference designation, IEC 81346 (=A1+B2-K1)",
+										   "designation display"),
+										static_cast<int>(QETProject::DesignationDisplay::Full));
+	m_designation_display_cb -> setToolTip(tr("What the label field of each element shows. The "
+											  "plant and location are the element's own, else those of "
+											  "its structure box or folio. Only the drawing changes: the "
+											  "label stays as typed, and a text written with %{label} "
+											  "still shows the label only.",
+											  "tooltip"));
+
 		//Placing and linking follow the device types
 	m_follow_device_types_cb = new QCheckBox(tr("Follow device types when placing and linking",
 												"checkbox label"));
@@ -314,7 +354,25 @@ void ProjectMainConfigPage::initWidgets()
 											  "tooltip"));
 
 	chained_reports_cb_ = new QCheckBox(tr("Enable chained folio reports for report elements", "checkbox label"));
-	chained_reports_cb_ -> setToolTip(tr("Automatically chains folio report elements with the same label in a forward/backward sequence.", "tooltip"));
+	chained_reports_cb_ -> setToolTip(tr("Automatically chains folio report elements that share a name in a forward/backward sequence.", "tooltip"));
+
+		//What two folio reports must share to be chained together
+	chained_key_gb_ = new QGroupBox(tr("Chain folio report elements by", "group box title"));
+	chained_key_gb_ -> setToolTip(tr("What two folio report elements must share to be chained together: "
+									 "the label each of them carries, or the function of the wire its "
+									 "terminal holds. A report without a value of its own is never "
+									 "chained. Changing this dissolves the chains of this project and "
+									 "makes them again from the new key.", "tooltip"));
+	chained_key_label_rb_ = new QRadioButton(tr("Their label", "radio button label"));
+	chained_key_function_rb_ = new QRadioButton(tr("The function of their conductor", "radio button label"));
+	QVBoxLayout *chained_key_layout = new QVBoxLayout(chained_key_gb_);
+	chained_key_layout -> addWidget(chained_key_label_rb_);
+	chained_key_layout -> addWidget(chained_key_function_rb_);
+	auto update_chained_key_enabled = [this](bool on) {
+		chained_key_gb_ -> setEnabled(on && !(m_project -> isReadOnly()));
+	};
+	update_chained_key_enabled(chained_reports_cb_ -> isChecked());
+	connect(chained_reports_cb_, &QCheckBox::toggled, this, update_chained_key_enabled);
 
 		//How the terminals draw their label: a setting of this project,
 		//so the same file draws the same way on every machine which
@@ -425,10 +483,19 @@ void ProjectMainConfigPage::initLayout()
 	main_layout0 -> addWidget(m_plant_location_cb);
 	main_layout0 -> addSpacing(10);
 
+	QHBoxLayout *designation_display_layout = new QHBoxLayout();
+	designation_display_layout -> addWidget(m_designation_display_label);
+	designation_display_layout -> addWidget(m_designation_display_cb);
+	designation_display_layout -> addStretch();
+	main_layout0 -> addLayout(designation_display_layout);
+	main_layout0 -> addSpacing(10);
+
 	main_layout0 -> addWidget(m_follow_device_types_cb);
 	main_layout0 -> addSpacing(10);
 
 	main_layout0 -> addWidget(chained_reports_cb_);
+	main_layout0 -> addSpacing(10);
+	main_layout0 -> addWidget(chained_key_gb_);
 	main_layout0 -> addSpacing(10);
 
 	QVBoxLayout *terminal_label_layout = new QVBoxLayout(terminal_label_gb_);
@@ -481,8 +548,15 @@ void ProjectMainConfigPage::readValuesFromProject()
 	wire_hops_cb_ -> setCurrentIndex(qMax(0, wire_hops_index));
 	upright_symbol_texts_cb_ -> setChecked(m_project -> uprightSymbolTexts());
 	m_plant_location_cb -> setChecked(m_project -> plantAndLocationInherited());
+	m_designation_display_cb -> setCurrentIndex(qMax(0, m_designation_display_cb -> findData(
+			static_cast<int>(m_project -> designationDisplay()))));
 	m_follow_device_types_cb -> setChecked(m_project -> followDeviceTypes());
 	chained_reports_cb_ -> setChecked(m_project -> chainedReports());
+	if (m_project -> chainedReportsKey() == QETProject::ReportLinkKey::Function) {
+		chained_key_function_rb_ -> setChecked(true);
+	} else {
+		chained_key_label_rb_ -> setChecked(true);
+	}
 	if (m_project -> terminalLabelSplit()) {
 		terminal_label_split_rb_ -> setChecked(true);
 	} else {
@@ -548,8 +622,10 @@ void ProjectMainConfigPage::adjustReadOnly()
 	wire_hops_cb_ -> setDisabled(is_read_only);
 	upright_symbol_texts_cb_ -> setDisabled(is_read_only);
 	m_plant_location_cb -> setDisabled(is_read_only);
+	m_designation_display_cb -> setDisabled(is_read_only);
 	m_follow_device_types_cb -> setDisabled(is_read_only);
 	chained_reports_cb_ -> setDisabled(is_read_only);
+	chained_key_gb_ -> setDisabled(is_read_only || !(chained_reports_cb_ -> isChecked()));
 	terminal_label_gb_ -> setDisabled(is_read_only);
 	wiring_rules_gb_ -> setDisabled(is_read_only);
 	origin_cb_->setDisabled(is_read_only);

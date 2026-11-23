@@ -20,6 +20,7 @@
 
 #include <QDomElement>
 #include <QList>
+#include <QSet>
 #include <QString>
 
 class Diagram;
@@ -42,6 +43,8 @@ namespace MacroLabels
 	};
 
 	QList<Field> fields(const QDomElement &macro_root);
+	QString placeOf(Diagram *folio);
+	QSet<QString> taken(Diagram *folio, QSet<QString> *typed_with_sign = nullptr);
 	QString nextFree(const QString &label, const QString &place, const QSet<QString> &taken);
 	void propose(QList<Field> &fields, Diagram *folio);
 	void apply(QDomElement &diagram, const QList<Field> &fields);

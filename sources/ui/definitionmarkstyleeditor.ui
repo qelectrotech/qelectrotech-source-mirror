@@ -1,0 +1,576 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>DefinitionMarkStyleEditor</class>
+ <widget class="QDialog" name="DefinitionMarkStyleEditor">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>900</width>
+    <height>470</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Customize the stroke and its texts</string>
+  </property>
+  <layout class="QGridLayout" name="m_main_gl">
+   <item row="0" column="0" rowspan="5">
+    <widget class="QGraphicsView" name="m_preview_view">
+     <property name="toolTip">
+      <string>The stroke as the conductors show it. Drag the shapes and texts to move them.</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1">
+    <widget class="QCheckBox" name="m_enabled_cb">
+     <property name="toolTip">
+      <string>Draw the stroke with the shapes and texts below instead of the standard slanted stroke. The drawing is saved with the project.</string>
+     </property>
+     <property name="text">
+      <string>Use a customized drawing</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1">
+    <layout class="QHBoxLayout" name="m_turn_hl">
+     <item>
+      <widget class="QLabel" name="m_vertical_turn_label">
+       <property name="text">
+        <string>On a vertical conductor :</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QComboBox" name="m_vertical_turn_cb">
+       <property name="toolTip">
+        <string>Where the conductor runs up and down, the drawing turns by this much: shapes, texts and their places turn with it.</string>
+       </property>
+       <item>
+        <property name="text">
+         <string>As designed</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Turns 90°</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Turns 180°</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Turns 270°</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item>
+      <spacer name="m_turn_spacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+   <item row="2" column="1">
+    <widget class="QGroupBox" name="m_items_gb">
+     <property name="title">
+      <string>Items</string>
+     </property>
+     <layout class="QVBoxLayout" name="m_items_vl">
+      <item>
+       <widget class="QListWidget" name="m_items_lw"/>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="m_add_hl">
+        <item>
+         <widget class="QPushButton" name="m_add_text_pb">
+          <property name="toolTip">
+           <string>Add a text whose words come from a formula</string>
+          </property>
+          <property name="text">
+           <string>Add a text</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="m_add_shape_pb">
+          <property name="toolTip">
+           <string>Add a line, a circle or a rectangle to the stroke</string>
+          </property>
+          <property name="text">
+           <string>Add a shape</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="m_remove_pb">
+          <property name="toolTip">
+           <string>Remove the selected item</string>
+          </property>
+          <property name="text">
+           <string>Remove</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="3" column="1">
+    <widget class="QStackedWidget" name="m_properties_stack">
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <widget class="QWidget" name="m_no_selection_page"/>
+     <widget class="QWidget" name="m_shape_page">
+      <layout class="QGridLayout" name="m_shape_gl">
+       <item row="0" column="0">
+        <widget class="QLabel" name="m_shape_kind_label">
+         <property name="text">
+          <string>Shape :</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1" colspan="3">
+        <widget class="QComboBox" name="m_shape_kind_cb">
+         <item>
+          <property name="text">
+           <string>Line</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Circle</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Rectangle</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="m_shape_x_label">
+         <property name="text">
+          <string>Position X :</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QDoubleSpinBox" name="m_shape_x_sb">
+         <property name="minimum">
+          <double>-1000.000000000000000</double>
+         </property>
+         <property name="maximum">
+          <double>1000.000000000000000</double>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="2">
+        <widget class="QLabel" name="m_shape_y_label">
+         <property name="text">
+          <string>Position Y :</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="3">
+        <widget class="QDoubleSpinBox" name="m_shape_y_sb">
+         <property name="minimum">
+          <double>-1000.000000000000000</double>
+         </property>
+         <property name="maximum">
+          <double>1000.000000000000000</double>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="m_shape_rotation_label">
+         <property name="text">
+          <string>Rotation :</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QDoubleSpinBox" name="m_shape_rotation_sb">
+         <property name="minimum">
+          <double>-360.000000000000000</double>
+         </property>
+         <property name="maximum">
+          <double>360.000000000000000</double>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="2">
+        <widget class="QLabel" name="m_shape_width_label">
+         <property name="text">
+          <string>Length :</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="3">
+        <widget class="QDoubleSpinBox" name="m_shape_width_sb">
+         <property name="minimum">
+          <double>0.500000000000000</double>
+         </property>
+         <property name="maximum">
+          <double>500.000000000000000</double>
+         </property>
+         <property name="value">
+          <double>8.000000000000000</double>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="m_shape_height_label">
+         <property name="text">
+          <string>Height :</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QDoubleSpinBox" name="m_shape_height_sb">
+         <property name="minimum">
+          <double>0.500000000000000</double>
+         </property>
+         <property name="maximum">
+          <double>500.000000000000000</double>
+         </property>
+         <property name="value">
+          <double>8.000000000000000</double>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="2">
+        <widget class="QLabel" name="m_shape_pen_width_label">
+         <property name="text">
+          <string>Pen width :</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="3">
+        <widget class="QDoubleSpinBox" name="m_shape_pen_width_sb">
+         <property name="toolTip">
+          <string>The width of the shape's own outline, whatever the conductor's width is.</string>
+         </property>
+         <property name="specialValueText">
+          <string>Conductor's</string>
+         </property>
+         <property name="decimals">
+          <number>1</number>
+         </property>
+         <property name="minimum">
+          <double>0.000000000000000</double>
+         </property>
+         <property name="maximum">
+          <double>50.000000000000000</double>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0">
+        <widget class="QLabel" name="m_shape_color_label">
+         <property name="text">
+          <string>Colour :</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1">
+        <widget class="KColorButton" name="m_shape_color_kpb"/>
+       </item>
+       <item row="4" column="2" colspan="2">
+        <widget class="QCheckBox" name="m_shape_auto_color_cb">
+         <property name="toolTip">
+          <string>Draw the shape in the conductor's own colour.</string>
+         </property>
+         <property name="text">
+          <string>Conductor's own colour</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="0" colspan="4">
+        <widget class="QCheckBox" name="m_shape_filled_cb">
+         <property name="text">
+          <string>Filled</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="m_text_page">
+      <layout class="QGridLayout" name="m_text_gl">
+       <item row="0" column="0">
+        <widget class="QLabel" name="m_text_formula_label">
+         <property name="text">
+          <string>Text :</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1" colspan="3">
+        <widget class="QPlainTextEdit" name="m_text_formula_pte">
+         <property name="toolTip">
+          <string>The words of the text, with the variables of a conductor's formula: %wc is its colour, %ws its section and so on.</string>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>60</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1" colspan="3">
+        <widget class="QToolButton" name="m_insert_variable_tb">
+         <property name="text">
+          <string>Insert a variable</string>
+         </property>
+         <property name="popupMode">
+          <enum>QToolButton::InstantPopup</enum>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0" colspan="4">
+        <widget class="QLabel" name="m_variable_help_label">
+         <property name="text">
+          <string notr="true">set in the constructor</string>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="m_text_x_label">
+         <property name="text">
+          <string>Position X :</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QDoubleSpinBox" name="m_text_x_sb">
+         <property name="minimum">
+          <double>-1000.000000000000000</double>
+         </property>
+         <property name="maximum">
+          <double>1000.000000000000000</double>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="2">
+        <widget class="QLabel" name="m_text_y_label">
+         <property name="text">
+          <string>Position Y :</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="3">
+        <widget class="QDoubleSpinBox" name="m_text_y_sb">
+         <property name="minimum">
+          <double>-1000.000000000000000</double>
+         </property>
+         <property name="maximum">
+          <double>1000.000000000000000</double>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0">
+        <widget class="QLabel" name="m_text_rotation_label">
+         <property name="text">
+          <string>Rotation :</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1">
+        <widget class="QDoubleSpinBox" name="m_text_rotation_sb">
+         <property name="minimum">
+          <double>-360.000000000000000</double>
+         </property>
+         <property name="maximum">
+          <double>360.000000000000000</double>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="2">
+        <widget class="QLabel" name="m_text_size_label">
+         <property name="text">
+          <string>Size :</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="3">
+        <widget class="QDoubleSpinBox" name="m_text_size_sb">
+         <property name="toolTip">
+          <string>The size of the text in points, whatever the conductor's own text size is.</string>
+         </property>
+         <property name="specialValueText">
+          <string>Conductor's</string>
+         </property>
+         <property name="decimals">
+          <number>1</number>
+         </property>
+         <property name="minimum">
+          <double>0.000000000000000</double>
+         </property>
+         <property name="maximum">
+          <double>100.000000000000000</double>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="0">
+        <widget class="QLabel" name="m_text_alignment_label">
+         <property name="text">
+          <string>Alignment :</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="1">
+        <widget class="QComboBox" name="m_text_halign_cb">
+         <property name="toolTip">
+          <string>Where the text stands around its place: Left, so the text grows to the right from it.</string>
+         </property>
+         <item>
+          <property name="text">
+           <string>Left</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Center</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Right</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="5" column="2" colspan="2">
+        <widget class="QComboBox" name="m_text_valign_cb">
+         <property name="toolTip">
+          <string>Where the text stands around its place: Top, so the text grows downwards from it.</string>
+         </property>
+         <item>
+          <property name="text">
+           <string>Top</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Middle</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Bottom</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="6" column="0">
+        <widget class="QLabel" name="m_text_color_label">
+         <property name="text">
+          <string>Colour :</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="1">
+        <widget class="KColorButton" name="m_text_color_kpb"/>
+       </item>
+       <item row="6" column="2" colspan="2">
+        <widget class="QCheckBox" name="m_text_auto_color_cb">
+         <property name="toolTip">
+          <string>Write the text in the conductor's own text colour.</string>
+         </property>
+         <property name="text">
+          <string>Conductor's own colour</string>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="0" colspan="4">
+        <widget class="QCheckBox" name="m_text_upright_cb">
+         <property name="toolTip">
+          <string>Keep the text horizontal whatever the drawing does. When off, the text turns with it, for example on a conductor that runs up and down.</string>
+         </property>
+         <property name="text">
+          <string>Text stays horizontal</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+   <item row="4" column="1">
+    <layout class="QHBoxLayout" name="m_bottom_hl">
+     <item>
+      <widget class="QPushButton" name="m_standard_pb">
+       <property name="toolTip">
+        <string>Go back to the standard slanted stroke, with the colour above and the section below.</string>
+       </property>
+       <property name="text">
+        <string>Back to the standard drawing</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="m_as_default_cb">
+       <property name="toolTip">
+        <string>The projects you create from now on start with this drawing; the open one keeps its own.</string>
+       </property>
+       <property name="text">
+        <string>Use for new projects</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="m_bottom_spacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QDialogButtonBox" name="m_button_box">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="standardButtons">
+        <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>KColorButton</class>
+   <extends>QPushButton</extends>
+   <header>kcolorbutton.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

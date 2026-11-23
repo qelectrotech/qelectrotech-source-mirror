@@ -21,8 +21,10 @@
 	and goes with them, and is saved with the conductor.
 */
 #include "qetapptest.h"
+#include "autoNum/assignvariables.h"
 #include "diagram.h"
 #include "factory/elementfactory.h"
+#include "properties/definitionmarkstyle.h"
 #include "qetgraphicsitem/conductor.h"
 #include "qetgraphicsitem/conductordefinitionmark.h"
 #include "qetgraphicsitem/conductortextitem.h"
@@ -222,6 +224,190 @@ class TstConductorDefinitionMark : public QObject
 			m_conductor->properties().toXml(element);
 			QVERIFY(!element.hasAttribute(QStringLiteral("definition_mark")));
 		}
+
+			//The customized drawing of the stroke goes out and comes
+			//back whole
+		void styleXmlRoundTrip()
+		{
+			DefinitionMarkStyle style;
+			style.m_enabled = true;
+			style.m_vertical_turn = 90;
+			DefinitionMarkStyle::ShapeItem shape;
+			shape.m_kind = DefinitionMarkStyle::ShapeKind::Circle;
+			shape.m_pos = QPointF(3, -4);
+			shape.m_rotation = 15;
+			shape.m_width = 12;
+			shape.m_height = 9;
+			shape.m_pen_width = 2.5;
+			shape.m_color = QColor(200, 10, 10);
+			shape.m_filled = true;
+			style.m_shapes << shape;
+			DefinitionMarkStyle::TextItem text;
+			text.m_formula = QStringLiteral("%wt / %wb");
+			text.m_pos = QPointF(-7, 8);
+			text.m_rotation = -90;
+			text.m_size = 6.5;
+			text.m_upright = true;
+			text.m_alignment = Qt::AlignLeft | Qt::AlignBottom;
+			style.m_texts << text;
+
+			QDomDocument document;
+			QDomElement element = document.createElement(QStringLiteral("definition_mark_style"));
+			style.toXml(element);
+			DefinitionMarkStyle read;
+			read.fromXml(element);
+			QVERIFY(read == style);
+
+				//What the settings keep for the new projects
+			QSettings settings;
+			style.toSettings(settings, QStringLiteral("test/"));
+			DefinitionMarkStyle from_settings;
+			from_settings.fromSettings(settings, QStringLiteral("test/"));
+			QVERIFY(from_settings == style);
+		}
+
+			//A drawing that was never customized is the standard one
+		void standardStyleIsTheOldDrawing()
+		{
+			QVERIFY(DefinitionMarkStyle().isStandard());
+			const DefinitionMarkStyle standard = DefinitionMarkStyle::standardStyle();
+			QVERIFY(standard.isStandard());
+			QCOMPARE(standard.m_texts.size(), 2);
+			QCOMPARE(standard.m_texts.at(0).m_formula, QStringLiteral("%wc"));
+			QCOMPARE(standard.m_texts.at(1).m_formula, QStringLiteral("%ws"));
+			QVERIFY(standard.m_shapes.size() >= 1);
+		}
+
+			//The project draws its marks its own way from now on
+		void customStyleChangesTheMark()
+		{
+			setMark(true, -1);
+			QVERIFY(mark());
+			QETProject *project = m_conductor->diagram()->project();
+			const QRectF before = mark()->boundingRect();
+
+			DefinitionMarkStyle style = DefinitionMarkStyle::standardStyle();
+			style.m_enabled = true;
+			DefinitionMarkStyle::TextItem text;
+			text.m_formula = QStringLiteral("%wc and %ws");
+			text.m_pos = QPointF(40, -30);
+			style.m_texts << text;
+			project->setDefinitionMarkStyle(style);
+				//The mark is drawn again on its own as the style
+				//changes; its texts are resolved for this conductor
+			const QRectF after = mark()->boundingRect();
+			QVERIFY(after.width() > before.width()
+				|| after.height() > before.height());
+
+			project->setDefinitionMarkStyle(DefinitionMarkStyle());
+			QCOMPARE(mark()->boundingRect(), before);
+		}
+
+			//A formula speaks of the wire it is drawn on
+		void wireFormulaVariables()
+		{
+			const ConductorProperties old_properties = m_conductor->properties();
+			ConductorProperties p = old_properties;
+			p.m_function = QStringLiteral("PE");
+			p.m_tension_protocol = QStringLiteral("24V=");
+			p.m_conductor_type = QStringLiteral("H07V-K");
+			p.m_cable = QStringLiteral("W1");
+			m_conductor->setProperties(p);
+			autonum::sequentialNumbers numbers;
+			const QString label = autonum::AssignVariables::formulaToLabel(
+					QStringLiteral("%wf|%wv|%wc|%ws|%wt|%wb"),
+					numbers, m_conductor->diagram(), nullptr, m_conductor);
+			QCOMPARE(label, QStringLiteral("PE|24V=|BK|10|H07V-K|W1"));
+			m_conductor->setProperties(old_properties);
+		}
+
+			//The words of a customized drawing follow the wire they
+			//are drawn on: editing its section redraws the stroke
+		void theMarkFollowsAnEditedWire()
+		{
+			QETProject *project = m_conductor->diagram()->project();
+			DefinitionMarkStyle style = DefinitionMarkStyle::standardStyle();
+			style.m_enabled = true;
+			project->setDefinitionMarkStyle(style);
+			setMark(true, -1);
+			QVERIFY(mark());
+
+			ConductorProperties p = m_conductor->properties();
+			p.m_wire_section = QStringLiteral("16mm²");
+			m_conductor->setProperties(p);
+			const qreal wide = mark()->boundingRect().width();
+
+			p.m_wire_section = QStringLiteral("16");
+			m_conductor->setProperties(p);
+			const qreal narrow = mark()->boundingRect().width();
+			QVERIFY2(narrow < wide, "the stroke kept the section it had before");
+			project->setDefinitionMarkStyle(DefinitionMarkStyle());
+		}
+
+			//A project saved before the drawing existed is drawn
+			//the standard way, whatever the application's default
+			//for new projects says
+		void anOldProjectKeepsTheStandardDrawing()
+		{
+			DefinitionMarkStyle custom = DefinitionMarkStyle::standardStyle();
+			custom.m_enabled = true;
+			QSettings settings;
+			custom.toSettings(settings, QStringLiteral("diagrameditor/default"));
+
+				//The default really is the customized one...
+			QETProject *fresh = new QETProject();
+			QVERIFY(fresh->definitionMarkStyle().m_enabled);
+			delete fresh;
+
+				//...and a project without the element is not
+				//touched by it
+			QETProject *old = new QETProject(
+					QFINDTESTDATA("fixtures/ten_sequential_numbers.qet"));
+			QVERIFY(old);
+			QVERIFY(old->definitionMarkStyle().isStandard());
+			QVERIFY(!old->definitionMarkStyle().m_enabled);
+			delete old;
+
+			settings.remove(QStringLiteral("diagrameditor/defaultdefinitionmarkstyle"));
+		}
+
+			//A stroke made before its wire reaches the folio -- a
+			//paste or an undone delete makes wires so -- follows
+			//the project's drawing all the same
+		void aMarkMadeBeforeItsWireJoinsTheFolio()
+		{
+			Diagram *diagram = QetAppTest::diagram();
+			const ElementsLocation location(
+				QStringLiteral("common://10_electric/10_allpole/114_connections/corner.elmt"));
+			int state = 0;
+			Element *a = ElementFactory::Instance()->createElement(location, nullptr, &state);
+			Element *b = ElementFactory::Instance()->createElement(location, nullptr, &state);
+			QVERIFY(a && b);
+			diagram->addItem(a);
+			diagram->addItem(b);
+			a->setPos(100, 500);
+			b->setPos(300, 500);
+
+				//The properties ask for a stroke before the wire
+				//is anywhere
+			Conductor *conductor = new Conductor(a->terminals().first(), b->terminals().first());
+			setMark(conductor, true, -1);
+			QVERIFY(!markOf(conductor));
+			diagram->addItem(conductor);
+			QVERIFY(conductor->isValid());
+			ConductorDefinitionMark *mark = markOf(conductor);
+			QVERIFY(mark);
+
+			const QRectF before = mark->boundingRect();
+			DefinitionMarkStyle style = DefinitionMarkStyle::standardStyle();
+			style.m_enabled = true;
+			style.m_texts[0].m_pos = QPointF(60, -30);
+			QETProject *project = diagram->project();
+			project->setDefinitionMarkStyle(style);
+			QVERIFY2(mark->boundingRect() != before,
+				 "the stroke did not follow the project's drawing");
+			project->setDefinitionMarkStyle(DefinitionMarkStyle());
+		}
 };
 
 int main(int argc, char **argv)
@@ -236,6 +422,9 @@ int main(int argc, char **argv)
 	QSettings::setDefaultFormat(QSettings::IniFormat);
 	QSettings::setPath(QSettings::IniFormat, QSettings::UserScope, home.filePath("settings"));
 	QSettings::setPath(QSettings::IniFormat, QSettings::SystemScope, home.filePath("settings"));
+		//QETApp keeps its standard folders unless the ones named exist
+	QDir().mkpath(home.filePath("config"));
+	QDir().mkpath(home.filePath("data"));
 	QETApp::applyDirectoryArguments(QETArguments(QList<QString>{
 		"--config-dir=" + home.filePath("config"),
 		"--data-dir=" + home.filePath("data"),

@@ -42,6 +42,14 @@ namespace BomExport
 		bool numbering = true;
 			/// The auxiliary blocks of an element are parts of their own
 		bool auxiliaries = true;
+			/// Unit price, labour time and their totals per part, and a
+			/// last line adding them up for the project (#1878 A4)
+		bool costing = false;
+			/// The name of that last line
+		QString total_label = QStringLiteral("Total");
+			/// The cables which have a part number are parts too, one
+			/// each, read from qet_cables
+		bool cables = true;
 	};
 	QString groupedQuery(const GroupedOptions &options = GroupedOptions());
 		/// One CSV record: every field quoted, ';' between them, '\n'

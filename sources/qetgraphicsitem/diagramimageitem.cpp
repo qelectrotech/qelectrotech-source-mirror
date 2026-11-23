@@ -2240,9 +2240,10 @@ void DiagramImageItem::replaceImage()
 	QWidget *parentWidget = diagram()->views().isEmpty() ? nullptr : diagram()->views().first();
 	const QString fileName = QFileDialog::getOpenFileName(
 			parentWidget, tr("Select an image ..."),
-			QETApp::pictureDir(), tr("Image Files (*.png *.jpg *.jpeg *.bmp *.svg)"));
+			QETApp::lastPictureDir(), tr("Image Files (*.png *.jpg *.jpeg *.bmp *.svg)"));
 	if (fileName.isEmpty())
 		return;
+	QETApp::rememberPictureDir(fileName);
 
 	QImage image(fileName);
 	if (image.isNull())

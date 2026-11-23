@@ -160,6 +160,8 @@ void BOMExportDialog::on_m_group_parts_clicked(bool checked)
 	m_query_widget->setEnabled(!checked);
 	ui->m_format_as_bom->setEnabled(!checked);
 	ui->m_no_junctions->setEnabled(!checked);
+		//Prices are added up per part, so only the grouped list has them
+	ui->m_costing->setEnabled(checked);
 }
 
 /**
@@ -167,9 +169,13 @@ void BOMExportDialog::on_m_group_parts_clicked(bool checked)
 */
 QString BOMExportDialog::currentQuery() const
 {
-	return ui->m_group_parts->isChecked()
-			? BomExport::groupedQuery()
-			: m_query_widget->queryStr();
+	if (!ui->m_group_parts->isChecked()) {
+		return m_query_widget->queryStr();
+	}
+	BomExport::GroupedOptions options;
+	options.costing = ui->m_costing->isChecked();
+	options.total_label = tr("Total", "last line of the parts list with prices");
+	return BomExport::groupedQuery(options);
 }
 
 /**
@@ -185,6 +191,10 @@ QString BOMExportDialog::groupedHeader(const QString &field_name)
 	if (field_name == QLatin1String("references"))  return tr("References");
 	if (field_name == QLatin1String("manufacturer")) return tr("Manufacturer");
 	if (field_name == QLatin1String("unit"))        return tr("Unit");
+	if (field_name == QLatin1String("unit_price"))  return tr("Unit price");
+	if (field_name == QLatin1String("total_price")) return tr("Total price");
+	if (field_name == QLatin1String("labour_time")) return tr("Labour time [h]");
+	if (field_name == QLatin1String("total_labour")) return tr("Total labour [h]");
 	return field_name;
 }
 

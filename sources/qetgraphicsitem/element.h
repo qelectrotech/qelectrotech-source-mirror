@@ -72,7 +72,8 @@ class Element : public QetGraphicsItem
             Slave = 16,
             Terminale = 32,
             Thumbnail = 64,
-            ConductorDefinition = 128};
+            ConductorDefinition = 128,
+            Junction = 256};
 
 		/**
 		 * @brief The LinkInfo struct
@@ -208,7 +209,10 @@ class Element : public QetGraphicsItem
 		QString conductorTextForDisplay();
 		QString conductorInfoForDisplay(const QString &info_name);
 		void addDisplayValues(DiagramContext &dc);
-		QString infoForDisplay(const QString &info_name);
+		QString infoForDisplay(const QString &info_name,
+							   const Element *drawn_on = nullptr);
+		QString designationForDisplay(const QString &label,
+									  const Element *drawn_on = nullptr) const;
 		bool hasTerminalNumberText() const;
 		bool labelShown() const;
 			/**
@@ -319,10 +323,45 @@ class Element : public QetGraphicsItem
 				link unlinked.
 			*/
 		void initLink(const QList<Element *> &candidates);
-		QList<Element *> linkedElements ();
+		QList<Element *> linkedElements () const;
+			/**
+				@brief Element::allLinkedElements
+				@return every partner this element keeps, the ones whose
+				folio left the project included, in the order it saves
+				them in.
+
+				linkedElements() is the list to show and to count, and it
+				leaves those away (standsInProject()). This one is the
+				list itself: undo() has to put back what was really
+				there, and the link commands act on it.
+			*/
+		QList<Element *> allLinkedElements () const;
+			/**
+				Whether this element still stands on a folio of its own
+				project.
+
+				A folio taken out of the project is detached rather than
+				destroyed -- undo() puts it back -- so its elements keep
+				their links while they are away. Those links may not be
+				counted or shown by the elements that stay: a master
+				which goes on counting a contact whose folio is gone is
+				full, takes no new one, and lists a partner nobody can
+				see any more.
+			*/
+		bool standsInProject() const;
 
 		int groupIndexForElement(Element *elmt) const;
 		void setGroupIndexForElement(Element *elmt, int index);
+			/**
+				@brief Element::linkedSlaveForIo
+				@param io_idx index of a PLC contact group of this master
+				@return the slave drawn in that contact group, or nullptr
+				when no linked slave stands in it any more. Both drawings
+				of the PLC table (Element::drawPlcTable and
+				CrossRefItem::drawAsPlcTable) ask here, so the contact
+				they show and the contact they let click on are the same.
+			*/
+		Element *linkedSlaveForIo(int io_idx) const;
 		void applyContactGroupLabels(Element *slave, int index) const;
 
 		/**
@@ -478,7 +517,7 @@ bool comparPos(const Element * elmt1, const Element * elmt2);
 
 inline bool Element::isFree() const
 {
-	return (connected_elements.isEmpty());
+	return linkedElements().isEmpty();
 }
 
 /**
@@ -505,12 +544,34 @@ inline QUuid Element::uuid() const
 	@brief Element::linkedElements
 	@return the list of linked elements, sorted by position. A sorted copy:
 	the element's own list keeps the order it is saved in.
+
+	Only the partners which still stand on a folio of their own project
+	are in it -- see standsInProject(). The element's own list keeps the
+	ones which are away, so undo() finds them again; they are simply not
+	counted, listed or written out until their folio comes back.
 */
-inline QList <Element *> Element::linkedElements()
+inline QList <Element *> Element::linkedElements() const
 {
-	QList <Element *> sorted = connected_elements;
+	QList <Element *> sorted;
+	sorted.reserve(connected_elements.size());
+	for (Element *elmt : connected_elements)
+		if (elmt && elmt->standsInProject())
+			sorted << elmt;
 	std::sort(sorted.begin(), sorted.end(), comparPos);
 	return sorted;
+}
+
+/**
+	@brief Element::allLinkedElements
+	@return every partner this element keeps, sorted by position like
+	linkedElements() returns them, the partners whose folio left the
+	project included.
+*/
+inline QList <Element *> Element::allLinkedElements () const
+{
+	QList <Element *> all = connected_elements;
+	std::sort(all.begin(), all.end(), comparPos);
+	return all;
 }
 
 #endif

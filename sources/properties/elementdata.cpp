@@ -790,6 +790,8 @@ QString ElementData::typeToString(ElementData::Type type)
 			return  QStringLiteral("thumbnail");
 		case ElementData::ConductorDefinition:
 			return QStringLiteral("conductor_definition");
+		case ElementData::Junction:
+			return QStringLiteral("junction");
 		default:
 			qDebug() << "ElementData::typeToString : type don't exist"
 					 << "return failsafe value 'simple'";
@@ -815,6 +817,8 @@ ElementData::Type ElementData::typeFromString(const QString &string)
 		return ElementData::Thumbnail;
 	} else if (string == QLatin1String("conductor_definition")) {
 		return ElementData::ConductorDefinition;
+	} else if (string == QLatin1String("junction")) {
+		return ElementData::Junction;
 	}
 
 		//Return simple if nothing match
@@ -831,7 +835,9 @@ ElementData::Type ElementData::typeFromString(const QString &string)
 	A slave or a report takes its name from the element it is linked to,
 	and a conductor definition labels a wire rather than naming an item of
 	the drawing: numbering one of them would give a wire label a BMK and
-	advance a scheme's counter for nothing.
+	advance a scheme's counter for nothing. A junction is a purely visual
+	connection point on a wire, never built in the cabinet, so a number on
+	it would name nothing (#1500).
 	@param type the kind of element
 	@return true when the element numbering schemes apply to this kind
 */
@@ -841,6 +847,9 @@ bool ElementData::takesSchemeNumber(const ElementData::Type type)
 		return false;
 	}
 	if (type & ElementData::AllReport) {
+		return false;
+	}
+	if (type == ElementData::Junction) {
 		return false;
 	}
 	return type != ElementData::ConductorDefinition;

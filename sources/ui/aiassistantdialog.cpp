@@ -17,6 +17,7 @@
 */
 #include "aiassistantdialog.h"
 #include <qet.h>
+#include "qetapp.h"
 
 #include <QApplication>
 #include <QCheckBox>
@@ -181,10 +182,15 @@ void AiAssistantDialog::refresh()
 
 void AiAssistantDialog::chooseWorkspace()
 {
+	const QString start = m_workspace->text().isEmpty()
+			? QETApp::lastFileDir(QString())
+			: m_workspace->text();
 	const QString dir = QFileDialog::getExistingDirectory(
-		this, tr("Folder the assistant can use"), m_workspace->text());
-	if (!dir.isEmpty())
+		this, tr("Folder the assistant can use"), start);
+	if (!dir.isEmpty()) {
+		QETApp::rememberFileDir(dir);
 		m_workspace->setText(QDir::toNativeSeparators(dir));
+	}
 }
 
 void AiAssistantDialog::copy()

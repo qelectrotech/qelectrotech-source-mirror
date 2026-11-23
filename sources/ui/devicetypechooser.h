@@ -45,12 +45,23 @@ class DeviceTypeChooser : public QDialog
 		DeviceTypeChooser(Element *symbol, QWidget *parent = nullptr,
 						  const QString &current = QString());
 
+			/// Chooser of a connector's device type: the types of the project
+			/// and of the library having pins (parts of role terminal)
+		DeviceTypeChooser(QETProject *project, const QString &connector,
+						  QWidget *parent = nullptr, const QString &current = QString());
+
 		QString chosen() const;
 		QStringList shown() const;
 		void setFilter(const QString &text);
 		void setShowAll(bool all);
 
 		static QStringList candidates(Element *symbol, bool all);
+			/// The names of the types a connector of @p project can have:
+			/// the types with pins, or all of them when @p all
+		static QStringList connectorCandidates(QETProject *project, bool all);
+			/// Add to @p parent the command copying the library's type
+			/// @p name into @p project, when the project has not got it
+		static void copyToProject(QETProject *project, const QString &name, QUndoCommand *parent);
 			/// The undo command giving @p symbol the type @p name (copying a
 			/// type of the library into the project); nullptr if nothing changes
 		static QUndoCommand *give(Element *symbol, const QString &name);
@@ -60,9 +71,12 @@ class DeviceTypeChooser : public QDialog
 		static void remember(const QString &name);
 
 	private:
+		void setUp(const QString &help_text);
 		void fill();
 
 		QPointer<Element> m_symbol;
+		QPointer<QETProject> m_project;	///< the project of m_symbol, or of the connector
+		bool m_connector = false;		///< choosing a connector's type, not a symbol's
 		QString m_current;
 		QLineEdit *m_filter = nullptr;
 		QCheckBox *m_all = nullptr;

@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "titleblockpropertieswidget.h"
+#include "placesuggestions.h"
 
 #include <qetapp.h>
 #include <qeticons.h>
@@ -450,6 +451,7 @@ void TitleBlockPropertiesWidget::initDialog(
 			ui->m_folio_subgroup_le, &QLineEdit::setPlaceholderText);
 
 	if (project!= nullptr){
+		PlaceSuggestions::attach(ui->m_plant, ui->m_loc, project);
 		keys_2 = project -> folioAutoNum().keys();
 		foreach (QString str, keys_2) { ui -> auto_page_cb -> addItem(str); }
 		if (ui->auto_page_cb->currentText()==nullptr)

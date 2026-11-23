@@ -90,7 +90,15 @@ LinkElementCommand::LinkElementCommand(Element *element_, QUndoCommand *parent):
 	m_element(element_),
 	m_first_redo (true)
 {
-	m_linked_before = m_linked_after = m_element->linkedElements();
+		//undo() has to put back what was really there.
+		//linkedElements() leaves out the partners whose folio left the
+		//project, so a snapshot of it is empty while the element still
+		//keeps one -- and makeLink() with an empty list unlinks
+		//everything. m_linked_after is what redo() puts in place: it is
+		//rebuilt by setLink() and cut down by unlink(), so it stays the
+		//list the element shows.
+	m_linked_before = m_element->allLinkedElements();
+	m_linked_after = m_element->linkedElements();
 	setText(QObject::tr("Edit the cross reference", "edite the cross reference"));
 }
 

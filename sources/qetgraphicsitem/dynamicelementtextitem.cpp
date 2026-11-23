@@ -23,6 +23,9 @@
 #include <QetGraphicsItemModeler/textresizehandles.h>
 #include <shownkinds.h>
 #include <qetproject.h>
+#include <dataBase/projectdatabase.h>
+#include <QSqlError>
+#include <QSqlQuery>
 #include <QPropertyUndoCommand/qpropertyundocommand.h>
 #include <diagram.h>
 #include <qetapp.h>
@@ -596,6 +599,7 @@ void DynamicElementTextItem::watchLabelSource()
 */
 void DynamicElementTextItem::refreshLabelConnection()
 {
+	refreshRemoteEndpoint();
 	refreshLabelShown();
 	if ((m_text_from == ElementInfo &&
 		 (m_info_name == QLatin1String("label")
@@ -721,6 +725,7 @@ void DynamicElementTextItem::setTextFrom(DynamicElementTextItem::TextFrom text_f
 		parentElement()->refreshLabelFields();
 	}
 
+	refreshRemoteEndpoint();
 	emit textFromChanged(m_text_from);
 }
 
@@ -1125,7 +1130,20 @@ QVariant DynamicElementTextItem::itemChange(QGraphicsItem::GraphicsItemChange ch
 		{
 			connect(m_parent_element.data(), &Element::linkedElementChanged, this, &DynamicElementTextItem::masterChanged);
 			if(m_parent_element.data()->diagram())
+			{
 				connect(m_parent_element.data()->diagram()->project(), &QETProject::XRefPropertiesChanged, this, &DynamicElementTextItem::updateXref);
+					//undo() puts a deleted folio back, and with it
+					//the master this text draws its label of. The
+					//link itself did not change, only whether its
+					//master stands on a folio of the project again,
+					//so nothing else tells this text to look once
+					//more -- it went blank when the folio went.
+				connect(m_parent_element.data()->diagram()->project(), &QETProject::diagramAdded, this, &DynamicElementTextItem::masterChanged);
+					//The other way round: the master's folio goes
+					//away, and this text may not go on drawing a
+					//label whose link is not there any more
+				connect(m_parent_element.data()->diagram()->project(), &QETProject::diagramRemoved, this, &DynamicElementTextItem::masterChanged);
+			}
 				//The parent is already linked, wa call master changed for init the connection
 			if(!m_parent_element.data()->linkedElements().isEmpty())
 				masterChanged();
@@ -1137,11 +1155,38 @@ QVariant DynamicElementTextItem::itemChange(QGraphicsItem::GraphicsItemChange ch
 			if (m_parent_element.data()->diagram() && m_parent_element.data()->diagram()->project())
 			{
 				m_report_formula = m_parent_element.data()->diagram()->project()->defaultReportProperties();
+				QETProject *project = m_parent_element.data()->diagram()->project();
+				if (m_parent_element.data()->linkType() & Element::AllReport) {
+					connect(project->dataBase(),
+							&projectDataBase::dataBaseUpdated, this,
+							[this, project]() {
+						// Export can start as soon as loading returns.
+						const auto state = project->state();
+						const auto type = state == QETProject::ProjectParsingRunning
+								? Qt::DirectConnection : Qt::QueuedConnection;
+						QMetaObject::invokeMethod(this,
+								&DynamicElementTextItem::refreshRemoteEndpoint, type);
+					});
+					// The project forwards index changes once its stack exists.
+					connect(project, &QETProject::undoStackIndexChanged, this,
+							&DynamicElementTextItem::refreshRemoteEndpoint,
+							Qt::QueuedConnection);
+				}
 				m_report_formula_con = connect(m_parent_element.data()->diagram()->project(), &QETProject::reportPropertiesChanged, this, &DynamicElementTextItem::reportFormulaChanged);
 			}
 
 			//Add connection to keep up to date the status of the element linked to the parent folio report of this text.
 			connect(m_parent_element.data(), &Element::linkedElementChanged, this, &DynamicElementTextItem::reportChanged);
+				//The folio this report points at can come back the
+				//same way, and then the report has to look again
+			if (m_parent_element.data()->diagram())
+			{
+				connect(m_parent_element.data()->diagram()->project(), &QETProject::diagramAdded, this, &DynamicElementTextItem::reportChanged);
+					//And the partner's folio going away: this text
+					//may not go on naming a report that is not
+					//linked to it any more
+				connect(m_parent_element.data()->diagram()->project(), &QETProject::diagramRemoved, this, &DynamicElementTextItem::reportChanged);
+			}
 			//The parent is already linked, we call reportChanged for init the connection
 			if(!m_parent_element.data()->linkedElements().isEmpty())
 				reportChanged();
@@ -1159,7 +1204,12 @@ QVariant DynamicElementTextItem::itemChange(QGraphicsItem::GraphicsItemChange ch
 		{
 			connect(m_parent_element.data(), &Element::linkedElementChanged, this, &DynamicElementTextItem::updateXref);
 			if(m_parent_element.data()->diagram())
+			{
 				connect(m_parent_element.data()->diagram()->project(), &QETProject::XRefPropertiesChanged, this, &DynamicElementTextItem::updateXref);
+					//A slave's folio put back by undo() brings the
+					//contacts back, and the comb draws them again
+				connect(m_parent_element.data()->diagram()->project(), &QETProject::diagramAdded, this, &DynamicElementTextItem::updateXref);
+			}
 			//Also call updateXref for a master without any linked slave:
 			//when the contact comb must show every contact group the master
 			//defines, the cross ref is expected the moment the element lands
@@ -1450,6 +1500,11 @@ void DynamicElementTextItem::handlerMouseReleaseEvent(QetGraphicsHandlerItem *ha
 
 void DynamicElementTextItem::elementInfoChanged()
 {
+	if (m_text_from == ElementInfo
+		&& m_info_name == QETInformation::REPORT_REMOTE_ENDPOINT) {
+		refreshRemoteEndpoint();
+		return;
+	}
 		//The "Show name" box of the selection properties was possibly
 		//ticked or unticked: the field of a hidden name leaves the
 		//sheet and comes back with the box (@sa refreshLabelShown)
@@ -1505,7 +1560,7 @@ void DynamicElementTextItem::elementInfoChanged()
 			setupFormulaConnection();
 
 			if (element) {
-				final_text = label_element->infoForDisplay(m_info_name);
+				final_text = label_element->infoForDisplay(m_info_name, parentElement());
 			}
 		}
 		else {
@@ -1573,6 +1628,7 @@ void DynamicElementTextItem::masterChanged()
 */
 void DynamicElementTextItem::reportChanged()
 {
+	QTimer::singleShot(0, this, &DynamicElementTextItem::refreshRemoteEndpoint);
 		/*
 		 * When the dynamic text are added by a drag & drop from the element panel,
 		 * the connection below are made in the constructor.
@@ -1646,6 +1702,9 @@ void DynamicElementTextItem::setConnectionForReportFormula(const QString &formul
 	{
 		connect(other_diagram->project(), &QETProject::projectDiagramsOrderChanged, this, &DynamicElementTextItem::updateReportText);
 		connect(other_diagram->project(), &QETProject::diagramRemoved, this, &DynamicElementTextItem::updateReportText);
+			//A folio put back by undo() renumbers the sheets the
+			//same way taking one out does, so it is looked at too
+		connect(other_diagram->project(), &QETProject::diagramAdded, this, &DynamicElementTextItem::updateReportText);
 	}
 	if (other_diagram && string.contains("%T"))
 		connect(&other_diagram->border_and_titleblock, &BorderTitleBlock::informationChanged, this, &DynamicElementTextItem::updateReportText);
@@ -1673,7 +1732,16 @@ void DynamicElementTextItem::removeConnectionForReportFormula(const QString &for
 	}
 	
 	if (other_diagram && (string.contains("%f") || string.contains("%id")))
+	{
+			//Every signal setConnectionForReportFormula() registers
+			//here has to come off again as well: Qt keeps every
+			//connect() it is given, so a report text set up over and
+			//over -- once per sheet change since it watches those
+			//signals -- would run this one more time each round
 		disconnect(other_diagram->project(), &QETProject::projectDiagramsOrderChanged, this, &DynamicElementTextItem::updateReportText);
+		disconnect(other_diagram->project(), &QETProject::diagramRemoved, this, &DynamicElementTextItem::updateReportText);
+		disconnect(other_diagram->project(), &QETProject::diagramAdded, this, &DynamicElementTextItem::updateReportText);
+	}
 	if (other_diagram && string.contains("%T"))
 		disconnect(&other_diagram->border_and_titleblock, &BorderTitleBlock::informationChanged, this, &DynamicElementTextItem::updateReportText);
 	if (string.contains("%l"))
@@ -1759,6 +1827,7 @@ void DynamicElementTextItem::updateReportFormulaConnection()
 */
 void DynamicElementTextItem::updateReportText()
 {
+	if (refreshRemoteEndpoint()) return;
 	if (!m_parent_element ||
 		(!(m_parent_element.data()->linkType() & Element::AllReport) &&
 		 m_parent_element.data()->linkType() != Element::ConductorDefinition))
@@ -1842,6 +1911,11 @@ void DynamicElementTextItem::updateReportText()
 */
 void DynamicElementTextItem::updateLabel()
 {
+	if (m_text_from == CompositeText
+		&& m_composite_text.contains(QETInformation::REPORT_REMOTE_ENDPOINT_VAR)) {
+		refreshRemoteEndpoint();
+		return;
+	}
 	if ((m_text_from == ElementInfo &&
 		 (m_info_name == QLatin1String("label")
 		  || m_info_name == QETInformation::ELMT_TERMINAL_NUMBER)) ||
@@ -1863,7 +1937,7 @@ void DynamicElementTextItem::updateLabel()
 		
 
 		if(m_text_from == ElementInfo && element) {
-			QString new_label = label_element->infoForDisplay(m_info_name);
+			QString new_label = label_element->infoForDisplay(m_info_name, parentElement());
 			if (toPlainText() != new_label) {
 				setPlainText(new_label);
 			}
@@ -2032,6 +2106,7 @@ void DynamicElementTextItem::setPotentialConductor()
 */
 void DynamicElementTextItem::conductorPropertiesChanged()
 {
+	if (refreshRemoteEndpoint()) return;
 	if(m_parent_element && ((m_parent_element.data()->linkType() & Element::AllReport) || (m_parent_element.data()->linkType() == Element::ConductorDefinition) ||
 		m_parent_element.data()->linkType() == Element::ConductorDefinition))
 	{
@@ -2055,11 +2130,133 @@ void DynamicElementTextItem::conductorPropertiesChanged()
 }
 
 /**
-	@brief DynamicElementTextItem::reportReplacedCompositeText
-	This function is only used when the parent element of this text is a report element
-	@return the composite text with the variable replaced by the real value.
-	If the parent element of this text is not a folio report, return a default QString.
+	@brief DynamicElementTextItem::remoteEndpoint
+	@return the device and pin reached across linked reports, or an empty
+	string when a path is missing, cyclic or reaches a different endpoint.
 */
+QString DynamicElementTextItem::remoteEndpoint() const
+{
+	Element *report = parentElement();
+	if (!report || !(report->linkType() & Element::AllReport)
+		|| !report->diagram() || !report->diagram()->project())
+		return {};
+
+	const QString source = report->uuid().toString();
+	// Each row is a hop from a report through its partner and along a wire.
+	// UNION visits each hop once, even if several paths share it or loop.
+	const QString sql = QStringLiteral(
+		"WITH RECURSIVE hops(report, device, pin) AS ("
+		"SELECT '', '%1', '' WHERE EXISTS (SELECT 1 FROM conductor "
+		"WHERE terminal1_element_uuid = '%1' OR terminal2_element_uuid = '%1') "
+		"UNION SELECT h.device, "
+		"CASE WHEN c.terminal1_element_uuid = p.linked_uuid "
+		"THEN c.terminal2_element_uuid ELSE c.terminal1_element_uuid END, "
+		"CASE WHEN c.terminal1_element_uuid = p.linked_uuid "
+		"THEN c.terminal2_uuid ELSE c.terminal1_uuid END "
+		"FROM hops h "
+		"JOIN element r ON r.uuid = h.device "
+		"AND r.type IN ('next_report', 'previous_report') "
+		"JOIN link p ON p.element_uuid = h.device "
+		"JOIN element other ON other.uuid = p.linked_uuid "
+		"AND other.type IN ('next_report', 'previous_report') "
+		"JOIN conductor c ON c.terminal1_element_uuid = p.linked_uuid "
+		"OR c.terminal2_element_uuid = p.linked_uuid "
+		"WHERE (SELECT count(*) FROM link WHERE element_uuid = h.device) = 1) "
+		"SELECT h.report, h.device, t.uuid, d.type, ei.label, t.name, "
+		"CASE WHEN d.type = 'slave' AND COALESCE(ei.label, '') = '' THEN ("
+		"SELECT CASE WHEN count(*) = 1 THEN max(mi.label) END FROM link l "
+		"JOIN element m ON m.uuid = l.linked_uuid AND m.type = 'master' "
+		"LEFT JOIN element_info mi ON mi.element_uuid = m.uuid "
+		"WHERE l.element_uuid = d.uuid) END "
+		"FROM hops h "
+		"LEFT JOIN element d ON d.uuid = h.device "
+		"LEFT JOIN element_info ei ON ei.element_uuid = h.device "
+		"LEFT JOIN terminal t ON t.element_uuid = h.device AND t.uuid = h.pin "
+		"WHERE h.report <> ''").arg(source);
+	QSqlQuery query = report->diagram()->project()->dataBase()->newQuery(sql);
+	QHash<QString, QStringList> following;
+	QHash<QString, qsizetype> incoming{{source, 0}};
+	QString device_uuid, pin_uuid, type, label, pin;
+	while (query.next()) {
+		auto &next = following[query.value(0).toString()];
+		const QString device = query.value(1).toString();
+		const QString terminal = query.value(2).toString();
+		const QString kind = query.value(3).toString();
+		if (device.isEmpty() || terminal.isEmpty() || kind.isEmpty()
+			|| kind == QLatin1String("conductor_definition"))
+			return {};
+		if (kind == QLatin1String("next_report")
+			|| kind == QLatin1String("previous_report")) {
+			next.append(device);
+			++incoming[device];
+			continue;
+		}
+		if (!device_uuid.isEmpty()) {
+			if (device != device_uuid || terminal != pin_uuid)
+				return {};
+			continue;
+		}
+		device_uuid = device;
+		pin_uuid = terminal;
+		type = kind;
+		label = query.value(4).toString().trimmed();
+		pin = query.value(5).toString().trimmed();
+		if (label.isEmpty())
+			label = query.value(6).toString().trimmed();
+	}
+	if (label.isEmpty() || query.lastError().isValid())
+		return {};
+
+	// Every reached report needs a continuation. Remove reports in
+	// topological order to tell a shared continuation from a cycle.
+	QStringList ready;
+	for (auto it = incoming.cbegin(); it != incoming.cend(); ++it) {
+		if (!following.contains(it.key()))
+			return {};
+		if (it.value() == 0)
+			ready.append(it.key());
+	}
+	for (qsizetype i = 0; i < ready.size(); ++i) {
+		for (const QString &next : following.value(ready.at(i))) {
+			if (--incoming[next] == 0)
+				ready.append(next);
+		}
+	}
+	if (ready.size() != incoming.size())
+		return {};
+
+	// A strip terminal can already be labelled "X1:7". Its pin name may
+	// identify the side of that terminal, so keep the strip designation.
+	const int colon = label.lastIndexOf(QLatin1Char(':'));
+	const bool has_number = colon > 0 && colon < label.size() - 1;
+	if (type == QLatin1String("terminal") && (has_number || pin.isEmpty()))
+		return label;
+	if (!pin.isEmpty())
+		return label + QLatin1Char(':') + pin;
+	if (type == QLatin1String("thumbnail") && has_number)
+		return label;
+	return {};
+}
+
+bool DynamicElementTextItem::refreshRemoteEndpoint()
+{
+	QString value;
+	if (m_text_from == ElementInfo
+		&& m_info_name == QETInformation::REPORT_REMOTE_ENDPOINT) {
+		value = remoteEndpoint();
+	} else if (m_text_from == CompositeText
+		&& m_composite_text.contains(QETInformation::REPORT_REMOTE_ENDPOINT_VAR)) {
+		value = reportReplacedCompositeText();
+	} else {
+		return false;
+	}
+	if (toPlainText() != value) {
+		setPlainText(value);
+		emit plainTextChanged();
+	}
+	return true;
+}
+
 QString DynamicElementTextItem::reportReplacedCompositeText() const
 {
 	QString string;
@@ -2114,6 +2311,8 @@ QString DynamicElementTextItem::reportReplacedCompositeText() const
 		string = autonum::AssignVariables::replaceVariable(
 					string, m_parent_element.data()->elementInformations(),
 					m_parent_element.data());
+		if (string.contains(QETInformation::REPORT_REMOTE_ENDPOINT_VAR))
+			string.replace(QETInformation::REPORT_REMOTE_ENDPOINT_VAR, remoteEndpoint());
 	}
 	
 	return string;
@@ -2306,6 +2505,14 @@ void DynamicElementTextItem::updateXref()
 		m_Xref_item = nullptr;
 	}
 	
+		//Take the connections with them: this list is only
+		//bookkeeping, and emptying it leaves every one of them
+		//running -- the next time this block registers them, they
+		//are registered a second time (and a third, and so on),
+		//and the ones to a master this text no longer has keep it
+		//reacting to that master
+	for(const QMetaObject::Connection& c : m_update_slave_Xref_connection)
+		disconnect(c);
 	m_update_slave_Xref_connection.clear();
 
 	if(m_slave_Xref_item)

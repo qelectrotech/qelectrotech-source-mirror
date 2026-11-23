@@ -19,6 +19,7 @@
 
 #include "../QPropertyUndoCommand/qpropertyundocommand.h"
 #include "../diagram.h"
+#include "placesuggestions.h"
 #include "../qetgraphicsitem/structureboxitem.h"
 
 #ifdef BUILD_WITHOUT_KF
@@ -42,14 +43,24 @@ StructureBoxPropertiesWidget::StructureBoxPropertiesWidget(StructureBoxItem *ite
 	layout->addRow(tr("Plant (=)"), m_plant_edit);
 	layout->addRow(tr("Location (+)"), m_location_edit);
 	layout->addRow(tr("Prefix (-)"), m_prefix_edit);
+	m_plant_edit->setObjectName(QStringLiteral("plantEdit"));
+	m_location_edit->setObjectName(QStringLiteral("locationEdit"));
+	if (m_item && m_item->diagram())
+		PlaceSuggestions::attach(m_plant_edit, m_location_edit, m_item->diagram()->project());
 	m_label_size = new QDoubleSpinBox(this);
 	m_label_size->setObjectName(QStringLiteral("labelSize"));
 	m_label_size->setRange(1, 200);
+	m_label_size->setDecimals(1);
 	m_label_size->setSuffix(tr(" pt"));
 	layout->addRow(tr("Size of its name"), m_label_size);
 	m_color = new KColorButton(this);
 	m_color->setObjectName(QStringLiteral("color"));
 	layout->addRow(tr("Colour"), m_color);
+		//An undo changes the size behind the editor's back
+	connect(m_item, &StructureBoxItem::labelSizeChanged, this, [this]() {
+		m_label_size->setValue(m_item->labelSize());
+		m_label_size_shown = m_label_size->value();
+	});
 
 	updateUi();
 }
@@ -69,9 +80,13 @@ void StructureBoxPropertiesWidget::apply()
 	change("plant",    m_item->plant(),    m_plant_edit->text());
 	change("location", m_item->location(), m_location_edit->text());
 	change("prefix",   m_item->prefix(),   m_prefix_edit->text());
-	if (!qFuzzyCompare(m_item->labelSize(), m_label_size->value())) {
+		//Only a size the user typed: a stored size the box cannot show
+		//(8.333, or 0.5 below its range) is not changed by another edit
+	if (!qFuzzyCompare(m_label_size_shown, m_label_size->value())) {
 		if (!undo) undo = new QUndoCommand(tr("Modify a structure box"));
-		new QPropertyUndoCommand(m_item, "labelSize", m_item->labelSize(), m_label_size->value(), undo);
+		new QPropertyUndoCommand(m_item, "labelSize", m_item->labelSize(),
+								 m_label_size->value(), undo);
+		m_label_size_shown = m_label_size->value();
 	}
 	if (m_item->pen().color() != m_color->color()) {
 		if (!undo) undo = new QUndoCommand(tr("Modify a structure box"));
@@ -103,6 +118,7 @@ void StructureBoxPropertiesWidget::updateUi()
 	m_prefix_edit->setText(m_item->prefix());
 	m_label_size->setValue(m_item->labelSize());
 	m_color->setColor(m_item->pen().color());
+	m_label_size_shown = m_label_size->value();
 }
 
 /**

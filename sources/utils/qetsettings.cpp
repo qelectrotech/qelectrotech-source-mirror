@@ -313,6 +313,98 @@ namespace QetSettings
 		settings.setValue("diagrameditor/ask_labels_placing_macro", ask);
 	}
 
+	namespace {
+		/**
+		* @brief lastDirKey
+		* @param which
+		* @return the settings key holding the folder the last file of
+		* @p which was picked from
+		*/
+		QString lastDirKey(QetSettings::FileDialog which)
+		{
+			switch (which) {
+				case QetSettings::FileDialog::Picture:
+					return "filedialogs/last_picture_dir";
+				case QetSettings::FileDialog::Pdf:
+					return "filedialogs/last_pdf_dir";
+				case QetSettings::FileDialog::File:
+					break;
+			}
+			return "filedialogs/last_file_dir";
+		}
+	}
+
+	/**
+	* @brief rememberLastDir
+	* @return whether a dialog that asks for a file or a folder starts in
+	* the folder the last one was picked from instead of the pictures or
+	* the documents folder (@sa setRememberLastDir), off unless the user
+	* turned it on
+	*/
+	bool rememberLastDir()
+	{
+		QSettings settings;
+		return settings.value("filedialogs/remember_last_dir", false).toBool();
+	}
+
+	/**
+	* @brief setRememberLastDir
+	* Store whether a dialog that asks for a file or a folder starts in
+	* the folder the last one was picked from. Turning it off forgets the
+	* folders, so that nothing of the user's disk stays in the settings.
+	* @sa rememberLastDir
+	* @param remember
+	*/
+	void setRememberLastDir(bool remember)
+	{
+		QSettings settings;
+		settings.setValue("filedialogs/remember_last_dir", remember);
+		if (!remember) {
+			settings.remove("filedialogs/last_picture_dir");
+			settings.remove("filedialogs/last_pdf_dir");
+			settings.remove("filedialogs/last_file_dir");
+		}
+	}
+
+	/**
+	* @brief lastDir
+	* @param which
+	* @return the folder the last file of @p which was picked from, empty
+	* when none was picked yet or the setting is off (@sa setLastDir)
+	*/
+	QString lastDir(FileDialog which)
+	{
+		if (!rememberLastDir()) return QString();
+		QSettings settings;
+		return settings.value(lastDirKey(which), QString()).toString();
+	}
+
+	/**
+	* @brief setLastDir
+	* Store the folder the last file of @p which was picked from.
+	* Nothing is stored while the setting is off.
+	* @sa lastDir
+	* @param which
+	* @param dir
+	*/
+	void setLastDir(FileDialog which, const QString &dir)
+	{
+		if (!rememberLastDir()) return;
+		QSettings settings;
+		settings.setValue(lastDirKey(which), dir);
+	}
+	bool askLabelAndPartPlacingSymbol()
+	{
+		QSettings settings;
+		return settings.value("diagrameditor/ask_label_and_part_placing_symbol", false).toBool();
+	}
+
+	void setAskLabelAndPartPlacingSymbol(bool ask)
+	{
+		QSettings settings;
+		settings.setValue("diagrameditor/ask_label_and_part_placing_symbol", ask);
+	}
+
 	/**
 	* @brief stripWiresShown
 	* @return whether a terminal strip draws the wires which end at it
@@ -393,6 +485,59 @@ namespace QetSettings
 	}
 
 	/**
+	* @brief unwiredSymbolsSkipWirelessFolios
+	* @return whether the Check panel's symbols with no wire leaves out
+	* the folios that have no wire at all: panel layouts, terminal plans,
+	* cover sheets. On by default.
+	*/
+	bool unwiredSymbolsSkipWirelessFolios()
+	{
+		QSettings settings;
+		return settings.value("check_panel/unwired_skip_wireless_folios", true).toBool();
+	}
+
+	void setUnwiredSymbolsSkipWirelessFolios(bool skip)
+	{
+		QSettings settings;
+		settings.setValue("check_panel/unwired_skip_wireless_folios", skip);
+	}
+
+	/**
+	* @brief unwiredSymbolsSkipStripTerminals
+	* @return whether the Check panel's symbols with no wire leaves out
+	* strip terminals, since a spare terminal has no wire. On by default.
+	*/
+	bool unwiredSymbolsSkipStripTerminals()
+	{
+		QSettings settings;
+		return settings.value("check_panel/unwired_skip_strip_terminals", true).toBool();
+	}
+
+	void setUnwiredSymbolsSkipStripTerminals(bool skip)
+	{
+		QSettings settings;
+		settings.setValue("check_panel/unwired_skip_strip_terminals", skip);
+	}
+
+	/**
+	* @brief unwiredSymbolsSkipContacts
+	* @return whether the Check panel's symbols with no wire leaves out
+	* auxiliary contacts, which may be spares shown for the cross
+	* reference. Off by default.
+	*/
+	bool unwiredSymbolsSkipContacts()
+	{
+		QSettings settings;
+		return settings.value("check_panel/unwired_skip_contacts", false).toBool();
+	}
+
+	void setUnwiredSymbolsSkipContacts(bool skip)
+	{
+		QSettings settings;
+		settings.setValue("check_panel/unwired_skip_contacts", skip);
+	}
+
+	/**
 	* @brief newFolioTakesPreviousGroup
 	* @return whether a new folio starts with the group and sub-group of the
 	* folio it comes after (QETProject::addNewDiagram()), so a run of folios
@@ -410,6 +555,26 @@ namespace QetSettings
 	{
 		QSettings settings;
 		settings.setValue("diagrameditor/new_folio_takes_previous_group", takes);
+	}
+
+	/**
+	* @brief foliosListedByGroup
+	* @return whether the Projects panel lists a project's folios as a tree,
+	* under their group and then their sub-group (GenericPanel::
+	* folioGroupPaths(), #1878 C9). Off by default: the folios are then
+	* listed flat, as before.
+	* @sa setFoliosListedByGroup
+	*/
+	bool foliosListedByGroup()
+	{
+		QSettings settings;
+		return settings.value("diagrameditor/folios_listed_by_group", false).toBool();
+	}
+
+	void setFoliosListedByGroup(bool listed)
+	{
+		QSettings settings;
+		settings.setValue("diagrameditor/folios_listed_by_group", listed);
 	}
 
 	/**

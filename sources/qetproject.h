@@ -29,6 +29,7 @@
 #include "dataBase/qetdbfile.h"
 #include "properties/projectlanguages.h"
 #include "properties/potentialtypes.h"
+#include "properties/definitionmarkstyle.h"
 #include "properties/reportproperties.h"
 #include "properties/xrefproperties.h"
 #include "titleblock/templatescollection.h"
@@ -36,6 +37,7 @@
 #include "wirehops.h"
 #include "wiringrules.h"
 #include "diagram.h"
+#include <QPointer>
 #include "autoNum/assignvariables.h"
 #include "container/qetcontainerdb.h"
 #include "container/qetzreader.h"
@@ -72,6 +74,7 @@ class QTimer;
 class TerminalStrip;
 class Cable;
 class Bridge;
+class Conductor;
 
 
 #include <QColor>
@@ -127,6 +130,8 @@ class QETProject : public QObject
 
 		void autoLinkReportElements();
 		void scheduleAutoLink();
+		void reportKeySourceChanged(Conductor *conductor);
+		void recheckReportKeys(Conductor *conductor);
 
 	private:
 		QETProject(const QETProject &);
@@ -344,12 +349,22 @@ class QETProject : public QObject
 		void setUprightSymbolTexts(bool upright);
 		bool plantAndLocationInherited() const;
 		void setPlantAndLocationInherited(bool inherited);
+			/// What the label field of a symbol shows: its label only, or
+			/// its IEC 81346 reference designation, short or full
+		enum class DesignationDisplay {Label, Short, Full};
+		DesignationDisplay designationDisplay() const;
+		void setDesignationDisplay(DesignationDisplay display);
 		bool followDeviceTypes() const;
 		void setFollowDeviceTypes(bool follow);
 		const ProjectLanguages &languages() const {return m_languages;}
 		void setLanguages(const ProjectLanguages &languages);
 		const PotentialTypes &potentialTypes() const {return m_potential_types;}
 		void setPotentialTypes(const PotentialTypes &potential_types);
+			/// How the definition marks of this project's conductors
+			/// are drawn; carried by the project, so it looks the
+			/// same wherever it is opened
+		const DefinitionMarkStyle &definitionMarkStyle() const {return m_definition_mark_style;}
+		void setDefinitionMarkStyle(const DefinitionMarkStyle &style);
 			/// The type @p wire takes from the source terminals of its
 			/// potential, in the mode that draws from them; empty otherwise
 		QString derivedPotentialType(const QUuid &wire);
@@ -364,6 +379,9 @@ class QETProject : public QObject
 		QStringList conductorPlantCounter(const QString &scheme, const QString &plant) const;
 		void setConductorPlantCounter(const QString &scheme, const QString &plant,
 									  const QStringList &values);
+			/// Every plant counter: numbering scheme, then plant
+		QHash<QString, QHash<QString, QStringList>> conductorPlantCounters() const
+				{return m_conductor_plant_counters;}
 		void renameConductorPlantCounters(const QString &from, const QString &to);
 			/// The device types this project keeps (<devicetypes>), by name
 		QList<DeviceType> deviceTypes() const {return m_device_types.values();}
@@ -373,6 +391,36 @@ class QETProject : public QObject
 		bool chainedReports() const;
 		void setChainedReports(bool enable);
 		bool hasChainedReportsAttribute() const;
+			/// What two folio reports must share to be chained together
+			/// (reportMatchKey()): the label each of them carries, or the
+			/// function of the wire its terminal holds
+		enum class ReportLinkKey { Label, Function };
+			/// What a project writes for its key in the file, and reads
+		static QString reportLinkKeyToString(ReportLinkKey key);
+		static ReportLinkKey reportLinkKeyFromString(const QString &name);
+		ReportLinkKey chainedReportsKey() const;
+		void setChainedReportsKey(ReportLinkKey key);
+			/// Whether this project chains its folio reports by the
+			/// function of the wire each of them holds: what is new in
+			/// this change happens only then
+		bool chainsByWireFunction() const;
+			/// Take away the folio report links of the potential
+			/// @p conductor is in, when this project chains by the wire
+			/// function: a name written over the potential stays on its
+			/// folio, and the chaining makes the links again
+			/// (reportKeySourceChanged). Nothing in a project chaining by
+			/// the label, or not at all: its links are nobody's to take
+			/// away (Conductor::setPropertyToPotential)
+		void dissolveReportLinksOfPotential(Conductor *conductor);
+			/// The folio report links of the potentials of @p wires: each
+			/// pair of reports a link joins, in the order they are found
+			/// (DissolveReportLinksCommand)
+		QList<QPair<Element *, Element *>> reportLinksOfPotential(
+				const QList<Conductor *> &wires) const;
+			/// Take away every folio report link of this project
+		void dissolveReportLinks();
+			/// Draw every report's texts as its link state says
+		void refreshReportTexts();
 		bool terminalLabelSplit() const;
 		void setTerminalLabelSplit(bool split);
 		WiringRules::Settings wiringRules() const;
@@ -463,6 +511,7 @@ class QETProject : public QObject
 		void diagramAdded(QETProject *, Diagram *);
 		void diagramRemoved(QETProject *, Diagram *);
 		void projectModified(QETProject *, bool);
+		void undoStackIndexChanged(int index);
 		void projectDiagramsOrderChanged(QETProject *, int, int);
 		void diagramUsedTemplate(TitleBlockTemplatesCollection *, const QString &);
 		void readOnlyChanged(QETProject *, bool);
@@ -482,6 +531,9 @@ class QETProject : public QObject
 		void autoNumContextUpdated();
 		void folioAutoNumRemoved();
 		void defaultTitleBlockPropertiesChanged();
+			/// The definition marks of this project are drawn
+			/// another way from now on
+		void definitionMarkStyleChanged();
 		void conductorAutoNumChanged();
 			/// A cable joined or left this project. Views over the
 			/// cables -- the cable list table -- listen to both to work
@@ -534,9 +586,11 @@ class QETProject : public QObject
 		void readBridgeXml(const QDomDocument &xml_project);
 		void readUsageXml(QDomDocument &xml_project);
 		void readWireHopsXml(QDomDocument &xml_project);
+		void readAutoConductorXml(QDomDocument &xml_project);
 		void readOriginXml(QDomDocument& xml_project);
 		void readSymbolTextsXml(QDomDocument &xml_project);
 		void readPlantLocationXml(QDomDocument &xml_project);
+		void readDesignationDisplayXml(QDomDocument &xml_project);
 		void readDeviceTypeRulesXml(QDomDocument &xml_project);
 		void readLanguagesXml(QDomDocument &xml_project);
 		void readPotentialTypesXml(QDomDocument &xml_project);
@@ -545,6 +599,7 @@ class QETProject : public QObject
 		void readDeviceTypesXml(QDomDocument &xml_project);
 		void readTerminalLabelSplitXml(QDomDocument &xml_project);
 		void readWiringRulesXml(QDomDocument &xml_project);
+		void readDefinitionMarkStyleXml(QDomDocument &xml_project);
 
 		void writeProjectPropertiesXml(QDomElement &);
 		void writeDefaultPropertiesXml(QDomElement &);
@@ -556,9 +611,11 @@ class QETProject : public QObject
 	private:
 		void writeUsageXml(QDomElement &);
 		void writeWireHopsXml(QDomElement &);
+		void writeAutoConductorXml(QDomElement &);
 		void writeOriginXml(QDomElement&);
 		void writeSymbolTextsXml(QDomElement &);
 		void writePlantLocationXml(QDomElement &);
+		void writeDesignationDisplayXml(QDomElement &);
 		void writeDeviceTypeRulesXml(QDomElement &);
 		void writeLanguagesXml(QDomElement &);
 		void writePotentialTypesXml(QDomElement &);
@@ -567,6 +624,7 @@ class QETProject : public QObject
 		void writeDeviceTypesXml(QDomElement &);
 		void writeTerminalLabelSplitXml(QDomElement &);
 		void writeWiringRulesXml(QDomElement &);
+		void writeDefinitionMarkStyleXml(QDomElement &);
 		void addDiagram(Diagram *diagram, int pos = -1);
 		void detachDiagram(Diagram *diagram);
 		void writeBackup();
@@ -632,7 +690,7 @@ class QETProject : public QObject
 			/// project-wide variables that will be made available to child diagrams
 		DiagramContext m_project_properties;
 			/// undo stack for this project
-		QUndoStack *m_undo_stack;
+		QUndoStack *m_undo_stack = nullptr;
 			/// True when the loaded file had element numbering schemes
 			/// saved without an id (written before ids existed)
 		bool m_legacy_element_autonums = false;
@@ -689,6 +747,9 @@ class QETProject : public QObject
 			/// %{plant} and %{location} give the place a symbol takes, see
 			/// plantAndLocationInherited()
 		bool m_plant_location_inherited = false;
+			/// What the label field of a symbol shows (the label only for
+			/// a project saved without it), see designationDisplay()
+		DesignationDisplay m_designation_display = DesignationDisplay::Label;
 			/// Placing and linking follow the device types, see
 			/// followDeviceTypes()
 		bool m_follow_device_types = false;
@@ -696,12 +757,17 @@ class QETProject : public QObject
 		ProjectLanguages m_languages;
 			/// The potential types and whether conductors are drawn from them
 		PotentialTypes m_potential_types;
+			/// How the definition marks of this project's conductors
+			/// are drawn (definitionMarkStyle())
+		DefinitionMarkStyle m_definition_mark_style;
 			/// The types wires take from the sources, see derivedPotentialType()
 		QHash<QUuid, QString> m_derived_potential_types;
 		bool m_derived_potential_types_due = false;
 		void refreshDerivedPotentialTypes();
 		bool m_chained_reports = false;
 		bool m_has_chained_reports_attribute = false;
+			/// What pairs folio reports together, see ReportLinkKey
+		ReportLinkKey m_chained_reports_key = ReportLinkKey::Label;
 			/// Conductor numbering scheme -> plant -> the values its plant
 			/// counters last gave there (conductorPlantCounter())
 		QHash<QString, QHash<QString, QStringList>> m_conductor_plant_counters;

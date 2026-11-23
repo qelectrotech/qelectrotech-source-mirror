@@ -66,6 +66,10 @@ QString DeviceNavigatorFilterScheme::displayName() const
 	{
 		return QObject::tr("No structure identifier");
 	}
+	else if (id == QLatin1String("free_parts"))
+	{
+		return QObject::tr("Devices with free parts");
+	}
 	return name;
 }
 
@@ -235,6 +239,13 @@ QList<DeviceNavigatorFilterScheme> DeviceNavigatorFilterScheme::defaultSchemes()
 		s.structureMode = 2; // Without structure only
 		list.append(s);
 	}
+	// 9: Devices with a part of their device type not drawn yet
+	{
+		DeviceNavigatorFilterScheme s;
+		s.id			= QStringLiteral("free_parts");
+		s.onlyFreeParts = true;
+		list.append(s);
+	}
 
 	return list;
 }
@@ -279,6 +290,8 @@ QList<DeviceNavigatorFilterScheme> DeviceNavigatorFilterScheme::loadSchemes()
 			settings.value(QStringLiteral("showThumbnails"), true).toBool();
 		s.showOthers =
 			settings.value(QStringLiteral("showOthers"), true).toBool();
+		s.onlyFreeParts =
+			settings.value(QStringLiteral("onlyFreeParts"), false).toBool();
 		s.structureMode =
 			settings.value(QStringLiteral("structureMode"), 0).toInt();
 		s.structurePattern =
@@ -321,6 +334,7 @@ void DeviceNavigatorFilterScheme::saveSchemes(
 			s.showConductorDefs);
 		settings.setValue(QStringLiteral("showThumbnails"), s.showThumbnails);
 		settings.setValue(QStringLiteral("showOthers"), s.showOthers);
+		settings.setValue(QStringLiteral("onlyFreeParts"), s.onlyFreeParts);
 		settings.setValue(QStringLiteral("structureMode"), s.structureMode);
 		settings.setValue(
 			QStringLiteral("structurePattern"),
@@ -563,6 +577,7 @@ void DeviceNavigatorFilterDialog::loadSchemeToUi(
 	ui->m_cb_conductor_def->setChecked(s.showConductorDefs);
 	ui->m_cb_thumbnail->setChecked(s.showThumbnails);
 	ui->m_cb_other->setChecked(s.showOthers);
+	ui->m_cb_free_parts->setChecked(s.onlyFreeParts);
 
 	ui->m_struct_mode_combo->setCurrentIndex(qBound(0, s.structureMode, 2));
 	ui->m_struct_pattern_edit->setText(s.structurePattern);
@@ -597,6 +612,7 @@ DeviceNavigatorFilterDialog::saveSchemeFromUi() const
 	s.showConductorDefs = ui->m_cb_conductor_def->isChecked();
 	s.showThumbnails	= ui->m_cb_thumbnail->isChecked();
 	s.showOthers		= ui->m_cb_other->isChecked();
+	s.onlyFreeParts		= ui->m_cb_free_parts->isChecked();
 
 	s.structureMode	   = ui->m_struct_mode_combo->currentIndex();
 	s.structurePattern = ui->m_struct_pattern_edit->text().trimmed();

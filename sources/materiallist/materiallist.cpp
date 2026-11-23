@@ -23,7 +23,9 @@
 #include <QDir>
 #include <QFile>
 #include <QFileInfo>
+#include <QRegularExpression>
 #include <QSaveFile>
+#include <QSet>
 #include <QSettings>
 #include <QStandardPaths>
 
@@ -321,6 +323,37 @@ bool MaterialList::isArticleBound(const QString &column)
 	};
 
 	return article_columns.contains(column);
+}
+
+/**
+	@brief MaterialList::elementInfoFor
+	What applying @p record to @p block writes into an element's
+	informations: for each column of the block the record holds, the
+	element information it feeds. An empty cell is left out unless its
+	column is article-bound (see isArticleBound()), and so is whatever
+	QElectroTech has no element information for.
+	@param record an entry of the material file
+	@param block 0 for the main article, 1 to 4 for an auxiliary article
+	@return the element information keys with their values
+*/
+QHash<QString, QString> MaterialList::elementInfoFor(const MaterialRecord &record, int block)
+{
+	QHash<QString, QString> infos;
+	for (const QString &column : columnsForBlock(block)) {
+		if (!record.values.contains(column)) {
+			continue;
+		}
+		const QString value = record.value(column);
+		if (value.isEmpty() && !isArticleBound(column)) {
+			continue;
+		}
+		const QString key = elementInfoKey(column, block);
+		if (key.isEmpty() || !QETInformation::elementInfoKeys().contains(key)) {
+			continue;
+		}
+		infos.insert(key, value);
+	}
+	return infos;
 }
 
 /**
@@ -809,6 +842,12 @@ bool MaterialList::appendRecord(const QString &path, const MaterialRecord &recor
 		data.separator = QLatin1Char(';');
 	}
 
+	for (const QString &col : defaultColumns())
+	{
+		if (!data.columns.contains(col) && !record.value(col).isEmpty()) {
+			data.columns.append(col);
+		}
+	}
 	data.records.append(record);
 	return writeFile(path, data, error);
 }
@@ -872,8 +911,210 @@ bool MaterialList::updateRecord(const QString &path, int row,
 	if (replacement.extra.isEmpty() && !data.records.at(target_row).extra.isEmpty()) {
 		replacement.extra = data.records.at(target_row).extra;
 	}
+	for (const QString &col : defaultColumns())
+	{
+		if (!data.columns.contains(col) && !replacement.value(col).isEmpty()) {
+			data.columns.append(col);
+		}
+	}
 	data.records[target_row] = replacement;
 	return writeFile(path, data, error);
+}
+
+/**
+	@brief MaterialList::removeRecords
+	Remove one or more existing entries from a material file.
+*/
+bool MaterialList::removeRecords(const QString &path,
+								 const QList<int> &rows,
+								 const QList<MaterialRecord> &originals,
+								 QString *error)
+{
+	if (error) {
+		error->clear();
+	}
+	if (rows.size() != originals.size() || rows.isEmpty()) {
+		return false;
+	}
+
+	MaterialListData data;
+	if (!load(path, &data, error)) {
+		return false;
+	}
+	if (data.columns.isEmpty())
+	{
+		if (error) {
+			*error = QCoreApplication::translate("MaterialList", "The file has no header: columns are missing.");
+		}
+		return false;
+	}
+
+	QList<int> to_remove;
+	for (int k = 0; k < rows.size(); ++k)
+	{
+		const int row = rows.at(k);
+		const MaterialRecord &original = originals.at(k);
+		int target_row = -1;
+		if (row >= 0 && row < data.records.size()
+			&& !to_remove.contains(row)
+			&& data.records.at(row) == original)
+		{
+			target_row = row;
+		}
+		else
+		{
+			for (int i = 0; i < data.records.size(); ++i)
+			{
+				if (!to_remove.contains(i) && data.records.at(i) == original)
+				{
+					target_row = i;
+					break;
+				}
+			}
+		}
+		if (target_row >= 0) {
+			to_remove.append(target_row);
+		}
+	}
+
+	if (to_remove.isEmpty())
+	{
+		if (error) {
+			*error = QCoreApplication::translate("MaterialList", "The selected entry no longer exists in the file.");
+		}
+		return false;
+	}
+
+	std::sort(to_remove.begin(), to_remove.end(), std::greater<int>());
+	for (int idx : std::as_const(to_remove)) {
+		data.records.removeAt(idx);
+	}
+	return writeFile(path, data, error);
+}
+
+namespace {
+int findByDesignation(const MaterialListData &data, const QString &designation)
+{
+	const QString needle = designation.trimmed();
+	if (needle.isEmpty()) {
+		return -1;
+	}
+	for (int i = 0; i < data.records.size(); ++i)
+	{
+		if (data.records.at(i).value(QStringLiteral("designation")).trimmed()
+				.compare(needle, Qt::CaseInsensitive) == 0)
+		{
+			return i;
+		}
+	}
+	return -1;
+}
+} // namespace
+
+/**
+	@brief MaterialList::countImportConflicts
+	Count how many records in @a incoming share a non-empty article number
+	(designation) with an existing record that has different field values.
+*/
+int MaterialList::countImportConflicts(const MaterialListData &existing,
+									   const MaterialListData &incoming)
+{
+	int conflicts = 0;
+	for (const MaterialRecord &rec : incoming.records)
+	{
+		const int idx = findByDesignation(existing, rec.value(QStringLiteral("designation")));
+		if (idx >= 0 && !(existing.records.at(idx) == rec)) {
+			++conflicts;
+		}
+	}
+	return conflicts;
+}
+
+/**
+	@brief MaterialList::importFromFile
+	Merge records from @a source_path into @a target_path according to @a policy.
+*/
+bool MaterialList::importFromFile(const QString &target_path,
+								  const QString &source_path,
+								  ImportConflictPolicy policy,
+								  ImportResult *result,
+								  QString *error)
+{
+	if (error) {
+		error->clear();
+	}
+	if (result) {
+		*result = ImportResult{};
+	}
+
+	MaterialListData incoming;
+	if (!load(source_path, &incoming, error)) {
+		return false;
+	}
+
+	MaterialListData target;
+	if (hasContent(target_path))
+	{
+		if (!load(target_path, &target, error)) {
+			return false;
+		}
+	}
+	else
+	{
+		target.columns = incoming.columns.isEmpty() ? defaultColumns() : incoming.columns;
+		target.separator = incoming.separator;
+	}
+
+	for (const QString &col : std::as_const(incoming.columns))
+	{
+		if (!target.columns.contains(col)) {
+			target.columns.append(col);
+		}
+	}
+
+	ImportResult counts;
+	for (const MaterialRecord &rec : std::as_const(incoming.records))
+	{
+		if (target.records.contains(rec))
+		{
+			++counts.skipped;
+			continue;
+		}
+
+		const int match_idx = findByDesignation(target, rec.value(QStringLiteral("designation")));
+		if (match_idx >= 0)
+		{
+			if (policy == ImportConflictPolicy::SkipExisting)
+			{
+				++counts.skipped;
+				continue;
+			}
+			if (policy == ImportConflictPolicy::UpdateExisting)
+			{
+				MaterialRecord merged = target.records.at(match_idx);
+				for (auto it = rec.values.constBegin(); it != rec.values.constEnd(); ++it) {
+					merged.values.insert(it.key(), it.value());
+				}
+				if (!rec.extra.isEmpty()) {
+					merged.extra = rec.extra;
+				}
+				target.records[match_idx] = merged;
+				++counts.updated;
+				continue;
+			}
+		}
+
+		target.records.append(rec);
+		++counts.added;
+	}
+
+	if (!writeFile(target_path, target, error)) {
+		return false;
+	}
+	if (result) {
+		*result = counts;
+	}
+	return true;
 }
 
 /**
@@ -911,4 +1152,34 @@ bool MaterialList::createFile(const QString &path, QString *error)
 bool MaterialList::isEmptyFile(const QString &path)
 {
 	return !hasContent(path);
+}
+
+/**
+	@brief MaterialList::nextDuplicateDesignation
+	Compute the next free copy designation with a " (1)", " (2)", ... suffix.
+*/
+QString MaterialList::nextDuplicateDesignation(const QList<MaterialRecord> &records,
+											   const QString &designation)
+{
+	static const QRegularExpression suffix_re(QStringLiteral("\\s*\\(\\d+\\)$"));
+	QString base = designation.trimmed();
+	base.remove(suffix_re);
+	base = base.trimmed();
+
+	QSet<QString> existing;
+	existing.reserve(records.size());
+	for (const MaterialRecord &rec : records) {
+		existing.insert(rec.value(QStringLiteral("designation")).trimmed().toLower());
+	}
+
+	int index = 1;
+	while (true) {
+		const QString candidate = base.isEmpty()
+			? QStringLiteral("(%1)").arg(index)
+			: QStringLiteral("%1 (%2)").arg(base).arg(index);
+		if (!existing.contains(candidate.toLower())) {
+			return candidate;
+		}
+		++index;
+	}
 }
