@@ -42,13 +42,15 @@ namespace MacroLabels
 	{
 		enum Kind {Label, Text, Value};
 		Kind kind = Label;
-		QString saved;      ///< what the macro holds: a label, a whole text, or ?name
+			/// what the macro holds: a label, a whole text, or ?name
+		QString saved;
 		QString value;      ///< what to put in its place
 	};
 
 	QList<Field> fields(const QDomElement &macro_root);
 	QStringList namedValues(const QString &text);
-	QString withValues(const QString &text, const QHash<QString, QString> &values);
+	QString withValues(const QString &text,
+					   const QHash<QString, QString> &values);
 	QString placeOf(Diagram *folio);
 	QSet<QString> taken(Diagram *folio, QSet<QString> *typed_with_sign = nullptr);
 	QString nextFree(const QString &label, const QString &place, const QSet<QString> &taken);

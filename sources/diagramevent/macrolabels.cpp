@@ -25,6 +25,8 @@
 #include <QRegularExpression>
 #include <QSet>
 #include <QSqlQuery>
+#include <QTextCursor>
+#include <QTextDocument>
 #include <QTextDocumentFragment>
 
 namespace MacroLabels
@@ -86,20 +88,45 @@ namespace MacroLabels
 		}
 
 			/// The texts of a wire a macro can ask for
-		const char *const ConductorTexts[] = {"num", "function", "tension_protocol",
-											  "conductor_color", "conductor_section", "bus"};
+		const char *const ConductorTexts[] = {
+			"num", "function", "tension_protocol",
+			"conductor_color", "conductor_section", "bus"};
 
-			/// A question mark followed by a name: ?motor_kw
+			/// A question mark followed by a name, ?motor_kw, at the start
+			/// of a word: not the ? of K?A, Ok?Yes or a link's ?id=5
 		const QRegularExpression &namedValue()
 		{
-			static const QRegularExpression re(QStringLiteral("\\?([\\p{L}_][\\p{L}\\p{N}_]*)"));
+			static const QRegularExpression re(QStringLiteral(
+				"(?<![^\\s(\\[{\"'=:/])\\?([\\p{L}_][\\p{L}\\p{N}_]*+)(?!=)"));
 			return re;
 		}
 
-			/// Whether @p text still holds a question mark once its named values are out
+			/// Whether @p text still holds a question mark once its
+			/// named values are out
 		bool hasBareMark(const QString &text)
 		{
-			return QString(text).remove(namedValue()).contains(QLatin1Char('?'));
+			return QString(text).remove(namedValue())
+					.contains(QLatin1Char('?'));
+		}
+
+			/// @p html with each ?name of @p values replaced, in the format
+			/// of the name's first letter: the rest of the text keeps its own
+		QString htmlWithValues(const QString &html,
+							   const QHash<QString, QString> &values)
+		{
+			QTextDocument document;
+			document.setHtml(html);
+			bool changed = false;
+			QTextCursor found(&document);
+			while (!(found = document.find(namedValue(), found)).isNull()) {
+				if (!values.contains(found.selectedText())) continue;
+				QTextCursor first(&document);
+				first.setPosition(found.selectionStart() + 1);
+				found.insertText(values.value(found.selectedText()),
+								 first.charFormat());
+				changed = true;
+			}
+			return changed ? document.toHtml() : html;
 		}
 
 			/// The place of a folio or device: =plant+location
@@ -131,7 +158,8 @@ namespace MacroLabels
 		@return @p text with each ?name of @p values replaced by its value;
 		a name @p values does not hold stays as it is
 	*/
-	QString withValues(const QString &text, const QHash<QString, QString> &values)
+	QString withValues(const QString &text,
+					   const QHash<QString, QString> &values)
 	{
 		if (values.isEmpty() || !text.contains(QLatin1Char('?'))) return text;
 		QString result;
@@ -140,7 +168,8 @@ namespace MacroLabels
 		while (it.hasNext()) {
 			const auto match = it.next();
 			if (!values.contains(match.captured(0))) continue;
-			result += text.mid(from, match.capturedStart(0) - from) + values.value(match.captured(0));
+			result += text.mid(from, match.capturedStart(0) - from)
+					+ values.value(match.captured(0));
 			from = match.capturedEnd(0);
 		}
 		return result + text.mid(from);
@@ -168,7 +197,8 @@ namespace MacroLabels
 		};
 		const auto addText = [&](const QString &text) {
 			if (!text.contains(QLatin1Char('?'))) return;
-			for (const QString &name : namedValues(text)) add(Field::Value, name);
+			for (const QString &name : namedValues(text))
+				add(Field::Value, name);
 			if (hasBareMark(text)) add(Field::Text, text);
 		};
 		const QDomElement diagram = diagramOf(macro_root);
@@ -190,7 +220,8 @@ namespace MacroLabels
 			}
 			for (const QDomElement &dynamic : children(element.firstChildElement(QStringLiteral("dynamic_texts")), "dynamic_elmt_text")) {
 				if (dynamic.attribute(QStringLiteral("text_from")) != QLatin1String("UserText")) continue;
-				addText(dynamic.firstChildElement(QStringLiteral("text")).text());
+				addText(dynamic.firstChildElement(QStringLiteral("text"))
+						.text());
 			}
 		}
 		for (const QDomElement &input : children(diagram.firstChildElement(QStringLiteral("inputs")), "input")) {
@@ -304,14 +335,16 @@ namespace MacroLabels
 		for (const Field &field : fields) {
 			if (field.kind == Field::Label) device_labels.insert(field.saved);
 			if (field.value == field.saved) continue;
-			(field.kind == Field::Label ? labels : field.kind == Field::Text ? texts : values)
+			(field.kind == Field::Label ? labels
+				: field.kind == Field::Text ? texts : values)
 					.insert(field.saved, field.value);
 		}
 		if (labels.isEmpty() && texts.isEmpty() && values.isEmpty()) return;
-			//A whole text answered, then the ?names left in it
+			//A whole text answered is written as typed; else its ?names
 		const auto answered = [&](const QString &text) {
 			const QString saved = text.trimmed();
-			return withValues(texts.contains(saved) ? texts.value(saved) : text, values);
+			return texts.contains(saved) ? texts.value(saved)
+										 : withValues(text, values);
 		};
 		const auto answer = [&](QDomElement &element) {
 			const QString text = answered(element.text());
@@ -329,9 +362,11 @@ namespace MacroLabels
 				} else if (name == QLatin1String(LabelKey) && labels.contains(saved)) {
 					setText(info, labels.value(saved));
 					relabelled = true;
-				} else if (name == QLatin1String(LabelKey) && device_labels.contains(saved) && !texts.contains(saved)) {
-						//A device label is numbered, never read for ?names
-				} else {
+				} else if (name != QLatin1String(LabelKey)
+						   || !device_labels.contains(saved)
+						   || texts.contains(saved)) {
+						//Not a device label, which is numbered, never read
+						//for ?names; or a report's text sharing its label
 					answer(info);
 				}
 			}
@@ -343,20 +378,25 @@ namespace MacroLabels
 			}
 		}
 		for (QDomElement &input : children(diagram.firstChildElement(QStringLiteral("inputs")), "input")) {
-				//Held as HTML: answered on its plain text, as fields() read it,
-				//and written back escaped
-			const QString saved = plain(input.attribute(QStringLiteral("text")));
-			const QString text = answered(saved);
-			if (text != saved) input.setAttribute(QStringLiteral("text"), escaped(text));
+				//Held as HTML: a whole text answered is written plain,
+				//a ?name in the format it had
+			const QString html = input.attribute(QStringLiteral("text"));
+			const QString saved = plain(html).trimmed();
+			const QString text = texts.contains(saved)
+					? escaped(texts.value(saved))
+					: htmlWithValues(html, values);
+			if (text != html) input.setAttribute(QStringLiteral("text"), text);
 		}
 		for (QDomElement &conductor : children(diagram.firstChildElement(QStringLiteral("conductors")), "conductor")) {
 			for (const char *attribute : ConductorTexts) {
-				const QString saved = conductor.attribute(QLatin1String(attribute));
+				const QString saved =
+						conductor.attribute(QLatin1String(attribute));
 				const QString text = answered(saved);
 				if (text == saved) continue;
 				conductor.setAttribute(QLatin1String(attribute), text);
 					//An answered number no longer follows a formula
-				if (qstrcmp(attribute, "num") == 0) conductor.removeAttribute(QStringLiteral("formula"));
+				if (qstrcmp(attribute, "num") == 0)
+					conductor.removeAttribute(QStringLiteral("formula"));
 			}
 		}
 	}

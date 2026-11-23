@@ -31,6 +31,7 @@
 #include <QPushButton>
 #include <QScopeGuard>
 #include <QTableWidget>
+#include <QTextDocumentFragment>
 #include <QtTest>
 
 /**
@@ -134,6 +135,30 @@ class tst_macrolabels : public QObject
 		QCOMPARE(fields.at(4).saved, QStringLiteral("?motor_kw ?phase, line ? here"));
 	}
 
+	void aMarkInsideAWordIsNoName()
+	{
+		QDomDocument doc;
+		const auto fields = MacroLabels::fields(root(macroText(QStringLiteral("K1"), QStringLiteral("Ok?Yes K?A"),
+															   QStringLiteral("see x.com/?id=5")), doc));
+			//Asked whole, as before named values
+		QCOMPARE(fields.size(), 4);
+		for (int i = 1 ; i < fields.size() ; ++i)
+			QCOMPARE(fields.at(i).kind, MacroLabels::Field::Text);
+	}
+
+	void aWholeTextIsWrittenAsTyped()
+	{
+		QDomDocument doc;
+		QDomElement r = root(macroText(QStringLiteral("K1"), QStringLiteral("?motor_kw, line ?")), doc);
+		auto fields = MacroLabels::fields(r);
+		QCOMPARE(fields.size(), 3);
+		fields[1].value = QStringLiteral("7.5");                  //?motor_kw
+		fields[2].value = QStringLiteral("see ?motor_kw spec");   //the whole text
+		QDomElement diagram = diagramOf(r);
+		MacroLabels::apply(diagram, fields);
+		QVERIFY(doc.toString().contains(QLatin1String(">see ?motor_kw spec<")));
+	}
+
 	void withValues_data()
 	{
 		QTest::addColumn<QString>("text");
@@ -145,6 +170,10 @@ class tst_macrolabels : public QObject
 		QTest::newRow("not answered") << QStringLiteral("?phase ?motor_kw") << QStringLiteral("?phase 7.5");
 		QTest::newRow("bare mark") << QStringLiteral("K? ?") << QStringLiteral("K? ?");
 		QTest::newRow("accents") << QStringLiteral("?puissance_é") << QStringLiteral("2");
+		QTest::newRow("after =") << QStringLiteral("P=?motor_kw") << QStringLiteral("P=7.5");
+		QTest::newRow("in brackets") << QStringLiteral("(?motor_kw)") << QStringLiteral("(7.5)");
+		QTest::newRow("inside a word") << QStringLiteral("Ok?motor_kw") << QStringLiteral("Ok?motor_kw");
+		QTest::newRow("in a link") << QStringLiteral("x.com/?motor_kw=1") << QStringLiteral("x.com/?motor_kw=1");
 	}
 
 	void withValues()
@@ -203,18 +232,24 @@ class tst_macrolabels : public QObject
 	void aStyledFreeTextIsAnswered()
 	{
 			//Part of the name in bold: the HTML never holds "?motor_kw" whole;
-			//a link's ?lang is markup, not a question
+			//a link's ?lang is markup, not a question; the rest keeps its format
 		QDomDocument doc;
 		QDomElement r = root(macroText(), doc);
 		QDomElement input = diagramOf(r).firstChildElement(QStringLiteral("inputs")).firstChildElement(QStringLiteral("input"));
-		input.setAttribute(QStringLiteral("text"), QStringLiteral("<p><a href=\"x?lang=en\">?<b>motor</b>_kw</a></p>"));
+		input.setAttribute(QStringLiteral("text"), QStringLiteral(
+			"<p><b>Motor</b> <a href=\"x?lang=en\">?<b>motor</b>_kw</a> "
+			"<span style=\"color:#ff0000;\">kW</span></p>"));
 		auto fields = MacroLabels::fields(r);
 		QCOMPARE(fields.size(), 2);
 		QCOMPARE(fields.at(1).saved, QStringLiteral("?motor_kw"));
 		fields[1].value = QStringLiteral("7.5");
 		QDomElement diagram = diagramOf(r);
 		MacroLabels::apply(diagram, fields);
-		QCOMPARE(input.attribute(QStringLiteral("text")), QStringLiteral("7.5"));
+		const QString html = input.attribute(QStringLiteral("text"));
+		QCOMPARE(QTextDocumentFragment::fromHtml(html).toPlainText(), QStringLiteral("Motor 7.5 kW"));
+		QVERIFY(html.contains(QLatin1String("font-weight")));
+		QVERIFY(html.contains(QLatin1String("#ff0000")));
+		QVERIFY(html.contains(QLatin1String("x?lang=en")));
 	}
 
 	void aReportSharingADeviceLabelKeepsItsAnswer()
