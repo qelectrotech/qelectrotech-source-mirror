@@ -83,8 +83,10 @@
 #	include <KAutoSaveFile>
 #endif
 #include "ui/backuprestoredialog.h"
+#include "ui/dialogwaiting.h"
 
 #include <algorithm>
+#include <utility>
 
 #ifdef QET_ALLOW_OVERRIDE_CED_OPTION
 QString QETApp::m_overrided_common_elements_dir = QString();
@@ -2392,9 +2394,31 @@ void QETApp::checkRemainingWindows()
 	\~ @see openProjectFiles openElementFiles
 */
 void QETApp::openFiles(const QETArguments &args) {
-	openProjectFiles(args.projectFiles());
+	QStringList projects = args.projectFiles();
+		//A project is being read while its progress dialog is up, and the
+		//dialog lets events through. A project handed over now (by the
+		//system or by another instance) would be read inside that one,
+		//which then resumes with the dialog the second one has closed, and
+		//crashes (#1978). It is opened once the dialog is gone
+	if (!projects.isEmpty() && DialogWaiting::hasInstance()) {
+		m_waiting_projects << projects;
+		projects.clear();
+		connect(DialogWaiting::instance(), &QObject::destroyed,
+			this, &QETApp::openWaitingProjects,
+			Qt::ConnectionType(Qt::QueuedConnection | Qt::UniqueConnection));
+	}
+	openProjectFiles(projects);
 	openElementFiles(args.elementFiles());
 	openTitleBlockTemplateFiles(args.titleBlockTemplateFiles());
+}
+
+/**
+	@brief QETApp::openWaitingProjects
+	Open the projects given to openFiles() while a project was read
+*/
+void QETApp::openWaitingProjects()
+{
+	openFiles(QETArguments(std::exchange(m_waiting_projects, {})));
 }
 
 /**
