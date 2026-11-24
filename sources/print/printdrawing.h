@@ -99,10 +99,13 @@ namespace QetPrint {
 		painter->save();
 		painter->setClipRect(target, Qt::IntersectClip);
 		painter->translate(target.topLeft());
-			//drawPicture() scales by the ratio of the two devices'
-			//resolutions itself: cancel it, then fit the folio.
-		painter->scale(scale * drawingDpi / painter->device()->logicalDpiX(),
-			       scale * drawingDpi / painter->device()->logicalDpiY());
+			//drawPicture() scales by the device's resolution divided by
+			//the screen's (qt_defaultDpi, which a plain QPicture reports:
+			//96 on most screens, 72 on macOS): cancel it, then fit the
+			//folio (#1977).
+		const QPicture screen_dpi;
+		painter->scale(scale * screen_dpi.logicalDpiX() / painter->device()->logicalDpiX(),
+			       scale * screen_dpi.logicalDpiY() / painter->device()->logicalDpiY());
 		painter->drawPicture(QPointF(), picture);
 		painter->restore();
 	}

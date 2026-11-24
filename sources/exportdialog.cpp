@@ -430,7 +430,13 @@ void ExportDialog::generateSvg(
 	// "joue" la QPicture sur un QSvgGenerator
 	QSvgGenerator svg_engine;
 	svg_engine.setSize(QSize(width, height));
-	svg_engine.setViewBox(QRect(0, 0, width*0.75, height*0.75));
+		// play() scales by the generator's resolution divided by the
+		// screen's (72/96 on most screens, 1 on macOS): the view box
+		// follows it, or macOS cuts the folio to 75 % (#1977).
+	const qreal svg_scale = qreal(svg_engine.resolution())
+				/ QPicture().logicalDpiX();
+	svg_engine.setViewBox(QRect(0, 0, int(width * svg_scale),
+				    int(height * svg_scale)));
 	svg_engine.setOutputDevice(&io_device);
 	QPainter svg_painter(&svg_engine);
 	picture.play(&svg_painter);
