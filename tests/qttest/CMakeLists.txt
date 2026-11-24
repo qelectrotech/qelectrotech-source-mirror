@@ -481,6 +481,17 @@ set_tests_properties(tst_textanchor PROPERTIES ENVIRONMENT "QT_QPA_PLATFORM=offs
 target_include_directories(tst_textanchor PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_textanchor PRIVATE Qt::Test Qt::Widgets)
 
+# printdrawing.h is header-only: a folio printed or exported to SVG fits
+# its page on a 96 dpi screen and on a 72 dpi one, as on macOS (#1977).
+add_executable(tst_printdrawing tst_printdrawing.cpp)
+foreach(dpi 96 72)
+  add_test(NAME tst_printdrawing_${dpi}dpi COMMAND tst_printdrawing)
+  set_tests_properties(tst_printdrawing_${dpi}dpi PROPERTIES
+    ENVIRONMENT "QT_QPA_PLATFORM=offscreen;QT_FONT_DPI=${dpi}")
+endforeach()
+target_include_directories(tst_printdrawing PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_printdrawing PRIVATE Qt::Test Qt::Widgets Qt::Svg)
+
 # Shared handle geometry and picking, including fractional sizes.
 add_executable(tst_handlersize tst_handlersize.cpp
   ${QET_DIR}/sources/QetGraphicsItemModeler/qetgraphicshandleritem.cpp)
