@@ -83,10 +83,14 @@ class ConductorPropertiesWidget : public QWidget
 		void on_m_neutral_cb_toggled(bool checked);
 		void on_m_update_preview_pb_clicked();
 		void on_m_definition_mark_customize_pb_clicked();
+		void potentialTypeChosen(int index);
 
 	private:
 		Ui::ConductorPropertiesWidget *ui;
 		ConductorProperties m_properties;
+			/// The project's potential types, whose core definition a
+			/// conductor is given when one of them is chosen for it
+		PotentialTypes m_potential_types;
 		QTextOrientationSpinBoxWidget *m_verti_select, *m_horiz_select;
 		bool m_text_locked = false;
 			/// The project whose definition mark style the

@@ -23,17 +23,21 @@
 #include "qetgraphicsitem/terminal.h"
 #include "qetresult.h"
 #include "qetproject.h"
+#include "ui/conductorpropertieseditorwidget.h"
 #include "ui/conductorpropertieswidget.h"
 #include "ui/potentialtypeswidget.h"
 
 #include "dataBase/projectdatabase.h"
 #include "dataBase/qetdbfile.h"
 
+#include <QComboBox>
 #include <QDir>
 #include <QImage>
 #include <QPainter>
+#include <QSettings>
 #include <QSqlQuery>
 #include <QStyleOptionGraphicsItem>
+#include <QTableWidget>
 
 /**
 	Potential types (#1539): a project lists types (L, N, PE...) with a
@@ -110,6 +114,30 @@ class tst_potentialtypes : public QObject
 		types.setMode(mode);
 		types.setTypes({{QStringLiteral("N"), QColor(0, 0, 255), Qt::SolidLine, 3},
 						{QStringLiteral("PE"), QColor(0, 160, 0), Qt::SolidLine, 3}});
+		return types;
+	}
+
+	/// The potential type choice of a conductor properties widget, or of
+	/// a panel hosting one
+	static QComboBox *typeCombo(const QObject &parent)
+	{
+		return parent.findChild<QComboBox *>(
+					QStringLiteral("m_potential_type_cb"));
+	}
+
+	/// One type with a core definition: what a conductor is given when
+	/// this type is chosen for it. The mode is on, as it is in a project
+	/// that offers the choice at all
+	static PotentialTypes coreTypes()
+	{
+		PotentialTypes types;
+		types.setMode(PotentialTypes::Mode::PerWire);
+		types.setShowCores(true);
+		PotentialType type{QStringLiteral("N"), QColor(0, 0, 255), Qt::SolidLine, 1.0};
+		type.wire_color = QStringLiteral("GNYE");
+		type.wire_section = QStringLiteral("1.5 mm2");
+		type.conductor_type = QStringLiteral("H07V-K");
+		types.setTypes({type});
 		return types;
 	}
 
@@ -982,6 +1010,188 @@ class tst_potentialtypes : public QObject
 			QETProject project(QFINDTESTDATA("fixtures/every_feature.qet"));
 			QVERIFY(project.toXml().documentElement()
 					.elementsByTagName(QStringLiteral("potentialSources")).isEmpty());
+		}
+
+		/// The core definition of a type -- the conductor colour, section
+		/// and kind of wire a conductor is given when the type is chosen
+		/// for it -- is kept in the file and comes back. Off by default:
+		/// a project saved before it existed has none of it, and saves
+		/// exactly as before
+		void coreDefinitionsRoundTrip()
+		{
+			const PotentialTypes types = coreTypes();
+			QDomDocument document;
+			document.appendChild(types.toXml(document));
+			QCOMPARE(PotentialTypes::fromXml(document.documentElement()), types);
+			QCOMPARE(PotentialTypes::fromXml(document.documentElement())
+					 .types().first().wire_color, QStringLiteral("GNYE"));
+
+				//A file saved before this existed reads with none of it
+			QDomDocument old_doc;
+			QVERIFY(old_doc.setContent(QStringLiteral(
+					"<potentialtypes><potentialtype name=\"N\"/>"
+					"</potentialtypes>")));
+			const PotentialTypes old = PotentialTypes::fromXml(
+					old_doc.documentElement());
+			QVERIFY(!old.showCores());
+			QVERIFY(old.types().first().wire_color.isEmpty());
+			QVERIFY(old.types().first().wire_section.isEmpty());
+			QVERIFY(old.types().first().conductor_type.isEmpty());
+
+				//Nothing of it is written until the project shows it
+			PotentialTypes defaults;
+			QVERIFY(defaults.isDefault());
+			QVERIFY(!defaults.showCores());
+			defaults.setShowCores(true);
+			QVERIFY(!defaults.isDefault());
+			QDomDocument cores_doc;
+			cores_doc.appendChild(defaults.toXml(cores_doc));
+			const QDomElement cores_root = cores_doc.documentElement();
+			QCOMPARE(cores_root.attribute(QStringLiteral("cores")),
+					 QStringLiteral("1"));
+			QVERIFY(PotentialTypes::fromXml(cores_root).showCores());
+		}
+
+		/// Choosing a type for a conductor gives it the core definition of
+		/// that type. "None" keeps the three fields as they are, a project
+		/// which shows no core definitions gives nothing away, and a core
+		/// of a cable keeps what its cable says about it
+		void theChoiceGivesTheConductorItsCoreDefinition()
+		{
+			ConductorProperties p;
+			p.m_wire_color = QStringLiteral("BN");
+			p.m_wire_section = QStringLiteral("0.75 mm2");
+			p.m_conductor_type = QStringLiteral("H05V-K");
+			ConductorPropertiesWidget widget(p);
+			widget.setPotentialTypes(coreTypes());
+			QComboBox *cb = typeCombo(widget);
+			QVERIFY(cb);
+			const int chosen = cb->findData(QStringLiteral("N"));
+			QVERIFY(chosen > 0);
+			cb->setCurrentIndex(chosen);
+			QVERIFY(QMetaObject::invokeMethod(cb, "activated", Q_ARG(int, chosen)));
+			QCOMPARE(widget.properties().m_wire_color, QStringLiteral("GNYE"));
+			QCOMPARE(widget.properties().m_wire_section, QStringLiteral("1.5 mm2"));
+			QCOMPARE(widget.properties().m_conductor_type, QStringLiteral("H07V-K"));
+			QCOMPARE(widget.properties().m_potential_type, QStringLiteral("N"));
+
+			cb->setCurrentIndex(0);
+			QVERIFY(QMetaObject::invokeMethod(cb, "activated", Q_ARG(int, 0)));
+			QCOMPARE(widget.properties().m_wire_color, QStringLiteral("GNYE"));
+
+			ConductorPropertiesWidget plain(p);
+			plain.setPotentialTypes(blueTypes(true, Qt::SolidLine, 1));
+			QComboBox *plain_cb = typeCombo(plain);
+			const int plain_index = plain_cb->findData(QStringLiteral("N"));
+			QVERIFY(plain_index >= 0);
+			plain_cb->setCurrentIndex(plain_index);
+			QVERIFY(QMetaObject::invokeMethod(plain_cb, "activated", Q_ARG(int, plain_index)));
+			QCOMPARE(plain.properties().m_wire_color, QStringLiteral("BN"));
+			QCOMPARE(plain.properties().m_conductor_type, QStringLiteral("H05V-K"));
+
+			ConductorProperties core = p;
+			core.m_cable_uuid = QUuid::createUuid();
+			ConductorPropertiesWidget cable(core);
+			cable.setPotentialTypes(coreTypes());
+			QComboBox *cable_cb = typeCombo(cable);
+			const int cable_index = cable_cb->findData(QStringLiteral("N"));
+			QVERIFY(cable_index >= 0);
+			cable_cb->setCurrentIndex(cable_index);
+			QVERIFY(QMetaObject::invokeMethod(cable_cb, "activated", Q_ARG(int, cable_index)));
+			QCOMPARE(cable.properties().m_wire_color, QStringLiteral("BN"));
+			QCOMPARE(cable.properties().m_conductor_type, QStringLiteral("H05V-K"));
+		}
+
+		/// The table keeps the core definition of each type, a value typed
+		/// in by hand exactly as it is typed, and its three columns are
+		/// out of sight while the project keeps no core definitions
+		void theWidgetKeepsCoreDefinitions()
+		{
+			PotentialTypesWidget widget;
+			widget.setPotentialTypes(coreTypes());
+			const PotentialTypes read = widget.potentialTypes();
+			QVERIFY(read.showCores());
+			QCOMPARE(read.types().first().wire_color, QStringLiteral("GNYE"));
+			QCOMPARE(read.types().first().wire_section, QStringLiteral("1.5 mm2"));
+			QCOMPARE(read.types().first().conductor_type, QStringLiteral("H07V-K"));
+
+			QTableWidget *table = widget.findChild<QTableWidget *>();
+			QVERIFY(table && table->rowCount() == 1);
+				//Name, Colour, Line style, Width, Conductor color,
+				//Conductor section, Conductor type
+			QVERIFY(!table->isColumnHidden(4));
+			auto *wire_color = qobject_cast<QComboBox *>(table->cellWidget(0, 4));
+			QVERIFY(wire_color);
+			wire_color->setCurrentText(QStringLiteral("blue/white"));
+			table->item(0, 5)->setText(QStringLiteral("2,5 mm2"));
+			table->item(0, 6)->setText(QStringLiteral("H05V-K"));
+			const PotentialTypes edited = widget.potentialTypes();
+			QCOMPARE(edited.types().first().wire_color, QStringLiteral("blue/white"));
+			QCOMPARE(edited.types().first().wire_section, QStringLiteral("2,5 mm2"));
+			QCOMPARE(edited.types().first().conductor_type, QStringLiteral("H05V-K"));
+
+			widget.setPotentialTypes(PotentialTypes());
+			QVERIFY(!widget.potentialTypes().showCores());
+			for (int column = 4; column <= 6; ++column)
+				QVERIFY(table->isColumnHidden(column));
+		}
+
+		/// The wire colour of a type typed in by hand is kept exactly as
+		/// it is typed: the codes the list offers never rewrite it, and
+		/// one picked from the list is kept as written there
+		void typedWireColourIsKeptAsTyped()
+		{
+			PotentialTypesWidget widget;
+			widget.setPotentialTypes(coreTypes());
+			QTableWidget *table = widget.findChild<QTableWidget *>();
+			QVERIFY(table && table->rowCount() == 1);
+			auto *wire_color = qobject_cast<QComboBox *>(table->cellWidget(0, 4));
+			QVERIFY(wire_color);
+			wire_color->setFocus();
+
+			for (const Qt::Key end : {Qt::Key_Return, Qt::Key_Tab}) {
+				wire_color->setCurrentText(QString());
+				QTest::keyClicks(wire_color, "gn");
+				QTest::keyClick(wire_color, end);
+				QCOMPARE(wire_color->currentText(), QStringLiteral("gn"));
+			}
+			QCOMPARE(widget.potentialTypes().types().first().wire_color,
+					 QStringLiteral("gn"));
+
+				//Picked from the list, the code is kept as written there
+			wire_color->setCurrentIndex(
+						wire_color->findText(QStringLiteral("GNYE")));
+			QCOMPARE(widget.potentialTypes().types().first().wire_color,
+					 QStringLiteral("GNYE"));
+
+				//and it comes back that way through the file
+			QDomDocument document;
+			document.appendChild(widget.potentialTypes().toXml(document));
+			QCOMPARE(PotentialTypes::fromXml(document.documentElement())
+					 .types().first().wire_color, QStringLiteral("GNYE"));
+		}
+		/// The selection properties panel offers the potential types of
+		/// the project, the way the conductor's own dialog does, and
+		/// choosing one gives the conductor the core definition of it
+		void thePanelOffersThePotentialTypes()
+		{
+			QETProject project(QFINDTESTDATA("fixtures/every_feature.qet"));
+			Conductor *c = wire(project);
+			QVERIFY(c && c->properties().m_cable_uuid.isNull());
+			project.setPotentialTypes(coreTypes());
+			ConductorPropertiesEditorWidget panel({c});
+			panel.setLiveEdit(true);
+			QComboBox *cb = typeCombo(panel);
+			QVERIFY(cb);
+			QVERIFY2(!cb->isHidden(), "the panel offers the potential types");
+			const int index = cb->findData(QStringLiteral("N"));
+			QVERIFY(index >= 0);
+			cb->setCurrentIndex(index);
+			QVERIFY(QMetaObject::invokeMethod(cb, "activated", Q_ARG(int, index)));
+			QCOMPARE(c->properties().m_potential_type, QStringLiteral("N"));
+			QCOMPARE(c->properties().m_wire_color, QStringLiteral("GNYE"));
+			QCOMPARE(c->properties().m_wire_section, QStringLiteral("1.5 mm2"));
+			QCOMPARE(c->properties().m_conductor_type, QStringLiteral("H07V-K"));
 		}
 
 };
