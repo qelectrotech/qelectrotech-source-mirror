@@ -974,6 +974,7 @@ void ConductorProperties::applyChanges(const ConductorProperties &before,
 	take(m_tension_protocol,     before.m_tension_protocol,     after.m_tension_protocol);
 	take(m_wire_color,           before.m_wire_color,           after.m_wire_color);
 	take(m_wire_section,         before.m_wire_section,         after.m_wire_section);
+	take(m_conductor_type,       before.m_conductor_type,       after.m_conductor_type);
 	take(m_show_text,            before.m_show_text,            after.m_show_text);
 	take(text_size,              before.text_size,              after.text_size);
 	take(cond_size,              before.cond_size,              after.cond_size);
