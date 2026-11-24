@@ -21,6 +21,7 @@
 #include "macrorecorder.h"
 #include "qetscripting.h"
 #include "scriptlibrary.h"
+#include "ui/dialogwaiting.h"
 #include <diagram.h>
 #include <diagramview.h>
 #include <qet.h>
@@ -689,7 +690,6 @@ QJsonObject LiveServer::openProject(const QString &raw_path)
 	if (info.isRelative()) return failure(QStringLiteral("path must be absolute: %1").arg(path));
 	if (!info.isFile()) return failure(QStringLiteral("%1 does not exist").arg(path));
 	if (!info.isReadable()) return failure(QStringLiteral("%1 cannot be read (permissions)").arg(path));
-
 	QJsonObject extra{{QStringLiteral("opened"), true}};
 	if (ProjectView *pv = e->viewForFile(info.absoluteFilePath())) {
 		e->activateProject(pv);
@@ -697,6 +697,11 @@ QJsonObject LiveServer::openProject(const QString &raw_path)
 	} else if (QETApp::diagramEditorForFile(info.absoluteFilePath())) {
 		return failure(QStringLiteral("%1 is open in another QElectroTech window; "
 					      "switch to it there").arg(path));
+	} else if (DialogWaiting::hasInstance()) {
+			//Another project is being read and its progress dialog let
+			//this request through: this one is not read inside it (#1978)
+		return failure(QStringLiteral("QElectroTech is opening a project; "
+					      "try again when it is open"));
 	} else {
 		if (!e->openAndAddProject(info.absoluteFilePath(), false))
 			return failure(QStringLiteral("QElectroTech could not open %1 (not a "
