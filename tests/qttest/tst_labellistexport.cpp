@@ -23,6 +23,7 @@
 #include "qetproject.h"
 
 #include <QCheckBox>
+#include <QCollator>
 #include <QFile>
 #include <QLabel>
 #include <QRadioButton>
@@ -98,15 +99,27 @@ class TstLabelListExport : public QObject
 			QCOMPARE(LabelListExport::labels(&project, LabelListExport::Cables, true), QStringList{"-W1"});
 		}
 
-		/// The same numbers as "Export the list of names of wires"; a wire
-		/// has no full designation
+		/// The same numbers as "Export the list of names of wires", 2 before
+		/// 10; a wire has no full designation
 		void wiresAsTheWireExport()
 		{
 			QETProject project(QStringLiteral(QET_EXAMPLES_DIR "/industrial.qet"));
 			QVERIFY(project.state() == QETProject::Ok);
 			const QStringList list = LabelListExport::labels(&project, LabelListExport::Wires, true);
 			QVERIFY(!list.isEmpty());
-			QCOMPARE(LabelListExport::toCsv(list), ConductorNumExport(&project).wiresNum());
+			QStringList same = ConductorNumExport(&project).wiresNum().split('\n', Qt::SkipEmptyParts);
+			QStringList sorted = list;
+			same.sort();
+			sorted.sort();
+			QCOMPARE(sorted, same);
+				//In natural order: 2 before 10
+			QCollator collator;
+			collator.setNumericMode(true);
+			collator.setCaseSensitivity(Qt::CaseInsensitive);
+			for (int i = 1 ; i < list.size() ; ++i) {
+				QVERIFY2(collator.compare(list.at(i - 1), list.at(i)) <= 0,
+						 qPrintable(list.at(i - 1) + " before " + list.at(i)));
+			}
 		}
 
 		/// The dialog counts the list picked; a wire has no full designation

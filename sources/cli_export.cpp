@@ -416,15 +416,10 @@ int exportDxf(QETProject &project, const QString &out_dir, bool showTerminals,
 }
 
 /// --export-labels: one label per line for a label printer (#1878 A7)
-int exportLabels(QETProject &project, const QString &output, const QString &kind_name,
+int exportLabels(QETProject &project, const QString &output, LabelListExport::Kind kind,
 				 bool full_designation)
 {
-	LabelListExport::Kind kind;
-	if (!LabelListExport::kindFromString(kind_name, &kind)) {
-		err << "Usage: qelectrotech --export-labels <project.qet> <output.csv> "
-			   "devices|terminals|cables|wires [--full-designation]\n";
-		return 2;
-	}
+	const QString kind_name = LabelListExport::kindName(kind);
 	const QStringList labels = LabelListExport::labels(&project, kind, full_designation);
 	if (labels.isEmpty()) {
 		err << "Nothing to export (no " << kind_name << " with a label).\n";
@@ -1569,6 +1564,14 @@ int run(const QStringList &args)
 		return queryProjects(rest.at(0), rest.mid(1), json);
 	}
 
+		//The list asked for, before the project is opened
+	LabelListExport::Kind label_kind = LabelListExport::Devices;
+	if (format == "labels" && !LabelListExport::kindFromString(rest.value(2), &label_kind)) {
+		err << "Usage: qelectrotech --export-labels <project.qet> <output.csv> "
+			   "devices|terminals|cables|wires [--full-designation]\n";
+		return 2;
+	}
+
 	const QString input = rest.value(0);
 	if (input.isEmpty()) {
 		err << "Usage: qelectrotech " << flag << " <project.qet> <output>\n";
@@ -1603,7 +1606,7 @@ int run(const QStringList &args)
 	if (format == "cables" || format == "wires")
 		return exportCsv(project, format, output);
 	if (format == "labels")
-		return exportLabels(project, output, rest.value(2), fullDesignation);
+		return exportLabels(project, output, label_kind, fullDesignation);
 	if (format == "bom")
 		return exportBom(project, output, includeSlaves, includeJunctions);
 	if (format == "wiring")

@@ -246,17 +246,25 @@ QString LabelListExport::kindName(Kind kind)
 	@return the labels of @p kind in @p project, one per marker to print:
 	a tag per device (not per symbol), a marker per terminal, a number per
 	cable, and a wire number per wire as "Export the list of names of wires"
-	writes them
+	writes them, in natural order (2 before 10)
 */
 QStringList LabelListExport::labels(QETProject *project, Kind kind, bool full_designation)
 {
 	if (!project) return QStringList();
 	if (kind == Wires) {
-		return ConductorNumExport(project).wiresNum().split(QLatin1Char('\n'), Qt::SkipEmptyParts);
+		QStringList wires = ConductorNumExport(project).wiresNum().split(QLatin1Char('\n'), Qt::SkipEmptyParts);
+			//2 before 10, as the other lists
+		const QCollator collator = naturalOrder();
+		std::stable_sort(wires.begin(), wires.end(), [&collator](const QString &a, const QString &b) {
+			return collator.compare(a, b) < 0;
+		});
+		return wires;
 	}
 	projectDataBase *db = project->dataBase();
 	if (!db) return QStringList();
-	db->updateDB();
+		//Up to date without telling the views of the project: a list
+		//that is only counted or written changes nothing they show
+	db->refresh();
 	switch (kind) {
 		case Devices: return devices(db, full_designation);
 		case Terminals: return terminals(db, full_designation);
@@ -385,8 +393,11 @@ void LabelListExportDialog::save()
 	}
 	QString dir = m_project->currentDir();
 	if (dir.isEmpty()) dir = QETApp::documentDir();
+		//A title may hold what a file name cannot
+	QString title = m_project->title();
+	title.replace(QRegularExpression(QStringLiteral("[/\\\\:*?\"<>|]")), QStringLiteral("_"));
 	const QString name = dir % QLatin1Char('/') % tr("labels") % QLatin1Char('_')
-			% LabelListExport::kindName(kind()) % QLatin1Char('_') % m_project->title() % QStringLiteral(".csv");
+			% LabelListExport::kindName(kind()) % QLatin1Char('_') % title % QStringLiteral(".csv");
 	const QString file_name = QFileDialog::getSaveFileName(this, tr("Save As..."), name,
 														   tr("CSV files (*.csv)"));
 	if (file_name.isEmpty()) return;
