@@ -29,6 +29,7 @@
 
 #include "dataBase/projectdatabase.h"
 #include "dataBase/qetdbfile.h"
+#include "utils/configprofile.h"
 
 #include <QComboBox>
 #include <QDir>
@@ -1134,6 +1135,30 @@ class tst_potentialtypes : public QObject
 			QVERIFY(!widget.potentialTypes().showCores());
 			for (int column = 4; column <= 6; ++column)
 				QVERIFY(table->isColumnHidden(column));
+		}
+
+		/// The potential types a new project starts with are the ones the
+		/// settings hold (Configure QElectroTech > New project), saved
+		/// with the other defaults of a new project; with nothing in the
+		/// settings they are the defaults of a new project
+		void aNewProjectTakesTheSettingsTypes()
+		{
+			QSettings settings;
+			const QString key = PotentialTypes::settingsKey();
+			QVERIFY(ConfigProfile::partOf(key) == ConfigProfile::Part::NewProject);
+			const QVariant saved = settings.value(key);
+			settings.remove(key);
+			QCOMPARE(PotentialTypes::fromSettings(settings, key), PotentialTypes());
+
+			coreTypes().toSettings(settings, key);
+			{
+				QETProject project;
+				QCOMPARE(project.potentialTypes(), coreTypes());
+			}
+			if (saved.isValid())
+				settings.setValue(key, saved);
+			else
+				settings.remove(key);
 		}
 
 		/// The wire colour of a type typed in by hand is kept exactly as

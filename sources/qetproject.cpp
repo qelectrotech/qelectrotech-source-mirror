@@ -111,6 +111,12 @@ m_project_properties_handler{this}
 		//project saved after that keeps its own choice (readTerminalLabelSplitXml())
 	setTerminalLabelSplit(settings.value(QStringLiteral("diagrameditor/defaultterminallabelling"), false).toBool());
 
+		//A new project starts with the potential types the settings chose
+		//for new projects (Configure QElectroTech > New project). A
+		//project read keeps what its file says (readPotentialTypesXml())
+	m_potential_types = PotentialTypes::fromSettings(
+			settings, PotentialTypes::settingsKey());
+
 		//Read chained reports default from global settings (enabled for newly created projects when setting is on)
 	m_chained_reports = settings.value(QStringLiteral("project/enable-chained-reports"), false).toBool();
 	m_has_chained_reports_attribute = true;
