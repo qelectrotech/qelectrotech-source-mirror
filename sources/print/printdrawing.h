@@ -99,12 +99,31 @@ namespace QetPrint {
 		painter->save();
 		painter->setClipRect(target, Qt::IntersectClip);
 		painter->translate(target.topLeft());
-			//drawPicture() scales by the ratio of the two devices'
-			//resolutions itself: cancel it, then fit the folio.
-		painter->scale(scale * drawingDpi / painter->device()->logicalDpiX(),
-			       scale * drawingDpi / painter->device()->logicalDpiY());
+			//drawPicture() scales by the device's resolution divided by
+			//the screen's (qt_defaultDpi, which a plain QPicture reports:
+			//96 on most screens, 72 on macOS): cancel it, then fit the
+			//folio (#1977).
+		const QPicture screen_dpi;
+		const QPaintDevice *device = painter->device();
+		painter->scale(scale * screen_dpi.logicalDpiX() / device->logicalDpiX(),
+			       scale * screen_dpi.logicalDpiY() / device->logicalDpiY());
 		painter->drawPicture(QPointF(), picture);
 		painter->restore();
+	}
+
+	/**
+		@brief svgViewBox
+		@return the view box of an SVG of @p size pixels made by playing a
+		QPicture on a QSvgGenerator of @p svg_dpi. play() scales by
+		@p svg_dpi divided by the screen's resolution (72/96 on most
+		screens, 1 on macOS), so the view box follows it or macOS cuts
+		the folio to 75 % (#1977).
+	*/
+	inline QRect svgViewBox(const QSize &size, int svg_dpi)
+	{
+		const qreal ratio = qreal(svg_dpi) / QPicture().logicalDpiX();
+		return QRect(0, 0, int(size.width() * ratio),
+			     int(size.height() * ratio));
 	}
 }
 

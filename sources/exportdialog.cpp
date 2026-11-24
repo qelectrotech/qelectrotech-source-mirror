@@ -39,6 +39,7 @@
 #include "qetgraphicsitem/terminal.h"
 #include "qeticons.h"
 #include "qetmessagebox.h"
+#include "print/printdrawing.h"
 
 #include <QGraphicsSimpleTextItem>
 #include <QSvgGenerator>
@@ -430,7 +431,8 @@ void ExportDialog::generateSvg(
 	// "joue" la QPicture sur un QSvgGenerator
 	QSvgGenerator svg_engine;
 	svg_engine.setSize(QSize(width, height));
-	svg_engine.setViewBox(QRect(0, 0, width*0.75, height*0.75));
+	svg_engine.setViewBox(QetPrint::svgViewBox(QSize(width, height),
+						   svg_engine.resolution()));
 	svg_engine.setOutputDevice(&io_device);
 	QPainter svg_painter(&svg_engine);
 	picture.play(&svg_painter);
