@@ -1618,6 +1618,13 @@ OPS = {
     "remove_autonum":   ("removeAutoNum",       [("kind", "str"), ("name", "str")]),
     "rename_autonum":   ("renameAutoNum",       [("kind", "str"), ("name", "str"),
                                                  ("new_name", "str")]),
+    # A plant or a location renamed in the whole project, in one undo step.
+    # Every key is required: the caller says whether the new name may be an
+    # existing one (merge) and which wire counters win (higher, new, old).
+    "rename_plant":     ("renamePlant",         [("plant", "str"), ("new_name", "str"),
+                                                 ("merge", "bool"), ("counters", "str")]),
+    "rename_location":  ("renameLocation",      [("plant", "str"), ("location", "str"),
+                                                 ("new_name", "str"), ("merge", "bool")]),
     "use_conductor_autonum": ("useConductorAutoNum", [("folio", "folio"), ("name", "str")]),
     "use_element_autonum": ("useElementAutoNum", [("name", "str")]),
     "number_element":   ("numberElement",       [("folio", "folio"), ("element", "elmt")]),
@@ -5175,6 +5182,13 @@ TOOLS = [
                         "assign_element_autonum makes one element follow a named element context "
                         "(refused when it holds a formula, frozen label or follows "
                         "another one, unless overwrite is true); "
+                        "rename_plant and rename_location rename a plant, or a location "
+                        "of a plant, in the whole project (folio title blocks, structure boxes, "
+                        "symbols, the defaults for new folios, wire counters) as one undo step; "
+                        "merge must say whether the new name may already exist (the two then "
+                        "become one), counters (rename_plant) which wire counters win when both "
+                        "plants have some: higher, new or old; read the places with qet_query "
+                        "on qet_locations. "
                         "rename_autonum renames a context of any kind, what follows it (elements, or "
                         "the folios of a conductor or folio context) keeps following it; "
                         "remove_autonum refuses a context which elements (element kind) or "

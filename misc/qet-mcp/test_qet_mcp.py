@@ -451,6 +451,10 @@ class EditValidation(unittest.TestCase):
             "add_autonum": [{"op": "add_autonum", "kind": "conductor", "name": "W", "parts": ["string:W"]}],
             "remove_autonum": [{"op": "remove_autonum", "kind": "conductor", "name": "W"}],
             "rename_autonum": [{"op": "rename_autonum", "kind": "element", "name": "EL", "new_name": "EL2"}],
+            "rename_plant": [{"op": "rename_plant", "plant": "A", "new_name": "B",
+                              "merge": False, "counters": "higher"}],
+            "rename_location": [{"op": "rename_location", "plant": "A", "location": "L1",
+                                 "new_name": "L2", "merge": False}],
             "use_conductor_autonum": [f, {"op": "use_conductor_autonum", "folio": "$f", "name": "W"}],
             "use_element_autonum": [{"op": "use_element_autonum", "name": "EL"}],
             "insert_folio": [{"op": "insert_folio", "id": "i", "position": 0}],
@@ -6294,6 +6298,60 @@ class LayoutOpsIntegration(unittest.TestCase):
         self.need_positions(r)
         self.assertTrue(r["ok"], r.get("hint"))
         self.assertIn((100.0, 200.0), self.xy(r["output"]).values())
+
+
+@needs_binary
+class PlaceRenameIntegration(unittest.TestCase):
+    """rename_plant and rename_location through the real binary: the new
+    name is in the saved file, and a name that exists is refused unless the
+    op says merge."""
+
+    def setUp(self):
+        self.sb = Sandbox()
+
+    def tearDown(self):
+        self.sb.close()
+
+    def edit(self, ops):
+        return m.tool_edit(BINARY, self.sb.new(), ops, self.sb.p("out.qet"))
+
+    @staticmethod
+    def places():
+        return [{"op": "add_folio", "id": "a"}, {"op": "add_folio", "id": "b"},
+                {"op": "set_folio", "folio": "$a", "property": "plant", "value": "FACTORY"},
+                {"op": "set_folio", "folio": "$a", "property": "locmach", "value": "CP1"},
+                {"op": "set_folio", "folio": "$b", "property": "plant", "value": "WORKS"},
+                {"op": "set_folio", "folio": "$b", "property": "locmach", "value": "CP1"}]
+
+    def test_a_plant_is_renamed_in_the_saved_file(self):
+        r = self.edit(self.places() + [
+            {"op": "rename_plant", "plant": "FACTORY", "new_name": "DEPOT",
+             "merge": False, "counters": "higher"}])
+        self.assertTrue(r["ok"], json.dumps(r.get("operations"), default=str)[:600])
+        xml = Path(r["output"]).read_text(encoding="utf-8")
+        self.assertIn('plant="DEPOT"', xml)
+        self.assertNotIn('plant="FACTORY"', xml)
+        self.assertIn('plant="WORKS"', xml)
+
+    def test_a_location_is_renamed_within_its_plant(self):
+        r = self.edit(self.places() + [
+            {"op": "rename_location", "plant": "FACTORY", "location": "CP1",
+             "new_name": "CP2", "merge": False}])
+        self.assertTrue(r["ok"], json.dumps(r.get("operations"), default=str)[:600])
+        xml = Path(r["output"]).read_text(encoding="utf-8")
+        self.assertEqual(xml.count('locmach="CP2"'), 1)
+        self.assertEqual(xml.count('locmach="CP1"'), 1)
+
+    def test_an_existing_name_is_refused_unless_merge_is_true(self):
+        refused = self.edit(self.places() + [
+            {"op": "rename_plant", "plant": "FACTORY", "new_name": "WORKS",
+             "merge": False, "counters": "higher"}])
+        self.assertFalse(refused["ok"])
+        merged = self.edit(self.places() + [
+            {"op": "rename_plant", "plant": "FACTORY", "new_name": "WORKS",
+             "merge": True, "counters": "higher"}])
+        self.assertTrue(merged["ok"], json.dumps(merged.get("operations"), default=str)[:600])
+        self.assertNotIn('plant="FACTORY"', Path(merged["output"]).read_text(encoding="utf-8"))
 
 
 @needs_binary
