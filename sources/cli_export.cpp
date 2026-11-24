@@ -21,6 +21,7 @@
 
 #include "bordertitleblock.h"
 #include "conductornumexport.h"
+#include "labellistexport.h"
 #include "conductorproperties.h"
 #include "dataBase/projectdatabase.h"
 #include "dataBase/qetdbfile.h"
@@ -89,6 +90,7 @@ const QHash<QString, QString> &exportFlags()
 		{"--export-dxf", "dxf"},
 		{"--export-cables", "cables"},
 		{"--export-wires", "wires"},
+		{"--export-labels", "labels"},
 		{"--export-bom", "bom"},
 		{"--export-wiring", "wiring"},
 		{"--export-nets", "nets"},
@@ -410,6 +412,30 @@ int exportDxf(QETProject &project, const QString &out_dir, bool showTerminals,
 		err << "Note: DXF has no pictures in this format; "
 			   "each picture is exported as an outline box.\n";
 	out << "Exported " << diagrams.size() << " diagram(s) -> " << out_dir << "\n";
+	return 0;
+}
+
+/// --export-labels: one label per line for a label printer (#1878 A7)
+int exportLabels(QETProject &project, const QString &output, const QString &kind_name,
+				 bool full_designation)
+{
+	LabelListExport::Kind kind;
+	if (!LabelListExport::kindFromString(kind_name, &kind)) {
+		err << "Usage: qelectrotech --export-labels <project.qet> <output.csv> "
+			   "devices|terminals|cables|wires [--full-designation]\n";
+		return 2;
+	}
+	const QStringList labels = LabelListExport::labels(&project, kind, full_designation);
+	if (labels.isEmpty()) {
+		err << "Nothing to export (no " << kind_name << " with a label).\n";
+		return 1;
+	}
+	QString error;
+	if (!LabelListExport::write(labels, output, &error)) {
+		err << "Cannot write '" << output << "': " << error << "\n";
+		return 1;
+	}
+	out << "Exported " << labels.size() << " " << kind_name << " label(s) -> " << output << "\n";
 	return 0;
 }
 
@@ -1342,6 +1368,7 @@ int run(const QStringList &args)
 	const bool ignoreLock = filtered.removeAll("--ignore-lock") > 0;
 	const bool json = filtered.removeAll("--json") > 0;
 	const bool grid = filtered.removeAll("--grid") > 0;
+	const bool fullDesignation = filtered.removeAll("--full-designation") > 0;
 
 	QString flag;
 	QStringList rest;
@@ -1575,6 +1602,8 @@ int run(const QStringList &args)
 		return exportDxf(project, output, showTerminals, dxfBlocks, dxfAttributes);
 	if (format == "cables" || format == "wires")
 		return exportCsv(project, format, output);
+	if (format == "labels")
+		return exportLabels(project, output, rest.value(2), fullDesignation);
 	if (format == "bom")
 		return exportBom(project, output, includeSlaves, includeJunctions);
 	if (format == "wiring")

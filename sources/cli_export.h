@@ -48,6 +48,7 @@ namespace CLIExport {
 		  qelectrotech --export-dxf     <project.qet> <output_dir> [--show-terminals] [--dxf-blocks] [--dxf-attributes]
 		  qelectrotech --export-cables  <project.qet> <output.csv>
 		  qelectrotech --export-wires   <project.qet> <output.csv>
+		  qelectrotech --export-labels  <project.qet> <output.csv> devices|terminals|cables|wires [--full-designation]
 		  qelectrotech --export-bom     <project.qet> <output.csv> [--no-slaves] [--no-junctions]
 		  qelectrotech --export-wiring  <project.qet> <output.csv>
 		  qelectrotech --export-nets    <project.qet> <output.json>
@@ -81,6 +82,15 @@ namespace CLIExport {
 		      smaller file, still sharp when printed.
 		cables: wiring list (one row per conductor) as CSV.
 		wires: list of distinct wire numbers as CSV.
+		labels: one label per line, no header, for label printer software
+		      (the same lists as Project > Export labels for printing).
+		      devices: one tag per device (terminals left
+		      out), in folio order; terminals: the
+		      terminal markers strip by strip in strip order, then the
+		      terminals on no strip by label; cables: one number per
+		      cable, in folio order; wires: as `wires`.
+		--full-designation: labels write =plant+location-tag instead of
+		      the tag as drawn (not for wires).
 		bom: bill of materials (one row per element) as CSV.
 		--no-slaves: leave the contact blocks (slave elements) out of the
 		      bill of materials.

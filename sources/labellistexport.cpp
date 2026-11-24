@@ -1,0 +1,403 @@
+/*
+	Copyright 2006-2026 The QElectroTech Team
+	This file is part of QElectroTech.
+
+	QElectroTech is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 2 of the License, or
+	(at your option) any later version.
+
+	QElectroTech is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+	GNU General Public License for more details.
+
+	You should have received a copy of the GNU General Public License
+	along with QElectroTech. If not, see <http://www.gnu.org/licenses/>.
+*/
+#include "labellistexport.h"
+#include "conductornumexport.h"
+#include "qetapp.h"
+#include "qetproject.h"
+#include "dataBase/projectdatabase.h"
+
+#include <QButtonGroup>
+#include <QCheckBox>
+#include <QCollator>
+#include <QDialogButtonBox>
+#include <QFileDialog>
+#include <QLabel>
+#include <QMessageBox>
+#include <QPushButton>
+#include <QRadioButton>
+#include <QRegularExpression>
+#include <QSaveFile>
+#include <QSettings>
+#include <QSqlQuery>
+#include <QStringBuilder>
+#include <QVBoxLayout>
+
+#include <algorithm>
+#include <climits>
+
+namespace {
+
+	/**
+		@brief The Row struct
+		One label and where it is drawn, to sort by
+	*/
+	struct Row
+	{
+		QString label;
+		int folio = INT_MAX;	///< folio number, INT_MAX for none
+		int column = INT_MAX;	///< column of the cell, "G4" -> 4
+		QString row;			///< row of the cell, "G4" -> "G"
+	};
+
+	/**
+		@brief cell
+		Reads a cell of the folio grid as written in the database ("G4":
+		row G, column 4) into @p row; leaves a cell it can't read last.
+	*/
+	void cell(const QString &position, Row &row)
+	{
+		static const QRegularExpression rx(QStringLiteral("^([A-Za-z]+)(\\d+)$"));
+		const QRegularExpressionMatch match = rx.match(position.trimmed());
+		if (match.hasMatch()) {
+			row.row = match.captured(1).toUpper();
+			row.column = match.captured(2).toInt();
+		}
+	}
+
+	QCollator naturalOrder()
+	{
+		QCollator collator;
+		collator.setNumericMode(true);
+		collator.setCaseSensitivity(Qt::CaseInsensitive);
+		return collator;
+	}
+
+	/**
+		@brief inFolioOrder
+		Folio after folio; on a folio, column after column, top to bottom;
+		then by label, 2 before 10
+	*/
+	void inFolioOrder(QList<Row> &rows)
+	{
+		const QCollator collator = naturalOrder();
+		std::stable_sort(rows.begin(), rows.end(), [&collator](const Row &a, const Row &b) {
+			if (a.folio != b.folio) return a.folio < b.folio;
+			if (a.column != b.column) return a.column < b.column;
+			if (a.row.size() != b.row.size()) return a.row.size() < b.row.size();
+			if (a.row != b.row) return a.row < b.row;
+			return collator.compare(a.label, b.label) < 0;
+		});
+	}
+
+	QStringList labelsOf(const QList<Row> &rows)
+	{
+		QStringList list;
+		for (const Row &row : rows) list << row.label;
+		return list;
+	}
+
+	/**
+		@brief label
+		The label of a row of @p query: the plain label in column 0, or the
+		full designation in column 1 when asked for and there is one. An
+		item with no plain label has nothing to print: empty.
+	*/
+	QString label(const QSqlQuery &query, bool full_designation)
+	{
+		const QString plain = query.value(0).toString().trimmed();
+		if (plain.isEmpty()) return QString();
+		const QString full = query.value(1).toString().trimmed();
+		return full_designation && !full.isEmpty() ? full : plain;
+	}
+
+	QStringList devices(projectDataBase *db, bool full_designation)
+	{
+		QList<Row> rows;
+			//A terminal gets a terminal marker, not a device tag
+		QSqlQuery query = db->newQuery(QStringLiteral(
+				"SELECT l.label, l.structure_id, l.folio_number, l.position FROM qet_device_list l "
+				"JOIN qet_devices d ON d.device_uuid = l.head_uuid "
+				"WHERE COALESCE(d.kind, '') <> 'terminal'"));
+		query.exec();
+		while (query.next()) {
+			Row row;
+			row.label = label(query, full_designation);
+			if (row.label.isEmpty()) continue;
+			if (!query.value(2).isNull()) row.folio = query.value(2).toInt();
+			cell(query.value(3).toString(), row);
+			rows << row;
+		}
+		inFolioOrder(rows);
+		return labelsOf(rows);
+	}
+
+	QStringList terminals(projectDataBase *db, bool full_designation)
+	{
+		QStringList list;
+			//Strip by strip, as the terminal strip editor shows them
+		QSqlQuery query = db->newQuery(QStringLiteral(
+				"SELECT label, terminal_id FROM qet_terminals "
+				"ORDER BY strip_id, strip_uuid, position, level"));
+		query.exec();
+		while (query.next()) {
+			const QString text = label(query, full_designation);
+			if (!text.isEmpty()) list << text;
+		}
+
+			//Then the terminals on no strip, by label: XE:2 before XE:10
+		QList<Row> loose;
+		query = db->newQuery(QStringLiteral(
+				"SELECT label, structure_id FROM qet_devices WHERE kind = 'terminal' "
+				"AND device_uuid NOT IN (SELECT element_uuid FROM qet_terminals "
+				"WHERE element_uuid IS NOT NULL)"));
+		query.exec();
+		while (query.next()) {
+			Row row;
+			row.label = label(query, full_designation);
+			if (!row.label.isEmpty()) loose << row;
+		}
+		const QCollator collator = naturalOrder();
+		std::stable_sort(loose.begin(), loose.end(), [&collator](const Row &a, const Row &b) {
+			return collator.compare(a.label, b.label) < 0;
+		});
+		return list + labelsOf(loose);
+	}
+
+	QStringList cables(projectDataBase *db, bool full_designation)
+	{
+		QList<Row> rows;
+		QSqlQuery query = db->newQuery(QStringLiteral(
+				"SELECT designation, structure_id, folio_number FROM qet_cables"));
+		query.exec();
+		while (query.next()) {
+			Row row;
+			row.label = label(query, full_designation);
+			if (row.label.isEmpty()) continue;
+			if (!query.value(2).isNull()) row.folio = query.value(2).toInt();
+			rows << row;
+		}
+		inFolioOrder(rows);
+		return labelsOf(rows);
+	}
+
+	/**
+		@brief csvField
+		@return @p text as a field of RFC 4180 CSV: quoted when it holds a
+		comma, a quote or a line break
+	*/
+	QString csvField(const QString &text)
+	{
+		if (!text.contains(QLatin1Char(',')) && !text.contains(QLatin1Char('"'))
+				&& !text.contains(QLatin1Char('\n')) && !text.contains(QLatin1Char('\r'))) {
+			return text;
+		}
+		QString quoted = text;
+		quoted.replace(QLatin1Char('"'), QStringLiteral("\"\""));
+		return QLatin1Char('"') % quoted % QLatin1Char('"');
+	}
+
+	const QString kind_key = QStringLiteral("export/label_list/kind");
+	const QString full_key = QStringLiteral("export/label_list/full_designation");
+}
+
+/**
+	@brief LabelListExport::kindFromString
+	@param name : devices, terminals, cables or wires
+	@param kind : set to the kind @p name names
+	@return true if @p name names a kind
+*/
+bool LabelListExport::kindFromString(const QString &name, Kind *kind)
+{
+	for (const Kind k : {Devices, Terminals, Cables, Wires}) {
+		if (kindName(k) == name) {
+			*kind = k;
+			return true;
+		}
+	}
+	return false;
+}
+
+/**
+	@brief LabelListExport::kindName
+	@return the name of @p kind on the command line and in the settings
+*/
+QString LabelListExport::kindName(Kind kind)
+{
+	switch (kind) {
+		case Devices: return QStringLiteral("devices");
+		case Terminals: return QStringLiteral("terminals");
+		case Cables: return QStringLiteral("cables");
+		case Wires: return QStringLiteral("wires");
+	}
+	return QString();
+}
+
+/**
+	@brief LabelListExport::labels
+	@param project
+	@param kind
+	@param full_designation : =plant+location-tag instead of the tag as
+	drawn, for devices, terminals and cables; wires have only their number
+	@return the labels of @p kind in @p project, one per marker to print:
+	a tag per device (not per symbol), a marker per terminal, a number per
+	cable, and a wire number per wire as "Export the list of names of wires"
+	writes them
+*/
+QStringList LabelListExport::labels(QETProject *project, Kind kind, bool full_designation)
+{
+	if (!project) return QStringList();
+	if (kind == Wires) {
+		return ConductorNumExport(project).wiresNum().split(QLatin1Char('\n'), Qt::SkipEmptyParts);
+	}
+	projectDataBase *db = project->dataBase();
+	if (!db) return QStringList();
+	db->updateDB();
+	switch (kind) {
+		case Devices: return devices(db, full_designation);
+		case Terminals: return terminals(db, full_designation);
+		case Cables: return cables(db, full_designation);
+		case Wires: break;
+	}
+	return QStringList();
+}
+
+/**
+	@brief LabelListExport::toCsv
+	@return @p labels as CSV, one per line, no header: what label printer
+	software reads as a list of markers
+*/
+QString LabelListExport::toCsv(const QStringList &labels)
+{
+	QString csv;
+	for (const QString &label : labels) {
+		csv += csvField(label) % QLatin1Char('\n');
+	}
+	return csv;
+}
+
+/**
+	@brief LabelListExport::write
+	Writes @p labels to @p file_name as CSV in UTF-8 with a byte order mark,
+	as the other list exports do, so that Excel reads it right
+	@return true if written; else false and @p error says why
+*/
+bool LabelListExport::write(const QStringList &labels, const QString &file_name, QString *error)
+{
+	QSaveFile file(file_name);
+	if (!file.open(QIODevice::WriteOnly)) {
+		if (error) *error = file.errorString();
+		return false;
+	}
+	file.write("\xEF\xBB\xBF");
+	file.write(toCsv(labels).toUtf8());
+	if (!file.commit()) {
+		if (error) *error = file.errorString();
+		return false;
+	}
+	return true;
+}
+
+/**
+	@brief LabelListExportDialog::LabelListExportDialog
+	@param project : the project to export the labels of
+	@param parent
+*/
+LabelListExportDialog::LabelListExportDialog(QETProject *project, QWidget *parent) :
+	QDialog(parent),
+	m_project(project)
+{
+	setWindowTitle(tr("Export labels for printing"));
+
+	auto layout = new QVBoxLayout(this);
+	layout->addWidget(new QLabel(tr("One label per line, for label printer software:"), this));
+
+	m_kinds = new QButtonGroup(this);
+	const QList<QPair<LabelListExport::Kind, QString>> kinds {
+		{LabelListExport::Devices, tr("Device tags (one per device, in folio order)")},
+		{LabelListExport::Terminals, tr("Terminal markers (strip by strip, in strip order)")},
+		{LabelListExport::Cables, tr("Cable numbers (in folio order)")},
+		{LabelListExport::Wires, tr("Wire numbers (one per wire)")}
+	};
+	QSettings settings;
+	LabelListExport::Kind saved = LabelListExport::Devices;
+	LabelListExport::kindFromString(settings.value(kind_key).toString(), &saved);
+	for (const auto &kind : kinds) {
+		auto button = new QRadioButton(kind.second, this);
+		button->setChecked(kind.first == saved);
+		m_kinds->addButton(button, kind.first);
+		layout->addWidget(button);
+	}
+
+	m_full = new QCheckBox(tr("Full designation (=plant+location-tag)"), this);
+	m_full->setChecked(settings.value(full_key, false).toBool());
+	layout->addWidget(m_full);
+
+	m_count = new QLabel(this);
+	layout->addWidget(m_count);
+
+	auto buttons = new QDialogButtonBox(QDialogButtonBox::Save | QDialogButtonBox::Close, this);
+	buttons->button(QDialogButtonBox::Save)->setText(tr("Save as CSV..."));
+	connect(buttons, &QDialogButtonBox::accepted, this, &LabelListExportDialog::save);
+	connect(buttons, &QDialogButtonBox::rejected, this, &QDialog::reject);
+	layout->addWidget(buttons);
+
+	connect(m_kinds, &QButtonGroup::idClicked, this, &LabelListExportDialog::refresh);
+	connect(m_full, &QCheckBox::toggled, this, &LabelListExportDialog::refresh);
+	refresh();
+}
+
+LabelListExport::Kind LabelListExportDialog::kind() const {
+	return static_cast<LabelListExport::Kind>(m_kinds->checkedId());
+}
+
+/**
+	@brief LabelListExportDialog::refresh
+	Reads the list again, and says how many labels it has
+*/
+void LabelListExportDialog::refresh()
+{
+	const bool wires = kind() == LabelListExport::Wires;
+		//A wire has only its number
+	m_full->setEnabled(!wires);
+	m_labels = LabelListExport::labels(m_project, kind(), m_full->isChecked() && !wires);
+	if (m_labels.isEmpty()) {
+		m_count->setText(tr("This project has none."));
+	} else {
+		m_count->setText(tr("%n label(s), the first: %1", nullptr, m_labels.size())
+						 .arg(m_labels.first()));
+	}
+}
+
+/**
+	@brief LabelListExportDialog::save
+	Asks where, and writes the list
+*/
+void LabelListExportDialog::save()
+{
+	if (m_labels.isEmpty()) {
+		QMessageBox::information(this, windowTitle(), tr("There are no labels of this kind to export."));
+		return;
+	}
+	QString dir = m_project->currentDir();
+	if (dir.isEmpty()) dir = QETApp::documentDir();
+	const QString name = dir % QLatin1Char('/') % tr("labels") % QLatin1Char('_')
+			% LabelListExport::kindName(kind()) % QLatin1Char('_') % m_project->title() % QStringLiteral(".csv");
+	const QString file_name = QFileDialog::getSaveFileName(this, tr("Save As..."), name,
+														   tr("CSV files (*.csv)"));
+	if (file_name.isEmpty()) return;
+
+	QString error;
+	if (!LabelListExport::write(m_labels, file_name, &error)) {
+		QMessageBox::critical(this, tr("Error"), tr("Unable to write %1:\n%2").arg(file_name, error));
+		return;
+	}
+	QSettings settings;
+	settings.setValue(kind_key, LabelListExport::kindName(kind()));
+	settings.setValue(full_key, m_full->isChecked());
+	accept();
+}
