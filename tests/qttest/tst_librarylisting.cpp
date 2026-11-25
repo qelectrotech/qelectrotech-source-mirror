@@ -65,8 +65,14 @@ class TstLibraryListing : public QObject
 					  "<definition type=\"element\"><names><name lang=\"en\">Lamp</name></names>"
 					  "<description/></definition>");
 			writeFile(QStringLiteral("lib/plain/broken.elmt"), "<definition");
+			writeFile(QStringLiteral("lib/relays 2/other.elmt"),
+					  "<definition type=\"element\"><names><name lang=\"en\">Other</name></names></definition>");
 			writeFile(QStringLiteral("lib/plain/starter.qetmak"),
-					  "<qet_macro><collection/><diagram_content><diagram>"
+					  "<qet_macro><collection><element path=\"arrows/go.elmt\">"
+					  "<definition link_type=\"next_report\"/></element></collection>"
+					  "<diagram_content><diagram>"
+					  "<element type=\"macro://arrows/go.elmt\"><elementInformations>"
+					  "<elementInformation name=\"label\">ARROW</elementInformation></elementInformations></element>"
 					  "<element><elementInformations><elementInformation name=\"label\">-Q1</elementInformation>"
 					  "</elementInformations></element>"
 					  "<element><elementInformations><elementInformation name=\"label\">-K1</elementInformation>"
@@ -77,12 +83,13 @@ class TstLibraryListing : public QObject
 		void rows()
 		{
 			const QList<LibraryListing::Row> rows = LibraryListing().scan(m_dir.filePath(QStringLiteral("lib")));
-			QCOMPARE(rows.size(), 5);
+			QCOMPARE(rows.size(), 6);
 				//Folder by folder, 2 before 10
 			QStringList files;
 			for (const auto &row : rows) files << row.folder + QLatin1Char('/') + row.file;
 			QCOMPARE(files, (QStringList{"plain/broken.elmt", "plain/starter.qetmak", "relays/coil.elmt",
-										 "relays/2_less/lamp.elmt", "relays/10_more/contact.elmt"}));
+										 "relays/2_less/lamp.elmt", "relays/10_more/contact.elmt",
+										 "relays 2/other.elmt"}));
 
 			QVERIFY(!rows.at(0).error.isEmpty());
 
@@ -114,10 +121,14 @@ class TstLibraryListing : public QObject
 				//A folder the file names without a letter has none
 			QCOMPARE(rows.at(0).class_letter, QString());
 
-			const QString csv = LibraryListing::toCsv(rows);
-			QVERIFY(csv.startsWith(QStringLiteral("name,folder,file,kind,type,class_letter,")));
-			QVERIFY(csv.contains(QStringLiteral("\"Contact, NO\",relays/10_more,contact.elmt,symbol,slave,K,2,13,1,,\n")));
-			QVERIFY(csv.contains(QStringLiteral("starter,plain,starter.qetmak,macro,,,,,,-Q1 -K1,\n")));
+			QCOMPARE(rows.at(0).name, QStringLiteral("broken"));
+
+			const QString csv = QString::fromUtf8(LibraryListing::toCsv(rows));
+			QVERIFY(csv.startsWith(QStringLiteral("\"name\";\"folder\";\"file\";\"kind\";\"type\";\"class_letter\";")));
+			QVERIFY(csv.contains(QStringLiteral("\"Contact, NO\";\"relays/10_more\";\"contact.elmt\";\"symbol\";\"slave\";\"K\";\"2\";\"13\";\"1\";\"\";\"\"\n")));
+			QVERIFY(csv.contains(QStringLiteral("\"Coil\";\"relays\";\"coil.elmt\";\"symbol\";\"master\";\"K\";\"2\";\"A1, A2\";\"0\";\"\";\"\"\n")));
+			QVERIFY(csv.contains(QStringLiteral("\"starter\";\"plain\";\"starter.qetmak\";\"macro\";\"\";\"\";\"\";\"\";\"\";\"-Q1, -K1\";\"\"\n")));
+			QVERIFY(csv.contains(QStringLiteral("\"broken\";\"plain\";\"broken.elmt\";\"symbol\";\"\";\"\";\"\";\"\";\"\";\"\";")));
 		}
 
 		/// Every symbol of the shipped collection gets the class letter
@@ -151,7 +162,7 @@ class TstLibraryListing : public QObject
 			QVERIFY(LibraryListing::write({}, name));
 			QFile file(name);
 			QVERIFY(file.open(QIODevice::ReadOnly));
-			QVERIFY(file.readAll().startsWith("\xEF\xBB\xBF" "name,"));
+			QVERIFY(file.readAll().startsWith("\xEF\xBB\xBF" "\"name\";"));
 		}
 };
 

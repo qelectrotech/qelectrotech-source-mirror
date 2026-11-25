@@ -18,10 +18,13 @@
 #ifndef LIBRARYLISTING_H
 #define LIBRARYLISTING_H
 
+#include <QByteArray>
 #include <QHash>
 #include <QList>
 #include <QString>
 #include <QStringList>
+
+#include <functional>
 
 /**
 	@brief The LibraryListing class
@@ -39,7 +42,7 @@ class LibraryListing
 			QString file;
 			bool macro = false;
 			QString type;			///< link_type of a symbol: simple, master, slave...
-			QString class_letter;	///< from the nearest qet_labels.xml; empty for none
+			QString class_letter;	///< the one placing gives it; empty for none
 			int terminals = 0;
 			QStringList terminal_names;	///< the named ones, in file order
 			int unnamed_terminals = 0;
@@ -47,14 +50,15 @@ class LibraryListing
 			QString error;			///< why the file could not be read
 		};
 
-		QList<Row> scan(const QString &folder);
-		static QString toCsv(const QList<Row> &rows);
+		QList<Row> scan(const QString &folder,
+						const std::function<bool (int, int)> &progress = nullptr);
+		static QByteArray toCsv(const QList<Row> &rows);
 		static bool write(const QList<Row> &rows, const QString &file_name, QString *error = nullptr);
 
 	private:
 		Row symbol(const QString &file_path);
 		Row macro(const QString &file_path);
-		QString classLetter(const QString &dir_path);
+		QString classLetter(const QString &file_path);
 
 		QHash<QString, QString> m_letters;	///< class letter per folder already looked up
 };

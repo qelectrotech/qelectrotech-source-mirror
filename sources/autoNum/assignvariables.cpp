@@ -1238,12 +1238,23 @@ namespace autonum
 			path << current_location.fileName();
 			current_location = current_location.parent();
 		}
+		return elementPrefixForTree(path, current_location.fileName());
+	}
+
+	/**
+		@brief elementPrefixForTree
+		The prefix of elementPrefixForLocation(), from where the element
+		is in its collection
+		@param path : the element's file name, then its folders up to (not
+		including) the top-level tree of the collection, outermost last
+		@param collection_root : the name of that top-level tree, e.g.
+		"10_electric" -- or, for a custom/company collection not organised
+		that way, whatever its top-level folder happens to be called
+		@return the prefix, possibly null
+	*/
+	QString elementPrefixForTree(const QStringList &path, const QString &collection_root)
+	{
 		const int dirLevel = path.size() - 1;
-			//Name of the top-level tree the element's path was found
-			//under, e.g. "10_electric" -- or, for a custom/company
-			//collection not organised that way, whatever its top-level
-			//folder happens to be called.
-		const QString collection_root = current_location.fileName();
 
 			//Every top-level common-collection tree (10_electric,
 			//20_logic, 30_hydraulic, ...) may carry its own

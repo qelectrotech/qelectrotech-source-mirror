@@ -37,7 +37,7 @@
 
 #include <QCheckBox>
 #include <QDesktopServices>
-#include <QFileDialog>
+#include <QProgressDialog>
 #include <QSettings>
 #include <QShortcut>
 #include <QListView>
@@ -989,22 +989,38 @@ void ElementsCollectionWidget::exportList()
 	if (file_name.isEmpty())
 		return;
 
-	QApplication::setOverrideCursor(Qt::WaitCursor);
-	const QList<LibraryListing::Row> rows = LibraryListing().scan(folder);
+		//The whole collection is thousands of files: a few seconds
+	QProgressDialog progress(tr("Reading the symbols…"), tr("Cancel"), 0, 0, this);
+	progress.setWindowTitle(tr("Export symbol list"));
+	progress.setWindowModality(Qt::WindowModal);
+	progress.setMinimumDuration(500);
+	bool cancelled = false;
+	const QList<LibraryListing::Row> rows = LibraryListing().scan(folder,
+			[&progress, &cancelled](int done, int total) {
+		progress.setMaximum(total);
+		progress.setValue(done);
+		cancelled = progress.wasCanceled();
+		return !cancelled;
+	});
+	progress.reset();
+	if (cancelled)
+		return;
+
 	QString error;
-	const bool written = LibraryListing::write(rows, file_name, &error);
-	QApplication::restoreOverrideCursor();
-	if (!written) {
+	if (!LibraryListing::write(rows, file_name, &error)) {
 		QMessageBox::critical(this, tr("Export symbol list"),
 							  tr("Unable to write %1:\n%2").arg(file_name, error));
 		return;
 	}
-	int macros = 0;
-	for (const auto &row : rows)
+	int macros = 0, unreadable = 0;
+	for (const auto &row : rows) {
 		if (row.macro) ++macros;
+		if (!row.error.isEmpty()) ++unreadable;
+	}
 	QMessageBox::information(this, tr("Export symbol list"),
-							 tr("%n symbol(s)", nullptr, int(rows.size()) - macros) % QStringLiteral(", ")
-							 % tr("%n macro(s) written to %1", nullptr, macros).arg(file_name));
+							 tr("Symbols: %1, macros: %2, files that could not be read: %3.\n"
+								"Written to %4")
+							 .arg(int(rows.size()) - macros).arg(macros).arg(unreadable).arg(file_name));
 }
 
 /**

@@ -17,7 +17,10 @@
 */
 #include "librarylisting.h"
 #include "qetlabelsfile.h"
+#include "../autoNum/assignvariables.h"
+#include "../bomexport.h"
 #include "../NameList/nameslist.h"
+#include "../qetapp.h"
 
 #include <QCollator>
 #include <QDir>
@@ -26,27 +29,11 @@
 #include <QFile>
 #include <QFileInfo>
 #include <QSaveFile>
-#include <QStringBuilder>
+#include <QSet>
 
 #include <algorithm>
 
 namespace {
-
-	/**
-		@brief csvField
-		@return @p text as a field of RFC 4180 CSV: quoted when it holds a
-		comma, a quote or a line break
-	*/
-	QString csvField(const QString &text)
-	{
-		if (!text.contains(QLatin1Char(',')) && !text.contains(QLatin1Char('"'))
-				&& !text.contains(QLatin1Char('\n')) && !text.contains(QLatin1Char('\r'))) {
-			return text;
-		}
-		QString quoted = text;
-		quoted.replace(QLatin1Char('"'), QStringLiteral("\"\""));
-		return QLatin1Char('"') % quoted % QLatin1Char('"');
-	}
 
 	bool readXml(const QString &file_path, QDomDocument &document, QString *error)
 	{
@@ -72,40 +59,55 @@ namespace {
 #endif
 		return true;
 	}
+
+		/// The names in one cell
+	const QString separator = QStringLiteral(", ");
 }
 
 /**
 	@brief LibraryListing::scan
 	@param folder : a collection folder, or any folder of symbols
+	@param progress : if set, called before each file with how many are
+	done and how many there are; returning false stops the scan
 	@return a row per symbol and per macro in @p folder and its
-	sub-folders, folder by folder, in natural order (2 before 10)
+	sub-folders: a folder's own files, then its sub-folders, each in
+	natural order (2 before 10); none if stopped
 */
-QList<LibraryListing::Row> LibraryListing::scan(const QString &folder)
+QList<LibraryListing::Row> LibraryListing::scan(const QString &folder,
+												const std::function<bool (int, int)> &progress)
 {
 	const QDir root(folder);
-	QStringList files;
+	QList<QStringList> files;	///< folders then the file name, relative to root
 	QDirIterator it(folder, {QStringLiteral("*.elmt"), QStringLiteral("*.qetmak")},
 					QDir::Files, QDirIterator::Subdirectories);
 	while (it.hasNext()) {
-		files << root.relativeFilePath(it.next());
+		files << root.relativeFilePath(it.next()).split(QLatin1Char('/'));
 	}
 	QCollator collator;
 	collator.setNumericMode(true);
 	collator.setCaseSensitivity(Qt::CaseInsensitive);
-		//A folder's own files, then its sub-folders
-	std::sort(files.begin(), files.end(), [&collator](const QString &a, const QString &b) {
-		const QFileInfo ia(a), ib(b);
-		const int folder = collator.compare(ia.path(), ib.path());
-		return folder != 0 ? folder < 0 : collator.compare(ia.fileName(), ib.fileName()) < 0;
+		//Folder name by folder name, so that a folder's sub-folders come
+		//right after it; a folder's own files before its sub-folders
+	std::sort(files.begin(), files.end(), [&collator](const QStringList &a, const QStringList &b) {
+		const int folders = std::min(a.size(), b.size()) - 1;
+		for (int i = 0 ; i < folders ; ++i) {
+			const int order = collator.compare(a.at(i), b.at(i));
+			if (order != 0) return order < 0;
+		}
+		if (a.size() != b.size()) return a.size() < b.size();
+		return collator.compare(a.last(), b.last()) < 0;
 	});
 
 	QList<Row> rows;
-	for (const QString &relative : std::as_const(files)) {
-		const QString path = root.filePath(relative);
-		Row row = relative.endsWith(QLatin1String(".qetmak")) ? macro(path) : symbol(path);
-		const QFileInfo info(relative);
-		row.folder = info.path() == QLatin1String(".") ? QString() : info.path();
-		row.file = info.fileName();
+	for (int i = 0 ; i < files.size() ; ++i) {
+		if (progress && !progress(i, int(files.size()))) {
+			return QList<Row>();
+		}
+		const QStringList &parts = files.at(i);
+		const QString path = root.filePath(parts.join(QLatin1Char('/')));
+		Row row = parts.last().endsWith(QLatin1String(".qetmak")) ? macro(path) : symbol(path);
+		row.folder = parts.mid(0, parts.size() - 1).join(QLatin1Char('/'));
+		row.file = parts.last();
 		rows << row;
 	}
 	return rows;
@@ -118,6 +120,7 @@ QList<LibraryListing::Row> LibraryListing::scan(const QString &folder)
 LibraryListing::Row LibraryListing::symbol(const QString &file_path)
 {
 	Row row;
+	row.name = QFileInfo(file_path).completeBaseName();
 	QDomDocument document;
 	if (!readXml(file_path, document, &row.error)) {
 		return row;
@@ -125,7 +128,7 @@ LibraryListing::Row LibraryListing::symbol(const QString &file_path)
 	const QDomElement definition = document.documentElement();
 	NamesList names;
 	names.fromXml(definition);
-	row.name = names.name(QFileInfo(file_path).completeBaseName());
+	row.name = names.name(row.name);
 	row.type = definition.attribute(QStringLiteral("link_type"), QStringLiteral("simple"));
 
 	const QDomNodeList terminals = definition.elementsByTagName(QStringLiteral("terminal"));
@@ -138,14 +141,14 @@ LibraryListing::Row LibraryListing::symbol(const QString &file_path)
 			row.terminal_names << name;
 		}
 	}
-	row.class_letter = classLetter(QFileInfo(file_path).absolutePath());
+	row.class_letter = classLetter(file_path);
 	return row;
 }
 
 /**
 	@brief LibraryListing::macro
 	@return the row of the .qetmak at @p file_path: its file name as name,
-	and the labels of the symbols it places
+	and the labels of the symbols it places, folio reports left out
 */
 LibraryListing::Row LibraryListing::macro(const QString &file_path)
 {
@@ -156,10 +159,25 @@ LibraryListing::Row LibraryListing::macro(const QString &file_path)
 	if (!readXml(file_path, document, &row.error)) {
 		return row;
 	}
-	const QDomElement content = document.documentElement().firstChildElement(QStringLiteral("diagram_content"));
+	const QDomElement root = document.documentElement();
+
+		//The symbols a macro carries, by the type its elements name them by
+	QSet<QString> reports;
+	const QDomElement collection = root.firstChildElement(QStringLiteral("collection"));
+	for (QDomElement e = collection.firstChildElement(QStringLiteral("element")) ; !e.isNull()
+		 ; e = e.nextSiblingElement(QStringLiteral("element"))) {
+		const QString link_type = e.firstChildElement(QStringLiteral("definition")).attribute(QStringLiteral("link_type"));
+		if (link_type.contains(QLatin1String("report"))) {
+			reports << QStringLiteral("macro://") + e.attribute(QStringLiteral("path"));
+		}
+	}
+
+	const QDomElement content = root.firstChildElement(QStringLiteral("diagram_content"));
 	const QDomNodeList elements = content.elementsByTagName(QStringLiteral("element"));
 	for (int i = 0 ; i < elements.count() ; ++i) {
-		const QDomNodeList infos = elements.at(i).toElement().elementsByTagName(QStringLiteral("elementInformation"));
+		const QDomElement element = elements.at(i).toElement();
+		if (reports.contains(element.attribute(QStringLiteral("type")))) continue;
+		const QDomNodeList infos = element.elementsByTagName(QStringLiteral("elementInformation"));
 		for (int j = 0 ; j < infos.count() ; ++j) {
 			const QDomElement info = infos.at(j).toElement();
 			if (info.attribute(QStringLiteral("name")) == QLatin1String("label")) {
@@ -174,58 +192,83 @@ LibraryListing::Row LibraryListing::macro(const QString &file_path)
 
 /**
 	@brief LibraryListing::classLetter
-	The class letter the symbols of the folder @p dir_path get when placed:
-	the prefix of the nearest qet_labels.xml, in that folder or above it,
-	that describes the folder (a folder it does not name takes its parent's
-	prefix, as when placing a symbol)
+	The class letter the symbol at @p file_path gets when placed. In a
+	collection QElectroTech knows (the common, company and user ones),
+	read as placing reads it (autonum::elementPrefixForTree()). Elsewhere,
+	from the nearest qet_labels.xml, in the symbol's folder or above it,
+	that describes the folder.
 	@return the letter, or an empty string for none
 */
-QString LibraryListing::classLetter(const QString &dir_path)
+QString LibraryListing::classLetter(const QString &file_path)
 {
+	const QFileInfo info(file_path);
+	const QString dir_path = info.absolutePath();
 	const auto cached = m_letters.constFind(dir_path);
 	if (cached != m_letters.constEnd()) {
 		return cached.value();
 	}
 
 	QString letter;
-	QDir ancestor(dir_path);
-	while (ancestor.cdUp()) {
-		const QString labels = ancestor.filePath(QStringLiteral("qet_labels.xml"));
-		if (!QFileInfo::exists(labels)) continue;
-		const QStringList folders = ancestor.relativeFilePath(dir_path).split(QLatin1Char('/'), Qt::SkipEmptyParts);
-		const QString prefix = QetLabelsFile::prefixForFolder(labels, folders);
-		if (!prefix.isNull()) {
-			letter = prefix;
-			break;
+	bool known = false;
+	for (const QString &collection : {QETApp::commonElementsDir(), QETApp::companyElementsDir(),
+									  QETApp::customElementsDir()}) {
+		const QString relative = QDir(collection).relativeFilePath(info.absoluteFilePath());
+		if (collection.isEmpty() || relative.startsWith(QLatin1String("..")) || QDir::isAbsolutePath(relative)) {
+			continue;
 		}
+			//The file name, then its folders up to the top-level tree
+		const QStringList parts = relative.split(QLatin1Char('/'));
+		QStringList path;
+		for (int i = int(parts.size()) - 1 ; i >= 1 ; --i) path << parts.at(i);
+		if (path.isEmpty()) path << parts.first();
+		letter = autonum::elementPrefixForTree(path, parts.size() > 1 ? parts.first() : QString());
+		known = true;
+		break;
 	}
+
+	QDir ancestor(dir_path);
+	while (!known) {
+		const QString labels = ancestor.filePath(QStringLiteral("qet_labels.xml"));
+		const QStringList folders = ancestor.relativeFilePath(dir_path).split(QLatin1Char('/'), Qt::SkipEmptyParts);
+		if (!folders.isEmpty() && QFileInfo::exists(labels)) {
+			QStringList path {info.fileName()};
+			for (auto it = folders.crbegin() ; it != folders.crend() ; ++it) path << *it;
+			const QString prefix = QetLabelsFile::prefixForPath(labels, path, int(path.size()) - 1);
+			if (!prefix.isNull()) {
+				letter = prefix;
+				break;
+			}
+		}
+		if (!ancestor.cdUp()) break;
+	}
+	letter = letter.isNull() ? QString() : letter;
 	m_letters.insert(dir_path, letter);
 	return letter;
 }
 
 /**
 	@brief LibraryListing::toCsv
-	@return @p rows as CSV with a header row; the names in a cell are
-	separated by a space
+	@return @p rows as CSV with a header row, separated by ';' as the
+	other list exports; the names in a cell are separated by ", "
 */
-QString LibraryListing::toCsv(const QList<Row> &rows)
+QByteArray LibraryListing::toCsv(const QList<Row> &rows)
 {
-	QString csv = QStringLiteral("name,folder,file,kind,type,class_letter,terminals,"
-								 "terminal_names,unnamed_terminals,labels,error\n");
+	QByteArray csv = BomExport::csvRecord({
+			QStringLiteral("name"), QStringLiteral("folder"), QStringLiteral("file"),
+			QStringLiteral("kind"), QStringLiteral("type"), QStringLiteral("class_letter"),
+			QStringLiteral("terminals"), QStringLiteral("terminal_names"),
+			QStringLiteral("unnamed_terminals"), QStringLiteral("labels"), QStringLiteral("error")});
 	for (const Row &row : rows) {
-		const QStringList fields {
+		const bool readable = row.error.isEmpty();
+		csv += BomExport::csvRecord({
 			row.name, row.folder, row.file,
 			row.macro ? QStringLiteral("macro") : QStringLiteral("symbol"),
 			row.type, row.class_letter,
-			row.macro ? QString() : QString::number(row.terminals),
-			row.terminal_names.join(QLatin1Char(' ')),
-			row.macro ? QString() : QString::number(row.unnamed_terminals),
-			row.labels.join(QLatin1Char(' ')),
-			row.error
-		};
-		QStringList cells;
-		for (const QString &field : fields) cells << csvField(field);
-		csv += cells.join(QLatin1Char(',')) % QLatin1Char('\n');
+			row.macro || !readable ? QString() : QString::number(row.terminals),
+			row.terminal_names.join(separator),
+			row.macro || !readable ? QString() : QString::number(row.unnamed_terminals),
+			row.labels.join(separator),
+			row.error});
 	}
 	return csv;
 }
@@ -244,7 +287,7 @@ bool LibraryListing::write(const QList<Row> &rows, const QString &file_name, QSt
 		return false;
 	}
 	file.write("\xEF\xBB\xBF");
-	file.write(toCsv(rows).toUtf8());
+	file.write(toCsv(rows));
 	if (!file.commit()) {
 		if (error) *error = file.errorString();
 		return false;
