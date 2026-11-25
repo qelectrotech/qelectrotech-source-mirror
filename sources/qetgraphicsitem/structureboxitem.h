@@ -52,6 +52,8 @@ class StructureBoxItem : public QetShapeItem
 	Q_PROPERTY(QString plant READ plant WRITE setPlant NOTIFY identityChanged)
 	Q_PROPERTY(QString location READ location WRITE setLocation NOTIFY identityChanged)
 	Q_PROPERTY(QString prefix READ prefix WRITE setPrefix NOTIFY identityChanged)
+	Q_PROPERTY(QString higherPlant READ higherPlant WRITE setHigherPlant NOTIFY identityChanged)
+	Q_PROPERTY(QString higherLocation READ higherLocation WRITE setHigherLocation NOTIFY identityChanged)
 	Q_PROPERTY(qreal labelSize READ labelSize WRITE setLabelSize NOTIFY labelSizeChanged)
 
 	public:
@@ -68,6 +70,12 @@ class StructureBoxItem : public QetShapeItem
 		void setLocation(const QString &location);
 		QString prefix() const { return m_prefix; }
 		void setPrefix(const QString &prefix);
+			/// The IEC 81346 level above its plant (==), over the folio's
+		QString higherPlant() const { return m_higher_plant; }
+		void setHigherPlant(const QString &higher_plant);
+			/// The level above its location (++), over the folio's
+		QString higherLocation() const { return m_higher_location; }
+		void setHigherLocation(const QString &higher_location);
 
 		QString structureId() const;
 
@@ -104,6 +112,17 @@ class StructureBoxItem : public QetShapeItem
 			QString plant;
 			QString location;
 			QString product;
+				/// The IEC 81346 levels above the plant (==) and the
+				/// location (++): the smallest box's that has one, else
+				/// the folio's
+			QString higher_plant;
+			QString higher_location;
+
+				/// The plant with its == level in front ("==A1=P1"), for
+				/// AssignVariables::buildStructureId()
+			QString plantPart() const;
+				/// The location with its ++ level in front ("++S1+L1")
+			QString locationPart() const;
 		};
 
 			/// The boxes @p element lies in, the smallest first. "In" means
@@ -138,7 +157,7 @@ class StructureBoxItem : public QetShapeItem
 		static void refreshTextsOf(Element *element, bool label_fields = false);
 
 	signals:
-			/// Its plant, location or prefix changed
+			/// Its plant, location, prefix, == or ++ changed
 		void identityChanged();
 			/// The size of its name changed, by an edit or an undo
 		void labelSizeChanged();
@@ -157,6 +176,7 @@ class StructureBoxItem : public QetShapeItem
 							 const QList<const StructureBoxItem *> &boxes);
 
 		QString m_plant, m_location, m_prefix;
+		QString m_higher_plant, m_higher_location;
 			/// The folio it was last on: the symbols it leaves are
 			/// refreshed once it is gone
 		QPointer<Diagram> m_folio;

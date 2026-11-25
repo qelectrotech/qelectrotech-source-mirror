@@ -47,10 +47,14 @@ struct FolioRow
 
 using TerminalKey = std::pair<QString, QString>;   //element uuid, terminal uuid
 
-	/// A cell as its row letters and its column number. Compared by hand,
-	/// not with QCollator: its numeric mode does nothing in the C locale,
-	/// where A10 would come before A9
-int compareCells(const QString &a, const QString &b)
+QUuid firstWire(const QList<QUuid> &wires)
+{
+	return wires.isEmpty() ? QUuid() : *std::min_element(wires.begin(), wires.end());
+}
+
+} // namespace
+
+int OpenWireEnds::compareCells(const QString &a, const QString &b)
 {
 	const auto split = [](const QString &cell) {
 		int digits = cell.size();
@@ -69,13 +73,6 @@ int compareCells(const QString &a, const QString &b)
 		return column_a < column_b ? -1 : 1;
 	return 0;
 }
-
-QUuid firstWire(const QList<QUuid> &wires)
-{
-	return wires.isEmpty() ? QUuid() : *std::min_element(wires.begin(), wires.end());
-}
-
-} // namespace
 
 QList<OpenWireEnds::Finding> OpenWireEnds::check(const QSqlDatabase &db)
 {
