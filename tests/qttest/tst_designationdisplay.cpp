@@ -20,6 +20,7 @@
 #include "dataBase/projectdatabase.h"
 #include "ElementsCollection/xmlelementcollection.h"
 #include "diagram.h"
+#include "duplicatelabels.h"
 #include "factory/elementfactory.h"
 #include "qetapptest.h"
 #include "qetgraphicsitem/dynamicelementtextitem.h"
@@ -88,6 +89,26 @@ R"(<definition type="element" link_type="%1" uuid="%2" width="20" height="40" ho
 		tb.plant = plant;
 		tb.locmach = location;
 		diagram->border_and_titleblock.importTitleBlock(tb);
+	}
+
+	static void setHigherLevels(Diagram *diagram, const QString &higher_plant,
+								const QString &higher_location)
+	{
+		TitleBlockProperties tb = diagram->border_and_titleblock.exportTitleBlock();
+		tb.higher_plant = higher_plant;
+		tb.higher_location = higher_location;
+		diagram->border_and_titleblock.importTitleBlock(tb);
+	}
+
+	static QString deviceRow(QETProject &project, Element *element)
+	{
+		project.dataBase()->updateDB();
+		QString error;
+		QSqlQuery query = project.dataBase()->newQuery(QStringLiteral(
+			"SELECT structure_id FROM qet_devices WHERE device_uuid = '%1'")
+				.arg(element->uuid().toString()), &error);
+		if (!error.isEmpty() || !query.next()) return QStringLiteral("<no row: %1>").arg(error);
+		return query.value(0).toString();
 	}
 
 	static void setInfo(Element *element, const QString &label,
@@ -314,6 +335,113 @@ private slots:
 		project.setDesignationDisplay(Display::Short);
 		QCOMPARE(coil_field->toPlainText(), QStringLiteral("-K1"));
 		QCOMPARE(contact_field->toPlainText(), QStringLiteral("-A1-K1"));
+	}
+
+		//Item C7 of #1878: a folio's higher-level function (==) and
+		//higher-level location (++) go above its plant and location:
+		//==A1=FACTORY++S1+CP1-K1
+	void theFolioHigherLevelsGoAboveThePlantAndTheLocation()
+	{
+		QETProject project;
+		Diagram *diagram = project.addNewDiagram();
+		setFolio(diagram, QStringLiteral("FACTORY"), QStringLiteral("CP1"));
+		auto *box = new StructureBoxItem(QPointF(0, 0), QPointF(400, 400));
+		diagram->addItem(box);
+		Element *boxed = symbol(diagram);
+		Element *own = symbol(diagram);
+		QVERIFY(boxed && own);
+		boxed->setPos(200, 200);
+		own->setPos(1200, 1200);
+		setInfo(boxed, QStringLiteral("K1"));
+		setInfo(own, QStringLiteral("K2"), QStringLiteral("P2"));
+		DynamicElementTextItem *boxed_field = labelField(boxed);
+		DynamicElementTextItem *own_field = labelField(own);
+		DynamicElementTextItem *boxed_text = composite(boxed, QStringLiteral("%{structure_id_full}"));
+		DynamicElementTextItem *own_short = composite(own, QStringLiteral("%{structure_id}"));
+
+			//None set: as before, in the texts and the database
+		project.setDesignationDisplay(Display::Full);
+		QCOMPARE(boxed_field->toPlainText(), QStringLiteral("=FACTORY+CP1-K1"));
+		QCOMPARE(deviceRow(project, boxed), QStringLiteral("=FACTORY+CP1-K1"));
+
+			//Typed with their signs or without them
+		setHigherLevels(diagram, QStringLiteral("A1"), QStringLiteral("++S1"));
+		box->setPrefix(QStringLiteral("B2"));
+		QCOMPARE(boxed_field->toPlainText(), QStringLiteral("==A1=FACTORY++S1+CP1-B2-K1"));
+		QCOMPARE(boxed_text->toPlainText(), QStringLiteral("==A1=FACTORY++S1+CP1-B2-K1"));
+		QCOMPARE(own_field->toPlainText(), QStringLiteral("==A1=P2++S1+CP1-K2"));
+
+			//The short form leaves them out with the folio's plant and
+			//location; an own plant says which == it is under
+		project.setDesignationDisplay(Display::Short);
+		QCOMPARE(boxed_field->toPlainText(), QStringLiteral("-K1"));
+		QCOMPARE(own_field->toPlainText(), QStringLiteral("==A1=P2-K2"));
+		QCOMPARE(own_short->toPlainText(), QStringLiteral("==A1=P2-K2"));
+
+			//A folio with no plant still has its == level
+		project.setDesignationDisplay(Display::Full);
+		setFolio(diagram, QString(), QStringLiteral("CP1"));
+		QCOMPARE(boxed_field->toPlainText(), QStringLiteral("==A1++S1+CP1-B2-K1"));
+		setFolio(diagram, QStringLiteral("FACTORY"), QStringLiteral("CP1"));
+
+			//The database says what the texts say
+		for (Element *e : {boxed, own}) {
+			const QString label = e->elementInformations().value(QStringLiteral("label")).toString();
+			QCOMPARE(deviceRow(project, e), e->designationForDisplay(label));
+		}
+
+			//The duplicate check: -K1 under ==A1 and under ==A2 are two devices
+		QCOMPARE(DuplicateLabels::place(boxed), QStringLiteral("==A1=FACTORY++S1+CP1-B2"));
+	}
+
+		//A contact on a folio of another == shows its coil's ==
+	void aContactShowsTheHigherLevelOfItsCoil()
+	{
+		QETProject project;
+		Diagram *coil_folio = project.addNewDiagram();
+		Diagram *contact_folio = project.addNewDiagram();
+		setFolio(coil_folio, QStringLiteral("FACTORY"), QStringLiteral("CP1"));
+		setFolio(contact_folio, QStringLiteral("FACTORY"), QStringLiteral("CP1"));
+		setHigherLevels(coil_folio, QStringLiteral("A1"), QString());
+		setHigherLevels(contact_folio, QStringLiteral("A2"), QString());
+		Element *coil = symbol(coil_folio, QStringLiteral("master"));
+		Element *contact = symbol(contact_folio, QStringLiteral("slave"));
+		QVERIFY(coil && contact);
+		setInfo(coil, QStringLiteral("K1"));
+		DynamicElementTextItem *coil_field = labelField(coil);
+		DynamicElementTextItem *contact_field = labelField(contact);
+		coil->linkToElement(contact);
+
+		project.setDesignationDisplay(Display::Short);
+		QCOMPARE(coil_field->toPlainText(), QStringLiteral("-K1"));
+		QCOMPARE(contact_field->toPlainText(), QStringLiteral("==A1=FACTORY-K1"));
+		setHigherLevels(contact_folio, QStringLiteral("A1"), QString());
+		QCOMPARE(contact_field->toPlainText(), QStringLiteral("-K1"));
+	}
+
+		//Saved only when set, so a project without them saves as before;
+		//kept through .qet and .qetz
+	void theHigherLevelsAreSavedOnlyWhenSet()
+	{
+		QTemporaryDir dir;
+		QVERIFY(dir.isValid());
+		QETProject project;
+		Diagram *diagram = project.addNewDiagram();
+		const QString xml = project.toXml().toString();
+		QVERIFY(!xml.contains(QLatin1String("higher_plant")));
+		QVERIFY(!xml.contains(QLatin1String("higher_location")));
+
+		setHigherLevels(diagram, QStringLiteral("A1"), QStringLiteral("S1"));
+		for (const QString &name : {QStringLiteral("higher.qet"),
+									QStringLiteral("higher.qetz")}) {
+			project.setFilePath(dir.filePath(name));
+			QVERIFY2(project.write().isOk(), qPrintable(name));
+			QETProject reopened(project.filePath());
+			QVERIFY2(!reopened.diagrams().isEmpty(), qPrintable(name));
+			const BorderTitleBlock &tb = reopened.diagrams().first()->border_and_titleblock;
+			QCOMPARE(tb.higherPlant(), QStringLiteral("A1"));
+			QCOMPARE(tb.higherLocation(), QStringLiteral("S1"));
+		}
 	}
 
 		//A contact shows its coil's designation; the short form leaves out

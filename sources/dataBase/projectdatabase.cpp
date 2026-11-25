@@ -4974,8 +4974,40 @@ QString projectDataBase::structurePlacesSql()
 	The SQL of the full designation: =plant+location-label, every part left out
 	when it is empty, as AssignVariables::replaceVariable() composes it.
 */
+/**
+	@brief folioHigherLevelSql
+	The SQL of a folio's == or ++ level, from the title block properties
+	the folio stores (folio_titleblock, written only when set); NULL when
+	it has none.
+	@param name : higher_plant or higher_location
+	@param folio_uuid : the folio's uuid column, e.g. e.diagram_uuid
+*/
+static QString folioHigherLevelSql(const QString &name, const QString &folio_uuid)
+{
+	return QStringLiteral("(SELECT ft.value FROM folio_titleblock ft "
+						  "WHERE ft.diagram_uuid = %2 AND ft.name = '%1')")
+			.arg(name, folio_uuid);
+}
+
+/**
+	@brief withHigherLevelSql
+	The SQL of AssignVariables::withHigherLevel(): @p value with the level
+	@p higher above it in front ("==A1=P1"), @p value as it is when
+	@p higher is empty.
+*/
+static QString withHigherLevelSql(const QString &sign, const QString &higher,
+								  const QString &value)
+{
+	const QString level = QStringLiteral("LTRIM(TRIM(%1), '%2')").arg(higher, sign);
+	return QStringLiteral("(CASE WHEN COALESCE(%1, '') = '' THEN %2 "
+						  "ELSE '%3%3' || %1 || CASE WHEN COALESCE(%2, '') = '' THEN '' "
+						  "WHEN substr(%2, 1, 1) = '%3' THEN %2 ELSE '%3' || %2 END END)")
+			.arg(level, value, sign);
+}
+
 static QString structureIdSql(const QString &plant, const QString &location,
-							  const QString &label, const QString &product = QString())
+							  const QString &label, const QString &product = QString(),
+							  const QString &folio_uuid = QString())
 {
 	const auto part = [](const QString &sign, const QString &value) {
 			//A value typed with its sign ("-K1") keeps one sign, as
@@ -4997,9 +5029,16 @@ static QString structureIdSql(const QString &plant, const QString &location,
 						 "OR substr(%3, 1, length(%2) + 1) = %2 || '-') THEN %3 "
 						 "ELSE COALESCE(%2, '') || %3 END")
 			.arg(label, product, signed_label);
+		//The folio's == and ++ levels above the plant and the location
+	const QString plant_part = folio_uuid.isEmpty() ? plant
+		: withHigherLevelSql(QStringLiteral("="),
+							 folioHigherLevelSql(QStringLiteral("higher_plant"), folio_uuid), plant);
+	const QString location_part = folio_uuid.isEmpty() ? location
+		: withHigherLevelSql(QStringLiteral("+"),
+							 folioHigherLevelSql(QStringLiteral("higher_location"), folio_uuid), location);
 	return QStringLiteral("(%1 || %2 || %3)")
-			.arg(part(QStringLiteral("="), plant),
-				 part(QStringLiteral("+"), location),
+			.arg(part(QStringLiteral("="), plant_part),
+				 part(QStringLiteral("+"), location_part),
 				 label_part);
 }
 
@@ -5402,7 +5441,8 @@ QStringList projectDataBase::publicViewStatements()
 			"e.definition AS symbol, e.uuid AS device_uuid, e.diagram_uuid AS folio_uuid, ")
 			+ structureIdSql(effectiveStructureSql(QStringLiteral("ei.plant"), QStringLiteral("es.plant"), QStringLiteral("di.plant")),
 							 effectiveStructureSql(QStringLiteral("ei.location"), QStringLiteral("es.location"), QStringLiteral("di.locmach")),
-							 QStringLiteral("ei.label"), QStringLiteral("es.product"))
+							 QStringLiteral("ei.label"), QStringLiteral("es.product"),
+							 QStringLiteral("e.diagram_uuid"))
 			+ QStringLiteral(" AS structure_id, ei.model AS model "
 			"FROM element e LEFT JOIN element_info ei ON ei.element_uuid = e.uuid "
 			"LEFT JOIN ") + structurePlacesSql() + QStringLiteral(" es ON es.element_uuid = e.uuid")
@@ -5422,11 +5462,13 @@ QStringList projectDataBase::publicViewStatements()
 			"t2.element_uuid AS to_device_uuid, ")
 			+ structureIdSql(effectiveStructureSql(QStringLiteral("ei1.plant"), QStringLiteral("es1.plant"), QStringLiteral("di.plant")),
 							 effectiveStructureSql(QStringLiteral("ei1.location"), QStringLiteral("es1.location"), QStringLiteral("di.locmach")),
-							 QStringLiteral("ei1.label"), QStringLiteral("es1.product"))
+							 QStringLiteral("ei1.label"), QStringLiteral("es1.product"),
+							 QStringLiteral("c.diagram_uuid"))
 			+ QStringLiteral(" AS from_structure_id, ")
 			+ structureIdSql(effectiveStructureSql(QStringLiteral("ei2.plant"), QStringLiteral("es2.plant"), QStringLiteral("di.plant")),
 							 effectiveStructureSql(QStringLiteral("ei2.location"), QStringLiteral("es2.location"), QStringLiteral("di.locmach")),
-							 QStringLiteral("ei2.label"), QStringLiteral("es2.product"))
+							 QStringLiteral("ei2.label"), QStringLiteral("es2.product"),
+							 QStringLiteral("c.diagram_uuid"))
 			+ QStringLiteral(" AS to_structure_id "
 			"FROM conductor c "
 			"LEFT JOIN terminal t1 ON t1.uuid = c.terminal1_uuid AND t1.element_uuid = c.terminal1_element_uuid "
@@ -6358,6 +6400,10 @@ void projectDataBase::storeFolioTitleBlock(const QUuid &folio, const TitleBlockP
 		row(QStringLiteral("folio_group"), properties.folio_group, true);
 	if (!properties.folio_subgroup.isEmpty())
 		row(QStringLiteral("folio_subgroup"), properties.folio_subgroup, true);
+	if (!properties.higher_plant.isEmpty())
+		row(QStringLiteral("higher_plant"), properties.higher_plant, true);
+	if (!properties.higher_location.isEmpty())
+		row(QStringLiteral("higher_location"), properties.higher_location, true);
 	row(QStringLiteral("indexrev"), properties.indexrev, true);
 	row(QStringLiteral("version"), properties.version, true);
 	row(QStringLiteral("folio"), properties.folio, true);
@@ -7880,6 +7926,8 @@ void projectDataBase::endPrefill(bool keep_unplaced)
 		if (built.locmach != p.locmach) differing << QStringLiteral("locmach");
 		if (built.folio_group != p.folio_group) differing << QStringLiteral("folio_group");
 		if (built.folio_subgroup != p.folio_subgroup) differing << QStringLiteral("folio_subgroup");
+		if (built.higher_plant != p.higher_plant) differing << QStringLiteral("higher_plant");
+		if (built.higher_location != p.higher_location) differing << QStringLiteral("higher_location");
 		if (built.indexrev != p.indexrev) differing << QStringLiteral("indexrev");
 		if (built.version != p.version) differing << QStringLiteral("version");
 		if (built.folio != p.folio) differing << QStringLiteral("folio");
