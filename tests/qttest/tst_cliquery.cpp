@@ -134,7 +134,7 @@ private slots:
 		QTest::addColumn<QString>("columns");
 		QTest::newRow("qet_folios") << QStringLiteral("qet_folios")
 			<< QStringLiteral("folio_number,folio,title,author,plant,location,revision,date,filename,folio_uuid,"
-							  "folio_group,folio_subgroup");
+							  "folio_group,folio_subgroup,document_kind");
 		QTest::newRow("qet_devices") << QStringLiteral("qet_devices")
 			<< QStringLiteral("folio_number,folio,position,label,plant,location,kind,sub_kind,function,"
 							  "description,designation,manufacturer,article,supplier,quantity,comment,"

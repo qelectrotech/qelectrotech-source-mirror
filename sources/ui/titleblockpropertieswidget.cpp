@@ -122,6 +122,7 @@ void TitleBlockPropertiesWidget::setProperties(
 	ui -> m_loc           -> setText (properties.locmach);
 	ui -> m_folio_group_le    -> setText (properties.folio_group);
 	ui -> m_folio_subgroup_le -> setText (properties.folio_subgroup);
+	ui -> m_document_kind_le  -> setText (properties.document_kind);
 	ui -> m_indice        -> setText (properties.indexrev);
 	ui -> m_folio_le      -> setText (properties.folio);
 	ui -> m_display_at_cb -> setCurrentIndex(properties.display_at == Qt::BottomEdge ? 0 : 1);
@@ -190,6 +191,7 @@ TitleBlockProperties TitleBlockPropertiesWidget::properties() const
 	prop.locmach    = ui -> m_loc           -> text();
 	prop.folio_group    = ui -> m_folio_group_le    -> text();
 	prop.folio_subgroup = ui -> m_folio_subgroup_le -> text();
+	prop.document_kind  = ui -> m_document_kind_le  -> text();
 	prop.indexrev   = ui -> m_indice        -> text();
 	prop.folio      = ui -> m_folio_le      -> text();
 	prop.display_at = ui -> m_display_at_cb -> currentIndex() == 0 ? Qt::BottomEdge : Qt::RightEdge;
@@ -258,6 +260,7 @@ TitleBlockProperties TitleBlockPropertiesWidget::propertiesAutoNum(
 	prop.locmach  = ui -> m_loc       -> text();
 	prop.folio_group    = ui -> m_folio_group_le    -> text();
 	prop.folio_subgroup = ui -> m_folio_subgroup_le -> text();
+	prop.document_kind  = ui -> m_document_kind_le  -> text();
 	prop.indexrev = ui -> m_indice    -> text();
 	prop.folio    = "%autonum";
 	prop.display_at = ui -> m_display_at_cb -> currentIndex() == 0 ? Qt::BottomEdge : Qt::RightEdge;
@@ -592,6 +595,7 @@ void TitleBlockPropertiesWidget::addTemplateVariables(
 		QStringLiteral("title"), QStringLiteral("filename"),
 		QStringLiteral("plant"), QStringLiteral("locmach"),
 		QStringLiteral("folio_group"), QStringLiteral("folio_subgroup"),
+		QStringLiteral("document_kind"),
 		QStringLiteral("indexrev"), QStringLiteral("version"),
 		QStringLiteral("folio"), QStringLiteral("folio-id"),
 		QStringLiteral("folio-total"), QStringLiteral("auto_page_num"),

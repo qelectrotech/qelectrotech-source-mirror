@@ -207,6 +207,7 @@ TitleBlockProperties titleBlockOf(const QSqlDatabase &db, const QString &folio)
 		else if (name == QLatin1String("locmach")) properties.locmach = value;
 		else if (name == QLatin1String("folio_group")) properties.folio_group = value;
 		else if (name == QLatin1String("folio_subgroup")) properties.folio_subgroup = value;
+		else if (name == QLatin1String("document_kind")) properties.document_kind = value;
 		else if (name == QLatin1String("indexrev")) properties.indexrev = value;
 		else if (name == QLatin1String("version")) properties.version = value;
 		else if (name == QLatin1String("folio")) properties.folio = value;
