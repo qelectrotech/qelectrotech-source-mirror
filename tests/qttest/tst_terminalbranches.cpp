@@ -381,6 +381,60 @@ class tst_terminalbranches : public QObject
 			QCOMPARE(int(TerminalBranches::check(db).size()), found);
 		}
 
+			/// A chained junction is where its wires land: a split behind it,
+			/// between two symbols, is not between the strip terminals.
+			/// X1 -> J1 (chained) -> X2 -> J2, and J2 splits to K1 and K2
+		void splitBehindAChainedJunction()
+		{
+			QSqlDatabase db = newDatabase();
+			stripAndSymbols(db);
+			junctionDefinition(db, QStringLiteral("chain"), {1, 2, 3});
+			symbol(db, QStringLiteral("J1"), QStringLiteral("junction"), 3, QStringLiteral("A3"),
+				   QStringLiteral("embed://import/chain.elmt"));
+			symbol(db, QStringLiteral("J2"), QStringLiteral("junction"), 1, QStringLiteral("B3"));
+			wire(db, QStringLiteral("W1"), QStringLiteral("X1"), 2, QStringLiteral("J1"), 1);
+			wire(db, QStringLiteral("W2"), QStringLiteral("J1"), 2, QStringLiteral("X2"), 1);
+			wire(db, QStringLiteral("W3"), QStringLiteral("J1"), 3, QStringLiteral("J2"), 1);
+			wire(db, QStringLiteral("W4"), QStringLiteral("J2"), 1, QStringLiteral("K1"), 1);
+			wire(db, QStringLiteral("W5"), QStringLiteral("J2"), 1, QStringLiteral("K2"), 1);
+			QVERIFY(TerminalBranches::check(db).isEmpty());
+		}
+
+			/// The third wire need not reach a terminal: one to a folio
+			/// report not linked yet still splits the wire from X1 to X2
+		void thirdWireToAnUnlinkedReport()
+		{
+			QSqlDatabase db = newDatabase();
+			stripAndSymbols(db);
+			symbol(db, QStringLiteral("J1"), QStringLiteral("junction"), 1, QStringLiteral("A3"));
+			symbol(db, QStringLiteral("R1"), QStringLiteral("next_report"), 1);
+			wire(db, QStringLiteral("W1"), QStringLiteral("X1"), 2, QStringLiteral("J1"), 1);
+			wire(db, QStringLiteral("W2"), QStringLiteral("J1"), 1, QStringLiteral("X2"), 1);
+			wire(db, QStringLiteral("W3"), QStringLiteral("J1"), 1, QStringLiteral("R1"), 1);
+			const auto found = TerminalBranches::check(db);
+			QCOMPARE(found.size(), 1);
+			QCOMPARE(found.first().others, 0);
+		}
+
+			/// A strip terminal with no label of its own is named by its
+			/// strip and its place on it, as the strip draws it
+		void stripTerminalWithoutALabel()
+		{
+			QSqlDatabase db = newDatabase();
+			stripAndSymbols(db);
+			exec(db, QStringLiteral("UPDATE element_info SET label = '' WHERE element_uuid = '%1'").arg(id(QStringLiteral("X2"))));
+			exec(db, QStringLiteral("CREATE TABLE qet_terminals (strip TEXT, position INTEGER, element_uuid TEXT)"));
+			exec(db, QStringLiteral("INSERT INTO qet_terminals VALUES ('X5', 6, '%1')").arg(id(QStringLiteral("X2"))));
+			symbol(db, QStringLiteral("J1"), QStringLiteral("junction"), 1, QStringLiteral("A3"));
+			wire(db, QStringLiteral("W1"), QStringLiteral("X1"), 2, QStringLiteral("J1"), 1);
+			wire(db, QStringLiteral("W2"), QStringLiteral("J1"), 1, QStringLiteral("X2"), 1);
+			wire(db, QStringLiteral("W3"), QStringLiteral("J1"), 1, QStringLiteral("K1"), 1);
+			const auto found = TerminalBranches::check(db);
+			QCOMPARE(found.size(), 1);
+			QCOMPARE(found.first().terminals.at(0).label, QStringLiteral("-X1"));
+			QCOMPARE(found.first().terminals.at(1).label, QStringLiteral("X5:7"));
+		}
+
 			/// A bend on the way to a chained junction splits nothing:
 			/// X1 -- J2 -- J1 (chained) -> K1 -> X2
 		void bendBeforeAChainedJunction()

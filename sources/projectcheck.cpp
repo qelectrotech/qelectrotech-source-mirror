@@ -365,7 +365,7 @@ ProjectCheck::Result ProjectCheck::terminalBranches(QETProject *project)
 			finding.places << symbolPlace(folios, end.element, end.folio, end.position,
 										  end.label.isEmpty() ? tr("a terminal") : end.label);
 		if (branch.others)
-			finding.places << detail(tr("%n symbol terminal(s) on the same wire", nullptr,
+			finding.places << detail(tr("%n other terminal(s) on the same wire", nullptr,
 										branch.others));
 		result.findings << finding;
 	}

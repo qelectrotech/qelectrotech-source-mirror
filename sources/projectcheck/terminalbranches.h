@@ -36,11 +36,11 @@
 	which only pass a wire on; it stops at every other terminal, those of
 	symbols and of strip terminals. A run is found when it ends on two or
 	more different strip terminals and is split at a junction: one with
-	three wires or more and no chain to follow. Wires that meet on a
-	terminal are not a branch between terminals: they are clamped there.
-	Nor is a junction whose definition gives its chain (#1500), with each
-	of its wires on a connection of the chain: the wiring list runs it
-	from terminal to terminal, the way it is wired.
+	three wires or more. Wires that meet on a terminal are not a branch
+	between terminals: they are clamped there. Nor is a junction whose
+	definition gives its chain (#1500), with each of its wires on a
+	connection of the chain: the wiring list runs it from terminal to
+	terminal, the way it is wired, so a run stops there as at a terminal.
 
 	check() reads the conductor, element, element_info, terminal, link and
 	symbol_def tables of @p db alone, so it builds no folio and gives the same answer
@@ -53,7 +53,7 @@ namespace TerminalBranches
 	struct End
 	{
 		QUuid element;            ///< the strip terminal
-		QString label;
+		QString label;            ///< its label, else its strip and place on it, "X1:7"
 		QString terminal;         ///< the name of its terminal the run reaches
 		QUuid folio;
 		int folioNumber = 0;      ///< from 1 (diagram.pos)
@@ -69,7 +69,7 @@ namespace TerminalBranches
 		QString folioTitle;
 		QString position;         ///< its cell, as A3
 		QList<End> terminals;     ///< the strip terminals the run reaches, one each, in folio order
-		int others = 0;           ///< the other terminals it reaches, of symbols
+		int others = 0;           ///< the other terminals it reaches
 		QList<QUuid> wires;       ///< the wires of the run
 		QList<QUuid> folios;      ///< the folios those wires are on
 	};

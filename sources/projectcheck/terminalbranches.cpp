@@ -43,12 +43,6 @@ struct ElementRow
 
 using TerminalKey = std::pair<QString, QString>;   //element uuid, terminal uuid
 
-	/// A junction or a folio report: what only passes a wire on
-bool passesOn(ElementData::Type kind)
-{
-	return (kind & ElementData::Junction) || (kind & ElementData::AllReport);
-}
-
 } // namespace
 
 QList<TerminalBranches::Finding> TerminalBranches::check(const QSqlDatabase &db)
@@ -79,20 +73,6 @@ QList<TerminalBranches::Finding> TerminalBranches::check(const QSqlDatabase &db)
 		return row == elements.constEnd() ? ElementData::Simple : row->kind;
 	};
 
-		//The runs: junctions and reports joined by the wires between them,
-		//and a report to the first symbol it is linked to, as
-		//projectDataBase::potentialGroupsOf() follows a potential
-	QHash<QString, QString> parent;
-	const auto find = [&](QString x) {
-		for (auto up = parent.constFind(x) ; up != parent.constEnd() ; up = parent.constFind(x))
-			x = up.value();
-		return x;
-	};
-	const auto join = [&](const QString &a, const QString &b) {
-		const QString ra = find(a), rb = find(b);
-		if (ra != rb) parent[rb] = ra;
-	};
-
 	struct WireRow { QString uuid, folio; TerminalKey end1, end2; };
 	QList<WireRow> wires;
 	QHash<QString, int> junction_wires;   //wire ends on each junction
@@ -105,31 +85,12 @@ QList<TerminalBranches::Finding> TerminalBranches::check(const QSqlDatabase &db)
 			const WireRow wire{query.value(0).toString(), query.value(1).toString(),
 							   {query.value(2).toString(), query.value(3).toString()},
 							   {query.value(4).toString(), query.value(5).toString()}};
-			const bool pass1 = passesOn(kindOf(wire.end1.first));
-			const bool pass2 = passesOn(kindOf(wire.end2.first));
-			if (!pass1 && !pass2)
-				continue;   //from terminal to terminal: in no run
-			if (pass1 && pass2)
-				join(wire.end1.first, wire.end2.first);
 			for (const TerminalKey &end : {wire.end1, wire.end2})
 				if (kindOf(end.first) & ElementData::Junction) {
 					++junction_wires[end.first];
 					++connection_wires[end.first][QUuid(end.second)];
 				}
 			wires << wire;
-		}
-	}
-	{
-		QSqlQuery query(db);
-		query.exec(QStringLiteral("SELECT element_uuid, linked_uuid FROM link ORDER BY element_uuid, ord, rowid"));
-		QSet<QString> seen;
-		while (query.next()) {
-			const QString element = query.value(0).toString();
-			if (seen.contains(element)) continue;
-			seen.insert(element);
-			const QString partner = query.value(1).toString();
-			if ((kindOf(element) & ElementData::AllReport) && passesOn(kindOf(partner)))
-				join(element, partner);
 		}
 	}
 
@@ -173,42 +134,80 @@ QList<TerminalBranches::Finding> TerminalBranches::check(const QSqlDatabase &db)
 				return false;
 		return true;
 	};
-		//A junction a wire is split at: three wires or more and no chain.
-		//One with two is a point on the wire, a bend
-	QHash<QString, bool> splits;
-	const auto splitsWire = [&](const QString &junction) {
-		auto known = splits.constFind(junction);
-		if (known == splits.constEnd())
-			known = splits.insert(junction, junction_wires.value(junction) >= 3
-											&& !followsChain(junction));
-		return known.value();
+	QSet<QString> chained;
+	for (auto it = junction_wires.constBegin() ; it != junction_wires.constEnd() ; ++it)
+		if (followsChain(it.key()))
+			chained.insert(it.key());
+
+		//What only passes a wire on: a folio report, a junction with no
+		//chain. A chained junction is where its wires land, as a terminal
+	const auto passesOn = [&](const QString &element) {
+		const ElementData::Type kind = kindOf(element);
+		return (kind & ElementData::AllReport)
+			|| ((kind & ElementData::Junction) && !chained.contains(element));
 	};
+
+		//The runs: what passes a wire on, joined by the wires between, and
+		//a report to the first symbol it is linked to, as
+		//projectDataBase::potentialGroupsOf() follows a potential
+	QHash<QString, QString> parent;
+	const auto find = [&](QString x) {
+		for (auto up = parent.constFind(x) ; up != parent.constEnd() ; up = parent.constFind(x))
+			x = up.value();
+		return x;
+	};
+	const auto join = [&](const QString &a, const QString &b) {
+		const QString ra = find(a), rb = find(b);
+		if (ra != rb) parent[rb] = ra;
+	};
+	for (const WireRow &wire : std::as_const(wires))
+		if (passesOn(wire.end1.first) && passesOn(wire.end2.first))
+			join(wire.end1.first, wire.end2.first);
+	{
+		QSqlQuery query(db);
+		query.exec(QStringLiteral("SELECT element_uuid, linked_uuid FROM link ORDER BY element_uuid, ord, rowid"));
+		QSet<QString> seen;
+		while (query.next()) {
+			const QString element = query.value(0).toString();
+			if (seen.contains(element)) continue;
+			seen.insert(element);
+			const QString partner = query.value(1).toString();
+			if ((kindOf(element) & ElementData::AllReport) && passesOn(partner))
+				join(element, partner);
+		}
+	}
 
 	struct Run {
 		QSet<TerminalKey> ends;
 		QList<QUuid> wires;
 		QList<QUuid> folios;
-		QSet<QString> junctions;   ///< the junctions it is split at (splitsWire())
+		QSet<QString> junctions;   ///< the junctions it is split at: three wires or more
 	};
 	QHash<QString, Run> runs;
 	for (const WireRow &wire : std::as_const(wires)) {
-		const QString pass = passesOn(kindOf(wire.end1.first)) ? wire.end1.first : wire.end2.first;
-		Run &run = runs[find(pass)];
+		const bool pass1 = passesOn(wire.end1.first);
+		if (!pass1 && !passesOn(wire.end2.first))
+			continue;   //from terminal to terminal: in no run
+		Run &run = runs[find(pass1 ? wire.end1.first : wire.end2.first)];
 		run.wires << QUuid(wire.uuid);
 		const QUuid folio(wire.folio);
 		if (!run.folios.contains(folio))
 			run.folios << folio;
 		for (const TerminalKey &end : {wire.end1, wire.end2}) {
-			const ElementData::Type kind = kindOf(end.first);
-			if (kind & ElementData::Junction) {
-				if (splitsWire(end.first))
-					run.junctions.insert(end.first);
-			}
-			else if (!(kind & ElementData::AllReport))
+			if (!passesOn(end.first))
 				run.ends.insert(end);
+			else if ((kindOf(end.first) & ElementData::Junction)
+					 && junction_wires.value(end.first) >= 3)
+				run.junctions.insert(end.first);
 		}
 	}
 
+		//A strip terminal is named as the strip draws it: by its own
+		//label, else by its strip and its place on it, "X1:7"
+		//(RealTerminal's endDesignation()). qet_terminals counts from 0
+	QSqlQuery strip_place(db);
+	strip_place.prepare(QStringLiteral("SELECT strip, position FROM qet_terminals "
+									   "WHERE element_uuid = :element AND COALESCE(strip, '') <> ''"));
 	QSqlQuery terminal_name(db);
 	terminal_name.prepare(QStringLiteral("SELECT name FROM terminal WHERE uuid = :uuid AND element_uuid = :element"));
 	const auto place = [&](const QString &element, QUuid &folio, int &number, QString &position, QString &label) {
@@ -229,7 +228,7 @@ QList<TerminalBranches::Finding> TerminalBranches::check(const QSqlDatabase &db)
 
 	QList<Finding> found;
 	for (const Run &run : std::as_const(runs)) {
-		if (run.junctions.isEmpty() || run.ends.size() < 3)
+		if (run.junctions.isEmpty())
 			continue;
 		QList<End> strip;
 		QSet<QString> strip_elements;
@@ -249,6 +248,12 @@ QList<TerminalBranches::Finding> TerminalBranches::check(const QSqlDatabase &db)
 			End e;
 			e.element = QUuid(end.first);
 			place(end.first, e.folio, e.folioNumber, e.position, e.label);
+			if (e.label.isEmpty()) {
+				strip_place.bindValue(QStringLiteral(":element"), end.first);
+				if (strip_place.exec() && strip_place.next())
+					e.label = QStringLiteral("%1:%2").arg(strip_place.value(0).toString())
+							  .arg(strip_place.value(1).toInt() + 1);
+			}
 			terminal_name.bindValue(QStringLiteral(":uuid"), end.second);
 			terminal_name.bindValue(QStringLiteral(":element"), end.first);
 			if (terminal_name.exec() && terminal_name.next())
