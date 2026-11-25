@@ -2696,3 +2696,8 @@ qet_add_app_test(tst_tablereopen tst_tablereopen.cpp)
 # back only for one-digit ids: from the eleventh project opened, editing an
 # embedded symbol or placing one silently failed (#1958).
 qet_add_app_test(tst_projectidlocation tst_projectidlocation.cpp)
+# The library listing (#1878 A8): a row per symbol and macro of a
+# collection folder, with its terminal names and class letter.
+qet_add_app_test(tst_librarylisting tst_librarylisting.cpp)
+target_compile_definitions(tst_librarylisting PRIVATE
+  QET_ELEMENTS_DIR="${QET_DIR}/elements")

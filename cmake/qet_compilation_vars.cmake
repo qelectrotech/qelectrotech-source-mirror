@@ -642,6 +642,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/ElementsCollection/fileelementcollectionitem.cpp
   ${QET_DIR}/sources/ElementsCollection/fileelementcollectionitem.h
   ${QET_DIR}/sources/ElementsCollection/qetlabelsfile.cpp
+  ${QET_DIR}/sources/ElementsCollection/librarylisting.cpp
+  ${QET_DIR}/sources/ElementsCollection/librarylisting.h
   ${QET_DIR}/sources/ElementsCollection/qetlabelsfile.h
   ${QET_DIR}/sources/ElementsCollection/terminaluuids.cpp
   ${QET_DIR}/sources/ElementsCollection/terminaluuids.h
