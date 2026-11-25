@@ -138,7 +138,7 @@ private slots:
 		QTest::newRow("qet_devices") << QStringLiteral("qet_devices")
 			<< QStringLiteral("folio_number,folio,position,label,plant,location,kind,sub_kind,function,"
 							  "description,designation,manufacturer,article,supplier,quantity,comment,"
-							  "symbol,device_uuid,folio_uuid,structure_id,model");
+							  "symbol,device_uuid,folio_uuid,structure_id,model,higher_plant,higher_location");
 		QTest::newRow("qet_wires") << QStringLiteral("qet_wires")
 			<< QStringLiteral("folio_number,folio,wire_number,from_device,from_terminal,to_device,"
 							  "to_terminal,colour,section,cable,bus,function,voltage,wire_uuid,"
@@ -166,7 +166,8 @@ private slots:
 		QTest::newRow("qet_revisions") << QStringLiteral("qet_revisions")
 			<< QStringLiteral("position,revision,date,description,author,approver");
 		QTest::newRow("qet_locations") << QStringLiteral("qet_locations")
-			<< QStringLiteral("plant,location,structure_id,symbols,folios,first_folio_number");
+			<< QStringLiteral("plant,location,structure_id,symbols,folios,first_folio_number,"
+							  "higher_plant,higher_location");
 	}
 
 	void viewColumns()

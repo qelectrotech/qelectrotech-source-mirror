@@ -2399,6 +2399,15 @@ QList<OpenWireEnds::Finding> projectDataBase::openWireEnds()
 	return OpenWireEnds::check(m_data_base);
 }
 
+QList<TerminalBranches::Finding> projectDataBase::terminalBranches()
+{
+	flushLinks();
+	flushElementTexts();
+	flushElementPositions();
+	flushCollections();
+	return TerminalBranches::check(m_data_base);
+}
+
 /**
 	@brief projectDataBase::linkedSymbols
 	@return the symbols @p element is linked to, read from the link table
@@ -4937,15 +4946,17 @@ QString projectDataBase::structurePlacesSql()
 	};
 	return QStringLiteral(
 		"(WITH box_rows AS (SELECT folio_uuid, %1 AS plant, %2 AS location, %10 AS prefix, "
+			"%11 AS higher_plant, %12 AS higher_location, "
 			"%3 AS x1, %4 AS x2, %5 AS y1, %6 AS y2, "
 			"COALESCE(%7, 0) AS px, COALESCE(%8, 0) AS py "
 			"FROM drawing_item WHERE section = 'shape' GROUP BY item_uuid, folio_uuid "
 			"HAVING %9 = 'true'), "
-		"boxes AS (SELECT folio_uuid, plant, location, prefix, "
+		"boxes AS (SELECT folio_uuid, plant, location, prefix, higher_plant, higher_location, "
 			"MIN(x1, x2) + px AS x_min, MAX(x1, x2) + px AS x_max, "
 			"MIN(y1, y2) + py AS y_min, MAX(y1, y2) + py AS y_max, "
 			"ABS(x2 - x1) * ABS(y2 - y1) AS area FROM box_rows), "
-		"hits AS (SELECT e.uuid AS element_uuid, b.plant, b.location, b.prefix, b.area "
+		"hits AS (SELECT e.uuid AS element_uuid, b.plant, b.location, b.prefix, "
+			"b.higher_plant, b.higher_location, b.area "
 			"FROM element e JOIN element_placement p ON p.element_uuid = e.uuid "
 			"JOIN boxes b ON b.folio_uuid = e.diagram_uuid "
 			"AND COALESCE(p.centre_x, p.x) BETWEEN b.x_min AND b.x_max "
@@ -4955,6 +4966,12 @@ QString projectDataBase::structurePlacesSql()
 				"ORDER BY COALESCE(plant, '') = '', area) AS plant, "
 			"FIRST_VALUE(NULLIF(location, '')) OVER (PARTITION BY element_uuid "
 				"ORDER BY COALESCE(location, '') = '', area) AS location, "
+				//The == and ++ of the smallest box that has one, field by
+				//field as the plant and the location
+			"FIRST_VALUE(NULLIF(TRIM(higher_plant), '')) OVER (PARTITION BY element_uuid "
+				"ORDER BY COALESCE(TRIM(higher_plant), '') = '', area) AS higher_plant, "
+			"FIRST_VALUE(NULLIF(TRIM(higher_location), '')) OVER (PARTITION BY element_uuid "
+				"ORDER BY COALESCE(TRIM(higher_location), '') = '', area) AS higher_location, "
 				//The prefixes of every box around it, the largest first, each
 				//with its sign: the product levels above its label
 			"GROUP_CONCAT(CASE WHEN COALESCE(TRIM(prefix), '') = '' THEN NULL "
@@ -4966,7 +4983,7 @@ QString projectDataBase::structurePlacesSql()
 			.arg(pivot("plant", false), pivot("location", false),
 				 pivot("x1", true), pivot("x2", true), pivot("y1", true), pivot("y2", true),
 				 pivot("posX", true), pivot("posY", true), pivot("structure_box", false))
-			.arg(pivot("prefix", false));
+			.arg(pivot("prefix", false), pivot("higher_plant", false), pivot("higher_location", false));
 }
 
 /**
@@ -4974,8 +4991,95 @@ QString projectDataBase::structurePlacesSql()
 	The SQL of the full designation: =plant+location-label, every part left out
 	when it is empty, as AssignVariables::replaceVariable() composes it.
 */
+/**
+	@brief folioHigherLevelSql
+	The SQL of a folio's == or ++ level, from the title block properties
+	the folio stores (folio_titleblock, written only when set); NULL when
+	it has none.
+	@param name : higher_plant or higher_location
+	@param folio_uuid : the folio's uuid column, e.g. e.diagram_uuid
+*/
+static QString folioHigherLevelSql(const QString &name, const QString &folio_uuid)
+{
+	return QStringLiteral("(SELECT ft.value FROM folio_titleblock ft "
+						  "WHERE ft.diagram_uuid = %2 AND ft.name = '%1')")
+			.arg(name, folio_uuid);
+}
+
+/**
+	@brief withHigherLevelSql
+	The SQL of AssignVariables::withHigherLevel(): @p value with the level
+	@p higher above it in front ("==A1=P1"), @p value as it is when
+	@p higher is empty.
+*/
+static QString withHigherLevelSql(const QString &sign, const QString &higher,
+								  const QString &value)
+{
+	const QString level = QStringLiteral("LTRIM(TRIM(%1), '%2')").arg(higher, sign);
+	return QStringLiteral("(CASE WHEN COALESCE(%1, '') = '' THEN %2 "
+						  "ELSE '%3%3' || %1 || CASE WHEN COALESCE(%2, '') = '' THEN '' "
+						  "WHEN substr(%2, 1, 1) = '%3' THEN %2 ELSE '%3' || %2 END END)")
+			.arg(level, value, sign);
+}
+
+/**
+	@brief structureIdSql
+	The same, with the == and ++ levels given as SQL values rather than
+	read from a folio; an empty @p higher_plant / @p higher_location
+	string means none.
+*/
+static QString levelsStructureIdSql(const QString &plant, const QString &location,
+									const QString &label, const QString &product,
+									const QString &higher_plant, const QString &higher_location);
+
+/**
+	@brief elementHigherLevelSql
+	The SQL of a symbol's == or ++: its own, else the smallest structure
+	box around it that has one, else its folio's; NULL when none has one.
+	@param name : higher_plant or higher_location
+	@param own : the symbol's information's alias, e.g. ei
+	@param box : the boxes' alias, e.g. es (structurePlacesSql())
+	@param folio_uuid : the folio's uuid column, e.g. e.diagram_uuid
+*/
+static QString elementHigherLevelSql(const QString &name, const QString &own,
+									 const QString &box, const QString &folio_uuid)
+{
+	return QStringLiteral("COALESCE(NULLIF(TRIM(%4.%1), ''), %2.%1, %3)")
+			.arg(name, box, folioHigherLevelSql(name, folio_uuid), own);
+}
+
+/**
+	@brief elementStructureIdSql
+	structureIdSql() of a symbol, whose == and ++ are its boxes', else
+	its folio's (elementHigherLevelSql())
+*/
+static QString elementStructureIdSql(const QString &plant, const QString &location,
+									 const QString &label, const QString &own,
+									 const QString &box, const QString &folio_uuid);
+
 static QString structureIdSql(const QString &plant, const QString &location,
-							  const QString &label, const QString &product = QString())
+							  const QString &label, const QString &product = QString(),
+							  const QString &folio_uuid = QString())
+{
+	return levelsStructureIdSql(plant, location, label, product,
+		folio_uuid.isEmpty() ? QString()
+			: folioHigherLevelSql(QStringLiteral("higher_plant"), folio_uuid),
+		folio_uuid.isEmpty() ? QString()
+			: folioHigherLevelSql(QStringLiteral("higher_location"), folio_uuid));
+}
+
+static QString elementStructureIdSql(const QString &plant, const QString &location,
+									 const QString &label, const QString &own,
+									 const QString &box, const QString &folio_uuid)
+{
+	return levelsStructureIdSql(plant, location, label, box + QStringLiteral(".product"),
+		elementHigherLevelSql(QStringLiteral("higher_plant"), own, box, folio_uuid),
+		elementHigherLevelSql(QStringLiteral("higher_location"), own, box, folio_uuid));
+}
+
+static QString levelsStructureIdSql(const QString &plant, const QString &location,
+									const QString &label, const QString &product,
+									const QString &higher_plant, const QString &higher_location)
 {
 	const auto part = [](const QString &sign, const QString &value) {
 			//A value typed with its sign ("-K1") keeps one sign, as
@@ -4997,9 +5101,14 @@ static QString structureIdSql(const QString &plant, const QString &location,
 						 "OR substr(%3, 1, length(%2) + 1) = %2 || '-') THEN %3 "
 						 "ELSE COALESCE(%2, '') || %3 END")
 			.arg(label, product, signed_label);
+		//The folio's == and ++ levels above the plant and the location
+	const QString plant_part = higher_plant.isEmpty() ? plant
+		: withHigherLevelSql(QStringLiteral("="), higher_plant, plant);
+	const QString location_part = higher_location.isEmpty() ? location
+		: withHigherLevelSql(QStringLiteral("+"), higher_location, location);
 	return QStringLiteral("(%1 || %2 || %3)")
-			.arg(part(QStringLiteral("="), plant),
-				 part(QStringLiteral("+"), location),
+			.arg(part(QStringLiteral("="), plant_part),
+				 part(QStringLiteral("+"), location_part),
 				 label_part);
 }
 
@@ -5013,12 +5122,21 @@ void projectDataBase::createElementNomenclatureView()
 		//%M / %LM of the folio), as EPLAN builds the device tag from the
 		//page structure: an element drawn on a +UV1 folio is in +UV1
 		//without the information being typed into every element.
+	const QString higher_plant_sql = elementHigherLevelSql(
+				QStringLiteral("higher_plant"), QStringLiteral("ei"), QStringLiteral("es"), QStringLiteral("e.diagram_uuid"));
+	const QString higher_location_sql = elementHigherLevelSql(
+				QStringLiteral("higher_location"), QStringLiteral("ei"), QStringLiteral("es"), QStringLiteral("e.diagram_uuid"));
 	QString create_view (QStringLiteral("CREATE VIEW element_nomenclature_view AS SELECT "
 						 "ei.label AS label,")
 						 + effectiveStructureSql(QStringLiteral("ei.plant"), QStringLiteral("es.plant"), QStringLiteral("di.plant"))
 						 + QStringLiteral(" AS plant,")
 						 + effectiveStructureSql(QStringLiteral("ei.location"), QStringLiteral("es.location"), QStringLiteral("di.locmach"))
-						 + QStringLiteral(" AS location,"
+						 + QStringLiteral(" AS location,")
+							//The == and ++ the symbol takes: its own, else its
+							//box's, else its folio's, as plant and location
+						 + QStringLiteral("LTRIM(TRIM(") + higher_plant_sql
+						 + QStringLiteral("), '=') AS higher_plant, LTRIM(TRIM(") + higher_location_sql
+						 + QStringLiteral("), '+') AS higher_location,"
 						 "ei.comment AS comment,"
 						 "ei.function AS function,"
 						 "ei.description AS description,"
@@ -5130,6 +5248,9 @@ void projectDataBase::createElementNomenclatureView()
 						 QStringLiteral("COALESCE(NULLIF(st.plant, ''), '')"));
 		columns_.replace(effectiveStructureSql(QStringLiteral("ei.location"), QStringLiteral("es.location"), QStringLiteral("di.locmach")),
 						 QStringLiteral("COALESCE(NULLIF(st.location, ''), '')"));
+			//Its own == and ++ only: no box, no folio
+		columns_.replace(higher_plant_sql, QStringLiteral("COALESCE(ei.higher_plant, '')"));
+		columns_.replace(higher_location_sql, QStringLiteral("COALESCE(ei.higher_location, '')"));
 		columns_.replace(QStringLiteral("ei."), QStringLiteral("st."));
 		columns_.replace(QStringLiteral("d.pos AS diagram_position"), QStringLiteral("st.diagram_position AS diagram_position"));
 		columns_.replace(QStringLiteral("e.type AS element_type"), QStringLiteral("'terminal' AS element_type"));
@@ -5308,7 +5429,14 @@ QStringList projectDataBase::publicViews()
 	smallest structure box it is in, else its folio's, as in the parts list
 	and in its texts (StructureBoxItem::placeOf()), and structure_id composes them with its label
 	(=plant+location-label) as %{structure_id} does in its texts; each
-	end of a wire has its own (from_structure_id, to_structure_id). The links are kept once each: coil to contact,
+	end of a wire has its own (from_structure_id, to_structure_id). The
+	IEC 81346 levels above the plant (==) and the location (++) are the
+	symbol's own, else the smallest structure box's that has one, else
+	the folio's; structure_id
+	puts them in front (==A1=plant++S1+location-label), and qet_devices
+	gives them last, as higher_plant and higher_location, without their
+	signs ('' for none).
+	The links are kept once each: coil to contact,
 	going arrow to coming arrow.
 
 	qet_device_list is the project's devices, one row each: a device is
@@ -5345,7 +5473,10 @@ QStringList projectDataBase::publicViews()
 	each (plant, location) a symbol or a folio's title block has, with the
 	symbols in it (folio reports left out), the folios showing it and the
 	first of them. Empty plant and location are '' (the row of what has
-	neither), and structure_id is =plant+location. A folio counts under
+	neither), and structure_id is =plant+location. The same place under
+	another == or ++ is another row: higher_plant and higher_location,
+	added last, are the symbols' (qet_devices) or the folio's, and
+	structure_id puts them in front (==A1=plant++S1+location). A folio counts under
 	every place it shows, so the folios of different rows are not to be
 	added up.
 	qet_revisions is the project's revision history (#1295), one row per
@@ -5408,10 +5539,18 @@ QStringList projectDataBase::publicViewStatements()
 			"ei.manufacturer AS manufacturer, ei.manufacturer_reference AS article, "
 			"ei.supplier AS supplier, ei.quantity AS quantity, ei.comment AS comment, "
 			"e.definition AS symbol, e.uuid AS device_uuid, e.diagram_uuid AS folio_uuid, ")
-			+ structureIdSql(effectiveStructureSql(QStringLiteral("ei.plant"), QStringLiteral("es.plant"), QStringLiteral("di.plant")),
+			+ elementStructureIdSql(effectiveStructureSql(QStringLiteral("ei.plant"), QStringLiteral("es.plant"), QStringLiteral("di.plant")),
 							 effectiveStructureSql(QStringLiteral("ei.location"), QStringLiteral("es.location"), QStringLiteral("di.locmach")),
-							 QStringLiteral("ei.label"), QStringLiteral("es.product"))
-			+ QStringLiteral(" AS structure_id, ei.model AS model "
+							 QStringLiteral("ei.label"), QStringLiteral("ei"), QStringLiteral("es"),
+							 QStringLiteral("e.diagram_uuid"))
+			+ QStringLiteral(" AS structure_id, ei.model AS model, ")
+				//Its == and ++, its own, its boxes' else its folio's: as structure_id
+				//has them, for the lists that group by place
+				//without their signs, so ==A1 and A1 are one level
+			+ QStringLiteral("COALESCE(LTRIM(TRIM(") + elementHigherLevelSql(QStringLiteral("higher_plant"), QStringLiteral("ei"), QStringLiteral("es"), QStringLiteral("e.diagram_uuid"))
+			+ QStringLiteral("), '='), '') AS higher_plant, COALESCE(LTRIM(TRIM(")
+			+ elementHigherLevelSql(QStringLiteral("higher_location"), QStringLiteral("ei"), QStringLiteral("es"), QStringLiteral("e.diagram_uuid"))
+			+ QStringLiteral("), '+'), '') AS higher_location "
 			"FROM element e LEFT JOIN element_info ei ON ei.element_uuid = e.uuid "
 			"LEFT JOIN ") + structurePlacesSql() + QStringLiteral(" es ON es.element_uuid = e.uuid")
 			+ folio_of.arg(QStringLiteral("e.diagram_uuid")),
@@ -5428,13 +5567,15 @@ QStringList projectDataBase::publicViewStatements()
 			+ property(QStringLiteral("tension_protocol"), QStringLiteral("voltage")) + QStringLiteral(
 			", c.uuid AS wire_uuid, t1.element_uuid AS from_device_uuid, "
 			"t2.element_uuid AS to_device_uuid, ")
-			+ structureIdSql(effectiveStructureSql(QStringLiteral("ei1.plant"), QStringLiteral("es1.plant"), QStringLiteral("di.plant")),
+			+ elementStructureIdSql(effectiveStructureSql(QStringLiteral("ei1.plant"), QStringLiteral("es1.plant"), QStringLiteral("di.plant")),
 							 effectiveStructureSql(QStringLiteral("ei1.location"), QStringLiteral("es1.location"), QStringLiteral("di.locmach")),
-							 QStringLiteral("ei1.label"), QStringLiteral("es1.product"))
+							 QStringLiteral("ei1.label"), QStringLiteral("ei1"), QStringLiteral("es1"),
+							 QStringLiteral("c.diagram_uuid"))
 			+ QStringLiteral(" AS from_structure_id, ")
-			+ structureIdSql(effectiveStructureSql(QStringLiteral("ei2.plant"), QStringLiteral("es2.plant"), QStringLiteral("di.plant")),
+			+ elementStructureIdSql(effectiveStructureSql(QStringLiteral("ei2.plant"), QStringLiteral("es2.plant"), QStringLiteral("di.plant")),
 							 effectiveStructureSql(QStringLiteral("ei2.location"), QStringLiteral("es2.location"), QStringLiteral("di.locmach")),
-							 QStringLiteral("ei2.label"), QStringLiteral("es2.product"))
+							 QStringLiteral("ei2.label"), QStringLiteral("ei2"), QStringLiteral("es2"),
+							 QStringLiteral("c.diagram_uuid"))
 			+ QStringLiteral(" AS to_structure_id "
 			"FROM conductor c "
 			"LEFT JOIN terminal t1 ON t1.uuid = c.terminal1_uuid AND t1.element_uuid = c.terminal1_element_uuid "
@@ -5522,9 +5663,15 @@ QStringList projectDataBase::publicViewStatements()
 				"GROUP BY element), "
 			"reached AS (SELECT element, group_concat(other, ', ') AS connected_to FROM "
 				"(SELECT DISTINCT element, other FROM ends WHERE other IS NOT NULL) "
-				"GROUP BY element) "
+				"GROUP BY element), "
+				//The folio a strip is first drawn on, whose == and ++ go
+				//above its plant and location, as a cable's do
+			"first_folio AS (SELECT t.strip_uuid, d.folio_uuid, ROW_NUMBER() OVER "
+				"(PARTITION BY t.strip_uuid ORDER BY d.folio_number, t.position, t.level) AS n "
+				"FROM terminal t JOIN qet_devices d ON d.device_uuid = t.element_uuid) "
 			"SELECT ")
-			+ structureIdSql(QStringLiteral("s.plant"), QStringLiteral("s.location"), QStringLiteral("s.name"))
+			+ structureIdSql(QStringLiteral("s.plant"), QStringLiteral("s.location"), QStringLiteral("s.name"),
+							 QString(), QStringLiteral("ff.folio_uuid"))
 			+ QStringLiteral(" AS strip_id, COALESCE(s.plant, '') AS plant, "
 			"COALESCE(s.location, '') AS location, s.name AS strip, t.position, t.level, "
 			"d.label, d.structure_id AS terminal_id, t.spare, d.folio_number, d.folio, "
@@ -5532,6 +5679,7 @@ QStringList projectDataBase::publicViewStatements()
 			"COALESCE(s.kind, 'terminals') AS strip_kind, "
 			"COALESCE(s.device_type, '') AS strip_device_type "
 			"FROM terminal t JOIN strip s ON s.strip_uuid = t.strip_uuid "
+			"LEFT JOIN first_folio ff ON ff.strip_uuid = s.strip_uuid AND ff.n = 1 "
 			"LEFT JOIN qet_devices d ON d.device_uuid = t.element_uuid "
 			"LEFT JOIN numbers n ON n.element = t.element_uuid "
 			"LEFT JOIN reached r ON r.element = t.element_uuid "
@@ -5563,11 +5711,14 @@ QStringList projectDataBase::publicViewStatements()
 			+ QStringLiteral(" AS eff_plant, ")
 			+ effectiveStructureSql(QStringLiteral("c.location"), QStringLiteral("d.location"))
 			+ QStringLiteral(" AS eff_location, COALESCE(s.folios, 0) AS folios, "
-				"d.folio_number, d.folio FROM cable c LEFT JOIN drawn d "
+				"d.folio_number, d.folio, d.folio_uuid AS first_folio_uuid FROM cable c LEFT JOIN drawn d "
 				"ON d.cable_uuid = c.cable_uuid AND d.n = 1 "
 				"LEFT JOIN spread s ON s.cable_uuid = c.cable_uuid) "
 			"SELECT ")
-			+ structureIdSql(QStringLiteral("eff_plant"), QStringLiteral("eff_location"), QStringLiteral("designation"))
+				//The == and ++ of the folio it is first drawn on, as its plant
+				//and location fall back to that folio's
+			+ structureIdSql(QStringLiteral("eff_plant"), QStringLiteral("eff_location"), QStringLiteral("designation"),
+							 QString(), QStringLiteral("first_folio_uuid"))
 			+ QStringLiteral(" AS structure_id, eff_plant AS plant, eff_location AS location, "
 			"designation, type, COALESCE(cores, 0) AS cores, COALESCE(k.drawn_cores, 0) AS drawn_cores, "
 			"COALESCE(k.wired_cores, 0) AS wired_cores, length, folios, folio_number, folio, "
@@ -5621,15 +5772,26 @@ QStringList projectDataBase::publicViewStatements()
 			//After qet_devices and qet_folios, which it reads
 		QStringLiteral(
 			"CREATE VIEW qet_locations AS SELECT plant, location, ")
-			+ structureIdSql(QStringLiteral("plant"), QStringLiteral("location"), QStringLiteral("NULL"))
+			+ levelsStructureIdSql(QStringLiteral("plant"), QStringLiteral("location"), QStringLiteral("NULL"),
+								   QString(), QStringLiteral("higher_plant"), QStringLiteral("higher_location"))
 			+ QStringLiteral(" AS structure_id, SUM(is_symbol) AS symbols, "
-			"COUNT(DISTINCT folio_uuid) AS folios, MIN(folio_number) AS first_folio_number "
+			"COUNT(DISTINCT folio_uuid) AS folios, MIN(folio_number) AS first_folio_number, "
+			"COALESCE(higher_plant, '') AS higher_plant, "
+			"COALESCE(higher_location, '') AS higher_location "
+				//The == and ++ of the folio: a place under ==A1 and the
+				//same place under ==A2 are two rows
+				//A symbol's from qet_devices (its boxes', else its folio's)
 			"FROM (SELECT COALESCE(plant, '') AS plant, COALESCE(location, '') AS location, "
-			"folio_uuid, folio_number, 1 AS is_symbol FROM qet_devices "
+			"folio_uuid, folio_number, 1 AS is_symbol, higher_plant, higher_location FROM qet_devices "
 			"WHERE COALESCE(kind, '') NOT IN ('next_report', 'previous_report') "
-			"UNION ALL SELECT COALESCE(plant, ''), COALESCE(location, ''), "
-			"folio_uuid, folio_number, 0 FROM qet_folios) "
-			"GROUP BY plant, location ORDER BY plant, location"),
+			"UNION ALL SELECT COALESCE(f.plant, ''), COALESCE(f.location, ''), "
+			"f.folio_uuid, f.folio_number, 0, "
+			"COALESCE((SELECT LTRIM(TRIM(ft.value), '=') FROM folio_titleblock ft WHERE ft.diagram_uuid = f.folio_uuid "
+				"AND ft.name = 'higher_plant'), ''), "
+			"COALESCE((SELECT LTRIM(TRIM(ft.value), '+') FROM folio_titleblock ft WHERE ft.diagram_uuid = f.folio_uuid "
+				"AND ft.name = 'higher_location'), '') FROM qet_folios f) "
+			"GROUP BY plant, location, COALESCE(higher_plant, ''), COALESCE(higher_location, '') "
+			"ORDER BY plant, location, higher_plant, higher_location"),
 			//The project's revision history, one row each in its order
 			//(RevisionList, saved as <revisions> in the project settings)
 		QStringLiteral(
@@ -6377,6 +6539,10 @@ void projectDataBase::storeFolioTitleBlock(const QUuid &folio, const TitleBlockP
 		row(QStringLiteral("folio_group"), properties.folio_group, true);
 	if (!properties.folio_subgroup.isEmpty())
 		row(QStringLiteral("folio_subgroup"), properties.folio_subgroup, true);
+	if (!properties.higher_plant.isEmpty())
+		row(QStringLiteral("higher_plant"), properties.higher_plant, true);
+	if (!properties.higher_location.isEmpty())
+		row(QStringLiteral("higher_location"), properties.higher_location, true);
 	if (!properties.document_kind.isEmpty())
 		row(QStringLiteral("document_kind"), properties.document_kind, true);
 	row(QStringLiteral("indexrev"), properties.indexrev, true);
@@ -7901,6 +8067,8 @@ void projectDataBase::endPrefill(bool keep_unplaced)
 		if (built.locmach != p.locmach) differing << QStringLiteral("locmach");
 		if (built.folio_group != p.folio_group) differing << QStringLiteral("folio_group");
 		if (built.folio_subgroup != p.folio_subgroup) differing << QStringLiteral("folio_subgroup");
+		if (built.higher_plant != p.higher_plant) differing << QStringLiteral("higher_plant");
+		if (built.higher_location != p.higher_location) differing << QStringLiteral("higher_location");
 		if (built.document_kind != p.document_kind) differing << QStringLiteral("document_kind");
 		if (built.indexrev != p.indexrev) differing << QStringLiteral("indexrev");
 		if (built.version != p.version) differing << QStringLiteral("version");

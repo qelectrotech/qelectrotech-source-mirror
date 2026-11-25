@@ -17,6 +17,7 @@
 */
 #include "projectreports.h"
 
+#include "../autoNum/assignvariables.h"
 #include "../dataBase/projectdatabase.h"
 #include "../qetproject.h"
 
@@ -61,13 +62,34 @@ namespace ProjectReports
 			return QLatin1Char('\'') + text + QLatin1Char('\'');
 		}
 
+		/// "==A1=P1": the plant with its == level, as a designation starts
+		QString plantText(const Place &place)
+		{
+			return autonum::AssignVariables::buildStructureId(
+						autonum::AssignVariables::withHigherLevel(
+							QLatin1Char('='), place.higher_plant, place.plant),
+						QString(), QString());
+		}
+
+		/// "++S1+L1": the location with its ++ level
+		QString locationText(const Place &place)
+		{
+			return autonum::AssignVariables::buildStructureId(
+						QString(),
+						autonum::AssignVariables::withHigherLevel(
+							QLatin1Char('+'), place.higher_location, place.location),
+						QString());
+		}
+
 			/// How a designation starts in @p place: "=P+L-", or "=P+" and "=P-"
 		QStringList prefixes(const Place &place)
 		{
-			QString start;
-			if (!place.plant.isEmpty()) start += QLatin1Char('=') + place.plant;
-			if (!place.location.isEmpty())
-				return {start + QLatin1Char('+') + place.location + QLatin1Char('-')};
+				//"==A1=P", the == level in front of the plant; "++S1+L"
+			const QString start = plantText(place);
+			const QString location = locationText(place);
+			if (!location.isEmpty())
+				return {start + location + QLatin1Char('-')};
+				//"=P+" also starts "=P++S1+L-"
 			return {start + QLatin1Char('+'), start + QLatin1Char('-')};
 		}
 
@@ -104,10 +126,7 @@ namespace ProjectReports
 
 	QString Place::text() const
 	{
-		QString place;
-		if (!plant.isEmpty()) place += QLatin1Char('=') + plant;
-		if (!location.isEmpty()) place += QLatin1Char('+') + location;
-		return place;
+		return plantText(*this) + locationText(*this);
 	}
 
 	/**
@@ -268,6 +287,8 @@ namespace ProjectReports
 			r.source = QStringLiteral(
 				"(WITH symbol AS (SELECT d.device_uuid, d.kind, d.structure_id, "
 					"COALESCE(d.plant, '') AS plant, COALESCE(d.location, '') AS location, "
+						//Its == and ++, as qet_locations splits by them
+					"d.higher_plant, d.higher_location, "
 					"COALESCE(d.label, '') AS label, d.folio_number, d.position, "
 					"(SELECT l.linked_uuid FROM link l JOIN element m ON m.uuid = l.linked_uuid "
 					"WHERE l.element_uuid = d.device_uuid AND m.type = 'master' LIMIT 1) AS master_uuid, "
@@ -285,19 +306,20 @@ namespace ProjectReports
 					"CASE WHEN NOT s.excluded AND s.w > 0 AND s.h > 0 AND s.q > 0 "
 						"THEN s.w * s.h * s.q END AS area "
 					"FROM symbol s LEFT JOIN qet_devices m ON m.device_uuid = s.master_uuid), "
-				"part AS (SELECT plant, location, excluded, "
+				"part AS (SELECT plant, location, higher_plant, higher_location, excluded, "
 					"MAX(area) OVER (PARTITION BY device) AS area, "
 					"MAX(CASE WHEN NOT excluded THEN depth END) OVER (PARTITION BY device) AS depth, "
 					"MAX(NOT excluded AND article <> '') OVER (PARTITION BY device) AS has_article, "
 					"ROW_NUMBER() OVER (PARTITION BY device "
 						"ORDER BY rank, folio_number, position, device_uuid) AS n FROM member), "
-				"place AS (SELECT plant, location, COUNT(area) AS sized, "
+				"place AS (SELECT plant, location, higher_plant, higher_location, COUNT(area) AS sized, "
 					"SUM(area IS NULL AND has_article) AS unsized, "
 					"TOTAL(area) AS area, MAX(depth) AS depth "
-					"FROM part WHERE n = 1 AND NOT excluded GROUP BY plant, location) "
+					"FROM part WHERE n = 1 AND NOT excluded GROUP BY plant, location, higher_plant, higher_location) "
 					//The place's name as every other list writes it
 				"SELECT p.*, COALESCE(k.structure_id, '') AS structure_id FROM place p "
 				"LEFT JOIN qet_locations k ON k.plant = p.plant AND k.location = p.location "
+					"AND k.higher_plant = p.higher_plant AND k.higher_location = p.higher_location "
 				"WHERE p.sized > 0 OR p.unsized > 0)")
 					.arg(number(QStringLiteral("ei.width")), number(QStringLiteral("ei.height")),
 						 number(QStringLiteral("ei.depth")));
@@ -332,19 +354,21 @@ namespace ProjectReports
 		if (!project || !project->dataBase()) return list;
 		project->dataBase()->updateDB();
 		QSqlQuery query = project->dataBase()->newQuery(QStringLiteral(
-				"SELECT DISTINCT plant, location FROM qet_locations "
-				"ORDER BY plant, location"));
-		QString last_plant;
+				"SELECT DISTINCT plant, location, higher_plant, higher_location FROM qet_locations "
+				"ORDER BY higher_plant, plant, higher_location, location"));
+		Place last_plant;
 		bool first = true;
 		while (query.next()) {
-			const QString plant = query.value(0).toString().trimmed();
-			const QString location = query.value(1).toString().trimmed();
-			if ((first || plant != last_plant) && !plant.isEmpty())
-				list << Place{plant, QString()};
+			Place place{query.value(0).toString().trimmed(), query.value(1).toString().trimmed(),
+						query.value(2).toString().trimmed(), query.value(3).toString().trimmed()};
+				//The plant under its ==, before its locations
+			const Place plant{place.plant, QString(), place.higher_plant, QString()};
+			if ((first || plant.text() != last_plant.text()) && !plant.text().isEmpty())
+				list << plant;
 			first = false;
 			last_plant = plant;
-			if (!location.isEmpty())
-				list << Place{plant, location};
+			if (!place.location.isEmpty() || !place.higher_location.isEmpty())
+				list << place;
 		}
 		return list;
 	}

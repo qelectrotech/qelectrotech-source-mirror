@@ -42,6 +42,7 @@
 #include <conductorproperties.h>
 #include <properties/potentialtypes.h>
 #include <projectcheck/openwireends.h>
+#include <projectcheck/terminalbranches.h>
 #include "conductorlayout.h"
 #include "conductorpath.h"
 #include "elementplacement.h"
@@ -505,6 +506,9 @@ class projectDataBase : public QObject
 			/// The wires that lead nowhere (OpenWireEnds::check()), after
 			/// writing the links, texts and positions still held back
 		QList<OpenWireEnds::Finding> openWireEnds();
+			/// The branches between two strip terminals
+			/// (TerminalBranches::check()), after the same writes
+		QList<TerminalBranches::Finding> terminalBranches();
 			/// The types wires take from the source terminals of placed
 			/// symbols (PotentialTypes::Mode::AtSource): wire -> type, for
 			/// each potential whose sources all name one type, and the
