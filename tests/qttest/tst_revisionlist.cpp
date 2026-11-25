@@ -226,8 +226,8 @@ private slots:
 		revisions << Revision{QStringLiteral("C"), QStringLiteral("2026-12-01"),
 							  QStringLiteral("Cable list"), QStringLiteral("SR"), QString()};
 		three.setRevisions(revisions);
+			//As Project properties does it: no database update asked for
 		project.setRevisions(three);
-		project.dataBase()->updateDB();
 		QCOMPARE(model.rowCount(), 3);
 		QCOMPARE(model.data(model.index(2, 2)).toString(), QStringLiteral("Cable list"));
 	}
