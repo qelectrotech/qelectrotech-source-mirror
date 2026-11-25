@@ -5556,9 +5556,15 @@ QStringList projectDataBase::publicViewStatements()
 				"GROUP BY element), "
 			"reached AS (SELECT element, group_concat(other, ', ') AS connected_to FROM "
 				"(SELECT DISTINCT element, other FROM ends WHERE other IS NOT NULL) "
-				"GROUP BY element) "
+				"GROUP BY element), "
+				//The folio a strip is first drawn on, whose == and ++ go
+				//above its plant and location, as a cable's do
+			"first_folio AS (SELECT t.strip_uuid, d.folio_uuid, ROW_NUMBER() OVER "
+				"(PARTITION BY t.strip_uuid ORDER BY d.folio_number, t.position, t.level) AS n "
+				"FROM terminal t JOIN qet_devices d ON d.device_uuid = t.element_uuid) "
 			"SELECT ")
-			+ structureIdSql(QStringLiteral("s.plant"), QStringLiteral("s.location"), QStringLiteral("s.name"))
+			+ structureIdSql(QStringLiteral("s.plant"), QStringLiteral("s.location"), QStringLiteral("s.name"),
+							 QString(), QStringLiteral("ff.folio_uuid"))
 			+ QStringLiteral(" AS strip_id, COALESCE(s.plant, '') AS plant, "
 			"COALESCE(s.location, '') AS location, s.name AS strip, t.position, t.level, "
 			"d.label, d.structure_id AS terminal_id, t.spare, d.folio_number, d.folio, "
@@ -5566,6 +5572,7 @@ QStringList projectDataBase::publicViewStatements()
 			"COALESCE(s.kind, 'terminals') AS strip_kind, "
 			"COALESCE(s.device_type, '') AS strip_device_type "
 			"FROM terminal t JOIN strip s ON s.strip_uuid = t.strip_uuid "
+			"LEFT JOIN first_folio ff ON ff.strip_uuid = s.strip_uuid AND ff.n = 1 "
 			"LEFT JOIN qet_devices d ON d.device_uuid = t.element_uuid "
 			"LEFT JOIN numbers n ON n.element = t.element_uuid "
 			"LEFT JOIN reached r ON r.element = t.element_uuid "
@@ -5597,11 +5604,14 @@ QStringList projectDataBase::publicViewStatements()
 			+ QStringLiteral(" AS eff_plant, ")
 			+ effectiveStructureSql(QStringLiteral("c.location"), QStringLiteral("d.location"))
 			+ QStringLiteral(" AS eff_location, COALESCE(s.folios, 0) AS folios, "
-				"d.folio_number, d.folio FROM cable c LEFT JOIN drawn d "
+				"d.folio_number, d.folio, d.folio_uuid AS first_folio_uuid FROM cable c LEFT JOIN drawn d "
 				"ON d.cable_uuid = c.cable_uuid AND d.n = 1 "
 				"LEFT JOIN spread s ON s.cable_uuid = c.cable_uuid) "
 			"SELECT ")
-			+ structureIdSql(QStringLiteral("eff_plant"), QStringLiteral("eff_location"), QStringLiteral("designation"))
+				//The == and ++ of the folio it is first drawn on, as its plant
+				//and location fall back to that folio's
+			+ structureIdSql(QStringLiteral("eff_plant"), QStringLiteral("eff_location"), QStringLiteral("designation"),
+							 QString(), QStringLiteral("first_folio_uuid"))
 			+ QStringLiteral(" AS structure_id, eff_plant AS plant, eff_location AS location, "
 			"designation, type, COALESCE(cores, 0) AS cores, COALESCE(k.drawn_cores, 0) AS drawn_cores, "
 			"COALESCE(k.wired_cores, 0) AS wired_cores, length, folios, folio_number, folio, "
