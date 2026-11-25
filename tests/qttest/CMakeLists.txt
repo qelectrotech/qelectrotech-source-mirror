@@ -868,6 +868,10 @@ target_link_libraries(tst_textresizehandles PRIVATE Qt::Test Qt::Widgets)
 # rectangle's does; a pivot placed by hand stays.
 qet_add_app_test(tst_linepivotresize tst_linepivotresize.cpp)
 
+# A shape that was only moved saves its folio position in x1..y2, as 0.100
+# did; only a rotated or skewed shape writes posX/posY (issue #1997).
+qet_add_app_test(tst_shapesaveposition tst_shapesaveposition.cpp)
+
 # The terminal strip sorts into the plan's own order -- folio by folio, then
 # left to right -- instead of by label; the auto import and
 # SortTerminalStripCommand share one comparator for it, so a strip the import
