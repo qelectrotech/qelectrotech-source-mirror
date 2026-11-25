@@ -127,7 +127,11 @@ namespace DuplicateLabels
 			location.prepend(QLatin1Char('+'));
 			// The product levels its boxes give it: -K1 in box -A1 and -K1
 			// in box -B2 are two devices
-		return plant + location + reference.product;
+			// and the folio's == and ++ levels: -K1 under ==A1 and -K1
+			// under ==A2 are two devices too
+		return autonum::AssignVariables::withHigherLevel(QLatin1Char('='), reference.higher_plant, plant)
+				+ autonum::AssignVariables::withHigherLevel(QLatin1Char('+'), reference.higher_location, location)
+				+ reference.product;
 	}
 
 	Diagram* diagramOf(const QGraphicsObject* item)

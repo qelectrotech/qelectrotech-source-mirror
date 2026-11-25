@@ -340,6 +340,8 @@ namespace autonum
 			//of the next box around it, then of the folio. A box that only
 			//says +FIELD keeps the =plant of its folio.
 		QString reference_plant, reference_location, product_value;
+			//The == and ++ levels above them: the folio's alone
+		QString higher_plant, higher_location;
 		if (elmt && elmt->diagram()) {
 			const StructureBoxItem::Place reference = StructureBoxItem::referencePlace(elmt);
 			reference_plant = reference.plant;
@@ -347,9 +349,13 @@ namespace autonum
 				//The levels above the label are the boxes' alone: a symbol
 				//has no product level of its own to override them
 			product_value = reference.product;
+			higher_plant = reference.higher_plant;
+			higher_location = reference.higher_location;
 		} else if (diagram) {
 			reference_plant = diagram->border_and_titleblock.plant();
 			reference_location = diagram->border_and_titleblock.locmach();
+			higher_plant = diagram->border_and_titleblock.higherPlant();
+			higher_location = diagram->border_and_titleblock.higherLocation();
 		}
 
 		QString plant_value = own_plant;
@@ -365,15 +371,22 @@ namespace autonum
 
 			//Full IEC 81346 reference designation (=plant+location-label),
 			//each segment omitted when its underlying value is empty.
-		QString structure_id_full = buildStructureId(plant_value, location_value, product_value, label_value);
+		QString structure_id_full = buildStructureId(
+			withHigherLevel(QLatin1Char('='), higher_plant, plant_value),
+			withHigherLevel(QLatin1Char('+'), higher_location, location_value),
+			product_value, label_value);
 
 			//Reduced form relative to the reference point (IEC 81346's own
 			//allowance for dropping higher-level parts already implied by
 			//context): the =/+ segments are also omitted when they match it,
 			//since an empty value already resolves to it.
+			//An own plant or location other than the folio's shows with the
+			//folio's == or ++ in front, so it says which one it is under.
 		QString structure_id = buildStructureId(
-			plant_value != reference_plant ? plant_value : QString(),
-			location_value != reference_location ? location_value : QString(),
+			plant_value != reference_plant
+				? withHigherLevel(QLatin1Char('='), higher_plant, plant_value) : QString(),
+			location_value != reference_location
+				? withHigherLevel(QLatin1Char('+'), higher_location, location_value) : QString(),
 				//The symbol is in the boxes that give it its levels, so
 				//the reference point already has all of them
 			QString(),
@@ -614,6 +627,23 @@ namespace autonum
 	{
 		const QString level = prefix.trimmed();
 		return level.isEmpty() ? chain : chain + withSign(QLatin1Char('-'), level);
+	}
+
+	/**
+		@brief AssignVariables::withHigherLevel
+		@sa the declaration
+	*/
+	QString AssignVariables::withHigherLevel(QChar sign, const QString &higher, const QString &value)
+	{
+		QString level = higher.trimmed();
+		if (level.isEmpty())
+			return value;
+		const QString doubled = QString(2, sign);
+		while (level.startsWith(sign))
+			level.remove(0, 1);
+		if (level.isEmpty())
+			return value;
+		return doubled + level + (value.isEmpty() ? QString() : withSign(sign, value));
 	}
 
 	void AssignVariables::assignTitleBlockVar()

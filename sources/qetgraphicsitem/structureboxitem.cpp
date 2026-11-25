@@ -358,6 +358,8 @@ StructureBoxItem::Place StructureBoxItem::placeIn(
 	if (diagram) {
 		place.plant = diagram->border_and_titleblock.plant();
 		place.location = diagram->border_and_titleblock.locmach();
+		place.higher_plant = diagram->border_and_titleblock.higherPlant();
+		place.higher_location = diagram->border_and_titleblock.higherLocation();
 	}
 	for (auto it = boxes.crbegin() ; it != boxes.crend() ; ++it) {
 		if (!(*it)->plant().isEmpty())    place.plant = (*it)->plant();
@@ -385,7 +387,25 @@ StructureBoxItem::Place StructureBoxItem::placeOf(const Element *element)
 	if (place.location.isEmpty()) place.location = reference.location;
 		//A symbol has no product levels of its own, only its boxes'
 	place.product = reference.product;
+	place.higher_plant = reference.higher_plant;
+	place.higher_location = reference.higher_location;
 	return place;
+}
+
+/**
+	@brief StructureBoxItem::Place::plantPart
+*/
+QString StructureBoxItem::Place::plantPart() const
+{
+	return autonum::AssignVariables::withHigherLevel(QLatin1Char('='), higher_plant, plant);
+}
+
+/**
+	@brief StructureBoxItem::Place::locationPart
+*/
+QString StructureBoxItem::Place::locationPart() const
+{
+	return autonum::AssignVariables::withHigherLevel(QLatin1Char('+'), higher_location, location);
 }
 
 /**

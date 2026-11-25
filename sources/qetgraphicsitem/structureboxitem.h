@@ -104,6 +104,16 @@ class StructureBoxItem : public QetShapeItem
 			QString plant;
 			QString location;
 			QString product;
+				/// The IEC 81346 levels above the plant (==) and the
+				/// location (++): the folio's, as no box has them
+			QString higher_plant;
+			QString higher_location;
+
+				/// The plant with its == level in front ("==A1=P1"), for
+				/// AssignVariables::buildStructureId()
+			QString plantPart() const;
+				/// The location with its ++ level in front ("++S1+L1")
+			QString locationPart() const;
 		};
 
 			/// The boxes @p element lies in, the smallest first. "In" means

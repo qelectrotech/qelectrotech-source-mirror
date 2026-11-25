@@ -139,6 +139,22 @@ namespace autonum
 			/// its "-" sign; @p chain itself when @p prefix is empty
 			static QString addProductLevel(const QString &chain, const QString &prefix);
 
+			/**
+				@brief withHigherLevel
+				The plant or location with the IEC 81346 level above it in
+				front: "==A1=P1" for the plant P1 under the higher-level
+				function A1, "++S1+L1" for a location. Pass the result as
+				the plant or location of buildStructureId(), which keeps a
+				value that starts with its sign as it is.
+				@param sign '=' for the plant, '+' for the location
+				@param higher the level above, typed with or without its
+				doubled sign ("A1", "==A1"); empty for none
+				@param value the plant or location, may be empty
+				@return @p value unchanged when @p higher is empty, so a
+				folio without these levels designates as before
+			*/
+			static QString withHigherLevel(QChar sign, const QString &higher, const QString &value);
+
 		private:
 			AssignVariables(const QString& formula, const sequentialNumbers& seqStruct, const FormulaContext &context);
 			void assignTitleBlockVar();
