@@ -230,6 +230,7 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/materiallist/parttypes.cpp
   ${QET_DIR}/sources/ui/devicetypecheckdialog.cpp
   ${QET_DIR}/sources/conductornumexport.cpp
+  ${QET_DIR}/sources/labellistexport.cpp
   ${QET_DIR}/sources/wiringlistexport.h
   ${QET_DIR}/sources/wiringlistexport.cpp
   ${QET_DIR}/sources/wiringlistdb.h
@@ -244,6 +245,7 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/ui/toolmenu.h
   ${QET_DIR}/sources/ui/wiringlistdialog.cpp
   ${QET_DIR}/sources/conductornumexport.h
+  ${QET_DIR}/sources/labellistexport.h
   ${QET_DIR}/sources/bomexport.cpp
   ${QET_DIR}/sources/bomexport.h
   ${QET_DIR}/sources/conductordashpattern.cpp

@@ -52,6 +52,7 @@
 #include "ui/checkpaneldockwidget.h"
 #include "ui/toolmenu.h"
 #include "conductornumexport.h"
+#include "labellistexport.h"
 #include "diagramcommands.h"
 #include "diagramcontent.h"
 #include "diagramevent/diagrameventaddimage.h"
@@ -1494,6 +1495,18 @@ void QETDiagramEditor::setUpActions()
 			wne.toCsv();
 		}
 	});
+		//Device tags, terminal markers, cable and wire numbers, one per
+		//line, for label printer software (#1878 A7)
+	m_project_export_label_lists = new QAction(QET::Icons::DocumentSpreadsheet, tr("Export labels for printing..."), this);
+	ShortcutManager::instance().registerAction(m_project_export_label_lists, "diagrameditor.export_label_lists", tr("Diagram editors"), QKeySequence());
+	connect(m_project_export_label_lists, &QAction::triggered, [this]() {
+		QETProject *project = this->currentProject();
+		if (project)
+		{
+			LabelListExportDialog dialog(project, this);
+			dialog.exec();
+		}
+	});
 	// Export wiring list to CSV
 	m_project_export_wiring_list = new QAction(QET::Icons::DocumentSpreadsheet, tr("Export the wiring diagram"), this);
 	ShortcutManager::instance().registerAction(m_project_export_wiring_list, "diagrameditor.export_wiring_list", tr("Diagram editors"), QKeySequence());
@@ -2469,6 +2482,7 @@ void QETDiagramEditor::setUpMenu()
 	menu_project -> addAction(m_csv_export);
 	menu_project -> addAction(m_export_cable_list);
 	menu_project -> addAction(m_project_export_conductor_num);
+	menu_project -> addAction(m_project_export_label_lists);
 	menu_project -> addAction(m_project_export_wiring_list);
 	menu_project -> addAction(m_project_wiring_list_view);
 	menu_project -> addAction(m_reports);
@@ -4122,6 +4136,7 @@ void QETDiagramEditor::slot_updateActions()
 	m_add_nomenclature            -> setEnabled(editable_project);
 	m_csv_export                  -> setEnabled(editable_project);
 	m_project_export_conductor_num-> setEnabled(opened_project);
+	m_project_export_label_lists  -> setEnabled(opened_project);
 	m_terminal_strip_dialog       -> setEnabled(editable_project);
 	m_project_export_wiring_list  -> setEnabled(opened_project);
 	m_project_wiring_list_view    -> setEnabled(opened_project);

@@ -2706,3 +2706,9 @@ qet_add_app_test(tst_projectidlocation tst_projectidlocation.cpp)
 qet_add_app_test(tst_librarylisting tst_librarylisting.cpp)
 target_compile_definitions(tst_librarylisting PRIVATE
   QET_ELEMENTS_DIR="${QET_DIR}/elements")
+# Label lists for printers (#1878 A7): device tags, terminal markers, cable
+# and wire numbers, one per line, read from the project database.
+qet_add_app_test(tst_labellistexport tst_labellistexport.cpp)
+target_compile_definitions(tst_labellistexport PRIVATE
+  QET_EXAMPLES_DIR="${QET_DIR}/examples"
+  QET_FIXTURES_DIR="${CMAKE_CURRENT_SOURCE_DIR}/fixtures")
