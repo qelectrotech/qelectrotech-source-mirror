@@ -2818,13 +2818,9 @@ bool QetScriptApi::setShapePathNodes(int folioIndex, int shapeIndex, const QVari
 	}
 	if (path_nodes == shape->pathNodes()) return true;
 
-	QDomDocument before_doc;
-	const QDomElement before = shape->toXml(before_doc);
-	before_doc.appendChild(before);
+	const QDomElement before = shape->snapshotXml();
 	shape->setPathNodes(path_nodes);
-	QDomDocument after_doc;
-	const QDomElement after = shape->toXml(after_doc);
-	after_doc.appendChild(after);
+	const QDomElement after = shape->snapshotXml();
 
 	auto *cmd = new PromoteShapeCommand(shape, before, after);
 	cmd->setText(QObject::tr("Change the shape of %1").arg(shape->name()));

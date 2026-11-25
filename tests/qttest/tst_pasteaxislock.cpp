@@ -30,6 +30,19 @@
 #include <QKeyEvent>
 #include <QTest>
 
+/**
+	Where @a item stands on the folio. For a shape this is the top left
+	corner of its geometry, not pos(): a shape copied without rotation
+	carries its position in its geometry (issue #1997), so the pasted
+	copy comes back with pos() at 0,0 and stands in the same place.
+*/
+static QPointF placed(const QGraphicsItem *item)
+{
+	if (auto *shape = qgraphicsitem_cast<const QetShapeItem *>(item))
+		return shape->mapToScene(shape->rect().topLeft());
+	return item->pos();
+}
+
 class tst_pasteaxislock : public QObject
 {
 	Q_OBJECT
@@ -99,7 +112,7 @@ void tst_pasteaxislock::testAxisLockAndOriginalPositionSnap()
 		}
 	}
 	QVERIFY(pasted != nullptr);
-	const QPointF base_pos = pasted->pos();
+	const QPointF base_pos = placed(pasted);
 
 	auto hasDashedLine = [diagram](Qt::Orientation orientation) -> bool {
 		for (auto *item : diagram->items()) {
@@ -123,7 +136,7 @@ void tst_pasteaxislock::testAxisLockAndOriginalPositionSnap()
 	move1.setScenePos(QPointF(300, 400));
 	paste->mouseMoveEvent(&move1);
 	// Delta from start_pos (200, 200) is (+100, +200)
-	QCOMPARE(pasted->pos(), base_pos + QPointF(100, 200));
+	QCOMPARE(placed(pasted), base_pos + QPointF(100, 200));
 	QVERIFY(!hasDashedLine(Qt::Vertical));
 	QVERIFY(!hasDashedLine(Qt::Horizontal));
 
@@ -131,7 +144,7 @@ void tst_pasteaxislock::testAxisLockAndOriginalPositionSnap()
 	QKeyEvent key_x(QEvent::KeyPress, Qt::Key_X, Qt::NoModifier);
 	paste->keyPressEvent(&key_x);
 	QVERIFY(key_x.isAccepted());
-	QCOMPARE(pasted->pos().x(), 100.0);
+	QCOMPARE(placed(pasted).x(), 100.0);
 	QVERIFY(hasDashedLine(Qt::Vertical));
 	QVERIFY(!hasDashedLine(Qt::Horizontal));
 
@@ -139,8 +152,8 @@ void tst_pasteaxislock::testAxisLockAndOriginalPositionSnap()
 	QGraphicsSceneMouseEvent move2(QEvent::GraphicsSceneMouseMove);
 	move2.setScenePos(QPointF(500, 600));
 	paste->mouseMoveEvent(&move2);
-	QCOMPARE(pasted->pos().x(), 100.0);
-	QCOMPARE(pasted->pos().y(), base_pos.y() + 400);
+	QCOMPARE(placed(pasted).x(), 100.0);
+	QCOMPARE(placed(pasted).y(), base_pos.y() + 400);
 	QVERIFY(hasDashedLine(Qt::Vertical));
 
 	// 3. Press Y: now BOTH X and Y are locked! Must snap to original position (100, 100)
@@ -148,7 +161,7 @@ void tst_pasteaxislock::testAxisLockAndOriginalPositionSnap()
 	QKeyEvent key_y(QEvent::KeyPress, Qt::Key_Y, Qt::NoModifier);
 	paste->keyPressEvent(&key_y);
 	QVERIFY(key_y.isAccepted());
-	QCOMPARE(pasted->pos(), QPointF(100, 100));
+	QCOMPARE(placed(pasted), QPointF(100, 100));
 	QVERIFY(hasDashedLine(Qt::Vertical));
 	QVERIFY(hasDashedLine(Qt::Horizontal));
 
@@ -157,7 +170,7 @@ void tst_pasteaxislock::testAxisLockAndOriginalPositionSnap()
 	QGraphicsSceneMouseEvent move3(QEvent::GraphicsSceneMouseMove);
 	move3.setScenePos(QPointF(800, 900));
 	paste->mouseMoveEvent(&move3);
-	QCOMPARE(pasted->pos(), QPointF(100, 100));
+	QCOMPARE(placed(pasted), QPointF(100, 100));
 	QVERIFY(hasDashedLine(Qt::Vertical));
 	QVERIFY(hasDashedLine(Qt::Horizontal));
 
@@ -165,8 +178,8 @@ void tst_pasteaxislock::testAxisLockAndOriginalPositionSnap()
 	// moves to mouse (800 - 200 = +600) -> only horizontal line visible
 	QKeyEvent key_x_unlock(QEvent::KeyPress, Qt::Key_X, Qt::NoModifier);
 	paste->keyPressEvent(&key_x_unlock);
-	QCOMPARE(pasted->pos().x(), base_pos.x() + 600);
-	QCOMPARE(pasted->pos().y(), 100.0);
+	QCOMPARE(placed(pasted).x(), base_pos.x() + 600);
+	QCOMPARE(placed(pasted).y(), 100.0);
 	QVERIFY(!hasDashedLine(Qt::Vertical));
 	QVERIFY(hasDashedLine(Qt::Horizontal));
 
@@ -174,13 +187,13 @@ void tst_pasteaxislock::testAxisLockAndOriginalPositionSnap()
 	QGraphicsSceneMouseEvent move4(QEvent::GraphicsSceneMouseMove);
 	move4.setScenePos(QPointF(850, 950));
 	paste->mouseMoveEvent(&move4);
-	QCOMPARE(pasted->pos().x(), base_pos.x() + 650);
-	QCOMPARE(pasted->pos().y(), 100.0);
+	QCOMPARE(placed(pasted).x(), base_pos.x() + 650);
+	QCOMPARE(placed(pasted).y(), 100.0);
 
 	// 5. Press Y again to unlock Y: both axes are free again -> no dashed lines
 	QKeyEvent key_y_unlock(QEvent::KeyPress, Qt::Key_Y, Qt::NoModifier);
 	paste->keyPressEvent(&key_y_unlock);
-	QCOMPARE(pasted->pos(), base_pos + QPointF(650, 750));
+	QCOMPARE(placed(pasted), base_pos + QPointF(650, 750));
 	QVERIFY(!hasDashedLine(Qt::Vertical));
 	QVERIFY(!hasDashedLine(Qt::Horizontal));
 
@@ -188,7 +201,7 @@ void tst_pasteaxislock::testAxisLockAndOriginalPositionSnap()
 	// Press Y to lock Y to original Y (100) -> horizontal dashed line visible
 	QKeyEvent key_y2(QEvent::KeyPress, Qt::Key_Y, Qt::NoModifier);
 	paste->keyPressEvent(&key_y2);
-	QCOMPARE(pasted->pos().y(), 100.0);
+	QCOMPARE(placed(pasted).y(), 100.0);
 	QVERIFY(!hasDashedLine(Qt::Vertical));
 	QVERIFY(hasDashedLine(Qt::Horizontal));
 
@@ -196,13 +209,13 @@ void tst_pasteaxislock::testAxisLockAndOriginalPositionSnap()
 	move5.setScenePos(QPointF(600, 400));
 	paste->mouseMoveEvent(&move5);
 	// deltaX = 600 - 200 = +400, Y locked at original 100
-	QCOMPARE(pasted->pos().x(), base_pos.x() + 400);
-	QCOMPARE(pasted->pos().y(), 100.0);
+	QCOMPARE(placed(pasted).x(), base_pos.x() + 400);
+	QCOMPARE(placed(pasted).y(), 100.0);
 
 	// Now press X -> both locked -> snap to original position (100, 100) -> both dashed lines visible
 	QKeyEvent key_x2(QEvent::KeyPress, Qt::Key_X, Qt::NoModifier);
 	paste->keyPressEvent(&key_x2);
-	QCOMPARE(pasted->pos(), QPointF(100, 100));
+	QCOMPARE(placed(pasted), QPointF(100, 100));
 	QVERIFY(hasDashedLine(Qt::Vertical));
 	QVERIFY(hasDashedLine(Qt::Horizontal));
 
@@ -212,7 +225,7 @@ void tst_pasteaxislock::testAxisLockAndOriginalPositionSnap()
 	diagram->clearEventInterface();
 
 	// Item must be landed at (100, 100) and dashed lines must be gone
-	QCOMPARE(pasted->pos(), QPointF(100, 100));
+	QCOMPARE(placed(pasted), QPointF(100, 100));
 	QCOMPARE(pasted->scene(), diagram);
 	QVERIFY(!hasDashedLine(Qt::Vertical));
 	QVERIFY(!hasDashedLine(Qt::Horizontal));
@@ -311,9 +324,9 @@ void tst_pasteaxislock::testMenuPasteFocusAndKeyRouting()
 	QWidget *focused = QApplication::focusWidget();
 	QVERIFY(focused == view || view->isAncestorOf(focused));
 	QTest::keyClick(focused, Qt::Key_X);
-	QCOMPARE(pasted->pos().x(), 120.0);
+	QCOMPARE(placed(pasted).x(), 120.0);
 	QTest::keyClick(focused, Qt::Key_Y);
-	QCOMPARE(pasted->pos(), QPointF(120.0, 140.0));
+	QCOMPARE(placed(pasted), QPointF(120.0, 140.0));
 
 	QTest::keyClick(focused, Qt::Key_Escape);
 	QCoreApplication::processEvents();
@@ -351,31 +364,31 @@ void tst_pasteaxislock::testInPlaceAxisLock()
 		}
 	}
 	QVERIFY(pasted != nullptr);
-	QCOMPARE(pasted->pos(), QPointF(100, 100));
+	QCOMPARE(placed(pasted), QPointF(100, 100));
 
 	// Drag to (340, 360): delta = (+40, +60) -> (140, 160)
 	QGraphicsSceneMouseEvent move1(QEvent::GraphicsSceneMouseMove);
 	move1.setScenePos(QPointF(340, 360));
 	paste->mouseMoveEvent(&move1);
-	QCOMPARE(pasted->pos(), QPointF(140, 160));
+	QCOMPARE(placed(pasted), QPointF(140, 160));
 
 	// Press X: X locks to original (100), Y remains at 160
 	QKeyEvent key_x(QEvent::KeyPress, Qt::Key_X, Qt::NoModifier);
 	paste->keyPressEvent(&key_x);
 	QVERIFY(key_x.isAccepted());
-	QCOMPARE(pasted->pos(), QPointF(100, 160));
+	QCOMPARE(placed(pasted), QPointF(100, 160));
 
 	// Press Y: both locked -> snaps to original (100, 100)
 	QKeyEvent key_y(QEvent::KeyPress, Qt::Key_Y, Qt::NoModifier);
 	paste->keyPressEvent(&key_y);
 	QVERIFY(key_y.isAccepted());
-	QCOMPARE(pasted->pos(), QPointF(100, 100));
+	QCOMPARE(placed(pasted), QPointF(100, 100));
 
 	// Commit with Return -> remains at (100, 100)
 	QKeyEvent key_enter(QEvent::KeyPress, Qt::Key_Return, Qt::NoModifier);
 	paste->keyPressEvent(&key_enter);
 	diagram->clearEventInterface();
-	QCOMPARE(pasted->pos(), QPointF(100, 100));
+	QCOMPARE(placed(pasted), QPointF(100, 100));
 }
 
 void tst_pasteaxislock::testConflictingShortcutOverride()
@@ -423,7 +436,7 @@ void tst_pasteaxislock::testConflictingShortcutOverride()
 	QVERIFY(focused != nullptr);
 	QTest::keyClick(focused, Qt::Key_M);
 	QVERIFY(diagram->eventInterfaceIsRunning());
-	QCOMPARE(pasted->pos().x(), 100.0);
+	QCOMPARE(placed(pasted).x(), 100.0);
 
 	QTest::keyClick(focused, Qt::Key_Escape);
 	QCoreApplication::processEvents();
