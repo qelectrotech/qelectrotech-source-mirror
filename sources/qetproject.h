@@ -29,6 +29,7 @@
 #include "dataBase/qetdbfile.h"
 #include "properties/projectlanguages.h"
 #include "properties/potentialtypes.h"
+#include "properties/revisionlist.h"
 #include "properties/definitionmarkstyle.h"
 #include "properties/reportproperties.h"
 #include "properties/xrefproperties.h"
@@ -359,6 +360,9 @@ class QETProject : public QObject
 		const ProjectLanguages &languages() const {return m_languages;}
 		void setLanguages(const ProjectLanguages &languages);
 		const PotentialTypes &potentialTypes() const {return m_potential_types;}
+			/// The project's revision history (#1295, rule 2)
+		const RevisionList &revisions() const {return m_revisions;}
+		void setRevisions(const RevisionList &revisions);
 		void setPotentialTypes(const PotentialTypes &potential_types);
 			/// How the definition marks of this project's conductors
 			/// are drawn; carried by the project, so it looks the
@@ -594,6 +598,7 @@ class QETProject : public QObject
 		void readDeviceTypeRulesXml(QDomDocument &xml_project);
 		void readLanguagesXml(QDomDocument &xml_project);
 		void readPotentialTypesXml(QDomDocument &xml_project);
+		void readRevisionsXml(QDomDocument &xml_project);
 		void readChainedReportsXml(QDomDocument &xml_project);
 		void readConductorPlantCountersXml(QDomDocument &xml_project);
 		void readDeviceTypesXml(QDomDocument &xml_project);
@@ -619,6 +624,7 @@ class QETProject : public QObject
 		void writeDeviceTypeRulesXml(QDomElement &);
 		void writeLanguagesXml(QDomElement &);
 		void writePotentialTypesXml(QDomElement &);
+		void writeRevisionsXml(QDomElement &);
 		void writeChainedReportsXml(QDomElement &);
 		void writeConductorPlantCountersXml(QDomElement &);
 		void writeDeviceTypesXml(QDomElement &);
@@ -757,6 +763,7 @@ class QETProject : public QObject
 		ProjectLanguages m_languages;
 			/// The potential types and whether conductors are drawn from them
 		PotentialTypes m_potential_types;
+		RevisionList m_revisions;
 			/// How the definition marks of this project's conductors
 			/// are drawn (definitionMarkStyle())
 		DefinitionMarkStyle m_definition_mark_style;

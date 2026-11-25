@@ -5410,7 +5410,8 @@ QStringList projectDataBase::publicViews()
 			QStringLiteral("qet_cables"),
 			QStringLiteral("qet_plc_io"),
 			QStringLiteral("qet_cable_cores"),
-			QStringLiteral("qet_locations")};
+			QStringLiteral("qet_locations"),
+			QStringLiteral("qet_revisions")};
 }
 
 /**
@@ -5478,6 +5479,9 @@ QStringList projectDataBase::publicViews()
 	structure_id puts them in front (==A1=plant++S1+location). A folio counts under
 	every place it shows, so the folios of different rows are not to be
 	added up.
+	qet_revisions is the project's revision history (#1295), one row per
+	revision in the order of the list, position counted from 1: revision,
+	date, description, author and approver, as typed; '' for an empty one.
 
 */
 void projectDataBase::createPublicViews()
@@ -5787,7 +5791,18 @@ QStringList projectDataBase::publicViewStatements()
 			"COALESCE((SELECT LTRIM(TRIM(ft.value), '+') FROM folio_titleblock ft WHERE ft.diagram_uuid = f.folio_uuid "
 				"AND ft.name = 'higher_location'), '') FROM qet_folios f) "
 			"GROUP BY plant, location, COALESCE(higher_plant, ''), COALESCE(higher_location, '') "
-			"ORDER BY plant, location, higher_plant, higher_location")
+			"ORDER BY plant, location, higher_plant, higher_location"),
+			//The project's revision history, one row each in its order
+			//(RevisionList, saved as <revisions> in the project settings)
+		QStringLiteral(
+			"CREATE VIEW qet_revisions AS SELECT ord + 1 AS position, "
+			"COALESCE(MAX(CASE WHEN name = 'revision' THEN value END), '') AS revision, "
+			"COALESCE(MAX(CASE WHEN name = 'date' THEN value END), '') AS date, "
+			"COALESCE(MAX(CASE WHEN name = 'description' THEN value END), '') AS description, "
+			"COALESCE(MAX(CASE WHEN name = 'author' THEN value END), '') AS author, "
+			"COALESCE(MAX(CASE WHEN name = 'approver' THEN value END), '') AS approver "
+			"FROM project_setting WHERE section = 'revisions/revision' "
+			"GROUP BY ord ORDER BY ord")
 	};
 	return views;
 }
