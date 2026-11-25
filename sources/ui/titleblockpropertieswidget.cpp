@@ -602,7 +602,7 @@ void TitleBlockPropertiesWidget::addTemplateVariables(
 		QStringLiteral("plant"), QStringLiteral("locmach"),
 		QStringLiteral("folio_group"), QStringLiteral("folio_subgroup"),
 		QStringLiteral("higher_plant"), QStringLiteral("higher_location"),
-		QStringLiteral("document_kind"),
+		QStringLiteral("document_kind"), QStringLiteral("folio_designation"),
 		QStringLiteral("indexrev"), QStringLiteral("version"),
 		QStringLiteral("folio"), QStringLiteral("folio-id"),
 		QStringLiteral("folio-total"), QStringLiteral("auto_page_num"),

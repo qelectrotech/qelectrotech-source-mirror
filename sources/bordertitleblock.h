@@ -141,6 +141,9 @@ class BorderTitleBlock : public QObject
 		QString higherLocation() const { const TitleBlockProperties *s = stored(); return(s ? s->higher_location : btb_higher_location_); }
 		/// @return the kind of document the folio is (IEC 61355), empty for none
 		QString documentKind() const { const TitleBlockProperties *s = stored(); return(s ? s->document_kind : btb_document_kind_); }
+		/// The full name of a sheet, "=PLANT+LOC&EFS/3" (%{folio_designation})
+		static QString folioDesignation(const QString &plant, const QString &location,
+										const QString &document_kind, int folio_number);
 		/// @return the value of the revision index block "Folio" field
 		QString indexrev() const { const TitleBlockProperties *s = stored(); return(s ? s->indexrev : btb_indexrev_); }
 		/// @return the value of the title block "File" field

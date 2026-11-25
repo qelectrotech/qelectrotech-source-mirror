@@ -15,6 +15,7 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
+#include "bordertitleblock.h"
 #include "dataBase/projectdatabase.h"
 #include "diagram.h"
 #include "qetapptest.h"
@@ -131,6 +132,43 @@ private slots:
 				QVERIFY(!project.toXml().toString().contains(QLatin1String("document_kind")));
 			}
 		}
+	}
+
+		//The sheet's full name, =plant+location&kind/number: the title
+		//block's %{folio_designation} and qet_folios.folio_designation
+		//say the same, every part but the number left out when empty
+	void aSheetHasAFullName()
+	{
+		QETProject project;
+		const QList<QStringList> folios {
+			{QStringLiteral("FACTORY"), QStringLiteral("CP1"), QStringLiteral("EFS")},
+			{QStringLiteral("=FACTORY"), QStringLiteral("+CP1"), QStringLiteral("&FS")},
+			{QString(), QStringLiteral("CP2"), QString()},
+			{QString(), QString(), QString()}};
+		for (const QStringList &f : folios) {
+			Diagram *d = project.addNewDiagram();
+			TitleBlockProperties tb = d->border_and_titleblock.exportTitleBlock();
+			tb.plant = f.at(0);
+			tb.locmach = f.at(1);
+			tb.document_kind = f.at(2);
+			d->border_and_titleblock.importTitleBlock(tb);
+		}
+		const QStringList expected {QStringLiteral("=FACTORY+CP1&EFS/1"),
+									QStringLiteral("=FACTORY+CP1&FS/2"),
+									QStringLiteral("+CP2/3"), QStringLiteral("/4")};
+		QStringList shown;
+		for (Diagram *d : project.diagrams())
+			shown << d->border_and_titleblock.titleblockInformation()
+						 .value(QStringLiteral("folio_designation")).toString();
+		QCOMPARE(shown, expected);
+		project.dataBase()->updateDB();
+		QString error;
+		QSqlQuery query = project.dataBase()->newQuery(QStringLiteral(
+			"SELECT folio_designation FROM qet_folios ORDER BY folio_number"), &error);
+		QVERIFY2(error.isEmpty(), qPrintable(error));
+		QStringList rows;
+		while (query.next()) rows << query.value(0).toString();
+		QCOMPARE(rows, expected);
 	}
 };
 
