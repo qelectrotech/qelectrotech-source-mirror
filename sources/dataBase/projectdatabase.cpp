@@ -5005,9 +5005,30 @@ static QString withHigherLevelSql(const QString &sign, const QString &higher,
 			.arg(level, value, sign);
 }
 
+/**
+	@brief structureIdSql
+	The same, with the == and ++ levels given as SQL values rather than
+	read from a folio; an empty @p higher_plant / @p higher_location
+	string means none.
+*/
+static QString levelsStructureIdSql(const QString &plant, const QString &location,
+									const QString &label, const QString &product,
+									const QString &higher_plant, const QString &higher_location);
+
 static QString structureIdSql(const QString &plant, const QString &location,
 							  const QString &label, const QString &product = QString(),
 							  const QString &folio_uuid = QString())
+{
+	return levelsStructureIdSql(plant, location, label, product,
+		folio_uuid.isEmpty() ? QString()
+			: folioHigherLevelSql(QStringLiteral("higher_plant"), folio_uuid),
+		folio_uuid.isEmpty() ? QString()
+			: folioHigherLevelSql(QStringLiteral("higher_location"), folio_uuid));
+}
+
+static QString levelsStructureIdSql(const QString &plant, const QString &location,
+									const QString &label, const QString &product,
+									const QString &higher_plant, const QString &higher_location)
 {
 	const auto part = [](const QString &sign, const QString &value) {
 			//A value typed with its sign ("-K1") keeps one sign, as
@@ -5030,12 +5051,10 @@ static QString structureIdSql(const QString &plant, const QString &location,
 						 "ELSE COALESCE(%2, '') || %3 END")
 			.arg(label, product, signed_label);
 		//The folio's == and ++ levels above the plant and the location
-	const QString plant_part = folio_uuid.isEmpty() ? plant
-		: withHigherLevelSql(QStringLiteral("="),
-							 folioHigherLevelSql(QStringLiteral("higher_plant"), folio_uuid), plant);
-	const QString location_part = folio_uuid.isEmpty() ? location
-		: withHigherLevelSql(QStringLiteral("+"),
-							 folioHigherLevelSql(QStringLiteral("higher_location"), folio_uuid), location);
+	const QString plant_part = higher_plant.isEmpty() ? plant
+		: withHigherLevelSql(QStringLiteral("="), higher_plant, plant);
+	const QString location_part = higher_location.isEmpty() ? location
+		: withHigherLevelSql(QStringLiteral("+"), higher_location, location);
 	return QStringLiteral("(%1 || %2 || %3)")
 			.arg(part(QStringLiteral("="), plant_part),
 				 part(QStringLiteral("+"), location_part),
@@ -5665,15 +5684,25 @@ QStringList projectDataBase::publicViewStatements()
 			//After qet_devices and qet_folios, which it reads
 		QStringLiteral(
 			"CREATE VIEW qet_locations AS SELECT plant, location, ")
-			+ structureIdSql(QStringLiteral("plant"), QStringLiteral("location"), QStringLiteral("NULL"))
+			+ levelsStructureIdSql(QStringLiteral("plant"), QStringLiteral("location"), QStringLiteral("NULL"),
+								   QString(), QStringLiteral("higher_plant"), QStringLiteral("higher_location"))
 			+ QStringLiteral(" AS structure_id, SUM(is_symbol) AS symbols, "
-			"COUNT(DISTINCT folio_uuid) AS folios, MIN(folio_number) AS first_folio_number "
+			"COUNT(DISTINCT folio_uuid) AS folios, MIN(folio_number) AS first_folio_number, "
+			"COALESCE(higher_plant, '') AS higher_plant, "
+			"COALESCE(higher_location, '') AS higher_location "
+				//The == and ++ of the folio: a place under ==A1 and the
+				//same place under ==A2 are two rows
 			"FROM (SELECT COALESCE(plant, '') AS plant, COALESCE(location, '') AS location, "
 			"folio_uuid, folio_number, 1 AS is_symbol FROM qet_devices "
 			"WHERE COALESCE(kind, '') NOT IN ('next_report', 'previous_report') "
 			"UNION ALL SELECT COALESCE(plant, ''), COALESCE(location, ''), "
 			"folio_uuid, folio_number, 0 FROM qet_folios) "
-			"GROUP BY plant, location ORDER BY plant, location")
+			"LEFT JOIN (SELECT diagram_uuid, "
+				"COALESCE(MAX(CASE WHEN name = 'higher_plant' THEN TRIM(value) END), '') AS higher_plant, "
+				"COALESCE(MAX(CASE WHEN name = 'higher_location' THEN TRIM(value) END), '') AS higher_location "
+				"FROM folio_titleblock GROUP BY diagram_uuid) lv ON lv.diagram_uuid = folio_uuid "
+			"GROUP BY plant, location, COALESCE(higher_plant, ''), COALESCE(higher_location, '') "
+			"ORDER BY plant, location, higher_plant, higher_location")
 	};
 	return views;
 }

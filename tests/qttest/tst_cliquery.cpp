@@ -164,7 +164,8 @@ private slots:
 							  "section,colour,from_structure_id,from_terminal,to_structure_id,"
 							  "to_terminal,folio_number,folio,cable_uuid,wire_uuid");
 		QTest::newRow("qet_locations") << QStringLiteral("qet_locations")
-			<< QStringLiteral("plant,location,structure_id,symbols,folios,first_folio_number");
+			<< QStringLiteral("plant,location,structure_id,symbols,folios,first_folio_number,"
+							  "higher_plant,higher_location");
 	}
 
 	void viewColumns()
