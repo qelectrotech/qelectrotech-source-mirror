@@ -134,7 +134,13 @@ private slots:
 		auto *table = page.findChild<QTableWidget *>(QStringLiteral("revisionTable"));
 		QVERIFY(table);
 		QCOMPARE(table->rowCount(), 2);
-		page.findChild<QPushButton *>(QStringLiteral("addRevision"))->click();
+			//The buttons come before the table, so a tall page keeps them
+			//in view
+		QPushButton *add = page.findChild<QPushButton *>(QStringLiteral("addRevision"));
+		page.resize(600, 3000);
+		page.show();
+		QVERIFY(add->mapTo(&page, QPoint(0, 0)).y() < table->mapTo(&page, QPoint(0, 0)).y());
+		add->click();
 		QCOMPARE(table->rowCount(), 3);
 			//Dated today, the rest to type
 		QCOMPARE(table->item(2, 1)->text(), QDate::currentDate().toString(Qt::ISODate));

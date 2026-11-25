@@ -74,8 +74,11 @@ void RevisionsConfigPage::initLayout()
 							   "A table on a folio can print it."), this);
 	help->setWordWrap(true);
 	layout->addWidget(help);
-	layout->addWidget(m_table);
+		//The buttons above the table: the page is as tall as the tallest
+		//page of the dialog (a QStackedWidget), and the table stretches
+		//to fill it, so buttons under it would be far out of view
 	layout->addLayout(buttons);
+	layout->addWidget(m_table);
 }
 
 void RevisionsConfigPage::readValuesFromProject()
