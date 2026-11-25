@@ -122,6 +122,8 @@ void TitleBlockPropertiesWidget::setProperties(
 	ui -> m_loc           -> setText (properties.locmach);
 	ui -> m_folio_group_le    -> setText (properties.folio_group);
 	ui -> m_folio_subgroup_le -> setText (properties.folio_subgroup);
+	ui -> m_higher_plant_le    -> setText (properties.higher_plant);
+	ui -> m_higher_location_le -> setText (properties.higher_location);
 	ui -> m_document_kind_le  -> setText (properties.document_kind);
 	ui -> m_indice        -> setText (properties.indexrev);
 	ui -> m_folio_le      -> setText (properties.folio);
@@ -191,6 +193,8 @@ TitleBlockProperties TitleBlockPropertiesWidget::properties() const
 	prop.locmach    = ui -> m_loc           -> text();
 	prop.folio_group    = ui -> m_folio_group_le    -> text();
 	prop.folio_subgroup = ui -> m_folio_subgroup_le -> text();
+	prop.higher_plant    = ui -> m_higher_plant_le    -> text();
+	prop.higher_location = ui -> m_higher_location_le -> text();
 	prop.document_kind  = ui -> m_document_kind_le  -> text();
 	prop.indexrev   = ui -> m_indice        -> text();
 	prop.folio      = ui -> m_folio_le      -> text();
@@ -260,6 +264,8 @@ TitleBlockProperties TitleBlockPropertiesWidget::propertiesAutoNum(
 	prop.locmach  = ui -> m_loc       -> text();
 	prop.folio_group    = ui -> m_folio_group_le    -> text();
 	prop.folio_subgroup = ui -> m_folio_subgroup_le -> text();
+	prop.higher_plant    = ui -> m_higher_plant_le    -> text();
+	prop.higher_location = ui -> m_higher_location_le -> text();
 	prop.document_kind  = ui -> m_document_kind_le  -> text();
 	prop.indexrev = ui -> m_indice    -> text();
 	prop.folio    = "%autonum";
@@ -595,6 +601,7 @@ void TitleBlockPropertiesWidget::addTemplateVariables(
 		QStringLiteral("title"), QStringLiteral("filename"),
 		QStringLiteral("plant"), QStringLiteral("locmach"),
 		QStringLiteral("folio_group"), QStringLiteral("folio_subgroup"),
+		QStringLiteral("higher_plant"), QStringLiteral("higher_location"),
 		QStringLiteral("document_kind"),
 		QStringLiteral("indexrev"), QStringLiteral("version"),
 		QStringLiteral("folio"), QStringLiteral("folio-id"),
