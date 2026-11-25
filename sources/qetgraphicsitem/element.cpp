@@ -3583,14 +3583,14 @@ QString Element::designationForDisplay(const QString &label, const Element *draw
 	const StructureBoxItem::Place place = StructureBoxItem::placeOf(this);
 	if (display == QETProject::DesignationDisplay::Full) {
 		return autonum::AssignVariables::buildStructureId(
-					place.plant, place.location, place.product, label);
+					place.plantPart(), place.locationPart(), place.product, label);
 	}
 
 	const Element *reference_element = drawn_on && drawn_on->diagram() ? drawn_on : this;
 	const StructureBoxItem::Place reference = StructureBoxItem::referencePlace(reference_element);
 	return autonum::AssignVariables::buildStructureId(
-				place.plant != reference.plant ? place.plant : QString(),
-				place.location != reference.location ? place.location : QString(),
+				place.plantPart() != reference.plantPart() ? place.plantPart() : QString(),
+				place.locationPart() != reference.locationPart() ? place.locationPart() : QString(),
 				place.product != reference.product ? place.product : QString(),
 				label);
 }

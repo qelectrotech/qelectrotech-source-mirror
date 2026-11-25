@@ -82,6 +82,10 @@ namespace QETInformation
 	static QString ELMT_LABOUR_TIME                  = "labour_time";
 	static QString ELMT_PLANT                        = "plant";
 	static QString ELMT_LOCATION                     = "location";
+		/// The IEC 81346 levels above them (== and ++): over the
+		/// symbol's structure box's and folio's (#1878 C7)
+	static QString ELMT_HIGHER_PLANT                 = "higher_plant";
+	static QString ELMT_HIGHER_LOCATION              = "higher_location";
 	static QString ELMT_AUX1                         = "auxiliary1";
 	static QString ELMT_DESCRIPTION_AUX1                 = "description_auxiliary1";
 	static QString ELMT_DESIGNATION_AUX1                  = "designation_auxiliary1";

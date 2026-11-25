@@ -4095,6 +4095,9 @@ Diagram *QETProject::addNewDiagram(int pos)
 					m_diagrams_list.at(before)->border_and_titleblock;
 			titleblock.folio_group = previous.folioGroup();
 			titleblock.folio_subgroup = previous.folioSubgroup();
+				//The == and ++ levels span many folios, as groups do
+			titleblock.higher_plant = previous.higherPlant();
+			titleblock.higher_location = previous.higherLocation();
 		}
 	}
 	diagram->border_and_titleblock.importTitleBlock(titleblock);

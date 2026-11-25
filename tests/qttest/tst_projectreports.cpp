@@ -37,6 +37,7 @@
 #include <QTemporaryDir>
 #include <QSqlQuery>
 #include <QtTest>
+#include <tuple>
 
 /**
 	The project's lists: each a query of the public views, for the whole
@@ -191,6 +192,58 @@ class tst_projectreports : public QObject
 		for (const auto &place : places) texts << place.text();
 		QCOMPARE(texts, QStringList({QStringLiteral("=FACTORY"), QStringLiteral("=FACTORY+CP1"),
 									 QStringLiteral("=SILO"), QStringLiteral("=SILO+P_1")}));
+	}
+
+		//Item C7 of #1878: the same plant and location under two == are
+		//two places, each listed and each a filter of the lists
+	void placesUnderAHigherLevel()
+	{
+		QETProject project;
+		Diagram *a1 = project.addNewDiagram();
+		Diagram *a2 = project.addNewDiagram();
+		Diagram *a1b = project.addNewDiagram();
+		for (auto [folio, higher_plant, higher_location] :
+			 {std::tuple{a1, QStringLiteral("A1"), QStringLiteral("S1")},
+			  std::tuple{a2, QStringLiteral("A2"), QString()},
+				//Typed with its sign on this one: the same == as a1's
+			  std::tuple{a1b, QStringLiteral("==A1"), QStringLiteral("++S1")}}) {
+			setPlace(folio, QStringLiteral("FACTORY"), QStringLiteral("CP1"));
+			auto block = folio->border_and_titleblock.exportTitleBlock();
+			block.higher_plant = higher_plant;
+			block.higher_location = higher_location;
+			folio->border_and_titleblock.importTitleBlock(block);
+		}
+		QVERIFY(symbol(a1, QStringLiteral("K1")) && symbol(a1, QStringLiteral("K2"))
+				&& symbol(a2, QStringLiteral("K3")));
+
+		const auto places = ProjectReports::places(&project);
+		QStringList texts;
+		for (const auto &place : places) texts << place.text();
+		QCOMPARE(texts, QStringList({QStringLiteral("==A1=FACTORY"), QStringLiteral("==A1=FACTORY++S1+CP1"),
+									 QStringLiteral("==A2=FACTORY"), QStringLiteral("==A2=FACTORY+CP1")}));
+
+		const auto parts = ProjectReports::report(QStringLiteral("parts"));
+		QCOMPARE(column(ProjectReports::read(&project, parts, places.at(1)), 0),
+				 QStringList({QStringLiteral("==A1=FACTORY++S1+CP1-K1"),
+							  QStringLiteral("==A1=FACTORY++S1+CP1-K2")}));
+		QCOMPARE(column(ProjectReports::read(&project, parts, places.at(2)), 0),
+				 QStringList({QStringLiteral("==A2=FACTORY+CP1-K3")}));
+			//Without the levels, the place is another one
+		QVERIFY(ProjectReports::read(&project, parts, {QStringLiteral("FACTORY"), QStringLiteral("CP1")})
+				.rows.isEmpty());
+
+		QSqlQuery view = project.dataBase()->newQuery(QStringLiteral(
+				"SELECT structure_id, symbols, folios FROM qet_locations ORDER BY structure_id"));
+		QStringList rows;
+		while (view.next())
+			rows << view.value(0).toString() + QLatin1Char('|') + view.value(1).toString()
+					+ QLatin1Char('|') + view.value(2).toString();
+			//The folio with ==A1 typed with its sign is in the same place
+		QCOMPARE(rows, QStringList({QStringLiteral("==A1=FACTORY++S1+CP1|2|2"),
+									QStringLiteral("==A2=FACTORY+CP1|1|1")}));
+
+		const auto space = ProjectReports::read(&project, ProjectReports::report(QStringLiteral("space")));
+		QVERIFY2(space.error.isEmpty(), qPrintable(space.error));
 	}
 
 	void plantsAndLocationsWithCounts()
