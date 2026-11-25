@@ -2399,6 +2399,15 @@ QList<OpenWireEnds::Finding> projectDataBase::openWireEnds()
 	return OpenWireEnds::check(m_data_base);
 }
 
+QList<TerminalBranches::Finding> projectDataBase::terminalBranches()
+{
+	flushLinks();
+	flushElementTexts();
+	flushElementPositions();
+	flushCollections();
+	return TerminalBranches::check(m_data_base);
+}
+
 /**
 	@brief projectDataBase::linkedSymbols
 	@return the symbols @p element is linked to, read from the link table
