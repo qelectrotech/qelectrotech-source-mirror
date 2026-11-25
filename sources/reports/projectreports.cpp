@@ -231,7 +231,8 @@ namespace ProjectReports
 						 {QStringLiteral("cores"), Text::tr("Cores")},
 						 {QStringLiteral("wired_cores"), Text::tr("Wired")},
 						 {QStringLiteral("length"), Text::tr("Length")},
-						 {QStringLiteral("folio_number"), Text::tr("Sheet")}};
+						 {QStringLiteral("folio_number"), Text::tr("Sheet")},
+						 {QStringLiteral("comment"), Text::tr("Comment"), true}};
 			list << r;
 		}
 		{
@@ -463,6 +464,22 @@ namespace ProjectReports
 			for (int i = 0 ; i < report.columns.size() ; ++i)
 				row << query.value(i).toString();
 			table.rows << row;
+		}
+
+			//A column shown only when used goes while no row fills it,
+			//from the right so the indexes still to be read hold
+		for (int i = report.columns.size() - 1 ; i >= 0 ; --i) {
+			if (!report.columns.at(i).when_used) continue;
+			bool used = false;
+			for (const QStringList &row : std::as_const(table.rows)) {
+				if (!row.at(i).trimmed().isEmpty()) {
+					used = true;
+					break;
+				}
+			}
+			if (used) continue;
+			table.headers.removeAt(i);
+			for (QStringList &row : table.rows) row.removeAt(i);
 		}
 		return table;
 	}

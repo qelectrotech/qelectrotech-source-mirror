@@ -142,6 +142,8 @@ class CablePropertiesWidget : public QWidget
 			///What the cable is bought as: never drawn, so no tick
 		QLineEdit *m_manufacturer = nullptr;
 		QLineEdit *m_manufacturer_reference = nullptr;
+			///A note of the user's own, never drawn either
+		QLineEdit *m_comment = nullptr;
 		QCheckBox *m_show_designation = nullptr;
 		QCheckBox *m_show_type = nullptr;
 		QCheckBox *m_show_installation = nullptr;

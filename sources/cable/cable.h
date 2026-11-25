@@ -158,6 +158,12 @@ struct CableProperties
 		*/
 	QString manufacturer;
 	QString manufacturer_reference;
+		/**
+			A note of the user's own about this cable -- how it is laid,
+			what it is for -- the same free text an element has under
+			the same name. Not drawn: the cable list is where it is read.
+		*/
+	QString comment;
 
 		///What of that is written next to the trunk line of the drawing
 	bool show_designation = true;
@@ -195,6 +201,7 @@ struct CableProperties
 				&& length == other.length
 				&& manufacturer == other.manufacturer
 				&& manufacturer_reference == other.manufacturer_reference
+				&& comment == other.comment
 				&& show_designation == other.show_designation
 				&& show_type == other.show_type
 				&& show_installation == other.show_installation
@@ -289,6 +296,9 @@ class Cable : public QObject
 		QString manufacturerReference() const;
 		void setManufacturerReference(const QString &reference);
 
+		QString comment() const;
+		void setComment(const QString &comment);
+
 			///Every field of the cable, and what of it is drawn on the sheet
 		CableProperties properties() const;
 		void setProperties(const CableProperties &properties);
@@ -353,6 +363,7 @@ class Cable : public QObject
 		QString m_length;
 		QString m_manufacturer;
 		QString m_manufacturer_reference;
+		QString m_comment;
 		QString m_type;
 		int m_core_count = 0;
 		QStringList m_core_colors;

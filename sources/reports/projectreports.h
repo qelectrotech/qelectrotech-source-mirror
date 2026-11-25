@@ -38,6 +38,10 @@ namespace ProjectReports
 	{
 		QString sql;        ///< the expression, in the report's source
 		QString title;      ///< what the column is called
+			/// Left out of the table while every row of it is empty: a
+			/// column most projects never fill, which would otherwise
+			/// print as a blank strip on every page
+		bool when_used = false;
 	};
 
 	struct Report
