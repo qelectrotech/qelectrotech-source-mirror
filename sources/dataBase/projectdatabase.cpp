@@ -5423,7 +5423,8 @@ QStringList projectDataBase::publicViews()
 	Every column comes from a table filled when the project is opened, so
 	a folio not built gives the same rows. folio_number is the folio's
 	place in the project from 1, folio its label as its title block shows
-	it. A device's plant and location are its own, else the ones of the
+	it, and document_kind (added last) the kind of document it is, an
+	IEC 61355 code such as FS, '' for none. A device's plant and location are its own, else the ones of the
 	smallest structure box it is in, else its folio's, as in the parts list
 	and in its texts (StructureBoxItem::placeOf()), and structure_id composes them with its label
 	(=plant+location-label) as %{structure_id} does in its texts; each
@@ -5516,7 +5517,10 @@ QStringList projectDataBase::publicViewStatements()
 			+ folioGroupSql(QStringLiteral("folio_group"), QStringLiteral("d.uuid"), QStringLiteral("di.plant"))
 			+ QStringLiteral(" AS folio_group, ")
 			+ folioGroupSql(QStringLiteral("folio_subgroup"), QStringLiteral("d.uuid"), QStringLiteral("di.locmach"))
-			+ QStringLiteral(" AS folio_subgroup "
+			+ QStringLiteral(" AS folio_subgroup, "
+				//The kind of document (IEC 61355), '' for none: added last
+			"COALESCE((SELECT ft.value FROM folio_titleblock ft WHERE ft.diagram_uuid = d.uuid "
+				"AND ft.name = 'document_kind'), '') AS document_kind "
 			"FROM diagram d LEFT JOIN diagram_info di ON di.diagram_uuid = d.uuid"),
 		QStringLiteral(
 			"CREATE VIEW qet_devices AS SELECT "
@@ -6524,6 +6528,8 @@ void projectDataBase::storeFolioTitleBlock(const QUuid &folio, const TitleBlockP
 		row(QStringLiteral("higher_plant"), properties.higher_plant, true);
 	if (!properties.higher_location.isEmpty())
 		row(QStringLiteral("higher_location"), properties.higher_location, true);
+	if (!properties.document_kind.isEmpty())
+		row(QStringLiteral("document_kind"), properties.document_kind, true);
 	row(QStringLiteral("indexrev"), properties.indexrev, true);
 	row(QStringLiteral("version"), properties.version, true);
 	row(QStringLiteral("folio"), properties.folio, true);
@@ -8048,6 +8054,7 @@ void projectDataBase::endPrefill(bool keep_unplaced)
 		if (built.folio_subgroup != p.folio_subgroup) differing << QStringLiteral("folio_subgroup");
 		if (built.higher_plant != p.higher_plant) differing << QStringLiteral("higher_plant");
 		if (built.higher_location != p.higher_location) differing << QStringLiteral("higher_location");
+		if (built.document_kind != p.document_kind) differing << QStringLiteral("document_kind");
 		if (built.indexrev != p.indexrev) differing << QStringLiteral("indexrev");
 		if (built.version != p.version) differing << QStringLiteral("version");
 		if (built.folio != p.folio) differing << QStringLiteral("folio");

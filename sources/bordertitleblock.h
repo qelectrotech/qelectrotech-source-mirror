@@ -139,6 +139,8 @@ class BorderTitleBlock : public QObject
 		QString higherPlant() const { const TitleBlockProperties *s = stored(); return(s ? s->higher_plant : btb_higher_plant_); }
 		/// @return the folio's higher-level location (IEC 81346 "++"), above its location
 		QString higherLocation() const { const TitleBlockProperties *s = stored(); return(s ? s->higher_location : btb_higher_location_); }
+		/// @return the kind of document the folio is (IEC 61355), empty for none
+		QString documentKind() const { const TitleBlockProperties *s = stored(); return(s ? s->document_kind : btb_document_kind_); }
 		/// @return the value of the revision index block "Folio" field
 		QString indexrev() const { const TitleBlockProperties *s = stored(); return(s ? s->indexrev : btb_indexrev_); }
 		/// @return the value of the title block "File" field
@@ -284,6 +286,7 @@ class BorderTitleBlock : public QObject
 		QString btb_folio_subgroup_; ///< titleblock folio sub-group
 		QString btb_higher_plant_;    ///< titleblock higher-level function (==)
 		QString btb_higher_location_; ///< titleblock higher-level location (++)
+		QString btb_document_kind_;  ///< titleblock document kind (IEC 61355)
 		QString btb_indexrev_;      ///< titleblock index rev
 		QString btb_final_folio_;   ///< titleblock final folio
 		QString btb_auto_page_num_; ///< titleblock auto page num

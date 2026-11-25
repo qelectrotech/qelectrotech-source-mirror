@@ -124,6 +124,7 @@ void TitleBlockPropertiesWidget::setProperties(
 	ui -> m_folio_subgroup_le -> setText (properties.folio_subgroup);
 	ui -> m_higher_plant_le    -> setText (properties.higher_plant);
 	ui -> m_higher_location_le -> setText (properties.higher_location);
+	ui -> m_document_kind_le  -> setText (properties.document_kind);
 	ui -> m_indice        -> setText (properties.indexrev);
 	ui -> m_folio_le      -> setText (properties.folio);
 	ui -> m_display_at_cb -> setCurrentIndex(properties.display_at == Qt::BottomEdge ? 0 : 1);
@@ -194,6 +195,7 @@ TitleBlockProperties TitleBlockPropertiesWidget::properties() const
 	prop.folio_subgroup = ui -> m_folio_subgroup_le -> text();
 	prop.higher_plant    = ui -> m_higher_plant_le    -> text();
 	prop.higher_location = ui -> m_higher_location_le -> text();
+	prop.document_kind  = ui -> m_document_kind_le  -> text();
 	prop.indexrev   = ui -> m_indice        -> text();
 	prop.folio      = ui -> m_folio_le      -> text();
 	prop.display_at = ui -> m_display_at_cb -> currentIndex() == 0 ? Qt::BottomEdge : Qt::RightEdge;
@@ -264,6 +266,7 @@ TitleBlockProperties TitleBlockPropertiesWidget::propertiesAutoNum(
 	prop.folio_subgroup = ui -> m_folio_subgroup_le -> text();
 	prop.higher_plant    = ui -> m_higher_plant_le    -> text();
 	prop.higher_location = ui -> m_higher_location_le -> text();
+	prop.document_kind  = ui -> m_document_kind_le  -> text();
 	prop.indexrev = ui -> m_indice    -> text();
 	prop.folio    = "%autonum";
 	prop.display_at = ui -> m_display_at_cb -> currentIndex() == 0 ? Qt::BottomEdge : Qt::RightEdge;
@@ -599,6 +602,7 @@ void TitleBlockPropertiesWidget::addTemplateVariables(
 		QStringLiteral("plant"), QStringLiteral("locmach"),
 		QStringLiteral("folio_group"), QStringLiteral("folio_subgroup"),
 		QStringLiteral("higher_plant"), QStringLiteral("higher_location"),
+		QStringLiteral("document_kind"),
 		QStringLiteral("indexrev"), QStringLiteral("version"),
 		QStringLiteral("folio"), QStringLiteral("folio-id"),
 		QStringLiteral("folio-total"), QStringLiteral("auto_page_num"),
