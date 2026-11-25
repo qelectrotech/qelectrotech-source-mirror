@@ -3020,6 +3020,7 @@ QDomDocument QETProject::toXml(QHash<int, QByteArray> *kept_folios, QStringList 
 	writeDeviceTypeRulesXml(project_root);
 	writeLanguagesXml(project_root);
 	writePotentialTypesXml(project_root);
+	writeRevisionsXml(project_root);
 	writeTerminalLabelSplitXml(project_root);
 	writeWiringRulesXml(project_root);
 	writeDefinitionMarkStyleXml(project_root);
@@ -4253,6 +4254,7 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 	readDeviceTypeRulesXml(xml_project);
 	readLanguagesXml(xml_project);
 	readPotentialTypesXml(xml_project);
+	readRevisionsXml(xml_project);
 	readTerminalLabelSplitXml(xml_project);
 	readWiringRulesXml(xml_project);
 	readDefinitionMarkStyleXml(xml_project);
@@ -5482,6 +5484,46 @@ void QETProject::writePotentialTypesXml(QDomElement &xml_element)
 }
 
 /**
+	@brief QETProject::readRevisionsXml
+	Read the <revisions> element of the project, if any: its revision
+	history (#1295, rule 2)
+*/
+void QETProject::readRevisionsXml(QDomDocument &xml_project)
+{
+	m_revisions = RevisionList::fromXml(xml_project.documentElement()
+			.firstChildElement(QStringLiteral("revisions")));
+}
+
+/**
+	@brief QETProject::writeRevisionsXml
+	Write the <revisions> element, only when the project has revisions,
+	so any other project saves exactly as before
+	@param xml_element : the <project> element
+*/
+void QETProject::writeRevisionsXml(QDomElement &xml_element)
+{
+	if (m_revisions.isEmpty()) {
+		return;
+	}
+	QDomDocument document = xml_element.ownerDocument();
+	xml_element.appendChild(m_revisions.toXml(document));
+}
+
+/**
+	@brief QETProject::setRevisions
+	Set the project's revision history
+*/
+void QETProject::setRevisions(const RevisionList &revisions)
+{
+	if (revisions == m_revisions) {
+		return;
+	}
+	m_revisions = revisions;
+	storeSettings();
+	setModified(true);
+}
+
+/**
 	@brief QETProject::setPotentialTypes
 	Set the potential types and whether conductors are drawn from them,
 	and redraw the folios built.
@@ -6139,6 +6181,7 @@ void QETProject::storeSettings()
 	writeDeviceTypeRulesXml(root);
 	writeLanguagesXml(root);
 	writePotentialTypesXml(root);
+	writeRevisionsXml(root);
 	writeTerminalLabelSplitXml(root);
 	writeWiringRulesXml(root);
 	writeDefinitionMarkStyleXml(root);

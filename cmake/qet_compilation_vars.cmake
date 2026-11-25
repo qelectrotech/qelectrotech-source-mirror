@@ -696,6 +696,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/properties/projectlanguages.h
   ${QET_DIR}/sources/properties/potentialtypes.cpp
   ${QET_DIR}/sources/properties/potentialtypes.h
+  ${QET_DIR}/sources/properties/revisionlist.cpp
+  ${QET_DIR}/sources/properties/revisionlist.h
   ${QET_DIR}/sources/properties/propertiesinterface.cpp
   ${QET_DIR}/sources/properties/propertiesinterface.h
   ${QET_DIR}/sources/properties/reportproperties.cpp
@@ -1064,6 +1066,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/ui/configpage/generalconfigurationpage.h
   ${QET_DIR}/sources/ui/configpage/projectconfigpages.cpp
   ${QET_DIR}/sources/ui/configpage/projectconfigpages.h
+  ${QET_DIR}/sources/ui/configpage/revisionsconfigpage.cpp
+  ${QET_DIR}/sources/ui/configpage/revisionsconfigpage.h
   ${QET_DIR}/sources/ui/configpage/guidespropertieswidget.cpp
   ${QET_DIR}/sources/ui/configpage/guidespropertieswidget.h
   ${QET_DIR}/sources/ui/configpage/shortcutsconfigpage.cpp

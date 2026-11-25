@@ -1,0 +1,157 @@
+/*
+	Copyright 2006-2026 The QElectroTech Team
+	This file is part of QElectroTech.
+
+	QElectroTech is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 2 of the License, or
+	(at your option) any later version.
+
+	QElectroTech is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+
+	You should have received a copy of the GNU General Public License
+	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
+*/
+#include "dataBase/projectdatabase.h"
+#include "properties/revisionlist.h"
+#include "qetapptest.h"
+#include "qetproject.h"
+#include "qetresult.h"
+#include "ui/configpage/revisionsconfigpage.h"
+
+#include <QDomDocument>
+#include <QPushButton>
+#include <QSqlQuery>
+#include <QTableWidget>
+#include <QTemporaryDir>
+#include <QtTest>
+
+/**
+	Item C8 of #1878, agreed in #1295 (rule 2): the project's revision
+	history is one list in the project properties -- revision, date,
+	description, author, approver. Saved as <revisions> only when it has
+	one; a .qet, .qetz and .qetdb keep it; qet_revisions gives it.
+*/
+class tst_revisionlist : public QObject
+{
+	Q_OBJECT
+	QTemporaryDir m_dir;
+
+	static RevisionList twoRevisions()
+	{
+		RevisionList list;
+		list.setRevisions({{QStringLiteral("A"), QStringLiteral("2026-11-01"),
+							QStringLiteral("First issue"), QStringLiteral("SR"), QString()},
+						   {QStringLiteral("B"), QStringLiteral("2026-11-25"),
+							QStringLiteral("Pump P2 added; \"quoted\" & <marked>"),
+							QStringLiteral("SR"), QStringLiteral("JD")}});
+		return list;
+	}
+
+private slots:
+	void initTestCase()
+	{
+		QVERIFY(m_dir.isValid());
+		QETProject::setBackupEnabled(false);
+	}
+
+	void xmlRoundTrip()
+	{
+		QDomDocument document;
+		const RevisionList list = twoRevisions();
+		const QDomElement e = list.toXml(document);
+		QCOMPARE(e.tagName(), QStringLiteral("revisions"));
+			//An empty field is not written
+		QVERIFY(!e.firstChildElement().hasAttribute(QStringLiteral("approver")));
+		QCOMPARE(RevisionList::fromXml(e), list);
+		QCOMPARE(list.latest().revision, QStringLiteral("B"));
+		QVERIFY(RevisionList::fromXml(QDomElement()).isEmpty());
+	}
+
+	void savedOnlyWhenSet()
+	{
+		QETProject project;
+		project.addNewDiagram();
+		QVERIFY(!project.toXml().toString().contains(QLatin1String("<revisions")));
+		project.setRevisions(twoRevisions());
+		QVERIFY(project.toXml().toString().contains(QLatin1String("<revisions")));
+		project.setRevisions(RevisionList());
+		QVERIFY(!project.toXml().toString().contains(QLatin1String("<revisions")));
+	}
+
+	void projectKeepsIt_data()
+	{
+		QTest::addColumn<QString>("file");
+		QTest::newRow("qet") << QStringLiteral("revisions.qet");
+		QTest::newRow("qetz") << QStringLiteral("revisions.qetz");
+		QTest::newRow("qetdb") << QStringLiteral("revisions.qetdb");
+	}
+
+	void projectKeepsIt()
+	{
+		QFETCH(QString, file);
+		QETProject project;
+		project.addNewDiagram();
+		project.setRevisions(twoRevisions());
+		project.setFilePath(m_dir.filePath(file));
+		const QETResult written = project.write();
+		QVERIFY2(written.isOk(), qPrintable(written.errorMessage()));
+		QETProject again(m_dir.filePath(file));
+		QCOMPARE(again.revisions(), twoRevisions());
+	}
+
+	void theViewGivesIt()
+	{
+		QETProject project;
+		project.addNewDiagram();
+		project.setRevisions(twoRevisions());
+		project.dataBase()->updateDB();
+		QString error;
+		QSqlQuery query = project.dataBase()->newQuery(QStringLiteral(
+			"SELECT position, revision, date, description, author, approver "
+			"FROM qet_revisions"), &error);
+		QVERIFY2(error.isEmpty(), qPrintable(error));
+		QStringList rows;
+		while (query.next()) {
+			QStringList row;
+			for (int i = 0 ; i < 6 ; ++i) row << query.value(i).toString();
+			rows << row.join(QLatin1Char('|'));
+		}
+		QCOMPARE(rows, QStringList({
+			QStringLiteral("1|A|2026-11-01|First issue|SR|"),
+			QStringLiteral("2|B|2026-11-25|Pump P2 added; \"quoted\" & <marked>|SR|JD")}));
+	}
+
+	void thePageEditsIt()
+	{
+		QETProject project;
+		project.addNewDiagram();
+		project.setRevisions(twoRevisions());
+		RevisionsConfigPage page(&project);
+		auto *table = page.findChild<QTableWidget *>(QStringLiteral("revisionTable"));
+		QVERIFY(table);
+		QCOMPARE(table->rowCount(), 2);
+		page.findChild<QPushButton *>(QStringLiteral("addRevision"))->click();
+		QCOMPARE(table->rowCount(), 3);
+			//Dated today, the rest to type
+		QCOMPARE(table->item(2, 1)->text(), QDate::currentDate().toString(Qt::ISODate));
+		table->item(2, 0)->setText(QStringLiteral(" C "));
+		table->item(2, 2)->setText(QStringLiteral("Cable list"));
+		table->setCurrentCell(0, 0);
+		page.findChild<QPushButton *>(QStringLiteral("removeRevision"))->click();
+		page.applyProjectConf();
+		const QList<Revision> revisions = project.revisions().revisions();
+		QCOMPARE(revisions.size(), 2);
+		QCOMPARE(revisions.at(0).revision, QStringLiteral("B"));
+		QCOMPARE(revisions.at(1).revision, QStringLiteral("C"));
+		QCOMPARE(revisions.at(1).description, QStringLiteral("Cable list"));
+		QVERIFY(project.projectOptionsWereModified() || project.projectWasModified());
+	}
+
+};
+
+QET_APP_TEST_MAIN(tst_revisionlist)
+#include "tst_revisionlist.moc"

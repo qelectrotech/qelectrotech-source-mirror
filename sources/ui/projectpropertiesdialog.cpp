@@ -22,6 +22,8 @@
 #include "configpage/projectconfigpages.h"
 #include <TerminalStrip/ui/ConfigPage/terminalstripprojectconfigpage.h>
 
+#include "configpage/revisionsconfigpage.h"
+
 #include <QObject>
 
 /**
@@ -43,6 +45,7 @@ ProjectPropertiesDialog::ProjectPropertiesDialog(QETProject *project, QWidget *p
 	m_properties_dialog -> addPage(projectAutoNumConfigPage);
 
 	m_properties_dialog->addPage(new TerminalStripProjectConfigPage { project, parent });
+	m_properties_dialog->addPage(new RevisionsConfigPage(project));
 
 	connect(projectAutoNumConfigPage, qOverload<QString>(&ProjectAutoNumConfigPage::setAutoNum), newDiagramPage, &NewDiagramPage::setFolioAutonum);
 	connect(projectAutoNumConfigPage, &ProjectAutoNumConfigPage::saveCurrentTbp, newDiagramPage, &NewDiagramPage::saveCurrentTbp);
