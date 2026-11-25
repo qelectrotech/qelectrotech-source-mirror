@@ -57,6 +57,11 @@ namespace ProjectReports
 	{
 		QString plant;
 		QString location;
+			/// The IEC 81346 levels above them (== and ++), the folio's;
+			/// empty for none
+		QString higher_plant;
+		QString higher_location;
+			/// "==A1=P1++S1+L1": every part left out when empty
 		QString text() const;
 	};
 

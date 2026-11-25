@@ -153,6 +153,8 @@ QStringList QETInformation::elementInfoKeys()
 						 ELMT_TERMINAL_NUMBER,
 						 ELMT_PLANT,
 						 ELMT_LOCATION,
+						 ELMT_HIGHER_PLANT,
+						 ELMT_HIGHER_LOCATION,
 						 ELMT_COMMENT,
 						 ELMT_FUNCTION,
 						 ELMT_DESCRIPTION,
@@ -428,6 +430,8 @@ QString QETInformation::translatedInfoKey(const QString &info)
 	else if (info == ELMT_UNIT_PRICE)                  return QObject::tr("Unit price");
 	else if (info == ELMT_LABOUR_TIME)                 return QObject::tr("Labour time [h]");
 	else if (info == ELMT_LOCATION)                    return QObject::tr("Location (+)");
+	else if (info == ELMT_HIGHER_PLANT)                return QObject::tr("Higher-level function (==)");
+	else if (info == ELMT_HIGHER_LOCATION)             return QObject::tr("Higher-level location (++)");
 	else if (info == COND_FUNCTION)                    return QObject::tr("Function");
 	else if (info == COND_TENSION_PROTOCOL)            return QObject::tr("Voltage / Protocol");
 	else if (info == COND_COLOR)                       return QObject::tr("Wire color");

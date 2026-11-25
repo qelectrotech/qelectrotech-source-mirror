@@ -373,6 +373,8 @@ TitleBlockProperties BorderTitleBlock::localTitleBlock() const
 	ip.locmach = btb_locmach_;
 	ip.folio_group = btb_folio_group_;
 	ip.folio_subgroup = btb_folio_subgroup_;
+	ip.higher_plant = btb_higher_plant_;
+	ip.higher_location = btb_higher_location_;
 	ip.indexrev = btb_indexrev_;
 	ip.version = btb_version_;
 	ip.folio = btb_folio_;
@@ -509,6 +511,8 @@ void BorderTitleBlock::importTitleBlock(const TitleBlockProperties &ip)
 	btb_locmach_ = ip.locmach;
 	btb_folio_group_ = ip.folio_group;
 	btb_folio_subgroup_ = ip.folio_subgroup;
+	btb_higher_plant_ = ip.higher_plant;
+	btb_higher_location_ = ip.higher_location;
 	btb_indexrev_ = ip.indexrev;
 	btb_version_ = QetVersion::displayedVersion();
 	btb_auto_page_num_ = ip.auto_page_num;
@@ -1221,6 +1225,9 @@ void BorderTitleBlock::updateDiagramContextForTitleBlock(
 		//The group a folio is in: its own, else its plant / location
 	context.addValue("folio_group",    tb.resolvedFolioGroup());
 	context.addValue("folio_subgroup", tb.resolvedFolioSubgroup());
+		//The IEC 81346 levels above the plant (==) and the location (++)
+	context.addValue("higher_plant",    tb.higher_plant);
+	context.addValue("higher_location", tb.higher_location);
 	context.addValue("indexrev",    tb.indexrev);
 	context.addValue("version",     tb.version);
 	context.addValue("folio",       btb_final_folio_);

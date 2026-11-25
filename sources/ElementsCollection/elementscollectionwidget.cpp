@@ -32,10 +32,12 @@
 #include "elementslocation.h"
 #include "elementstreeview.h"
 #include "fileelementcollectionitem.h"
+#include "librarylisting.h"
 #include "xmlprojectelementcollectionitem.h"
 
 #include <QCheckBox>
 #include <QDesktopServices>
+#include <QProgressDialog>
 #include <QSettings>
 #include <QShortcut>
 #include <QListView>
@@ -247,6 +249,8 @@ void ElementsCollectionWidget::setUpAction()
 					 tr("Show All Folders"), this);
 	m_dir_propertie = new QAction(QET::Icons::FolderProperties,
 					  tr("Folder properties"), this);
+	m_export_list = new QAction(QET::Icons::DocumentSpreadsheet,
+					tr("Export symbol list…"), this);
 }
 
 /**
@@ -357,6 +361,8 @@ void ElementsCollectionWidget::setUpConnection()
 		this, &ElementsCollectionWidget::resetShowThisDir);
 	connect(m_dir_propertie, &QAction::triggered,
 		this, &ElementsCollectionWidget::dirProperties);
+	connect(m_export_list, &QAction::triggered,
+		this, &ElementsCollectionWidget::exportList);
 
 	connect(m_tree_view, &QTreeView::doubleClicked,
 			[this](const QModelIndex &index) { this->activateIndex(index); });
@@ -494,6 +500,9 @@ void ElementsCollectionWidget::customContextMenu(const QPoint &point)
 			m_context_menu->addAction(m_show_all_dir);
 
 		m_context_menu->addAction(m_dir_propertie);
+			//A list of the symbols and macros of a folder on disk
+		if (eci->type() == FileElementCollectionItem::Type)
+			m_context_menu->addAction(m_export_list);
 	}
 	if (add_open_dir)
 		m_context_menu->addAction(m_open_dir);
@@ -954,6 +963,72 @@ void ElementsCollectionWidget::resetShowThisDir()
 
 	m_showed_index = QModelIndex();
 	search();
+}
+
+/**
+	@brief ElementsCollectionWidget::exportList
+	Writes a CSV of the symbols and macros of the folder at the context
+	menu and its sub-folders: name, folder, terminal names, class letter
+	(#1878 A8)
+*/
+void ElementsCollectionWidget::exportList()
+{
+	ElementCollectionItem *eci =
+		elementCollectionItemForIndex(m_index_at_context_menu);
+	if (!eci || !eci->isDir() || eci->type() != FileElementCollectionItem::Type)
+		return;
+	const QString folder =
+		static_cast<FileElementCollectionItem *>(eci)->fileSystemPath();
+
+		//A folder name may hold what a file name cannot
+	QString name = eci->localName();
+	name.replace(QRegularExpression(QStringLiteral("[/\\\\:*?\"<>|]")),
+				 QStringLiteral("_"));
+	const QString file_name = QFileDialog::getSaveFileName(
+				this, tr("Export symbol list"),
+				QDir(QETApp::documentDir()).filePath(
+					tr("symbols") % QLatin1Char('_') % name
+					% QStringLiteral(".csv")),
+				tr("CSV files (*.csv)"));
+	if (file_name.isEmpty())
+		return;
+
+		//The whole collection is thousands of files: a few seconds
+	QProgressDialog progress(tr("Reading the symbols…"), tr("Cancel"),
+							 0, 0, this);
+	progress.setWindowTitle(tr("Export symbol list"));
+	progress.setWindowModality(Qt::WindowModal);
+	progress.setMinimumDuration(500);
+	bool cancelled = false;
+	const QList<LibraryListing::Row> rows = LibraryListing().scan(folder,
+			[&progress, &cancelled](int done, int total) {
+		progress.setMaximum(total);
+		progress.setValue(done);
+		cancelled = progress.wasCanceled();
+		return !cancelled;
+	});
+	progress.reset();
+	if (cancelled)
+		return;
+
+	QString error;
+	if (!LibraryListing::write(rows, file_name, &error)) {
+		QMessageBox::critical(
+			this, tr("Export symbol list"),
+			tr("Unable to write %1:\n%2").arg(file_name, error));
+		return;
+	}
+	int macros = 0, unreadable = 0;
+	for (const auto &row : rows) {
+		if (row.macro) ++macros;
+		if (!row.error.isEmpty()) ++unreadable;
+	}
+	QMessageBox::information(
+		this, tr("Export symbol list"),
+		tr("Symbols: %1, macros: %2, files that could not be read: %3.\n"
+		   "Written to %4")
+			.arg(int(rows.size()) - macros).arg(macros).arg(unreadable)
+			.arg(file_name));
 }
 
 /**

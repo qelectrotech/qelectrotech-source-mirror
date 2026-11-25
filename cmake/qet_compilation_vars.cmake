@@ -643,6 +643,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/ElementsCollection/elementstreeview.h
   ${QET_DIR}/sources/ElementsCollection/fileelementcollectionitem.cpp
   ${QET_DIR}/sources/ElementsCollection/fileelementcollectionitem.h
+  ${QET_DIR}/sources/ElementsCollection/librarylisting.cpp
+  ${QET_DIR}/sources/ElementsCollection/librarylisting.h
   ${QET_DIR}/sources/ElementsCollection/qetlabelsfile.cpp
   ${QET_DIR}/sources/ElementsCollection/qetlabelsfile.h
   ${QET_DIR}/sources/ElementsCollection/terminaluuids.cpp
@@ -1033,6 +1035,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/ui/openwireendsdialog.h
   ${QET_DIR}/sources/projectcheck/openwireends.cpp
   ${QET_DIR}/sources/projectcheck/openwireends.h
+  ${QET_DIR}/sources/projectcheck/terminalbranches.cpp
+  ${QET_DIR}/sources/projectcheck/terminalbranches.h
   ${QET_DIR}/sources/ui/potentialsourceswidget.cpp
   ${QET_DIR}/sources/ui/potentialsourceswidget.h
   ${QET_DIR}/sources/ui/potentialtypeswidget.cpp

@@ -2553,6 +2553,11 @@ qet_add_app_test(tst_potentialview tst_potentialview.cpp)
 qet_add_app_test(tst_openwireends tst_openwireends.cpp)
 target_compile_definitions(tst_openwireends PRIVATE
   QET_EXAMPLES_DIR="${QET_DIR}/examples")
+# Branches between strip terminals (#1878 B4): a junction on a wire between
+# two terminal strip terminals, with a third wire going off it.
+qet_add_app_test(tst_terminalbranches tst_terminalbranches.cpp)
+target_compile_definitions(tst_terminalbranches PRIVATE
+  QET_EXAMPLES_DIR="${QET_DIR}/examples")
 # Chained folio reports: what two reports must share to be chained
 # together is the project's choice -- the labels they carry, or the
 # function of the wires their terminals hold.
@@ -2696,6 +2701,11 @@ qet_add_app_test(tst_tablereopen tst_tablereopen.cpp)
 # back only for one-digit ids: from the eleventh project opened, editing an
 # embedded symbol or placing one silently failed (#1958).
 qet_add_app_test(tst_projectidlocation tst_projectidlocation.cpp)
+# The library listing (#1878 A8): a row per symbol and macro of a
+# collection folder, with its terminal names and class letter.
+qet_add_app_test(tst_librarylisting tst_librarylisting.cpp)
+target_compile_definitions(tst_librarylisting PRIVATE
+  QET_ELEMENTS_DIR="${QET_DIR}/elements")
 # Label lists for printers (#1878 A7): device tags, terminal markers, cable
 # and wire numbers, one per line, read from the project database.
 qet_add_app_test(tst_labellistexport tst_labellistexport.cpp)

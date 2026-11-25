@@ -202,6 +202,52 @@ class tst_cablelist : public QObject
 		QCOMPARE(w1_uuid, w1->uuid().toString());
 	}
 
+		//Item C7 of #1878: a cable's id takes the == and ++ of the folio it
+		//is first drawn on, as its plant and location do; its cores too
+	void aCableTakesTheHigherLevelsOfItsFirstFolio()
+	{
+		QETProject project;
+		Diagram *first = project.addNewDiagram();
+		Diagram *second = project.addNewDiagram();
+		setPlace(first, QStringLiteral("FACTORY"), QStringLiteral("CP1"));
+		setPlace(second, QStringLiteral("FACTORY"), QStringLiteral("CP2"));
+		auto block = first->border_and_titleblock.exportTitleBlock();
+		block.higher_plant = QStringLiteral("==A1");
+		block.higher_location = QStringLiteral("S1");
+		first->border_and_titleblock.importTitleBlock(block);
+
+		Cable *w1 = cable(project, QStringLiteral("W1"));
+		w1->setCoreCount(1);
+		drawOn(w1, second);
+		drawOn(w1, first);
+			//Its own plant: the folio's == still goes above it
+		Cable *w2 = cable(project, QStringLiteral("W2"));
+		w2->setInstallation(QStringLiteral("SILO"));
+		drawOn(w2, first);
+			//Drawn on a folio without them, or nowhere: as before
+		drawOn(cable(project, QStringLiteral("W3")), second);
+		Cable *w4 = cable(project, QStringLiteral("W4"));
+		w4->setInstallation(QStringLiteral("SILO"));
+
+		project.dataBase()->updateDB();
+		QString error;
+		QSqlQuery query = project.dataBase()->newQuery(QStringLiteral(
+			"SELECT structure_id FROM qet_cables"), &error);
+		QVERIFY2(error.isEmpty(), qPrintable(error));
+		QStringList ids;
+		while (query.next()) ids << query.value(0).toString();
+		ids.sort();
+		QCOMPARE(ids, QStringList({QStringLiteral("==A1=FACTORY++S1+CP1-W1"),
+								   QStringLiteral("==A1=SILO++S1+CP1-W2"),
+								   QStringLiteral("=FACTORY+CP2-W3"),
+								   QStringLiteral("=SILO-W4")}));
+		query = project.dataBase()->newQuery(QStringLiteral(
+			"SELECT structure_id FROM qet_cable_cores WHERE designation = 'W1'"), &error);
+		QVERIFY2(error.isEmpty(), qPrintable(error));
+		QVERIFY(query.next());
+		QCOMPARE(query.value(0).toString(), QStringLiteral("==A1=FACTORY++S1+CP1-W1"));
+	}
+
 		//A cable whose cores land on the terminals of one strip ends at the
 		//strip, not at its first two terminals
 	void coresOnOneStripAreOneEnd()

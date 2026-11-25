@@ -655,6 +655,47 @@ private slots:
 		QCOMPARE(b->location(), QStringLiteral("J3"));
 	}
 
+		//Item C7 of #1878: the box's == and ++ fields edit those and
+		//nothing else, live (the Selection properties panel) or applied
+	void editingABoxHigherLevelsChangesOnlyThem()
+	{
+		QETProject project;
+		Diagram *diagram = project.addNewDiagram();
+		StructureBoxItem *b = box(diagram, QRectF(0, 0, 100, 100),
+								  QStringLiteral("SILO"), QStringLiteral("J3"));
+		StructureBoxPropertiesWidget panel(b);
+		QVERIFY(panel.setLiveEdit(true));
+		auto *higher_plant = panel.findChild<QLineEdit *>(QStringLiteral("higherPlantEdit"));
+		auto *higher_location = panel.findChild<QLineEdit *>(QStringLiteral("higherLocationEdit"));
+		QVERIFY(higher_plant && higher_location);
+		higher_plant->setFocus();
+		QTest::keyClicks(higher_plant, QStringLiteral("A2"));
+		emit higher_plant->editingFinished();
+		QCOMPARE(b->higherPlant(), QStringLiteral("A2"));
+		QCOMPARE(b->plant(), QStringLiteral("SILO"));
+		QCOMPARE(b->location(), QStringLiteral("J3"));
+		QVERIFY(b->higherLocation().isEmpty());
+
+			//A dialog on the same box, opened after: it shows the panel's
+			//edit, and its Apply keeps every field where it is
+		StructureBoxPropertiesWidget dialog(b);
+		auto *dialog_higher_location = dialog.findChild<QLineEdit *>(QStringLiteral("higherLocationEdit"));
+		QCOMPARE(dialog.findChild<QLineEdit *>(QStringLiteral("higherPlantEdit"))->text(), QStringLiteral("A2"));
+		dialog_higher_location->setText(QStringLiteral("S2"));
+		dialog.apply();
+		QCOMPARE(b->higherLocation(), QStringLiteral("S2"));
+		QCOMPARE(b->higherPlant(), QStringLiteral("A2"));
+		QCOMPARE(b->plant(), QStringLiteral("SILO"));
+		QCOMPARE(b->location(), QStringLiteral("J3"));
+
+			//One undo step each
+		diagram->undoStack().undo();
+		QVERIFY(b->higherLocation().isEmpty());
+		diagram->undoStack().undo();
+		QVERIFY(b->higherPlant().isEmpty());
+		QCOMPARE(b->plant(), QStringLiteral("SILO"));
+	}
+
 	void editingABoxCanBeUndone()
 	{
 		QETProject project;

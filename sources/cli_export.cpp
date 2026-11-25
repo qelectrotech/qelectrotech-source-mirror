@@ -33,6 +33,7 @@
 #include "editor/symbolgridcheck.h"
 #include "editor/terminalnamecheck.h"
 #include "dxfexport.h"
+#include "ElementsCollection/librarylisting.h"
 #include "exportproperties.h"
 #include "pdf_links.h"
 #include "container/qetcontainer.h"
@@ -100,6 +101,7 @@ const QHash<QString, QString> &exportFlags()
 		{"--export-device-types-brief", "devicetypebrief"},
 		{"--info", "info"},
 		{"--check-elements", "check"},
+		{"--export-library", "library"},
 		{"--resave", "resave"},
 		{"--recover", "recover"},
 		{"--history", "history"},
@@ -1390,6 +1392,25 @@ int run(const QStringList &args)
 			return 2;
 		}
 		return checkElements(rest.at(0), grid);
+	}
+
+	// --export-library lists the symbols and macros of a folder, not a project
+	if (format == "library") {
+		if (rest.size() < 2 || !QFileInfo(rest.at(0)).isDir()) {
+			err << "Usage: qelectrotech --export-library <folder>"
+				   " <output.csv>\n";
+			return 2;
+		}
+		const QList<LibraryListing::Row> rows =
+				LibraryListing().scan(rest.at(0));
+		QString error;
+		if (!LibraryListing::write(rows, rest.at(1), &error)) {
+			err << "Cannot write '" << rest.at(1) << "': " << error << "\n";
+			return 1;
+		}
+		out << "Listed " << rows.size() << " symbol(s) and macro(s) -> "
+			<< rest.at(1) << "\n";
+		return 0;
 	}
 
 	// --recover reads what it can of a damaged .qetz, which a project
