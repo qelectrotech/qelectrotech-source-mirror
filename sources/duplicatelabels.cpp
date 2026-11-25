@@ -129,8 +129,14 @@ namespace DuplicateLabels
 			// in box -B2 are two devices
 			// and the folio's == and ++ levels: -K1 under ==A1 and -K1
 			// under ==A2 are two devices too
-		return autonum::AssignVariables::withHigherLevel(QLatin1Char('='), reference.higher_plant, plant)
-				+ autonum::AssignVariables::withHigherLevel(QLatin1Char('+'), reference.higher_location, location)
+			// A symbol's own == and ++ go over them
+		const QString own_higher_plant = info.value(QStringLiteral("higher_plant")).toString().trimmed();
+		const QString own_higher_location = info.value(QStringLiteral("higher_location")).toString().trimmed();
+		return autonum::AssignVariables::withHigherLevel(
+					QLatin1Char('='), own_higher_plant.isEmpty() ? reference.higher_plant : own_higher_plant, plant)
+				+ autonum::AssignVariables::withHigherLevel(
+					QLatin1Char('+'), own_higher_location.isEmpty() ? reference.higher_location : own_higher_location,
+					location)
 				+ reference.product;
 	}
 

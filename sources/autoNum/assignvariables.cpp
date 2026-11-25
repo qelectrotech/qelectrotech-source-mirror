@@ -366,15 +366,23 @@ namespace autonum
 		if (location_value.isEmpty())
 			location_value = reference_location;
 
+			//The symbol's own == and ++ over its boxes' and its folio's
+		const QString reference_higher_plant = higher_plant;
+		const QString reference_higher_location = higher_location;
+		if (!dc.value("higher_plant").toString().trimmed().isEmpty())
+			higher_plant = dc.value("higher_plant").toString();
+		if (!dc.value("higher_location").toString().trimmed().isEmpty())
+			higher_location = dc.value("higher_location").toString();
+		const QString plant_part = withHigherLevel(QLatin1Char('='), higher_plant, plant_value);
+		const QString location_part = withHigherLevel(QLatin1Char('+'), higher_location, location_value);
+
 		QString prefix_value = elmt ? elmt->getPrefix() : QString();
 		QString label_value = dc.value("label").toString();
 
 			//Full IEC 81346 reference designation (=plant+location-label),
 			//each segment omitted when its underlying value is empty.
 		QString structure_id_full = buildStructureId(
-			withHigherLevel(QLatin1Char('='), higher_plant, plant_value),
-			withHigherLevel(QLatin1Char('+'), higher_location, location_value),
-			product_value, label_value);
+			plant_part, location_part, product_value, label_value);
 
 			//Reduced form relative to the reference point (IEC 81346's own
 			//allowance for dropping higher-level parts already implied by
@@ -383,10 +391,10 @@ namespace autonum
 			//An own plant or location other than the folio's shows with the
 			//folio's == or ++ in front, so it says which one it is under.
 		QString structure_id = buildStructureId(
-			plant_value != reference_plant
-				? withHigherLevel(QLatin1Char('='), higher_plant, plant_value) : QString(),
-			location_value != reference_location
-				? withHigherLevel(QLatin1Char('+'), higher_location, location_value) : QString(),
+			plant_part != withHigherLevel(QLatin1Char('='), reference_higher_plant, reference_plant)
+				? plant_part : QString(),
+			location_part != withHigherLevel(QLatin1Char('+'), reference_higher_location, reference_location)
+				? location_part : QString(),
 				//The symbol is in the boxes that give it its levels, so
 				//the reference point already has all of them
 			QString(),

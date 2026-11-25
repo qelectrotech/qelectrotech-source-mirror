@@ -411,8 +411,12 @@ StructureBoxItem::Place StructureBoxItem::placeOf(const Element *element)
 	if (place.location.isEmpty()) place.location = reference.location;
 		//A symbol has no product levels of its own, only its boxes'
 	place.product = reference.product;
-	place.higher_plant = reference.higher_plant;
-	place.higher_location = reference.higher_location;
+		//Its own == and ++ over its boxes' and its folio's, field by field
+	const QString own_higher_plant = info.value(QStringLiteral("higher_plant")).toString();
+	const QString own_higher_location = info.value(QStringLiteral("higher_location")).toString();
+	place.higher_plant = own_higher_plant.trimmed().isEmpty() ? reference.higher_plant : own_higher_plant;
+	place.higher_location = own_higher_location.trimmed().isEmpty() ? reference.higher_location
+																	 : own_higher_location;
 	return place;
 }
 

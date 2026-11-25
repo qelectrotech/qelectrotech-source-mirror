@@ -5034,17 +5034,18 @@ static QString levelsStructureIdSql(const QString &plant, const QString &locatio
 
 /**
 	@brief elementHigherLevelSql
-	The SQL of a symbol's == or ++: the smallest structure box around it
-	that has one, else its folio's; NULL when neither has one.
+	The SQL of a symbol's == or ++: its own, else the smallest structure
+	box around it that has one, else its folio's; NULL when none has one.
 	@param name : higher_plant or higher_location
+	@param own : the symbol's information's alias, e.g. ei
 	@param box : the boxes' alias, e.g. es (structurePlacesSql())
 	@param folio_uuid : the folio's uuid column, e.g. e.diagram_uuid
 */
-static QString elementHigherLevelSql(const QString &name, const QString &box,
-									 const QString &folio_uuid)
+static QString elementHigherLevelSql(const QString &name, const QString &own,
+									 const QString &box, const QString &folio_uuid)
 {
-	return QStringLiteral("COALESCE(%2.%1, %3)")
-			.arg(name, box, folioHigherLevelSql(name, folio_uuid));
+	return QStringLiteral("COALESCE(NULLIF(TRIM(%4.%1), ''), %2.%1, %3)")
+			.arg(name, box, folioHigherLevelSql(name, folio_uuid), own);
 }
 
 /**
@@ -5053,8 +5054,8 @@ static QString elementHigherLevelSql(const QString &name, const QString &box,
 	its folio's (elementHigherLevelSql())
 */
 static QString elementStructureIdSql(const QString &plant, const QString &location,
-									 const QString &label, const QString &box,
-									 const QString &folio_uuid);
+									 const QString &label, const QString &own,
+									 const QString &box, const QString &folio_uuid);
 
 static QString structureIdSql(const QString &plant, const QString &location,
 							  const QString &label, const QString &product = QString(),
@@ -5068,12 +5069,12 @@ static QString structureIdSql(const QString &plant, const QString &location,
 }
 
 static QString elementStructureIdSql(const QString &plant, const QString &location,
-									 const QString &label, const QString &box,
-									 const QString &folio_uuid)
+									 const QString &label, const QString &own,
+									 const QString &box, const QString &folio_uuid)
 {
 	return levelsStructureIdSql(plant, location, label, box + QStringLiteral(".product"),
-		elementHigherLevelSql(QStringLiteral("higher_plant"), box, folio_uuid),
-		elementHigherLevelSql(QStringLiteral("higher_location"), box, folio_uuid));
+		elementHigherLevelSql(QStringLiteral("higher_plant"), own, box, folio_uuid),
+		elementHigherLevelSql(QStringLiteral("higher_location"), own, box, folio_uuid));
 }
 
 static QString levelsStructureIdSql(const QString &plant, const QString &location,
@@ -5121,12 +5122,21 @@ void projectDataBase::createElementNomenclatureView()
 		//%M / %LM of the folio), as EPLAN builds the device tag from the
 		//page structure: an element drawn on a +UV1 folio is in +UV1
 		//without the information being typed into every element.
+	const QString higher_plant_sql = elementHigherLevelSql(
+				QStringLiteral("higher_plant"), QStringLiteral("ei"), QStringLiteral("es"), QStringLiteral("e.diagram_uuid"));
+	const QString higher_location_sql = elementHigherLevelSql(
+				QStringLiteral("higher_location"), QStringLiteral("ei"), QStringLiteral("es"), QStringLiteral("e.diagram_uuid"));
 	QString create_view (QStringLiteral("CREATE VIEW element_nomenclature_view AS SELECT "
 						 "ei.label AS label,")
 						 + effectiveStructureSql(QStringLiteral("ei.plant"), QStringLiteral("es.plant"), QStringLiteral("di.plant"))
 						 + QStringLiteral(" AS plant,")
 						 + effectiveStructureSql(QStringLiteral("ei.location"), QStringLiteral("es.location"), QStringLiteral("di.locmach"))
-						 + QStringLiteral(" AS location,"
+						 + QStringLiteral(" AS location,")
+							//The == and ++ the symbol takes: its own, else its
+							//box's, else its folio's, as plant and location
+						 + QStringLiteral("LTRIM(TRIM(") + higher_plant_sql
+						 + QStringLiteral("), '=') AS higher_plant, LTRIM(TRIM(") + higher_location_sql
+						 + QStringLiteral("), '+') AS higher_location,"
 						 "ei.comment AS comment,"
 						 "ei.function AS function,"
 						 "ei.description AS description,"
@@ -5238,6 +5248,9 @@ void projectDataBase::createElementNomenclatureView()
 						 QStringLiteral("COALESCE(NULLIF(st.plant, ''), '')"));
 		columns_.replace(effectiveStructureSql(QStringLiteral("ei.location"), QStringLiteral("es.location"), QStringLiteral("di.locmach")),
 						 QStringLiteral("COALESCE(NULLIF(st.location, ''), '')"));
+			//Its own == and ++ only: no box, no folio
+		columns_.replace(higher_plant_sql, QStringLiteral("COALESCE(ei.higher_plant, '')"));
+		columns_.replace(higher_location_sql, QStringLiteral("COALESCE(ei.higher_location, '')"));
 		columns_.replace(QStringLiteral("ei."), QStringLiteral("st."));
 		columns_.replace(QStringLiteral("d.pos AS diagram_position"), QStringLiteral("st.diagram_position AS diagram_position"));
 		columns_.replace(QStringLiteral("e.type AS element_type"), QStringLiteral("'terminal' AS element_type"));
@@ -5416,7 +5429,8 @@ QStringList projectDataBase::publicViews()
 	(=plant+location-label) as %{structure_id} does in its texts; each
 	end of a wire has its own (from_structure_id, to_structure_id). The
 	IEC 81346 levels above the plant (==) and the location (++) are the
-	smallest structure box's that has one, else the folio's; structure_id
+	symbol's own, else the smallest structure box's that has one, else
+	the folio's; structure_id
 	puts them in front (==A1=plant++S1+location-label), and qet_devices
 	gives them last, as higher_plant and higher_location, without their
 	signs ('' for none).
@@ -5519,15 +5533,15 @@ QStringList projectDataBase::publicViewStatements()
 			"e.definition AS symbol, e.uuid AS device_uuid, e.diagram_uuid AS folio_uuid, ")
 			+ elementStructureIdSql(effectiveStructureSql(QStringLiteral("ei.plant"), QStringLiteral("es.plant"), QStringLiteral("di.plant")),
 							 effectiveStructureSql(QStringLiteral("ei.location"), QStringLiteral("es.location"), QStringLiteral("di.locmach")),
-							 QStringLiteral("ei.label"), QStringLiteral("es"),
+							 QStringLiteral("ei.label"), QStringLiteral("ei"), QStringLiteral("es"),
 							 QStringLiteral("e.diagram_uuid"))
 			+ QStringLiteral(" AS structure_id, ei.model AS model, ")
-				//Its == and ++, its boxes' else its folio's: as structure_id
+				//Its == and ++, its own, its boxes' else its folio's: as structure_id
 				//has them, for the lists that group by place
 				//without their signs, so ==A1 and A1 are one level
-			+ QStringLiteral("COALESCE(LTRIM(TRIM(") + elementHigherLevelSql(QStringLiteral("higher_plant"), QStringLiteral("es"), QStringLiteral("e.diagram_uuid"))
+			+ QStringLiteral("COALESCE(LTRIM(TRIM(") + elementHigherLevelSql(QStringLiteral("higher_plant"), QStringLiteral("ei"), QStringLiteral("es"), QStringLiteral("e.diagram_uuid"))
 			+ QStringLiteral("), '='), '') AS higher_plant, COALESCE(LTRIM(TRIM(")
-			+ elementHigherLevelSql(QStringLiteral("higher_location"), QStringLiteral("es"), QStringLiteral("e.diagram_uuid"))
+			+ elementHigherLevelSql(QStringLiteral("higher_location"), QStringLiteral("ei"), QStringLiteral("es"), QStringLiteral("e.diagram_uuid"))
 			+ QStringLiteral("), '+'), '') AS higher_location "
 			"FROM element e LEFT JOIN element_info ei ON ei.element_uuid = e.uuid "
 			"LEFT JOIN ") + structurePlacesSql() + QStringLiteral(" es ON es.element_uuid = e.uuid")
@@ -5547,12 +5561,12 @@ QStringList projectDataBase::publicViewStatements()
 			"t2.element_uuid AS to_device_uuid, ")
 			+ elementStructureIdSql(effectiveStructureSql(QStringLiteral("ei1.plant"), QStringLiteral("es1.plant"), QStringLiteral("di.plant")),
 							 effectiveStructureSql(QStringLiteral("ei1.location"), QStringLiteral("es1.location"), QStringLiteral("di.locmach")),
-							 QStringLiteral("ei1.label"), QStringLiteral("es1"),
+							 QStringLiteral("ei1.label"), QStringLiteral("ei1"), QStringLiteral("es1"),
 							 QStringLiteral("c.diagram_uuid"))
 			+ QStringLiteral(" AS from_structure_id, ")
 			+ elementStructureIdSql(effectiveStructureSql(QStringLiteral("ei2.plant"), QStringLiteral("es2.plant"), QStringLiteral("di.plant")),
 							 effectiveStructureSql(QStringLiteral("ei2.location"), QStringLiteral("es2.location"), QStringLiteral("di.locmach")),
-							 QStringLiteral("ei2.label"), QStringLiteral("es2"),
+							 QStringLiteral("ei2.label"), QStringLiteral("ei2"), QStringLiteral("es2"),
 							 QStringLiteral("c.diagram_uuid"))
 			+ QStringLiteral(" AS to_structure_id "
 			"FROM conductor c "

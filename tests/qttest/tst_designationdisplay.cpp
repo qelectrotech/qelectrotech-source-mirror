@@ -478,6 +478,85 @@ private slots:
 		QVERIFY(read.higherPlant().isEmpty());
 	}
 
+		//Item C7 of #1878: a symbol's own == and ++ (its information) go
+		//over its box's and its folio's, field by field
+	void aSymbolsOwnHigherLevelGoesOverItsBoxAndFolio()
+	{
+		QETProject project;
+		Diagram *diagram = project.addNewDiagram();
+		setFolio(diagram, QStringLiteral("FACTORY"), QStringLiteral("CP1"));
+		setHigherLevels(diagram, QStringLiteral("A1"), QStringLiteral("S1"));
+		auto *b = new StructureBoxItem(QPointF(0, 0), QPointF(400, 400));
+		diagram->addItem(b);
+		b->setHigherPlant(QStringLiteral("A2"));
+		Element *own = symbol(diagram);
+		Element *other = symbol(diagram);
+		QVERIFY(own && other);
+		own->setPos(100, 100);
+		other->setPos(300, 300);
+		setInfo(own, QStringLiteral("K5"));
+		setInfo(other, QStringLiteral("K6"));
+		DynamicElementTextItem *own_field = labelField(own);
+		DynamicElementTextItem *other_field = labelField(other);
+		DynamicElementTextItem *own_short = composite(own, QStringLiteral("%{structure_id}"));
+		project.setDesignationDisplay(Display::Full);
+		QCOMPARE(own_field->toPlainText(), QStringLiteral("==A2=FACTORY++S1+CP1-K5"));
+
+			//Its own ==, typed with its sign: over the box's; its ++ is
+			//still the folio's
+		DiagramContext info = own->elementInformations();
+		info.addValue(QStringLiteral("higher_plant"), QStringLiteral("==A3"));
+		own->setElementInformations(info);
+		QCOMPARE(own_field->toPlainText(), QStringLiteral("==A3=FACTORY++S1+CP1-K5"));
+		QCOMPARE(other_field->toPlainText(), QStringLiteral("==A2=FACTORY++S1+CP1-K6"));
+
+			//The short form shows what differs from where it is drawn
+		project.setDesignationDisplay(Display::Short);
+		QCOMPARE(own_field->toPlainText(), QStringLiteral("==A3=FACTORY-K5"));
+		QCOMPARE(own_short->toPlainText(), QStringLiteral("==A3=FACTORY-K5"));
+		QCOMPARE(other_field->toPlainText(), QStringLiteral("-K6"));
+
+			//The duplicate check and the database agree
+		QCOMPARE(DuplicateLabels::place(own), QStringLiteral("==A3=FACTORY++S1+CP1"));
+		project.setDesignationDisplay(Display::Full);
+		QCOMPARE(deviceRow(project, own), QStringLiteral("==A3=FACTORY++S1+CP1-K5"));
+		QCOMPARE(deviceRow(project, other), QStringLiteral("==A2=FACTORY++S1+CP1-K6"));
+		QString error;
+		QSqlQuery query = project.dataBase()->newQuery(QStringLiteral(
+			"SELECT higher_plant, higher_location FROM qet_devices WHERE device_uuid = '%1'")
+				.arg(own->uuid().toString()), &error);
+		QVERIFY2(error.isEmpty(), qPrintable(error));
+		QVERIFY(query.next());
+		QCOMPARE(query.value(0).toString(), QStringLiteral("A3"));
+		QCOMPARE(query.value(1).toString(), QStringLiteral("S1"));
+			//An open query holds the database: a .qetdb could not be saved
+		query.finish();
+
+			//Kept through a save, in the symbol's information
+		QTemporaryDir dir;
+		QVERIFY(dir.isValid());
+		for (const QString &name : {QStringLiteral("own.qet"), QStringLiteral("own.qetdb")}) {
+			project.setFilePath(dir.filePath(name));
+			const QETResult written = project.write();
+			QVERIFY2(written.isOk(), qPrintable(name + QLatin1String(": ") + written.errorMessage()));
+			QETProject reopened(project.filePath());
+			QVERIFY(!reopened.diagrams().isEmpty());
+			bool found = false;
+			for (Element *e : reopened.diagrams().first()->elements()) {
+				if (e->uuid() != own->uuid()) continue;
+				found = true;
+				QCOMPARE(e->elementInformations().value(QStringLiteral("higher_plant")).toString(),
+						 QStringLiteral("==A3"));
+			}
+			QVERIFY2(found, qPrintable(name));
+		}
+
+			//Emptied, the box's again
+		info.addValue(QStringLiteral("higher_plant"), QString());
+		own->setElementInformations(info);
+		QCOMPARE(own_field->toPlainText(), QStringLiteral("==A2=FACTORY++S1+CP1-K5"));
+	}
+
 		//A contact on a folio of another == shows its coil's ==
 	void aContactShowsTheHigherLevelOfItsCoil()
 	{
