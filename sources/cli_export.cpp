@@ -422,8 +422,9 @@ int exportLabels(QETProject &project, const QString &output, LabelListExport::Ki
 	const QString kind_name = LabelListExport::kindName(kind);
 	const QStringList labels = LabelListExport::labels(&project, kind, full_designation);
 	if (labels.isEmpty()) {
+		// An empty list is a valid answer, so scripts exporting every kind do not fail.
 		err << "Nothing to export (no " << kind_name << " with a label).\n";
-		return 1;
+		return 0;
 	}
 	QString error;
 	if (!LabelListExport::write(labels, output, &error)) {
@@ -1376,6 +1377,10 @@ int run(const QStringList &args)
 		}
 	}
 	const QString format = exportFlags().value(flag);
+	if (fullDesignation && format != "labels") {
+		err << "--full-designation only applies to --export-labels.\n";
+		return 2;
+	}
 
 	// --check-elements operates on an element file/directory, not a project.
 	if (format == "check") {
