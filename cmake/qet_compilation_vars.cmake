@@ -668,6 +668,7 @@ set(QET_SRC_FILES
 
   ${QET_DIR}/sources/factory/ui/addtabledialog.cpp
   ${QET_DIR}/sources/factory/ui/addtabledialog.h
+  ${QET_DIR}/sources/factory/ui/revisionquerywidget.h
 
   ${QET_DIR}/sources/NameList/nameslist.cpp
   ${QET_DIR}/sources/NameList/nameslist.h

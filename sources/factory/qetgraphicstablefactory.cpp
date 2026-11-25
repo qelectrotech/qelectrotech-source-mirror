@@ -28,6 +28,7 @@
 #include <qetgraphicsitem/ViewItem/qetgraphicstableitem.h>
 #include <utils/qetutils.h>
 #include "ui/addtabledialog.h"
+#include "ui/revisionquerywidget.h"
 #include <qetproject.h>
 #include <QDialog>
 
@@ -68,6 +69,26 @@ void QetGraphicsTableFactory::createAndAddSummary(Diagram *diagram)
 					new SummaryQueryWidget(),
 					diagram->views().first()));
 	d->setWindowTitle(QObject::tr("Add a summary"));
+
+	if (d->exec()) {
+		create(diagram, d.data());
+	}
+}
+
+/**
+	@brief QetGraphicsTableFactory::createAndAddCableList
+	Open a dialog for ask user the config of the table,
+	create a cable list table and add it to diagram
+	@param diagram
+*/
+void QetGraphicsTableFactory::createAndAddRevisionTable(Diagram *diagram)
+{
+	QScopedPointer<AddTableDialog> d(
+				new AddTableDialog(
+					new RevisionQueryWidget(),
+					diagram->views().first()));
+	d->setWindowTitle(QObject::tr("Add a revision table"));
+	d->setTableName(QObject::tr("Revisions"));
 
 	if (d->exec()) {
 		create(diagram, d.data());
@@ -173,6 +194,12 @@ QetGraphicsTableItem *QetGraphicsTableFactory::newTable(Diagram *diagram, AddTab
 			auto *db_model = new ProjectDBModel(diagram->project(), diagram->project());
 			db_model->setIdentifier(query_widget->modelIdentifier());
 			db_model->setQuery(query_widget->queryStr());
+			model = db_model;
+		} else if (dynamic_cast<RevisionQueryWidget *>(dialog->contentWidget())) {
+				//The project's revision history (#1295 rule 2)
+			auto *db_model = new ProjectDBModel(diagram->project(), diagram->project());
+			db_model->setIdentifier(RevisionQueryWidget::modelIdentifier());
+			db_model->setQuery(RevisionQueryWidget::queryStr());
 			model = db_model;
 		} else if (auto query_widget = dynamic_cast<CableQueryWidget *>(dialog->contentWidget())) {
 			auto *cable_model = new CableListModel(diagram->project(), diagram->project());

@@ -5524,6 +5524,9 @@ void QETProject::setRevisions(const RevisionList &revisions)
 	m_revisions = revisions;
 	storeSettings();
 	setModified(true);
+		//A revision table on a folio reads qet_revisions: tell it, as
+		//nothing else changed in the database to do so
+	emit m_data_base.dataBaseUpdated();
 }
 
 /**

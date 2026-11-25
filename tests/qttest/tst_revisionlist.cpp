@@ -21,6 +21,8 @@
 #include "qetproject.h"
 #include "qetresult.h"
 #include "ui/configpage/revisionsconfigpage.h"
+#include "factory/ui/revisionquerywidget.h"
+#include "qetgraphicsitem/ViewItem/projectdbmodel.h"
 
 #include <QDomDocument>
 #include <QApplication>
@@ -195,6 +197,39 @@ private slots:
 		QApplication::processEvents();
 		QVERIFY(dialog.isVisible());
 		QCOMPARE(dialog.result(), 0);
+	}
+
+		//The table a folio prints it with: a database table over
+		//qet_revisions, its columns named as on the Revisions page, and
+		//following the list when it changes
+	void aTablePrintsIt()
+	{
+		QETProject project;
+		project.addNewDiagram();
+		project.setRevisions(twoRevisions());
+		project.dataBase()->updateDB();
+		ProjectDBModel model(&project);
+		model.setIdentifier(RevisionQueryWidget::modelIdentifier());
+		model.setQuery(RevisionQueryWidget::queryStr());
+		QStringList headers;
+		for (int c = 0 ; c < model.columnCount() ; ++c)
+			headers << model.headerData(c, Qt::Horizontal).toString();
+		QCOMPARE(headers, QStringList({QStringLiteral("Revision"), QStringLiteral("Date"),
+									   QStringLiteral("Description"), QStringLiteral("Author"),
+									   QStringLiteral("Approved by")}));
+		QCOMPARE(model.rowCount(), 2);
+		QCOMPARE(model.data(model.index(1, 0)).toString(), QStringLiteral("B"));
+		QCOMPARE(model.data(model.index(1, 4)).toString(), QStringLiteral("JD"));
+
+		RevisionList three = twoRevisions();
+		QList<Revision> revisions = three.revisions();
+		revisions << Revision{QStringLiteral("C"), QStringLiteral("2026-12-01"),
+							  QStringLiteral("Cable list"), QStringLiteral("SR"), QString()};
+		three.setRevisions(revisions);
+			//As Project properties does it: no database update asked for
+		project.setRevisions(three);
+		QCOMPARE(model.rowCount(), 3);
+		QCOMPARE(model.data(model.index(2, 2)).toString(), QStringLiteral("Cable list"));
 	}
 };
 
