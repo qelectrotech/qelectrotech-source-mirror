@@ -57,6 +57,7 @@ namespace CLIExport {
 		  qelectrotech --export-device-types-brief <project.qet> <output.csv>
 		  qelectrotech --info           <project.qet> [output.json]
 		  qelectrotech --check-elements <element.elmt | directory> [--grid]
+		  qelectrotech --export-library <directory> <output.csv>
 		  qelectrotech --resave         <project.qet> <output.qet>
 		  qelectrotech --recover        <damaged.qetz> <output.qet>
 		  qelectrotech --set-titleblock <project.qet> <output.qet> key=value...
@@ -102,6 +103,11 @@ namespace CLIExport {
 		      up with the folio grid: its insertion point on no connection
 		      point, its frame (hotspot, width, height) or a connection
 		      point off the grid of 10.
+		export-library: a CSV of every symbol (.elmt) and macro (.qetmak) in
+		      a folder and its sub-folders, one row each: name, folder, file,
+		      kind, type, class letter (from the nearest qet_labels.xml),
+		      terminals and their names, the labels a macro places, and why
+		      a file could not be read.
 		resave: load and rewrite the project XML (round-trip integrity).
 		--ignore-lock: resave and set-titleblock leave a file alone when a lock
 		      file beside it (.~<name>.lock, made by a QElectroTech that has
