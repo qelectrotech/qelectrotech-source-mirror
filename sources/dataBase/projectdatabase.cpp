@@ -5113,12 +5113,21 @@ void projectDataBase::createElementNomenclatureView()
 		//%M / %LM of the folio), as EPLAN builds the device tag from the
 		//page structure: an element drawn on a +UV1 folio is in +UV1
 		//without the information being typed into every element.
+	const QString higher_plant_sql = elementHigherLevelSql(
+				QStringLiteral("higher_plant"), QStringLiteral("ei"), QStringLiteral("es"), QStringLiteral("e.diagram_uuid"));
+	const QString higher_location_sql = elementHigherLevelSql(
+				QStringLiteral("higher_location"), QStringLiteral("ei"), QStringLiteral("es"), QStringLiteral("e.diagram_uuid"));
 	QString create_view (QStringLiteral("CREATE VIEW element_nomenclature_view AS SELECT "
 						 "ei.label AS label,")
 						 + effectiveStructureSql(QStringLiteral("ei.plant"), QStringLiteral("es.plant"), QStringLiteral("di.plant"))
 						 + QStringLiteral(" AS plant,")
 						 + effectiveStructureSql(QStringLiteral("ei.location"), QStringLiteral("es.location"), QStringLiteral("di.locmach"))
-						 + QStringLiteral(" AS location,"
+						 + QStringLiteral(" AS location,")
+							//The == and ++ the symbol takes: its own, else its
+							//box's, else its folio's, as plant and location
+						 + QStringLiteral("LTRIM(TRIM(") + higher_plant_sql
+						 + QStringLiteral("), '=') AS higher_plant, LTRIM(TRIM(") + higher_location_sql
+						 + QStringLiteral("), '+') AS higher_location,"
 						 "ei.comment AS comment,"
 						 "ei.function AS function,"
 						 "ei.description AS description,"
@@ -5230,6 +5239,9 @@ void projectDataBase::createElementNomenclatureView()
 						 QStringLiteral("COALESCE(NULLIF(st.plant, ''), '')"));
 		columns_.replace(effectiveStructureSql(QStringLiteral("ei.location"), QStringLiteral("es.location"), QStringLiteral("di.locmach")),
 						 QStringLiteral("COALESCE(NULLIF(st.location, ''), '')"));
+			//Its own == and ++ only: no box, no folio
+		columns_.replace(higher_plant_sql, QStringLiteral("COALESCE(ei.higher_plant, '')"));
+		columns_.replace(higher_location_sql, QStringLiteral("COALESCE(ei.higher_location, '')"));
 		columns_.replace(QStringLiteral("ei."), QStringLiteral("st."));
 		columns_.replace(QStringLiteral("d.pos AS diagram_position"), QStringLiteral("st.diagram_position AS diagram_position"));
 		columns_.replace(QStringLiteral("e.type AS element_type"), QStringLiteral("'terminal' AS element_type"));
