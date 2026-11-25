@@ -421,11 +421,11 @@ int exportLabels(QETProject &project, const QString &output, LabelListExport::Ki
 {
 	const QString kind_name = LabelListExport::kindName(kind);
 	const QStringList labels = LabelListExport::labels(&project, kind, full_designation);
-	if (labels.isEmpty()) {
-		// An empty list is a valid answer, so scripts exporting every kind do not fail.
+	// An empty list is a valid answer, so scripts exporting every kind do not
+	// fail; the file is still written (empty) so a stale list from an earlier
+	// run is never left behind to be printed.
+	if (labels.isEmpty())
 		err << "Nothing to export (no " << kind_name << " with a label).\n";
-		return 0;
-	}
 	QString error;
 	if (!LabelListExport::write(labels, output, &error)) {
 		err << "Cannot write '" << output << "': " << error << "\n";
