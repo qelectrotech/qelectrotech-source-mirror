@@ -394,6 +394,90 @@ private slots:
 		QCOMPARE(DuplicateLabels::place(boxed), QStringLiteral("==A1=FACTORY++S1+CP1-B2"));
 	}
 
+		//Item C7 of #1878: a structure box's == and ++ go over the folio's,
+		//field by field, the smallest box first; saved only when set
+	void aBoxHigherLevelGoesOverTheFolios()
+	{
+		QETProject project;
+		Diagram *diagram = project.addNewDiagram();
+		setFolio(diagram, QStringLiteral("FACTORY"), QStringLiteral("CP1"));
+		setHigherLevels(diagram, QStringLiteral("A1"), QStringLiteral("S1"));
+		auto *outer = new StructureBoxItem(QPointF(0, 0), QPointF(800, 800));
+		auto *inner = new StructureBoxItem(QPointF(0, 0), QPointF(400, 400));
+		diagram->addItem(outer);
+		diagram->addItem(inner);
+		Element *deep = symbol(diagram);    // in both boxes
+		Element *middle = symbol(diagram);  // in the outer one only
+		Element *none = symbol(diagram);    // in no box
+		QVERIFY(deep && middle && none);
+		deep->setPos(200, 200);
+		middle->setPos(600, 600);
+		none->setPos(1200, 1200);
+		for (Element *e : {deep, middle, none})
+			setInfo(e, QStringLiteral("K1"));
+		DynamicElementTextItem *deep_field = labelField(deep);
+		DynamicElementTextItem *middle_field = labelField(middle);
+		DynamicElementTextItem *none_field = labelField(none);
+		DynamicElementTextItem *deep_text = composite(deep, QStringLiteral("%{structure_id_full}"));
+		project.setDesignationDisplay(Display::Full);
+
+			//None on the boxes: the folio's, and the boxes save as before
+		QCOMPARE(deep_field->toPlainText(), QStringLiteral("==A1=FACTORY++S1+CP1-K1"));
+		QDomDocument document;
+		QVERIFY(!outer->toXml(document).hasAttribute(QStringLiteral("higher_plant")));
+		QVERIFY(!outer->toXml(document).hasAttribute(QStringLiteral("higher_location")));
+
+			//The outer box's == over the folio's; the inner box's ++ over
+			//both; the folio's ++ still for the symbol in the outer box only
+		outer->setHigherPlant(QStringLiteral("A2"));
+		inner->setHigherLocation(QStringLiteral("++S2"));
+		QCOMPARE(deep_field->toPlainText(), QStringLiteral("==A2=FACTORY++S2+CP1-K1"));
+		QCOMPARE(deep_text->toPlainText(), QStringLiteral("==A2=FACTORY++S2+CP1-K1"));
+		QCOMPARE(middle_field->toPlainText(), QStringLiteral("==A2=FACTORY++S1+CP1-K1"));
+		QCOMPARE(none_field->toPlainText(), QStringLiteral("==A1=FACTORY++S1+CP1-K1"));
+			//The box's own name says them too
+		inner->setPrefix(QStringLiteral("A1"));
+		QCOMPARE(inner->structureId(), QStringLiteral("++S2-A1"));
+
+			//The short form leaves out what the box gives
+		project.setDesignationDisplay(Display::Short);
+		QCOMPARE(deep_field->toPlainText(), QStringLiteral("-K1"));
+		QCOMPARE(none_field->toPlainText(), QStringLiteral("-K1"));
+
+			//The duplicate check: -K1 under ==A2 is not -K1 under ==A1
+		QCOMPARE(DuplicateLabels::place(middle), QStringLiteral("==A2=FACTORY++S1+CP1"));
+		QCOMPARE(DuplicateLabels::place(none), QStringLiteral("==A1=FACTORY++S1+CP1"));
+
+			//The database says what the texts say, and gives the levels
+		project.setDesignationDisplay(Display::Full);
+		for (Element *e : {deep, middle, none})
+			QCOMPARE(deviceRow(project, e), e->designationForDisplay(QStringLiteral("K1")));
+		QString error;
+		QSqlQuery query = project.dataBase()->newQuery(QStringLiteral(
+			"SELECT higher_plant, higher_location FROM qet_devices WHERE device_uuid = '%1'")
+				.arg(deep->uuid().toString()), &error);
+		QVERIFY2(error.isEmpty(), qPrintable(error));
+		QVERIFY(query.next());
+		QCOMPARE(query.value(0).toString(), QStringLiteral("A2"));
+		QCOMPARE(query.value(1).toString(), QStringLiteral("S2"));
+		query = project.dataBase()->newQuery(QStringLiteral(
+			"SELECT structure_id FROM qet_locations WHERE symbols > 0 ORDER BY structure_id"), &error);
+		QVERIFY2(error.isEmpty(), qPrintable(error));
+		QStringList places;
+		while (query.next()) places << query.value(0).toString();
+		QCOMPARE(places, QStringList({QStringLiteral("==A1=FACTORY++S1+CP1"),
+									  QStringLiteral("==A2=FACTORY++S1+CP1"),
+									  QStringLiteral("==A2=FACTORY++S2+CP1")}));
+
+			//Saved with the box, read back
+		const QDomElement saved = inner->toXml(document);
+		QCOMPARE(saved.attribute(QStringLiteral("higher_location")), QStringLiteral("++S2"));
+		StructureBoxItem read(QPointF(0, 0));
+		QVERIFY(read.fromXml(saved));
+		QCOMPARE(read.higherLocation(), QStringLiteral("++S2"));
+		QVERIFY(read.higherPlant().isEmpty());
+	}
+
 		//A contact on a folio of another == shows its coil's ==
 	void aContactShowsTheHigherLevelOfItsCoil()
 	{

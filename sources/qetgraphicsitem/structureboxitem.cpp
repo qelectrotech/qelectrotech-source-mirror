@@ -262,6 +262,24 @@ void StructureBoxItem::setPrefix(const QString &prefix)
 	emit identityChanged();
 }
 
+void StructureBoxItem::setHigherPlant(const QString &higher_plant)
+{
+	if (m_higher_plant == higher_plant) return;
+	m_higher_plant = higher_plant;
+	refreshLabel();
+	update();
+	emit identityChanged();
+}
+
+void StructureBoxItem::setHigherLocation(const QString &higher_location)
+{
+	if (m_higher_location == higher_location) return;
+	m_higher_location = higher_location;
+	refreshLabel();
+	update();
+	emit identityChanged();
+}
+
 /**
 	@brief StructureBoxItem::structureId
 	@return this box's own full IEC 81346 designation ("=plant+location-prefix"),
@@ -270,7 +288,11 @@ void StructureBoxItem::setPrefix(const QString &prefix)
 */
 QString StructureBoxItem::structureId() const
 {
-	return autonum::AssignVariables::buildStructureId(m_plant, m_location, m_prefix);
+		//With its own == and ++, when it has them: ==A1=P1++S1+L1-A1
+	return autonum::AssignVariables::buildStructureId(
+				autonum::AssignVariables::withHigherLevel(QLatin1Char('='), m_higher_plant, m_plant),
+				autonum::AssignVariables::withHigherLevel(QLatin1Char('+'), m_higher_location, m_location),
+				m_prefix);
 }
 
 /**
@@ -364,6 +386,8 @@ StructureBoxItem::Place StructureBoxItem::placeIn(
 	for (auto it = boxes.crbegin() ; it != boxes.crend() ; ++it) {
 		if (!(*it)->plant().isEmpty())    place.plant = (*it)->plant();
 		if (!(*it)->location().isEmpty()) place.location = (*it)->location();
+		if (!(*it)->higherPlant().trimmed().isEmpty())    place.higher_plant = (*it)->higherPlant();
+		if (!(*it)->higherLocation().trimmed().isEmpty()) place.higher_location = (*it)->higherLocation();
 		place.product = autonum::AssignVariables::addProductLevel(place.product, (*it)->prefix());
 	}
 	return place;
@@ -445,6 +469,8 @@ bool StructureBoxItem::fromXml(const QDomElement &e)
 	m_plant = e.attribute(QStringLiteral("plant"));
 	m_location = e.attribute(QStringLiteral("location"));
 	m_prefix = e.attribute(QStringLiteral("prefix"));
+	m_higher_plant = e.attribute(QStringLiteral("higher_plant"));
+	m_higher_location = e.attribute(QStringLiteral("higher_location"));
 	m_label_size = e.attribute(QStringLiteral("label_size"),
 							   QStringLiteral("8")).toDouble();
 	if (!(m_label_size > 0) || !qIsFinite(m_label_size))
@@ -470,6 +496,11 @@ QDomElement StructureBoxItem::toXml(QDomDocument &document) const
 	result.setAttribute(QStringLiteral("plant"), m_plant);
 	result.setAttribute(QStringLiteral("location"), m_location);
 	result.setAttribute(QStringLiteral("prefix"), m_prefix);
+		//Only when set, so a box without them is saved as before
+	if (!m_higher_plant.isEmpty())
+		result.setAttribute(QStringLiteral("higher_plant"), m_higher_plant);
+	if (!m_higher_location.isEmpty())
+		result.setAttribute(QStringLiteral("higher_location"), m_higher_location);
 	if (m_label_moved) {
 		const QPointF offset = labelOffset();
 		result.setAttribute(QStringLiteral("label_x"), QString::number(offset.x(), 'f', 1));
