@@ -23,6 +23,9 @@
 #include "ui/configpage/revisionsconfigpage.h"
 
 #include <QDomDocument>
+#include <QApplication>
+#include <QVBoxLayout>
+#include <QDialog>
 #include <QPushButton>
 #include <QSqlQuery>
 #include <QTableWidget>
@@ -157,6 +160,42 @@ private slots:
 		QVERIFY(project.projectOptionsWereModified() || project.projectWasModified());
 	}
 
+
+		//Return typed in a cell ends its edit and keeps the text, but does
+		//not close the dialog the page is in (its default button)
+	void returnInACellDoesNotCloseTheDialog()
+	{
+		QETProject project;
+		project.addNewDiagram();
+		QDialog dialog;
+		auto *layout = new QVBoxLayout(&dialog);
+		auto *page = new RevisionsConfigPage(&project, &dialog);
+		auto *ok = new QPushButton(QStringLiteral("OK"), &dialog);
+		ok->setDefault(true);
+		connect(ok, &QPushButton::clicked, &dialog, &QDialog::accept);
+		layout->addWidget(page);
+		layout->addWidget(ok);
+		dialog.show();
+		QVERIFY(QTest::qWaitForWindowExposed(&dialog));
+		page->findChild<QPushButton *>(QStringLiteral("addRevision"))->click();
+		auto *table = page->findChild<QTableWidget *>(QStringLiteral("revisionTable"));
+			//Add a revision opens the new row's first cell for typing
+		QWidget *editor = nullptr;
+		QTRY_VERIFY((editor = QApplication::focusWidget()) && editor != table
+					&& table->isAncestorOf(editor));
+		QTest::keyClicks(editor, QStringLiteral("A"));
+		QTest::keyClick(editor, Qt::Key_Return);
+			//The editor commits on Return through the event loop
+		QTRY_COMPARE(table->item(0, 0)->text(), QStringLiteral("A"));
+		QVERIFY(dialog.isVisible());
+		QCOMPARE(dialog.result(), 0);
+			//And Return on the table itself, no cell being edited
+		QTRY_VERIFY(QApplication::focusWidget() == table || table->isAncestorOf(QApplication::focusWidget()));
+		QTest::keyClick(QApplication::focusWidget(), Qt::Key_Return);
+		QApplication::processEvents();
+		QVERIFY(dialog.isVisible());
+		QCOMPARE(dialog.result(), 0);
+	}
 };
 
 QET_APP_TEST_MAIN(tst_revisionlist)

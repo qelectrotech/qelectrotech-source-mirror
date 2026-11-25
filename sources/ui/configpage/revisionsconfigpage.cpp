@@ -25,9 +25,11 @@
 #include <QDate>
 #include <QHBoxLayout>
 #include <QHeaderView>
+#include <QKeyEvent>
 #include <QLabel>
 #include <QPushButton>
 #include <QTableWidget>
+#include <QTimer>
 #include <QVBoxLayout>
 
 RevisionsConfigPage::RevisionsConfigPage(QETProject *project, QWidget *parent) :
@@ -131,7 +133,29 @@ void RevisionsConfigPage::addRevision()
 		m_table->setItem(row, column, new QTableWidgetItem(
 			column == 1 ? QDate::currentDate().toString(Qt::ISODate) : QString()));
 	m_table->setCurrentCell(row, 0);
-	m_table->editItem(m_table->item(row, 0));
+	m_table->setFocus();
+		//Once the new row is laid out: opened at once, the editor fails
+	QTimer::singleShot(0, m_table, [this, row]() {
+		if (QTableWidgetItem *item = m_table->item(row, 0))
+			m_table->editItem(item);
+	});
+}
+
+/**
+	@brief RevisionsConfigPage::keyPressEvent
+	Return or Enter typed in the table ends the edit of a cell (the cell's
+	editor has already taken the text): it must not go on up to the
+	dialog, whose default button would close it. Elsewhere on the page
+	they reach the dialog as usual.
+*/
+void RevisionsConfigPage::keyPressEvent(QKeyEvent *event)
+{
+	if ((event->key() == Qt::Key_Return || event->key() == Qt::Key_Enter)
+			&& m_table && (m_table->hasFocus() || m_table->isAncestorOf(focusWidget()))) {
+		event->accept();
+		return;
+	}
+	ProjectConfigPage::keyPressEvent(event);
 }
 
 void RevisionsConfigPage::removeRevision()

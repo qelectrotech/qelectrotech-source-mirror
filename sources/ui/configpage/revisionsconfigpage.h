@@ -41,6 +41,7 @@ class RevisionsConfigPage : public ProjectConfigPage
 		void applyProjectConf() override;
 
 	protected:
+		void keyPressEvent(QKeyEvent *event) override;
 		void initWidgets() override;
 		void initLayout() override;
 		void readValuesFromProject() override;
