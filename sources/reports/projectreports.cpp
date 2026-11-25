@@ -287,11 +287,8 @@ namespace ProjectReports
 			r.source = QStringLiteral(
 				"(WITH symbol AS (SELECT d.device_uuid, d.kind, d.structure_id, "
 					"COALESCE(d.plant, '') AS plant, COALESCE(d.location, '') AS location, "
-						//The folio's == and ++, as qet_locations splits by them
-					"COALESCE((SELECT LTRIM(TRIM(ft.value), '=') FROM folio_titleblock ft WHERE ft.diagram_uuid = d.folio_uuid "
-						"AND ft.name = 'higher_plant'), '') AS higher_plant, "
-					"COALESCE((SELECT LTRIM(TRIM(ft.value), '+') FROM folio_titleblock ft WHERE ft.diagram_uuid = d.folio_uuid "
-						"AND ft.name = 'higher_location'), '') AS higher_location, "
+						//Its == and ++, as qet_locations splits by them
+					"d.higher_plant, d.higher_location, "
 					"COALESCE(d.label, '') AS label, d.folio_number, d.position, "
 					"(SELECT l.linked_uuid FROM link l JOIN element m ON m.uuid = l.linked_uuid "
 					"WHERE l.element_uuid = d.device_uuid AND m.type = 'master' LIMIT 1) AS master_uuid, "
