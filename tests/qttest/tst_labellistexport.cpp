@@ -23,7 +23,6 @@
 #include "qetproject.h"
 
 #include <QCheckBox>
-#include <QCollator>
 #include <QFile>
 #include <QLabel>
 #include <QRadioButton>
@@ -113,11 +112,21 @@ class TstLabelListExport : public QObject
 			sorted.sort();
 			QCOMPARE(sorted, same);
 				//In natural order: 2 before 10
-			QCollator collator;
-			collator.setNumericMode(true);
-			collator.setCaseSensitivity(Qt::CaseInsensitive);
+				//(a key with the numbers padded, not QCollator: that depends on the locale)
+			const auto key = [](const QString &label) {
+				QString out;
+				static const QRegularExpression digits(QStringLiteral("\\d+"));
+				int at = 0;
+				for (auto m = digits.globalMatch(label); m.hasNext();) {
+					const auto hit = m.next();
+					out += label.mid(at, hit.capturedStart() - at).toCaseFolded()
+						+ hit.captured().rightJustified(12, QLatin1Char('0'));
+					at = hit.capturedEnd();
+				}
+				return out + label.mid(at).toCaseFolded();
+			};
 			for (int i = 1 ; i < list.size() ; ++i) {
-				QVERIFY2(collator.compare(list.at(i - 1), list.at(i)) <= 0,
+				QVERIFY2(key(list.at(i - 1)) <= key(list.at(i)),
 						 qPrintable(list.at(i - 1) + " before " + list.at(i)));
 			}
 		}

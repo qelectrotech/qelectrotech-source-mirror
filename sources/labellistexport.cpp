@@ -24,7 +24,6 @@
 
 #include <QButtonGroup>
 #include <QCheckBox>
-#include <QCollator>
 #include <QDialogButtonBox>
 #include <QFileDialog>
 #include <QLabel>
@@ -70,12 +69,46 @@ namespace {
 		}
 	}
 
-	QCollator naturalOrder()
+	/**
+		@brief The natural order of labels: digit runs compare as numbers (2
+		before 10), the rest case-insensitively. Done by hand because
+		QCollator's numeric mode depends on the locale (the C locale of a
+		CI runner ignores it).
+	*/
+	struct NaturalOrder
 	{
-		QCollator collator;
-		collator.setNumericMode(true);
-		collator.setCaseSensitivity(Qt::CaseInsensitive);
-		return collator;
+		int compare(const QString &a, const QString &b) const
+		{
+			int i = 0, j = 0;
+			while (i < a.size() && j < b.size()) {
+				if (a[i].isDigit() && b[j].isDigit()) {
+					int ie = i, je = j;
+					while (ie < a.size() && a[ie].isDigit()) ++ie;
+					while (je < b.size() && b[je].isDigit()) ++je;
+					QStringView da = QStringView(a).mid(i, ie - i);
+					QStringView db = QStringView(b).mid(j, je - j);
+					while (da.size() > 1 && da.startsWith(QLatin1Char('0'))) da = da.mid(1);
+					while (db.size() > 1 && db.startsWith(QLatin1Char('0'))) db = db.mid(1);
+					if (da.size() != db.size()) return da.size() < db.size() ? -1 : 1;
+					if (const int c = da.compare(db)) return c < 0 ? -1 : 1;
+					i = ie;
+					j = je;
+				} else {
+					const QChar x = a[i].toCaseFolded(), y = b[j].toCaseFolded();
+					if (x != y) return x < y ? -1 : 1;
+					++i;
+					++j;
+				}
+			}
+			if (i < a.size()) return 1;
+			if (j < b.size()) return -1;
+			return 0;
+		}
+	};
+
+	NaturalOrder naturalOrder()
+	{
+		return NaturalOrder();
 	}
 
 	/**
@@ -85,7 +118,7 @@ namespace {
 	*/
 	void inFolioOrder(QList<Row> &rows)
 	{
-		const QCollator collator = naturalOrder();
+		const NaturalOrder collator = naturalOrder();
 		std::stable_sort(rows.begin(), rows.end(), [&collator](const Row &a, const Row &b) {
 			if (a.folio != b.folio) return a.folio < b.folio;
 			if (a.column != b.column) return a.column < b.column;
@@ -162,7 +195,7 @@ namespace {
 			row.label = label(query, full_designation);
 			if (!row.label.isEmpty()) loose << row;
 		}
-		const QCollator collator = naturalOrder();
+		const NaturalOrder collator = naturalOrder();
 		std::stable_sort(loose.begin(), loose.end(), [&collator](const Row &a, const Row &b) {
 			return collator.compare(a.label, b.label) < 0;
 		});
@@ -239,7 +272,7 @@ QStringList LabelListExport::labels(QETProject *project, Kind kind, bool full_de
 	if (kind == Wires) {
 		QStringList wires = ConductorNumExport(project).wiresNum().split(QLatin1Char('\n'), Qt::SkipEmptyParts);
 			//2 before 10, as the other lists
-		const QCollator collator = naturalOrder();
+		const NaturalOrder collator = naturalOrder();
 		std::stable_sort(wires.begin(), wires.end(), [&collator](const QString &a, const QString &b) {
 			return collator.compare(a, b) < 0;
 		});
