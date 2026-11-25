@@ -21,7 +21,6 @@
 
 #include "bordertitleblock.h"
 #include "conductornumexport.h"
-#include "ElementsCollection/librarylisting.h"
 #include "conductorproperties.h"
 #include "dataBase/projectdatabase.h"
 #include "dataBase/qetdbfile.h"
@@ -33,6 +32,7 @@
 #include "editor/symbolgridcheck.h"
 #include "editor/terminalnamecheck.h"
 #include "dxfexport.h"
+#include "ElementsCollection/librarylisting.h"
 #include "exportproperties.h"
 #include "pdf_links.h"
 #include "container/qetcontainer.h"
@@ -1370,16 +1370,19 @@ int run(const QStringList &args)
 	// --export-library lists the symbols and macros of a folder, not a project
 	if (format == "library") {
 		if (rest.size() < 2 || !QFileInfo(rest.at(0)).isDir()) {
-			err << "Usage: qelectrotech --export-library <folder> <output.csv>\n";
+			err << "Usage: qelectrotech --export-library <folder>"
+				   " <output.csv>\n";
 			return 2;
 		}
-		const QList<LibraryListing::Row> rows = LibraryListing().scan(rest.at(0));
+		const QList<LibraryListing::Row> rows =
+				LibraryListing().scan(rest.at(0));
 		QString error;
 		if (!LibraryListing::write(rows, rest.at(1), &error)) {
 			err << "Cannot write '" << rest.at(1) << "': " << error << "\n";
 			return 1;
 		}
-		out << "Listed " << rows.size() << " symbol(s) and macro(s) -> " << rest.at(1) << "\n";
+		out << "Listed " << rows.size() << " symbol(s) and macro(s) -> "
+			<< rest.at(1) << "\n";
 		return 0;
 	}
 

@@ -1252,7 +1252,8 @@ namespace autonum
 		that way, whatever its top-level folder happens to be called
 		@return the prefix, possibly null
 	*/
-	QString elementPrefixForTree(const QStringList &path, const QString &collection_root)
+	QString elementPrefixForTree(const QStringList &path,
+								 const QString &collection_root)
 	{
 		const int dirLevel = path.size() - 1;
 

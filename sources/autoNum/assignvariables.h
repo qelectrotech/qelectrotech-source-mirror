@@ -216,7 +216,8 @@ namespace autonum
 	*/
 	NumerotationContext resetContextCounters(const NumerotationContext &nc);
 	QString elementPrefixForLocation(const ElementsLocation &location);
-	QString elementPrefixForTree(const QStringList &path, const QString &collection_root);
+	QString elementPrefixForTree(const QStringList &path,
+								 const QString &collection_root);
 }
 
 Q_DECLARE_METATYPE(autonum::sequentialNumbers)

@@ -977,20 +977,25 @@ void ElementsCollectionWidget::exportList()
 		elementCollectionItemForIndex(m_index_at_context_menu);
 	if (!eci || !eci->isDir() || eci->type() != FileElementCollectionItem::Type)
 		return;
-	const QString folder = static_cast<FileElementCollectionItem *>(eci)->fileSystemPath();
+	const QString folder =
+		static_cast<FileElementCollectionItem *>(eci)->fileSystemPath();
 
 		//A folder name may hold what a file name cannot
 	QString name = eci->localName();
-	name.replace(QRegularExpression(QStringLiteral("[/\\\\:*?\"<>|]")), QStringLiteral("_"));
+	name.replace(QRegularExpression(QStringLiteral("[/\\\\:*?\"<>|]")),
+				 QStringLiteral("_"));
 	const QString file_name = QFileDialog::getSaveFileName(
 				this, tr("Export symbol list"),
-				QDir(QETApp::documentDir()).filePath(tr("symbols") % QLatin1Char('_') % name % QStringLiteral(".csv")),
+				QDir(QETApp::documentDir()).filePath(
+					tr("symbols") % QLatin1Char('_') % name
+					% QStringLiteral(".csv")),
 				tr("CSV files (*.csv)"));
 	if (file_name.isEmpty())
 		return;
 
 		//The whole collection is thousands of files: a few seconds
-	QProgressDialog progress(tr("Reading the symbols…"), tr("Cancel"), 0, 0, this);
+	QProgressDialog progress(tr("Reading the symbols…"), tr("Cancel"),
+							 0, 0, this);
 	progress.setWindowTitle(tr("Export symbol list"));
 	progress.setWindowModality(Qt::WindowModal);
 	progress.setMinimumDuration(500);
@@ -1008,8 +1013,9 @@ void ElementsCollectionWidget::exportList()
 
 	QString error;
 	if (!LibraryListing::write(rows, file_name, &error)) {
-		QMessageBox::critical(this, tr("Export symbol list"),
-							  tr("Unable to write %1:\n%2").arg(file_name, error));
+		QMessageBox::critical(
+			this, tr("Export symbol list"),
+			tr("Unable to write %1:\n%2").arg(file_name, error));
 		return;
 	}
 	int macros = 0, unreadable = 0;
@@ -1017,10 +1023,12 @@ void ElementsCollectionWidget::exportList()
 		if (row.macro) ++macros;
 		if (!row.error.isEmpty()) ++unreadable;
 	}
-	QMessageBox::information(this, tr("Export symbol list"),
-							 tr("Symbols: %1, macros: %2, files that could not be read: %3.\n"
-								"Written to %4")
-							 .arg(int(rows.size()) - macros).arg(macros).arg(unreadable).arg(file_name));
+	QMessageBox::information(
+		this, tr("Export symbol list"),
+		tr("Symbols: %1, macros: %2, files that could not be read: %3.\n"
+		   "Written to %4")
+			.arg(int(rows.size()) - macros).arg(macros).arg(unreadable)
+			.arg(file_name));
 }
 
 /**

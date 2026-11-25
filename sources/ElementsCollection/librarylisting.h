@@ -37,30 +37,40 @@ class LibraryListing
 	public:
 		struct Row
 		{
-			QString name;			///< in the language of the settings, else English
-			QString folder;			///< relative to the listed folder, "/" between
+				/// in the language of the settings, else English
+			QString name;
+				/// relative to the listed folder, "/" between
+			QString folder;
 			QString file;
 			bool macro = false;
-			QString type;			///< link_type of a symbol: simple, master, slave...
-			QString class_letter;	///< the one placing gives it; empty for none
+				/// link_type of a symbol: simple, master, slave...
+			QString type;
+				/// the one placing gives it; empty for none
+			QString class_letter;
 			int terminals = 0;
-			QStringList terminal_names;	///< the named ones, in file order
+				/// the named ones, in file order
+			QStringList terminal_names;
 			int unnamed_terminals = 0;
-			QStringList labels;		///< of the symbols of a macro, in file order
-			QString error;			///< why the file could not be read
+				/// of the symbols of a macro, in file order
+			QStringList labels;
+				/// why the file could not be read
+			QString error;
 		};
 
-		QList<Row> scan(const QString &folder,
-						const std::function<bool (int, int)> &progress = nullptr);
+		QList<Row> scan(
+				const QString &folder,
+				const std::function<bool (int, int)> &progress = nullptr);
 		static QByteArray toCsv(const QList<Row> &rows);
-		static bool write(const QList<Row> &rows, const QString &file_name, QString *error = nullptr);
+		static bool write(const QList<Row> &rows, const QString &file_name,
+						  QString *error = nullptr);
 
 	private:
 		Row symbol(const QString &file_path);
 		Row macro(const QString &file_path);
 		QString classLetter(const QString &file_path);
 
-		QHash<QString, QString> m_letters;	///< class letter per folder already looked up
+			/// class letter per folder already looked up
+		QHash<QString, QString> m_letters;
 };
 
 #endif // LIBRARYLISTING_H
