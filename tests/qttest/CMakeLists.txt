@@ -2553,6 +2553,11 @@ qet_add_app_test(tst_potentialview tst_potentialview.cpp)
 qet_add_app_test(tst_openwireends tst_openwireends.cpp)
 target_compile_definitions(tst_openwireends PRIVATE
   QET_EXAMPLES_DIR="${QET_DIR}/examples")
+# Branches between strip terminals (#1878 B4): a junction on a wire between
+# two terminal strip terminals, with a third wire going off it.
+qet_add_app_test(tst_terminalbranches tst_terminalbranches.cpp)
+target_compile_definitions(tst_terminalbranches PRIVATE
+  QET_EXAMPLES_DIR="${QET_DIR}/examples")
 # Chained folio reports: what two reports must share to be chained
 # together is the project's choice -- the labels they carry, or the
 # function of the wires their terminals hold.

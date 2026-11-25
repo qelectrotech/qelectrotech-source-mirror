@@ -104,8 +104,8 @@ namespace {
 QList<ProjectCheck::Kind> ProjectCheck::kinds()
 {
 	return {Kind::DuplicateLabels, Kind::PotentialTypes, Kind::OpenWireEnds,
-			Kind::UnwiredSymbols, Kind::DeviceTypes, Kind::WiresPerTerminal,
-			Kind::TerminalNames};
+			Kind::UnwiredSymbols, Kind::TerminalBranches, Kind::DeviceTypes,
+			Kind::WiresPerTerminal, Kind::TerminalNames};
 }
 
 QString ProjectCheck::title(Kind kind)
@@ -115,6 +115,7 @@ QString ProjectCheck::title(Kind kind)
 		case Kind::PotentialTypes: return tr("Potential types");
 		case Kind::OpenWireEnds: return tr("Open wire ends");
 		case Kind::UnwiredSymbols: return tr("Symbols with no wire");
+		case Kind::TerminalBranches: return tr("Branches between strip terminals");
 		case Kind::DeviceTypes: return tr("Device types");
 		case Kind::WiresPerTerminal: return tr("Wires per terminal");
 		case Kind::TerminalNames: return tr("Terminal names");
@@ -137,6 +138,10 @@ QString ProjectCheck::toolTip(Kind kind)
 		case Kind::UnwiredSymbols:
 			return tr("Symbols none of whose terminals has a wire. Folio reports "
 					  "are never listed; Options chooses what else is left out.");
+		case Kind::TerminalBranches:
+			return tr("Junctions with three wires or more, and no chain set in their "
+					  "symbol, on a wire between two terminal strip terminals. A wire "
+					  "cannot be split between two terminals: make the branch on a terminal.");
 		case Kind::DeviceTypes:
 			return tr("Devices not drawn the way their device type says. "
 					  "Project > Check device types... can place the missing parts.");
@@ -162,6 +167,7 @@ ProjectCheck::Result ProjectCheck::run(QETProject *project, Kind kind)
 		case Kind::PotentialTypes: return potentialTypes(project);
 		case Kind::OpenWireEnds: return openWireEnds(project);
 		case Kind::UnwiredSymbols: return unwiredSymbols(project);
+		case Kind::TerminalBranches: return terminalBranches(project);
 		case Kind::DeviceTypes: return deviceTypes(project);
 		case Kind::WiresPerTerminal: return wiresPerTerminal(project);
 		case Kind::TerminalNames: return terminalNames(project);
@@ -324,6 +330,43 @@ ProjectCheck::Result ProjectCheck::unwiredSymbols(QETProject *project)
 		finding.places << symbolPlace(folios, QUuid(query.value(0).toString()),
 									  QUuid(query.value(1).toString()),
 									  query.value(2).toString(), label);
+		result.findings << finding;
+	}
+	return result;
+}
+
+/**
+	@brief ProjectCheck::terminalBranches
+	projectDataBase::terminalBranches() (#1878 B4): a junction on a wire
+	between two strip terminals, with a third wire going off it. Read from
+	the database: the junction, the strip terminals and the wires are found
+	on their folios when the finding is opened.
+*/
+ProjectCheck::Result ProjectCheck::terminalBranches(QETProject *project)
+{
+	Result result;
+	result.kind = Kind::TerminalBranches;
+	FolioTexts folios(project);
+	for (const auto &branch : project->dataBase()->terminalBranches()) {
+		QStringList terminals;
+		for (const auto &end : branch.terminals)
+			terminals << (end.label.isEmpty() ? tr("a terminal") : end.label);
+		Finding finding;
+		//: %1 lists the strip terminals, such as "X1:1, X2:4"
+		finding.text = tr("Branch between %1").arg(terminals.join(QStringLiteral(", ")));
+		if (!branch.label.isEmpty())
+			//: %1 is the junction, %2 the finding above
+			finding.text = tr("%1: %2").arg(branch.label, finding.text);
+		Place junction = symbolPlace(folios, branch.junction, branch.folio, branch.position,
+									 branch.label.isEmpty() ? tr("Junction") : branch.label);
+		junction.wires = branch.wires;
+		finding.places << junction;
+		for (const auto &end : branch.terminals)
+			finding.places << symbolPlace(folios, end.element, end.folio, end.position,
+										  end.label.isEmpty() ? tr("a terminal") : end.label);
+		if (branch.others)
+			finding.places << detail(tr("%n symbol terminal(s) on the same wire", nullptr,
+										branch.others));
 		result.findings << finding;
 	}
 	return result;
