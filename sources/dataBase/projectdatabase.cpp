@@ -5455,8 +5455,9 @@ QStringList projectDataBase::publicViews()
 	the number of cores its type has, the cores drawn and the ones of them
 	wired to a conductor, its length, the folios it is drawn on and the
 	first of them, then its manufacturer and part number (article, as in
-	qet_devices) after cable_uuid. Its plant and location are its own,
-	else the ones of that first folio, and structure_id composes them with the designation
+	qet_devices) and the user's comment after cable_uuid. Its plant and
+	location are its own, else the ones of that first folio, and
+	structure_id composes them with the designation
 	(=plant+location-designation) like a device's.
 
 	qet_terminals is the terminals of each terminal strip, one row per
@@ -5707,7 +5708,8 @@ QStringList projectDataBase::publicViewStatements()
 				"MAX(CASE WHEN name = 'cores' THEN CAST(value AS INTEGER) END) AS cores, "
 				"MAX(CASE WHEN name = 'length' THEN value END) AS length, "
 				"MAX(CASE WHEN name = 'manufacturer' THEN value END) AS manufacturer, "
-				"MAX(CASE WHEN name = 'manufacturer_reference' THEN value END) AS article "
+				"MAX(CASE WHEN name = 'manufacturer_reference' THEN value END) AS article, "
+				"MAX(CASE WHEN name = 'comment' THEN value END) AS comment "
 				"FROM cable_value WHERE section = 'cable' GROUP BY cable_uuid), "
 			"core AS (SELECT cable_uuid, COUNT(DISTINCT ord) AS drawn_cores, "
 				"COUNT(DISTINCT CASE WHEN name = 'conductor' AND value <> '' THEN ord END) AS wired_cores "
@@ -5734,7 +5736,7 @@ QStringList projectDataBase::publicViewStatements()
 			+ QStringLiteral(" AS structure_id, eff_plant AS plant, eff_location AS location, "
 			"designation, type, COALESCE(cores, 0) AS cores, COALESCE(k.drawn_cores, 0) AS drawn_cores, "
 			"COALESCE(k.wired_cores, 0) AS wired_cores, length, folios, folio_number, folio, "
-			"p.cable_uuid, manufacturer, article FROM placed p LEFT JOIN core k ON k.cable_uuid = p.cable_uuid "
+			"p.cable_uuid, manufacturer, article, comment FROM placed p LEFT JOIN core k ON k.cable_uuid = p.cable_uuid "
 			"ORDER BY structure_id, p.cable_uuid"),
 			//After qet_devices, which it reads: one row per entry of a PLC's
 			//I/O table, with the slave linked to it where one is drawn

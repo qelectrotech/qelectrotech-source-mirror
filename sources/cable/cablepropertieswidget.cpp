@@ -92,6 +92,9 @@ CablePropertiesWidget::CablePropertiesWidget(QWidget *parent) :
 	m_manufacturer_reference->setToolTip(
 		tr("The number this cable is ordered by. The parts list counts "
 		   "the cable under it, like the part number of an element."));
+		//A note of the user's own, not drawn either: the cable list
+		//can show it as a column.
+	m_comment = addPlainField(grid, row++, tr("Comment"));
 
 		//The colours of the cores: one setting for every one of them at
 		//once, since they are written in one row along the line and are
@@ -369,6 +372,7 @@ CableProperties CablePropertiesWidget::properties() const
 	properties.length = m_length->text().trimmed();
 	properties.manufacturer = m_manufacturer->text().trimmed();
 	properties.manufacturer_reference = m_manufacturer_reference->text().trimmed();
+	properties.comment = m_comment->text().trimmed();
 	properties.show_designation = m_show_designation->isChecked();
 	properties.show_type = m_show_type->isChecked();
 	properties.show_installation = m_show_installation->isChecked();
@@ -402,6 +406,7 @@ void CablePropertiesWidget::setProperties(const CableProperties &properties)
 	m_length->setText(properties.length);
 	m_manufacturer->setText(properties.manufacturer);
 	m_manufacturer_reference->setText(properties.manufacturer_reference);
+	m_comment->setText(properties.comment);
 	m_show_designation->setChecked(properties.show_designation);
 	m_show_type->setChecked(properties.show_type);
 	m_show_installation->setChecked(properties.show_installation);

@@ -322,6 +322,45 @@ class tst_cablelist : public QObject
 		QCOMPARE(rows, QStringList({QStringLiteral("1|W2|CAB-0001|W2|"),
 									QStringLiteral("1|INSTRUMENT 12PR|CAB-0001|W1|Maker A")}));
 	}
+
+		//A cable's comment (#2002): kept by the file only when there is
+		//one, read by qet_cables, offered by the cable list but left off
+	void commentIsKeptAndListed()
+	{
+		QETProject project;
+		project.addNewDiagram();
+		Cable *w1 = cable(project, QStringLiteral("W1"));
+		CableProperties properties = w1->properties();
+		properties.comment = QStringLiteral("Laid in the floor duct");
+		w1->setProperties(properties);
+		Cable *w2 = cable(project, QStringLiteral("W2"));
+
+		QDomDocument document;
+		QCOMPARE(w1->toXml(document).attribute(QStringLiteral("comment")),
+				 QStringLiteral("Laid in the floor duct"));
+		QVERIFY(!w2->toXml(document).hasAttribute(QStringLiteral("comment")));
+		Cable copy(&project);
+		copy.fromXml(w1->toXml(document));
+		QCOMPARE(copy.comment(), QStringLiteral("Laid in the floor duct"));
+		QCOMPARE(copy.properties(), w1->properties());
+
+		project.dataBase()->updateDB();
+		QString error;
+		QSqlQuery query = project.dataBase()->newQuery(QStringLiteral(
+			"SELECT designation, comment FROM qet_cables"), &error);
+		QVERIFY2(error.isEmpty(), qPrintable(error));
+		QStringList rows;
+		while (query.next())
+			rows << query.value(0).toString() + "|" + query.value(1).toString();
+		QCOMPARE(rows, QStringList({QStringLiteral("W1|Laid in the floor duct"),
+									QStringLiteral("W2|")}));
+
+		QVERIFY(!CableList::defaultKeys().contains(QStringLiteral("comment")));
+		bool offered = false;
+		for (const CableList::Column &column : CableList::allColumns())
+			offered = offered || column.key == QStringLiteral("comment");
+		QVERIFY(offered);
+	}
 };
 
 QET_APP_TEST_MAIN(tst_cablelist)

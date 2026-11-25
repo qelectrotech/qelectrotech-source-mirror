@@ -254,6 +254,26 @@ void Cable::setManufacturerReference(const QString &reference)
 }
 
 /**
+	@brief Cable::comment
+	@return the note the user wrote about this cable
+*/
+QString Cable::comment() const
+{
+	return m_comment;
+}
+
+/**
+	@brief Cable::setComment
+	@param comment
+*/
+void Cable::setComment(const QString &comment)
+{
+	if (m_comment == comment) return;
+	m_comment = comment;
+	emit changed();
+}
+
+/**
 	@brief Cable::properties
 	@return every field the user fills in, together with what of it he
 	want to see drawn next to the trunk line
@@ -269,6 +289,7 @@ CableProperties Cable::properties() const
 	properties.length = m_length;
 	properties.manufacturer = m_manufacturer;
 	properties.manufacturer_reference = m_manufacturer_reference;
+	properties.comment = m_comment;
 	properties.show_designation = m_show_designation;
 	properties.show_type = m_show_type;
 	properties.show_installation = m_show_installation;
@@ -299,6 +320,7 @@ void Cable::setProperties(const CableProperties &properties)
 	m_length = properties.length;
 	m_manufacturer = properties.manufacturer;
 	m_manufacturer_reference = properties.manufacturer_reference;
+	m_comment = properties.comment;
 	m_show_designation = properties.show_designation;
 	m_show_type = properties.show_type;
 	m_show_installation = properties.show_installation;
@@ -753,6 +775,9 @@ QDomElement Cable::toXml(QDomDocument &document) const
 	if (!m_manufacturer_reference.isEmpty()) {
 		root.setAttribute(QLatin1String("manufacturer_reference"), m_manufacturer_reference);
 	}
+	if (!m_comment.isEmpty()) {
+		root.setAttribute(QLatin1String("comment"), m_comment);
+	}
 		//Only what was switched off is written: a cable written before
 		//these existed shows everything, like the ones written from now
 	if (!m_show_designation) {
@@ -887,6 +912,7 @@ void Cable::fromXml(const QDomElement &element)
 	m_length = element.attribute(QLatin1String("length"));
 	m_manufacturer = element.attribute(QLatin1String("manufacturer"));
 	m_manufacturer_reference = element.attribute(QLatin1String("manufacturer_reference"));
+	m_comment = element.attribute(QLatin1String("comment"));
 	m_show_designation = element.attribute(
 		QLatin1String("show_designation"), QLatin1String("1")).toInt() != 0;
 	m_show_type = element.attribute(
