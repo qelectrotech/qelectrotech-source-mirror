@@ -365,6 +365,30 @@ QStringList CableTypeList::coreColors(const CableTypeRecord &record)
 }
 
 /**
+	@brief CableTypeList::manufacturer
+	@param record
+	@return who makes that cable, from the manufacturer column -- the
+	column the material file uses for the same thing -- or an empty
+	string when the file has no such column or leaves the cell empty
+*/
+QString CableTypeList::manufacturer(const CableTypeRecord &record)
+{
+	return record.value(QStringLiteral("manufacturer")).trimmed();
+}
+
+/**
+	@brief CableTypeList::manufacturerReference
+	@param record
+	@return the part number that cable is ordered by, from the
+	manufacturer_reference column, like the material file; empty when
+	the file says nothing
+*/
+QString CableTypeList::manufacturerReference(const CableTypeRecord &record)
+{
+	return record.value(QStringLiteral("manufacturer_reference")).trimmed();
+}
+
+/**
 	@brief CableTypeList::headerAliasMap
 	@return every accepted header cell of a cable type file, lowercased,
 	mapped to the canonical column it means.

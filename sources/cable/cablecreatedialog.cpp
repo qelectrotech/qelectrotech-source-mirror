@@ -950,6 +950,10 @@ void CableCreateDialog::accept()
 			//conductors which were recognised, since that is all we know.
 		m_cable->setCoreCount(qMax(cores, needed));
 		m_cable->setCoreColors(CableTypeList::coreColors(record));
+			//What it is bought as comes along with it, when the file
+			//says so: the parts list then counts it without retyping
+		m_cable->setManufacturer(CableTypeList::manufacturer(record));
+		m_cable->setManufacturerReference(CableTypeList::manufacturerReference(record));
 		m_cable->setDesignation(CableManager::nextDesignation(project, m_diagram.data()));
 		m_cable->addPart(m_part);
 		core_slots = nextFreeSlots(needed);
@@ -1202,6 +1206,18 @@ void CableCreateDialog::acceptTypeChange()
 			|| m_designation_prefill_by_hand;
 	properties_after.installation = m_installation->text().trimmed();
 	properties_after.location = m_location->text().trimmed();
+		//The new type brings the manufacturer and the part number it is
+		//bought as, when the file gives them. An empty cell says
+		//nothing, so it leaves what the cable already had -- often a
+		//number typed in by hand -- rather than wiping it.
+	const QString manufacturer = CableTypeList::manufacturer(record);
+	if (!manufacturer.isEmpty()) {
+		properties_after.manufacturer = manufacturer;
+	}
+	const QString reference = CableTypeList::manufacturerReference(record);
+	if (!reference.isEmpty()) {
+		properties_after.manufacturer_reference = reference;
+	}
 
 	QList<QUndoCommand *> steps;
 	if (properties_after != properties_before) {
