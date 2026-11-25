@@ -1462,6 +1462,14 @@ void QETDiagramEditor::setUpActions()
 	ShortcutManager::instance().registerAction(m_project_terminalBloc, "diagrameditor.terminal_strip_plugin", tr("Diagram editors"), QKeySequence());
 	connect(m_project_terminalBloc, &QAction::triggered, this, &QETDiagramEditor::generateTerminalBlock);
 
+		//Add a table of the project's revision history (#1295 rule 2)
+	m_add_revision_table = new QAction(QET::Icons::TableOfContent, tr("Add a revision table"), this);
+	connect(m_add_revision_table, &QAction::triggered, this, [this]() {
+		if (this->currentDiagramView()) {
+			QetGraphicsTableFactory::createAndAddRevisionTable(this->currentDiagramView()->diagram());
+		}
+	});
+
 		//Add a cable list
 	m_add_cable_list = new QAction(QET::Icons::TableOfContent, tr("Add a cable list"), this);
 	connect(m_add_cable_list, &QAction::triggered, this, [this]() {
@@ -2508,6 +2516,7 @@ void QETDiagramEditor::setUpMenu()
 	menu_lists -> addAction(m_project_terminalBloc);
 	menu_lists -> addSeparator();
 	menu_lists -> addAction(m_add_cable_list);
+	menu_lists -> addAction(m_add_revision_table);
 
 	main_tool_bar         -> toggleViewAction() -> setStatusTip(tr("Display or hide the main toolbar"));
 	view_tool_bar         -> toggleViewAction() -> setStatusTip(tr("Display or hide the Display toolbar"));
@@ -4128,6 +4137,7 @@ void QETDiagramEditor::slot_updateActions()
 	m_terminal_numbering          -> setEnabled(editable_project);
 	m_cable_numbering             -> setEnabled(editable_project);
 	m_add_cable_list              -> setEnabled(editable_project);
+	m_add_revision_table          -> setEnabled(editable_project);
 	m_export_cable_list           -> setEnabled(editable_project);
 	m_reload_element_drawings     -> setEnabled(opened_project);
 	m_update_elements_from_collections -> setEnabled(editable_project);

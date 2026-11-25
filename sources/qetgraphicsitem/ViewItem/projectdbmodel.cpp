@@ -386,7 +386,17 @@ void ProjectDBModel::setHeaderString()
 		auto field_name = record.fieldName(i);
 		QString header_name;
 		
-		if (field_name == "position") {
+			//A revision table names its columns as the Revisions page does
+		if (m_identifier == QLatin1String("revisions")
+				&& (field_name == QLatin1String("revision") || field_name == QLatin1String("date")
+					|| field_name == QLatin1String("description") || field_name == QLatin1String("author")
+					|| field_name == QLatin1String("approver"))) {
+			header_name = field_name == QLatin1String("revision") ? tr("Revision")
+					: field_name == QLatin1String("date") ? tr("Date")
+					: field_name == QLatin1String("description") ? tr("Description")
+					: field_name == QLatin1String("author") ? tr("Author")
+					: tr("Approved by");
+		} else if (field_name == "position") {
 			header_name = tr("Position");
 		} else if (field_name == "diagram_position") {
 			header_name = tr("Sheet position");

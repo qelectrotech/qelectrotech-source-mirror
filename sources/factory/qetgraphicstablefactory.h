@@ -33,6 +33,8 @@ class QetGraphicsTableFactory
 		static void createAndAddNomenclature(Diagram *diagram);
 		static void createAndAddSummary(Diagram *diagram);
 		static void createAndAddCableList(Diagram *diagram);
+			/// The project's revision history, as a table on @p diagram
+		static void createAndAddRevisionTable(Diagram *diagram);
 			// Public so a caller that has already built and configured an
 			// AddTableDialog itself (never shown or exec'd -- the two
 			// methods above always exec() one, which the scripting API
