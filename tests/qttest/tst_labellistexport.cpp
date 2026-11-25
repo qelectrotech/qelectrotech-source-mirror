@@ -157,8 +157,8 @@ class TstLabelListExport : public QObject
 
 		void csvQuotesWhatItMust()
 		{
-			QCOMPARE(LabelListExport::toCsv({"K1", "a,b", "say \"hi\""}),
-					 QStringLiteral("K1\n\"a,b\"\n\"say \"\"hi\"\"\"\n"));
+			QCOMPARE(LabelListExport::toCsv({"K1", "a;b", "a,b", "say \"hi\""}),
+					 QByteArray("\"K1\"\n\"a;b\"\n\"a,b\"\n\"say \"\"hi\"\"\"\n"));
 		}
 
 		void writesUtf8WithByteOrderMark()
@@ -168,7 +168,7 @@ class TstLabelListExport : public QObject
 			QVERIFY(LabelListExport::write({QStringLiteral("–K1"), QStringLiteral("X1:2")}, name));
 			QFile file(name);
 			QVERIFY(file.open(QIODevice::ReadOnly));
-			QCOMPARE(file.readAll(), QByteArray("\xEF\xBB\xBF") + QStringLiteral("–K1\nX1:2\n").toUtf8());
+			QCOMPARE(file.readAll(), QByteArray("\xEF\xBB\xBF") + QStringLiteral("\"–K1\"\n\"X1:2\"\n").toUtf8());
 		}
 
 		void kindNames()

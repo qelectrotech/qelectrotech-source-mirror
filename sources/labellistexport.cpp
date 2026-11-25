@@ -16,6 +16,7 @@
 	along with QElectroTech. If not, see <http://www.gnu.org/licenses/>.
 */
 #include "labellistexport.h"
+#include "bomexport.h"
 #include "conductornumexport.h"
 #include "qetapp.h"
 #include "qetproject.h"
@@ -185,22 +186,6 @@ namespace {
 		return labelsOf(rows);
 	}
 
-	/**
-		@brief csvField
-		@return @p text as a field of RFC 4180 CSV: quoted when it holds a
-		comma, a quote or a line break
-	*/
-	QString csvField(const QString &text)
-	{
-		if (!text.contains(QLatin1Char(',')) && !text.contains(QLatin1Char('"'))
-				&& !text.contains(QLatin1Char('\n')) && !text.contains(QLatin1Char('\r'))) {
-			return text;
-		}
-		QString quoted = text;
-		quoted.replace(QLatin1Char('"'), QStringLiteral("\"\""));
-		return QLatin1Char('"') % quoted % QLatin1Char('"');
-	}
-
 	const QString kind_key = QStringLiteral("export/label_list/kind");
 	const QString full_key = QStringLiteral("export/label_list/full_designation");
 }
@@ -276,14 +261,16 @@ QStringList LabelListExport::labels(QETProject *project, Kind kind, bool full_de
 
 /**
 	@brief LabelListExport::toCsv
-	@return @p labels as CSV, one per line, no header: what label printer
-	software reads as a list of markers
+	@return @p labels as CSV in UTF-8, one per line, no header: what label
+	printer software reads as a list of markers. Quoted, as the other list
+	exports (BomExport::csvRecord()), so that a ';' or ',' in a label stays
+	in its cell whatever separator the spreadsheet expects
 */
-QString LabelListExport::toCsv(const QStringList &labels)
+QByteArray LabelListExport::toCsv(const QStringList &labels)
 {
-	QString csv;
+	QByteArray csv;
 	for (const QString &label : labels) {
-		csv += csvField(label) % QLatin1Char('\n');
+		csv += BomExport::csvRecord({label});
 	}
 	return csv;
 }
@@ -302,7 +289,7 @@ bool LabelListExport::write(const QStringList &labels, const QString &file_name,
 		return false;
 	}
 	file.write("\xEF\xBB\xBF");
-	file.write(toCsv(labels).toUtf8());
+	file.write(toCsv(labels));
 	if (!file.commit()) {
 		if (error) *error = file.errorString();
 		return false;

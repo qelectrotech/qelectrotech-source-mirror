@@ -18,6 +18,7 @@
 #ifndef LABELLISTEXPORT_H
 #define LABELLISTEXPORT_H
 
+#include <QByteArray>
 #include <QDialog>
 #include <QStringList>
 
@@ -45,7 +46,7 @@ namespace LabelListExport
 	QString kindName(Kind kind);
 
 	QStringList labels(QETProject *project, Kind kind, bool full_designation);
-	QString toCsv(const QStringList &labels);
+	QByteArray toCsv(const QStringList &labels);
 	bool write(const QStringList &labels, const QString &file_name, QString *error = nullptr);
 }
 
