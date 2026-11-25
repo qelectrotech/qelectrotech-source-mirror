@@ -5455,8 +5455,9 @@ QStringList projectDataBase::publicViews()
 	the number of cores its type has, the cores drawn and the ones of them
 	wired to a conductor, its length, the folios it is drawn on and the
 	first of them, then its manufacturer and part number (article, as in
-	qet_devices) and the user's comment after cable_uuid. Its plant and location are its own,
-	else the ones of that first folio, and structure_id composes them with the designation
+	qet_devices) and the user's comment after cable_uuid. Its plant and
+	location are its own, else the ones of that first folio, and
+	structure_id composes them with the designation
 	(=plant+location-designation) like a device's.
 
 	qet_terminals is the terminals of each terminal strip, one row per

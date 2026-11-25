@@ -39,7 +39,9 @@
 	   undo step;
 	 - a line whose cells are empty leaves what the cable already had --
 	   a part number typed in by hand is not wiped by a file which says
-	   nothing about it.
+	   nothing about it, nor by taking the same type again;
+	 - the two go as a pair: a line with a part number and no maker
+	   does not leave the cable with the maker of its former type.
 */
 class tst_cabletypepick : public QObject
 {
@@ -74,7 +76,8 @@ class tst_cabletypepick : public QObject
 		file.write("Designation;Number of cores;Core colors;Manufacturer;Part number\n"
 				   "designation;cores;core_colors;manufacturer;manufacturer_reference\n"
 				   "H07RN-F 3G1,5;3;;Lapp;LAPP-0001\n"
-				   "NYM-J 3G2,5;3;;;\n");
+				   "NYM-J 3G2,5;3;;;\n"
+				   "OLFLEX 4G1;4;;;OLF-0004\n");
 		file.close();
 		CableTypeList::setConfiguredPath(path);
 	}
@@ -139,6 +142,42 @@ class tst_cabletypepick : public QObject
 		QCOMPARE(cable->type(), QStringLiteral("NYM-J 3G2,5"));
 		QCOMPARE(cable->manufacturer(), QStringLiteral("Maker B"));
 		QCOMPARE(cable->manufacturerReference(), QStringLiteral("TYPED-BY-HAND"));
+	}
+
+	void theSameTypeAgainKeepsWhatWasTyped()
+	{
+		QETProject project;
+		Diagram *folio = project.addNewDiagram();
+		Cable *cable = project.newCable();
+		cable->setDesignation(QStringLiteral("W1"));
+		cable->setType(QStringLiteral("H07RN-F 3G1,5"));
+		cable->setCoreCount(3);
+		cable->setManufacturerReference(QStringLiteral("TYPED-BY-HAND"));
+
+		CableCreateDialog dialog(folio, cable);
+		QVERIFY(pick(dialog, QStringLiteral("H07RN-F 3G1,5")));
+		dialog.accept();
+		QCOMPARE(cable->manufacturer(), QString());
+		QCOMPARE(cable->manufacturerReference(), QStringLiteral("TYPED-BY-HAND"));
+	}
+
+	void makerAndNumberGoAsAPair()
+	{
+		QETProject project;
+		Diagram *folio = project.addNewDiagram();
+		Cable *cable = project.newCable();
+		cable->setDesignation(QStringLiteral("W1"));
+		cable->setType(QStringLiteral("H07RN-F 3G1,5"));
+		cable->setCoreCount(3);
+		cable->setManufacturer(QStringLiteral("Lapp"));
+		cable->setManufacturerReference(QStringLiteral("LAPP-0001"));
+
+		CableCreateDialog dialog(folio, cable);
+		QVERIFY(pick(dialog, QStringLiteral("OLFLEX 4G1")));
+		dialog.accept();
+		QCOMPARE(cable->type(), QStringLiteral("OLFLEX 4G1"));
+		QCOMPARE(cable->manufacturer(), QString());
+		QCOMPARE(cable->manufacturerReference(), QStringLiteral("OLF-0004"));
 	}
 };
 

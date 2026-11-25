@@ -466,18 +466,17 @@ namespace ProjectReports
 			table.rows << row;
 		}
 
-			//A column shown only when used goes while no row fills it,
-			//from the right so the indexes still to be read hold
+			//A column shown only when used goes while nothing in the whole
+			//project fills it -- the project, not the place asked for, so
+			//every place's list has the same columns. From the right, so
+			//the indexes still to be read hold.
 		for (int i = report.columns.size() - 1 ; i >= 0 ; --i) {
 			if (!report.columns.at(i).when_used) continue;
-			bool used = false;
-			for (const QStringList &row : std::as_const(table.rows)) {
-				if (!row.at(i).trimmed().isEmpty()) {
-					used = true;
-					break;
-				}
-			}
-			if (used) continue;
+			QString error;
+			QSqlQuery used = project->dataBase()->newQuery(
+				QStringLiteral("SELECT 1 FROM %1 WHERE TRIM(COALESCE(%2, '')) <> '' LIMIT 1")
+					.arg(report.source, report.columns.at(i).sql), &error);
+			if (!error.isEmpty() || used.next()) continue;
 			table.headers.removeAt(i);
 			for (QStringList &row : table.rows) row.removeAt(i);
 		}

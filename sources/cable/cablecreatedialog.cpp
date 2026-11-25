@@ -1206,16 +1206,17 @@ void CableCreateDialog::acceptTypeChange()
 			|| m_designation_prefill_by_hand;
 	properties_after.installation = m_installation->text().trimmed();
 	properties_after.location = m_location->text().trimmed();
-		//The new type brings the manufacturer and the part number it is
-		//bought as, when the file gives them. An empty cell says
-		//nothing, so it leaves what the cable already had -- often a
-		//number typed in by hand -- rather than wiping it.
+		//A new type brings the manufacturer and the part number it is
+		//bought as, when the file gives them -- the two as one pair, so
+		//a cable never ends up with the maker of one type and the
+		//number of another. A line saying neither leaves what the cable
+		//had, often a number typed in by hand; so does taking the same
+		//type again, which is only saying yes to the other fields.
 	const QString manufacturer = CableTypeList::manufacturer(record);
-	if (!manufacturer.isEmpty()) {
-		properties_after.manufacturer = manufacturer;
-	}
 	const QString reference = CableTypeList::manufacturerReference(record);
-	if (!reference.isEmpty()) {
+	if (type != before.type
+			&& (!manufacturer.isEmpty() || !reference.isEmpty())) {
+		properties_after.manufacturer = manufacturer;
 		properties_after.manufacturer_reference = reference;
 	}
 

@@ -373,7 +373,7 @@ QStringList CableTypeList::coreColors(const CableTypeRecord &record)
 */
 QString CableTypeList::manufacturer(const CableTypeRecord &record)
 {
-	return record.value(QStringLiteral("manufacturer")).trimmed();
+	return record.value(QETInformation::ELMT_MANUFACTURER).trimmed();
 }
 
 /**
@@ -385,7 +385,7 @@ QString CableTypeList::manufacturer(const CableTypeRecord &record)
 */
 QString CableTypeList::manufacturerReference(const CableTypeRecord &record)
 {
-	return record.value(QStringLiteral("manufacturer_reference")).trimmed();
+	return record.value(QETInformation::ELMT_MANUFACTURER_REF).trimmed();
 }
 
 /**
