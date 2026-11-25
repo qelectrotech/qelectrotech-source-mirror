@@ -5303,7 +5303,9 @@ QStringList projectDataBase::publicViews()
 	a folio not built gives the same rows. folio_number is the folio's
 	place in the project from 1, folio its label as its title block shows
 	it, and document_kind (added last) the kind of document it is, an
-	IEC 61355 code such as FS, '' for none. A device's plant and location are its own, else the ones of the
+	IEC 61355 code such as FS, '' for none. folio_designation, after it,
+	is the sheet's full name: =plant+location&kind/folio_number, every
+	part but the number left out when empty, as %{folio_designation}. A device's plant and location are its own, else the ones of the
 	smallest structure box it is in, else its folio's, as in the parts list
 	and in its texts (StructureBoxItem::placeOf()), and structure_id composes them with its label
 	(=plant+location-label) as %{structure_id} does in its texts; each
@@ -5389,7 +5391,17 @@ QStringList projectDataBase::publicViewStatements()
 			+ QStringLiteral(" AS folio_subgroup, "
 				//The kind of document (IEC 61355), '' for none: added last
 			"COALESCE((SELECT ft.value FROM folio_titleblock ft WHERE ft.diagram_uuid = d.uuid "
-				"AND ft.name = 'document_kind'), '') AS document_kind "
+				"AND ft.name = 'document_kind'), '') AS document_kind, "
+				//The sheet's full name, =plant+location&kind/number, as
+				//%{folio_designation} in its title block: added last
+			"CASE WHEN COALESCE(TRIM(di.plant), '') = '' THEN '' "
+				"WHEN substr(TRIM(di.plant), 1, 1) = '=' THEN TRIM(di.plant) ELSE '=' || TRIM(di.plant) END "
+			"|| CASE WHEN COALESCE(TRIM(di.locmach), '') = '' THEN '' "
+				"WHEN substr(TRIM(di.locmach), 1, 1) = '+' THEN TRIM(di.locmach) ELSE '+' || TRIM(di.locmach) END "
+			"|| COALESCE((SELECT CASE WHEN TRIM(ft.value) = '' THEN '' "
+				"WHEN substr(TRIM(ft.value), 1, 1) = '&' THEN TRIM(ft.value) ELSE '&' || TRIM(ft.value) END "
+				"FROM folio_titleblock ft WHERE ft.diagram_uuid = d.uuid AND ft.name = 'document_kind'), '') "
+			"|| '/' || d.pos AS folio_designation "
 			"FROM diagram d LEFT JOIN diagram_info di ON di.diagram_uuid = d.uuid"),
 		QStringLiteral(
 			"CREATE VIEW qet_devices AS SELECT "
