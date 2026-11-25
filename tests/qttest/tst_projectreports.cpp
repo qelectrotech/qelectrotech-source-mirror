@@ -201,9 +201,12 @@ class tst_projectreports : public QObject
 		QETProject project;
 		Diagram *a1 = project.addNewDiagram();
 		Diagram *a2 = project.addNewDiagram();
+		Diagram *a1b = project.addNewDiagram();
 		for (auto [folio, higher_plant, higher_location] :
 			 {std::tuple{a1, QStringLiteral("A1"), QStringLiteral("S1")},
-			  std::tuple{a2, QStringLiteral("A2"), QString()}}) {
+			  std::tuple{a2, QStringLiteral("A2"), QString()},
+				//Typed with its sign on this one: the same == as a1's
+			  std::tuple{a1b, QStringLiteral("==A1"), QStringLiteral("++S1")}}) {
 			setPlace(folio, QStringLiteral("FACTORY"), QStringLiteral("CP1"));
 			auto block = folio->border_and_titleblock.exportTitleBlock();
 			block.higher_plant = higher_plant;
@@ -230,11 +233,14 @@ class tst_projectreports : public QObject
 				.rows.isEmpty());
 
 		QSqlQuery view = project.dataBase()->newQuery(QStringLiteral(
-				"SELECT structure_id, symbols FROM qet_locations ORDER BY structure_id"));
+				"SELECT structure_id, symbols, folios FROM qet_locations ORDER BY structure_id"));
 		QStringList rows;
-		while (view.next()) rows << view.value(0).toString() + QLatin1Char('|') + view.value(1).toString();
-		QCOMPARE(rows, QStringList({QStringLiteral("==A1=FACTORY++S1+CP1|2"),
-									QStringLiteral("==A2=FACTORY+CP1|1")}));
+		while (view.next())
+			rows << view.value(0).toString() + QLatin1Char('|') + view.value(1).toString()
+					+ QLatin1Char('|') + view.value(2).toString();
+			//The folio with ==A1 typed with its sign is in the same place
+		QCOMPARE(rows, QStringList({QStringLiteral("==A1=FACTORY++S1+CP1|2|2"),
+									QStringLiteral("==A2=FACTORY+CP1|1|1")}));
 
 		const auto space = ProjectReports::read(&project, ProjectReports::report(QStringLiteral("space")));
 		QVERIFY2(space.error.isEmpty(), qPrintable(space.error));

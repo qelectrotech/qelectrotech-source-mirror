@@ -5698,8 +5698,10 @@ QStringList projectDataBase::publicViewStatements()
 			"UNION ALL SELECT COALESCE(plant, ''), COALESCE(location, ''), "
 			"folio_uuid, folio_number, 0 FROM qet_folios) "
 			"LEFT JOIN (SELECT diagram_uuid, "
-				"COALESCE(MAX(CASE WHEN name = 'higher_plant' THEN TRIM(value) END), '') AS higher_plant, "
-				"COALESCE(MAX(CASE WHEN name = 'higher_location' THEN TRIM(value) END), '') AS higher_location "
+					//Without their signs, so ==A1 on one folio and A1 on
+					//another are one place
+				"COALESCE(MAX(CASE WHEN name = 'higher_plant' THEN LTRIM(TRIM(value), '=') END), '') AS higher_plant, "
+				"COALESCE(MAX(CASE WHEN name = 'higher_location' THEN LTRIM(TRIM(value), '+') END), '') AS higher_location "
 				"FROM folio_titleblock GROUP BY diagram_uuid) lv ON lv.diagram_uuid = folio_uuid "
 			"GROUP BY plant, location, COALESCE(higher_plant, ''), COALESCE(higher_location, '') "
 			"ORDER BY plant, location, higher_plant, higher_location")
