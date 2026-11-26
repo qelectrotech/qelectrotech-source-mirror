@@ -18,6 +18,9 @@
 #ifndef QETGRAPHICSTABLEFACTORY_H
 #define QETGRAPHICSTABLEFACTORY_H
 
+#include <QString>
+#include <QVector>
+
 class Diagram;
 class QetGraphicsTableItem;
 class AddTableDialog;
@@ -44,6 +47,10 @@ class QetGraphicsTableFactory
 			// create() only reads settings already on the dialog; nothing
 			// about it depends on the dialog having been shown.
 		static void create(Diagram *diagram, AddTableDialog *dialog);
+			/// How many rows a page of a grouped list takes, so that a
+			/// page never starts inside a group (@see rowsOnPage()).
+			/// Public for the tests.
+		static int rowsOnPage(const QVector<QString> &groups, int start, int fit);
 	private:
 		static QetGraphicsTableItem *newTable(
 				Diagram *diagram,

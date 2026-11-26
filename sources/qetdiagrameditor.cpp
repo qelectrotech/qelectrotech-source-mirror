@@ -2558,11 +2558,12 @@ void QETDiagramEditor::setUpMenu()
 	// menu Listes
 		//Everything which drops a table or a list onto the sheets has
 		//come out of the project menu and sits here together: the
-		//summary, the material list, the terminal strip tools and the
-		//cable list. The CSV exports stay with the other exports in the
-		//project menu, the cable list's among them.
+		//summary, the material list, the SPS list, the terminal strip
+		//tools and the cable list. The CSV exports stay with the other
+		//exports in the project menu, the cable list's among them.
 	menu_lists -> addAction(m_add_summary);
 	menu_lists -> addAction(m_add_nomenclature);
+	menu_lists -> addAction(m_add_plc_list);
 	menu_lists -> addSeparator();
 	menu_lists -> addAction(m_terminal_strip_dialog);
 	menu_lists -> addAction(m_project_terminalBloc);
@@ -2571,7 +2572,6 @@ void QETDiagramEditor::setUpMenu()
 	menu_lists -> addAction(m_add_revision_table);
 	menu_lists -> addAction(m_add_device_list);
 	menu_lists -> addAction(m_add_wiring_table);
-	menu_lists -> addAction(m_add_plc_list);
 	menu_lists -> addAction(m_add_signal_list);
 
 	main_tool_bar         -> toggleViewAction() -> setStatusTip(tr("Display or hide the main toolbar"));
@@ -4245,6 +4245,7 @@ void QETDiagramEditor::slot_updateActions()
 	m_clean_project               -> setEnabled(editable_project);
 	m_add_summary                 -> setEnabled(editable_project);
 	m_add_nomenclature            -> setEnabled(editable_project);
+	m_add_plc_list                -> setEnabled(editable_project);
 	m_csv_export                  -> setEnabled(editable_project);
 	m_project_export_conductor_num-> setEnabled(opened_project);
 	m_project_export_label_lists  -> setEnabled(opened_project);
@@ -4257,7 +4258,6 @@ void QETDiagramEditor::slot_updateActions()
 	m_add_revision_table          -> setEnabled(editable_project);
 	m_add_device_list             -> setEnabled(editable_project);
 	m_add_wiring_table            -> setEnabled(editable_project);
-	m_add_plc_list                -> setEnabled(editable_project);
 	m_add_signal_list             -> setEnabled(editable_project);
 	m_export_cable_list           -> setEnabled(editable_project);
 	m_reload_element_drawings     -> setEnabled(opened_project);

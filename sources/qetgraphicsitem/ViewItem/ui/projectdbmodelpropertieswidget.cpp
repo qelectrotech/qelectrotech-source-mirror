@@ -18,6 +18,7 @@
 #include "projectdbmodelpropertieswidget.h"
 
 #include <dataBase/ui/elementquerywidget.h>
+#include <dataBase/ui/plcquerywidget.h>
 #include <dataBase/ui/summaryquerywidget.h>
 #include <qetproject.h>
 #include <qetgraphicsitem/ViewItem/projectdbmodel.h>
@@ -70,6 +71,7 @@ void ProjectDBModelPropertiesWidget::on_m_edit_query_pb_clicked()
 
 	ElementQueryWidget *nom_w = nullptr;
 	SummaryQueryWidget *sum_w = nullptr;
+	PlcQueryWidget *plc_w = nullptr;
 	if (m_model->identifier() == "nomenclature")
 	{
 		nom_w = new ElementQueryWidget(&d);
@@ -81,6 +83,12 @@ void ProjectDBModelPropertiesWidget::on_m_edit_query_pb_clicked()
 		sum_w = new SummaryQueryWidget(&d);
 		sum_w->setQuery(m_model->queryString());
 		l->addWidget(sum_w);
+	}
+	else if (m_model->identifier() == "plc_list")
+	{
+		plc_w = new PlcQueryWidget(&d);
+		plc_w->setQuery(m_model->queryString());
+		l->addWidget(plc_w);
 	}
 
 	auto button_box = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
@@ -94,6 +102,8 @@ void ProjectDBModelPropertiesWidget::on_m_edit_query_pb_clicked()
 			m_model->setQuery(nom_w->queryStr());
 		} else if (sum_w) {
 			m_model->setQuery(sum_w->queryStr());
+		} else if (plc_w) {
+			m_model->setQuery(plc_w->queryStr());
 		}
 	}
 }
