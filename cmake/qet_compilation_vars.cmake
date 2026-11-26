@@ -211,6 +211,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/reports/projectreports.cpp
   ${QET_DIR}/sources/placesuggestions.h
   ${QET_DIR}/sources/placesuggestions.cpp
+  ${QET_DIR}/sources/placecopy.h
+  ${QET_DIR}/sources/placecopy.cpp
   ${QET_DIR}/sources/placerename.h
   ${QET_DIR}/sources/placerename.cpp
   ${QET_DIR}/sources/ui/devicetypecheckdialog.h
