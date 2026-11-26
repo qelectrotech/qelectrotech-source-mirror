@@ -2558,6 +2558,8 @@ qet_add_app_test(tst_projectcheck tst_projectcheck.cpp)
 # The choices of the checks kept in the project (#1878 B12), and each
 # check switched off or a finding accepted for the project (#1878 B8).
 qet_add_app_test(tst_checksettings tst_checksettings.cpp)
+target_compile_definitions(tst_checksettings PRIVATE
+  QET_EXAMPLES_DIR="${QET_DIR}/examples")
 # potential_view: one row per potential (wires, terminals, folios, wire
 # numbers, more than one number), as QElectroTech groups the wires.
 qet_add_app_test(tst_potentialview tst_potentialview.cpp)

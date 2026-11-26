@@ -185,6 +185,13 @@ void ProjectMainConfigPage::applyProjectConf()
 		for (auto it = m_check_option_cbs.cbegin() ; it != m_check_option_cbs.cend() ; ++it)
 			check_options.insert(it.key(), it.value() -> isChecked());
 	new_properties = CheckSettings::withOptions(new_properties, check_options);
+		//The checks switched off, and the findings accepted in the Check
+		//panel, which this page keeps as they are
+	QList<ProjectCheck::Kind> rules_off;
+	for (auto it = m_check_rule_cbs.cbegin() ; it != m_check_rule_cbs.cend() ; ++it)
+		if (!it.value() -> isChecked()) rules_off << it.key();
+	new_properties = CheckSettings::withPanelState(new_properties, m_project -> projectProperties());
+	new_properties = CheckSettings::withRulesOff(new_properties, rules_off);
 	const QVariant standard = m_drawing_standard_cb -> currentData();
 	if (!standard.isValid())
 		new_properties.addValue(QStringLiteral("drawing_standard"), m_drawing_standard_cb -> currentText());
@@ -493,6 +500,15 @@ void ProjectMainConfigPage::initWidgets()
 				 tr("Symbols with no wire: leave out strip terminals", "checkbox label"));
 	check_option(CheckSettings::Option::UnwiredSkipContacts,
 				 tr("Symbols with no wire: leave out auxiliary contacts", "checkbox label"));
+		//Each check of the Check panel, on or off for this project (#1878 B8)
+	m_check_rules_label = new QLabel(tr("Checks the Check panel runs on this project:",
+										"label when configuring"));
+	for (ProjectCheck::Kind kind : ProjectCheck::kinds()) {
+		auto *check_box = new QCheckBox(ProjectCheck::title(kind));
+		check_box -> setObjectName(QStringLiteral("checkRule") + ProjectCheck::id(kind));
+		check_box -> setToolTip(ProjectCheck::toolTip(kind));
+		m_check_rule_cbs.insert(kind, check_box);
+	}
 	//origin (of a coordinate system) settings
 	origin_label_ = new QLabel(tr("Cell numbering starts from:"));
 	origin_cb_	  = new QComboBox();
@@ -594,6 +610,10 @@ void ProjectMainConfigPage::initLayout()
 	check_options_layout -> addWidget(m_check_options_application_cb);
 	for (CheckSettings::Option option : CheckSettings::options())
 		check_options_layout -> addWidget(m_check_option_cbs.value(option));
+	check_options_layout -> addSpacing(6);
+	check_options_layout -> addWidget(m_check_rules_label);
+	for (ProjectCheck::Kind kind : ProjectCheck::kinds())
+		check_options_layout -> addWidget(m_check_rule_cbs.value(kind));
 	main_layout0 -> addWidget(m_check_options_gb);
 	main_layout0 -> addSpacing(10);
 
@@ -682,6 +702,8 @@ void ProjectMainConfigPage::readValuesFromProject()
 	for (auto it = m_check_option_cbs.cbegin() ; it != m_check_option_cbs.cend() ; ++it)
 		it.value() -> setChecked(CheckSettings::value(m_project, it.key()));
 	updateCheckOptionsWidgets();
+	for (auto it = m_check_rule_cbs.cbegin() ; it != m_check_rule_cbs.cend() ; ++it)
+		it.value() -> setChecked(CheckSettings::ruleEnabled(m_project, it.key()));
 }
 
 /**

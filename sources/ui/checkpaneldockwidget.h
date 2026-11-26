@@ -25,6 +25,7 @@
 #include <QMetaObject>
 #include <QPointer>
 
+class QAction;
 class QETProject;
 class QLabel;
 class QMenu;
@@ -36,7 +37,9 @@ class QTreeWidgetItem;
 	@brief The CheckPanelDockWidget class
 	The Check panel (#1878 B1): runs every check of ProjectCheck on the
 	current project when asked and lists the findings, grouped by check.
-	Double-clicking a finding shows it on its folio. The results are not
+	Double-clicking a finding shows it on its folio. A check can be
+	switched off for the project, and a finding accepted with a note so
+	that it is no longer listed (#1878 B8, CheckSettings). The results are not
 	kept up to date while the project is edited: Run checks again.
 	Options holds the choices of the checks which have some (what symbols
 	with no wire leaves out), kept in the settings, or in the project when
@@ -56,14 +59,24 @@ class CheckPanelDockWidget : public QDockWidget
 		int findingCount() const {return m_finding_count;}
 		QTreeWidget *tree() const {return m_tree;}
 		QMenu *optionsMenu() const {return m_options;}
+			/// The row of a check, after run()
+		QTreeWidgetItem *checkRow(ProjectCheck::Kind kind) const;
 
 	public slots:
 		void run();
 		bool showRow(QTreeWidgetItem *row);
+		bool setAccepted(QTreeWidgetItem *row, bool accept, const QString &note = QString());
+		bool setCheckEnabled(ProjectCheck::Kind kind, bool enabled);
 
 	private:
 		void clear(const QString &summary);
 		void buildFolios();
+		void fillCheck(QTreeWidgetItem *root, ProjectCheck::Kind kind);
+		void updateCheck(QTreeWidgetItem *root);
+		void updateSummary();
+		void removeFindings(QTreeWidgetItem *root);
+		QTreeWidgetItem *findingRow(QTreeWidgetItem *row) const;
+		void showMenu(const QPoint &pos);
 
 		QPointer<QETProject> m_project;
 			/// While the folios are built (events are processed), a new
@@ -75,6 +88,7 @@ class CheckPanelDockWidget : public QDockWidget
 		QPushButton *m_run = nullptr;
 		QLabel *m_summary = nullptr;
 		QMenu *m_options = nullptr;
+		QAction *m_show_accepted = nullptr;
 		QTreeWidget *m_tree = nullptr;
 		QHash<QTreeWidgetItem *, ProjectCheck::Place> m_places;
 		int m_finding_count = 0;

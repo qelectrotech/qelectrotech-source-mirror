@@ -19,6 +19,8 @@
 #ifndef CHECKSETTINGS_H
 #define CHECKSETTINGS_H
 
+#include "../projectcheck.h"
+
 #include <QHash>
 #include <QList>
 #include <QString>
@@ -38,6 +40,12 @@ class QETProject;
 	which an older QElectroTech keeps when it saves the project. A project
 	that follows the application stores nothing, and saves the same bytes
 	as before.
+
+	A project can also switch a check off, and accept a finding with a note
+	so that the Check panel no longer lists it (#1878 B8): stored the same
+	way, in check_rules_off (the ids of the checks switched off) and
+	check_accepted (each accepted finding's findingId() and its note), only
+	when there is something to store.
 */
 namespace CheckSettings
 {
@@ -75,6 +83,31 @@ namespace CheckSettings
 		/// (the project follows the application) when @p own is empty
 	DiagramContext withOptions(DiagramContext properties,
 							   const QHash<Option, bool> &own);
+
+		/// Whether @p kind runs for @p project: every check does until
+		/// the project switches it off (B8)
+	bool ruleEnabled(QETProject *project, ProjectCheck::Kind kind);
+	void setRuleEnabled(QETProject *project, ProjectCheck::Kind kind, bool enabled);
+		/// @p properties with the checks of @p off switched off and every
+		/// other check this QElectroTech knows on; the ids of checks it
+		/// does not know (from a newer one) are kept
+	DiagramContext withRulesOff(DiagramContext properties,
+								const QList<ProjectCheck::Kind> &off);
+
+		/// @p properties with the checks switched off and the findings
+		/// accepted of @p from
+	DiagramContext withPanelState(DiagramContext properties, const DiagramContext &from);
+
+		/// What a finding is about, the same in every session: its check
+		/// and the uuids of its symbols and wires, and
+		/// any ids the check gives (ProjectCheck::Finding::ids), never
+		/// where they are drawn nor the order of the file. A finding
+		/// about none of them is known by its text.
+	QString findingId(ProjectCheck::Kind kind, const ProjectCheck::Finding &finding);
+		/// The findings accepted in @p project: id to note
+	QHash<QString, QString> acceptedFindings(QETProject *project);
+	void acceptFinding(QETProject *project, const QString &id, const QString &note);
+	void unacceptFinding(QETProject *project, const QString &id);
 }
 
 #endif // CHECKSETTINGS_H

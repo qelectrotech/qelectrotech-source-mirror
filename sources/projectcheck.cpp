@@ -31,6 +31,7 @@
 #include "wiringrules.h"
 
 #include <QHash>
+#include <QMetaEnum>
 #include <QSqlQuery>
 
 namespace {
@@ -122,6 +123,19 @@ QString ProjectCheck::title(Kind kind)
 		case Kind::TerminalNames: return tr("Terminal names");
 	}
 	return QString();
+}
+
+QString ProjectCheck::id(Kind kind)
+{
+	return QString::fromLatin1(QMetaEnum::fromType<Kind>().valueToKey(int(kind)));
+}
+
+bool ProjectCheck::kindFromId(const QString &id, Kind *kind)
+{
+	bool ok = false;
+	const int value = QMetaEnum::fromType<Kind>().keyToValue(id.toLatin1().constData(), &ok);
+	if (ok && kind) *kind = Kind(value);
+	return ok;
 }
 
 QString ProjectCheck::toolTip(Kind kind)
@@ -497,7 +511,7 @@ ProjectCheck::Result ProjectCheck::wiresPerTerminal(QETProject *project)
 		" SELECT terminal1_uuid AS tu, terminal1_element_uuid AS eu FROM conductor"
 		" UNION ALL SELECT terminal2_uuid, terminal2_element_uuid FROM conductor) "
 		"SELECT e.uuid, e.diagram_uuid, e.pos, e.type, i.label, t.name, t.terminal_index, "
-		" COUNT(*) AS wires "
+		" COUNT(*) AS wires, ends.tu "
 		"FROM ends JOIN element e ON e.uuid = ends.eu "
 		"LEFT JOIN terminal t ON t.uuid = ends.tu AND t.element_uuid = ends.eu "
 		"LEFT JOIN element_info i ON i.element_uuid = e.uuid "
@@ -524,6 +538,11 @@ ProjectCheck::Result ProjectCheck::wiresPerTerminal(QETProject *project)
 		finding.places << symbolPlace(folios, QUuid(query.value(0).toString()),
 									  QUuid(query.value(1).toString()),
 									  query.value(2).toString(), label);
+			// Two terminals of one symbol are two findings: the terminal's
+			// uuid, and its place in the symbol's definition
+		finding.ids << QStringLiteral("t:%1/%2").arg(
+						   QUuid(query.value(8).toString()).toString(QUuid::WithoutBraces),
+						   query.value(6).toString());
 		result.findings << finding;
 	}
 	return result;

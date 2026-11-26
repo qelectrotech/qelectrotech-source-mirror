@@ -167,6 +167,8 @@ class ProjectMainConfigPage : public ProjectConfigPage {
 	QGroupBox *m_check_options_gb;
 	QCheckBox *m_check_options_application_cb;
 	QHash<CheckSettings::Option, QCheckBox *> m_check_option_cbs;
+	QLabel *m_check_rules_label;
+	QHash<ProjectCheck::Kind, QCheckBox *> m_check_rule_cbs;
 	QLabel *origin_label_;
 	QComboBox *origin_cb_;
 };

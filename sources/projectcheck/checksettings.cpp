@@ -20,12 +20,22 @@
 
 #include "../diagramcontext.h"
 #include "../qet.h"
+#include "../qetgraphicsitem/conductor.h"
+#include "../qetgraphicsitem/element.h"
 #include "../qetproject.h"
 #include "../utils/qetsettings.h"
+
+#include <QCryptographicHash>
+#include <QJsonDocument>
+#include <QJsonObject>
 
 namespace {
 		/// Every property of the checks starts so
 	const QString key_prefix = QStringLiteral("check_");
+		/// The ids of the checks switched off, comma separated
+	const QString rules_off_key = QStringLiteral("check_rules_off");
+		/// The accepted findings: a JSON object, findingId() to note
+	const QString accepted_key = QStringLiteral("check_accepted");
 
 	QString text(bool value)
 	{
@@ -62,6 +72,7 @@ QString CheckSettings::key(Option option)
 bool CheckSettings::isCheckKey(const QString &key)
 {
 	if (!key.startsWith(key_prefix)) return false;
+	if (key == rules_off_key || key == accepted_key) return true;
 	for (Option option : options())
 		if (key == CheckSettings::key(option)) return true;
 	return false;
@@ -141,4 +152,138 @@ DiagramContext CheckSettings::withOptions(DiagramContext properties,
 			properties.addValue(key(option), text(own.value(option)));
 	}
 	return properties;
+}
+
+namespace {
+	QStringList rulesOff(QETProject *project)
+	{
+		if (!project) return {};
+		return project->projectProperties().value(rules_off_key).toString()
+				.split(QLatin1Char(','), Qt::SkipEmptyParts);
+	}
+
+	QString uuidId(const char *prefix, const QUuid &uuid)
+	{
+		return QLatin1String(prefix) + uuid.toString(QUuid::WithoutBraces);
+	}
+
+	void setProperties(QETProject *project, const DiagramContext &properties)
+	{
+		if (project->isReadOnly() || project->projectProperties() == properties) return;
+		project->setUnshownProjectProperties(properties);
+		project->setModified(true);
+	}
+}
+
+bool CheckSettings::ruleEnabled(QETProject *project, ProjectCheck::Kind kind)
+{
+	return !rulesOff(project).contains(ProjectCheck::id(kind));
+}
+
+void CheckSettings::setRuleEnabled(QETProject *project, ProjectCheck::Kind kind, bool enabled)
+{
+	if (!project) return;
+	QList<ProjectCheck::Kind> off;
+	for (ProjectCheck::Kind other : ProjectCheck::kinds())
+		if (other != kind && !ruleEnabled(project, other)) off << other;
+	if (!enabled) off << kind;
+	setProperties(project, withRulesOff(project->projectProperties(), off));
+}
+
+DiagramContext CheckSettings::withRulesOff(DiagramContext properties,
+										   const QList<ProjectCheck::Kind> &off)
+{
+	QStringList ids;
+	for (const QString &id : properties.value(rules_off_key).toString()
+			.split(QLatin1Char(','), Qt::SkipEmptyParts)) {
+		ProjectCheck::Kind kind;
+		if (!ProjectCheck::kindFromId(id, &kind)) ids << id;
+	}
+	for (ProjectCheck::Kind kind : off) ids << ProjectCheck::id(kind);
+	ids.removeDuplicates();
+	ids.sort();
+	if (ids.isEmpty())
+		properties.remove(rules_off_key);
+	else
+		properties.addValue(rules_off_key, ids.join(QLatin1Char(',')));
+	return properties;
+}
+
+DiagramContext CheckSettings::withPanelState(DiagramContext properties,
+											 const DiagramContext &from)
+{
+	for (const QString &key : {rules_off_key, accepted_key}) {
+		properties.remove(key);
+		if (from.contains(key)) properties.addValue(key, from.value(key));
+	}
+	return properties;
+}
+
+QString CheckSettings::findingId(ProjectCheck::Kind kind, const ProjectCheck::Finding &finding)
+{
+		// A wire's uuid lasts: one an older file does not give is worked
+		// out from its two ends (QETProject::derivedItemUuid())
+	QStringList parts = finding.ids;
+	for (const ProjectCheck::Place &place : finding.places) {
+		if (auto *element = qobject_cast<Element *>(place.item.data()))
+			parts << uuidId("e:", element->uuid());
+		else if (auto *conductor = qobject_cast<Conductor *>(place.item.data()))
+			parts << uuidId("w:", conductor->uuid());
+		if (!place.element.isNull())
+			parts << uuidId("e:", place.element);
+		for (const QUuid &wire : place.wires)
+			parts << uuidId("w:", wire);
+	}
+	parts.removeDuplicates();
+	parts.sort();
+	const QByteArray what = parts.isEmpty()
+		? QByteArrayLiteral("text:") + finding.text.toUtf8()
+		: parts.join(QLatin1Char(' ')).toUtf8();
+		// A potential may have hundreds of wires: the id stays short
+	return ProjectCheck::id(kind) + QLatin1Char(':')
+			+ QString::fromLatin1(QCryptographicHash::hash(what, QCryptographicHash::Sha1).toHex());
+}
+
+QHash<QString, QString> CheckSettings::acceptedFindings(QETProject *project)
+{
+	QHash<QString, QString> accepted;
+	if (!project) return accepted;
+	const QJsonObject object = QJsonDocument::fromJson(
+		project->projectProperties().value(accepted_key).toString().toUtf8()).object();
+	for (auto it = object.constBegin() ; it != object.constEnd() ; ++it)
+		accepted.insert(it.key(), it.value().toString());
+	return accepted;
+}
+
+namespace {
+	void setAccepted(QETProject *project, const QHash<QString, QString> &accepted)
+	{
+		DiagramContext properties = project->projectProperties();
+		if (accepted.isEmpty())
+			properties.remove(accepted_key);
+		else {
+			QJsonObject object;
+			for (auto it = accepted.cbegin() ; it != accepted.cend() ; ++it)
+				object.insert(it.key(), it.value());
+				// Keys sorted: the same findings save the same bytes
+			properties.addValue(accepted_key, QString::fromUtf8(
+				QJsonDocument(object).toJson(QJsonDocument::Compact)));
+		}
+		setProperties(project, properties);
+	}
+}
+
+void CheckSettings::acceptFinding(QETProject *project, const QString &id, const QString &note)
+{
+	if (!project || id.isEmpty()) return;
+	auto accepted = acceptedFindings(project);
+	accepted.insert(id, note);
+	setAccepted(project, accepted);
+}
+
+void CheckSettings::unacceptFinding(QETProject *project, const QString &id)
+{
+	if (!project) return;
+	auto accepted = acceptedFindings(project);
+	if (accepted.remove(id)) setAccepted(project, accepted);
 }
