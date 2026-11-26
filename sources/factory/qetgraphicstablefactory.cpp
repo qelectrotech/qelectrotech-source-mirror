@@ -33,6 +33,7 @@
 #include "ui/revisionquerywidget.h"
 #include "ui/listquerywidget.h"
 #include <qetproject.h>
+#include <QApplication>
 #include <QDialog>
 #include <QSqlQuery>
 
@@ -158,7 +159,14 @@ void QetGraphicsTableFactory::createAndAddListTable(Diagram *diagram, int kind)
 	}
 
 	if (d->exec()) {
+			//The sheets the PLC list needs take seconds each on a large
+			//project, and nothing is on screen meanwhile: the cursor says
+			//the program is working. Only the SPS list gets it, the
+			//other lists are as they were merged
+		const bool plc = list_kind == ListQueryWidget::Plc;
+		if (plc) QApplication::setOverrideCursor(Qt::WaitCursor);
 		create(diagram, d.data());
+		if (plc) QApplication::restoreOverrideCursor();
 	}
 }
 
