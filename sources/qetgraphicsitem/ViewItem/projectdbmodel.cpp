@@ -41,6 +41,11 @@ namespace {
 	*/
 QString listHeader(const QString &identifier, const QString &field)
 {
+	static const QStringList lists{QStringLiteral("device_list"), QStringLiteral("wiring_table"),
+								   QStringLiteral("plc_list"), QStringLiteral("signal_list")};
+	if (!lists.contains(identifier)) {
+		return QString();
+	}
 	using T = QHash<QString, QString>;
 	const QHash<QString, T> titles = {
 		{QStringLiteral("device_list"), {
@@ -444,8 +449,8 @@ void ProjectDBModel::setHeaderString()
 					: field_name == QLatin1String("description") ? tr("Description")
 					: field_name == QLatin1String("author") ? tr("Author")
 					: tr("Approved by");
-		} else if (!listHeader(m_identifier, field_name).isEmpty()) {
-			header_name = listHeader(m_identifier, field_name);
+		} else if (const QString title = listHeader(m_identifier, field_name); !title.isEmpty()) {
+			header_name = title;
 		} else if (field_name == "position") {
 			header_name = tr("Position");
 		} else if (field_name == "diagram_position") {
