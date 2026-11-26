@@ -21,8 +21,12 @@
 #include "qetresult.h"
 #include "ui/configpage/projectconfigpages.h"
 #include "ui/diagramcontextwidget.h"
+#include "projectview.h"
+#include "qetmessagebox.h"
+#include "qetversion.h"
 
 #include <QComboBox>
+#include <QFile>
 #include <QTemporaryDir>
 #include <QtTest>
 
@@ -159,6 +163,52 @@ private slots:
 		page.applyProjectConf();
 		QVERIFY(!project.projectProperties().contains(QStringLiteral("drawing_standard")));
 		QCOMPARE(project.drawingStandard(), Standard::AsBefore);
+	}
+
+		//#1267: a project a newer QElectroTech saved is not saved over
+		//without asking. With nobody to answer (the default, Cancel) the
+		//file is left as it is; a project of this version saves as before.
+	void savingOverANewerProjectAsks()
+	{
+		const QString path = m_dir.filePath(QStringLiteral("newer.qet"));
+		{
+			QETProject project;
+			project.addNewDiagram();
+			project.setFilePath(path);
+			QVERIFY(project.write().isOk());
+		}
+		QFile file(path);
+		QVERIFY(file.open(QIODevice::ReadOnly));
+		QByteArray xml = file.readAll();
+		file.close();
+		const QByteArray current = QetVersion::currentVersion().toString().toUtf8();
+		QVERIFY(xml.contains("version=\"" + current + "\""));
+		xml.replace("version=\"" + current + "\"", "version=\"99.0\"");
+		QVERIFY(file.open(QIODevice::WriteOnly | QIODevice::Truncate));
+		file.write(xml);
+		file.close();
+
+		QET::QetMessageBox::setNonInteractive(true);
+		auto *project = new QETProject(path);
+		QVERIFY(project->savedByNewerVersion());
+		ProjectView view(project);
+		view.save();
+		QVERIFY(!project->newerVersionSaveAccepted());
+		QVERIFY(file.open(QIODevice::ReadOnly));
+		QVERIFY(file.readAll().contains("version=\"99.0\""));
+		file.close();
+
+			//A project of this version: no question, saved as before
+		const QString plain = m_dir.filePath(QStringLiteral("plain.qet"));
+		{
+			QETProject ours;
+			ours.addNewDiagram();
+			ours.setFilePath(plain);
+			QVERIFY(ours.write().isOk());
+		}
+		auto *ours = new QETProject(plain);
+		QVERIFY(!ours->savedByNewerVersion());
+		QET::QetMessageBox::setNonInteractive(false);
 	}
 };
 

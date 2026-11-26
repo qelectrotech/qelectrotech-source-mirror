@@ -182,6 +182,13 @@ class QETProject : public QObject
 		QString pathNameTitle() const;
 		QString title() const;
 		QVersionNumber declaredQElectroTechVersion();
+			/// Whether the project was last saved by a newer QElectroTech
+			/// than this one: saving it here may lose what that version
+			/// added (#1267, #1289)
+		bool savedByNewerVersion() const;
+			/// The user agreed, this session, to save it here all the same
+		bool newerVersionSaveAccepted() const {return m_newer_version_save_accepted;}
+		void acceptNewerVersionSave() {m_newer_version_save_accepted = true;}
 		void setTitle(const QString &);
 
 		/// Enable/disable the asynchronous crash-recovery backup for all
@@ -679,6 +686,7 @@ class QETProject : public QObject
 		QString project_title_;
 			/// QElectroTech version declared in the XML document at opening time
 		QVersionNumber m_project_qet_version;
+		bool m_newer_version_save_accepted = false;
 			/// Whether options were modified
 		bool m_modified = false;
 			/// Whether the project is read only

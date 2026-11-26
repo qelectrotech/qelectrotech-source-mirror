@@ -1529,6 +1529,12 @@ QString QETProject::title() const
 	celui-ci a ete ouvert ; si ce projet n'a jamais ete enregistre / ouvert
 	depuis un fichier, cette methode une version nulle.
 */
+bool QETProject::savedByNewerVersion() const
+{
+	return !m_project_qet_version.isNull()
+			&& QetVersion::currentVersion() < m_project_qet_version;
+}
+
 QVersionNumber QETProject::declaredQElectroTechVersion()
 {
 	return(m_project_qet_version);
