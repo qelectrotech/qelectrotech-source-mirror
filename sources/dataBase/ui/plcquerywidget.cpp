@@ -212,6 +212,7 @@ void PlcQueryWidget::setUpItems()
 		QStringLiteral("description"),
 		QStringLiteral("supplier"),
 		QStringLiteral("plc_type"),
+		QStringLiteral("plc_type_full"),
 		QStringLiteral("plc_address"),
 		QStringLiteral("plc_function"),
 		QStringLiteral("plc_comment"),

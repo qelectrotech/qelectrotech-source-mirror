@@ -212,6 +212,19 @@ private slots:
 		QVERIFY2(!drawn.at(1).isEmpty(), "the drawn channel has no position");
 		QCOMPARE(drawn.at(2), QStringLiteral("1"));
 
+			//The type written out is what the symbol drawing the channel
+			//keeps of it -- the same words the drawing shows. An entry
+			//no symbol is drawn for keeps none, so its column is empty
+		const QStringList kinds = rows(project, QStringLiteral(
+			"SELECT plc_type, plc_type_full FROM qet_plc_list "
+			"ORDER BY structure_id, plc_uuid, entry"), &error);
+		QVERIFY2(error.isEmpty(), qPrintable(error));
+		QCOMPARE(int(kinds.size()), 5);
+		QCOMPARE(kinds.at(1), QStringLiteral("DO|")
+				 + ElementData::translatedPlcIOType(ElementData::SortieDigitale));
+		QCOMPARE(kinds.at(0), QStringLiteral("DI|"));
+		QCOMPARE(kinds.at(3), QStringLiteral("DI|"));
+
 			//The SPS cross-reference of a drawn channel is its own
 			//place: the sheet it is on and the cell it stands in, made
 			//the way the drawing makes its own cross-references. The

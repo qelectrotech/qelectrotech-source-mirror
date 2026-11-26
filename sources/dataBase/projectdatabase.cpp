@@ -5329,6 +5329,12 @@ void projectDataBase::createPlcListView()
 			"WHEN 'entree_analogique' THEN 'AI' WHEN 'sortie_analogique' THEN 'AO' "
 			"WHEN 'entree_universelle' THEN 'UI' WHEN 'sortie_universelle' THEN 'UO' "
 			"ELSE io.io_type END AS plc_type, "
+			//The type written out, as the symbol drawing the channel
+			//keeps it when it is linked -- what the drawing shows too.
+			//The card's own table holds the key (entree_digitale), not
+			//the words, and SQL cannot translate it, so an entry no
+			//symbol is drawn for has nothing to show here
+		"si.plc_type AS plc_type_full, "
 		"io.address AS plc_address, io.function_text AS plc_function, "
 		"io.comment AS plc_comment, "
 			//The cross-reference of the symbol drawn for the channel,
