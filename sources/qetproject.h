@@ -182,6 +182,13 @@ class QETProject : public QObject
 		QString pathNameTitle() const;
 		QString title() const;
 		QVersionNumber declaredQElectroTechVersion();
+			/// Whether the project was last saved by a newer QElectroTech
+			/// than this one: saving it here may lose what that version
+			/// added (#1267, #1289)
+		bool savedByNewerVersion() const;
+			/// The user agreed, this session, to save it here all the same
+		bool newerVersionSaveAccepted() const {return m_newer_version_save_accepted;}
+		void acceptNewerVersionSave() {m_newer_version_save_accepted = true;}
 		void setTitle(const QString &);
 
 		/// Enable/disable the asynchronous crash-recovery backup for all
@@ -353,6 +360,18 @@ class QETProject : public QObject
 			/// What the label field of a symbol shows: its label only, or
 			/// its IEC 81346 reference designation, short or full
 		enum class DesignationDisplay {Label, Short, Full};
+			/// The standard the project is drawn to (#1289, #1878 C6). It
+			/// changes nothing by itself: features check it. AsBefore is
+			/// a project as it always was, the default.
+		enum class DrawingStandard {AsBefore, Iec, Nfpa};
+		DrawingStandard drawingStandard() const;
+			/// What the project stores, as typed: "iec", "nfpa", empty for
+			/// As before, or a value this QElectroTech does not know
+			/// (kept as it is, read as AsBefore)
+		QString drawingStandardText() const;
+		void setDrawingStandard(DrawingStandard standard);
+		static QString drawingStandardName(DrawingStandard standard);
+		static DrawingStandard drawingStandardFromName(const QString &name, bool *known = nullptr);
 		DesignationDisplay designationDisplay() const;
 		void setDesignationDisplay(DesignationDisplay display);
 		bool followDeviceTypes() const;
@@ -667,6 +686,7 @@ class QETProject : public QObject
 		QString project_title_;
 			/// QElectroTech version declared in the XML document at opening time
 		QVersionNumber m_project_qet_version;
+		bool m_newer_version_save_accepted = false;
 			/// Whether options were modified
 		bool m_modified = false;
 			/// Whether the project is read only

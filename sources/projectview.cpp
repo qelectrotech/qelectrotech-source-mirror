@@ -27,6 +27,7 @@
 #include "qetapp.h"
 #include "qeticons.h"
 #include "qetmessagebox.h"
+#include "qetversion.h"
 #include "qetproject.h"
 #include "titleblock/qettemplateeditor.h"
 #include "ui/borderpropertieswidget.h"
@@ -762,6 +763,25 @@ void ProjectView::exportProject()
 */
 QETResult ProjectView::save()
 {
+		//A project a newer QElectroTech saved: saving it over its file here
+		//may lose what that version added (#1267). Asked once a session;
+		//Save as, or a copy for an older version, leaves the file as it is.
+	if (m_project && !m_project->filePath().isEmpty()
+			&& m_project->savedByNewerVersion() && !m_project->newerVersionSaveAccepted()) {
+		const auto answer = QET::QetMessageBox::warning(
+				this,
+				tr("Save over a newer project?", "message box title"),
+				tr("This project was saved by QElectroTech %1, which is newer than "
+				   "this one (%2).\n\nSaving it here may lose what that version added "
+				   "and this one does not know.\n\nTo keep the newer file as it is, "
+				   "cancel and use File > Save as.", "message box content")
+						.arg(m_project->declaredQElectroTechVersion().toString(),
+							 QetVersion::currentVersion().toString()),
+				QMessageBox::Save | QMessageBox::Cancel,
+				QMessageBox::Cancel);
+		if (answer != QMessageBox::Save) return(QETResult());
+		m_project->acceptNewerVersionSave();
+	}
 	return(doSave());
 }
 
