@@ -1,0 +1,246 @@
+<project version="0.100">
+    <titleblocktemplates>
+<titleblocktemplate name="ISO7200 A3">
+    <information />
+    <logos>
+        </logos>
+    <grid cols="r100%;50px;70px;165px;215px;35px;100px;35px;35px;" rows="15;15;15;15;">
+        <field valign="center" row="0" colspan="1" fontsize="9" hadjust="true" col="1" name="department" displaylabel="false" align="center">
+            <value>
+                <translation lang="en">%{department}</translation>
+            </value>
+            <label>
+                <translation lang="en">Department</translation>
+                <translation lang="sv">Ansvarig avdelning</translation>
+            </label>
+        </field>
+        <field valign="center" row="0" hadjust="true" col="3" name="reference" displaylabel="false" align="center">
+            <value>
+                <translation lang="en">%{ref}</translation>
+            </value>
+            <label>
+                <translation lang="ar">عنوان</translation>
+                <translation lang="ca">Títol</translation>
+                <translation lang="cs">Název</translation>
+                <translation lang="de">Titel</translation>
+                <translation lang="en">Ref</translation>
+                <translation lang="es">Título</translation>
+                <translation lang="fr">Titre</translation>
+                <translation lang="hr">Naslov</translation>
+                <translation lang="it">Titolo</translation>
+                <translation lang="nl">Ref</translation>
+                <translation lang="pl">Tytuł</translation>
+                <translation lang="pt_BR">Título</translation>
+                <translation lang="pt">Título</translation>
+                <translation lang="ro">Titlu</translation>
+                <translation lang="ru">Название</translation>
+                <translation lang="sv">Referens</translation>
+                <translation lang="zh">职称</translation>
+            </label>
+        </field>
+        <field valign="center" row="0" hadjust="true" col="4" name="author" displaylabel="false" align="left">
+            <value>
+                <translation lang="en">%{author}</translation>
+            </value>
+            <label>
+                <translation lang="ar">ملف</translation>
+                <translation lang="ca">Fitxer</translation>
+                <translation lang="cs">Soubor</translation>
+                <translation lang="da">Forfatter</translation>
+                <translation lang="de">Autor</translation>
+                <translation lang="el">Αρχείο</translation>
+                <translation lang="en">author</translation>
+                <translation lang="es">Archivo</translation>
+                <translation lang="fr">auteur</translation>
+                <translation lang="hr">Datoteka</translation>
+                <translation lang="it">File</translation>
+                <translation lang="nl">auteur</translation>
+                <translation lang="pl">Plik</translation>
+                <translation lang="pt_BR">Arquivo</translation>
+                <translation lang="pt">Ficheiro</translation>
+                <translation lang="ro">Fisier</translation>
+                <translation lang="ru">Файл</translation>
+                <translation lang="sv">Upprättad av</translation>
+                <translation lang="zh">文件名</translation>
+            </label>
+        </field>
+        <field valign="center" row="0" colspan="1" fontsize="9" hadjust="true" col="5" name="approval" displaylabel="false" align="center">
+            <value>
+                <translation lang="en">%{approval}</translation>
+            </value>
+            <label />
+        </field>
+        <field valign="center" row="0" colspan="1" hadjust="true" col="7" name="file" displaylabel="false" align="left">
+            <value>
+                <translation lang="en">%{filename}</translation>
+            </value>
+            <label>
+                <translation lang="ar">ملف</translation>
+                <translation lang="ca">Fitxer</translation>
+                <translation lang="cs">Soubor</translation>
+                <translation lang="da">Filnavn</translation>
+                <translation lang="de">Datei</translation>
+                <translation lang="el">Αρχείο</translation>
+                <translation lang="en">File</translation>
+                <translation lang="es">Archivo</translation>
+                <translation lang="fr">Fichier</translation>
+                <translation lang="hr">Datoteka</translation>
+                <translation lang="it">File</translation>
+                <translation lang="pl">Plik</translation>
+                <translation lang="pt_BR">Arquivo</translation>
+                <translation lang="pt">Ficheiro</translation>
+                <translation lang="ro">Fisier</translation>
+                <translation lang="ru">Файл</translation>
+                <translation lang="sv">Fil</translation>
+                <translation lang="zh">文件名</translation>
+            </label>
+        </field>
+        <field valign="center" row="1" fontsize="9" hadjust="true" col="1" name="email" displaylabel="false" align="center">
+            <value>
+                <translation lang="en">qet@lists.tuxfamily.org</translation>
+            </value>
+            <label />
+        </field>
+        <field valign="center" rowspan="2" row="1" colspan="1" fontsize="9" hadjust="true" col="2" name="owner" displaylabel="false" align="center">
+            <value>
+                <translation lang="en">%{owner}</translation>
+            </value>
+            <label />
+        </field>
+        <field valign="center" row="1" fontsize="9" hadjust="true" col="4" name="type" displaylabel="false" align="center">
+            <value>
+                <translation lang="en">%{type}</translation>
+            </value>
+            <label />
+        </field>
+        <field valign="center" row="1" colspan="1" fontsize="9" hadjust="true" col="5" name="status" displaylabel="true" align="center">
+            <value>
+                <translation lang="en">%{status}</translation>
+            </value>
+            <label>
+                <translation lang="en">status</translation>
+                <translation lang="sv">Dokumentstatus</translation>
+            </label>
+        </field>
+        <field valign="center" row="1" colspan="1" fontsize="9" hadjust="true" col="7" name="code" displaylabel="false" align="center">
+            <value>
+                <translation lang="en">%{code}</translation>
+            </value>
+            <label />
+        </field>
+        <field valign="center" row="2" fontsize="9" hadjust="true" col="1" name="website" displaylabel="false" align="center">
+            <value>
+                <translation lang="en">Qelectrotech.org</translation>
+            </value>
+            <label />
+        </field>
+        <field valign="center" rowspan="1" row="2" hadjust="true" col="4" name="title" displaylabel="false" align="center">
+            <value>
+                <translation lang="en">%{title}</translation>
+            </value>
+            <label>
+                <translation lang="ar">عنوان</translation>
+                <translation lang="ca">Títol</translation>
+                <translation lang="cs">Název</translation>
+                <translation lang="da">Titel</translation>
+                <translation lang="de">Titel</translation>
+                <translation lang="en">Title</translation>
+                <translation lang="es">Título</translation>
+                <translation lang="fr">Titre</translation>
+                <translation lang="hr">Naslov</translation>
+                <translation lang="it">Titolo</translation>
+                <translation lang="pl">Tytuł</translation>
+                <translation lang="pt_BR">Título</translation>
+                <translation lang="pt">Título</translation>
+                <translation lang="ro">Titlu</translation>
+                <translation lang="ru">Название</translation>
+                <translation lang="sv">Titel</translation>
+                <translation lang="zh">职称</translation>
+            </label>
+        </field>
+        <field valign="center" row="2" colspan="3" fontsize="9" hadjust="true" col="5" name="drawingname" displaylabel="false" align="center">
+            <value>
+                <translation lang="en">%{name}</translation>
+            </value>
+            <label />
+        </field>
+        <field valign="center" row="3" fontsize="9" hadjust="true" col="5" name="Revision" displaylabel="false" align="center">
+            <value>
+                <translation lang="en">%{rev}</translation>
+            </value>
+            <label />
+        </field>
+        <field valign="center" row="3" fontsize="9" hadjust="true" col="6" name="Date" displaylabel="false" align="center">
+            <value>
+                <translation lang="en">%{date}</translation>
+            </value>
+            <label />
+        </field>
+        <field valign="center" row="3" fontsize="9" hadjust="true" col="7" name="country" displaylabel="false" align="center">
+            <value>
+                <translation lang="en">%{country}</translation>
+            </value>
+            <label>
+                <translation lang="en">country</translation>
+                <translation lang="sv">Land</translation>
+            </label>
+        </field>
+        <field valign="center" row="3" fontsize="9" hadjust="true" col="8" name="folio" displaylabel="false" align="center">
+            <value>
+                <translation lang="en">%{folio-id}/%{folio-total}</translation>
+                <translation lang="fr">%{folio-id}/%{folio-total}</translation>
+                <translation lang="nl">%{folio-id}/%{folio-total}</translation>
+            </value>
+            <label>
+                <translation lang="ar">صفحة</translation>
+                <translation lang="ca">Folio</translation>
+                <translation lang="cs">Folio</translation>
+                <translation lang="da">Ark</translation>
+                <translation lang="de">Seite</translation>
+                <translation lang="el">Σελίδα</translation>
+                <translation lang="en">Sheet</translation>
+                <translation lang="es">Folio</translation>
+                <translation lang="fr">Folio</translation>
+                <translation lang="hr">List</translation>
+                <translation lang="it">Foglio</translation>
+                <translation lang="pl">Arkusz</translation>
+                <translation lang="pt_BR">Folha</translation>
+                <translation lang="pt">Folha</translation>
+                <translation lang="ro">Pagina</translation>
+                <translation lang="ru">Фолио</translation>
+                <translation lang="sv">Blad</translation>
+                <translation lang="zh">当前页</translation>
+            </label>
+        </field>
+    </grid>
+</titleblocktemplate>
+    </titleblocktemplates>
+    <newdiagrams>
+        <border rowsize="80" rows="13" displaycols="true" cols="27" colsize="58" displayrows="true"/>
+        <inset titleblocktemplate="ISO7200 A3" titleblocktemplateCollection="embedded" displayAt="bottom" folio="%id/%total" indexrev="" plant="" date="null" filename="" author="" locmach="" title="" version="" auto_page_num="Folio"/>
+        <report label="%f-%l%c"/>
+        <conductors_autonums freeze_new_conductors="false" current_autonum="IEC wires">
+            <conductor_autonum formula="%id-%sequf_1" title="IEC wires">
+                <part increase="1" value="" type="idfolio"/>
+                <part increase="1" value="-" type="string"/>
+                <part increase="1" value="" type="unitfolio"/>
+            </conductor_autonum>
+        </conductors_autonums>
+        <folio_autonums>
+            <folio_autonum title="Folio">
+                <part increase="1" value="" type="unit"/>
+            </folio_autonum>
+        </folio_autonums>
+        <element_autonums freeze_new_elements="false" current_autonum="IEC symbols">
+            <element_autonum formula="-%prefix%sequ_1" title="IEC symbols">
+                <part increase="1" value="-" type="string"/>
+                <part increase="1" value="" type="elementprefix"/>
+                <part increase="1" value="" type="unit"/>
+            </element_autonum>
+        </element_autonums>
+    </newdiagrams>
+    <properties>
+        <property name="drawing_standard">iec</property>
+    </properties>
+    <diagram titleblocktemplate="ISO7200 A3" titleblocktemplateCollection="embedded" cols="27" colsize="58" rows="13" rowsize="80" displaycols="true" displayrows="true" displayAt="bottom" folio="%id/%total" title="" auto_page_num="Folio" order="1" freezeNewElement="false" freezeNewConductor="false"/>
+</project>
