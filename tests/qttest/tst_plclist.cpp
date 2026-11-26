@@ -115,6 +115,15 @@ class tst_plclist : public QObject
 		return true;
 	}
 
+	/// The number of a border cell label: "B12" -> "12"
+	static QString fieldNumber(const QString &cell)
+	{
+		QString number;
+		for (const QChar c : cell)
+			if (c.isDigit()) number += c;
+		return number;
+	}
+
 	static QStringList rows(QETProject &project, const QString &sql, QString *error = nullptr)
 	{
 		QString local_error;
@@ -202,6 +211,23 @@ private slots:
 		QCOMPARE(drawn.at(0), QStringLiteral("2"));
 		QVERIFY2(!drawn.at(1).isEmpty(), "the drawn channel has no position");
 		QCOMPARE(drawn.at(2), QStringLiteral("1"));
+
+			//The SPS cross-reference of a drawn channel is its own
+			//place: the sheet it is on and the cell it stands in, made
+			//the way the drawing makes its own cross-references. The
+			//stored one the drawing keeps would read the same on every
+			//row of a card, because it is made on the master.
+		const QStringList refs = rows(project, QStringLiteral(
+			"SELECT plc_crossref, folio, diagram_position, position "
+			"FROM qet_plc_list ORDER BY structure_id, plc_uuid, entry"), &error);
+		QVERIFY2(error.isEmpty(), qPrintable(error));
+		const QStringList mine = refs.at(1).split(QLatin1Char('|'));
+		QCOMPARE(int(mine.size()), 4);
+		QVERIFY2(!mine.at(0).isEmpty(), "the drawn channel has no SPS cross-reference");
+		const QString sheet = mine.at(1).isEmpty() ? mine.at(2) : mine.at(1);
+		QCOMPARE(mine.at(0), sheet + QLatin1Char('.') + fieldNumber(mine.at(3)));
+			//and the sheet no symbol is drawn for has none
+		QCOMPARE(refs.at(0).section(QLatin1Char('|'), 0, 0), QStringLiteral(""));
 	}
 
 	/**

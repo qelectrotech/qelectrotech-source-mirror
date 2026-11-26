@@ -5331,9 +5331,26 @@ void projectDataBase::createPlcListView()
 			"ELSE io.io_type END AS plc_type, "
 		"io.address AS plc_address, io.function_text AS plc_function, "
 		"io.comment AS plc_comment, "
-			//The symbol drawn for the channel: its own cross-references
-			//and where it stands, empty for an entry with none drawn
-		"si.plc_crossref AS plc_crossref, si.xref AS xref, "
+			//The cross-reference of the symbol drawn for the channel,
+			//worked out the way the project's own ones are (%F.%c): its
+			//own sheet and its own cell, so that the rows of a card
+			//differ -- the stored one the drawing keeps is made on the
+			//master and reads the same on every row of it. The cells
+			//count from 1, which is what the drawing does unless its
+			//"border-columns_0" setting says otherwise; that setting is
+			//the person's, not the project's, so SQL cannot read it.
+		"CASE WHEN COALESCE(s.folio, s.folio_number, '') = '' THEN '' "
+			"ELSE COALESCE(s.folio, CAST(s.folio_number AS TEXT)) || '.' || "
+			"CASE WHEN COALESCE(s.position, '') GLOB '[A-Za-z][A-Za-z][0-9]*' "
+				"THEN substr(s.position, 3) "
+			"WHEN COALESCE(s.position, '') GLOB '[A-Za-z][0-9]*' "
+				"THEN substr(s.position, 2) "
+			"ELSE COALESCE(s.position, '') END "
+		"END AS plc_crossref, "
+			//The cross-reference the drawing keeps, which points at the
+			//master, and where the symbol stands: empty for an entry no
+			//symbol is drawn for
+		"si.xref AS xref, "
 		"s.position AS position, s.folio_number AS diagram_position, s.folio AS folio, "
 		"s.device_uuid AS slave_uuid "
 		"FROM io JOIN qet_devices m ON m.device_uuid = io.element_uuid "

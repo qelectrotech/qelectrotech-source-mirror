@@ -216,7 +216,6 @@ void PlcQueryWidget::setUpItems()
 		QStringLiteral("plc_function"),
 		QStringLiteral("plc_comment"),
 		QStringLiteral("plc_crossref"),
-		QStringLiteral("xref"),
 		QStringLiteral("position"),
 		QStringLiteral("diagram_position"),
 		QStringLiteral("folio")
