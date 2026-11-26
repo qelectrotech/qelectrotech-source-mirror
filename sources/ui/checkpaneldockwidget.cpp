@@ -24,6 +24,7 @@
 #include "../qetdiagrameditor.h"
 #include "../qetgraphicsitem/conductor.h"
 #include "../qetgraphicsitem/element.h"
+#include "../qetgraphicsitem/independenttextitem.h"
 #include "../qetproject.h"
 #include "../dataBase/projectdatabase.h"
 #include "../projectcheck/checksettings.h"
@@ -546,6 +547,13 @@ bool CheckPanelDockWidget::showRow(QTreeWidgetItem *row)
 						targets << element;
 						break;
 					}
+			if (!place.drawing.isNull())
+				for (QGraphicsItem *item : diagram->items())
+					if (auto *text = dynamic_cast<IndependentTextItem *>(item))
+						if (text->uuid() == place.drawing) {
+							targets << text;
+							break;
+						}
 			const QSet<QUuid> uuids(place.wires.begin(), place.wires.end());
 			if (!uuids.isEmpty())
 				for (Conductor *conductor : diagram->content().conductors())

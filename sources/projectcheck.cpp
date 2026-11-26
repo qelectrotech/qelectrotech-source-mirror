@@ -18,6 +18,7 @@
 #include "projectcheck.h"
 
 #include "dataBase/projectdatabase.h"
+#include "diagramevent/macrolabels.h"
 #include "devicetype/devicetypecheck.h"
 #include "diagram.h"
 #include "duplicatelabels.h"
@@ -107,7 +108,8 @@ QList<ProjectCheck::Kind> ProjectCheck::kinds()
 {
 	return {Kind::DuplicateLabels, Kind::PotentialTypes, Kind::OpenWireEnds,
 			Kind::UnwiredSymbols, Kind::TerminalBranches, Kind::DeviceTypes,
-			Kind::WiresPerTerminal, Kind::TerminalNames};
+			Kind::WiresPerTerminal, Kind::TerminalNames, Kind::WireInTwoCables,
+			Kind::NoPartNumber, Kind::UnansweredPrompts};
 }
 
 QString ProjectCheck::title(Kind kind)
@@ -121,6 +123,9 @@ QString ProjectCheck::title(Kind kind)
 		case Kind::DeviceTypes: return tr("Device types");
 		case Kind::WiresPerTerminal: return tr("Wires per terminal");
 		case Kind::TerminalNames: return tr("Terminal names");
+		case Kind::WireInTwoCables: return tr("Wires in two cables");
+		case Kind::NoPartNumber: return tr("Symbols with no part number");
+		case Kind::UnansweredPrompts: return tr("Unanswered prompts");
 	}
 	return QString();
 }
@@ -166,6 +171,17 @@ QString ProjectCheck::toolTip(Kind kind)
 		case Kind::TerminalNames:
 			return tr("Symbols of the project with two terminals of one name, "
 					  "which a wiring list cannot tell apart.");
+		case Kind::WireInTwoCables:
+			return tr("Wires set as a core of more than one cable. A wire runs in one "
+					  "cable: the cable core list would show it twice.");
+		case Kind::NoPartNumber:
+			return tr("Symbols the parts list holds that have no part number. Folio "
+					  "reports, junctions and symbols set to be left out of the bill "
+					  "of materials are not listed.");
+		case Kind::UnansweredPrompts:
+			return tr("Labels and texts of symbols, wires and folios that still hold a "
+					  "question mark or a ?name: what a macro asks for when it is placed, "
+					  "left unanswered.");
 	}
 	return QString();
 }
@@ -186,6 +202,9 @@ ProjectCheck::Result ProjectCheck::run(QETProject *project, Kind kind)
 		case Kind::DeviceTypes: return deviceTypes(project);
 		case Kind::WiresPerTerminal: return wiresPerTerminal(project);
 		case Kind::TerminalNames: return terminalNames(project);
+		case Kind::WireInTwoCables: return wireInTwoCables(project);
+		case Kind::NoPartNumber: return noPartNumber(project);
+		case Kind::UnansweredPrompts: return unansweredPrompts(project);
 	}
 	return Result();
 }
@@ -589,6 +608,164 @@ ProjectCheck::Result ProjectCheck::terminalNames(QETProject *project)
 											  QUuid(placed.value(1).toString()),
 											  placed.value(2).toString(),
 											  placed.value(3).toString());
+		result.findings << finding;
+	}
+	return result;
+}
+
+/**
+	@brief ProjectCheck::wireInTwoCables
+	The wires that are a core of two cables or more (#1878 B5): a wire runs
+	in one cable, so the cable core list would show it twice. Read from
+	qet_cable_cores; the wire is found on its folio when the finding is
+	opened.
+*/
+ProjectCheck::Result ProjectCheck::wireInTwoCables(QETProject *project)
+{
+	Result result;
+	result.kind = Kind::WireInTwoCables;
+	QSqlQuery query = project->dataBase()->newQuery(QStringLiteral(
+		"SELECT s.wire_uuid, c.diagram_uuid, c.text, "
+		" (SELECT group_concat(designation, ', ') FROM "
+		"  (SELECT DISTINCT k.designation FROM qet_cable_cores k "
+		"   WHERE k.wire_uuid = s.wire_uuid ORDER BY k.designation)) AS cables "
+		"FROM (SELECT wire_uuid FROM qet_cable_cores WHERE wire_uuid IS NOT NULL "
+		"      GROUP BY wire_uuid HAVING COUNT(DISTINCT cable_uuid) > 1) s "
+		"JOIN conductor c ON c.uuid = s.wire_uuid "
+		"ORDER BY (SELECT pos FROM diagram WHERE uuid = c.diagram_uuid), c.text, s.wire_uuid"));
+	FolioTexts folios(project);
+	while (query.next()) {
+		const QString number = query.value(2).toString().trimmed();
+		const QString cables = query.value(3).toString();
+		Finding finding;
+		//: %1 is the wire's number, %2 the cables, such as "W1, W2"
+		finding.text = number.isEmpty()
+			? tr("A wire is a core of two cables: %1").arg(cables)
+			: tr("Wire %1 is a core of two cables: %2").arg(number, cables);
+		Place place;
+		place.text = number.isEmpty() ? tr("Wire") : number;
+		place.diagram = QUuid(query.value(1).toString());
+		place.folio = folios(place.diagram);
+		place.wires = {QUuid(query.value(0).toString())};
+		finding.places << place;
+		result.findings << finding;
+	}
+	return result;
+}
+
+/**
+	@brief ProjectCheck::noPartNumber
+	The symbols the parts list (BomExport::defaultQuery()) holds that have
+	no part number (#1878 B6): the manufacturer reference field the list
+	counts by. Left out are what the list leaves out: folio reports, the
+	junctions drawn as terminals (BomExport::junctionFilter()) and the
+	symbols set to be excluded from the bill of materials (#785). A terminal
+	strip has no part number of its own, so its terminals are each checked.
+*/
+ProjectCheck::Result ProjectCheck::noPartNumber(QETProject *project)
+{
+	Result result;
+	result.kind = Kind::NoPartNumber;
+	QSqlQuery query = project->dataBase()->newQuery(QStringLiteral(
+		"SELECT e.uuid, e.diagram_uuid, e.pos, e.definition, ei.label "
+		"FROM element e JOIN element_info ei ON ei.element_uuid = e.uuid "
+		"WHERE e.type IN ('simple', 'master', 'slave', 'terminal') "
+		"AND TRIM(COALESCE(ei.manufacturer_reference, '')) = '' "
+		"AND COALESCE(LOWER(TRIM(ei.exclude_from_bom)), '') NOT IN ('true', '1', 'yes', 'on') "
+		//The parts list's junctionFilter(): a terminal-type symbol with no
+		//label, designation or manufacturer is a dot where wires branch
+		"AND NOT (e.type = 'terminal' AND IFNULL(ei.label, '') = '' "
+		"AND IFNULL(ei.designation, '') = '' AND IFNULL(ei.manufacturer, '') = '') "
+		"ORDER BY (SELECT pos FROM diagram WHERE uuid = e.diagram_uuid), e.pos"));
+	QHash<QString, QString> names;
+	FolioTexts folios(project);
+	while (query.next()) {
+		const QString definition = query.value(3).toString();
+		auto name = names.constFind(definition);
+		if (name == names.constEnd())
+			name = names.insert(definition,
+								DeviceTypeCheck::symbolLocation(definition, project).name());
+		const QString label = query.value(4).toString().trimmed();
+		Finding finding;
+		finding.text = label.isEmpty()
+			? name.value()
+			//: %1 is the symbol's label, %2 its name, such as "QF1: Circuit breaker"
+			: tr("%1: %2").arg(label, name.value());
+		finding.places << symbolPlace(folios, QUuid(query.value(0).toString()),
+									  QUuid(query.value(1).toString()),
+									  query.value(2).toString(), label);
+		result.findings << finding;
+	}
+	return result;
+}
+
+/**
+	@brief ProjectCheck::unansweredPrompts
+	The labels and texts still holding a question mark or a ?name (#1878
+	B7): what a macro asks for when it is placed (MacroLabels::holdsPrompt()),
+	left unanswered. Looked for in the information of each symbol, the texts
+	typed into a symbol, the texts of each wire and the free texts of the
+	folios, as the macro asks for them; the label formula is not one. Read
+	from the database: the item is found on its folio when the finding is
+	opened.
+*/
+ProjectCheck::Result ProjectCheck::unansweredPrompts(QETProject *project)
+{
+	Result result;
+	result.kind = Kind::UnansweredPrompts;
+	QSqlQuery query = project->dataBase()->newQuery(QStringLiteral(
+		"SELECT * FROM ("
+		"SELECT 'element' AS kind, e.uuid AS item, e.diagram_uuid AS diagram, e.pos AS pos, "
+		" i.value AS text, ei.label AS label "
+		" FROM element_information i JOIN element e ON e.uuid = i.element_uuid "
+		" LEFT JOIN element_info ei ON ei.element_uuid = e.uuid "
+		" WHERE i.name <> 'formula' AND i.value LIKE '%?%' "
+		"UNION ALL SELECT 'element', e.uuid, e.diagram_uuid, e.pos, t.value, ei.label "
+		" FROM element_text_value t JOIN element e ON e.uuid = t.element_uuid "
+		" LEFT JOIN element_info ei ON ei.element_uuid = e.uuid "
+		" WHERE t.name = '#text' AND t.section LIKE 'dynamic_texts/dynamic_elmt_text%/text' "
+		" AND t.value LIKE '%?%' "
+		"UNION ALL SELECT 'wire', c.uuid, c.diagram_uuid, NULL, c.text, c.text FROM conductor c "
+		" WHERE c.text LIKE '%?%' "
+		"UNION ALL SELECT 'wire', c.uuid, c.diagram_uuid, NULL, p.value, c.text "
+		" FROM conductor_properties p JOIN conductor c ON c.uuid = p.conductor_uuid "
+		" WHERE p.name IN ('function', 'tension_protocol', 'conductor_color', "
+		" 'conductor_section', 'bus') AND p.value LIKE '%?%' "
+		"UNION ALL SELECT 'text', uuid, diagram_uuid, pos, text, '' FROM independent_text "
+		" WHERE text LIKE '%?%') "
+		"ORDER BY (SELECT pos FROM diagram WHERE uuid = diagram), pos, item"));
+	FolioTexts folios(project);
+	QSet<QString> seen;
+	while (query.next()) {
+		const QString text = query.value(4).toString();
+		if (!MacroLabels::holdsPrompt(text)) continue;
+		const QString kind = query.value(0).toString();
+		const QString item = query.value(1).toString();
+			// One finding for each item, whatever number of its texts ask
+		if (seen.contains(item)) continue;
+		seen.insert(item);
+		const QString shown = text.simplified();
+		const QString label = query.value(5).toString().trimmed();
+		Finding finding;
+		if (kind == QLatin1String("element"))
+			//: %1 is the symbol's label, %2 the text that still asks, such as "-K?"
+			finding.text = label.isEmpty() ? tr("Unanswered: %1").arg(shown)
+										   : tr("%1: unanswered %2").arg(label, shown);
+		else if (kind == QLatin1String("wire"))
+			//: %1 is the wire's text that still asks, such as "?wire"
+			finding.text = tr("Wire: unanswered %1").arg(shown);
+		else
+			//: %1 is the folio text that still asks
+			finding.text = tr("Text: unanswered %1").arg(shown);
+		Place place;
+		place.text = kind == QLatin1String("wire") ? tr("Wire") : (label.isEmpty() ? shown : label);
+		place.diagram = QUuid(query.value(2).toString());
+		place.folio = folios(place.diagram);
+		place.cell = query.value(3).toString();
+		if (kind == QLatin1String("element")) place.element = QUuid(item);
+		else if (kind == QLatin1String("wire")) place.wires = {QUuid(item)};
+		else place.drawing = QUuid(item);
+		finding.places << place;
 		result.findings << finding;
 	}
 	return result;
