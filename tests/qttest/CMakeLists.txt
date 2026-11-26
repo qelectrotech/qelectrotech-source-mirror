@@ -565,6 +565,9 @@ qet_add_app_test(tst_renumberwires tst_renumberwires.cpp)
 qet_add_app_test(tst_macrolabels tst_macrolabels.cpp)
 # qet_plc_io: one row per PLC I/O entry, with the slave linked to it.
 qet_add_app_test(tst_plcio tst_plcio.cpp)
+# qet_plc_list: the SPS list, one row per channel of a PLC master, and
+# its pages broken at the masters.
+qet_add_app_test(tst_plclist tst_plclist.cpp)
 # Device types: parts and their ways to be drawn, kept by .qet, .qetdb and
 # the user's library of .qetdt files.
 qet_add_app_test(tst_devicetype tst_devicetype.cpp)
