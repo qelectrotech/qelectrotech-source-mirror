@@ -38,7 +38,9 @@ class ListQueryWidget : public QWidget
 	public:
 		enum Kind {
 			Device, ///< one row per device (qet_device_list)
-			Wiring  ///< one row per wire, both ends as -K1:A1, cable and core
+			Wiring, ///< one row per wire, both ends as -K1:A1, cable and core
+			Plc,    ///< one row per entry of a PLC's I/O table (qet_plc_io)
+			Signal  ///< one row per signal: the wires that carry one potential (potential_view)
 		};
 
 		explicit ListQueryWidget(Kind kind, QWidget *parent = nullptr) :
@@ -58,6 +60,8 @@ class ListQueryWidget : public QWidget
 			switch (kind) {
 				case Device: return QStringLiteral("device_list");
 				case Wiring: return QStringLiteral("wiring_table");
+				case Plc: return QStringLiteral("plc_list");
+				case Signal: return QStringLiteral("signal_list");
 			}
 			return QString();
 		}
@@ -73,6 +77,14 @@ class ListQueryWidget : public QWidget
 					"The table shows the project's wires, one row each: wire number, "
 					"both ends as device:terminal, cable, core and sheet. It follows the "
 					"wiring and the labels.");
+				case Plc: return QCoreApplication::translate("ListQueryWidget",
+					"The table shows the I/O of the project's PLCs, one row per entry: PLC, "
+					"address, type, function, comment, the device wired to it and its sheet. "
+					"It follows the PLC's I/O table.");
+				case Signal: return QCoreApplication::translate("ListQueryWidget",
+					"The table shows the project's signals, one row each: the wire numbers "
+					"and names of one potential, its type, the terminals it joins and the "
+					"sheets it is on. It follows the wiring.");
 			}
 			return QString();
 		}
@@ -108,6 +120,22 @@ class ListQueryWidget : public QWidget
 						"ORDER BY w.folio_number, "
 						"CASE WHEN w.wire_number GLOB '[0-9]*' THEN 0 ELSE 1 END, "
 						"CAST(w.wire_number AS INTEGER), w.wire_number");
+				case Plc:
+					return QStringLiteral(
+						"SELECT COALESCE(p.structure_id, '') AS plc, COALESCE(p.address, '') AS address, "
+						"COALESCE(p.type, '') AS io_type, COALESCE(p.function, '') AS function, "
+						"COALESCE(p.comment, '') AS comment, COALESCE(d.structure_id, '') AS device, "
+						"COALESCE(p.folio_number, '') AS folio_number "
+						"FROM qet_plc_io p LEFT JOIN qet_devices d ON d.device_uuid = p.slave_uuid "
+						"ORDER BY p.structure_id, p.entry");
+				case Signal:
+						//potential_view is made when a query names it
+						//(projectDataBase::newQuery)
+					return QStringLiteral(
+						"SELECT COALESCE(wire_numbers, '') AS wire_numbers, COALESCE(names, '') AS names, "
+						"COALESCE(potential_type, '') AS potential_type, terminals, wires, "
+						"COALESCE(first_folio_number, '') AS folio_number, folios "
+						"FROM potential_view ORDER BY first_folio_number, wire_numbers");
 			}
 			return QString();
 		}

@@ -139,6 +139,14 @@ void QetGraphicsTableFactory::createAndAddListTable(Diagram *diagram, int kind)
 			d->setWindowTitle(QObject::tr("Add a wiring table"));
 			d->setTableName(QObject::tr("Wiring table"));
 			break;
+		case ListQueryWidget::Plc:
+			d->setWindowTitle(QObject::tr("Add a PLC list"));
+			d->setTableName(QObject::tr("PLC list"));
+			break;
+		case ListQueryWidget::Signal:
+			d->setWindowTitle(QObject::tr("Add a signal list"));
+			d->setTableName(QObject::tr("Signal list"));
+			break;
 	}
 
 	if (d->exec()) {

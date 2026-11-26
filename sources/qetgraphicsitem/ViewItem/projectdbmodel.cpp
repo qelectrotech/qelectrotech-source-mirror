@@ -56,7 +56,23 @@ QString listHeader(const QString &identifier, const QString &field)
 			{QStringLiteral("to_end"), QCoreApplication::translate("ProjectDBModel", "To")},
 			{QStringLiteral("cable"), QCoreApplication::translate("ProjectDBModel", "Cable")},
 			{QStringLiteral("core"), QCoreApplication::translate("ProjectDBModel", "Core")},
-			{QStringLiteral("folio_number"), QCoreApplication::translate("ProjectDBModel", "Sheet")}}}
+			{QStringLiteral("folio_number"), QCoreApplication::translate("ProjectDBModel", "Sheet")}}},
+		{QStringLiteral("plc_list"), {
+			{QStringLiteral("plc"), QCoreApplication::translate("ProjectDBModel", "PLC")},
+			{QStringLiteral("address"), QCoreApplication::translate("ProjectDBModel", "Address")},
+			{QStringLiteral("io_type"), QCoreApplication::translate("ProjectDBModel", "Type")},
+			{QStringLiteral("function"), QCoreApplication::translate("ProjectDBModel", "Function")},
+			{QStringLiteral("comment"), QCoreApplication::translate("ProjectDBModel", "Comment")},
+			{QStringLiteral("device"), QCoreApplication::translate("ProjectDBModel", "Device")},
+			{QStringLiteral("folio_number"), QCoreApplication::translate("ProjectDBModel", "Sheet")}}},
+		{QStringLiteral("signal_list"), {
+			{QStringLiteral("wire_numbers"), QCoreApplication::translate("ProjectDBModel", "Wire numbers")},
+			{QStringLiteral("names"), QCoreApplication::translate("ProjectDBModel", "Names")},
+			{QStringLiteral("potential_type"), QCoreApplication::translate("ProjectDBModel", "Type")},
+			{QStringLiteral("terminals"), QCoreApplication::translate("ProjectDBModel", "Terminals")},
+			{QStringLiteral("wires"), QCoreApplication::translate("ProjectDBModel", "Wires")},
+			{QStringLiteral("folio_number"), QCoreApplication::translate("ProjectDBModel", "First sheet")},
+			{QStringLiteral("folios"), QCoreApplication::translate("ProjectDBModel", "Sheets")}}}
 	};
 	return titles.value(identifier).value(field);
 }

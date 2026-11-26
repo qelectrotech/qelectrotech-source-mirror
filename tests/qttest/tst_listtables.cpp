@@ -15,6 +15,7 @@
 #include "qetgraphicsitem/terminal.h"
 #include "cable/cable.h"
 #include "qetproject.h"
+#include "undocommand/linkelementcommand.h"
 #include "ui/wiringlistdialog.h"
 #include "qetresult.h"
 
@@ -246,6 +247,117 @@ private slots:
 		QCOMPARE(column(model, 3), QStringList({QString(), QStringLiteral("W1"), QString()}));
 		QCOMPARE(column(model, 4), QStringList({QString(), QStringLiteral("2"), QString()}));
 		QCOMPARE(model->headerData(1, Qt::Horizontal).toString(), QStringLiteral("From"));
+	}
+
+		//B11: the PLC list has a row per entry of the PLC's I/O table, and
+		//follows the table
+	void plcTableFollowsTheIoTable()
+	{
+		QETProject project;
+		Diagram *folio = project.addNewDiagram();
+		auto *collection = project.embeddedElementCollection();
+		for (const QString &kind : {QStringLiteral("plc_card"), QStringLiteral("plc_point")}) {
+			const bool master = kind == QLatin1String("plc_card");
+			QDomDocument definition;
+			QVERIFY(definition.setContent(QString(
+				R"(<definition type="element" link_type="%1" uuid="%2" width="40" height="60" hotspot_x="20" hotspot_y="30">
+<names><name lang="en">%3</name></names>
+<kindInformations><kindInformation name="type">plc</kindInformation></kindInformations>
+<description><line x1="-20" y1="-30" x2="20" y2="-30"/>
+<terminal x="0" y="30" orientation="s" uuid="%4"/></description></definition>)")
+				.arg(master ? QStringLiteral("master") : QStringLiteral("slave"),
+					 QUuid::createUuid().toString(), kind, QUuid::createUuid().toString())));
+			QVERIFY(collection->addElementDefinition(QStringLiteral("import"), kind,
+													 definition.documentElement()));
+		}
+		const auto place = [&](const QString &kind, QPointF at) {
+			int state = 0;
+			Element *e = ElementFactory::Instance()->createElement(
+				ElementsLocation(QStringLiteral("embed://import/") + kind + QStringLiteral(".elmt"),
+								 &project), nullptr, &state);
+			if (e) { folio->addItem(e); e->setPos(at); }
+			return e;
+		};
+		Element *card = place(QStringLiteral("plc_card"), {100, 100});
+		Element *point = place(QStringLiteral("plc_point"), {400, 300});
+		QVERIFY(card && point);
+		ElementData data = card->elementData();
+		auto plc = data.plcMasterData();
+		const auto entry = [](ElementData::PlcIOType type, const QString &address, const QString &function) {
+			ElementData::PlcIO io;
+			io.type = type;
+			io.address = address;
+			io.functionText = function;
+			io.terminalCount = 1;
+			return io;
+		};
+		plc.ios = {entry(ElementData::EntreeDigitale, QStringLiteral("I:3/0"), QStringLiteral("DRIVE")),
+				   entry(ElementData::SortieDigitale, QStringLiteral("O:4/1"), QStringLiteral("FAN"))};
+		data.setPlcMasterData(plc);
+		card->setElementData(data);
+		setLabel(card, QStringLiteral("A201"));
+		auto *link = new LinkElementCommand(point);
+		link->setLink(card);
+		link->setGroupIndex(1);
+		project.undoStack()->push(link);
+		project.dataBase()->updateDB();
+
+		QetGraphicsTableItem *t = addList(folio, ListQueryWidget::Plc);
+		QVERIFY(t);
+		auto *model = qobject_cast<ProjectDBModel *>(t->model());
+		QVERIFY(model);
+		QCOMPARE(model->identifier(), QStringLiteral("plc_list"));
+		QCOMPARE(model->rowCount(), 2);
+		QCOMPARE(column(model, 0), QStringList({QStringLiteral("-A201"), QStringLiteral("-A201")}));
+		QCOMPARE(column(model, 1), QStringList({QStringLiteral("I:3/0"), QStringLiteral("O:4/1")}));
+		QCOMPARE(column(model, 2), QStringList({QStringLiteral("DI"), QStringLiteral("DO")}));
+		QCOMPARE(column(model, 3), QStringList({QStringLiteral("DRIVE"), QStringLiteral("FAN")}));
+			//The point linked to the second entry is drawn on folio 1
+		QCOMPARE(column(model, 6), QStringList({QString(), QStringLiteral("1")}));
+		QCOMPARE(model->headerData(1, Qt::Horizontal).toString(), QStringLiteral("Address"));
+
+		plc.ios.last().address = QStringLiteral("O:4/2");
+		data.setPlcMasterData(plc);
+		card->setElementData(data);
+		project.dataBase()->updateDB();
+		QCOMPARE(column(model, 1), QStringList({QStringLiteral("I:3/0"), QStringLiteral("O:4/2")}));
+	}
+
+		//B11: the signal list has a row per potential, and follows a wire number
+	void signalTableFollowsTheWiring()
+	{
+		QETProject project;
+		Diagram *folio = project.addNewDiagram();
+		Element *a = symbol(folio, QStringLiteral("K1"));
+		Element *b = symbol(folio, QStringLiteral("K2"));
+		Element *c = symbol(folio, QStringLiteral("K3"));
+		QVERIFY(a && b && c);
+		const auto wire = [&](Element *from, Element *to, const QString &number) {
+			auto *conductor = new Conductor(from->terminals().last(), to->terminals().first());
+			folio->addItem(conductor);
+			auto properties = conductor->properties();
+			properties.text = number;
+			conductor->setProperties(properties);
+			return conductor;
+		};
+		Conductor *first = wire(a, b, QStringLiteral("24V"));
+		wire(b, c, QStringLiteral("0V"));
+		project.dataBase()->updateDB();
+
+		QetGraphicsTableItem *t = addList(folio, ListQueryWidget::Signal);
+		QVERIFY(t);
+		auto *model = qobject_cast<ProjectDBModel *>(t->model());
+		QVERIFY(model);
+		QCOMPARE(model->identifier(), QStringLiteral("signal_list"));
+		QCOMPARE(column(model, 0), QStringList({QStringLiteral("0V"), QStringLiteral("24V")}));
+		QCOMPARE(column(model, 5), QStringList({QStringLiteral("1"), QStringLiteral("1")}));
+		QCOMPARE(model->headerData(0, Qt::Horizontal).toString(), QStringLiteral("Wire numbers"));
+
+		auto properties = first->properties();
+		properties.text = QStringLiteral("L1");
+		first->setProperties(properties);
+		project.dataBase()->updateDB();
+		QCOMPARE(column(model, 0), QStringList({QStringLiteral("0V"), QStringLiteral("L1")}));
 	}
 
 		//A QET without the view reads the saved query, finds nothing, and
