@@ -27,8 +27,33 @@
 #include <qetxml.h>
 #include <utils/qetutils.h>
 
+#include <QCoreApplication>
 #include <QSqlError>
 #include <QSqlRecord>
+
+namespace {
+	/**
+		@brief listHeader
+		@param identifier the identifier of a list table (ListQueryWidget)
+		@param field a column of its query
+		@return the column's title, empty for a table or a column that is
+		not one of the list tables'
+	*/
+QString listHeader(const QString &identifier, const QString &field)
+{
+	using T = QHash<QString, QString>;
+	const QHash<QString, T> titles = {
+		{QStringLiteral("device_list"), {
+			{QStringLiteral("device"), QCoreApplication::translate("ProjectDBModel", "Device")},
+			{QStringLiteral("description"), QCoreApplication::translate("ProjectDBModel", "Description")},
+			{QStringLiteral("designation"), QCoreApplication::translate("ProjectDBModel", "Designation")},
+			{QStringLiteral("articles"), QCoreApplication::translate("ProjectDBModel", "Article")},
+			{QStringLiteral("symbols"), QCoreApplication::translate("ProjectDBModel", "Symbols")},
+			{QStringLiteral("folio_number"), QCoreApplication::translate("ProjectDBModel", "Sheet")}}}
+	};
+	return titles.value(identifier).value(field);
+}
+}
 
 /**
 	@brief ProjectDBModel::ProjectDBModel
@@ -396,6 +421,8 @@ void ProjectDBModel::setHeaderString()
 					: field_name == QLatin1String("description") ? tr("Description")
 					: field_name == QLatin1String("author") ? tr("Author")
 					: tr("Approved by");
+		} else if (!listHeader(m_identifier, field_name).isEmpty()) {
+			header_name = listHeader(m_identifier, field_name);
 		} else if (field_name == "position") {
 			header_name = tr("Position");
 		} else if (field_name == "diagram_position") {
