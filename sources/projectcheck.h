@@ -23,6 +23,7 @@
 #include <QList>
 #include <QPointer>
 #include <QString>
+#include <QStringList>
 #include <QUuid>
 #include <QVector>
 
@@ -41,9 +42,12 @@ class QETProject;
 */
 class ProjectCheck
 {
+	Q_GADGET
 	Q_DECLARE_TR_FUNCTIONS(ProjectCheck)
 
 	public:
+			/// The name of each kind is its id in a project file
+			/// (CheckSettings, #1878 B8): never rename one
 		enum class Kind {
 			DuplicateLabels,   ///< DuplicateLabels::find()
 			PotentialTypes,    ///< projectDataBase::potentialTypeMismatches()
@@ -54,6 +58,7 @@ class ProjectCheck
 			WiresPerTerminal,  ///< terminals with more wires than WiringRules::limit()
 			TerminalNames      ///< symbols with two terminals of one name (TerminalNameCheck)
 		};
+		Q_ENUM(Kind)
 
 			/// Where a finding is. One of item, element or wires says what
 			/// to show; a place with none of them is a line of detail only.
@@ -72,6 +77,10 @@ class ProjectCheck
 		struct Finding {
 			QString text;
 			QList<Place> places;
+				/// Further lasting ids of what the finding is about (a
+				/// terminal's uuid), when its places alone do not tell
+				/// it from another finding: CheckSettings::findingId()
+			QStringList ids;
 		};
 
 		struct Result {
@@ -85,6 +94,9 @@ class ProjectCheck
 			/// Every check, in the order the panel lists them
 		static QList<Kind> kinds();
 		static QString title(Kind kind);
+			/// The id of @p kind in a project file: its name, "OpenWireEnds"
+		static QString id(Kind kind);
+		static bool kindFromId(const QString &id, Kind *kind);
 			/// Where the check's own window is, with its options
 		static QString toolTip(Kind kind);
 		static Result run(QETProject *project, Kind kind);

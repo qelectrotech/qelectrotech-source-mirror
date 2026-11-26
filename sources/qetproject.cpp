@@ -6541,6 +6541,18 @@ void QETProject::setProjectProperties(const DiagramContext &context) {
 }
 
 /**
+	@brief QETProject::setUnshownProjectProperties
+	Like setProjectProperties(), for a change to properties no folio shows
+	(the choices of the checks, CheckSettings): stored without refreshing
+	the folios, which would build those not built yet and move a folio
+	numbering.
+*/
+void QETProject::setUnshownProjectProperties(const DiagramContext &context) {
+	m_project_properties = context;
+	storeSettings();
+}
+
+/**
  * @brief QETProject::terminalStrip
  * @return a QVector who contain all terminal strip owned by this project
  */

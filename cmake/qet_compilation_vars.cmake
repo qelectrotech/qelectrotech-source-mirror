@@ -1036,6 +1036,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/ui/potentialcheckdialog.h
   ${QET_DIR}/sources/ui/openwireendsdialog.cpp
   ${QET_DIR}/sources/ui/openwireendsdialog.h
+  ${QET_DIR}/sources/projectcheck/checksettings.cpp
+  ${QET_DIR}/sources/projectcheck/checksettings.h
   ${QET_DIR}/sources/projectcheck/openwireends.cpp
   ${QET_DIR}/sources/projectcheck/openwireends.h
   ${QET_DIR}/sources/projectcheck/terminalbranches.cpp

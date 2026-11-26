@@ -22,6 +22,7 @@
 #include "diagram.h"
 #include "duplicatelabels.h"
 #include "editor/terminalnamecheck.h"
+#include "projectcheck/checksettings.h"
 #include "ElementsCollection/elementslocation.h"
 #include "qetgraphicsitem/element.h"
 #include "qetproject.h"
@@ -30,6 +31,7 @@
 #include "wiringrules.h"
 
 #include <QHash>
+#include <QMetaEnum>
 #include <QSqlQuery>
 
 namespace {
@@ -123,6 +125,19 @@ QString ProjectCheck::title(Kind kind)
 	return QString();
 }
 
+QString ProjectCheck::id(Kind kind)
+{
+	return QString::fromLatin1(QMetaEnum::fromType<Kind>().valueToKey(int(kind)));
+}
+
+bool ProjectCheck::kindFromId(const QString &id, Kind *kind)
+{
+	bool ok = false;
+	const int value = QMetaEnum::fromType<Kind>().keyToValue(id.toLatin1().constData(), &ok);
+	if (ok && kind) *kind = Kind(value);
+	return ok;
+}
+
 QString ProjectCheck::toolTip(Kind kind)
 {
 	switch (kind) {
@@ -177,19 +192,22 @@ ProjectCheck::Result ProjectCheck::run(QETProject *project, Kind kind)
 
 /**
 	@brief ProjectCheck::duplicateLabels
-	DuplicateLabels::find() with the options last chosen in its window.
+	DuplicateLabels::find() with the options last chosen in its window, or
+	the project's own (CheckSettings).
 */
 ProjectCheck::Result ProjectCheck::duplicateLabels(QETProject *project)
 {
 	Result result;
 	result.kind = Kind::DuplicateLabels;
+	using CheckSettings::Option;
 	const auto groups = DuplicateLabels::find(
 		project,
-		QetSettings::duplicateLabelsCaseSensitive() ? Qt::CaseSensitive : Qt::CaseInsensitive,
-		QetSettings::duplicateLabelsByDesignation()
+		CheckSettings::value(project, Option::DuplicatesCaseSensitive)
+			? Qt::CaseSensitive : Qt::CaseInsensitive,
+		CheckSettings::value(project, Option::DuplicatesByDesignation)
 			? DuplicateLabels::ComponentRule::SameDesignation
 			: DuplicateLabels::ComponentRule::LinkedOnly,
-		QetSettings::duplicateLabelsSignalsByPlant()
+		CheckSettings::value(project, Option::DuplicatesSignalsByPlant)
 			? DuplicateLabels::SignalScope::Plant
 			: DuplicateLabels::SignalScope::Project);
 	for (const auto &group : groups) {
@@ -275,8 +293,9 @@ ProjectCheck::Result ProjectCheck::openWireEnds(QETProject *project)
 	The symbols with terminals none of which has a wire (#1878 B3): drawn
 	over a wire without joining it, or left behind. Folio reports are never
 	listed (a report without a wire is not wired yet, not misdrawn), nor a
-	symbol with no terminal (a frame, a title); the QetSettings
-	unwiredSymbolsSkip... options leave out more. Read from the database:
+	symbol with no terminal (a frame, a title); the unwiredSymbolsSkip...
+	options (the project's own or the application's, CheckSettings) leave
+	out more. Read from the database:
 	the terminals of each symbol from its definition, once, since the
 	terminal table has a row only for a terminal a wire ends on.
 */
@@ -285,12 +304,13 @@ ProjectCheck::Result ProjectCheck::unwiredSymbols(QETProject *project)
 	Result result;
 	result.kind = Kind::UnwiredSymbols;
 
+	using CheckSettings::Option;
 	QStringList skipped_types{QStringLiteral("next_report"), QStringLiteral("previous_report")};
-	if (QetSettings::unwiredSymbolsSkipStripTerminals())
+	if (CheckSettings::value(project, Option::UnwiredSkipStripTerminals))
 		skipped_types << QStringLiteral("terminal");
-	if (QetSettings::unwiredSymbolsSkipContacts())
+	if (CheckSettings::value(project, Option::UnwiredSkipContacts))
 		skipped_types << QStringLiteral("slave");
-	const QString wireless = QetSettings::unwiredSymbolsSkipWirelessFolios()
+	const QString wireless = CheckSettings::value(project, Option::UnwiredSkipWirelessFolios)
 		? QStringLiteral("AND e.diagram_uuid IN (SELECT diagram_uuid FROM conductor) ")
 		: QString();
 
@@ -491,7 +511,7 @@ ProjectCheck::Result ProjectCheck::wiresPerTerminal(QETProject *project)
 		" SELECT terminal1_uuid AS tu, terminal1_element_uuid AS eu FROM conductor"
 		" UNION ALL SELECT terminal2_uuid, terminal2_element_uuid FROM conductor) "
 		"SELECT e.uuid, e.diagram_uuid, e.pos, e.type, i.label, t.name, t.terminal_index, "
-		" COUNT(*) AS wires "
+		" COUNT(*) AS wires, ends.tu "
 		"FROM ends JOIN element e ON e.uuid = ends.eu "
 		"LEFT JOIN terminal t ON t.uuid = ends.tu AND t.element_uuid = ends.eu "
 		"LEFT JOIN element_info i ON i.element_uuid = e.uuid "
@@ -518,6 +538,11 @@ ProjectCheck::Result ProjectCheck::wiresPerTerminal(QETProject *project)
 		finding.places << symbolPlace(folios, QUuid(query.value(0).toString()),
 									  QUuid(query.value(1).toString()),
 									  query.value(2).toString(), label);
+			// Two terminals of one symbol are two findings: the terminal's
+			// uuid, and its place in the symbol's definition
+		finding.ids << QStringLiteral("t:%1/%2").arg(
+						   QUuid(query.value(8).toString()).toString(QUuid::WithoutBraces),
+						   query.value(6).toString());
 		result.findings << finding;
 	}
 	return result;
