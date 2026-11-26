@@ -503,6 +503,7 @@ class QETProject : public QObject
 		DiagramContext projectProperties();
 		DiagramContext projectWideProperties();
 		void setProjectProperties(const DiagramContext &);
+		void setUnshownProjectProperties(const DiagramContext &);
 		QUndoStack* undoStack() {return m_undo_stack;}
 
 		QVector<TerminalStrip *> terminalStrip() const;

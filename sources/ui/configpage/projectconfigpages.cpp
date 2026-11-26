@@ -175,6 +175,16 @@ void ProjectMainConfigPage::applyProjectConf()
 		//list: As before is no property at all, a value this
 		//QElectroTech does not know (no data) is kept as it is
 	new_properties.remove(QStringLiteral("drawing_standard"));
+		//The choices of the checks are project properties too, set below
+		//rather than in the table: following the application's stores
+		//none of them
+	for (const QString &key : new_properties.keys())
+		if (CheckSettings::isCheckKey(key)) new_properties.remove(key);
+	QHash<CheckSettings::Option, bool> check_options;
+	if (!m_check_options_application_cb -> isChecked())
+		for (auto it = m_check_option_cbs.cbegin() ; it != m_check_option_cbs.cend() ; ++it)
+			check_options.insert(it.key(), it.value() -> isChecked());
+	new_properties = CheckSettings::withOptions(new_properties, check_options);
 	const QVariant standard = m_drawing_standard_cb -> currentData();
 	if (!standard.isValid())
 		new_properties.addValue(QStringLiteral("drawing_standard"), m_drawing_standard_cb -> currentText());
@@ -448,6 +458,41 @@ void ProjectMainConfigPage::initWidgets()
 											"(Configure QElectroTech > General).",
 											"informative label"));
 	wiring_rules_off_label_ -> setWordWrap(true);
+
+		//The choices of the checks (#1878 B12): kept in the project, two
+		//machines which open it find the same
+	m_check_options_gb = new QGroupBox(tr("Checks", "group box title"));
+	m_check_options_application_cb = new QCheckBox(tr("Use the application settings", "checkbox label"));
+	m_check_options_application_cb -> setObjectName(QStringLiteral("checkOptionsApplication"));
+	m_check_options_application_cb -> setToolTip(tr("The options last chosen in the Check panel and in "
+			"Find duplicate signals and components apply, and may differ from one computer to "
+			"another. Untick to give this project its own, saved in the project.", "tooltip"));
+	connect(m_check_options_application_cb, &QCheckBox::toggled, this, [this](bool use) {
+			//Show the values that will apply: the application's, or the
+			//application's as a starting point for the project's own
+		if (use)
+			for (auto it = m_check_option_cbs.cbegin() ; it != m_check_option_cbs.cend() ; ++it)
+				it.value() -> setChecked(CheckSettings::applicationValue(it.key()));
+		updateCheckOptionsWidgets();
+	});
+	const auto check_option = [this](CheckSettings::Option option, const QString &text) {
+		auto *check_box = new QCheckBox(text);
+		check_box -> setObjectName(CheckSettings::key(option));
+		m_check_option_cbs.insert(option, check_box);
+	};
+	check_option(CheckSettings::Option::DuplicatesCaseSensitive,
+				 tr("Duplicates: case-sensitive comparison", "checkbox label"));
+	check_option(CheckSettings::Option::DuplicatesByDesignation,
+				 tr("Duplicates: one designation is one device; report different part numbers",
+					"checkbox label"));
+	check_option(CheckSettings::Option::DuplicatesSignalsByPlant,
+				 tr("Duplicates: a wire number is unique within its plant (=)", "checkbox label"));
+	check_option(CheckSettings::Option::UnwiredSkipWirelessFolios,
+				 tr("Symbols with no wire: leave out folios with no wire", "checkbox label"));
+	check_option(CheckSettings::Option::UnwiredSkipStripTerminals,
+				 tr("Symbols with no wire: leave out strip terminals", "checkbox label"));
+	check_option(CheckSettings::Option::UnwiredSkipContacts,
+				 tr("Symbols with no wire: leave out auxiliary contacts", "checkbox label"));
 	//origin (of a coordinate system) settings
 	origin_label_ = new QLabel(tr("Cell numbering starts from:"));
 	origin_cb_	  = new QComboBox();
@@ -545,6 +590,13 @@ void ProjectMainConfigPage::initLayout()
 	main_layout0 -> addWidget(wiring_rules_gb_);
 	main_layout0->addSpacing(10);
 
+	QVBoxLayout *check_options_layout = new QVBoxLayout(m_check_options_gb);
+	check_options_layout -> addWidget(m_check_options_application_cb);
+	for (CheckSettings::Option option : CheckSettings::options())
+		check_options_layout -> addWidget(m_check_option_cbs.value(option));
+	main_layout0 -> addWidget(m_check_options_gb);
+	main_layout0 -> addSpacing(10);
+
 	QHBoxLayout* project_origin_layout0 = new QHBoxLayout();
 	project_origin_layout0->addWidget(origin_label_);
 	project_origin_layout0->addWidget(origin_cb_);
@@ -566,6 +618,8 @@ void ProjectMainConfigPage::readValuesFromProject()
 		//The drawing standard has its own list, not a row of the table
 	DiagramContext variables = m_project -> projectProperties();
 	variables.remove(QStringLiteral("drawing_standard"));
+	for (const QString &key : variables.keys())
+		if (CheckSettings::isCheckKey(key)) variables.remove(key);
 	project_variables_ -> setContext(variables);
 		//A stored value this QElectroTech does not know shows as it is
 		//typed, an entry without data, and stays unless another is chosen
@@ -619,6 +673,26 @@ void ProjectMainConfigPage::readValuesFromProject()
 	max_wires_sb_ -> setValue(wiring_rules.max_wires);
 	one_wire_per_report_cb_ -> setChecked(wiring_rules.one_wire_per_report);
 	updateWiringRulesWidgets();
+
+		//The options that apply: the project's own or the application's
+	{
+		const QSignalBlocker blocker(m_check_options_application_cb);
+		m_check_options_application_cb -> setChecked(!CheckSettings::hasOwnOptions(m_project));
+	}
+	for (auto it = m_check_option_cbs.cbegin() ; it != m_check_option_cbs.cend() ; ++it)
+		it.value() -> setChecked(CheckSettings::value(m_project, it.key()));
+	updateCheckOptionsWidgets();
+}
+
+/**
+	@brief ProjectMainConfigPage::updateCheckOptionsWidgets
+	Enable the check options only when the project has its own.
+*/
+void ProjectMainConfigPage::updateCheckOptionsWidgets()
+{
+	const bool own = !m_check_options_application_cb -> isChecked();
+	for (QCheckBox *check_box : std::as_const(m_check_option_cbs))
+		check_box -> setEnabled(own);
 }
 
 /**
@@ -673,6 +747,7 @@ void ProjectMainConfigPage::adjustReadOnly()
 	chained_key_gb_ -> setDisabled(is_read_only || !(chained_reports_cb_ -> isChecked()));
 	terminal_label_gb_ -> setDisabled(is_read_only);
 	wiring_rules_gb_ -> setDisabled(is_read_only);
+	m_check_options_gb -> setDisabled(is_read_only);
 	origin_cb_->setDisabled(is_read_only);
 }
 

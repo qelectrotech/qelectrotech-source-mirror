@@ -22,6 +22,7 @@
 #include "diagram.h"
 #include "duplicatelabels.h"
 #include "editor/terminalnamecheck.h"
+#include "projectcheck/checksettings.h"
 #include "ElementsCollection/elementslocation.h"
 #include "qetgraphicsitem/element.h"
 #include "qetproject.h"
@@ -177,19 +178,22 @@ ProjectCheck::Result ProjectCheck::run(QETProject *project, Kind kind)
 
 /**
 	@brief ProjectCheck::duplicateLabels
-	DuplicateLabels::find() with the options last chosen in its window.
+	DuplicateLabels::find() with the options last chosen in its window, or
+	the project's own (CheckSettings).
 */
 ProjectCheck::Result ProjectCheck::duplicateLabels(QETProject *project)
 {
 	Result result;
 	result.kind = Kind::DuplicateLabels;
+	using CheckSettings::Option;
 	const auto groups = DuplicateLabels::find(
 		project,
-		QetSettings::duplicateLabelsCaseSensitive() ? Qt::CaseSensitive : Qt::CaseInsensitive,
-		QetSettings::duplicateLabelsByDesignation()
+		CheckSettings::value(project, Option::DuplicatesCaseSensitive)
+			? Qt::CaseSensitive : Qt::CaseInsensitive,
+		CheckSettings::value(project, Option::DuplicatesByDesignation)
 			? DuplicateLabels::ComponentRule::SameDesignation
 			: DuplicateLabels::ComponentRule::LinkedOnly,
-		QetSettings::duplicateLabelsSignalsByPlant()
+		CheckSettings::value(project, Option::DuplicatesSignalsByPlant)
 			? DuplicateLabels::SignalScope::Plant
 			: DuplicateLabels::SignalScope::Project);
 	for (const auto &group : groups) {
@@ -275,8 +279,9 @@ ProjectCheck::Result ProjectCheck::openWireEnds(QETProject *project)
 	The symbols with terminals none of which has a wire (#1878 B3): drawn
 	over a wire without joining it, or left behind. Folio reports are never
 	listed (a report without a wire is not wired yet, not misdrawn), nor a
-	symbol with no terminal (a frame, a title); the QetSettings
-	unwiredSymbolsSkip... options leave out more. Read from the database:
+	symbol with no terminal (a frame, a title); the unwiredSymbolsSkip...
+	options (the project's own or the application's, CheckSettings) leave
+	out more. Read from the database:
 	the terminals of each symbol from its definition, once, since the
 	terminal table has a row only for a terminal a wire ends on.
 */
@@ -285,12 +290,13 @@ ProjectCheck::Result ProjectCheck::unwiredSymbols(QETProject *project)
 	Result result;
 	result.kind = Kind::UnwiredSymbols;
 
+	using CheckSettings::Option;
 	QStringList skipped_types{QStringLiteral("next_report"), QStringLiteral("previous_report")};
-	if (QetSettings::unwiredSymbolsSkipStripTerminals())
+	if (CheckSettings::value(project, Option::UnwiredSkipStripTerminals))
 		skipped_types << QStringLiteral("terminal");
-	if (QetSettings::unwiredSymbolsSkipContacts())
+	if (CheckSettings::value(project, Option::UnwiredSkipContacts))
 		skipped_types << QStringLiteral("slave");
-	const QString wireless = QetSettings::unwiredSymbolsSkipWirelessFolios()
+	const QString wireless = CheckSettings::value(project, Option::UnwiredSkipWirelessFolios)
 		? QStringLiteral("AND e.diagram_uuid IN (SELECT diagram_uuid FROM conductor) ")
 		: QString();
 

@@ -39,7 +39,8 @@ class QTreeWidgetItem;
 	Double-clicking a finding shows it on its folio. The results are not
 	kept up to date while the project is edited: Run checks again.
 	Options holds the choices of the checks which have some (what symbols
-	with no wire leaves out), kept in the settings.
+	with no wire leaves out), kept in the settings, or in the project when
+	it has its own (CheckSettings).
 */
 class CheckPanelDockWidget : public QDockWidget
 {

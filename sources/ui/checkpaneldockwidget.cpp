@@ -26,7 +26,7 @@
 #include "../qetgraphicsitem/element.h"
 #include "../qetproject.h"
 #include "../dataBase/projectdatabase.h"
-#include "../utils/qetsettings.h"
+#include "../projectcheck/checksettings.h"
 
 #include <QApplication>
 #include <QHBoxLayout>
@@ -37,6 +37,7 @@
 #include <QPushButton>
 #include <QScopeGuard>
 #include <QSet>
+#include <QSignalBlocker>
 #include <QSqlQuery>
 #include <QStyle>
 #include <QToolButton>
@@ -63,27 +64,30 @@ CheckPanelDockWidget::CheckPanelDockWidget(QWidget *parent) :
 	options->setPopupMode(QToolButton::InstantPopup);
 	m_options = new QMenu(options);
 	m_options->addSection(tr("Symbols with no wire"));
-	const auto option = [this](const QString &name, const QString &text, bool checked,
-							   void (*save)(bool)) {
+		// The project's own options when it has them, else the
+		// application's (CheckSettings): read again each time the menu opens
+	const auto option = [this](const QString &name, const QString &text,
+							   CheckSettings::Option which) {
 		QAction *action = m_options->addAction(text);
 		action->setObjectName(name);
 		action->setCheckable(true);
-		action->setChecked(checked);
-		connect(action, &QAction::toggled, this, [this, save](bool on) {
-			save(on);
+		action->setChecked(CheckSettings::value(m_project, which));
+		connect(m_options, &QMenu::aboutToShow, action, [this, action, which]() {
+			const QSignalBlocker blocker(action);
+			action->setChecked(CheckSettings::value(m_project, which));
+		});
+		connect(action, &QAction::toggled, this, [this, which](bool on) {
+			CheckSettings::setValue(m_project, which, on);
 			if (m_finding_count || m_tree->topLevelItemCount())
 				m_summary->setText(tr("The options changed. Run the checks again."));
 		});
 	};
 	option(QStringLiteral("unwiredSkipWirelessFolios"), tr("Leave out folios with no wire"),
-		   QetSettings::unwiredSymbolsSkipWirelessFolios(),
-		   &QetSettings::setUnwiredSymbolsSkipWirelessFolios);
+		   CheckSettings::Option::UnwiredSkipWirelessFolios);
 	option(QStringLiteral("unwiredSkipStripTerminals"), tr("Leave out strip terminals"),
-		   QetSettings::unwiredSymbolsSkipStripTerminals(),
-		   &QetSettings::setUnwiredSymbolsSkipStripTerminals);
+		   CheckSettings::Option::UnwiredSkipStripTerminals);
 	option(QStringLiteral("unwiredSkipContacts"), tr("Leave out auxiliary contacts"),
-		   QetSettings::unwiredSymbolsSkipContacts(),
-		   &QetSettings::setUnwiredSymbolsSkipContacts);
+		   CheckSettings::Option::UnwiredSkipContacts);
 	options->setMenu(m_options);
 	top->addWidget(options);
 	m_summary = new QLabel(body);
