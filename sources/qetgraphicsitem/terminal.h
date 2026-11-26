@@ -66,6 +66,7 @@ class Terminal : public QGraphicsObject
 		void   drawHelpLine (bool draw = true);
 		QLineF HelpLine     () const;
 		QRectF boundingRect () const override;
+		QPainterPath shape () const override;
 
 		// methods to manage conductors attached to the terminal
 		Terminal* alignedWithTerminal () const;
