@@ -49,6 +49,13 @@ QString listHeader(const QString &identifier, const QString &field)
 			{QStringLiteral("designation"), QCoreApplication::translate("ProjectDBModel", "Designation")},
 			{QStringLiteral("articles"), QCoreApplication::translate("ProjectDBModel", "Article")},
 			{QStringLiteral("symbols"), QCoreApplication::translate("ProjectDBModel", "Symbols")},
+			{QStringLiteral("folio_number"), QCoreApplication::translate("ProjectDBModel", "Sheet")}}},
+		{QStringLiteral("wiring_table"), {
+			{QStringLiteral("wire_number"), QCoreApplication::translate("ProjectDBModel", "Wire")},
+			{QStringLiteral("from_end"), QCoreApplication::translate("ProjectDBModel", "From")},
+			{QStringLiteral("to_end"), QCoreApplication::translate("ProjectDBModel", "To")},
+			{QStringLiteral("cable"), QCoreApplication::translate("ProjectDBModel", "Cable")},
+			{QStringLiteral("core"), QCoreApplication::translate("ProjectDBModel", "Core")},
 			{QStringLiteral("folio_number"), QCoreApplication::translate("ProjectDBModel", "Sheet")}}}
 	};
 	return titles.value(identifier).value(field);

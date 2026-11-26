@@ -13,10 +13,13 @@
 #include "qetgraphicsitem/conductor.h"
 #include "qetgraphicsitem/element.h"
 #include "qetgraphicsitem/terminal.h"
+#include "cable/cable.h"
 #include "qetproject.h"
+#include "ui/wiringlistdialog.h"
 #include "qetresult.h"
 
 #include <QDomDocument>
+#include <QTableView>
 #include <QTemporaryDir>
 #include <QtTest>
 
@@ -45,7 +48,7 @@ class tst_listtables : public QObject
 <names><name lang="en">Test symbol</name></names>
 <kindInformations><kindInformation name="type">simple</kindInformation></kindInformations>
 <description><line x1="0" y1="-10" x2="0" y2="10"/>
-<terminal x="0" y="-20" orientation="n" uuid="%2"/><terminal x="0" y="20" orientation="s" uuid="%3"/>
+<terminal x="0" y="-20" orientation="n" uuid="%2" name="A1"/><terminal x="0" y="20" orientation="s" uuid="%3" name="A2"/>
 </description></definition>)")
 					.arg(QUuid::createUuid().toString(), QUuid::createUuid().toString(),
 						 QUuid::createUuid().toString())))
@@ -168,6 +171,81 @@ private slots:
 		QVERIFY(t->displayNRow() < 60);
 		QVERIFY(project.diagrams().size() > 1);
 		QVERIFY(t->nextTable());
+	}
+
+		//B10: the wiring table is the wiring list, row for row, and adds
+		//the cable and the core. Two folios, wire numbers that a plain text
+		//sort would put in the wrong order (2, 10, 9), one wire on a core
+	void wiringTableMatchesTheWiringListDialog()
+	{
+		QETProject project;
+		Diagram *first = project.addNewDiagram();
+		Diagram *second = project.addNewDiagram();
+		QList<Conductor *> wires;
+		const auto wire = [&](Diagram *folio, const QString &from, const QString &to,
+							  const QString &number) {
+			Element *a = symbol(folio, from);
+			Element *b = symbol(folio, to);
+			QVERIFY(a && b);
+			QVERIFY(a->terminals().size() == 2 && b->terminals().size() == 2);
+			auto *conductor = new Conductor(a->terminals().last(), b->terminals().first());
+			folio->addItem(conductor);
+			auto properties = conductor->properties();
+			properties.text = number;
+			conductor->setProperties(properties);
+			wires << conductor;
+		};
+		wire(second, QStringLiteral("K5"), QStringLiteral("K6"), QStringLiteral("9"));
+		wire(first, QStringLiteral("K1"), QStringLiteral("K2"), QStringLiteral("10"));
+		wire(first, QStringLiteral("K3"), QStringLiteral("K4"), QStringLiteral("2"));
+		QCOMPARE(wires.size(), 3);
+
+		auto *w1 = new Cable(&project);
+		w1->setDesignation(QStringLiteral("W1"));
+		w1->setCoreCount(3);
+		project.addCable(w1);
+		CableCore core;
+		core.core = 1;
+		core.conductor = wires.at(1)->uuid();
+		w1->setCore(core);
+		auto properties = wires.at(1)->properties();
+		properties.m_cable_uuid = w1->uuid();
+		properties.m_cable = QStringLiteral("W1");
+		wires.at(1)->setProperties(properties);
+		project.dataBase()->updateDB();
+
+		QetGraphicsTableItem *t = addList(first, ListQueryWidget::Wiring);
+		QVERIFY(t);
+		auto *model = qobject_cast<ProjectDBModel *>(t->model());
+		QVERIFY(model);
+		QCOMPARE(model->identifier(), QStringLiteral("wiring_table"));
+
+		WiringListDialog dialog(&project);
+		auto *view = dialog.findChild<QTableView *>();
+		QVERIFY(view && view->model());
+		const QAbstractItemModel *list = view->model();
+		QCOMPARE(model->rowCount(), 3);
+		QCOMPARE(model->rowCount(), list->rowCount());
+		for (int r = 0 ; r < list->rowCount() ; ++r) {
+				//Wire, sheet; each end is the dialog's component and terminal,
+				//the component written as a designation (-K3)
+			const auto designation = [](const QString &label) {
+				return label.startsWith(QLatin1Char('-')) ? label : QLatin1Char('-') + label;
+			};
+			QCOMPARE(model->index(r, 0).data(), list->index(r, 0).data());
+			QCOMPARE(model->index(r, 5).data(), list->index(r, 5).data());
+			QCOMPARE(model->index(r, 1).data().toString(),
+					 designation(list->index(r, 1).data().toString()) + QLatin1Char(':') + list->index(r, 2).data().toString());
+			QCOMPARE(model->index(r, 2).data().toString(),
+					 designation(list->index(r, 3).data().toString()) + QLatin1Char(':') + list->index(r, 4).data().toString());
+		}
+		QCOMPARE(column(model, 0), QStringList({QStringLiteral("2"), QStringLiteral("10"), QStringLiteral("9")}));
+		QCOMPARE(model->index(0, 1).data().toString(), QStringLiteral("-K3:A2"));
+		QCOMPARE(model->index(0, 2).data().toString(), QStringLiteral("-K4:A1"));
+			//Only the wire on a core has a cable and a core (the core as the list writes it, from 1)
+		QCOMPARE(column(model, 3), QStringList({QString(), QStringLiteral("W1"), QString()}));
+		QCOMPARE(column(model, 4), QStringList({QString(), QStringLiteral("2"), QString()}));
+		QCOMPARE(model->headerData(1, Qt::Horizontal).toString(), QStringLiteral("From"));
 	}
 
 		//A QET without the view reads the saved query, finds nothing, and

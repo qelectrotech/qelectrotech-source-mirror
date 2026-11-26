@@ -37,7 +37,8 @@ class ListQueryWidget : public QWidget
 {
 	public:
 		enum Kind {
-			Device ///< one row per device (qet_device_list)
+			Device, ///< one row per device (qet_device_list)
+			Wiring  ///< one row per wire, both ends as -K1:A1, cable and core
 		};
 
 		explicit ListQueryWidget(Kind kind, QWidget *parent = nullptr) :
@@ -56,6 +57,7 @@ class ListQueryWidget : public QWidget
 		{
 			switch (kind) {
 				case Device: return QStringLiteral("device_list");
+				case Wiring: return QStringLiteral("wiring_table");
 			}
 			return QString();
 		}
@@ -67,6 +69,10 @@ class ListQueryWidget : public QWidget
 					"The table shows the project's devices, one row each: reference, "
 					"description, designation, article, number of symbols and first "
 					"sheet. It follows the labels and the information of the symbols.");
+				case Wiring: return QCoreApplication::translate("ListQueryWidget",
+					"The table shows the project's wires, one row each: wire number, "
+					"both ends as device:terminal, cable, core and sheet. It follows the "
+					"wiring and the labels.");
 			}
 			return QString();
 		}
@@ -83,11 +89,39 @@ class ListQueryWidget : public QWidget
 						"COALESCE(symbols, 0) AS symbols, "
 						"COALESCE(folio_number, '') AS folio_number "
 						"FROM qet_device_list ORDER BY structure_id");
+				case Wiring:
+						//The wiring list's rows and order (wiring_list_view as
+						//WiringListDialog reads it), a wire's ends named as
+						//-K1:A1 -- the device, then its terminal unless the
+						//device's name already carries it -- with its cable
+						//and the core it is on
+					return QStringLiteral(
+						"WITH core AS (SELECT wire_uuid, MIN(core) AS core FROM qet_cable_cores "
+						"WHERE wire_uuid IS NOT NULL GROUP BY wire_uuid) "
+						"SELECT COALESCE(w.wire_number, '') AS wire_number, ")
+						+ endSql(QStringLiteral("from")) + QStringLiteral(" AS from_end, ")
+						+ endSql(QStringLiteral("to")) + QStringLiteral(" AS to_end, "
+						"COALESCE(w.cable, '') AS cable, COALESCE(k.core, '') AS core, "
+						"COALESCE(w.folio_number, '') AS folio_number "
+						"FROM qet_wires w LEFT JOIN core k ON k.wire_uuid = w.wire_uuid "
+						"WHERE w.from_device_uuid IS NOT NULL AND w.to_device_uuid IS NOT NULL "
+						"ORDER BY w.folio_number, "
+						"CASE WHEN w.wire_number GLOB '[0-9]*' THEN 0 ELSE 1 END, "
+						"CAST(w.wire_number AS INTEGER), w.wire_number");
 			}
 			return QString();
 		}
 
 	private:
+			/// A wire's end @p side ("from" or "to") as -K1:A1
+		static QString endSql(const QString &side)
+		{
+			return QStringLiteral(
+				"COALESCE(w.%1_structure_id, '') || CASE WHEN COALESCE(w.%1_terminal, '') = '' "
+				"OR substr(COALESCE(w.%1_structure_id, ''), -length(w.%1_terminal) - 1) = ':' || w.%1_terminal "
+				"THEN '' ELSE ':' || w.%1_terminal END").arg(side);
+		}
+
 		Kind m_kind;
 };
 
