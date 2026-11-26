@@ -543,6 +543,11 @@ qet_add_app_test(tst_folioautonumcopy tst_folioautonumcopy.cpp)
 # block variables, kept by .qet and .qetdb, absent from older files.
 qet_add_app_test(tst_foliogroup tst_foliogroup.cpp)
 qet_add_app_test(tst_drawingstandard tst_drawingstandard.cpp)
+# Project templates (#852, #1878 B13): a new project from a .qet template
+# has its folios, title block, paper size, numbering and drawing standard.
+qet_add_app_test(tst_projecttemplates tst_projecttemplates.cpp)
+target_compile_definitions(tst_projecttemplates PRIVATE
+  QET_TEMPLATES_DIR="${QET_DIR}/templates")
 qet_add_app_test(tst_documentkind tst_documentkind.cpp)
 qet_add_app_test(tst_revisionlist tst_revisionlist.cpp)
 # The project panel lists folios as a tree by folio group and sub-group

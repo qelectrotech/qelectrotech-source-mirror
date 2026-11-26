@@ -1007,6 +1007,43 @@ QString QETApp::customTitleBlockTemplatesDir()
 }
 
 /**
+	@brief QETApp::commonProjectTemplatesDir
+	@return the folder of the project templates QElectroTech ships, beside
+	the title block templates (empty if the packaging does not ship any)
+*/
+QString QETApp::commonProjectTemplatesDir()
+{
+	return QDir::cleanPath(commonTitleBlockTemplatesDir() + QStringLiteral("/../templates"));
+}
+
+/**
+	@brief QETApp::customProjectTemplatesDir
+	@return the folder of the user's own project templates
+*/
+QString QETApp::customProjectTemplatesDir()
+{
+	return dataDir() + QStringLiteral("/templates");
+}
+
+/**
+	@brief QETApp::projectTemplateFolders
+	@return the folders project templates are looked for in: those
+	QElectroTech ships, the user's own, and the shared folder set by the
+	"project-templates/shared-path" setting, for templates a team keeps on
+	a shared drive (#852)
+*/
+QList<ProjectTemplates::Folder> QETApp::projectTemplateFolders()
+{
+	QList<ProjectTemplates::Folder> folders;
+	folders << ProjectTemplates::Folder{tr("QElectroTech"), commonProjectTemplatesDir()};
+	folders << ProjectTemplates::Folder{tr("My templates"), customProjectTemplatesDir()};
+	const QString shared = QSettings().value(QStringLiteral("project-templates/shared-path")).toString();
+	if (!shared.isEmpty())
+		folders << ProjectTemplates::Folder{tr("Shared"), shared};
+	return folders;
+}
+
+/**
  * @brief QETApp::userMacrosDir
  * @return the path of the directory containing the user macros collection.
  */

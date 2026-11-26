@@ -21,6 +21,7 @@
 #include "ElementsCollection/elementslocation.h"
 #include "dataBase/workingcopyrecovery.h"
 #include "qetarguments.h"
+#include "utils/projecttemplates.h"
 #include "titleblock/templatelocation.h"
 
 #include <QByteArray>
@@ -97,6 +98,9 @@ class QETApp : public QObject
 		static QString commonTitleBlockTemplatesDir();
 		static QString companyTitleBlockTemplatesDir();
 		static QString customTitleBlockTemplatesDir();
+		static QString commonProjectTemplatesDir();
+		static QString customProjectTemplatesDir();
+		static QList<ProjectTemplates::Folder> projectTemplateFolders();
 		static QString userMacrosDir();
 		static bool registerProject(QETProject *);
 		static bool unregisterProject(QETProject *);

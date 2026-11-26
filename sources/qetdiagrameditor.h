@@ -158,6 +158,8 @@ class QETDiagramEditor : public QETMainWindow
 		void saveAs();
 		bool newProject();
 		bool newAutoConnectProject();
+		bool newProjectFromTemplate();
+		bool newProjectFromTemplateFile(const QString &path);
 		bool openProject();
 		bool openRecentFile(const QString &);
 		bool closeProject(ProjectView *);
