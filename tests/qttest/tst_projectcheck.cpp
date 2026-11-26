@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "qetapptest.h"
+#include "cable/cable.h"
 #include "diagram.h"
 #include "devicetype/devicetypecheck.h"
 #include "dataBase/projectdatabase.h"
@@ -113,6 +114,45 @@ class tst_projectcheck : public QObject
 		}
 
 	private slots:
+		/// A wire that is a core of two cables is listed once, with both
+		/// cables, and a wire of one cable is not (#1878 B5)
+		void wireInTwoCablesFindsTheSharedWire()
+		{
+			const QString path = copy(QStringLiteral("shared_symbol_uuid_0200.qet"));
+			QVERIFY(!path.isEmpty());
+			QETProject project(path);
+			project.loadFolios();
+			QList<Conductor *> wires;
+			for (Diagram *diagram : project.diagrams())
+				wires << diagram->conductors();
+			QVERIFY(wires.size() >= 2);
+
+			QVERIFY(ProjectCheck::run(&project, ProjectCheck::Kind::WireInTwoCables).findings.isEmpty());
+
+			const auto makeCable = [&project](const QString &designation, const QList<Conductor *> &used) {
+				auto *cable = new Cable(&project);
+				cable->setDesignation(designation);
+				cable->setCoreCount(3);
+				project.addCable(cable);
+				for (int i = 0 ; i < used.size() ; ++i) {
+					CableCore core;
+					core.core = i;
+					core.conductor = used.at(i)->uuid();
+					cable->setCore(core);
+				}
+			};
+			makeCable(QStringLiteral("W1"), {wires.at(0), wires.at(1)});
+			makeCable(QStringLiteral("W2"), {wires.at(0)});
+
+			const auto result = ProjectCheck::run(&project, ProjectCheck::Kind::WireInTwoCables);
+			QCOMPARE(result.findings.size(), 1);
+			const auto &finding = result.findings.first();
+			QVERIFY2(finding.text.contains(QStringLiteral("W1, W2")), qPrintable(finding.text));
+			QCOMPARE(finding.places.size(), 1);
+			QCOMPARE(finding.places.first().wires, QList<QUuid>{wires.at(0)->uuid()});
+			QVERIFY(finding.places.first().canShow());
+		}
+
 		/// A limit of 1 lists exactly the terminals the folios show with
 		/// two wires or more; no limit gives a note and no finding
 		void wiresPerTerminalMatchesTheFolios()

@@ -52,7 +52,8 @@ class ProjectCheck
 			TerminalBranches,  ///< projectDataBase::terminalBranches()
 			DeviceTypes,       ///< DeviceTypeCheck::check()
 			WiresPerTerminal,  ///< terminals with more wires than WiringRules::limit()
-			TerminalNames      ///< symbols with two terminals of one name (TerminalNameCheck)
+			TerminalNames,     ///< symbols with two terminals of one name (TerminalNameCheck)
+			WireInTwoCables    ///< a wire that is a core of two cables
 		};
 
 			/// Where a finding is. One of item, element or wires says what
@@ -98,6 +99,7 @@ class ProjectCheck
 		static Result deviceTypes(QETProject *project);
 		static Result wiresPerTerminal(QETProject *project);
 		static Result terminalNames(QETProject *project);
+		static Result wireInTwoCables(QETProject *project);
 };
 
 #endif // PROJECTCHECK_H

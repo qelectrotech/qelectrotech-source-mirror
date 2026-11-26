@@ -105,7 +105,7 @@ QList<ProjectCheck::Kind> ProjectCheck::kinds()
 {
 	return {Kind::DuplicateLabels, Kind::PotentialTypes, Kind::OpenWireEnds,
 			Kind::UnwiredSymbols, Kind::TerminalBranches, Kind::DeviceTypes,
-			Kind::WiresPerTerminal, Kind::TerminalNames};
+			Kind::WiresPerTerminal, Kind::TerminalNames, Kind::WireInTwoCables};
 }
 
 QString ProjectCheck::title(Kind kind)
@@ -119,6 +119,7 @@ QString ProjectCheck::title(Kind kind)
 		case Kind::DeviceTypes: return tr("Device types");
 		case Kind::WiresPerTerminal: return tr("Wires per terminal");
 		case Kind::TerminalNames: return tr("Terminal names");
+		case Kind::WireInTwoCables: return tr("Wires in two cables");
 	}
 	return QString();
 }
@@ -151,6 +152,9 @@ QString ProjectCheck::toolTip(Kind kind)
 		case Kind::TerminalNames:
 			return tr("Symbols of the project with two terminals of one name, "
 					  "which a wiring list cannot tell apart.");
+		case Kind::WireInTwoCables:
+			return tr("Wires set as a core of more than one cable. A wire runs in one "
+					  "cable: the cable core list would show it twice.");
 	}
 	return QString();
 }
@@ -171,6 +175,7 @@ ProjectCheck::Result ProjectCheck::run(QETProject *project, Kind kind)
 		case Kind::DeviceTypes: return deviceTypes(project);
 		case Kind::WiresPerTerminal: return wiresPerTerminal(project);
 		case Kind::TerminalNames: return terminalNames(project);
+		case Kind::WireInTwoCables: return wireInTwoCables(project);
 	}
 	return Result();
 }
@@ -564,6 +569,46 @@ ProjectCheck::Result ProjectCheck::terminalNames(QETProject *project)
 											  QUuid(placed.value(1).toString()),
 											  placed.value(2).toString(),
 											  placed.value(3).toString());
+		result.findings << finding;
+	}
+	return result;
+}
+
+/**
+	@brief ProjectCheck::wireInTwoCables
+	The wires that are a core of two cables or more (#1878 B5): a wire runs
+	in one cable, so the cable core list would show it twice. Read from
+	qet_cable_cores; the wire is found on its folio when the finding is
+	opened.
+*/
+ProjectCheck::Result ProjectCheck::wireInTwoCables(QETProject *project)
+{
+	Result result;
+	result.kind = Kind::WireInTwoCables;
+	QSqlQuery query = project->dataBase()->newQuery(QStringLiteral(
+		"SELECT s.wire_uuid, c.diagram_uuid, c.text, "
+		" (SELECT group_concat(designation, ', ') FROM "
+		"  (SELECT DISTINCT k.designation FROM qet_cable_cores k "
+		"   WHERE k.wire_uuid = s.wire_uuid ORDER BY k.designation)) AS cables "
+		"FROM (SELECT wire_uuid FROM qet_cable_cores WHERE wire_uuid IS NOT NULL "
+		"      GROUP BY wire_uuid HAVING COUNT(DISTINCT cable_uuid) > 1) s "
+		"JOIN conductor c ON c.uuid = s.wire_uuid "
+		"ORDER BY (SELECT pos FROM diagram WHERE uuid = c.diagram_uuid), c.text, s.wire_uuid"));
+	FolioTexts folios(project);
+	while (query.next()) {
+		const QString number = query.value(2).toString().trimmed();
+		const QString cables = query.value(3).toString();
+		Finding finding;
+		//: %1 is the wire's number, %2 the cables, such as "W1, W2"
+		finding.text = number.isEmpty()
+			? tr("A wire is a core of two cables: %1").arg(cables)
+			: tr("Wire %1 is a core of two cables: %2").arg(number, cables);
+		Place place;
+		place.text = number.isEmpty() ? tr("Wire") : number;
+		place.diagram = QUuid(query.value(1).toString());
+		place.folio = folios(place.diagram);
+		place.wires = {QUuid(query.value(0).toString())};
+		finding.places << place;
 		result.findings << finding;
 	}
 	return result;
