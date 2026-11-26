@@ -542,6 +542,7 @@ qet_add_app_test(tst_folioautonumcopy tst_folioautonumcopy.cpp)
 # A folio's group and sub-group: named, or its plant and location; title
 # block variables, kept by .qet and .qetdb, absent from older files.
 qet_add_app_test(tst_foliogroup tst_foliogroup.cpp)
+qet_add_app_test(tst_drawingstandard tst_drawingstandard.cpp)
 qet_add_app_test(tst_documentkind tst_documentkind.cpp)
 qet_add_app_test(tst_revisionlist tst_revisionlist.cpp)
 # The project panel lists folios as a tree by folio group and sub-group

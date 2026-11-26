@@ -171,6 +171,15 @@ void ProjectMainConfigPage::applyProjectConf()
 	}
 	
 	DiagramContext new_properties = project_variables_ -> context();
+		//The drawing standard is a project property, chosen in its own
+		//list: As before is no property at all, a value this
+		//QElectroTech does not know (no data) is kept as it is
+	new_properties.remove(QStringLiteral("drawing_standard"));
+	const QVariant standard = m_drawing_standard_cb -> currentData();
+	if (!standard.isValid())
+		new_properties.addValue(QStringLiteral("drawing_standard"), m_drawing_standard_cb -> currentText());
+	else if (!standard.toString().isEmpty())
+		new_properties.addValue(QStringLiteral("drawing_standard"), standard.toString());
 	if (m_project -> projectProperties() != new_properties) {
 		m_project -> setProjectProperties(new_properties);
 		modified_project = true;
@@ -325,6 +334,18 @@ void ProjectMainConfigPage::initWidgets()
 										 "tooltip"));
 
 		//What the label field of an element shows
+	m_drawing_standard_label = new QLabel(tr("Drawing standard:", "label when configuring"));
+	m_drawing_standard_cb = new QComboBox();
+	m_drawing_standard_cb -> setObjectName(QStringLiteral("drawingStandard"));
+	m_drawing_standard_cb -> addItem(tr("As before", "drawing standard"), QString());
+	m_drawing_standard_cb -> addItem(tr("IEC", "drawing standard"),
+			QETProject::drawingStandardName(QETProject::DrawingStandard::Iec));
+	m_drawing_standard_cb -> addItem(tr("NFPA", "drawing standard"),
+			QETProject::drawingStandardName(QETProject::DrawingStandard::Nfpa));
+	m_drawing_standard_cb -> setToolTip(tr("The standard this project is drawn to. It changes "
+			"nothing by itself: features to come will follow it. As before keeps the project "
+			"exactly as it always was.", "drawing standard tooltip"));
+
 	m_designation_display_label = new QLabel(tr("Element labels show:", "label when configuring"));
 	m_designation_display_cb = new QComboBox();
 	m_designation_display_cb -> setObjectName(QStringLiteral("designationDisplay"));
@@ -483,6 +504,13 @@ void ProjectMainConfigPage::initLayout()
 	main_layout0 -> addWidget(m_plant_location_cb);
 	main_layout0 -> addSpacing(10);
 
+	QHBoxLayout *drawing_standard_layout = new QHBoxLayout();
+	drawing_standard_layout -> addWidget(m_drawing_standard_label);
+	drawing_standard_layout -> addWidget(m_drawing_standard_cb);
+	drawing_standard_layout -> addStretch();
+	main_layout0 -> addLayout(drawing_standard_layout);
+	main_layout0 -> addSpacing(10);
+
 	QHBoxLayout *designation_display_layout = new QHBoxLayout();
 	designation_display_layout -> addWidget(m_designation_display_label);
 	designation_display_layout -> addWidget(m_designation_display_cb);
@@ -535,7 +563,23 @@ void ProjectMainConfigPage::initLayout()
 void ProjectMainConfigPage::readValuesFromProject()
 {
 	title_value_ -> setText(m_project -> title());
-	project_variables_ -> setContext(m_project -> projectProperties());
+		//The drawing standard has its own list, not a row of the table
+	DiagramContext variables = m_project -> projectProperties();
+	variables.remove(QStringLiteral("drawing_standard"));
+	project_variables_ -> setContext(variables);
+		//A stored value this QElectroTech does not know shows as it is
+		//typed, an entry without data, and stays unless another is chosen
+	for (int i = m_drawing_standard_cb -> count() - 1 ; i > 2 ; --i)
+		m_drawing_standard_cb -> removeItem(i);
+	bool known = true;
+	const auto standard = QETProject::drawingStandardFromName(m_project -> drawingStandardText(), &known);
+	if (known) {
+		m_drawing_standard_cb -> setCurrentIndex(qMax(0, m_drawing_standard_cb -> findData(
+				QETProject::drawingStandardName(standard))));
+	} else {
+		m_drawing_standard_cb -> addItem(m_project -> drawingStandardText().trimmed());
+		m_drawing_standard_cb -> setCurrentIndex(m_drawing_standard_cb -> count() - 1);
+	}
 
 	const ProjectUsageTracker &usage_tracker = m_project -> projectPropertiesHandler().usageTracker();
 	const qint64 total_seconds = usage_tracker.secondsSpent();
@@ -623,6 +667,7 @@ void ProjectMainConfigPage::adjustReadOnly()
 	upright_symbol_texts_cb_ -> setDisabled(is_read_only);
 	m_plant_location_cb -> setDisabled(is_read_only);
 	m_designation_display_cb -> setDisabled(is_read_only);
+	m_drawing_standard_cb -> setDisabled(is_read_only);
 	m_follow_device_types_cb -> setDisabled(is_read_only);
 	chained_reports_cb_ -> setDisabled(is_read_only);
 	chained_key_gb_ -> setDisabled(is_read_only || !(chained_reports_cb_ -> isChecked()));

@@ -353,6 +353,18 @@ class QETProject : public QObject
 			/// What the label field of a symbol shows: its label only, or
 			/// its IEC 81346 reference designation, short or full
 		enum class DesignationDisplay {Label, Short, Full};
+			/// The standard the project is drawn to (#1289, #1878 C6). It
+			/// changes nothing by itself: features check it. AsBefore is
+			/// a project as it always was, the default.
+		enum class DrawingStandard {AsBefore, Iec, Nfpa};
+		DrawingStandard drawingStandard() const;
+			/// What the project stores, as typed: "iec", "nfpa", empty for
+			/// As before, or a value this QElectroTech does not know
+			/// (kept as it is, read as AsBefore)
+		QString drawingStandardText() const;
+		void setDrawingStandard(DrawingStandard standard);
+		static QString drawingStandardName(DrawingStandard standard);
+		static DrawingStandard drawingStandardFromName(const QString &name, bool *known = nullptr);
 		DesignationDisplay designationDisplay() const;
 		void setDesignationDisplay(DesignationDisplay display);
 		bool followDeviceTypes() const;

@@ -6453,6 +6453,72 @@ DiagramContext QETProject::projectProperties()
 	return(m_project_properties);
 }
 
+namespace {
+		/// The project property holding the drawing standard: in the
+		/// project's properties so that an older QElectroTech keeps it when
+		/// it saves the project (#1289 rule 4)
+	const QString drawing_standard_key = QStringLiteral("drawing_standard");
+}
+
+/**
+	@brief QETProject::drawingStandardName
+	@return the name a standard is stored as: "iec", "nfpa", empty for
+	As before
+*/
+QString QETProject::drawingStandardName(DrawingStandard standard)
+{
+	switch (standard) {
+		case DrawingStandard::Iec:  return QStringLiteral("iec");
+		case DrawingStandard::Nfpa: return QStringLiteral("nfpa");
+		case DrawingStandard::AsBefore: break;
+	}
+	return QString();
+}
+
+/**
+	@brief QETProject::drawingStandardFromName
+	@param name : a stored value, in any case, spaces around it ignored
+	@param known : set to false for a value this QElectroTech does not
+	know, which reads as As before
+*/
+QETProject::DrawingStandard QETProject::drawingStandardFromName(const QString &name, bool *known)
+{
+	const QString value = name.trimmed().toLower();
+	if (known) *known = true;
+	if (value == QLatin1String("iec"))  return DrawingStandard::Iec;
+	if (value == QLatin1String("nfpa")) return DrawingStandard::Nfpa;
+	if (known && !value.isEmpty()) *known = false;
+	return DrawingStandard::AsBefore;
+}
+
+QString QETProject::drawingStandardText() const
+{
+	return m_project_properties.value(drawing_standard_key).toString();
+}
+
+QETProject::DrawingStandard QETProject::drawingStandard() const
+{
+	return drawingStandardFromName(drawingStandardText());
+}
+
+/**
+	@brief QETProject::setDrawingStandard
+	As before removes the property, so the project saves exactly as one
+	that never had it.
+*/
+void QETProject::setDrawingStandard(DrawingStandard standard)
+{
+	DiagramContext properties = m_project_properties;
+	if (standard == DrawingStandard::AsBefore)
+		properties.remove(drawing_standard_key);
+	else
+		properties.addValue(drawing_standard_key, drawingStandardName(standard));
+	if (properties != m_project_properties) {
+		setProjectProperties(properties);
+		setModified(true);
+	}
+}
+
 /**
 	Use \a context as project-wide properties made available to child diagrams.
 */
