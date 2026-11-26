@@ -573,6 +573,12 @@ class projectDataBase : public QObject
 
 	public:
 		void spareTerminalsChanged();
+			//The name a placed symbol gave one of its terminals, so the
+			//lists read the name the drawing shows. A terminal instance
+			//is only told apart by its uuid together with its element's
+			//(@see Element::setTerminalLabel())
+		void terminalNameChanged(const QUuid &element, const QUuid &terminal,
+								 const QString &name);
 
 	signals:
 		void dataBaseUpdated();
@@ -709,6 +715,7 @@ class projectDataBase : public QObject
 				  m_diagram_order_changed,
 				  m_diagram_info_order_changed,
 				  m_insert_terminal_query,
+				  m_update_terminal_name_query,
 				  m_insert_conductor_query,
 				  m_update_conductor_query,
 				  m_remove_conductor_query,

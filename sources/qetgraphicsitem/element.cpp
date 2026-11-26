@@ -1712,6 +1712,26 @@ bool Element::fromXml(QDomElement &e,
 			m_potential_sources.insert(terminal, type);
 	}
 
+		//The names this placed symbol gave its terminals and how it draws
+		//them, keyed by Terminal::stableUuid() as toXml() writes them.
+		//The terminals are built from the definition in the constructor,
+		//so they are already there to take the values over
+	for (Terminal *terminal : std::as_const(m_terminals))
+		terminal->setLabel(terminal->definitionLabel());
+	m_terminal_labels.clear();
+	for (const QDomElement &label : QETXML::subChild(e, QStringLiteral("terminalLabels"), QStringLiteral("terminalLabel"))) {
+		const QUuid terminal(label.attribute(QStringLiteral("terminal")));
+		TerminalLabel data;
+		if (terminal.isNull() || !data.fromXml(label))
+			continue;
+		m_terminal_labels.insert(terminal, data);
+	}
+	for (Terminal *terminal : std::as_const(m_terminals)) {
+		const auto found = m_terminal_labels.constFind(terminal->stableUuid());
+		if (found != m_terminal_labels.constEnd())
+			terminal->setLabel(found.value());
+	}
+
 		//Load PLC master data override from diagram XML
 	if (m_data.m_type == ElementData::Master &&
 		m_data.m_master_type == ElementData::PLC)
@@ -1825,6 +1845,10 @@ QDomElement Element::toXml(
 		xml_terminals.appendChild(terminal);
 	}
 	element.appendChild(xml_terminals);
+
+		//The names this placed symbol gave its terminals, and how it
+		//draws them; nothing at all when it gave them nothing
+	appendTerminalLabelsXml(document, element);
 
 	// enregistrement des champ de texte de l'appareil
 	QDomElement inputs = document.createElement(QStringLiteral("inputs"));
@@ -2822,6 +2846,41 @@ void Element::appendDataXml(QDomDocument &document, QDomElement &element) const
 }
 
 /**
+	@brief Element::appendTerminalLabelsXml
+	Append to @p element, made in @p document, what toXml() writes of the
+	names this placed symbol gave its terminals and of how it draws them,
+	in terminal order, then any whose terminal the definition no longer
+	has, kept as read.
+	Written only when there is one, so a symbol that gave its terminals
+	nothing saves exactly as before
+*/
+void Element::appendTerminalLabelsXml(QDomDocument &document, QDomElement &element) const
+{
+	if (m_terminal_labels.isEmpty())
+		return;
+
+	QDomElement labels = document.createElement(QStringLiteral("terminalLabels"));
+	QHash<QUuid, TerminalLabel> left = m_terminal_labels;
+	const auto write = [&](const QUuid &terminal, const TerminalLabel &label) {
+		QDomElement entry = label.toXml(document);
+		entry.setAttribute(QStringLiteral("terminal"), terminal.toString());
+		labels.appendChild(entry);
+	};
+	for (const Terminal *terminal : terminals()) {
+		const QUuid uuid = terminal->stableUuid();
+		const auto found = left.constFind(uuid);
+		if (found == left.constEnd()) continue;
+		write(uuid, found.value());
+		left.remove(uuid);
+	}
+	QList<QUuid> rest = left.keys();
+	std::sort(rest.begin(), rest.end(), [](const QUuid &a, const QUuid &b) {return a.toString() < b.toString();});
+	for (const QUuid &uuid : std::as_const(rest))
+		write(uuid, left.value(uuid));
+	element.appendChild(labels);
+}
+
+/**
 	@brief Element::ownValuesXml
 	@return an <element> made in @p document holding what toXml() writes
 	of this symbol that no other table of the project database holds: its
@@ -2875,6 +2934,74 @@ void Element::setPotentialSourcesMap(const QVariantMap &sources)
 	for (auto it = sources.constBegin() ; it != sources.constEnd() ; ++it)
 		hash.insert(QUuid(it.key()), it.value().toString());
 	setPotentialSources(hash);
+}
+
+/**
+	@brief Element::setTerminalLabel
+	Give the terminal @p terminal of this placed symbol the name and the
+	drawing of @p label: the values of this copy only, the definition
+	keeping its own, so three copies of one symbol can read differently.
+	@param terminal Terminal::stableUuid() of the terminal
+	@param label what the terminal shows from now on
+*/
+void Element::setTerminalLabel(const QUuid &terminal, const TerminalLabel &label)
+{
+	if (terminal.isNull())
+		return;
+
+	Terminal *found = nullptr;
+	for (Terminal *t : std::as_const(m_terminals)) {
+		if (t->stableUuid() == terminal) {
+			found = t;
+			break;
+		}
+	}
+	m_terminal_labels.insert(terminal, label);
+	if (found) {
+		const QString was = found->name();
+		found->setLabel(label);
+		if (was != found->name())
+			storeTerminalName(found);
+	}
+}
+
+/**
+	@brief Element::removeTerminalLabel
+	Take back what the definition says about the terminal @p terminal of
+	this placed symbol
+	@param terminal Terminal::stableUuid() of the terminal
+*/
+void Element::removeTerminalLabel(const QUuid &terminal)
+{
+	if (m_terminal_labels.remove(terminal) == 0)
+		return;
+
+	for (Terminal *t : std::as_const(m_terminals)) {
+		if (t->stableUuid() != terminal)
+			continue;
+		const QString was = t->name();
+		t->setLabel(t->definitionLabel());
+		if (was != t->name())
+			storeTerminalName(t);
+		break;
+	}
+}
+
+/**
+	@brief Element::storeTerminalName
+	Tell the project's database that the terminal @p terminal of this
+	symbol now reads @p terminal->name(), so the lists it builds follow
+	the rename. A row is written when the terminal's wire is and never
+	after (INSERT OR IGNORE), and a project being read has no row for it
+	yet: the row that comes later is written from the live terminal
+	anyway, which is why a database with nothing to change hears nothing
+*/
+void Element::storeTerminalName(const Terminal *terminal) const
+{
+	if (!terminal || !diagram() || !diagram()->project())
+		return;
+	diagram()->project()->dataBase()->terminalNameChanged(
+				uuid(), terminal->stableUuid(), terminal->name());
 }
 
 /**

@@ -1422,6 +1422,16 @@ bool projectDataBase::populateFromDocument(const QDomDocument &document, QString
 			element.type = known->type;
 			element.sub_type = known->sub_type;
 			element.terminals = known->terminals;
+				//The name this placed symbol gave a terminal: the
+				//definition it shares with every other copy of the symbol
+				//does not have it, so it is read from the element
+			for (const QDomElement &label : QET::findInDomElement(
+					 element_xml, QStringLiteral("terminalLabels"), QStringLiteral("terminalLabel"))) {
+				const QUuid terminal(label.attribute(QStringLiteral("terminal")));
+				auto found = element.terminals.find(terminal);
+				if (!terminal.isNull() && found != element.terminals.end())
+					found->name = label.attribute(QStringLiteral("name"));
+			}
 			element.location = element_xml.attribute(QStringLiteral("type"));
 			element.sequence = elementSequence(element_xml);
 			const QUuid group = ItemGroups::read(element_xml);
@@ -9058,6 +9068,34 @@ void projectDataBase::insertFolioConductorRows(Diagram *diagram)
 }
 
 /**
+	@brief projectDataBase::terminalNameChanged
+	Rewrite the name of the terminal @p terminal of @p element to
+	@p name, the name its symbol's drawing reads now
+	(@see Element::setTerminalLabel()).
+	Nothing while updates are blocked, as every other writer, and nothing
+	heard when no row holds the terminal anyway: a row written later is
+	written from the live terminal, which already reads the new name.
+	@param element uuid of the placed symbol the terminal belongs to
+	@param terminal Terminal::stableUuid() of the terminal
+	@param name the name the terminal reads now
+*/
+void projectDataBase::terminalNameChanged(const QUuid &element, const QUuid &terminal,
+										  const QString &name)
+{
+	if (m_update_blocked || terminal.isNull() || element.isNull())
+		return;
+	m_update_terminal_name_query.bindValue(QStringLiteral(":uuid"), terminal.toString());
+	m_update_terminal_name_query.bindValue(QStringLiteral(":element_uuid"), element.toString());
+	m_update_terminal_name_query.bindValue(QStringLiteral(":name"), name);
+	if (!m_update_terminal_name_query.exec()) {
+		qDebug() << "projectDataBase::terminalNameChanged update error : " << m_update_terminal_name_query.lastError();
+		return;
+	}
+	if (m_update_terminal_name_query.numRowsAffected() > 0)
+		emit dataBaseUpdated();
+}
+
+/**
 	@brief projectDataBase::insertTerminal
 	Insert (or, if already present -- e.g. a junction shared by several
 	conductors -- silently keep) @terminal in the terminal table.
@@ -9235,6 +9273,13 @@ void projectDataBase::prepareQuery()
 		//INSERT TERMINAL
 	m_insert_terminal_query = QSqlQuery(m_data_base);
 	m_insert_terminal_query.prepare("INSERT OR IGNORE INTO terminal (uuid, element_uuid, name, terminal_index) VALUES (:uuid, :element_uuid, :name, :terminal_index)");
+
+		//A terminal row is written when its wire is, and never after, so
+		//the name a placed symbol gives a terminal afterwards reaches the
+		//row where it already is. Scoped to the element: every copy of a
+		//symbol shares its terminals' uuids
+	m_update_terminal_name_query.prepare("UPDATE terminal SET name = :name "
+										 "WHERE uuid = :uuid AND element_uuid = :element_uuid");
 
 		//INSERT CONDUCTOR
 	m_insert_conductor_query = QSqlQuery(m_data_base);
