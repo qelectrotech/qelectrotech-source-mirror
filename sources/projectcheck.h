@@ -54,7 +54,8 @@ class ProjectCheck
 			WiresPerTerminal,  ///< terminals with more wires than WiringRules::limit()
 			TerminalNames,     ///< symbols with two terminals of one name (TerminalNameCheck)
 			WireInTwoCables,   ///< a wire that is a core of two cables
-			NoPartNumber       ///< symbols the parts list holds, with no part number
+			NoPartNumber,      ///< symbols the parts list holds, with no part number
+			UnansweredPrompts  ///< labels and texts still holding a ? or a ?name
 		};
 
 			/// Where a finding is. One of item, element or wires says what
@@ -65,10 +66,12 @@ class ProjectCheck
 			QString cell;                    ///< "B4", empty if not known
 			QPointer<QGraphicsObject> item;  ///< a built item
 			QUuid element;                   ///< a symbol, when item is not given
+			QUuid drawing;                   ///< a free text of the folio, found
+											 ///< on the folio diagram
 			QUuid diagram;                   ///< the symbol's folio
 			QList<QUuid> wires;              ///< wires, found when shown, on
 											 ///< the folio diagram if given
-			bool canShow() const {return item || !element.isNull() || !wires.isEmpty();}
+			bool canShow() const {return item || !element.isNull() || !drawing.isNull() || !wires.isEmpty();}
 		};
 
 		struct Finding {
@@ -102,6 +105,7 @@ class ProjectCheck
 		static Result terminalNames(QETProject *project);
 		static Result wireInTwoCables(QETProject *project);
 		static Result noPartNumber(QETProject *project);
+		static Result unansweredPrompts(QETProject *project);
 };
 
 #endif // PROJECTCHECK_H

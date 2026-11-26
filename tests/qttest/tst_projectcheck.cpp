@@ -20,6 +20,7 @@
 #include "diagram.h"
 #include "devicetype/devicetypecheck.h"
 #include "dataBase/projectdatabase.h"
+#include "diagramevent/macrolabels.h"
 #include "projectcheck.h"
 #include "qetgraphicsitem/conductor.h"
 #include "qetgraphicsitem/element.h"
@@ -115,6 +116,56 @@ class tst_projectcheck : public QObject
 		}
 
 	private slots:
+		/// A label or text still holding a ? or a ?name is listed, once for
+		/// each item, and answering it takes it off the list (#1878 B7)
+		void unansweredPromptsFindsWhatAMacroAsks()
+		{
+			QVERIFY(MacroLabels::holdsPrompt(QStringLiteral("-K?")));
+			QVERIFY(MacroLabels::holdsPrompt(QStringLiteral("?motor_kw kW")));
+			QVERIFY(!MacroLabels::holdsPrompt(QStringLiteral("-K1")));
+
+			const QString path = copy(QStringLiteral("every_feature.qet"));
+			QVERIFY(!path.isEmpty());
+			QETProject project(path);
+			project.loadFolios();
+			const QSet<QUuid> before = listed(run(project, ProjectCheck::Kind::UnansweredPrompts));
+
+			QList<Element *> symbols;
+			for (Diagram *diagram : project.diagrams())
+				for (Element *e : diagram->elements())
+					if (!before.contains(e->uuid()) && symbols.size() < 2) symbols << e;
+			QCOMPARE(symbols.size(), 2);
+			const auto setInfo = [](Element *e, const QString &key, const QString &value) {
+				DiagramContext info = e->elementInformations();
+					// A label typed by hand no longer follows a formula
+				if (key == QLatin1String("label")) info.addValue(QStringLiteral("formula"), QString());
+				info.addValue(key, value);
+				e->setElementInformations(info);
+			};
+			setInfo(symbols.at(0), QStringLiteral("label"), QStringLiteral("-K?"));
+				// Two texts of one symbol are one finding
+			setInfo(symbols.at(1), QStringLiteral("comment"), QStringLiteral("?motor_kw kW"));
+			setInfo(symbols.at(1), QStringLiteral("function"), QStringLiteral("?motor_kw"));
+
+			auto result = ProjectCheck::run(&project, ProjectCheck::Kind::UnansweredPrompts);
+				// A symbol linked to another may take its label along: the
+				// two planted are there, whatever else is
+			QSet<QUuid> found = listed(result);
+			QVERIFY(found.contains(symbols.at(0)->uuid()));
+			QVERIFY(found.contains(symbols.at(1)->uuid()));
+			int own = 0;
+			for (const auto &finding : result.findings) {
+				QVERIFY(finding.places.first().canShow());
+				if (finding.places.first().element == symbols.at(1)->uuid()) ++own;
+			}
+			QCOMPARE(own, 1);
+
+			setInfo(symbols.at(0), QStringLiteral("label"), QStringLiteral("-K1"));
+			found = listed(ProjectCheck::run(&project, ProjectCheck::Kind::UnansweredPrompts));
+			QVERIFY(!found.contains(symbols.at(0)->uuid()));
+			QVERIFY(found.contains(symbols.at(1)->uuid()));
+		}
+
 		/// The symbols with no part number are those the parts list would
 		/// hold: not a report, not set to be left out, not a junction;
 		/// once a part number is given, the symbol is not listed (#1878 B6)

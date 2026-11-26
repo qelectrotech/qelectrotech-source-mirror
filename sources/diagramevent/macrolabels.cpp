@@ -140,6 +140,18 @@ namespace MacroLabels
 	}
 
 	/**
+		@return whether @p text still asks for an answer: it holds a ?name
+		or a question mark of its own. The test fields() makes of each text
+		of a macro, for a project to find what was left unanswered.
+	*/
+	bool holdsPrompt(const QString &text)
+	{
+		if (!text.contains(QLatin1Char('?'))) return false;
+		const QString shown = plain(text);
+		return !namedValues(shown).isEmpty() || hasBareMark(shown);
+	}
+
+	/**
 		@return the named values @p text asks for, each once and written
 		as the macro holds them: "?kw kW at ?kw" gives ?kw
 	*/

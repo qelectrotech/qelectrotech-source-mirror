@@ -49,6 +49,7 @@ namespace MacroLabels
 
 	QList<Field> fields(const QDomElement &macro_root);
 	QStringList namedValues(const QString &text);
+	bool holdsPrompt(const QString &text);
 	QString withValues(const QString &text,
 					   const QHash<QString, QString> &values);
 	QString placeOf(Diagram *folio);
