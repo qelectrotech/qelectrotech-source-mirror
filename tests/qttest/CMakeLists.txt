@@ -914,6 +914,8 @@ qet_add_app_test(tst_cabletypepick tst_cabletypepick.cpp)
 qet_add_app_test(tst_junctionchain tst_junctionchain.cpp)
 # A wire dropped on a terminal that already has a wire is made.
 qet_add_app_test(tst_wireonusedterminal tst_wireonusedterminal.cpp)
+# Only a terminal takes its clicks, not its name (bugtracker #349).
+qet_add_app_test(tst_terminalnamehitarea tst_terminalnamehitarea.cpp)
 
 # An undone step of a symbol and its wires, dropped later, deletes the
 # wires without reading the symbol's deleted terminals.
