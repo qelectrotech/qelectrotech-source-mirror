@@ -79,6 +79,7 @@
 #include "elementspanelwidget.h"
 #include "factory/elementpicturefactory.h"
 #include "factory/qetgraphicstablefactory.h"
+#include "factory/ui/listquerywidget.h"
 #include "print/projectprintwindow.h"
 #include "project/projectpropertieshandler.h"
 #include "ui/multielementinfowidget.h"
@@ -1473,6 +1474,36 @@ void QETDiagramEditor::setUpActions()
 		}
 	});
 
+		//Add a table of the devices (#1878 B9)
+	m_add_device_list = new QAction(QET::Icons::TableOfContent, tr("Add a device list"), this);
+	connect(m_add_device_list, &QAction::triggered, this, [this]() {
+		if (this->currentDiagramView()) {
+			QetGraphicsTableFactory::createAndAddListTable(this->currentDiagramView()->diagram(), ListQueryWidget::Device);
+		}
+	});
+
+		//Add a table of the wires (#1878 B10)
+	m_add_wiring_table = new QAction(QET::Icons::TableOfContent, tr("Add a wiring table"), this);
+	connect(m_add_wiring_table, &QAction::triggered, this, [this]() {
+		if (this->currentDiagramView()) {
+			QetGraphicsTableFactory::createAndAddListTable(this->currentDiagramView()->diagram(), ListQueryWidget::Wiring);
+		}
+	});
+
+		//Add a table of the PLC I/O and of the signals (#1878 B11)
+	m_add_plc_list = new QAction(QET::Icons::TableOfContent, tr("Add a PLC list"), this);
+	connect(m_add_plc_list, &QAction::triggered, this, [this]() {
+		if (this->currentDiagramView()) {
+			QetGraphicsTableFactory::createAndAddListTable(this->currentDiagramView()->diagram(), ListQueryWidget::Plc);
+		}
+	});
+	m_add_signal_list = new QAction(QET::Icons::TableOfContent, tr("Add a signal list"), this);
+	connect(m_add_signal_list, &QAction::triggered, this, [this]() {
+		if (this->currentDiagramView()) {
+			QetGraphicsTableFactory::createAndAddListTable(this->currentDiagramView()->diagram(), ListQueryWidget::Signal);
+		}
+	});
+
 		//Add a cable list
 	m_add_cable_list = new QAction(QET::Icons::TableOfContent, tr("Add a cable list"), this);
 	connect(m_add_cable_list, &QAction::triggered, this, [this]() {
@@ -2538,6 +2569,10 @@ void QETDiagramEditor::setUpMenu()
 	menu_lists -> addSeparator();
 	menu_lists -> addAction(m_add_cable_list);
 	menu_lists -> addAction(m_add_revision_table);
+	menu_lists -> addAction(m_add_device_list);
+	menu_lists -> addAction(m_add_wiring_table);
+	menu_lists -> addAction(m_add_plc_list);
+	menu_lists -> addAction(m_add_signal_list);
 
 	main_tool_bar         -> toggleViewAction() -> setStatusTip(tr("Display or hide the main toolbar"));
 	view_tool_bar         -> toggleViewAction() -> setStatusTip(tr("Display or hide the Display toolbar"));
@@ -4220,6 +4255,10 @@ void QETDiagramEditor::slot_updateActions()
 	m_cable_numbering             -> setEnabled(editable_project);
 	m_add_cable_list              -> setEnabled(editable_project);
 	m_add_revision_table          -> setEnabled(editable_project);
+	m_add_device_list             -> setEnabled(editable_project);
+	m_add_wiring_table            -> setEnabled(editable_project);
+	m_add_plc_list                -> setEnabled(editable_project);
+	m_add_signal_list             -> setEnabled(editable_project);
 	m_export_cable_list           -> setEnabled(editable_project);
 	m_reload_element_drawings     -> setEnabled(opened_project);
 	m_update_elements_from_collections -> setEnabled(editable_project);

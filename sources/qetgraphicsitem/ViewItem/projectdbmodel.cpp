@@ -27,8 +27,61 @@
 #include <qetxml.h>
 #include <utils/qetutils.h>
 
+#include <QCoreApplication>
 #include <QSqlError>
 #include <QSqlRecord>
+
+namespace {
+	/**
+		@brief listHeader
+		@param identifier the identifier of a list table (ListQueryWidget)
+		@param field a column of its query
+		@return the column's title, empty for a table or a column that is
+		not one of the list tables'
+	*/
+QString listHeader(const QString &identifier, const QString &field)
+{
+	static const QStringList lists{QStringLiteral("device_list"), QStringLiteral("wiring_table"),
+								   QStringLiteral("plc_list"), QStringLiteral("signal_list")};
+	if (!lists.contains(identifier)) {
+		return QString();
+	}
+	using T = QHash<QString, QString>;
+	const QHash<QString, T> titles = {
+		{QStringLiteral("device_list"), {
+			{QStringLiteral("device"), QCoreApplication::translate("ProjectDBModel", "Device")},
+			{QStringLiteral("description"), QCoreApplication::translate("ProjectDBModel", "Description")},
+			{QStringLiteral("designation"), QCoreApplication::translate("ProjectDBModel", "Designation")},
+			{QStringLiteral("articles"), QCoreApplication::translate("ProjectDBModel", "Article")},
+			{QStringLiteral("symbols"), QCoreApplication::translate("ProjectDBModel", "Symbols")},
+			{QStringLiteral("folio_number"), QCoreApplication::translate("ProjectDBModel", "Sheet")}}},
+		{QStringLiteral("wiring_table"), {
+			{QStringLiteral("wire_number"), QCoreApplication::translate("ProjectDBModel", "Wire")},
+			{QStringLiteral("from_end"), QCoreApplication::translate("ProjectDBModel", "From")},
+			{QStringLiteral("to_end"), QCoreApplication::translate("ProjectDBModel", "To")},
+			{QStringLiteral("cable"), QCoreApplication::translate("ProjectDBModel", "Cable")},
+			{QStringLiteral("core"), QCoreApplication::translate("ProjectDBModel", "Core")},
+			{QStringLiteral("folio_number"), QCoreApplication::translate("ProjectDBModel", "Sheet")}}},
+		{QStringLiteral("plc_list"), {
+			{QStringLiteral("plc"), QCoreApplication::translate("ProjectDBModel", "PLC")},
+			{QStringLiteral("address"), QCoreApplication::translate("ProjectDBModel", "Address")},
+			{QStringLiteral("io_type"), QCoreApplication::translate("ProjectDBModel", "Type")},
+			{QStringLiteral("function"), QCoreApplication::translate("ProjectDBModel", "Function")},
+			{QStringLiteral("comment"), QCoreApplication::translate("ProjectDBModel", "Comment")},
+			{QStringLiteral("device"), QCoreApplication::translate("ProjectDBModel", "Device")},
+			{QStringLiteral("folio_number"), QCoreApplication::translate("ProjectDBModel", "Sheet")}}},
+		{QStringLiteral("signal_list"), {
+			{QStringLiteral("wire_numbers"), QCoreApplication::translate("ProjectDBModel", "Wire numbers")},
+			{QStringLiteral("names"), QCoreApplication::translate("ProjectDBModel", "Names")},
+			{QStringLiteral("potential_type"), QCoreApplication::translate("ProjectDBModel", "Type")},
+			{QStringLiteral("terminals"), QCoreApplication::translate("ProjectDBModel", "Terminals")},
+			{QStringLiteral("wires"), QCoreApplication::translate("ProjectDBModel", "Wires")},
+			{QStringLiteral("folio_number"), QCoreApplication::translate("ProjectDBModel", "First sheet")},
+			{QStringLiteral("folios"), QCoreApplication::translate("ProjectDBModel", "Sheets")}}}
+	};
+	return titles.value(identifier).value(field);
+}
+}
 
 /**
 	@brief ProjectDBModel::ProjectDBModel
@@ -396,6 +449,8 @@ void ProjectDBModel::setHeaderString()
 					: field_name == QLatin1String("description") ? tr("Description")
 					: field_name == QLatin1String("author") ? tr("Author")
 					: tr("Approved by");
+		} else if (const QString title = listHeader(m_identifier, field_name); !title.isEmpty()) {
+			header_name = title;
 		} else if (field_name == "position") {
 			header_name = tr("Position");
 		} else if (field_name == "diagram_position") {

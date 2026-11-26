@@ -35,6 +35,8 @@ class QetGraphicsTableFactory
 		static void createAndAddCableList(Diagram *diagram);
 			/// The project's revision history, as a table on @p diagram
 		static void createAndAddRevisionTable(Diagram *diagram);
+			/// A list of the project database (a ListQueryWidget::Kind), as a table on @p diagram
+		static void createAndAddListTable(Diagram *diagram, int kind);
 			// Public so a caller that has already built and configured an
 			// AddTableDialog itself (never shown or exec'd -- the two
 			// methods above always exec() one, which the scripting API
