@@ -4848,6 +4848,8 @@ bool projectDataBase::createDataBase()
 	createWiringListView();
 	createDrawingItemView();
 	createPublicViews();
+		//After them: it reads qet_devices and qet_folios
+	createPlcListView();
 	prepareQuery();
 
 		//The working copy's one row, for recovering it at the next start:
@@ -5279,6 +5281,71 @@ void projectDataBase::createElementNomenclatureView()
 	query_version.finish();
 	
 	qInfo() << "SQLite version: " << version;
+}
+
+/**
+	@brief projectDataBase::createPlcListView
+	One row per entry of each PLC master's I/O table, the rows the SPS
+	list of a folio shows: the master's own data (its BMK, its place and
+	what is ordered for it) repeated on each of its channels, the
+	channel's number, type, address, function and comment read from the
+	master's table, and -- where a symbol is drawn for the channel --
+	its cross-references and where it stands. An entry no symbol is
+	drawn for is a row too, with those columns empty: qet_plc_io lists
+	them the same way, and a list of the channels of a card is not
+	complete without them.
+
+	Ordered by master, then by the order of the channels in the card,
+	which is the order the card shows them in; the folio table of the
+	SPS list keeps it and starts a new page at a master's first channel.
+*/
+void projectDataBase::createPlcListView()
+{
+	const QString create_view = QStringLiteral(
+		"CREATE VIEW qet_plc_list AS "
+		"WITH io AS (SELECT element_uuid, ord, "
+			"MAX(CASE WHEN name = 'address' THEN value END) AS address, "
+			"MAX(CASE WHEN name = 'type' THEN value END) AS io_type, "
+			"MAX(CASE WHEN name = 'functionText' THEN value END) AS function_text, "
+			"MAX(CASE WHEN name = 'comment' THEN value END) AS comment "
+			"FROM element_value WHERE section = 'plcMasterData/plcIOs/plcIO' "
+			"GROUP BY element_uuid, ord) "
+		"SELECT m.structure_id AS structure_id, m.device_uuid AS plc_uuid, "
+			//The BMK the drawing shows: the master's, the copy the slave
+			//keeps when it was linked, used only if the master has none
+		"COALESCE(NULLIF(m.label, ''), NULLIF(s.label, '')) AS label, "
+			//Where the channel is drawn, else where the card is
+		"COALESCE(NULLIF(s.plant, ''), m.plant) AS plant, "
+		"COALESCE(NULLIF(s.location, ''), m.location) AS location, "
+			//The card itself: what is ordered is the master. A slave
+			//keeps no part data of its own (an auxiliary contact block
+			//that is hardware of its own is a simple symbol, not a PLC
+			//point), so these are the master's on every row
+		"m.manufacturer AS manufacturer, m.article AS manufacturer_reference, "
+		"m.designation AS designation, m.model AS model, "
+		"m.description AS description, m.supplier AS supplier, "
+		"io.ord + 1 AS entry, "
+		"CASE io.io_type WHEN 'entree_digitale' THEN 'DI' WHEN 'sortie_digitale' THEN 'DO' "
+			"WHEN 'entree_analogique' THEN 'AI' WHEN 'sortie_analogique' THEN 'AO' "
+			"WHEN 'entree_universelle' THEN 'UI' WHEN 'sortie_universelle' THEN 'UO' "
+			"ELSE io.io_type END AS plc_type, "
+		"io.address AS plc_address, io.function_text AS plc_function, "
+		"io.comment AS plc_comment, "
+			//The symbol drawn for the channel: its own cross-references
+			//and where it stands, empty for an entry with none drawn
+		"si.plc_crossref AS plc_crossref, si.xref AS xref, "
+		"s.position AS position, s.folio_number AS diagram_position, s.folio AS folio, "
+		"s.device_uuid AS slave_uuid "
+		"FROM io JOIN qet_devices m ON m.device_uuid = io.element_uuid "
+		"LEFT JOIN link l ON l.element_uuid = io.element_uuid AND l.group_index = io.ord "
+		"LEFT JOIN qet_devices s ON s.device_uuid = l.linked_uuid "
+		"LEFT JOIN element_info si ON si.element_uuid = s.device_uuid "
+		"ORDER BY m.structure_id, m.device_uuid, io.ord");
+
+	QSqlQuery query(m_data_base);
+	if (!query.exec(create_view)) {
+		qDebug() << query.lastError();
+	}
 }
 
 /**
