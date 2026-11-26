@@ -24,6 +24,7 @@
 #include "qetgraphicsitem/conductor.h"
 #include "qetgraphicsitem/element.h"
 #include "qetgraphicsitem/terminal.h"
+#include "qetinformation.h"
 #include "qetproject.h"
 #include "ui/checkpaneldockwidget.h"
 #include "ui/openwireendsdialog.h"
@@ -114,6 +115,63 @@ class tst_projectcheck : public QObject
 		}
 
 	private slots:
+		/// The symbols with no part number are those the parts list would
+		/// hold: not a report, not set to be left out, not a junction;
+		/// once a part number is given, the symbol is not listed (#1878 B6)
+		void noPartNumberListsWhatThePartsListHolds()
+		{
+			const QString path = copy(QStringLiteral("every_feature.qet"));
+			QVERIFY(!path.isEmpty());
+			QETProject project(path);
+			project.loadFolios();
+
+			const auto text = [](Element *e, const QString &key) {
+				return e->elementInformations().value(key).toString().trimmed();
+			};
+				// What the parts list holds, found on the folios
+			const auto expected = [&]() {
+				QSet<QUuid> set;
+				for (Diagram *diagram : project.diagrams())
+					for (Element *e : diagram->elements()) {
+						const auto type = e->linkType();
+						if (!(type & (Element::Simple | Element::Master | Element::Slave | Element::Terminale)))
+							continue;
+						if (QET::infoFlagIsTrue(text(e, QStringLiteral("exclude_from_bom")))) continue;
+						if (!text(e, QStringLiteral("manufacturer_reference")).isEmpty()) continue;
+						if (type == Element::Terminale
+							&& text(e, QStringLiteral("label")).isEmpty()
+							&& text(e, QStringLiteral("designation")).isEmpty()
+							&& text(e, QStringLiteral("manufacturer")).isEmpty()) continue;
+						set << e->uuid();
+					}
+				return set;
+			};
+			const auto set = [](Element *e, const QString &key, const QString &value) {
+				DiagramContext info = e->elementInformations();
+				info.addValue(key, value);
+				e->setElementInformations(info);
+			};
+
+			auto result = run(project, ProjectCheck::Kind::NoPartNumber);
+			QSet<QUuid> before = expected();
+			QVERIFY(before.size() >= 2);
+			QCOMPARE(listed(result), before);
+
+				// One given a part number, one set to be left out
+			QList<Element *> two;
+			for (Diagram *diagram : project.diagrams())
+				for (Element *e : diagram->elements())
+					if (before.contains(e->uuid()) && two.size() < 2) two << e;
+			set(two.at(0), QStringLiteral("manufacturer_reference"), QStringLiteral("PN-1"));
+			set(two.at(1), QStringLiteral("exclude_from_bom"), QStringLiteral("true"));
+			result = ProjectCheck::run(&project, ProjectCheck::Kind::NoPartNumber);
+			QSet<QUuid> after = before;
+			after.remove(two.at(0)->uuid());
+			after.remove(two.at(1)->uuid());
+			QCOMPARE(expected(), after);
+			QCOMPARE(listed(result), after);
+		}
+
 		/// A wire that is a core of two cables is listed once, with both
 		/// cables, and a wire of one cable is not (#1878 B5)
 		void wireInTwoCablesFindsTheSharedWire()

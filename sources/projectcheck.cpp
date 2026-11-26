@@ -105,7 +105,8 @@ QList<ProjectCheck::Kind> ProjectCheck::kinds()
 {
 	return {Kind::DuplicateLabels, Kind::PotentialTypes, Kind::OpenWireEnds,
 			Kind::UnwiredSymbols, Kind::TerminalBranches, Kind::DeviceTypes,
-			Kind::WiresPerTerminal, Kind::TerminalNames, Kind::WireInTwoCables};
+			Kind::WiresPerTerminal, Kind::TerminalNames, Kind::WireInTwoCables,
+			Kind::NoPartNumber};
 }
 
 QString ProjectCheck::title(Kind kind)
@@ -120,6 +121,7 @@ QString ProjectCheck::title(Kind kind)
 		case Kind::WiresPerTerminal: return tr("Wires per terminal");
 		case Kind::TerminalNames: return tr("Terminal names");
 		case Kind::WireInTwoCables: return tr("Wires in two cables");
+		case Kind::NoPartNumber: return tr("Symbols with no part number");
 	}
 	return QString();
 }
@@ -155,6 +157,10 @@ QString ProjectCheck::toolTip(Kind kind)
 		case Kind::WireInTwoCables:
 			return tr("Wires set as a core of more than one cable. A wire runs in one "
 					  "cable: the cable core list would show it twice.");
+		case Kind::NoPartNumber:
+			return tr("Symbols the parts list holds that have no part number. Folio "
+					  "reports, junctions and symbols set to be left out of the bill "
+					  "of materials are not listed.");
 	}
 	return QString();
 }
@@ -176,6 +182,7 @@ ProjectCheck::Result ProjectCheck::run(QETProject *project, Kind kind)
 		case Kind::WiresPerTerminal: return wiresPerTerminal(project);
 		case Kind::TerminalNames: return terminalNames(project);
 		case Kind::WireInTwoCables: return wireInTwoCables(project);
+		case Kind::NoPartNumber: return noPartNumber(project);
 	}
 	return Result();
 }
@@ -609,6 +616,52 @@ ProjectCheck::Result ProjectCheck::wireInTwoCables(QETProject *project)
 		place.folio = folios(place.diagram);
 		place.wires = {QUuid(query.value(0).toString())};
 		finding.places << place;
+		result.findings << finding;
+	}
+	return result;
+}
+
+/**
+	@brief ProjectCheck::noPartNumber
+	The symbols the parts list (BomExport::defaultQuery()) holds that have
+	no part number (#1878 B6): the manufacturer reference field the list
+	counts by. Left out are what the list leaves out: folio reports, the
+	junctions drawn as terminals (BomExport::junctionFilter()) and the
+	symbols set to be excluded from the bill of materials (#785). A terminal
+	strip has no part number of its own, so its terminals are each checked.
+*/
+ProjectCheck::Result ProjectCheck::noPartNumber(QETProject *project)
+{
+	Result result;
+	result.kind = Kind::NoPartNumber;
+	QSqlQuery query = project->dataBase()->newQuery(QStringLiteral(
+		"SELECT e.uuid, e.diagram_uuid, e.pos, e.definition, ei.label "
+		"FROM element e JOIN element_info ei ON ei.element_uuid = e.uuid "
+		"WHERE e.type IN ('simple', 'master', 'slave', 'terminal') "
+		"AND TRIM(COALESCE(ei.manufacturer_reference, '')) = '' "
+		"AND COALESCE(LOWER(TRIM(ei.exclude_from_bom)), '') NOT IN ('true', '1', 'yes', 'on') "
+		//The parts list's junctionFilter(): a terminal-type symbol with no
+		//label, designation or manufacturer is a dot where wires branch
+		"AND NOT (e.type = 'terminal' AND IFNULL(ei.label, '') = '' "
+		"AND IFNULL(ei.designation, '') = '' AND IFNULL(ei.manufacturer, '') = '') "
+		"ORDER BY (SELECT pos FROM diagram WHERE uuid = e.diagram_uuid), e.pos"));
+	QHash<QString, QString> names;
+	FolioTexts folios(project);
+	while (query.next()) {
+		const QString definition = query.value(3).toString();
+		auto name = names.constFind(definition);
+		if (name == names.constEnd())
+			name = names.insert(definition,
+								DeviceTypeCheck::symbolLocation(definition, project).name());
+		const QString label = query.value(4).toString().trimmed();
+		Finding finding;
+		finding.text = label.isEmpty()
+			? name.value()
+			//: %1 is the symbol's label, %2 its name, such as "QF1: Circuit breaker"
+			: tr("%1: %2").arg(label, name.value());
+		finding.places << symbolPlace(folios, QUuid(query.value(0).toString()),
+									  QUuid(query.value(1).toString()),
+									  query.value(2).toString(), label);
 		result.findings << finding;
 	}
 	return result;
