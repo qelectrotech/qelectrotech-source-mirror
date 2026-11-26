@@ -224,6 +224,16 @@
            </widget>
           </item>
           <item>
+           <widget class="QCheckBox" name="m_outline_light_wires_cb">
+            <property name="text">
+             <string>Outline white and very pale wires in black</string>
+            </property>
+            <property name="toolTip">
+             <string>Unchecked, a white wire cannot be seen on a white folio. Applies to every wire, drawing, printing and export.</string>
+            </property>
+           </widget>
+          </item>
+          <item>
            <widget class="QCheckBox" name="m_strip_wires">
             <property name="toolTip">
              <string>One stub per terminal which has a wire of its own, going up from the strip: what the wire is made of at its foot, where it lands at its top (12K1:A1). Cores of a cable are left out -- the cable is drawn below the strip.</string>

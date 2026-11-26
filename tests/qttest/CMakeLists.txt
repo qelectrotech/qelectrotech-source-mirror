@@ -2595,6 +2595,9 @@ qet_add_app_test(tst_cablelockedfields tst_cablelockedfields.cpp)
 # IEC 60757 wire colour codes: a code picked from the list sets the colour
 # text and the drawing (green-yellow striped); typed text stays text.
 qet_add_app_test(tst_conductorcolorcodes tst_conductorcolorcodes.cpp)
+# The setting that outlines white and very pale wires in black, so they
+# show on a white folio; off by default.
+qet_add_app_test(tst_outlinelightwires tst_outlinelightwires.cpp)
 
 # A function separated terminal block: a new wire on one side takes what
 # the separation lets through from the other -- the voltage / protocol and
