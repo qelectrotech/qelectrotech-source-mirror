@@ -605,6 +605,8 @@ qet_add_app_test(tst_placesuggestions tst_placesuggestions.cpp)
 
 # Renaming a plant or a location in the whole project, in one undo step.
 qet_add_app_test(tst_placerename tst_placerename.cpp)
+# Copying a plant with its folios under a new name, in one undo step.
+qet_add_app_test(tst_placecopy tst_placecopy.cpp)
 # A read-only project builds its lazy folios whole: shown, exported, written out.
 qet_add_app_test(tst_readonlyfolios tst_readonlyfolios.cpp)
 target_compile_definitions(tst_readonlyfolios PRIVATE
