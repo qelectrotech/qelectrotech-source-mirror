@@ -31,6 +31,7 @@
 #include "dynamicelementtextitemeditor.h"
 #include "elementarticleswidget.h"
 #include "elementinfowidget.h"
+#include "elementterminalswidget.h"
 #include "linksingleelementwidget.h"
 #include "masterpropertieswidget.h"
 #include "plclinkwidget.h"
@@ -400,6 +401,9 @@ void ElementPropertiesWidget::updateUi()
 		//The types its terminals give, in a project that takes them there
 	if (PotentialSourcesWidget::isWanted(m_element))
 		m_list_editor << new PotentialSourcesWidget(m_element, this);
+		//The names of the terminals and how they are drawn, this copy of
+		//the symbol's own
+	m_list_editor << new ElementTerminalsWidget(m_element, this);
 	m_list_editor << new DynamicElementTextItemEditor(m_element, this);
 
 		//Add each editors in tab widget

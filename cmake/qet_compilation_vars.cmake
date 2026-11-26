@@ -109,6 +109,7 @@ set(QET_RES_FILES
   ${QET_DIR}/sources/ui/elementinfopartwidget.ui
   ${QET_DIR}/sources/ui/elementinfowidget.ui
   ${QET_DIR}/sources/ui/terminalnumberingdialog.ui
+  ${QET_DIR}/sources/ui/terminallabeldialog.ui
   ${QET_DIR}/sources/ui/formulaassistantdialog.ui
   ${QET_DIR}/sources/ui/imagepropertieswidget.ui
   ${QET_DIR}/sources/ui/importelementdialog.ui
@@ -995,10 +996,14 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/ui/elementarticleswidget.h
   ${QET_DIR}/sources/ui/elementinfowidget.cpp
   ${QET_DIR}/sources/ui/elementinfowidget.h
+  ${QET_DIR}/sources/ui/elementterminalswidget.cpp
+  ${QET_DIR}/sources/ui/elementterminalswidget.h
   ${QET_DIR}/sources/ui/multielementinfowidget.cpp
   ${QET_DIR}/sources/ui/multielementinfowidget.h
   ${QET_DIR}/sources/ui/terminalnumberingdialog.cpp
   ${QET_DIR}/sources/ui/terminalnumberingdialog.h
+  ${QET_DIR}/sources/ui/terminallabeldialog.cpp
+  ${QET_DIR}/sources/ui/terminallabeldialog.h
   ${QET_DIR}/sources/ui/cablenumberingdialog.cpp
   ${QET_DIR}/sources/ui/cablenumberingdialog.h
   ${QET_DIR}/sources/ui/elementpropertieswidget.cpp
@@ -1123,6 +1128,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/undocommand/reportlinkkeycommand.h
   ${QET_DIR}/sources/undocommand/setautonumcontextcommand.cpp
   ${QET_DIR}/sources/undocommand/setautonumcontextcommand.h
+  ${QET_DIR}/sources/undocommand/setterminallabelcommand.cpp
+  ${QET_DIR}/sources/undocommand/setterminallabelcommand.h
   ${QET_DIR}/sources/undocommand/groupitemscommand.cpp
   ${QET_DIR}/sources/undocommand/groupitemscommand.h
   ${QET_DIR}/sources/undocommand/alignselectioncommand.cpp
