@@ -19,6 +19,7 @@
 
 #include <QDialog>
 #include <QGuiApplication>
+#include <QLayout>
 #include <QScreen>
 
 namespace {
@@ -53,6 +54,13 @@ void DialogPlacement::placeBelow(QWidget *dialog, const QWidget *anchor,
 {
 	if (!dialog || !anchor || dialog->isVisible())
 		return;
+
+		//The layout widens the dialog to fit its content when it is shown,
+		//as for a long variable name in the composite text dialog. Laid
+		//out now, the dialog is placed by that size, not by the size it
+		//was last closed with.
+	if (QLayout *layout = dialog->layout())
+		layout->activate();
 
 		//A window has its frame as soon as it exists on some platforms,
 		//as on macOS. On others, as on X11, the window manager adds the

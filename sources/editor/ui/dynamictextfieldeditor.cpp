@@ -474,6 +474,7 @@ void DynamicTextFieldEditor::on_m_composite_text_pb_clicked()
 		const auto ed = elementEditor()->elementScene()->elementData();
 		ctd.addCustomInfo(ed.withCustomInfo(ed.m_informations));
 	}
+	DialogPlacement::placeBelow(&ctd, ui->m_composite_text_pb);
 	if(ctd.exec()) {
 		QString ct = ctd.plainText();
 		for (int i = 0; i < m_parts.length(); i++) {
