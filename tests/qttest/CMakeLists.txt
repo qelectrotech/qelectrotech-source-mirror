@@ -734,6 +734,20 @@ qet_add_app_test(tst_terminalconductortext tst_terminalconductortext.cpp)
 # typed as %{key} in a composite text, and both follow its value.
 qet_add_app_test(tst_custominfotext tst_custominfotext.cpp)
 
+# The text alignment and composite text dialogs open next to what opened
+# them (issue #1952): under their cell of the Texts tab, under the Alignment
+# buttons of the symbol editor, and inside the screen under the button. Two
+# offscreen screens side by side, for the screen under the button.
+qet_add_app_test(tst_dialogplacement tst_dialogplacement.cpp)
+set(two_screens "${CMAKE_CURRENT_SOURCE_DIR}/fixtures/two_screens.json")
+set_tests_properties(tst_dialogplacement PROPERTIES ENVIRONMENT
+  "QT_QPA_PLATFORM=offscreen:configfile=${two_screens}")
+
+# The text alignment dialog applies a point as soon as it is picked (#1973).
+# The composite text dialog of the Texts tab saves its text only with OK
+# (#1979).
+qet_add_app_test(tst_textdialogs tst_textdialogs.cpp)
+
 # A symbol can define its own custom properties (discussion #561): every
 # placed copy has them, filled in or not, an empty one adds nothing to
 # the saved project, and a typed name becomes a key every version opens.

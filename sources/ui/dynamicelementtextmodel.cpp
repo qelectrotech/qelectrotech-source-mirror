@@ -28,12 +28,14 @@
 #include <qeticons.h>
 #include <qetinformation.h>
 #include <undocommand/addelementtextcommand.h>
+#include <utils/dialogplacement.h>
 #include "alignmenttextdialog.h"
 #include "compositetexteditdialog.h"
 
 #include <QColorDialog>
 #include <QComboBox>
 #include <QHash>
+#include <QKeyEvent>
 #include <QModelIndex>
 #include <QStandardItem>
 #include <QTimer>
@@ -1485,6 +1487,11 @@ void DynamicElementTextModel::setConnection(DynamicElementTextItem *deti, bool s
 		connection_list << connect(deti, &DynamicElementTextItem::textWidthChanged,[deti,this](){this->updateDataFromText(deti, textWidth);});
 		connection_list << connect(deti, &DynamicElementTextItem::textHeightChanged,[deti,this](){this->updateDataFromText(deti, textHeight);});
 		connection_list << connect(deti, &DynamicElementTextItem::compositeTextChanged, [deti, this]() {this->updateDataFromText(deti, compositeText);});
+		connection_list << connect(
+					deti, &DynamicElementTextItem::alignmentChanged,
+					[deti, this]() {
+						this->updateDataFromText(deti, txtAlignment);
+					});
 		m_hash_text_connect.insert(deti, connection_list);
 	}
 	else
@@ -1626,6 +1633,15 @@ void DynamicElementTextModel::updateDataFromText(DynamicElementTextItem *deti,
 			setSizeItems(qsi, deti);
 			break;
 		}
+		case txtAlignment:
+		{
+				//A text in a group has no alignment row
+			if (qsi->child(align_txt_row, 1))
+				qsi->child(align_txt_row, 1)->setData(
+							QVariant::fromValue(deti->alignment()),
+							Qt::UserRole+2);
+			break;
+		}
 	default:break;
 	}
 
@@ -1763,6 +1779,9 @@ QWidget *DynamicTextItemDelegate::createEditor(
 			
 			CompositeTextEditDialog *cted = new CompositeTextEditDialog(deti, parent);
 			cted->setObjectName("composite_text");
+				//Modal, as the alignment dialog: a click elsewhere in the
+				//view would close it, and only OK saves the text
+			cted->setModal(true);
 			return cted;
 		}
 		case DynamicElementTextModel::txtAlignment:
@@ -1777,8 +1796,16 @@ QWidget *DynamicTextItemDelegate::createEditor(
 			if(!deti)
 				break;
 			
-			AlignmentTextDialog *atd = new AlignmentTextDialog(deti->alignment(), parent);
+				//On the point of the cell, which may be waiting for Apply
+			AlignmentTextDialog *atd = new AlignmentTextDialog(
+						index.data(Qt::UserRole+2).value<Qt::Alignment>(),
+						parent);
 			atd->setObjectName("alignment_text");
+				//Save each point when it is picked, as the spin boxes
+				//of this view do: the dialog stays open to try another
+			auto *self = const_cast<DynamicTextItemDelegate *>(this);
+			connect(atd, &AlignmentTextDialog::alignmentChanged, self,
+					[self, atd]() { emit self->commitData(atd); });
 			return atd;
 		}
 		case DynamicElementTextModel::size:
@@ -1972,6 +1999,10 @@ void DynamicTextItemDelegate::setModelData(
 				{
 					
 					CompositeTextEditDialog *cted = static_cast<CompositeTextEditDialog *>(editor);
+						//The view also saves this dialog when Cancel or the
+						//close button hides it: only OK changes the text
+					if (cted->result() != QDialog::Accepted)
+						return;
 					
 					QString edited_text = cted->plainText();
 					QString assigned_text;
@@ -2021,6 +2052,26 @@ void DynamicTextItemDelegate::setModelData(
 	QStyledItemDelegate::setModelData(editor, model, index);
 }
 
+/**
+	@brief DynamicTextItemDelegate::updateEditorGeometry
+	The alignment and composite text editors are dialogs, windows of their
+	own: the default geometry, the cell's position inside the table,
+	would put them near the corner of the screen. They open under their
+	cell instead.
+*/
+void DynamicTextItemDelegate::updateEditorGeometry(
+		QWidget *editor,
+		const QStyleOptionViewItem &option,
+		const QModelIndex &index) const
+{
+	if (editor->isWindow()) {
+		DialogPlacement::placeBelow(editor, editor->parentWidget(),
+									option.rect);
+		return;
+	}
+	QStyledItemDelegate::updateEditorGeometry(editor, option, index);
+}
+
 bool DynamicTextItemDelegate::eventFilter(QObject *object, QEvent *event)
 {
 	
@@ -2059,7 +2110,25 @@ bool DynamicTextItemDelegate::eventFilter(QObject *object, QEvent *event)
 		QComboBox *qcb = static_cast<QComboBox *>(object);
 		connect(qcb, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), [this,qcb](){emit commitData(qcb);});
 	}
-	
+
+	//The view closes an editor at Return or Tab, which the text box of
+	//the composite text dialog leaves to it with Ctrl. Only OK saves that
+	//dialog, so the typed text would be lost: keep the dialog open.
+	if (object->objectName() == "composite_text"
+		&& event->type() == QEvent::KeyPress)
+	{
+		switch (static_cast<QKeyEvent *>(event)->key())
+		{
+			case Qt::Key_Return:
+			case Qt::Key_Enter:
+			case Qt::Key_Tab:
+			case Qt::Key_Backtab:
+				return false;
+			default:
+				break;
+		}
+	}
+
 	return QStyledItemDelegate::eventFilter(object, event);
 }
 
