@@ -136,24 +136,32 @@ class tst_dialogplacement : public QObject
 	static QRect dialogOpenedBy(QPushButton *button, QSize *inside = nullptr)
 	{
 		QRect frame;
+		bool asked = false;
 		QElapsedTimer waited;
 		waited.start();
 		QTimer poll;
 		QObject::connect(&poll, &QTimer::timeout, [&]() {
 			auto *dialog = qobject_cast<QDialog *>(
 						QApplication::activeModalWidget());
-			if (!dialog)
+			if (!dialog || asked)
 				return;
-			const bool shown = dialog->windowHandle()
-					&& dialog->windowHandle()->isExposed();
+			QWindow *window = dialog->windowHandle();
+			const bool shown = window && window->isExposed();
 			if (!shown && waited.elapsed() < 5000)
 				return;
-			if (shown && qobject_cast<Dialog *>(dialog)) {
-				frame = dialog->frameGeometry();
-				if (inside)
-					*inside = dialog->size();
-			}
-			dialog->reject();
+				//macOS centers a modal dialog as it opens it, and Qt puts
+				//it back right after; this timer can fire in between. A
+				//queued call runs once both are done. It reads the window,
+				//which the dialog's own geometry may not follow yet.
+			asked = true;
+			QMetaObject::invokeMethod(dialog, [&, dialog, window, shown]() {
+				if (shown && qobject_cast<Dialog *>(dialog)) {
+					frame = window->frameGeometry();
+					if (inside)
+						*inside = window->geometry().size();
+				}
+				dialog->reject();
+			}, Qt::QueuedConnection);
 		});
 		poll.start(10);
 		button->click();
