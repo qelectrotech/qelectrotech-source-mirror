@@ -296,14 +296,19 @@ void ConductorPropertiesWidget::selectPotentialType(const QString &name)
 	The user picked a type in the potential type choice: the conductor is
 	given the core definition of that type -- the wire colour, the
 	section and the kind of wire -- when the project keeps those
-	(@see PotentialTypes::showCores()) and the conductor is not a core of
-	a cable, whose cable is what says what its cores are. "None", and a
-	name the project does not list, leave the three fields as they are.
+	(@see PotentialTypes::showCores()). "None", and a name the project
+	does not list, leave the three fields as they are.
+
+	The three fields are filled whatever conductor this widget shows: an
+	edit reaches every conductor of the selection and of its potential,
+	and one of them being a core of a cable must not keep the others from
+	being given the definition. A core keeps the three its cable gives
+	it (@see ConductorProperties::applyChanges).
 	@param index : the chosen item of the potential type choice
 */
 void ConductorPropertiesWidget::potentialTypeChosen(int index)
 {
-	if (!m_potential_types.showCores() || !m_properties.m_cable_uuid.isNull()) {
+	if (!m_potential_types.showCores()) {
 		return;
 	}
 	PotentialType type;

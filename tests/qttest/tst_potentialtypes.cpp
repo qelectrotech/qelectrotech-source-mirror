@@ -23,6 +23,7 @@
 #include "qetgraphicsitem/terminal.h"
 #include "qetresult.h"
 #include "qetproject.h"
+#include "ui/configpage/configpages.h"
 #include "ui/conductorpropertieseditorwidget.h"
 #include "ui/conductorpropertieswidget.h"
 #include "ui/potentialtypeswidget.h"
@@ -1055,8 +1056,9 @@ class tst_potentialtypes : public QObject
 
 		/// Choosing a type for a conductor gives it the core definition of
 		/// that type. "None" keeps the three fields as they are, a project
-		/// which shows no core definitions gives nothing away, and a core
-		/// of a cable keeps what its cable says about it
+		/// which shows no core definitions gives nothing away, and the
+		/// fields are filled whatever conductor is shown: the edit reaches
+		/// the other conductors of the selection as well
 		void theChoiceGivesTheConductorItsCoreDefinition()
 		{
 			ConductorProperties p;
@@ -1090,6 +1092,12 @@ class tst_potentialtypes : public QObject
 			QCOMPARE(plain.properties().m_wire_color, QStringLiteral("BN"));
 			QCOMPARE(plain.properties().m_conductor_type, QStringLiteral("H05V-K"));
 
+				//A core of a cable: the three fields are filled here
+				//too, so the choice reaches the other conductors of the
+				//edit, and a core keeps the three its cable gives it
+				//when the edit is written down (@see
+				//ConductorProperties::applyChanges, tst_conductorapplychanges
+				//and the panel tests further down)
 			ConductorProperties core = p;
 			core.m_cable_uuid = QUuid::createUuid();
 			ConductorPropertiesWidget cable(core);
@@ -1099,8 +1107,8 @@ class tst_potentialtypes : public QObject
 			QVERIFY(cable_index >= 0);
 			cable_cb->setCurrentIndex(cable_index);
 			QVERIFY(QMetaObject::invokeMethod(cable_cb, "activated", Q_ARG(int, cable_index)));
-			QCOMPARE(cable.properties().m_wire_color, QStringLiteral("BN"));
-			QCOMPARE(cable.properties().m_conductor_type, QStringLiteral("H05V-K"));
+			QCOMPARE(cable.properties().m_wire_color, QStringLiteral("GNYE"));
+			QCOMPARE(cable.properties().m_conductor_type, QStringLiteral("H07V-K"));
 		}
 
 		/// The table keeps the core definition of each type, a value typed
@@ -1195,7 +1203,35 @@ class tst_potentialtypes : public QObject
 			QCOMPARE(PotentialTypes::fromXml(document.documentElement())
 					 .types().first().wire_color, QStringLiteral("GNYE"));
 		}
-		/// The selection properties panel offers the potential types of
+		/// Make a conductor look like a core of a cable: the cable says what
+	/// its section, colour and type are
+	static void makeCore(Conductor *c)
+	{
+		ConductorProperties p = c->properties();
+		p.m_cable_uuid = QUuid::createUuid();
+		p.m_cable_slot = 1;
+		p.m_wire_color = QStringLiteral("BN");
+		p.m_wire_section = QStringLiteral("2.5 mm2");
+		p.m_conductor_type = QStringLiteral("H05V-K");
+		c->setProperties(p);
+	}
+
+	/// Choose a potential type in a panel, the way a user does: the item
+	/// of the choice, and the change of the current index with it
+	bool chooseType(QObject &panel, const QString &name)
+	{
+		QComboBox *cb = typeCombo(panel);
+		if (!cb)
+			return false;
+		const int index = cb->findData(name);
+		if (index < 0)
+			return false;
+		cb->setCurrentIndex(index);
+		return QMetaObject::invokeMethod(cb, "activated",
+										 Q_ARG(int, index));
+	}
+
+	/// The selection properties panel offers the potential types of
 		/// the project, the way the conductor's own dialog does, and
 		/// choosing one gives the conductor the core definition of it
 		void thePanelOffersThePotentialTypes()
@@ -1217,6 +1253,78 @@ class tst_potentialtypes : public QObject
 			QCOMPARE(c->properties().m_wire_color, QStringLiteral("GNYE"));
 			QCOMPARE(c->properties().m_wire_section, QStringLiteral("1.5 mm2"));
 			QCOMPARE(c->properties().m_conductor_type, QStringLiteral("H07V-K"));
+		}
+
+		/// A core of a cable takes its section, colour and type from its
+		/// cable: choosing a potential type writes them to the other
+		/// conductors of the edit and never to a core, whether the core
+		/// is reached through the potential or selected beside a wire
+		void aCableCoreTakesNothingFromTheChoice()
+		{
+			QSettings().setValue(
+				QStringLiteral("diagrameditor/conductor_apply_all"), true);
+			for (bool core_selected : {false, true}) {
+				QETProject project(QFINDTESTDATA("fixtures/every_feature.qet"));
+				project.setPotentialTypes(coreTypes());
+				Conductor *free_wire = wire(project);
+				QVERIFY(free_wire
+						&& free_wire->properties().m_cable_uuid.isNull());
+				const QSet<Conductor *> others =
+						free_wire->relatedPotentialConductors();
+				QVERIFY2(!others.isEmpty(),
+						 "the fixture wire shares its potential with others");
+				Conductor *core = *others.constBegin();
+				makeCore(core);
+
+				QList<Conductor *> selection{free_wire};
+				if (core_selected)
+					selection << core;
+				ConductorPropertiesEditorWidget panel(selection);
+				panel.setLiveEdit(true);
+				QVERIFY(chooseType(panel, QStringLiteral("N")));
+
+				QCOMPARE(free_wire->properties().m_wire_color,
+						 QStringLiteral("GNYE"));
+				QCOMPARE(free_wire->properties().m_wire_section,
+						 QStringLiteral("1.5 mm2"));
+				QCOMPARE(free_wire->properties().m_conductor_type,
+						 QStringLiteral("H07V-K"));
+				QCOMPARE(core->properties().m_wire_color,
+						 QStringLiteral("BN"));
+				QCOMPARE(core->properties().m_wire_section,
+						 QStringLiteral("2.5 mm2"));
+				QCOMPARE(core->properties().m_conductor_type,
+						 QStringLiteral("H05V-K"));
+			}
+		}
+
+		/// The choice reaches the wires of the edit even when the panel
+		/// shows a core of a cable first
+		void theChoiceReachesTheWiresWhenACoreIsShown()
+		{
+			QETProject project(QFINDTESTDATA("fixtures/every_feature.qet"));
+			project.setPotentialTypes(coreTypes());
+			Conductor *free_wire = wire(project);
+			QVERIFY(free_wire);
+			const QSet<Conductor *> others =
+					free_wire->relatedPotentialConductors();
+			QVERIFY(!others.isEmpty());
+			QList<Conductor *> pair{free_wire, *others.constBegin()};
+				//The panel shows the top left conductor first
+			ConductorMultiEdit::sortByPosition(pair, [](Conductor *c) {
+				return c->sceneBoundingRect().topLeft(); });
+			makeCore(pair.first());
+
+			ConductorPropertiesEditorWidget panel(pair);
+			panel.setLiveEdit(true);
+			QVERIFY(chooseType(panel, QStringLiteral("N")));
+
+			QCOMPARE(pair.first()->properties().m_wire_color,
+					 QStringLiteral("BN"));
+			QCOMPARE(pair.last()->properties().m_wire_color,
+					 QStringLiteral("GNYE"));
+			QCOMPARE(pair.last()->properties().m_wire_section,
+					 QStringLiteral("1.5 mm2"));
 		}
 
 };
