@@ -115,6 +115,10 @@ class Element : public QetGraphicsItem
 		void elementInfoChange(
 				DiagramContext old_info,
 				DiagramContext new_info);
+			/// This copy of the symbol gave one of its terminals a name or
+			/// a drawing of its own, or took it back off -- from the
+			/// properties, from an undo or from anywhere else
+		void terminalLabelsChanged();
 		void textAdded(DynamicElementTextItem *deti);
 		void textRemoved(DynamicElementTextItem *deti);
 		void textsGroupAdded(ElementTextItemGroup *group);
@@ -191,7 +195,8 @@ class Element : public QetGraphicsItem
 		void setTerminalLabel(const QUuid &terminal, const TerminalLabel &label);
 			/// Take back what the definition says about the terminal
 			/// @p terminal of this placed symbol
-		void removeTerminalLabel(const QUuid &terminal);		void setMovable(bool movable) override;
+		void removeTerminalLabel(const QUuid &terminal);
+		void setMovable(bool movable) override;
 		//@kind_information_ is used to store more information
 		//about the herited class like contactelement for know
 		// kind of contact (simple tempo) or number of contact show by the element.

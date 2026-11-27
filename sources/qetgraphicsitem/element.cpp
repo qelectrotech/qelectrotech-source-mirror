@@ -2966,6 +2966,7 @@ void Element::setTerminalLabel(const QUuid &terminal, const TerminalLabel &label
 	}
 		//ownValuesXml() writes the labels, so the store follows them
 	scheduleTextsStore();
+	emit terminalLabelsChanged();
 }
 
 /**
@@ -2990,6 +2991,7 @@ void Element::removeTerminalLabel(const QUuid &terminal)
 	}
 		//ownValuesXml() writes the labels, so the store follows them
 	scheduleTextsStore();
+	emit terminalLabelsChanged();
 }
 
 /**

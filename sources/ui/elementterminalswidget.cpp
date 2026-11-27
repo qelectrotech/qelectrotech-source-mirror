@@ -76,7 +76,30 @@ ElementTerminalsWidget::ElementTerminalsWidget(Element *element, QWidget *parent
 
 void ElementTerminalsWidget::setElement(Element *element)
 {
+	if (m_element == element)
+		return;
+	if (m_element)
+		disconnect(m_element.data(), &Element::terminalLabelsChanged,
+				   this, &ElementTerminalsWidget::terminalLabelsChanged);
 	m_element = element;
+	if (m_element)
+		connect(m_element.data(), &Element::terminalLabelsChanged,
+				this, &ElementTerminalsWidget::terminalLabelsChanged);
+	updateUi();
+}
+
+/**
+	@brief ElementTerminalsWidget::terminalLabelsChanged
+	The symbol's terminals were given their names from outside this
+	editor: an undo or a redo on the drawing, or the properties dialog
+	applying its own step. What the rows show is not what the symbol has
+	any more, so they are filled again -- a row that still showed a name
+	the symbol no longer has would put it back with the next edit.
+*/
+void ElementTerminalsWidget::terminalLabelsChanged()
+{
+	if (m_pushing)
+		return;
 	updateUi();
 }
 
@@ -178,6 +201,7 @@ void ElementTerminalsWidget::nameChanged(int row)
 	if (row < 0 || row >= m_rows.size() || !m_rows.at(row).name->isEnabled())
 		return;
 	m_rows[row].label.m_name = m_rows.at(row).name->text();
+	m_rows[row].touched = true;
 	if (m_live_edit)
 		apply();
 }
@@ -191,6 +215,7 @@ void ElementTerminalsWidget::showChanged(int row)
 	if (row < 0 || row >= m_rows.size())
 		return;
 	m_rows[row].label.m_show_name = m_rows.at(row).show->isChecked();
+	m_rows[row].touched = true;
 	if (m_live_edit)
 		apply();
 }
@@ -210,6 +235,7 @@ void ElementTerminalsWidget::fontClicked(int row)
 		return;
 
 	m_rows[row].label = dialog.label();
+	m_rows[row].touched = true;
 	showRowValues(row);
 	if (m_live_edit)
 		apply();
@@ -226,6 +252,7 @@ void ElementTerminalsWidget::resetClicked(int row)
 	if (row < 0 || row >= m_rows.size() || !m_rows.at(row).terminal)
 		return;
 	m_rows[row].label = m_rows.at(row).terminal->definitionLabel();
+	m_rows[row].touched = true;
 	showRowValues(row);
 	if (m_live_edit)
 		apply();
@@ -240,8 +267,16 @@ void ElementTerminalsWidget::apply()
 {
 	if (!m_element || !m_element->diagram())
 		return;
-	if (QUndoCommand *undo = associatedUndo())
-		m_element->diagram()->undoStack().push(undo);
+	QUndoCommand *undo = associatedUndo();
+	if (!undo)
+		return;
+		//The rows show what the symbol shows once the step is taken: the
+		//signal it makes must not rebuild them under the typing
+	m_pushing = true;
+	m_element->diagram()->undoStack().push(undo);
+	m_pushing = false;
+	for (Row &row : m_rows)
+		row.touched = false;
 }
 
 /**
@@ -261,6 +296,11 @@ QUndoCommand *ElementTerminalsWidget::associatedUndo() const
 	QList<SetTerminalLabelCommand::Change> changes;
 	for (const Row &entry : std::as_const(m_rows)) {
 		if (!entry.terminal)
+			continue;
+			//A row the user has not changed cannot change the symbol,
+			//even when it shows something the symbol no longer has after
+			//an undo from the drawing
+		if (!entry.touched)
 			continue;
 		const QUuid uuid = entry.terminal->stableUuid();
 		const auto found = labels.constFind(uuid);

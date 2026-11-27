@@ -59,11 +59,15 @@ class ElementTerminalsWidget : public AbstractElementPropertiesEditorWidget
 
 	private:
 		/// One row of the table: the terminal it edits, the values the
-		/// row holds so far, and the widgets it is made of
+		/// row holds so far, whether the user has changed them since the
+		/// row was filled, and the widgets it is made of
 		struct Row
 		{
 			QPointer<Terminal> terminal;
 			TerminalLabel label;
+				/// Set when the user changes the row, cleared when it is
+				/// filled again: only such a row can change the symbol
+			bool touched = false;
 			QCheckBox *show = nullptr;
 			QLineEdit *name = nullptr;
 			QPushButton *font = nullptr;
@@ -76,11 +80,17 @@ class ElementTerminalsWidget : public AbstractElementPropertiesEditorWidget
 		void showChanged(int row);
 		void fontClicked(int row);
 		void resetClicked(int row);
+			/// The symbol changed from outside: an undo, a redo, the
+			/// other properties of it -- show what it has now
+		void terminalLabelsChanged();
 
 	private:
 		QTableWidget *m_table = nullptr;
 		QLabel *m_empty_lb = nullptr;
 		QList<Row> m_rows;
+			/// Set while this editor pushes its own step, so the signal
+			/// it makes does not rebuild the rows under the typing
+		bool m_pushing = false;
 };
 
 #endif // ELEMENTTERMINALSWIDGET_H
