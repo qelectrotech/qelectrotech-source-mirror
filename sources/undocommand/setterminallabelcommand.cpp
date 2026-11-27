@@ -20,8 +20,32 @@
 
 #include <qetgraphicsitem/element.h>
 
+#include <QDateTime>
+
 #include <algorithm>
 #include <utility>
+
+namespace {
+	/// Two steps merge into one only when they are this close together:
+	/// a burst of typing is one step, an edit a second later is another
+	constexpr int merge_window_ms = 1000;
+
+	/// Whether @p one and @p two are steps on the same terminals
+	bool sameTerminals(const QList<SetTerminalLabelCommand::Change> &one,
+					   const QList<SetTerminalLabelCommand::Change> &two)
+	{
+		if (one.size() != two.size())
+			return false;
+		QList<QUuid> first, second;
+		for (const SetTerminalLabelCommand::Change &change : one)
+			first << change.terminal;
+		for (const SetTerminalLabelCommand::Change &change : two)
+			second << change.terminal;
+		std::sort(first.begin(), first.end());
+		std::sort(second.begin(), second.end());
+		return first == second;
+	}
+}
 
 /**
 	@brief SetTerminalLabelCommand::SetTerminalLabelCommand
@@ -37,7 +61,8 @@ SetTerminalLabelCommand::SetTerminalLabelCommand(Element *element,
 												 QUndoCommand *parent) :
 	QUndoCommand(parent),
 	m_element(element),
-	m_changes(changes)
+	m_changes(changes),
+	m_last_change(QDateTime::currentMSecsSinceEpoch())
 {
 	setText(QObject::tr("Change the name or the drawing of a terminal"));
 }
@@ -65,6 +90,15 @@ bool SetTerminalLabelCommand::mergeWith(const QUndoCommand *other)
 	const auto *command = dynamic_cast<const SetTerminalLabelCommand *>(other);
 	if (!command || command->m_element != m_element)
 		return false;
+		//One burst of typing on the same terminals: another row of the
+		//properties, or an edit that comes later than the window, is a
+		//step of its own
+	if (!sameTerminals(m_changes, command->m_changes))
+		return false;
+	const qint64 now = QDateTime::currentMSecsSinceEpoch();
+	if (now - m_last_change > merge_window_ms)
+		return false;
+	m_last_change = now;
 
 	for (const Change &change : std::as_const(command->m_changes)) {
 		auto found = std::find_if(m_changes.begin(), m_changes.end(),

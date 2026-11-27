@@ -64,6 +64,9 @@ class SetTerminalLabelCommand : public QUndoCommand
 	private:
 		QPointer<Element> m_element;
 		QList<Change> m_changes;
+			/// When m_changes last grew, so a later edit on the same
+			/// terminal is a step of its own (@see mergeWith())
+		qint64 m_last_change = 0;
 };
 
 #endif // SETTERMINALLABELCOMMAND_H
