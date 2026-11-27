@@ -19,6 +19,7 @@
 
 #include <qetproject.h>
 #include "bridge.h"
+#include "bridgemanager.h"
 #include <TerminalStrip/terminalstripbridge.h>
 
 #include <QCheckBox>
@@ -360,6 +361,14 @@ QString BridgeCreateDialog::bridgeName() const {
 */
 QString BridgeCreateDialog::problem() const
 {
+		//A bridge lies at one stage: a line crossing terminals of
+		//different stages cannot be built, whatever else the choice
+		//at hand would say
+	if (const QString stage_problem_ = BridgeManager::stageProblem(m_crossings);
+		!stage_problem_.isEmpty()) {
+		return stage_problem_;
+	}
+
 	const int needed = m_crossings.size();
 
 		//The window of a bridge already drawn: a limit below what it

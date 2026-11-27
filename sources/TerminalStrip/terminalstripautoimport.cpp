@@ -25,6 +25,8 @@
 #include <utils/qetsettings.h>
 #include "UndoCommand/addterminalstripcommand.h"
 #include "UndoCommand/addterminaltostripcommand.h"
+#include "UndoCommand/changeterminallevel.h"
+#include "UndoCommand/groupterminalscommand.h"
 #include "UndoCommand/sortterminalstripcommand.h"
 #include "physicalterminal.h"
 #include "realterminal.h"
@@ -128,6 +130,96 @@ namespace
  * QetSettings::stripSortedByLabel() is on (see
  * SortTerminalStripCommand::labelOrderLessThan).
  */
+/**
+ * @brief groupByStages
+ * The stages of a block are one after the other (2, 1, 0 or 0, 1, 2):
+ * the terminals of a strip whose stages continue one another and which
+ * are multi-level belong to the same block. This is the recognition the
+ * terminal page does when a stage is set, here for every strip of the
+ * project -- a terminal which an import action has just put into a
+ * strip comes out grouped with the block its stage belongs to.
+ * Pushes one command per block it joins, as one undoable step.
+ * @return the number of terminals joined to a block
+ */
+static int groupByStages(QETProject *project)
+{
+	if (!project) {
+		return 0;
+	}
+
+		//First work out the joins without touching the project: the
+		//stages of a block stay one after the other, so "inside the
+		//block" is "between its lowest and its highest stage"
+	struct Join
+	{
+		TerminalStrip *strip{nullptr};
+		QSharedPointer<PhysicalTerminal> receiver;
+		QVector<QSharedPointer<RealTerminal>> add;
+	};
+	QVector<Join> joins;
+
+	for (auto strip_ : project->terminalStrip())
+	{
+		if (!strip_) {
+			continue;
+		}
+		QSharedPointer<PhysicalTerminal> open_;
+		int min_ = 0, max_ = 0;
+
+		for (const auto &real_ : strip_->realTerminals())
+		{
+			if (!real_ || !real_->element()) {
+				open_.clear();
+				continue;
+			}
+			const bool multi_ = real_->element()->elementData().terminalForm()
+					== ElementData::TFormMultiLevel;
+			if (!multi_) {
+				open_.clear();
+				continue;
+			}
+			const int stage_ = real_->stage();
+
+			if (open_ && open_ == real_->physicalTerminal()) {
+					//Walking through a block which is one already
+				min_ = qMin(min_, stage_);
+				max_ = qMax(max_, stage_);
+				continue;
+			}
+			if (open_) {
+				const bool within_ = stage_ >= min_ && stage_ <= max_;
+				if (!within_ && (stage_ == min_ - 1 || stage_ == max_ + 1)) {
+					joins.append({strip_, open_, {real_}});
+					min_ = qMin(min_, stage_);
+					max_ = qMax(max_, stage_);
+					continue;
+				}
+			}
+				//This terminal starts the block of its own
+			open_ = real_->physicalTerminal();
+			min_ = max_ = stage_;
+		}
+	}
+
+	if (joins.isEmpty()) {
+		return 0;
+	}
+
+	auto undo_ = project->undoStack();
+	undo_->beginMacro(QCoreApplication::translate("TerminalStripAutoImport",
+												  "Group the terminals by their stages"));
+	for (const auto &join_ : std::as_const(joins)) {
+		undo_->push(new GroupTerminalsCommand(join_.strip, join_.receiver, join_.add));
+			//The stages of a block lie foot first -- the same order the
+			//terminal page gives them when it sets a stage
+		for (const auto &real_ : join_.add) {
+			undo_->push(new ChangeTerminalLevel(join_.strip, real_, real_->stage()));
+		}
+	}
+	undo_->endMacro();
+	return joins.size();
+}
+
 TerminalStripAutoImport::ImportResult TerminalStripAutoImport::importFreeTerminals(
 	QETProject *project, bool move_placed)
 {
@@ -241,6 +333,9 @@ TerminalStripAutoImport::ImportResult TerminalStripAutoImport::importFreeTermina
 		}
 	}
 	if (plans.isEmpty()) {
+			//Nothing to assign: the stages may still say that some of
+			//the terminals of a strip belong to one block
+		groupByStages(project);
 		return ImportResult{};
 	}
 
@@ -292,6 +387,10 @@ TerminalStripAutoImport::ImportResult TerminalStripAutoImport::importFreeTermina
 			undo_->push(new SortTerminalStripCommand(strip_));
 		}
 	}
+
+		//The terminals an import has just put together come out
+		//grouped when their stages say they are one block
+	groupByStages(project);
 
 	undo_->endMacro();
 	ImportResult result_;

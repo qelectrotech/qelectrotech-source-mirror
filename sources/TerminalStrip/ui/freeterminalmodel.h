@@ -39,7 +39,8 @@ class FreeTerminalModel : public QAbstractTableModel
 			XRef = 1,
 			Type = 2,
 			Function = 3,
-			Led = 4,
+			Form = 4,
+			Led = 5,
 			Invalid = 99
 		};
 

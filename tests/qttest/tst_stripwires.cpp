@@ -140,6 +140,7 @@ private slots:
 	void theStubGrowsWithWhatTheWireIsMadeOf();
 	void aTwinSleeveGetsAWireForEachOfItsAdern();
 	void allTheTargetsStandAtOneHeight();
+	void theFormChoosesTheHolesAndThePart();
 	void theAdapterSaysWhatTheTerminalSays();
 };
 
@@ -392,6 +393,45 @@ void tst_stripwires::allTheTargetsStandAtOneHeight()
 	QVERIFY2(qAbs(long_foot - short_foot) <= 3,
 		 qPrintable(QStringLiteral("the targets stand at %1 and %2")
 				.arg(long_foot).arg(short_foot)));
+}
+
+/**
+ * The form of a terminal decides how many wire holes it has and which
+ * part it draws: a 2-conductor through terminal keeps one hole on each
+ * side (the drawing as it always was), a 3-conductor gets two above and
+ * one under, a 4-conductor and a sensor/actuator terminal two and two.
+ * A fuse or sectionable form draws its part even when the function of
+ * the terminal says nothing about it -- and for those two the form wins
+ * over the function.
+ */
+void tst_stripwires::theFormChoosesTheHolesAndThePart()
+{
+	using TerminalStripDrawer::Helpers::entryRowsForForm;
+	using TerminalStripDrawer::Helpers::effectiveType;
+
+	QCOMPARE(entryRowsForForm(ElementData::TFormNone).first, 1);
+	QCOMPARE(entryRowsForForm(ElementData::TFormNone).second, 1);
+	QCOMPARE(entryRowsForForm(ElementData::TFormFeedThrough2).first, 1);
+	QCOMPARE(entryRowsForForm(ElementData::TFormFeedThrough2).second, 1);
+	QCOMPARE(entryRowsForForm(ElementData::TFormFeedThrough3).first, 2);
+	QCOMPARE(entryRowsForForm(ElementData::TFormFeedThrough3).second, 1);
+	QCOMPARE(entryRowsForForm(ElementData::TFormFeedThrough4).first, 2);
+	QCOMPARE(entryRowsForForm(ElementData::TFormFeedThrough4).second, 2);
+	QCOMPARE(entryRowsForForm(ElementData::TFormSensorActuator).first, 2);
+	QCOMPARE(entryRowsForForm(ElementData::TFormSensorActuator).second, 2);
+	QCOMPARE(entryRowsForForm(ElementData::TFormPluggable).first, 1);
+	QCOMPARE(entryRowsForForm(ElementData::TFormPluggable).second, 1);
+	QCOMPARE(entryRowsForForm(ElementData::TFormMultiLevel).first, 1);
+	QCOMPARE(entryRowsForForm(ElementData::TFormMultiLevel).second, 1);
+
+	QCOMPARE(effectiveType(ElementData::TTGeneric, ElementData::TFormFuse),
+			 ElementData::TTFuse);
+	QCOMPARE(effectiveType(ElementData::TTGeneric, ElementData::TFormSectionable),
+			 ElementData::TTSectional);
+	QCOMPARE(effectiveType(ElementData::TTGround, ElementData::TFormNone),
+			 ElementData::TTGround);
+	QCOMPARE(effectiveType(ElementData::TTGround, ElementData::TFormFuse),
+			 ElementData::TTFuse);
 }
 
 void tst_stripwires::theStubGrowsWithWhatTheWireIsMadeOf()

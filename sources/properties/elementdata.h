@@ -224,6 +224,25 @@ class ElementData : public PropertiesInterface
 		};
 		Q_ENUM(TerminalFunction)
 
+			///What a terminal is built as: a through terminal, a
+			///multi-level one... A second choice beside the function type,
+			///kept apart so that symbols written before this list existed
+			///load and look as they did (TFormNone).
+		enum TerminalForm {
+			TFormNone,           ///< not specified
+			TFormFeedThrough2,   ///< 2-conductor feed-through terminal
+			TFormFeedThrough3,
+			TFormFeedThrough4,
+			TFormMultiLevel,     ///< multi-level terminal
+			TFormSectionable,
+			TFormFuse,
+			TFormBlock,          ///< terminal block: too variable for a
+			                     ///< drawing of its own
+			TFormSensorActuator,
+			TFormPluggable
+		};
+		Q_ENUM(TerminalForm)
+
 		/**
 		 * @brief The SlaveContactGroup struct
 		 * Defines a contact group that a master element provides for slave elements.
@@ -270,6 +289,10 @@ class ElementData : public PropertiesInterface
 		void setTerminalFunction(ElementData::TerminalFunction t_function);
 		ElementData::TerminalFunction terminalFunction() const;
 
+		void setTerminalForm(ElementData::TerminalForm t_form);
+		ElementData::TerminalForm terminalForm() const;
+		bool terminalFormIsOverrided() const;
+
 		void setTerminalLED(bool led);
 		bool terminalLed() const;
 		bool terminalPropertiesIsOverrided() const;
@@ -305,6 +328,10 @@ class ElementData : public PropertiesInterface
 		static ElementData::TerminalType terminalTypeFromString(const QString &string);
 		static QString translatedTerminalType(ElementData::TerminalType type);
 
+		static QString terminalFormToString(ElementData::TerminalForm form);
+		static ElementData::TerminalForm terminalFormFromString(const QString &string);
+		static QString translatedTerminalForm(ElementData::TerminalForm form);
+
 		static QString terminalFunctionToString(ElementData::TerminalFunction function);
 		static ElementData::TerminalFunction terminalFunctionFromString(const QString &string);
 		static QString translatedTerminalFunction(ElementData::TerminalFunction function);
@@ -332,6 +359,7 @@ class ElementData : public PropertiesInterface
 		ElementData::SlaveState m_slave_state = ElementData::NO;
 
 		ElementData::TerminalType     m_terminal_type     = ElementData::TTGeneric;
+		ElementData::TerminalForm     m_terminal_form     = ElementData::TFormNone;
 			/// Kind informations this class does not know (a corner, a
 			/// drawing aid, the row of a terminal...): read and written
 			/// back as they were, so saving in the editor keeps them
@@ -349,6 +377,9 @@ class ElementData : public PropertiesInterface
 	private:
 		ElementData::TerminalType m_override_terminal_type = ElementData::TTGeneric;
 		bool m_terminal_type_is_override = false;
+
+		ElementData::TerminalForm m_override_terminal_form = ElementData::TFormNone;
+		bool m_terminal_form_is_override = false;
 
 		ElementData::TerminalFunction m_override_terminal_function = ElementData::TFGeneric;
 		bool m_terminal_function_is_override = false;

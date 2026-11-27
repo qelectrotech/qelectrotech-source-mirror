@@ -271,6 +271,16 @@ namespace TerminalStripDrawer
 		return m_real ? m_real->widthMm() : 0;
 	}
 
+	int TrueRealTerminal::stage() const
+	{
+		return m_real ? m_real->stage() : 0;
+	}
+
+	ElementData::TerminalForm TrueRealTerminal::form() const
+	{
+		return m_real ? m_real->form() : ElementData::TFormNone;
+	}
+
 	QString TrueRealTerminal::catalogEntry() const
 	{
 		return m_real ? m_real->catalogEntry() : QString();

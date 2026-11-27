@@ -1464,6 +1464,43 @@ void Helpers::drawTypeSymbol(QPainter *painter, const QRectF &box,
 	::TerminalStripDrawer::drawTypeSymbol(painter, box, type, led);
 }
 
+/**
+ * @brief entryRowsForForm
+ * How the wire entries of a terminal are shared between the top and the
+ * bottom of its body, by its form (@sa Helpers::entryRowsForForm).
+ */
+QPair<int, int> Helpers::entryRowsForForm(ElementData::TerminalForm form)
+{
+	switch (form)
+	{
+		case ElementData::TFormFeedThrough3:
+			return {2, 1};
+		case ElementData::TFormFeedThrough4:
+		case ElementData::TFormSensorActuator:
+			return {2, 2};
+		default:
+				//One hole on each side, the drawing as it has always been
+			return {1, 1};
+	}
+}
+
+/**
+ * @brief effectiveType
+ * The part a terminal draws, worked out of its form
+ * (@sa Helpers::effectiveType).
+ */
+ElementData::TerminalType Helpers::effectiveType(ElementData::TerminalType type,
+												 ElementData::TerminalForm form)
+{
+	if (form == ElementData::TFormFuse) {
+		return ElementData::TTFuse;
+	}
+	if (form == ElementData::TFormSectionable) {
+		return ElementData::TTSectional;
+	}
+	return type;
+}
+
 void Helpers::drawCables(QPainter *painter, const QVector<CableCell> &cells,
 						 const TerminalStripLayoutPattern &pattern, bool above,
 						 qreal minimum_box_depth) {
@@ -1820,7 +1857,8 @@ void TerminalStripDrawer::paint(QPainter *painter)
 					drawTypeSymbol(painter,
 								   QRectF{0, m_pattern->m_type_symbol_y,
 										  terminal_rect.width(), m_pattern->m_type_symbol_height},
-								   real_terminal_vector[i]->type(),
+								   Helpers::effectiveType(real_terminal_vector[i]->type(),
+										   real_terminal_vector[i]->form()),
 								   real_terminal_vector[i]->isLed());
 					painter->restore();
 				}

@@ -86,6 +86,7 @@ class TerminalStripEditor : public QWidget
 		void on_m_level_sb_valueChanged(int arg1);
 		void on_m_type_cb_activated(int index);
 		void on_m_function_cb_activated(int index);
+		void on_m_form_cb_activated(int index);
 		void on_m_led_cb_activated(int index);
 		void on_m_cable_apply_pb_clicked();
 		void on_m_cable_sides_pb_clicked();

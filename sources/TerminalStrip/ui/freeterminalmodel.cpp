@@ -29,11 +29,12 @@ const int LABEL_CELL = 0;
 const int XREF_CELL = 1;
 const int TYPE_CELL = 2;
 const int FUNCTION_CELL = 3;
-const int LED_CELL = 4;
+const int FORM_CELL = 4;
+const int LED_CELL = 5;
 
-const int COLUMN_COUNT = 5;
+const int COLUMN_COUNT = 6;
 
-static QVector<bool> UNMODIFIED_CELL_VECTOR{false, false, false, false, false};
+static QVector<bool> UNMODIFIED_CELL_VECTOR{false, false, false, false, false, false};
 
 FreeTerminalModel::Column FreeTerminalModel::columnTypeForIndex(const QModelIndex &index)
 {
@@ -44,7 +45,8 @@ FreeTerminalModel::Column FreeTerminalModel::columnTypeForIndex(const QModelInde
 			case 1 : return XRef;
 			case 2 : return Type;
 			case 3 : return Function;
-			case 4 : return Led;
+			case 4 : return Form;
+			case 5 : return Led;
 			default : return Invalid;
 		}
 	}
@@ -127,6 +129,7 @@ QVariant FreeTerminalModel::data(const QModelIndex &index, int role) const
 			case XREF_CELL : return real_t_data.Xref_;
 			case TYPE_CELL : return ElementData::translatedTerminalType(real_t_data.type_);
 			case FUNCTION_CELL: return ElementData::translatedTerminalFunction(real_t_data.function_);
+			case FORM_CELL: return ElementData::translatedTerminalForm(real_t_data.form_);
 			default : return QVariant();
 		}
 	}
@@ -183,6 +186,13 @@ bool FreeTerminalModel::setData(const QModelIndex &index, const QVariant &value,
 		modified_ = true;
 		modified_cell = FUNCTION_CELL;
 	}
+	else if (column_ == FORM_CELL &&
+			 role == Qt::EditRole)
+	{
+		mrtd.form_ = value.value<ElementData::TerminalForm>();
+		modified_ = true;
+		modified_cell = FORM_CELL;
+	}
 	else if (column_ == LED_CELL && mrtd.led_ != value.toBool())
 	{
 		mrtd.led_ = value.toBool();
@@ -229,6 +239,7 @@ QVariant FreeTerminalModel::headerData(int section, Qt::Orientation orientation,
 				case XREF_CELL:     return tr("Cross-reference");
 				case TYPE_CELL:     return tr("Type");
 				case FUNCTION_CELL: return tr("Function");
+				case FORM_CELL:     return tr("Form");
 				case LED_CELL:      return tr("led");
 				default : return QVariant();
 			}
@@ -243,7 +254,7 @@ Qt::ItemFlags FreeTerminalModel::flags(const QModelIndex &index) const
 	Qt::ItemFlags flags = Qt::ItemIsEnabled | Qt::ItemIsSelectable | Qt::ItemIsDragEnabled;
 
 	auto c = index.column();
-	if (c == LABEL_CELL || c == TYPE_CELL || c == FUNCTION_CELL)
+	if (c == LABEL_CELL || c == TYPE_CELL || c == FUNCTION_CELL || c == FORM_CELL)
 		flags = flags | Qt::ItemIsEditable;
 	if (c == LED_CELL) {
 		flags = flags | Qt::ItemIsUserCheckable;

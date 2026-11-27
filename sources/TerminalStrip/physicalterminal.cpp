@@ -16,6 +16,8 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "physicalterminal.h"
+
+#include <algorithm>
 #include "terminalstriplabels.h"
 #include <qetgraphicsitem/element.h>
 #include "realterminal.h"
@@ -171,6 +173,21 @@ TerminalStrip *PhysicalTerminal::terminalStrip() const {
  */
 int PhysicalTerminal::levelCount() const {
 	return m_real_terminal.size();
+}
+
+/**
+ * @brief PhysicalTerminal::sortByStage
+ * Order the terminals of the block by their stage, foot first
+ */
+void PhysicalTerminal::sortByStage()
+{
+	if (m_real_terminal.size() > 1) {
+		std::stable_sort(m_real_terminal.begin(), m_real_terminal.end(),
+						 [](const QSharedPointer<RealTerminal> &a, const QSharedPointer<RealTerminal> &b)
+						 {
+							 return a->stage() < b->stage();
+						 });
+	}
 }
 
 /**

@@ -79,6 +79,15 @@ class RealTerminal
 		QDomElement toXml(QDomDocument &parent_document) const;
 
 		int level() const;
+			///The stage of the terminal within its block: 0 is the one at
+			///the foot of the block (the PE of a multi-level one), the ones
+			///above count up. -1 when none was chosen: the number is then
+			///the position of the terminal in its block (@sa level())
+		int stage() const;
+			///True when a stage was chosen for this terminal, false when
+			///the number of its position is all there is
+		bool hasStage() const;
+		void setStage(int stage);
 		QString label() const;
 		QString Xref() const;
 		QString cable() const;
@@ -140,6 +149,7 @@ class RealTerminal
 
 		ElementData::TerminalType type() const;
 		ElementData::TerminalFunction function() const;
+		ElementData::TerminalForm form() const;
 
 		bool isLed() const;
 		bool isElement() const;
@@ -160,6 +170,7 @@ class RealTerminal
 		bool m_spare = false;
 		QUuid m_spare_uuid;
 		ElementData m_spare_data;
+		int m_stage = -1;
 		QWeakPointer<RealTerminal> m_this_weak;
 		QSharedPointer<PhysicalTerminal> m_physical_terminal;
 };

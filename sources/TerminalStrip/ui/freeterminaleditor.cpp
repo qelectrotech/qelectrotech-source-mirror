@@ -168,6 +168,7 @@ void FreeTerminalEditor::apply()
 				auto current_data = element_->elementData();
 				current_data.setTerminalType(data_.type_);
 				current_data.setTerminalFunction(data_.function_);
+				current_data.setTerminalForm(data_.form_);
 				current_data.setTerminalLED(data_.led_);
 				current_data.m_informations.addValue(QStringLiteral("label"), data_.label_);
 
@@ -250,6 +251,24 @@ void FreeTerminalEditor::on_m_type_cb_activated(int index)
 	}
 }
 
+
+void FreeTerminalEditor::on_m_form_cb_activated(int index)
+{
+	if (m_model)
+	{
+		const auto index_list = ui->m_table_view->selectionModel()->selectedIndexes();
+
+		for (auto model_index : index_list)
+		{
+			auto form_index = m_model->index(m_proxy_model->mapToSource(model_index).row(), FreeTerminalModel::Form);
+			if (form_index.isValid())
+			{
+					//The combo lists the forms in the order of the enum
+				m_model->setData(form_index, static_cast<ElementData::TerminalForm>(index));
+			}
+		}
+	}
+}
 
 void FreeTerminalEditor::on_m_function_cb_activated(int index)
 {

@@ -95,7 +95,7 @@
     <string>Assign free terminals</string>
    </property>
    <property name="toolTip">
-    <string>Add the free terminals to the terminal strips named after their labels ("X1:2" goes to the strip "X1"), creating the strips when needed. Terminals already assigned to a strip are never touched. Asks for confirmation.</string>
+    <string>Add the free terminals to the terminal strips named after their labels ("X1:2" goes to the strip "X1"), creating the strips when needed. Terminals already assigned to a strip are never touched; terminals whose stages continue one another are joined into one block. Asks for confirmation.</string>
    </property>
   </action>
   <action name="m_regroup_terminals">
@@ -106,7 +106,7 @@
     <string>Re-group all terminals</string>
    </property>
    <property name="toolTip">
-    <string>Assign the free terminals and also move every terminal whose label prefix or plant and location no longer match its strip. Existing strips are never re-sorted. Asks for confirmation.</string>
+    <string>Assign the free terminals and also move every terminal whose label prefix or plant and location no longer match its strip. Existing strips are never re-sorted; terminals whose stages continue one another are joined into one block. Asks for confirmation.</string>
    </property>
   </action>
  </widget>
