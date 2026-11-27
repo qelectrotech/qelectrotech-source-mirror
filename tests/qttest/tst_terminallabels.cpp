@@ -23,9 +23,11 @@
 #include "qetapptest.h"
 #include "ElementsCollection/elementslocation.h"
 #include "ElementsCollection/xmlelementcollection.h"
+#include "dataBase/projectdatabase.h"
 #include "diagram.h"
 #include "factory/elementfactory.h"
 #include "properties/terminallabel.h"
+#include "qetgraphicsitem/conductor.h"
 #include "qetgraphicsitem/element.h"
 #include "qetgraphicsitem/terminal.h"
 #include "qetproject.h"
@@ -35,6 +37,8 @@
 #include <QDomDocument>
 #include <QLineEdit>
 #include <QPushButton>
+#include <QSqlDatabase>
+#include <QSqlQuery>
 #include <QTableWidget>
 #include <QUndoStack>
 
@@ -86,6 +90,22 @@ class tst_terminallabels : public QObject
 		{
 			auto *table = tab->findChild<QTableWidget *>();
 			return table ? qobject_cast<QLineEdit *>(table->cellWidget(row, 1)) : nullptr;
+		}
+
+		/// The name the lists read for @p terminal of @p element, from
+		/// the row the terminal's wire wrote; QString() when there is no
+		/// such row
+		static QString storedName(QETProject &project, const Element *element,
+								  const Terminal *terminal)
+		{
+			QSqlQuery query(project.dataBase()->database());
+			query.prepare(QStringLiteral(
+				"SELECT name FROM terminal WHERE uuid = :uuid AND element_uuid = :element"));
+			query.bindValue(QStringLiteral(":uuid"), terminal->stableUuid().toString());
+			query.bindValue(QStringLiteral(":element"), element->uuid().toString());
+			if (!query.exec() || !query.next())
+				return QString();
+			return query.value(0).toString();
 		}
 
 	private slots:
@@ -162,6 +182,8 @@ class tst_terminallabels : public QObject
 			label.m_label_pos = QPointF(2.0, -6.0);
 			label.m_label_rotation = 90.0;
 			label.m_label_frame = true;
+				//A colour keeps its alpha through the round trip
+			label.m_label_color = QColor(120, 40, 200, 137);
 			element->setTerminalLabel(terminal->stableUuid(), label);
 
 			QDomDocument document;
@@ -190,9 +212,50 @@ class tst_terminallabels : public QObject
 			QCOMPARE(copied->label().m_label_rotation, 90.0);
 			QVERIFY(copied->label().m_label_frame);
 			QCOMPARE(copied->label().m_name, QStringLiteral("X1:42"));
+			QCOMPARE(copied->label().m_label_color, QColor(120, 40, 200, 137));
 				//The definition of the symbol still says X1:1
 			QCOMPARE(copied->baseName(), QStringLiteral("X1:1"));
 			QCOMPARE(copied->definitionLabel().m_name, QStringLiteral("X1:1"));
+
+				//What the project database keeps of this symbol, so a
+				//save to .qetdb and back keeps the label too: the values
+				//ownValuesXml() writes, and the rows they become
+			QDomDocument values;
+			const QDomElement own = element->ownValuesXml(values);
+			QVERIFY(!own.firstChildElement(QStringLiteral("terminalLabels")).isNull());
+			bool in_rows = false;
+			for (const projectDataBase::ProjectSetting &row :
+				 projectDataBase::elementValueRowsOf(own)) {
+				if (row.section.startsWith(QStringLiteral("terminalLabels")))
+					in_rows = true;
+			}
+			QVERIFY(in_rows);
+		}
+
+		//The name a copy gives a terminal reaches the row the lists read
+		//from, which is written when the terminal's wire is
+		void theDatabaseReadsTheNewName()
+		{
+			QETProject project;
+			Diagram *diagram = project.addNewDiagram();
+			define(diagram, QStringLiteral("stored"));
+			Element *first = place(diagram, QStringLiteral("stored"));
+			Element *second = place(diagram, QStringLiteral("stored"));
+			QVERIFY(first && second);
+			Terminal *terminal = named(first, QStringLiteral("X1:1"));
+			QVERIFY(terminal);
+			auto *wire = new Conductor(terminal, named(second, QStringLiteral("X1:2")));
+			diagram->addItem(wire);
+
+			QCOMPARE(storedName(project, first, terminal), QStringLiteral("X1:1"));
+
+			TerminalLabel label = terminal->label();
+			label.m_name = QStringLiteral("X1:99");
+			first->setTerminalLabel(terminal->stableUuid(), label);
+			QCOMPARE(storedName(project, first, terminal), QStringLiteral("X1:99"));
+
+			first->removeTerminalLabel(terminal->stableUuid());
+			QCOMPARE(storedName(project, first, terminal), QStringLiteral("X1:1"));
 		}
 
 		//Taking the values back shows the definition's again, and the
@@ -307,9 +370,64 @@ class tst_terminallabels : public QObject
 				//into the first
 			QCOMPARE(diagram->undoStack().count(), before + 1);
 
+				//Another row, right after, is a step of its own: only one
+				//burst of typing on one terminal merges
+			QLineEdit *other = nameEdit(&tab, 1);
+			QVERIFY(other);
+			other->setText(QStringLiteral("X2:7"));
+			QVERIFY(named(element, QStringLiteral("X2:7")));
+			QCOMPARE(diagram->undoStack().count(), before + 2);
+
+				//One undo takes back the other row alone...
+			diagram->undoStack().undo();
+			QVERIFY(named(element, QStringLiteral("X1:77")));
+			QVERIFY(named(element, QStringLiteral("X1:2")));
+			QVERIFY(!named(element, QStringLiteral("X1:2"))->labelIsOverridden());
+
+				//...and the next one the typing, back to the definition
 			diagram->undoStack().undo();
 			QVERIFY(named(element, QStringLiteral("X1:1")));
 			QVERIFY(!named(element, QStringLiteral("X1:1"))->labelIsOverridden());
+		}
+
+		//An undo from the drawing fills the rows again, and a row the
+		//user did not touch cannot put its old value back with the next
+		//edit
+		void anUndoDoesNotComeBackWithTheNextEdit()
+		{
+			QETProject project;
+			Diagram *diagram = project.addNewDiagram();
+			define(diagram, QStringLiteral("undone"));
+			Element *element = place(diagram, QStringLiteral("undone"));
+			QVERIFY(element);
+
+			ElementTerminalsWidget tab(element);
+			tab.setLiveEdit(true);
+			QLineEdit *edit = nameEdit(&tab, 0);
+			QVERIFY(edit);
+			edit->setText(QStringLiteral("X1:99"));
+			QVERIFY(named(element, QStringLiteral("X1:99")));
+
+			diagram->undoStack().undo();
+			QVERIFY(named(element, QStringLiteral("X1:1")));
+
+				//The row shows what the symbol has again, rather than the
+				//name it had before the undo
+			QLineEdit *after_undo = nameEdit(&tab, 0);
+			QVERIFY(after_undo);
+			QCOMPARE(after_undo->text(), QStringLiteral("X1:1"));
+
+				//Ticking the other row changes that row only: the name
+				//of the first is not put back
+			auto *table = tab.findChild<QTableWidget *>();
+			QVERIFY(table);
+			QCheckBox *show = qobject_cast<QCheckBox *>(table->cellWidget(1, 0));
+			QVERIFY(show);
+			show->setChecked(true);
+
+			QVERIFY(named(element, QStringLiteral("X1:1")));
+			QVERIFY(!named(element, QStringLiteral("X1:1"))->labelIsOverridden());
+			QVERIFY(named(element, QStringLiteral("X1:2"))->label().m_show_name);
 		}
 };
 
