@@ -130,9 +130,10 @@ class tst_dialogplacement : public QObject
 	}
 
 		//Click @p button, which opens a @p Dialog with exec(), and return
-		//where the dialog is once on the screen
+		//where the dialog is once on the screen. @p inside, if any, gets
+		//the size of the dialog without its title bar and borders.
 	template <class Dialog = AlignmentTextDialog>
-	static QRect dialogOpenedBy(QPushButton *button)
+	static QRect dialogOpenedBy(QPushButton *button, QSize *inside = nullptr)
 	{
 		QRect frame;
 		QElapsedTimer waited;
@@ -147,8 +148,11 @@ class tst_dialogplacement : public QObject
 					&& dialog->windowHandle()->isExposed();
 			if (!shown && waited.elapsed() < 5000)
 				return;
-			if (shown && qobject_cast<Dialog *>(dialog))
+			if (shown && qobject_cast<Dialog *>(dialog)) {
 				frame = dialog->frameGeometry();
+				if (inside)
+					*inside = dialog->size();
+			}
 			dialog->reject();
 		});
 		poll.start(10);
@@ -289,6 +293,8 @@ class tst_dialogplacement : public QObject
 			//under the button, at the size it was closed with
 		void textFieldCompositeTextButton()
 		{
+				//Sizes without the title bar: on X11 some window managers,
+				//such as fluxbox, add it only after the dialog shows
 			QSize closed_size;
 			{
 				CompositeTextEditDialog elsewhere(QString(), false);
@@ -296,7 +302,7 @@ class tst_dialogplacement : public QObject
 				elsewhere.move(screenArea().center());
 				elsewhere.show();
 				QVERIFY(QTest::qWaitForWindowExposed(&elsewhere));
-				closed_size = elsewhere.frameGeometry().size();
+				closed_size = elsewhere.size();
 				elsewhere.reject();
 			}
 
@@ -317,12 +323,13 @@ class tst_dialogplacement : public QObject
 			QVERIFY(button);
 			QVERIFY(button->isEnabled());
 
-			const QRect frame =
-					dialogOpenedBy<CompositeTextEditDialog>(button);
+			QSize opened_size;
+			const QRect frame = dialogOpenedBy<CompositeTextEditDialog>(
+						button, &opened_size);
 			QVERIFY2(nextTo(frame, onScreen(button)),
 					 qPrintable(QStringLiteral("dialog at %1,%2")
 								.arg(frame.x()).arg(frame.y())));
-			QCOMPARE(frame.size(), closed_size);
+			QCOMPARE(opened_size, closed_size);
 		}
 
 		void opensAboveTheButtonWithoutRoomBelow()
