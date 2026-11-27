@@ -43,6 +43,8 @@
 #include <QTreeView>
 #include <QWindow>
 
+#include <memory>
+
 /**
 	The text alignment dialog and the composite text dialog open next to
 	what opened them (issue #1952): under their cell of a symbol's Texts
@@ -129,11 +131,13 @@ class tst_dialogplacement : public QObject
 		return QTest::qWaitForWindowExposed(&dialog);
 	}
 
-		//Click @p button, which opens a @p Dialog with exec(), and return
-		//where the dialog is once on the screen. @p inside, if any, gets
-		//the size of the dialog without its title bar and borders.
-	template <class Dialog = AlignmentTextDialog>
-	static QRect dialogOpenedBy(QPushButton *button, QSize *inside = nullptr)
+		//Click @p button, which opens a dialog of class @p dialog_class
+		//with exec(), and return where the dialog is once on the screen.
+		//@p inside, if any, gets the size of the dialog without its title
+		//bar and borders.
+	static QRect dialogOpenedBy(QPushButton *button,
+								const QString &dialog_class,
+								QSize *inside = nullptr)
 	{
 		QRect frame;
 		bool asked = false;
@@ -155,7 +159,8 @@ class tst_dialogplacement : public QObject
 				//which the dialog's own geometry may not follow yet.
 			asked = true;
 			QMetaObject::invokeMethod(dialog, [&, dialog, window, shown]() {
-				if (shown && qobject_cast<Dialog *>(dialog)) {
+				if (shown
+						&& dialog_class == dialog->metaObject()->className()) {
 					frame = window->frameGeometry();
 					if (inside)
 						*inside = window->geometry().size();
@@ -166,6 +171,66 @@ class tst_dialogplacement : public QObject
 		poll.start(10);
 		button->click();
 		return frame;
+	}
+
+		//The parts whose panel in the symbol editor has a button that
+		//opens a dialog
+	enum class Part { Text, TextField, CompositeTextField, Terminal };
+
+		//The panel of the symbol editor for a new @p part in the scene of
+		//@p window, shown near the top left of the screen
+	static std::unique_ptr<ElementItemEditor> shownPanel(
+			Part part, QETElementEditor &window)
+	{
+		ElementScene *scene = window.elementScene();
+		std::unique_ptr<ElementItemEditor> panel;
+		bool set = false;
+		switch (part) {
+			case Part::Text: {
+				auto *text = new PartText(&window);
+				text->setPlainText(QStringLiteral("Text"));
+				scene->addItems({text});
+				panel = std::make_unique<TextEditor>(&window);
+				set = panel->setParts({text});
+				break;
+			}
+			case Part::TextField:
+			case Part::CompositeTextField: {
+				auto *field = new PartDynamicTextField(&window);
+				if (part == Part::CompositeTextField)
+					field->setTextFrom(DynamicElementTextItem::CompositeText);
+				else
+					field->setText(QStringLiteral("Field"));
+				scene->addItems({field});
+				panel = std::make_unique<DynamicTextFieldEditor>(&window);
+				set = panel->setParts({field});
+				break;
+			}
+			case Part::Terminal: {
+				auto *terminal = new PartTerminal(&window);
+				terminal->setShowName(true);
+				scene->addItems({terminal});
+				panel = std::make_unique<TerminalEditor>(&window);
+				set = panel->setPart(terminal);
+				break;
+			}
+		}
+		if (!set)
+			return nullptr;
+		panel->move(screenArea().topLeft() + QPoint(100, 50));
+		panel->show();
+		if (!QTest::qWaitForWindowExposed(panel.get()))
+			return nullptr;
+		return panel;
+	}
+
+		//The button of @p panel named @p name, or showing @p name
+	static QPushButton *buttonOf(const QWidget *panel, const QString &name)
+	{
+		for (QPushButton *button : panel->findChildren<QPushButton *>())
+			if (button->objectName() == name || button->text() == name)
+				return button;
+		return nullptr;
 	}
 
 	private slots:
@@ -222,84 +287,51 @@ class tst_dialogplacement : public QObject
 					 QPoint(rect.left(), rect.top() + rect.height()));
 		}
 
-		void textAlignmentButton()
+		void buttonsOpenTheirDialogUnderThem_data()
 		{
-			QETElementEditor window;
-			ElementScene *scene = window.elementScene();
-			const auto reset = qScopeGuard([scene] { scene->reset(); });
-			auto *text = new PartText(&window);
-			text->setPlainText(QStringLiteral("Text"));
-			scene->addItems({text});
-
-			TextEditor editor(&window);
-			QVERIFY(editor.setParts({text}));
-			editor.move(screenArea().topLeft() + QPoint(100, 50));
-			editor.show();
-			QVERIFY(QTest::qWaitForWindowExposed(&editor));
-			QPushButton *button = nullptr;
-			for (QPushButton *b : editor.findChildren<QPushButton *>())
-				if (b->text() == QStringLiteral("Alignment"))
-					button = b;
-			QVERIFY(button);
-
-			const QRect frame = dialogOpenedBy(button);
-			QVERIFY2(nextTo(frame, onScreen(button)),
-					 qPrintable(QStringLiteral("dialog at %1,%2")
-								.arg(frame.x()).arg(frame.y())));
+			QTest::addColumn<int>("part");
+			QTest::addColumn<QString>("button");
+			QTest::addColumn<QString>("dialog");
+			const QString alignment = QStringLiteral("AlignmentTextDialog");
+			QTest::newRow("text, Alignment")
+					<< int(Part::Text) << QStringLiteral("Alignment")
+					<< alignment;
+			QTest::newRow("text field, Alignment")
+					<< int(Part::TextField) << QStringLiteral("m_alignment_pb")
+					<< alignment;
+			QTest::newRow("terminal, Alignment")
+					<< int(Part::Terminal) << QStringLiteral("m_align_pb")
+					<< alignment;
+			QTest::newRow("text field, Composite text")
+					<< int(Part::CompositeTextField)
+					<< QStringLiteral("m_composite_text_pb")
+					<< QStringLiteral("CompositeTextEditDialog");
 		}
 
-		void textFieldAlignmentButton()
+		void buttonsOpenTheirDialogUnderThem()
 		{
+			QFETCH(int, part);
+			QFETCH(QString, button);
+			QFETCH(QString, dialog);
 			QETElementEditor window;
-			ElementScene *scene = window.elementScene();
-			const auto reset = qScopeGuard([scene] { scene->reset(); });
-			auto *field = new PartDynamicTextField(&window);
-			field->setText(QStringLiteral("Field"));
-			scene->addItems({field});
+			const auto reset = qScopeGuard([&window] {
+				window.elementScene()->reset();
+			});
+			const auto panel = shownPanel(Part(part), window);
+			QVERIFY(panel);
+			QPushButton *pb = buttonOf(panel.get(), button);
+			QVERIFY(pb);
+			QVERIFY(pb->isEnabled());
 
-			DynamicTextFieldEditor editor(&window);
-			QVERIFY(editor.setParts({field}));
-			editor.move(screenArea().topLeft() + QPoint(100, 50));
-			editor.show();
-			QVERIFY(QTest::qWaitForWindowExposed(&editor));
-			auto *button = editor.findChild<QPushButton *>(
-						QStringLiteral("m_alignment_pb"));
-			QVERIFY(button);
-
-			const QRect frame = dialogOpenedBy(button);
-			QVERIFY2(nextTo(frame, onScreen(button)),
-					 qPrintable(QStringLiteral("dialog at %1,%2")
-								.arg(frame.x()).arg(frame.y())));
-		}
-
-		void terminalAlignmentButton()
-		{
-			QETElementEditor window;
-			ElementScene *scene = window.elementScene();
-			const auto reset = qScopeGuard([scene] { scene->reset(); });
-			auto *terminal = new PartTerminal(&window);
-			terminal->setShowName(true);
-			scene->addItems({terminal});
-
-			TerminalEditor editor(&window);
-			QVERIFY(editor.setPart(terminal));
-			editor.move(screenArea().topLeft() + QPoint(100, 50));
-			editor.show();
-			QVERIFY(QTest::qWaitForWindowExposed(&editor));
-			auto *button = editor.findChild<QPushButton *>(
-						QStringLiteral("m_align_pb"));
-			QVERIFY(button);
-			QVERIFY(button->isEnabled());
-
-			const QRect frame = dialogOpenedBy(button);
-			QVERIFY2(nextTo(frame, onScreen(button)),
+			const QRect frame = dialogOpenedBy(pb, dialog);
+			QVERIFY2(nextTo(frame, onScreen(pb)),
 					 qPrintable(QStringLiteral("dialog at %1,%2")
 								.arg(frame.x()).arg(frame.y())));
 		}
 
 			//Closed somewhere else, the composite text dialog still opens
 			//under the button, at the size it was closed with
-		void textFieldCompositeTextButton()
+		void compositeTextKeepsTheSizeItWasClosedWith()
 		{
 				//Sizes without the title bar: on X11 some window managers,
 				//such as fluxbox, add it only after the dialog shows
@@ -315,25 +347,19 @@ class tst_dialogplacement : public QObject
 			}
 
 			QETElementEditor window;
-			ElementScene *scene = window.elementScene();
-			const auto reset = qScopeGuard([scene] { scene->reset(); });
-			auto *field = new PartDynamicTextField(&window);
-			field->setTextFrom(DynamicElementTextItem::CompositeText);
-			scene->addItems({field});
-
-			DynamicTextFieldEditor editor(&window);
-			QVERIFY(editor.setParts({field}));
-			editor.move(screenArea().topLeft() + QPoint(100, 50));
-			editor.show();
-			QVERIFY(QTest::qWaitForWindowExposed(&editor));
-			auto *button = editor.findChild<QPushButton *>(
-						QStringLiteral("m_composite_text_pb"));
+			const auto reset = qScopeGuard([&window] {
+				window.elementScene()->reset();
+			});
+			const auto panel = shownPanel(Part::CompositeTextField, window);
+			QVERIFY(panel);
+			QPushButton *button = buttonOf(
+						panel.get(), QStringLiteral("m_composite_text_pb"));
 			QVERIFY(button);
-			QVERIFY(button->isEnabled());
 
 			QSize opened_size;
-			const QRect frame = dialogOpenedBy<CompositeTextEditDialog>(
-						button, &opened_size);
+			const QRect frame = dialogOpenedBy(
+						button, QStringLiteral("CompositeTextEditDialog"),
+						&opened_size);
 			QVERIFY2(nextTo(frame, onScreen(button)),
 					 qPrintable(QStringLiteral("dialog at %1,%2")
 								.arg(frame.x()).arg(frame.y())));
