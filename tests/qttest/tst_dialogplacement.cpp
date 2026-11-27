@@ -17,6 +17,7 @@
 */
 #include "qetapptest.h"
 #include "diagram.h"
+#include "diagramcontext.h"
 #include "editor/elementscene.h"
 #include "editor/graphicspart/partdynamictextfield.h"
 #include "editor/graphicspart/partterminal.h"
@@ -353,6 +354,38 @@ class tst_dialogplacement : public QObject
 					 "the dialog goes past the right edge of the screen");
 			QCOMPARE(placed.left() + placed.width(),
 					 screen.left() + screen.width());
+		}
+
+			//A long variable name widens the composite text dialog when it
+			//is shown: it is placed by that width, not by the width it was
+			//closed with
+		void staysInsideTheScreenWhenItsContentWidensIt()
+		{
+				//Measured on another dialog: a combo box keeps the width
+				//it measured first
+			QSize smallest;
+			{
+				CompositeTextEditDialog measured(QString(), false);
+				smallest = measured.minimumSizeHint();
+			}
+			const QRect screen = screenArea();
+			ButtonWindow w(QPoint(screen.left() + screen.width() - 120,
+								  screen.top() + 100));
+			QVERIFY(QTest::qWaitForWindowExposed(&w.window));
+			CompositeTextEditDialog dialog(QString(), false, &w.window);
+			dialog.resize(smallest);
+			DiagramContext info;
+			info.addValue(QString(120, QLatin1Char('k')),
+						  QStringLiteral("value"));
+			dialog.addCustomInfo(info);
+			DialogPlacement::placeBelow(&dialog, w.button);
+			dialog.show();
+			QVERIFY(QTest::qWaitForWindowExposed(&dialog));
+
+			const QRect placed = dialog.frameGeometry();
+			QVERIFY(placed.width() > smallest.width());
+			QVERIFY2(screen.contains(placed),
+					 "the dialog goes past the right edge of the screen");
 		}
 
 		void rightToLeftLinesUpTheRightEdges()
