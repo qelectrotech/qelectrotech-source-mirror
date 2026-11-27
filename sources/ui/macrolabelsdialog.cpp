@@ -32,7 +32,8 @@ MacroLabelsDialog::MacroLabelsDialog(const QList<MacroLabels::Field> &fields, QW
 	setWindowTitle(tr("Place the macro"));
 	resize(520, 380);
 	auto *layout = new QVBoxLayout(this);
-	auto *help = new QLabel(tr("Enter the labels and texts of this macro. "
+	auto *help = new QLabel(tr("Enter the labels, texts and values of this "
+							   "macro. "
 							   "Accept All takes the labels proposed."), this);
 	help->setWordWrap(true);
 	layout->addWidget(help);
@@ -43,7 +44,11 @@ MacroLabelsDialog::MacroLabelsDialog(const QList<MacroLabels::Field> &fields, QW
 	m_table->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 	for (int row = 0 ; row < fields.size() ; ++row) {
 		const auto &field = fields.at(row);
-		auto *kind = new QTableWidgetItem(field.kind == MacroLabels::Field::Label ? tr("Label") : tr("Text"));
+		const QString kind_name =
+				field.kind == MacroLabels::Field::Label ? tr("Label")
+				: field.kind == MacroLabels::Field::Value ? tr("Value")
+				: tr("Text");
+		auto *kind = new QTableWidgetItem(kind_name);
 		auto *saved = new QTableWidgetItem(field.saved);
 		kind->setFlags(Qt::ItemIsEnabled);
 		saved->setFlags(Qt::ItemIsEnabled);

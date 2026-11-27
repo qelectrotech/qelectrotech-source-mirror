@@ -61,6 +61,9 @@ class TitleBlockProperties {
 	QString locmach;              ///< Location(displayed by the default template)
 	QString folio_group;      ///< Group the folio belongs to; empty = its plant (@see resolvedFolioGroup())
 	QString folio_subgroup;   ///< Sub-group within the group; empty = its location (@see resolvedFolioSubgroup())
+	QString higher_plant;     ///< Higher-level function (IEC 81346 "=="), above the plant; may be empty
+	QString higher_location;  ///< Higher-level location (IEC 81346 "++"), above the location; may be empty
+	QString document_kind;    ///< What kind of document the folio is (IEC 61355, e.g. FS); may be empty
 	QString indexrev;         ///< Revision Index (displayed by the default template)
 	QString version;          ///< Version (displayed by the default template)
 	QString folio;            ///< Folio information (displayed by the default template)

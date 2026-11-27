@@ -171,6 +171,32 @@ void ProjectMainConfigPage::applyProjectConf()
 	}
 	
 	DiagramContext new_properties = project_variables_ -> context();
+		//The drawing standard is a project property, chosen in its own
+		//list: As before is no property at all, a value this
+		//QElectroTech does not know (no data) is kept as it is
+	new_properties.remove(QStringLiteral("drawing_standard"));
+		//The choices of the checks are project properties too, set below
+		//rather than in the table: following the application's stores
+		//none of them
+	for (const QString &key : new_properties.keys())
+		if (CheckSettings::isCheckKey(key)) new_properties.remove(key);
+	QHash<CheckSettings::Option, bool> check_options;
+	if (!m_check_options_application_cb -> isChecked())
+		for (auto it = m_check_option_cbs.cbegin() ; it != m_check_option_cbs.cend() ; ++it)
+			check_options.insert(it.key(), it.value() -> isChecked());
+	new_properties = CheckSettings::withOptions(new_properties, check_options);
+		//The checks switched off, and the findings accepted in the Check
+		//panel, which this page keeps as they are
+	QList<ProjectCheck::Kind> rules_off;
+	for (auto it = m_check_rule_cbs.cbegin() ; it != m_check_rule_cbs.cend() ; ++it)
+		if (!it.value() -> isChecked()) rules_off << it.key();
+	new_properties = CheckSettings::withPanelState(new_properties, m_project -> projectProperties());
+	new_properties = CheckSettings::withRulesOff(new_properties, rules_off);
+	const QVariant standard = m_drawing_standard_cb -> currentData();
+	if (!standard.isValid())
+		new_properties.addValue(QStringLiteral("drawing_standard"), m_drawing_standard_cb -> currentText());
+	else if (!standard.toString().isEmpty())
+		new_properties.addValue(QStringLiteral("drawing_standard"), standard.toString());
 	if (m_project -> projectProperties() != new_properties) {
 		m_project -> setProjectProperties(new_properties);
 		modified_project = true;
@@ -325,6 +351,18 @@ void ProjectMainConfigPage::initWidgets()
 										 "tooltip"));
 
 		//What the label field of an element shows
+	m_drawing_standard_label = new QLabel(tr("Drawing standard:", "label when configuring"));
+	m_drawing_standard_cb = new QComboBox();
+	m_drawing_standard_cb -> setObjectName(QStringLiteral("drawingStandard"));
+	m_drawing_standard_cb -> addItem(tr("As before", "drawing standard"), QString());
+	m_drawing_standard_cb -> addItem(tr("IEC", "drawing standard"),
+			QETProject::drawingStandardName(QETProject::DrawingStandard::Iec));
+	m_drawing_standard_cb -> addItem(tr("NFPA", "drawing standard"),
+			QETProject::drawingStandardName(QETProject::DrawingStandard::Nfpa));
+	m_drawing_standard_cb -> setToolTip(tr("The standard this project is drawn to. It changes "
+			"nothing by itself: features to come will follow it. As before keeps the project "
+			"exactly as it always was.", "drawing standard tooltip"));
+
 	m_designation_display_label = new QLabel(tr("Element labels show:", "label when configuring"));
 	m_designation_display_cb = new QComboBox();
 	m_designation_display_cb -> setObjectName(QStringLiteral("designationDisplay"));
@@ -427,6 +465,50 @@ void ProjectMainConfigPage::initWidgets()
 											"(Configure QElectroTech > General).",
 											"informative label"));
 	wiring_rules_off_label_ -> setWordWrap(true);
+
+		//The choices of the checks (#1878 B12): kept in the project, two
+		//machines which open it find the same
+	m_check_options_gb = new QGroupBox(tr("Checks", "group box title"));
+	m_check_options_application_cb = new QCheckBox(tr("Use the application settings", "checkbox label"));
+	m_check_options_application_cb -> setObjectName(QStringLiteral("checkOptionsApplication"));
+	m_check_options_application_cb -> setToolTip(tr("The options last chosen in the Check panel and in "
+			"Find duplicate signals and components apply, and may differ from one computer to "
+			"another. Untick to give this project its own, saved in the project.", "tooltip"));
+	connect(m_check_options_application_cb, &QCheckBox::toggled, this, [this](bool use) {
+			//Show the values that will apply: the application's, or the
+			//application's as a starting point for the project's own
+		if (use)
+			for (auto it = m_check_option_cbs.cbegin() ; it != m_check_option_cbs.cend() ; ++it)
+				it.value() -> setChecked(CheckSettings::applicationValue(it.key()));
+		updateCheckOptionsWidgets();
+	});
+	const auto check_option = [this](CheckSettings::Option option, const QString &text) {
+		auto *check_box = new QCheckBox(text);
+		check_box -> setObjectName(CheckSettings::key(option));
+		m_check_option_cbs.insert(option, check_box);
+	};
+	check_option(CheckSettings::Option::DuplicatesCaseSensitive,
+				 tr("Duplicates: case-sensitive comparison", "checkbox label"));
+	check_option(CheckSettings::Option::DuplicatesByDesignation,
+				 tr("Duplicates: one designation is one device; report different part numbers",
+					"checkbox label"));
+	check_option(CheckSettings::Option::DuplicatesSignalsByPlant,
+				 tr("Duplicates: a wire number is unique within its plant (=)", "checkbox label"));
+	check_option(CheckSettings::Option::UnwiredSkipWirelessFolios,
+				 tr("Symbols with no wire: leave out folios with no wire", "checkbox label"));
+	check_option(CheckSettings::Option::UnwiredSkipStripTerminals,
+				 tr("Symbols with no wire: leave out strip terminals", "checkbox label"));
+	check_option(CheckSettings::Option::UnwiredSkipContacts,
+				 tr("Symbols with no wire: leave out auxiliary contacts", "checkbox label"));
+		//Each check of the Check panel, on or off for this project (#1878 B8)
+	m_check_rules_label = new QLabel(tr("Checks the Check panel runs on this project:",
+										"label when configuring"));
+	for (ProjectCheck::Kind kind : ProjectCheck::kinds()) {
+		auto *check_box = new QCheckBox(ProjectCheck::title(kind));
+		check_box -> setObjectName(QStringLiteral("checkRule") + ProjectCheck::id(kind));
+		check_box -> setToolTip(ProjectCheck::toolTip(kind));
+		m_check_rule_cbs.insert(kind, check_box);
+	}
 	//origin (of a coordinate system) settings
 	origin_label_ = new QLabel(tr("Cell numbering starts from:"));
 	origin_cb_	  = new QComboBox();
@@ -483,6 +565,13 @@ void ProjectMainConfigPage::initLayout()
 	main_layout0 -> addWidget(m_plant_location_cb);
 	main_layout0 -> addSpacing(10);
 
+	QHBoxLayout *drawing_standard_layout = new QHBoxLayout();
+	drawing_standard_layout -> addWidget(m_drawing_standard_label);
+	drawing_standard_layout -> addWidget(m_drawing_standard_cb);
+	drawing_standard_layout -> addStretch();
+	main_layout0 -> addLayout(drawing_standard_layout);
+	main_layout0 -> addSpacing(10);
+
 	QHBoxLayout *designation_display_layout = new QHBoxLayout();
 	designation_display_layout -> addWidget(m_designation_display_label);
 	designation_display_layout -> addWidget(m_designation_display_cb);
@@ -517,6 +606,17 @@ void ProjectMainConfigPage::initLayout()
 	main_layout0 -> addWidget(wiring_rules_gb_);
 	main_layout0->addSpacing(10);
 
+	QVBoxLayout *check_options_layout = new QVBoxLayout(m_check_options_gb);
+	check_options_layout -> addWidget(m_check_options_application_cb);
+	for (CheckSettings::Option option : CheckSettings::options())
+		check_options_layout -> addWidget(m_check_option_cbs.value(option));
+	check_options_layout -> addSpacing(6);
+	check_options_layout -> addWidget(m_check_rules_label);
+	for (ProjectCheck::Kind kind : ProjectCheck::kinds())
+		check_options_layout -> addWidget(m_check_rule_cbs.value(kind));
+	main_layout0 -> addWidget(m_check_options_gb);
+	main_layout0 -> addSpacing(10);
+
 	QHBoxLayout* project_origin_layout0 = new QHBoxLayout();
 	project_origin_layout0->addWidget(origin_label_);
 	project_origin_layout0->addWidget(origin_cb_);
@@ -535,7 +635,25 @@ void ProjectMainConfigPage::initLayout()
 void ProjectMainConfigPage::readValuesFromProject()
 {
 	title_value_ -> setText(m_project -> title());
-	project_variables_ -> setContext(m_project -> projectProperties());
+		//The drawing standard has its own list, not a row of the table
+	DiagramContext variables = m_project -> projectProperties();
+	variables.remove(QStringLiteral("drawing_standard"));
+	for (const QString &key : variables.keys())
+		if (CheckSettings::isCheckKey(key)) variables.remove(key);
+	project_variables_ -> setContext(variables);
+		//A stored value this QElectroTech does not know shows as it is
+		//typed, an entry without data, and stays unless another is chosen
+	for (int i = m_drawing_standard_cb -> count() - 1 ; i > 2 ; --i)
+		m_drawing_standard_cb -> removeItem(i);
+	bool known = true;
+	const auto standard = QETProject::drawingStandardFromName(m_project -> drawingStandardText(), &known);
+	if (known) {
+		m_drawing_standard_cb -> setCurrentIndex(qMax(0, m_drawing_standard_cb -> findData(
+				QETProject::drawingStandardName(standard))));
+	} else {
+		m_drawing_standard_cb -> addItem(m_project -> drawingStandardText().trimmed());
+		m_drawing_standard_cb -> setCurrentIndex(m_drawing_standard_cb -> count() - 1);
+	}
 
 	const ProjectUsageTracker &usage_tracker = m_project -> projectPropertiesHandler().usageTracker();
 	const qint64 total_seconds = usage_tracker.secondsSpent();
@@ -575,6 +693,28 @@ void ProjectMainConfigPage::readValuesFromProject()
 	max_wires_sb_ -> setValue(wiring_rules.max_wires);
 	one_wire_per_report_cb_ -> setChecked(wiring_rules.one_wire_per_report);
 	updateWiringRulesWidgets();
+
+		//The options that apply: the project's own or the application's
+	{
+		const QSignalBlocker blocker(m_check_options_application_cb);
+		m_check_options_application_cb -> setChecked(!CheckSettings::hasOwnOptions(m_project));
+	}
+	for (auto it = m_check_option_cbs.cbegin() ; it != m_check_option_cbs.cend() ; ++it)
+		it.value() -> setChecked(CheckSettings::value(m_project, it.key()));
+	updateCheckOptionsWidgets();
+	for (auto it = m_check_rule_cbs.cbegin() ; it != m_check_rule_cbs.cend() ; ++it)
+		it.value() -> setChecked(CheckSettings::ruleEnabled(m_project, it.key()));
+}
+
+/**
+	@brief ProjectMainConfigPage::updateCheckOptionsWidgets
+	Enable the check options only when the project has its own.
+*/
+void ProjectMainConfigPage::updateCheckOptionsWidgets()
+{
+	const bool own = !m_check_options_application_cb -> isChecked();
+	for (QCheckBox *check_box : std::as_const(m_check_option_cbs))
+		check_box -> setEnabled(own);
 }
 
 /**
@@ -623,11 +763,13 @@ void ProjectMainConfigPage::adjustReadOnly()
 	upright_symbol_texts_cb_ -> setDisabled(is_read_only);
 	m_plant_location_cb -> setDisabled(is_read_only);
 	m_designation_display_cb -> setDisabled(is_read_only);
+	m_drawing_standard_cb -> setDisabled(is_read_only);
 	m_follow_device_types_cb -> setDisabled(is_read_only);
 	chained_reports_cb_ -> setDisabled(is_read_only);
 	chained_key_gb_ -> setDisabled(is_read_only || !(chained_reports_cb_ -> isChecked()));
 	terminal_label_gb_ -> setDisabled(is_read_only);
 	wiring_rules_gb_ -> setDisabled(is_read_only);
+	m_check_options_gb -> setDisabled(is_read_only);
 	origin_cb_->setDisabled(is_read_only);
 }
 

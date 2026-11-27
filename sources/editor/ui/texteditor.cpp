@@ -19,6 +19,7 @@
 
 #include <QPropertyUndoCommand/qpropertyundocommand.h>
 #include <ui/alignmenttextdialog.h>
+#include <utils/dialogplacement.h>
 #include <editor/graphicspart/parttext.h>
 
 #include <cassert>
@@ -370,20 +371,36 @@ void TextEditor::setUpWidget(QWidget *parent)
 	QPushButton *alignment_pb = new QPushButton(tr("Alignment"), parent);
 	alignment_pb->setToolTip(tr("ext anchor point and alignment of "
 								"lines relative to one another"));
-	connect(alignment_pb, &QPushButton::clicked, [this]() {
+	connect(alignment_pb, &QPushButton::clicked, [this, alignment_pb]() {
 		if (m_text.isNull()) {
 			return;
 		}
+		QList<Qt::Alignment> old_alignments;
+		for (PartText *part_text : std::as_const(m_parts)) {
+			old_alignments << part_text->alignment();
+		}
 		AlignmentTextDialog atd(m_text->alignment(), this);
-		if (atd.exec() != QDialog::Accepted) {
+		DialogPlacement::placeBelow(&atd, alignment_pb);
+		// Each point picked shows at once. Closing the dialog makes
+		// one Undo step for each text, from where it was to the end.
+		bool picked = false;
+		connect(&atd, &AlignmentTextDialog::alignmentChanged, this,
+				[this, &picked](Qt::Alignment alignment) {
+			picked = true;
+			for (PartText *part_text : std::as_const(m_parts)) {
+				part_text->setAlignment(alignment);
+			}
+		});
+		atd.exec();
+		if (!picked) {
 			return;
 		}
 		for (int i = 0; i < m_parts.length(); i++) {
 			PartText *part_text = m_parts[i];
-			if (atd.alignment() != part_text->alignment()) {
+			if (atd.alignment() != old_alignments[i]) {
 				QPropertyUndoCommand *undo = new QPropertyUndoCommand(
 					part_text, "alignment",
-					QVariant(part_text->alignment()),
+					QVariant(old_alignments[i]),
 					QVariant(atd.alignment()));
 				undo->setText(tr("Modify the alignment of a text field"));
 				undoStack().push(undo);

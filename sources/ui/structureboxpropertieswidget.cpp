@@ -37,12 +37,22 @@ StructureBoxPropertiesWidget::StructureBoxPropertiesWidget(StructureBoxItem *ite
 	m_item(item),
 	m_plant_edit(new QLineEdit(this)),
 	m_location_edit(new QLineEdit(this)),
-	m_prefix_edit(new QLineEdit(this))
+	m_prefix_edit(new QLineEdit(this)),
+	m_higher_plant_edit(new QLineEdit(this)),
+	m_higher_location_edit(new QLineEdit(this))
 {
 	auto layout = new QFormLayout(this);
+		//In the order of a designation: ==A1=P1++S1+L1-A1. The levels
+		//above the plant and the location are the folio's when left empty
+	layout->addRow(tr("Higher-level function (==)"), m_higher_plant_edit);
 	layout->addRow(tr("Plant (=)"), m_plant_edit);
+	layout->addRow(tr("Higher-level location (++)"), m_higher_location_edit);
 	layout->addRow(tr("Location (+)"), m_location_edit);
 	layout->addRow(tr("Prefix (-)"), m_prefix_edit);
+	m_higher_plant_edit->setObjectName(QStringLiteral("higherPlantEdit"));
+	m_higher_location_edit->setObjectName(QStringLiteral("higherLocationEdit"));
+	m_higher_plant_edit->setToolTip(tr("Left empty, the folio's"));
+	m_higher_location_edit->setToolTip(tr("Left empty, the folio's"));
 	m_plant_edit->setObjectName(QStringLiteral("plantEdit"));
 	m_location_edit->setObjectName(QStringLiteral("locationEdit"));
 	if (m_item && m_item->diagram())
@@ -80,6 +90,8 @@ void StructureBoxPropertiesWidget::apply()
 	change("plant",    m_item->plant(),    m_plant_edit->text());
 	change("location", m_item->location(), m_location_edit->text());
 	change("prefix",   m_item->prefix(),   m_prefix_edit->text());
+	change("higherPlant",    m_item->higherPlant(),    m_higher_plant_edit->text());
+	change("higherLocation", m_item->higherLocation(), m_higher_location_edit->text());
 		//Only a size the user typed: a stored size the box cannot show
 		//(8.333, or 0.5 below its range) is not changed by another edit
 	if (!qFuzzyCompare(m_label_size_shown, m_label_size->value())) {
@@ -116,6 +128,8 @@ void StructureBoxPropertiesWidget::updateUi()
 	m_plant_edit->setText(m_item->plant());
 	m_location_edit->setText(m_item->location());
 	m_prefix_edit->setText(m_item->prefix());
+	m_higher_plant_edit->setText(m_item->higherPlant());
+	m_higher_location_edit->setText(m_item->higherLocation());
 	m_label_size->setValue(m_item->labelSize());
 	m_color->setColor(m_item->pen().color());
 	m_label_size_shown = m_label_size->value();
@@ -139,7 +153,8 @@ bool StructureBoxPropertiesWidget::setLiveEdit(bool live_edit)
 	m_edit_connections.clear();
 
 	if (m_live_edit) {
-		for (QLineEdit *edit : {m_plant_edit, m_location_edit, m_prefix_edit})
+		for (QLineEdit *edit : {m_plant_edit, m_location_edit, m_prefix_edit,
+								m_higher_plant_edit, m_higher_location_edit})
 			m_edit_connections << connect(edit, &QLineEdit::editingFinished,
 										  this, &StructureBoxPropertiesWidget::apply);
 		m_edit_connections << connect(m_label_size, &QDoubleSpinBox::editingFinished,

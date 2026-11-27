@@ -23,7 +23,7 @@
 #include <qet.h>
 #include <qetdiagrameditor.h>
 #include <qetproject.h>
-#include <utils/qetsettings.h>
+#include <projectcheck/checksettings.h>
 
 #include <QApplication>
 #include <QCheckBox>
@@ -64,14 +64,14 @@ DuplicateLabelsDialog::DuplicateLabelsDialog(
 	m_case_sensitive->setToolTip(
 		tr("When unchecked, labels differing only in letter case, such as K1 "
 		   "and k1, are duplicates."));
-	m_case_sensitive->setChecked(QetSettings::duplicateLabelsCaseSensitive());
+	m_case_sensitive->setChecked(CheckSettings::value(m_project, CheckSettings::Option::DuplicatesCaseSensitive));
 	connect(
 		m_case_sensitive,
 		&QCheckBox::toggled,
 		this,
 		[this](bool checked)
 		{
-			QetSettings::setDuplicateLabelsCaseSensitive(checked);
+			CheckSettings::setValue(m_project, CheckSettings::Option::DuplicatesCaseSensitive, checked);
 			refresh();
 		});
 	layout->addWidget(m_case_sensitive);
@@ -83,14 +83,14 @@ DuplicateLabelsDialog::DuplicateLabelsDialog(
 		   "such as a socket drawn on two sheets, are one device and are "
 		   "reported only when their part numbers differ. When unchecked, "
 		   "only linked symbols (a coil and its contacts) are one device."));
-	m_by_designation->setChecked(QetSettings::duplicateLabelsByDesignation());
+	m_by_designation->setChecked(CheckSettings::value(m_project, CheckSettings::Option::DuplicatesByDesignation));
 	connect(
 		m_by_designation,
 		&QCheckBox::toggled,
 		this,
 		[this](bool checked)
 		{
-			QetSettings::setDuplicateLabelsByDesignation(checked);
+			CheckSettings::setValue(m_project, CheckSettings::Option::DuplicatesByDesignation, checked);
 			refresh();
 		});
 	layout->addWidget(m_by_designation);
@@ -102,14 +102,14 @@ DuplicateLabelsDialog::DuplicateLabelsDialog(
 		   "a =FACTORY sheet and 101 on a =SILO sheet, is not a duplicate: a "
 		   "wire takes the plant of its sheet. When unchecked, a wire number "
 		   "names one potential in the whole project."));
-	m_signals_by_plant->setChecked(QetSettings::duplicateLabelsSignalsByPlant());
+	m_signals_by_plant->setChecked(CheckSettings::value(m_project, CheckSettings::Option::DuplicatesSignalsByPlant));
 	connect(
 		m_signals_by_plant,
 		&QCheckBox::toggled,
 		this,
 		[this](bool checked)
 		{
-			QetSettings::setDuplicateLabelsSignalsByPlant(checked);
+			CheckSettings::setValue(m_project, CheckSettings::Option::DuplicatesSignalsByPlant, checked);
 			refresh();
 		});
 	layout->addWidget(m_signals_by_plant);

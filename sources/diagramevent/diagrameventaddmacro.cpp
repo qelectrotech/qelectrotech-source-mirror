@@ -255,8 +255,8 @@ bool DiagramEventAddMacro::loadMacro()
 
 /**
 	@brief DiagramEventAddMacro::askLabels
-	Asks for the macro's device labels and question-mark texts, when the
-	setting says so, and writes the answers in @p diagram.
+	Asks for the macro's device labels, ?name values and question-mark
+	texts, when the setting says so, and writes the answers in @p diagram.
 	@return false to place nothing
 */
 bool DiagramEventAddMacro::askLabels(QDomElement &diagram)

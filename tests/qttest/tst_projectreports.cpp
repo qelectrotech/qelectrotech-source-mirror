@@ -15,6 +15,7 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
+#include "cable/cable.h"
 #include "dataBase/projectdatabase.h"
 #include "ElementsCollection/elementslocation.h"
 #include "ElementsCollection/xmlelementcollection.h"
@@ -37,6 +38,7 @@
 #include <QTemporaryDir>
 #include <QSqlQuery>
 #include <QtTest>
+#include <tuple>
 
 /**
 	The project's lists: each a query of the public views, for the whole
@@ -141,7 +143,15 @@ class tst_projectreports : public QObject
 		for (const auto &report : ProjectReports::all()) {
 			const auto table = ProjectReports::read(&project, report);
 			QVERIFY2(table.error.isEmpty(), qPrintable(report.id + QLatin1Char(' ') + table.error));
-			QCOMPARE(table.headers.size(), report.columns.size());
+				//A column shown only when used may be left out, never
+				//anything else; every row matches the headers
+			int always = 0;
+			for (const auto &column : report.columns)
+				if (!column.when_used) ++always;
+			QVERIFY(table.headers.size() >= always);
+			QVERIFY(table.headers.size() <= report.columns.size());
+			for (const QStringList &row : table.rows)
+				QCOMPARE(row.size(), table.headers.size());
 		}
 	}
 
@@ -191,6 +201,58 @@ class tst_projectreports : public QObject
 		for (const auto &place : places) texts << place.text();
 		QCOMPARE(texts, QStringList({QStringLiteral("=FACTORY"), QStringLiteral("=FACTORY+CP1"),
 									 QStringLiteral("=SILO"), QStringLiteral("=SILO+P_1")}));
+	}
+
+		//Item C7 of #1878: the same plant and location under two == are
+		//two places, each listed and each a filter of the lists
+	void placesUnderAHigherLevel()
+	{
+		QETProject project;
+		Diagram *a1 = project.addNewDiagram();
+		Diagram *a2 = project.addNewDiagram();
+		Diagram *a1b = project.addNewDiagram();
+		for (auto [folio, higher_plant, higher_location] :
+			 {std::tuple{a1, QStringLiteral("A1"), QStringLiteral("S1")},
+			  std::tuple{a2, QStringLiteral("A2"), QString()},
+				//Typed with its sign on this one: the same == as a1's
+			  std::tuple{a1b, QStringLiteral("==A1"), QStringLiteral("++S1")}}) {
+			setPlace(folio, QStringLiteral("FACTORY"), QStringLiteral("CP1"));
+			auto block = folio->border_and_titleblock.exportTitleBlock();
+			block.higher_plant = higher_plant;
+			block.higher_location = higher_location;
+			folio->border_and_titleblock.importTitleBlock(block);
+		}
+		QVERIFY(symbol(a1, QStringLiteral("K1")) && symbol(a1, QStringLiteral("K2"))
+				&& symbol(a2, QStringLiteral("K3")));
+
+		const auto places = ProjectReports::places(&project);
+		QStringList texts;
+		for (const auto &place : places) texts << place.text();
+		QCOMPARE(texts, QStringList({QStringLiteral("==A1=FACTORY"), QStringLiteral("==A1=FACTORY++S1+CP1"),
+									 QStringLiteral("==A2=FACTORY"), QStringLiteral("==A2=FACTORY+CP1")}));
+
+		const auto parts = ProjectReports::report(QStringLiteral("parts"));
+		QCOMPARE(column(ProjectReports::read(&project, parts, places.at(1)), 0),
+				 QStringList({QStringLiteral("==A1=FACTORY++S1+CP1-K1"),
+							  QStringLiteral("==A1=FACTORY++S1+CP1-K2")}));
+		QCOMPARE(column(ProjectReports::read(&project, parts, places.at(2)), 0),
+				 QStringList({QStringLiteral("==A2=FACTORY+CP1-K3")}));
+			//Without the levels, the place is another one
+		QVERIFY(ProjectReports::read(&project, parts, {QStringLiteral("FACTORY"), QStringLiteral("CP1")})
+				.rows.isEmpty());
+
+		QSqlQuery view = project.dataBase()->newQuery(QStringLiteral(
+				"SELECT structure_id, symbols, folios FROM qet_locations ORDER BY structure_id"));
+		QStringList rows;
+		while (view.next())
+			rows << view.value(0).toString() + QLatin1Char('|') + view.value(1).toString()
+					+ QLatin1Char('|') + view.value(2).toString();
+			//The folio with ==A1 typed with its sign is in the same place
+		QCOMPARE(rows, QStringList({QStringLiteral("==A1=FACTORY++S1+CP1|2|2"),
+									QStringLiteral("==A2=FACTORY+CP1|1|1")}));
+
+		const auto space = ProjectReports::read(&project, ProjectReports::report(QStringLiteral("space")));
+		QVERIFY2(space.error.isEmpty(), qPrintable(space.error));
 	}
 
 	void plantsAndLocationsWithCounts()
@@ -321,6 +383,31 @@ class tst_projectreports : public QObject
 				 QStringList({QStringLiteral("=SILO+P_1")}));
 		QCOMPARE(column(ProjectReports::read(&project, space, {QStringLiteral("FACTORY"), QStringLiteral("CP1")}), 0),
 				 QStringList({QStringLiteral("=FACTORY+CP1")}));
+	}
+
+		//The cable list's comment column (#2002) is only there once a
+		//cable has a comment: no blank strip on every project before
+	void cableCommentOnlyWhenUsed()
+	{
+		QETProject project;
+		project.addNewDiagram();
+		Cable *w1 = project.newCable();
+		w1->setDesignation(QStringLiteral("W1"));
+		const auto report = ProjectReports::report(QStringLiteral("cables"));
+
+		auto table = ProjectReports::read(&project, report);
+		QVERIFY2(table.error.isEmpty(), qPrintable(table.error));
+		QVERIFY(!table.headers.contains(QStringLiteral("Comment")));
+		QCOMPARE(table.headers.size(), report.columns.size() - 1);
+		QCOMPARE(table.rows.size(), 1);
+		QCOMPARE(table.rows.first().size(), table.headers.size());
+
+		w1->setComment(QStringLiteral("Laid in the floor duct"));
+		table = ProjectReports::read(&project, report);
+		QVERIFY2(table.error.isEmpty(), qPrintable(table.error));
+		QCOMPARE(table.headers.size(), report.columns.size());
+		QCOMPARE(table.headers.last(), QStringLiteral("Comment"));
+		QCOMPARE(table.rows.first().last(), QStringLiteral("Laid in the floor duct"));
 	}
 
 	void writesCsv()

@@ -248,6 +248,48 @@
               </property>
              </widget>
             </item>
+            <item row="13" column="1">
+             <widget class="QLabel" name="m_higher_plant_label">
+              <property name="text">
+               <string>Higher-level function (==):</string>
+              </property>
+             </widget>
+            </item>
+            <item row="13" column="3">
+             <widget class="QLineEdit" name="m_higher_plant_le">
+              <property name="toolTip">
+               <string>The IEC 81346 level above the plant: ==A1 in ==A1=P1+L1-K1. Left empty, there is none. Available as variable %{higher_plant} for title blocks</string>
+              </property>
+             </widget>
+            </item>
+            <item row="14" column="1">
+             <widget class="QLabel" name="m_higher_location_label">
+              <property name="text">
+               <string>Higher-level location (++):</string>
+              </property>
+             </widget>
+            </item>
+            <item row="14" column="3">
+             <widget class="QLineEdit" name="m_higher_location_le">
+              <property name="toolTip">
+               <string>The IEC 81346 level above the location: ++S1 in =P1++S1+L1-K1. Left empty, there is none. Available as variable %{higher_location} for title blocks</string>
+              </property>
+             </widget>
+            </item>
+            <item row="15" column="1">
+             <widget class="QLabel" name="m_document_kind_label">
+              <property name="text">
+               <string>Document kind (&amp;):</string>
+              </property>
+             </widget>
+            </item>
+            <item row="15" column="3">
+             <widget class="QLineEdit" name="m_document_kind_le">
+              <property name="toolTip">
+               <string>What kind of document this folio is, as an IEC 61355 code. Left empty, none. Available as variable %{document_kind} for title blocks</string>
+              </property>
+             </widget>
+            </item>
             <item row="10" column="1">
              <widget class="QLabel" name="m_folio_subgroup_label">
               <property name="text">
@@ -466,6 +508,9 @@ The following variables can be used:
   <tabstop>m_loc</tabstop>
   <tabstop>m_folio_group_le</tabstop>
   <tabstop>m_folio_subgroup_le</tabstop>
+  <tabstop>m_higher_plant_le</tabstop>
+  <tabstop>m_higher_location_le</tabstop>
+  <tabstop>m_document_kind_le</tabstop>
   <tabstop>m_indice</tabstop>
   <tabstop>auto_page_cb</tabstop>
   <tabstop>m_edit_autofolionum_pb</tabstop>

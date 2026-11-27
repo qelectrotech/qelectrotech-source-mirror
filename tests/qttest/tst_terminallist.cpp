@@ -32,6 +32,7 @@
 #include <QDomDocument>
 #include <QSqlQuery>
 #include <QtTest>
+#include <tuple>
 
 /**
 	qet_terminals: the terminals of each terminal strip, one row each, in
@@ -182,6 +183,46 @@ class tst_terminallist : public QObject
 					 "WHERE strip = 'X9'"), 4),
 				 QStringList({QStringLiteral("-X9|0|0|X9:1")}));
 
+	}
+
+		//Item C7 of #1878: a strip's id takes the == and ++ of the folio
+		//it is first drawn on; each terminal's id those of its own folio
+	void aStripTakesTheHigherLevelsOfItsFirstFolio()
+	{
+		QETProject project;
+		Diagram *first = project.addNewDiagram();
+		Diagram *second = project.addNewDiagram();
+		setPlace(first, QStringLiteral("FACTORY"), QStringLiteral("CP1"));
+		setPlace(second, QStringLiteral("FACTORY"), QStringLiteral("CP1"));
+		for (auto [folio, higher_plant, higher_location] :
+			 {std::tuple{first, QStringLiteral("A1"), QStringLiteral("S1")},
+			  std::tuple{second, QStringLiteral("A2"), QString()}}) {
+			auto block = folio->border_and_titleblock.exportTitleBlock();
+			block.higher_plant = higher_plant;
+			block.higher_location = higher_location;
+			folio->border_and_titleblock.importTitleBlock(block);
+		}
+		Element *on_second = terminal(second, QStringLiteral("X1:1"));
+		Element *on_first = terminal(first, QStringLiteral("X1:2"));
+		Element *alone = terminal(second, QStringLiteral("X9:1"));
+		QVERIFY(on_second && on_first && alone);
+			//The strip's order puts the second folio's terminal first: the
+			//folio is still the first one it is drawn on
+		TerminalStrip *strip = project.newTerminalStrip(
+			QStringLiteral("FACTORY"), QStringLiteral("CP1"), QStringLiteral("X1"));
+		QVERIFY(strip->addTerminal(on_second));
+		QVERIFY(strip->addTerminal(on_first));
+			//No plant or location of its own: the levels still apply
+		TerminalStrip *bare = project.newTerminalStrip(QString(), QString(), QStringLiteral("X9"));
+		QVERIFY(bare->addTerminal(alone));
+
+		project.dataBase()->updateDB();
+		QCOMPARE(rows(project, QStringLiteral(
+					 "SELECT strip_id, label, terminal_id FROM qet_terminals"), 3),
+				 QStringList({
+					 QStringLiteral("==A1=FACTORY++S1+CP1-X1|X1:1|==A2=FACTORY+CP1-X1:1"),
+					 QStringLiteral("==A1=FACTORY++S1+CP1-X1|X1:2|==A1=FACTORY++S1+CP1-X1:2"),
+					 QStringLiteral("==A2-X9|X9:1|==A2=FACTORY+CP1-X9:1")}));
 	}
 };
 

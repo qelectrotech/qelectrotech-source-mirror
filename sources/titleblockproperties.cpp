@@ -52,6 +52,9 @@ bool TitleBlockProperties::operator==(const TitleBlockProperties &ip) {
 		ip.locmach == locmach &&\
 		ip.folio_group == folio_group &&\
 		ip.folio_subgroup == folio_subgroup &&\
+		ip.higher_plant == higher_plant &&\
+		ip.higher_location == higher_location &&\
+		ip.document_kind == document_kind &&\
 		ip.indexrev == indexrev &&\
 		ip.version == version &&\
 		ip.folio == folio &&\
@@ -89,6 +92,16 @@ void TitleBlockProperties::toXml(QDomElement &e) const
 		e.setAttribute("folio_group", folio_group);
 	if (!folio_subgroup.isEmpty())
 		e.setAttribute("folio_subgroup", folio_subgroup);
+		//The == and ++ levels likewise: a project without them is saved
+		//exactly as before, and an older QElectroTech skips them
+	if (!higher_plant.isEmpty())
+		e.setAttribute("higher_plant", higher_plant);
+	if (!higher_location.isEmpty())
+		e.setAttribute("higher_location", higher_location);
+		//The same for the kind of document (#1295): a project without it
+		//is saved as before, and an older QElectroTech skips it
+	if (!document_kind.isEmpty())
+		e.setAttribute("document_kind", document_kind);
 	e.setAttribute("indexrev",indexrev);
 	e.setAttribute("version", version);
 	e.setAttribute("folio",    folio);
@@ -121,6 +134,9 @@ void TitleBlockProperties::fromXml(const QDomElement &e) {
 	if (e.hasAttribute("locmach"))     locmach  = e.attribute("locmach");
 	if (e.hasAttribute("folio_group"))    folio_group    = e.attribute("folio_group");
 	if (e.hasAttribute("folio_subgroup")) folio_subgroup = e.attribute("folio_subgroup");
+	if (e.hasAttribute("higher_plant"))    higher_plant    = e.attribute("higher_plant");
+	if (e.hasAttribute("higher_location")) higher_location = e.attribute("higher_location");
+	if (e.hasAttribute("document_kind"))  document_kind  = e.attribute("document_kind");
 	if (e.hasAttribute("indexrev"))    indexrev  = e.attribute("indexrev");
 	if (e.hasAttribute("version"))     version   = e.attribute("version");
 	if (e.hasAttribute("folio"))       folio    = e.attribute("folio");
@@ -157,6 +173,9 @@ void TitleBlockProperties::toSettings(QSettings &settings, const QString &prefix
 	settings.setValue(prefix % "locmach", locmach);
 	settings.setValue(prefix % "folio_group", folio_group);
 	settings.setValue(prefix % "folio_subgroup", folio_subgroup);
+	settings.setValue(prefix % "higher_plant", higher_plant);
+	settings.setValue(prefix % "higher_location", higher_location);
+	settings.setValue(prefix % "document_kind", document_kind);
 	settings.setValue(prefix % "indexrev", indexrev);
 	settings.setValue(prefix % "version", version);
 	settings.setValue(prefix % "folio",    folio);
@@ -181,6 +200,9 @@ void TitleBlockProperties::fromSettings(QSettings &settings, const QString &pref
 	locmach  = settings.value(prefix % "locmach").toString();
 	folio_group    = settings.value(prefix % "folio_group").toString();
 	folio_subgroup = settings.value(prefix % "folio_subgroup").toString();
+	higher_plant    = settings.value(prefix % "higher_plant").toString();
+	higher_location = settings.value(prefix % "higher_location").toString();
+	document_kind  = settings.value(prefix % "document_kind").toString();
 	indexrev = settings.value(prefix % "indexrev").toString();
 	version  = settings.value(prefix % "version").toString();
 	folio    = settings.value(prefix % "folio", "%id/%total").toString();

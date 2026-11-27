@@ -52,6 +52,8 @@ class PlantsLocationsDialog : public QDialog
 		void renameLocation() {renameSelected(true);}
 		bool applyRename(const PlaceRename::Request &request,
 						 PlaceRename::CounterPolicy policy = PlaceRename::CounterPolicy::MergeHigher);
+		void copyPlant();
+		bool applyCopy(const QString &plant, const QString &new_name);
 
 	private:
 		void rowActivated(QTableWidgetItem *item);
@@ -64,6 +66,7 @@ class PlantsLocationsDialog : public QDialog
 		QTableWidget *m_table;
 		QPushButton *m_rename_plant;
 		QPushButton *m_rename_location;
+		QPushButton *m_copy_plant;
 };
 
 #endif // PLANTSLOCATIONSDIALOG_H

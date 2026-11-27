@@ -83,8 +83,10 @@
 #	include <KAutoSaveFile>
 #endif
 #include "ui/backuprestoredialog.h"
+#include "ui/dialogwaiting.h"
 
 #include <algorithm>
+#include <utility>
 
 #ifdef QET_ALLOW_OVERRIDE_CED_OPTION
 QString QETApp::m_overrided_common_elements_dir = QString();
@@ -1002,6 +1004,43 @@ QString QETApp::customTitleBlockTemplatesDir()
 	}
 
 	return(dataDir() + "/titleblocks/");
+}
+
+/**
+	@brief QETApp::commonProjectTemplatesDir
+	@return the folder of the project templates QElectroTech ships, beside
+	the title block templates (empty if the packaging does not ship any)
+*/
+QString QETApp::commonProjectTemplatesDir()
+{
+	return QDir::cleanPath(commonTitleBlockTemplatesDir() + QStringLiteral("/../templates"));
+}
+
+/**
+	@brief QETApp::customProjectTemplatesDir
+	@return the folder of the user's own project templates
+*/
+QString QETApp::customProjectTemplatesDir()
+{
+	return dataDir() + QStringLiteral("/templates");
+}
+
+/**
+	@brief QETApp::projectTemplateFolders
+	@return the folders project templates are looked for in: those
+	QElectroTech ships, the user's own, and the shared folder set by the
+	"project-templates/shared-path" setting, for templates a team keeps on
+	a shared drive (#852)
+*/
+QList<ProjectTemplates::Folder> QETApp::projectTemplateFolders()
+{
+	QList<ProjectTemplates::Folder> folders;
+	folders << ProjectTemplates::Folder{tr("QElectroTech"), commonProjectTemplatesDir()};
+	folders << ProjectTemplates::Folder{tr("My templates"), customProjectTemplatesDir()};
+	const QString shared = QSettings().value(QStringLiteral("project-templates/shared-path")).toString();
+	if (!shared.isEmpty())
+		folders << ProjectTemplates::Folder{tr("Shared"), shared};
+	return folders;
 }
 
 /**
@@ -2392,9 +2431,33 @@ void QETApp::checkRemainingWindows()
 	\~ @see openProjectFiles openElementFiles
 */
 void QETApp::openFiles(const QETArguments &args) {
-	openProjectFiles(args.projectFiles());
+	QStringList projects = args.projectFiles();
+		//A project is being read while its progress dialog is up, and the
+		//dialog lets events through. A project handed over now (by the
+		//system or by another instance) would be read inside that one,
+		//which then resumes with the dialog the second one has closed, and
+		//crashes (#1978). It is opened once the dialog is gone
+	if (!projects.isEmpty() && DialogWaiting::hasInstance()) {
+		for (const QString &project : std::as_const(projects))
+			if (!m_waiting_projects.contains(project))
+				m_waiting_projects << project;
+		projects.clear();
+		connect(DialogWaiting::instance(), &QObject::destroyed,
+			this, &QETApp::openWaitingProjects,
+			Qt::ConnectionType(Qt::QueuedConnection | Qt::UniqueConnection));
+	}
+	openProjectFiles(projects);
 	openElementFiles(args.elementFiles());
 	openTitleBlockTemplateFiles(args.titleBlockTemplateFiles());
+}
+
+/**
+	@brief QETApp::openWaitingProjects
+	Open the projects given to openFiles() while a project was read
+*/
+void QETApp::openWaitingProjects()
+{
+	openFiles(QETArguments(std::exchange(m_waiting_projects, {})));
 }
 
 /**

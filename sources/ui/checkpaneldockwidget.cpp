@@ -24,24 +24,29 @@
 #include "../qetdiagrameditor.h"
 #include "../qetgraphicsitem/conductor.h"
 #include "../qetgraphicsitem/element.h"
+#include "../qetgraphicsitem/independenttextitem.h"
 #include "../qetproject.h"
 #include "../dataBase/projectdatabase.h"
-#include "../utils/qetsettings.h"
+#include "../projectcheck/checksettings.h"
 
 #include <QApplication>
 #include <QHBoxLayout>
 #include <QHeaderView>
+#include <QInputDialog>
 #include <QLabel>
 #include <QMenu>
 #include <QProgressDialog>
 #include <QPushButton>
 #include <QScopeGuard>
 #include <QSet>
+#include <QSignalBlocker>
 #include <QSqlQuery>
 #include <QStyle>
 #include <QToolButton>
 #include <QTreeWidget>
 #include <QVBoxLayout>
+
+#include <functional>
 
 CheckPanelDockWidget::CheckPanelDockWidget(QWidget *parent) :
 	QDockWidget(tr("Check", "dock title"), parent)
@@ -63,27 +68,38 @@ CheckPanelDockWidget::CheckPanelDockWidget(QWidget *parent) :
 	options->setPopupMode(QToolButton::InstantPopup);
 	m_options = new QMenu(options);
 	m_options->addSection(tr("Symbols with no wire"));
-	const auto option = [this](const QString &name, const QString &text, bool checked,
-							   void (*save)(bool)) {
+		// The project's own options when it has them, else the
+		// application's (CheckSettings): read again each time the menu opens
+	const auto option = [this](const QString &name, const QString &text,
+							   CheckSettings::Option which) {
 		QAction *action = m_options->addAction(text);
 		action->setObjectName(name);
 		action->setCheckable(true);
-		action->setChecked(checked);
-		connect(action, &QAction::toggled, this, [this, save](bool on) {
-			save(on);
+		action->setChecked(CheckSettings::value(m_project, which));
+		connect(m_options, &QMenu::aboutToShow, action, [this, action, which]() {
+			const QSignalBlocker blocker(action);
+			action->setChecked(CheckSettings::value(m_project, which));
+		});
+		connect(action, &QAction::toggled, this, [this, which](bool on) {
+			CheckSettings::setValue(m_project, which, on);
 			if (m_finding_count || m_tree->topLevelItemCount())
 				m_summary->setText(tr("The options changed. Run the checks again."));
 		});
 	};
 	option(QStringLiteral("unwiredSkipWirelessFolios"), tr("Leave out folios with no wire"),
-		   QetSettings::unwiredSymbolsSkipWirelessFolios(),
-		   &QetSettings::setUnwiredSymbolsSkipWirelessFolios);
+		   CheckSettings::Option::UnwiredSkipWirelessFolios);
 	option(QStringLiteral("unwiredSkipStripTerminals"), tr("Leave out strip terminals"),
-		   QetSettings::unwiredSymbolsSkipStripTerminals(),
-		   &QetSettings::setUnwiredSymbolsSkipStripTerminals);
+		   CheckSettings::Option::UnwiredSkipStripTerminals);
 	option(QStringLiteral("unwiredSkipContacts"), tr("Leave out auxiliary contacts"),
-		   QetSettings::unwiredSymbolsSkipContacts(),
-		   &QetSettings::setUnwiredSymbolsSkipContacts);
+		   CheckSettings::Option::UnwiredSkipContacts);
+	m_options->addSection(tr("Accepted findings"));
+	m_show_accepted = m_options->addAction(tr("Show accepted findings"));
+	m_show_accepted->setObjectName(QStringLiteral("checkPanelShowAccepted"));
+	m_show_accepted->setCheckable(true);
+	connect(m_show_accepted, &QAction::toggled, this, [this]() {
+		for (int i = 0 ; i < m_tree->topLevelItemCount() ; ++i)
+			updateCheck(m_tree->topLevelItem(i));
+	});
 	options->setMenu(m_options);
 	top->addWidget(options);
 	m_summary = new QLabel(body);
@@ -101,7 +117,11 @@ CheckPanelDockWidget::CheckPanelDockWidget(QWidget *parent) :
 	m_tree->header()->setSectionResizeMode(0, QHeaderView::Stretch);
 	m_tree->header()->setSectionResizeMode(1, QHeaderView::ResizeToContents);
 	m_tree->header()->setSectionResizeMode(2, QHeaderView::ResizeToContents);
-	m_tree->setToolTip(tr("Double-click a finding to show it on its folio."));
+	m_tree->setToolTip(tr("Double-click a finding to show it on its folio. Right-click "
+						  "to accept it, or to switch its check off for this project."));
+	m_tree->setContextMenuPolicy(Qt::CustomContextMenu);
+	connect(m_tree, &QTreeWidget::customContextMenuRequested,
+			this, &CheckPanelDockWidget::showMenu);
 	layout->addWidget(m_tree);
 	setWidget(body);
 
@@ -191,6 +211,39 @@ void CheckPanelDockWidget::run()
 	}
 	QApplication::setOverrideCursor(Qt::WaitCursor);
 	const auto restore = qScopeGuard([]() { QApplication::restoreOverrideCursor(); });
+	for (ProjectCheck::Kind kind : ProjectCheck::kinds())
+		fillCheck(new QTreeWidgetItem(m_tree), kind);
+	updateSummary();
+}
+
+namespace {
+		/// On a check's row: its ProjectCheck::Kind; its note, if any
+	constexpr int kind_role = Qt::UserRole;
+	constexpr int note_role = Qt::UserRole + 1;
+		/// On a finding's row: CheckSettings::findingId(), its text, and
+		/// whether it is accepted and with what note
+	constexpr int id_role = Qt::UserRole;
+	constexpr int text_role = Qt::UserRole + 1;
+	constexpr int accepted_role = Qt::UserRole + 2;
+	constexpr int accepted_note_role = Qt::UserRole + 3;
+}
+
+/**
+	@brief CheckPanelDockWidget::fillCheck
+	Run the check @p kind and list its findings under @p root, unless the
+	project switched it off. The findings the project accepted are hidden
+	unless Show accepted findings is on.
+*/
+void CheckPanelDockWidget::fillCheck(QTreeWidgetItem *root, ProjectCheck::Kind kind)
+{
+	removeFindings(root);
+	root->setData(0, kind_role, int(kind));
+	root->setData(0, note_role, QVariant());
+	root->setToolTip(0, ProjectCheck::toolTip(kind));
+	if (!m_project || !CheckSettings::ruleEnabled(m_project, kind)) {
+		updateCheck(root);
+		return;
+	}
 
 	const auto setPlace = [this](QTreeWidgetItem *row, const ProjectCheck::Place &place) {
 		row->setText(1, place.folio);
@@ -198,55 +251,258 @@ void CheckPanelDockWidget::run()
 		if (place.canShow()) m_places.insert(row, place);
 	};
 
-	for (ProjectCheck::Kind kind : ProjectCheck::kinds()) {
-		const auto result = ProjectCheck::run(m_project, kind);
-		auto *root = new QTreeWidgetItem(m_tree);
-		root->setToolTip(0, ProjectCheck::toolTip(kind));
-		const int found = int(result.findings.size());
-		m_finding_count += found;
-		if (!result.note.isEmpty()) {
-			//: %1 is the check, %2 why it found nothing to check
-			root->setText(0, tr("%1: %2").arg(ProjectCheck::title(kind), result.note));
-			root->setIcon(0, style()->standardIcon(QStyle::SP_MessageBoxInformation));
-			root->setForeground(0, palette().brush(QPalette::Disabled, QPalette::Text));
+	const auto result = ProjectCheck::run(m_project, kind);
+	if (!result.note.isEmpty()) root->setData(0, note_role, result.note);
+	const auto accepted = CheckSettings::acceptedFindings(m_project);
+	for (const auto &finding : result.findings) {
+		auto *row = new QTreeWidgetItem(root);
+		const QString id = CheckSettings::findingId(kind, finding);
+		row->setData(0, id_role, id);
+		row->setData(0, text_role, finding.text);
+		row->setData(0, accepted_role, accepted.contains(id));
+		row->setData(0, accepted_note_role, accepted.value(id));
+			// One place: on the finding's own row. Several: a row each,
+			// and the finding shows the first that can be shown.
+		if (finding.places.size() == 1) {
+			setPlace(row, finding.places.first());
 			continue;
 		}
-		if (!found) {
+		for (const auto &place : finding.places) {
+			auto *child = new QTreeWidgetItem(row);
+			child->setText(0, place.text);
+			setPlace(child, place);
+			if (!m_places.contains(row) && place.canShow())
+				m_places.insert(row, place);
+		}
+		if (m_places.contains(row)) {
+			row->setText(1, m_places.value(row).folio);
+			row->setText(2, m_places.value(row).cell);
+		}
+	}
+	updateCheck(root);
+	root->setExpanded(true);
+}
+
+/**
+	@brief CheckPanelDockWidget::updateCheck
+	The text of a check's row and of its findings' rows, from what they
+	hold: switched off, a note, or how many findings are open and accepted.
+*/
+void CheckPanelDockWidget::updateCheck(QTreeWidgetItem *root)
+{
+	const auto kind = ProjectCheck::Kind(root->data(0, kind_role).toInt());
+	const QString title = ProjectCheck::title(kind);
+	root->setData(0, Qt::ForegroundRole, QVariant());
+	if (!m_project || !CheckSettings::ruleEnabled(m_project, kind)) {
+		//: %1 is the check
+		root->setText(0, tr("%1: switched off for this project").arg(title));
+		root->setIcon(0, style()->standardIcon(QStyle::SP_MessageBoxInformation));
+		root->setForeground(0, palette().brush(QPalette::Disabled, QPalette::Text));
+		return;
+	}
+	const QString note = root->data(0, note_role).toString();
+	if (!note.isEmpty() && !root->childCount()) {
+		//: %1 is the check, %2 why it found nothing to check
+		root->setText(0, tr("%1: %2").arg(title, note));
+		root->setIcon(0, style()->standardIcon(QStyle::SP_MessageBoxInformation));
+		root->setForeground(0, palette().brush(QPalette::Disabled, QPalette::Text));
+		return;
+	}
+	int open = 0, accepted = 0;
+	const bool show_accepted = m_show_accepted->isChecked();
+	for (int i = 0 ; i < root->childCount() ; ++i) {
+		QTreeWidgetItem *row = root->child(i);
+		const QString text = row->data(0, text_role).toString();
+		if (row->data(0, accepted_role).toBool()) {
+			++accepted;
+			const QString why = row->data(0, accepted_note_role).toString();
+			row->setText(0, why.isEmpty()
+				//: %1 is a finding the project accepted
+				? tr("%1 (accepted)").arg(text)
+				//: %1 is a finding the project accepted, %2 the note given then
+				: tr("%1 (accepted: %2)").arg(text, why));
+			row->setForeground(0, palette().brush(QPalette::Disabled, QPalette::Text));
+			row->setHidden(!show_accepted);
+		} else {
+			++open;
+			row->setText(0, text);
+			row->setData(0, Qt::ForegroundRole, QVariant());
+			row->setHidden(false);
+		}
+		row->setToolTip(0, row->text(0));
+	}
+	if (!open) {
+		root->setText(0, accepted
+			//: %1 is the check; %n counts the findings the project accepted
+			? tr("%1: nothing found, %n accepted", nullptr, accepted).arg(title)
 			//: %1 is the check
-			root->setText(0, tr("%1: nothing found").arg(ProjectCheck::title(kind)));
-			root->setIcon(0, style()->standardIcon(QStyle::SP_DialogApplyButton));
-			continue;
-		}
+			: tr("%1: nothing found").arg(title));
+		root->setIcon(0, style()->standardIcon(QStyle::SP_DialogApplyButton));
+		return;
+	}
+	root->setText(0, accepted
+		//: %1 is the check, %2 how many findings it has; %n counts those accepted
+		? tr("%1 (%2, %n accepted)", nullptr, accepted).arg(title).arg(open)
 		//: %1 is the check, %2 how many findings it has
-		root->setText(0, tr("%1 (%2)").arg(ProjectCheck::title(kind)).arg(found));
-		root->setIcon(0, style()->standardIcon(QStyle::SP_MessageBoxWarning));
-		for (const auto &finding : result.findings) {
-			auto *row = new QTreeWidgetItem(root);
-			row->setText(0, finding.text);
-			row->setToolTip(0, finding.text);
-				// One place: on the finding's own row. Several: a row each,
-				// and the finding shows the first that can be shown.
-			if (finding.places.size() == 1) {
-				setPlace(row, finding.places.first());
-				continue;
-			}
-			for (const auto &place : finding.places) {
-				auto *child = new QTreeWidgetItem(row);
-				child->setText(0, place.text);
-				setPlace(child, place);
-				if (!m_places.contains(row) && place.canShow())
-					m_places.insert(row, place);
-			}
-			if (m_places.contains(row)) {
-				row->setText(1, m_places.value(row).folio);
-				row->setText(2, m_places.value(row).cell);
-			}
-		}
-		root->setExpanded(true);
+		: tr("%1 (%2)").arg(title).arg(open));
+	root->setIcon(0, style()->standardIcon(QStyle::SP_MessageBoxWarning));
+}
+
+/// The findings of the last run which are not accepted, in the summary
+void CheckPanelDockWidget::updateSummary()
+{
+	m_finding_count = 0;
+	for (int i = 0 ; i < m_tree->topLevelItemCount() ; ++i) {
+		QTreeWidgetItem *root = m_tree->topLevelItem(i);
+		for (int j = 0 ; j < root->childCount() ; ++j)
+			if (!root->child(j)->data(0, accepted_role).toBool()) ++m_finding_count;
 	}
 	m_summary->setText(m_finding_count
 		? tr("%n finding(s). Run the checks again after a change.", nullptr, m_finding_count)
 		: tr("Nothing found."));
+}
+
+/// Take away the findings listed under @p root
+void CheckPanelDockWidget::removeFindings(QTreeWidgetItem *root)
+{
+	const std::function<void(QTreeWidgetItem *)> forget = [&](QTreeWidgetItem *row) {
+		m_places.remove(row);
+		for (int i = 0 ; i < row->childCount() ; ++i) forget(row->child(i));
+	};
+	for (int i = 0 ; i < root->childCount() ; ++i) forget(root->child(i));
+	qDeleteAll(root->takeChildren());
+}
+
+QTreeWidgetItem *CheckPanelDockWidget::checkRow(ProjectCheck::Kind kind) const
+{
+	for (int i = 0 ; i < m_tree->topLevelItemCount() ; ++i) {
+		QTreeWidgetItem *root = m_tree->topLevelItem(i);
+		if (root->data(0, kind_role).toInt() == int(kind)) return root;
+	}
+	return nullptr;
+}
+
+/// The finding's row @p row is, or is a place of; null for a check's row
+QTreeWidgetItem *CheckPanelDockWidget::findingRow(QTreeWidgetItem *row) const
+{
+	if (!row || !row->parent()) return nullptr;
+	while (row->parent()->parent()) row = row->parent();
+	return row;
+}
+
+/**
+	@brief CheckPanelDockWidget::setAccepted
+	Accept the finding of @p row with @p note in the project, or (@p
+	accept false) list it again. An accepted finding stays hidden after
+	the project is saved and opened again.
+	@return false when @p row is no finding or the project cannot change
+*/
+bool CheckPanelDockWidget::setAccepted(QTreeWidgetItem *row, bool accept, const QString &note)
+{
+	row = findingRow(row);
+	if (!row || !m_project || m_project->isReadOnly()) return false;
+	const QString id = row->data(0, id_role).toString();
+	if (accept)
+		CheckSettings::acceptFinding(m_project, id, note);
+	else
+		CheckSettings::unacceptFinding(m_project, id);
+		// Every row of that finding: one finding may be listed twice
+		// (two places of one id)
+	const auto accepted = CheckSettings::acceptedFindings(m_project);
+	QTreeWidgetItem *root = row->parent();
+	for (int i = 0 ; i < root->childCount() ; ++i) {
+		QTreeWidgetItem *other = root->child(i);
+		if (other->data(0, id_role).toString() != id) continue;
+		other->setData(0, accepted_role, accepted.contains(id));
+		other->setData(0, accepted_note_role, accepted.value(id));
+	}
+	updateCheck(root);
+	updateSummary();
+	return true;
+}
+
+/**
+	@brief CheckPanelDockWidget::setCheckEnabled
+	Switch the check @p kind on or off in the project, and run it again or
+	take its findings away.
+*/
+bool CheckPanelDockWidget::setCheckEnabled(ProjectCheck::Kind kind, bool enabled)
+{
+	if (!m_project || m_project->isReadOnly() || m_building) return false;
+	CheckSettings::setRuleEnabled(m_project, kind, enabled);
+	if (!checkRow(kind)) return true;
+	if (enabled) {
+		m_building = true;
+		buildFolios();
+		m_building = false;
+		if (m_has_pending) {
+			m_has_pending = false;
+			if (m_pending != m_project) {
+				setProject(m_pending);
+				return true;
+			}
+		}
+		if (!m_project) return true;
+	}
+		// Found again: building the folios processes events
+	QTreeWidgetItem *root = checkRow(kind);
+	if (!root) return true;
+	QApplication::setOverrideCursor(Qt::WaitCursor);
+	const auto restore = qScopeGuard([]() { QApplication::restoreOverrideCursor(); });
+	fillCheck(root, kind);
+	updateSummary();
+	return true;
+}
+
+void CheckPanelDockWidget::showMenu(const QPoint &pos)
+{
+	QTreeWidgetItem *item = m_tree->itemAt(pos);
+	if (!item || !m_project) return;
+	QTreeWidgetItem *row = findingRow(item);
+	QTreeWidgetItem *root = row ? row->parent() : item;
+	const auto kind = ProjectCheck::Kind(root->data(0, kind_role).toInt());
+	const bool read_only = m_project->isReadOnly();
+	QMenu menu(this);
+	if (row) {
+			// The rows may be listed again while the note is asked: the
+			// finding is found again by its id
+		const QString id = row->data(0, id_role).toString();
+		const auto findAgain = [this, kind, id]() -> QTreeWidgetItem * {
+			QTreeWidgetItem *check = checkRow(kind);
+			for (int i = 0 ; check && i < check->childCount() ; ++i)
+				if (check->child(i)->data(0, id_role).toString() == id) return check->child(i);
+			return nullptr;
+		};
+		if (row->data(0, accepted_role).toBool()) {
+			QAction *action = menu.addAction(tr("List this finding again"));
+			action->setEnabled(!read_only);
+			connect(action, &QAction::triggered, this, [this, findAgain]() {
+				setAccepted(findAgain(), false);
+			});
+		} else {
+			QAction *action = menu.addAction(tr("Accept this finding..."));
+			action->setToolTip(tr("The finding is not listed any more in this project, "
+								  "until Options > Show accepted findings."));
+			action->setEnabled(!read_only);
+			connect(action, &QAction::triggered, this, [this, findAgain]() {
+				bool ok = false;
+				const QString note = QInputDialog::getText(
+					this, tr("Accept this finding"),
+					tr("Why it is right as it is (kept in the project):"),
+					QLineEdit::Normal, QString(), &ok);
+				if (ok) setAccepted(findAgain(), true, note.trimmed());
+			});
+		}
+		menu.addSeparator();
+	}
+	const bool enabled = CheckSettings::ruleEnabled(m_project, kind);
+	QAction *toggle = menu.addAction(enabled ? tr("Switch this check off for this project")
+											 : tr("Switch this check on for this project"));
+	toggle->setEnabled(!read_only);
+	connect(toggle, &QAction::triggered, this, [this, kind, enabled]() {
+		setCheckEnabled(kind, !enabled);
+	});
+	menu.exec(m_tree->viewport()->mapToGlobal(pos));
 }
 
 /**
@@ -291,6 +547,13 @@ bool CheckPanelDockWidget::showRow(QTreeWidgetItem *row)
 						targets << element;
 						break;
 					}
+			if (!place.drawing.isNull())
+				for (QGraphicsItem *item : diagram->items())
+					if (auto *text = dynamic_cast<IndependentTextItem *>(item))
+						if (text->uuid() == place.drawing) {
+							targets << text;
+							break;
+						}
 			const QSet<QUuid> uuids(place.wires.begin(), place.wires.end());
 			if (!uuids.isEmpty())
 				for (Conductor *conductor : diagram->content().conductors())

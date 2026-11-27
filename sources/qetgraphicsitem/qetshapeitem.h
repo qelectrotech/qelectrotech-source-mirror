@@ -201,6 +201,7 @@ class QetShapeItem : public QetGraphicsItem
 		bool pivotIsCustom() const {return m_pivotIsCustom;}
 		void setPivotIsCustom(bool custom) {m_pivotIsCustom = custom;}
 		void setPivot(const QPointF &pivot); // moves the pivot handle: compensates pos() so the shape does not jump
+		QDomElement snapshotXml() const;   // the state for PromoteShapeCommand: toXml() into a throwaway document, geometry kept local
 		void resetPivotToBoundingRectCenter();
 		void enableNodeEditMode();   // Path only: switches to NodeEdit mode, so every node's control handles become visible
 
@@ -299,7 +300,6 @@ class QetShapeItem : public QetGraphicsItem
 		std::pair<int, qreal> nearestPathSegment(const QPointF &localPos) const;   // {segmentIndex, t}, -1 if fewer than 2 nodes
 		void insertPathPoint(int segmentIndex, qreal t);   // De Casteljau split -- see .cpp for why
 		void removePathPoint(int nodeIndex);
-		QDomElement snapshotXml() const;   // helper for PromoteShapeCommand: toXml() into a throwaway document
 
 		QRectF localRect() const;
 		QPainterPath outline() const;   // raw, unstroked path for the current type; shared by shape() and paint()
@@ -352,6 +352,7 @@ class QetShapeItem : public QetGraphicsItem
 		ArcClosure       m_arcClosure = NoClosure;
 		bool             m_pivotIsCustom = false;   // false: pivot auto-follows the bounding-rect center on every geometry edit
 		bool             m_deferHandleReposition = false;   // true while setPivot() is applying its two related updates together
+		mutable bool     m_snapshotting = false;   // true inside snapshotXml(): toXml() keeps the geometry local, see there
 
 		QVector<PathNode> m_nodes;
 		QVector<PathNode> m_old_nodes;              // saved at handle press, for undo

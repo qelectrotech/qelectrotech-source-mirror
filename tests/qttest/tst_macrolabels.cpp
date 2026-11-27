@@ -31,6 +31,7 @@
 #include <QPushButton>
 #include <QScopeGuard>
 #include <QTableWidget>
+#include <QTextDocumentFragment>
 #include <QtTest>
 
 /**
@@ -113,6 +114,157 @@ class tst_macrolabels : public QObject
 		QCOMPARE(fields.at(1).saved, QStringLiteral("PUMP ?"));
 		QCOMPARE(fields.at(2).saved, QStringLiteral("LINE ?"));
 		QCOMPARE(fields.at(3).saved, QStringLiteral("LINE ? here"));   //a free text, read without its HTML
+	}
+
+	void namedValuesAreAskedOnce()
+	{
+		QDomDocument doc;
+		const auto fields = MacroLabels::fields(root(macroText(QStringLiteral("K?A"), QStringLiteral("?motor_kw kW"),
+															   QStringLiteral("?motor_kw ?phase, line ?")), doc));
+			//The label keeps its number to find; each name is one question;
+			//a text with a bare question mark is still asked whole
+		QCOMPARE(fields.size(), 5);
+		QCOMPARE(fields.at(0).kind, MacroLabels::Field::Label);
+		QCOMPARE(fields.at(0).saved, QStringLiteral("K?A"));
+		QCOMPARE(fields.at(1).kind, MacroLabels::Field::Value);
+		QCOMPARE(fields.at(1).saved, QStringLiteral("?motor_kw"));
+		QCOMPARE(fields.at(2).kind, MacroLabels::Field::Value);
+		QCOMPARE(fields.at(2).saved, QStringLiteral("?phase"));
+		QCOMPARE(fields.at(3).kind, MacroLabels::Field::Text);
+		QCOMPARE(fields.at(3).saved, QStringLiteral("?motor_kw ?phase, line ?"));
+		QCOMPARE(fields.at(4).saved, QStringLiteral("?motor_kw ?phase, line ? here"));
+	}
+
+	void aMarkInsideAWordIsNoName()
+	{
+		QDomDocument doc;
+		const auto fields = MacroLabels::fields(root(macroText(QStringLiteral("K1"), QStringLiteral("Ok?Yes K?A"),
+															   QStringLiteral("see x.com/?id=5")), doc));
+			//Asked whole, as before named values
+		QCOMPARE(fields.size(), 4);
+		for (int i = 1 ; i < fields.size() ; ++i)
+			QCOMPARE(fields.at(i).kind, MacroLabels::Field::Text);
+	}
+
+	void aWholeTextIsWrittenAsTyped()
+	{
+		QDomDocument doc;
+		QDomElement r = root(macroText(QStringLiteral("K1"), QStringLiteral("?motor_kw, line ?")), doc);
+		auto fields = MacroLabels::fields(r);
+		QCOMPARE(fields.size(), 3);
+		fields[1].value = QStringLiteral("7.5");                  //?motor_kw
+		fields[2].value = QStringLiteral("see ?motor_kw spec");   //the whole text
+		QDomElement diagram = diagramOf(r);
+		MacroLabels::apply(diagram, fields);
+		QVERIFY(doc.toString().contains(QLatin1String(">see ?motor_kw spec<")));
+	}
+
+	void withValues_data()
+	{
+		QTest::addColumn<QString>("text");
+		QTest::addColumn<QString>("expected");
+		QTest::newRow("alone") << QStringLiteral("?motor_kw") << QStringLiteral("7.5");
+		QTest::newRow("in a text") << QStringLiteral("M1 ?motor_kw kW") << QStringLiteral("M1 7.5 kW");
+		QTest::newRow("twice") << QStringLiteral("?motor_kw/?motor_kw") << QStringLiteral("7.5/7.5");
+		QTest::newRow("a longer name is another") << QStringLiteral("?motor_kwh") << QStringLiteral("?motor_kwh");
+		QTest::newRow("not answered") << QStringLiteral("?phase ?motor_kw") << QStringLiteral("?phase 7.5");
+		QTest::newRow("bare mark") << QStringLiteral("K? ?") << QStringLiteral("K? ?");
+		QTest::newRow("accents") << QStringLiteral("?puissance_é") << QStringLiteral("2");
+		QTest::newRow("after =") << QStringLiteral("P=?motor_kw") << QStringLiteral("P=7.5");
+		QTest::newRow("in brackets") << QStringLiteral("(?motor_kw)") << QStringLiteral("(7.5)");
+		QTest::newRow("inside a word") << QStringLiteral("Ok?motor_kw") << QStringLiteral("Ok?motor_kw");
+		QTest::newRow("in a link") << QStringLiteral("x.com/?motor_kw=1") << QStringLiteral("x.com/?motor_kw=1");
+	}
+
+	void withValues()
+	{
+		QFETCH(QString, text);
+		QFETCH(QString, expected);
+		const QHash<QString, QString> values{{QStringLiteral("?motor_kw"), QStringLiteral("7.5")},
+											 {QStringLiteral("?puissance_é"), QStringLiteral("2")}};
+		QCOMPARE(MacroLabels::withValues(text, values), expected);
+	}
+
+	void namedAnswersAreWritten()
+	{
+		QDomDocument doc;
+		QDomElement r = root(macroText(QStringLiteral("K1"), QStringLiteral("?motor_kw kW"),
+									   QStringLiteral("?motor_kw ?phase")), doc);
+		auto fields = MacroLabels::fields(r);
+		QCOMPARE(fields.size(), 3);
+		fields[1].value = QStringLiteral("<7.5>");   //?motor_kw; ?phase left unanswered
+		QDomElement diagram = diagramOf(r);
+		MacroLabels::apply(diagram, fields);
+		const QString saved = doc.toString();
+		QVERIFY(saved.contains(QLatin1String(">&lt;7.5> kW<")));         //the element's information
+		QVERIFY(saved.contains(QLatin1String(">&lt;7.5> ?phase<")));     //its user text
+		QVERIFY(saved.contains(QLatin1String("&amp;lt;7.5&amp;gt; ?phase here")));   //the free text, as HTML
+		QVERIFY(!saved.contains(QLatin1String("?motor_kw")));
+			//The label was not changed: it still follows its formula
+		QVERIFY(saved.contains(QLatin1String("name=\"formula\"")));
+	}
+
+	void aWireTextIsAsked()
+	{
+		QDomDocument doc;
+		QDomElement r = root(macroText(), doc);
+		QDomElement wires = doc.createElement(QStringLiteral("conductors"));
+		QDomElement wire = doc.createElement(QStringLiteral("conductor"));
+		wire.setAttribute(QStringLiteral("num"), QStringLiteral("?wire"));
+		wire.setAttribute(QStringLiteral("formula"), QStringLiteral("%autonum"));
+		wire.setAttribute(QStringLiteral("conductor_section"), QStringLiteral("?section mm2"));
+		wires.appendChild(wire);
+		QDomElement diagram = diagramOf(r);
+		diagram.appendChild(wires);
+		auto fields = MacroLabels::fields(r);
+		QCOMPARE(fields.size(), 3);
+		QCOMPARE(fields.at(1).saved, QStringLiteral("?wire"));
+		QCOMPARE(fields.at(2).saved, QStringLiteral("?section"));
+		fields[1].value = QStringLiteral("L1");
+		fields[2].value = QStringLiteral("2.5");
+		MacroLabels::apply(diagram, fields);
+		QCOMPARE(wire.attribute(QStringLiteral("num")), QStringLiteral("L1"));
+		QCOMPARE(wire.attribute(QStringLiteral("conductor_section")), QStringLiteral("2.5 mm2"));
+			//An answered number no longer follows its formula
+		QVERIFY(!wire.hasAttribute(QStringLiteral("formula")));
+	}
+
+	void aStyledFreeTextIsAnswered()
+	{
+			//Part of the name in bold: the HTML never holds "?motor_kw" whole;
+			//a link's ?lang is markup, not a question; the rest keeps its format
+		QDomDocument doc;
+		QDomElement r = root(macroText(), doc);
+		QDomElement input = diagramOf(r).firstChildElement(QStringLiteral("inputs")).firstChildElement(QStringLiteral("input"));
+		input.setAttribute(QStringLiteral("text"), QStringLiteral(
+			"<p><b>Motor</b> <a href=\"x?lang=en\">?<b>motor</b>_kw</a> "
+			"<span style=\"color:#ff0000;\">kW</span></p>"));
+		auto fields = MacroLabels::fields(r);
+		QCOMPARE(fields.size(), 2);
+		QCOMPARE(fields.at(1).saved, QStringLiteral("?motor_kw"));
+		fields[1].value = QStringLiteral("7.5");
+		QDomElement diagram = diagramOf(r);
+		MacroLabels::apply(diagram, fields);
+		const QString html = input.attribute(QStringLiteral("text"));
+		QCOMPARE(QTextDocumentFragment::fromHtml(html).toPlainText(), QStringLiteral("Motor 7.5 kW"));
+		QVERIFY(html.contains(QLatin1String("font-weight")));
+		QVERIFY(html.contains(QLatin1String("#ff0000")));
+		QVERIFY(html.contains(QLatin1String("x?lang=en")));
+	}
+
+	void aReportSharingADeviceLabelKeepsItsAnswer()
+	{
+		QDomDocument doc;
+		QString text = macroText(QStringLiteral("K?"));
+		text.replace(QStringLiteral(">SIG1<"), QStringLiteral(">K?<"));
+		QDomElement r = root(text, doc);
+		auto fields = MacroLabels::fields(r);
+		QCOMPARE(fields.size(), 2);
+		QCOMPARE(fields.at(1).kind, MacroLabels::Field::Text);
+		fields[1].value = QStringLiteral("SIG1");   //the device label is kept
+		QDomElement diagram = diagramOf(r);
+		MacroLabels::apply(diagram, fields);
+		QVERIFY(doc.toString().contains(QLatin1String(">SIG1<")));
 	}
 
 	void nextFreeLabel_data()
@@ -214,6 +366,40 @@ class tst_macrolabels : public QObject
 		click(placing, QPointF(100, 100));
 		QCOMPARE(asked, 0);
 		QVERIFY(labels(folio).contains(QStringLiteral("K?")));
+	}
+
+	void aNamedValueIsPlaced()
+	{
+		QETProject project;
+		QETApp::registerProject(&project);
+		const auto registered = qScopeGuard([&project]() {QETApp::unregisterProject(&project);});
+		Diagram *folio = project.addNewDiagram();
+		const QString location = saveMacro(QStringLiteral("named"), macroText(QStringLiteral("K1"), QStringLiteral("?motor_kw kW")));
+		DiagramEventAddMacro placing{ElementsLocation(location), folio, QPointF(50, 50)};
+		int asked = 0;
+		placing.setAsker([&asked](QList<MacroLabels::Field> &fields) {
+			++asked;
+			for (auto &field : fields)
+				if (field.saved == QLatin1String("?motor_kw")) field.value = QStringLiteral("7.5");
+			return true;
+		});
+		const auto functions = [folio]() {
+			QStringList list;
+			for (Element *e : folio->elements()) {
+				const QString function = e->elementInformations().value(QStringLiteral("function")).toString();
+				if (!function.isEmpty()) list << function;
+			}
+			list.sort();
+			return list;
+		};
+			//Setting off: nothing asked, the text as the macro holds it
+		click(placing, QPointF(100, 100));
+		QCOMPARE(asked, 0);
+		QCOMPARE(functions(), QStringList({QStringLiteral("?motor_kw kW")}));
+		QetSettings::setAskLabelsPlacingMacro(true);
+		click(placing, QPointF(100, 300));
+		QCOMPARE(asked, 1);
+		QCOMPARE(functions(), QStringList({QStringLiteral("7.5 kW"), QStringLiteral("?motor_kw kW")}));
 	}
 
 	void cancelPlacesNothing()

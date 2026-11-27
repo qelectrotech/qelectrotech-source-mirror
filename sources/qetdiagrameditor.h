@@ -158,6 +158,8 @@ class QETDiagramEditor : public QETMainWindow
 		void saveAs();
 		bool newProject();
 		bool newAutoConnectProject();
+		bool newProjectFromTemplate();
+		bool newProjectFromTemplateFile(const QString &path);
 		bool openProject();
 		bool openRecentFile(const QString &);
 		bool closeProject(ProjectView *);
@@ -343,11 +345,17 @@ class QETDiagramEditor : public QETMainWindow
 		*m_terminal_strip_dialog = nullptr, ///<Launch terminal strip dialog
 		*m_project_terminalBloc,	///< generate terminal block
 		*m_project_export_conductor_num,///<Export the wire num to csv
+		*m_project_export_label_lists,///<Export device, terminal, cable or wire labels for a printer
 		*m_project_export_wiring_list, ///< Action to export the wiring list
 		*m_project_wiring_list_view,   ///< Action to show the wiring list read from the project database
 		*m_terminal_numbering,         ///< Action to launch terminal numbering
 		*m_cable_numbering,            ///< Action to open the cable numbering window (rule + numbering of every cable)
 		*m_add_cable_list,             ///< Add a cable list graphics item
+		*m_add_revision_table,         ///< Add a table of the project's revision history
+		*m_add_device_list,            ///< Add a table of the project's devices
+		*m_add_wiring_table,           ///< Add a table of the project's wires
+		*m_add_plc_list,               ///< Add a table of the PLC I/O
+		*m_add_signal_list,            ///< Add a table of the signals (potentials)
 		*m_export_cable_list,          ///< Export the cable list of the project to CSV
 		*m_reload_element_drawings,    ///< Action to redraw every placed element from its current definition
 		*m_update_elements_from_collections, ///< Action to replace embedded elements changed in their collection

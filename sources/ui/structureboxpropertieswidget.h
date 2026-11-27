@@ -48,6 +48,8 @@ class StructureBoxPropertiesWidget : public PropertiesEditorWidget
 		QLineEdit *m_plant_edit;
 		QLineEdit *m_location_edit;
 		QLineEdit *m_prefix_edit;
+		QLineEdit *m_higher_plant_edit;
+		QLineEdit *m_higher_location_edit;
 		QList<QMetaObject::Connection> m_edit_connections;
 		QDoubleSpinBox *m_label_size = nullptr;
 		KColorButton *m_color = nullptr;

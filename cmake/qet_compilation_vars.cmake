@@ -212,6 +212,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/reports/projectreports.cpp
   ${QET_DIR}/sources/placesuggestions.h
   ${QET_DIR}/sources/placesuggestions.cpp
+  ${QET_DIR}/sources/placecopy.h
+  ${QET_DIR}/sources/placecopy.cpp
   ${QET_DIR}/sources/placerename.h
   ${QET_DIR}/sources/placerename.cpp
   ${QET_DIR}/sources/ui/devicetypecheckdialog.h
@@ -231,6 +233,7 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/materiallist/parttypes.cpp
   ${QET_DIR}/sources/ui/devicetypecheckdialog.cpp
   ${QET_DIR}/sources/conductornumexport.cpp
+  ${QET_DIR}/sources/labellistexport.cpp
   ${QET_DIR}/sources/wiringlistexport.h
   ${QET_DIR}/sources/wiringlistexport.cpp
   ${QET_DIR}/sources/wiringlistdb.h
@@ -245,6 +248,7 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/ui/toolmenu.h
   ${QET_DIR}/sources/ui/wiringlistdialog.cpp
   ${QET_DIR}/sources/conductornumexport.h
+  ${QET_DIR}/sources/labellistexport.h
   ${QET_DIR}/sources/bomexport.cpp
   ${QET_DIR}/sources/bomexport.h
   ${QET_DIR}/sources/conductordashpattern.cpp
@@ -642,6 +646,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/ElementsCollection/elementstreeview.h
   ${QET_DIR}/sources/ElementsCollection/fileelementcollectionitem.cpp
   ${QET_DIR}/sources/ElementsCollection/fileelementcollectionitem.h
+  ${QET_DIR}/sources/ElementsCollection/librarylisting.cpp
+  ${QET_DIR}/sources/ElementsCollection/librarylisting.h
   ${QET_DIR}/sources/ElementsCollection/qetlabelsfile.cpp
   ${QET_DIR}/sources/ElementsCollection/qetlabelsfile.h
   ${QET_DIR}/sources/ElementsCollection/terminaluuids.cpp
@@ -665,6 +671,8 @@ set(QET_SRC_FILES
 
   ${QET_DIR}/sources/factory/ui/addtabledialog.cpp
   ${QET_DIR}/sources/factory/ui/addtabledialog.h
+  ${QET_DIR}/sources/factory/ui/revisionquerywidget.h
+  ${QET_DIR}/sources/factory/ui/listquerywidget.h
 
   ${QET_DIR}/sources/NameList/nameslist.cpp
   ${QET_DIR}/sources/NameList/nameslist.h
@@ -695,6 +703,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/properties/projectlanguages.h
   ${QET_DIR}/sources/properties/potentialtypes.cpp
   ${QET_DIR}/sources/properties/potentialtypes.h
+  ${QET_DIR}/sources/properties/revisionlist.cpp
+  ${QET_DIR}/sources/properties/revisionlist.h
   ${QET_DIR}/sources/properties/propertiesinterface.cpp
   ${QET_DIR}/sources/properties/propertiesinterface.h
   ${QET_DIR}/sources/properties/reportproperties.cpp
@@ -1032,8 +1042,12 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/ui/potentialcheckdialog.h
   ${QET_DIR}/sources/ui/openwireendsdialog.cpp
   ${QET_DIR}/sources/ui/openwireendsdialog.h
+  ${QET_DIR}/sources/projectcheck/checksettings.cpp
+  ${QET_DIR}/sources/projectcheck/checksettings.h
   ${QET_DIR}/sources/projectcheck/openwireends.cpp
   ${QET_DIR}/sources/projectcheck/openwireends.h
+  ${QET_DIR}/sources/projectcheck/terminalbranches.cpp
+  ${QET_DIR}/sources/projectcheck/terminalbranches.h
   ${QET_DIR}/sources/ui/potentialsourceswidget.cpp
   ${QET_DIR}/sources/ui/potentialsourceswidget.h
   ${QET_DIR}/sources/ui/potentialtypeswidget.cpp
@@ -1065,6 +1079,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/ui/configpage/generalconfigurationpage.h
   ${QET_DIR}/sources/ui/configpage/projectconfigpages.cpp
   ${QET_DIR}/sources/ui/configpage/projectconfigpages.h
+  ${QET_DIR}/sources/ui/configpage/revisionsconfigpage.cpp
+  ${QET_DIR}/sources/ui/configpage/revisionsconfigpage.h
   ${QET_DIR}/sources/ui/configpage/guidespropertieswidget.cpp
   ${QET_DIR}/sources/ui/configpage/guidespropertieswidget.h
   ${QET_DIR}/sources/ui/configpage/shortcutsconfigpage.cpp
@@ -1129,6 +1145,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/utils/conductorcreator.h
   ${QET_DIR}/sources/utils/colordialogdoubleclick.cpp
   ${QET_DIR}/sources/utils/colordialogdoubleclick.h
+  ${QET_DIR}/sources/utils/dialogplacement.cpp
+  ${QET_DIR}/sources/utils/dialogplacement.h
   ${QET_DIR}/sources/utils/macosxopenevent.cpp
   ${QET_DIR}/sources/utils/macosxopenevent.h
   ${QET_DIR}/sources/utils/qetsettings.cpp
@@ -1136,6 +1154,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/utils/qetutils.cpp
   ${QET_DIR}/sources/utils/previousversions.cpp
   ${QET_DIR}/sources/utils/previousversions.h
+  ${QET_DIR}/sources/utils/projecttemplates.cpp
+  ${QET_DIR}/sources/utils/projecttemplates.h
   ${QET_DIR}/sources/utils/qetutils.h
   ${QET_DIR}/sources/utils/syncfolder.h
 

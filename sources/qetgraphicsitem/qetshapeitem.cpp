@@ -1859,11 +1859,16 @@ void QetShapeItem::removePoint()
 	toXml() into a private, throwaway document -- used only to hand a
 	self-contained QDomElement to PromoteShapeCommand, which deep-clones
 	it again into its own document anyway (see promoteshapecommand.cpp).
+	Unlike a file, the snapshot always keeps the geometry local and pos()
+	in posX/posY: restoring it must give back the same pos(), or a move
+	still on the undo stack would put the shape back in the wrong place.
 */
 QDomElement QetShapeItem::snapshotXml() const
 {
 	QDomDocument doc;
+	m_snapshotting = true;
 	QDomElement e = toXml(doc);
+	m_snapshotting = false;
 	doc.appendChild(e);
 	return e;
 }
@@ -3148,11 +3153,12 @@ bool QetShapeItem::fromXml(const QDomElement &e)
 		m_arcClosure = (closure == "chord") ? Chord : (closure == "pie") ? Pie : NoClosure;
 	}
 
-	if (e.hasAttribute("posX") || e.hasAttribute("posY"))
-	{
-		QGraphicsItem::setPos(e.attribute("posX", "0").toDouble(),
-		                      e.attribute("posY", "0").toDouble());
-	}
+	// Always set, even when posX/posY are absent: a shape without a
+	// transform keeps its folio position in the geometry itself (see
+	// toXml()), and fromXml() also restores an already-placed item
+	// (PromoteShapeCommand), whose old pos() must not be added on top.
+	QGraphicsItem::setPos(e.attribute("posX", "0").toDouble(),
+	                      e.attribute("posY", "0").toDouble());
 
 	setZValue(e.attribute("z", QString::number(this->zValue())).toDouble());
 
@@ -3188,12 +3194,22 @@ QDomElement QetShapeItem::toXml(QDomDocument &document) const
 	result.setAttribute("is_movable", bool(is_movable_));
 	result.setAttribute("closed", bool(m_closed));
 
+	// Without a transform the shape is written as QElectroTech 0.100
+	// wrote it: pos() added into the geometry, so x1..y2 and the points
+	// are folio positions and no posX/posY is needed. Older versions
+	// and other programs reading the file then place it correctly
+	// (issue #1997). Only a rotated or skewed shape, which needs the
+	// <transform> element anyway, keeps the geometry local and writes
+	// posX/posY -- and so does snapshotXml(), for undo.
+	const bool positionInGeometry = !m_snapshotting && m_transform.isIdentity() && !m_pivotIsCustom;
+	const QPointF offset = positionInGeometry ? pos() : QPointF();
+
 	if (m_shapeType != Polygon && m_shapeType != Path)
 	{
-		result.setAttribute("x1", QString::number(m_P1.x()));
-		result.setAttribute("y1", QString::number(m_P1.y()));
-		result.setAttribute("x2", QString::number(m_P2.x()));
-		result.setAttribute("y2", QString::number(m_P2.y()));
+		result.setAttribute("x1", QString::number(m_P1.x() + offset.x()));
+		result.setAttribute("y1", QString::number(m_P1.y() + offset.y()));
+		result.setAttribute("x2", QString::number(m_P2.x() + offset.x()));
+		result.setAttribute("y2", QString::number(m_P2.y() + offset.y()));
 
 		if (m_shapeType == Rectangle)
 		{
@@ -3207,8 +3223,8 @@ QDomElement QetShapeItem::toXml(QDomDocument &document) const
 		for (QPointF p : m_polygon)
 		{
 			QDomElement point = document.createElement("point");
-			point.setAttribute("x", QString::number(p.x()));
-			point.setAttribute("y", QString::number(p.y()));
+			point.setAttribute("x", QString::number(p.x() + offset.x()));
+			point.setAttribute("y", QString::number(p.y() + offset.y()));
 			points.appendChild(point);
 		}
 		result.appendChild(points);
@@ -3219,8 +3235,8 @@ QDomElement QetShapeItem::toXml(QDomDocument &document) const
 		for (const PathNode &n : m_nodes)
 		{
 			QDomElement node = document.createElement("node");
-			node.setAttribute("x", QString::number(n.anchor.x()));
-			node.setAttribute("y", QString::number(n.anchor.y()));
+			node.setAttribute("x", QString::number(n.anchor.x() + offset.x()));
+			node.setAttribute("y", QString::number(n.anchor.y() + offset.y()));
 			if (n.kind != NodeKind::Corner)
 				node.setAttribute("kind", n.kind == NodeKind::Smooth ? "smooth" : "symmetric");
 			if (n.inHandle)
@@ -3275,7 +3291,7 @@ QDomElement QetShapeItem::toXml(QDomDocument &document) const
 	// (0,0), which is exactly the "position shifts slightly on reload"
 	// bug -- geometry and transform round-tripped correctly, but the
 	// placement component of the two together did not.
-	if (!pos().isNull())
+	if (!positionInGeometry && !pos().isNull())
 	{
 		result.setAttribute("posX", QString::number(pos().x()));
 		result.setAttribute("posY", QString::number(pos().y()));
