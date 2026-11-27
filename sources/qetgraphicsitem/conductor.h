@@ -119,6 +119,8 @@ class Conductor : public QGraphicsObject
 
 	public:
 		static bool valideXml (QDomElement &);
+		static bool outlinesLightWires();
+		static void setOutlinesLightWires(bool outline);
 		bool fromXml (QDomElement &);
 		QDomElement toXml (
 				QDomDocument &,
