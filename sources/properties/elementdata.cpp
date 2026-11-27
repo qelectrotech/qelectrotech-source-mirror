@@ -307,12 +307,15 @@ QDomElement ElementData::kindInfoToXml(QDomDocument &document)
 		xml_func.appendChild(func_txt);
 		returned_elmt.appendChild(xml_func);
 
-			//form
-		auto xml_form = document.createElement(QStringLiteral("kindInformation"));
-		xml_form.setAttribute(QStringLiteral("name"), QStringLiteral("form"));
-		auto form_txt = document.createTextNode(terminalFormToString(m_terminal_form));
-		xml_form.appendChild(form_txt);
-		returned_elmt.appendChild(xml_form);
+			//form, only when there is one: a symbol without a form
+			//saves as it always did
+		if (m_terminal_form != ElementData::TFormNone) {
+			auto xml_form = document.createElement(QStringLiteral("kindInformation"));
+			xml_form.setAttribute(QStringLiteral("name"), QStringLiteral("form"));
+			auto form_txt = document.createTextNode(terminalFormToString(m_terminal_form));
+			xml_form.appendChild(form_txt);
+			returned_elmt.appendChild(xml_form);
+		}
 	}
 
 	for (const auto &other : std::as_const(m_other_kind_informations)) {

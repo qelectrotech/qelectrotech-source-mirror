@@ -2786,8 +2786,6 @@ void Element::appendDataXml(QDomDocument &document, QDomElement &element) const
 								m_data.terminalFunctionToString(m_data.terminalFunction()));
 		element_type.setAttribute(QStringLiteral("terminal_led"),
 								QETXML::boolToString(m_data.terminalLed()));
-		element_type.setAttribute(QStringLiteral("terminal_form"),
-								m_data.terminalFormToString(m_data.terminalForm()));
 			//The stage of the terminal within its block, kept with the
 			//symbol: a copy of a symbol is on no strip, and has to come
 			//back with the stage it was given
@@ -2802,6 +2800,13 @@ void Element::appendDataXml(QDomDocument &document, QDomElement &element) const
 											  QString::number(real_terminal->stage()));
 				}
 			}
+		}
+			//The form only when there is one: a symbol without a form
+			//saves as it always did, and a resave of an untouched project
+			//changes nothing
+		if (m_data.terminalForm() != ElementData::TFormNone) {
+			element_type.setAttribute(QStringLiteral("terminal_form"),
+									 m_data.terminalFormToString(m_data.terminalForm()));
 		}
 
 		properties.appendChild(element_type);
