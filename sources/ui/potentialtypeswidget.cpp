@@ -87,7 +87,7 @@ PotentialTypesWidget::PotentialTypesWidget(QWidget *parent) :
 	m_table = new QTableWidget(0, 7, this);
 	m_table->setHorizontalHeaderLabels({
 		tr("Name"), tr("Colour"), tr("Line style"), tr("Width"),
-		tr("Conductor color"), tr("Conductor section"),
+		tr("Conductor colour"), tr("Conductor section"),
 		tr("Conductor type")});
 	m_table->horizontalHeader()->setSectionResizeMode(NameColumn, QHeaderView::Stretch);
 	m_table->horizontalHeader()->setSectionResizeMode(StyleColumn, QHeaderView::ResizeToContents);
