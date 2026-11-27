@@ -146,6 +146,40 @@ class tst_conductorapplychanges : public QObject
 			QVERIFY(other == all(1));
 		}
 
+			// A core of a cable takes its section, colour and type from
+			// its cable: no edit of the panel writes over those three,
+			// the way a potential and the conductor dialog leave a core
+			// alone (Conductor::setPropertyToPotential)
+		void aCableCoreKeepsItsWireData()
+		{
+			ConductorProperties shown;
+			ConductorProperties edited = shown;
+			edited.m_wire_color = QStringLiteral("BU");
+			edited.m_wire_section = QStringLiteral("1.5 mm2");
+			edited.m_conductor_type = QStringLiteral("H07V-K");
+			edited.m_function = QStringLiteral("24V DC");
+			edited.m_potential_type = QStringLiteral("N");
+
+			ConductorProperties core;
+			core.m_cable_uuid = QUuid::createUuid();
+			core.m_cable_slot = 2;
+			core.m_wire_color = QStringLiteral("GNYE");
+			core.m_wire_section = QStringLiteral("2.5 mm2");
+			core.m_conductor_type = QStringLiteral("H05V-K");
+			const ConductorProperties own = core;
+
+			core.applyChanges(shown, edited);
+
+			QCOMPARE(core.m_wire_color, own.m_wire_color);
+			QCOMPARE(core.m_wire_section, own.m_wire_section);
+			QCOMPARE(core.m_conductor_type, own.m_conductor_type);
+			QCOMPARE(core.m_cable_uuid, own.m_cable_uuid);
+			QCOMPARE(core.m_cable_slot, own.m_cable_slot);
+				//every other field of the edit reaches it
+			QCOMPARE(core.m_function, edited.m_function);
+			QCOMPARE(core.m_potential_type, edited.m_potential_type);
+		}
+
 			// Set the function on a wire with its own number and cable
 		void functionOnTwoWires()
 		{

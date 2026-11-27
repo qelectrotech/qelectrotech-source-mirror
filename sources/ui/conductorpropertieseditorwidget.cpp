@@ -179,9 +179,16 @@ void ConductorPropertiesEditorWidget::setConductors(
 		//The "Customize..." button of the stroke with colour and
 		//section edits the drawing of the project these conductors
 		//are on
-	m_cpw->setProject(sorted.first()->diagram()
-			  ? sorted.first()->diagram()->project()
-			  : nullptr);
+	QETProject *project = sorted.first()->diagram()
+			? sorted.first()->diagram()->project()
+			: nullptr;
+	m_cpw->setProject(project);
+		//The potential types of that project, offered here as in the
+		//conductor's own dialog: choosing one is one click on the
+		//conductor and one on the type
+	if (project) {
+		m_cpw->setPotentialTypes(project->potentialTypes());
+	}
 
 	setEnabled(true);
 	updateUi();

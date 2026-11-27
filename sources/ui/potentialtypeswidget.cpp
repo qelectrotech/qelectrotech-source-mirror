@@ -18,6 +18,8 @@
 */
 #include "potentialtypeswidget.h"
 
+#include <conductorcolorcodes.h>
+
 #include <QCheckBox>
 #include <QColorDialog>
 #include <QComboBox>
@@ -32,7 +34,9 @@
 #include <QVBoxLayout>
 
 namespace {
-	enum Column {NameColumn, ColorColumn, StyleColumn, WidthColumn};
+	enum Column {NameColumn, ColorColumn, StyleColumn, WidthColumn,
+				 WireColorColumn, WireSectionColumn, WireTypeColumn};
+	const int CoreColumns[]{WireColorColumn, WireSectionColumn, WireTypeColumn};
 
 	void paintColorButton(QPushButton *button, const QColor &color)
 	{
@@ -67,10 +71,30 @@ PotentialTypesWidget::PotentialTypesWidget(QWidget *parent) :
 								 "on a conductor still wins."), this);
 	help->setWordWrap(true);
 
-	m_table = new QTableWidget(0, 4, this);
-	m_table->setHorizontalHeaderLabels({tr("Name"), tr("Colour"), tr("Line style"), tr("Width")});
+		//The core definition of each type: what a conductor is given when
+		//this type is chosen for it. Off by default, so a project saved
+		//before it existed has no such columns and no conductor is ever
+		//given one
+	m_cores_cb = new QCheckBox(
+		tr("Also give each type a conductor colour, section and type"),
+		this);
+	m_cores_cb->setToolTip(
+		tr("Three more columns in the table. Choosing a type on a "
+		   "conductor writes them to the conductor: the wire colour, "
+		   "the section and the kind of wire. A column left empty "
+		   "clears the conductor's value."));
+
+	m_table = new QTableWidget(0, 7, this);
+	m_table->setHorizontalHeaderLabels({
+		tr("Name"), tr("Colour"), tr("Line style"), tr("Width"),
+		tr("Conductor colour"), tr("Conductor section"),
+		tr("Conductor type")});
 	m_table->horizontalHeader()->setSectionResizeMode(NameColumn, QHeaderView::Stretch);
 	m_table->horizontalHeader()->setSectionResizeMode(StyleColumn, QHeaderView::ResizeToContents);
+	for (int column : {ColorColumn, WidthColumn, WireColorColumn,
+					   WireSectionColumn, WireTypeColumn})
+		m_table->horizontalHeader()->setSectionResizeMode(
+					column, QHeaderView::ResizeToContents);
 	m_table->verticalHeader()->hide();
 		//Tall enough for the default list, no taller: the buttons below
 		//must stay in view, not be pushed down by the empty rows
@@ -111,6 +135,7 @@ PotentialTypesWidget::PotentialTypesWidget(QWidget *parent) :
 	QVBoxLayout *layout = new QVBoxLayout(this);
 	layout->addWidget(m_mode_cb);
 	layout->addWidget(help);
+	layout->addWidget(m_cores_cb);
 	layout->addWidget(m_table);
 	layout->addLayout(buttons);
 	layout->addWidget(bond_help);
@@ -136,6 +161,9 @@ PotentialTypesWidget::PotentialTypesWidget(QWidget *parent) :
 	connect(m_table->model(), &QAbstractItemModel::rowsInserted, this, &PotentialTypesWidget::refreshBondChoices);
 	connect(m_table->model(), &QAbstractItemModel::rowsRemoved, this, &PotentialTypesWidget::refreshBondChoices);
 	connect(m_table->model(), &QAbstractItemModel::dataChanged, this, &PotentialTypesWidget::refreshBondChoices);
+	connect(m_cores_cb, &QCheckBox::toggled,
+		this, &PotentialTypesWidget::updateCoreColumns);
+	updateCoreColumns();
 	connect(bond_add_pb, &QPushButton::clicked, this, [this]() {
 		const PotentialBond bond{m_bond_a_cb->currentText(), m_bond_b_cb->currentText()};
 		if (bond.a.isEmpty() || bond.b.isEmpty() || bond.a == bond.b)
@@ -156,8 +184,21 @@ void PotentialTypesWidget::setPotentialTypes(const PotentialTypes &types)
 {
 		//Every mode is offered (one this QET does not know reads as Off)
 	m_mode_cb->setCurrentIndex(qMax(0, m_mode_cb->findData(static_cast<int>(types.mode()))));
+	m_cores_cb->setChecked(types.showCores());
+	updateCoreColumns();
 	setTypes(types.types());
 	setBonds(types.bonds());
+}
+
+/**
+	@brief PotentialTypesWidget::updateCoreColumns
+	Show the three core definition columns only when the project keeps
+	them: without them the table is exactly what it always was.
+*/
+void PotentialTypesWidget::updateCoreColumns()
+{
+	for (int column : CoreColumns)
+		m_table->setColumnHidden(column, !m_cores_cb->isChecked());
 }
 
 void PotentialTypesWidget::setBonds(const QList<PotentialBond> &bonds)
@@ -225,6 +266,31 @@ void PotentialTypesWidget::addRow(const PotentialType &type)
 	width_sb->setDecimals(1);
 	width_sb->setValue(type.width);
 	m_table->setCellWidget(row, WidthColumn, width_sb);
+
+		//The core definition a conductor is given when this type is
+		//chosen for it: the wire colour, offered as the IEC 60757 codes
+		//-- anything typed in is kept exactly as it is typed -- the
+		//section and the kind of wire
+	QComboBox *wire_color_cb = new QComboBox(m_table);
+	wire_color_cb->setEditable(true);
+	wire_color_cb->setInsertPolicy(QComboBox::NoInsert);
+		//No completion at all: a value typed in is kept exactly as it
+		//is typed. With one, "gn" turned into the "GN" the list holds
+		//as soon as the user pressed Enter
+	wire_color_cb->setCompleter(nullptr);
+	for (const auto &code : ConductorColorCodes::all()) {
+		const int item = wire_color_cb->count();
+		wire_color_cb->addItem(ConductorColorCodes::swatch(code), code.code);
+		wire_color_cb->setItemData(item, ConductorColorCodes::displayName(code),
+								   Qt::ToolTipRole);
+	}
+	wire_color_cb->setCurrentText(type.wire_color);
+	m_table->setCellWidget(row, WireColorColumn, wire_color_cb);
+
+	m_table->setItem(row, WireSectionColumn,
+		new QTableWidgetItem(type.wire_section));
+	m_table->setItem(row, WireTypeColumn,
+		new QTableWidgetItem(type.conductor_type));
 }
 
 void PotentialTypesWidget::chooseColor(QWidget *button)
@@ -259,11 +325,16 @@ PotentialTypes PotentialTypesWidget::potentialTypes() const
 					static_cast<QComboBox *>(m_table->cellWidget(row, StyleColumn))
 					->currentData().toInt());
 		type.width = static_cast<QDoubleSpinBox *>(m_table->cellWidget(row, WidthColumn))->value();
+		type.wire_color = static_cast<QComboBox *>(
+					m_table->cellWidget(row, WireColorColumn))->currentText();
+		type.wire_section = m_table->item(row, WireSectionColumn)->text();
+		type.conductor_type = m_table->item(row, WireTypeColumn)->text();
 		types << type;
 	}
 
 	PotentialTypes result;
 	result.setMode(static_cast<PotentialTypes::Mode>(m_mode_cb->currentData().toInt()));
+	result.setShowCores(m_cores_cb->isChecked());
 	result.setTypes(types);
 	QList<PotentialBond> bonds;
 	for (int i = 0; i < m_bond_list->count(); ++i) {

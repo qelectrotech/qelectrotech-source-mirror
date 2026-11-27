@@ -74,12 +74,19 @@ void ConductorPropertiesDialog::PropertiesDialog(Conductor *conductor,
 {
 	ConductorPropertiesDialog cpd (conductor, parent);
 
-	if (cpd.exec() == QDialog::Rejected
-			|| cpd.properties() == conductor->properties()) return;
+	if (cpd.exec() == QDialog::Rejected) return;
+
+		//The edit as it reaches this conductor: a core of a cable keeps
+		//the cable reference and the section, colour and type its cable
+		//gives it, the way the loop below leaves the other cores alone
+		//(@see ConductorProperties::applyChanges)
+	ConductorProperties applied = conductor->properties();
+	applied.applyChanges(conductor->properties(), cpd.properties());
+	if (applied == conductor->properties()) return;
 
 	QVariant old_value, new_value;
 	old_value.setValue(conductor->properties());
-	new_value.setValue(cpd.properties());
+	new_value.setValue(applied);
 
 		//A name written over a potential stays on the folio it is written
 		//on in a project chaining its reports by the wire function: the

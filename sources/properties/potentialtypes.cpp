@@ -19,13 +19,17 @@
 #include "potentialtypes.h"
 
 #include <QDomDocument>
+#include <QSettings>
 
 bool PotentialType::operator==(const PotentialType &other) const
 {
 	return name == other.name
 			&& color == other.color
 			&& style == other.style
-			&& qFuzzyCompare(width + 1, other.width + 1);
+			&& qFuzzyCompare(width + 1, other.width + 1)
+			&& wire_color == other.wire_color
+			&& wire_section == other.wire_section
+			&& conductor_type == other.conductor_type;
 }
 
 /**
@@ -114,13 +118,14 @@ bool PotentialTypes::isBond(const QString &x, const QString &y) const
 bool PotentialTypes::isDefault() const
 {
 	return m_mode == Mode::Off && m_unknown_mode.isEmpty() && m_types == defaultTypes()
-			&& m_bonds.isEmpty();
+			&& m_bonds.isEmpty() && !m_show_cores;
 }
 
 bool PotentialTypes::operator==(const PotentialTypes &other) const
 {
 	return m_mode == other.m_mode && m_unknown_mode == other.m_unknown_mode
-			&& m_types == other.m_types && m_bonds == other.m_bonds;
+			&& m_types == other.m_types && m_bonds == other.m_bonds
+			&& m_show_cores == other.m_show_cores;
 }
 
 QDomElement PotentialTypes::toXml(QDomDocument &document) const
@@ -130,12 +135,28 @@ QDomElement PotentialTypes::toXml(QDomDocument &document) const
 	root.setAttribute(QStringLiteral("enabled"), m_mode != Mode::Off ? 1 : 0);
 	root.setAttribute(QStringLiteral("mode"),
 					  m_unknown_mode.isEmpty() ? modeName(m_mode) : m_unknown_mode);
+		//Written only when the core definitions are shown, so a project
+		//which does not show them is saved exactly as before
+	if (m_show_cores)
+		root.setAttribute(QStringLiteral("cores"), 1);
 	for (const PotentialType &type : m_types) {
 		QDomElement elmt = document.createElement(QStringLiteral("potentialtype"));
 		elmt.setAttribute(QStringLiteral("name"), type.name);
 		elmt.setAttribute(QStringLiteral("color"), type.color.name());
 		elmt.setAttribute(QStringLiteral("style"), static_cast<int>(type.style));
 		elmt.setAttribute(QStringLiteral("width"), QString::number(type.width));
+			//Written only when set, so a type without a core
+			//definition is saved exactly as before. An absent one
+			//reads back empty, which is what it says.
+		if (!type.wire_color.isEmpty())
+			elmt.setAttribute(QStringLiteral("conductor_color"),
+				type.wire_color);
+		if (!type.wire_section.isEmpty())
+			elmt.setAttribute(QStringLiteral("conductor_section"),
+				type.wire_section);
+		if (!type.conductor_type.isEmpty())
+			elmt.setAttribute(QStringLiteral("conductor_type"),
+				type.conductor_type);
 		root.appendChild(elmt);
 	}
 	for (const PotentialBond &bond : m_bonds) {
@@ -170,6 +191,8 @@ PotentialTypes PotentialTypes::fromXml(const QDomElement &element)
 		result.m_mode = element.attribute(QStringLiteral("enabled")).toInt() != 0
 				? Mode::PerWire : Mode::Off;
 	}
+	result.m_show_cores =
+			element.attribute(QStringLiteral("cores")).toInt() != 0;
 	result.m_types.clear();
 	for (QDomElement elmt = element.firstChildElement(QStringLiteral("potentialtype"));
 		 !elmt.isNull();
@@ -188,6 +211,9 @@ PotentialTypes PotentialTypes::fromXml(const QDomElement &element)
 		bool ok = false;
 		const qreal width = elmt.attribute(QStringLiteral("width")).toDouble(&ok);
 		type.width = (ok && width > 0) ? width : 1.0;
+		type.wire_color = elmt.attribute(QStringLiteral("conductor_color"));
+		type.wire_section = elmt.attribute(QStringLiteral("conductor_section"));
+		type.conductor_type = elmt.attribute(QStringLiteral("conductor_type"));
 		result.m_types << type;
 	}
 	for (QDomElement elmt = element.firstChildElement(QStringLiteral("bond"));
@@ -199,4 +225,46 @@ PotentialTypes PotentialTypes::fromXml(const QDomElement &element)
 			result.m_bonds << bond;
 	}
 	return result;
+}
+
+/**
+	@return the settings key holding the potential types a new project
+	starts with. It starts with "diagrameditor/default", so it is saved
+	and brought back with the other defaults of a new project
+	(@see ConfigProfile::partOf()).
+*/
+QString PotentialTypes::settingsKey()
+{
+	return QStringLiteral("diagrameditor/defaultpotentialtypes");
+}
+
+/**
+	@brief PotentialTypes::toSettings
+	Write the types to @p settings, under @p key, as the XML the project
+	itself would hold: one key holds all of it, and a file a user saves
+	there (Configure QElectroTech > New project) holds the same words.
+	@param settings
+	@param key
+*/
+void PotentialTypes::toSettings(QSettings &settings, const QString &key) const
+{
+	QDomDocument document;
+	document.appendChild(toXml(document));
+	settings.setValue(key, document.toString());
+}
+
+/**
+	@brief PotentialTypes::fromSettings
+	@param settings
+	@param key
+	@return the types the settings hold, or the defaults of a new
+	project when they hold none or something unreadable.
+*/
+PotentialTypes PotentialTypes::fromSettings(const QSettings &settings,
+	const QString &key)
+{
+	QDomDocument document;
+	if (document.setContent(settings.value(key).toString()))
+		return fromXml(document.documentElement());
+	return PotentialTypes();
 }

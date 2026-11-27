@@ -62,6 +62,22 @@ class tst_conductortypefield : public QObject
 			QCOMPARE(read_back.m_wire_section, QStringLiteral("1.5"));
 		}
 
+		void theTypeIsAppliedLikeTheOtherFields()
+		{
+			//The selection properties panel applies an edit field by
+			//field (ConductorProperties::applyChanges): the type is one
+			//of them, like the wire colour and the section
+			ConductorProperties shown, edited, target;
+			edited.m_conductor_type = QStringLiteral("H07V-K");
+			target.applyChanges(shown, edited);
+			QCOMPARE(target.m_conductor_type, QStringLiteral("H07V-K"));
+
+			ConductorProperties keeps;
+			keeps.m_conductor_type = QStringLiteral("H05V-K");
+			keeps.applyChanges(shown, edited);
+			QCOMPARE(keeps.m_conductor_type, QStringLiteral("H07V-K"));
+		}
+
 		void theChoiceIsInTheDynamicTextFieldList()
 		{
 			//The element editor offers the conductor information in its

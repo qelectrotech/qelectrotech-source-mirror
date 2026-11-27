@@ -941,7 +941,8 @@ void ConductorProperties::applyForEqualAttributes(QList<ConductorProperties> lis
 	and leave every other attribute as it is. The Selection properties
 	panel applies an edit this way, so a conductor keeps everything the
 	user did not change: its own text, function, cable... and any value
-	the panel cannot show exactly.
+	the panel cannot show exactly. A core of a cable keeps its section,
+	colour and type as well: those three come from the cable.
 	@param before : the properties as they were shown to the user
 	@param after : the properties after the user's edit
 */
@@ -972,8 +973,15 @@ void ConductorProperties::applyChanges(const ConductorProperties &before,
 	take(m_function,             before.m_function,             after.m_function);
 	take(m_potential_type,       before.m_potential_type,       after.m_potential_type);
 	take(m_tension_protocol,     before.m_tension_protocol,     after.m_tension_protocol);
-	take(m_wire_color,           before.m_wire_color,           after.m_wire_color);
-	take(m_wire_section,         before.m_wire_section,         after.m_wire_section);
+		//A core of a cable takes its section, colour and type from its
+		//cable: no edit writes over those three, the way a potential and
+		//the conductor dialog leave a core alone
+		//(@see Conductor::setPropertyToPotential)
+	if (m_cable_uuid.isNull()) {
+		take(m_wire_color,       before.m_wire_color,       after.m_wire_color);
+		take(m_wire_section,     before.m_wire_section,     after.m_wire_section);
+		take(m_conductor_type,   before.m_conductor_type,   after.m_conductor_type);
+	}
 	take(m_show_text,            before.m_show_text,            after.m_show_text);
 	take(text_size,              before.text_size,              after.text_size);
 	take(cond_size,              before.cond_size,              after.cond_size);

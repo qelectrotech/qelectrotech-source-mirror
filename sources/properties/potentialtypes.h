@@ -25,6 +25,8 @@
 #include <QString>
 #include <Qt>
 
+class QSettings;
+
 /**
 	@brief The PotentialType struct
 	One kind of potential (L, N, PE, 24V...) and how the conductors on it
@@ -36,6 +38,16 @@ struct PotentialType
 	QColor color = Qt::black;
 	Qt::PenStyle style = Qt::SolidLine;
 	qreal width = 1.0;
+
+		/// The core definition a conductor is given when this type is
+		/// chosen for it: its wire colour (an IEC 60757 code, or any
+		/// text), its section and the kind of wire it is made of. Each is
+		/// written as it stands, an empty one emptying the conductor's
+		/// value. Only a project that shows the core definitions has
+		/// these filled in (@see PotentialTypes::showCores())
+	QString wire_color;
+	QString wire_section;
+	QString conductor_type;
 
 	bool operator==(const PotentialType &other) const;
 	bool operator!=(const PotentialType &other) const {return !(*this == other);}
@@ -90,6 +102,14 @@ class PotentialTypes
 		const QList<PotentialType> &types() const {return m_types;}
 		void setTypes(const QList<PotentialType> &types) {m_types = types;}
 
+			/// Whether the project carries the core definition of each
+			/// type (the conductor colour, section and type a conductor
+			/// is given when it is chosen). Off by default: a project
+			/// saved before this existed keeps its conductors as they
+			/// are, and the three columns stay out of the table.
+		bool showCores() const {return m_show_cores;}
+		void setShowCores(bool show) {m_show_cores = show;}
+
 		bool find(const QString &name, PotentialType *found = nullptr) const;
 
 			/// The pairs of types joined on purpose. None by default: a
@@ -104,6 +124,17 @@ class PotentialTypes
 		QDomElement toXml(QDomDocument &document) const;
 		static PotentialTypes fromXml(const QDomElement &element);
 
+			/// The settings key holding the types a new project starts
+			/// with (Configure QElectroTech > New project). A key of the
+			/// "diagrameditor/default" part, so it is saved and restored
+			/// with the other defaults of a new project.
+		static QString settingsKey();
+			/// The types are kept in the settings as the project's own
+			/// XML, one key holding all of it
+		void toSettings(QSettings &settings, const QString &key) const;
+		static PotentialTypes fromSettings(const QSettings &settings,
+			const QString &key);
+
 		bool isDefault() const;
 		bool operator==(const PotentialTypes &other) const;
 		bool operator!=(const PotentialTypes &other) const {return !(*this == other);}
@@ -115,6 +146,7 @@ class PotentialTypes
 		QString m_unknown_mode;
 		QList<PotentialType> m_types = defaultTypes();
 		QList<PotentialBond> m_bonds;
+		bool m_show_cores = false;
 };
 
 #endif // POTENTIALTYPES_H
