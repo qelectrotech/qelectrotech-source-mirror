@@ -31,7 +31,12 @@
 #include "undocommand/linkelementcommand.h"
 #include "utils/qetutils.h"
 
+#include <QComboBox>
 #include <QDomDocument>
+#include <QFile>
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QLineEdit>
 #include <QSqlQuery>
 #include <QSqlRecord>
 #include <QStandardItemModel>
@@ -364,6 +369,57 @@ private slots:
 		QCOMPARE(QetGraphicsTableFactory::rowsOnPage(one, 0, 0), 0);
 		QCOMPARE(QetGraphicsTableFactory::rowsOnPage(one, 3, 10), 0);
 		QCOMPARE(QetGraphicsTableFactory::rowsOnPage(QVector<QString>(), 0, 10), 0);
+	}
+
+	/**
+		Two saved column sets: each is written under its own name and
+		loads back. A save that wrote only its own entry replaced every
+		saved set with {"fields": ...}, lost the name it was saved under,
+		and left the list offering "fields" and loading nothing.
+	*/
+	void savedSetsLoadBack()
+	{
+		const QString path = QETApp::configDir() + QStringLiteral("/plc_list.json");
+		QFile::remove(path);
+
+		PlcQueryWidget widget;
+		auto *name = widget.findChild<QLineEdit *>(QStringLiteral("m_line_edit"));
+		QVERIFY(name);
+
+		widget.setQuery(QStringLiteral("SELECT label, plant FROM qet_plc_list "
+									   "ORDER BY structure_id, plc_uuid, entry"));
+		name->setText(QStringLiteral("first"));
+		QVERIFY(QMetaObject::invokeMethod(&widget, "saveConfig"));
+
+		widget.setQuery(QStringLiteral("SELECT label, plc_address FROM qet_plc_list "
+									   "ORDER BY structure_id, plc_uuid, entry"));
+		name->setText(QStringLiteral("second"));
+		QVERIFY(QMetaObject::invokeMethod(&widget, "saveConfig"));
+
+			//Both sets are in the file, each under its own name
+		QFile file(path);
+		QVERIFY2(file.open(QFile::ReadOnly), qPrintable(file.errorString()));
+		const QJsonObject root = QJsonDocument::fromJson(file.readAll()).object();
+		QCOMPARE(int(root.keys().size()), 2);
+		QVERIFY(root.contains(QStringLiteral("first")));
+		QVERIFY(root.contains(QStringLiteral("second")));
+
+			//Each loads back into a widget built after the saves, so
+			//that its list of names comes out of the file as it does
+			//for a person opening the dialog again
+		const QList<QStringList> expected{
+			QStringList({QStringLiteral("label"), QStringLiteral("plant")}),
+			QStringList({QStringLiteral("label"), QStringLiteral("plc_address")})};
+		const QStringList names{QStringLiteral("first"), QStringLiteral("second")};
+		for (int i = 0 ; i < names.size() ; ++i) {
+			PlcQueryWidget loaded;
+			auto *combo = loaded.findChild<QComboBox *>();
+			QVERIFY(combo);
+			combo->setCurrentText(names.at(i));
+			QCOMPARE(combo->currentText(), names.at(i));
+			QVERIFY(QMetaObject::invokeMethod(&loaded, "loadConfig"));
+			QCOMPARE(loaded.selectedKeys(), expected.at(i));
+		}
 	}
 };
 

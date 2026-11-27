@@ -52,6 +52,9 @@ class PlcQueryWidget : public QWidget
 			/// follow, so that no page is broken at a master then
 		QString groupQueryStr() const;
 		void setQuery(const QString &query);
+			/// The chosen columns, in order, as CableQueryWidget gives
+			/// them -- what a saved set is made of and what loads back
+		QStringList selectedKeys() const;
 
 	private slots:
 		void onAvailableItemDoubleClicked(QListWidgetItem *item);
@@ -69,7 +72,6 @@ class PlcQueryWidget : public QWidget
 		void fillSavedQuery();
 		void updateQueryLine();
 		void setFields(const QStringList &fields);
-		QStringList selectedKeys() const;
 		void reset();
 
 		QListWidget *m_available_list = nullptr;

@@ -421,7 +421,10 @@ void PlcQueryWidget::saveConfig()
 		object_.insert(QStringLiteral("fields"), selectedKeys().join(QLatin1Char(',')));
 		root_object[m_config_gb->text()] = object_;
 
-		const QJsonDocument doc(object_);
+			//The whole file, not this one entry: writing only object_
+			//replaced every saved set with {"fields": ...} and lost the
+			//name it was saved under, so nothing loaded back
+		const QJsonDocument doc(root_object);
 		file.resize(0);
 		file.write(doc.toJson());
 	}
