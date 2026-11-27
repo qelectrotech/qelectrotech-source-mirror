@@ -46,8 +46,9 @@
 	The text alignment dialog and the composite text dialog open next to
 	what opened them (issue #1952): under their cell of a symbol's Texts
 	tab, under the Alignment button of a text, a text field or a terminal
-	in the symbol editor, above a button with no room below it, and
-	inside the screen under the button.
+	in the symbol editor, under the Composite text button of a text field,
+	above a button with no room below it, and inside the screen under the
+	button.
 
 	CTest runs it offscreen with two screens side by side
 	(fixtures/two_screens.json). Run directly, it uses the platform's
@@ -127,8 +128,9 @@ class tst_dialogplacement : public QObject
 		return QTest::qWaitForWindowExposed(&dialog);
 	}
 
-		//Click @p button, which opens the alignment dialog with exec(),
-		//and return where the dialog is once on the screen
+		//Click @p button, which opens a @p Dialog with exec(), and return
+		//where the dialog is once on the screen
+	template <class Dialog = AlignmentTextDialog>
 	static QRect dialogOpenedBy(QPushButton *button)
 	{
 		QRect frame;
@@ -144,7 +146,7 @@ class tst_dialogplacement : public QObject
 					&& dialog->windowHandle()->isExposed();
 			if (!shown && waited.elapsed() < 5000)
 				return;
-			if (shown && qobject_cast<AlignmentTextDialog *>(dialog))
+			if (shown && qobject_cast<Dialog *>(dialog))
 				frame = dialog->frameGeometry();
 			dialog->reject();
 		});
@@ -280,6 +282,46 @@ class tst_dialogplacement : public QObject
 			QVERIFY2(nextTo(frame, onScreen(button)),
 					 qPrintable(QStringLiteral("dialog at %1,%2")
 								.arg(frame.x()).arg(frame.y())));
+		}
+
+			//Closed somewhere else, the composite text dialog still opens
+			//under the button, at the size it was closed with
+		void textFieldCompositeTextButton()
+		{
+			QSize closed_size;
+			{
+				CompositeTextEditDialog elsewhere(QString(), false);
+				elsewhere.resize(elsewhere.size() - QSize(100, 150));
+				elsewhere.move(screenArea().center());
+				elsewhere.show();
+				QVERIFY(QTest::qWaitForWindowExposed(&elsewhere));
+				closed_size = elsewhere.frameGeometry().size();
+				elsewhere.reject();
+			}
+
+			QETElementEditor window;
+			ElementScene *scene = window.elementScene();
+			const auto reset = qScopeGuard([scene] { scene->reset(); });
+			auto *field = new PartDynamicTextField(&window);
+			field->setTextFrom(DynamicElementTextItem::CompositeText);
+			scene->addItems({field});
+
+			DynamicTextFieldEditor editor(&window);
+			QVERIFY(editor.setParts({field}));
+			editor.move(screenArea().topLeft() + QPoint(100, 50));
+			editor.show();
+			QVERIFY(QTest::qWaitForWindowExposed(&editor));
+			auto *button = editor.findChild<QPushButton *>(
+						QStringLiteral("m_composite_text_pb"));
+			QVERIFY(button);
+			QVERIFY(button->isEnabled());
+
+			const QRect frame =
+					dialogOpenedBy<CompositeTextEditDialog>(button);
+			QVERIFY2(nextTo(frame, onScreen(button)),
+					 qPrintable(QStringLiteral("dialog at %1,%2")
+								.arg(frame.x()).arg(frame.y())));
+			QCOMPARE(frame.size(), closed_size);
 		}
 
 		void opensAboveTheButtonWithoutRoomBelow()
