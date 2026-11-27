@@ -58,6 +58,7 @@
 #include "diagramcommands.h"
 #include "diagramcontent.h"
 #include "diagramevent/diagrameventaddimage.h"
+#include "import/eplanproject/eplanprojectimportdialog.h"
 #ifdef QET_HAS_QTPDF
 #include "diagramevent/diagrameventaddpdf.h"
 #endif
@@ -2397,6 +2398,22 @@ void QETDiagramEditor::setUpMenu()
 	menu_fichier -> addActions(m_file_actions_group.actions());
 	menu_fichier -> addSeparator();
 	//menu_fichier -> addAction(import_diagram);
+		//An EPLAN export archive (.epdz) as a new QElectroTech project
+	QAction *import_eplan_project = menu_fichier->addAction(
+		QET::Icons::DocumentOpen, tr("Import EPLAN project (.epdz)…"));
+	import_eplan_project->setObjectName(QStringLiteral("import_eplan_project"));
+	import_eplan_project->setStatusTip(tr("Reads an EPLAN export archive and opens it as a QElectroTech project"));
+	connect(import_eplan_project, &QAction::triggered, this, [this]() {
+		EplanProjectImportDialog dialog(this);
+			// the file dialog over the import dialog: cancelled, the import
+			// dialog still takes a dropped file
+		QTimer::singleShot(0, &dialog, [&dialog]() { dialog.chooseArchive(); });
+		if (dialog.exec() != QDialog::Accepted || dialog.resultPath().isEmpty()) return;
+			// the import may have kept parts in the user collection
+		if (m_element_collection_widget) m_element_collection_widget->reload();
+		openAndAddProject(dialog.resultPath());
+	});
+	menu_fichier -> addSeparator();
 	menu_fichier -> addAction(m_export_to_images);
 	menu_fichier -> addAction(m_export_to_pdf);
 	menu_fichier -> addAction(m_export_delivery);
