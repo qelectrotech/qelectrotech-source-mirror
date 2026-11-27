@@ -43,6 +43,7 @@
 #include <ui/titleblockpropertieswidget.h>
 #include <ui/xrefpropertieswidget.h>
 #include <projectorigin.h>
+#include <qetunits.h>
 
 //#include "ui_autonumberingmanagementw.h"
 
@@ -175,6 +176,27 @@ void ProjectMainConfigPage::applyProjectConf()
 		//list: As before is no property at all, a value this
 		//QElectroTech does not know (no data) is kept as it is
 	new_properties.remove(QStringLiteral("drawing_standard"));
+		//The drawing scale likewise: Pixels is no property at all
+	new_properties.remove(QETProject::drawingScaleKey());
+		//and the module M: 2.5 mm is no property at all
+	new_properties.remove(QETProject::drawingModuleKey());
+		//All three are set before the checks are stored: which checks run by
+		//default depends on the scale
+	const QVariant standard = m_drawing_standard_cb -> currentData();
+	if (!standard.isValid())
+		new_properties.addValue(QStringLiteral("drawing_standard"), m_drawing_standard_cb -> currentText());
+	else if (!standard.toString().isEmpty())
+		new_properties.addValue(QStringLiteral("drawing_standard"), standard.toString());
+	const QVariant scale = m_scale_cb -> currentData();
+	if (!scale.isValid())
+		new_properties.addValue(QETProject::drawingScaleKey(), m_scale_cb -> currentText());
+	else if (!scale.toString().isEmpty())
+		new_properties.addValue(QETProject::drawingScaleKey(), scale.toString());
+	const QVariant module = m_module_cb -> currentData();
+	if (!module.isValid())
+		new_properties.addValue(QETProject::drawingModuleKey(), m_module_cb -> currentText());
+	else if (!QETProject::moduleName(module.toDouble()).isEmpty())
+		new_properties.addValue(QETProject::drawingModuleKey(), QETProject::moduleName(module.toDouble()));
 		//The choices of the checks are project properties too, set below
 		//rather than in the table: following the application's stores
 		//none of them
@@ -192,11 +214,6 @@ void ProjectMainConfigPage::applyProjectConf()
 		if (!it.value() -> isChecked()) rules_off << it.key();
 	new_properties = CheckSettings::withPanelState(new_properties, m_project -> projectProperties());
 	new_properties = CheckSettings::withRulesOff(new_properties, rules_off);
-	const QVariant standard = m_drawing_standard_cb -> currentData();
-	if (!standard.isValid())
-		new_properties.addValue(QStringLiteral("drawing_standard"), m_drawing_standard_cb -> currentText());
-	else if (!standard.toString().isEmpty())
-		new_properties.addValue(QStringLiteral("drawing_standard"), standard.toString());
 	if (m_project -> projectProperties() != new_properties) {
 		m_project -> setProjectProperties(new_properties);
 		modified_project = true;
@@ -363,6 +380,33 @@ void ProjectMainConfigPage::initWidgets()
 			"nothing by itself: features to come will follow it. As before keeps the project "
 			"exactly as it always was.", "drawing standard tooltip"));
 
+	m_scale_label = new QLabel(tr("Drawing scale:", "label when configuring"));
+	m_scale_cb = new QComboBox();
+	m_scale_cb -> setObjectName(QStringLiteral("drawingScale"));
+	m_scale_cb -> addItem(tr("As before (pixels)", "drawing scale"), QString());
+	m_scale_cb -> addItem(tr("Millimetres (10 px grid = M)", "drawing scale"),
+			QETProject::scaleName(QETProject::Scale::Mm));
+	m_scale_cb -> setToolTip(tr("What a pixel of the drawing means on paper. It applies "
+			"to printing and PDF and DXF export to scale, paper sizes, the widths and "
+			"text heights shown in mm, dimensions and the clearance checks. Drawings "
+			"already made do not move. As before keeps the project exactly as it "
+			"always was.", "drawing scale tooltip"));
+
+	m_module_label = new QLabel(tr("Module M:", "label when configuring"));
+	m_module_cb = new QComboBox();
+	m_module_cb -> setObjectName(QStringLiteral("drawingModule"));
+	for (qreal module : QETProject::modulesMm()) {
+		const QString mm = QString::number(module, 'f', 1);
+		m_module_cb -> addItem(qFuzzyCompare(module, QetUnits::defaultModuleMm)
+				? tr("%1 mm (recommended)", "drawing module").arg(mm)
+				: tr("%1 mm", "drawing module").arg(mm), module);
+	}
+	m_module_cb -> setToolTip(tr("The module M of IEC 61082-1 (5.7.3.2): the length on "
+			"paper of the 10 px grid step, which symbols, line widths and clearances "
+			"are measured in. 2.5 mm is recommended. Only used when the drawing "
+			"scale is Millimetres. The drawing itself is not resized: only what its "
+			"pixels mean on paper changes.", "drawing module tooltip"));
+
 	m_designation_display_label = new QLabel(tr("Element labels show:", "label when configuring"));
 	m_designation_display_cb = new QComboBox();
 	m_designation_display_cb -> setObjectName(QStringLiteral("designationDisplay"));
@@ -508,7 +552,31 @@ void ProjectMainConfigPage::initWidgets()
 		check_box -> setObjectName(QStringLiteral("checkRule") + ProjectCheck::id(kind));
 		check_box -> setToolTip(ProjectCheck::toolTip(kind));
 		m_check_rule_cbs.insert(kind, check_box);
+		connect(check_box, &QCheckBox::toggled, this, [this, kind]() {
+			m_check_rules_touched.insert(kind);
+		});
 	}
+		//A new scale moves the checks the user did not touch to what the
+		//project's stored choices give under that scale (the default of
+		//the scale, unless the project says otherwise): the boxes show
+		//what applying will store, and going back restores what was there
+	connect(m_scale_cb, QOverload<int>::of(&QComboBox::currentIndexChanged), this, [this]() {
+		updateModuleEnabled();
+		emitPaperPxPerMm();
+		DiagramContext stored = m_project ? m_project -> projectProperties() : DiagramContext();
+		const QVariant scale = m_scale_cb -> currentData();
+		const QString name = scale.isValid() ? scale.toString() : m_scale_cb -> currentText();
+		stored.remove(QETProject::drawingScaleKey());
+		if (!name.isEmpty()) stored.addValue(QETProject::drawingScaleKey(), name);
+		for (auto it = m_check_rule_cbs.cbegin() ; it != m_check_rule_cbs.cend() ; ++it) {
+			if (!ProjectCheck::onlyForScale(it.key()) || m_check_rules_touched.contains(it.key()))
+				continue;
+			const QSignalBlocker blocker(it.value());
+			it.value() -> setChecked(CheckSettings::ruleEnabled(stored, it.key()));
+		}
+	});
+	connect(m_module_cb, QOverload<int>::of(&QComboBox::currentIndexChanged),
+			this, &ProjectMainConfigPage::emitPaperPxPerMm);
 	//origin (of a coordinate system) settings
 	origin_label_ = new QLabel(tr("Cell numbering starts from:"));
 	origin_cb_	  = new QComboBox();
@@ -572,6 +640,16 @@ void ProjectMainConfigPage::initLayout()
 	main_layout0 -> addLayout(drawing_standard_layout);
 	main_layout0 -> addSpacing(10);
 
+	QHBoxLayout *scale_layout = new QHBoxLayout();
+	scale_layout -> addWidget(m_scale_label);
+	scale_layout -> addWidget(m_scale_cb);
+	scale_layout -> addSpacing(10);
+	scale_layout -> addWidget(m_module_label);
+	scale_layout -> addWidget(m_module_cb);
+	scale_layout -> addStretch();
+	main_layout0 -> addLayout(scale_layout);
+	main_layout0 -> addSpacing(10);
+
 	QHBoxLayout *designation_display_layout = new QHBoxLayout();
 	designation_display_layout -> addWidget(m_designation_display_label);
 	designation_display_layout -> addWidget(m_designation_display_cb);
@@ -630,6 +708,36 @@ void ProjectMainConfigPage::initLayout()
 }
 
 /**
+	@brief ProjectMainConfigPage::emitPaperPxPerMm
+	Tell the pages of the dialog what a millimetre of paper is with the
+	drawing scale and the module M shown, which are not the project's
+	until applied: the paper sizes of the new folios follow them.
+*/
+void ProjectMainConfigPage::emitPaperPxPerMm()
+{
+	const QVariant scale = m_scale_cb -> currentData();
+	const bool mm = scale.isValid()
+			&& QETProject::scaleFromName(scale.toString()) == QETProject::Scale::Mm;
+	const QVariant module = m_module_cb -> currentData();
+	emit paperPxPerMmChanged(mm && module.isValid() && module.toDouble() > 0
+			? QetUnits::pxPerMmFor(module.toDouble()) : 0);
+}
+
+/**
+	@brief ProjectMainConfigPage::updateModuleEnabled
+	The module M means something only in a project drawn to scale: the
+	list is enabled when Millimetres is chosen, and the project can be
+	edited.
+*/
+void ProjectMainConfigPage::updateModuleEnabled()
+{
+	const QVariant scale = m_scale_cb -> currentData();
+	const bool mm = scale.isValid()
+			&& QETProject::scaleFromName(scale.toString()) == QETProject::Scale::Mm;
+	m_module_cb -> setEnabled(mm && !m_project -> isReadOnly());
+}
+
+/**
 	Read properties from the edited project then fill widgets with them.
 */
 void ProjectMainConfigPage::readValuesFromProject()
@@ -638,6 +746,8 @@ void ProjectMainConfigPage::readValuesFromProject()
 		//The drawing standard has its own list, not a row of the table
 	DiagramContext variables = m_project -> projectProperties();
 	variables.remove(QStringLiteral("drawing_standard"));
+	variables.remove(QETProject::drawingScaleKey());
+	variables.remove(QETProject::drawingModuleKey());
 	for (const QString &key : variables.keys())
 		if (CheckSettings::isCheckKey(key)) variables.remove(key);
 	project_variables_ -> setContext(variables);
@@ -654,6 +764,28 @@ void ProjectMainConfigPage::readValuesFromProject()
 		m_drawing_standard_cb -> addItem(m_project -> drawingStandardText().trimmed());
 		m_drawing_standard_cb -> setCurrentIndex(m_drawing_standard_cb -> count() - 1);
 	}
+	for (int i = m_scale_cb -> count() - 1 ; i > 1 ; --i)
+		m_scale_cb -> removeItem(i);
+	bool scale_known = true;
+	const auto scale = QETProject::scaleFromName(m_project -> scaleText(), &scale_known);
+	if (scale_known) {
+		m_scale_cb -> setCurrentIndex(qMax(0, m_scale_cb -> findData(
+				QETProject::scaleName(scale))));
+	} else {
+		m_scale_cb -> addItem(m_project -> scaleText().trimmed());
+		m_scale_cb -> setCurrentIndex(m_scale_cb -> count() - 1);
+	}
+	for (int i = m_module_cb -> count() - 1 ; i >= QETProject::modulesMm().count() ; --i)
+		m_module_cb -> removeItem(i);
+	bool module_known = true;
+	const qreal module = QETProject::moduleFromName(m_project -> moduleText(), &module_known);
+	if (module_known) {
+		m_module_cb -> setCurrentIndex(qMax(0, m_module_cb -> findData(module)));
+	} else {
+		m_module_cb -> addItem(m_project -> moduleText().trimmed());
+		m_module_cb -> setCurrentIndex(m_module_cb -> count() - 1);
+	}
+	updateModuleEnabled();
 
 	const ProjectUsageTracker &usage_tracker = m_project -> projectPropertiesHandler().usageTracker();
 	const qint64 total_seconds = usage_tracker.secondsSpent();
@@ -704,6 +836,7 @@ void ProjectMainConfigPage::readValuesFromProject()
 	updateCheckOptionsWidgets();
 	for (auto it = m_check_rule_cbs.cbegin() ; it != m_check_rule_cbs.cend() ; ++it)
 		it.value() -> setChecked(CheckSettings::ruleEnabled(m_project, it.key()));
+	m_check_rules_touched.clear();
 }
 
 /**
@@ -764,6 +897,8 @@ void ProjectMainConfigPage::adjustReadOnly()
 	m_plant_location_cb -> setDisabled(is_read_only);
 	m_designation_display_cb -> setDisabled(is_read_only);
 	m_drawing_standard_cb -> setDisabled(is_read_only);
+	m_scale_cb -> setDisabled(is_read_only);
+	updateModuleEnabled();
 	m_follow_device_types_cb -> setDisabled(is_read_only);
 	chained_reports_cb_ -> setDisabled(is_read_only);
 	chained_key_gb_ -> setDisabled(is_read_only || !(chained_reports_cb_ -> isChecked()));

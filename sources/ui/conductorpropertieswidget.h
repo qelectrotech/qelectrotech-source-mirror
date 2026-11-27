@@ -86,6 +86,8 @@ class ConductorPropertiesWidget : public QWidget
 		void potentialTypeChosen(int index);
 
 	private:
+		void showTextSize();
+
 		Ui::ConductorPropertiesWidget *ui;
 		ConductorProperties m_properties;
 			/// The project's potential types, whose core definition a
@@ -97,6 +99,21 @@ class ConductorPropertiesWidget : public QWidget
 			/// "Customize..." button edits; null where there is
 			/// none to edit
 		QETProject *m_project = nullptr;
+			/// The conductor width is shown and typed in mm (the project
+			/// is drawn to scale); the properties keep it in px
+		bool m_size_in_mm = false;
+			/// Pixels per millimetre of the project when the width is in mm
+		qreal m_px_per_mm = 0;
+		QComboBox *m_cond_size_presets = nullptr;
+		void setSizeInMm(qreal px_per_mm);
+		void showCondSize(qreal px);
+		qreal condSizePx() const;
+		void showDashSize(int px);
+		int dashSizePx() const;
+		static int dashSizeMinimumPx();
+		static int dashSizeMaximumPx();
+			/// Whether the text size box takes the capital height in mm
+		qreal m_text_size_px_per_mm = 0;
 };
 
 #endif // CONDUCTORPROPERTIESWIDGET_H

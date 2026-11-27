@@ -20,6 +20,7 @@
 
 #include <PropertiesEditor/propertieseditorwidget.h>
 
+#include <QFont>
 #include <QPointer>
 class IndependentTextItem;
 
@@ -54,6 +55,10 @@ class IndiTextPropertiesWidget : public PropertiesEditorWidget
 		private:
 		void setUpEditConnection();
 		void updateUi() override;
+		qreal sizePxPerMm() const;
+		qreal projectSizePxPerMm() const;
+		QFont sizeFont() const;
+		static qreal shownSize(const IndependentTextItem *text, qreal px_per_mm);
 		
 	private:
 		Ui::IndiTextPropertiesWidget *ui;
@@ -63,6 +68,8 @@ class IndiTextPropertiesWidget : public PropertiesEditorWidget
 										m_edit_connection;
 		QFont m_selected_font;
 		bool m_font_is_selected = false;
+			/// The unit the size box was filled in (see sizePxPerMm())
+		qreal m_size_px_per_mm = 0;
 };
 
 #endif // INDITEXTPROPERTIESWIDGET_H

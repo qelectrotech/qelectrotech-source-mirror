@@ -19,6 +19,7 @@
 
 #include <diagram.h>
 #include <diagramcommands.h>
+#include <qetproject.h>
 #include <qetgraphicsitem/conductor.h>
 #include <qetgraphicsitem/conductortextitem.h>
 #include <undocommand/changetitleblockcommand.h>
@@ -54,6 +55,10 @@ DiagramPropertiesDialog::DiagramPropertiesDialog(Diagram *diagram, QWidget *pare
 	//Border widget
 	BorderPropertiesWidget *border_infos = new BorderPropertiesWidget(border, this);
 	border_infos -> setReadOnly(diagram_is_read_only);
+	const qreal px_per_mm = diagram -> project()
+		? diagram -> project() -> paperPxPerMm() : 0;
+	if (px_per_mm > 0)
+		border_infos -> setPxPerMm(px_per_mm);
 
 	//Title block widget
 	TitleBlockPropertiesWidget  *titleblock_infos;

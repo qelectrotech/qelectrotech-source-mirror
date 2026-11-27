@@ -18,6 +18,8 @@
 #ifndef TERMINALSTRIPLAYOUTPATTERN_H
 #define TERMINALSTRIPLAYOUTPATTERN_H
 
+#include "qetunits.h"
+
 #include <QDomElement>
 #include <QFont>
 #include <QRect>
@@ -67,7 +69,7 @@ class TerminalStripLayoutPattern
 
 			//Realistic style
 			//Scale of the drawing : number of pixels for one millimeter
-		qreal m_realistic_px_per_mm{4.0};
+		qreal m_realistic_px_per_mm{QetUnits::defaultPxPerMm};
 			//Length (mm) of a terminal along the wires, from the top to the bottom
 		qreal m_realistic_length_mm{60.0};
 			//Draw an end stop at each end of the strip

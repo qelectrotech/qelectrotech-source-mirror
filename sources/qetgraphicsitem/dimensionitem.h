@@ -229,6 +229,9 @@ public:
 	void setProperties(const DimensionProperties &p);
 
 	qreal dimensionValueMM() const;
+	qreal pxPerMm() const;
+	void projectScaleAboutToChange();
+	void projectScaleChanged();
 	QString displayText() const;
 
 	QUuid chainId() const { return m_chain_id; }
@@ -243,6 +246,7 @@ public:
 	void clearHandles();
 	QList<DimensionHandler *> handlers() const { return m_handlers; }
 
+	QPointF textPosition(const QPointF &mid_dim, const QPointF &normal_dir) const;
 	void calculateGeometry(QPointF &p1_dim, QPointF &p2_dim,
 	                       QPointF &p1_ext_end, QPointF &p2_ext_end,
 	                       QPointF &mid_dim, qreal &angle_deg,

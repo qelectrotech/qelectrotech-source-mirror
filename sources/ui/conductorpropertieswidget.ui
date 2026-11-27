@@ -107,7 +107,7 @@
                <widget class="KColorButton" name="m_text_color_kpb"/>
               </item>
               <item row="1" column="1">
-               <widget class="QSpinBox" name="m_text_size_sb">
+               <widget class="QDoubleSpinBox" name="m_text_size_sb">
                 <property name="toolTip">
                  <string>Text size</string>
                 </property>
@@ -117,14 +117,17 @@
                 <property name="buttonSymbols">
                  <enum>QAbstractSpinBox::UpDownArrows</enum>
                 </property>
+                <property name="decimals">
+                 <number>0</number>
+                </property>
                 <property name="prefix">
                  <string/>
                 </property>
                 <property name="minimum">
-                 <number>3</number>
+                 <double>3.000000000000000</double>
                 </property>
                 <property name="maximum">
-                 <number>99</number>
+                 <double>99.000000000000000</double>
                 </property>
                </widget>
               </item>
@@ -786,12 +789,21 @@
            </widget>
           </item>
           <item row="1" column="1">
-           <widget class="QSpinBox" name="m_dash_size_sb">
+           <widget class="QDoubleSpinBox" name="m_dash_size_sb">
             <property name="suffix">
              <string>px</string>
             </property>
+            <property name="decimals">
+             <number>0</number>
+            </property>
             <property name="minimum">
-             <number>2</number>
+             <double>2.000000000000000</double>
+            </property>
+            <property name="maximum">
+             <double>99.000000000000000</double>
+            </property>
+            <property name="singleStep">
+             <double>1.000000000000000</double>
             </property>
            </widget>
           </item>

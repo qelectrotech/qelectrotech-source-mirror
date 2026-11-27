@@ -23,6 +23,7 @@
 #include <QPainter>
 #include <QPicture>
 
+
 /**
 	@brief QetPrint
 	Draws a folio on a printer at the printer's own resolution while its
@@ -65,14 +66,77 @@ namespace QetPrint {
 	};
 
 	/**
+		@brief unitsPerMm
+		@return how many folio units (scene pixels) make a millimetre of
+		paper: drawingDpi / 25.4 as before, or the project's pixels per
+		millimetre when the folio is printed to scale (docs/mm-scale.md).
+		@param px_per_mm : QETProject::pxPerMm() to print to scale, 0 as
+		before
+	*/
+	constexpr qreal unitsPerMm(qreal px_per_mm = 0)
+	{
+		return px_per_mm > 0 ? px_per_mm : drawingDpi / 25.4;
+	}
+
+	/**
+		@brief pixelsPerUnit
+		@return the device pixels of a printer of @p resolution dpi that
+		one folio unit takes up, to scale or at drawingDpi.
+		@param px_per_mm : QETProject::pxPerMm() to print to scale, 0 as
+		before
+	*/
+	constexpr qreal pixelsPerUnit(qreal resolution, qreal px_per_mm = 0)
+	{
+		return px_per_mm > 0 ? resolution / (px_per_mm * 25.4)
+				: resolution / drawingDpi;
+	}
+
+	/**
+		@brief folioPageLayout
+		@return the page of a folio of @p folio_px scene pixels: as large
+		as the folio on paper, without margins. A folio wider than high is
+		a landscape page, since QPageSize knows the sheets upright only.
+		@param px_per_mm : QETProject::paperPxPerMm(). To scale (> 0) the
+		page is a standard sheet within 3 pt that is not smaller than the
+		folio in either direction, else exactly the size of the folio. In
+		pixels (0) it is at 96 dpi and QPageSize rounds a size within 3 pt
+		of a standard sheet to that sheet, as the export always did.
+	*/
+	inline QPageLayout folioPageLayout(const QSizeF &folio_px, qreal px_per_mm = 0)
+	{
+		const qreal pt_per_px = px_per_mm > 0 ? 72.0 / (px_per_mm * 25.4)
+						      : 72.0 / drawingDpi;
+		QSizeF points(folio_px.width() * pt_per_px, folio_px.height() * pt_per_px);
+		const bool wide = points.width() > points.height();
+		if (wide) points.transpose();
+			//To scale a standard sheet within 3 pt that is not smaller
+			//than the folio in either direction (one smaller would cut
+			//off its edge), else the size of the folio
+		QPageSize size(points, QPageSize::Point);
+		if (px_per_mm > 0) {
+			const QSizeF sheet = size.size(QPageSize::Point);
+			const bool standard = size.id() != QPageSize::Custom
+				&& sheet.width() >= points.width() - 0.01
+				&& sheet.height() >= points.height() - 0.01;
+			if (!standard)
+				size = QPageSize(points, QPageSize::Point, QString(),
+						 QPageSize::ExactMatch);
+		}
+		return QPageLayout(size,
+				   wide ? QPageLayout::Landscape : QPageLayout::Portrait,
+				   QMarginsF(0, 0, 0, 0));
+	}
+
+	/**
 		@brief pageSizeInDrawingUnits
 		@return the printable size of a page in folio coordinates
 	*/
-	inline QSizeF pageSizeInDrawingUnits(const QPageLayout &layout, bool full_page)
+	inline QSizeF pageSizeInDrawingUnits(const QPageLayout &layout, bool full_page,
+					     qreal px_per_mm = 0)
 	{
 		const QRectF mm = full_page ? layout.fullRect(QPageLayout::Millimeter)
 					    : layout.paintRect(QPageLayout::Millimeter);
-		return mm.size() * (drawingDpi / 25.4);
+		return mm.size() * unitsPerMm(px_per_mm);
 	}
 
 	/**

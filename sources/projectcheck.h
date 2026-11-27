@@ -36,7 +36,8 @@ class QETProject;
 	gives their findings one shape: a finding is a line of text and the
 	places it is about, each of which can be shown on its folio.
 
-	Duplicate labels and device types read the built folios: the caller
+	Duplicate labels, device types and the two drawing rules (clearances
+	and texts on wires, step 8 of docs/mm-scale.md) read the built folios: the caller
 	builds the lazy ones first. The others read the project database only.
 	A check reports; it changes nothing in the project.
 */
@@ -59,7 +60,9 @@ class ProjectCheck
 			TerminalNames,     ///< symbols with two terminals of one name (TerminalNameCheck)
 			WireInTwoCables,   ///< a wire that is a core of two cables
 			NoPartNumber,      ///< symbols the parts list holds, with no part number
-			UnansweredPrompts  ///< labels and texts still holding a ? or a ?name
+			UnansweredPrompts, ///< labels and texts still holding a ? or a ?name
+			ConductorClearance, ///< parallel wires closer than 1 M (IEC 61082-1 7.1.3.4)
+			TextOnLines        ///< texts crossing a wire of another (IEC 61082-1 7.1.3.5)
 		};
 		Q_ENUM(Kind)
 
@@ -86,6 +89,10 @@ class ProjectCheck
 				/// terminal's uuid), when its places alone do not tell
 				/// it from another finding: CheckSettings::findingId()
 			QStringList ids;
+				/// Whether ids alone tell the finding: findingId()
+				/// then leaves the places out, which may change (the
+				/// wire met first of a potential) while it stays
+			bool ids_only = false;
 		};
 
 		struct Result {
@@ -104,6 +111,9 @@ class ProjectCheck
 		static bool kindFromId(const QString &id, Kind *kind);
 			/// Where the check's own window is, with its options
 		static QString toolTip(Kind kind);
+			/// Whether @p kind is a rule of the millimetre scale: off in
+			/// a project until it is drawn to scale (CheckSettings)
+		static bool onlyForScale(Kind kind);
 		static Result run(QETProject *project, Kind kind);
 
 	private:
@@ -118,6 +128,8 @@ class ProjectCheck
 		static Result wireInTwoCables(QETProject *project);
 		static Result noPartNumber(QETProject *project);
 		static Result unansweredPrompts(QETProject *project);
+		static Result conductorClearance(QETProject *project);
+		static Result textOnLines(QETProject *project);
 };
 
 #endif // PROJECTCHECK_H

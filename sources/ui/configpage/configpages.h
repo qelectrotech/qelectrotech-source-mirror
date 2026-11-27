@@ -55,6 +55,7 @@ class NewDiagramPage : public ConfigPage {
 public slots:
 	void changeToAutoFolioTab();
 	void setFolioAutonum(QString);
+	void setPaperPxPerMm(qreal px_per_mm);
 	void saveCurrentTbp();
 	void loadSavedTbp();
 

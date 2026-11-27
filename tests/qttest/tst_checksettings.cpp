@@ -27,6 +27,7 @@
 #include "wiringrules.h"
 
 #include <QCheckBox>
+#include <QComboBox>
 #include <QDir>
 #include <QFile>
 #include <QScopeGuard>
@@ -38,6 +39,17 @@
 #include <QTemporaryDir>
 #include <QTreeWidget>
 #include <QtTest>
+
+static bool storesRules(QETProject &project)
+{
+	return project.projectProperties().contains(QStringLiteral("check_rules_off"))
+		|| project.projectProperties().contains(QStringLiteral("check_rules_on"));
+}
+
+static QCheckBox *ruleBox(ProjectMainConfigPage &page, ProjectCheck::Kind kind)
+{
+	return page.findChild<QCheckBox *>(QStringLiteral("checkRule") + ProjectCheck::id(kind));
+}
 
 /**
 	Items B12 and B8 of #1878: the choices of the checks kept in the
@@ -447,7 +459,8 @@ private slots:
 		QETProject project(path);
 		QVERIFY(!CheckSettings::ruleEnabled(&project, kind));
 		for (auto other : ProjectCheck::kinds())
-			if (other != kind) QVERIFY(CheckSettings::ruleEnabled(&project, other));
+			if (other != kind)
+				QCOMPARE(CheckSettings::ruleEnabled(&project, other), !ProjectCheck::onlyForScale(other));
 
 		CheckPanelDockWidget panel;
 		panel.setProject(&project);
@@ -575,7 +588,8 @@ private slots:
 		for (auto kind : ProjectCheck::kinds()) {
 			auto *box = page.findChild<QCheckBox *>(QStringLiteral("checkRule") + ProjectCheck::id(kind));
 			QVERIFY(box);
-			QVERIFY(box->isChecked());
+				//The checks of the millimetre scale are off in a project in pixels
+			QCOMPARE(box->isChecked(), !ProjectCheck::onlyForScale(kind));
 		}
 		auto *names = page.findChild<QCheckBox *>(
 			QStringLiteral("checkRule") + ProjectCheck::id(ProjectCheck::Kind::TerminalNames));
@@ -591,6 +605,104 @@ private slots:
 		page.applyProjectConf();
 		QVERIFY(!project.projectProperties().contains(QStringLiteral("check_rules_off")));
 		QVERIFY(project.projectProperties().contains(QStringLiteral("check_accepted")));
+	}
+
+		/// In a project drawn to scale a check of the millimetre scale is on
+		/// by default: unticking it there is what the project stores
+	void aCheckOfTheScaleIsSwitchedOffInMillimetres()
+	{
+		QETProject project;
+		project.addNewDiagram();
+		DiagramContext properties = project.projectProperties();
+		properties.addValue(QStringLiteral("drawing_scale"), QStringLiteral("mm"));
+		project.setProjectProperties(properties);
+		QVERIFY(CheckSettings::ruleEnabled(&project, ProjectCheck::Kind::ConductorClearance));
+
+		ProjectMainConfigPage page(&project);
+		auto *box = ruleBox(page, ProjectCheck::Kind::ConductorClearance);
+		QVERIFY(box && box->isChecked());
+		box->setChecked(false);
+		page.applyProjectConf();
+		QVERIFY(!CheckSettings::ruleEnabled(&project, ProjectCheck::Kind::ConductorClearance));
+		QVERIFY(CheckSettings::ruleEnabled(&project, ProjectCheck::Kind::TextOnLines));
+		QVERIFY(project.projectProperties().contains(QStringLiteral("check_rules_off")));
+		QCOMPARE(project.scale(), QETProject::Scale::Mm);
+	}
+
+		/// Choosing the scale in the page moves the boxes not touched to
+		/// the default of that scale, and nothing is stored for them
+	void theBoxesFollowTheScaleChosen()
+	{
+		QETProject project;
+		project.addNewDiagram();
+		ProjectMainConfigPage page(&project);
+		auto *list = page.findChild<QComboBox *>(QStringLiteral("drawingScale"));
+		auto *clearance = ruleBox(page, ProjectCheck::Kind::ConductorClearance);
+		auto *texts = ruleBox(page, ProjectCheck::Kind::TextOnLines);
+		QVERIFY(list && clearance && texts);
+		QVERIFY(!clearance->isChecked() && !texts->isChecked());
+
+		list->setCurrentIndex(list->findData(QStringLiteral("mm")));
+		QVERIFY(clearance->isChecked() && texts->isChecked());
+		page.applyProjectConf();
+		QCOMPARE(project.scale(), QETProject::Scale::Mm);
+		QVERIFY(CheckSettings::ruleEnabled(&project, ProjectCheck::Kind::ConductorClearance));
+		QVERIFY(CheckSettings::ruleEnabled(&project, ProjectCheck::Kind::TextOnLines));
+		QVERIFY(!storesRules(project));
+
+			//Back to pixels, boxes untouched: both off again, nothing stored
+		list->setCurrentIndex(list->findData(QString()));
+		QVERIFY(!clearance->isChecked() && !texts->isChecked());
+		page.applyProjectConf();
+		QCOMPARE(project.scale(), QETProject::Scale::Px);
+		QVERIFY(!CheckSettings::ruleEnabled(&project, ProjectCheck::Kind::ConductorClearance));
+		QVERIFY(!storesRules(project));
+	}
+
+		/// A box the user set stays as set when the scale changes
+	void aBoxTouchedIsKeptWhenTheScaleChanges()
+	{
+		QETProject project;
+		project.addNewDiagram();
+		ProjectMainConfigPage page(&project);
+		auto *list = page.findChild<QComboBox *>(QStringLiteral("drawingScale"));
+		auto *clearance = ruleBox(page, ProjectCheck::Kind::ConductorClearance);
+		auto *texts = ruleBox(page, ProjectCheck::Kind::TextOnLines);
+		clearance->setChecked(true);
+		list->setCurrentIndex(list->findData(QStringLiteral("mm")));
+		QVERIFY(clearance->isChecked() && texts->isChecked());
+		clearance->setChecked(false);
+		page.applyProjectConf();
+		QVERIFY(!CheckSettings::ruleEnabled(&project, ProjectCheck::Kind::ConductorClearance));
+		QVERIFY(CheckSettings::ruleEnabled(&project, ProjectCheck::Kind::TextOnLines));
+	}
+
+		/// Scale switched away and back, boxes untouched: what the project
+		/// stored for a check comes back, not the default of the scale
+	void aStoredChoiceComesBackWhenTheScaleIsSwitchedBack()
+	{
+		QETProject project;
+		project.addNewDiagram();
+		project.setScale(QETProject::Scale::Mm);
+		CheckSettings::setRuleEnabled(&project, ProjectCheck::Kind::ConductorClearance, false);
+		QVERIFY(!CheckSettings::ruleEnabled(&project, ProjectCheck::Kind::ConductorClearance));
+
+		ProjectMainConfigPage page(&project);
+		auto *list = page.findChild<QComboBox *>(QStringLiteral("drawingScale"));
+		auto *clearance = ruleBox(page, ProjectCheck::Kind::ConductorClearance);
+		auto *texts = ruleBox(page, ProjectCheck::Kind::TextOnLines);
+		QVERIFY(list && clearance && texts);
+		QVERIFY(!clearance->isChecked() && texts->isChecked());
+
+		list->setCurrentIndex(list->findData(QString()));
+		QVERIFY(!clearance->isChecked() && !texts->isChecked());
+		list->setCurrentIndex(list->findData(QStringLiteral("mm")));
+		QVERIFY(!clearance->isChecked());
+		QVERIFY(texts->isChecked());
+		page.applyProjectConf();
+		QCOMPARE(project.scale(), QETProject::Scale::Mm);
+		QVERIFY(!CheckSettings::ruleEnabled(&project, ProjectCheck::Kind::ConductorClearance));
+		QVERIFY(CheckSettings::ruleEnabled(&project, ProjectCheck::Kind::TextOnLines));
 	}
 };
 

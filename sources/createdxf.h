@@ -34,7 +34,8 @@ class Createdxf
 		Createdxf();
 		~Createdxf();
 		static void dxfBegin (const QString&, const QStringList &layers = QStringList(),
-				      const std::function<void()> &writeBlocks = {});
+				      const std::function<void()> &writeBlocks = {},
+				      const QSizeF &extent_mm = QSizeF());
 		static void dxfEnd(const QString&);
 		static void dxfBlockBegin(const QString &fileName,
 					  const QString &name,
@@ -203,7 +204,11 @@ class Createdxf
 	static int dxfColor(QPen pen);
 
 		static const double sheetWidth;
-		static const double sheetHeight;
+			/// Height of the sheet fitted for a project in pixels
+		static const double fitSheetHeight;
+			/// Height the Y flip is taken from: fitSheetHeight, or the
+			/// folio's height in millimetres (DxfExport::write() sets it)
+		static double		sheetHeight;
 		static double		xScale;
 		static double		yScale;
 			/// Layer every entity is written on, "0" unless set; the

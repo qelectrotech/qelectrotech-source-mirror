@@ -20,6 +20,7 @@
 
 #include <QDateTime>
 #include <QMap>
+#include <QPageLayout>
 #include <QPointF>
 #include <QRectF>
 #include <QString>
@@ -53,9 +54,37 @@ namespace PdfLinks {
 		QRectF pageBounds;
 		/// device pixels -> PDF points (replicates the engine's page matrix)
 		std::function<QPointF(const QPointF &)> devToPdf;
+		/// optional: a diagram (a link's target) -> device pixels to PDF
+		/// points on the page that diagram is on, when its page is not
+		/// the size of this one. Not set = every diagram is on a page
+		/// like this one, and \a devToPdf serves.
+		std::function<std::function<QPointF(const QPointF &)>(Diagram *)> devToPdfOf;
 		/// a diagram -> its source rectangle in scene pixels (for /FitR framing)
 		std::function<QRectF(Diagram *)> sourceRectOf;
+		/// optional: where a diagram (a link's target) is on its page, as
+		/// scene -> device pixels; false = it cannot be framed. Not set =
+		/// every diagram is fitted to \a target.
+		std::function<bool(Diagram *, QTransform *)> sceneToDeviceOf;
 	};
+
+	/**
+		Device pixels -> PDF points on a page of @p layout written at
+		@p resolution dpi, as the PDF engine's page matrix does: the scale
+		of 72 / resolution, the flip of Y on the page's height and, unless
+		the layout is in full page mode, the margins. For the page of a
+		link's target, when it is not the size of the page of the link
+		(PageGeometry::devToPdfOf).
+	*/
+	std::function<QPointF(const QPointF &)> devToPdfOnPage(
+			const QPageLayout &layout, int resolution);
+
+	/**
+		The transform of a folio of @p source scene pixels onto @p target
+		device pixels at one scale for both directions, anchored at the top
+		left of @p target: what QetPrint::render() does with
+		Qt::KeepAspectRatio.
+	*/
+	QTransform fitToPage(const QRectF &source, const QRectF &target);
 
 	/**
 		Inject clickable cross-reference / folio-report hyperlinks for @p diagram

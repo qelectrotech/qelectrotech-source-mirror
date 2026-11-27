@@ -84,6 +84,8 @@ class DynamicElementTextModel : public QStandardItemModel
 	QModelIndex indexFromGroup(ElementTextItemGroup *group) const;
 	bool indexIsText(const QModelIndex &index) const;
 	bool indexIsGroup(const QModelIndex &index) const;
+	qreal sizePxPerMm() const;
+	QVariant sizeCellValue(const QFont &font) const;
 
 	bool canDropMimeData(
 			const QMimeData *data,
@@ -128,6 +130,7 @@ class DynamicElementTextModel : public QStandardItemModel
 
 	private:
 	QPointer<Element> m_element;
+	qreal m_size_px_per_mm = 0;
 	QHash <DynamicElementTextItem *, QStandardItem *> m_texts_list;
 	QHash <ElementTextItemGroup *, QStandardItem *> m_groups_list;
 	QHash <DynamicElementTextItem *,
@@ -158,6 +161,9 @@ class DynamicTextItemDelegate : public QStyledItemDelegate
 			const QModelIndex &index) const override;
 
 	protected:
+	void initStyleOption(
+			QStyleOptionViewItem *option,
+			const QModelIndex &index) const override;
 	bool eventFilter(QObject *object, QEvent *event) override;
 
 	private:

@@ -363,6 +363,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/qetxml.cpp
   ${QET_DIR}/sources/qetxml.h
   ${QET_DIR}/sources/qetversion.cpp
+  ${QET_DIR}/sources/qetunits.cpp
+  ${QET_DIR}/sources/qetunits.h
   ${QET_DIR}/sources/qetversion.h
   ${QET_DIR}/sources/qfilenameedit.cpp
   ${QET_DIR}/sources/qfilenameedit.h
@@ -1044,6 +1046,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/ui/openwireendsdialog.h
   ${QET_DIR}/sources/projectcheck/checksettings.cpp
   ${QET_DIR}/sources/projectcheck/checksettings.h
+  ${QET_DIR}/sources/projectcheck/clearancecheck.cpp
+  ${QET_DIR}/sources/projectcheck/clearancecheck.h
   ${QET_DIR}/sources/projectcheck/openwireends.cpp
   ${QET_DIR}/sources/projectcheck/openwireends.h
   ${QET_DIR}/sources/projectcheck/terminalbranches.cpp
@@ -1152,6 +1156,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/utils/qetsettings.cpp
   ${QET_DIR}/sources/utils/qetsettings.h
   ${QET_DIR}/sources/utils/qetutils.cpp
+  ${QET_DIR}/sources/utils/textsizebox.cpp
+  ${QET_DIR}/sources/utils/textsizebox.h
   ${QET_DIR}/sources/utils/previousversions.cpp
   ${QET_DIR}/sources/utils/previousversions.h
   ${QET_DIR}/sources/utils/projecttemplates.cpp

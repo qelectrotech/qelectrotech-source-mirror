@@ -26,14 +26,18 @@
 #include <qetgraphicsitem/elementtextitemgroup.h>
 #include <qetgraphicsitem/terminal.h>
 #include <qeticons.h>
+#include <qetunits.h>
 #include <qetinformation.h>
 #include <undocommand/addelementtextcommand.h>
 #include <utils/dialogplacement.h>
+#include <utils/textsizebox.h>
 #include "alignmenttextdialog.h"
 #include "compositetexteditdialog.h"
 
 #include <QColorDialog>
 #include <QComboBox>
+#include <QDoubleSpinBox>
+#include <QLocale>
 #include <QHash>
 #include <QKeyEvent>
 #include <QModelIndex>
@@ -84,6 +88,11 @@ DynamicElementTextModel::DynamicElementTextModel(Element *element, QObject *pare
 	QStandardItemModel(parent),
 	m_element(element)
 {
+		//The unit the size cells are filled in, kept for as long as the
+		//cells live: a later change of the project's scale must not make
+		//the number of a cell be read in another unit
+	m_size_px_per_mm = m_element && m_element->diagram()
+		? TextSizeBox::pxPerMm(m_element->diagram()->project()) : 0;
 	setColumnCount(2);
 	setHeaderData(0, Qt::Horizontal, tr("Property"), Qt::DisplayRole);
 	setHeaderData(1, Qt::Horizontal, tr("Value"), Qt::DisplayRole);
@@ -102,6 +111,29 @@ DynamicElementTextModel::DynamicElementTextModel(Element *element, QObject *pare
 	
 	for (DynamicElementTextItem *deti : m_element.data()->dynamicTextItems())
 		this->appendRow(itemsForText(deti));
+}
+
+/**
+	@brief DynamicElementTextModel::sizePxPerMm
+	@return the pixels per millimetre the size cells were filled with if
+	they hold a capital height in mm (the element was on a folio of a
+	project drawn to scale when the model was built), else 0
+*/
+qreal DynamicElementTextModel::sizePxPerMm() const
+{
+	return m_size_px_per_mm;
+}
+
+/**
+	@brief DynamicElementTextModel::sizeCellValue
+	@param font : the font of a text
+	@return what the size cell holds for \p font: whole points, or in mm
+	the capital height with two decimals
+*/
+QVariant DynamicElementTextModel::sizeCellValue(const QFont &font) const
+{
+	return sizePxPerMm() ? QVariant(TextSizeBox::shown(sizePxPerMm(), font.pointSizeF(), font))
+					  : QVariant(font.pointSize());
 }
 
 DynamicElementTextModel::~DynamicElementTextModel()
@@ -274,7 +306,7 @@ QList<QStandardItem *> DynamicElementTextModel::itemsForText(
 	size->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
 
 	QStandardItem *siza = new QStandardItem();
-	siza->setData(deti->font().pointSize(), Qt::EditRole);
+	siza->setData(sizeCellValue(deti->font()), Qt::EditRole);
 	siza->setData(DynamicElementTextModel::size, Qt::UserRole+1);
 	siza->setFlags(Qt::ItemIsSelectable
 		       | Qt::ItemIsEnabled
@@ -633,13 +665,29 @@ QUndoCommand *DynamicElementTextModel::undoForEditedText(
 			new QPropertyUndoCommand(deti, "compositeText", QVariant(deti->compositeText()), QVariant(composite_text), undo);
 	}
 	
-	int fs = text_qsi->child(size_txt_row,1)->data(Qt::EditRole).toInt();
-	if (fs != deti->font().pointSize())
+	const qreal mm = sizePxPerMm();
+	const QFont pending_font = text_qsi->child(font_txt_row, 1)->data(Qt::UserRole+2).value<QFont>();
+		//In mm the size cell is the cap height of the font it was shown
+		//with: while a new font is pending, that font brings its own size
+	const bool font_pending = mm && pending_font != deti->font();
+	const qreal cell = text_qsi->child(size_txt_row,1)->data(Qt::EditRole).toDouble();
+	const bool size_changed = mm
+		? qAbs(cell - sizeCellValue(deti->font()).toDouble()) > 0.001
+		: int(cell) != deti->font().pointSize();
+	if (size_changed && !font_pending)
 	{
 		QFont font = deti->font();
-		font.setPointSize(fs);
-		QPropertyUndoCommand *quc = new QPropertyUndoCommand(deti, "font", QVariant(deti->font()), QVariant(font), undo);
-		quc->setText(tr("Change the size of an element text"));
+		if (mm)
+			font.setPointSizeF(qMax(qreal(1), qRound(QetUnits::textMmToPoints(cell, font, mm) * 10.0) / 10.0));
+		else
+			font.setPointSize(int(cell));
+			//The cell is rounded to 0.01 mm: it may stand for the size
+			//the font has, which is no change to undo
+		if (font != deti->font())
+		{
+			QPropertyUndoCommand *quc = new QPropertyUndoCommand(deti, "font", QVariant(deti->font()), QVariant(font), undo);
+			quc->setText(tr("Change the size of an element text"));
+		}
 	}
 
 	QFont font = text_qsi->child(font_txt_row, 1)->data(Qt::UserRole+2).value<QFont>();
@@ -1599,7 +1647,7 @@ void DynamicElementTextModel::updateDataFromText(DynamicElementTextItem *deti,
 			QFont f(deti->font());
 			qsi->child(font_txt_row,1)->setData(f.family(), Qt::EditRole);
 			qsi->child(font_txt_row,1)->setData(f, Qt::UserRole+2);
-			qsi->child(size_txt_row,1)->setData(f.pointSize(), Qt::EditRole);
+			qsi->child(size_txt_row,1)->setData(sizeCellValue(f), Qt::EditRole);
 			break;
 		}
 		case color:
@@ -1810,6 +1858,19 @@ QWidget *DynamicTextItemDelegate::createEditor(
 		}
 		case DynamicElementTextModel::size:
 		{
+			const auto *dtm = qobject_cast<const DynamicElementTextModel *>(index.model());
+			if (dtm && dtm->sizePxPerMm())
+			{
+					//A height in mm, which has decimals
+				QDoubleSpinBox *dsb = new QDoubleSpinBox(parent);
+				dsb->setObjectName("font_size");
+				dsb->setFrame(false);
+				const DynamicElementTextItem *deti = dtm->textFromIndex(index);
+					//The range of the spin box of the pixels, 0 to 99 pt, but
+				//from the smallest size a font can have: 0 mm is no font
+				TextSizeBox::configure(dsb, dtm->sizePxPerMm(), 1, 99, deti ? deti->font() : QFont());
+				return dsb;
+			}
 			QSpinBox *sb = new QSpinBox(parent);
 			sb->setObjectName("font_size");
 			sb->setFrame(false);
@@ -1938,6 +1999,23 @@ QWidget *DynamicTextItemDelegate::createEditor(
 	return QStyledItemDelegate::createEditor(parent, option, index);
 }
 
+/**
+	@brief DynamicTextItemDelegate::initStyleOption
+	The size of a text in a project drawn to scale is a height in mm
+*/
+void DynamicTextItemDelegate::initStyleOption(
+		QStyleOptionViewItem *option,
+		const QModelIndex &index) const
+{
+	QStyledItemDelegate::initStyleOption(option, index);
+	if (index.data(Qt::UserRole+1).toInt() == DynamicElementTextModel::size
+		&& index.data(Qt::EditRole).metaType().id() == QMetaType::Double)
+	{
+		option->text = tr("%1 mm").arg(QLocale().toString(
+			index.data(Qt::EditRole).toDouble(), 'f', 2));
+	}
+}
+
 void DynamicTextItemDelegate::setModelData(
 		QWidget *editor,
 		QAbstractItemModel *model,
@@ -2036,6 +2114,13 @@ void DynamicTextItemDelegate::setModelData(
 				}
 			}
 		}
+		else if (editor->objectName() == "font_size")
+		{
+				//A size in mm left as it was shown is not an edit
+			const auto *dsb = qobject_cast<QDoubleSpinBox *>(editor);
+			if (dsb && qAbs(dsb->value() - index.data(Qt::EditRole).toDouble()) < 0.001)
+				return;
+		}
 		else if (editor->objectName() == "group_alignment")
 		{
 			if(QStandardItemModel *qsim = dynamic_cast<QStandardItemModel *>(model))
@@ -2086,7 +2171,7 @@ bool DynamicTextItemDelegate::eventFilter(QObject *object, QEvent *event)
 	{
 		object->event(event);
 		
-		QSpinBox *sb = static_cast<QSpinBox *>(object);
+		QWidget *sb = static_cast<QWidget *>(object);
 		switch (event->type()) {
 			case QEvent::KeyPress:
 				emit commitData(sb); break;

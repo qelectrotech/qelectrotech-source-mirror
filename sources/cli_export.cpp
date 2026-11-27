@@ -36,6 +36,7 @@
 #include "ElementsCollection/librarylisting.h"
 #include "exportproperties.h"
 #include "pdf_links.h"
+#include "print/printdrawing.h"
 #include "container/qetcontainer.h"
 #include "qetgraphicsitem/conductor.h"
 #include "qetgraphicsitem/diagramimageitem.h"
@@ -239,13 +240,11 @@ int exportPdf(QETProject &project, const QString &output,
 		// folio is matched upright and turned: otherwise an A3 landscape
 		// folio became a 1190 x 841 pt page while an A3 portrait one was
 		// 842 x 1191, the sheet.
-		QSizeF points(r.width() * 72.0 / 96.0, r.height() * 72.0 / 96.0);
-		const bool wide = points.width() > points.height();
-		if (wide) points.transpose();
-		writer.setPageLayout(QPageLayout(QPageSize(points, QPageSize::Point),
-										 wide ? QPageLayout::Landscape
-											  : QPageLayout::Portrait,
-										 QMarginsF(0, 0, 0, 0)));
+		// A project drawn in millimetres has the page in mm instead: 1 px =
+		// M / 10 mm (QETProject::pxPerMm()), the drawing is scaled to fill it
+		// and the page is exactly the folio.
+		writer.setPageLayout(QetPrint::folioPageLayout(
+			r.size(), project.paperPxPerMm()));
 
 		if (first) {
 			if (!painter.begin(&writer)) {
@@ -294,6 +293,33 @@ int exportPdf(QETProject &project, const QString &output,
 			geom.sourceRectOf = [](Diagram *dg) {
 				return QRectF(diagramRect(dg));
 			};
+			// In millimetres each folio has a page of its own size, so a
+			// link's target is on a page that is not like this one: its
+			// own page matrix, and the folio fitted to its own page. Pages
+			// of pixels are all asked of this page, as ever.
+			if (project.scale() == QETProject::Scale::Mm) {
+				const qreal px_per_mm = project.paperPxPerMm();
+				const int resolution = writer.resolution();
+				const QPageLayout::Mode mode = writer.pageLayout().mode();
+				auto layoutOf = [px_per_mm, mode](Diagram *dg) {
+					QPageLayout layout = QetPrint::folioPageLayout(
+						diagramRect(dg).size(), px_per_mm);
+					layout.setMode(mode);
+					return layout;
+				};
+				geom.devToPdfOf = [=](Diagram *dg) {
+					return PdfLinks::devToPdfOnPage(layoutOf(dg), resolution);
+				};
+				geom.sceneToDeviceOf = [=](Diagram *dg, QTransform *out) {
+					const QRectF src(diagramRect(dg));
+					const QRectF page(QPointF(),
+						QSizeF(layoutOf(dg).paintRectPixels(resolution).size()));
+					if (src.width() <= 0.0 || src.height() <= 0.0)
+						return false;
+					*out = PdfLinks::fitToPage(src, page);
+					return true;
+				};
+			}
 			PdfLinks::injectCrossRefLinks(engine, diagram, geom, pageMap, output);
 		}
 	}

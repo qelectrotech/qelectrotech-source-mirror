@@ -44,11 +44,13 @@ class BorderPropertiesWidget : public QWidget
 		const BorderProperties &properties();
 		void setReadOnly (const bool &ro);
 		void setTitleBlockSize(int height, Qt::Edge edge, Qt::Alignment align);
+		void setPxPerMm(qreal px_per_mm);
 
 	private:
 		void applyPaperSize();
 		void showMatchingPaperSize();
 		void showFolioSize();
+		int mmToPx(int mm) const;
 		bool fitPaperSize(int index, bool landscape,
 						  int &columns, int &column_width,
 						  int &rows, int &row_height) const;
@@ -66,6 +68,9 @@ class BorderPropertiesWidget : public QWidget
 			/// true once the user picked a paper size, until the columns or
 			/// rows are edited by hand
 		bool m_paper_picked = false;
+			/// pixels per millimetre of paper: 96 dpi, or QETProject::pxPerMm()
+			/// in a project drawn to scale
+		qreal m_px_per_mm = 96.0 / 25.4;
 			/// the column width and row height last set by hand: a paper
 			/// size is fitted from these, not from what a previous paper
 			/// size left, so A4, A3 and A4 again gives the first A4 back

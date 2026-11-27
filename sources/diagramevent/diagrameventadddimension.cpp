@@ -373,7 +373,7 @@ void DiagramEventAddDimension::updateStatusHint()
 		}
 
 		case WaitingForOffset: {
-			qreal off = m_dimension_item ? std::abs(m_dimension_item->offset()) / 2.0 : 0.0;
+			qreal off = m_dimension_item ? std::abs(m_dimension_item->offset()) / m_dimension_item->pxPerMm() : 0.0;
 			msg = tr("Dimension: Move mouse to set offset distance and side (%1 mm), click to fix")
 				.arg(QString::number(off, 'f', 1));
 			break;

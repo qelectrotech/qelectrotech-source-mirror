@@ -39,6 +39,7 @@
 #include <qetmessagebox.h>
 #include <qetgraphicsitem/qgraphicsitemutility.h>
 #include <foliogrid.h>
+#include <QLabel>
 #include <autoconnect.h>
 #include <textgrid.h>
 #include <qetgraphicsitem/element.h>
@@ -164,6 +165,24 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	ui->m_warn_outside_sheet_cb->setChecked(QETDiagramEditor::warnsOutsideSheet());
 	ui->DiagramEditor_xGrid_sb->setValue(settings.value("diagrameditor/Xgrid", 10).toInt());
 	ui->DiagramEditor_yGrid_sb->setValue(settings.value("diagrameditor/Ygrid", 10).toInt());
+		//A note shown only while the grid step is not 10 px, the module M
+		//of a project drawn to scale (see docs/mm-scale.md)
+	QLabel *grid_scale_note = new QLabel(
+		tr("In a project drawn to scale, the grid step should stay 10 px, which is "
+		   "the module M on paper."), this);
+	grid_scale_note->setWordWrap(true);
+	grid_scale_note->setToolTip(
+		tr("A grid step of 10 px is one module M (2.5 mm unless the project says "
+		   "otherwise) on paper in a project drawn to scale. Other steps do not "
+		   "fall on whole modules."));
+	ui->gridLayout_6->addWidget(grid_scale_note, ui->gridLayout_6->rowCount(), 0, 1, -1);
+	auto update_grid_scale_note = [this, grid_scale_note]() {
+		grid_scale_note->setVisible(ui->DiagramEditor_xGrid_sb->value() != 10
+					 || ui->DiagramEditor_yGrid_sb->value() != 10);
+	};
+	connect(ui->DiagramEditor_xGrid_sb, QOverload<int>::of(&QSpinBox::valueChanged), this, update_grid_scale_note);
+	connect(ui->DiagramEditor_yGrid_sb, QOverload<int>::of(&QSpinBox::valueChanged), this, update_grid_scale_note);
+	update_grid_scale_note();
 	for (const qreal divisor : TextGrid::divisors)
 		ui->DiagramEditor_textGrid_cb->addItem(
 					divisor > 0 ? TextGrid::ratioLabel(divisor) : tr("Disabled", "fr: Désactivée"),

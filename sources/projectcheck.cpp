@@ -24,9 +24,14 @@
 #include "duplicatelabels.h"
 #include "editor/terminalnamecheck.h"
 #include "projectcheck/checksettings.h"
+#include "projectcheck/clearancecheck.h"
 #include "ElementsCollection/elementslocation.h"
+#include "qetgraphicsitem/conductor.h"
+#include "qetgraphicsitem/conductortextitem.h"
 #include "qetgraphicsitem/element.h"
+#include "qetgraphicsitem/independenttextitem.h"
 #include "qetproject.h"
+#include "qetunits.h"
 #include "ui/openwireendsdialog.h"
 #include "utils/qetsettings.h"
 #include "wiringrules.h"
@@ -109,7 +114,8 @@ QList<ProjectCheck::Kind> ProjectCheck::kinds()
 	return {Kind::DuplicateLabels, Kind::PotentialTypes, Kind::OpenWireEnds,
 			Kind::UnwiredSymbols, Kind::TerminalBranches, Kind::DeviceTypes,
 			Kind::WiresPerTerminal, Kind::TerminalNames, Kind::WireInTwoCables,
-			Kind::NoPartNumber, Kind::UnansweredPrompts};
+			Kind::NoPartNumber, Kind::UnansweredPrompts,
+			Kind::ConductorClearance, Kind::TextOnLines};
 }
 
 QString ProjectCheck::title(Kind kind)
@@ -126,6 +132,8 @@ QString ProjectCheck::title(Kind kind)
 		case Kind::WireInTwoCables: return tr("Wires in two cables");
 		case Kind::NoPartNumber: return tr("Symbols with no part number");
 		case Kind::UnansweredPrompts: return tr("Unanswered prompts");
+		case Kind::ConductorClearance: return tr("Wire clearances");
+		case Kind::TextOnLines: return tr("Texts on wires");
 	}
 	return QString();
 }
@@ -182,8 +190,22 @@ QString ProjectCheck::toolTip(Kind kind)
 			return tr("Labels and texts of symbols, wires and folios that still hold a "
 					  "question mark or a ?name: what a macro asks for when it is placed, "
 					  "left unanswered.");
+		case Kind::ConductorClearance:
+			return tr("Parallel wires of a folio closer than 1 M where they run "
+					  "side by side, or closer than 2 M with a text between them "
+					  "(IEC 61082-1, 7.1.3.4). Off until the project is drawn to scale: "
+					  "switch it on in Project properties.");
+		case Kind::TextOnLines:
+			return tr("Wire texts and free texts that cross a wire other than their own "
+					  "(IEC 61082-1, 7.1.3.5). Off until the project is drawn to scale: "
+					  "switch it on in Project properties.");
 	}
 	return QString();
+}
+
+bool ProjectCheck::onlyForScale(Kind kind)
+{
+	return kind == Kind::ConductorClearance || kind == Kind::TextOnLines;
 }
 
 ProjectCheck::Result ProjectCheck::run(QETProject *project, Kind kind)
@@ -205,6 +227,8 @@ ProjectCheck::Result ProjectCheck::run(QETProject *project, Kind kind)
 		case Kind::WireInTwoCables: return wireInTwoCables(project);
 		case Kind::NoPartNumber: return noPartNumber(project);
 		case Kind::UnansweredPrompts: return unansweredPrompts(project);
+		case Kind::ConductorClearance: return conductorClearance(project);
+		case Kind::TextOnLines: return textOnLines(project);
 	}
 	return Result();
 }
@@ -767,6 +791,119 @@ ProjectCheck::Result ProjectCheck::unansweredPrompts(QETProject *project)
 		else place.drawing = QUuid(item);
 		finding.places << place;
 		result.findings << finding;
+	}
+	return result;
+}
+
+namespace {
+	/// What a wire is called in a finding: its number, else "Wire"
+	QString wireName(Conductor *conductor)
+	{
+		const QString text = conductor->properties().text.trimmed();
+		return text.isEmpty() ? ProjectCheck::tr("Wire") : text;
+	}
+
+	/// The finding that says a folio has more findings than are listed
+	ProjectCheck::Finding notListed(QETProject *project, Diagram *diagram, int omitted)
+	{
+		ProjectCheck::Finding finding;
+		const QString folio = folioText(project, diagram);
+		//: %1 is the number of findings left out, %2 the folio ("3 - Power")
+		finding.text = ProjectCheck::tr("%1 more on folio %2 are not listed")
+					   .arg(omitted).arg(folio);
+		ProjectCheck::Place place;
+		place.text = folio;
+		place.folio = folio;
+		finding.places << place;
+		return finding;
+	}
+
+	QString millimetres(qreal px, qreal px_per_mm)
+	{
+		return QString::number(QetUnits::pxToMm(px, px_per_mm), 'f', 1);
+	}
+
+		/// 1 M or 2 M in mm, such as "2.5", of the module M of the project
+	QString modulesMillimetres(const QETProject *project, int modules)
+	{
+		return QString::number(modules * project->moduleMm(), 'f', 1);
+	}
+}
+
+/**
+	@brief ProjectCheck::conductorClearance
+	IEC 61082-1 7.1.3.4 (ClearanceCheck::clearances()), folio by folio: wires
+	run side by side at less than 1 M, or less than 2 M with
+	a text between them. Reads the built folios.
+*/
+ProjectCheck::Result ProjectCheck::conductorClearance(QETProject *project)
+{
+	Result result;
+	result.kind = Kind::ConductorClearance;
+	for (Diagram *diagram : project->diagrams()) {
+		int omitted = 0;
+		for (const auto &found : ClearanceCheck::clearances(diagram, &omitted)) {
+			Finding finding;
+			const QString first = wireName(found.first);
+			const QString second = wireName(found.second);
+			finding.text = found.text
+				//: %1 and %2 are the wires' numbers, %3 the distance in mm, such as "2.5", %4 two modules M in mm, such as "5.0"
+				? tr("%1 and %2 are %3 mm apart with a text between them, less than 2 M (%4 mm)")
+				  .arg(first, second, millimetres(found.distance, project->pxPerMm()),
+					   modulesMillimetres(project, 2))
+				//: %1 and %2 are the wires' numbers, %3 the distance in mm, such as "1.5", %4 one module M in mm, such as "2.5"
+				: tr("%1 and %2 are %3 mm apart, less than 1 M (%4 mm)")
+				  .arg(first, second, millimetres(found.distance, project->pxPerMm()),
+					   modulesMillimetres(project, 1));
+			finding.places << itemPlace(project, found.first, first)
+						   << itemPlace(project, found.second, second);
+			result.findings << finding;
+		}
+		if (omitted > 0) result.findings << notListed(project, diagram, omitted);
+	}
+	return result;
+}
+
+/**
+	@brief ProjectCheck::textOnLines
+	IEC 61082-1 7.1.3.5 (ClearanceCheck::textsOnLines()), folio by folio: a
+	wire's text or a free text over a wire other than its own. Reads the
+	built folios.
+*/
+ProjectCheck::Result ProjectCheck::textOnLines(QETProject *project)
+{
+	Result result;
+	result.kind = Kind::TextOnLines;
+	for (Diagram *diagram : project->diagrams()) {
+		int omitted = 0;
+		for (const auto &found : ClearanceCheck::textsOnLines(diagram, &omitted)) {
+			Finding finding;
+			const QString text = found.text->toPlainText().simplified();
+			const QString wire = wireName(found.conductor);
+			//: %1 is the text, %2 the wire's number
+			finding.text = tr("Text \"%1\" crosses %2").arg(text, wire);
+			finding.places << itemPlace(project, found.text, text)
+						   << itemPlace(project, found.conductor, wire);
+				// The text and the potential it crosses (by its wire with
+				// the lowest uuid, which may be on another folio): a text
+				// over two potentials is two findings
+			const QString crossed = found.potential->uuid().toString(QUuid::WithoutBraces);
+			if (auto *own = qobject_cast<ConductorTextItem *>(found.text)) {
+				if (own->parentConductor())
+					finding.ids << QStringLiteral("x:%1/%2").arg(
+						own->parentConductor()->uuid().toString(QUuid::WithoutBraces),
+						crossed);
+			}
+			else if (auto *free = qobject_cast<IndependentTextItem *>(found.text))
+				finding.ids << QStringLiteral("x:%1/%2").arg(
+					free->uuid().toString(QUuid::WithoutBraces), crossed);
+				// The wire under the text, in the places, is the first met
+				// of the potential, which a sweep in another order or a
+				// moved wire changes: the id does not depend on it
+			finding.ids_only = !finding.ids.isEmpty();
+			result.findings << finding;
+		}
+		if (omitted > 0) result.findings << notListed(project, diagram, omitted);
 	}
 	return result;
 }

@@ -44,6 +44,34 @@
 
 namespace PdfLinks {
 
+std::function<QPointF(const QPointF &)> devToPdfOnPage(
+		const QPageLayout &layout, int resolution)
+{
+	const qreal pt_scale = 72.0 / resolution;
+	const qreal height_pt = layout.fullRectPoints().height();
+	const bool full_page = layout.mode() == QPageLayout::FullPageMode;
+	const QRect paint_px = layout.paintRectPixels(resolution);
+	return [=](const QPointF &d) -> QPointF {
+		qreal dx = d.x(), dy = d.y();
+		if (!full_page) {
+			dx += paint_px.left();
+			dy += paint_px.top();
+		}
+		return QPointF(pt_scale * dx, height_pt - pt_scale * dy);
+	};
+}
+
+QTransform fitToPage(const QRectF &source, const QRectF &target)
+{
+	const qreal s = qMin(target.width() / source.width(),
+						 target.height() / source.height());
+	QTransform fit;
+	fit.translate(target.x(), target.y());
+	fit.scale(s, s);
+	fit.translate(-source.x(), -source.y());
+	return fit;
+}
+
 void injectCrossRefLinks(QPdfEngine *engine, Diagram *diagram,
 						 const PageGeometry &geom,
 						 const QMap<Diagram *, int> &pageMap,
@@ -66,12 +94,16 @@ void injectCrossRefLinks(QPdfEngine *engine, Diagram *diagram,
 			return QRectF();
 		const QRectF srcT = geom.sourceRectOf(dg);
 		if (srcT.width() <= 0.0 || srcT.height() <= 0.0) return QRectF();
-		const qreal sT = qMin(target.width()  / srcT.width(),
-							  target.height() / srcT.height());
 		QTransform fitT;
-		fitT.translate(target.x(), target.y());
-		fitT.scale(sT, sT);
-		fitT.translate(-srcT.x(), -srcT.y());
+		if (geom.sceneToDeviceOf) {
+			if (!geom.sceneToDeviceOf(dg, &fitT)) return QRectF();
+		} else {
+			const qreal sT = qMin(target.width()  / srcT.width(),
+								  target.height() / srcT.height());
+			fitT.translate(target.x(), target.y());
+			fitT.scale(sT, sT);
+			fitT.translate(-srcT.x(), -srcT.y());
+		}
 
 		// Frame the target with a little context, and enforce a minimum
 		// framed size so tiny contacts don't zoom in extremely.
@@ -87,8 +119,13 @@ void injectCrossRefLinks(QPdfEngine *engine, Diagram *diagram,
 						  0,  (minSide - framed.height()) / 2.0);
 
 		const QRectF devT = fitT.mapRect(framed);
-		const QPointF a = geom.devToPdf(devT.topLeft());
-		const QPointF b = geom.devToPdf(devT.bottomRight());
+		auto toPdf = geom.devToPdf;
+		if (geom.devToPdfOf) {
+			const auto own = geom.devToPdfOf(dg);
+			if (own) toPdf = own;
+		}
+		const QPointF a = toPdf(devT.topLeft());
+		const QPointF b = toPdf(devT.bottomRight());
 		return QRectF(QPointF(qMin(a.x(), b.x()), qMin(a.y(), b.y())),
 					  QPointF(qMax(a.x(), b.x()), qMax(a.y(), b.y())));
 	};
