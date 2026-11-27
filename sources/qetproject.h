@@ -29,6 +29,7 @@
 #include "dataBase/qetdbfile.h"
 #include "properties/projectlanguages.h"
 #include "properties/potentialtypes.h"
+#include "properties/revisionlist.h"
 #include "properties/definitionmarkstyle.h"
 #include "properties/reportproperties.h"
 #include "properties/xrefproperties.h"
@@ -181,6 +182,13 @@ class QETProject : public QObject
 		QString pathNameTitle() const;
 		QString title() const;
 		QVersionNumber declaredQElectroTechVersion();
+			/// Whether the project was last saved by a newer QElectroTech
+			/// than this one: saving it here may lose what that version
+			/// added (#1267, #1289)
+		bool savedByNewerVersion() const;
+			/// The user agreed, this session, to save it here all the same
+		bool newerVersionSaveAccepted() const {return m_newer_version_save_accepted;}
+		void acceptNewerVersionSave() {m_newer_version_save_accepted = true;}
 		void setTitle(const QString &);
 
 		/// Enable/disable the asynchronous crash-recovery backup for all
@@ -352,6 +360,18 @@ class QETProject : public QObject
 			/// What the label field of a symbol shows: its label only, or
 			/// its IEC 81346 reference designation, short or full
 		enum class DesignationDisplay {Label, Short, Full};
+			/// The standard the project is drawn to (#1289, #1878 C6). It
+			/// changes nothing by itself: features check it. AsBefore is
+			/// a project as it always was, the default.
+		enum class DrawingStandard {AsBefore, Iec, Nfpa};
+		DrawingStandard drawingStandard() const;
+			/// What the project stores, as typed: "iec", "nfpa", empty for
+			/// As before, or a value this QElectroTech does not know
+			/// (kept as it is, read as AsBefore)
+		QString drawingStandardText() const;
+		void setDrawingStandard(DrawingStandard standard);
+		static QString drawingStandardName(DrawingStandard standard);
+		static DrawingStandard drawingStandardFromName(const QString &name, bool *known = nullptr);
 		DesignationDisplay designationDisplay() const;
 		void setDesignationDisplay(DesignationDisplay display);
 		bool followDeviceTypes() const;
@@ -359,6 +379,9 @@ class QETProject : public QObject
 		const ProjectLanguages &languages() const {return m_languages;}
 		void setLanguages(const ProjectLanguages &languages);
 		const PotentialTypes &potentialTypes() const {return m_potential_types;}
+			/// The project's revision history (#1295, rule 2)
+		const RevisionList &revisions() const {return m_revisions;}
+		void setRevisions(const RevisionList &revisions);
 		void setPotentialTypes(const PotentialTypes &potential_types);
 			/// How the definition marks of this project's conductors
 			/// are drawn; carried by the project, so it looks the
@@ -480,6 +503,7 @@ class QETProject : public QObject
 		DiagramContext projectProperties();
 		DiagramContext projectWideProperties();
 		void setProjectProperties(const DiagramContext &);
+		void setUnshownProjectProperties(const DiagramContext &);
 		QUndoStack* undoStack() {return m_undo_stack;}
 
 		QVector<TerminalStrip *> terminalStrip() const;
@@ -594,6 +618,7 @@ class QETProject : public QObject
 		void readDeviceTypeRulesXml(QDomDocument &xml_project);
 		void readLanguagesXml(QDomDocument &xml_project);
 		void readPotentialTypesXml(QDomDocument &xml_project);
+		void readRevisionsXml(QDomDocument &xml_project);
 		void readChainedReportsXml(QDomDocument &xml_project);
 		void readConductorPlantCountersXml(QDomDocument &xml_project);
 		void readDeviceTypesXml(QDomDocument &xml_project);
@@ -619,6 +644,7 @@ class QETProject : public QObject
 		void writeDeviceTypeRulesXml(QDomElement &);
 		void writeLanguagesXml(QDomElement &);
 		void writePotentialTypesXml(QDomElement &);
+		void writeRevisionsXml(QDomElement &);
 		void writeChainedReportsXml(QDomElement &);
 		void writeConductorPlantCountersXml(QDomElement &);
 		void writeDeviceTypesXml(QDomElement &);
@@ -661,6 +687,7 @@ class QETProject : public QObject
 		QString project_title_;
 			/// QElectroTech version declared in the XML document at opening time
 		QVersionNumber m_project_qet_version;
+		bool m_newer_version_save_accepted = false;
 			/// Whether options were modified
 		bool m_modified = false;
 			/// Whether the project is read only
@@ -757,6 +784,7 @@ class QETProject : public QObject
 		ProjectLanguages m_languages;
 			/// The potential types and whether conductors are drawn from them
 		PotentialTypes m_potential_types;
+		RevisionList m_revisions;
 			/// How the definition marks of this project's conductors
 			/// are drawn (definitionMarkStyle())
 		DefinitionMarkStyle m_definition_mark_style;

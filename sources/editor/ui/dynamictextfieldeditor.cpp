@@ -25,6 +25,7 @@
 #include <qetinformation.h>
 #include <ui/alignmenttextdialog.h>
 #include <ui/compositetexteditdialog.h>
+#include <utils/dialogplacement.h>
 #include "qetelementeditor.h"
 #include <editor/elementscene.h>
 #include "ui_dynamictextfieldeditor.h"
@@ -487,14 +488,31 @@ void DynamicTextFieldEditor::on_m_composite_text_pb_clicked()
 
 void DynamicTextFieldEditor::on_m_alignment_pb_clicked()
 {
+	QList<Qt::Alignment> old_alignments;
+	for (PartDynamicTextField *part : std::as_const(m_parts))
+		old_alignments << part -> alignment();
+
 	AlignmentTextDialog atd(m_text_field.data() -> alignment(), this);
+	DialogPlacement::placeBelow(&atd, ui->m_alignment_pb);
+		//Each point picked shows at once. Closing the dialog makes one
+		//Undo step for each text field, from where it was to the end.
+	bool picked = false;
+	connect(&atd, &AlignmentTextDialog::alignmentChanged, this,
+			[this, &picked](Qt::Alignment alignment) {
+		picked = true;
+		for (PartDynamicTextField *part : std::as_const(m_parts))
+			part -> setAlignmentAtAnchor(alignment);
+	});
 	atd.exec();
+	if (!picked)
+		return;
 
 	for (int i = 0; i < m_parts.length(); i++) {
-		if(atd.alignment() != m_parts[i] -> alignment()) {
+		if(atd.alignment() != old_alignments[i]) {
 			QPropertyUndoCommand *undo =\
 				new QPropertyUndoCommand(
-					m_parts[i], "alignmentAtAnchor", QVariant(m_parts[i] -> alignment()), QVariant(atd.alignment()));
+					m_parts[i], "alignmentAtAnchor",
+					QVariant(old_alignments[i]), QVariant(atd.alignment()));
 			undo -> setText(tr("Modify the alignment of a text field"));
 			undoStack().push(undo);
 		}

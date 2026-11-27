@@ -102,6 +102,12 @@ class tst_cabletypelist : public QObject
 				 QStringLiteral("1.5"));
 		QCOMPARE(CableTypeList::designation(data.records.at(1)),
 				 QStringLiteral("NYM-J 3G2,5"));
+		//The manufacturer and the part number a picked cable takes
+		//(#2002): the material file's two columns, empty when the cell is
+		QCOMPARE(CableTypeList::manufacturer(data.records.at(0)), QStringLiteral("Nexans"));
+		QCOMPARE(CableTypeList::manufacturerReference(data.records.at(0)), QStringLiteral("X123"));
+		QCOMPARE(CableTypeList::manufacturer(data.records.at(1)), QString());
+		QCOMPARE(CableTypeList::manufacturerReference(data.records.at(1)), QString());
 	}
 
 	void newFileHasThreeColumns()

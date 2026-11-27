@@ -542,6 +542,16 @@ qet_add_app_test(tst_folioautonumcopy tst_folioautonumcopy.cpp)
 # A folio's group and sub-group: named, or its plant and location; title
 # block variables, kept by .qet and .qetdb, absent from older files.
 qet_add_app_test(tst_foliogroup tst_foliogroup.cpp)
+qet_add_app_test(tst_drawingstandard tst_drawingstandard.cpp)
+# Project templates (#852, #1878 B13): a new project from a .qet template
+# has its folios, title block, paper size, numbering and drawing standard.
+qet_add_app_test(tst_projecttemplates tst_projecttemplates.cpp)
+target_compile_definitions(tst_projecttemplates PRIVATE
+  QET_TEMPLATES_DIR="${QET_DIR}/templates")
+qet_add_app_test(tst_documentkind tst_documentkind.cpp)
+qet_add_app_test(tst_revisionlist tst_revisionlist.cpp)
+# The device, wiring, PLC and signal lists as tables on a folio (#1878 B9-B11)
+qet_add_app_test(tst_listtables tst_listtables.cpp)
 # The project panel lists folios as a tree by folio group and sub-group
 # (#1878 C9); a level shows only where it splits the folios.
 qet_add_app_test(tst_foliotree tst_foliotree.cpp)
@@ -597,6 +607,8 @@ qet_add_app_test(tst_placesuggestions tst_placesuggestions.cpp)
 
 # Renaming a plant or a location in the whole project, in one undo step.
 qet_add_app_test(tst_placerename tst_placerename.cpp)
+# Copying a plant with its folios under a new name, in one undo step.
+qet_add_app_test(tst_placecopy tst_placecopy.cpp)
 # A read-only project builds its lazy folios whole: shown, exported, written out.
 qet_add_app_test(tst_readonlyfolios tst_readonlyfolios.cpp)
 target_compile_definitions(tst_readonlyfolios PRIVATE
@@ -721,6 +733,20 @@ qet_add_app_test(tst_terminalconductortext tst_terminalconductortext.cpp)
 # drawing (discussion #561): picked as the information of a text, or
 # typed as %{key} in a composite text, and both follow its value.
 qet_add_app_test(tst_custominfotext tst_custominfotext.cpp)
+
+# The text alignment and composite text dialogs open next to what opened
+# them (issue #1952): under their cell of the Texts tab, under the Alignment
+# buttons of the symbol editor, and inside the screen under the button. Two
+# offscreen screens side by side, for the screen under the button.
+qet_add_app_test(tst_dialogplacement tst_dialogplacement.cpp)
+set(two_screens "${CMAKE_CURRENT_SOURCE_DIR}/fixtures/two_screens.json")
+set_tests_properties(tst_dialogplacement PROPERTIES ENVIRONMENT
+  "QT_QPA_PLATFORM=offscreen:configfile=${two_screens}")
+
+# The text alignment dialog applies a point as soon as it is picked (#1973).
+# The composite text dialog of the Texts tab saves its text only with OK
+# (#1979).
+qet_add_app_test(tst_textdialogs tst_textdialogs.cpp)
 
 # A symbol can define its own custom properties (discussion #561): every
 # placed copy has them, filled in or not, an empty one adds nothing to
@@ -868,6 +894,10 @@ target_link_libraries(tst_textresizehandles PRIVATE Qt::Test Qt::Widgets)
 # rectangle's does; a pivot placed by hand stays.
 qet_add_app_test(tst_linepivotresize tst_linepivotresize.cpp)
 
+# A shape that was only moved saves its folio position in x1..y2, as 0.100
+# did; only a rotated or skewed shape writes posX/posY (issue #1997).
+qet_add_app_test(tst_shapesaveposition tst_shapesaveposition.cpp)
+
 # The terminal strip sorts into the plan's own order -- folio by folio, then
 # left to right -- instead of by label; the auto import and
 # SortTerminalStripCommand share one comparator for it, so a strip the import
@@ -897,6 +927,9 @@ qet_add_app_test(tst_connectordeviceplan tst_connectordeviceplan.cpp)
 # plan order, the same three fields the cable list computes for a target.
 qet_add_app_test(tst_cabletarget tst_cabletarget.cpp)
 qet_add_app_test(tst_cablelist tst_cablelist.cpp)
+# Picking a cable from the cable type file brings its manufacturer and
+# part number, and an empty cell keeps what was typed (#2002).
+qet_add_app_test(tst_cabletypepick tst_cabletypepick.cpp)
 
 # What a junction's chain says: how a stub beside the strip names the wire
 # which ends on the junction, and where a cable list says each cable starts
@@ -904,6 +937,8 @@ qet_add_app_test(tst_cablelist tst_cablelist.cpp)
 qet_add_app_test(tst_junctionchain tst_junctionchain.cpp)
 # A wire dropped on a terminal that already has a wire is made.
 qet_add_app_test(tst_wireonusedterminal tst_wireonusedterminal.cpp)
+# Only a terminal takes its clicks, not its name (bugtracker #349).
+qet_add_app_test(tst_terminalnamehitarea tst_terminalnamehitarea.cpp)
 
 # An undone step of a symbol and its wires, dropped later, deletes the
 # wires without reading the symbol's deleted terminals.
@@ -2545,6 +2580,11 @@ qet_add_app_test(tst_potentialtypes tst_potentialtypes.cpp)
 # The Check panel (#1878 B1): every check at once, each finding shown on
 # its folio; wires over the limit and repeated terminal names are new.
 qet_add_app_test(tst_projectcheck tst_projectcheck.cpp)
+# The choices of the checks kept in the project (#1878 B12), and each
+# check switched off or a finding accepted for the project (#1878 B8).
+qet_add_app_test(tst_checksettings tst_checksettings.cpp)
+target_compile_definitions(tst_checksettings PRIVATE
+  QET_EXAMPLES_DIR="${QET_DIR}/examples")
 # potential_view: one row per potential (wires, terminals, folios, wire
 # numbers, more than one number), as QElectroTech groups the wires.
 qet_add_app_test(tst_potentialview tst_potentialview.cpp)
@@ -2552,6 +2592,11 @@ qet_add_app_test(tst_potentialview tst_potentialview.cpp)
 # report, into a junction on one side only, or reach one symbol terminal.
 qet_add_app_test(tst_openwireends tst_openwireends.cpp)
 target_compile_definitions(tst_openwireends PRIVATE
+  QET_EXAMPLES_DIR="${QET_DIR}/examples")
+# Branches between strip terminals (#1878 B4): a junction on a wire between
+# two terminal strip terminals, with a third wire going off it.
+qet_add_app_test(tst_terminalbranches tst_terminalbranches.cpp)
+target_compile_definitions(tst_terminalbranches PRIVATE
   QET_EXAMPLES_DIR="${QET_DIR}/examples")
 # Chained folio reports: what two reports must share to be chained
 # together is the project's choice -- the labels they carry, or the
@@ -2564,6 +2609,9 @@ qet_add_app_test(tst_cablelockedfields tst_cablelockedfields.cpp)
 # IEC 60757 wire colour codes: a code picked from the list sets the colour
 # text and the drawing (green-yellow striped); typed text stays text.
 qet_add_app_test(tst_conductorcolorcodes tst_conductorcolorcodes.cpp)
+# The setting that outlines white and very pale wires in black, so they
+# show on a white folio; off by default.
+qet_add_app_test(tst_outlinelightwires tst_outlinelightwires.cpp)
 
 # A function separated terminal block: a new wire on one side takes what
 # the separation lets through from the other -- the voltage / protocol and
@@ -2696,3 +2744,14 @@ qet_add_app_test(tst_tablereopen tst_tablereopen.cpp)
 # back only for one-digit ids: from the eleventh project opened, editing an
 # embedded symbol or placing one silently failed (#1958).
 qet_add_app_test(tst_projectidlocation tst_projectidlocation.cpp)
+# The library listing (#1878 A8): a row per symbol and macro of a
+# collection folder, with its terminal names and class letter.
+qet_add_app_test(tst_librarylisting tst_librarylisting.cpp)
+target_compile_definitions(tst_librarylisting PRIVATE
+  QET_ELEMENTS_DIR="${QET_DIR}/elements")
+# Label lists for printers (#1878 A7): device tags, terminal markers, cable
+# and wire numbers, one per line, read from the project database.
+qet_add_app_test(tst_labellistexport tst_labellistexport.cpp)
+target_compile_definitions(tst_labellistexport PRIVATE
+  QET_EXAMPLES_DIR="${QET_DIR}/examples"
+  QET_FIXTURES_DIR="${CMAKE_CURRENT_SOURCE_DIR}/fixtures")

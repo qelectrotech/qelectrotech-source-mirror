@@ -28,6 +28,8 @@
 #include <qetgraphicsitem/ViewItem/qetgraphicstableitem.h>
 #include <utils/qetutils.h>
 #include "ui/addtabledialog.h"
+#include "ui/revisionquerywidget.h"
+#include "ui/listquerywidget.h"
 #include <qetproject.h>
 #include <QDialog>
 
@@ -80,6 +82,26 @@ void QetGraphicsTableFactory::createAndAddSummary(Diagram *diagram)
 	create a cable list table and add it to diagram
 	@param diagram
 */
+void QetGraphicsTableFactory::createAndAddRevisionTable(Diagram *diagram)
+{
+	QScopedPointer<AddTableDialog> d(
+				new AddTableDialog(
+					new RevisionQueryWidget(),
+					diagram->views().first()));
+	d->setWindowTitle(QObject::tr("Add a revision table"));
+	d->setTableName(QObject::tr("Revisions"));
+
+	if (d->exec()) {
+		create(diagram, d.data());
+	}
+}
+
+/**
+	@brief QetGraphicsTableFactory::createAndAddCableList
+	Open a dialog for ask user the config of the table,
+	create a cable list table and add it to diagram
+	@param diagram
+*/
 void QetGraphicsTableFactory::createAndAddCableList(Diagram *diagram)
 {
 	QScopedPointer<AddTableDialog> d(
@@ -88,6 +110,44 @@ void QetGraphicsTableFactory::createAndAddCableList(Diagram *diagram)
 					diagram->views().first()));
 	d->setWindowTitle(QObject::tr("Add a cable list"));
 	d->setTableName(QObject::tr("Cable list"));
+
+	if (d->exec()) {
+		create(diagram, d.data());
+	}
+}
+
+/**
+	@brief QetGraphicsTableFactory::createAndAddListTable
+	Open the usual table dialog for a list of the project database
+	(device list, ...) and add the table it makes to @p diagram
+	@param diagram
+	@param kind which list
+*/
+void QetGraphicsTableFactory::createAndAddListTable(Diagram *diagram, int kind)
+{
+	const auto list_kind = static_cast<ListQueryWidget::Kind>(kind);
+	QScopedPointer<AddTableDialog> d(
+				new AddTableDialog(
+					new ListQueryWidget(list_kind),
+					diagram->views().first()));
+	switch (list_kind) {
+		case ListQueryWidget::Device:
+			d->setWindowTitle(QObject::tr("Add a device list"));
+			d->setTableName(QObject::tr("Device list"));
+			break;
+		case ListQueryWidget::Wiring:
+			d->setWindowTitle(QObject::tr("Add a wiring table"));
+			d->setTableName(QObject::tr("Wiring table"));
+			break;
+		case ListQueryWidget::Plc:
+			d->setWindowTitle(QObject::tr("Add a PLC list"));
+			d->setTableName(QObject::tr("PLC list"));
+			break;
+		case ListQueryWidget::Signal:
+			d->setWindowTitle(QObject::tr("Add a signal list"));
+			d->setTableName(QObject::tr("Signal list"));
+			break;
+	}
 
 	if (d->exec()) {
 		create(diagram, d.data());
@@ -173,6 +233,18 @@ QetGraphicsTableItem *QetGraphicsTableFactory::newTable(Diagram *diagram, AddTab
 			auto *db_model = new ProjectDBModel(diagram->project(), diagram->project());
 			db_model->setIdentifier(query_widget->modelIdentifier());
 			db_model->setQuery(query_widget->queryStr());
+			model = db_model;
+		} else if (dynamic_cast<RevisionQueryWidget *>(dialog->contentWidget())) {
+				//The project's revision history (#1295 rule 2)
+			auto *db_model = new ProjectDBModel(diagram->project(), diagram->project());
+			db_model->setIdentifier(RevisionQueryWidget::modelIdentifier());
+			db_model->setQuery(RevisionQueryWidget::queryStr());
+			model = db_model;
+		} else if (auto list_widget = dynamic_cast<ListQueryWidget *>(dialog->contentWidget())) {
+				//A list the project database answers (#1878 B9-B11)
+			auto *db_model = new ProjectDBModel(diagram->project(), diagram->project());
+			db_model->setIdentifier(ListQueryWidget::modelIdentifier(list_widget->kind()));
+			db_model->setQuery(ListQueryWidget::queryStr(list_widget->kind()));
 			model = db_model;
 		} else if (auto query_widget = dynamic_cast<CableQueryWidget *>(dialog->contentWidget())) {
 			auto *cable_model = new CableListModel(diagram->project(), diagram->project());

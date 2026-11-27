@@ -1535,6 +1535,12 @@ QString QETProject::title() const
 	celui-ci a ete ouvert ; si ce projet n'a jamais ete enregistre / ouvert
 	depuis un fichier, cette methode une version nulle.
 */
+bool QETProject::savedByNewerVersion() const
+{
+	return !m_project_qet_version.isNull()
+			&& QetVersion::currentVersion() < m_project_qet_version;
+}
+
 QVersionNumber QETProject::declaredQElectroTechVersion()
 {
 	return(m_project_qet_version);
@@ -3026,6 +3032,7 @@ QDomDocument QETProject::toXml(QHash<int, QByteArray> *kept_folios, QStringList 
 	writeDeviceTypeRulesXml(project_root);
 	writeLanguagesXml(project_root);
 	writePotentialTypesXml(project_root);
+	writeRevisionsXml(project_root);
 	writeTerminalLabelSplitXml(project_root);
 	writeWiringRulesXml(project_root);
 	writeDefinitionMarkStyleXml(project_root);
@@ -4100,6 +4107,9 @@ Diagram *QETProject::addNewDiagram(int pos)
 					m_diagrams_list.at(before)->border_and_titleblock;
 			titleblock.folio_group = previous.folioGroup();
 			titleblock.folio_subgroup = previous.folioSubgroup();
+				//The == and ++ levels span many folios, as groups do
+			titleblock.higher_plant = previous.higherPlant();
+			titleblock.higher_location = previous.higherLocation();
 		}
 	}
 	diagram->border_and_titleblock.importTitleBlock(titleblock);
@@ -4259,6 +4269,7 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 	readDeviceTypeRulesXml(xml_project);
 	readLanguagesXml(xml_project);
 	readPotentialTypesXml(xml_project);
+	readRevisionsXml(xml_project);
 	readTerminalLabelSplitXml(xml_project);
 	readWiringRulesXml(xml_project);
 	readDefinitionMarkStyleXml(xml_project);
@@ -5488,6 +5499,49 @@ void QETProject::writePotentialTypesXml(QDomElement &xml_element)
 }
 
 /**
+	@brief QETProject::readRevisionsXml
+	Read the <revisions> element of the project, if any: its revision
+	history (#1295, rule 2)
+*/
+void QETProject::readRevisionsXml(QDomDocument &xml_project)
+{
+	m_revisions = RevisionList::fromXml(xml_project.documentElement()
+			.firstChildElement(QStringLiteral("revisions")));
+}
+
+/**
+	@brief QETProject::writeRevisionsXml
+	Write the <revisions> element, only when the project has revisions,
+	so any other project saves exactly as before
+	@param xml_element : the <project> element
+*/
+void QETProject::writeRevisionsXml(QDomElement &xml_element)
+{
+	if (m_revisions.isEmpty()) {
+		return;
+	}
+	QDomDocument document = xml_element.ownerDocument();
+	xml_element.appendChild(m_revisions.toXml(document));
+}
+
+/**
+	@brief QETProject::setRevisions
+	Set the project's revision history
+*/
+void QETProject::setRevisions(const RevisionList &revisions)
+{
+	if (revisions == m_revisions) {
+		return;
+	}
+	m_revisions = revisions;
+	storeSettings();
+	setModified(true);
+		//A revision table on a folio reads qet_revisions: tell it, as
+		//nothing else changed in the database to do so
+	emit m_data_base.dataBaseUpdated();
+}
+
+/**
 	@brief QETProject::setPotentialTypes
 	Set the potential types and whether conductors are drawn from them,
 	and redraw the folios built.
@@ -6145,6 +6199,7 @@ void QETProject::storeSettings()
 	writeDeviceTypeRulesXml(root);
 	writeLanguagesXml(root);
 	writePotentialTypesXml(root);
+	writeRevisionsXml(root);
 	writeTerminalLabelSplitXml(root);
 	writeWiringRulesXml(root);
 	writeDefinitionMarkStyleXml(root);
@@ -6413,6 +6468,72 @@ DiagramContext QETProject::projectProperties()
 	return(m_project_properties);
 }
 
+namespace {
+		/// The project property holding the drawing standard: in the
+		/// project's properties so that an older QElectroTech keeps it when
+		/// it saves the project (#1289 rule 4)
+	const QString drawing_standard_key = QStringLiteral("drawing_standard");
+}
+
+/**
+	@brief QETProject::drawingStandardName
+	@return the name a standard is stored as: "iec", "nfpa", empty for
+	As before
+*/
+QString QETProject::drawingStandardName(DrawingStandard standard)
+{
+	switch (standard) {
+		case DrawingStandard::Iec:  return QStringLiteral("iec");
+		case DrawingStandard::Nfpa: return QStringLiteral("nfpa");
+		case DrawingStandard::AsBefore: break;
+	}
+	return QString();
+}
+
+/**
+	@brief QETProject::drawingStandardFromName
+	@param name : a stored value, in any case, spaces around it ignored
+	@param known : set to false for a value this QElectroTech does not
+	know, which reads as As before
+*/
+QETProject::DrawingStandard QETProject::drawingStandardFromName(const QString &name, bool *known)
+{
+	const QString value = name.trimmed().toLower();
+	if (known) *known = true;
+	if (value == QLatin1String("iec"))  return DrawingStandard::Iec;
+	if (value == QLatin1String("nfpa")) return DrawingStandard::Nfpa;
+	if (known && !value.isEmpty()) *known = false;
+	return DrawingStandard::AsBefore;
+}
+
+QString QETProject::drawingStandardText() const
+{
+	return m_project_properties.value(drawing_standard_key).toString();
+}
+
+QETProject::DrawingStandard QETProject::drawingStandard() const
+{
+	return drawingStandardFromName(drawingStandardText());
+}
+
+/**
+	@brief QETProject::setDrawingStandard
+	As before removes the property, so the project saves exactly as one
+	that never had it.
+*/
+void QETProject::setDrawingStandard(DrawingStandard standard)
+{
+	DiagramContext properties = m_project_properties;
+	if (standard == DrawingStandard::AsBefore)
+		properties.remove(drawing_standard_key);
+	else
+		properties.addValue(drawing_standard_key, drawingStandardName(standard));
+	if (properties != m_project_properties) {
+		setProjectProperties(properties);
+		setModified(true);
+	}
+}
+
 /**
 	Use \a context as project-wide properties made available to child diagrams.
 */
@@ -6423,6 +6544,18 @@ void QETProject::setProjectProperties(const DiagramContext &context) {
 	markKeptFoliosStale();
 	updateDiagramsFolioData();
 	emit projectInformationsChanged(this);
+}
+
+/**
+	@brief QETProject::setUnshownProjectProperties
+	Like setProjectProperties(), for a change to properties no folio shows
+	(the choices of the checks, CheckSettings): stored without refreshing
+	the folios, which would build those not built yet and move a folio
+	numbering.
+*/
+void QETProject::setUnshownProjectProperties(const DiagramContext &context) {
+	m_project_properties = context;
+	storeSettings();
 }
 
 /**

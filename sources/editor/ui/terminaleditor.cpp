@@ -22,6 +22,7 @@
 #include <editor/graphicspart/partterminal.h>
 #include <QPropertyUndoCommand/qpropertyundocommand.h>
 #include <ui/alignmenttextdialog.h>
+#include <utils/dialogplacement.h>
 
 #include <QColorDialog>
 #include <QFontDialog>
@@ -410,22 +411,34 @@ void TerminalEditor::labelRotationEdited()
 
 void TerminalEditor::labelAlignClicked()
 {
-	Qt::Alignment align = m_part->labelHAlignment() | m_part->labelVAlignment();
-	AlignmentTextDialog dialog(align, this);
-	if (dialog.exec() == QDialog::Accepted) {
+	const Qt::Alignment old_h = m_part->labelHAlignment();
+	const Qt::Alignment old_v = m_part->labelVAlignment();
+	AlignmentTextDialog dialog(old_h | old_v, this);
+	DialogPlacement::placeBelow(&dialog, ui->m_align_pb);
+	// Each point picked shows at once. Closing the dialog makes the
+	// Undo steps, from where the label was to the end.
+	bool picked = false;
+	connect(&dialog, &AlignmentTextDialog::alignmentChanged, this,
+			[this, &picked](Qt::Alignment align) {
+		picked = true;
+		m_part->setLabelHAlignment(align & Qt::AlignHorizontal_Mask);
+		m_part->setLabelVAlignment(align & Qt::AlignVertical_Mask);
+	});
+	dialog.exec();
+	if (picked) {
 		Qt::Alignment new_align = dialog.alignment();
 		Qt::Alignment new_h = new_align & Qt::AlignHorizontal_Mask;
 		Qt::Alignment new_v = new_align & Qt::AlignVertical_Mask;
 
-		if (new_h != m_part->labelHAlignment()) {
+		if (new_h != old_h) {
 			auto undo = new QPropertyUndoCommand(m_part, "label_halignment",
-				QVariant::fromValue(m_part->labelHAlignment()), QVariant::fromValue(new_h));
+				QVariant::fromValue(old_h), QVariant::fromValue(new_h));
 			undo->setText(tr("Change the alignment of the label"));
 			undoStack().push(undo);
 		}
-		if (new_v != m_part->labelVAlignment()) {
+		if (new_v != old_v) {
 			auto undo = new QPropertyUndoCommand(m_part, "label_valignment",
-				QVariant::fromValue(m_part->labelVAlignment()), QVariant::fromValue(new_v));
+				QVariant::fromValue(old_v), QVariant::fromValue(new_v));
 			undo->setText(tr("Change the alignment of the label"));
 			undoStack().push(undo);
 		}

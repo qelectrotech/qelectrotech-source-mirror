@@ -21,6 +21,7 @@
 
 #include "bordertitleblock.h"
 #include "conductornumexport.h"
+#include "labellistexport.h"
 #include "conductorproperties.h"
 #include "dataBase/projectdatabase.h"
 #include "dataBase/qetdbfile.h"
@@ -32,6 +33,7 @@
 #include "editor/symbolgridcheck.h"
 #include "editor/terminalnamecheck.h"
 #include "dxfexport.h"
+#include "ElementsCollection/librarylisting.h"
 #include "exportproperties.h"
 #include "pdf_links.h"
 #include "container/qetcontainer.h"
@@ -89,6 +91,7 @@ const QHash<QString, QString> &exportFlags()
 		{"--export-dxf", "dxf"},
 		{"--export-cables", "cables"},
 		{"--export-wires", "wires"},
+		{"--export-labels", "labels"},
 		{"--export-bom", "bom"},
 		{"--export-wiring", "wiring"},
 		{"--export-nets", "nets"},
@@ -98,6 +101,7 @@ const QHash<QString, QString> &exportFlags()
 		{"--export-device-types-brief", "devicetypebrief"},
 		{"--info", "info"},
 		{"--check-elements", "check"},
+		{"--export-library", "library"},
 		{"--resave", "resave"},
 		{"--recover", "recover"},
 		{"--history", "history"},
@@ -410,6 +414,26 @@ int exportDxf(QETProject &project, const QString &out_dir, bool showTerminals,
 		err << "Note: DXF has no pictures in this format; "
 			   "each picture is exported as an outline box.\n";
 	out << "Exported " << diagrams.size() << " diagram(s) -> " << out_dir << "\n";
+	return 0;
+}
+
+/// --export-labels: one label per line for a label printer (#1878 A7)
+int exportLabels(QETProject &project, const QString &output, LabelListExport::Kind kind,
+				 bool full_designation)
+{
+	const QString kind_name = LabelListExport::kindName(kind);
+	const QStringList labels = LabelListExport::labels(&project, kind, full_designation);
+	// An empty list is a valid answer, so scripts exporting every kind do not
+	// fail; the file is still written (empty) so a stale list from an earlier
+	// run is never left behind to be printed.
+	if (labels.isEmpty())
+		err << "Nothing to export (no " << kind_name << " with a label).\n";
+	QString error;
+	if (!LabelListExport::write(labels, output, &error)) {
+		err << "Cannot write '" << output << "': " << error << "\n";
+		return 1;
+	}
+	out << "Exported " << labels.size() << " " << kind_name << " label(s) -> " << output << "\n";
 	return 0;
 }
 
@@ -1342,6 +1366,7 @@ int run(const QStringList &args)
 	const bool ignoreLock = filtered.removeAll("--ignore-lock") > 0;
 	const bool json = filtered.removeAll("--json") > 0;
 	const bool grid = filtered.removeAll("--grid") > 0;
+	const bool fullDesignation = filtered.removeAll("--full-designation") > 0;
 
 	QString flag;
 	QStringList rest;
@@ -1354,6 +1379,10 @@ int run(const QStringList &args)
 		}
 	}
 	const QString format = exportFlags().value(flag);
+	if (fullDesignation && format != "labels") {
+		err << "--full-designation only applies to --export-labels.\n";
+		return 2;
+	}
 
 	// --check-elements operates on an element file/directory, not a project.
 	if (format == "check") {
@@ -1363,6 +1392,25 @@ int run(const QStringList &args)
 			return 2;
 		}
 		return checkElements(rest.at(0), grid);
+	}
+
+	// --export-library lists the symbols and macros of a folder, not a project
+	if (format == "library") {
+		if (rest.size() < 2 || !QFileInfo(rest.at(0)).isDir()) {
+			err << "Usage: qelectrotech --export-library <folder>"
+				   " <output.csv>\n";
+			return 2;
+		}
+		const QList<LibraryListing::Row> rows =
+				LibraryListing().scan(rest.at(0));
+		QString error;
+		if (!LibraryListing::write(rows, rest.at(1), &error)) {
+			err << "Cannot write '" << rest.at(1) << "': " << error << "\n";
+			return 1;
+		}
+		out << "Listed " << rows.size() << " symbol(s) and macro(s) -> "
+			<< rest.at(1) << "\n";
+		return 0;
 	}
 
 	// --recover reads what it can of a damaged .qetz, which a project
@@ -1542,6 +1590,14 @@ int run(const QStringList &args)
 		return queryProjects(rest.at(0), rest.mid(1), json);
 	}
 
+		//The list asked for, before the project is opened
+	LabelListExport::Kind label_kind = LabelListExport::Devices;
+	if (format == "labels" && !LabelListExport::kindFromString(rest.value(2), &label_kind)) {
+		err << "Usage: qelectrotech --export-labels <project.qet> <output.csv> "
+			   "devices|terminals|cables|wires [--full-designation]\n";
+		return 2;
+	}
+
 	const QString input = rest.value(0);
 	if (input.isEmpty()) {
 		err << "Usage: qelectrotech " << flag << " <project.qet> <output>\n";
@@ -1575,6 +1631,8 @@ int run(const QStringList &args)
 		return exportDxf(project, output, showTerminals, dxfBlocks, dxfAttributes);
 	if (format == "cables" || format == "wires")
 		return exportCsv(project, format, output);
+	if (format == "labels")
+		return exportLabels(project, output, label_kind, fullDesignation);
 	if (format == "bom")
 		return exportBom(project, output, includeSlaves, includeJunctions);
 	if (format == "wiring")

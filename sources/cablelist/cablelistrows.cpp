@@ -194,6 +194,7 @@ const QList<CableList::Column> &CableList::allColumns()
 		{QStringLiteral("cores_used"),        tr("Used cores")},
 		{QStringLiteral("manufacturer"),      tr("Manufacturer")},
 		{QStringLiteral("manufacturer_reference"), tr("Part number")},
+		{QStringLiteral("comment"),           tr("Comment")},
 	};
 	return columns;
 }
@@ -201,8 +202,8 @@ const QList<CableList::Column> &CableList::allColumns()
 /**
 	@brief CableList::defaultKeys
 	@return the columns a freshly drawn cable list starts with: all of
-	them but the manufacturer and the part number, which are offered
-	but left off
+	them but the manufacturer, the part number and the comment, which
+	are offered but left off
 */
 const QStringList &CableList::defaultKeys()
 {
@@ -212,7 +213,8 @@ const QStringList &CableList::defaultKeys()
 			//offered but left off, so a list drawn by default keeps
 			//the shape it always had
 		const QStringList later = {QStringLiteral("manufacturer"),
-								   QStringLiteral("manufacturer_reference")};
+								   QStringLiteral("manufacturer_reference"),
+								   QStringLiteral("comment")};
 		for (const Column &column : allColumns()) {
 			if (!later.contains(column.key)) {
 				list << column.key;
@@ -460,6 +462,7 @@ QVector<QMap<QString, QString>> CableList::rows(QETProject *project)
 		row.insert(QStringLiteral("length"), cable->length());
 		row.insert(QStringLiteral("manufacturer"), cable->manufacturer());
 		row.insert(QStringLiteral("manufacturer_reference"), cable->manufacturerReference());
+		row.insert(QStringLiteral("comment"), cable->comment());
 		row.insert(QStringLiteral("cores_used"),
 				   QStringLiteral("%1/%2")
 						   .arg(cable->usedCoreCount())

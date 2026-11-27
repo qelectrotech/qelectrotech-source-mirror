@@ -16,13 +16,16 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "qetapptest.h"
+#include "cable/cable.h"
 #include "diagram.h"
 #include "devicetype/devicetypecheck.h"
 #include "dataBase/projectdatabase.h"
+#include "diagramevent/macrolabels.h"
 #include "projectcheck.h"
 #include "qetgraphicsitem/conductor.h"
 #include "qetgraphicsitem/element.h"
 #include "qetgraphicsitem/terminal.h"
+#include "qetinformation.h"
 #include "qetproject.h"
 #include "ui/checkpaneldockwidget.h"
 #include "ui/openwireendsdialog.h"
@@ -113,6 +116,152 @@ class tst_projectcheck : public QObject
 		}
 
 	private slots:
+		/// A label or text still holding a ? or a ?name is listed, once for
+		/// each item, and answering it takes it off the list (#1878 B7)
+		void unansweredPromptsFindsWhatAMacroAsks()
+		{
+			QVERIFY(MacroLabels::holdsPrompt(QStringLiteral("-K?")));
+			QVERIFY(MacroLabels::holdsPrompt(QStringLiteral("?motor_kw kW")));
+			QVERIFY(!MacroLabels::holdsPrompt(QStringLiteral("-K1")));
+
+			const QString path = copy(QStringLiteral("every_feature.qet"));
+			QVERIFY(!path.isEmpty());
+			QETProject project(path);
+			project.loadFolios();
+			const QSet<QUuid> before = listed(run(project, ProjectCheck::Kind::UnansweredPrompts));
+
+			QList<Element *> symbols;
+			for (Diagram *diagram : project.diagrams())
+				for (Element *e : diagram->elements())
+					if (!before.contains(e->uuid()) && symbols.size() < 2) symbols << e;
+			QCOMPARE(symbols.size(), 2);
+			const auto setInfo = [](Element *e, const QString &key, const QString &value) {
+				DiagramContext info = e->elementInformations();
+					// A label typed by hand no longer follows a formula
+				if (key == QLatin1String("label")) info.addValue(QStringLiteral("formula"), QString());
+				info.addValue(key, value);
+				e->setElementInformations(info);
+			};
+			setInfo(symbols.at(0), QStringLiteral("label"), QStringLiteral("-K?"));
+				// Two texts of one symbol are one finding
+			setInfo(symbols.at(1), QStringLiteral("comment"), QStringLiteral("?motor_kw kW"));
+			setInfo(symbols.at(1), QStringLiteral("function"), QStringLiteral("?motor_kw"));
+
+			auto result = ProjectCheck::run(&project, ProjectCheck::Kind::UnansweredPrompts);
+				// A symbol linked to another may take its label along: the
+				// two planted are there, whatever else is
+			QSet<QUuid> found = listed(result);
+			QVERIFY(found.contains(symbols.at(0)->uuid()));
+			QVERIFY(found.contains(symbols.at(1)->uuid()));
+			int own = 0;
+			for (const auto &finding : result.findings) {
+				QVERIFY(finding.places.first().canShow());
+				if (finding.places.first().element == symbols.at(1)->uuid()) ++own;
+			}
+			QCOMPARE(own, 1);
+
+			setInfo(symbols.at(0), QStringLiteral("label"), QStringLiteral("-K1"));
+			found = listed(ProjectCheck::run(&project, ProjectCheck::Kind::UnansweredPrompts));
+			QVERIFY(!found.contains(symbols.at(0)->uuid()));
+			QVERIFY(found.contains(symbols.at(1)->uuid()));
+		}
+
+		/// The symbols with no part number are those the parts list would
+		/// hold: not a report, not set to be left out, not a junction;
+		/// once a part number is given, the symbol is not listed (#1878 B6)
+		void noPartNumberListsWhatThePartsListHolds()
+		{
+			const QString path = copy(QStringLiteral("every_feature.qet"));
+			QVERIFY(!path.isEmpty());
+			QETProject project(path);
+			project.loadFolios();
+
+			const auto text = [](Element *e, const QString &key) {
+				return e->elementInformations().value(key).toString().trimmed();
+			};
+				// What the parts list holds, found on the folios
+			const auto expected = [&]() {
+				QSet<QUuid> set;
+				for (Diagram *diagram : project.diagrams())
+					for (Element *e : diagram->elements()) {
+						const auto type = e->linkType();
+						if (!(type & (Element::Simple | Element::Master | Element::Slave | Element::Terminale)))
+							continue;
+						if (QET::infoFlagIsTrue(text(e, QStringLiteral("exclude_from_bom")))) continue;
+						if (!text(e, QStringLiteral("manufacturer_reference")).isEmpty()) continue;
+						if (type == Element::Terminale
+							&& text(e, QStringLiteral("label")).isEmpty()
+							&& text(e, QStringLiteral("designation")).isEmpty()
+							&& text(e, QStringLiteral("manufacturer")).isEmpty()) continue;
+						set << e->uuid();
+					}
+				return set;
+			};
+			const auto set = [](Element *e, const QString &key, const QString &value) {
+				DiagramContext info = e->elementInformations();
+				info.addValue(key, value);
+				e->setElementInformations(info);
+			};
+
+			auto result = run(project, ProjectCheck::Kind::NoPartNumber);
+			QSet<QUuid> before = expected();
+			QVERIFY(before.size() >= 2);
+			QCOMPARE(listed(result), before);
+
+				// One given a part number, one set to be left out
+			QList<Element *> two;
+			for (Diagram *diagram : project.diagrams())
+				for (Element *e : diagram->elements())
+					if (before.contains(e->uuid()) && two.size() < 2) two << e;
+			set(two.at(0), QStringLiteral("manufacturer_reference"), QStringLiteral("PN-1"));
+			set(two.at(1), QStringLiteral("exclude_from_bom"), QStringLiteral("true"));
+			result = ProjectCheck::run(&project, ProjectCheck::Kind::NoPartNumber);
+			QSet<QUuid> after = before;
+			after.remove(two.at(0)->uuid());
+			after.remove(two.at(1)->uuid());
+			QCOMPARE(expected(), after);
+			QCOMPARE(listed(result), after);
+		}
+
+		/// A wire that is a core of two cables is listed once, with both
+		/// cables, and a wire of one cable is not (#1878 B5)
+		void wireInTwoCablesFindsTheSharedWire()
+		{
+			const QString path = copy(QStringLiteral("shared_symbol_uuid_0200.qet"));
+			QVERIFY(!path.isEmpty());
+			QETProject project(path);
+			project.loadFolios();
+			QList<Conductor *> wires;
+			for (Diagram *diagram : project.diagrams())
+				wires << diagram->conductors();
+			QVERIFY(wires.size() >= 2);
+
+			QVERIFY(ProjectCheck::run(&project, ProjectCheck::Kind::WireInTwoCables).findings.isEmpty());
+
+			const auto makeCable = [&project](const QString &designation, const QList<Conductor *> &used) {
+				auto *cable = new Cable(&project);
+				cable->setDesignation(designation);
+				cable->setCoreCount(3);
+				project.addCable(cable);
+				for (int i = 0 ; i < used.size() ; ++i) {
+					CableCore core;
+					core.core = i;
+					core.conductor = used.at(i)->uuid();
+					cable->setCore(core);
+				}
+			};
+			makeCable(QStringLiteral("W1"), {wires.at(0), wires.at(1)});
+			makeCable(QStringLiteral("W2"), {wires.at(0)});
+
+			const auto result = ProjectCheck::run(&project, ProjectCheck::Kind::WireInTwoCables);
+			QCOMPARE(result.findings.size(), 1);
+			const auto &finding = result.findings.first();
+			QVERIFY2(finding.text.contains(QStringLiteral("W1, W2")), qPrintable(finding.text));
+			QCOMPARE(finding.places.size(), 1);
+			QCOMPARE(finding.places.first().wires, QList<QUuid>{wires.at(0)->uuid()});
+			QVERIFY(finding.places.first().canShow());
+		}
+
 		/// A limit of 1 lists exactly the terminals the folios show with
 		/// two wires or more; no limit gives a note and no finding
 		void wiresPerTerminalMatchesTheFolios()

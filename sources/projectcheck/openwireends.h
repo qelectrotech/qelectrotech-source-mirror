@@ -64,6 +64,11 @@ namespace OpenWireEnds
 		/// Every finding of the project in @p db, in folio order. A report
 		/// or junction found is not found again as the potential it is on.
 	QList<Finding> check(const QSqlDatabase &db);
+
+		/// A cell as its row letters and its column number, < 0, 0 or > 0.
+		/// Compared by hand, not with QCollator: its numeric mode does
+		/// nothing in the C locale, where A10 would come before A9
+	int compareCells(const QString &a, const QString &b);
 }
 
 #endif // OPENWIREENDS_H

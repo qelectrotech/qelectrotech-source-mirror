@@ -17,6 +17,7 @@
 */
 #include "plantslocationsdialog.h"
 
+#include "../placecopy.h"
 #include "../reports/projectreports.h"
 
 #include <qet.h>
@@ -47,7 +48,8 @@ PlantsLocationsDialog::PlantsLocationsDialog(QETProject *project, QWidget *paren
 	m_summary(new QLabel(this)),
 	m_table(new QTableWidget(this)),
 	m_rename_plant(nullptr),
-	m_rename_location(nullptr)
+	m_rename_location(nullptr),
+	m_copy_plant(nullptr)
 {
 	setWindowTitle(tr("Plants and locations"));
 	resize(760, 460);
@@ -74,6 +76,10 @@ PlantsLocationsDialog::PlantsLocationsDialog(QETProject *project, QWidget *paren
 	m_rename_location = buttons->addButton(tr("Rename location..."), QDialogButtonBox::ActionRole);
 	m_rename_location->setObjectName(QStringLiteral("renameLocation"));
 	m_rename_location->setToolTip(tr("Changes this location's name in its plant, everywhere in the project"));
+	m_copy_plant = buttons->addButton(tr("Copy plant..."), QDialogButtonBox::ActionRole);
+	m_copy_plant->setObjectName(QStringLiteral("copyPlant"));
+	m_copy_plant->setToolTip(tr("Copies this plant's folios with everything on them under a new plant name"));
+	connect(m_copy_plant, &QPushButton::clicked, this, &PlantsLocationsDialog::copyPlant);
 	connect(m_rename_plant, &QPushButton::clicked, this, &PlantsLocationsDialog::renamePlant);
 	connect(m_rename_location, &QPushButton::clicked, this, &PlantsLocationsDialog::renameLocation);
 	connect(m_table, &QTableWidget::itemSelectionChanged, this, &PlantsLocationsDialog::updateButtons);
@@ -145,6 +151,7 @@ void PlantsLocationsDialog::updateButtons()
 	const bool location = plant && !first->data(Qt::UserRole + 2).toString().isEmpty();
 	m_rename_plant->setEnabled(plant);
 	m_rename_location->setEnabled(location);
+	m_copy_plant->setEnabled(plant);
 }
 
 /**
@@ -249,4 +256,61 @@ void PlantsLocationsDialog::renameSelected(bool location)
 				? tr("Not every folio could be read, so nothing was renamed.")
 				: tr("The project does not store \"%1\" anywhere that can be renamed.").arg(old_name));
 	}
+}
+
+/**
+	@brief PlantsLocationsDialog::applyCopy
+	Copies the plant's folios under @p new_name, in one undo step.
+	@return false when nothing was copied
+*/
+bool PlantsLocationsDialog::applyCopy(const QString &plant, const QString &new_name)
+{
+	if (!m_project || !PlaceCopy::isValid(m_project, plant, new_name)) return false;
+	buildFolios();
+	if (!PlaceCopy::copy(m_project, plant, new_name)) return false;
+	refresh();
+	return true;
+}
+
+/**
+	@brief PlantsLocationsDialog::copyPlant
+	Asks for the copy's plant name, says what will be copied, and copies.
+*/
+void PlantsLocationsDialog::copyPlant()
+{
+	const int row = m_table->currentRow();
+	const QTableWidgetItem *first = row >= 0 ? m_table->item(row, PlantColumn) : nullptr;
+	if (!m_project || !first) return;
+	const QString plant = first->data(Qt::UserRole + 1).toString();
+
+	bool ok = false;
+	const QString text = QInputDialog::getText(
+				this, tr("Copy plant"),
+				tr("Name of the copy of plant %1:").arg(plant),
+				QLineEdit::Normal, plant, &ok);
+	if (!ok) return;
+	const QString new_name = text.trimmed();
+	QString why;
+	if (!PlaceCopy::isValid(m_project, plant, new_name, &why)) {
+		QMessageBox::warning(this, windowTitle(), why);
+		return;
+	}
+	buildFolios();
+	const PlaceCopy::Plan plan = PlaceCopy::collect(m_project, plant);
+	if (plan.folios.isEmpty()) {
+		QMessageBox::information(this, windowTitle(),
+				m_project->unloadedFolioCount()
+				? tr("Not every folio could be read, so nothing was copied.")
+				: tr("No folio has \"%1\" as its plant, so there is nothing to copy.").arg(plant));
+		return;
+	}
+	QString question = tr("%n folio(s) of plant %1 will be copied as plant %2. Labels are kept: "
+						  "-K1 of the copy is =%2-K1.", nullptr, int(plan.folios.size()))
+			.arg(plant, new_name);
+	if (plan.other_plant_symbols)
+		question += QLatin1Char('\n') + tr("%n symbol(s) on these folios belong to another plant. "
+										   "Their copies keep it, so they have the same designations "
+										   "as the originals.", nullptr, plan.other_plant_symbols);
+	if (QMessageBox::question(this, windowTitle(), question) != QMessageBox::Yes) return;
+	applyCopy(plant, new_name);
 }

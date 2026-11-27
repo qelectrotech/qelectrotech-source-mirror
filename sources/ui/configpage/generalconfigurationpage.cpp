@@ -18,6 +18,7 @@
 #include <bordercelllabels.h>
 #include "generalconfigurationpage.h"
 
+#include <qetgraphicsitem/conductor.h>
 #include <qetgraphicsitem/dynamicelementtextitem.h>
 #include <connectionsymbols.h>
 #include <scripting/liveserver.h>
@@ -204,6 +205,7 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	ui->m_zoom_step_sb->setValue(DiagramView::zoomStep());
 	ui->m_jump_zoom_sb->setValue(DiagramView::jumpZoom());
 	ui->m_terminal_conductor_color->setChecked(Terminal::takesConductorColor());
+	ui->m_outline_light_wires_cb->setChecked(Conductor::outlinesLightWires());
 	ui->m_strip_wires->setChecked(QetSettings::stripWiresShown());
 	ui->m_strip_cable_core_targets->setChecked(
 		QetSettings::stripCableCoreTargetsShown());
@@ -538,6 +540,12 @@ void GeneralConfigurationPage::applyConf()
 	QetSettings::setAskLabelAndPartPlacingSymbol(ui->m_symbol_ask_label_part_cb->isChecked());
 	if (ui->m_terminal_conductor_color->isChecked() != Terminal::takesConductorColor()) {
 		Terminal::setTakesConductorColor(ui->m_terminal_conductor_color->isChecked());
+		for (QETProject *project : QETApp::registeredProjects())
+			for (Diagram *diagram : project->diagrams())
+				diagram->update();
+	}
+	if (ui->m_outline_light_wires_cb->isChecked() != Conductor::outlinesLightWires()) {
+		Conductor::setOutlinesLightWires(ui->m_outline_light_wires_cb->isChecked());
 		for (QETProject *project : QETApp::registeredProjects())
 			for (Diagram *diagram : project->diagrams())
 				diagram->update();
