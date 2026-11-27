@@ -153,6 +153,20 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/import/edz/edzimporter.h
   ${QET_DIR}/sources/import/edz/edzsevenzip.cpp
   ${QET_DIR}/sources/import/edz/edzsevenzip.h
+  ${QET_DIR}/sources/import/elementfingerprint.cpp
+  ${QET_DIR}/sources/import/elementfingerprint.h
+  ${QET_DIR}/sources/import/eplandxf/eplandxfreader.cpp
+  ${QET_DIR}/sources/import/eplandxf/eplandxfreader.h
+  ${QET_DIR}/sources/import/eplandxf/eplanelementbuilder.cpp
+  ${QET_DIR}/sources/import/eplandxf/eplanelementbuilder.h
+  ${QET_DIR}/sources/import/eplandxf/eplanimportdialog.cpp
+  ${QET_DIR}/sources/import/eplandxf/eplanimportdialog.h
+  ${QET_DIR}/sources/import/eplandxf/eplanmacroreader.cpp
+  ${QET_DIR}/sources/import/eplandxf/eplanmacroreader.h
+  ${QET_DIR}/sources/import/eplandxf/eplanpartimporter.cpp
+  ${QET_DIR}/sources/import/eplandxf/eplanpartimporter.h
+  ${QET_DIR}/sources/import/plcchannels.cpp
+  ${QET_DIR}/sources/import/plcchannels.h
   ${QET_DIR}/sources/diagramevent/macrolabels.cpp
   ${QET_DIR}/sources/diagramevent/macrolabels.h
   ${QET_DIR}/sources/ui/macrolabelsdialog.cpp

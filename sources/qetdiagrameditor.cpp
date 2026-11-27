@@ -77,6 +77,7 @@
 #include "diagramview.h"
 #include "elementtextpattern.h"
 #include "elementspanelwidget.h"
+#include "import/eplandxf/eplanimportdialog.h"
 #include "factory/elementpicturefactory.h"
 #include "factory/qetgraphicstablefactory.h"
 #include "factory/ui/listquerywidget.h"
@@ -2377,6 +2378,23 @@ void QETDiagramEditor::setUpMenu()
 	insertMenu(settings_menu_, menu_lists);
 	insertMenu(settings_menu_, menu_affichage);
 	insertMenu(help_menu_, windows_menu);
+
+	// Part import: manufacturer EPLAN data as elements of a collection
+	QMenu *menu_part_import = new QMenu(tr("Part import"), this);
+	menu_part_import->setObjectName(QStringLiteral("part_import_menu"));
+	insertMenu(settings_menu_, menu_part_import);
+	// one entry for every file kind: the dialog tells it by the file
+	QAction *import_part = menu_part_import->addAction(tr("Import part…"));
+	import_part->setObjectName(QStringLiteral("import_part"));
+	import_part->setStatusTip(tr("Builds elements from an EPLAN Data Portal DXF package, a DXF or an EPLAN part (.edz)"));
+	connect(import_part, &QAction::triggered, this, [this]() {
+		EplanImportDialog dialog(this);
+		// the file dialog over the import dialog: cancelled, the import
+		// dialog still offers a folder or a dropped file
+		QTimer::singleShot(0, &dialog, [&dialog]() { dialog.chooseSource(); });
+		if (dialog.exec() == QDialog::Accepted && m_element_collection_widget)
+			m_element_collection_widget->reload();
+	});
 
 	// File menu
 		// Add the RecentFiles menu itself, not a copy of the actions it

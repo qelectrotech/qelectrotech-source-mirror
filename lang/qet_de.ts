@@ -9354,6 +9354,209 @@ Mit dem Import dieser Datei bestätigen Sie, dass:
     </message>
 </context>
 <context>
+    <name>EplanImportDialog</name>
+    <message>
+        <location filename="../sources/import/eplandxf/eplanimportdialog.cpp"/>
+        <source>Part import</source>
+        <translation>Bauteil-Import</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/eplandxf/eplanimportdialog.cpp"/>
+        <source>ZIP package, .edz part or DXF; or drop it here</source>
+        <translation>ZIP-Paket, .edz-Artikel oder DXF; oder hier ablegen</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/eplandxf/eplanimportdialog.cpp"/>
+        <source>Change…</source>
+        <translation>Ändern…</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/eplandxf/eplanimportdialog.cpp"/>
+        <source>Folder…</source>
+        <translation>Ordner…</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/eplandxf/eplanimportdialog.cpp"/>
+        <source>Unpacked EPLAN DXF package (folder)</source>
+        <translation>Entpacktes EPLAN-DXF-Paket (Ordner)</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/eplandxf/eplanimportdialog.cpp"/>
+        <source>optional: order number and description</source>
+        <translation>optional: Bestellnummer und Bezeichnung</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/eplandxf/eplanimportdialog.cpp"/>
+        <source>Choose…</source>
+        <translation>Wählen…</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/eplandxf/eplanimportdialog.cpp"/>
+        <source>User collection</source>
+        <translation>Benutzersammlung</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/eplandxf/eplanimportdialog.cpp"/>
+        <source>Company collection</source>
+        <translation>Firmensammlung</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/eplandxf/eplanimportdialog.cpp"/>
+        <source>Other folder…</source>
+        <translation>Anderer Ordner…</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/eplandxf/eplanimportdialog.cpp"/>
+        <source>Folder of an element collection</source>
+        <translation>Ordner einer Bauteilsammlung</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/eplandxf/eplanimportdialog.cpp"/>
+        <source>Source:</source>
+        <translation>Quelle:</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/eplandxf/eplanimportdialog.cpp"/>
+        <source>Manufacturer:</source>
+        <translation>Hersteller:</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/eplandxf/eplanimportdialog.cpp"/>
+        <source>Category:</source>
+        <translation>Kategorie:</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/eplandxf/eplanimportdialog.cpp"/>
+        <source>Type:</source>
+        <translation>Typ:</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/eplandxf/eplanimportdialog.cpp"/>
+        <source>Part data (.edz):</source>
+        <translation>Artikeldaten (.edz):</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/eplandxf/eplanimportdialog.cpp"/>
+        <source>Import into:</source>
+        <translation>Importieren nach:</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/eplandxf/eplanimportdialog.cpp"/>
+        <source>The elements are stored in manufacturer / category / type folders. Each empty EPLAN field (PLC address, symbolic address, function text) becomes a text of its own that is filled in per placement.</source>
+        <translation>Die Bauteile werden in Ordnern Hersteller / Kategorie / Typ abgelegt. Jedes leere EPLAN-Feld (SPS-Adresse, symbolische Adresse, Funktionstext) wird ein eigener Text, der je Platzierung im Plan ausgefüllt wird.</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/eplandxf/eplanimportdialog.cpp"/>
+        <source>Manufacturer data from the EPLAN Data Portal or a manufacturer&apos;s website is subject to the terms of use of that source. By importing you confirm that you are authorised to use it here; the import is at your own responsibility.</source>
+        <translation>Herstellerdaten aus dem EPLAN Data Portal oder von einer Herstellerseite unterliegen den Nutzungsbedingungen dieser Quelle. Mit dem Import bestätigen Sie, dass Sie die Daten hier verwenden dürfen; der Import erfolgt in eigener Verantwortung.</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/eplandxf/eplanimportdialog.cpp"/>
+        <source>I accept these terms.</source>
+        <translation>Ich akzeptiere diese Bedingungen.</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/eplandxf/eplanimportdialog.cpp"/>
+        <source>Import</source>
+        <translation>Importieren</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/eplandxf/eplanimportdialog.cpp"/>
+        <source>Parts (*.zip *.edz *.dxf)</source>
+        <translation>Artikel (*.zip *.edz *.dxf)</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/eplandxf/eplanimportdialog.cpp"/>
+        <source>EPLAN Data Portal DXF package (*.zip)</source>
+        <translation>EPLAN-Data-Portal-DXF-Paket (*.zip)</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/eplandxf/eplanimportdialog.cpp"/>
+        <source>EPLAN parts (*.edz)</source>
+        <translation>EPLAN-Bauteile (*.edz)</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/eplandxf/eplanimportdialog.cpp"/>
+        <source>DXF drawings (*.dxf)</source>
+        <translation>DXF-Zeichnungen (*.dxf)</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/eplandxf/eplanimportdialog.cpp"/>
+        <source>Import part</source>
+        <translation>Artikel importieren</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/eplandxf/eplanimportdialog.cpp"/>
+        <source>Unpacked EPLAN DXF package</source>
+        <translation>Entpacktes EPLAN-DXF-Paket</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/eplandxf/eplanimportdialog.cpp"/>
+        <source>%1 is no part file: choose a ZIP package, an .edz part, a DXF or the folder of an unpacked package.</source>
+        <translation>%1 ist keine Artikeldatei: Ein ZIP-Paket, einen .edz-Artikel, eine DXF oder den Ordner eines entpackten Pakets wählen.</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/eplandxf/eplanimportdialog.cpp"/>
+        <source>This is no EPLAN DXF package:
+%1</source>
+        <translation>Das ist kein EPLAN-DXF-Paket:
+%1</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/eplandxf/eplanimportdialog.cpp"/>
+        <source>EPLAN part</source>
+        <translation>EPLAN-Bauteil</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/eplandxf/eplanimportdialog.cpp"/>
+        <source>source</source>
+        <translation>Quelle</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/eplandxf/eplanimportdialog.cpp"/>
+        <source>manufacturer</source>
+        <translation>Hersteller</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/eplandxf/eplanimportdialog.cpp"/>
+        <source>type</source>
+        <translation>Typ</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/eplandxf/eplanimportdialog.cpp"/>
+        <source>accept the terms</source>
+        <translation>Bedingungen akzeptieren</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/eplandxf/eplanimportdialog.cpp"/>
+        <source>Still missing: %1</source>
+        <translation>Es fehlt noch: %1</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/eplandxf/eplanimportdialog.cpp"/>
+        <source>Choose the folder to import into.</source>
+        <translation>Bitte den Zielordner wählen.</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/eplandxf/eplanimportdialog.cpp"/>
+        <source>The import failed:
+%1</source>
+        <translation>Der Import ist fehlgeschlagen:
+%1</translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../sources/import/eplandxf/eplanimportdialog.cpp"/>
+        <source>%n element(s) imported into
+%1</source>
+        <translation>
+            <numerusform>%n Bauteil importiert nach
+%1</numerusform>
+            <numerusform>%n Bauteile importiert nach
+%1</numerusform>
+        </translation>
+    </message>
+</context>
+<context>
     <name>ExportConfigPage</name>
     <message>
         <location filename="../sources/ui/configpage/configpages.cpp" line="666"/>
@@ -20732,6 +20935,21 @@ Um daraus ein Skript zu machen, bitten Sie Ihren KI-Assistenten: Die Schaltfläc
         <location filename="../sources/qetdiagrameditor.cpp" line="1231"/>
         <source>Find duplicate signals and components...</source>
         <translation>Doppelte Signale und Bauteile suchen...</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp"/>
+        <source>Part import</source>
+        <translation>Bauteil-Import</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp"/>
+        <source>Import part…</source>
+        <translation>Artikel importieren…</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp"/>
+        <source>Builds elements from an EPLAN Data Portal DXF package, a DXF or an EPLAN part (.edz)</source>
+        <translation>Erzeugt Bauteile aus einem EPLAN-Data-Portal-DXF-Paket, einer DXF oder einem EPLAN-Artikel (.edz)</translation>
     </message>
 </context>
 <context>

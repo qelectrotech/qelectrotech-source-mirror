@@ -2765,3 +2765,7 @@ qet_add_app_test(tst_labellistexport tst_labellistexport.cpp)
 target_compile_definitions(tst_labellistexport PRIVATE
   QET_EXAMPLES_DIR="${QET_DIR}/examples"
   QET_FIXTURES_DIR="${CMAKE_CURRENT_SOURCE_DIR}/fixtures")
+# Part import of manufacturer EPLAN data: a Data Portal DXF package, a
+# single DXF with black-box frames, the part data of an .edz, and the
+# fingerprint that keeps elements edited since their import.
+qet_add_app_test(tst_eplanpartimport tst_eplanpartimport.cpp)
