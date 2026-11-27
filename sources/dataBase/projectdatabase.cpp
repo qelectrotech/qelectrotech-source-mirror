@@ -6922,7 +6922,8 @@ QList<projectDataBase::ProjectSetting> projectDataBase::elementValueRowsOf(const
 	if (element.attribute(QStringLiteral("shownAsDot")) == QLatin1String("true"))
 		rows.append({section, 0, QStringLiteral("shownAsDot"), QStringLiteral("true")});
 	for (const QString &tag : {QStringLiteral("properties"), QStringLiteral("plcMasterData"),
-							   QStringLiteral("xrefDisplay"), QStringLiteral("potentialSources")}) {
+							   QStringLiteral("xrefDisplay"), QStringLiteral("potentialSources"),
+							   QStringLiteral("terminalLabels")}) {
 		const QDomElement child = element.firstChildElement(tag);
 		if (!child.isNull())
 			xmlRows(child, tag, 0, rows);
@@ -9278,6 +9279,7 @@ void projectDataBase::prepareQuery()
 		//the name a placed symbol gives a terminal afterwards reaches the
 		//row where it already is. Scoped to the element: every copy of a
 		//symbol shares its terminals' uuids
+	m_update_terminal_name_query = QSqlQuery(m_data_base);
 	m_update_terminal_name_query.prepare("UPDATE terminal SET name = :name "
 										 "WHERE uuid = :uuid AND element_uuid = :element_uuid");
 

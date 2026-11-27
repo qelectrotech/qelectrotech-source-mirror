@@ -2885,7 +2885,7 @@ void Element::appendTerminalLabelsXml(QDomDocument &document, QDomElement &eleme
 	@return an <element> made in @p document holding what toXml() writes
 	of this symbol that no other table of the project database holds: its
 	prefix, frozen label, whether it can be moved, whether it is shown as a
-	dot, and appendDataXml()
+	dot, appendDataXml(), and the names this copy gave its terminals
 */
 QDomElement Element::ownValuesXml(QDomDocument &document) const
 {
@@ -2896,6 +2896,7 @@ QDomElement Element::ownValuesXml(QDomDocument &document) const
 	if (m_shown_as_dot)
 		element.setAttribute(QStringLiteral("shownAsDot"), QStringLiteral("true"));
 	appendDataXml(document, element);
+	appendTerminalLabelsXml(document, element);
 	return element;
 }
 
@@ -2963,6 +2964,8 @@ void Element::setTerminalLabel(const QUuid &terminal, const TerminalLabel &label
 		if (was != found->name())
 			storeTerminalName(found);
 	}
+		//ownValuesXml() writes the labels, so the store follows them
+	scheduleTextsStore();
 }
 
 /**
@@ -2985,6 +2988,8 @@ void Element::removeTerminalLabel(const QUuid &terminal)
 			storeTerminalName(t);
 		break;
 	}
+		//ownValuesXml() writes the labels, so the store follows them
+	scheduleTextsStore();
 }
 
 /**
