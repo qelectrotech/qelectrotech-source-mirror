@@ -369,9 +369,17 @@ void NewDiagramPage::applyConf()
 						  m_terminal_label_split_rb -> isChecked());
 
 		// The potential types every new project starts with, kept as the
-		// project keeps them, one key holding the whole XML
-		m_ptw -> potentialTypes().toSettings(settings,
-			PotentialTypes::settingsKey());
+		// project keeps them, one key holding the whole XML. Written only
+		// when they differ from the defaults of a new project: confirming
+		// this page untouched must not freeze today's list into the
+		// settings, where a QET with more default types could never
+		// reach a new project again.
+		const PotentialTypes new_project_types = m_ptw -> potentialTypes();
+		if (new_project_types.isDefault())
+			settings.remove(PotentialTypes::settingsKey());
+		else
+			new_project_types.toSettings(settings,
+				PotentialTypes::settingsKey());
 
 		// save global auto-numbering defaults
 		//

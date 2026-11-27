@@ -1169,6 +1169,37 @@ class tst_potentialtypes : public QObject
 				settings.remove(key);
 		}
 
+		/// The settings page of a new project writes the potential types
+		/// only when they differ from the defaults of a new project.
+		/// Confirming the page untouched must not freeze today's list
+		/// into the settings, where a QET with more default types could
+		/// never reach a new project again.
+		void theNewProjectPageKeepsTheDefaultsFree()
+		{
+			QSettings settings;
+			const QString key = PotentialTypes::settingsKey();
+			settings.remove(key);
+
+			NewDiagramPage page;
+			PotentialTypesWidget *types =
+					page.findChild<PotentialTypesWidget *>();
+			QVERIFY(types);
+
+			types->setPotentialTypes(PotentialTypes());
+			page.applyConf();
+			QVERIFY2(!settings.contains(key),
+					 "the defaults of a new project are not written");
+
+			types->setPotentialTypes(coreTypes());
+			page.applyConf();
+			QCOMPARE(PotentialTypes::fromSettings(settings, key), coreTypes());
+
+				//Back to the defaults: the key goes away again
+			types->setPotentialTypes(PotentialTypes());
+			page.applyConf();
+			QVERIFY(!settings.contains(key));
+		}
+
 		/// The wire colour of a type typed in by hand is kept exactly as
 		/// it is typed: the codes the list offers never rewrite it, and
 		/// one picked from the list is kept as written there
