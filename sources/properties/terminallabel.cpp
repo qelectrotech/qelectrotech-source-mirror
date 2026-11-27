@@ -85,8 +85,9 @@ bool TerminalLabel::operator==(const TerminalLabel &other) const
 	@brief TerminalLabel::toXml
 	@return a <terminalLabel> element holding this label, the attributes
 	named as the <terminal> of a definition names them, so the two read
-	alike. Element::toXml() adds the terminal it belongs to
-	(@see Element::appendTerminalLabelsXml())
+	alike -- the colour alone keeps its alpha (#AARRGGBB), which the
+	definition's format cannot hold. Element::toXml() adds the terminal it
+	belongs to (@see Element::appendTerminalLabelsXml())
 */
 QDomElement TerminalLabel::toXml(QDomDocument &document) const
 {
@@ -101,7 +102,7 @@ QDomElement TerminalLabel::toXml(QDomDocument &document) const
 	xml_element.setAttribute(QStringLiteral("label_halign"), static_cast<int>(m_label_halignment));
 	xml_element.setAttribute(QStringLiteral("label_valign"), static_cast<int>(m_label_valignment));
 	xml_element.setAttribute(QStringLiteral("label_frame"), QETXML::boolToString(m_label_frame));
-	xml_element.setAttribute(QStringLiteral("label_color"), m_label_color.name());
+	xml_element.setAttribute(QStringLiteral("label_color"), m_label_color.name(QColor::HexArgb));
 
 	return xml_element;
 }
@@ -143,9 +144,11 @@ bool TerminalLabel::fromXml(const QDomElement &xml_element)
 	m_label_frame = QETXML::boolFromString(
 				xml_element.attribute(QStringLiteral("label_frame")), false);
 
-	const QString color = xml_element.attribute(QStringLiteral("label_color"));
-	if (!color.isEmpty())
-		m_label_color = QColor(color);
+		//HexArgb is what toXml() writes; #RRGGBB reads as it always did
+	const QColor color = QColor::fromString(
+				xml_element.attribute(QStringLiteral("label_color")));
+	if (color.isValid())
+		m_label_color = color;
 
 	return true;
 }
