@@ -107,6 +107,10 @@ namespace TerminalStripDrawer
 			//Type and led are only used to draw the symbol of the terminal.
 			//They are not pure virtual, so an implementation can ignore them.
 			virtual ElementData::TerminalType type() const { return ElementData::TTGeneric; }
+			//Form of the terminal (through terminal, multi-level...), the second
+			//choice of the Terminal page beside the type: what the terminal is
+			//built as, and what the strip draws because of it
+		virtual ElementData::TerminalForm form() const { return ElementData::TFormNone; }
 			virtual bool isLed() const { return false; }
 			//Cable (hose) connected to the terminal, drawn under the strip.
 			virtual QString cable() const { return QString(); }
@@ -159,6 +163,12 @@ namespace TerminalStripDrawer
 			virtual QString catalogEntry() const { return QString(); }
 			//A separator plate is mounted after the terminal (drawn by the realistic styles)
 			virtual bool hasSeparatorAfter() const { return false; }
+			//The stage of the terminal within its block: 0 at the foot (the
+			//PE of a multi-level one), the ones above count up. The realistic
+			//styles work the size of a level column and the row it stands in
+			//out of it, so that the stages of two terminals of the strip stand
+			//at the same height whatever the number of levels they have.
+			virtual int stage() const { return 0; }
     };
 
 	class AbstractPhysicalTerminalInterface

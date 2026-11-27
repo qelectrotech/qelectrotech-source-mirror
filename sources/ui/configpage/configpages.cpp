@@ -21,6 +21,7 @@
 #include <NameList/nameslist.h>
 #include <bordertitleblock.h>
 #include <exportpropertieswidget.h>
+#include <properties/potentialtypes.h>
 #include <properties/reportproperties.h>
 #include <qetapp.h>
 #include <qeticons.h>
@@ -181,9 +182,15 @@ NewDiagramPage::NewDiagramPage(QETProject *project,
 		ipw -> setProperties (m_project -> defaultTitleBlockProperties());
 		rpw -> setReportProperties (m_project -> defaultReportProperties());
 		xrefpw -> setProperties (m_project -> defaultXRefProperties());
-		m_ptw = new PotentialTypesWidget(this);
-		m_ptw -> setPotentialTypes(m_project -> potentialTypes());
 	}
+		//The potential types: a project's own, or the ones every new
+		//project starts with (Configure QElectroTech > New project).
+		//Same widget, same words, in both places.
+	m_ptw = new PotentialTypesWidget(this);
+	m_ptw -> setPotentialTypes(m_project
+			? m_project -> potentialTypes()
+			: PotentialTypes::fromSettings(
+				settings, PotentialTypes::settingsKey()));
 
 	connect(ipw, &TitleBlockPropertiesWidget::openAutoNumFolioEditor, this, &NewDiagramPage::changeToAutoFolioTab);
 	bpw -> setTitleBlockSize(ipw -> currentTitleBlockHeight(),
@@ -227,10 +234,7 @@ NewDiagramPage::NewDiagramPage(QETProject *project,
 	tab_widget -> addTab (rpw,            tr("Sheet references"));
 	tab_widget -> addTab (xrefpw,         tr("Cross-references"));
 	tab_widget -> addTab (m_gpw,          tr("Guides"));
-		//Potential types belong to a project: there is no application default
-	if (m_ptw) {
-		tab_widget -> addTab (m_ptw,      tr("Potential types"));
-	}
+	tab_widget -> addTab (m_ptw,          tr("Potential types"));
 
 	// add auto-numbering tab only for global settings (not per project)
 	if (!m_project) {
@@ -363,6 +367,19 @@ void NewDiagramPage::applyConf()
 		// configuration profile, see ConfigProfile::partOf())
 		settings.setValue(QStringLiteral("diagrameditor/defaultterminallabelling"),
 						  m_terminal_label_split_rb -> isChecked());
+
+		// The potential types every new project starts with, kept as the
+		// project keeps them, one key holding the whole XML. Written only
+		// when they differ from the defaults of a new project: confirming
+		// this page untouched must not freeze today's list into the
+		// settings, where a QET with more default types could never
+		// reach a new project again.
+		const PotentialTypes new_project_types = m_ptw -> potentialTypes();
+		if (new_project_types.isDefault())
+			settings.remove(PotentialTypes::settingsKey());
+		else
+			new_project_types.toSettings(settings,
+				PotentialTypes::settingsKey());
 
 		// save global auto-numbering defaults
 		//

@@ -54,14 +54,15 @@ const int CABLE_WIRE_CELL = 10;
 const int CABLE_TARGET_CELL = 11;
 const int TYPE_CELL = 12;
 const int FUNCTION_CELL = 13;
-const int LED_CELL = 14;
-const int SHIELD_CELL = 15;
-const int COLOR_CELL = 16;
-const int SECTION_CELL = 17;
-const int WIDTH_CELL = 18;
-const int SEPARATOR_CELL = 19;
+const int FORM_CELL = 14;
+const int LED_CELL = 15;
+const int SHIELD_CELL = 16;
+const int COLOR_CELL = 17;
+const int SECTION_CELL = 18;
+const int WIDTH_CELL = 19;
+const int SEPARATOR_CELL = 20;
 
-const int COLUMN_COUNT = 20;
+const int COLUMN_COUNT = 21;
 
 static QVector<bool> UNMODIFIED_CELL_VECTOR(COLUMN_COUNT, false);
 
@@ -218,6 +219,7 @@ QVariant TerminalStripModel::data(const QModelIndex &index, int role) const
 			case CABLE_TARGET_CELL : return mrtd.cable_target_;
 			case TYPE_CELL :       return ElementData::translatedTerminalType(mrtd.type_);
 			case FUNCTION_CELL :   return ElementData::translatedTerminalFunction(mrtd.function_);
+			case FORM_CELL :       return ElementData::translatedTerminalForm(mrtd.form_);
 			case COLOR_CELL :      return TerminalColor::displayName(mrtd.color_, mrtd.stripe_color_);
 			case SECTION_CELL :    return mrtd.section_ > 0 ? QLocale().toString(mrtd.section_, 'g', 6) : QString();
 			case WIDTH_CELL :
@@ -347,6 +349,13 @@ bool TerminalStripModel::setData(const QModelIndex &index, const QVariant &value
 		mrtd.function_ = value.value<ElementData::TerminalFunction>();
 		modified_ = true;
 		modified_cell = FUNCTION_CELL;
+	}
+	else if (column_ == FORM_CELL &&
+			 role == Qt::EditRole)
+	{
+		mrtd.form_ = value.value<ElementData::TerminalForm>();
+		modified_ = true;
+		modified_cell = FORM_CELL;
 	}
 	else if (column_ == LABEL_CELL &&
 			 role == Qt::EditRole &&
@@ -506,6 +515,7 @@ QVariant TerminalStripModel::headerData(int section, Qt::Orientation orientation
 				case CABLE_TARGET_CELL: return tr("Target");
 				case TYPE_CELL:       return tr("Type");
 				case FUNCTION_CELL :  return tr("Function");
+				case FORM_CELL :      return tr("Form");
 				case LED_CELL:        return tr("led");
 				case SHIELD_CELL:     return tr("Shield");
 				case COLOR_CELL:      return tr("Color");
@@ -545,6 +555,7 @@ Qt::ItemFlags TerminalStripModel::flags(const QModelIndex &index) const
 		&& !dataAtRow(index.row()).cable_target_auto_)
 		flags = flags | Qt::ItemIsEditable;
 	if (c == LABEL_CELL || c == TYPE_CELL || c == FUNCTION_CELL
+		|| c == FORM_CELL
 		|| c == COLOR_CELL || c == SECTION_CELL || c == WIDTH_CELL)
 		flags = flags | Qt::ItemIsEditable;
 	if (c == LED_CELL || c == SHIELD_CELL || c == SEPARATOR_CELL) {
@@ -856,7 +867,7 @@ static modelRealTerminalData bridgeWalkStep(const QSharedPointer<RealTerminal> &
 	modelRealTerminalData mrtd;
 	if (!real_t.isNull())
 	{
-		mrtd.level_ = real_t->level();
+		mrtd.level_ = real_t->stage();
 		mrtd.bridged_ = real_t->isBridged();
 		mrtd.real_terminal = real_t.toWeakRef();
 	}

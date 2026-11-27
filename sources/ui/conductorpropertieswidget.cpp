@@ -259,6 +259,7 @@ void ConductorPropertiesWidget::addAutonumWidget(QWidget *widget) {
 */
 void ConductorPropertiesWidget::setPotentialTypes(const PotentialTypes &types)
 {
+	m_potential_types = types;
 	const bool shown = types.isEnabled();
 	ui->m_potential_type_cb->clear();
 	ui->m_potential_type_cb->addItem(tr("None"), QString());
@@ -288,6 +289,36 @@ void ConductorPropertiesWidget::selectPotentialType(const QString &name)
 		index = cb->count() - 1;
 	}
 	cb->setCurrentIndex(index);
+}
+
+/**
+	@brief ConductorPropertiesWidget::potentialTypeChosen
+	The user picked a type in the potential type choice: the conductor is
+	given the core definition of that type -- the wire colour, the
+	section and the kind of wire -- when the project keeps those
+	(@see PotentialTypes::showCores()). "None", and a name the project
+	does not list, leave the three fields as they are.
+
+	The three fields are filled whatever conductor this widget shows: an
+	edit reaches every conductor of the selection and of its potential,
+	and one of them being a core of a cable must not keep the others from
+	being given the definition. A core keeps the three its cable gives
+	it (@see ConductorProperties::applyChanges).
+	@param index : the chosen item of the potential type choice
+*/
+void ConductorPropertiesWidget::potentialTypeChosen(int index)
+{
+	if (!m_potential_types.showCores()) {
+		return;
+	}
+	PotentialType type;
+	if (!m_potential_types.find(
+				ui->m_potential_type_cb->itemData(index).toString(), &type)) {
+		return;
+	}
+	ui->m_wire_color_le->setText(type.wire_color);
+	ui->m_wire_section_le->setText(type.wire_section);
+	ui->m_conductor_type_le->setText(type.conductor_type);
 }
 
 /**
@@ -436,6 +467,11 @@ void ConductorPropertiesWidget::initWidget()
 		this, &ConductorPropertiesWidget::updateDashPatternPreview);
 	connect(ui->m_color_kpb, &KColorButton::changed,
 		this, &ConductorPropertiesWidget::updateDashPatternPreview);
+
+		//Choosing a potential type gives the conductor the core
+		//definition of that type, in the same go as the edit it is part of
+	connect(ui->m_potential_type_cb, QOverload<int>::of(&QComboBox::activated),
+			this, &ConductorPropertiesWidget::potentialTypeChosen);
 
 		//The IEC 60757 colour codes: picked from the list, a code sets
 		//the drawn colour too; typed, it stays text like any other

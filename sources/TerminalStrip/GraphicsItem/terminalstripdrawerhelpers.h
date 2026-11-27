@@ -42,6 +42,19 @@ namespace TerminalStripDrawer
 			//Symbol of the type of the terminal (fuse, diode, led...) scaled to fit in box
 		void drawTypeSymbol(QPainter *painter, const QRectF &box,
 							ElementData::TerminalType type, bool led);
+			//How the wire entries of a terminal are shared between the top and
+			//the bottom of its body, by its form: a 2-conductor through terminal
+			//has one hole on each side (the drawing as it has always been), a
+			//3-conductor two above and one under, a 4-conductor and the
+			//sensor/actuator terminal two and two, the pluggable terminal one
+			//and one (the opening under it is drawn as a rectangle)
+		QPair<int, int> entryRowsForForm(ElementData::TerminalForm form);
+			//The part a terminal draws, worked out of its form: a fuse terminal
+			//draws the fuse holder and a sectionable one the disconnect knife
+			//even when their function says nothing about it, and for those two
+			//the form wins over the function
+		ElementData::TerminalType effectiveType(ElementData::TerminalType type,
+											 ElementData::TerminalForm form);
 			//What is needed to draw the cable under a terminal
 		struct CableCell
 		{

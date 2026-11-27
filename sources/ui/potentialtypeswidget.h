@@ -23,6 +23,7 @@
 
 #include <QWidget>
 
+class QCheckBox;
 class QComboBox;
 class QListWidget;
 class QTableWidget;
@@ -30,8 +31,9 @@ class QTableWidget;
 /**
 	@brief The PotentialTypesWidget class
 	Edits the potential types of a project: whether its conductors are
-	drawn from them, the name, colour, line style and width of each, and
-	the pairs of types joined on purpose.
+	drawn from them, the name, colour, line style and width of each, the
+	core definition (conductor colour, section and type) a conductor is
+	given when it is chosen, and the pairs of types joined on purpose.
 */
 class PotentialTypesWidget : public QWidget
 {
@@ -50,8 +52,10 @@ class PotentialTypesWidget : public QWidget
 		void setBonds(const QList<PotentialBond> &bonds);
 		void addBondItem(const PotentialBond &bond);
 		void refreshBondChoices();
+		void updateCoreColumns();
 
 		QComboBox *m_mode_cb = nullptr;
+		QCheckBox *m_cores_cb = nullptr;
 		QTableWidget *m_table = nullptr;
 		QComboBox *m_bond_a_cb = nullptr;
 		QComboBox *m_bond_b_cb = nullptr;

@@ -44,7 +44,7 @@
      </property>
     </widget>
    </item>
-   <item row="6" column="2">
+   <item row="7" column="2">
     <spacer name="verticalSpacer">
      <property name="orientation">
       <enum>Qt::Vertical</enum>
@@ -79,6 +79,67 @@
     </widget>
    </item>
    <item row="5" column="1">
+    <widget class="QLabel" name="label_terminal_form">
+     <property name="text">
+      <string>Form</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="2" colspan="2">
+    <widget class="QComboBox" name="m_form_cb">
+     <item>
+      <property name="text">
+       <string>Not specified</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>2-conductor feed-through terminal</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>3-conductor feed-through terminal</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>4-conductor feed-through terminal</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Multi-level terminal</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Sectionable terminal</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Fuse terminal</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Terminal block</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Sensor/actuator terminal</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Pluggable terminal</string>
+      </property>
+     </item>
+    </widget>
+   </item>
+   <item row="6" column="1">
     <widget class="QLabel" name="label_3">
      <property name="text">
       <string>LED :</string>
@@ -178,7 +239,7 @@
      </item>
     </widget>
    </item>
-   <item row="5" column="2" colspan="2">
+   <item row="6" column="2" colspan="2">
     <widget class="QComboBox" name="m_led_cb">
      <item>
       <property name="text">

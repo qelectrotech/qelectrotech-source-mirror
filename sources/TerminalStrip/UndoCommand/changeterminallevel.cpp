@@ -26,19 +26,32 @@ ChangeTerminalLevel::ChangeTerminalLevel(TerminalStrip *strip,
 	m_strip(strip),
 	m_real_terminal(real_terminal),
 	m_new_level(level),
-	m_old_level(real_terminal.toStrongRef()->level())
+	m_old_level(real_terminal.toStrongRef()->stage())
 {}
 
 void ChangeTerminalLevel::undo()
 {
+	const auto real_terminal = m_real_terminal.toStrongRef();
+	if (!real_terminal) {
+		return;
+	}
 	if (m_strip) {
-		m_strip->setLevel(m_real_terminal, m_old_level);
+		m_strip->setLevel(real_terminal, m_old_level);
+	} else {
+			//A terminal on no strip keeps its stage on itself alone
+		real_terminal->setStage(m_old_level);
 	}
 }
 
 void ChangeTerminalLevel::redo()
 {
+	const auto real_terminal = m_real_terminal.toStrongRef();
+	if (!real_terminal) {
+		return;
+	}
 	if (m_strip) {
-		m_strip->setLevel(m_real_terminal, m_new_level);
+		m_strip->setLevel(real_terminal, m_new_level);
+	} else {
+		real_terminal->setStage(m_new_level);
 	}
 }

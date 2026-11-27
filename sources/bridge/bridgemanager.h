@@ -67,6 +67,10 @@ class BridgeManager
 			//Drawing
 		static QList<BridgeCrossing> crossedTerminals(Diagram *diagram, const QLineF &line);
 
+			//Why what a drawn line crosses cannot become a bridge, or an
+			//empty string when it can: a bridge lies at one stage only
+		static QString stageProblem(const QList<BridgeCrossing> &crossings);
+
 			//Where a bridge runs at the terminals it crosses
 		static int freeColumn(QETProject *project, const QList<BridgeTerminal> &terminals);
 		static QSet<QUuid> occupiedTerminals(QETProject *project,

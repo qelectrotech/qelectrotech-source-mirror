@@ -47,6 +47,7 @@ class FreeTerminalEditor : public QWidget
 	private slots:
 		void on_m_type_cb_activated(int index);
 		void on_m_function_cb_activated(int index);
+		void on_m_form_cb_activated(int index);
 		void on_m_led_cb_activated(int index);
 		void on_m_move_pb_clicked();
 

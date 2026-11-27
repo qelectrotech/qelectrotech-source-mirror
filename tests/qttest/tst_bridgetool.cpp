@@ -300,6 +300,41 @@ private slots:
 		QVERIFY2(at_first < at_second, "the terminals are crossed in the order the line runs over them");
 	}
 
+	//A bridge lies at one stage: a line crossing terminals of different
+	//stages cannot be built -- a comb cannot sit at two heights of the
+	//cabinet at once
+	void aBridgeMayNotJoinTwoStages()
+	{
+		const QString fixture = QFINDTESTDATA("fixtures/bridge_tracks.qet");
+		QETProject project(fixture);
+		QCOMPARE(project.state(), QETProject::Ok);
+
+		const auto terminals = stripTerminals(project);
+		QVERIFY2(terminals.size() >= 2, "the fixture has the terminals of the strip X1");
+		auto strip = project.terminalStrip().first();
+		QVERIFY(strip);
+
+			//Every terminal of the strip at the same stage: allowed
+		for (const auto &real_t : terminals) {
+			QVERIFY(strip->setLevel(real_t, 1));
+		}
+		const QLineF line(terminals.first()->element()->scenePos(),
+						  terminals.last()->element()->scenePos());
+		const QList<BridgeCrossing> same =
+			BridgeManager::crossedTerminals(project.diagrams().first(), line);
+		QVERIFY(same.size() >= 2);
+		const QString same_problem = BridgeManager::stageProblem(same);
+		QVERIFY2(same_problem.isEmpty(), qPrintable(same_problem));
+
+			//One of them at another stage: refused
+		QVERIFY(strip->setLevel(terminals.last(), 2));
+		const QList<BridgeCrossing> mixed =
+			BridgeManager::crossedTerminals(project.diagrams().first(), line);
+		QVERIFY(mixed.size() >= 2);
+		QVERIFY2(!BridgeManager::stageProblem(mixed).isEmpty(),
+				 "a line crossing two stages has to be refused");
+	}
+
 	//Two bridges side by side do not share a track: a bridge lies across
 	//the terminals between the ones it lands on as well
 	void parallelBridgesTakeTheirOwnColumn()

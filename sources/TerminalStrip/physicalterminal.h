@@ -75,6 +75,7 @@ class PhysicalTerminal
 		bool removeTerminal(const QSharedPointer<RealTerminal> &terminal);
 
 		bool setLevelOf(const QSharedPointer<RealTerminal> &terminal, int level);
+		void sortByStage();
 
 		void setParentStrip(TerminalStrip *strip);
 

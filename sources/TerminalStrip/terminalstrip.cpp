@@ -690,9 +690,13 @@ bool TerminalStrip::setLevel(const QSharedPointer<RealTerminal> &real_terminal, 
 	{
 		if (auto physical_terminal = real_terminal->physicalTerminal())
 		{
-			if (physical_terminal->realTerminals().size() > 1 &&
-				physical_terminal->setLevelOf(real_terminal, level))
+			if (physical_terminal)
 			{
+					//The stage of the terminal is the number the user gave
+					//it (@sa RealTerminal::stage): the stages of a block
+					//stay in their order, foot first
+				real_terminal->setStage(level);
+				physical_terminal->sortByStage();
 				emit orderChanged();
 				return true;
 			}
@@ -724,7 +728,7 @@ bool TerminalStrip::isBridgeable(const QVector<QSharedPointer<RealTerminal>> &re
 	}
 
 		// Get the level of the first terminal
-	const int level_ = first_real_terminal->level();
+	const int level_ = first_real_terminal->stage();
 
 		// Get the physical terminal and pos
 	auto first_physical_terminal = first_real_terminal->physicalTerminal();
@@ -745,7 +749,7 @@ bool TerminalStrip::isBridgeable(const QVector<QSharedPointer<RealTerminal>> &re
 		}
 
 			// at the same level
-		if (level_ != real_terminal->level()) {
+		if (level_ != real_terminal->stage()) {
 			return false;
 		}
 
@@ -1312,6 +1316,22 @@ QDomElement TerminalStrip::toXml(QDomDocument &parent_document)
  * @param xml_element
  * @return Set up this terminal strip from the xml description \p xml_element
  */
+/**
+ * @brief readStage
+ * Give \p real_terminal the stage written in \p xml_real, when the
+ * layout has one: terminals written before the stage existed have none
+ * and keep the number of their position.
+ */
+static void readStage(const QDomElement &xml_real,
+					  const QSharedPointer<RealTerminal> &real_terminal)
+{
+	bool ok = false;
+	const int stage = xml_real.attribute(QStringLiteral("stage")).toInt(&ok);
+	if (ok && real_terminal) {
+		real_terminal->setStage(stage);
+	}
+}
+
 bool TerminalStrip::fromXml(QDomElement &xml_element)
 {
 	if (xml_element.tagName() != xmlTagName()) {
@@ -1358,6 +1378,7 @@ bool TerminalStrip::fromXml(QDomElement &xml_element)
 					//A spare terminal (on no folio) has its own data
 				if (auto spare_ = RealTerminal::spareFromXml(xml_real)) {
 					real_t_vector.append(spare_);
+					readStage(xml_real, spare_);
 					continue;
 				}
 
@@ -1368,6 +1389,7 @@ bool TerminalStrip::fromXml(QDomElement &xml_element)
 					if (terminal_elmt->uuid() == uuid_)
 					{
 						real_t_vector.append(terminal_elmt->realTerminal());
+						readStage(xml_real, terminal_elmt->realTerminal());
 							//Remove the actual terminal element from the vector, they dicrease the size
 							//of the vector and so each iteration have less terminal element to check
 						free_terminals.removeOne(terminal_elmt);

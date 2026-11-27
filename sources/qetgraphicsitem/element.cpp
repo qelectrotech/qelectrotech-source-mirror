@@ -44,6 +44,7 @@
 #include <undocommand/setautonumcontextcommand.h>
 #include "crossrefitem.h"
 #include "terminalelement.h"
+#include "TerminalStrip/realterminal.h"
 #include <TerminalStrip/terminalstrip.h>
 #include "dynamicelementtextitem.h"
 #include "elementtextitemgroup.h"
@@ -1697,9 +1698,25 @@ bool Element::fromXml(QDomElement &e,
 						m_data.terminalFunctionFromString(
 							elmt_type.attribute(QStringLiteral("terminal_function"))));
 
+			m_data.setTerminalForm(
+						m_data.terminalFormFromString(
+							elmt_type.attribute(QStringLiteral("terminal_form"))));
+
 			m_data.setTerminalLED(
 						QETXML::boolFromString(
 							elmt_type.attribute(QStringLiteral("terminal_led")), false));
+
+				//The stage the terminal was given with its symbol, so
+				//that a copy of it comes back with the stage it had
+			bool stage_ok = false;
+			const int stage = elmt_type.attribute(QStringLiteral("stage")).toInt(&stage_ok);
+			if (stage_ok) {
+				if (auto *terminal = qobject_cast<TerminalElement *>(this)) {
+					if (auto real_terminal = terminal->realTerminal()) {
+						real_terminal->setStage(stage);
+					}
+				}
+			}
 		}
 	}
 
@@ -2793,6 +2810,28 @@ void Element::appendDataXml(QDomDocument &document, QDomElement &element) const
 								m_data.terminalFunctionToString(m_data.terminalFunction()));
 		element_type.setAttribute(QStringLiteral("terminal_led"),
 								QETXML::boolToString(m_data.terminalLed()));
+			//The stage of the terminal within its block, kept with the
+			//symbol: a copy of a symbol is on no strip, and has to come
+			//back with the stage it was given
+			//Only a stage which was chosen travels with the symbol: the
+			//number of the position is written by the layout of the strip
+			//alone, and writing it twice made a save which was not
+			//idempotent (a save which changes the file it just wrote)
+		if (const auto *terminal = qobject_cast<const TerminalElement *>(this)) {
+			if (const auto real_terminal = terminal->realTerminal()) {
+				if (real_terminal->hasStage()) {
+					element_type.setAttribute(QStringLiteral("stage"),
+											  QString::number(real_terminal->stage()));
+				}
+			}
+		}
+			//The form only when there is one: a symbol without a form
+			//saves as it always did, and a resave of an untouched project
+			//changes nothing
+		if (m_data.terminalForm() != ElementData::TFormNone) {
+			element_type.setAttribute(QStringLiteral("terminal_form"),
+									 m_data.terminalFormToString(m_data.terminalForm()));
+		}
 
 		properties.appendChild(element_type);
 		element.appendChild(properties);

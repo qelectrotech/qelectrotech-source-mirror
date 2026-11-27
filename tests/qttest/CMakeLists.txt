@@ -734,6 +734,20 @@ qet_add_app_test(tst_terminalconductortext tst_terminalconductortext.cpp)
 # typed as %{key} in a composite text, and both follow its value.
 qet_add_app_test(tst_custominfotext tst_custominfotext.cpp)
 
+# The text alignment and composite text dialogs open next to what opened
+# them (issue #1952): under their cell of the Texts tab, under the Alignment
+# buttons of the symbol editor, and inside the screen under the button. Two
+# offscreen screens side by side, for the screen under the button.
+qet_add_app_test(tst_dialogplacement tst_dialogplacement.cpp)
+set(two_screens "${CMAKE_CURRENT_SOURCE_DIR}/fixtures/two_screens.json")
+set_tests_properties(tst_dialogplacement PROPERTIES ENVIRONMENT
+  "QT_QPA_PLATFORM=offscreen:configfile=${two_screens}")
+
+# The text alignment dialog applies a point as soon as it is picked (#1973).
+# The composite text dialog of the Texts tab saves its text only with OK
+# (#1979).
+qet_add_app_test(tst_textdialogs tst_textdialogs.cpp)
+
 # A symbol can define its own custom properties (discussion #561): every
 # placed copy has them, filled in or not, an empty one adds nothing to
 # the saved project, and a typed name becomes a key every version opens.
@@ -2567,6 +2581,16 @@ qet_add_app_test(tst_dragtextswithoutshift tst_dragtextswithoutshift.cpp)
 # Potential types (#1539): a project that asks for it draws a conductor in the
 # colour, line style and width of its potential type.
 qet_add_app_test(tst_potentialtypes tst_potentialtypes.cpp)
+# The form of a terminal (through terminal, multi-level one...): a second
+# choice beside the function type, saved and loaded apart from it, unset in
+# every symbol written before the list existed.
+qet_add_app_test(tst_terminalform tst_terminalform.cpp)
+# The stage of a terminal within its block (0 at the foot, the PE of a
+# multi-level one): saved with the strip, kept in order foot first, and a
+# number which does not continue the block before it starts a new one.
+qet_add_app_test(tst_terminalstage tst_terminalstage.cpp)
+target_compile_definitions(tst_terminalstage PRIVATE
+  QET_ELEMENTS_DIR="${QET_DIR}/elements")
 # The Check panel (#1878 B1): every check at once, each finding shown on
 # its folio; wires over the limit and repeated terminal names are new.
 qet_add_app_test(tst_projectcheck tst_projectcheck.cpp)
@@ -2599,6 +2623,9 @@ qet_add_app_test(tst_cablelockedfields tst_cablelockedfields.cpp)
 # IEC 60757 wire colour codes: a code picked from the list sets the colour
 # text and the drawing (green-yellow striped); typed text stays text.
 qet_add_app_test(tst_conductorcolorcodes tst_conductorcolorcodes.cpp)
+# The setting that outlines white and very pale wires in black, so they
+# show on a white folio; off by default.
+qet_add_app_test(tst_outlinelightwires tst_outlinelightwires.cpp)
 
 # A function separated terminal block: a new wire on one side takes what
 # the separation lets through from the other -- the voltage / protocol and

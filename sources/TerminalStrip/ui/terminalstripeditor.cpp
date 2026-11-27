@@ -402,6 +402,7 @@ void TerminalStripEditor::apply()
 				auto current_data = old_data;
 				current_data.setTerminalType(data_.type_);
 				current_data.setTerminalFunction(data_.function_);
+				current_data.setTerminalForm(data_.form_);
 				current_data.setTerminalLED(data_.led_);
 				current_data.m_informations.addValue(QStringLiteral("label"), data_.label_);
 				//The cable data are only stored when they are used
@@ -442,7 +443,7 @@ void TerminalStripEditor::apply()
 						m_project->undoStack()->push(new ChangeSpareTerminalDataCommand(real_t, current_data));
 					}
 				}
-				if (data_.level_ != real_t->level())
+				if (data_.level_ != real_t->stage())
 					m_project->undoStack()->push(new ChangeTerminalLevel(m_current_strip, data_.real_terminal, data_.level_));
 			}
 		}
@@ -547,6 +548,7 @@ void TerminalStripEditor::selectionChanged()
 		ui->m_level_sb          ->setDisabled(true);
 		ui->m_type_cb           ->setDisabled(true);
 		ui->m_function_cb       ->setDisabled(true);
+		ui->m_form_cb           ->setDisabled(true);
 		ui->m_led_cb            ->setDisabled(true);
 		ui->m_cable_le          ->setDisabled(true);
 		ui->m_cable_apply_pb    ->setDisabled(true);
@@ -566,12 +568,14 @@ void TerminalStripEditor::selectionChanged()
 	if (index_list.isEmpty()) {
 		ui->m_type_cb     ->setDisabled(true);
 		ui->m_function_cb ->setDisabled(true);
+		ui->m_form_cb     ->setDisabled(true);
 		ui->m_led_cb      ->setDisabled(true);
 		ui->m_cable_le      ->setDisabled(true);
 		ui->m_cable_apply_pb->setDisabled(true);
 	} else {
 		ui->m_type_cb     ->setEnabled(true);
 		ui->m_function_cb ->setEnabled(true);
+		ui->m_form_cb     ->setEnabled(true);
 		ui->m_led_cb      ->setEnabled(true);
 		ui->m_cable_le      ->setEnabled(true);
 		ui->m_cable_apply_pb->setEnabled(true);
@@ -1180,6 +1184,24 @@ void TerminalStripEditor::on_m_function_cb_activated(int index)
 }
 
 
+void TerminalStripEditor::on_m_form_cb_activated(int index)
+{
+	if (m_model)
+	{
+		const auto index_list = ui->m_table_widget->selectionModel()->selectedIndexes();
+
+		for (auto model_index : index_list)
+		{
+			auto form_index = m_model->index(model_index.row(), TerminalStripModel::Form, model_index.parent());
+			if (form_index.isValid())
+			{
+					//The combo lists the forms in the order of the enum
+				m_model->setData(form_index, static_cast<ElementData::TerminalForm>(index));
+			}
+		}
+	}
+}
+
 void TerminalStripEditor::on_m_led_cb_activated(int index)
 {
 	if (m_model)
@@ -1779,6 +1801,7 @@ void TerminalStripEditor::on_m_add_spare_pb_clicked()
 		const auto reference_data_ = reference_real_->terminalData();
 		model_.setTerminalType(reference_data_.terminalType());
 		model_.setTerminalFunction(reference_data_.terminalFunction());
+		model_.setTerminalForm(reference_data_.terminalForm());
 		model_.setTerminalLED(reference_data_.terminalLed());
 			//What makes the part, not what belongs to this terminal (label, cable...)
 		for (const auto &key_ : {RealTerminal::sectionInfoKey(), RealTerminal::widthInfoKey(),
