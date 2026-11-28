@@ -20733,6 +20733,16 @@ Um daraus ein Skript zu machen, bitten Sie Ihren KI-Assistenten: Die Schaltfläc
         <source>Find duplicate signals and components...</source>
         <translation>Doppelte Signale und Bauteile suchen...</translation>
     </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2402"/>
+        <source>Import sPlan schematic (.spl8)…</source>
+        <translation type="unfinished">sPlan-Plan importieren (.spl8)…</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2404"/>
+        <source>Reads an sPlan 8 schematic and draws it anew as a QElectroTech project</source>
+        <translation type="unfinished">Liest einen sPlan-8-Plan und zeichnet ihn als QElectroTech-Projekt neu</translation>
+    </message>
 </context>
 <context>
     <name>QETElementEditor</name>
@@ -28239,6 +28249,239 @@ Andere Felder werden nicht verwendet.</translation>
         <source>3D mouse</source>
         <comment>configuration page title</comment>
         <translation type="vanished">3D-Maus</translation>
+    </message>
+</context>
+<context>
+    <name>SplanImportDialog</name>
+    <message>
+        <location filename="../sources/import/splan/splanimportdialog.cpp" line="92"/>
+        <source>Change…</source>
+        <translation type="unfinished">Ändern…</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/splan/splanimportdialog.cpp" line="104"/>
+        <source>Import an sPlan schematic</source>
+        <translation type="unfinished">sPlan-Plan importieren</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/splan/splanimportdialog.cpp" line="109"/>
+        <source>Reads an sPlan 8 schematic (.spl8) and draws it anew as a QElectroTech project: the same devices and connections on the grid, with cross references between coils and contacts. What the schematic leaves open is listed in a file &lt;name&gt;_open_questions.txt next to the project.</source>
+        <translation type="unfinished">Liest einen sPlan-8-Plan (.spl8) und zeichnet ihn als QElectroTech-Projekt neu: dieselben Geräte und Verbindungen im Raster, mit Querverweisen zwischen Spulen und Kontakten. Was der Plan offen lässt, steht in einer Datei &lt;name&gt;_open_questions.txt neben dem Projekt.</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/splan/splanimportdialog.cpp" line="121"/>
+        <source>sPlan schematic (.spl8):</source>
+        <translation type="unfinished">sPlan-Plan (.spl8):</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/splan/splanimportdialog.cpp" line="123"/>
+        <source>Save as:</source>
+        <translation type="unfinished">Speichern als:</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/splan/splanimportdialog.cpp" line="126"/>
+        <source>Also write a PDF and a comparison with the original</source>
+        <translation type="unfinished">Zusätzlich PDF und Vergleich mit dem Original schreiben</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/splan/splanimportdialog.cpp" line="131"/>
+        <source>Import program:</source>
+        <translation type="unfinished">Importprogramm:</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/splan/splanimportdialog.cpp" line="134"/>
+        <source>Python:</source>
+        <translation type="unfinished">Python:</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/splan/splanimportdialog.cpp" line="136"/>
+        <source>found when the import starts</source>
+        <translation type="unfinished">wird beim Start gesucht</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/splan/splanimportdialog.cpp" line="148"/>
+        <source>The output of the import appears here.</source>
+        <translation type="unfinished">Hier erscheint die Ausgabe des Imports.</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/splan/splanimportdialog.cpp" line="104"/>
+        <source>Import</source>
+        <translation type="unfinished">Importieren</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/splan/splanimportdialog.cpp" line="287"/>
+        <source>Reading the sPlan schematic</source>
+        <translation type="unfinished">sPlan-Plan lesen</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/splan/splanimportdialog.cpp" line="289"/>
+        <source>Recognising devices and connections, laying out the sheets</source>
+        <translation type="unfinished">Geräte und Verbindungen erkennen, Blätter anordnen</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/splan/splanimportdialog.cpp" line="292"/>
+        <source>Writing the QElectroTech project</source>
+        <translation type="unfinished">QElectroTech-Projekt schreiben</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/splan/splanimportdialog.cpp" line="294"/>
+        <source>Checking and tidying the layout</source>
+        <translation type="unfinished">Layout prüfen und nachbessern</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/splan/splanimportdialog.cpp" line="296"/>
+        <source>Writing the PDF</source>
+        <translation type="unfinished">PDF schreiben</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/splan/splanimportdialog.cpp" line="298"/>
+        <source>Done</source>
+        <translation type="unfinished">Fertig</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/splan/splanimportdialog.cpp" line="309"/>
+        <source>sPlan 8 schematics (*.spl8);;All files (*)</source>
+        <translation type="unfinished">sPlan-8-Pläne (*.spl8);;Alle Dateien (*)</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/splan/splanimportdialog.cpp" line="326"/>
+        <source>Save the imported project as</source>
+        <translation type="unfinished">Importiertes Projekt speichern als</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/splan/splanimportdialog.cpp" line="327"/>
+        <source>QElectroTech projects (*.qet)</source>
+        <translation type="unfinished">QElectroTech-Projekte (*.qet)</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/splan/splanimportdialog.cpp" line="339"/>
+        <source>Where is the import program?</source>
+        <translation type="unfinished">Wo liegt das Importprogramm?</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/splan/splanimportdialog.cpp" line="341"/>
+        <source>Import program (%1)</source>
+        <translation type="unfinished">Importprogramm (%1)</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/splan/splanimportdialog.cpp" line="351"/>
+        <source>Programs (*.exe)</source>
+        <translation type="unfinished">Programme (*.exe)</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/splan/splanimportdialog.cpp" line="356"/>
+        <source>Which Python should run the import?</source>
+        <translation type="unfinished">Mit welchem Python soll der Import laufen?</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/splan/splanimportdialog.cpp" line="369"/>
+        <source>Choose the sPlan schematic (.spl8).</source>
+        <translation type="unfinished">sPlan-Plan (.spl8) auswählen.</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/splan/splanimportdialog.cpp" line="371"/>
+        <source>The sPlan schematic %1 does not exist.</source>
+        <translation type="unfinished">Der sPlan-Plan %1 existiert nicht.</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/splan/splanimportdialog.cpp" line="373"/>
+        <source>Choose where the QElectroTech project is to be saved.</source>
+        <translation type="unfinished">Wählen, wo das QElectroTech-Projekt gespeichert wird.</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/splan/splanimportdialog.cpp" line="376"/>
+        <source>The import program (%1) was not found. Choose it with &quot;Change…&quot;.</source>
+        <translation type="unfinished">Das Importprogramm (%1) wurde nicht gefunden. Mit „Ändern…“ auswählen.</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/splan/splanimportdialog.cpp" line="381"/>
+        <source>Cancel</source>
+        <translation type="unfinished">Abbrechen</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/splan/splanimportdialog.cpp" line="381"/>
+        <source>Close</source>
+        <translation type="unfinished">Schließen</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/splan/splanimportdialog.cpp" line="410"/>
+        <source>%1 does not start.</source>
+        <translation type="unfinished">%1 startet nicht.</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/splan/splanimportdialog.cpp" line="416"/>
+        <source>%1 did not answer.</source>
+        <translation type="unfinished">%1 antwortet nicht.</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/splan/splanimportdialog.cpp" line="478"/>
+        <source>Checking %1 …</source>
+        <translation type="unfinished">Prüfe %1 …</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/splan/splanimportdialog.cpp" line="486"/>
+        <source>No Python runs the import program:</source>
+        <translation type="unfinished">Kein Python kann das Importprogramm ausführen:</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/splan/splanimportdialog.cpp" line="490"/>
+        <source>Install Python 3.10 or newer, or choose another Python.</source>
+        <translation type="unfinished">Python 3.10 oder neuer installieren oder ein anderes Python wählen.</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/splan/splanimportdialog.cpp" line="505"/>
+        <source>%1 is open in QElectroTech. Close it first or choose another file.</source>
+        <translation type="unfinished">%1 ist in QElectroTech geöffnet. Erst schließen oder eine andere Datei wählen.</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/splan/splanimportdialog.cpp" line="513"/>
+        <source>%1 already exists. Replace it?</source>
+        <translation type="unfinished">%1 existiert schon. Ersetzen?</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/splan/splanimportdialog.cpp" line="520"/>
+        <source>The folder %1 cannot be created.</source>
+        <translation type="unfinished">Der Ordner %1 kann nicht angelegt werden.</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/splan/splanimportdialog.cpp" line="538"/>
+        <source>No usable Python found.</source>
+        <translation type="unfinished">Kein passendes Python gefunden.</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/splan/splanimportdialog.cpp" line="558"/>
+        <source>The import does not start: %1</source>
+        <translation type="unfinished">Der Import startet nicht: %1</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/splan/splanimportdialog.cpp" line="563"/>
+        <source>The import did not start.</source>
+        <translation type="unfinished">Der Import ist nicht gestartet.</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/splan/splanimportdialog.cpp" line="572"/>
+        <source>Importing %1 … this can take a few minutes.</source>
+        <translation type="unfinished">Importiere %1 … das kann einige Minuten dauern.</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/splan/splanimportdialog.cpp" line="625"/>
+        <source>Done: %1</source>
+        <translation type="unfinished">Fertig: %1</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/splan/splanimportdialog.cpp" line="631"/>
+        <source>The import was stopped.</source>
+        <translation type="unfinished">Der Import wurde abgebrochen.</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/splan/splanimportdialog.cpp" line="632"/>
+        <source>The import failed (exit code %1). The reason is in the output below.</source>
+        <translation type="unfinished">Der Import ist fehlgeschlagen (Rückgabewert %1). Der Grund steht in der Ausgabe unten.</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/splan/splanimportdialog.cpp" line="640"/>
+        <source>Stop the running import?</source>
+        <translation type="unfinished">Laufenden Import abbrechen?</translation>
     </message>
 </context>
 <context>
