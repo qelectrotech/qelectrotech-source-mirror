@@ -1704,7 +1704,7 @@ Nota: queste opzioni non consentono attivare o disattivare la numerazione automa
     <message>
         <location filename="../sources/bridge/bridgemanager.cpp" line="227"/>
         <source>The line crosses terminals of different stages (%1). A bridge lies at one stage only: draw it along one stage.</source>
-        <translation type="unfinished"></translation>
+        <translation>La linea attraversa morsetti di livelli diversi (%1). Un ponticello sta su un solo livello: tracciala lungo un solo livello.</translation>
     </message>
 </context>
 <context>
@@ -2116,7 +2116,7 @@ Se confermi, l&apos;altro cavo perderà queste anime. Vuoi continuare?</numerusf
     <message>
         <location filename="../sources/cablelist/cablelistrows.cpp" line="197"/>
         <source>Comment</source>
-        <translation type="unfinished"></translation>
+        <translation>Commento</translation>
     </message>
 </context>
 <context>
@@ -2465,7 +2465,7 @@ Vuoi rinumerare anche questi?</numerusform>
     <message>
         <location filename="../sources/cable/cablepropertieswidget.cpp" line="97"/>
         <source>Comment</source>
-        <translation type="unfinished"></translation>
+        <translation>Commento</translation>
     </message>
     <message>
         <location filename="../sources/cable/cablepropertieswidget.cpp" line="102"/>
@@ -2840,77 +2840,77 @@ Vuoi rinumerare anche questi?</numerusform>
         <location filename="../sources/ui/checkpaneldockwidget.cpp" line="52"/>
         <source>Check</source>
         <comment>dock title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Verifica</translation>
     </message>
     <message>
         <location filename="../sources/ui/checkpaneldockwidget.cpp" line="60"/>
         <source>Run checks</source>
-        <translation type="unfinished"></translation>
+        <translation>Esegui le verifiche</translation>
     </message>
     <message>
         <location filename="../sources/ui/checkpaneldockwidget.cpp" line="62"/>
         <source>Run every check on the current project</source>
-        <translation type="unfinished"></translation>
+        <translation>Esegui tutte le verifiche sul progetto corrente</translation>
     </message>
     <message>
         <location filename="../sources/ui/checkpaneldockwidget.cpp" line="67"/>
         <source>Options</source>
-        <translation type="unfinished"></translation>
+        <translation>Opzioni</translation>
     </message>
     <message>
         <location filename="../sources/ui/checkpaneldockwidget.cpp" line="70"/>
         <source>Symbols with no wire</source>
-        <translation type="unfinished"></translation>
+        <translation>Simboli senza filo</translation>
     </message>
     <message>
         <location filename="../sources/ui/checkpaneldockwidget.cpp" line="86"/>
         <source>The options changed. Run the checks again.</source>
-        <translation type="unfinished"></translation>
+        <translation>Le opzioni sono cambiate. Esegui di nuovo le verifiche.</translation>
     </message>
     <message>
         <location filename="../sources/ui/checkpaneldockwidget.cpp" line="89"/>
         <source>Leave out folios with no wire</source>
-        <translation type="unfinished"></translation>
+        <translation>Escludi le pagine senza fili</translation>
     </message>
     <message>
         <location filename="../sources/ui/checkpaneldockwidget.cpp" line="91"/>
         <source>Leave out strip terminals</source>
-        <translation type="unfinished"></translation>
+        <translation>Escludi i morsetti delle morsettiere</translation>
     </message>
     <message>
         <location filename="../sources/ui/checkpaneldockwidget.cpp" line="93"/>
         <source>Leave out auxiliary contacts</source>
-        <translation type="unfinished"></translation>
+        <translation>Escludi i contatti ausiliari</translation>
     </message>
     <message>
         <location filename="../sources/ui/checkpaneldockwidget.cpp" line="95"/>
         <source>Accepted findings</source>
-        <translation type="unfinished"></translation>
+        <translation>Segnalazioni accettate</translation>
     </message>
     <message>
         <location filename="../sources/ui/checkpaneldockwidget.cpp" line="96"/>
         <source>Show accepted findings</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostra le segnalazioni accettate</translation>
     </message>
     <message>
         <location filename="../sources/ui/checkpaneldockwidget.cpp" line="113"/>
         <source>Finding</source>
-        <translation type="unfinished"></translation>
+        <translation>Segnalazione</translation>
     </message>
     <message>
         <location filename="../sources/ui/checkpaneldockwidget.cpp" line="113"/>
         <source>Folio</source>
-        <translation type="unfinished">Pagina</translation>
+        <translation>Pagina</translation>
     </message>
     <message>
         <location filename="../sources/ui/checkpaneldockwidget.cpp" line="113"/>
         <source>Cell</source>
-        <translation type="unfinished"></translation>
+        <translation>Cella</translation>
     </message>
     <message>
         <location filename="../sources/ui/checkpaneldockwidget.cpp" line="120"/>
         <source>Double-click a finding to show it on its folio. Right-click to accept it, or to switch its check off for this project.</source>
-        <translation type="unfinished"></translation>
+        <translation>Fai doppio clic su una segnalazione per mostrarla nella sua pagina. Clic destro per accettarla o per disattivarne la verifica per questo progetto.</translation>
     </message>
     <message>
         <location filename="../sources/ui/checkpaneldockwidget.cpp" line="131"/>
@@ -2919,129 +2919,129 @@ Vuoi rinumerare anche questi?</numerusform>
         <location filename="../sources/ui/checkpaneldockwidget.cpp" line="192"/>
         <location filename="../sources/ui/checkpaneldockwidget.cpp" line="209"/>
         <source>No project is open.</source>
-        <translation type="unfinished">Nessun progetto aperto.</translation>
+        <translation>Nessun progetto aperto.</translation>
     </message>
     <message>
         <location filename="../sources/ui/checkpaneldockwidget.cpp" line="147"/>
         <source>Press Run checks to check the project.</source>
-        <translation type="unfinished"></translation>
+        <translation>Premi “Esegui le verifiche” per verificare il progetto.</translation>
     </message>
     <message>
         <location filename="../sources/ui/checkpaneldockwidget.cpp" line="168"/>
         <source>Reading the folios...</source>
-        <translation type="unfinished">Lettura delle pagine...</translation>
+        <translation>Lettura delle pagine...</translation>
     </message>
     <message>
         <location filename="../sources/ui/checkpaneldockwidget.cpp" line="181"/>
         <source>Reading folio %1 of %2...</source>
-        <translation type="unfinished">Lettura della pagina %1 di %2...</translation>
+        <translation>Lettura della pagina %1 di %2...</translation>
     </message>
     <message>
         <location filename="../sources/ui/checkpaneldockwidget.cpp" line="298"/>
         <source>%1: switched off for this project</source>
         <extracomment>%1 is the check</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>%1: disattivata per questo progetto</translation>
     </message>
     <message>
         <location filename="../sources/ui/checkpaneldockwidget.cpp" line="306"/>
         <source>%1: %2</source>
         <extracomment>%1 is the check, %2 why it found nothing to check</extracomment>
-        <translation type="unfinished">%1: %2</translation>
+        <translation>%1: %2</translation>
     </message>
     <message>
         <location filename="../sources/ui/checkpaneldockwidget.cpp" line="321"/>
         <source>%1 (accepted)</source>
         <extracomment>%1 is a finding the project accepted</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>%1 (accettata)</translation>
     </message>
     <message>
         <location filename="../sources/ui/checkpaneldockwidget.cpp" line="323"/>
         <source>%1 (accepted: %2)</source>
         <extracomment>%1 is a finding the project accepted, %2 the note given then</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>%1 (accettate: %2)</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/checkpaneldockwidget.cpp" line="337"/>
         <source>%1: nothing found, %n accepted</source>
         <extracomment>%1 is the check; %n counts the findings the project accepted</extracomment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%1: nulla trovato, %n accettata</numerusform>
+            <numerusform>%1: nulla trovato, %n accettate</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/ui/checkpaneldockwidget.cpp" line="339"/>
         <source>%1: nothing found</source>
         <extracomment>%1 is the check</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>%1: nulla trovato</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/checkpaneldockwidget.cpp" line="345"/>
         <source>%1 (%2, %n accepted)</source>
         <extracomment>%1 is the check, %2 how many findings it has; %n counts those accepted</extracomment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%1 (%2, %n accettata)</numerusform>
+            <numerusform>%1 (%2, %n accettate)</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/ui/checkpaneldockwidget.cpp" line="347"/>
         <source>%1 (%2)</source>
         <extracomment>%1 is the check, %2 how many findings it has</extracomment>
-        <translation type="unfinished">%1 (%2)</translation>
+        <translation>%1 (%2)</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/checkpaneldockwidget.cpp" line="361"/>
         <source>%n finding(s). Run the checks again after a change.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n segnalazione. Esegui di nuovo le verifiche dopo una modifica.</numerusform>
+            <numerusform>%n segnalazioni. Esegui di nuovo le verifiche dopo una modifica.</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/ui/checkpaneldockwidget.cpp" line="362"/>
         <source>Nothing found.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nulla trovato.</translation>
     </message>
     <message>
         <location filename="../sources/ui/checkpaneldockwidget.cpp" line="477"/>
         <source>List this finding again</source>
-        <translation type="unfinished"></translation>
+        <translation>Elenca di nuovo questa segnalazione</translation>
     </message>
     <message>
         <location filename="../sources/ui/checkpaneldockwidget.cpp" line="483"/>
         <source>Accept this finding...</source>
-        <translation type="unfinished"></translation>
+        <translation>Accetta questa segnalazione...</translation>
     </message>
     <message>
         <location filename="../sources/ui/checkpaneldockwidget.cpp" line="484"/>
         <source>The finding is not listed any more in this project, until Options &gt; Show accepted findings.</source>
-        <translation type="unfinished"></translation>
+        <translation>Questa segnalazione non è più elencata in questo progetto, a meno di Opzioni &gt; Mostra le segnalazioni accettate.</translation>
     </message>
     <message>
         <location filename="../sources/ui/checkpaneldockwidget.cpp" line="490"/>
         <source>Accept this finding</source>
-        <translation type="unfinished"></translation>
+        <translation>Accetta questa segnalazione</translation>
     </message>
     <message>
         <location filename="../sources/ui/checkpaneldockwidget.cpp" line="491"/>
         <source>Why it is right as it is (kept in the project):</source>
-        <translation type="unfinished"></translation>
+        <translation>Perché va bene così (conservato nel progetto):</translation>
     </message>
     <message>
         <location filename="../sources/ui/checkpaneldockwidget.cpp" line="499"/>
         <source>Switch this check off for this project</source>
-        <translation type="unfinished"></translation>
+        <translation>Disattiva questa verifica per questo progetto</translation>
     </message>
     <message>
         <location filename="../sources/ui/checkpaneldockwidget.cpp" line="500"/>
         <source>Switch this check on for this project</source>
-        <translation type="unfinished"></translation>
+        <translation>Attiva questa verifica per questo progetto</translation>
     </message>
     <message>
         <location filename="../sources/ui/checkpaneldockwidget.cpp" line="565"/>
         <source>This is no longer in the project. Run the checks again.</source>
-        <translation type="unfinished"></translation>
+        <translation>Questo non è più nel progetto. Esegui di nuovo le verifiche.</translation>
     </message>
 </context>
 <context>
@@ -3371,12 +3371,12 @@ Vuoi rinumerare anche questi?</numerusform>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="260"/>
         <source>Choose the shapes and texts drawn at the stroke. The drawing is saved with the project as soon as you accept its editor, even if this dialog is cancelled then.</source>
-        <translation type="unfinished"></translation>
+        <translation>Scegli le forme e i testi disegnati sul tratto. Il disegno viene salvato con il progetto non appena accetti il suo editor, anche se questa finestra viene poi annullata.</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="263"/>
         <source>Customize...</source>
-        <translation type="unfinished"></translation>
+        <translation>Personalizza...</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="270"/>
@@ -3953,325 +3953,325 @@ Continuare?</translation>
     <message>
         <location filename="../sources/ui/definitionmarkstyleeditor.ui" line="14"/>
         <source>Customize the stroke and its texts</source>
-        <translation type="unfinished"></translation>
+        <translation>Personalizza il tratto e i suoi testi</translation>
     </message>
     <message>
         <location filename="../sources/ui/definitionmarkstyleeditor.ui" line="20"/>
         <source>The stroke as the conductors show it. Drag the shapes and texts to move them.</source>
-        <translation type="unfinished"></translation>
+        <translation>Il tratto come lo mostrano i conduttori. Trascina le forme e i testi per spostarli.</translation>
     </message>
     <message>
         <location filename="../sources/ui/definitionmarkstyleeditor.ui" line="30"/>
         <source>Draw the stroke with the shapes and texts below instead of the standard slanted stroke. The drawing is saved with the project.</source>
-        <translation type="unfinished"></translation>
+        <translation>Disegna il tratto con le forme e i testi qui sotto invece del tratto obliquo standard. Il disegno viene salvato con il progetto.</translation>
     </message>
     <message>
         <location filename="../sources/ui/definitionmarkstyleeditor.ui" line="33"/>
         <source>Use a customized drawing</source>
-        <translation type="unfinished"></translation>
+        <translation>Usa un disegno personalizzato</translation>
     </message>
     <message>
         <location filename="../sources/ui/definitionmarkstyleeditor.ui" line="42"/>
         <source>On a vertical conductor :</source>
-        <translation type="unfinished"></translation>
+        <translation>Su un conduttore verticale:</translation>
     </message>
     <message>
         <location filename="../sources/ui/definitionmarkstyleeditor.ui" line="49"/>
         <source>Where the conductor runs up and down, the drawing turns by this much: shapes, texts and their places turn with it.</source>
-        <translation type="unfinished"></translation>
+        <translation>Dove il conduttore corre in su e in giù, il disegno ruota di questo angolo: forme, testi e le loro posizioni ruotano con esso.</translation>
     </message>
     <message>
         <location filename="../sources/ui/definitionmarkstyleeditor.ui" line="53"/>
         <source>As designed</source>
-        <translation type="unfinished"></translation>
+        <translation>Come disegnato</translation>
     </message>
     <message>
         <location filename="../sources/ui/definitionmarkstyleeditor.ui" line="58"/>
         <source>Turns 90°</source>
-        <translation type="unfinished"></translation>
+        <translation>Ruota di 90°</translation>
     </message>
     <message>
         <location filename="../sources/ui/definitionmarkstyleeditor.ui" line="63"/>
         <source>Turns 180°</source>
-        <translation type="unfinished"></translation>
+        <translation>Ruota di 180°</translation>
     </message>
     <message>
         <location filename="../sources/ui/definitionmarkstyleeditor.ui" line="68"/>
         <source>Turns 270°</source>
-        <translation type="unfinished"></translation>
+        <translation>Ruota di 270°</translation>
     </message>
     <message>
         <location filename="../sources/ui/definitionmarkstyleeditor.ui" line="91"/>
         <source>Items</source>
-        <translation type="unfinished"></translation>
+        <translation>Elementi</translation>
     </message>
     <message>
         <location filename="../sources/ui/definitionmarkstyleeditor.ui" line="102"/>
         <source>Add a text whose words come from a formula</source>
-        <translation type="unfinished"></translation>
+        <translation>Aggiungi un testo le cui parole provengono da una formula</translation>
     </message>
     <message>
         <location filename="../sources/ui/definitionmarkstyleeditor.ui" line="105"/>
         <source>Add a text</source>
-        <translation type="unfinished"></translation>
+        <translation>Aggiungi un testo</translation>
     </message>
     <message>
         <location filename="../sources/ui/definitionmarkstyleeditor.ui" line="112"/>
         <source>Add a line, a circle or a rectangle to the stroke</source>
-        <translation type="unfinished"></translation>
+        <translation>Aggiungi una linea, un cerchio o un rettangolo al tratto</translation>
     </message>
     <message>
         <location filename="../sources/ui/definitionmarkstyleeditor.ui" line="115"/>
         <source>Add a shape</source>
-        <translation type="unfinished"></translation>
+        <translation>Aggiungi una forma</translation>
     </message>
     <message>
         <location filename="../sources/ui/definitionmarkstyleeditor.ui" line="122"/>
         <source>Remove the selected item</source>
-        <translation type="unfinished"></translation>
+        <translation>Rimuovi l&apos;elemento selezionato</translation>
     </message>
     <message>
         <location filename="../sources/ui/definitionmarkstyleeditor.ui" line="125"/>
         <source>Remove</source>
-        <translation type="unfinished">Rimuovi</translation>
+        <translation>Rimuovi</translation>
     </message>
     <message>
         <location filename="../sources/ui/definitionmarkstyleeditor.ui" line="145"/>
         <source>Shape :</source>
-        <translation type="unfinished"></translation>
+        <translation>Forma:</translation>
     </message>
     <message>
         <location filename="../sources/ui/definitionmarkstyleeditor.ui" line="153"/>
         <location filename="../sources/ui/definitionmarkstyleeditor.cpp" line="275"/>
         <location filename="../sources/ui/definitionmarkstyleeditor.cpp" line="739"/>
         <source>Line</source>
-        <translation type="unfinished">Tratto</translation>
+        <translation>Tratto</translation>
     </message>
     <message>
         <location filename="../sources/ui/definitionmarkstyleeditor.ui" line="158"/>
         <location filename="../sources/ui/definitionmarkstyleeditor.cpp" line="276"/>
         <location filename="../sources/ui/definitionmarkstyleeditor.cpp" line="739"/>
         <source>Circle</source>
-        <translation type="unfinished">Cerchio</translation>
+        <translation>Cerchio</translation>
     </message>
     <message>
         <location filename="../sources/ui/definitionmarkstyleeditor.ui" line="163"/>
         <location filename="../sources/ui/definitionmarkstyleeditor.cpp" line="277"/>
         <location filename="../sources/ui/definitionmarkstyleeditor.cpp" line="739"/>
         <source>Rectangle</source>
-        <translation type="unfinished">Rettangolo</translation>
+        <translation>Rettangolo</translation>
     </message>
     <message>
         <location filename="../sources/ui/definitionmarkstyleeditor.ui" line="171"/>
         <location filename="../sources/ui/definitionmarkstyleeditor.ui" line="359"/>
         <source>Position X :</source>
-        <translation type="unfinished"></translation>
+        <translation>Posizione X:</translation>
     </message>
     <message>
         <location filename="../sources/ui/definitionmarkstyleeditor.ui" line="188"/>
         <location filename="../sources/ui/definitionmarkstyleeditor.ui" line="376"/>
         <source>Position Y :</source>
-        <translation type="unfinished"></translation>
+        <translation>Posizione Y:</translation>
     </message>
     <message>
         <location filename="../sources/ui/definitionmarkstyleeditor.ui" line="205"/>
         <location filename="../sources/ui/definitionmarkstyleeditor.ui" line="393"/>
         <source>Rotation :</source>
-        <translation type="unfinished"></translation>
+        <translation>Rotazione:</translation>
     </message>
     <message>
         <location filename="../sources/ui/definitionmarkstyleeditor.ui" line="222"/>
         <source>Length :</source>
-        <translation type="unfinished">Lunghezza:</translation>
+        <translation>Lunghezza:</translation>
     </message>
     <message>
         <location filename="../sources/ui/definitionmarkstyleeditor.ui" line="242"/>
         <source>Height :</source>
-        <translation type="unfinished"></translation>
+        <translation>Altezza:</translation>
     </message>
     <message>
         <location filename="../sources/ui/definitionmarkstyleeditor.ui" line="262"/>
         <source>Pen width :</source>
-        <translation type="unfinished"></translation>
+        <translation>Spessore del tratto:</translation>
     </message>
     <message>
         <location filename="../sources/ui/definitionmarkstyleeditor.ui" line="269"/>
         <source>The width of the shape&apos;s own outline, whatever the conductor&apos;s width is.</source>
-        <translation type="unfinished"></translation>
+        <translation>Lo spessore del contorno proprio della forma, qualunque sia lo spessore del conduttore.</translation>
     </message>
     <message>
         <location filename="../sources/ui/definitionmarkstyleeditor.ui" line="272"/>
         <location filename="../sources/ui/definitionmarkstyleeditor.ui" line="420"/>
         <source>Conductor&apos;s</source>
-        <translation type="unfinished"></translation>
+        <translation>Del conduttore</translation>
     </message>
     <message>
         <location filename="../sources/ui/definitionmarkstyleeditor.ui" line="288"/>
         <location filename="../sources/ui/definitionmarkstyleeditor.ui" line="487"/>
         <source>Colour :</source>
-        <translation type="unfinished"></translation>
+        <translation>Colore:</translation>
     </message>
     <message>
         <location filename="../sources/ui/definitionmarkstyleeditor.ui" line="298"/>
         <source>Draw the shape in the conductor&apos;s own colour.</source>
-        <translation type="unfinished"></translation>
+        <translation>Disegna la forma con il colore proprio del conduttore.</translation>
     </message>
     <message>
         <location filename="../sources/ui/definitionmarkstyleeditor.ui" line="301"/>
         <location filename="../sources/ui/definitionmarkstyleeditor.ui" line="500"/>
         <source>Conductor&apos;s own colour</source>
-        <translation type="unfinished"></translation>
+        <translation>Colore proprio del conduttore</translation>
     </message>
     <message>
         <location filename="../sources/ui/definitionmarkstyleeditor.ui" line="308"/>
         <source>Filled</source>
-        <translation type="unfinished"></translation>
+        <translation>Riempita</translation>
     </message>
     <message>
         <location filename="../sources/ui/definitionmarkstyleeditor.ui" line="319"/>
         <source>Text :</source>
-        <translation type="unfinished"></translation>
+        <translation>Testo:</translation>
     </message>
     <message>
         <location filename="../sources/ui/definitionmarkstyleeditor.ui" line="326"/>
         <source>The words of the text, with the variables of a conductor&apos;s formula: %wc is its colour, %ws its section and so on.</source>
-        <translation type="unfinished"></translation>
+        <translation>Le parole del testo, con le variabili della formula di un conduttore: %wc è il suo colore, %ws la sua sezione e così via.</translation>
     </message>
     <message>
         <location filename="../sources/ui/definitionmarkstyleeditor.ui" line="339"/>
         <source>Insert a variable</source>
-        <translation type="unfinished"></translation>
+        <translation>Inserisci una variabile</translation>
     </message>
     <message>
         <location filename="../sources/ui/definitionmarkstyleeditor.ui" line="410"/>
         <source>Size :</source>
-        <translation type="unfinished"></translation>
+        <translation>Dimensione:</translation>
     </message>
     <message>
         <location filename="../sources/ui/definitionmarkstyleeditor.ui" line="417"/>
         <source>The size of the text in points, whatever the conductor&apos;s own text size is.</source>
-        <translation type="unfinished"></translation>
+        <translation>La dimensione del testo in punti, qualunque sia la dimensione propria del testo del conduttore.</translation>
     </message>
     <message>
         <location filename="../sources/ui/definitionmarkstyleeditor.ui" line="436"/>
         <source>Alignment :</source>
-        <translation type="unfinished">Allineamento :</translation>
+        <translation>Allineamento:</translation>
     </message>
     <message>
         <location filename="../sources/ui/definitionmarkstyleeditor.ui" line="443"/>
         <source>Where the text stands around its place: Left, so the text grows to the right from it.</source>
-        <translation type="unfinished"></translation>
+        <translation>Dove si colloca il testo rispetto alla sua posizione: A sinistra, così il testo cresce verso destra a partire da essa.</translation>
     </message>
     <message>
         <location filename="../sources/ui/definitionmarkstyleeditor.ui" line="447"/>
         <source>Left</source>
-        <translation type="unfinished"></translation>
+        <translation>A sinistra</translation>
     </message>
     <message>
         <location filename="../sources/ui/definitionmarkstyleeditor.ui" line="452"/>
         <source>Center</source>
-        <translation type="unfinished"></translation>
+        <translation>Centrato</translation>
     </message>
     <message>
         <location filename="../sources/ui/definitionmarkstyleeditor.ui" line="457"/>
         <source>Right</source>
-        <translation type="unfinished"></translation>
+        <translation>A destra</translation>
     </message>
     <message>
         <location filename="../sources/ui/definitionmarkstyleeditor.ui" line="465"/>
         <source>Where the text stands around its place: Top, so the text grows downwards from it.</source>
-        <translation type="unfinished"></translation>
+        <translation>Dove si colloca il testo rispetto alla sua posizione: In alto, così il testo cresce verso il basso a partire da essa.</translation>
     </message>
     <message>
         <location filename="../sources/ui/definitionmarkstyleeditor.ui" line="469"/>
         <source>Top</source>
-        <translation type="unfinished"></translation>
+        <translation>In alto</translation>
     </message>
     <message>
         <location filename="../sources/ui/definitionmarkstyleeditor.ui" line="474"/>
         <source>Middle</source>
-        <translation type="unfinished"></translation>
+        <translation>Al centro</translation>
     </message>
     <message>
         <location filename="../sources/ui/definitionmarkstyleeditor.ui" line="479"/>
         <source>Bottom</source>
-        <translation type="unfinished"></translation>
+        <translation>In basso</translation>
     </message>
     <message>
         <location filename="../sources/ui/definitionmarkstyleeditor.ui" line="497"/>
         <source>Write the text in the conductor&apos;s own text colour.</source>
-        <translation type="unfinished"></translation>
+        <translation>Scrivi il testo con il colore del testo proprio del conduttore.</translation>
     </message>
     <message>
         <location filename="../sources/ui/definitionmarkstyleeditor.ui" line="507"/>
         <source>Keep the text horizontal whatever the drawing does. When off, the text turns with it, for example on a conductor that runs up and down.</source>
-        <translation type="unfinished"></translation>
+        <translation>Mantieni il testo orizzontale qualunque cosa faccia il disegno. Se disattivato, il testo ruota con esso, ad esempio su un conduttore che corre in su e in giù.</translation>
     </message>
     <message>
         <location filename="../sources/ui/definitionmarkstyleeditor.ui" line="510"/>
         <source>Text stays horizontal</source>
-        <translation type="unfinished"></translation>
+        <translation>Il testo resta orizzontale</translation>
     </message>
     <message>
         <location filename="../sources/ui/definitionmarkstyleeditor.ui" line="523"/>
         <source>Go back to the standard slanted stroke, with the colour above and the section below.</source>
-        <translation type="unfinished"></translation>
+        <translation>Torna al tratto obliquo standard, con il colore sopra e la sezione sotto.</translation>
     </message>
     <message>
         <location filename="../sources/ui/definitionmarkstyleeditor.ui" line="526"/>
         <source>Back to the standard drawing</source>
-        <translation type="unfinished"></translation>
+        <translation>Torna al disegno standard</translation>
     </message>
     <message>
         <location filename="../sources/ui/definitionmarkstyleeditor.ui" line="533"/>
         <source>The projects you create from now on start with this drawing; the open one keeps its own.</source>
-        <translation type="unfinished"></translation>
+        <translation>I progetti che crei d&apos;ora in poi partono con questo disegno; quello aperto mantiene il proprio.</translation>
     </message>
     <message>
         <location filename="../sources/ui/definitionmarkstyleeditor.ui" line="536"/>
         <source>Use for new projects</source>
-        <translation type="unfinished"></translation>
+        <translation>Usa per i nuovi progetti</translation>
     </message>
     <message>
         <location filename="../sources/ui/definitionmarkstyleeditor.cpp" line="94"/>
         <source>Customize the stroke with colour and section</source>
-        <translation type="unfinished"></translation>
+        <translation>Personalizza il tratto con colore e sezione</translation>
     </message>
     <message>
         <location filename="../sources/ui/definitionmarkstyleeditor.cpp" line="289"/>
         <source>Colour of the wire (%wc)</source>
-        <translation type="unfinished"></translation>
+        <translation>Colore del filo (%wc)</translation>
     </message>
     <message>
         <location filename="../sources/ui/definitionmarkstyleeditor.cpp" line="290"/>
         <source>Section of the wire (%ws)</source>
-        <translation type="unfinished"></translation>
+        <translation>Sezione del filo (%ws)</translation>
     </message>
     <message>
         <location filename="../sources/ui/definitionmarkstyleeditor.cpp" line="291"/>
         <source>Function (%wf)</source>
-        <translation type="unfinished"></translation>
+        <translation>Funzione (%wf)</translation>
     </message>
     <message>
         <location filename="../sources/ui/definitionmarkstyleeditor.cpp" line="292"/>
         <source>Voltage / protocol (%wv)</source>
-        <translation type="unfinished"></translation>
+        <translation>Tensione / protocollo (%wv)</translation>
     </message>
     <message>
         <location filename="../sources/ui/definitionmarkstyleeditor.cpp" line="293"/>
         <source>Conductor type (%wt)</source>
-        <translation type="unfinished"></translation>
+        <translation>Tipo di conduttore (%wt)</translation>
     </message>
     <message>
         <location filename="../sources/ui/definitionmarkstyleeditor.cpp" line="294"/>
         <source>Cable (%wb)</source>
-        <translation type="unfinished"></translation>
+        <translation>Cavo (%wb)</translation>
     </message>
     <message>
         <location filename="../sources/ui/definitionmarkstyleeditor.cpp" line="631"/>
         <location filename="../sources/ui/definitionmarkstyleeditor.cpp" line="751"/>
         <source>Text: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Testo: %1</translation>
     </message>
 </context>
 <context>
@@ -8718,7 +8718,7 @@ Continuare?</translation>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="245"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Forma</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="258"/>
@@ -9306,53 +9306,53 @@ Continuare?</translation>
     <message>
         <location filename="../sources/ui/elementterminalswidget.cpp" line="48"/>
         <source>What a row changes belongs to this copy of the symbol: the definition keeps its own values, and so do the other copies of the symbol.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ciò che modifica una riga appartiene a questa copia del simbolo: la definizione mantiene i propri valori, come le altre copie del simbolo.</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementterminalswidget.cpp" line="53"/>
         <source>This symbol has no terminal.</source>
-        <translation type="unfinished"></translation>
+        <translation>Questo simbolo non ha morsetti.</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementterminalswidget.cpp" line="58"/>
         <source>Show</source>
-        <translation type="unfinished">Mostra</translation>
+        <translation>Mostra</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementterminalswidget.cpp" line="58"/>
         <source>Name</source>
-        <translation type="unfinished">Nome</translation>
+        <translation>Nome</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementterminalswidget.cpp" line="59"/>
         <source>Text properties</source>
-        <translation type="unfinished">Proprietà del testo</translation>
+        <translation>Proprietà del testo</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementterminalswidget.cpp" line="59"/>
         <location filename="../sources/ui/elementterminalswidget.cpp" line="152"/>
         <source>Reset</source>
-        <translation type="unfinished"></translation>
+        <translation>Reimposta</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementterminalswidget.cpp" line="108"/>
         <source>Terminals</source>
-        <translation type="unfinished"></translation>
+        <translation>Morsetti</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementterminalswidget.cpp" line="149"/>
         <source>Set where the name sits, how big and how turned it is, how aligned, whether it is framed and in which colour</source>
-        <translation type="unfinished"></translation>
+        <translation>Imposta dove si trova il nome, la sua dimensione, la sua rotazione, il suo allineamento, se è incorniciato e di quale colore</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementterminalswidget.cpp" line="153"/>
         <source>Take back the values the definition of the symbol gives</source>
-        <translation type="unfinished"></translation>
+        <translation>Riprendi i valori forniti dalla definizione del simbolo</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementterminalswidget.cpp" line="187"/>
         <source>The name comes from the master this terminal is linked to</source>
-        <translation type="unfinished"></translation>
+        <translation>Il nome proviene dal master a cui questo morsetto è collegato</translation>
     </message>
 </context>
 <context>
@@ -9511,7 +9511,7 @@ Continuare?</translation>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="253"/>
         <source>Export symbol list…</source>
-        <translation type="unfinished"></translation>
+        <translation>Esporta elenco simboli…</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="267"/>
@@ -9642,39 +9642,41 @@ Importando questo file confermi che:
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="1017"/>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="1027"/>
         <source>Export symbol list</source>
-        <translation type="unfinished"></translation>
+        <translation>Esporta elenco simboli</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="990"/>
         <source>symbols</source>
-        <translation type="unfinished"></translation>
+        <translation>simboli</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="992"/>
         <source>CSV files (*.csv)</source>
-        <translation type="unfinished">File CSV (*.csv)</translation>
+        <translation>File CSV (*.csv)</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="997"/>
         <source>Reading the symbols…</source>
-        <translation type="unfinished"></translation>
+        <translation>Lettura dei simboli…</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="997"/>
         <source>Cancel</source>
-        <translation type="unfinished">Annulla</translation>
+        <translation>Annulla</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="1018"/>
         <source>Unable to write %1:
 %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossibile scrivere %1:
+%2</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="1028"/>
         <source>Symbols: %1, macros: %2, files that could not be read: %3.
 Written to %4</source>
-        <translation type="unfinished"></translation>
+        <translation>Simboli: %1, macro: %2, file non leggibili: %3.
+Scritto in %4</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="1047"/>
@@ -9960,42 +9962,42 @@ Written to %4</source>
     <message>
         <location filename="../sources/import/eplanproject/epdzimport.cpp" line="64"/>
         <source>No temporary folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Nessuna cartella temporanea</translation>
     </message>
     <message>
         <location filename="../sources/import/eplanproject/epdzimport.cpp" line="69"/>
         <source>%1 cannot be unpacked: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 non può essere decompresso: %2</translation>
     </message>
     <message>
         <location filename="../sources/import/eplanproject/epdzimport.cpp" line="97"/>
         <source>Page %1: no drawing in the archive</source>
-        <translation type="unfinished"></translation>
+        <translation>Pagina %1: nessun disegno nell&apos;archivio</translation>
     </message>
     <message>
         <location filename="../sources/import/eplanproject/epdzimport.cpp" line="102"/>
         <source>Page %1: the drawing cannot be read</source>
-        <translation type="unfinished"></translation>
+        <translation>Pagina %1: il disegno non può essere letto</translation>
     </message>
     <message>
         <location filename="../sources/import/eplanproject/epdzimport.cpp" line="163"/>
         <source>%1 page(s), %2 function(s), %3 connection(s), %4 3D installation space(s)</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 pagina(e), %2 funzione(i), %3 collegamento(i), %4 spazio(i) di installazione 3D</translation>
     </message>
     <message>
         <location filename="../sources/import/eplanproject/epdzmanifest.cpp" line="61"/>
         <source>The archive holds no manifest.db: it is no EPLAN export archive</source>
-        <translation type="unfinished"></translation>
+        <translation>L&apos;archivio non contiene manifest.db: non è un archivio di esportazione EPLAN</translation>
     </message>
     <message>
         <location filename="../sources/import/eplanproject/epdzmanifest.cpp" line="71"/>
         <source>manifest.db cannot be read</source>
-        <translation type="unfinished"></translation>
+        <translation>manifest.db non può essere letto</translation>
     </message>
     <message>
         <location filename="../sources/import/eplanproject/epdzmanifest.cpp" line="155"/>
         <source>The manifest lists no page</source>
-        <translation type="unfinished"></translation>
+        <translation>Il manifest non elenca nessuna pagina</translation>
     </message>
 </context>
 <context>
@@ -10003,288 +10005,288 @@ Written to %4</source>
     <message>
         <location filename="../sources/import/eplanproject/eplanprojectimport.cpp" line="93"/>
         <source>Unpacking and reading the EPLAN archive</source>
-        <translation type="unfinished"></translation>
+        <translation>Decompressione e lettura dell&apos;archivio EPLAN</translation>
     </message>
     <message>
         <location filename="../sources/import/eplanproject/eplanprojectimport.cpp" line="95"/>
         <source>Reading the pages, symbols and connections</source>
-        <translation type="unfinished"></translation>
+        <translation>Lettura di pagine, simboli e collegamenti</translation>
     </message>
     <message>
         <location filename="../sources/import/eplanproject/eplanprojectimport.cpp" line="97"/>
         <source>Interruption points</source>
-        <translation type="unfinished"></translation>
+        <translation>Punti di interruzione</translation>
     </message>
     <message>
         <location filename="../sources/import/eplanproject/eplanprojectimport.cpp" line="99"/>
         <source>Drawing connections</source>
-        <translation type="unfinished"></translation>
+        <translation>Disegno dei collegamenti</translation>
     </message>
     <message>
         <location filename="../sources/import/eplanproject/eplanprojectimport.cpp" line="101"/>
         <source>Writing the QElectroTech project</source>
-        <translation type="unfinished"></translation>
+        <translation>Scrittura del progetto QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/import/eplanproject/eplanprojectimport.cpp" line="103"/>
         <source>Device list, connection list and 3D installation spaces</source>
-        <translation type="unfinished"></translation>
+        <translation>Elenco dei dispositivi, elenco dei collegamenti e spazi di installazione 3D</translation>
     </message>
     <message>
         <location filename="../sources/import/eplanproject/eplanprojectimport.cpp" line="105"/>
         <source>Writing the PDF</source>
-        <translation type="unfinished"></translation>
+        <translation>Scrittura del PDF</translation>
     </message>
     <message>
         <location filename="../sources/import/eplanproject/eplanprojectimport.cpp" line="107"/>
         <source>Done</source>
-        <translation type="unfinished">Fatto</translation>
+        <translation>Fatto</translation>
     </message>
     <message>
         <location filename="../sources/import/eplanproject/eplanprojectimportdialog.cpp" line="85"/>
         <source>Change…</source>
-        <translation type="unfinished"></translation>
+        <translation>Cambia…</translation>
     </message>
     <message>
         <location filename="../sources/import/eplanproject/eplanprojectimportdialog.cpp" line="101"/>
         <location filename="../sources/import/eplanproject/eplanprojectimportdialog.cpp" line="193"/>
         <source>Import an EPLAN project</source>
-        <translation type="unfinished"></translation>
+        <translation>Importa un progetto EPLAN</translation>
     </message>
     <message>
         <location filename="../sources/import/eplanproject/eplanprojectimportdialog.cpp" line="105"/>
         <source>Reads an EPLAN export archive (.epdz) and writes a QElectroTech project with its pages, parts, conductors and interruption points. The import opens in QElectroTech when it is done. Without Python 3 the pages come in as pictures.</source>
-        <translation type="unfinished"></translation>
+        <translation>Legge un archivio di esportazione EPLAN (.epdz) e scrive un progetto QElectroTech con le sue pagine, parti, conduttori e punti di interruzione. L&apos;importazione si apre in QElectroTech al termine. Senza Python 3 le pagine arrivano come immagini.</translation>
     </message>
     <message>
         <location filename="../sources/import/eplanproject/eplanprojectimportdialog.cpp" line="114"/>
         <source>EPLAN export archive (.epdz):</source>
-        <translation type="unfinished"></translation>
+        <translation>Archivio di esportazione EPLAN (.epdz):</translation>
     </message>
     <message>
         <location filename="../sources/import/eplanproject/eplanprojectimportdialog.cpp" line="115"/>
         <source>Save as:</source>
-        <translation type="unfinished"></translation>
+        <translation>Salva come:</translation>
     </message>
     <message>
         <location filename="../sources/import/eplanproject/eplanprojectimportdialog.cpp" line="118"/>
         <source>Also write a PDF (takes a while on big projects)</source>
-        <translation type="unfinished"></translation>
+        <translation>Scrivi anche un PDF (richiede tempo sui progetti grandi)</translation>
     </message>
     <message>
         <location filename="../sources/import/eplanproject/eplanprojectimportdialog.cpp" line="120"/>
         <source>Keep the parts made from the EPLAN symbols in the user collection</source>
-        <translation type="unfinished"></translation>
+        <translation>Conserva nella collezione utente le parti create dai simboli EPLAN</translation>
     </message>
     <message>
         <location filename="../sources/import/eplanproject/eplanprojectimportdialog.cpp" line="125"/>
         <source>Import program:</source>
-        <translation type="unfinished"></translation>
+        <translation>Programma di importazione:</translation>
     </message>
     <message>
         <location filename="../sources/import/eplanproject/eplanprojectimportdialog.cpp" line="128"/>
         <source>Python:</source>
-        <translation type="unfinished"></translation>
+        <translation>Python:</translation>
     </message>
     <message>
         <location filename="../sources/import/eplanproject/eplanprojectimportdialog.cpp" line="130"/>
         <source>found when the import starts</source>
-        <translation type="unfinished"></translation>
+        <translation>trovato all&apos;avvio dell&apos;importazione</translation>
     </message>
     <message>
         <location filename="../sources/import/eplanproject/eplanprojectimportdialog.cpp" line="141"/>
         <source>The output of the import appears here.</source>
-        <translation type="unfinished"></translation>
+        <translation>L&apos;output dell&apos;importazione appare qui.</translation>
     </message>
     <message>
         <location filename="../sources/import/eplanproject/eplanprojectimportdialog.cpp" line="144"/>
         <source>Import</source>
-        <translation type="unfinished">Importa</translation>
+        <translation>Importa</translation>
     </message>
     <message>
         <location filename="../sources/import/eplanproject/eplanprojectimportdialog.cpp" line="194"/>
         <source>EPLAN export archives (*.epdz);;All files (*)</source>
-        <translation type="unfinished"></translation>
+        <translation>Archivi di esportazione EPLAN (*.epdz);;Tutti i file (*)</translation>
     </message>
     <message>
         <location filename="../sources/import/eplanproject/eplanprojectimportdialog.cpp" line="210"/>
         <source>Save the imported project as</source>
-        <translation type="unfinished"></translation>
+        <translation>Salva il progetto importato come</translation>
     </message>
     <message>
         <location filename="../sources/import/eplanproject/eplanprojectimportdialog.cpp" line="211"/>
         <source>QElectroTech projects (*.qet)</source>
-        <translation type="unfinished"></translation>
+        <translation>Progetti QElectroTech (*.qet)</translation>
     </message>
     <message>
         <location filename="../sources/import/eplanproject/eplanprojectimportdialog.cpp" line="220"/>
         <source>Where is the import program?</source>
-        <translation type="unfinished"></translation>
+        <translation>Dov&apos;è il programma di importazione?</translation>
     </message>
     <message>
         <location filename="../sources/import/eplanproject/eplanprojectimportdialog.cpp" line="221"/>
         <source>Import program (%1)</source>
-        <translation type="unfinished"></translation>
+        <translation>Programma di importazione (%1)</translation>
     </message>
     <message>
         <location filename="../sources/import/eplanproject/eplanprojectimportdialog.cpp" line="230"/>
         <source>Programs (*.exe)</source>
-        <translation type="unfinished"></translation>
+        <translation>Programmi (*.exe)</translation>
     </message>
     <message>
         <location filename="../sources/import/eplanproject/eplanprojectimportdialog.cpp" line="234"/>
         <source>Which Python should run the import?</source>
-        <translation type="unfinished"></translation>
+        <translation>Quale Python deve eseguire l&apos;importazione?</translation>
     </message>
     <message>
         <location filename="../sources/import/eplanproject/eplanprojectimportdialog.cpp" line="246"/>
         <source>Choose the EPLAN export archive (.epdz).</source>
-        <translation type="unfinished"></translation>
+        <translation>Scegli l&apos;archivio di esportazione EPLAN (.epdz).</translation>
     </message>
     <message>
         <location filename="../sources/import/eplanproject/eplanprojectimportdialog.cpp" line="248"/>
         <source>The file %1 does not exist.</source>
-        <translation type="unfinished">Il file %1 non esiste.</translation>
+        <translation>Il file %1 non esiste.</translation>
     </message>
     <message>
         <location filename="../sources/import/eplanproject/eplanprojectimportdialog.cpp" line="250"/>
         <source>%1 is no EPLAN export archive (.epdz).</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 non è un archivio di esportazione EPLAN (.epdz).</translation>
     </message>
     <message>
         <location filename="../sources/import/eplanproject/eplanprojectimportdialog.cpp" line="252"/>
         <source>Choose where the QElectroTech project is to be saved.</source>
-        <translation type="unfinished"></translation>
+        <translation>Scegli dove salvare il progetto QElectroTech.</translation>
     </message>
     <message>
         <location filename="../sources/import/eplanproject/eplanprojectimportdialog.cpp" line="255"/>
         <source>Cancel</source>
-        <translation type="unfinished">Annulla</translation>
+        <translation>Annulla</translation>
     </message>
     <message>
         <location filename="../sources/import/eplanproject/eplanprojectimportdialog.cpp" line="255"/>
         <source>Close</source>
-        <translation type="unfinished"></translation>
+        <translation>Chiudi</translation>
     </message>
     <message>
         <location filename="../sources/import/eplanproject/eplanprojectimportdialog.cpp" line="273"/>
         <source>%1 does not start.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 non si avvia.</translation>
     </message>
     <message>
         <location filename="../sources/import/eplanproject/eplanprojectimportdialog.cpp" line="279"/>
         <source>%1 did not answer.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 non ha risposto.</translation>
     </message>
     <message>
         <location filename="../sources/import/eplanproject/eplanprojectimportdialog.cpp" line="329"/>
         <source>Checking %1 …</source>
-        <translation type="unfinished"></translation>
+        <translation>Verifica di %1 …</translation>
     </message>
     <message>
         <location filename="../sources/import/eplanproject/eplanprojectimportdialog.cpp" line="336"/>
         <source>No Python 3 was found.</source>
-        <translation type="unfinished"></translation>
+        <translation>Non è stato trovato nessun Python 3.</translation>
     </message>
     <message>
         <location filename="../sources/import/eplanproject/eplanprojectimportdialog.cpp" line="337"/>
         <source>No Python runs the import program:</source>
-        <translation type="unfinished"></translation>
+        <translation>Nessun Python esegue il programma di importazione:</translation>
     </message>
     <message>
         <location filename="../sources/import/eplanproject/eplanprojectimportdialog.cpp" line="350"/>
         <source>%1 is open in QElectroTech. Close it first or choose another file.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 è aperto in QElectroTech. Chiudilo prima o scegli un altro file.</translation>
     </message>
     <message>
         <location filename="../sources/import/eplanproject/eplanprojectimportdialog.cpp" line="356"/>
         <source>%1 already exists. Replace it?</source>
-        <translation type="unfinished">%1 esiste già. Sostituirlo?</translation>
+        <translation>%1 esiste già. Sostituirlo?</translation>
     </message>
     <message>
         <location filename="../sources/import/eplanproject/eplanprojectimportdialog.cpp" line="361"/>
         <source>The folder %1 cannot be created.</source>
-        <translation type="unfinished"></translation>
+        <translation>La cartella %1 non può essere creata.</translation>
     </message>
     <message>
         <location filename="../sources/import/eplanproject/eplanprojectimportdialog.cpp" line="378"/>
         <source>The import program (%1) was not found.</source>
-        <translation type="unfinished"></translation>
+        <translation>Il programma di importazione (%1) non è stato trovato.</translation>
     </message>
     <message>
         <location filename="../sources/import/eplanproject/eplanprojectimportdialog.cpp" line="382"/>
         <source>This QElectroTech is built without scripting, which the import program needs.</source>
-        <translation type="unfinished"></translation>
+        <translation>Questo QElectroTech è compilato senza scripting, di cui il programma di importazione ha bisogno.</translation>
     </message>
     <message>
         <location filename="../sources/import/eplanproject/eplanprojectimportdialog.cpp" line="389"/>
         <source>No Python 3 runs the import program; the reasons are in the output. Import the pages as pictures instead?</source>
-        <translation type="unfinished"></translation>
+        <translation>Nessun Python 3 esegue il programma di importazione; i motivi sono nell&apos;output. Importare invece le pagine come immagini?</translation>
     </message>
     <message>
         <location filename="../sources/import/eplanproject/eplanprojectimportdialog.cpp" line="391"/>
         <source>No usable Python found.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nessun Python utilizzabile trovato.</translation>
     </message>
     <message>
         <location filename="../sources/import/eplanproject/eplanprojectimportdialog.cpp" line="401"/>
         <source>Unpacking %1 …</source>
-        <translation type="unfinished"></translation>
+        <translation>Decompressione di %1 …</translation>
     </message>
     <message>
         <location filename="../sources/import/eplanproject/eplanprojectimportdialog.cpp" line="409"/>
         <source>%1 cannot be unpacked: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 non può essere decompresso: %2</translation>
     </message>
     <message>
         <location filename="../sources/import/eplanproject/eplanprojectimportdialog.cpp" line="410"/>
         <source>The import failed.</source>
-        <translation type="unfinished"></translation>
+        <translation>L&apos;importazione non è riuscita.</translation>
     </message>
     <message>
         <location filename="../sources/import/eplanproject/eplanprojectimportdialog.cpp" line="429"/>
         <source>The import does not start: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>L&apos;importazione non si avvia: %1</translation>
     </message>
     <message>
         <location filename="../sources/import/eplanproject/eplanprojectimportdialog.cpp" line="434"/>
         <source>The import did not start.</source>
-        <translation type="unfinished"></translation>
+        <translation>L&apos;importazione non si è avviata.</translation>
     </message>
     <message>
         <location filename="../sources/import/eplanproject/eplanprojectimportdialog.cpp" line="441"/>
         <source>Importing %1 … this can take several minutes.</source>
-        <translation type="unfinished"></translation>
+        <translation>Importazione di %1 … può richiedere diversi minuti.</translation>
     </message>
     <message>
         <location filename="../sources/import/eplanproject/eplanprojectimportdialog.cpp" line="450"/>
         <source>Without the import program and a Python 3 that runs it, the pages of %1 come in as pictures; parts and conductors need them.</source>
-        <translation type="unfinished"></translation>
+        <translation>Senza il programma di importazione e un Python 3 che lo esegua, le pagine di %1 arrivano come immagini; parti e conduttori ne hanno bisogno.</translation>
     </message>
     <message>
         <location filename="../sources/import/eplanproject/eplanprojectimportdialog.cpp" line="452"/>
         <source>Importing %1 …</source>
-        <translation type="unfinished"></translation>
+        <translation>Importazione di %1 …</translation>
     </message>
     <message>
         <location filename="../sources/import/eplanproject/eplanprojectimportdialog.cpp" line="459"/>
         <source>The import failed: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>L&apos;importazione non è riuscita: %1</translation>
     </message>
     <message>
         <location filename="../sources/import/eplanproject/eplanprojectimportdialog.cpp" line="520"/>
         <source>The import was stopped.</source>
-        <translation type="unfinished"></translation>
+        <translation>L&apos;importazione è stata interrotta.</translation>
     </message>
     <message>
         <location filename="../sources/import/eplanproject/eplanprojectimportdialog.cpp" line="521"/>
         <source>The import failed (exit code %1). The reason is in the output below.</source>
-        <translation type="unfinished"></translation>
+        <translation>L&apos;importazione non è riuscita (codice di uscita %1). Il motivo è nell&apos;output qui sotto.</translation>
     </message>
     <message>
         <location filename="../sources/import/eplanproject/eplanprojectimportdialog.cpp" line="532"/>
         <source>Stop the running import?</source>
-        <translation type="unfinished"></translation>
+        <translation>Interrompere l&apos;importazione in corso?</translation>
     </message>
 </context>
 <context>
@@ -10785,7 +10787,23 @@ In a conductor&apos;s formula also:
 You can also assign any other titleblock variable 
 that you create. Text and number inputs are
  also available.</source>
-        <translation type="unfinished"></translation>
+        <translation>Puoi usare le seguenti variabili nella tua formula:
+ -%prefix: prefisso predefinito dell&apos;elemento
+ -%l: riga dell&apos;elemento
+ -%c: colonna dell&apos;elemento
+ -%F: nome della pagina
+ -%f o %id: ID della pagina
+ -%total: totale delle pagine
+Nella formula di un conduttore anche:
+ -%wf: funzione del conduttore
+ -%wv: tensione / protocollo del conduttore
+ -%wc: colore del conduttore
+ -%ws: sezione del conduttore
+ -%wt: tipo di conduttore
+ -%wb: cavo del conduttore
+Puoi anche assegnare qualsiasi altra variabile del cartiglio 
+che crei. I campi di testo e numerici sono
+ anch&apos;essi disponibili.</translation>
     </message>
     <message>
         <source>You can use the following variables to your formula:
@@ -10911,52 +10929,52 @@ che si crea. Si possono anche inserire caratteri alfanumerici.</translation>
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="92"/>
         <source>Not specified</source>
-        <translation type="unfinished"></translation>
+        <translation>Non specificato</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="97"/>
         <source>2-conductor feed-through terminal</source>
-        <translation type="unfinished"></translation>
+        <translation>Morsetto passante a 2 conduttori</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="102"/>
         <source>3-conductor feed-through terminal</source>
-        <translation type="unfinished"></translation>
+        <translation>Morsetto passante a 3 conduttori</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="107"/>
         <source>4-conductor feed-through terminal</source>
-        <translation type="unfinished"></translation>
+        <translation>Morsetto passante a 4 conduttori</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="112"/>
         <source>Multi-level terminal</source>
-        <translation type="unfinished"></translation>
+        <translation>Morsetto multilivello</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="117"/>
         <source>Sectionable terminal</source>
-        <translation type="unfinished"></translation>
+        <translation>Morsetto sezionabile</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="122"/>
         <source>Fuse terminal</source>
-        <translation type="unfinished"></translation>
+        <translation>Morsetto portafusibile</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="127"/>
         <source>Terminal block</source>
-        <translation type="unfinished">Morsettiera</translation>
+        <translation>Morsettiera</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="132"/>
         <source>Sensor/actuator terminal</source>
-        <translation type="unfinished"></translation>
+        <translation>Morsetto sensore/attuatore</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="137"/>
         <source>Pluggable terminal</source>
-        <translation type="unfinished"></translation>
+        <translation>Morsetto a innesto</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="145"/>
@@ -11090,7 +11108,7 @@ che si crea. Si possono anche inserire caratteri alfanumerici.</translation>
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminalmodel.cpp" line="242"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Forma</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminalmodel.cpp" line="243"/>
@@ -11873,12 +11891,12 @@ Qualsiasi impostazione diversa da “Nessun arrotondamento” può causare error
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="229"/>
         <source>Outline white and very pale wires in black</source>
-        <translation type="unfinished"></translation>
+        <translation>Contorna di nero i fili bianchi e molto chiari</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="232"/>
         <source>Unchecked, a white wire cannot be seen on a white folio. Applies to every wire, drawing, printing and export.</source>
-        <translation type="unfinished"></translation>
+        <translation>Se disattivato, un filo bianco non si vede su una pagina bianca. Vale per ogni filo, disegno, stampa ed esportazione.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="249"/>
@@ -12043,12 +12061,12 @@ Qualsiasi impostazione diversa da “Nessun arrotondamento” può causare error
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="2427"/>
         <source>Off, the default: every dialog starts where it always did -- the pictures folder for a picture, the documents folder for a PDF, and for the others the folder it always opened in. On: it starts in the folder the last file was picked from; pictures and PDFs keep a folder of their own, and a folder that no longer exists sends the dialog back to the standard one. Saving and exporting are not affected.</source>
-        <translation type="unfinished"></translation>
+        <translation>Disattivato, impostazione predefinita: ogni finestra parte dove ha sempre fatto -- la cartella delle immagini per un&apos;immagine, la cartella dei documenti per un PDF, e per gli altri la cartella in cui si apriva sempre. Attivato: parte dalla cartella da cui è stato scelto l&apos;ultimo file; immagini e PDF mantengono una cartella propria, e una cartella che non esiste più riporta la finestra a quella standard. Salvataggio ed esportazione non sono interessati.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="2430"/>
         <source>Remember the last folder a file was picked from</source>
-        <translation type="unfinished"></translation>
+        <translation>Ricorda l&apos;ultima cartella da cui è stato scelto un file</translation>
     </message>
     <message>
         <source>When enabled, report elements (cross-references) across folios with matching labels are automatically chained together. Newly created projects will have this enabled automatically.</source>
@@ -12118,12 +12136,12 @@ Qualsiasi impostazione diversa da “Nessun arrotondamento” può causare error
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="855"/>
         <source>List folios by group and sub-group in the Projects panel</source>
-        <translation type="unfinished"></translation>
+        <translation>Elenca le pagine per gruppo e sottogruppo nel pannello Progetti</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="858"/>
         <source>A folio with no group of its own is listed under its plant and location. A level is shown only where it splits the folios, so a project without groups stays a flat list.</source>
-        <translation type="unfinished"></translation>
+        <translation>Una pagina senza gruppo proprio è elencata sotto la sua funzione e posizione. Un livello è mostrato solo dove separa le pagine, quindi un progetto senza gruppi resta un elenco piatto.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="875"/>
@@ -13102,12 +13120,12 @@ Qui è possibile specificare il valore predefinito di questo campo per gli ogget
     <message>
         <location filename="../sources/genericpanel.cpp" line="459"/>
         <source>Folio group: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Gruppo di pagine: %1</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="460"/>
         <source>Folio sub-group: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Sottogruppo di pagine: %1</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="550"/>
@@ -14026,86 +14044,87 @@ Si prega di utilizzare l&apos;editor avanzato per questo.</translation>
     <message>
         <location filename="../sources/labellistexport.cpp" line="342"/>
         <source>Export labels for printing</source>
-        <translation type="unfinished"></translation>
+        <translation>Esporta etichette per la stampa</translation>
     </message>
     <message>
         <location filename="../sources/labellistexport.cpp" line="345"/>
         <source>One label per line, for label printer software:</source>
-        <translation type="unfinished"></translation>
+        <translation>Un&apos;etichetta per riga, per il software delle stampanti di etichette:</translation>
     </message>
     <message>
         <location filename="../sources/labellistexport.cpp" line="349"/>
         <source>Device tags (one per device, in folio order)</source>
-        <translation type="unfinished"></translation>
+        <translation>Sigle dei dispositivi (una per dispositivo, in ordine di pagina)</translation>
     </message>
     <message>
         <location filename="../sources/labellistexport.cpp" line="350"/>
         <source>Terminal markers (strip by strip, in strip order)</source>
-        <translation type="unfinished"></translation>
+        <translation>Contrassegni dei morsetti (morsettiera per morsettiera, in ordine di morsettiera)</translation>
     </message>
     <message>
         <location filename="../sources/labellistexport.cpp" line="351"/>
         <source>Cable numbers (in folio order)</source>
-        <translation type="unfinished"></translation>
+        <translation>Numeri dei cavi (in ordine di pagina)</translation>
     </message>
     <message>
         <location filename="../sources/labellistexport.cpp" line="352"/>
         <source>Wire numbers (one per wire)</source>
-        <translation type="unfinished"></translation>
+        <translation>Numeri dei fili (uno per filo)</translation>
     </message>
     <message>
         <location filename="../sources/labellistexport.cpp" line="364"/>
         <source>Full designation (=plant+location-tag)</source>
-        <translation type="unfinished"></translation>
+        <translation>Designazione completa (=funzione+posizione-sigla)</translation>
     </message>
     <message>
         <location filename="../sources/labellistexport.cpp" line="372"/>
         <source>Save as CSV...</source>
-        <translation type="unfinished"></translation>
+        <translation>Salva come CSV...</translation>
     </message>
     <message>
         <location filename="../sources/labellistexport.cpp" line="397"/>
         <source>This project has none.</source>
-        <translation type="unfinished"></translation>
+        <translation>Questo progetto non ne ha.</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/labellistexport.cpp" line="399"/>
         <source>%n label(s), the first: %1</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n etichetta, la prima: %1</numerusform>
+            <numerusform>%n etichette, la prima: %1</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/labellistexport.cpp" line="411"/>
         <source>There are no labels of this kind to export.</source>
-        <translation type="unfinished"></translation>
+        <translation>Non ci sono etichette di questo tipo da esportare.</translation>
     </message>
     <message>
         <location filename="../sources/labellistexport.cpp" line="419"/>
         <source>labels</source>
-        <translation type="unfinished"></translation>
+        <translation>etichette</translation>
     </message>
     <message>
         <location filename="../sources/labellistexport.cpp" line="421"/>
         <source>Save As...</source>
-        <translation type="unfinished"></translation>
+        <translation>Salva con nome...</translation>
     </message>
     <message>
         <location filename="../sources/labellistexport.cpp" line="422"/>
         <source>CSV files (*.csv)</source>
-        <translation type="unfinished">File CSV (*.csv)</translation>
+        <translation>File CSV (*.csv)</translation>
     </message>
     <message>
         <location filename="../sources/labellistexport.cpp" line="427"/>
         <source>Error</source>
-        <translation type="unfinished">Errore</translation>
+        <translation>Errore</translation>
     </message>
     <message>
         <location filename="../sources/labellistexport.cpp" line="427"/>
         <source>Unable to write %1:
 %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossibile scrivere %1:
+%2</translation>
     </message>
 </context>
 <context>
@@ -14381,22 +14400,22 @@ Portali prima in una sola morsettiera.</translation>
     <message>
         <location filename="../sources/factory/ui/listquerywidget.h" line="72"/>
         <source>The table shows the project&apos;s devices, one row each: reference, description, designation, article, number of symbols and first sheet. It follows the labels and the information of the symbols.</source>
-        <translation type="unfinished"></translation>
+        <translation>La tabella mostra i dispositivi del progetto, una riga ciascuno: riferimento, descrizione, designazione, articolo, numero di simboli e prima pagina. Segue le etichette e le informazioni dei simboli.</translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/listquerywidget.h" line="76"/>
         <source>The table shows the project&apos;s wires, one row each: wire number, both ends as device:terminal, cable, core and sheet. It follows the wiring and the labels.</source>
-        <translation type="unfinished"></translation>
+        <translation>La tabella mostra i fili del progetto, una riga ciascuno: numero del filo, le due estremità come dispositivo:morsetto, cavo, anima e pagina. Segue il cablaggio e le etichette.</translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/listquerywidget.h" line="80"/>
         <source>The table shows the I/O of the project&apos;s PLCs, one row per entry: PLC, address, type, function, comment, the device wired to it and its sheet. It follows the PLC&apos;s I/O table.</source>
-        <translation type="unfinished"></translation>
+        <translation>La tabella mostra gli I/O dei PLC del progetto, una riga per voce: PLC, indirizzo, tipo, funzione, commento, il dispositivo collegato e la sua pagina. Segue la tabella I/O del PLC.</translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/listquerywidget.h" line="84"/>
         <source>The table shows the project&apos;s signals, one row each: the wire numbers and names of one potential, its type, the terminals it joins and the sheets it is on. It follows the wiring.</source>
-        <translation type="unfinished"></translation>
+        <translation>La tabella mostra i segnali del progetto, una riga ciascuno: i numeri dei fili e i nomi di un potenziale, il suo tipo, i morsetti che collega e le pagine in cui si trova. Segue il cablaggio.</translation>
     </message>
 </context>
 <context>
@@ -14519,7 +14538,7 @@ Questa impostazione si trova in Configura QElectroTech &gt; Generale &gt; Proget
     <message>
         <location filename="../sources/ui/macrolabelsdialog.cpp" line="35"/>
         <source>Enter the labels, texts and values of this macro. Accept All takes the labels proposed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Inserisci le etichette, i testi e i valori di questa macro. “Accetta tutto” prende le etichette proposte.</translation>
     </message>
     <message>
         <location filename="../sources/ui/macrolabelsdialog.cpp" line="42"/>
@@ -14544,7 +14563,7 @@ Questa impostazione si trova in Configura QElectroTech &gt; Generale &gt; Proget
     <message>
         <location filename="../sources/ui/macrolabelsdialog.cpp" line="49"/>
         <source>Value</source>
-        <translation type="unfinished">Valore</translation>
+        <translation>Valore</translation>
     </message>
     <message>
         <location filename="../sources/ui/macrolabelsdialog.cpp" line="50"/>
@@ -15829,80 +15848,80 @@ Ignorate: %3</translation>
     <message>
         <location filename="../sources/ui/openwireendsdialog.cpp" line="45"/>
         <source>Check open wire ends</source>
-        <translation type="unfinished"></translation>
+        <translation>Verifica le estremità di filo aperte</translation>
     </message>
     <message>
         <location filename="../sources/ui/openwireendsdialog.cpp" line="52"/>
         <source>Each row is a wire that leads nowhere: to a folio report linked to no other report, into a junction on one side only, or on a potential that reaches one symbol terminal or none. Click a row to select its wires.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ogni riga è un filo che non porta da nessuna parte: a un riferimento di pagina collegato a nessun altro riferimento, in una giunzione da un solo lato, o su un potenziale che raggiunge un solo morsetto di simbolo o nessuno. Fai clic su una riga per selezionare i suoi fili.</translation>
     </message>
     <message>
         <location filename="../sources/ui/openwireendsdialog.cpp" line="60"/>
         <source>Problem</source>
-        <translation type="unfinished"></translation>
+        <translation>Problema</translation>
     </message>
     <message>
         <location filename="../sources/ui/openwireendsdialog.cpp" line="60"/>
         <source>Folio</source>
-        <translation type="unfinished">Pagina</translation>
+        <translation>Pagina</translation>
     </message>
     <message>
         <location filename="../sources/ui/openwireendsdialog.cpp" line="60"/>
         <source>Position</source>
-        <translation type="unfinished">Posizione</translation>
+        <translation>Posizione</translation>
     </message>
     <message>
         <location filename="../sources/ui/openwireendsdialog.cpp" line="60"/>
         <source>Symbol</source>
-        <translation type="unfinished">Simbolo</translation>
+        <translation>Simbolo</translation>
     </message>
     <message>
         <location filename="../sources/ui/openwireendsdialog.cpp" line="60"/>
         <source>Wires</source>
-        <translation type="unfinished">Fili</translation>
+        <translation>Fili</translation>
     </message>
     <message>
         <location filename="../sources/ui/openwireendsdialog.cpp" line="71"/>
         <source>Refresh</source>
-        <translation type="unfinished">Aggiorna</translation>
+        <translation>Aggiorna</translation>
     </message>
     <message>
         <location filename="../sources/ui/openwireendsdialog.cpp" line="86"/>
         <source>Folio report linked to no other report</source>
-        <translation type="unfinished"></translation>
+        <translation>Riferimento di pagina collegato a nessun altro riferimento</translation>
     </message>
     <message>
         <location filename="../sources/ui/openwireendsdialog.cpp" line="88"/>
         <source>Junction with one wire</source>
-        <translation type="unfinished"></translation>
+        <translation>Giunzione con un solo filo</translation>
     </message>
     <message>
         <location filename="../sources/ui/openwireendsdialog.cpp" line="93"/>
         <source>Wires that reach no symbol terminal</source>
-        <translation type="unfinished"></translation>
+        <translation>Fili che non raggiungono nessun morsetto di simbolo</translation>
     </message>
     <message>
         <location filename="../sources/ui/openwireendsdialog.cpp" line="94"/>
         <source>Wires that reach only one symbol terminal</source>
-        <translation type="unfinished"></translation>
+        <translation>Fili che raggiungono un solo morsetto di simbolo</translation>
     </message>
     <message>
         <location filename="../sources/ui/openwireendsdialog.cpp" line="119"/>
         <source>Every wire leads somewhere.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ogni filo porta da qualche parte.</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/openwireendsdialog.cpp" line="121"/>
         <source>%n place(s) where wires stop and go nowhere.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n punto in cui i fili si interrompono e non portano da nessuna parte.</numerusform>
+            <numerusform>%n punti in cui i fili si interrompono e non portano da nessuna parte.</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/ui/openwireendsdialog.cpp" line="178"/>
         <source>These wires no longer exist. Refresh the results.</source>
-        <translation type="unfinished">Questi fili non esistono più. Aggiorna i risultati.</translation>
+        <translation>Questi fili non esistono più. Aggiorna i risultati.</translation>
     </message>
 </context>
 <context>
@@ -16159,94 +16178,94 @@ Ignorate: %3</translation>
     <message>
         <location filename="../sources/ui/parttypesdialog.cpp" line="83"/>
         <source>Parts without a device type</source>
-        <translation type="unfinished"></translation>
+        <translation>Parti senza tipo di dispositivo</translation>
     </message>
     <message>
         <location filename="../sources/ui/parttypesdialog.cpp" line="105"/>
         <source>Search part, description or manufacturer...</source>
-        <translation type="unfinished"></translation>
+        <translation>Cerca parte, descrizione o costruttore...</translation>
     </message>
     <message>
         <location filename="../sources/ui/parttypesdialog.cpp" line="106"/>
         <source>Only the parts this project uses</source>
-        <translation type="unfinished"></translation>
+        <translation>Solo le parti usate da questo progetto</translation>
     </message>
     <message>
         <location filename="../sources/ui/parttypesdialog.cpp" line="107"/>
         <source>Use the suggestions</source>
-        <translation type="unfinished"></translation>
+        <translation>Usa i suggerimenti</translation>
     </message>
     <message>
         <location filename="../sources/ui/parttypesdialog.cpp" line="108"/>
         <source>Takes the device type of the parts whose devices in this project all have the same one.</source>
-        <translation type="unfinished"></translation>
+        <translation>Prende il tipo di dispositivo delle parti i cui dispositivi in questo progetto hanno tutti lo stesso.</translation>
     </message>
     <message>
         <location filename="../sources/ui/parttypesdialog.cpp" line="119"/>
         <source>Also give each type to the symbols of this project with that part and no device type</source>
-        <translation type="unfinished"></translation>
+        <translation>Assegna inoltre ogni tipo ai simboli di questo progetto con quella parte e senza tipo di dispositivo</translation>
     </message>
     <message>
         <location filename="../sources/ui/parttypesdialog.cpp" line="141"/>
         <source>The material list %1 does not exist yet.</source>
-        <translation type="unfinished"></translation>
+        <translation>L&apos;elenco materiali %1 non esiste ancora.</translation>
     </message>
     <message>
         <location filename="../sources/ui/parttypesdialog.cpp" line="149"/>
         <source>Part number</source>
-        <translation type="unfinished">Codice articolo</translation>
+        <translation>Codice articolo</translation>
     </message>
     <message>
         <location filename="../sources/ui/parttypesdialog.cpp" line="149"/>
         <source>Description</source>
-        <translation type="unfinished">Descrizione</translation>
+        <translation>Descrizione</translation>
     </message>
     <message>
         <location filename="../sources/ui/parttypesdialog.cpp" line="149"/>
         <source>Manufacturer</source>
-        <translation type="unfinished"></translation>
+        <translation>Costruttore</translation>
     </message>
     <message>
         <location filename="../sources/ui/parttypesdialog.cpp" line="150"/>
         <source>Devices here</source>
-        <translation type="unfinished"></translation>
+        <translation>Dispositivi qui</translation>
     </message>
     <message>
         <location filename="../sources/ui/parttypesdialog.cpp" line="150"/>
         <source>Suggested type</source>
-        <translation type="unfinished"></translation>
+        <translation>Tipo suggerito</translation>
     </message>
     <message>
         <location filename="../sources/ui/parttypesdialog.cpp" line="150"/>
         <source>Device type</source>
-        <translation type="unfinished">Tipo di dispositivo</translation>
+        <translation>Tipo di dispositivo</translation>
     </message>
     <message>
         <location filename="../sources/ui/parttypesdialog.cpp" line="158"/>
         <source>%1 (others too)</source>
         <comment>a suggested device type some devices do not share</comment>
-        <translation type="unfinished"></translation>
+        <translation>%1 (anche altri)</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/parttypesdialog.cpp" line="183"/>
         <source>%n part(s) of the material list have no device type:</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n parte dell&apos;elenco materiali non ha un tipo di dispositivo:</numerusform>
+            <numerusform>%n parti dell&apos;elenco materiali non hanno un tipo di dispositivo:</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/parttypesdialog.cpp" line="184"/>
         <source>%n shown.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n mostrata.</numerusform>
+            <numerusform>%n mostrate.</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/ui/parttypesdialog.cpp" line="222"/>
         <source>There is no device type called: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Non esiste nessun tipo di dispositivo chiamato: %1</translation>
     </message>
 </context>
 <context>
@@ -16400,42 +16419,42 @@ Importarle? Gli elementi riceveranno allora i numeri successivi, a partire da 1.
     <message>
         <location filename="../sources/placecopy.cpp" line="72"/>
         <source>Give the copied plant its wire counters</source>
-        <translation type="unfinished"></translation>
+        <translation>Dai alla funzione copiata i suoi contatori dei fili</translation>
     </message>
     <message>
         <location filename="../sources/placecopy.cpp" line="240"/>
         <source>The project is read-only.</source>
-        <translation type="unfinished"></translation>
+        <translation>Il progetto è di sola lettura.</translation>
     </message>
     <message>
         <location filename="../sources/placecopy.cpp" line="242"/>
         <source>A symbol with no plant has no plant to copy.</source>
-        <translation type="unfinished"></translation>
+        <translation>Un simbolo senza funzione non ha una funzione da copiare.</translation>
     </message>
     <message>
         <location filename="../sources/placecopy.cpp" line="245"/>
         <source>The new name is empty.</source>
-        <translation type="unfinished"></translation>
+        <translation>Il nuovo nome è vuoto.</translation>
     </message>
     <message>
         <location filename="../sources/placecopy.cpp" line="247"/>
         <source>The new name starts or ends with a space.</source>
-        <translation type="unfinished"></translation>
+        <translation>Il nuovo nome inizia o finisce con uno spazio.</translation>
     </message>
     <message>
         <location filename="../sources/placecopy.cpp" line="249"/>
         <source>The new name is the old one.</source>
-        <translation type="unfinished"></translation>
+        <translation>Il nuovo nome è quello vecchio.</translation>
     </message>
     <message>
         <location filename="../sources/placecopy.cpp" line="253"/>
         <source>The plant &quot;%1&quot; already exists.</source>
-        <translation type="unfinished"></translation>
+        <translation>La funzione “%1” esiste già.</translation>
     </message>
     <message>
         <location filename="../sources/placecopy.cpp" line="310"/>
         <source>Copy plant %1 to %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Copia la funzione %1 in %2</translation>
     </message>
 </context>
 <context>
@@ -16505,42 +16524,42 @@ Importarle? Gli elementi riceveranno allora i numeri successivi, a partire da 1.
     <message>
         <location filename="../sources/placerename.cpp" line="73"/>
         <source>Change the new folio defaults and wire counters</source>
-        <translation type="unfinished"></translation>
+        <translation>Cambia i valori predefiniti delle nuove pagine e i contatori dei fili</translation>
     </message>
     <message>
         <location filename="../sources/placerename.cpp" line="224"/>
         <source>A symbol with no plant has nothing to rename.</source>
-        <translation type="unfinished"></translation>
+        <translation>Un simbolo senza funzione non ha nulla da rinominare.</translation>
     </message>
     <message>
         <location filename="../sources/placerename.cpp" line="226"/>
         <source>A symbol with no location has nothing to rename.</source>
-        <translation type="unfinished"></translation>
+        <translation>Un simbolo senza posizione non ha nulla da rinominare.</translation>
     </message>
     <message>
         <location filename="../sources/placerename.cpp" line="228"/>
         <source>The new name is empty.</source>
-        <translation type="unfinished"></translation>
+        <translation>Il nuovo nome è vuoto.</translation>
     </message>
     <message>
         <location filename="../sources/placerename.cpp" line="230"/>
         <source>The new name starts or ends with a space.</source>
-        <translation type="unfinished"></translation>
+        <translation>Il nuovo nome inizia o finisce con uno spazio.</translation>
     </message>
     <message>
         <location filename="../sources/placerename.cpp" line="233"/>
         <source>The new name is the old one.</source>
-        <translation type="unfinished"></translation>
+        <translation>Il nuovo nome è quello vecchio.</translation>
     </message>
     <message>
         <location filename="../sources/placerename.cpp" line="344"/>
         <source>Rename location %1 to %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Rinomina la posizione %1 in %2</translation>
     </message>
     <message>
         <location filename="../sources/placerename.cpp" line="345"/>
         <source>Rename plant %1 to %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Rinomina la funzione %1 in %2</translation>
     </message>
 </context>
 <context>
@@ -16548,156 +16567,156 @@ Importarle? Gli elementi riceveranno allora i numeri successivi, a partire da 1.
     <message>
         <location filename="../sources/ui/plantslocationsdialog.cpp" line="54"/>
         <source>Plants and locations</source>
-        <translation type="unfinished"></translation>
+        <translation>Funzioni e posizioni</translation>
     </message>
     <message>
         <location filename="../sources/ui/plantslocationsdialog.cpp" line="67"/>
         <source>Double-click a row to go to its first folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Fai doppio clic su una riga per andare alla sua prima pagina</translation>
     </message>
     <message>
         <location filename="../sources/ui/plantslocationsdialog.cpp" line="72"/>
         <source>Refresh</source>
-        <translation type="unfinished">Aggiorna</translation>
+        <translation>Aggiorna</translation>
     </message>
     <message>
         <location filename="../sources/ui/plantslocationsdialog.cpp" line="73"/>
         <source>Rename plant...</source>
-        <translation type="unfinished"></translation>
+        <translation>Rinomina funzione...</translation>
     </message>
     <message>
         <location filename="../sources/ui/plantslocationsdialog.cpp" line="75"/>
         <source>Changes this plant&apos;s name everywhere in the project</source>
-        <translation type="unfinished"></translation>
+        <translation>Cambia il nome di questa funzione in tutto il progetto</translation>
     </message>
     <message>
         <location filename="../sources/ui/plantslocationsdialog.cpp" line="76"/>
         <source>Rename location...</source>
-        <translation type="unfinished"></translation>
+        <translation>Rinomina posizione...</translation>
     </message>
     <message>
         <location filename="../sources/ui/plantslocationsdialog.cpp" line="78"/>
         <source>Changes this location&apos;s name in its plant, everywhere in the project</source>
-        <translation type="unfinished"></translation>
+        <translation>Cambia il nome di questa posizione nella sua funzione, in tutto il progetto</translation>
     </message>
     <message>
         <location filename="../sources/ui/plantslocationsdialog.cpp" line="79"/>
         <source>Copy plant...</source>
-        <translation type="unfinished"></translation>
+        <translation>Copia funzione...</translation>
     </message>
     <message>
         <location filename="../sources/ui/plantslocationsdialog.cpp" line="81"/>
         <source>Copies this plant&apos;s folios with everything on them under a new plant name</source>
-        <translation type="unfinished"></translation>
+        <translation>Copia le pagine di questa funzione con tutto il loro contenuto sotto un nuovo nome di funzione</translation>
     </message>
     <message>
         <location filename="../sources/ui/plantslocationsdialog.cpp" line="111"/>
         <source>(none)</source>
-        <translation type="unfinished">(nessuno)</translation>
+        <translation>(nessuno)</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/plantslocationsdialog.cpp" line="128"/>
         <source>%n plant and location row(s).</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n riga di funzione e posizione.</numerusform>
+            <numerusform>%n righe di funzione e posizione.</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/ui/plantslocationsdialog.cpp" line="165"/>
         <source>Reading the folios...</source>
-        <translation type="unfinished">Lettura delle pagine...</translation>
+        <translation>Lettura delle pagine...</translation>
     </message>
     <message>
         <location filename="../sources/ui/plantslocationsdialog.cpp" line="178"/>
         <source>Reading folio %1 of %2...</source>
-        <translation type="unfinished">Lettura della pagina %1 di %2...</translation>
+        <translation>Lettura della pagina %1 di %2...</translation>
     </message>
     <message>
         <location filename="../sources/ui/plantslocationsdialog.cpp" line="221"/>
         <source>Rename location</source>
-        <translation type="unfinished"></translation>
+        <translation>Rinomina posizione</translation>
     </message>
     <message>
         <location filename="../sources/ui/plantslocationsdialog.cpp" line="221"/>
         <source>Rename plant</source>
-        <translation type="unfinished"></translation>
+        <translation>Rinomina funzione</translation>
     </message>
     <message>
         <location filename="../sources/ui/plantslocationsdialog.cpp" line="222"/>
         <source>New name for the location %1 of plant %2:</source>
-        <translation type="unfinished"></translation>
+        <translation>Nuovo nome per la posizione %1 della funzione %2:</translation>
     </message>
     <message>
         <location filename="../sources/ui/plantslocationsdialog.cpp" line="223"/>
         <source>New name for the plant %1:</source>
-        <translation type="unfinished"></translation>
+        <translation>Nuovo nome per la funzione %1:</translation>
     </message>
     <message>
         <location filename="../sources/ui/plantslocationsdialog.cpp" line="234"/>
         <source>&quot;%1&quot; already exists. The two will become one. Continue?</source>
-        <translation type="unfinished"></translation>
+        <translation>“%1” esiste già. I due diventeranno uno solo. Continuare?</translation>
     </message>
     <message>
         <location filename="../sources/ui/plantslocationsdialog.cpp" line="241"/>
         <source>Both plants have wire numbers counted. Which counters should &quot;%1&quot; keep?</source>
-        <translation type="unfinished"></translation>
+        <translation>Entrambe le funzioni hanno numeri di fili contati. Quali contatori deve mantenere “%1”?</translation>
     </message>
     <message>
         <location filename="../sources/ui/plantslocationsdialog.cpp" line="243"/>
         <source>The higher number of each</source>
-        <translation type="unfinished"></translation>
+        <translation>Il numero più alto di ciascuno</translation>
     </message>
     <message>
         <location filename="../sources/ui/plantslocationsdialog.cpp" line="244"/>
         <location filename="../sources/ui/plantslocationsdialog.cpp" line="245"/>
         <source>Those of %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Quelli di %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/plantslocationsdialog.cpp" line="256"/>
         <source>Not every folio could be read, so nothing was renamed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Non è stato possibile leggere tutte le pagine, quindi nulla è stato rinominato.</translation>
     </message>
     <message>
         <location filename="../sources/ui/plantslocationsdialog.cpp" line="257"/>
         <source>The project does not store &quot;%1&quot; anywhere that can be renamed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Il progetto non memorizza “%1” in nessun punto che possa essere rinominato.</translation>
     </message>
     <message>
         <location filename="../sources/ui/plantslocationsdialog.cpp" line="288"/>
         <source>Copy plant</source>
-        <translation type="unfinished"></translation>
+        <translation>Copia funzione</translation>
     </message>
     <message>
         <location filename="../sources/ui/plantslocationsdialog.cpp" line="289"/>
         <source>Name of the copy of plant %1:</source>
-        <translation type="unfinished"></translation>
+        <translation>Nome della copia della funzione %1:</translation>
     </message>
     <message>
         <location filename="../sources/ui/plantslocationsdialog.cpp" line="303"/>
         <source>Not every folio could be read, so nothing was copied.</source>
-        <translation type="unfinished"></translation>
+        <translation>Non è stato possibile leggere tutte le pagine, quindi nulla è stato copiato.</translation>
     </message>
     <message>
         <location filename="../sources/ui/plantslocationsdialog.cpp" line="304"/>
         <source>No folio has &quot;%1&quot; as its plant, so there is nothing to copy.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nessuna pagina ha “%1” come funzione, quindi non c&apos;è nulla da copiare.</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/plantslocationsdialog.cpp" line="307"/>
         <source>%n folio(s) of plant %1 will be copied as plant %2. Labels are kept: -K1 of the copy is =%2-K1.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n pagina della funzione %1 sarà copiata come funzione %2. Le etichette sono mantenute: -K1 della copia diventa =%2-K1.</numerusform>
+            <numerusform>%n pagine della funzione %1 saranno copiate come funzione %2. Le etichette sono mantenute: -K1 della copia diventa =%2-K1.</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/plantslocationsdialog.cpp" line="311"/>
         <source>%n symbol(s) on these folios belong to another plant. Their copies keep it, so they have the same designations as the originals.</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n simbolo di queste pagine appartiene a un&apos;altra funzione. La sua copia la mantiene, quindi ha la stessa designazione dell&apos;originale.</numerusform>
+            <numerusform>%n simboli di queste pagine appartengono a un&apos;altra funzione. Le loro copie la mantengono, quindi hanno le stesse designazioni degli originali.</numerusform>
         </translation>
     </message>
 </context>
@@ -16784,47 +16803,47 @@ Importarle? Gli elementi riceveranno allora i numeri successivi, a partire da 1.
     <message>
         <location filename="../sources/dataBase/ui/plcquerywidget.cpp" line="51"/>
         <source>Available information</source>
-        <translation type="unfinished">Informazioni disponibili</translation>
+        <translation>Informazioni disponibili</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/plcquerywidget.cpp" line="63"/>
         <source>Add selection</source>
-        <translation type="unfinished">Aggiungi alla selezione</translation>
+        <translation>Aggiungi alla selezione</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/plcquerywidget.cpp" line="64"/>
         <source>Delete selection</source>
-        <translation type="unfinished"></translation>
+        <translation>Elimina la selezione</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/plcquerywidget.cpp" line="65"/>
         <source>go up the selection</source>
-        <translation type="unfinished">Spostare in alto la selezione</translation>
+        <translation>Spostare in alto la selezione</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/plcquerywidget.cpp" line="66"/>
         <source>go down the selection</source>
-        <translation type="unfinished">Scorri la selezione verso il basso</translation>
+        <translation>Scorri la selezione verso il basso</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/plcquerywidget.cpp" line="74"/>
         <source>Information to display</source>
-        <translation type="unfinished">Informazioni da visualizzare</translation>
+        <translation>Informazioni da visualizzare</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/plcquerywidget.cpp" line="83"/>
         <source>Custom SQL Query</source>
-        <translation type="unfinished">Richiesta SQL personalizzata</translation>
+        <translation>Richiesta SQL personalizzata</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/plcquerywidget.cpp" line="229"/>
         <source>Position</source>
-        <translation type="unfinished">Posizione</translation>
+        <translation>Posizione</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/plcquerywidget.cpp" line="230"/>
         <source>Sheet position</source>
-        <translation type="unfinished">Posizione della pagina</translation>
+        <translation>Posizione della pagina</translation>
     </message>
 </context>
 <context>
@@ -17115,12 +17134,12 @@ Funzione : %1</translation>
     <message>
         <location filename="../sources/ui/potentialtypeswidget.cpp" line="79"/>
         <source>Also give each type a conductor colour, section and type</source>
-        <translation type="unfinished"></translation>
+        <translation>Assegna inoltre a ogni tipo un colore, una sezione e un tipo di conduttore</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialtypeswidget.cpp" line="82"/>
         <source>Three more columns in the table. Choosing a type on a conductor writes them to the conductor: the wire colour, the section and the kind of wire. A column left empty clears the conductor&apos;s value.</source>
-        <translation type="unfinished"></translation>
+        <translation>Tre colonne in più nella tabella. Scegliere un tipo su un conduttore le scrive nel conduttore: il colore del filo, la sezione e il genere di filo. Una colonna lasciata vuota cancella il valore del conduttore.</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialtypeswidget.cpp" line="89"/>
@@ -17145,17 +17164,17 @@ Funzione : %1</translation>
     <message>
         <location filename="../sources/ui/potentialtypeswidget.cpp" line="90"/>
         <source>Conductor colour</source>
-        <translation type="unfinished"></translation>
+        <translation>Colore del conduttore</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialtypeswidget.cpp" line="90"/>
         <source>Conductor section</source>
-        <translation type="unfinished"></translation>
+        <translation>Sezione del conduttore</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialtypeswidget.cpp" line="91"/>
         <source>Conductor type</source>
-        <translation type="unfinished">Tipo di conduttore</translation>
+        <translation>Tipo di conduttore</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialtypeswidget.cpp" line="106"/>
@@ -17350,14 +17369,16 @@ conservarle o eliminarle?</numerusform>
     <message>
         <location filename="../sources/ui/prefixconfigurationdialog.cpp" line="343"/>
         <source>Prefix file updated</source>
-        <translation type="unfinished"></translation>
+        <translation>File dei prefissi aggiornato</translation>
     </message>
     <message>
         <location filename="../sources/ui/prefixconfigurationdialog.cpp" line="344"/>
         <source>The file %1 has been rewritten in the form this dialog uses. Every folder keeps its prefix.
 Its previous version was kept as:
 %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Il file %1 è stato riscritto nella forma usata da questa finestra. Ogni cartella mantiene il suo prefisso.
+La sua versione precedente è stata conservata come:
+%2</translation>
     </message>
     <message>
         <location filename="../sources/ui/prefixconfigurationdialog.cpp" line="351"/>
@@ -17733,157 +17754,157 @@ Assegna loro prima un&apos;altra numerazione.</numerusform>
     <message>
         <location filename="../sources/projectcheck.cpp" line="118"/>
         <source>Duplicate signals and components</source>
-        <translation type="unfinished">Segnali e componenti duplicati</translation>
+        <translation>Segnali e componenti duplicati</translation>
     </message>
     <message>
         <location filename="../sources/projectcheck.cpp" line="119"/>
         <source>Potential types</source>
-        <translation type="unfinished">Tipi di potenziale</translation>
+        <translation>Tipi di potenziale</translation>
     </message>
     <message>
         <location filename="../sources/projectcheck.cpp" line="120"/>
         <source>Open wire ends</source>
-        <translation type="unfinished"></translation>
+        <translation>Estremità di filo aperte</translation>
     </message>
     <message>
         <location filename="../sources/projectcheck.cpp" line="121"/>
         <source>Symbols with no wire</source>
-        <translation type="unfinished"></translation>
+        <translation>Simboli senza filo</translation>
     </message>
     <message>
         <location filename="../sources/projectcheck.cpp" line="122"/>
         <source>Branches between strip terminals</source>
-        <translation type="unfinished"></translation>
+        <translation>Derivazioni tra morsetti di morsettiera</translation>
     </message>
     <message>
         <location filename="../sources/projectcheck.cpp" line="123"/>
         <source>Device types</source>
-        <translation type="unfinished">Tipi di dispositivo</translation>
+        <translation>Tipi di dispositivo</translation>
     </message>
     <message>
         <location filename="../sources/projectcheck.cpp" line="124"/>
         <source>Wires per terminal</source>
-        <translation type="unfinished"></translation>
+        <translation>Fili per morsetto</translation>
     </message>
     <message>
         <location filename="../sources/projectcheck.cpp" line="125"/>
         <source>Terminal names</source>
-        <translation type="unfinished"></translation>
+        <translation>Nomi dei morsetti</translation>
     </message>
     <message>
         <location filename="../sources/projectcheck.cpp" line="126"/>
         <source>Wires in two cables</source>
-        <translation type="unfinished"></translation>
+        <translation>Fili in due cavi</translation>
     </message>
     <message>
         <location filename="../sources/projectcheck.cpp" line="127"/>
         <source>Symbols with no part number</source>
-        <translation type="unfinished"></translation>
+        <translation>Simboli senza codice articolo</translation>
     </message>
     <message>
         <location filename="../sources/projectcheck.cpp" line="128"/>
         <source>Unanswered prompts</source>
-        <translation type="unfinished"></translation>
+        <translation>Richieste senza risposta</translation>
     </message>
     <message>
         <location filename="../sources/projectcheck.cpp" line="150"/>
         <source>Project &gt; Find duplicate signals and components... has the options of this check.</source>
-        <translation type="unfinished"></translation>
+        <translation>Progetto &gt; Trova segnali e componenti duplicati... ha le opzioni di questa verifica.</translation>
     </message>
     <message>
         <location filename="../sources/projectcheck.cpp" line="152"/>
         <source>Wires of different potential types joined on one potential. Project &gt; Check potential types... lists them too.</source>
-        <translation type="unfinished"></translation>
+        <translation>Fili di tipi di potenziale diversi uniti su un potenziale. Progetto &gt; Verifica i tipi di potenziale... li elenca anch&apos;esso.</translation>
     </message>
     <message>
         <location filename="../sources/projectcheck.cpp" line="155"/>
         <source>Wires that run to an unlinked folio report, into a junction on one side only, or reach one symbol terminal. Project &gt; Check open wire ends... lists them too.</source>
-        <translation type="unfinished"></translation>
+        <translation>Fili che vanno a un riferimento di pagina non collegato, in una giunzione da un solo lato, o raggiungono un solo morsetto di simbolo. Progetto &gt; Verifica le estremità di filo aperte... li elenca anch&apos;esso.</translation>
     </message>
     <message>
         <location filename="../sources/projectcheck.cpp" line="159"/>
         <source>Symbols none of whose terminals has a wire. Folio reports are never listed; Options chooses what else is left out.</source>
-        <translation type="unfinished"></translation>
+        <translation>Simboli di cui nessun morsetto ha un filo. I riferimenti di pagina non sono mai elencati; Opzioni sceglie che cos&apos;altro viene escluso.</translation>
     </message>
     <message>
         <location filename="../sources/projectcheck.cpp" line="162"/>
         <source>Junctions with three wires or more, and no chain set in their symbol, on a wire between two terminal strip terminals. A wire cannot be split between two terminals: make the branch on a terminal.</source>
-        <translation type="unfinished"></translation>
+        <translation>Giunzioni con tre o più fili, e senza catena impostata nel loro simbolo, su un filo tra due morsetti di morsettiera. Un filo non può essere diviso tra due morsetti: fai la derivazione su un morsetto.</translation>
     </message>
     <message>
         <location filename="../sources/projectcheck.cpp" line="166"/>
         <source>Devices not drawn the way their device type says. Project &gt; Check device types... can place the missing parts.</source>
-        <translation type="unfinished"></translation>
+        <translation>Dispositivi non disegnati come dice il loro tipo di dispositivo. Progetto &gt; Verifica i tipi di dispositivo... può collocare le parti mancanti.</translation>
     </message>
     <message>
         <location filename="../sources/projectcheck.cpp" line="169"/>
         <source>Terminals with more wires than the limit set in Project properties &gt; Wiring.</source>
-        <translation type="unfinished"></translation>
+        <translation>Morsetti con più fili del limite impostato in Proprietà del progetto &gt; Cablaggio.</translation>
     </message>
     <message>
         <location filename="../sources/projectcheck.cpp" line="172"/>
         <source>Symbols of the project with two terminals of one name, which a wiring list cannot tell apart.</source>
-        <translation type="unfinished"></translation>
+        <translation>Simboli del progetto con due morsetti dallo stesso nome, che un elenco di cablaggio non può distinguere.</translation>
     </message>
     <message>
         <location filename="../sources/projectcheck.cpp" line="175"/>
         <source>Wires set as a core of more than one cable. A wire runs in one cable: the cable core list would show it twice.</source>
-        <translation type="unfinished"></translation>
+        <translation>Fili impostati come anima di più di un cavo. Un filo corre in un solo cavo: l&apos;elenco delle anime dei cavi lo mostrerebbe due volte.</translation>
     </message>
     <message>
         <location filename="../sources/projectcheck.cpp" line="178"/>
         <source>Symbols the parts list holds that have no part number. Folio reports, junctions and symbols set to be left out of the bill of materials are not listed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Simboli che l&apos;elenco delle parti contiene e che non hanno codice articolo. I riferimenti di pagina, le giunzioni e i simboli esclusi dalla distinta materiali non sono elencati.</translation>
     </message>
     <message>
         <location filename="../sources/projectcheck.cpp" line="182"/>
         <source>Labels and texts of symbols, wires and folios that still hold a question mark or a ?name: what a macro asks for when it is placed, left unanswered.</source>
-        <translation type="unfinished"></translation>
+        <translation>Etichette e testi di simboli, fili e pagine che contengono ancora un punto interrogativo o un ?nome: ciò che una macro chiede quando viene collocata, rimasto senza risposta.</translation>
     </message>
     <message>
         <location filename="../sources/projectcheck.cpp" line="236"/>
         <source>Duplicate signal: %1</source>
-        <translation type="unfinished">Segnale duplicato: %1</translation>
+        <translation>Segnale duplicato: %1</translation>
     </message>
     <message>
         <location filename="../sources/projectcheck.cpp" line="237"/>
         <source>Duplicate component: %1</source>
-        <translation type="unfinished">Componente duplicato: %1</translation>
+        <translation>Componente duplicato: %1</translation>
     </message>
     <message>
         <location filename="../sources/projectcheck.cpp" line="240"/>
         <source>Duplicate signal: %1 in %2</source>
         <extracomment>%2 is the plant, or the plant and location, such as &quot;=P1+UV1&quot;.</extracomment>
-        <translation type="unfinished">Segnale duplicato: %1 in %2</translation>
+        <translation>Segnale duplicato: %1 in %2</translation>
     </message>
     <message>
         <location filename="../sources/projectcheck.cpp" line="241"/>
         <source>Duplicate component: %1 in %2</source>
-        <translation type="unfinished">Componente duplicato: %1 in %2</translation>
+        <translation>Componente duplicato: %1 in %2</translation>
     </message>
     <message>
         <location filename="../sources/projectcheck.cpp" line="244"/>
         <source>%1 — different part numbers: %2</source>
         <extracomment>%1 is the finding above, %2 the part numbers, &quot;A9, B1&quot;.</extracomment>
-        <translation type="unfinished">%1 — codici articolo diversi: %2</translation>
+        <translation>%1 — codici articolo diversi: %2</translation>
     </message>
     <message>
         <location filename="../sources/projectcheck.cpp" line="265"/>
         <source>Potential types are off for this project.</source>
-        <translation type="unfinished"></translation>
+        <translation>I tipi di potenziale sono disattivati per questo progetto.</translation>
     </message>
     <message>
         <location filename="../sources/projectcheck.cpp" line="271"/>
         <source>One potential with wires of types %1</source>
         <extracomment>%1 is the potential types, such as &quot;L1 / N&quot;</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Un potenziale con fili dei tipi %1</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/projectcheck.cpp" line="274"/>
         <source>%n wire(s)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n filo</numerusform>
+            <numerusform>%n fili</numerusform>
         </translation>
     </message>
     <message>
@@ -17897,49 +17918,49 @@ Assegna loro prima un&apos;altra numerazione.</numerusform>
 %1 is the symbol&apos;s label, %2 its name, such as &quot;QF1: Circuit breaker&quot;
 ----------
 %1 is the junction, %2 the finding above</extracomment>
-        <translation type="unfinished">%1: %2</translation>
+        <translation>%1: %2</translation>
     </message>
     <message>
         <location filename="../sources/projectcheck.cpp" line="392"/>
         <location filename="../sources/projectcheck.cpp" line="405"/>
         <source>a terminal</source>
-        <translation type="unfinished"></translation>
+        <translation>un morsetto</translation>
     </message>
     <message>
         <location filename="../sources/projectcheck.cpp" line="395"/>
         <source>Branch between %1</source>
         <extracomment>%1 lists the strip terminals, such as &quot;X1:1, X2:4&quot;</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Derivazione tra %1</translation>
     </message>
     <message>
         <location filename="../sources/projectcheck.cpp" line="400"/>
         <source>Junction</source>
-        <translation type="unfinished">Giunzione</translation>
+        <translation>Giunzione</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/projectcheck.cpp" line="407"/>
         <source>%n other terminal(s) on the same wire</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n altro morsetto sullo stesso filo</numerusform>
+            <numerusform>%n altri morsetti sullo stesso filo</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/projectcheck.cpp" line="427"/>
         <source>No device of the project has a device type.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nessun dispositivo del progetto ha un tipo di dispositivo.</translation>
     </message>
     <message>
         <location filename="../sources/projectcheck.cpp" line="438"/>
         <source>%1: the project has no device type %2</source>
         <extracomment>%1 is the device, such as &quot;=P1+CP1-K12&quot;; %2 its device type</extracomment>
-        <translation type="unfinished">%1: il progetto non ha un tipo di dispositivo %2</translation>
+        <translation>%1: il progetto non ha un tipo di dispositivo %2</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/projectcheck.cpp" line="448"/>
         <source>%1: %2 of %n pins drawn</source>
         <extracomment>%1 is the connector, such as &quot;=P1+CP1-X1&quot;</extracomment>
-        <translation type="unfinished">
+        <translation>
             <numerusform>%1: %2 di %n pin disegnato</numerusform>
             <numerusform>%1: %2 di %n pin disegnati</numerusform>
         </translation>
@@ -17947,13 +17968,13 @@ Assegna loro prima un&apos;altra numerazione.</numerusform>
     <message>
         <location filename="../sources/projectcheck.cpp" line="452"/>
         <source>Free pin: %1</source>
-        <translation type="unfinished">Pin libero: %1</translation>
+        <translation>Pin libero: %1</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/projectcheck.cpp" line="456"/>
         <source>%1: %2 of %n parts drawn</source>
         <extracomment>%1 is the device, such as &quot;=P1+CP1-K12&quot;</extracomment>
-        <translation type="unfinished">
+        <translation>
             <numerusform>%1: %2 di %n parte disegnata</numerusform>
             <numerusform>%1: %2 di %n parti disegnate</numerusform>
         </translation>
@@ -17962,118 +17983,118 @@ Assegna loro prima un&apos;altra numerazione.</numerusform>
         <location filename="../sources/projectcheck.cpp" line="460"/>
         <source>Not drawn: %1</source>
         <extracomment>%1 describes the part, such as &quot;simple NO 13 14&quot;</extracomment>
-        <translation type="unfinished">Non disegnata: %1</translation>
+        <translation>Non disegnata: %1</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/projectcheck.cpp" line="464"/>
         <source>%n contact(s) more than the device type has</source>
-        <translation type="unfinished">
-            <numerusform>%n contatto in più di quanti ne abbia il tipo di dispositivo</numerusform>
-            <numerusform>%n contatti in più di quanti ne abbia il tipo di dispositivo</numerusform>
+        <translation>
+            <numerusform>%n contatto in più di quelli che ha il tipo di dispositivo</numerusform>
+            <numerusform>%n contatti in più di quelli che ha il tipo di dispositivo</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/projectcheck.cpp" line="472"/>
         <source>Pin %1 is drawn twice</source>
-        <translation type="unfinished">Il pin %1 è disegnato due volte</translation>
+        <translation>Il pin %1 è disegnato due volte</translation>
     </message>
     <message>
         <location filename="../sources/projectcheck.cpp" line="475"/>
         <source>%1 has no pin %2</source>
         <extracomment>%1 is a connector, such as &quot;X1&quot;, %2 a pin name, such as &quot;7&quot;</extracomment>
-        <translation type="unfinished">%1 non ha il pin %2</translation>
+        <translation>%1 non ha il pin %2</translation>
     </message>
     <message>
         <location filename="../sources/projectcheck.cpp" line="477"/>
         <source>%1: a terminal drawn without a pin name</source>
-        <translation type="unfinished">%1: un morsetto disegnato senza nome di pin</translation>
+        <translation>%1: un morsetto disegnato senza nome di pin</translation>
     </message>
     <message>
         <location filename="../sources/projectcheck.cpp" line="479"/>
         <source>Beyond the type: %1</source>
-        <translation type="unfinished">Fuori dal tipo: %1</translation>
+        <translation>Fuori dal tipo: %1</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/projectcheck.cpp" line="486"/>
         <source>%n contact(s) linked to no master</source>
-        <translation type="unfinished">
-            <numerusform>%n contatto non collegato a nessun master</numerusform>
-            <numerusform>%n contatti non collegati a nessun master</numerusform>
+        <translation>
+            <numerusform>%n contatto collegato a nessun master</numerusform>
+            <numerusform>%n contatti collegati a nessun master</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/projectcheck.cpp" line="492"/>
         <source>%1 %2</source>
         <extracomment>%1 is the symbol&apos;s name, %2 its label</extracomment>
-        <translation type="unfinished">%1 %2</translation>
+        <translation>%1 %2</translation>
     </message>
     <message>
         <location filename="../sources/projectcheck.cpp" line="512"/>
         <source>The wiring rules are switched off in Settings &gt; Configure QElectroTech.</source>
-        <translation type="unfinished"></translation>
+        <translation>Le regole di cablaggio sono disattivate in Impostazioni &gt; Configura QElectroTech.</translation>
     </message>
     <message>
         <location filename="../sources/projectcheck.cpp" line="518"/>
         <source>No limit is set for the wires of a terminal.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nessun limite è impostato per i fili di un morsetto.</translation>
     </message>
     <message>
         <location filename="../sources/projectcheck.cpp" line="550"/>
         <source>terminal %1</source>
         <extracomment>%1 numbers the terminals of a symbol, from 1</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>morsetto %1</translation>
     </message>
     <message>
         <location filename="../sources/projectcheck.cpp" line="554"/>
         <source>%1: %2 wires, the limit is %3</source>
         <extracomment>%1 is the symbol&apos;s label and terminal, such as &quot;-K1:A1&quot;; %2 and %3 count wires</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>%1: %2 fili, il limite è %3</translation>
     </message>
     <message>
         <location filename="../sources/projectcheck.cpp" line="595"/>
         <source>%1: terminals of one name: %2</source>
         <extracomment>%1 is the symbol&apos;s name; %2 the names, such as &quot;L (2), N (2)&quot;</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>%1: morsetti con lo stesso nome: %2</translation>
     </message>
     <message>
         <location filename="../sources/projectcheck.cpp" line="643"/>
         <source>A wire is a core of two cables: %1</source>
         <extracomment>%1 is the wire&apos;s number, %2 the cables, such as &quot;W1, W2&quot;</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Un filo è un&apos;anima di due cavi: %1</translation>
     </message>
     <message>
         <location filename="../sources/projectcheck.cpp" line="644"/>
         <source>Wire %1 is a core of two cables: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Il filo %1 è un&apos;anima di due cavi: %2</translation>
     </message>
     <message>
         <location filename="../sources/projectcheck.cpp" line="646"/>
         <location filename="../sources/projectcheck.cpp" line="761"/>
         <source>Wire</source>
-        <translation type="unfinished"></translation>
+        <translation>Filo</translation>
     </message>
     <message>
         <location filename="../sources/projectcheck.cpp" line="752"/>
         <source>Unanswered: %1</source>
         <extracomment>%1 is the symbol&apos;s label, %2 the text that still asks, such as &quot;-K?&quot;</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Senza risposta: %1</translation>
     </message>
     <message>
         <location filename="../sources/projectcheck.cpp" line="753"/>
         <source>%1: unanswered %2</source>
-        <translation type="unfinished"></translation>
+        <translation>%1: %2 senza risposta</translation>
     </message>
     <message>
         <location filename="../sources/projectcheck.cpp" line="756"/>
         <source>Wire: unanswered %1</source>
         <extracomment>%1 is the wire&apos;s text that still asks, such as &quot;?wire&quot;</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Filo: %1 senza risposta</translation>
     </message>
     <message>
         <location filename="../sources/projectcheck.cpp" line="759"/>
         <source>Text: unanswered %1</source>
         <extracomment>%1 is the folio text that still asks</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>Testo: %1 senza risposta</translation>
     </message>
 </context>
 <context>
@@ -18082,136 +18103,136 @@ Assegna loro prima un&apos;altra numerazione.</numerusform>
         <location filename="../sources/qetgraphicsitem/ViewItem/projectdbmodel.cpp" line="52"/>
         <location filename="../sources/qetgraphicsitem/ViewItem/projectdbmodel.cpp" line="71"/>
         <source>Device</source>
-        <translation type="unfinished">Dispositivo</translation>
+        <translation>Dispositivo</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/projectdbmodel.cpp" line="53"/>
         <location filename="../sources/qetgraphicsitem/ViewItem/projectdbmodel.cpp" line="449"/>
         <source>Description</source>
-        <translation type="unfinished">Descrizione</translation>
+        <translation>Descrizione</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/projectdbmodel.cpp" line="54"/>
         <source>Designation</source>
-        <translation type="unfinished">Designazione</translation>
+        <translation>Designazione</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/projectdbmodel.cpp" line="55"/>
         <source>Article</source>
-        <translation type="unfinished">Articolo</translation>
+        <translation>Articolo</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/projectdbmodel.cpp" line="56"/>
         <source>Symbols</source>
-        <translation type="unfinished">Simboli</translation>
+        <translation>Simboli</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/projectdbmodel.cpp" line="57"/>
         <location filename="../sources/qetgraphicsitem/ViewItem/projectdbmodel.cpp" line="64"/>
         <location filename="../sources/qetgraphicsitem/ViewItem/projectdbmodel.cpp" line="72"/>
         <source>Sheet</source>
-        <translation type="unfinished">Pagina</translation>
+        <translation>Pagina</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/projectdbmodel.cpp" line="59"/>
         <source>Wire</source>
-        <translation type="unfinished"></translation>
+        <translation>Filo</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/projectdbmodel.cpp" line="60"/>
         <source>From</source>
-        <translation type="unfinished"></translation>
+        <translation>Da</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/projectdbmodel.cpp" line="61"/>
         <source>To</source>
-        <translation type="unfinished"></translation>
+        <translation>A</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/projectdbmodel.cpp" line="62"/>
         <source>Cable</source>
-        <translation type="unfinished">Cavo</translation>
+        <translation>Cavo</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/projectdbmodel.cpp" line="63"/>
         <source>Core</source>
-        <translation type="unfinished">Anima</translation>
+        <translation>Anima</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/projectdbmodel.cpp" line="66"/>
         <source>PLC</source>
-        <translation type="unfinished">PLC</translation>
+        <translation>PLC</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/projectdbmodel.cpp" line="67"/>
         <source>Address</source>
-        <translation type="unfinished">Indirizzo</translation>
+        <translation>Indirizzo</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/projectdbmodel.cpp" line="68"/>
         <location filename="../sources/qetgraphicsitem/ViewItem/projectdbmodel.cpp" line="76"/>
         <source>Type</source>
-        <translation type="unfinished">Tipo</translation>
+        <translation>Tipo</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/projectdbmodel.cpp" line="69"/>
         <source>Function</source>
-        <translation type="unfinished"></translation>
+        <translation>Funzione</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/projectdbmodel.cpp" line="70"/>
         <source>Comment</source>
-        <translation type="unfinished"></translation>
+        <translation>Commento</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/projectdbmodel.cpp" line="74"/>
         <source>Wire numbers</source>
-        <translation type="unfinished">Numeri dei fili</translation>
+        <translation>Numeri dei fili</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/projectdbmodel.cpp" line="75"/>
         <source>Names</source>
-        <translation type="unfinished">Nomi</translation>
+        <translation>Nomi</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/projectdbmodel.cpp" line="77"/>
         <source>Terminals</source>
-        <translation type="unfinished"></translation>
+        <translation>Morsetti</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/projectdbmodel.cpp" line="78"/>
         <source>Wires</source>
-        <translation type="unfinished">Fili</translation>
+        <translation>Fili</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/projectdbmodel.cpp" line="79"/>
         <source>First sheet</source>
-        <translation type="unfinished">Prima pagina</translation>
+        <translation>Prima pagina</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/projectdbmodel.cpp" line="80"/>
         <source>Sheets</source>
-        <translation type="unfinished">Pagine</translation>
+        <translation>Pagine</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/projectdbmodel.cpp" line="447"/>
         <source>Revision</source>
-        <translation type="unfinished"></translation>
+        <translation>Revisione</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/projectdbmodel.cpp" line="448"/>
         <source>Date</source>
-        <translation type="unfinished">Data</translation>
+        <translation>Data</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/projectdbmodel.cpp" line="450"/>
         <source>Author</source>
-        <translation type="unfinished">Autore</translation>
+        <translation>Autore</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/projectdbmodel.cpp" line="451"/>
         <source>Approved by</source>
-        <translation type="unfinished"></translation>
+        <translation>Approvato da</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/projectdbmodel.cpp" line="455"/>
@@ -18226,7 +18247,7 @@ Assegna loro prima un&apos;altra numerazione.</numerusform>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/projectdbmodel.cpp" line="461"/>
         <source>Type PLC in full</source>
-        <translation type="unfinished"></translation>
+        <translation>Tipo PLC completo</translation>
     </message>
 </context>
 <context>
@@ -18498,31 +18519,31 @@ Assegna loro prima un&apos;altra numerazione.</numerusform>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="354"/>
         <source>Drawing standard:</source>
         <comment>label when configuring</comment>
-        <translation type="unfinished"></translation>
+        <translation>Norma di disegno:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="357"/>
         <source>As before</source>
         <comment>drawing standard</comment>
-        <translation type="unfinished"></translation>
+        <translation>Come prima</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="358"/>
         <source>IEC</source>
         <comment>drawing standard</comment>
-        <translation type="unfinished"></translation>
+        <translation>IEC</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="360"/>
         <source>NFPA</source>
         <comment>drawing standard</comment>
-        <translation type="unfinished"></translation>
+        <translation>NFPA</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="362"/>
         <source>The standard this project is drawn to. It changes nothing by itself: features to come will follow it. As before keeps the project exactly as it always was.</source>
         <comment>drawing standard tooltip</comment>
-        <translation type="unfinished"></translation>
+        <translation>La norma secondo cui questo progetto è disegnato. Di per sé non cambia nulla: le funzionalità future la seguiranno. “Come prima” mantiene il progetto esattamente com&apos;è sempre stato.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="366"/>
@@ -18702,55 +18723,55 @@ Assegna loro prima un&apos;altra numerazione.</numerusform>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="471"/>
         <source>Checks</source>
         <comment>group box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Verifiche</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="474"/>
         <source>The options last chosen in the Check panel and in Find duplicate signals and components apply, and may differ from one computer to another. Untick to give this project its own, saved in the project.</source>
         <comment>tooltip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Si applicano le ultime opzioni scelte nel pannello Verifica e in Trova segnali e componenti duplicati, che possono differire da un computer all&apos;altro. Deseleziona per dare a questo progetto le proprie, salvate nel progetto.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="491"/>
         <source>Duplicates: case-sensitive comparison</source>
         <comment>checkbox label</comment>
-        <translation type="unfinished"></translation>
+        <translation>Duplicati: confronto con distinzione tra maiuscole e minuscole</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="493"/>
         <source>Duplicates: one designation is one device; report different part numbers</source>
         <comment>checkbox label</comment>
-        <translation type="unfinished"></translation>
+        <translation>Duplicati: una designazione è un dispositivo; segnala i codici articolo diversi</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="496"/>
         <source>Duplicates: a wire number is unique within its plant (=)</source>
         <comment>checkbox label</comment>
-        <translation type="unfinished"></translation>
+        <translation>Duplicati: un numero di filo è univoco all&apos;interno della sua funzione (=)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="498"/>
         <source>Symbols with no wire: leave out folios with no wire</source>
         <comment>checkbox label</comment>
-        <translation type="unfinished"></translation>
+        <translation>Simboli senza filo: escludi le pagine senza fili</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="500"/>
         <source>Symbols with no wire: leave out strip terminals</source>
         <comment>checkbox label</comment>
-        <translation type="unfinished"></translation>
+        <translation>Simboli senza filo: escludi i morsetti delle morsettiere</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="502"/>
         <source>Symbols with no wire: leave out auxiliary contacts</source>
         <comment>checkbox label</comment>
-        <translation type="unfinished"></translation>
+        <translation>Simboli senza filo: escludi i contatti ausiliari</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="504"/>
         <source>Checks the Check panel runs on this project:</source>
         <comment>label when configuring</comment>
-        <translation type="unfinished"></translation>
+        <translation>Verifiche che il pannello Verifica esegue su questo progetto:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="513"/>
@@ -19207,7 +19228,7 @@ Assegna loro prima un&apos;altra numerazione.</numerusform>
     <message>
         <location filename="../sources/reports/projectreports.cpp" line="235"/>
         <source>Comment</source>
-        <translation type="unfinished"></translation>
+        <translation>Commento</translation>
     </message>
     <message>
         <location filename="../sources/reports/projectreports.cpp" line="241"/>
@@ -19247,67 +19268,67 @@ Assegna loro prima un&apos;altra numerazione.</numerusform>
     <message>
         <location filename="../sources/reports/projectreports.cpp" line="287"/>
         <source>Panel space list</source>
-        <translation type="unfinished"></translation>
+        <translation>Elenco degli ingombri del quadro</translation>
     </message>
     <message>
         <location filename="../sources/reports/projectreports.cpp" line="331"/>
         <source>(no place)</source>
-        <translation type="unfinished"></translation>
+        <translation>(nessun posto)</translation>
     </message>
     <message>
         <location filename="../sources/reports/projectreports.cpp" line="331"/>
         <source>Place</source>
-        <translation type="unfinished"></translation>
+        <translation>Posto</translation>
     </message>
     <message>
         <location filename="../sources/reports/projectreports.cpp" line="332"/>
         <source>Parts with a size</source>
-        <translation type="unfinished"></translation>
+        <translation>Parti con dimensioni</translation>
     </message>
     <message>
         <location filename="../sources/reports/projectreports.cpp" line="333"/>
         <source>Area [m²]</source>
-        <translation type="unfinished"></translation>
+        <translation>Superficie [m²]</translation>
     </message>
     <message>
         <location filename="../sources/reports/projectreports.cpp" line="334"/>
         <source>Deepest [mm]</source>
-        <translation type="unfinished"></translation>
+        <translation>Profondità massima [mm]</translation>
     </message>
     <message>
         <location filename="../sources/reports/projectreports.cpp" line="335"/>
         <source>Parts without a size</source>
-        <translation type="unfinished"></translation>
+        <translation>Parti senza dimensioni</translation>
     </message>
     <message>
         <location filename="../sources/reports/projectreports.cpp" line="398"/>
         <source>Plant</source>
-        <translation type="unfinished">Funzione (=)</translation>
+        <translation>Funzione (=)</translation>
     </message>
     <message>
         <location filename="../sources/reports/projectreports.cpp" line="398"/>
         <source>Location</source>
-        <translation type="unfinished"></translation>
+        <translation>Posizione</translation>
     </message>
     <message>
         <location filename="../sources/reports/projectreports.cpp" line="398"/>
         <source>Designation</source>
-        <translation type="unfinished">Designazione</translation>
+        <translation>Designazione</translation>
     </message>
     <message>
         <location filename="../sources/reports/projectreports.cpp" line="399"/>
         <source>Folios</source>
-        <translation type="unfinished"></translation>
+        <translation>Pagine</translation>
     </message>
     <message>
         <location filename="../sources/reports/projectreports.cpp" line="399"/>
         <source>First folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Prima pagina</translation>
     </message>
     <message>
         <location filename="../sources/reports/projectreports.cpp" line="401"/>
         <source>The project has no database.</source>
-        <translation type="unfinished">Il progetto non ha un database.</translation>
+        <translation>Il progetto non ha un database.</translation>
     </message>
 </context>
 <context>
@@ -19315,17 +19336,17 @@ Assegna loro prima un&apos;altra numerazione.</numerusform>
     <message>
         <location filename="../sources/utils/projecttemplates.cpp" line="50"/>
         <source>Cannot read %1: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossibile leggere %1: %2</translation>
     </message>
     <message>
         <location filename="../sources/utils/projecttemplates.cpp" line="54"/>
         <source>%1 is not a QElectroTech project in the .qet format.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 non è un progetto QElectroTech nel formato .qet.</translation>
     </message>
     <message>
         <location filename="../sources/utils/projecttemplates.cpp" line="64"/>
         <source>Cannot write %1: %2</source>
-        <translation type="unfinished">Impossibile scrivere %1: %2</translation>
+        <translation>Impossibile scrivere %1: %2</translation>
     </message>
 </context>
 <context>
@@ -19376,7 +19397,7 @@ Assegna loro prima un&apos;altra numerazione.</numerusform>
         <location filename="../sources/projectview.cpp" line="773"/>
         <source>Save over a newer project?</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Sovrascrivere un progetto più recente?</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="774"/>
@@ -19386,7 +19407,11 @@ Saving it here may lose what that version added and this one does not know.
 
 To keep the newer file as it is, cancel and use File &gt; Save as.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Questo progetto è stato salvato da QElectroTech %1, più recente di questo (%2).
+
+Salvarlo qui può far perdere ciò che quella versione ha aggiunto e che questa non conosce.
+
+Per mantenere il file più recente così com&apos;è, annulla e usa File &gt; Salva con nome.</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="849"/>
@@ -19690,17 +19715,17 @@ Opzioni disponibili:
     <message>
         <location filename="../sources/qetapp.cpp" line="1038"/>
         <source>QElectroTech</source>
-        <translation type="unfinished">QElectroTech</translation>
+        <translation>QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1039"/>
         <source>My templates</source>
-        <translation type="unfinished"></translation>
+        <translation>I miei modelli</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1042"/>
         <source>Shared</source>
-        <translation type="unfinished"></translation>
+        <translation>Condivisi</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2055"/>
@@ -21033,23 +21058,23 @@ Ecco gli ultimi messaggi registrati prima della chiusura — puoi salvarli per i
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1311"/>
         <source>Plants and locations...</source>
-        <translation type="unfinished"></translation>
+        <translation>Funzioni e posizioni...</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1313"/>
         <source>Lists the project&apos;s plants and locations with their symbol and folio counts</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Elenca le funzioni e le posizioni del progetto con il numero di simboli e di pagine</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1327"/>
         <source>Parts without a device type...</source>
-        <translation type="unfinished"></translation>
+        <translation>Parti senza tipo di dispositivo...</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1329"/>
         <source>Lists the parts of your material list which do not say their device type</source>
-        <translation type="unfinished"></translation>
+        <translation>Elenca le parti del tuo elenco materiali che non indicano il loro tipo di dispositivo</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1337"/>
@@ -21065,24 +21090,24 @@ Ecco gli ultimi messaggi registrati prima della chiusura — puoi salvarli per i
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1349"/>
         <source>Check project</source>
-        <translation type="unfinished"></translation>
+        <translation>Verifica il progetto</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1351"/>
         <source>Runs every check on the project and lists the findings in the Check panel</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Esegue tutte le verifiche sul progetto ed elenca le segnalazioni nel pannello Verifica</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1361"/>
         <source>Check open wire ends...</source>
-        <translation type="unfinished"></translation>
+        <translation>Verifica le estremità di filo aperte...</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1363"/>
         <source>Lists the wires that run to an unlinked folio report, into a junction on one side only, or reach one symbol terminal</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Elenca i fili che vanno a un riferimento di pagina non collegato, in una giunzione da un solo lato, o raggiungono un solo morsetto di simbolo</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1373"/>
@@ -21127,27 +21152,27 @@ Ecco gli ultimi messaggi registrati prima della chiusura — puoi salvarli per i
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1472"/>
         <source>Add a revision table</source>
-        <translation type="unfinished"></translation>
+        <translation>Aggiungi una tabella delle revisioni</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1480"/>
         <source>Add a device list</source>
-        <translation type="unfinished"></translation>
+        <translation>Aggiungi un elenco dei dispositivi</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1488"/>
         <source>Add a wiring table</source>
-        <translation type="unfinished"></translation>
+        <translation>Aggiungi una tabella di cablaggio</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1496"/>
         <source>Add a PLC list</source>
-        <translation type="unfinished"></translation>
+        <translation>Aggiungi un elenco dei PLC</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1502"/>
         <source>Add a signal list</source>
-        <translation type="unfinished"></translation>
+        <translation>Aggiungi un elenco dei segnali</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1510"/>
@@ -21162,7 +21187,7 @@ Ecco gli ultimi messaggi registrati prima della chiusura — puoi salvarli per i
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1543"/>
         <source>Export labels for printing...</source>
-        <translation type="unfinished"></translation>
+        <translation>Esporta etichette per la stampa...</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1554"/>
@@ -21323,7 +21348,7 @@ Ecco gli ultimi messaggi registrati prima della chiusura — puoi salvarli per i
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1756"/>
         <source>New from template...</source>
-        <translation type="unfinished"></translation>
+        <translation>Nuovo da modello...</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1761"/>
@@ -21346,7 +21371,7 @@ Ecco gli ultimi messaggi registrati prima della chiusura — puoi salvarli per i
         <location filename="../sources/qetdiagrameditor.cpp" line="1775"/>
         <source>Creates a new project from a template: its folios, title block, numbering and properties</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Crea un nuovo progetto da un modello: le sue pagine, il cartiglio, la numerazione e le proprietà</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1777"/>
@@ -21880,22 +21905,22 @@ Ecco gli ultimi messaggi registrati prima della chiusura — puoi salvarli per i
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2404"/>
         <source>Import EPLAN project (.epdz)…</source>
-        <translation type="unfinished"></translation>
+        <translation>Importa progetto EPLAN (.epdz)…</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2406"/>
         <source>Reads an EPLAN export archive and opens it as a QElectroTech project</source>
-        <translation type="unfinished"></translation>
+        <translation>Legge un archivio di esportazione EPLAN e lo apre come progetto QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2421"/>
         <source>Import FluidSIM circuit (.circ)…</source>
-        <translation type="unfinished"></translation>
+        <translation>Importa circuito FluidSIM (.circ)…</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2423"/>
         <source>Reads FluidSIM circuits with their parts, wires, links, values and GRAFCET and opens them as a QElectroTech project</source>
-        <translation type="unfinished"></translation>
+        <translation>Legge circuiti FluidSIM con le loro parti, fili, collegamenti, valori e GRAFCET e li apre come progetto QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2447"/>
@@ -21925,7 +21950,7 @@ Ecco gli ultimi messaggi registrati prima della chiusura — puoi salvarli per i
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2616"/>
         <source>Show or hide the Check panel</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostra o nascondi il pannello Verifica</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2797"/>
@@ -21933,32 +21958,32 @@ Ecco gli ultimi messaggi registrati prima della chiusura — puoi salvarli per i
         <location filename="../sources/qetdiagrameditor.cpp" line="2828"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="2836"/>
         <source>New from template</source>
-        <translation type="unfinished"></translation>
+        <translation>Nuovo da modello</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2798"/>
         <source>There is no project template yet. A template is a project saved as a .qet file in the folder %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Non c&apos;è ancora nessun modello di progetto. Un modello è un progetto salvato come file .qet nella cartella %1</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2805"/>
         <source>%1 (%2)</source>
-        <translation type="unfinished">%1 (%2)</translation>
+        <translation>%1 (%2)</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2808"/>
         <source>Start the new project from:</source>
-        <translation type="unfinished"></translation>
+        <translation>Avvia il nuovo progetto da:</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2829"/>
         <source>Cannot make a copy of the template.</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossibile fare una copia del modello.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2837"/>
         <source>Cannot open the template %1.</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossibile aprire il modello %1.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2886"/>
@@ -25361,12 +25386,12 @@ non è stato possibile leggere il nome tradotto di questa cartella, quindi viene
     <message>
         <location filename="../sources/factory/qetgraphicstablefactory.cpp" line="95"/>
         <source>Add a revision table</source>
-        <translation type="unfinished"></translation>
+        <translation>Aggiungi una tabella delle revisioni</translation>
     </message>
     <message>
         <location filename="../sources/factory/qetgraphicstablefactory.cpp" line="96"/>
         <source>Revisions</source>
-        <translation type="unfinished"></translation>
+        <translation>Revisioni</translation>
     </message>
     <message>
         <location filename="../sources/factory/qetgraphicstablefactory.cpp" line="115"/>
@@ -25381,42 +25406,42 @@ non è stato possibile leggere il nome tradotto di questa cartella, quindi viene
     <message>
         <location filename="../sources/factory/qetgraphicstablefactory.cpp" line="144"/>
         <source>Add a device list</source>
-        <translation type="unfinished"></translation>
+        <translation>Aggiungi un elenco dei dispositivi</translation>
     </message>
     <message>
         <location filename="../sources/factory/qetgraphicstablefactory.cpp" line="145"/>
         <source>Device list</source>
-        <translation type="unfinished"></translation>
+        <translation>Elenco dei dispositivi</translation>
     </message>
     <message>
         <location filename="../sources/factory/qetgraphicstablefactory.cpp" line="148"/>
         <source>Add a wiring table</source>
-        <translation type="unfinished"></translation>
+        <translation>Aggiungi una tabella di cablaggio</translation>
     </message>
     <message>
         <location filename="../sources/factory/qetgraphicstablefactory.cpp" line="149"/>
         <source>Wiring table</source>
-        <translation type="unfinished"></translation>
+        <translation>Tabella di cablaggio</translation>
     </message>
     <message>
         <location filename="../sources/factory/qetgraphicstablefactory.cpp" line="152"/>
         <source>Add a PLC list</source>
-        <translation type="unfinished"></translation>
+        <translation>Aggiungi un elenco dei PLC</translation>
     </message>
     <message>
         <location filename="../sources/factory/qetgraphicstablefactory.cpp" line="153"/>
         <source>PLC list</source>
-        <translation type="unfinished"></translation>
+        <translation>Elenco dei PLC</translation>
     </message>
     <message>
         <location filename="../sources/factory/qetgraphicstablefactory.cpp" line="156"/>
         <source>Add a signal list</source>
-        <translation type="unfinished"></translation>
+        <translation>Aggiungi un elenco dei segnali</translation>
     </message>
     <message>
         <location filename="../sources/factory/qetgraphicstablefactory.cpp" line="157"/>
         <source>Signal list</source>
-        <translation type="unfinished"></translation>
+        <translation>Elenco dei segnali</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="403"/>
@@ -25832,7 +25857,7 @@ La si vuole sostituire ?</translation>
     <message>
         <location filename="../sources/qetinformation.cpp" line="382"/>
         <source>Remote endpoint</source>
-        <translation type="unfinished"></translation>
+        <translation>Estremità remota</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="384"/>
@@ -25883,12 +25908,12 @@ La si vuole sostituire ?</translation>
     <message>
         <location filename="../sources/qetinformation.cpp" line="433"/>
         <source>Higher-level function (==)</source>
-        <translation type="unfinished"></translation>
+        <translation>Funzione di livello superiore (==)</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="434"/>
         <source>Higher-level location (++)</source>
-        <translation type="unfinished"></translation>
+        <translation>Posizione di livello superiore (++)</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="439"/>
@@ -26612,61 +26637,61 @@ La si vuole sostituire ?</translation>
         <location filename="../sources/properties/elementdata.cpp" line="1191"/>
         <source>Not specified</source>
         <comment>no terminal form chosen</comment>
-        <translation type="unfinished"></translation>
+        <translation>Non specificato</translation>
     </message>
     <message>
         <location filename="../sources/properties/elementdata.cpp" line="1173"/>
         <source>2-conductor feed-through terminal</source>
         <comment>terminal form</comment>
-        <translation type="unfinished"></translation>
+        <translation>Morsetto passante a 2 conduttori</translation>
     </message>
     <message>
         <location filename="../sources/properties/elementdata.cpp" line="1175"/>
         <source>3-conductor feed-through terminal</source>
         <comment>terminal form</comment>
-        <translation type="unfinished"></translation>
+        <translation>Morsetto passante a 3 conduttori</translation>
     </message>
     <message>
         <location filename="../sources/properties/elementdata.cpp" line="1177"/>
         <source>4-conductor feed-through terminal</source>
         <comment>terminal form</comment>
-        <translation type="unfinished"></translation>
+        <translation>Morsetto passante a 4 conduttori</translation>
     </message>
     <message>
         <location filename="../sources/properties/elementdata.cpp" line="1179"/>
         <source>Multi-level terminal</source>
         <comment>terminal form</comment>
-        <translation type="unfinished"></translation>
+        <translation>Morsetto multilivello</translation>
     </message>
     <message>
         <location filename="../sources/properties/elementdata.cpp" line="1181"/>
         <source>Sectionable terminal</source>
         <comment>terminal form</comment>
-        <translation type="unfinished"></translation>
+        <translation>Morsetto sezionabile</translation>
     </message>
     <message>
         <location filename="../sources/properties/elementdata.cpp" line="1183"/>
         <source>Fuse terminal</source>
         <comment>terminal form</comment>
-        <translation type="unfinished"></translation>
+        <translation>Morsetto portafusibile</translation>
     </message>
     <message>
         <location filename="../sources/properties/elementdata.cpp" line="1185"/>
         <source>Terminal block</source>
         <comment>terminal form</comment>
-        <translation type="unfinished">Morsettiera</translation>
+        <translation>Morsettiera</translation>
     </message>
     <message>
         <location filename="../sources/properties/elementdata.cpp" line="1187"/>
         <source>Sensor/actuator terminal</source>
         <comment>terminal form</comment>
-        <translation type="unfinished"></translation>
+        <translation>Morsetto sensore/attuatore</translation>
     </message>
     <message>
         <location filename="../sources/properties/elementdata.cpp" line="1189"/>
         <source>Pluggable terminal</source>
         <comment>terminal form</comment>
-        <translation type="unfinished"></translation>
+        <translation>Morsetto a innesto</translation>
     </message>
     <message>
         <location filename="../sources/properties/elementdata.cpp" line="1226"/>
@@ -28442,73 +28467,75 @@ Come vuoi posizionarle?</translation>
         <location filename="../sources/import/fluidsim/fluidsimimport.cpp" line="143"/>
         <location filename="../sources/import/fluidsim/fluidsimimport.cpp" line="190"/>
         <source>Import FluidSIM circuit</source>
-        <translation type="unfinished"></translation>
+        <translation>Importa circuito FluidSIM</translation>
     </message>
     <message>
         <location filename="../sources/import/fluidsim/fluidsimimport.cpp" line="106"/>
         <source>The import program (%1) was not found next to QElectroTech. Set QET_FLUIDSIM_IMPORT to its path.</source>
-        <translation type="unfinished"></translation>
+        <translation>Il programma di importazione (%1) non è stato trovato accanto a QElectroTech. Imposta QET_FLUIDSIM_IMPORT sul suo percorso.</translation>
     </message>
     <message>
         <location filename="../sources/import/fluidsim/fluidsimimport.cpp" line="112"/>
         <source>FluidSIM circuits (*.circ);;All files (*)</source>
-        <translation type="unfinished"></translation>
+        <translation>Circuiti FluidSIM (*.circ);;Tutti i file (*)</translation>
     </message>
     <message>
         <location filename="../sources/import/fluidsim/fluidsimimport.cpp" line="120"/>
         <source>Save the imported project as</source>
-        <translation type="unfinished"></translation>
+        <translation>Salva il progetto importato come</translation>
     </message>
     <message>
         <location filename="../sources/import/fluidsim/fluidsimimport.cpp" line="122"/>
         <source>QElectroTech projects (*.qet)</source>
-        <translation type="unfinished"></translation>
+        <translation>Progetti QElectroTech (*.qet)</translation>
     </message>
     <message>
         <location filename="../sources/import/fluidsim/fluidsimimport.cpp" line="134"/>
         <source>%1 already exists. Replace it?</source>
-        <translation type="unfinished">%1 esiste già. Sostituirlo?</translation>
+        <translation>%1 esiste già. Sostituirlo?</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/import/fluidsim/fluidsimimport.cpp" line="140"/>
         <source>Importing %n FluidSIM circuit(s) …</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Importazione di %n circuito FluidSIM …</numerusform>
+            <numerusform>Importazione di %n circuiti FluidSIM …</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/import/fluidsim/fluidsimimport.cpp" line="142"/>
         <source>Cancel</source>
-        <translation type="unfinished">Annulla</translation>
+        <translation>Annulla</translation>
     </message>
     <message>
         <location filename="../sources/import/fluidsim/fluidsimimport.cpp" line="191"/>
         <source>No Python 3 could run the import program:
 %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Nessun Python 3 ha potuto eseguire il programma di importazione:
+%1</translation>
     </message>
     <message>
         <location filename="../sources/import/fluidsim/fluidsimimport.cpp" line="192"/>
         <source>The import did not finish:
 %1</source>
-        <translation type="unfinished"></translation>
+        <translation>L&apos;importazione non è terminata:
+%1</translation>
     </message>
     <message>
         <location filename="../sources/materiallist/parttypes.cpp" line="162"/>
         <source>Give the symbols of these parts their device type</source>
-        <translation type="unfinished"></translation>
+        <translation>Dai ai simboli di queste parti il loro tipo di dispositivo</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/setterminallabelcommand.cpp" line="67"/>
         <source>Change the name or the drawing of a terminal</source>
-        <translation type="unfinished"></translation>
+        <translation>Cambia il nome o il disegno di un morsetto</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="49"/>
         <source>(No action)</source>
         <comment>spacemouse config: unbound button</comment>
-        <translation type="unfinished"></translation>
+        <translation>(Nessuna azione)</translation>
     </message>
 </context>
 <context>
@@ -29731,7 +29758,7 @@ Creare il proprio testo utilizzando le seguenti variabili:
     <message>
         <location filename="../sources/factory/ui/revisionquerywidget.h" line="40"/>
         <source>The table shows the project&apos;s revision history: revision, date, description, author and approver, the latest last. Edit it in Project properties &gt; Revisions.</source>
-        <translation type="unfinished"></translation>
+        <translation>La tabella mostra la cronologia delle revisioni del progetto: revisione, data, descrizione, autore e approvatore, la più recente per ultima. Modificala in Proprietà del progetto &gt; Revisioni.</translation>
     </message>
 </context>
 <context>
@@ -29740,47 +29767,47 @@ Creare il proprio testo utilizzando le seguenti variabili:
         <location filename="../sources/ui/configpage/revisionsconfigpage.cpp" line="43"/>
         <source>Revisions</source>
         <comment>configuration page title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Revisioni</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/revisionsconfigpage.cpp" line="55"/>
         <source>Revision</source>
-        <translation type="unfinished"></translation>
+        <translation>Revisione</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/revisionsconfigpage.cpp" line="55"/>
         <source>Date</source>
-        <translation type="unfinished">Data</translation>
+        <translation>Data</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/revisionsconfigpage.cpp" line="55"/>
         <source>Description</source>
-        <translation type="unfinished">Descrizione</translation>
+        <translation>Descrizione</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/revisionsconfigpage.cpp" line="56"/>
         <source>Author</source>
-        <translation type="unfinished">Autore</translation>
+        <translation>Autore</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/revisionsconfigpage.cpp" line="56"/>
         <source>Approved by</source>
-        <translation type="unfinished"></translation>
+        <translation>Approvato da</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/revisionsconfigpage.cpp" line="60"/>
         <source>Add a revision</source>
-        <translation type="unfinished"></translation>
+        <translation>Aggiungi una revisione</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/revisionsconfigpage.cpp" line="62"/>
         <source>Remove</source>
-        <translation type="unfinished">Rimuovi</translation>
+        <translation>Rimuovi</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/revisionsconfigpage.cpp" line="75"/>
         <source>The project&apos;s revision history, the latest last. A table on a folio can print it.</source>
-        <translation type="unfinished"></translation>
+        <translation>La cronologia delle revisioni del progetto, la più recente per ultima. Una tabella su una pagina può stamparla.</translation>
     </message>
 </context>
 <context>
@@ -30925,93 +30952,93 @@ Gli altri campi non vengono usati.</translation>
         <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="71"/>
         <source>Link a button number on your 3D mouse (SpaceMouse, SpacePilot...) to a QElectroTech action. The button number depends on your device and its driver -- see its documentation, or try the values one by one starting from 0.</source>
         <comment>spacemouse config page intro</comment>
-        <translation type="unfinished"></translation>
+        <translation>Collega un numero di pulsante del tuo mouse 3D (SpaceMouse, SpacePilot...) a un&apos;azione di QElectroTech. Il numero del pulsante dipende dal dispositivo e dal suo driver -- consulta la sua documentazione, oppure prova i valori uno per uno partendo da 0.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="81"/>
         <source>Action</source>
-        <translation type="unfinished">Azione</translation>
+        <translation>Azione</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="81"/>
         <source>Button no.</source>
-        <translation type="unfinished"></translation>
+        <translation>Pulsante n.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="90"/>
         <source>Add a link</source>
-        <translation type="unfinished"></translation>
+        <translation>Aggiungi un collegamento</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="98"/>
         <source>Buttons</source>
-        <translation type="unfinished"></translation>
+        <translation>Pulsanti</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="134"/>
         <source>Small movements below this threshold are ignored. Raise it if the view drifts when you are not touching the mouse.</source>
-        <translation type="unfinished"></translation>
+        <translation>I piccoli movimenti sotto questa soglia vengono ignorati. Aumentala se la vista deriva quando non tocchi il mouse.</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="138"/>
         <source>Push / pull the cap</source>
-        <translation type="unfinished"></translation>
+        <translation>Spingi / tira il cappuccio</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="140"/>
         <source>Twist the cap</source>
-        <translation type="unfinished"></translation>
+        <translation>Ruota il cappuccio</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="145"/>
         <source>Reverse horizontal movement</source>
-        <translation type="unfinished"></translation>
+        <translation>Inverti il movimento orizzontale</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="147"/>
         <source>Reverse vertical movement</source>
-        <translation type="unfinished"></translation>
+        <translation>Inverti il movimento verticale</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="149"/>
         <source>Reverse zoom</source>
-        <translation type="unfinished"></translation>
+        <translation>Inverti lo zoom</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="153"/>
         <source>Pan speed:</source>
-        <translation type="unfinished"></translation>
+        <translation>Velocità di panoramica:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="154"/>
         <source>Zoom speed:</source>
-        <translation type="unfinished"></translation>
+        <translation>Velocità dello zoom:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="155"/>
         <source>Zoom by:</source>
-        <translation type="unfinished"></translation>
+        <translation>Zoom di:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="156"/>
         <source>Dead zone:</source>
-        <translation type="unfinished"></translation>
+        <translation>Zona morta:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="161"/>
         <source>Movement</source>
-        <translation type="unfinished"></translation>
+        <translation>Movimento</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="219"/>
         <source>Remove this link</source>
-        <translation type="unfinished"></translation>
+        <translation>Rimuovi questo collegamento</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/spacemouseconfigpage.cpp" line="295"/>
         <source>3D mouse</source>
         <comment>configuration page title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Mouse 3D</translation>
     </message>
 </context>
 <context>
@@ -31035,7 +31062,7 @@ Gli altri campi non vengono usati.</translation>
     <message>
         <location filename="../sources/ui/structureboxpropertieswidget.cpp" line="47"/>
         <source>Higher-level function (==)</source>
-        <translation type="unfinished"></translation>
+        <translation>Funzione di livello superiore (==)</translation>
     </message>
     <message>
         <location filename="../sources/ui/structureboxpropertieswidget.cpp" line="48"/>
@@ -31045,7 +31072,7 @@ Gli altri campi non vengono usati.</translation>
     <message>
         <location filename="../sources/ui/structureboxpropertieswidget.cpp" line="49"/>
         <source>Higher-level location (++)</source>
-        <translation type="unfinished"></translation>
+        <translation>Posizione di livello superiore (++)</translation>
     </message>
     <message>
         <location filename="../sources/ui/structureboxpropertieswidget.cpp" line="50"/>
@@ -31061,7 +31088,7 @@ Gli altri campi non vengono usati.</translation>
         <location filename="../sources/ui/structureboxpropertieswidget.cpp" line="54"/>
         <location filename="../sources/ui/structureboxpropertieswidget.cpp" line="55"/>
         <source>Left empty, the folio&apos;s</source>
-        <translation type="unfinished"></translation>
+        <translation>Se vuoto, quello della pagina</translation>
     </message>
     <message>
         <location filename="../sources/ui/structureboxpropertieswidget.cpp" line="64"/>
@@ -33392,47 +33419,47 @@ Gli altri campi non vengono usati.</translation>
     <message>
         <location filename="../sources/ui/terminallabeldialog.ui" line="6"/>
         <source>Text properties</source>
-        <translation type="unfinished">Proprietà del testo</translation>
+        <translation>Proprietà del testo</translation>
     </message>
     <message>
         <location filename="../sources/ui/terminallabeldialog.ui" line="12"/>
         <source>Font</source>
-        <translation type="unfinished">Carattere</translation>
+        <translation>Carattere</translation>
     </message>
     <message>
         <location filename="../sources/ui/terminallabeldialog.ui" line="32"/>
         <source>X :</source>
-        <translation type="unfinished"></translation>
+        <translation>X:</translation>
     </message>
     <message>
         <location filename="../sources/ui/terminallabeldialog.ui" line="49"/>
         <source>Y :</source>
-        <translation type="unfinished"></translation>
+        <translation>Y:</translation>
     </message>
     <message>
         <location filename="../sources/ui/terminallabeldialog.ui" line="66"/>
         <source>Rotation :</source>
-        <translation type="unfinished"></translation>
+        <translation>Rotazione:</translation>
     </message>
     <message>
         <location filename="../sources/ui/terminallabeldialog.ui" line="76"/>
         <source>°</source>
-        <translation type="unfinished">°</translation>
+        <translation>°</translation>
     </message>
     <message>
         <location filename="../sources/ui/terminallabeldialog.ui" line="92"/>
         <source>Alignment</source>
-        <translation type="unfinished">Allineamento</translation>
+        <translation>Allineamento</translation>
     </message>
     <message>
         <location filename="../sources/ui/terminallabeldialog.ui" line="99"/>
         <source>Color :</source>
-        <translation type="unfinished">Colore:</translation>
+        <translation>Colore:</translation>
     </message>
     <message>
         <location filename="../sources/ui/terminallabeldialog.ui" line="116"/>
         <source>Frame the text</source>
-        <translation type="unfinished">Incornicia il testo</translation>
+        <translation>Incornicia il testo</translation>
     </message>
 </context>
 <context>
@@ -33499,84 +33526,84 @@ Gli altri campi non vengono usati.</translation>
         <location filename="../sources/ui/terminalpropertieswidget.ui" line="14"/>
         <location filename="../sources/ui/terminalpropertieswidget.h" line="50"/>
         <source>Terminal</source>
-        <translation type="unfinished"></translation>
+        <translation>Morsetto</translation>
     </message>
     <message>
         <location filename="../sources/ui/terminalpropertieswidget.ui" line="20"/>
         <source>Type</source>
-        <translation type="unfinished">Tipo</translation>
+        <translation>Tipo</translation>
     </message>
     <message>
         <location filename="../sources/ui/terminalpropertieswidget.ui" line="30"/>
         <source>Function</source>
-        <translation type="unfinished"></translation>
+        <translation>Funzione</translation>
     </message>
     <message>
         <location filename="../sources/ui/terminalpropertieswidget.ui" line="40"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Forma</translation>
     </message>
     <message>
         <location filename="../sources/ui/terminalpropertieswidget.ui" line="50"/>
         <source>Stage</source>
-        <translation type="unfinished">Livello</translation>
+        <translation>Livello</translation>
     </message>
     <message>
         <location filename="../sources/ui/terminalpropertieswidget.ui" line="60"/>
         <source>Section (mm²)</source>
-        <translation type="unfinished">Sezione (mm²)</translation>
+        <translation>Sezione (mm²)</translation>
     </message>
     <message>
         <location filename="../sources/ui/terminalpropertieswidget.ui" line="74"/>
         <source>Width (mm)</source>
-        <translation type="unfinished">Larghezza (mm)</translation>
+        <translation>Larghezza (mm)</translation>
     </message>
     <message>
         <location filename="../sources/ui/terminalpropertieswidget.ui" line="88"/>
         <source>Manufacturer</source>
-        <translation type="unfinished"></translation>
+        <translation>Costruttore</translation>
     </message>
     <message>
         <location filename="../sources/ui/terminalpropertieswidget.ui" line="102"/>
         <source>Color</source>
-        <translation type="unfinished">Colore</translation>
+        <translation>Colore</translation>
     </message>
     <message>
         <location filename="../sources/ui/terminalpropertieswidget.ui" line="116"/>
         <source>LED</source>
-        <translation type="unfinished"></translation>
+        <translation>LED</translation>
     </message>
     <message>
         <location filename="../sources/ui/terminalpropertieswidget.cpp" line="132"/>
         <location filename="../sources/ui/terminalpropertieswidget.cpp" line="143"/>
         <location filename="../sources/ui/terminalpropertieswidget.cpp" line="398"/>
         <source>None (default)</source>
-        <translation type="unfinished">Nessuno (predefinito)</translation>
+        <translation>Nessuno (predefinito)</translation>
     </message>
     <message>
         <location filename="../sources/ui/terminalpropertieswidget.cpp" line="135"/>
         <source>%1 mm²</source>
-        <translation type="unfinished">%1 mm²</translation>
+        <translation>%1 mm²</translation>
     </message>
     <message>
         <location filename="../sources/ui/terminalpropertieswidget.cpp" line="138"/>
         <source>0 (PE)</source>
-        <translation type="unfinished"></translation>
+        <translation>0 (PE)</translation>
     </message>
     <message>
         <location filename="../sources/ui/terminalpropertieswidget.cpp" line="281"/>
         <source>Terminal properties</source>
-        <translation type="unfinished"></translation>
+        <translation>Proprietà del morsetto</translation>
     </message>
     <message>
         <location filename="../sources/ui/terminalpropertieswidget.cpp" line="389"/>
         <source> mm²</source>
-        <translation type="unfinished"> mm²</translation>
+        <translation> mm²</translation>
     </message>
     <message>
         <location filename="../sources/ui/terminalpropertieswidget.cpp" line="390"/>
         <source> mm</source>
-        <translation type="unfinished"> mm</translation>
+        <translation> mm</translation>
     </message>
 </context>
 <context>
@@ -33584,7 +33611,7 @@ Gli altri campi non vengono usati.</translation>
     <message>
         <location filename="../sources/TerminalStrip/terminalstripautoimport.cpp" line="209"/>
         <source>Group the terminals by their stages</source>
-        <translation type="unfinished"></translation>
+        <translation>Raggruppa i morsetti per livelli</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/terminalstripautoimport.cpp" line="346"/>
@@ -33665,52 +33692,52 @@ Gli altri campi non vengono usati.</translation>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="168"/>
         <source>Not specified</source>
-        <translation type="unfinished"></translation>
+        <translation>Non specificato</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="173"/>
         <source>2-conductor feed-through terminal</source>
-        <translation type="unfinished"></translation>
+        <translation>Morsetto passante a 2 conduttori</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="178"/>
         <source>3-conductor feed-through terminal</source>
-        <translation type="unfinished"></translation>
+        <translation>Morsetto passante a 3 conduttori</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="183"/>
         <source>4-conductor feed-through terminal</source>
-        <translation type="unfinished"></translation>
+        <translation>Morsetto passante a 4 conduttori</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="188"/>
         <source>Multi-level terminal</source>
-        <translation type="unfinished"></translation>
+        <translation>Morsetto multilivello</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="193"/>
         <source>Sectionable terminal</source>
-        <translation type="unfinished"></translation>
+        <translation>Morsetto sezionabile</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="198"/>
         <source>Fuse terminal</source>
-        <translation type="unfinished"></translation>
+        <translation>Morsetto portafusibile</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="203"/>
         <source>Terminal block</source>
-        <translation type="unfinished">Morsettiera</translation>
+        <translation>Morsettiera</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="208"/>
         <source>Sensor/actuator terminal</source>
-        <translation type="unfinished"></translation>
+        <translation>Morsetto sensore/attuatore</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="213"/>
         <source>Pluggable terminal</source>
-        <translation type="unfinished"></translation>
+        <translation>Morsetto a innesto</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="231"/>
@@ -33755,7 +33782,7 @@ Gli altri campi non vengono usati.</translation>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="289"/>
         <source>Cable sides...</source>
-        <translation type="unfinished"></translation>
+        <translation>Lati dei cavi...</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="362"/>
@@ -34044,27 +34071,27 @@ Gli altri campi non vengono usati.</translation>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1441"/>
         <source>Cable sides</source>
-        <translation type="unfinished"></translation>
+        <translation>Lati dei cavi</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1445"/>
         <source>This strip has no cables.</source>
-        <translation type="unfinished"></translation>
+        <translation>Questa morsettiera non ha cavi.</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1452"/>
         <source>Below</source>
-        <translation type="unfinished">In basso</translation>
+        <translation>In basso</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1453"/>
         <source>Above</source>
-        <translation type="unfinished">In alto</translation>
+        <translation>In alto</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1485"/>
         <source>Change the sides of terminal strip cables</source>
-        <translation type="unfinished"></translation>
+        <translation>Cambia i lati dei cavi della morsettiera</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="1545"/>
@@ -34167,12 +34194,12 @@ Definirlo qui comunque?</translation>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.ui" line="98"/>
         <source>Add the free terminals to the terminal strips named after their labels (&quot;X1:2&quot; goes to the strip &quot;X1&quot;), creating the strips when needed. Terminals already assigned to a strip are never touched; terminals whose stages continue one another are joined into one block. Asks for confirmation.</source>
-        <translation type="unfinished"></translation>
+        <translation>Aggiunge i morsetti liberi alle morsettiere denominate secondo le loro etichette (“X1:2” va nella morsettiera “X1”), creando le morsettiere se necessario. I morsetti già assegnati a una morsettiera non vengono mai toccati; i morsetti i cui livelli si susseguono sono uniti in un unico blocco. Chiede conferma.</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.ui" line="109"/>
         <source>Assign the free terminals and also move every terminal whose label prefix or plant and location no longer match its strip. Existing strips are never re-sorted; terminals whose stages continue one another are joined into one block. Asks for confirmation.</source>
-        <translation type="unfinished"></translation>
+        <translation>Assegna i morsetti liberi e sposta anche ogni morsetto il cui prefisso di etichetta o la cui funzione e posizione non corrispondono più alla sua morsettiera. Le morsettiere esistenti non vengono mai riordinate; i morsetti i cui livelli si susseguono sono uniti in un unico blocco. Chiede conferma.</translation>
     </message>
     <message>
         <source>Add the free terminals to the terminal strips named after their labels (&quot;X1:2&quot; goes to the strip &quot;X1&quot;), creating the strips when needed. Terminals already assigned to a strip are never touched. Asks for confirmation.</source>
@@ -34218,28 +34245,36 @@ Definirlo qui comunque?</translation>
         <source>
 
 Terminals whose stages continue one another are joined into one block.</source>
-        <translation type="unfinished"></translation>
+        <translation>
+
+I morsetti i cui livelli si susseguono sono uniti in un unico blocco.</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.cpp" line="217"/>
         <source>Free terminals will be added to the terminal strips named after their labels, and every terminal whose label prefix or plant and location no longer match its strip will be moved to the right strip.
 
 Terminals you placed by hand in a strip whose name does not match their label will be moved too. Existing strips are never re-sorted.</source>
-        <translation type="unfinished"></translation>
+        <translation>I morsetti liberi saranno aggiunti alle morsettiere denominate secondo le loro etichette, e ogni morsetto il cui prefisso di etichetta o la cui funzione e posizione non corrispondono più alla sua morsettiera sarà spostato nella morsettiera giusta.
+
+Anche i morsetti che hai collocato a mano in una morsettiera il cui nome non corrisponde alla loro etichetta saranno spostati. Le morsettiere esistenti non vengono mai riordinate.</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.cpp" line="224"/>
         <source>Every free terminal will be added to the terminal strip named after its label (&quot;X1:2&quot; goes to the strip &quot;X1&quot;), creating the strips when needed.
 
 Terminals that already belong to a strip are not touched and no strip is re-sorted.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ogni morsetto libero sarà aggiunto alla morsettiera denominata secondo la sua etichetta (“X1:2” va nella morsettiera “X1”), creando le morsettiere se necessario.
+
+I morsetti che appartengono già a una morsettiera non vengono toccati e nessuna morsettiera viene riordinata.</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.cpp" line="229"/>
         <source>
 
 This action can be undone with a single Undo.</source>
-        <translation type="unfinished"></translation>
+        <translation>
+
+Questa azione può essere annullata con un solo Annulla.</translation>
     </message>
     <message>
         <source>Free terminals will be added to the terminal strips named after their labels, and every terminal whose label prefix or plant and location no longer match its strip will be moved to the right strip.
@@ -34595,7 +34630,7 @@ Doppio clic per andare all&apos;elemento</translation>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="518"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Forma</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="519"/>
@@ -35209,32 +35244,32 @@ Ctrl+Invio conferma la cella, Esc scarta il testo.</translation>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="254"/>
         <source>Higher-level function (==):</source>
-        <translation type="unfinished"></translation>
+        <translation>Funzione di livello superiore (==):</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="261"/>
         <source>The IEC 81346 level above the plant: ==A1 in ==A1=P1+L1-K1. Left empty, there is none. Available as variable %{higher_plant} for title blocks</source>
-        <translation type="unfinished"></translation>
+        <translation>Il livello IEC 81346 sopra la funzione: ==A1 in ==A1=P1+L1-K1. Se vuoto, non ce n&apos;è. Disponibile come variabile %{higher_plant} per i cartigli</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="268"/>
         <source>Higher-level location (++):</source>
-        <translation type="unfinished"></translation>
+        <translation>Posizione di livello superiore (++):</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="275"/>
         <source>The IEC 81346 level above the location: ++S1 in =P1++S1+L1-K1. Left empty, there is none. Available as variable %{higher_location} for title blocks</source>
-        <translation type="unfinished"></translation>
+        <translation>Il livello IEC 81346 sopra la posizione: ++S1 in =P1++S1+L1-K1. Se vuoto, non ce n&apos;è. Disponibile come variabile %{higher_location} per i cartigli</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="282"/>
         <source>Document kind (&amp;):</source>
-        <translation type="unfinished"></translation>
+        <translation>Tipo di documento (&amp;):</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="289"/>
         <source>What kind of document this folio is, as an IEC 61355 code. Left empty, none. Available as variable %{document_kind} for title blocks</source>
-        <translation type="unfinished"></translation>
+        <translation>Che tipo di documento è questa pagina, come codice IEC 61355. Se vuoto, nessuno. Disponibile come variabile %{document_kind} per i cartigli</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="296"/>
