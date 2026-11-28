@@ -463,6 +463,17 @@ install(FILES misc/qet-mcp/README.md DESTINATION ${QET_DATA_PATH}mcp)
 install(DIRECTORY tools/eplan_import DESTINATION ${QET_DATA_PATH}
         PATTERN "tests" EXCLUDE
         PATTERN "__pycache__" EXCLUDE)
+# The FluidSIM import (File > Import FluidSIM circuit) is a Python 3 program
+# that writes the project through this QElectroTech and the MCP server above;
+# it finds both from <data>/fluidsim_import.
+install(FILES
+  tools/fluidsim_import/fluidsim_import.py
+  tools/fluidsim_import/fluidsim_elements.py
+  tools/fluidsim_import/fluidsim_grafcet.py
+  tools/fluidsim_import/own_graphics.py
+  DESTINATION ${QET_DATA_PATH}fluidsim_import)
+install(DIRECTORY tools/fluidsim_import/grafcet DESTINATION ${QET_DATA_PATH}fluidsim_import
+  FILES_MATCHING PATTERN "*.elmt")
 # The importers of File > Import (sources/import/splan) are Python programs
 # run beside QElectroTech; they draw through the MCP server above.
 install(DIRECTORY tools/qet_sheet tools/splan_import tools/wscad_import
