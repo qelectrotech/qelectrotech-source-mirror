@@ -177,7 +177,8 @@ class ToolRegistry(unittest.TestCase):
         self.assertEqual({t["name"] for t in m.TOOLS}, {
             "qet_project_info", "qet_elements", "qet_conductors", "qet_diff",
             "qet_scan", "qet_element_info", "qet_export", "qet_edit", "qet_query",
-            "qet_project_new", "qet_element_search", "qet_check", "qet_element_build",
+            "qet_project_new", "qet_fluidsim_import", "qet_element_search", "qet_check",
+            "qet_element_build",
             "qet_continuity", "qet_items", "qet_script_api", "qet_script_test",
         "qet_script_install", "qet_script_list", "qet_script_read",
         "qet_script_remove", "qet_live_status", "qet_live_run_script",
@@ -188,6 +189,29 @@ class ToolRegistry(unittest.TestCase):
         "qet_live_open_project", "qet_live_switch_project", "qet_live_save_project",
         "qet_live_close_project", "qet_live_print", "qet_live_changes",
         "qet_live_layout_check"})
+
+
+class FluidSimImportValidation(unittest.TestCase):
+    """qet_fluidsim_import refuses before it starts the import program."""
+
+    def test_refusals(self):
+        with tempfile.TemporaryDirectory() as d:
+            circuit = Path(d) / "a.circ"
+            circuit.write_bytes(b"")
+            with mock.patch.dict(os.environ, {"QET_ENABLE_SCRIPTING": "1"}):
+                with self.assertRaisesRegex(ValueError, "no such circuit"):
+                    m.tool_fluidsim_import("/no/qet", str(Path(d) / "missing.circ"), str(Path(d) / "o.qet"))
+                with self.assertRaisesRegex(ValueError, "must end in .qet"):
+                    m.tool_fluidsim_import("/no/qet", str(circuit), str(Path(d) / "o.txt"))
+            with mock.patch.dict(os.environ, {"QET_ENABLE_SCRIPTING": "0"}):
+                with self.assertRaisesRegex(ValueError, "QET_ENABLE_SCRIPTING=1"):
+                    m.tool_fluidsim_import("/no/qet", str(circuit), str(Path(d) / "o.qet"))
+
+    def test_the_program_is_found_in_the_source_tree(self):
+        with mock.patch.dict(os.environ, {"QET_FLUIDSIM_IMPORT": ""}):
+            program = m._fluidsim_program()
+        self.assertIsNotNone(program)
+        self.assertEqual(program.name, "fluidsim_import.py")
 
 
 class EditValidation(unittest.TestCase):

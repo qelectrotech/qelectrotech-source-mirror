@@ -1,0 +1,50 @@
+<definition version="0.100" type="element" link_type="simple" width="240" height="20" hotspot_x="120" hotspot_y="10">
+    <uuid uuid="{e5f8a147-bf8c-5d79-8b09-e0fe7d3ab36a}"/>
+    <names>
+        <name lang="ar">التزامن</name>
+        <name lang="ca">sincronització</name>
+        <name lang="cs">synchronizace</name>
+        <name lang="da">synkronisering</name>
+        <name lang="de">Synchronisierung</name>
+        <name lang="el">συγχρονισμός</name>
+        <name lang="en">synchronization</name>
+        <name lang="es">sincronización</name>
+        <name lang="fi">synkronointi</name>
+        <name lang="fr">synchronisation</name>
+        <name lang="hr">sinkronizacija</name>
+        <name lang="hu">szinkronizálás</name>
+        <name lang="it">sincronizzazione</name>
+        <name lang="ja">同期</name>
+        <name lang="ko">동기화</name>
+        <name lang="mn">синхрончлол</name>
+        <name lang="nb">synkronisering</name>
+        <name lang="nl">synchronisatie</name>
+        <name lang="nl_BE">synchronisatie</name>
+        <name lang="pl">synchronizacja</name>
+        <name lang="pt">sincronização</name>
+        <name lang="pt_BR">sincronização</name>
+        <name lang="ro">sincronizare</name>
+        <name lang="ru">синхронизация</name>
+        <name lang="sk">synchronizácia</name>
+        <name lang="sl">sinhronizacijo</name>
+        <name lang="sr">синхронизација</name>
+        <name lang="sv">synkronisering</name>
+        <name lang="tr">senkronizasyon</name>
+        <name lang="uk">Синхронізація</name>
+        <name lang="zh">同步</name>
+    </names>
+    <informations>Author: The QElectroTech team; redrawn on the 10 grid with named terminals for the FluidSIM import
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line x1="-110" y1="-3" x2="110" y2="-3" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <line x1="-110" y1="0" x2="110" y2="0" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <line x1="0" y1="0" x2="0" y2="10" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <line x1="-100" y1="-10" x2="-100" y2="-3" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <line x1="100" y1="-10" x2="100" y2="-3" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <terminal uuid="{198b1627-e7cd-4d9e-be24-e4a3cfe91f32}" name="1" x="-100" y="-10" orientation="n" type="Generic"/>
+        <terminal uuid="{ec262f25-807a-42f4-acbb-fb435c6b6f5d}" name="2" x="100" y="-10" orientation="n" type="Generic"/>
+        <terminal uuid="{0d91d3ef-415d-479c-b491-7ae7fe55b51f}" name="out" x="0" y="10" orientation="s" type="Generic"/>
+        <terminal uuid="{8be1770b-5789-45ec-8e16-6f4b88bc41b3}" name="w" x="-110" y="0" orientation="w" type="Generic"/>
+        <terminal uuid="{c2cf6b68-8322-40f4-b1e0-e998d4c3dd7d}" name="e" x="110" y="0" orientation="e" type="Generic"/>
+    </description>
+</definition>
