@@ -97,15 +97,66 @@ namespace {
 		return name;
 	}
 
-	/// folder chain with qet_directory files (display name per level)
+	/// @return whether @p path is @p root or lies below it (both clean, absolute)
+	bool isInside(const QString &path, const QString &root)
+	{
+#ifdef Q_OS_WIN
+		const Qt::CaseSensitivity cs = Qt::CaseInsensitive;
+#else
+		const Qt::CaseSensitivity cs = Qt::CaseSensitive;
+#endif
+		if (path.compare(root, cs) == 0) return true;
+		const QString r = root.endsWith(QLatin1Char('/')) ? root : root + QLatin1Char('/');
+		return path.startsWith(r, cs);
+	}
+
+	/**
+		Folder chain with qet_directory files (display name per level).
+		The names come from the imported data (commercialdata.csv, the part
+		data of an .edz) or from the command line: a level that is empty or
+		only dots ("." or "..") is refused, and so is a chain that would end
+		outside @p base, before anything is written.
+	*/
 	bool ensureDirs(const QString &base, const QStringList &levels, QString *out, QString *error)
 	{
-		QDir dir(base);
+		static const QRegularExpression reserved(QStringLiteral("[<>:\"/\\\\|?*\\x00-\\x1f]"));
+		static const QRegularExpression dots_only(QStringLiteral("^[.\\s]*$"));
+		QStringList folders;
 		for (const QString &name : levels) {
 			QString folder = name;
-			folder.replace(QRegularExpression(QStringLiteral("[<>:\"/\\\\|?*]")), QStringLiteral("-"));
+			folder.replace(reserved, QStringLiteral("-"));
+			if (dots_only.match(folder).hasMatch()) {
+				*error = QStringLiteral("Invalid folder name \"%1\": empty, \".\" or \"..\"").arg(name);
+				return false;
+			}
+			folders << folder;
+		}
+		const QString root = QDir::cleanPath(QDir(base).absolutePath());
+		const QString target = QDir::cleanPath(root + QLatin1Char('/') + folders.join(QLatin1Char('/')));
+		if (target == root || !isInside(target, root)) {
+			*error = QStringLiteral("The folder %1 lies outside the collection %2")
+					 .arg(QDir::toNativeSeparators(target), QDir::toNativeSeparators(root));
+			return false;
+		}
+		if (!QDir().mkpath(root)) {
+			*error = QStringLiteral("Cannot create folder %1").arg(QDir::toNativeSeparators(root));
+			return false;
+		}
+		// the collection itself may be reached through a link, a folder
+		// below it must not lead elsewhere
+		const QString canonical_root = QFileInfo(root).canonicalFilePath();
+		QDir dir(root);
+		for (int i = 0; i < folders.size(); ++i) {
+			const QString &name = levels.at(i);
+			const QString &folder = folders.at(i);
 			if (!dir.mkpath(folder) || !dir.cd(folder)) {
 				*error = QStringLiteral("Cannot create folder %1").arg(dir.filePath(folder));
+				return false;
+			}
+			if (!isInside(QFileInfo(dir.absolutePath()).canonicalFilePath(), canonical_root)) {
+				*error = QStringLiteral("The folder %1 lies outside the collection %2")
+						 .arg(QDir::toNativeSeparators(dir.absolutePath()),
+						      QDir::toNativeSeparators(root));
 				return false;
 			}
 			QFile f(dir.filePath(QStringLiteral("qet_directory")));
@@ -159,19 +210,23 @@ namespace {
 			*error = QStringLiteral("Not a zip archive: %1").arg(path);
 			return false;
 		}
-		qint64 total = 0;
+		// unsigned 64 bit: a zip64 entry may claim any size, which must
+		// neither wrap around nor turn negative before the budget is checked
+		const quint64 budget = quint64(QetZip::MaxUncompressedSize);
+		quint64 total = 0;
 		const mz_uint count = mz_zip_reader_get_num_files(&zip);
 		for (mz_uint i = 0; i < count && i < mz_uint(QetZip::MaxEntries); ++i) {
 			mz_zip_archive_file_stat stat;
 			if (!mz_zip_reader_file_stat(&zip, i, &stat) || stat.m_is_directory
 			    || stat.m_is_encrypted || !stat.m_is_supported)
 				continue;
-			total += qint64(stat.m_uncomp_size);
-			if (total > QetZip::MaxUncompressedSize) {
+			const quint64 claimed = quint64(stat.m_uncomp_size);
+			if (claimed > budget - total) {
 				*error = QStringLiteral("The archive is too large once unpacked");
 				mz_zip_reader_end(&zip);
 				return false;
 			}
+			total += claimed;
 			size_t size = 0;
 			void *data = mz_zip_reader_extract_to_heap(&zip, i, &size, 0);
 			if (!data) continue;
@@ -295,6 +350,9 @@ namespace {
 		});
 	}
 
+	/// the largest Data/part.json read from a .wspak (a real one has a few KB)
+	constexpr qint64 MaxPartJsonSize = 4 * 1024 * 1024;
+
 	/// part data of a WSCAD Universe package (.wspak: a zip with "ws" in front, Data/part.json);
 	/// its offsets count from the start of the file, prefix included, so it is read as it is
 	QMap<QString, QString> wspakInfo(const QString &path)
@@ -313,10 +371,13 @@ namespace {
 			mz_zip_archive_file_stat stat;
 			if (!mz_zip_reader_file_stat(&zip, i, &stat) || stat.m_is_directory) continue;
 			const QString name = QString::fromUtf8(stat.m_filename).replace(QLatin1Char('\\'), QLatin1Char('/'));
-			if (name.compare(QLatin1String("Data/part.json"), Qt::CaseInsensitive) == 0)
-				data = mz_zip_reader_extract_to_heap(&zip, i, &size, 0);
+			if (name.compare(QLatin1String("Data/part.json"), Qt::CaseInsensitive) != 0) continue;
+				// the size the archive declares, before anything is unpacked: a
+				// real part.json has a few KB, a crafted one could ask for GBs
+			if (stat.m_uncomp_size > quint64(MaxPartJsonSize)) break;
+			data = mz_zip_reader_extract_to_heap(&zip, i, &size, 0);
 		}
-		if (data && size < size_t(QetZip::MaxUncompressedSize)) {
+		if (data && size <= size_t(MaxPartJsonSize)) {
 			const QJsonObject o = QJsonDocument::fromJson(
 				QByteArray(static_cast<const char *>(data), qsizetype(size))).object();
 			out.insert(QStringLiteral("manufacturer"), o.value(QStringLiteral("manufacturerName")).toString());

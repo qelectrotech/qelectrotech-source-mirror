@@ -26,12 +26,16 @@
 #include "import/aasx/aasxpackage.h"
 #include "import/eplandxf/dwgreader.h"
 #include "import/eplandxf/eplandxfreader.h"
+#include "import/eplandxf/eplanelementbuilder.h"
 #include "import/eplandxf/eplanmacroreader.h"
 #include "import/eplandxf/eplanpartimporter.h"
 #include "import/plcchannels.h"
 
+#include <QDirIterator>
 #include <QDomDocument>
+#include <QElapsedTimer>
 #include <QFile>
+#include <QRegularExpression>
 
 /**
 	The part import of manufacturer EPLAN data (Part import > Import
@@ -374,6 +378,201 @@ class TstEplanPartImport : public QObject
 					QCOMPARE(p.description, QStringLiteral("-"));
 		}
 
+		/// A function with one connection point keeps its description
+		/// whole, also over several lines
+		void edzMultiLineDescription()
+		{
+			const QString xml = writeFile(
+				QStringLiteral("edz_descr/part.xml"),
+				"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
+				"<partsmanagement type=\"EPLAN.PartsManagement\">\n"
+				" <part P_ARTICLE_PARTNR=\"ACME.T1\" P_ARTICLE_MANUFACTURER=\"ACME\""
+				" P_ARTICLE_ORDERNR=\"T1\" P_ARTICLE_TYPENR=\"TERM-1\">\n"
+				"  <functiontemplate connectionDesignation=\"PE\""
+				" connectiondescription=\"Protective&#10;earth\" terminalNr=\"X1\"/>\n"
+				" </part>\n"
+				"</partsmanagement>\n");
+			QVERIFY(!xml.isEmpty());
+			EdzPart part;
+			QVERIFY2(part.parse(xml), qPrintable(part.errorString()));
+			QCOMPARE(part.pins().size(), 1);
+			QCOMPARE(part.pins().first().designation, QStringLiteral("PE"));
+			QCOMPARE(part.pins().first().description, QStringLiteral("Protective\nearth"));
+		}
+
+		/// Folder names from the imported data or the command line that
+		/// are "." or ".." would leave the collection: refused, and
+		/// nothing is written, neither inside nor above it
+		void dotFoldersRefused()
+		{
+			const QString jail = m_dir.filePath(QStringLiteral("dots/a/b"));
+			QVERIFY(QDir().mkpath(jail));
+			const QString collection = jail + QStringLiteral("/collection");
+
+			const QString zip = m_dir.filePath(QStringLiteral("dots.zip"));
+			const QByteArray csv =
+				"\"Order number\",\"Type number\",\"Manufacturer (full name)\","
+				"\"Description 1\",\"Product group\"\r\n"
+				"\"1234567\",\"..\",\"..\",\"Input module\",\"..\"\r\n";
+			QVERIFY(QetZip::write(zip, {{QStringLiteral("commercialdata.csv"), csv},
+						    {QStringLiteral("dxf/1234567/1/1234567_A1.dxf"), deviceDxf()}}));
+			EplanPartImporter importer;
+			QVERIFY(!importer.importPackage(zip, QString(), collection));
+			QVERIFY(!importer.errorString().isEmpty());
+			QVERIFY(importer.writtenPaths().isEmpty());
+
+			const QString dxf = writeFile(QStringLiteral("dots.dxf"), deviceDxf());
+			for (const QStringList &levels : QList<QStringList>{
+				     {QStringLiteral(".."), QStringLiteral("PLC"), QStringLiteral("DEV")},
+				     {QStringLiteral("Acme"), QStringLiteral(".."), QStringLiteral("..")},
+				     {QStringLiteral("Acme"), QStringLiteral("PLC"), QStringLiteral(".")},
+				     {QStringLiteral("Acme"), QStringLiteral(" "), QStringLiteral("DEV")},
+				     {QStringLiteral("..."), QStringLiteral("PLC"), QStringLiteral("DEV")}}) {
+				QVERIFY2(!importer.importDxf(dxf, QString(), levels.at(0), levels.at(1),
+							     levels.at(2), collection),
+					 qPrintable(levels.join(QLatin1Char('|'))));
+				QVERIFY(importer.writtenPaths().isEmpty());
+			}
+			QCOMPARE(CLIExport::run({QStringLiteral("--import-eplan"), dxf, collection,
+						 QStringLiteral("--manufacturer"), QStringLiteral(".."),
+						 QStringLiteral("--type"), QStringLiteral("..")}), 1);
+
+			QStringList files;
+			for (QDirIterator it(m_dir.filePath(QStringLiteral("dots")), QDir::Files | QDir::Hidden,
+					     QDirIterator::Subdirectories);
+			     it.hasNext();)
+				files << it.next();
+			QVERIFY2(files.isEmpty(), qPrintable(files.join(QLatin1Char(' '))));
+		}
+
+		/// A drawing of one zero-length line has no size: no element, no
+		/// crash
+		void zeroLengthLine()
+		{
+			const QByteArray dxf = code(0, "SECTION") + code(2, "ENTITIES") + line(5, 5, 5, 5)
+					       + code(0, "ENDSEC") + code(0, "EOF");
+			EplanDxfReader reader;
+			QVERIFY2(reader.read(dxf), qPrintable(reader.errorString()));
+			EplanSymbolData data;
+			data.lines = reader.lines();
+			QVERIFY(EplanElementBuilder::build(data, {{QStringLiteral("en"), QStringLiteral("x")}}, {})
+					.documentElement().isNull());
+			QVERIFY(EplanElementBuilder::build(EplanSymbolData(), {}, {}).documentElement().isNull());
+
+			// as the panel layout of a Data Portal package
+			const QString zip = m_dir.filePath(QStringLiteral("zero.zip"));
+			QVERIFY(QetZip::write(zip, {{QStringLiteral("commercialdata.csv"), commercialData()},
+						    {QStringLiteral("dxf/1234567/6/1234567_A6.dxf"), dxf}}));
+			const QString collection = m_dir.filePath(QStringLiteral("zero"));
+			EplanPartImporter importer;
+			QVERIFY(!importer.importPackage(zip, QString(), collection));
+			QVERIFY(importer.writtenPaths().isEmpty());
+		}
+
+		/// The sweep of an ARC is at most a full turn and its segments are
+		/// bounded, whatever the angles and the radius in the file
+		void hugeArc()
+		{
+			for (const QByteArray &radius : {QByteArrayLiteral("10"), QByteArrayLiteral("1e9")}) {
+				const QByteArray dxf = code(0, "SECTION") + code(2, "ENTITIES")
+					+ code(0, "ARC") + code(8, "0") + code(10, "0") + code(20, "0")
+					+ code(40, radius) + code(50, "0") + code(51, "1e10")
+					+ code(0, "ENDSEC") + code(0, "EOF");
+				QElapsedTimer timer;
+				timer.start();
+				EplanDxfReader reader;
+				QVERIFY2(reader.read(dxf), qPrintable(reader.errorString()));
+				QVERIFY(!reader.lines().isEmpty());
+				QVERIFY(reader.lines().size() <= 360);
+				QVERIFY(timer.elapsed() < 5000);
+			}
+		}
+
+		/// Block references nested deep and wide are cut off at a total
+		/// budget instead of expanding without end
+		void insertFanOut()
+		{
+			QByteArray dxf = code(0, "SECTION") + code(2, "BLOCKS");
+			for (int level = 0; level < 8; ++level) {
+				dxf += code(0, "BLOCK") + code(2, "B" + QByteArray::number(level))
+					+ code(10, "0") + code(20, "0");
+				for (int k = 0; k < 20; ++k)
+					dxf += code(0, "INSERT") + code(2, "B" + QByteArray::number(level + 1))
+						+ code(10, QByteArray::number(k)) + code(20, "0");
+				dxf += code(0, "ENDBLK");
+			}
+			dxf += code(0, "BLOCK") + code(2, "B8") + code(10, "0") + code(20, "0")
+				+ line(0, 0, 1, 1) + code(0, "ENDBLK");
+			dxf += code(0, "ENDSEC") + code(0, "SECTION") + code(2, "ENTITIES")
+				+ code(0, "INSERT") + code(2, "B0") + code(10, "0") + code(20, "0")
+				+ code(0, "ENDSEC") + code(0, "EOF");
+			QElapsedTimer timer;
+			timer.start();
+			EplanDxfReader reader;
+			QVERIFY(!reader.read(dxf));
+			QVERIFY(!reader.errorString().isEmpty());
+			QVERIFY(timer.elapsed() < 30000);
+		}
+
+		/// Coordinates that are not finite numbers never reach the element
+		void notFiniteCoordinates()
+		{
+			QByteArray dxf;
+			dxf += code(0, "SECTION") + code(2, "BLOCKS");
+			dxf += code(0, "BLOCK") + code(2, "CP") + code(10, "0") + code(20, "0") + code(0, "ENDBLK");
+			dxf += code(0, "ENDSEC");
+			dxf += code(0, "SECTION") + code(2, "ENTITIES");
+			dxf += line(0, 0, 16, 0) + line(16, 0, 16, 24) + line(16, 24, 0, 24) + line(0, 24, 0, 0);
+			dxf += code(0, "LINE") + code(8, "0") + code(10, "nan") + code(20, "0")
+				+ code(11, "4") + code(21, "inf");
+			dxf += code(0, "CIRCLE") + code(8, "0") + code(10, "8") + code(20, "-inf") + code(40, "2");
+			dxf += code(0, "TEXT") + code(8, "0") + code(10, "nan") + code(20, "2") + code(40, "2.5")
+				+ code(1, "LOST");
+			dxf += pin(0, 20, "1", "DI0") + pin(0, 12, "2", "DI1");
+			dxf += code(0, "INSERT") + code(2, "CP") + code(10, "nan") + code(20, "4")
+				+ attrib("Connection_Name", "3") + code(0, "SEQEND");
+			dxf += code(0, "ENDSEC") + code(0, "EOF");
+
+			EplanDxfReader reader;
+			QVERIFY2(reader.read(dxf), qPrintable(reader.errorString()));
+			QCOMPARE(reader.lines().size(), 4);
+			QVERIFY(reader.circles().isEmpty());
+			QCOMPARE(reader.pins().size(), 2);
+			for (const EplanDxfText &t : reader.texts())
+				QVERIFY(t.text != QLatin1String("LOST"));
+
+			const QString path = writeFile(QStringLiteral("nan.dxf"), dxf);
+			const QString collection = m_dir.filePath(QStringLiteral("nan"));
+			EplanPartImporter importer;
+			QVERIFY2(importer.importDxf(path, QString(), QStringLiteral("Acme"), QStringLiteral("PLC"),
+						    QStringLiteral("NAN-1"), collection),
+				 qPrintable(importer.errorString()));
+			QCOMPARE(importer.writtenPaths().size(), 1);
+			QFile element(importer.writtenPaths().first());
+			QVERIFY(element.open(QIODevice::ReadOnly));
+			const QString xml = QString::fromUtf8(element.readAll());
+			static const QRegularExpression not_finite(QStringLiteral("=\"[-+]?(nan|inf)"),
+								   QRegularExpression::CaseInsensitiveOption);
+			QVERIFY2(!xml.contains(not_finite), qPrintable(xml));
+
+			// the builder drops them as well, whatever reader the data comes from
+			EplanSymbolData data;
+			data.lines = {QLineF(0, 0, 16, 0), QLineF(qQNaN(), 0, 1, 1)};
+			data.circles = {{QPointF(qInf(), 0), 1.0}};
+			EplanDxfPin good;
+			good.pos = QPointF(0, 0);
+			good.name = QStringLiteral("1");
+			EplanDxfPin bad = good;
+			bad.pos = QPointF(qQNaN(), 0);
+			bad.name = QStringLiteral("2");
+			data.pins = {good, bad};
+			const QDomDocument doc = EplanElementBuilder::build(
+				data, {{QStringLiteral("en"), QStringLiteral("x")}}, {});
+			QVERIFY(!doc.documentElement().isNull());
+			QVERIFY2(!doc.toString().contains(not_finite), qPrintable(doc.toString()));
+			QCOMPARE(terminalNames(doc), QStringList{"1"});
+		}
+
 		/// The schematic of an EPLAN window macro (.ema, as an .edz
 		/// carries it): its black box with identifying letters and its
 		/// connection points with their descriptions
@@ -485,6 +684,25 @@ class TstEplanPartImport : public QObject
 			QCOMPARE(part.value(QStringLiteral("type")), QStringLiteral("REL-5"));
 			QCOMPARE(part.value(QStringLiteral("description")), QStringLiteral("Relay"));
 			QVERIFY(EplanPartImporter::wspakPartInfo(m_dir.filePath(QStringLiteral("none.wspak"))).isEmpty());
+
+				// a part.json larger than any real one (5 MB of spaces, packed
+				// to a few KB) is refused by its declared size, not unpacked
+			QByteArray big = json;
+			big.append(QByteArray(5 * 1024 * 1024, ' '));
+			mz_zip_zero_struct(&zip);
+			QVERIFY(mz_zip_writer_init_heap(&zip, 2, 0));
+			QVERIFY(mz_zip_writer_add_mem(&zip, "Data\\part.json", big.constData(), size_t(big.size()),
+						      MZ_DEFAULT_COMPRESSION));
+			data = nullptr;
+			size = 0;
+			QVERIFY(mz_zip_writer_finalize_heap_archive(&zip, &data, &size));
+			QByteArray packed(static_cast<const char *>(data), qsizetype(size));
+			mz_zip_writer_end(&zip);
+			packed.replace(0, 2, "ws");
+			QVERIFY(packed.size() < 1024 * 1024);
+			const QString bomb = writeFile(QStringLiteral("big.wspak"), packed);
+			QVERIFY(!bomb.isEmpty());
+			QVERIFY(EplanPartImporter::wspakPartInfo(bomb).isEmpty());
 		}
 
 		/// A DWG of another AutoCAD version, or one cut short, is refused

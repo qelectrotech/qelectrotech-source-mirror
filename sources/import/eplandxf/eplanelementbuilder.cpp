@@ -44,6 +44,8 @@ namespace {
 
 	QString num(double v)
 	{
+		// the input is finite (finiteOnly()), but its scaling may still overflow
+		if (!std::isfinite(v)) v = 0;
 		QString s = QString::number(v, 'f', 2);
 		while (s.endsWith(QLatin1Char('0'))) s.chop(1);
 		if (s.endsWith(QLatin1Char('.'))) s.chop(1);
@@ -130,6 +132,40 @@ namespace {
 	struct PinText { double x, y; QString ori; int name_len; };
 	struct FieldPx { QString tag; double x, y; int ha, va; };
 	struct HLine { double y, x1, x2; };
+
+	bool finite(const QPointF &p) { return std::isfinite(p.x()) && std::isfinite(p.y()); }
+	bool finite(const QLineF &l) { return finite(l.p1()) && finite(l.p2()); }
+
+	/**
+		@p data without the coordinates that are not finite numbers: a
+		damaged or crafted file must not bring "nan" or "inf" into the
+		element.
+	*/
+	EplanSymbolData finiteOnly(const EplanSymbolData &data)
+	{
+		EplanSymbolData out = data;
+		out.lines.clear();
+		out.circles.clear();
+		out.texts.clear();
+		out.pins.clear();
+		out.fields.clear();
+		out.filled.clear();
+		for (const QLineF &l : data.lines)
+			if (finite(l)) out.lines << l;
+		for (const auto &c : data.circles)
+			if (finite(c.first) && std::isfinite(c.second) && c.second >= 0) out.circles << c;
+		for (const EplanDxfText &t : data.texts)
+			if (finite(t.anchor) && finite(t.insert) && std::isfinite(t.height)
+			    && std::isfinite(t.rotation))
+				out.texts << t;
+		for (const EplanDxfPin &p : data.pins)
+			if (finite(p.pos)) out.pins << p;
+		for (const EplanDxfField &f : data.fields)
+			if (finite(f.anchor)) out.fields << f;
+		for (const QRectF &r : data.filled)
+			if (finite(r.topLeft()) && finite(r.bottomRight())) out.filled << r;
+		return out;
+	}
 }
 
 QStringList EplanElementBuilder::terminalNames(const QVector<EplanDxfPin> &pins)
@@ -145,10 +181,12 @@ QStringList EplanElementBuilder::terminalNames(const QVector<EplanDxfPin> &pins)
 	return out;
 }
 
-QDomDocument EplanElementBuilder::build(const EplanSymbolData &data,
+QDomDocument EplanElementBuilder::build(const EplanSymbolData &raw,
 					const QMap<QString, QString> &names,
 					const QVector<QPair<QString, QString>> &info)
 {
+	const EplanSymbolData data = finiteOnly(raw);
+	if (!std::isfinite(data.scale) || data.scale <= 0) return QDomDocument();
 	const double S = data.scale;  // px per mm of the drawing (EPLAN: 8 mm grid -> 20 px, QET grid 10 px)
 	QDomDocument doc;
 	QVector<EplanDxfPin> pins = data.pins;
@@ -318,10 +356,18 @@ QDomDocument EplanElementBuilder::build(const EplanSymbolData &data,
 		ys << y;
 	}
 
+	// nothing was drawn (a single zero-length line, say) and no terminal
+	// placed: no element, which the importer reports as such
+	if (xs.isEmpty() || ys.isEmpty()) return QDomDocument();
 	const double top_all = *std::min_element(ys.cbegin(), ys.cend());
 	const double left_all = *std::min_element(xs.cbegin(), xs.cend());
 	const double width = *std::max_element(xs.cbegin(), xs.cend()) - left_all;
 	const double height = *std::max_element(ys.cbegin(), ys.cend()) - top_all;
+	// a drawing without terminals and without any size, or one too large
+	// for a number
+	if ((pins.isEmpty() && width <= 0 && height <= 0)
+	    || !std::isfinite(width) || !std::isfinite(height))
+		return QDomDocument();
 	const double pad = 20;
 
 	QDomElement defn = doc.createElement(QStringLiteral("definition"));
