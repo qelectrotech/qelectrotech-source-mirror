@@ -23,6 +23,8 @@
 #include <QPair>
 #include <QRegularExpression>
 
+#include <algorithm>
+
 namespace {
 
 /**
@@ -242,6 +244,12 @@ bool EdzPart::parsePart(const QDomElement &part)
 				group = ft.parentNode().toElement()
 						.attribute(QStringLiteral("functiondefinition")).trimmed();
 		}
+		// A function with a single connection point keeps its description
+		// whole, also when that runs over several lines.
+		const qsizetype points = std::count_if(desigs.cbegin(), desigs.cend(),
+			[](const QString &d) { return !d.trimmed().isEmpty(); });
+		const QString whole = ft.attribute(QStringLiteral("connectiondescription"))
+					      .replace(QStringLiteral("\r\n"), QStringLiteral("\n")).trimmed();
 		for (int k = 0; k < desigs.size(); ++k) {
 			const QString desig = desigs.at(k).trimmed();
 			if (desig.isEmpty()) {
@@ -249,7 +257,10 @@ bool EdzPart::parsePart(const QDomElement &part)
 			}
 			EdzPin pin;
 			pin.designation = desig;
-			pin.description = k < descrs.size() ? descrs.at(k).trimmed() : QString();
+			if (points == 1)
+				pin.description = whole;
+			else
+				pin.description = k < descrs.size() ? descrs.at(k).trimmed() : QString();
 			pin.group = group;
 			pin.def_category = ft.attribute(QStringLiteral("functiondefcategory")).toInt();
 			pin.def_group = ft.attribute(QStringLiteral("functiondefgroup")).toInt();

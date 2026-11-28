@@ -36,7 +36,8 @@ namespace {
 		if (v.size() < 2) return false;
 		bool ok_x = false, ok_y = false;
 		const double x = v.at(0).toDouble(&ok_x), y = v.at(1).toDouble(&ok_y);
-		if (!ok_x || !ok_y) return false;
+		// "nan" and "inf" convert too, but are no position
+		if (!ok_x || !ok_y || !std::isfinite(x) || !std::isfinite(y)) return false;
 		*p = QPointF(x, y);
 		return true;
 	}
