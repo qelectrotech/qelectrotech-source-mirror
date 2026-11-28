@@ -83,6 +83,7 @@ const QStringList our_views{QStringLiteral("drawing_item_view"), QStringLiteral(
 							QStringLiteral("qet_terminals"),
 							QStringLiteral("qet_cables"),
 							QStringLiteral("qet_plc_io"),
+							QStringLiteral("qet_plc_list"),
 							QStringLiteral("qet_cable_cores"),
 							QStringLiteral("qet_locations"),
 							QStringLiteral("qet_revisions")};

@@ -476,6 +476,8 @@ set(QET_SRC_FILES
 
   ${QET_DIR}/sources/dataBase/ui/elementquerywidget.cpp
   ${QET_DIR}/sources/dataBase/ui/elementquerywidget.h
+  ${QET_DIR}/sources/dataBase/ui/plcquerywidget.cpp
+  ${QET_DIR}/sources/dataBase/ui/plcquerywidget.h
   ${QET_DIR}/sources/dataBase/ui/summaryquerywidget.cpp
   ${QET_DIR}/sources/dataBase/ui/summaryquerywidget.h
 

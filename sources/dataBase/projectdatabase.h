@@ -606,6 +606,7 @@ class projectDataBase : public QObject
 		qint64 m_committed_changes = -1;
 		QDateTime m_opened;
 		void createElementNomenclatureView();
+		void createPlcListView();
 		void createSummaryView();
 		void createWiringListView();
 		void createDrawingItemView();
