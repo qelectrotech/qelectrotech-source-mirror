@@ -31,7 +31,9 @@ Beside the project it writes `<name>_devices.csv`, `<name>_connections.csv`, the
 the `.e3d` installation spaces and, in `<name>_import_report.txt`, what was translated. Like the project
 they are written anew on every import, replacing older ones. The working folder `_epdz_import_<name>` is
 removed at the end. Pictures on the pages are taken only from inside the archive. Every report arrow's
-own label is left empty: EPLAN's page text beside the arrow already names its target. Cancel in the
+own label is left empty: EPLAN's page text beside the arrow already names its target. EPLAN's frame
+brings its own column and row numbering, so QElectroTech's column and row headers are switched off on
+every folio. Cancel in the
 dialog closes the program's input (`--stop-on-eof`), and the program then stops the QElectroTech runs it
 started.
 
