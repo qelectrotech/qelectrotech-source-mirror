@@ -476,7 +476,7 @@ install(DIRECTORY tools/fluidsim_import/grafcet DESTINATION ${QET_DATA_PATH}flui
   FILES_MATCHING PATTERN "*.elmt")
 # The importers of File > Import (sources/import/splan) are Python programs
 # run beside QElectroTech; they draw through the MCP server above.
-install(DIRECTORY tools/qet_sheet tools/splan_import
+install(DIRECTORY tools/qet_sheet tools/splan_import tools/wscad_import
     DESTINATION ${QET_DATA_PATH}import
     FILES_MATCHING PATTERN "*.py" PATTERN "*.md"
     PATTERN "test_*.py" EXCLUDE

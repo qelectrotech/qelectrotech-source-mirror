@@ -23324,6 +23324,16 @@ Um daraus ein Skript zu machen, bitten Sie Ihren KI-Assistenten: Die Schaltfläc
         <source>Reads an sPlan 8 schematic and draws it anew as a QElectroTech project</source>
         <translation type="unfinished">Liest einen sPlan-8-Plan und zeichnet ihn als QElectroTech-Projekt neu</translation>
     </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2423"/>
+        <source>Import WSCAD project…</source>
+        <translation type="unfinished">WSCAD-Projekt importieren…</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2425"/>
+        <source>Reads a WSCAD project (schematic pages, symbols, wires, cross references) as an editable QElectroTech project</source>
+        <translation type="unfinished">Liest ein WSCAD-Projekt (Schaltplanseiten, Symbole, Leitungen, Querverweise) als bearbeitbares QElectroTech-Projekt</translation>
+    </message>
 </context>
 <context>
     <name>QETElementEditor</name>
@@ -31336,6 +31346,71 @@ Andere Felder werden nicht verwendet.</translation>
         <location filename="../sources/import/splan/splanimportdialog.cpp" line="640"/>
         <source>Stop the running import?</source>
         <translation type="unfinished">Laufenden Import abbrechen?</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/splan/splanimportdialog.cpp" line="133"/>
+        <source>Import a WSCAD project</source>
+        <translation type="unfinished">WSCAD-Projekt importieren</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/splan/splanimportdialog.cpp" line="140"/>
+        <source>Reads a WSCAD project (the project folder with Database/WSCAD6.db and the .wsELD schematic pages, WSCAD ELECTRIX / SUITE 6 and later) and turns it into an editable QElectroTech project: every schematic page a folio with its frame and title block, every symbol an element with its terminals, the wires of the WSCAD connection list, linked cross references and coil/contact links. Device and connection lists (CSV) and &lt;name&gt;_open_questions.txt are written next to the project.</source>
+        <translation type="unfinished">Liest ein WSCAD-Projekt (den Projektordner mit Database/WSCAD6.db und den .wsELD-Schaltplanseiten, WSCAD ELECTRIX / SUITE ab 6) und macht daraus ein bearbeitbares QElectroTech-Projekt: jede Schaltplanseite ein Folio mit Rahmen und Schriftfeld, jedes Symbol ein Bauteil mit seinen Anschlüssen, die Leitungen der WSCAD-Verbindungsliste, verknüpfte Querverweise und Spule/Kontakt-Verknüpfungen. Geräte- und Verbindungslisten (CSV) und &lt;name&gt;_open_questions.txt entstehen neben dem Projekt.</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/splan/splanimportdialog.cpp" line="165"/>
+        <source>WSCAD project folder:</source>
+        <translation type="unfinished">WSCAD-Projektordner:</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/splan/splanimportdialog.cpp" line="171"/>
+        <source>Also write a PDF</source>
+        <translation type="unfinished">Zusätzlich PDF schreiben</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/splan/splanimportdialog.cpp" line="367"/>
+        <source>Reading the WSCAD project</source>
+        <translation type="unfinished">WSCAD-Projekt lesen</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/splan/splanimportdialog.cpp" line="370"/>
+        <source>Reading the schematic pages and their symbols</source>
+        <translation type="unfinished">Schaltplanseiten und ihre Symbole lesen</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/splan/splanimportdialog.cpp" line="372"/>
+        <source>Pairing the cross reference arrows</source>
+        <translation type="unfinished">Verweispfeile paaren</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/splan/splanimportdialog.cpp" line="374"/>
+        <source>Drawing the wires of the connection list</source>
+        <translation type="unfinished">Leitungen der Verbindungsliste zeichnen</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/splan/splanimportdialog.cpp" line="376"/>
+        <source>Writing the device and connection lists</source>
+        <translation type="unfinished">Geräte- und Verbindungslisten schreiben</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/splan/splanimportdialog.cpp" line="399"/>
+        <source>Choose the WSCAD project folder (with Database/WSCAD6.db)</source>
+        <translation type="unfinished">WSCAD-Projektordner wählen (mit Database/WSCAD6.db)</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/splan/splanimportdialog.cpp" line="399"/>
+        <source>Choose the WSCAD project folder.</source>
+        <translation type="unfinished">WSCAD-Projektordner auswählen.</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/splan/splanimportdialog.cpp" line="473"/>
+        <source>%1 is not a WSCAD project folder (Database/WSCAD6.db is missing).</source>
+        <translation type="unfinished">%1 ist kein WSCAD-Projektordner (Database/WSCAD6.db fehlt).</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/splan/splanimportdialog.cpp" line="605"/>
+        <source>Install Python 3.10 or newer and the package cryptography (&quot;py -m pip install cryptography&quot;), or choose another Python.</source>
+        <translation type="unfinished">Python 3.10 oder neuer und das Paket cryptography installieren („py -m pip install cryptography“) oder ein anderes Python wählen.</translation>
     </message>
 </context>
 <context>
