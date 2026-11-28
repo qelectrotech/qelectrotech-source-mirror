@@ -23,6 +23,7 @@
 #include <qetgraphicsitem/qetgraphicsitem.h>
 
 #include <QFont>
+#include <QHash>
 
 class QAbstractItemModel;
 class QetGraphicsHeaderItem;
@@ -137,6 +138,13 @@ class QetGraphicsTableItem : public QetGraphicsItem
 		m_minimum_row_height,
 		m_number_of_row_to_display = 0,
 		m_br_margin = 10;
+
+			//The width of a text as setUpColumnAndRowMinimumSize() measured
+			//it, keyed by the text itself: the same values come back again
+			//and again (empty cells, repeated labels) and each measurement
+			//shapes the text through the font engine
+		QHash<QString, int> m_measured_text_widths;
+		QFont m_measured_text_font;
 
 		QSize
 		m_current_size,
