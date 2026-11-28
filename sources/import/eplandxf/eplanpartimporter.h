@@ -1,0 +1,134 @@
+/*
+	Copyright 2006-2026 The QElectroTech Team
+	This file is part of QElectroTech.
+
+	QElectroTech is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 2 of the License, or
+	(at your option) any later version.
+
+	QElectroTech is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+	GNU General Public License for more details.
+
+	You should have received a copy of the GNU General Public License
+	along with QElectroTech. If not, see <http://www.gnu.org/licenses/>.
+*/
+#ifndef EPLANPARTIMPORTER_H
+#define EPLANPARTIMPORTER_H
+
+#include <QDomDocument>
+#include <QMap>
+#include <QString>
+#include <QStringList>
+
+#include <functional>
+
+class MacroPackage;
+struct MacroPackageArticle;
+
+/**
+	@brief Imports manufacturer EPLAN DXF data as QET elements.
+
+	Five sources:
+	- an EPLAN Data Portal DXF package (MAC_<part>.zip or its unpacked
+	  folder): commercialdata.csv with the part data and one DXF per
+	  variant and representation; every variant becomes an element;
+	- a single EPLAN DXF, e.g. a manufacturer download; a drawing with
+	  black-box frames (one per part of a multi-part device) gives one
+	  element per frame. Part data may come from the matching .edz;
+	- an EPLAN part (.edz): a generic element from its part data and,
+	  where the part carries the manufacturer's EPLAN macro, one element
+	  per schematic variant and its panel layout;
+	- an AutoCAD DWG drawing (importDwg()), e.g. the "Download DWG" of
+	  WSCAD Universe, with the part data of its .wspak package;
+	- an Asset Administration Shell package (importAasx()).
+	The articles of a manufacturer's macro package (MacroPackage) are
+	imported with importMacroPackage().
+
+	Elements are written to <collection>/<manufacturer>/<category>/<type>/,
+	each folder with a qet_directory file. UI-decoupled like EdzImporter.
+*/
+class EplanPartImporter
+{
+	public:
+		bool importPackage(const QString &path, const QString &category,
+				   const QString &collection_dir);
+		bool importDxf(const QString &dxf_path, const QString &edz_path,
+			       const QString &manufacturer, const QString &category,
+			       const QString &type, const QString &collection_dir);
+		/// an EPLAN part (.edz) as a generic element, in the same folder layout
+		bool importEdz(const QString &edz_path, const QString &manufacturer,
+			       const QString &category, const QString &type,
+			       const QString &collection_dir);
+		/// articles out of a manufacturer's macro package (ZIP or folder
+		/// with EPLAN macros and article data), by type or order number
+		/// An article whose type folder exists already is left as it is
+		/// (skippedCount()), so a newer package only adds what is new.
+		/// @param progress called before each article (done, total, type);
+		/// returning false stops the import
+		bool importMacroPackage(MacroPackage &package, const QStringList &types,
+					const QString &category, const QString &collection_dir,
+					const std::function<bool(int, int, const QString &)> &progress = {});
+		/// the type folder of an article of a macro package in a collection
+		/// (it need not exist); @p category empty: that of the package
+		static QString macroPackageFolder(const MacroPackage &package, const MacroPackageArticle &article,
+						  const QString &category, const QString &collection_dir);
+		/// of the last importMacroPackage(): articles imported, articles
+		/// left as they were, and those nothing could be built from (with the reason)
+		int importedCount() const { return m_imported; }
+		int skippedCount() const { return m_skipped; }
+		QStringList failed() const { return m_failed; }
+		/// an AutoCAD DWG drawing (e.g. WSCAD Universe "Download DWG"); part data from a .wspak
+		bool importDwg(const QString &dwg_path, const QString &wspak_path,
+			       const QString &manufacturer, const QString &category,
+			       const QString &type, const QString &collection_dir);
+		/// manufacturer, order, type and description from a WSCAD Universe package (.wspak)
+		static QMap<QString, QString> wspakPartInfo(const QString &path);
+		/// an Asset Administration Shell package (.aasx): part data, the element
+		/// from its EDZ/DXF/DWG, STEP and documents into folders next to the collection
+		bool importAasx(const QString &aasx_path, const QString &category,
+				const QString &collection_dir);
+		/// "Phoenix Contact GmbH & Co. KG" -> "Phoenix Contact"
+		static QString shortManufacturer(const QString &name);
+		/// display name of a manufacturer ("SIE" -> "Siemens")
+		static QString manufacturerName(const QString &name);
+
+		/// part data (commercialdata.csv columns) of a package, for the dialog
+		static QMap<QString, QString> packageInfo(const QString &path,
+							  QString *error = nullptr,
+							  const QString &macro = QString());
+
+		/**
+			An element file that already exists is overwritten only while it
+			is as the import wrote it (ElementFingerprint); one edited since,
+			or one without fingerprint, is kept and named in messages() and
+			keptPaths(). @p force overwrites it all the same. Either way the
+			uuids, names and element information of the old file stay.
+		*/
+		void setForce(bool force) { m_force = force; }
+		QStringList writtenPaths() const { return m_written; }
+		/// existing elements left as they are (edited since their import)
+		QStringList keptPaths() const { return m_kept; }
+		QStringList messages() const { return m_messages; }
+		QString errorString() const { return m_error; }
+
+	private:
+		enum class Stored { Written, Kept, Failed };
+		Stored store(QDomDocument &doc, const QString &path, int indent = 4);
+		void clear();
+		bool finish();
+
+		bool m_force = false;
+		QStringList m_written;
+		QStringList m_kept;
+		QStringList m_from_macro;	///< elements with the channel table of their EPLAN macro
+		QStringList m_messages;
+		QString m_error;
+		int m_imported = 0;
+		int m_skipped = 0;
+		QStringList m_failed;
+};
+
+#endif // EPLANPARTIMPORTER_H

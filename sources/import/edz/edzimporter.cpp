@@ -37,6 +37,41 @@ bool EdzImporter::importToDirectory(const QString &edz_path,
 	m_written.clear();
 	m_error.clear();
 
+	QDomDocument doc;
+	QString file_name;
+	if (!build(edz_path, &doc, &file_name)) {
+		return false;
+	}
+
+	const QDir dir(dest_dir);
+	if (!dir.exists() && !dir.mkpath(QStringLiteral("."))) {
+		m_error = QStringLiteral("Destination folder does not exist: %1")
+				  .arg(dest_dir);
+		return false;
+	}
+	const QString out_path = dir.filePath(file_name);
+
+	QFile file(out_path);
+	if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+		m_error = QStringLiteral("Cannot write %1").arg(out_path);
+		return false;
+	}
+	file.write(EdzElementBuilder::toElmtString(doc).toUtf8());
+	file.close();
+
+	m_written = out_path;
+	return true;
+}
+
+/**
+	Build the element of the .edz at @a edz_path without writing it.
+	@a file_name receives the name of its file, "<order number>.elmt".
+*/
+bool EdzImporter::build(const QString &edz_path, QDomDocument *doc,
+			QString *file_name)
+{
+	m_error.clear();
+
 	EdzArchive archive;
 	if (!archive.extract(edz_path)) {
 		m_error = archive.errorString();
@@ -49,7 +84,7 @@ bool EdzImporter::importToDirectory(const QString &edz_path,
 		return false;
 	}
 
-	const QDomDocument doc = EdzElementBuilder::build(part);
+	*doc = EdzElementBuilder::build(part);
 
 	// Name the file from the order number (fall back to part number / source).
 	QString base = part.orderNumber();
@@ -61,23 +96,6 @@ bool EdzImporter::importToDirectory(const QString &edz_path,
 	}
 	base.replace(QRegularExpression(QStringLiteral("[^A-Za-z0-9._-]")),
 		     QStringLiteral("_"));
-
-	const QDir dir(dest_dir);
-	if (!dir.exists() && !dir.mkpath(QStringLiteral("."))) {
-		m_error = QStringLiteral("Destination folder does not exist: %1")
-				  .arg(dest_dir);
-		return false;
-	}
-	const QString out_path = dir.filePath(base + QStringLiteral(".elmt"));
-
-	QFile file(out_path);
-	if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
-		m_error = QStringLiteral("Cannot write %1").arg(out_path);
-		return false;
-	}
-	file.write(EdzElementBuilder::toElmtString(doc).toUtf8());
-	file.close();
-
-	m_written = out_path;
+	*file_name = base + QStringLiteral(".elmt");
 	return true;
 }

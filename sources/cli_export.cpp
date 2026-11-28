@@ -34,6 +34,8 @@
 #include "editor/terminalnamecheck.h"
 #include "dxfexport.h"
 #include "ElementsCollection/librarylisting.h"
+#include "import/eplandxf/eplanpartimporter.h"
+#include "import/macropackage/macropackage.h"
 #include "exportproperties.h"
 #include "pdf_links.h"
 #include "container/qetcontainer.h"
@@ -102,6 +104,7 @@ const QHash<QString, QString> &exportFlags()
 		{"--info", "info"},
 		{"--check-elements", "check"},
 		{"--export-library", "library"},
+		{"--import-eplan", "importeplan"},
 		{"--resave", "resave"},
 		{"--recover", "recover"},
 		{"--history", "history"},
@@ -1410,6 +1413,126 @@ int run(const QStringList &args)
 		}
 		out << "Listed " << rows.size() << " symbol(s) and macro(s) -> "
 			<< rest.at(1) << "\n";
+		return 0;
+	}
+
+	// --import-eplan turns manufacturer EPLAN data into elements of a
+	// collection folder, as Part import > Import part... does.
+	if (format == "importeplan") {
+		QStringList positional;
+		QHash<QString, QString> opts;
+		bool force = false;
+		QStringList types;   // --type may be given several times (macro package)
+		for (int i = 0; i < rest.size(); ++i) {
+			const QString &a = rest.at(i);
+			if (a == "--force") {
+				force = true;
+			} else if (a == "--all") {
+				opts.insert("all", "1");
+			} else if (a.startsWith("--") && i + 1 < rest.size()) {
+				if (a == "--type") types << rest.at(i + 1);
+				opts.insert(a.mid(2), rest.at(++i));
+			} else {
+				positional << a;
+			}
+		}
+		// articles out of a manufacturer's macro package: the package is an
+		// option, the collection folder the only positional argument
+		if (opts.contains("macro-package")) {
+			const bool all = opts.contains("all");
+			if (positional.size() != 1 || (types.isEmpty() && !all)) {
+				err << "Usage: qelectrotech --import-eplan <collection_dir> --macro-package <zip | folder> "
+				       "(--type T [--type T2 ...] | --all) [--category C]\n";
+				return 2;
+			}
+			MacroPackage package;
+			if (!package.open(opts.value("macro-package"))) {
+				err << package.errorString() << "\n";
+				return 1;
+			}
+			if (all) {
+				types.clear();
+				for (const MacroPackageArticle &a : package.articles()) types << a.type();
+			}
+			EplanPartImporter importer;
+			const bool ok = importer.importMacroPackage(
+				package, types, opts.value("category"), positional.at(0),
+				[all](int done, int total, const QString &type) {
+					if (all && done % 100 == 0) {
+						err << done << " / " << total << "  " << type << "\n";
+						err.flush();
+					}
+					return true;
+				});
+			err << types.size() << " articles: " << importer.importedCount() << " imported ("
+			    << importer.writtenPaths().size() << " elements), " << importer.skippedCount()
+			    << " left as they were (type folder exists), " << importer.failed().size() << " failed\n";
+			for (const QString &f : importer.failed())
+				err << "  failed: " << f << "\n";
+			for (const QString &m : importer.messages())
+				out << m << "\n";
+			for (const QString &p : importer.writtenPaths())
+				out << "-> " << QDir::toNativeSeparators(p) << "\n";
+			out.flush();
+			if (!ok) {
+				err << opts.value("macro-package") << ": " << importer.errorString() << "\n";
+				return 1;
+			}
+			return 0;
+		}
+		if (positional.size() < 2) {
+			err << "Usage: qelectrotech --import-eplan <package.zip | folder | file.dxf | file.edz | file.dwg | file.aasx> "
+			       "<collection_dir> [--category C] [--manufacturer M --type T] [--edz part.edz] "
+			       "[--wspak part.wspak] [--force]\n"
+			       "       qelectrotech --import-eplan <collection_dir> --macro-package <zip | folder> "
+			       "(--type T [--type T2 ...] | --all) [--category C]\n"
+			       "  --force  also overwrite elements edited since their import\n";
+			return 2;
+		}
+		EplanPartImporter importer;
+		// elements edited since their import are kept unless forced
+		importer.setForce(force);
+		const QString source = positional.at(0);
+		const QString suffix = QFileInfo(source).suffix();
+		const bool single_dxf = suffix.compare("dxf", Qt::CaseInsensitive) == 0;
+		const bool edz = suffix.compare("edz", Qt::CaseInsensitive) == 0;
+		const bool dwg = suffix.compare("dwg", Qt::CaseInsensitive) == 0;
+		const bool aasx = suffix.compare("aasx", Qt::CaseInsensitive) == 0;
+		bool ok;
+		if (aasx) {
+			// the Digital Nameplate of the package names manufacturer and type
+			ok = importer.importAasx(source, opts.value("category", "General"), positional.at(1));
+		} else if (dwg) {
+			// manufacturer and type may come from the WSCAD Universe package instead
+			ok = importer.importDwg(source, opts.value("wspak"), opts.value("manufacturer"),
+						opts.value("category", "General"), opts.value("type"),
+						positional.at(1));
+		} else if (edz || single_dxf) {
+			if (opts.value("manufacturer").isEmpty() || opts.value("type").isEmpty()) {
+				err << "--import-eplan: " << (edz ? "an .edz part" : "a single DXF")
+				    << " needs --manufacturer and --type\n";
+				return 2;
+			}
+			ok = edz ? importer.importEdz(source, opts.value("manufacturer"),
+						      opts.value("category", "General"), opts.value("type"),
+						      positional.at(1))
+				 : importer.importDxf(source, opts.value("edz"), opts.value("manufacturer"),
+						      opts.value("category", "General"), opts.value("type"),
+						      positional.at(1));
+		} else {
+			ok = importer.importPackage(source, opts.value("category"), positional.at(1));
+		}
+		for (const QString &m : importer.messages())
+			out << m << "\n";
+		for (const QString &p : importer.writtenPaths())
+			out << "-> " << QDir::toNativeSeparators(p) << "\n";
+		if (!importer.keptPaths().isEmpty())
+			out << importer.keptPaths().size() << " element(s) kept as they are; --force overwrites them\n";
+		out.flush();
+		if (!ok) {
+			err << source << ": " << importer.errorString() << "\n";
+			return 1;
+		}
 		return 0;
 	}
 

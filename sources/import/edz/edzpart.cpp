@@ -23,6 +23,8 @@
 #include <QPair>
 #include <QRegularExpression>
 
+#include <algorithm>
+
 namespace {
 
 /**
@@ -175,13 +177,30 @@ bool EdzPart::parse(const QString &part_xml_path)
 		return false;
 	}
 	file.close();
+	return parsePart(doc.documentElement().firstChildElement(QStringLiteral("part")));
+}
 
-	const QDomElement part =
-		doc.documentElement().firstChildElement(QStringLiteral("part"));
+bool EdzPart::parse(const QByteArray &part_xml)
+{
+	m_error.clear();
+	QDomDocument doc;
+	if (!doc.setContent(part_xml)) {
+		m_error = QStringLiteral("Malformed part data");
+		return false;
+	}
+	return parsePart(doc.documentElement().firstChildElement(QStringLiteral("part")));
+}
+
+/**
+	Read one <part> of an EPLAN.PartsManagement document.
+*/
+bool EdzPart::parsePart(const QDomElement &part)
+{
 	if (part.isNull()) {
 		m_error = QStringLiteral("No <part> element in part.xml");
 		return false;
 	}
+	m_pins.clear();
 
 	m_part_number  = part.attribute(QStringLiteral("P_ARTICLE_PARTNR"));
 	m_manufacturer = part.attribute(QStringLiteral("P_ARTICLE_MANUFACTURER"));
@@ -204,27 +223,51 @@ bool EdzPart::parse(const QString &part_xml_path)
 		part.elementsByTagName(QStringLiteral("functiontemplate"));
 	for (int i = 0; i < fts.size(); ++i) {
 		const QDomElement ft = fts.at(i).toElement();
-		const QString desig =
-			ft.attribute(QStringLiteral("connectionDesignation")).trimmed();
-		if (desig.isEmpty()) {
-			continue;
-		}
-		EdzPin pin;
-		pin.designation = desig;
-		pin.description =
-			ft.attribute(QStringLiteral("connectiondescription")).trimmed();
+		// One function template is one function (a contact, a coil, a PLC
+		// channel); its connectionDesignation lists ALL of that function's
+		// connection points, one per line, e.g. ".2\n.1\n.4" for a changeover
+		// contact (EPLAN help, XML export: functiontemplate).  The matching
+		// connectiondescription is line-aligned.
+		static const QRegularExpression lines(QStringLiteral("\\r?\\n"));
+		const QStringList desigs =
+			ft.attribute(QStringLiteral("connectionDesignation")).split(lines);
+		const QStringList descrs =
+			ft.attribute(QStringLiteral("connectiondescription")).split(lines);
 		// terminalNr identifies the physical connector socket (X01, X31, …) and
 		// is the preferred group key.  Older EPLAN formats may omit it and carry
 		// a text functiondefinition block name (FINP, MOUT, …) instead, either on
 		// the <functiontemplate> itself or on its parent wrapper element.
-		pin.group = ft.attribute(QStringLiteral("terminalNr")).trimmed();
-		if (pin.group.isEmpty()) {
-			pin.group = ft.attribute(QStringLiteral("functiondefinition")).trimmed();
-			if (pin.group.isEmpty())
-				pin.group = ft.parentNode().toElement()
+		QString group = ft.attribute(QStringLiteral("terminalNr")).trimmed();
+		if (group.isEmpty()) {
+			group = ft.attribute(QStringLiteral("functiondefinition")).trimmed();
+			if (group.isEmpty())
+				group = ft.parentNode().toElement()
 						.attribute(QStringLiteral("functiondefinition")).trimmed();
 		}
-		m_pins.append(pin);
+		// A function with a single connection point keeps its description
+		// whole, also when that runs over several lines.
+		const qsizetype points = std::count_if(desigs.cbegin(), desigs.cend(),
+			[](const QString &d) { return !d.trimmed().isEmpty(); });
+		const QString whole = ft.attribute(QStringLiteral("connectiondescription"))
+					      .replace(QStringLiteral("\r\n"), QStringLiteral("\n")).trimmed();
+		for (int k = 0; k < desigs.size(); ++k) {
+			const QString desig = desigs.at(k).trimmed();
+			if (desig.isEmpty()) {
+				continue;
+			}
+			EdzPin pin;
+			pin.designation = desig;
+			if (points == 1)
+				pin.description = whole;
+			else
+				pin.description = k < descrs.size() ? descrs.at(k).trimmed() : QString();
+			pin.group = group;
+			pin.def_category = ft.attribute(QStringLiteral("functiondefcategory")).toInt();
+			pin.def_group = ft.attribute(QStringLiteral("functiondefgroup")).toInt();
+			pin.def_id = ft.attribute(QStringLiteral("functiondefid")).toInt();
+			pin.channel = ft.attribute(QStringLiteral("idx1")).trimmed();
+			m_pins.append(pin);
+		}
 	}
 
 	// Sort: preserve the XML order of functional groups (first-seen wins), and
