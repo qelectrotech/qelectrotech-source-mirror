@@ -719,7 +719,7 @@ def stop_on_eof():
 
     def watch():
         try:
-            while sys.stdin.buffer.read(4096):
+            while os.read(0, 4096):      # not sys.stdin: its lock would block the shutdown
                 pass
         except Exception:
             pass
