@@ -484,6 +484,25 @@ class TstEplanPartImport : public QObject
 			QCOMPARE(part.value(QStringLiteral("type")), QStringLiteral("REL-5"));
 			QCOMPARE(part.value(QStringLiteral("description")), QStringLiteral("Relay"));
 			QVERIFY(EplanPartImporter::wspakPartInfo(m_dir.filePath(QStringLiteral("none.wspak"))).isEmpty());
+
+				// a part.json larger than any real one (5 MB of spaces, packed
+				// to a few KB) is refused by its declared size, not unpacked
+			QByteArray big = json;
+			big.append(QByteArray(5 * 1024 * 1024, ' '));
+			mz_zip_zero_struct(&zip);
+			QVERIFY(mz_zip_writer_init_heap(&zip, 2, 0));
+			QVERIFY(mz_zip_writer_add_mem(&zip, "Data\\part.json", big.constData(), size_t(big.size()),
+						      MZ_DEFAULT_COMPRESSION));
+			data = nullptr;
+			size = 0;
+			QVERIFY(mz_zip_writer_finalize_heap_archive(&zip, &data, &size));
+			QByteArray packed(static_cast<const char *>(data), qsizetype(size));
+			mz_zip_writer_end(&zip);
+			packed.replace(0, 2, "ws");
+			QVERIFY(packed.size() < 1024 * 1024);
+			const QString bomb = writeFile(QStringLiteral("big.wspak"), packed);
+			QVERIFY(!bomb.isEmpty());
+			QVERIFY(EplanPartImporter::wspakPartInfo(bomb).isEmpty());
 		}
 
 		/// A DWG of another AutoCAD version, or one cut short, is refused

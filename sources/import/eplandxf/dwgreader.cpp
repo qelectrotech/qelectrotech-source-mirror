@@ -254,32 +254,35 @@ class Bits
 		void BE() { if (!B()) { BD(); BD(); BD(); } }
 		QPointF P2RD() { const double x = RD(); return {x, RD()}; }
 		QPointF P3BD() { const double x = BD(), y = BD(); BD(); return {x, y}; }
+			// unsigned arithmetic and a shift below 64: a crafted value
+			// cannot overflow (the result is then nonsense, which the
+			// callers' range checks refuse)
 		qint64 MC(bool sign = true)
 		{
-			qint64 w = 0;
+			quint64 w = 0;
 			int s = 0;
-			for (int k = 0; k < 10 && !m_bad; ++k) {
+			for (int k = 0; k < 10 && !m_bad && s < 64; ++k) {
 				const int b = RC();
-				if (b & 0x80) { w |= qint64(b & 0x7F) << s; s += 7; continue; }
+				if (b & 0x80) { w |= quint64(b & 0x7F) << s; s += 7; continue; }
 				if (sign) {
-					w |= qint64(b & 0x3F) << s;
-					return (b & 0x40) ? -w : w;
+					w |= quint64(b & 0x3F) << s;
+					return qint64((b & 0x40) ? quint64(0) - w : w);
 				}
-				return w | (qint64(b & 0x7F) << s);
+				return qint64(w | (quint64(b & 0x7F) << s));
 			}
-			return w;
+			return qint64(w);
 		}
 		qint64 MS()
 		{
-			qint64 w = 0;
+			quint64 w = 0;
 			int s = 0;
 			for (int k = 0; k < 4 && !m_bad; ++k) {
 				const int lo = RC(), hi = RC();
 				const int v = lo | (hi << 8);
-				if (v & 0x8000) { w |= qint64(v & 0x7FFF) << s; s += 15; continue; }
-				return w | (qint64(v) << s);
+				if (v & 0x8000) { w |= quint64(v & 0x7FFF) << s; s += 15; continue; }
+				return qint64(w | (quint64(v) << s));
 			}
-			return w;
+			return qint64(w);
 		}
 		/// handle reference; relative codes 6, 8, A, C refer to the own handle
 		quint64 H(quint64 own = 0)
@@ -513,8 +516,10 @@ void DwgReader::readObject(qint64 address, quint64 expected)
 	const qint64 size = head.MS();
 	const qint64 handlebits = r2010 ? head.MC(false) : 0;
 	const qint64 start = head.pos();
-	qint64 databits = size * 8 - handlebits;
-	if (size <= 0 || databits <= 0 || (start >> 3) + size > data.size()) return;
+		// the range first: size * 8 of a crafted size would overflow
+	if (size <= 0 || size > data.size() || handlebits < 0 || (start >> 3) + size > data.size()) return;
+	const qint64 databits = size * 8 - handlebits;
+	if (databits <= 0) return;
 	ObjectBits o(data, start, databits, r2007);
 
 	Object ob;

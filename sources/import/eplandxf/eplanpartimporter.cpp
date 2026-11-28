@@ -293,6 +293,9 @@ namespace {
 		});
 	}
 
+	/// the largest Data/part.json read from a .wspak (a real one has a few KB)
+	constexpr qint64 MaxPartJsonSize = 4 * 1024 * 1024;
+
 	/// part data of a WSCAD Universe package (.wspak: a zip with "ws" in front, Data/part.json);
 	/// its offsets count from the start of the file, prefix included, so it is read as it is
 	QMap<QString, QString> wspakInfo(const QString &path)
@@ -311,10 +314,13 @@ namespace {
 			mz_zip_archive_file_stat stat;
 			if (!mz_zip_reader_file_stat(&zip, i, &stat) || stat.m_is_directory) continue;
 			const QString name = QString::fromUtf8(stat.m_filename).replace(QLatin1Char('\\'), QLatin1Char('/'));
-			if (name.compare(QLatin1String("Data/part.json"), Qt::CaseInsensitive) == 0)
-				data = mz_zip_reader_extract_to_heap(&zip, i, &size, 0);
+			if (name.compare(QLatin1String("Data/part.json"), Qt::CaseInsensitive) != 0) continue;
+				// the size the archive declares, before anything is unpacked: a
+				// real part.json has a few KB, a crafted one could ask for GBs
+			if (stat.m_uncomp_size > quint64(MaxPartJsonSize)) break;
+			data = mz_zip_reader_extract_to_heap(&zip, i, &size, 0);
 		}
-		if (data && size < size_t(QetZip::MaxUncompressedSize)) {
+		if (data && size <= size_t(MaxPartJsonSize)) {
 			const QJsonObject o = QJsonDocument::fromJson(
 				QByteArray(static_cast<const char *>(data), qsizetype(size))).object();
 			out.insert(QStringLiteral("manufacturer"), o.value(QStringLiteral("manufacturerName")).toString());
