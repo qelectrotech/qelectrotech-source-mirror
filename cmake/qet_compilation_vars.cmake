@@ -154,6 +154,14 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/import/edz/edzimporter.h
   ${QET_DIR}/sources/import/edz/edzsevenzip.cpp
   ${QET_DIR}/sources/import/edz/edzsevenzip.h
+  ${QET_DIR}/sources/import/eplanproject/epdzimport.cpp
+  ${QET_DIR}/sources/import/eplanproject/epdzimport.h
+  ${QET_DIR}/sources/import/eplanproject/epdzmanifest.cpp
+  ${QET_DIR}/sources/import/eplanproject/epdzmanifest.h
+  ${QET_DIR}/sources/import/eplanproject/eplanprojectimport.cpp
+  ${QET_DIR}/sources/import/eplanproject/eplanprojectimport.h
+  ${QET_DIR}/sources/import/eplanproject/eplanprojectimportdialog.cpp
+  ${QET_DIR}/sources/import/eplanproject/eplanprojectimportdialog.h
   ${QET_DIR}/sources/diagramevent/macrolabels.cpp
   ${QET_DIR}/sources/diagramevent/macrolabels.h
   ${QET_DIR}/sources/ui/macrolabelsdialog.cpp

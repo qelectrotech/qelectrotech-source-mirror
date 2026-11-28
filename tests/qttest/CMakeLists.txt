@@ -1182,6 +1182,17 @@ set_tests_properties(tst_customizedialog PROPERTIES ENVIRONMENT "QT_QPA_PLATFORM
 target_include_directories(tst_customizedialog PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_customizedialog PRIVATE Qt::Test Qt::Widgets)
 
+# File > Import EPLAN project: the command line of the import program, its
+# output and the manifest of an EPLAN export archive (.epdz).
+add_executable(
+  tst_eplanprojectimport
+  tst_eplanprojectimport.cpp
+  ${QET_DIR}/sources/import/eplanproject/epdzmanifest.cpp
+  ${QET_DIR}/sources/import/eplanproject/eplanprojectimport.cpp)
+add_test(NAME tst_eplanprojectimport COMMAND tst_eplanprojectimport)
+target_include_directories(tst_eplanprojectimport PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_eplanprojectimport PRIVATE Qt::Test Qt::Sql)
+
 # scriptheader.h is header-only: the // ==QETScript== block that turns a
 # stored script into a button; and ShortcutManager::unregisterAction(), which
 # takes a deleted script's command out of the lists again.
@@ -1602,6 +1613,29 @@ if(QET_HAS_SCRIPTING)
   target_link_libraries(tst_scriptconductoruuid PRIVATE Qt::Test)
   target_compile_definitions(tst_scriptconductoruuid PRIVATE
     "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
+
+  # qet.setConductorPathBetween(): a conductor through given corners, as an
+  # importer keeps the path its source drawing had.
+  add_executable(
+    tst_scriptconductorpath
+    tst_scriptconductorpath.cpp)
+  add_test(NAME tst_scriptconductorpath COMMAND tst_scriptconductorpath)
+  add_dependencies(tst_scriptconductorpath qelectrotech)
+  target_link_libraries(tst_scriptconductorpath PRIVATE Qt::Test)
+  target_compile_definitions(tst_scriptconductorpath PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
+
+  # The EPLAN import program (tools/eplan_import/eplan_zw1): its tests build
+  # an export archive of their own and import it through this QElectroTech.
+  find_package(Python3 QUIET COMPONENTS Interpreter)
+  if(Python3_Interpreter_FOUND)
+    add_test(NAME tst_epdzimportpython
+      COMMAND ${Python3_EXECUTABLE}
+        ${CMAKE_CURRENT_SOURCE_DIR}/../../tools/eplan_import/eplan_zw1/tests/test_epdz_nach_qet.py)
+    set_tests_properties(tst_epdzimportpython PROPERTIES
+      TIMEOUT ${qet_probe_ctest_timeout}
+      ENVIRONMENT "QET_BINARY=$<TARGET_FILE:qelectrotech>;QET_ENABLE_SCRIPTING=1;QET_LOG_DISABLE=1")
+  endif()
 
   # The saved date, time and path of the title block change only when the
   # project changed, and go into the file that save writes (F124): an
