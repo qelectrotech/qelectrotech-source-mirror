@@ -914,7 +914,7 @@ class TstEplanPartImport : public QObject
 				"<partsmanagement type=\"EPLAN.PartsManagement\">\n"
 				" <part P_ARTICLE_PARTNR=\"X.Y\" P_ARTICLE_MANUFACTURER=\"..\""
 				" P_ARTICLE_ORDERNR=\"..\" P_ARTICLE_TYPENR=\"..\""
-				" P_ARTICLE_GROUPSYMBOLMACRO=\"$(MD_MACROS)\\..\\..\\..\\x.ema\"/>\n"
+				" P_ARTICLE_GROUPSYMBOLMACRO=\"$(MD_MACROS)\\Acme\\..\\x.ema\"/>\n"
 				"</partsmanagement>\n";
 			const QString root = m_dir.filePath(QStringLiteral("package_dots"));
 			const QString collection = root + QStringLiteral("/inner/collection");
@@ -922,14 +922,22 @@ class TstEplanPartImport : public QObject
 			const QString keep = root + QStringLiteral("/inner/keep.txt");
 			QVERIFY(!writeFile(QStringLiteral("package_dots/inner/keep.txt"), "kept").isEmpty());
 			const QString zip = root + QStringLiteral("/dots.zip");
-			QVERIFY(QetZip::write(zip, {{QStringLiteral("../Article_DB.xml"), parts},
-						    {QStringLiteral("../x.ema"), smallMacro()}}));
+				// the ZIP itself is well-formed: the ".." come from the part data
+			QVERIFY(QetZip::write(zip, {{QStringLiteral("Acme/Article_DB.xml"), parts},
+						    {QStringLiteral("Acme/IO/x.ema"), smallMacro()}}));
 			MacroPackage package;
 			if (!package.open(zip) || package.articles().isEmpty())
 				return;		// refused already when it is read: nothing to import
 			EplanPartImporter importer;
-			for (const MacroPackageArticle &a : package.articles())
+			int dots = 0;
+			for (const MacroPackageArticle &a : package.articles()) {
+				if (a.type() != QLatin1String("..")) continue;	// the macro "x" on its own is harmless
+				++dots;
+				QVERIFY(EplanPartImporter::macroPackageFolder(package, a, QString(), collection).isEmpty());
 				importer.importMacroPackage(package, {a.type()}, QString(), collection);
+				QCOMPARE(importer.importedCount(), 0);
+			}
+			QCOMPARE(dots, 1);
 			QVERIFY(QFile::exists(keep));
 			QVERIFY(QFileInfo(collection).isDir());
 			QStringList files;
