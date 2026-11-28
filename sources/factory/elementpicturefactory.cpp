@@ -21,6 +21,7 @@
 #include <editor/graphicspart/partline.h>
 #include <properties/elementdata.h>
 #include <qetapp.h>
+#include <qetunits.h>
 #include <qetversion.h>
 #include <utils/qetutils.h>
 
@@ -61,6 +62,42 @@ QUuid ElementPictureFactory::cacheKey(const ElementsLocation &location)
 }
 
 /**
+	@brief ElementPictureFactory::thinKey
+	@param key : the key of the plain drawing, see cacheKey()
+	@param thin_px : the width of thin lines, 0 for the plain drawing
+	@return the key of the drawing of an element for a project drawn to
+	scale, whose thin lines are 0.18 mm. Cached beside the other ones: one
+	for each width, as projects with another module M can be open together.
+*/
+QUuid ElementPictureFactory::thinKey(const QUuid &key, qreal thin_px)
+{
+	if (thin_px <= 0) return key;
+	return QUuid::createUuidV5(key, QByteArrayLiteral("thin-px-")
+							   + QByteArray::number(thin_px, 'f', 4));
+}
+
+/**
+	@brief ElementPictureFactory::thinWidth
+	@param thin_px : the width of thin lines in a project drawn to scale
+	(thinPx(QETProject::pxPerMm())), 0 for the plain drawing
+	@return the width in px of the "thin" line weight
+*/
+qreal ElementPictureFactory::thinWidth(qreal thin_px)
+{
+	return thin_px > 0 ? thin_px : 0.5;
+}
+
+/**
+	@brief ElementPictureFactory::thinPx
+	@param px_per_mm : QETProject::pxPerMm()
+	@return the width in px of thin lines in a project drawn to scale
+*/
+qreal ElementPictureFactory::thinPx(qreal px_per_mm)
+{
+	return QetUnits::mmToPx(thin_line_mm, px_per_mm);
+}
+
+/**
 	@brief ElementPictureFactory::getPictures
 	Set the picture of the element at location.
 	Note, picture can be null
@@ -68,13 +105,14 @@ QUuid ElementPictureFactory::cacheKey(const ElementsLocation &location)
 	@param picture
 	@param low_picture
 */
-void ElementPictureFactory::getPictures(const ElementsLocation &location, QPicture &picture, QPicture &low_picture)
+void ElementPictureFactory::getPictures(const ElementsLocation &location, QPicture &picture, QPicture &low_picture,
+									  qreal thin_px)
 {
 	if(!location.exist()) {
 		return;
 	}
 
-	const QUuid uuid = cacheKey(location);
+	const QUuid uuid = thinKey(cacheKey(location), thin_px);
 
 	if(m_pictures_H.contains(uuid))
 	{
@@ -83,7 +121,7 @@ void ElementPictureFactory::getPictures(const ElementsLocation &location, QPictu
 	}
 	else
 	{
-		if (build(location))
+		if (build(location, nullptr, nullptr, QTransform(), thin_px))
 		{
 			picture = m_pictures_H.value(uuid);
 			low_picture = m_low_pictures_H.value(uuid);
@@ -106,16 +144,18 @@ void ElementPictureFactory::getPictures(const ElementsLocation &location, QPictu
 void ElementPictureFactory::getReadablePictures(const ElementsLocation &location,
 												const QTransform &texts_transform,
 												QPicture &picture,
-												QPicture &low_picture)
+												QPicture &low_picture,
+												qreal thin_px)
 {
 	if(!location.exist() || texts_transform.isIdentity()) {
 		return;
 	}
 
-	const QPair<QUuid, int> key(cacheKey(location), readableKey(texts_transform));
+	const QUuid uuid = thinKey(cacheKey(location), thin_px);
+	const QPair<QUuid, int> key(uuid, readableKey(texts_transform));
 
 	if(!m_readable_pictures_H.contains(key)
-	   && !build(location, nullptr, nullptr, texts_transform)) {
+	   && !build(location, nullptr, nullptr, texts_transform, thin_px)) {
 		return;
 	}
 	picture = m_readable_pictures_H.value(key);
@@ -151,11 +191,16 @@ int ElementPictureFactory::readableKey(const QTransform &texts_transform)
 void ElementPictureFactory::dropCache(const ElementsLocation &location)
 {
 	const QUuid uuid = cacheKey(location);
-	m_pictures_H.remove(uuid);
-	m_low_pictures_H.remove(uuid);
+	QSet<QUuid> uuids{uuid};
+	for (qreal thin_px : m_thin_widths)
+		uuids.insert(thinKey(uuid, thin_px));
+	for (const QUuid &id : uuids) {
+		m_pictures_H.remove(id);
+		m_low_pictures_H.remove(id);
+	}
 	const auto keys = m_readable_pictures_H.keys();
 	for (const auto &key : keys) {
-		if (key.first == uuid) {
+		if (uuids.contains(key.first)) {
 			m_readable_pictures_H.remove(key);
 			m_readable_low_pictures_H.remove(key);
 		}
@@ -296,7 +341,8 @@ QPicture ElementPictureFactory::pictureFromDefinition(const QDomElement &definit
 bool ElementPictureFactory::build(const ElementsLocation &location,
 				  QPicture *picture,
 				  QPicture *low_picture,
-				  const QTransform &texts_transform)
+				  const QTransform &texts_transform,
+				  qreal thin_px)
 {
 	QDomElement dom = location.xml();
 
@@ -357,6 +403,8 @@ bool ElementPictureFactory::build(const ElementsLocation &location,
 	low_painter.setPen(tmp);
 
 	m_build_texts_undo = texts_transform.inverted();
+	m_build_thin_px = thin_px;
+	if (thin_px > 0) m_thin_widths.insert(thin_px);
 
 	//scroll of the Children of the Definition: Parts of the Drawing
 	// Extract PLC master data for rendering plc_table parts
@@ -413,7 +461,9 @@ bool ElementPictureFactory::build(const ElementsLocation &location,
 	m_build_texts_undo = QTransform();
 	qDeleteAll(low_primitives.m_texts);
 
-	const auto uuid_ = cacheKey(location);
+	m_build_thin_px = 0;
+
+	const auto uuid_ = thinKey(cacheKey(location), thin_px);
 	if (!texts_transform.isIdentity()) {
 			//The primitives are those of the plain drawing, already kept
 			//by the build of that one
@@ -425,6 +475,14 @@ bool ElementPictureFactory::build(const ElementsLocation &location,
 		if (!low_picture) {
 			m_readable_low_pictures_H.insert(key, low_pic);
 		}
+		return true;
+	}
+	if (thin_px > 0) {
+			//Only the drawing differs; the primitives (DXF, texts) are
+			//those of the plain build
+		qDeleteAll(primitives_.m_texts);
+		if (!picture) m_pictures_H.insert(uuid_, pic);
+		if (!low_picture) m_low_pictures_H.insert(uuid_, low_pic);
 		return true;
 	}
 	if (!picture) {
@@ -826,7 +884,7 @@ void ElementPictureFactory::setPainterStyle(const QDomElement &dom, QPainter &pa
 				else if (style_value == "normal") pen.setStyle(Qt::SolidLine);
 			} else if (style_name == "line-weight") {
 				if (style_value == "none") pen.setColor(QColor(0, 0, 0, 0));
-				else if (style_value == "thin") pen.setWidthF(0.5);
+				else if (style_value == "thin") pen.setWidthF(thinWidth(m_build_thin_px));
 				else if (style_value == "normal") pen.setWidthF(1.0);
 				else if (style_value == "hight") pen.setWidthF(2.0);
 				else if (style_value == "eleve") pen.setWidthF(5.0);

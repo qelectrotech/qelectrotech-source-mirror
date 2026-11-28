@@ -550,6 +550,21 @@ qet_add_app_test(tst_folioautonumcopy tst_folioautonumcopy.cpp)
 # block variables, kept by .qet and .qetdb, absent from older files.
 qet_add_app_test(tst_foliogroup tst_foliogroup.cpp)
 qet_add_app_test(tst_drawingstandard tst_drawingstandard.cpp)
+qet_add_app_test(tst_mmscale tst_mmscale.cpp)
+# Step 7 of docs/mm-scale.md: dimensions at 4 px per mm in a project drawn to scale.
+qet_add_app_test(tst_mmscaledimension tst_mmscaledimension.cpp)
+# Step 5 of docs/mm-scale.md: line widths in mm in a project drawn to scale.
+qet_add_app_test(tst_mmscalelines tst_mmscalelines.cpp)
+# Step 6 of docs/mm-scale.md: text heights in mm in a project drawn to scale.
+qet_add_app_test(tst_mmscaletext tst_mmscaletext.cpp)
+# Step 8 of docs/mm-scale.md: IEC 61082-1 clearance checks in the project check.
+qet_add_app_test(tst_clearancecheck tst_clearancecheck.cpp)
+# Step 3 of docs/mm-scale.md: print and --export-pdf to scale.
+qet_add_app_test(tst_mmscaleprint tst_mmscaleprint.cpp)
+add_dependencies(tst_mmscaleprint qelectrotech)
+target_compile_definitions(tst_mmscaleprint PRIVATE
+  "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
+qet_add_app_test(tst_dxfmm tst_dxfmm.cpp)
 # Project templates (#852, #1878 B13): a new project from a .qet template
 # has its folios, title block, paper size, numbering and drawing standard.
 qet_add_app_test(tst_projecttemplates tst_projecttemplates.cpp)

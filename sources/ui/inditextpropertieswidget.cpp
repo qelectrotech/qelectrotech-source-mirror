@@ -23,6 +23,7 @@
 #include <lastusedstyle.h>
 #include <qetgraphicsitem/independenttextitem.h>
 #include <ui_inditextpropertieswidget.h>
+#include <utils/textsizebox.h>
 
 #include <QLineEdit>
 #include <QtGlobal>
@@ -36,6 +37,54 @@
 static int spinBoxWidth(qreal width)
 {
 	return width > 0 ? qRound(width) : 0;
+}
+
+/**
+	@brief IndiTextPropertiesWidget::sizePxPerMm
+	@return the pixels per millimetre the size box was last filled with,
+	0 if it shows points. The box is read in that unit, even if the scale
+	or the module of the project changed since: the number in it still
+	means what it did when it was shown (updateUi() fills it again).
+*/
+qreal IndiTextPropertiesWidget::sizePxPerMm() const
+{
+	return m_size_px_per_mm;
+}
+
+/**
+	@brief IndiTextPropertiesWidget::projectSizePxPerMm
+	@return the pixels per millimetre of the project if the text size
+	is given as a capital height in mm (the edited texts are on a folio
+	of a project drawn to scale) now, else 0
+*/
+qreal IndiTextPropertiesWidget::projectSizePxPerMm() const
+{
+	const IndependentTextItem *text = m_text ? m_text.data()
+		: (m_text_list.isEmpty() ? nullptr : m_text_list.first().data());
+	return text && text->diagram()
+		? TextSizeBox::pxPerMm(text->diagram()->project()) : 0;
+}
+
+/**
+	@brief IndiTextPropertiesWidget::sizeFont
+	@return the font whose cap height gives the size in mm
+*/
+QFont IndiTextPropertiesWidget::sizeFont() const
+{
+	if (m_font_is_selected)
+		return m_selected_font;
+	if (m_text)
+		return m_text->font();
+	return m_text_list.isEmpty() ? QFont() : m_text_list.first()->font();
+}
+
+/**
+	@brief IndiTextPropertiesWidget::shownSize
+	@return the number the size box shows for \p text
+*/
+qreal IndiTextPropertiesWidget::shownSize(const IndependentTextItem *text, qreal px_per_mm)
+{
+	return TextSizeBox::shown(px_per_mm, text->font().pointSizeF(), text->font());
 }
 
 /**
@@ -210,9 +259,9 @@ QUndoCommand *IndiTextPropertiesWidget::associatedUndo() const
 				undo = new QPropertyUndoCommand(m_text.data(), "plainText", m_text->toPlainText(), ui->m_line_edit->text());
 				undo->setText(tr("Edit the text field"));
 			}
-			if (ui->m_size_sb->value() != m_text->font().pointSize()) {
+			if (!TextSizeBox::isUnchanged(ui->m_size_sb, sizePxPerMm(), m_text->font().pointSizeF(), m_text->font())) {
 				QFont font = m_text->font();
-				font.setPointSize(ui->m_size_sb->value());
+				font.setPointSizeF(TextSizeBox::points(ui->m_size_sb, sizePxPerMm(), font));
 				undo = new QPropertyUndoCommand(m_text.data(), "font", m_text->font(), font);
 				undo->setText(tr("Change the size of a text field"));
 			}
@@ -236,7 +285,8 @@ QUndoCommand *IndiTextPropertiesWidget::associatedUndo() const
 			bool font_equal = true;
 			bool width_equal = true;
 			qreal rotation_ = m_text_list.first()->rotation();
-			int size_ = m_text_list.first()->font().pointSize();
+			const qreal mm_ = sizePxPerMm();
+			qreal size_ = shownSize(m_text_list.first(), mm_);
 			QFont font_ = m_text_list.first()->font();
 			int width_ = spinBoxWidth(m_text_list.first()->textWidth());
 			for (QPointer<IndependentTextItem> piti : m_text_list)
@@ -244,7 +294,7 @@ QUndoCommand *IndiTextPropertiesWidget::associatedUndo() const
 				if (piti->rotation() != rotation_) {
 					angle_equal = false;
 				}
-				if (piti->font().pointSize() != size_) {
+				if (shownSize(piti, mm_) != size_) {
 					size_equal = false;
 				}
 				if (piti->font() != font_) {
@@ -270,7 +320,7 @@ QUndoCommand *IndiTextPropertiesWidget::associatedUndo() const
 					}
 				}
 			}
-			else if ((size_equal && (ui->m_size_sb->value() != size_)) ||
+			else if ((size_equal && (qAbs(ui->m_size_sb->value() - size_) > 0.001)) ||
 					 (!size_equal && (ui->m_size_sb->value() != ui->m_size_sb->minimum())))
 			{
 				for (QPointer<IndependentTextItem> piti : m_text_list)
@@ -281,7 +331,7 @@ QUndoCommand *IndiTextPropertiesWidget::associatedUndo() const
 							parent_undo = new QUndoCommand(tr("Change the size of multiple text fields"));
 						}
 						QFont font = piti->font();
-						font.setPointSize(ui->m_size_sb->value());
+						font.setPointSizeF(TextSizeBox::points(ui->m_size_sb, mm_, font));
 						new QPropertyUndoCommand(piti.data(), "font", QVariant(piti->font()), QVariant(font), parent_undo);
 					}
 				}
@@ -333,10 +383,10 @@ QUndoCommand *IndiTextPropertiesWidget::associatedUndo() const
 		if (ui->m_line_edit->text() != m_text->toPlainText()) {
 			new ChangeDiagramTextCommand(m_text.data(), m_text->toHtml(), ui->m_line_edit->text(), undo);
 		}
-		if (ui->m_size_sb->value() != m_text->font().pointSize())
+		if (!TextSizeBox::isUnchanged(ui->m_size_sb, sizePxPerMm(), m_text->font().pointSizeF(), m_text->font()))
 		{
 			QFont font = m_text->font();
-			font.setPointSize(ui->m_size_sb->value());
+			font.setPointSizeF(TextSizeBox::points(ui->m_size_sb, sizePxPerMm(), font));
 			new QPropertyUndoCommand(m_text.data(), "font", m_text->font(), font, undo);
 		}
 		if (m_font_is_selected && m_selected_font != m_text->font()) {
@@ -376,9 +426,14 @@ void IndiTextPropertiesWidget::setUpEditConnection()
 	}
 	m_edit_connection << connect(ui->m_angle_sb, QOverload<double>::of(&QDoubleSpinBox::valueChanged), this, &IndiTextPropertiesWidget::apply);
 	m_edit_connection << connect(ui->m_width_sb, QOverload<int>::of(&QSpinBox::valueChanged), this, &IndiTextPropertiesWidget::apply);
-	m_edit_connection << connect(ui->m_size_sb, QOverload<int>::of(&QSpinBox::valueChanged), [this]()
+	m_edit_connection << connect(ui->m_size_sb, QOverload<double>::of(&QDoubleSpinBox::valueChanged), [this]()
 	{
-		this->m_selected_font.setPointSize(ui->m_size_sb->value());
+		const qreal mm = sizePxPerMm();
+			//Keep the size of the selected font when the box still shows it,
+			//so a size in mm does not drift by rounding
+		if (!TextSizeBox::isUnchanged(ui->m_size_sb, mm, m_selected_font.pointSizeF(), m_selected_font)) {
+			this->m_selected_font.setPointSizeF(TextSizeBox::points(ui->m_size_sb, mm, m_selected_font));
+		}
 		this->apply();
 	});
 }
@@ -391,6 +446,7 @@ void IndiTextPropertiesWidget::updateUi()
 	if (!m_text && m_text_list.isEmpty()) {
 		return;
 	}
+	m_size_px_per_mm = projectSizePxPerMm();
 
 		//Disconnect every connections of editor widgets
 		//to avoid an unwanted edition (QSpinBox emit valueChanged no matter if changer by user or by program)
@@ -399,6 +455,11 @@ void IndiTextPropertiesWidget::updateUi()
 	}
 	m_edit_connection.clear();
 	
+	{
+		const QFont size_font = sizeFont();
+		TextSizeBox::configure(ui->m_size_sb, sizePxPerMm(), 4, 50, size_font);
+	}
+
 	ui->m_x_sb->setEnabled(m_text_list.isEmpty() ? true : false);
 	ui->m_y_sb->setEnabled(m_text_list.isEmpty() ? true : false);
 	ui->m_line_edit->setEnabled(m_text_list.isEmpty() ? true : false);
@@ -410,7 +471,7 @@ void IndiTextPropertiesWidget::updateUi()
 		ui->m_y_sb->setValue(m_text->pos().y());
 		ui->m_line_edit->setText(m_text->toPlainText());
 		ui->m_angle_sb->setValue(m_text->rotation());
-		ui->m_size_sb->setValue(m_text->font().pointSize());
+		TextSizeBox::setPoints(ui->m_size_sb, sizePxPerMm(), m_text->font().pointSizeF(), m_text->font());
 		ui->m_width_sb->setValue(spinBoxWidth(m_text->textWidth()));
 		
 		ui->m_line_edit->setDisabled(m_text->isHtml() ? true : false);
@@ -427,7 +488,8 @@ void IndiTextPropertiesWidget::updateUi()
 		bool font_equal = true;
 		bool width_equal = true;
 		qreal rotation_ = m_text_list.first()->rotation();
-		int size_ = m_text_list.first()->font().pointSize();
+		const qreal mm_ = sizePxPerMm();
+		qreal size_ = shownSize(m_text_list.first(), mm_);
 		QFont font_ = m_text_list.first()->font();
 		int width_ = spinBoxWidth(m_text_list.first()->textWidth());
 
@@ -436,7 +498,7 @@ void IndiTextPropertiesWidget::updateUi()
 			if (piti->rotation() != rotation_) {
 				angle_equal = false;
 			}
-			if (piti->font().pointSize() != size_) {
+			if (shownSize(piti, mm_) != size_) {
 				size_equal = false;
 			}
 			if (piti->font() != font_) {
@@ -503,7 +565,8 @@ void IndiTextPropertiesWidget::on_m_font_pb_clicked()
 	if (ok) {
 		m_font_is_selected = true;
 		ui->m_font_pb->setText(font.family());
-		ui->m_size_sb->setValue(font.pointSize());
+		TextSizeBox::configure(ui->m_size_sb, sizePxPerMm(), 4, 50, m_selected_font);
+		TextSizeBox::setPoints(ui->m_size_sb, sizePxPerMm(), m_selected_font.pointSizeF(), m_selected_font);
 		LastUsedStyle::setTextFont(m_selected_font);
 		apply();
 	} else {

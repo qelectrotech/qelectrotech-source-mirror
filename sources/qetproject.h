@@ -44,6 +44,7 @@
 #include "container/qetzreader.h"
 #include "projectlock.h"
 #include "projectorigin.h"
+#include "qetunits.h"
 
 #ifdef BUILD_WITHOUT_KF
 #	include "ui/nokde/kautosavefile.h"
@@ -372,6 +373,44 @@ class QETProject : public QObject
 		void setDrawingStandard(DrawingStandard standard);
 		static QString drawingStandardName(DrawingStandard standard);
 		static DrawingStandard drawingStandardFromName(const QString &name, bool *known = nullptr);
+			/// What a pixel of the drawing means on paper: nothing fixed
+			/// (Px, the project as it always was, the default), or
+			/// 10 px = M (Mm), see docs/mm-scale.md and moduleMm().
+		enum class Scale {Px, Mm};
+		Scale scale() const;
+			/// What the project stores, as typed: "mm", empty for Px, or a
+			/// value this QElectroTech does not know (kept as it is, read
+			/// as Px)
+		QString scaleText() const;
+		void setScale(Scale scale);
+		static QString scaleName(Scale scale);
+		static Scale scaleFromName(const QString &name, bool *known = nullptr);
+			/// The module M of IEC 61082-1 in mm (5.7.3.2), the length of
+			/// the 10 px grid step on paper in a project drawn to scale
+			/// (Scale::Mm): 1.8, 2.0, 2.5 (the default), 3.5 or 5.0. A
+			/// value this QElectroTech does not know is kept as typed and
+			/// read as 2.5. Means nothing in a project of Scale::Px.
+		qreal moduleMm() const;
+			/// What the project stores, as typed: "1.8", "2.0", "3.5",
+			/// "5.0", empty for 2.5, or a value this QElectroTech does not
+			/// know
+		QString moduleText() const;
+		void setModuleMm(qreal module_mm);
+			/// Pixels per millimetre of paper, 10 / moduleMm(). Only for
+			/// a project of Scale::Mm: the caller decides what Px means.
+		qreal pxPerMm() const;
+			/// Pixels per millimetre of paper for a caller that has a
+			/// pixel project to keep as it was: pxPerMm() for Scale::Mm,
+			/// 0 for Scale::Px. A caller tests it for > 0 and keeps its
+			/// own pixel fallback.
+		qreal paperPxPerMm() const;
+			/// The project properties that hold the drawing scale and the
+			/// module M, as they are stored in the file
+		static QString drawingScaleKey();
+		static QString drawingModuleKey();
+		static QList<qreal> modulesMm();
+		static QString moduleName(qreal module_mm);
+		static qreal moduleFromName(const QString &name, bool *known = nullptr);
 		DesignationDisplay designationDisplay() const;
 		void setDesignationDisplay(DesignationDisplay display);
 		bool followDeviceTypes() const;
@@ -716,6 +755,12 @@ class QETProject : public QObject
 		TitleBlockTemplatesProjectCollection m_titleblocks_collection;
 			/// project-wide variables that will be made available to child diagrams
 		DiagramContext m_project_properties;
+			//scale(), moduleMm() and pxPerMm() of m_project_properties,
+			//kept by refreshScaleCache() as they are asked for at each paint
+		Scale m_scale = Scale::Px;
+		qreal m_module_mm = QetUnits::defaultModuleMm;
+		qreal m_px_per_mm = QetUnits::defaultPxPerMm;
+		void refreshScaleCache();
 			/// undo stack for this project
 		QUndoStack *m_undo_stack = nullptr;
 			/// True when the loaded file had element numbering schemes

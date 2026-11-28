@@ -27,7 +27,8 @@
 
 
 const double Createdxf::sheetWidth = 4000;
-const double Createdxf::sheetHeight = 2700;
+const double Createdxf::fitSheetHeight = 2700;
+double Createdxf::sheetHeight = Createdxf::fitSheetHeight;
 
 double Createdxf::xScale = 1;
 
@@ -75,10 +76,29 @@ Createdxf::~Createdxf()
 	inside the BLOCKS section to write the block definitions
 	(dxfBlockBegin(), the entities, dxfBlockEnd()): a block has to be
 	defined before any entity, so before anything is drawn.
+	@a extent_mm, when valid, says the coordinates are millimetres (a
+	project drawn to scale, step 4 of docs/mm-scale.md): the header gets
+	$INSUNITS = 4 and $MEASUREMENT = 1, and the extents and the view cover
+	that size instead of the fitted 4000 x 2700 sheet.
 */
 void Createdxf::dxfBegin (const QString& fileName, const QStringList &layers,
-			  const std::function<void()> &writeBlocks)
+			  const std::function<void()> &writeBlocks,
+			  const QSizeF &extent_mm)
 {
+	const bool millimetres = extent_mm.isValid();
+	const QString ext_x = millimetres
+		? QString::number(extent_mm.width(), 'f', 1) : QStringLiteral("4000.0");
+	const QString ext_y = millimetres
+		? QString::number(extent_mm.height(), 'f', 1) : QStringLiteral("4000.0");
+		//The view of the fitted sheet is centred on 4000 x 2700. To scale it
+		//is centred on the extent, whatever its proportions.
+	const double view_factor = millimetres
+		? extent_mm.height() / fitSheetHeight : 1.0;
+	const double view_centre_x = millimetres
+		? extent_mm.width() / 2 : 2000 * view_factor;
+	const double view_centre_y = millimetres
+		? extent_mm.height() / 2 : 1350 * view_factor;
+
 	layer = QStringLiteral("0");
 
 	// Creation of an output stream object in text mode.
@@ -113,6 +133,16 @@ void Createdxf::dxfBegin (const QString& fileName, const QStringList &layers,
 			To_Dxf << "0.0"         << "\r\n";
 			To_Dxf << 30            << "\r\n";
 			To_Dxf << "0.0"         << "\r\n";
+			if (millimetres) {
+				To_Dxf << 9             << "\r\n";
+				To_Dxf << "$MEASUREMENT" << "\r\n";
+				To_Dxf << 70            << "\r\n";
+				To_Dxf << 1             << "\r\n";
+				To_Dxf << 9             << "\r\n";
+				To_Dxf << "$INSUNITS"   << "\r\n";
+				To_Dxf << 70            << "\r\n";
+				To_Dxf << 4             << "\r\n";
+			}
 			To_Dxf << 9             << "\r\n";
 
 			To_Dxf << "$EXTMIN"     << "\r\n";
@@ -123,9 +153,9 @@ void Createdxf::dxfBegin (const QString& fileName, const QStringList &layers,
 			To_Dxf << 9             << "\r\n";
 			To_Dxf << "$EXTMAX"     << "\r\n";
 			To_Dxf << 10            << "\r\n";
-			To_Dxf << "4000.0"      << "\r\n";
+			To_Dxf << ext_x         << "\r\n";
 			To_Dxf << 20            << "\r\n";
-			To_Dxf << "4000.0"      << "\r\n";
+			To_Dxf << ext_y         << "\r\n";
 
 			To_Dxf << 9             << "\r\n";
 			To_Dxf << "$LIMMIN"     << "\r\n";
@@ -136,9 +166,9 @@ void Createdxf::dxfBegin (const QString& fileName, const QStringList &layers,
 			To_Dxf << 9             << "\r\n";
 			To_Dxf << "$LIMMAX"     << "\r\n";
 			To_Dxf << 10            << "\r\n";
-			To_Dxf << "4000.0"      << "\r\n";
+			To_Dxf << ext_x         << "\r\n";
 			To_Dxf << 20            << "\r\n";
-			To_Dxf << "4000.0"      << "\r\n";
+			To_Dxf << ext_y         << "\r\n";
 			To_Dxf << 0             << "\r\n";
 			To_Dxf << "ENDSEC"      << "\r\n";
 			To_Dxf << 0             << "\r\n";
@@ -167,9 +197,9 @@ void Createdxf::dxfBegin (const QString& fileName, const QStringList &layers,
 			To_Dxf << 21            << "\r\n";
 			To_Dxf << 1.0           << "\r\n";
 			To_Dxf << 12            << "\r\n";
-			To_Dxf << 2000          << "\r\n";
+			To_Dxf << view_centre_x << "\r\n";
 			To_Dxf << 22            << "\r\n";
-			To_Dxf << 1350          << "\r\n";
+			To_Dxf << view_centre_y << "\r\n";
 			To_Dxf << 13            << "\r\n";
 			To_Dxf << 0.0           << "\r\n";
 			To_Dxf << 23            << "\r\n";
@@ -195,7 +225,7 @@ void Createdxf::dxfBegin (const QString& fileName, const QStringList &layers,
 			To_Dxf << 37            << "\r\n";
 			To_Dxf << 0.0           << "\r\n";
 			To_Dxf << 40            << "\r\n";
-			To_Dxf << 2732.5        << "\r\n";
+			To_Dxf << 2732.5 * view_factor << "\r\n";
 			To_Dxf << 41            << "\r\n";
 			To_Dxf << 2.558         << "\r\n";
 			To_Dxf << 42            << "\r\n";

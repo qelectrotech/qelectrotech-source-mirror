@@ -21,6 +21,7 @@
 #include <QMutex>
 #include <QSharedPointer>
 #include <QHash>
+#include <QSet>
 #include <QPair>
 #include <QTransform>
 
@@ -84,9 +85,18 @@ class ElementPictureFactory
 			}
 		}
 
-		void getPictures(const ElementsLocation &location, QPicture &picture, QPicture &low_picture);
+			/// The "thin" line weight of an element part, in px: 0.5 px as
+			/// drawn since always, or @a thin_px (thinPx()) for a folio of
+			/// a project drawn to scale; 0 is as always
+		static qreal thinWidth(qreal thin_px);
+			/// The thin line weight in a project drawn to scale: 0.18 mm
+			/// (ISO 128-20 very thin) at @a px_per_mm pixels per mm
+		static constexpr qreal thin_line_mm = 0.18;
+		static qreal thinPx(qreal px_per_mm);
+		void getPictures(const ElementsLocation &location, QPicture &picture, QPicture &low_picture,
+						 qreal thin_px = 0);
 		void getReadablePictures(const ElementsLocation &location, const QTransform &texts_transform,
-								 QPicture &picture, QPicture &low_picture);
+								 QPicture &picture, QPicture &low_picture, qreal thin_px = 0);
 		QPixmap pixmap(const ElementsLocation &location);
 		ElementPictureFactory::primitives getPrimitives(const ElementsLocation &location);
 		void dropCache(const ElementsLocation &location);
@@ -99,9 +109,10 @@ class ElementPictureFactory
 		~ElementPictureFactory();
 
 		static QUuid cacheKey(const ElementsLocation &location);
+		static QUuid thinKey(const QUuid &key, qreal thin_px);
 		static int readableKey(const QTransform &texts_transform);
 		bool build(const ElementsLocation &location, QPicture *picture=nullptr, QPicture *low_picture=nullptr,
-				   const QTransform &texts_transform=QTransform());
+				   const QTransform &texts_transform=QTransform(), qreal thin_px=0);
 		void parseElement(const QDomElement &dom, QPainter &painter, primitives &prim) const;
 		void parseLine   (const QDomElement &dom, QPainter &painter, primitives &prim) const;
 		void parseRect   (const QDomElement &dom, QPainter &painter, primitives &prim) const;
@@ -122,6 +133,10 @@ class ElementPictureFactory
 		QHash<QPair<QUuid, int>, QPicture> m_readable_low_pictures_H;
 			/// What build() undoes on each text, read by parseText()
 		QTransform m_build_texts_undo;
+			/// What build() draws thin lines with, read by setPainterStyle()
+		qreal m_build_thin_px = 0;
+			/// The thin widths drawings were cached for, see dropCache()
+		QSet<qreal> m_thin_widths;
 		QHash<QUuid, QPixmap> m_pixmap_H;
 		QHash<QUuid, primitives> m_primitives_H;
 		static ElementPictureFactory* m_factory;

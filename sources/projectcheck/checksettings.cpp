@@ -34,6 +34,9 @@ namespace {
 	const QString key_prefix = QStringLiteral("check_");
 		/// The ids of the checks switched off, comma separated
 	const QString rules_off_key = QStringLiteral("check_rules_off");
+		/// The checks switched on that are off unless the project is drawn
+		/// to scale (ProjectCheck::onlyForScale()), comma separated
+	const QString rules_on_key = QStringLiteral("check_rules_on");
 		/// The accepted findings: a JSON object, findingId() to note
 	const QString accepted_key = QStringLiteral("check_accepted");
 
@@ -72,7 +75,7 @@ QString CheckSettings::key(Option option)
 bool CheckSettings::isCheckKey(const QString &key)
 {
 	if (!key.startsWith(key_prefix)) return false;
-	if (key == rules_off_key || key == accepted_key) return true;
+	if (key == rules_off_key || key == rules_on_key || key == accepted_key) return true;
 	for (Option option : options())
 		if (key == CheckSettings::key(option)) return true;
 	return false;
@@ -155,11 +158,16 @@ DiagramContext CheckSettings::withOptions(DiagramContext properties,
 }
 
 namespace {
-	QStringList rulesOff(QETProject *project)
+	QStringList ids(const DiagramContext &properties, const QString &key)
 	{
-		if (!project) return {};
-		return project->projectProperties().value(rules_off_key).toString()
+		return properties.value(key).toString()
 				.split(QLatin1Char(','), Qt::SkipEmptyParts);
+	}
+
+	QETProject::Scale scaleOf(const DiagramContext &properties)
+	{
+		return QETProject::scaleFromName(
+			properties.value(QETProject::drawingScaleKey()).toString());
 	}
 
 	QString uuidId(const char *prefix, const QUuid &uuid)
@@ -175,9 +183,21 @@ namespace {
 	}
 }
 
+bool CheckSettings::ruleDefaultOn(const DiagramContext &properties, ProjectCheck::Kind kind)
+{
+	return !ProjectCheck::onlyForScale(kind) || scaleOf(properties) == QETProject::Scale::Mm;
+}
+
+bool CheckSettings::ruleEnabled(const DiagramContext &properties, ProjectCheck::Kind kind)
+{
+	const QString id = ProjectCheck::id(kind);
+	if (ids(properties, rules_off_key).contains(id)) return false;
+	return ruleDefaultOn(properties, kind) || ids(properties, rules_on_key).contains(id);
+}
+
 bool CheckSettings::ruleEnabled(QETProject *project, ProjectCheck::Kind kind)
 {
-	return !rulesOff(project).contains(ProjectCheck::id(kind));
+	return ruleEnabled(project ? project->projectProperties() : DiagramContext(), kind);
 }
 
 void CheckSettings::setRuleEnabled(QETProject *project, ProjectCheck::Kind kind, bool enabled)
@@ -193,26 +213,39 @@ void CheckSettings::setRuleEnabled(QETProject *project, ProjectCheck::Kind kind,
 DiagramContext CheckSettings::withRulesOff(DiagramContext properties,
 										   const QList<ProjectCheck::Kind> &off)
 {
-	QStringList ids;
-	for (const QString &id : properties.value(rules_off_key).toString()
-			.split(QLatin1Char(','), Qt::SkipEmptyParts)) {
+		// Only what differs from the default is stored: a check that is
+		// off by default and stays off adds nothing to the file. The ids
+		// of checks this QElectroTech does not know are kept.
+	QStringList off_ids, on_ids;
+	for (const QString &id : ids(properties, rules_off_key)) {
 		ProjectCheck::Kind kind;
-		if (!ProjectCheck::kindFromId(id, &kind)) ids << id;
+		if (!ProjectCheck::kindFromId(id, &kind)) off_ids << id;
 	}
-	for (ProjectCheck::Kind kind : off) ids << ProjectCheck::id(kind);
-	ids.removeDuplicates();
-	ids.sort();
-	if (ids.isEmpty())
-		properties.remove(rules_off_key);
-	else
-		properties.addValue(rules_off_key, ids.join(QLatin1Char(',')));
+	for (const QString &id : ids(properties, rules_on_key)) {
+		ProjectCheck::Kind kind;
+		if (!ProjectCheck::kindFromId(id, &kind)) on_ids << id;
+	}
+	for (ProjectCheck::Kind kind : ProjectCheck::kinds()) {
+		const bool enabled = !off.contains(kind);
+		if (enabled == ruleDefaultOn(properties, kind)) continue;
+		(enabled ? on_ids : off_ids) << ProjectCheck::id(kind);
+	}
+	for (const auto &[key, list] : {std::make_pair(rules_off_key, &off_ids),
+									std::make_pair(rules_on_key, &on_ids)}) {
+		list->removeDuplicates();
+		list->sort();
+		if (list->isEmpty())
+			properties.remove(key);
+		else
+			properties.addValue(key, list->join(QLatin1Char(',')));
+	}
 	return properties;
 }
 
 DiagramContext CheckSettings::withPanelState(DiagramContext properties,
 											 const DiagramContext &from)
 {
-	for (const QString &key : {rules_off_key, accepted_key}) {
+	for (const QString &key : {rules_off_key, rules_on_key, accepted_key}) {
 		properties.remove(key);
 		if (from.contains(key)) properties.addValue(key, from.value(key));
 	}
@@ -224,7 +257,8 @@ QString CheckSettings::findingId(ProjectCheck::Kind kind, const ProjectCheck::Fi
 		// A wire's uuid lasts: one an older file does not give is worked
 		// out from its two ends (QETProject::derivedItemUuid())
 	QStringList parts = finding.ids;
-	for (const ProjectCheck::Place &place : finding.places) {
+	for (const ProjectCheck::Place &place : finding.ids_only
+			? QList<ProjectCheck::Place>() : finding.places) {
 		if (auto *element = qobject_cast<Element *>(place.item.data()))
 			parts << uuidId("e:", element->uuid());
 		else if (auto *conductor = qobject_cast<Conductor *>(place.item.data()))

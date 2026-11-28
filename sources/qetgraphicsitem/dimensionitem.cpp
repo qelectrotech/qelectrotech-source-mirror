@@ -17,6 +17,7 @@
 */
 #include "dimensionitem.h"
 #include <diagram.h>
+#include <qetproject.h>
 #include <ui/dimensionpropertiesdialog.h>
 
 #include <algorithm>
@@ -513,12 +514,49 @@ void DimensionItem::setProperties(const DimensionProperties &p)
 	update();
 }
 
+/**
+	@brief DimensionItem::pxPerMm
+	@return how many scene pixels make a millimetre for this item: 10 / M
+	(QETProject::pxPerMm()) in a project drawn to scale, else the 2 px/mm
+	dimensions have always used, so a project in pixels reads as before.
+*/
+qreal DimensionItem::pxPerMm() const
+{
+	const QETProject *project_ = diagram() ? diagram()->project() : nullptr;
+	const qreal px_per_mm = project_ ? project_->paperPxPerMm() : 0;
+	return px_per_mm > 0 ? px_per_mm : 2.0;
+}
+
+/**
+	@brief DimensionItem::projectScaleAboutToChange
+	The project's drawing scale or module M is going to change, and so is
+	what a pixel measures, so the bounds. Called while the project still
+	has the old scale, for Qt to record the bounds the item has now.
+*/
+void DimensionItem::projectScaleAboutToChange()
+{
+	prepareGeometryChange();
+}
+
+/**
+	@brief DimensionItem::projectScaleChanged
+	The project's drawing scale or module M changed, and so did what a
+	pixel measures: the text is made again from the new value.
+	projectScaleAboutToChange() came first.
+*/
+void DimensionItem::projectScaleChanged()
+{
+	update();
+		//An open properties widget shows the length, which changed
+	emit geometryChanged();
+}
+
 qreal DimensionItem::dimensionValueMM() const
 {
 	qreal dx = m_p2.x() - m_p1.x();
 	qreal dy = m_p2.y() - m_p1.y();
 	qreal dist_px = std::hypot(dx, dy);
-	return dist_px / 2.0; // Strictly 2 px = 1.0 mm
+	return dist_px / pxPerMm();
 }
 
 QString DimensionItem::displayText() const
@@ -738,6 +776,22 @@ void DimensionItem::calculateGeometry(QPointF &p1_dim, QPointF &p2_dim,
 	}
 }
 
+/**
+	@brief DimensionItem::textPosition
+	@return the centre of the text: the middle of the dimension line, or
+	alongside it by the text distance (in mm, see pxPerMm()) when the text
+	is not in the line
+*/
+QPointF DimensionItem::textPosition(const QPointF &mid_dim, const QPointF &normal_dir) const
+{
+	QPointF text_pos = mid_dim;
+	if (!m_text_in_line) {
+		const qreal dist = m_text_distance * pxPerMm();
+		text_pos += normal_dir * (m_offset >= 0.0 ? dist : -dist);
+	}
+	return text_pos;
+}
+
 QRectF DimensionItem::boundingRect() const
 {
 	QPointF p1_dim, p2_dim, p1_ext_end, p2_ext_end, mid_dim, unit_dir, normal_dir;
@@ -756,7 +810,10 @@ QRectF DimensionItem::boundingRect() const
 	QFontMetricsF fm(m_font);
 	QRectF textRect = fm.boundingRect(displayText());
 	qreal maxTextDim = std::hypot(textRect.width(), textRect.height());
+		//The text is where paint() puts it, off the line by the text distance
+	const QPointF text_pos = textPosition(mid_dim, normal_dir);
 	r = r.united(QRectF(mid_dim.x() - maxTextDim, mid_dim.y() - maxTextDim, maxTextDim * 2.0, maxTextDim * 2.0));
+	r = r.united(QRectF(text_pos.x() - maxTextDim, text_pos.y() - maxTextDim, maxTextDim * 2.0, maxTextDim * 2.0));
 
 	return r.adjusted(-12, -12, 12, 12);
 }
@@ -785,10 +842,17 @@ QPainterPath DimensionItem::shape() const
 	// Add text region
 	QFontMetricsF fm(m_font);
 	QRectF textRect = fm.boundingRect(displayText());
-	stroked.addRect(QRectF(mid_dim.x() - textRect.width() / 2.0 - 4.0,
-	                       mid_dim.y() - textRect.height() / 2.0 - 4.0,
-	                       textRect.width() + 8.0,
-	                       textRect.height() + 8.0));
+		//where paint() draws it: off the line, turned with the line
+	const QPointF text_pos = textPosition(mid_dim, normal_dir);
+	QTransform at_text;
+	at_text.translate(text_pos.x(), text_pos.y());
+	at_text.rotate(angle);
+	QPainterPath text_path;
+	text_path.addRect(QRectF(-textRect.width() / 2.0 - 4.0,
+	                         -textRect.height() / 2.0 - 4.0,
+	                         textRect.width() + 8.0,
+	                         textRect.height() + 8.0));
+	stroked.addPath(at_text.map(text_path));
 	return stroked;
 }
 
@@ -863,12 +927,7 @@ void DimensionItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *opt
 		QFontMetricsF fm(m_font);
 		QRectF text_bounds = fm.boundingRect(text);
 
-		QPointF text_pos = mid_dim;
-		if (!m_text_in_line) {
-			// Text placed alongside the dimension line with distance (2 px = 1.0 mm)
-			qreal dist = m_text_distance * 2.0;
-			text_pos += normal_dir * (m_offset >= 0.0 ? dist : -dist);
-		}
+		const QPointF text_pos = textPosition(mid_dim, normal_dir);
 
 		painter->translate(text_pos);
 		painter->rotate(angle_deg);
@@ -936,6 +995,11 @@ QVariant DimensionItem::itemChange(GraphicsItemChange change, const QVariant &va
 		}
 	} else if (change == ItemSceneChange) {
 		clearHandles();
+	} else if (change == ItemSceneHasChanged) {
+			// the project, so the scale, may be another one
+		prepareGeometryChange();
+		emit geometryChanged();
+		update();
 	}
 	return QetGraphicsItem::itemChange(change, value);
 }

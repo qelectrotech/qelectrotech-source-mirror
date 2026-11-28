@@ -20,11 +20,18 @@
 #include <conductorproperties.h>
 #include <conductorcolorcodes.h>
 #include <qetapp.h>
+#include <qetproject.h>
+#include <qetunits.h>
 #include <qtextorientationspinboxwidget.h>
+#include <utils/textsizebox.h>
 #include "definitionmarkstyleeditor.h"
 #include "ui_conductorpropertieswidget.h"
 
+#include <QCoreApplication>
 #include <QCompleter>
+#include <QComboBox>
+#include <QGridLayout>
+#include <QHBoxLayout>
 #include <QIcon>
 #include <QMenu>
 #include <QPainter>
@@ -89,7 +96,7 @@ void ConductorPropertiesWidget::setProperties(
 	if (index != -1) ui -> m_line_style_cb -> setCurrentIndex(index);
 
 	ui->m_color_2_gb            -> setChecked  (m_properties.m_bicolor);
-	ui->m_dash_size_sb          -> setValue    (m_properties.m_dash_size);
+	showDashSize(m_properties.m_dash_size);
 	ui->m_custom_dash_gb        -> setChecked  (m_properties.m_dash_pattern.enabled);
 	ui->m_pattern_dash_sb       -> setValue    (m_properties.m_dash_pattern.dash);
 	ui->m_pattern_gap_sb        -> setValue    (m_properties.m_dash_pattern.gap);
@@ -105,8 +112,8 @@ void ConductorPropertiesWidget::setProperties(
 	ui->m_wire_color_le         -> setText    (m_properties.m_wire_color);
 	ui->m_wire_section_le       -> setText    (m_properties.m_wire_section);
 	ui->m_conductor_type_le     -> setText    (m_properties.m_conductor_type);
-	ui->m_text_size_sb          -> setValue   (m_properties.text_size);
-	ui->m_cond_size_sb          -> setValue   (m_properties.cond_size);
+	showTextSize();
+	showCondSize(m_properties.cond_size);
 	ui->m_show_text_cb          -> setChecked (m_properties.m_show_text);
 	ui->m_one_text_per_folio_cb -> setChecked (m_properties.m_one_text_per_folio);
 	ui->m_definition_mark_cb    -> setChecked (m_properties.m_definition_mark);
@@ -167,7 +174,7 @@ ConductorProperties ConductorPropertiesWidget::properties() const
 	properties_.color                   = ui -> m_color_kpb->color();
 	properties_.m_bicolor               = ui->m_color_2_gb->isChecked();
 	properties_.m_color_2               = ui->m_color_2_kpb->color();
-	properties_.m_dash_size             = ui->m_dash_size_sb->value();
+	properties_.m_dash_size             = dashSizePx();
 	properties_.m_dash_pattern.enabled  = ui->m_custom_dash_gb->isChecked();
 	properties_.m_dash_pattern.dash     = ui->m_pattern_dash_sb->value();
 	properties_.m_dash_pattern.gap      = ui->m_pattern_gap_sb->value();
@@ -175,9 +182,9 @@ ConductorProperties ConductorPropertiesWidget::properties() const
 	properties_.m_dash_pattern.dot_gap  = ui->m_pattern_dot_gap_sb->value();
 		//The box starts at 2, so the default size 1 shows as 2: keep the
 		//stored size unless the box shows something else.
-	if (properties_.m_dash_size == qBound(ui->m_dash_size_sb->minimum(),
+	if (properties_.m_dash_size == qBound(dashSizeMinimumPx(),
 										  m_properties.m_dash_size,
-										  ui->m_dash_size_sb->maximum()))
+										  int(dashSizeMaximumPx())))
 		properties_.m_dash_size = m_properties.m_dash_size;
 	properties_.style                   = ui -> m_line_style_cb->itemData(ui->m_line_style_cb->currentIndex()).value<QPen>().style();
 	properties_.m_formula               = ui->m_formula_le->text();
@@ -195,8 +202,13 @@ ConductorProperties ConductorPropertiesWidget::properties() const
 	properties_.m_wire_color            = ui -> m_wire_color_le->text();
 	properties_.m_wire_section          = ui -> m_wire_section_le->text();
 	properties_.m_conductor_type        = ui -> m_conductor_type_le->text();
-	properties_.text_size               = ui -> m_text_size_sb -> value();
-	properties_.cond_size               = ui -> m_cond_size_sb -> value();
+		//In millimetres the box can only show the stored size to 0.01 mm:
+		//keep it unless the box shows something else
+	if (m_text_size_px_per_mm > 0 && TextSizeBox::isUnchanged(ui->m_text_size_sb, m_text_size_px_per_mm, m_properties.text_size, QETApp::diagramTextsFont()))
+		properties_.text_size = m_properties.text_size;
+	else
+		properties_.text_size = qRound(TextSizeBox::points(ui->m_text_size_sb, m_text_size_px_per_mm, QETApp::diagramTextsFont()));
+	properties_.cond_size               = condSizePx();
 	properties_.m_show_text             = ui -> m_show_text_cb -> isChecked();
 	properties_.m_one_text_per_folio    = ui -> m_one_text_per_folio_cb -> isChecked();
 	properties_.m_definition_mark       = ui -> m_definition_mark_cb -> isChecked();
@@ -333,6 +345,141 @@ void ConductorPropertiesWidget::setProject(QETProject *project)
 {
 	m_project = project;
 	ui->m_definition_mark_customize_pb->setVisible(project != nullptr);
+	m_text_size_px_per_mm = TextSizeBox::pxPerMm(project);
+	showTextSize();
+	setSizeInMm(m_text_size_px_per_mm);
+}
+
+/**
+	@brief ConductorPropertiesWidget::setSizeInMm
+	In a project drawn to scale the width of the conductor is shown and
+	typed in mm, with the ISO 128-20 series as presets; what is stored
+	stays px (10 / M px per mm). Elsewhere, and in the application
+	defaults, it is px as it always was.
+	@param px_per_mm : QETProject::pxPerMm(), 0 for px
+*/
+void ConductorPropertiesWidget::setSizeInMm(qreal px_per_mm)
+{
+	const bool mm = px_per_mm > 0;
+	if (mm == m_size_in_mm && qFuzzyCompare(1 + px_per_mm, 1 + m_px_per_mm))
+		return;
+	const qreal px = condSizePx();
+	const int dash_px = dashSizePx();
+	m_size_in_mm = mm;
+	m_px_per_mm = px_per_mm;
+	QDoubleSpinBox *sb = ui->m_cond_size_sb;
+	QSignalBlocker blocker(sb);
+	if (mm)
+	{
+			//Not the 0.4 px of the pixel range: at M = 5 that is 0.20 mm,
+			//above the 0.18 mm of ISO 128-20
+		sb->setRange(0.1, QetUnits::pxToMm(20, px_per_mm));
+		sb->setDecimals(2);
+		sb->setSingleStep(0.05);
+		sb->setSuffix(tr(" mm", "suffix of a width in millimetres"));
+	}
+	else
+	{
+		sb->setRange(0.4, 20);
+		sb->setDecimals(2);
+		sb->setSingleStep(0.2);
+		sb->setSuffix(QString());
+	}
+	if (m_cond_size_presets)
+		m_cond_size_presets->setVisible(mm);
+	showCondSize(px);
+	blocker.unblock();
+
+		//The line size of the secondary color follows: whole px stored,
+		//so a quarter of a mm is the step
+	QDoubleSpinBox *dash = ui->m_dash_size_sb;
+	const QSignalBlocker dash_blocker(dash);
+	if (mm)
+	{
+		dash->setRange(QetUnits::pxToMm(dashSizeMinimumPx(), px_per_mm), QetUnits::pxToMm(dashSizeMaximumPx(), px_per_mm));
+		dash->setDecimals(2);
+		dash->setSingleStep(QetUnits::pxToMm(1, px_per_mm));
+		dash->setSuffix(tr(" mm", "suffix of a width in millimetres"));
+	}
+	else
+	{
+		dash->setRange(dashSizeMinimumPx(), dashSizeMaximumPx());
+		dash->setDecimals(0);
+		dash->setSingleStep(1);
+			//The text and context of the .ui, so that its translations match
+		dash->setSuffix(QCoreApplication::translate("ConductorPropertiesWidget", "px"));
+	}
+	showDashSize(dash_px);
+	updateDashPatternPreview();
+}
+
+/**
+	@brief ConductorPropertiesWidget::showCondSize
+	@param px : the width of the conductor, stored in px
+*/
+void ConductorPropertiesWidget::showCondSize(qreal px)
+{
+	ui->m_cond_size_sb->setValue(m_size_in_mm ? QetUnits::pxToMm(px, m_px_per_mm) : px);
+}
+
+/**
+	@brief ConductorPropertiesWidget::condSizePx
+	@return the width of the conductor in px. The box shows mm with two
+	decimals, so a width stored in px that does not fit them (1.3 px is
+	0.325 mm) is kept as it is until the user types another.
+*/
+qreal ConductorPropertiesWidget::condSizePx() const
+{
+	const qreal value = ui->m_cond_size_sb->value();
+	if (!m_size_in_mm)
+		return value;
+	const qreal shown = qRound(QetUnits::pxToMm(m_properties.cond_size, m_px_per_mm) * 100) / 100.0;
+	if (qFuzzyCompare(value + 1, shown + 1))
+		return m_properties.cond_size;
+	return QetUnits::mmToPx(value, m_px_per_mm);
+}
+
+/**
+	@brief ConductorPropertiesWidget::showDashSize
+	@param px : the line size of the secondary color, stored in whole px
+*/
+void ConductorPropertiesWidget::showDashSize(int px)
+{
+	ui->m_dash_size_sb->setValue(m_size_in_mm ? QetUnits::pxToMm(px, m_px_per_mm) : px);
+}
+
+/**
+	@brief ConductorPropertiesWidget::dashSizePx
+	@return the line size of the secondary color in px
+*/
+int ConductorPropertiesWidget::dashSizePx() const
+{
+	const qreal value = ui->m_dash_size_sb->value();
+	return m_size_in_mm ? qRound(QetUnits::mmToPx(value, m_px_per_mm)) : qRound(value);
+}
+
+	/// The smallest line size of the secondary color, px
+int ConductorPropertiesWidget::dashSizeMinimumPx()
+{
+	return 2;
+}
+
+	/// The largest line size of the secondary color, px
+int ConductorPropertiesWidget::dashSizeMaximumPx()
+{
+	return 99;
+}
+
+/**
+	@brief ConductorPropertiesWidget::showTextSize
+	Show the text size of the properties: points, or in a project drawn
+	to scale the capital height in mm. The conductor keeps whole points.
+*/
+void ConductorPropertiesWidget::showTextSize()
+{
+	const QFont font = QETApp::diagramTextsFont();
+	TextSizeBox::configure(ui->m_text_size_sb, m_text_size_px_per_mm, 3, 99, font);
+	TextSizeBox::setPoints(ui->m_text_size_sb, m_text_size_px_per_mm, m_properties.text_size, font);
 }
 
 /**
@@ -374,7 +521,7 @@ void ConductorPropertiesWidget::setMixedTextFields(
 		{WireColor,       ui->m_wire_color_le},
 		{WireSection,     ui->m_wire_section_le},
 		{WireType,        ui->m_conductor_type_le},
-		{Cable,           ui->m_cable_le},
+		{ConductorMultiEdit::Cable,           ui->m_cable_le},
 		{Bus,             ui->m_bus_le}};
 
 	for (const auto &edit : edits)
@@ -457,6 +604,31 @@ void ConductorPropertiesWidget::initWidget()
 
 	ui -> m_update_preview_pb -> setHidden(true);
 
+		//ISO 128-20 line widths, offered when the width is in mm
+	if (auto grid = qobject_cast<QGridLayout *>(ui->m_cond_size_sb->parentWidget()->layout()))
+	{
+		int row, column, row_span, column_span;
+		grid->getItemPosition(grid->indexOf(ui->m_cond_size_sb), &row, &column, &row_span, &column_span);
+		m_cond_size_presets = new QComboBox(this);
+		m_cond_size_presets->setToolTip(tr("Line widths of ISO 128-20", "tooltip of the conductor width presets"));
+		m_cond_size_presets->addItem(tr("Preset", "conductor width presets, nothing chosen"));
+		for (qreal mm : {0.18, 0.25, 0.35, 0.5, 0.7, 1.0})
+			m_cond_size_presets->addItem(tr("%1 mm").arg(mm, 0, 'f', 2), mm);
+		grid->removeWidget(ui->m_cond_size_sb);
+		auto box = new QHBoxLayout;
+		box->setContentsMargins(0, 0, 0, 0);
+		box->addWidget(ui->m_cond_size_sb, 1);
+		box->addWidget(m_cond_size_presets);
+		grid->addLayout(box, row, column, row_span, column_span);
+		m_cond_size_presets->setVisible(false);
+		connect(m_cond_size_presets, QOverload<int>::of(&QComboBox::activated), this, [this](int index) {
+			if (index <= 0)
+				return;
+			ui->m_cond_size_sb->setValue(m_cond_size_presets->itemData(index).toDouble());
+			m_cond_size_presets->setCurrentIndex(0);
+		});
+	}
+
 	for (QDoubleSpinBox *sb : {ui->m_pattern_dash_sb, ui->m_pattern_gap_sb,
 				   ui->m_pattern_dot_sb, ui->m_pattern_dot_gap_sb, ui->m_cond_size_sb})
 		connect(sb, QOverload<double>::of(&QDoubleSpinBox::valueChanged),
@@ -530,7 +702,7 @@ void ConductorPropertiesWidget::pickColorCode(const QString &text)
 	ui->m_color_2_gb->setChecked(shown.m_bicolor);
 	ui->m_color_2_kpb->setColor(shown.m_color_2);
 	if (shown.m_bicolor) {
-		ui->m_dash_size_sb->setValue(shown.m_dash_size);
+		showDashSize(shown.m_dash_size);
 	}
 	updateDashPatternPreview();
 	emit colorCodePicked();

@@ -59,6 +59,7 @@ class ProjectPrintWindow : public QMainWindow
 		void on_m_draw_terminal_names_cb_clicked();
 		void on_m_component_info_cb_clicked();
 		void on_m_fit_in_page_cb_clicked();
+		void on_m_to_scale_cb_clicked();
 		void on_m_use_full_page_cb_clicked();
 		void on_m_zoom_out_action_triggered();
 		void on_m_zoom_in_action_triggered();
@@ -83,6 +84,10 @@ class ProjectPrintWindow : public QMainWindow
 
 	private:
 		void requestPaint();
+		bool printToScale() const;
+		qreal printToScalePxPerMm() const;
+		bool fitInPage() const;
+		void updateScaleOptions();
 		void printDiagram(Diagram *diagram, bool fit_page, QPainter *painter, QPrinter *printer, const QMap<Diagram*, int> &diagramPageMap, int &annotIndex);
 		QRect diagramRect(Diagram *diagram, const ExportProperties &option) const;
 		int horizontalPagesCount(Diagram *diagram, const ExportProperties &option, bool full_page) const;
@@ -97,6 +102,9 @@ class ProjectPrintWindow : public QMainWindow
 		QList<Diagram *> selectedDiagram() const;
 		void exportToPDF();
 		void setOrientationForDiagram(Diagram *diagram);
+		bool pagePerFolio() const;
+		QPageLayout pageLayoutForFolio(Diagram *diagram) const;
+		void setPageForFolio(Diagram *diagram);
 
 
 	private:

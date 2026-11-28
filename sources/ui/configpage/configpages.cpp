@@ -41,6 +41,18 @@
 #include <utility>
 
 /**
+	@brief NewDiagramPage::setPaperPxPerMm
+	The paper sizes of the new folios follow the drawing scale and the
+	module M picked in the dialog, not the ones of the project as it was
+	when the dialog opened.
+	@param px_per_mm : pixels per millimetre, 0 for 96 dpi
+*/
+void NewDiagramPage::setPaperPxPerMm(qreal px_per_mm)
+{
+	bpw->setPxPerMm(px_per_mm);
+}
+
+/**
 	@brief NewDiagramPage::NewDiagramPage
 	Default constructor
 	@param project : QETProject
@@ -58,6 +70,9 @@ NewDiagramPage::NewDiagramPage(QETProject *project,
 
 	// dimensions by default for diagram
 	bpw = new BorderPropertiesWidget(BorderProperties::defaultProperties());
+	const qreal px_per_mm = m_project ? m_project->paperPxPerMm() : 0;
+	if (px_per_mm > 0)
+		bpw->setPxPerMm(px_per_mm);
 	// default titleblock properties
 	QList <TitleBlockTemplatesCollection *> c;
 	c << QETApp::commonTitleBlockTemplatesCollection()

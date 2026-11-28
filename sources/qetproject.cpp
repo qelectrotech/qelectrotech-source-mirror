@@ -17,6 +17,8 @@
 */
 
 #include "qetproject.h"
+#include "qetunits.h"
+#include "qetgraphicsitem/dimensionitem.h"
 #include "ElementsCollection/terminaluuids.h"
 #include "TerminalStrip/terminalstriplabels.h"
 #include "container/qetcontainer.h"
@@ -3498,6 +3500,7 @@ QETResult QETProject::write(bool overwrite_changed)
 	const auto failed_stamped = [&](const QString &error) {
 		if (stamped) {
 			m_project_properties = stamped_before;
+			refreshScaleCache();
 			emit projectInformationsChanged(this);
 			updateDiagramsFolioData();
 		}
@@ -4848,6 +4851,7 @@ void QETProject::readProjectPropertiesXml(QDomDocument &xml_project)
 {
 	for (const auto &dom_elmt : QET::findInDomElement(xml_project.documentElement(), QStringLiteral("properties")))
 		m_project_properties.fromXml(dom_elmt);
+	refreshScaleCache();
 }
 
 /**
@@ -6473,6 +6477,20 @@ namespace {
 		/// project's properties so that an older QElectroTech keeps it when
 		/// it saves the project (#1289 rule 4)
 	const QString drawing_standard_key = QStringLiteral("drawing_standard");
+		/// The project property holding the drawing scale, kept the same way
+	const QString scale_key = QETProject::drawingScaleKey();
+		/// The project property holding the module M, kept the same way
+	const QString module_key = QETProject::drawingModuleKey();
+}
+
+QString QETProject::drawingScaleKey()
+{
+	return QStringLiteral("drawing_scale");
+}
+
+QString QETProject::drawingModuleKey()
+{
+	return QStringLiteral("drawing_module");
 }
 
 /**
@@ -6535,10 +6553,203 @@ void QETProject::setDrawingStandard(DrawingStandard standard)
 }
 
 /**
+	@brief QETProject::scaleName
+	@return the name a scale is stored as: "mm", empty for Px
+*/
+QString QETProject::scaleName(Scale scale)
+{
+	switch (scale) {
+		case Scale::Mm: return QStringLiteral("mm");
+		case Scale::Px: break;
+	}
+	return QString();
+}
+
+/**
+	@brief QETProject::scaleFromName
+	@param name : a stored value, in any case, spaces around it ignored
+	@param known : set to false for a value this QElectroTech does not
+	know, which reads as Px
+*/
+QETProject::Scale QETProject::scaleFromName(const QString &name, bool *known)
+{
+	const QString value = name.trimmed().toLower();
+	if (known) *known = true;
+	if (value == QLatin1String("mm")) return Scale::Mm;
+	if (known && !value.isEmpty()) *known = false;
+	return Scale::Px;
+}
+
+QString QETProject::scaleText() const
+{
+	return m_project_properties.value(scale_key).toString();
+}
+
+QETProject::Scale QETProject::scale() const
+{
+	return m_scale;
+}
+
+/**
+	@brief QETProject::refreshScaleCache
+	Read the scale, the module M and the pixels per millimetre from the
+	project properties again. They are asked for each time something is
+	drawn, so the strings are parsed once, whenever the properties change.
+*/
+void QETProject::refreshScaleCache()
+{
+	m_scale = scaleFromName(scaleText());
+	m_module_mm = moduleFromName(moduleText());
+	m_px_per_mm = QetUnits::pxPerMmFor(m_module_mm);
+}
+
+/**
+	@brief QETProject::setScale
+	Px removes the property, so the project saves exactly as one that
+	never had it.
+*/
+void QETProject::setScale(Scale scale)
+{
+	DiagramContext properties = m_project_properties;
+	if (scale == Scale::Px)
+		properties.remove(scale_key);
+	else
+		properties.addValue(scale_key, scaleName(scale));
+	if (properties != m_project_properties) {
+		setProjectProperties(properties);
+		setModified(true);
+	}
+}
+
+/**
+	@brief QETProject::modulesMm
+	@return the modules M IEC 61082-1 (5.7.3.2) allows, in mm
+*/
+QList<qreal> QETProject::modulesMm()
+{
+	return {1.8, 2.0, QetUnits::defaultModuleMm, 3.5, 5.0};
+}
+
+/**
+	@brief QETProject::moduleName
+	@return the name a module is stored as: "1.8", "2.0", "3.5", "5.0",
+	empty for 2.5 (and for a value that is none of them)
+*/
+QString QETProject::moduleName(qreal module_mm)
+{
+	if (qFuzzyCompare(module_mm, QetUnits::defaultModuleMm)) return QString();
+	for (qreal module : modulesMm())
+		if (qFuzzyCompare(module_mm, module))
+			return QString::number(module, 'f', 1);
+	return QString();
+}
+
+/**
+	@brief QETProject::moduleFromName
+	@param name : a stored value, "2" and "2,0" read as 2.0, spaces around
+	it ignored
+	@param known : set to false for a value that is none of the modules,
+	which reads as 2.5
+*/
+qreal QETProject::moduleFromName(const QString &name, bool *known)
+{
+	QString value = name.trimmed();
+	value.replace(QLatin1Char(','), QLatin1Char('.'));
+	if (known) *known = true;
+	if (value.isEmpty()) return QetUnits::defaultModuleMm;
+	bool ok = false;
+	const qreal number = value.toDouble(&ok);
+	if (ok)
+		for (qreal module : modulesMm())
+			if (qFuzzyCompare(number, module)) return module;
+	if (known) *known = false;
+	return QetUnits::defaultModuleMm;
+}
+
+QString QETProject::moduleText() const
+{
+	return m_project_properties.value(module_key).toString();
+}
+
+qreal QETProject::moduleMm() const
+{
+	return m_module_mm;
+}
+
+/**
+	@brief QETProject::setModuleMm
+	2.5 removes the property, so the project saves exactly as one that
+	never had it. The pixels of the drawing are not rescaled: only what
+	they mean on paper changes.
+*/
+void QETProject::setModuleMm(qreal module_mm)
+{
+	DiagramContext properties = m_project_properties;
+	const QString name = moduleName(module_mm);
+	if (name.isEmpty())
+		properties.remove(module_key);
+	else
+		properties.addValue(module_key, name);
+	if (properties != m_project_properties) {
+		setProjectProperties(properties);
+		setModified(true);
+	}
+}
+
+/**
+	@brief QETProject::pxPerMm
+	@return 10 / moduleMm(): the pixels of one millimetre of paper
+*/
+qreal QETProject::pxPerMm() const
+{
+	return m_px_per_mm;
+}
+
+/**
+	@brief QETProject::paperPxPerMm
+	@return pxPerMm() in a project drawn to scale (Scale::Mm), 0 in a
+	project in pixels, which has no pixels per millimetre: the caller
+	keeps the 96 dpi or the 2 px/mm it always used
+*/
+qreal QETProject::paperPxPerMm() const
+{
+	return scale() == Scale::Mm ? m_px_per_mm : 0;
+}
+
+/**
 	Use \a context as project-wide properties made available to child diagrams.
 */
 void QETProject::setProjectProperties(const DiagramContext &context) {
+	const Scale old_scale = scale();
+	const qreal old_px_per_mm = pxPerMm();
 	m_project_properties = context;
+		//What the cache is going to hold, before it does
+	const Scale new_scale = scaleFromName(scaleText());
+	const qreal new_px_per_mm = QetUnits::pxPerMmFor(moduleFromName(moduleText()));
+	const bool scale_changed = new_scale != old_scale
+			|| !qFuzzyCompare(new_px_per_mm, old_px_per_mm);
+		//Dimensions measure the drawing in mm: they say their bounds are
+		//going to change while they still give the old ones, which is
+		//what Qt keeps to paint the area they leave
+	if (scale_changed)
+		for (Diagram *diagram : diagrams())
+			for (QGraphicsItem *item : diagram->items())
+				if (auto *dimension = dynamic_cast<DimensionItem *>(item))
+					dimension->projectScaleAboutToChange();
+	refreshScaleCache();
+		//Thin lines of the symbols are 0.18 mm in a project drawn to
+		//scale, and so as many pixels as the module M says
+	if (scale_changed)
+	{
+		for (Diagram *diagram : diagrams())
+		{
+			for (Element *element : diagram->elements())
+				element->updateThinWeight();
+			for (QGraphicsItem *item : diagram->items())
+				if (auto *dimension = dynamic_cast<DimensionItem *>(item))
+					dimension->projectScaleChanged();
+		}
+	}
 	storeSettings();
 		//Folio and symbol texts are made from them
 	markKeptFoliosStale();
@@ -6555,6 +6766,7 @@ void QETProject::setProjectProperties(const DiagramContext &context) {
 */
 void QETProject::setUnshownProjectProperties(const DiagramContext &context) {
 	m_project_properties = context;
+	refreshScaleCache();
 	storeSettings();
 }
 

@@ -19,12 +19,14 @@
 
 #include <diagram.h>
 #include <qetapp.h>
+#include <qetunits.h>
 #include <titleblocktemplate.h>
 #include "ui_borderpropertieswidget.h"
 
 #include <QGridLayout>
 #include <QLabel>
 
+#include <cmath>
 #include <iterator>
 #include <tuple>
 
@@ -41,11 +43,24 @@ namespace {
 	};
 
 	/// The PDF export draws one scene unit as one pixel at 96 dpi
-	int mmToPx(int mm) { return qRound(mm * 96.0 / 25.4); }
+	const qreal default_px_per_mm = 96.0 / 25.4;
 
 	/// The PDF export rounds a page within 3 pt of a paper size to that
-	/// size, and 4 px left over already rounds to 3.0 pt and misses
-	const int exact_fit = 3;
+	/// size. At 96 dpi, 3 px left over are 2.25 pt, and 4 px already
+	/// round to 3.0 pt and miss.
+	const int exact_fit_96dpi = 3;
+
+	/// What a folio may leave of its paper, in pixels, with @p px_per_mm
+	/// pixels to the millimetre: 2.5 pt, under the 3 pt of the rounding.
+	/// 3 px at 96 dpi, as ever, for the pixels of a project not drawn to
+	/// scale and for no project.
+	int exactFit(qreal px_per_mm)
+	{
+		if (qFuzzyCompare(px_per_mm, default_px_per_mm))
+			return exact_fit_96dpi;
+		constexpr qreal margin_pt = 2.5;
+		return qMax(0, int(std::floor(margin_pt / 72.0 * 25.4 * px_per_mm)));
+	}
 
 	/// Smallest column width or row height a paper size may give
 	const int min_cell = 10;
@@ -58,11 +73,12 @@ namespace {
 		@brief fitCells
 		Split @p available pixels into cells close to @p current pixels.
 		First choice: cells within 15 %, then 30 %, of the current size
-		that leave at most exact_fit pixels, the closest to the current
+		that leave at most @p exact_fit pixels, the closest to the current
 		size. Failing that, cells within 15 % that leave the fewest pixels.
 		@return the number of cells and their size
 	*/
-	QPair<int, int> fitCells(int available, int current, int min_size, int max_count)
+	QPair<int, int> fitCells(int available, int current, int min_size, int max_count,
+							 int exact_fit)
 	{
 		current = qMax(current, min_size);
 		auto size_for = [&](int count, double spread) {
@@ -226,6 +242,34 @@ void BorderPropertiesWidget::setTitleBlockSize(int height, Qt::Edge edge, Qt::Al
 }
 
 /**
+	@brief BorderPropertiesWidget::setPxPerMm
+	Set how many pixels a millimetre of paper is, which the paper sizes
+	are converted with. A project drawn to scale uses QETProject::pxPerMm();
+	without it the paper is 96 dpi, as the PDF export draws it. Folios
+	that exist are not resized: only a paper size picked afterwards
+	changes the columns and rows.
+	@param px_per_mm : pixels per millimetre, or 0 for 96 dpi
+*/
+void BorderPropertiesWidget::setPxPerMm(qreal px_per_mm)
+{
+	m_px_per_mm = px_per_mm > 0 ? px_per_mm : default_px_per_mm;
+	if (m_paper_picked)
+		applyPaperSize();
+	else
+		showMatchingPaperSize();
+}
+
+/**
+	@brief BorderPropertiesWidget::mmToPx
+	@param mm : paper length in millimetres
+	@return the length in pixels, with the current pixels per millimetre
+*/
+int BorderPropertiesWidget::mmToPx(int mm) const
+{
+	return qRound(mm * m_px_per_mm);
+}
+
+/**
 	@brief BorderPropertiesWidget::applyPaperSize
 	Set the columns and rows so the folio, title block included, has the
 	size of the chosen paper. The column width and row height stay close
@@ -283,11 +327,13 @@ bool BorderPropertiesWidget::fitPaperSize(int index, bool landscape,
 	const QPair<int, int> c = fitCells(width,
 									   m_wanted_column_width,
 									   min_cell,
-									   ui->m_colums_count_sp->maximum());
+									   ui->m_colums_count_sp->maximum(),
+									   exactFit(m_px_per_mm));
 	const QPair<int, int> r = fitCells(height,
 									   m_wanted_row_height,
 									   min_cell,
-									   ui->m_rows_count_sp->maximum());
+									   ui->m_rows_count_sp->maximum(),
+									   exactFit(m_px_per_mm));
 	columns = c.first;
 	column_width = c.second;
 	rows = r.first;
@@ -346,7 +392,7 @@ void BorderPropertiesWidget::showFolioSize()
 		height += m_titleblock_height;
 	else
 		width += m_titleblock_height;
-	const auto mm = [](int px) { return qRound(px * 25.4 / 96.0); };
+	const auto mm = [this](int px) { return qRound(px / m_px_per_mm); };
 
 	QString text = tr("Folio size: %1 × %2 mm").arg(mm(width)).arg(mm(height));
 	if (ui->m_paper_cb->currentIndex() == 0)

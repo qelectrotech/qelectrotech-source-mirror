@@ -21,6 +21,7 @@
 #include <projectcheck/checksettings.h>
 #include <QHash>
 #include <QPointer>
+#include <QSet>
 #include <QVector>
 #include <autoNum/autonumschemecommand.h>
 
@@ -125,10 +126,17 @@ class ProjectMainConfigPage : public ProjectConfigPage {
 	void readValuesFromProject() override;
 	void adjustReadOnly() override;
 
+	signals:
+		/// The drawing scale or the module M shown changed: pixels per
+		/// millimetre of a project drawn to scale, 0 in pixels
+	void paperPxPerMmChanged(qreal px_per_mm);
+
 	private slots:
 	void resetUsageTracker();
 	void updateWiringRulesWidgets();
 	void updateCheckOptionsWidgets();
+	void updateModuleEnabled();
+	void emitPaperPxPerMm();
 
 	// attributes
 	protected:
@@ -149,6 +157,10 @@ class ProjectMainConfigPage : public ProjectConfigPage {
 	QComboBox *m_designation_display_cb;
 	QLabel *m_drawing_standard_label;
 	QComboBox *m_drawing_standard_cb;
+	QLabel *m_scale_label;
+	QComboBox *m_scale_cb;
+	QLabel *m_module_label;
+	QComboBox *m_module_cb;
 	QCheckBox *m_follow_device_types_cb;
 	QCheckBox *chained_reports_cb_;
 	QGroupBox *chained_key_gb_;
@@ -169,6 +181,7 @@ class ProjectMainConfigPage : public ProjectConfigPage {
 	QHash<CheckSettings::Option, QCheckBox *> m_check_option_cbs;
 	QLabel *m_check_rules_label;
 	QHash<ProjectCheck::Kind, QCheckBox *> m_check_rule_cbs;
+	QSet<ProjectCheck::Kind> m_check_rules_touched;
 	QLabel *origin_label_;
 	QComboBox *origin_cb_;
 };

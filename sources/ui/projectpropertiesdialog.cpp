@@ -36,7 +36,8 @@ ProjectPropertiesDialog::ProjectPropertiesDialog(QETProject *project, QWidget *p
 {
 	m_properties_dialog = new ConfigDialog (parent);
 	m_properties_dialog -> setWindowTitle(QObject::tr("Project properties", "window title"));
-	m_properties_dialog -> addPage(new ProjectMainConfigPage(project));
+	ProjectMainConfigPage *mainPage = new ProjectMainConfigPage(project);
+	m_properties_dialog -> addPage(mainPage);
 
 	NewDiagramPage *newDiagramPage = new NewDiagramPage(project,parent,this);
 	m_properties_dialog -> addPage(newDiagramPage);
@@ -47,6 +48,7 @@ ProjectPropertiesDialog::ProjectPropertiesDialog(QETProject *project, QWidget *p
 	m_properties_dialog->addPage(new TerminalStripProjectConfigPage { project, parent });
 	m_properties_dialog->addPage(new RevisionsConfigPage(project));
 
+	connect(mainPage, &ProjectMainConfigPage::paperPxPerMmChanged, newDiagramPage, &NewDiagramPage::setPaperPxPerMm);
 	connect(projectAutoNumConfigPage, qOverload<QString>(&ProjectAutoNumConfigPage::setAutoNum), newDiagramPage, &NewDiagramPage::setFolioAutonum);
 	connect(projectAutoNumConfigPage, &ProjectAutoNumConfigPage::saveCurrentTbp, newDiagramPage, &NewDiagramPage::saveCurrentTbp);
 	connect(projectAutoNumConfigPage, &ProjectAutoNumConfigPage::loadSavedTbp, newDiagramPage, &NewDiagramPage::loadSavedTbp);

@@ -78,12 +78,15 @@
     </spacer>
    </item>
    <item row="3" column="3">
-    <widget class="QSpinBox" name="m_size_sb">
+    <widget class="QDoubleSpinBox" name="m_size_sb">
+     <property name="decimals">
+      <number>0</number>
+     </property>
      <property name="minimum">
-      <number>4</number>
+      <double>4.000000000000000</double>
      </property>
      <property name="maximum">
-      <number>50</number>
+      <double>50.000000000000000</double>
      </property>
     </widget>
    </item>

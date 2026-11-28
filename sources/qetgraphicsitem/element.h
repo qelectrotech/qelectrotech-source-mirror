@@ -290,6 +290,9 @@ class Element : public QetGraphicsItem
 		bool hasUprightSymbolTexts() const;
 		QTransform symbolTextsTransform() const;
 		void updateSymbolPictures(bool force = false);
+		void updateThinWeight();
+		bool thinWeightInMm() const {return m_thin_px > 0;}
+		qreal thinWeightPx() const {return m_thin_px;}
 		void keepReadable(QGraphicsItem *child) const;
 
 			//METHODS related to texts
@@ -484,6 +487,9 @@ class Element : public QetGraphicsItem
 
 	ElementsLocation m_location;
 	QList <Terminal *> m_terminals;
+		/// The thin line weight of the symbol in px, 0.18 mm because the
+		/// folio belongs to a project drawn to scale; 0 as always
+	qreal m_thin_px = 0;
 	QPicture m_picture;
 	QPicture m_low_zoom_picture;
 		/// The drawing with its texts kept readable, when the symbol's

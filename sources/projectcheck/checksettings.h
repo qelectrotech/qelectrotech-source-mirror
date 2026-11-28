@@ -87,10 +87,18 @@ namespace CheckSettings
 		/// Whether @p kind runs for @p project: every check does until
 		/// the project switches it off (B8)
 	bool ruleEnabled(QETProject *project, ProjectCheck::Kind kind);
+		/// The same for the properties of a project, which may be those
+		/// stored with another scale to see what they would give
+	bool ruleEnabled(const DiagramContext &properties, ProjectCheck::Kind kind);
 	void setRuleEnabled(QETProject *project, ProjectCheck::Kind kind, bool enabled);
+		/// Whether @p kind runs when @p properties (a project's) say
+		/// nothing about it: every check does, but those that need a unit
+		/// (ProjectCheck::onlyForScale()) only in a project drawn to scale
+	bool ruleDefaultOn(const DiagramContext &properties, ProjectCheck::Kind kind);
 		/// @p properties with the checks of @p off switched off and every
-		/// other check this QElectroTech knows on; the ids of checks it
-		/// does not know (from a newer one) are kept
+		/// other check this QElectroTech knows on; only what differs from
+		/// ruleDefaultOn() is stored, in check_rules_off or check_rules_on.
+		/// The ids of checks it does not know (from a newer one) are kept
 	DiagramContext withRulesOff(DiagramContext properties,
 								const QList<ProjectCheck::Kind> &off);
 

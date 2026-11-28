@@ -551,6 +551,32 @@ QTransform Element::symbolTextsTransform() const
 }
 
 /**
+	@brief Element::updateThinWeight
+	Draw the thin line weight of the symbol 0.18 mm (as many pixels as the
+	module M of the project says) when the folio belongs to a project drawn
+	to scale, as it always was (0.5 px) otherwise.
+	Called when the element enters a folio and when the project changes
+	its scale or module; does nothing when it already draws as it should.
+*/
+void Element::updateThinWeight()
+{
+	const QETProject *project = diagram() ? diagram()->project() : nullptr;
+	const qreal px_per_mm = project ? project->paperPxPerMm() : 0;
+	const qreal thin_px = px_per_mm > 0
+			? ElementPictureFactory::thinPx(px_per_mm) : 0;
+	if (qFuzzyCompare(1 + thin_px, 1 + m_thin_px))
+		return;
+	m_thin_px = thin_px;
+	if (m_picture.isNull())
+		return; //Not drawn yet: buildFromXml() will use m_thin_px
+	ElementPictureFactory::instance()->getPictures(
+				m_location, m_picture, m_low_zoom_picture, m_thin_px);
+	updateSymbolPictures(true);
+	updateDrawnRect();
+	update();
+}
+
+/**
 	@brief Element::updateSymbolPictures
 	Take the drawing of the symbol whose texts read normally once this
 	element has mirrored and turned it (symbolTextsTransform()), or drop it
@@ -583,7 +609,8 @@ void Element::updateSymbolPictures(bool force)
 				m_location,
 				transform,
 				m_readable_picture,
-				m_readable_low_zoom_picture);
+				m_readable_low_zoom_picture,
+				m_thin_px);
 	updateDrawnRect();
 	update();
 }
@@ -1150,7 +1177,8 @@ bool Element::buildFromXml(const QDomElement &xml_def_elmt, int *state)
 	ElementPictureFactory *epf = ElementPictureFactory::instance();
 	epf->getPictures(m_location,
 			 m_picture,
-			 m_low_zoom_picture);
+			 m_low_zoom_picture,
+			 m_thin_px);
 	updateDrawnRect();
 
 	if(!m_picture.isNull())
@@ -3411,7 +3439,11 @@ QVariant Element::itemChange(GraphicsItemChange change, const QVariant &value)
 		//Whether the texts of a turned symbol stay horizontal is the
 		//project's setting, known once the element is on one of its folios
 	else if (change == QGraphicsItem::ItemSceneHasChanged)
+	{
+		if (scene())
+			updateThinWeight();
 		updateSymbolPictures();
+	}
 	return QetGraphicsItem::itemChange(change, value);
 }
 
@@ -3930,7 +3962,8 @@ Element::ReloadPictureResult Element::reloadPicture(bool adopt_frame)
 	QPicture low_zoom_picture;
 	ElementPictureFactory::instance()->getPictures(m_location,
 												   picture,
-												   low_zoom_picture);
+												   low_zoom_picture,
+												   m_thin_px);
 	if (picture.isNull()) {
 		return ReloadPictureResult::Unavailable;
 	}

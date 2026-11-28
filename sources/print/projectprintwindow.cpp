@@ -157,6 +157,18 @@ ProjectPrintWindow::ProjectPrintWindow(QETProject *project, QPrinter *printer, Q
 	ui->m_component_info_cb->setChecked(settings.value("print/default/componentinfo", false).toBool());
 	ui->m_fit_in_page_cb->setChecked(settings.value("print/default/fitinpage", true).toBool());
 	ui->m_use_full_page_cb->setChecked(settings.value("print/default/fullpage", false).toBool());
+		//To scale is only for a project drawn in millimetres, where it is
+		//the default.
+	const bool mm_project = m_project->scale() == QETProject::Scale::Mm;
+	ui->m_to_scale_cb->setVisible(mm_project);
+	ui->m_to_scale_label->setVisible(mm_project);
+		//The module M of the project is in the texts
+	const QString module_mm = QString::number(m_project->moduleMm(), 'f', 1);
+	ui->m_to_scale_cb->setText(ui->m_to_scale_cb->text().arg(module_mm));
+	ui->m_to_scale_label->setText(ui->m_to_scale_label->text().arg(10).arg(module_mm));
+	ui->m_to_scale_cb->setChecked(
+		mm_project && settings.value("print/default/toscale", true).toBool());
+	updateScaleOptions();
 
 	ui->m_date_cb->blockSignals(true);
 	ui->m_date_cb->setDate(QDate::currentDate());
@@ -174,6 +186,46 @@ ProjectPrintWindow::~ProjectPrintWindow()
 	delete ui;
 	delete m_printer;
 	Diagram::background_color = m_backup_diagram_background_color;
+}
+
+/**
+ * @brief ProjectPrintWindow::printToScale
+ * @return true if the sheets are printed to scale (10 px = M): only
+ * for a project drawn in millimetres, and when the option is checked.
+ */
+bool ProjectPrintWindow::printToScale() const
+{
+	return m_project->scale() == QETProject::Scale::Mm
+		&& ui->m_to_scale_cb->isChecked();
+}
+
+/**
+ * @brief ProjectPrintWindow::printToScalePxPerMm
+ * @return the project's pixels per millimetre (QETProject::pxPerMm())
+ * when the sheets are printed to scale, else 0
+ */
+qreal ProjectPrintWindow::printToScalePxPerMm() const
+{
+	return printToScale() ? m_project->paperPxPerMm() : 0;
+}
+
+/**
+ * @brief ProjectPrintWindow::fitInPage
+ * @return true if each sheet is fitted to one page. To scale takes over
+ * from it.
+ */
+bool ProjectPrintWindow::fitInPage() const
+{
+	return !printToScale() && ui->m_fit_in_page_cb->isChecked();
+}
+
+/**
+ * @brief ProjectPrintWindow::updateScaleOptions
+ * Fit to page does not apply while printing to scale.
+ */
+void ProjectPrintWindow::updateScaleOptions()
+{
+	ui->m_fit_in_page_cb->setEnabled(!printToScale());
 }
 
 /**
@@ -198,7 +250,7 @@ void ProjectPrintWindow::requestPaint()
 		for (auto diagram : selectedDiagram()) {
 			diagramPageMap.insert(diagram, pageNum);
 			// Each diagram may span multiple pages if not fit_page
-			if (!ui->m_fit_in_page_cb->isChecked()) {
+			if (!fitInPage()) {
 				auto option = exportProperties();
 				bool full_page = m_printer->fullPage();
 				int h = horizontalPagesCount(diagram, option, full_page);
@@ -217,11 +269,17 @@ void ProjectPrintWindow::requestPaint()
 	// accepts a new page layout once printing has started.
 	const bool per_folio_orientation = m_printing
 		&& m_printer->outputFormat() == QPrinter::PdfFormat
-		&& ui->m_fit_in_page_cb->isChecked();
+		&& fitInPage();
 	const auto chosen_orientation = m_printer->pageLayout().orientation();
+		//A PDF written to scale has a page the size of each folio
+	const bool per_folio_page = pagePerFolio();
+	const QPageLayout chosen_layout = m_printer->pageLayout();
 	const auto diagrams = selectedDiagram();
 	if (per_folio_orientation && !diagrams.isEmpty()) {
 		setOrientationForDiagram(diagrams.first());
+	}
+	if (per_folio_page && !diagrams.isEmpty()) {
+		setPageForFolio(diagrams.first());
 	}
 
 	bool first = true;
@@ -245,13 +303,19 @@ void ProjectPrintWindow::requestPaint()
 			if (per_folio_orientation) {
 				setOrientationForDiagram(diagram);
 			}
+			if (per_folio_page) {
+				setPageForFolio(diagram);
+			}
 			m_printer->newPage();
 		}
-		printDiagram(diagram, ui->m_fit_in_page_cb->isChecked(), &painter, m_printer, diagramPageMap, annotIndex);
+		printDiagram(diagram, fitInPage(), &painter, m_printer, diagramPageMap, annotIndex);
 	}
 
 	if (per_folio_orientation) {
 		m_printer->setPageOrientation(chosen_orientation);
+	}
+	if (per_folio_page) {
+		m_printer->setPageLayout(chosen_layout);
 	}
 
 	// Note: do NOT call painter.end() or pdfConvertUriToGoTo() here.
@@ -260,6 +324,44 @@ void ProjectPrintWindow::requestPaint()
 	// closing the QPainter manually inside this slot leaves the backing
 	// store in an undefined state, producing a black screen after export.
 	// pdfConvertUriToGoTo() is deferred to print() via QTimer::singleShot(0).
+}
+
+/**
+ * @brief ProjectPrintWindow::pagePerFolio
+ * @return true while a PDF file is written to scale: each page is then the
+ * size of its folio, drawn 1:1, instead of tiles of the paper chosen. A
+ * physical printer has paper of its own and keeps tiling.
+ */
+bool ProjectPrintWindow::pagePerFolio() const
+{
+	return m_printing
+		&& m_printer->outputFormat() == QPrinter::PdfFormat
+		&& printToScale();
+}
+
+/**
+ * @brief ProjectPrintWindow::pageLayoutForFolio
+ * @param diagram
+ * @return the page @diagram is printed on when a PDF is written to scale:
+ * as large as the folio on paper, at the pixels per millimetre of the
+ * project, without margins. As the command line export does, a folio wider
+ * than high is a landscape page.
+ */
+QPageLayout ProjectPrintWindow::pageLayoutForFolio(Diagram *diagram) const
+{
+	return QetPrint::folioPageLayout(
+		diagramRect(diagram, exportProperties()).size(),
+		printToScalePxPerMm());
+}
+
+/**
+ * @brief ProjectPrintWindow::setPageForFolio
+ * Make the next page as large as @diagram on paper, see pageLayoutForFolio().
+ * @param diagram
+ */
+void ProjectPrintWindow::setPageForFolio(Diagram *diagram)
+{
+	m_printer->setPageLayout(pageLayoutForFolio(diagram));
 }
 
 /**
@@ -306,6 +408,7 @@ void ProjectPrintWindow::printDiagram(Diagram *diagram, bool fit_page, QPainter 
 
 
 	auto full_page = printer->fullPage();
+	const qreal px_per_mm = printToScalePxPerMm();
 	auto diagram_rect = QRectF(diagramRect(diagram, option));
 	if (fit_page) {
 		QetPrint::render(diagram, painter,
@@ -316,11 +419,16 @@ void ProjectPrintWindow::printDiagram(Diagram *diagram, bool fit_page, QPainter 
 			//Print on one or several pages, tiled in folio coordinates
 			//like the page count: device pixels grow with the printer's
 			//resolution, the folio and its printed size do not.
-		const QSizeF page_size = QetPrint::pageSizeInDrawingUnits(
-					     printer->pageLayout(), full_page);
+		QSizeF page_size = QetPrint::pageSizeInDrawingUnits(
+					     printer->pageLayout(), full_page, px_per_mm);
+			//The page of a PDF written to scale is the folio itself, to
+			//the rounding of the page size: draw all of it
+		if (pagePerFolio())
+			page_size = diagram_rect.size();
 		const int h_pages_count = horizontalPagesCount(diagram, option, full_page);
 		const int v_pages_count = verticalPagesCount(diagram, option, full_page);
-		const qreal pixels_per_unit = printer->resolution() / QetPrint::drawingDpi;
+		const qreal pixels_per_unit = QetPrint::pixelsPerUnit(
+					printer->resolution(), px_per_mm);
 
 		bool first_ = true;
 		for (int i = 0 ; i < v_pages_count ; ++i) {
@@ -338,7 +446,20 @@ void ProjectPrintWindow::printDiagram(Diagram *diagram, bool fit_page, QPainter 
 	}
 
 	////Inject PDF cross-reference links////
-	if (printer->outputFormat() == QPrinter::PdfFormat && fit_page) {
+		//Printed to scale, a folio that needs no more than one page is drawn
+		//at one fixed scale and anchored top-left, so its links can be
+		//placed like those of a folio fitted to its page. A folio tiled
+		//over several pages gets none: a link rectangle cannot be split
+		//over the pages, nor can the frame a link zooms to.
+	const auto tiledPages = [&](Diagram *dg) {
+		return horizontalPagesCount(dg, exportProperties(), full_page)
+			* verticalPagesCount(dg, exportProperties(), full_page);
+	};
+		//Only to scale: a pixel project printed without fitting keeps no
+		//links, exactly as before
+	const bool links_wanted = fit_page
+		|| (px_per_mm > 0 && tiledPages(diagram) == 1);
+	if (printer->outputFormat() == QPrinter::PdfFormat && links_wanted) {
 		auto *pdfEngine = dynamic_cast<QPdfEngine*>(painter->paintEngine());
 		if (pdfEngine) {
 
@@ -357,8 +478,14 @@ void ProjectPrintWindow::printDiagram(Diagram *diagram, bool fit_page, QPainter 
 			// render() ANCRE en haut-gauche (pas de centrage) :
 			//   translate(target.topLeft) . scale(s,s) . translate(-source.topLeft)
 			// On reproduit EXACTEMENT ca — surtout PAS de (target-source*s)/2.
-			const qreal s = qMin(target.width()  / source.width(),
-			                     target.height() / source.height());
+			// To scale, the same with the fixed scale of the printed
+			// unit instead of the one that fits the page.
+			const qreal pixels_per_unit_ = QetPrint::pixelsPerUnit(
+						printer->resolution(), px_per_mm);
+			const qreal s = fit_page
+				? qMin(target.width()  / source.width(),
+				       target.height() / source.height())
+				: pixels_per_unit_;
 
 			QTransform fit;
 			fit.translate(target.x(), target.y());
@@ -384,14 +511,46 @@ void ProjectPrintWindow::printDiagram(Diagram *diagram, bool fit_page, QPainter 
 				if (!fullPageMode) { dx += paintPx.left(); dy += paintPx.top(); }
 				return QPointF(pt_scale * dx, fullH_pt - pt_scale * dy);
 			};
+				//With one page per folio, a link's target is on a page of
+				//its own, as high as its folio: the Y flip and the margins
+				//are those of that page, not of the one the link is on
+			const bool own_pages = pagePerFolio();
+			const QPageLayout::Mode page_mode = printer->pageLayout().mode();
+			const int resolution = printer->resolution();
+			auto devToPdfOf = [=](Diagram *dg) -> std::function<QPointF(const QPointF &)> {
+				QPageLayout layout = pageLayoutForFolio(dg);
+				layout.setMode(page_mode);
+				return PdfLinks::devToPdfOnPage(layout, resolution);
+			};
 
 			PdfLinks::PageGeometry geom;
 			geom.sceneToDevice = fit;
 			geom.target        = target;
 			geom.pageBounds    = pageBounds;
 			geom.devToPdf      = devToPdf;
+			if (own_pages)
+				geom.devToPdfOf = devToPdfOf;
 			geom.sourceRectOf  = [this](Diagram *dg) {
 				return QRectF(diagramRect(dg, exportProperties()));
+			};
+				//Where another folio, the target of a link, sits on its
+				//page: not framed when it is tiled over several pages
+			geom.sceneToDeviceOf = [this, fit_page, target, pixels_per_unit_, tiledPages](Diagram *dg, QTransform *out) {
+				const QRectF src = QRectF(diagramRect(dg, exportProperties()));
+				if (src.width() <= 0.0 || src.height() <= 0.0) return false;
+				qreal scale_ = pixels_per_unit_;
+				if (fit_page) {
+					scale_ = qMin(target.width()  / src.width(),
+					              target.height() / src.height());
+				} else if (tiledPages(dg) != 1) {
+					return false;
+				}
+				QTransform t;
+				t.translate(target.x(), target.y());
+				t.scale(scale_, scale_);
+				t.translate(-src.x(), -src.y());
+				*out = t;
+				return true;
 			};
 			PdfLinks::injectCrossRefLinks(
 				pdfEngine, diagram, geom, diagramPageMap,
@@ -491,8 +650,11 @@ QRect ProjectPrintWindow::diagramRect(Diagram *diagram, const ExportProperties &
 int ProjectPrintWindow::horizontalPagesCount(
 		Diagram *diagram, const ExportProperties &option, bool full_page) const
 {
+	if (pagePerFolio())
+		return 1;
 	const QSizeF printable_area = QetPrint::pageSizeInDrawingUnits(
-					      m_printer->pageLayout(), full_page);
+					      m_printer->pageLayout(), full_page,
+					      printToScalePxPerMm());
 	const QRect diagram_rect = diagramRect(diagram, option);
 	if (printable_area.width() <= 0)
 		return(1);
@@ -512,8 +674,11 @@ int ProjectPrintWindow::horizontalPagesCount(
 int ProjectPrintWindow::verticalPagesCount(
 		Diagram *diagram, const ExportProperties &option, bool full_page) const
 {
+	if (pagePerFolio())
+		return 1;
 	const QSizeF printable_area = QetPrint::pageSizeInDrawingUnits(
-					      m_printer->pageLayout(), full_page);
+					      m_printer->pageLayout(), full_page,
+					      printToScalePxPerMm());
 	const QRect diagram_rect = diagramRect(diagram, option);
 	if (printable_area.height() <= 0)
 		return(1);
@@ -655,6 +820,8 @@ void ProjectPrintWindow::savePrintProperties()
 	exportProperties().toSettings(settings, "print/default");
 	settings.setValue("print/default/componentinfo", ui->m_component_info_cb->isChecked());
 	settings.setValue("print/default/fitinpage", ui->m_fit_in_page_cb->isChecked());
+	if (m_project->scale() == QETProject::Scale::Mm)
+		settings.setValue("print/default/toscale", ui->m_to_scale_cb->isChecked());
 	settings.setValue("print/default/fullpage", ui->m_use_full_page_cb->isChecked());
 	settings.sync();
 }
@@ -749,6 +916,11 @@ void ProjectPrintWindow::on_m_draw_terminal_cb_clicked()        { m_preview->upd
 void ProjectPrintWindow::on_m_draw_terminal_names_cb_clicked()  { m_preview->updatePreview(); }
 void ProjectPrintWindow::on_m_component_info_cb_clicked()       { m_preview->updatePreview(); }
 void ProjectPrintWindow::on_m_fit_in_page_cb_clicked()          { m_preview->updatePreview(); }
+void ProjectPrintWindow::on_m_to_scale_cb_clicked()
+{
+	updateScaleOptions();
+	m_preview->updatePreview();
+}
 void ProjectPrintWindow::on_m_use_full_page_cb_clicked()
 {
 	m_printer->setFullPage(ui->m_use_full_page_cb->isChecked());

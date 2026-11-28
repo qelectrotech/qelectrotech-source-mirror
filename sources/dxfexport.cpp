@@ -37,10 +37,13 @@
 #include "qetgraphicsitem/qetshapeitem.h"
 #include "qetgraphicsitem/terminal.h"
 #include "qetinformation.h"
+#include "qetproject.h"
+#include "qetunits.h"
 #include "textlines.h"
 
 #include <QFontMetricsF>
 #include <QGraphicsSimpleTextItem>
+#include <QScopeGuard>
 #include <QSet>
 #include <QtMath>
 #include <cmath>
@@ -315,16 +318,32 @@ void DxfExport::write(Diagram *diagram, int width, int height,
 {
 		//Non-const: BorderTitleBlock::drawDxf() takes a QString &.
 	QString file_path = path;
+		//The height set below is that of this export: it does not stay for
+		//what reads Createdxf::sheetHeight later, however write() returns
+	const auto reset_height = qScopeGuard([]() {
+		Createdxf::sheetHeight = Createdxf::fitSheetHeight;
+	});
 	const ExportProperties previous = diagram -> applyProperties(properties);
 
 	width  -= 2*Diagram::margin;
 	height -= 2*Diagram::margin;
 
-		//One scale for both axes, the largest that fits the sheet: two
-		//scales stretched the drawing and turned every circle into an oval
-		//(issue #1339).
-	const double scale = qMin(Createdxf::sheetWidth  / double(width),
-							  Createdxf::sheetHeight / double(height));
+		//A project drawn to scale is written 1:1 in millimetres. One scale
+		//for both axes in any case: two scales stretched the drawing and
+		//turned every circle into an oval (issue #1339).
+	const qreal paper_px_per_mm = diagram -> project()
+		? diagram -> project() -> paperPxPerMm() : 0;
+	const bool millimetres = paper_px_per_mm > 0;
+	double scale;
+	if (millimetres) {
+		scale = QetUnits::pxToMm(1, paper_px_per_mm);
+		Createdxf::sheetHeight = height * scale;
+	} else {
+			//The largest scale that fits the sheet
+		scale = qMin(Createdxf::sheetWidth  / double(width),
+					 Createdxf::fitSheetHeight / double(height));
+		Createdxf::sheetHeight = Createdxf::fitSheetHeight;
+	}
 	Createdxf::xScale = scale;
 	Createdxf::yScale = scale;
 
@@ -573,7 +592,7 @@ void DxfExport::write(Diagram *diagram, int width, int height,
 				Createdxf::drawAttdef(file_path, definition);
 			Createdxf::dxfBlockEnd(file_path);
 		}
-	});
+	}, millimetres ? QSizeF(width * scale, height * scale) : QSizeF());
 
 		//Each kind of content on its own layer (discussion #1071). The
 		//border's title block switches to Layer::TitleBlock itself, see
