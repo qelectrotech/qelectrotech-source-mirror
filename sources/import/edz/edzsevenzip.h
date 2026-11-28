@@ -23,6 +23,9 @@
 /**
 	Extract every entry of the 7-Zip archive at @a archivePath into @a destDir,
 	using the bundled (public-domain) LZMA SDK — no external 7-Zip needed.
+	An entry whose name is absolute, holds a ':', has a part ending in a dot
+	or a space, or climbs out of @a destDir with ".." stops the extraction
+	with an error; nothing is written outside it.
 	@return true on success; on failure @a error explains why.
 */
 bool sevenZipExtract(const QString &archivePath, const QString &destDir,

@@ -19,6 +19,7 @@
 #define TERMINAL_H
 #include <qet.h>
 #include <properties/terminaldata.h>
+#include <properties/terminallabel.h>
 
 #include <QtWidgets>
 #include <QtXml>
@@ -82,6 +83,18 @@ class Terminal : public QGraphicsObject
 		void      setPlaceRank        (int rank);
 		QString   name                () const;
 		QString   baseName            () const;
+			/// The name and the drawing of this terminal, as this placed
+			/// symbol gives them, the definition staying as it is
+		TerminalLabel label           () const;
+			/// The same, as the definition of this symbol gives them
+		TerminalLabel definitionLabel () const;
+			/// Whether this placed symbol gives this terminal values the
+			/// definition does not (@see Element::terminalLabels())
+		bool      labelIsOverridden   () const;
+			/// Give this terminal the name and the drawing of @p label,
+			/// repainted and measured again. Element::setTerminalLabel()
+			/// and Element::removeTerminalLabel() are what change them
+		void      setLabel            (const TerminalLabel &label);
 		TerminalData::Type terminalType() const;
 		QString potential() const;
 		bool useMasterLabel() const { return d->m_use_master_label; }
@@ -139,6 +152,11 @@ class Terminal : public QGraphicsObject
 
 
 		TerminalData* d;
+
+			/// What the definition of this symbol gave this terminal,
+			/// kept so an instance's own values can be taken back off
+			/// (@see definitionLabel())
+		TerminalLabel m_definition_label;
 
 		/// Parent electrical element
 		Element *parent_element_{nullptr};

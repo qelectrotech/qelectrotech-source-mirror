@@ -124,7 +124,7 @@ class DiagramView : public PaletteGraphicsView
 		QPointF           m_drag_last_pos;
 		QPoint            m_band_origin;
 		void updateRubberBandMode(const QPoint &viewport_pos);
-		bool              m_fresh_focus_in,
+		bool              m_fresh_focus_in = false,
 						  m_first_activation = true;
 		/// True while the view pans because Ctrl+Shift is held, as opposed
 		/// to the visualisation mode chosen from the toolbar.

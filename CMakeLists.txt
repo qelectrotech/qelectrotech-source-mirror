@@ -457,6 +457,12 @@ install(DIRECTORY templates   DESTINATION ${QET_DATA_PATH})
 # <prefix>/mcp -> <prefix>/bin.
 install(PROGRAMS misc/qet-mcp/qet_mcp.py DESTINATION ${QET_DATA_PATH}mcp)
 install(FILES misc/qet-mcp/README.md DESTINATION ${QET_DATA_PATH}mcp)
+# The EPLAN import program (File > Import EPLAN project), run with Python 3:
+# the dialog finds it in <data>/eplan_import/eplan_zw1, and it finds the MCP
+# module beside it in <data>/mcp.
+install(DIRECTORY tools/eplan_import DESTINATION ${QET_DATA_PATH}
+        PATTERN "tests" EXCLUDE
+        PATTERN "__pycache__" EXCLUDE)
 install(FILES LICENSE ELEMENTS.LICENSE CREDIT README ChangeLog DESTINATION ${QET_LICENSE_PATH})
 if(UNIX AND NOT APPLE)
     install(FILES misc/org.qelectrotech.qelectrotech.desktop DESTINATION ${QET_DESKTOP_PATH})

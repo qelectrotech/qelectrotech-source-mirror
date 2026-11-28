@@ -119,6 +119,7 @@ Terminal::Terminal(TerminalData* data, Element* e) :
 	parent_element_(e)
 {
 	d->setParent(this);
+	m_definition_label = TerminalLabel::fromData(*d);
 	init();
 }
 
@@ -1144,12 +1145,65 @@ QString Terminal::name() const
 
 /**
 	@brief Terminal::baseName
-	Return the original terminal name (T1, T2...) without master label override.
-	Used for sorting when linking.
+	Return the terminal name the definition of this symbol gives (T1,
+	T2...), neither the master label a link gives the terminal nor the
+	name this one placed symbol was given.
+
+	Used wherever a terminal is told apart by its name rather than shown
+	with it: the pins of a device type, the pin plan of a terminal strip,
+	the terminals matched when a symbol is replaced.
 */
 QString Terminal::baseName() const
 {
-	return d->m_name;
+	return m_definition_label.m_name;
+}
+
+/**
+	@brief Terminal::label
+	@return the name of this terminal and how it is drawn, as this placed
+	symbol gives them; the definition keeps its own values
+	(@see Element::terminalLabels())
+*/
+TerminalLabel Terminal::label() const
+{
+	return TerminalLabel::fromData(*d);
+}
+
+/**
+	@brief Terminal::definitionLabel
+	@return the name of this terminal and how it is drawn, as the
+	definition of this symbol gives them, whatever this placed symbol was
+	given afterwards
+*/
+TerminalLabel Terminal::definitionLabel() const
+{
+	return m_definition_label;
+}
+
+/**
+	@brief Terminal::labelIsOverridden
+	@return true when this placed symbol gives this terminal a name or a
+	drawing the definition does not
+*/
+bool Terminal::labelIsOverridden() const
+{
+	return label() != m_definition_label;
+}
+
+/**
+	@brief Terminal::setLabel
+	Give this terminal the name and the drawing of @p label.
+	The terminal measures itself again -- its name is part of the box it
+	takes in the scene -- and repaints.
+	@param label what the terminal shows from now on
+*/
+void Terminal::setLabel(const TerminalLabel &label)
+{
+	if (label == TerminalLabel::fromData(*d))
+		return;
+	prepareGeometryChange();
+	label.applyTo(*d);
+	update();
 }
 
 /**

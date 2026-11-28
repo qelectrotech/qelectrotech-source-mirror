@@ -2,6 +2,7 @@
 #include "ElementsCollection/elementslocation.h"
 #include "ElementsCollection/xmlelementcollection.h"
 #include "dataBase/projectdatabase.h"
+#include "dataBase/ui/plcquerywidget.h"
 #include "diagram.h"
 #include "factory/elementfactory.h"
 #include "factory/qetgraphicstablefactory.h"
@@ -86,11 +87,26 @@ class tst_listtables : public QObject
 		return nullptr;
 	}
 
+		/// The content tab of the PLC list: the columns the case below
+		/// reads, chosen the way a person chooses them (#1878 B11)
+	static PlcQueryWidget *plcListWithColumns()
+	{
+		auto *widget = new PlcQueryWidget();
+		widget->setQuery(QStringLiteral(
+			"SELECT label, plc_address, plc_type, plc_function, plc_comment, "
+			"plant, diagram_position FROM qet_plc_list "
+			"ORDER BY structure_id, plc_uuid, entry"));
+		return widget;
+	}
+
 		/// The table of @p kind on @p diagram, made as the menu makes it
 	static QetGraphicsTableItem *addList(Diagram *diagram, ListQueryWidget::Kind kind,
 										 bool newFolios = false)
 	{
-		AddTableDialog dialog(new ListQueryWidget(kind));
+		QWidget *content = kind == ListQueryWidget::Plc
+				? static_cast<QWidget *>(plcListWithColumns())
+				: static_cast<QWidget *>(new ListQueryWidget(kind));
+		AddTableDialog dialog(content);
 		dialog.setTableName(QStringLiteral("list"));
 		dialog.setAdjustTableToFolio(true);
 		dialog.setAddNewTableToNewDiagram(newFolios);
@@ -308,13 +324,13 @@ private slots:
 		QVERIFY(model);
 		QCOMPARE(model->identifier(), QStringLiteral("plc_list"));
 		QCOMPARE(model->rowCount(), 2);
-		QCOMPARE(column(model, 0), QStringList({QStringLiteral("-A201"), QStringLiteral("-A201")}));
+		QCOMPARE(column(model, 0), QStringList({QStringLiteral("A201"), QStringLiteral("A201")}));
 		QCOMPARE(column(model, 1), QStringList({QStringLiteral("I:3/0"), QStringLiteral("O:4/1")}));
 		QCOMPARE(column(model, 2), QStringList({QStringLiteral("DI"), QStringLiteral("DO")}));
 		QCOMPARE(column(model, 3), QStringList({QStringLiteral("DRIVE"), QStringLiteral("FAN")}));
 			//The point linked to the second entry is drawn on folio 1
 		QCOMPARE(column(model, 6), QStringList({QString(), QStringLiteral("1")}));
-		QCOMPARE(model->headerData(1, Qt::Horizontal).toString(), QStringLiteral("Address"));
+		QCOMPARE(model->headerData(1, Qt::Horizontal).toString(), QStringLiteral("PLC address"));
 
 		plc.ios.last().address = QStringLiteral("O:4/2");
 		data.setPlcMasterData(plc);
