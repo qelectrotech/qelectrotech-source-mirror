@@ -1228,15 +1228,19 @@ namespace {
 QString EplanPartImporter::macroPackageFolder(const MacroPackage &package, const MacroPackageArticle &article,
 					      const QString &category, const QString &collection_dir)
 {
-	// a folder name as ensureDirs() makes it
-	auto folderName = [](QString name) {
-		return name.replace(QRegularExpression(QStringLiteral("[<>:\"/\\\\|?*]")), QStringLiteral("-"));
-	};
+	// the folder names as ensureDirs() makes them; empty when a level is
+	// not usable (".", "..", nothing) or the folder would leave the collection
 	QString folder_category = category.isEmpty() ? article.category : category;
 	if (folder_category.isEmpty()) folder_category = QStringLiteral("General");
-	return QDir(collection_dir).filePath(folderName(package.manufacturerName(article)) + QLatin1Char('/')
-					     + folderName(folder_category) + QLatin1Char('/')
-					     + folderName(article.type()));
+	QStringList levels;
+	for (const QString &name : {package.manufacturerName(article), folder_category, article.type()}) {
+		const QString level = dataLevel(name);
+		if (level.isEmpty()) return QString();
+		levels << level;
+	}
+	const QString base = QDir::cleanPath(QDir(collection_dir).absolutePath());
+	const QString folder = QDir::cleanPath(base + QLatin1Char('/') + levels.join(QLatin1Char('/')));
+	return isInside(folder, base) && folder != base ? folder : QString();
 }
 
 /**
@@ -1281,10 +1285,26 @@ bool EplanPartImporter::importMacroPackage(MacroPackage &package, const QStringL
 
 		QString folder_category = category.isEmpty() ? article.category : category;
 		if (folder_category.isEmpty()) folder_category = QStringLiteral("General");
+		const QString planned = macroPackageFolder(package, article, category, collection_dir);
+		if (planned.isEmpty()) {
+			m_failed << QStringLiteral("%1: the package names no usable folder (%2 / %3)")
+					      .arg(type, manufacturer, folder_category);
+			continue;
+		}
 		// what is there stays: elements may have been improved by hand
-		if (QDir(macroPackageFolder(package, article, category, collection_dir)).exists()) {
+		if (QDir(planned).exists()) {
 			++m_skipped;
 			continue;
+		}
+		// the folders this article creates, top first: only those may go
+		// again when nothing comes out of it
+		QStringList created;
+		{
+			QString level = QDir::cleanPath(QDir(collection_dir).absolutePath());
+			for (const QString &part : QDir(level).relativeFilePath(planned).split(QLatin1Char('/'))) {
+				level += QLatin1Char('/') + part;
+				if (!QFileInfo::exists(level)) created << level;
+			}
 		}
 
 		EdzPart part;
@@ -1295,6 +1315,11 @@ bool EplanPartImporter::importMacroPackage(MacroPackage &package, const QStringL
 
 		QString folder;
 		if (!ensureDirs(collection_dir, {manufacturer, folder_category, type}, &folder, &m_error)) return false;
+		if (QDir::cleanPath(QDir(folder).absolutePath()) != planned) {
+			m_error = QStringLiteral("%1: the folder %2 is not the one planned (%3)")
+					  .arg(type, QDir::toNativeSeparators(folder), QDir::toNativeSeparators(planned));
+			return false;
+		}
 
 		QStringList written;
 		auto write = [&](QDomDocument doc, const QString &name) {
@@ -1369,8 +1394,15 @@ bool EplanPartImporter::importMacroPackage(MacroPackage &package, const QStringL
 			}
 		}
 		if (written.isEmpty()) {
-			// the folder was made for this article just now
-			QDir(folder).removeRecursively();
+			// only the folders made for this article just now, deepest
+			// first, and only when nothing but their qet_directory is in them
+			for (auto it = created.crbegin(); it != created.crend(); ++it) {
+				const QDir made(*it);
+				const QStringList rest = made.entryList(QDir::AllEntries | QDir::NoDotAndDotDot | QDir::Hidden);
+				if (!rest.isEmpty() && rest != QStringList{QStringLiteral("qet_directory")}) break;
+				QFile::remove(made.filePath(QStringLiteral("qet_directory")));
+				if (!QDir().rmdir(*it)) break;
+			}
 			m_failed << QStringLiteral("%1: %2").arg(
 				type, m_messages.isEmpty() ? QStringLiteral("neither terminals nor a drawing") : m_messages.last());
 			continue;

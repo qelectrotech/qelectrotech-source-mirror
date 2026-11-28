@@ -108,6 +108,7 @@ class ElementsCollectionWidget : public QWidget
 
 	public slots:
 		void reload();
+		void updatePackageTab();
 		void showCollectionFolder(const QString &folder);
 		void loadingFinished();
 		void insertCurrentElement();

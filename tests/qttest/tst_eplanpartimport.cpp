@@ -905,6 +905,40 @@ class TstEplanPartImport : public QObject
 						 QStringLiteral("--macro-package"), zip}), 2);
 		}
 
+		/// A package whose manufacturer and type are ".." neither writes
+		/// outside the collection nor removes a folder that was there
+		void macroPackageDots()
+		{
+			const QByteArray parts =
+				"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
+				"<partsmanagement type=\"EPLAN.PartsManagement\">\n"
+				" <part P_ARTICLE_PARTNR=\"X.Y\" P_ARTICLE_MANUFACTURER=\"..\""
+				" P_ARTICLE_ORDERNR=\"..\" P_ARTICLE_TYPENR=\"..\""
+				" P_ARTICLE_GROUPSYMBOLMACRO=\"$(MD_MACROS)\\..\\..\\..\\x.ema\"/>\n"
+				"</partsmanagement>\n";
+			const QString root = m_dir.filePath(QStringLiteral("package_dots"));
+			const QString collection = root + QStringLiteral("/inner/collection");
+			QVERIFY(QDir().mkpath(collection));
+			const QString keep = root + QStringLiteral("/inner/keep.txt");
+			QVERIFY(!writeFile(QStringLiteral("package_dots/inner/keep.txt"), "kept").isEmpty());
+			const QString zip = root + QStringLiteral("/dots.zip");
+			QVERIFY(QetZip::write(zip, {{QStringLiteral("../Article_DB.xml"), parts},
+						    {QStringLiteral("../x.ema"), smallMacro()}}));
+			MacroPackage package;
+			if (!package.open(zip) || package.articles().isEmpty())
+				return;		// refused already when it is read: nothing to import
+			EplanPartImporter importer;
+			for (const MacroPackageArticle &a : package.articles())
+				importer.importMacroPackage(package, {a.type()}, QString(), collection);
+			QVERIFY(QFile::exists(keep));
+			QVERIFY(QFileInfo(collection).isDir());
+			QStringList files;
+			QDirIterator it(root, QDir::Files | QDir::Hidden, QDirIterator::Subdirectories);
+			while (it.hasNext()) files << it.next();
+			files.sort();
+			QCOMPARE(files, (QStringList{zip, keep}));
+		}
+
 		/// The elements panel has the tab of the macro package
 		void macroPackageTab()
 		{

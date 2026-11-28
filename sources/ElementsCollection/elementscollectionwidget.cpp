@@ -301,6 +301,9 @@ void ElementsCollectionWidget::setUpWidget()
 		//shown.
 	m_package_tree = new MacroPackageTree(this);
 	m_tab_widget->addTab(m_package_tree, tr("Manufacturer packages"));
+		//only for who uses it: shown once a package was chosen in the
+		//part import (macropackage/path), hidden for everyone else
+	updatePackageTab();
 	connect(m_package_tree, &MacroPackageTree::typeLoaded, this, [this](const QString &folder, bool fresh) {
 		if (fresh) {
 			m_folder_after_loading = folder;
@@ -1084,6 +1087,21 @@ void ElementsCollectionWidget::dirProperties()
 /**
 	@brief ElementsCollectionWidget::reload, the displayed collections.
 */
+/**
+	@brief ElementsCollectionWidget::updatePackageTab
+	Show the "Manufacturer packages" tab only when a macro package was
+	chosen in Part import > From a manufacturer macro package (the setting
+	macropackage/path); without one it would be an empty tab for everyone.
+*/
+void ElementsCollectionWidget::updatePackageTab()
+{
+	if (!m_tab_widget || !m_package_tree) return;
+	const int index = m_tab_widget->indexOf(m_package_tree);
+	if (index < 0) return;
+	const bool used = !QSettings().value(QStringLiteral("macropackage/path")).toString().isEmpty();
+	m_tab_widget->setTabVisible(index, used);
+}
+
 void ElementsCollectionWidget::reload()
 {
 	m_loading_timer.reset(new QElapsedTimer());

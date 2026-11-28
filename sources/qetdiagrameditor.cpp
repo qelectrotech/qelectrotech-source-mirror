@@ -2403,7 +2403,10 @@ void QETDiagramEditor::setUpMenu()
 	connect(import_macro_package, &QAction::triggered, this, [this]() {
 		MacroPackageDialog dialog(this);
 		dialog.exec();
-		if (!dialog.writtenPaths().isEmpty() && m_element_collection_widget)
+		if (!m_element_collection_widget) return;
+			// a package chosen now: its tab appears in the elements panel
+		m_element_collection_widget->updatePackageTab();
+		if (!dialog.writtenPaths().isEmpty())
 			m_element_collection_widget->reload();
 	});
 
