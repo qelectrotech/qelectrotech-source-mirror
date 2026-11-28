@@ -372,7 +372,7 @@ class Transform:
     rotation (rotation, multiples of 90 degrees) about the middle of the object.
 
     SENSE: -1, FluidSIM rotates counter-clockwise (on screen, y downwards). Found on the sample circuits through
-    their wires (fluidsim_import.py --check-rotation: every wire at a rotated part fits)."""
+    their wires (fluidsim_batch.py --check-rotation: every wire at a rotated part fits)."""
     SENSE = -1
 
     def __init__(self, sx=1.0, sy=1.0, rot=0.0):

@@ -3980,11 +3980,11 @@ def _fluidsim_program() -> Path | None:
 
 
 def tool_fluidsim_import(binary: str, circuit: str, output: str,
-                         elements_dir: str | None = None, timeout: int = 600) -> dict:
+                         timeout: int = 600) -> dict:
     """Import FluidSIM 6 circuits (.circ, or a folder of them, one folio
     each) as a QElectroTech project, through the import program that comes
-    with QElectroTech. The parts are drawn anew; elements_dir is not used,
-    the import brings its own symbols."""
+    with QElectroTech. The parts are drawn anew with the import's own
+    symbols, so it takes no element collection."""
     src = Path(circuit).expanduser()
     if not (src.is_file() or src.is_dir()):
         raise ValueError(f"no such circuit or folder: {src}")
@@ -5480,13 +5480,11 @@ TOOLS = [
                 "circuit": {"type": "string", "description": "a FluidSIM circuit (.circ) or a folder of them"},
                 "output": {"type": "string", "description": "the project to write (.qet)"},
                 "overwrite": {"type": "boolean", "default": False},
-                "elements_dir": {"type": "string"},
                 "timeout": {"type": "integer", "default": 600},
             },
             "required": ["circuit", "output"],
         },
         "handler": lambda a: tool_fluidsim_import(a["binary"], a["circuit"], a["output"],
-                                                  a.get("elements_dir"),
                                                   a.get("timeout", 600)),
     },
     {

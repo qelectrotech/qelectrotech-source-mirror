@@ -8,10 +8,14 @@ fluidsim_import.py writes OUTPUT/<name>.qet and its report; the results go to OU
 circuit) and OUTPUT/summary.json.
 
     python3 fluidsim_batch.py --circ ".../FluidSIM6/circ" --output FOLDER [--qet ...] [--parallel 4] [--only pneu/TP101]
+    python3 fluidsim_batch.py --circ ".../FluidSIM6/circ" --check-rotation
+
+A development aid: it lives in the source tree only and is not installed.
 """
 import argparse
 import csv
 import json
+import math
 import os
 import re
 import subprocess
@@ -20,6 +24,8 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
+sys.path.insert(0, str(HERE))
+import fluidsim_import as fi  # noqa: E402
 FIELDS = ["file", "import", "failed_operations", "parts", "wires", "links", "grafcet_steps", "message"]
 
 
@@ -50,14 +56,58 @@ def one(circ: Path, root: Path, target: Path, qet):
     return row
 
 
+def check_rotation(folder: Path):
+    """Counts for SENSE = +1 and -1 how many wires at rotated parts fit exactly (development aid)."""
+    hits = {1: 0, -1: 0}
+    total = 0
+    for f in sorted(folder.rglob("*.circ")):
+        try:
+            root = fi.read(f)
+        except Exception:
+            continue
+        graphics = fi.section(root, "symbol-graphics")
+        if graphics is None:
+            continue
+        symbols = {s.get("ident"): s for s in graphics.findall("symbol")}
+        by_id = {o.get("ident"): o for o in fi.circuit_objects(root)}
+        for v in root.iter("connect"):
+            a, b = v.get("con1", ""), v.get("con2", "")
+            oa, _, xa = a.partition(".")
+            ob, _, xb = b.partition(".")
+            if oa not in by_id or ob not in by_id:
+                continue
+            if not (fi.fe.number(by_id[oa], "rotation") or fi.fe.number(by_id[ob], "rotation")):
+                continue
+            points = (v.get("points") or "").split()
+            if not points:
+                continue
+            lx, ly = (float(z) for z in points[-1].split(","))
+            total += 1
+            for sense in (1, -1):
+                fi.fe.Transform.SENSE = sense
+                pa, pb = fi.connector_position(symbols, by_id[oa], xa), fi.connector_position(symbols, by_id[ob], xb)
+                if pa and pb and math.hypot(pa[0] + lx - pb[0], pa[1] + ly - pb[1]) < 1.0:
+                    hits[sense] += 1
+    fi.fe.Transform.SENSE = -1
+    print(f"wires at rotated parts: {total}; fitting clockwise: {hits[1]}, counter-clockwise: {hits[-1]}")
+    return hits
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("--circ", type=Path, required=True, help="the folder with the circuits (searched below)")
-    ap.add_argument("--output", type=Path, required=True)
+    ap.add_argument("--check-rotation", action="store_true",
+                    help="only count, for both senses of rotation, the wires at rotated parts that fit exactly")
+    ap.add_argument("--output", type=Path, help="where the projects and results.csv go (not for --check-rotation)")
     ap.add_argument("--qet", type=Path, default=None, help="the QElectroTech executable")
     ap.add_argument("--parallel", type=int, default=4)
     ap.add_argument("--only", default="", help="only circuits whose path contains this")
     a = ap.parse_args(argv)
+    if a.check_rotation:
+        check_rotation(a.circ)
+        return
+    if a.output is None:
+        ap.error("--output is needed")
     a.output.mkdir(parents=True, exist_ok=True)
     circuits = [c for c in sorted(a.circ.rglob("*.circ")) if a.only.replace("\\", "/") in c.as_posix()]
     results = []

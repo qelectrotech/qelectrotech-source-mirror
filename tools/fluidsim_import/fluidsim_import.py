@@ -29,6 +29,9 @@ be data), simulation values. FluidSIM stores no article data (manufacturer, orde
     python3 fluidsim_import.py FOLDER_WITH_CIRC OUTPUT.qet          # one folio per .circ, sorted by name
     python3 fluidsim_import.py CIRCUIT.circ OUTPUT.qet --report report.json
 
+--stop-on-eof (QElectroTech's import passes it): when standard input closes (Cancel), stop the QElectroTech runs
+this program started, remove the temporary folders and exit with code 3.
+
 In QElectroTech: File > Import FluidSIM circuit (sources/import/fluidsim/fluidsimimport.cpp).
 
 QElectroTech itself writes the project, through its headless scripting (--run, the same way as the MCP server's
@@ -39,11 +42,12 @@ import argparse
 import gzip
 import hashlib
 import json
-import math
 import os
 import re
 import sys
 import tempfile
+import threading
+import time
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
@@ -209,43 +213,6 @@ def connector_position(symbols, obj, connector):
                 m = fe.centre(obj)
                 return (m[0] + q[0], m[1] + q[1])
     return None
-
-
-def check_rotation(folder: Path):
-    """Counts for SENSE = +1 and -1 how many wires at rotated parts fit exactly (development aid)."""
-    hits = {1: 0, -1: 0}
-    total = 0
-    for f in sorted(folder.rglob("*.circ")):
-        try:
-            root = read(f)
-        except Exception:
-            continue
-        graphics = section(root, "symbol-graphics")
-        if graphics is None:
-            continue
-        symbols = {s.get("ident"): s for s in graphics.findall("symbol")}
-        by_id = {o.get("ident"): o for o in circuit_objects(root)}
-        for v in root.iter("connect"):
-            a, b = v.get("con1", ""), v.get("con2", "")
-            oa, _, xa = a.partition(".")
-            ob, _, xb = b.partition(".")
-            if oa not in by_id or ob not in by_id:
-                continue
-            if not (fe.number(by_id[oa], "rotation") or fe.number(by_id[ob], "rotation")):
-                continue
-            points = (v.get("points") or "").split()
-            if not points:
-                continue
-            lx, ly = (float(z) for z in points[-1].split(","))
-            total += 1
-            for sense in (1, -1):
-                fe.Transform.SENSE = sense
-                pa, pb = connector_position(symbols, by_id[oa], xa), connector_position(symbols, by_id[ob], xb)
-                if pa and pb and math.hypot(pa[0] + lx - pb[0], pa[1] + ly - pb[1]) < 1.0:
-                    hits[sense] += 1
-    fe.Transform.SENSE = -1
-    print(f"wires at rotated parts: {total}; fitting clockwise: {hits[1]}, counter-clockwise: {hits[-1]}")
-    return hits
 
 
 def file_name(name, seed):
@@ -697,15 +664,20 @@ def reroute_wires(qet_mcp, binary, empty: Path, ops, result, output: Path, colle
             break
         for k in new:
             ops[k]["route"] = "avoid"
-        between = output.with_name(output.stem + ".rerouted.qet")
-        result2 = qet_mcp.tool_edit(str(binary), str(empty), ops, str(between), elements_dir=str(collection),
-                                    timeout=600)
-        if not result2.get("saved") or not between.exists():
+        # a file of its own next to the target (never one the user has): replaced onto the target only when saved
+        fd, name = tempfile.mkstemp(dir=output.parent, prefix="." + output.stem + ".", suffix=".rerouted.qet")
+        os.close(fd)
+        between = Path(name)
+        try:
+            result2 = qet_mcp.tool_edit(str(binary), str(empty), ops, str(between), elements_dir=str(collection),
+                                        timeout=600)
+            if not result2.get("saved") or not between.stat().st_size:
+                for k in new:
+                    ops[k]["route"] = "default"
+                break
+            os.replace(between, output)
+        finally:
             between.unlink(missing_ok=True)
-            for k in new:
-                ops[k]["route"] = "default"
-            break
-        os.replace(between, output)
         result = result2
         rerouted += len(new)
     return result, rerouted
@@ -729,6 +701,37 @@ def place_labels(qet_mcp, binary, path: Path, collection: Path):
             if d.get("kind") == "labels":
                 return d
     return {"error": "no answer"}
+
+
+def stop_on_eof():
+    """--stop-on-eof: when standard input closes, end the run like Ctrl+C -- the QElectroTech runs started since are
+    killed, the temporary folders removed as their "with" blocks unwind -- and exit with code 3 (see the end of this
+    file). If the program does not end within 20 s, it exits anyway."""
+    import _thread
+    import subprocess
+    children = []
+    popen_init = subprocess.Popen.__init__
+
+    def init(self, *a, **k):
+        popen_init(self, *a, **k)
+        children.append(self)
+    subprocess.Popen.__init__ = init
+
+    def watch():
+        try:
+            while sys.stdin.buffer.read(4096):
+                pass
+        except Exception:
+            pass
+        _thread.interrupt_main()
+        for p in list(children):
+            try:
+                p.kill()
+            except Exception:
+                pass
+        time.sleep(20)
+        os._exit(3)
+    threading.Thread(target=watch, daemon=True).start()
 
 
 def default_qet():
@@ -758,14 +761,13 @@ def main(argv=None):
     ap.add_argument("--route", choices=("default", "avoid"), default="default",
                     help="default: QElectroTech's straight path, then only the wires through symbols around them; "
                          "avoid: every wire around all symbols (more detours and crossings)")
-    ap.add_argument("--check-rotation", type=Path, metavar="FOLDER", help=argparse.SUPPRESS)
+    ap.add_argument("--stop-on-eof", action="store_true", help=argparse.SUPPRESS)
     ap.add_argument("--dry-run", action="store_true", help="print the operations as JSON, write nothing")
     ap.add_argument("--report", type=Path, help="a summary as JSON (counts, push buttons, what was not imported)")
     a = ap.parse_args(argv)
 
-    if a.check_rotation:
-        check_rotation(a.check_rotation)
-        return
+    if a.stop_on_eof:
+        stop_on_eof()
     paths = list(a.paths)
     output = None
     if paths and paths[-1].suffix.lower() == ".qet":
@@ -844,4 +846,8 @@ def main(argv=None):
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except KeyboardInterrupt:
+        print("stopped", flush=True)
+        sys.exit(3)

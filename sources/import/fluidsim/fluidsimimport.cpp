@@ -83,7 +83,8 @@ QStringList FluidSimImport::arguments(const QString &script, const QStringList &
 	QStringList args{QStringLiteral("-u"), QDir::toNativeSeparators(script)};
 	for (const QString &c : circuits) args << QDir::toNativeSeparators(c);
 	args << QDir::toNativeSeparators(target)
-	     << QStringLiteral("--qet") << QDir::toNativeSeparators(qet_binary);
+	     << QStringLiteral("--qet") << QDir::toNativeSeparators(qet_binary)
+	     << QStringLiteral("--stop-on-eof");
 	return args;
 }
 
@@ -114,11 +115,27 @@ QString FluidSimImport::run(QWidget *parent)
 	settings.setValue(DIR_KEY, first.absolutePath());
 	QString name = circuits.size() == 1 ? first.completeBaseName() : first.absoluteDir().dirName();
 	name.replace(QLatin1Char(' '), QLatin1Char('_'));
-	QString target = QFileDialog::getSaveFileName(parent, QObject::tr("Save the imported project as"),
-		first.absoluteDir().filePath(name + QStringLiteral("_FluidSIM.qet")),
-		QObject::tr("QElectroTech projects (*.qet)"));
-	if (target.isEmpty()) return QString();
-	if (!target.endsWith(QStringLiteral(".qet"), Qt::CaseInsensitive)) target += QStringLiteral(".qet");
+		// the dialog adds ".qet" itself, so its overwrite question sees the
+		// file that is really written
+	QFileDialog save(parent, QObject::tr("Save the imported project as"),
+			 first.absoluteDir().filePath(name + QStringLiteral("_FluidSIM.qet")),
+			 QObject::tr("QElectroTech projects (*.qet)"));
+	save.setAcceptMode(QFileDialog::AcceptSave);
+	save.setFileMode(QFileDialog::AnyFile);
+	save.setDefaultSuffix(QStringLiteral("qet"));
+	if (save.exec() != QDialog::Accepted || save.selectedFiles().isEmpty()) return QString();
+	QString target = save.selectedFiles().first();
+	if (!target.endsWith(QStringLiteral(".qet"), Qt::CaseInsensitive)) {
+			// another suffix typed ("foo.bak"): the project is foo.bak.qet,
+			// which the dialog did not ask about
+		target += QStringLiteral(".qet");
+		if (QFileInfo::exists(target)
+		    && QMessageBox::question(parent, QObject::tr("Import FluidSIM circuit"),
+					     QObject::tr("%1 already exists. Replace it?")
+					     .arg(QDir::toNativeSeparators(target)))
+		       != QMessageBox::Yes)
+			return QString();
+	}
 
 	QProgressDialog progress(QObject::tr("Importing %n FluidSIM circuit(s) …", nullptr,
 					     static_cast<int>(circuits.size())),
@@ -144,8 +161,14 @@ QString FluidSimImport::run(QWidget *parent)
 		while (!p.waitForFinished(100)) {
 			QApplication::processEvents();
 			if (progress.wasCanceled()) {
-				p.kill();
-				p.waitForFinished(3000);
+					// --stop-on-eof: closing its input makes the program
+					// stop the QElectroTech runs it started and remove its
+					// temporary folders; kill it only when it does not
+				p.closeWriteChannel();
+				if (!p.waitForFinished(15000)) {
+					p.kill();
+					p.waitForFinished(3000);
+				}
 				return QString();
 			}
 		}

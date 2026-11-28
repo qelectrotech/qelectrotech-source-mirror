@@ -121,6 +121,40 @@ def write_circuit(folder: Path, name="test.circ", text=CIRCUIT):
     return path
 
 
+PROBE = r"""
+import subprocess, sys, tempfile, time
+sys.path.insert(0, sys.argv[1])
+import fluidsim_import as fi
+fi.stop_on_eof()
+try:
+    with tempfile.TemporaryDirectory(prefix="fluidsim-import-", dir=sys.argv[2]) as tmp:
+        child = subprocess.Popen([sys.executable, "-c", "import time; time.sleep(60)"])
+        print("ready", child.pid, flush=True)
+        child.wait()
+        time.sleep(60)
+except KeyboardInterrupt:
+    print("stopped", flush=True)
+    sys.exit(3)
+"""
+
+
+class StopOnEof(unittest.TestCase):
+    """--stop-on-eof: closing standard input ends the run, its child processes and its temporary folders."""
+
+    def test_cancel(self):
+        import subprocess
+        with tempfile.TemporaryDirectory() as base:
+            p = subprocess.Popen([sys.executable, "-c", PROBE, str(Path(fi.__file__).parent), base],
+                                 stdin=subprocess.PIPE, stdout=subprocess.PIPE, text=True)
+            first = p.stdout.readline().split()
+            self.assertEqual(first[0], "ready")
+            p.stdin.close()
+            self.assertEqual(p.wait(15), 3)
+            self.assertIn("stopped", p.stdout.read())
+            p.stdout.close()
+            self.assertEqual(list(Path(base).iterdir()), [])
+
+
 class Unpack(unittest.TestCase):
     def test_line_and_polyline(self):
         w = ET.fromstring(f"<s><line end-cap='arrow1'>{packed(30, 30, -12, 12)}</line>"

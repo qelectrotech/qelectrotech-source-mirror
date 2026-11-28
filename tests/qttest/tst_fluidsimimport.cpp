@@ -102,7 +102,7 @@ class tst_FluidSimImport : public QObject
 			const QStringList args = FluidSimImport::arguments(
 				"/opt/qet/fluidsim_import/fluidsim_import.py",
 				{"/data/a.circ", "/data/b.circ"}, "/data/out.qet", "/opt/qet/qelectrotech");
-			QCOMPARE(args.size(), 7);
+			QCOMPARE(args.size(), 8);
 			QCOMPARE(args.at(0), QStringLiteral("-u"));
 			QCOMPARE(QDir::fromNativeSeparators(args.at(1)),
 				 QStringLiteral("/opt/qet/fluidsim_import/fluidsim_import.py"));
@@ -110,6 +110,7 @@ class tst_FluidSimImport : public QObject
 			QCOMPARE(QDir::fromNativeSeparators(args.at(4)), QStringLiteral("/data/out.qet"));
 			QCOMPARE(args.at(5), QStringLiteral("--qet"));
 			QCOMPARE(QDir::fromNativeSeparators(args.at(6)), QStringLiteral("/opt/qet/qelectrotech"));
+			QCOMPARE(args.at(7), QStringLiteral("--stop-on-eof"));
 		}
 
 		void resultIsTheLastDoneLine()
