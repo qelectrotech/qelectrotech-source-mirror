@@ -33,6 +33,33 @@
 
 namespace {
 const size_t kInputBufSize = (size_t)1 << 18;
+
+/**
+	Where entry @p rel of the archive goes inside @p dest, or an empty
+	string when the name leaves @p dest. Refused: an absolute name
+	("/home/x", "//host/share/x"), any ':' (a drive "C:/x", or a hidden
+	stream "file:x" on Windows), a part of the name ending in a dot or a
+	space (Windows drops those, so ".. /x" would become "../x" after this
+	check), and a name that climbs out with "..". Without this check, a
+	crafted archive could write any file the user can write. Archives
+	made on Windows never hold such names.
+*/
+QString pathInside(const QDir &dest, const QString &rel)
+{
+	if (rel.startsWith(QLatin1Char('/')) || QDir::isAbsolutePath(rel)
+		|| rel.contains(QLatin1Char(':')))
+		return QString();
+	for (const QString &part : rel.split(QLatin1Char('/'))) {
+		if (part != QLatin1String(".") && part != QLatin1String("..")
+			&& (part.endsWith(QLatin1Char('.')) || part.endsWith(QLatin1Char(' '))))
+			return QString();
+	}
+	const QString root = QDir::cleanPath(dest.absolutePath());
+	const QString path = QDir::cleanPath(root + QLatin1Char('/') + rel);
+	const QString inside = root.endsWith(QLatin1Char('/')) ? root : root + QLatin1Char('/');
+	if (path != root && !path.startsWith(inside)) return QString();
+	return path;
+}
 } // namespace
 
 bool sevenZipExtract(const QString &archivePath, const QString &destDir,
@@ -104,12 +131,19 @@ bool sevenZipExtract(const QString &archivePath, const QString &destDir,
 				continue;
 			}
 
+			const QString out_path = pathInside(dest, rel);
+			if (out_path.isEmpty()) {
+				error = QStringLiteral("Archive entry %1 lies outside the folder it is extracted to")
+						.arg(rel);
+				res = SZ_ERROR_FAIL;
+				break;
+			}
+
 			if (is_dir) {
-				dest.mkpath(rel);
+				dest.mkpath(out_path);
 				continue;
 			}
 
-			const QString out_path = dest.filePath(rel);
 			dest.mkpath(QFileInfo(out_path).path());
 
 			size_t offset = 0, outSizeProcessed = 0;

@@ -79,6 +79,21 @@ namespace {
 		QStringLiteral("function"), QStringLiteral("comment")};
 
 	/**
+		@return the name a terminal is matched by when a symbol is
+		replaced: the name its definition gives it, so a name this placed
+		symbol was given afterwards (@see Element::terminalLabels())
+		cannot stop the new definition from being matched. A terminal
+		which was given nothing keeps matching by the name it reads, as
+		it always did -- the master's for one which takes it from there.
+	*/
+	QString matchingName(const Terminal *terminal)
+	{
+		return terminal->labelIsOverridden()
+				? terminal->baseName()
+				: terminal->name();
+	}
+
+	/**
 		@return for each terminal of @a old_element, the terminal of
 		@a new_element that takes its wires (wired terminals only): first the one on the same
 		point, so the wires stay where they are; then, for those left,
@@ -106,10 +121,11 @@ namespace {
 			}
 		}
 		for (Terminal *old_terminal : std::as_const(left)) {
-			if (old_terminal->name().isEmpty())
+			const QString name = matchingName(old_terminal);
+			if (name.isEmpty())
 				continue;
 			for (Terminal *t : std::as_const(free_terminals))
-				if (t->name() == old_terminal->name()) {
+				if (matchingName(t) == name) {
 					map.insert(old_terminal, t);
 					free_terminals.removeOne(t);
 					break;

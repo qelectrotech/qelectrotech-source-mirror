@@ -351,6 +351,39 @@ class EditValidation(unittest.TestCase):
             self.build([{"op": "add_conductor", "folio": 0, "from": E, "from_terminal": 1,
                          "to": F, "to_terminal": 0, "route": "around"}])
 
+    def test_set_conductor_path_op(self):
+        """set_conductor_path hands the corners to setConductorPathBetween,
+        requires it only in an edit that uses it, and makes a path the
+        conductor cannot take a note, not a failure."""
+        E, F = "{11111111-2222-4333-8444-555555555555}", "{21111111-2222-4333-8444-555555555555}"
+        s = self.build([{"op": "set_conductor_path", "folio": 0, "from": E, "from_terminal": 1,
+                         "to": F, "to_terminal": 0, "corners": "120,40;120,90"}])
+        self.assertIn(f'qet.setConductorPathBetween(0, "{E}", 1, "{F}", 0, "120,40;120,90")', s)
+        self.assertIn('"setConductorPathBetween"', s)
+        self.assertIn("if (v0 === 'kept')", s)
+        plain = self.build([{"op": "add_conductor", "folio": 0, "from": E, "from_terminal": 1,
+                             "to": F, "to_terminal": 0}])
+        self.assertNotIn("setConductorPathBetween", plain)
+        with self.assertRaisesRegex(ValueError, "missing 'corners'"):
+            self.build([{"op": "set_conductor_path", "folio": 0, "from": E, "from_terminal": 1,
+                         "to": F, "to_terminal": 0}])
+
+    def test_collections_from_environment(self):
+        """QET_CUSTOM_ELEMENTS_DIR and QET_COMPANY_ELEMENTS_DIR point a run
+        at collections of the caller's own, before qet-assistant.json."""
+        with tempfile.TemporaryDirectory() as tmp:
+            custom, company = Path(tmp) / "custom", Path(tmp) / "company"
+            custom.mkdir()
+            company.mkdir()
+            env = {"QET_MCP_INFO_FILE": str(Path(tmp) / "none.json"),
+                   "QET_CUSTOM_ELEMENTS_DIR": str(custom),
+                   "QET_COMPANY_ELEMENTS_DIR": str(company)}
+            with mock.patch.dict(os.environ, env):
+                self.assertEqual(m._user_collections(), {"custom": custom, "company": company})
+            env["QET_CUSTOM_ELEMENTS_DIR"] = str(Path(tmp) / "missing")
+            with mock.patch.dict(os.environ, env):
+                self.assertEqual(m._user_collections(), {"company": company})
+
     def test_terminal_by_uuid(self):
         """A terminal named by uuid is turned into its index at run time, on
         the element it belongs to: the op's element, or each add_conductor
@@ -416,6 +449,9 @@ class EditValidation(unittest.TestCase):
                                              "dx": 10, "dy": 0}],
             "route_conductor": el + [{"op": "route_conductor", "folio": "$f", "element": "$e",
                                       "terminal": 0}],
+            "set_conductor_path": two + [{"op": "set_conductor_path", "folio": "$f", "from": "$e",
+                                          "from_terminal": 0, "to": "$e2", "to_terminal": 1,
+                                          "corners": "100,40;100,80"}],
             "delete_conductor": el + [{"op": "delete_conductor", "folio": "$f", "element": "$e", "terminal": 0}],
             "link_elements": two + [{"op": "link_elements", "folio": "$f", "element": "$e",
                                      "to_folio": "$f", "to": "$e2"}],

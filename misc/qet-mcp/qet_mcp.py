@@ -1067,6 +1067,12 @@ def _user_collections() -> dict:
     found = {}
     for scheme in ("custom", "company"):
         named = folders.get(f"elements_{scheme}")
+        # QET_CUSTOM_ELEMENTS_DIR / QET_COMPANY_ELEMENTS_DIR name the folder
+        # for this process instead: a program that writes the parts it
+        # places (the EPLAN import) or a test with a collection of its own
+        override = os.environ.get(f"QET_{scheme.upper()}_ELEMENTS_DIR", "").strip()
+        if override:
+            named = override
         if isinstance(named, str) and named and Path(named).is_dir():
             found[scheme] = Path(named)
     return found
@@ -1575,6 +1581,14 @@ OPS = {
     # "routed", or "no-route" when there is none, the path then unchanged.
     "route_conductor":  ("routeConductor",      [("folio", "folio"), ("element", "elmt"),
                                                  ("terminal", "term")]),
+    # The path a drawing gave the wire, through its corners ("x,y;x,y",
+    # scene coordinates, from "from"): an importer keeps the source's
+    # routing. "set", or "kept" when the corners do not make horizontal
+    # and vertical segments, the path then unchanged.
+    "set_conductor_path": ("setConductorPathBetween", [("folio", "folio"),
+                                                 ("from", "elmt"), ("from_terminal", "term"),
+                                                 ("to", "elmt"), ("to_terminal", "term"),
+                                                 ("corners", "str")]),
     "link_elements":    ("linkElements",        [("folio", "folio"), ("element", "elmt"),
                                                  ("to_folio", "folio"), ("to", "elmt")]),
     "link_plc_io":      ("linkElements",        [("folio", "folio"), ("element", "elmt"),
@@ -1787,7 +1801,7 @@ ROUTE_MODES = ["default", "avoid"]
 
 # Routing arrived after the other drawing verbs, so it is required only by
 # an edit that routes: every other edit still runs on a build without it.
-_ROUTE_METHODS = {"routeConductor", "routeConductorBetween"}
+_ROUTE_METHODS = {"routeConductor", "routeConductorBetween", "setConductorPathBetween"}
 
 # Accepted by set_conductor. The names are the project file's own, so what
 # a script sets is what qet_conductors reports back.
@@ -2145,6 +2159,8 @@ def _build_script(operations: list, output: str) -> str:
                              f"expected one of {', '.join(ROUTE_MODES)}")
         if name == "route_conductor":
             uuid_methods.add("routeConductor")
+        if name == "set_conductor_path":
+            uuid_methods.add("setConductorPathBetween")
         if route == "avoid":
             uuid_methods.add("routeConductorBetween")
         if name == "set_folio" and op.get("property") not in FOLIO_PROPERTIES:
@@ -2293,6 +2309,11 @@ def _build_script(operations: list, output: str) -> str:
                          f"JSON.stringify({{kind: 'op_note', index: {i}, note: 'no route "
                          f"around the symbols was found; the conductor keeps the default "
                          f"path'}})); }}")
+        if name == "set_conductor_path":
+            lines.append(f"  if (v{i} === 'kept') qet.log({_js(_MARKER)} + "
+                         f"JSON.stringify({{kind: 'op_note', index: {i}, note: 'the corners do "
+                         f"not make horizontal and vertical segments; the conductor keeps its "
+                         f"path'}}));")
         if name == "route_conductor":
             lines.append(f"  if (v{i} === 'no-route') qet.log({_js(_MARKER)} + "
                          f"JSON.stringify({{kind: 'op_note', index: {i}, note: 'no route "
@@ -5225,7 +5246,12 @@ TOOLS = [
                         "QElectroTech's default two or three straight segments; "
                         "route_conductor does the same to an existing conductor "
                         "(addressed like move_conductor_segment, or by \"conductor\") "
-                        "and returns \"routed\" or \"no-route\". Where no route "
+                        "and returns \"routed\" or \"no-route\". set_conductor_path "
+                        "gives the conductor joining two terminals (\"from\", "
+                        "\"from_terminal\", \"to\", \"to_terminal\") the path through "
+                        "\"corners\" (\"x,y;x,y\", scene coordinates, from \"from\"); "
+                        "corners that do not make horizontal and vertical segments "
+                        "leave the path as it was, with a note. Where no route "
                         "exists the wire keeps its path and the op's note says so -- "
                         "not a failure. Route after placing everything: moving a "
                         "symbol later stretches the routed path, it does not reroute it. "

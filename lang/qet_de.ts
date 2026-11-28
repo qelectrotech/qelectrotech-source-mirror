@@ -17600,6 +17600,14 @@ Verfügbare Optionen:
 <context>
     <name>QETDiagramEditor</name>
     <message>
+        <source>Import EPLAN project (.epdz)…</source>
+        <translation>EPLAN-Projekt importieren (.epdz)…</translation>
+    </message>
+    <message>
+        <source>Reads an EPLAN export archive and opens it as a QElectroTech project</source>
+        <translation>Liest ein EPLAN-Exportarchiv und öffnet es als QElectroTech-Projekt</translation>
+    </message>
+    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2297"/>
         <source>Tape measure</source>
         <translation>Maßband</translation>
@@ -33724,6 +33732,272 @@ die Variable &quot;volta&quot; kombiniert mit dem Wert &quot;1745&quot; lässt i
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="92"/>
         <source>What:</source>
         <translation>Was:</translation>
+    </message>
+</context>
+<context>
+    <name>EplanProjectImportDialog</name>
+    <message>
+        <source>No Python 3 runs the import program; the reasons are in the output. Import the pages as pictures instead?</source>
+        <translation>Kein Python 3 führt das Importprogramm aus; die Gründe stehen in der Ausgabe. Stattdessen die Seiten als Bilder importieren?</translation>
+    </message>
+    <message>
+        <source>No usable Python found.</source>
+        <translation>Kein brauchbares Python gefunden.</translation>
+    </message>
+    <message>
+        <source>Import an EPLAN project</source>
+        <translation>EPLAN-Projekt importieren</translation>
+    </message>
+    <message>
+        <source>Reads an EPLAN export archive (.epdz) and writes a QElectroTech project with its pages, parts, conductors and interruption points. The import opens in QElectroTech when it is done. Without Python 3 the pages come in as pictures.</source>
+        <translation>Liest ein EPLAN-Exportarchiv (.epdz) und schreibt daraus ein QElectroTech-Projekt mit Seiten, Bauteilen, Leitern und Unterbrechungspunkten. Danach öffnet es sich in QElectroTech. Ohne Python 3 kommen die Seiten als Bilder.</translation>
+    </message>
+    <message>
+        <source>EPLAN export archive (.epdz):</source>
+        <translation>EPLAN-Exportarchiv (.epdz):</translation>
+    </message>
+    <message>
+        <source>Save as:</source>
+        <translation>Speichern als:</translation>
+    </message>
+    <message>
+        <source>Also write a PDF (takes a while on big projects)</source>
+        <translation>Zusätzlich ein PDF schreiben (dauert bei großen Projekten)</translation>
+    </message>
+    <message>
+        <source>Keep the parts made from the EPLAN symbols in the user collection</source>
+        <translation>Aus den EPLAN-Symbolen erzeugte Bauteile in der Benutzersammlung behalten</translation>
+    </message>
+    <message>
+        <source>Import program:</source>
+        <translation>Importprogramm:</translation>
+    </message>
+    <message>
+        <source>Python:</source>
+        <translation>Python:</translation>
+    </message>
+    <message>
+        <source>found when the import starts</source>
+        <translation>wird beim Start des Imports gesucht</translation>
+    </message>
+    <message>
+        <source>The output of the import appears here.</source>
+        <translation>Hier erscheint die Ausgabe des Imports.</translation>
+    </message>
+    <message>
+        <source>Import</source>
+        <translation>Importieren</translation>
+    </message>
+    <message>
+        <source>Change…</source>
+        <translation>Ändern…</translation>
+    </message>
+    <message>
+        <source>EPLAN export archives (*.epdz);;All files (*)</source>
+        <translation>EPLAN-Exportarchive (*.epdz);;Alle Dateien (*)</translation>
+    </message>
+    <message>
+        <source>Save the imported project as</source>
+        <translation>Importiertes Projekt speichern als</translation>
+    </message>
+    <message>
+        <source>QElectroTech projects (*.qet)</source>
+        <translation>QElectroTech-Projekte (*.qet)</translation>
+    </message>
+    <message>
+        <source>Where is the import program?</source>
+        <translation>Wo liegt das Importprogramm?</translation>
+    </message>
+    <message>
+        <source>Import program (%1)</source>
+        <translation>Importprogramm (%1)</translation>
+    </message>
+    <message>
+        <source>Programs (*.exe)</source>
+        <translation>Programme (*.exe)</translation>
+    </message>
+    <message>
+        <source>Which Python should run the import?</source>
+        <translation>Welches Python soll den Import ausführen?</translation>
+    </message>
+    <message>
+        <source>Choose the EPLAN export archive (.epdz).</source>
+        <translation>Wähle das EPLAN-Exportarchiv (.epdz).</translation>
+    </message>
+    <message>
+        <source>The file %1 does not exist.</source>
+        <translation>Die Datei %1 gibt es nicht.</translation>
+    </message>
+    <message>
+        <source>%1 is no EPLAN export archive (.epdz).</source>
+        <translation>%1 ist kein EPLAN-Exportarchiv (.epdz).</translation>
+    </message>
+    <message>
+        <source>Choose where the QElectroTech project is to be saved.</source>
+        <translation>Wähle, wo das QElectroTech-Projekt gespeichert wird.</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation>Abbrechen</translation>
+    </message>
+    <message>
+        <source>Close</source>
+        <translation>Schließen</translation>
+    </message>
+    <message>
+        <source>%1 does not start.</source>
+        <translation>%1 startet nicht.</translation>
+    </message>
+    <message>
+        <source>%1 did not answer.</source>
+        <translation>%1 hat nicht geantwortet.</translation>
+    </message>
+    <message>
+        <source>Checking %1 …</source>
+        <translation>Prüfe %1 …</translation>
+    </message>
+    <message>
+        <source>No Python 3 was found.</source>
+        <translation>Kein Python 3 gefunden.</translation>
+    </message>
+    <message>
+        <source>No Python runs the import program:</source>
+        <translation>Kein Python führt das Importprogramm aus:</translation>
+    </message>
+    <message>
+        <source>%1 is open in QElectroTech. Close it first or choose another file.</source>
+        <translation>%1 ist in QElectroTech geöffnet. Schließe es zuerst oder wähle eine andere Datei.</translation>
+    </message>
+    <message>
+        <source>%1 already exists. Replace it?</source>
+        <translation>%1 gibt es schon. Ersetzen?</translation>
+    </message>
+    <message>
+        <source>The folder %1 cannot be created.</source>
+        <translation>Der Ordner %1 kann nicht angelegt werden.</translation>
+    </message>
+    <message>
+        <source>The import program (%1) was not found.</source>
+        <translation>Das Importprogramm (%1) wurde nicht gefunden.</translation>
+    </message>
+    <message>
+        <source>This QElectroTech is built without scripting, which the import program needs.</source>
+        <translation>Dieses QElectroTech ist ohne Skripting gebaut, das das Importprogramm braucht.</translation>
+    </message>
+    <message>
+        <source>Unpacking %1 …</source>
+        <translation>Entpacke %1 …</translation>
+    </message>
+    <message>
+        <source>%1 cannot be unpacked: %2</source>
+        <translation>%1 kann nicht entpackt werden: %2</translation>
+    </message>
+    <message>
+        <source>The import failed.</source>
+        <translation>Der Import ist fehlgeschlagen.</translation>
+    </message>
+    <message>
+        <source>The import does not start: %1</source>
+        <translation>Der Import startet nicht: %1</translation>
+    </message>
+    <message>
+        <source>The import did not start.</source>
+        <translation>Der Import wurde nicht gestartet.</translation>
+    </message>
+    <message>
+        <source>Importing %1 … this can take several minutes.</source>
+        <translation>Importiere %1 … das kann einige Minuten dauern.</translation>
+    </message>
+    <message>
+        <source>Without the import program and a Python 3 that runs it, the pages of %1 come in as pictures; parts and conductors need them.</source>
+        <translation>Ohne das Importprogramm und ein Python 3, das es ausführt, kommen die Seiten von %1 als Bilder; Bauteile und Leiter brauchen beides.</translation>
+    </message>
+    <message>
+        <source>Importing %1 …</source>
+        <translation>Importiere %1 …</translation>
+    </message>
+    <message>
+        <source>The import failed: %1</source>
+        <translation>Der Import ist fehlgeschlagen: %1</translation>
+    </message>
+    <message>
+        <source>The import was stopped.</source>
+        <translation>Der Import wurde abgebrochen.</translation>
+    </message>
+    <message>
+        <source>The import failed (exit code %1). The reason is in the output below.</source>
+        <translation>Der Import ist fehlgeschlagen (Rückgabewert %1). Der Grund steht in der Ausgabe unten.</translation>
+    </message>
+    <message>
+        <source>Stop the running import?</source>
+        <translation>Laufenden Import abbrechen?</translation>
+    </message>
+    <message>
+        <source>Unpacking and reading the EPLAN archive</source>
+        <translation>EPLAN-Archiv entpacken und lesen</translation>
+    </message>
+    <message>
+        <source>Reading the pages, symbols and connections</source>
+        <translation>Seiten, Symbole und Verbindungen lesen</translation>
+    </message>
+    <message>
+        <source>Interruption points</source>
+        <translation>Unterbrechungspunkte</translation>
+    </message>
+    <message>
+        <source>Drawing connections</source>
+        <translation>Verbindungen zeichnen</translation>
+    </message>
+    <message>
+        <source>Writing the QElectroTech project</source>
+        <translation>QElectroTech-Projekt schreiben</translation>
+    </message>
+    <message>
+        <source>Device list, connection list and 3D installation spaces</source>
+        <translation>Geräteliste, Verbindungsliste und 3D-Bauräume</translation>
+    </message>
+    <message>
+        <source>Writing the PDF</source>
+        <translation>PDF schreiben</translation>
+    </message>
+    <message>
+        <source>Done</source>
+        <translation>Fertig</translation>
+    </message>
+</context>
+<context>
+    <name>EpdzImport</name>
+    <message>
+        <source>No temporary folder</source>
+        <translation>Kein temporärer Ordner</translation>
+    </message>
+    <message>
+        <source>%1 cannot be unpacked: %2</source>
+        <translation>%1 kann nicht entpackt werden: %2</translation>
+    </message>
+    <message>
+        <source>Page %1: no drawing in the archive</source>
+        <translation>Seite %1: keine Zeichnung im Archiv</translation>
+    </message>
+    <message>
+        <source>Page %1: the drawing cannot be read</source>
+        <translation>Seite %1: die Zeichnung ist nicht lesbar</translation>
+    </message>
+    <message>
+        <source>%1 page(s), %2 function(s), %3 connection(s), %4 3D installation space(s)</source>
+        <translation>%1 Seite(n), %2 Funktion(en), %3 Verbindung(en), %4 3D-Bauraum/-räume</translation>
+    </message>
+    <message>
+        <source>The archive holds no manifest.db: it is no EPLAN export archive</source>
+        <translation>Das Archiv enthält keine manifest.db: es ist kein EPLAN-Exportarchiv</translation>
+    </message>
+    <message>
+        <source>manifest.db cannot be read</source>
+        <translation>manifest.db ist nicht lesbar</translation>
+    </message>
+    <message>
+        <source>The manifest lists no page</source>
+        <translation>Das Manifest nennt keine Seite</translation>
     </message>
 </context>
 </TS>

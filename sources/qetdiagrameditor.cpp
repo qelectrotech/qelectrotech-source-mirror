@@ -59,6 +59,7 @@
 #include "diagramcommands.h"
 #include "diagramcontent.h"
 #include "diagramevent/diagrameventaddimage.h"
+#include "import/eplanproject/eplanprojectimportdialog.h"
 #ifdef QET_HAS_QTPDF
 #include "diagramevent/diagrameventaddpdf.h"
 #endif
@@ -2398,7 +2399,24 @@ void QETDiagramEditor::setUpMenu()
 	menu_fichier -> addActions(m_file_actions_group.actions());
 	menu_fichier -> addSeparator();
 	//menu_fichier -> addAction(import_diagram);
-		//FluidSIM 6 circuits (.circ) as a new project, drawn with own graphics
+		//An EPLAN export archive (.epdz) as a new QElectroTech project
+	QAction *import_eplan_project = menu_fichier->addAction(
+		QET::Icons::DocumentOpen, tr("Import EPLAN project (.epdz)…"));
+	import_eplan_project->setObjectName(QStringLiteral("import_eplan_project"));
+	import_eplan_project->setStatusTip(tr("Reads an EPLAN export archive and opens it as a QElectroTech project"));
+	connect(import_eplan_project, &QAction::triggered, this, [this]() {
+		EplanProjectImportDialog dialog(this);
+			// the file dialog over the import dialog: cancelled, the import
+			// dialog still takes a dropped file
+		QTimer::singleShot(0, &dialog, [&dialog]() { dialog.chooseArchive(); });
+		if (dialog.exec() != QDialog::Accepted || dialog.resultPath().isEmpty()) return;
+			// the import may have kept parts in the user collection
+		if (m_element_collection_widget) m_element_collection_widget->reload();
+		openAndAddProject(dialog.resultPath());
+	});
+#ifdef QET_HAS_SCRIPTING
+		//FluidSIM 6 circuits (.circ) as a new project, drawn with own graphics;
+		//the import program writes it through scripting, so only with it
 	QAction *import_fluidsim = menu_fichier->addAction(
 		QET::Icons::DocumentOpen, tr("Import FluidSIM circuit (.circ)…"));
 	import_fluidsim->setObjectName(QStringLiteral("import_fluidsim"));
@@ -2407,6 +2425,7 @@ void QETDiagramEditor::setUpMenu()
 		const QString result = FluidSimImport::run(this);
 		if (!result.isEmpty()) openAndAddProject(result);
 	});
+#endif
 	menu_fichier -> addSeparator();
 	menu_fichier -> addAction(m_export_to_images);
 	menu_fichier -> addAction(m_export_to_pdf);
@@ -2569,11 +2588,12 @@ void QETDiagramEditor::setUpMenu()
 	// menu Listes
 		//Everything which drops a table or a list onto the sheets has
 		//come out of the project menu and sits here together: the
-		//summary, the material list, the terminal strip tools and the
-		//cable list. The CSV exports stay with the other exports in the
-		//project menu, the cable list's among them.
+		//summary, the material list, the SPS list, the terminal strip
+		//tools and the cable list. The CSV exports stay with the other
+		//exports in the project menu, the cable list's among them.
 	menu_lists -> addAction(m_add_summary);
 	menu_lists -> addAction(m_add_nomenclature);
+	menu_lists -> addAction(m_add_plc_list);
 	menu_lists -> addSeparator();
 	menu_lists -> addAction(m_terminal_strip_dialog);
 	menu_lists -> addAction(m_project_terminalBloc);
@@ -2582,7 +2602,6 @@ void QETDiagramEditor::setUpMenu()
 	menu_lists -> addAction(m_add_revision_table);
 	menu_lists -> addAction(m_add_device_list);
 	menu_lists -> addAction(m_add_wiring_table);
-	menu_lists -> addAction(m_add_plc_list);
 	menu_lists -> addAction(m_add_signal_list);
 
 	main_tool_bar         -> toggleViewAction() -> setStatusTip(tr("Display or hide the main toolbar"));
@@ -4256,6 +4275,7 @@ void QETDiagramEditor::slot_updateActions()
 	m_clean_project               -> setEnabled(editable_project);
 	m_add_summary                 -> setEnabled(editable_project);
 	m_add_nomenclature            -> setEnabled(editable_project);
+	m_add_plc_list                -> setEnabled(editable_project);
 	m_csv_export                  -> setEnabled(editable_project);
 	m_project_export_conductor_num-> setEnabled(opened_project);
 	m_project_export_label_lists  -> setEnabled(opened_project);
@@ -4268,7 +4288,6 @@ void QETDiagramEditor::slot_updateActions()
 	m_add_revision_table          -> setEnabled(editable_project);
 	m_add_device_list             -> setEnabled(editable_project);
 	m_add_wiring_table            -> setEnabled(editable_project);
-	m_add_plc_list                -> setEnabled(editable_project);
 	m_add_signal_list             -> setEnabled(editable_project);
 	m_export_cable_list           -> setEnabled(editable_project);
 	m_reload_element_drawings     -> setEnabled(opened_project);
