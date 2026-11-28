@@ -20,6 +20,8 @@
 
 #include <QString>
 
+class QDomDocument;
+
 /**
 	@brief Orchestrates importing an EPLAN .edz package as a QET element.
 
@@ -33,6 +35,9 @@ class EdzImporter
 	public:
 		bool importToDirectory(const QString &edz_path,
 				       const QString &dest_dir);
+		/// the element of @a edz_path and its file name, not written
+		bool build(const QString &edz_path, QDomDocument *doc,
+			   QString *file_name);
 
 		QString writtenPath() const { return m_written; }
 		QString errorString() const { return m_error; }

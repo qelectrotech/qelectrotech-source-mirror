@@ -22,6 +22,8 @@
 #include <QList>
 #include <QMap>
 
+class QDomElement;
+
 /** One physical connection of an EPLAN part (a pin/terminal). */
 struct EdzPin {
 	QString designation;   ///< terminal id, e.g. "1", "PE"
@@ -54,6 +56,8 @@ class EdzPart
 		QList<EdzPin> pins()   const { return m_pins; }
 
 	private:
+		bool parsePart(const QDomElement &part);
+
 		QString m_error;
 		QString m_part_number;
 		QString m_manufacturer;
