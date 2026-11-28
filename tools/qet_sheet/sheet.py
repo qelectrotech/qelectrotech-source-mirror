@@ -399,7 +399,9 @@ class Plan:
 
     def _font_sizes(self, path):
         """Font sizes of the free texts (the scripting API sets none), and
-        the cross-reference format "/folio/column"."""
+        the cross-reference format "/folio/column" (/%F/%c) for every
+        master/slave label and report arrow of the written project -- the
+        form sPlan schematics and EPLAN plans show."""
         with open(path, encoding="utf-8") as f:
             s = f.read()
         parts = re.split(r'(<diagram [^>]*>)', s)    # the folio = number of headers before

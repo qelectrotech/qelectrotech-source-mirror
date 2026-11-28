@@ -12,7 +12,14 @@ python splan_to_qet.py <schematic.spl8> [<target.qet>] [--pdf] [--compare <origi
 Without a target the project goes to `<folder of the schematic>/QET/<name>.qet`.
 Next to it the import writes `<name>_open_questions.txt` (what the schematic
 does not say unambiguously), with `--pdf` a PDF, and with `--compare` a PDF
-with the original page and the new sheet side by side.
+with the original page and the new sheet side by side
+(`<name>_comparison.pdf`); pictures go to `<name>_images/`, the tidied
+intermediate state to `<name>_tidy.qet`. Like the project itself, these
+files are written anew on every import and replace older ones; the dialog
+asks before it replaces an existing project.
+
+Cross references (master/slave labels and report arrows) are written in the
+form `/folio/column` (`/%F/%c`), as sPlan and EPLAN show them.
 
 Requirements:
 - Python 3.10 or newer, no packages for the import itself. Optional:
