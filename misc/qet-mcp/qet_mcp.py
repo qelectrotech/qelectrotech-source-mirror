@@ -3965,6 +3965,73 @@ def tool_edit(binary: str, project: str, operations: list, output: str,
 
 
 # --------------------------------------------------------------------------
+# qet_fluidsim_import: FluidSIM 6 circuits as a new project
+# --------------------------------------------------------------------------
+
+def _fluidsim_program() -> Path | None:
+    """fluidsim_import.py: next to an installed QElectroTech (<data>/fluidsim_import,
+    beside this server's mcp folder) or in the source tree (tools/fluidsim_import)."""
+    here = Path(__file__).resolve().parent
+    env = os.environ.get("QET_FLUIDSIM_IMPORT", "").strip()
+    candidates = [Path(env)] if env else []
+    candidates += [here.parent / "fluidsim_import" / "fluidsim_import.py",
+                   here.parents[1] / "tools" / "fluidsim_import" / "fluidsim_import.py"]
+    return next((c for c in candidates if c.is_file()), None)
+
+
+def tool_fluidsim_import(binary: str, circuit: str, output: str,
+                         timeout: int = 600) -> dict:
+    """Import FluidSIM 6 circuits (.circ, or a folder of them, one folio
+    each) as a QElectroTech project, through the import program that comes
+    with QElectroTech. The parts are drawn anew with the import's own
+    symbols, so it takes no element collection."""
+    src = Path(circuit).expanduser()
+    if not (src.is_file() or src.is_dir()):
+        raise ValueError(f"no such circuit or folder: {src}")
+    out = Path(output).expanduser()
+    if out.suffix.lower() != ".qet":
+        raise ValueError("output must end in .qet")
+    if os.environ.get("QET_ENABLE_SCRIPTING") != "1":
+        raise ValueError(
+            "the import writes the project through QElectroTech's scripting, so it "
+            "needs the same consent as editing a project: QET_ENABLE_SCRIPTING=1 in "
+            "the environment this server is started in.")
+    program = _fluidsim_program()
+    if program is None:
+        raise ValueError("the FluidSIM import program (fluidsim_import/fluidsim_import.py) "
+                         "is not installed next to this server; set QET_FLUIDSIM_IMPORT "
+                         "to its path")
+    with tempfile.TemporaryDirectory(prefix="qet-fluidsim-") as tmp:
+        report = Path(tmp) / "report.json"
+        env = dict(os.environ, PYTHONIOENCODING="utf-8", PYTHONUTF8="1")
+        try:
+            r = subprocess.run([sys.executable, str(program), str(src), str(out),
+                                "--qet", str(binary), "--report", str(report)],
+                               capture_output=True, text=True, encoding="utf-8",
+                               errors="replace", timeout=timeout, env=env)
+        except subprocess.TimeoutExpired:
+            return {"ok": False, "timed_out": True}
+        result = {"ok": r.returncode == 0 and report.is_file(), "output": str(out)}
+        if report.is_file():
+            data = json.loads(report.read_text(encoding="utf-8"))
+            result.update({
+                "parts": data.get("parts"), "wires": data.get("wires"),
+                "links": data.get("links"), "labels_added": data.get("labels_added"),
+                "grafcet": {"steps": data.get("steps"),
+                            "transitions": data.get("transitions"),
+                            "actions": data.get("actions")},
+                "push_buttons": data.get("push_buttons", []),
+                "manual_valves": data.get("manual_valves", []),
+                "not_imported": data.get("not_imported", []),
+                "failed_operations": data.get("failures", []),
+            })
+        if not result["ok"]:
+            result["exit_code"] = r.returncode
+            result["stderr"] = _keep_tail(r.stderr or r.stdout, 4000)
+        return result
+
+
+# --------------------------------------------------------------------------
 # Stored scripts: the buttons in Projet > Scripts and on the Scripts toolbar
 # --------------------------------------------------------------------------
 #
@@ -5398,6 +5465,29 @@ TOOLS = [
                                        a.get("timeout", 180)),
     },
     {
+        "name": "qet_fluidsim_import",
+        "description": "Import FluidSIM 6 circuits (.circ; a folder gives one folio per "
+                       "circuit) as a new QElectroTech project. Every part is drawn anew "
+                       "with its own graphics after ISO 1219-1 / IEC 60617 (never the "
+                       "FluidSIM symbols), with the wires, the valve solenoid and relay "
+                       "contact links, the labels, the values FluidSIM shows and the "
+                       "GRAFCET charts. Returns the counts and what was not imported. "
+                       "Needs QET_ENABLE_SCRIPTING=1.",
+        "inputSchema": {
+            "type": "object",
+            "properties": {
+                "binary": {"type": "string", "description": "the qelectrotech executable; leave it out to use the one this server is configured with. Any other is refused unless its configuration allows it"},
+                "circuit": {"type": "string", "description": "a FluidSIM circuit (.circ) or a folder of them"},
+                "output": {"type": "string", "description": "the project to write (.qet)"},
+                "overwrite": {"type": "boolean", "default": False},
+                "timeout": {"type": "integer", "default": 600},
+            },
+            "required": ["circuit", "output"],
+        },
+        "handler": lambda a: tool_fluidsim_import(a["binary"], a["circuit"], a["output"],
+                                                  a.get("timeout", 600)),
+    },
+    {
         "name": "qet_query",
         "description": "Run a read-only SQL SELECT against the project's SQLite "
                        "database and get rows back. Prefer the views "
@@ -6101,6 +6191,7 @@ _DATA_PATHS = {
     "qet_check":          {"read": ("project",)},
     "qet_layout_check":   {"read": ("project",)},
     "qet_project_new":    {"write": ("output",)},
+    "qet_fluidsim_import": {"read": ("circuit",), "write": ("output",)},
     # QElectroTech writes this file, but where is the client's choice:
     # held to the same workspace as every other file a tool writes.
     "qet_live_new_project": {"write": ("path",)},
@@ -6123,7 +6214,8 @@ _DATA_PATHS = {
 # Tools that launch QElectroTech, and so take "binary" and "elements_dir".
 _LAUNCHES_QET = {"qet_export", "qet_edit", "qet_query", "qet_continuity",
                  "qet_check", "qet_layout_check", "qet_project_new", "qet_script_api",
-                 "qet_script_test", "qet_recording_check", "qet_live_layout_check"}
+                 "qet_script_test", "qet_recording_check", "qet_live_layout_check",
+                 "qet_fluidsim_import"}
 
 # Tools that launch QElectroTech only when given this argument.
 _LAUNCHES_QET_WITH = {"qet_script_install": "test_project"}

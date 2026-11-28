@@ -257,6 +257,9 @@ class Import(unittest.TestCase):
         self.assertEqual({f.get("plant") for f in folios}, {"A1"})
         self.assertEqual({f.get("locmach") for f in folios}, {"S1"})
         self.assertEqual({f.get("titleblocktemplate") for f in folios}, {"eplan_import_blank"})
+        # EPLAN's frame brings its own column and row numbering: QElectroTech's headers are off
+        self.assertEqual({f.get("displaycols") for f in folios}, {"false"})
+        self.assertEqual({f.get("displayrows") for f in folios}, {"false"})
         names = [t.get("name") for t in self.root.iter("titleblocktemplate")]
         self.assertIn("eplan_import_blank", names)
 
@@ -343,6 +346,51 @@ class PictureReferences(unittest.TestCase):
                          "C:/a.png", "C:a.png", "../../../../../outside.png", "file:///etc/passwd",
                          "http://example.com/a.png", "data:image/png;base64,AAAA", ""):
                 self.assertIsNone(E._im_archiv(x, pages, href), href)
+
+
+STOP_PROBE = r"""
+import subprocess, sys
+sys.path.insert(0, sys.argv[1])
+import epdz_nach_qet as E
+E._stop_on_eof()
+child = subprocess.Popen([sys.executable, "-c", "import time; time.sleep(60)"])
+if sys.argv[2] == "finish":
+    child.kill()
+    child.wait()
+    print("done: probe", flush=True)
+else:
+    print("ready", flush=True)
+    child.wait()
+"""
+
+
+class StopOnEof(unittest.TestCase):
+    """--stop-on-eof: closing the input stops the run and its children (exit 3); a run that finishes while the
+    input is still open ends cleanly (no "Fatal Python error" from the thread watching the input)."""
+
+    def run_probe(self, mode):
+        return subprocess.Popen([sys.executable, "-c", STOP_PROBE, os.path.dirname(HERE), mode],
+                                stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+                                text=True)
+
+    def test_cancel(self):
+        p = self.run_probe("cancel")
+        self.assertEqual(p.stdout.readline().strip(), "ready")
+        p.stdin.close()
+        self.assertEqual(p.wait(15), 3)
+        p.stdout.close()
+        p.stderr.close()
+
+    def test_finish_with_input_open(self):
+        p = self.run_probe("finish")
+        out = p.stdout.read()                      # the input stays open until the program has ended
+        err = p.stderr.read()
+        code = p.wait(30)
+        for f in (p.stdin, p.stdout, p.stderr):
+            f.close()
+        self.assertEqual(code, 0, err)
+        self.assertIn("done: probe", out)
+        self.assertNotIn("Fatal Python error", err)
 
 
 class CommandLine(unittest.TestCase):
