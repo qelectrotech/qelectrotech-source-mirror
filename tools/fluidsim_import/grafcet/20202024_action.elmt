@@ -1,0 +1,47 @@
+<definition version="0.100" type="element" link_type="simple" width="150" height="55" hotspot_x="0" hotspot_y="40">
+    <uuid uuid="{a0d1e352-dfc4-54aa-8152-33eada32b875}"/>
+    <names>
+        <name lang="ar">الإجراء الذي يحفظ في حدث</name>
+        <name lang="ca">Acció que guarda en un esdeveniment</name>
+        <name lang="cs">Akce, která ukládá na události</name>
+        <name lang="da">Handling, der gemmer ved en begivenhed</name>
+        <name lang="de">Speichernd wirkende Aktion bei Event</name>
+        <name lang="el">Ενέργεια που αποθηκεύει σε μια εκδήλωση</name>
+        <name lang="en">Action that saves at an event</name>
+        <name lang="es">Acción que ahorra en un evento</name>
+        <name lang="fi">Toiminto, joka tallentuu tapahtumassa</name>
+        <name lang="fr">Action qui sauve lors d'un événement</name>
+        <name lang="hr">Radnja koja sprema na događaj</name>
+        <name lang="hu">Olyan művelet, amely egy eseményen ment</name>
+        <name lang="it">Azione che salva in occasione di un evento</name>
+        <name lang="ja">イベントで保存するアクション</name>
+        <name lang="ko">이벤트 시 저장하는 동작</name>
+        <name lang="mn">Үйл явдал дээр хэмнэдэг үйлдэл</name>
+        <name lang="nb">Handling som lagrer ved et arrangement</name>
+        <name lang="nl">Actie die bespaart bij een evenement</name>
+        <name lang="nl_BE">Actie die opslaat bij een gebeurtenis</name>
+        <name lang="pl">Akcja, która zapisuje na wydarzeniu</name>
+        <name lang="pt">Ação que salva em um evento</name>
+        <name lang="pt_BR">Ação que salva em um evento</name>
+        <name lang="ro">Acțiune care salvează la un eveniment</name>
+        <name lang="ru">Действие, которое сохраняется на событии</name>
+        <name lang="sk">Akcia, ktorá sa uloží pri udalosti</name>
+        <name lang="sl">Dejanje, ki shrani na dogodek</name>
+        <name lang="sr">Радња која чува на догађају</name>
+        <name lang="sv">Åtgärd som sparas vid en händelse</name>
+        <name lang="tr">Bir etkinlikte kaydedilen eylem</name>
+        <name lang="uk">Дія, що зберігається при події</name>
+        <name lang="zh">动作_24</name>
+    </names>
+    <informations>Author: The QElectroTech team; redrawn on the 10 grid with named terminals for the FluidSIM import
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line x1="0" y1="0" x2="10" y2="0" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <rect x="10" y="-15" width="140" height="30" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <terminal uuid="{0a70e18c-a2da-4dce-b28b-5cb5ddddb46b}" name="step" x="0" y="0" orientation="w" type="Generic"/>
+        <dynamic_text x="76" y="-10.5" z="5" text_width="-1" Halignment="AlignHCenter" Valignment="AlignVCenter" frame="false" rotation="0" keep_visual_rotation="false" text_from="ElementInfo" uuid="{e8d5e118-5441-401f-9d32-ac98bbf8ff6d}" font="Liberation Sans,8,-1,5,50,0,0,0,0,0,Regular"><text></text><info_name>label</info_name></dynamic_text>
+        <line x1="80" y1="-15" x2="80" y2="-25" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <dynamic_text x="84" y="-42.5" z="5" text_width="-1" Halignment="AlignLeft" Valignment="AlignVCenter" frame="false" rotation="0" keep_visual_rotation="false" text_from="UserText" uuid="{7499e0e9-665d-4516-93a6-5efcdaa2c9e3}" font="Liberation Sans,8,-1,5,50,0,0,0,0,0,Regular"><text></text></dynamic_text>
+        <polygon x1="80" y1="-27" x2="77" y2="-21" x3="83" y3="-21" closed="true" style="line-style:normal;line-weight:normal;filling:black;color:black" antialias="true"/>
+    </description>
+</definition>

@@ -1,0 +1,50 @@
+<definition version="0.100" type="element" link_type="simple" width="240" height="20" hotspot_x="120" hotspot_y="10">
+    <uuid uuid="{3f99ee57-ce67-55a7-b8c4-4a909063e5de}"/>
+    <names>
+        <name lang="ar">فرع مواز</name>
+        <name lang="ca">branca paral·lela</name>
+        <name lang="cs">paralelní větev</name>
+        <name lang="da">parallel gren</name>
+        <name lang="de">Parallelverzweigung</name>
+        <name lang="el">παράλληλος κλάδος</name>
+        <name lang="en">parallel branch</name>
+        <name lang="es">rama paralela</name>
+        <name lang="fi">rinnakkainen haara</name>
+        <name lang="fr">branche parallèle</name>
+        <name lang="hr">paralelna grana</name>
+        <name lang="hu">párhuzamos ág</name>
+        <name lang="it">ramo parallelo</name>
+        <name lang="ja">並列分岐</name>
+        <name lang="ko">병렬 분기</name>
+        <name lang="mn">зэрэгцээ салбар</name>
+        <name lang="nb">parallell gren</name>
+        <name lang="nl">parallelle tak</name>
+        <name lang="nl_BE">parallelle vertakking</name>
+        <name lang="pl">gałąź równoległa</name>
+        <name lang="pt">ramo paralelo</name>
+        <name lang="pt_BR">ramo paralelo</name>
+        <name lang="ro">ramură paralelă</name>
+        <name lang="ru">параллельная ветвь</name>
+        <name lang="sk">paralelná vetva</name>
+        <name lang="sl">vzporedna veja</name>
+        <name lang="sr">паралелна грана</name>
+        <name lang="sv">parallell gren</name>
+        <name lang="tr">paralel dal</name>
+        <name lang="uk">Паралельне розгалуження</name>
+        <name lang="zh">并行分支</name>
+    </names>
+    <informations>Author: The QElectroTech team; redrawn on the 10 grid with named terminals for the FluidSIM import
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line x1="-110" y1="0" x2="110" y2="0" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <line x1="-110" y1="3" x2="110" y2="3" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <line x1="0" y1="-10" x2="0" y2="0" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <line x1="-100" y1="3" x2="-100" y2="10" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <line x1="100" y1="3" x2="100" y2="10" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <terminal uuid="{1d2b8fad-8728-4b0d-9205-3bb5c002b155}" name="in" x="0" y="-10" orientation="n" type="Generic"/>
+        <terminal uuid="{1d9ac490-5669-4ed3-9d28-b52ec7fc38d6}" name="1" x="-100" y="10" orientation="s" type="Generic"/>
+        <terminal uuid="{8155e49f-8bd0-4dcd-8878-29228b6b2629}" name="2" x="100" y="10" orientation="s" type="Generic"/>
+        <terminal uuid="{f46b5bb3-9fad-49ad-b169-3880fd1bc44c}" name="w" x="-110" y="0" orientation="w" type="Generic"/>
+        <terminal uuid="{8afad8e9-1d16-4478-8f0f-25d937a5afbc}" name="e" x="110" y="0" orientation="e" type="Generic"/>
+    </description>
+</definition>

@@ -25,6 +25,7 @@
 #include "symboltextplacement.h"
 #include "ui/textclearancedialog.h"
 #include "autoconnect.h"
+#include "import/fluidsim/fluidsimimport.h"
 #ifdef QET_HAS_SCRIPTING
 #include "scripting/qetscripting.h"
 #include "scripting/scriptlibrary.h"
@@ -2444,6 +2445,18 @@ void QETDiagramEditor::setUpMenu()
 		if (m_element_collection_widget) m_element_collection_widget->reload();
 		openAndAddProject(dialog.resultPath());
 	});
+#ifdef QET_HAS_SCRIPTING
+		//FluidSIM 6 circuits (.circ) as a new project, drawn with own graphics;
+		//the import program writes it through scripting, so only with it
+	QAction *import_fluidsim = menu_fichier->addAction(
+		QET::Icons::DocumentOpen, tr("Import FluidSIM circuit (.circ)…"));
+	import_fluidsim->setObjectName(QStringLiteral("import_fluidsim"));
+	import_fluidsim->setStatusTip(tr("Reads FluidSIM circuits with their parts, wires, links, values and GRAFCET and opens them as a QElectroTech project"));
+	connect(import_fluidsim, &QAction::triggered, this, [this]() {
+		const QString result = FluidSimImport::run(this);
+		if (!result.isEmpty()) openAndAddProject(result);
+	});
+#endif
 	menu_fichier -> addSeparator();
 	menu_fichier -> addAction(m_export_to_images);
 	menu_fichier -> addAction(m_export_to_pdf);

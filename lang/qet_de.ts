@@ -20624,6 +20624,16 @@ Trotzdem fortfahren?</translation>
         <translation>&amp;Zuletzt geöffnet</translation>
     </message>
     <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2403"/>
+        <source>Import FluidSIM circuit (.circ)…</source>
+        <translation>FluidSIM-Schaltung importieren (.circ)…</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2405"/>
+        <source>Reads FluidSIM circuits with their parts, wires, links, values and GRAFCET and opens them as a QElectroTech project</source>
+        <translation>Liest FluidSIM-Schaltungen mit Bauteilen, Leitungen, Verknüpfungen, Kennwerten und GRAFCET und öffnet sie als QElectroTech-Projekt</translation>
+    </message>
+    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2293"/>
         <source>&amp;Add</source>
         <translation>Hinzufügen</translation>
@@ -22928,6 +22938,58 @@ Was möchten Sie tun?</translation>
         <location filename="../sources/elementtextpattern.cpp" line="434"/>
         <source>Apply text format</source>
         <translation>Beschriftungsart zuweisen</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/fluidsim/fluidsimimport.cpp" line="104"/>
+        <source>Import FluidSIM circuit</source>
+        <translation>FluidSIM-Schaltung importieren</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/fluidsim/fluidsimimport.cpp" line="105"/>
+        <source>The import program (%1) was not found next to QElectroTech. Set QET_FLUIDSIM_IMPORT to its path.</source>
+        <translation>Das Importprogramm (%1) liegt nicht neben QElectroTech. QET_FLUIDSIM_IMPORT auf seinen Pfad setzen.</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/fluidsim/fluidsimimport.cpp" line="111"/>
+        <source>FluidSIM circuits (*.circ);;All files (*)</source>
+        <translation>FluidSIM-Schaltungen (*.circ);;Alle Dateien (*)</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/fluidsim/fluidsimimport.cpp" line="117"/>
+        <source>Save the imported project as</source>
+        <translation>Importiertes Projekt speichern unter</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/fluidsim/fluidsimimport.cpp" line="119"/>
+        <source>QElectroTech projects (*.qet)</source>
+        <translation>QElectroTech-Projekte (*.qet)</translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../sources/import/fluidsim/fluidsimimport.cpp" line="123"/>
+        <source>Importing %n FluidSIM circuit(s) …</source>
+        <translation>
+            <numerusform>Importiere %n FluidSIM-Schaltung …</numerusform>
+            <numerusform>Importiere %n FluidSIM-Schaltungen …</numerusform>
+        </translation>
+    </message>
+    <message>
+        <location filename="../sources/import/fluidsim/fluidsimimport.cpp" line="125"/>
+        <source>Cancel</source>
+        <translation>Abbrechen</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/fluidsim/fluidsimimport.cpp" line="169"/>
+        <source>No Python 3 could run the import program:
+%1</source>
+        <translation>Kein Python 3 konnte das Importprogramm ausführen:
+%1</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/fluidsim/fluidsimimport.cpp" line="170"/>
+        <source>The import did not finish:
+%1</source>
+        <translation>Der Import wurde nicht abgeschlossen:
+%1</translation>
     </message>
     <message>
         <location filename="../sources/factory/elementpicturefactory.cpp" line="309"/>

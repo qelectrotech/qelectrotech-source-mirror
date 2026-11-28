@@ -1,0 +1,45 @@
+<definition version="0.100" type="element" link_type="simple" width="40" height="40" hotspot_x="20" hotspot_y="20">
+    <uuid uuid="{17ad00aa-a98a-5f46-ae95-639be894f1f7}"/>
+    <names>
+        <name lang="ar">خطوة</name>
+        <name lang="ca">Pas</name>
+        <name lang="cs">Krok</name>
+        <name lang="da">Trin</name>
+        <name lang="de">Schritt</name>
+        <name lang="el">Βήμα</name>
+        <name lang="en">Step</name>
+        <name lang="es">Paso</name>
+        <name lang="fi">Askel</name>
+        <name lang="fr">Étape</name>
+        <name lang="hr">Korak</name>
+        <name lang="hu">Lépés</name>
+        <name lang="it">Fare un passo</name>
+        <name lang="ja">ステップ</name>
+        <name lang="ko">스텝</name>
+        <name lang="mn">Алхам</name>
+        <name lang="nb">Steg</name>
+        <name lang="nl">Stap</name>
+        <name lang="nl_BE">Stap</name>
+        <name lang="pl">Krok</name>
+        <name lang="pt">Etapa</name>
+        <name lang="pt_BR">Etapa</name>
+        <name lang="ro">Etapa</name>
+        <name lang="ru">Шаг</name>
+        <name lang="sk">Krok</name>
+        <name lang="sl">korak</name>
+        <name lang="sr">Корак</name>
+        <name lang="sv">Steg</name>
+        <name lang="tr">Adım</name>
+        <name lang="uk">Крок</name>
+        <name lang="zh">步骤_01</name>
+    </names>
+    <informations>Author: The QElectroTech team; redrawn on the 10 grid with named terminals for the FluidSIM import
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <rect x="-20" y="-20" width="40" height="40" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <terminal uuid="{56517bf3-3bf7-44bf-90a0-0f149538420e}" name="in" x="0" y="-20" orientation="n" type="Generic"/>
+        <terminal uuid="{dc8fcf90-56b1-4565-8c78-fc7d71d779db}" name="out" x="0" y="20" orientation="s" type="Generic"/>
+        <terminal uuid="{9889aa41-493b-4df2-bc19-2232e6e16d8a}" name="action" x="20" y="0" orientation="e" type="Generic"/>
+        <dynamic_text x="-4" y="-11" z="5" text_width="-1" Halignment="AlignHCenter" Valignment="AlignVCenter" frame="false" rotation="0" keep_visual_rotation="false" text_from="ElementInfo" uuid="{29e6fa41-c8de-49a1-a29e-3e9fb6554a78}" font="Liberation Sans,9,-1,5,50,0,0,0,0,0,Regular"><text></text><info_name>label</info_name></dynamic_text>
+    </description>
+</definition>
