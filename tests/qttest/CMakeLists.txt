@@ -312,6 +312,13 @@ add_test(NAME tst_autosavemanagedfilepath COMMAND tst_autosavemanagedfilepath)
 target_include_directories(tst_autosavemanagedfilepath PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_autosavemanagedfilepath PRIVATE qelectrotech_objects Qt::Test)
 
+# The 7-Zip reader of the EDZ import keeps every entry inside the folder it
+# extracts to: an absolute name or one that climbs out with ".." is refused.
+add_executable(tst_sevenzipextract tst_sevenzipextract.cpp)
+add_test(NAME tst_sevenzipextract COMMAND tst_sevenzipextract)
+target_include_directories(tst_sevenzipextract PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_sevenzipextract PRIVATE qelectrotech_objects Qt::Test)
+
 # positionorder.h is header-only: the position comparisons behind element
 # renumbering and terminal numbering, as strict weak orderings for std::sort.
 add_executable(tst_positionorder tst_positionorder.cpp)
