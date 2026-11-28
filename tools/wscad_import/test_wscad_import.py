@@ -128,6 +128,42 @@ class PageFile(unittest.TestCase):
             W.unpack(packed(b"abc")[:-5])
 
 
+    def test_unpacking_is_limited(self):
+        saved = W.MAX_UNPACKED
+        W.MAX_UNPACKED = 1000
+        try:
+            with self.assertRaises(W.FormatError):
+                W.unpack(packed(b"x" * 5000))
+            self.assertEqual(W.unpack(packed(b"y" * 500)), b"y" * 500)
+        finally:
+            W.MAX_UNPACKED = saved
+
+
+class ListsAndPaths(unittest.TestCase):
+    def test_cells_stay_text(self):
+        self.assertEqual(Q.text_cell("=A1+ST-Q1"), "'=A1+ST-Q1")
+        for v in ("+A1", "-K1", "@X1"):
+            self.assertEqual(Q.text_cell(v), "'" + v)
+        self.assertEqual(Q.text_cell("K1"), "K1")
+        self.assertEqual(Q.text_cell(None), "")
+        self.assertEqual(Q.text_cell(1.5), "1.5")
+
+    def test_folder_with_hash_and_percent(self):
+        with tempfile.TemporaryDirectory() as base:
+            d = os.path.join(base, "plan #1 50% ?" if os.name != "nt" else "plan #1 50%")
+            os.makedirs(os.path.join(d, "Database"))
+            c = sqlite3.connect(os.path.join(d, "Database", "WSCAD6.db"))
+            c.execute("CREATE TABLE Page (PageID INTEGER, FileName TEXT, FileType TEXT, Ref TEXT, "
+                      "Width REAL, Height REAL, AspF TEXT, AspL TEXT)")
+            c.execute("INSERT INTO Page VALUES (1, 'X.WSELD', 'wsELD', '', 297, 210, 'A1', 'ST')")
+            c.commit()
+            c.close()
+            open(os.path.join(d, "X.wsELD"), "wb").close()
+            P = W.Project(d)
+            self.assertEqual([s["name"] for s in P.schematic_pages()], ["X.WSELD"])
+            P.close()
+
+
 class Texts(unittest.TestCase):
     def test_alignment_as_calibrated_on_the_pdf(self):
         self.assertEqual(Q._alignment({"align": "26"}), (2, "bottom"))     # designator bottom right
@@ -362,7 +398,7 @@ class Layout(unittest.TestCase):
                 for suffix in ("_open_questions.txt", "_devices.csv", "_connections.csv"):
                     self.assertTrue(os.path.isfile(target[:-4] + suffix), suffix)
                 with open(target[:-4] + "_devices.csv", encoding="utf-8-sig") as f:
-                    self.assertIn("=A1+ST-Q1;ART-1;", f.read())
+                    self.assertIn("'=A1+ST-Q1;ART-1;", f.read())       # text, not a formula
         finally:
             qet_runner.project_new, qet_runner.edit = saved
         self.assertEqual([c[0] for c in calls], ["new", "edit"])

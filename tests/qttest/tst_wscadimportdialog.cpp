@@ -75,8 +75,9 @@ class TestWscadImportDialog : public QObject
 			QCOMPARE(target, QDir(m_project).filePath(
 					 QStringLiteral("QET/Demo_project.qet")));
 				// the sPlan kind is unchanged
-			QCOMPARE(D::defaultTarget(QStringLiteral("C:/x/a b.spl8")),
-				 QStringLiteral("C:/x/QET/a_b.qet"));
+			const QDir dir(m_dir.path());
+			QCOMPARE(D::defaultTarget(dir.filePath(QStringLiteral("a b.spl8"))),
+				 dir.filePath(QStringLiteral("QET/a_b.qet")));
 
 			const QStringList args = D::arguments(
 						QStringLiteral("C:/t/wscad_to_qet.py"),

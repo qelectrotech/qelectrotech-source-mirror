@@ -18,11 +18,15 @@ length, key length, IV length, key, IV, 3 check bytes, then AES-CBC
 Unpacking needs one of the Python packages "cryptography" or
 "pycryptodome" for AES; everything else is the standard library.
 """
-import gzip
 import os
+import pathlib
 import sqlite3
 import struct
 import xml.etree.ElementTree as ET
+import zlib
+
+# the largest unpacked page section: a page of a real project is a few MB
+MAX_UNPACKED = 256 * 1024 * 1024
 
 SECTION_PAGE, SECTION_INFO = 2, 5
 
@@ -64,9 +68,15 @@ def unpack(section):
     if not data or len(data) % 16:
         raise FormatError("encrypted data is not a whole number of blocks")
     try:
-        return gzip.decompress(_aes_cbc_decrypt(key, iv, data))
-    except (OSError, EOFError) as e:
+        unpacker = zlib.decompressobj(16 + zlib.MAX_WBITS)      # GZip
+        out = unpacker.decompress(_aes_cbc_decrypt(key, iv, data), MAX_UNPACKED + 1)
+    except zlib.error as e:
         raise FormatError(f"packed content is no GZip stream: {e}") from None
+    if len(out) > MAX_UNPACKED or unpacker.unconsumed_tail:
+        raise FormatError(f"packed content unpacks to more than {MAX_UNPACKED // (1024 * 1024)} MB")
+    if not unpacker.eof:
+        raise FormatError("packed content is no complete GZip stream")
+    return out
 
 
 def sections(path):
@@ -124,7 +134,8 @@ class Project:
         db = os.path.join(folder, "Database", "WSCAD6.db")
         if not os.path.exists(db):
             raise FileNotFoundError(f"no WSCAD project (Database/WSCAD6.db is missing): {folder}")
-        self.db = sqlite3.connect(f"file:{db}?mode=ro", uri=True)
+        # as_uri() encodes the path: a #, ? or % in a folder name stays part of the path
+        self.db = sqlite3.connect(pathlib.Path(os.path.abspath(db)).as_uri() + "?mode=ro", uri=True)
         files = {n.upper(): n for n in os.listdir(folder)}
         self.pages = []
         for pid, name, kind, ref, w, h, asp_f, asp_l in self.db.execute(

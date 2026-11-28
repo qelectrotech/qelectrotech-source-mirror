@@ -27,7 +27,15 @@ The translation (FORMAT_WSCAD.md):
 - arrows with a target (SL kind 14) become linked QET folio reports; a coil
   (kind 2) or master (kind 7) and the contacts (kind 3) of the same
   designator become master/slave. WSCAD's cross-reference texts stay,
-  QET's own are switched off.
+  QET's own are switched off: every report arrow's own label is left
+  empty (<report label="">), since WSCAD's text beside the arrow already
+  names its target.
+
+The files next to the project (the CSV lists, _open_questions.txt and,
+with --pdf, the PDF) are written anew on every import, like the project
+itself; the dialog asks before it replaces an existing project. Cells of
+the CSV lists that begin with =, +, - or @ get an apostrophe in front, so a
+spreadsheet keeps them as text.
 """
 import base64
 import collections
@@ -887,7 +895,8 @@ def _plan_of(P, folder, target):
     for s in P.schematic_pages():
         try:
             pages.append(Page(s, W.page_xml(s["file"])))
-        except (W.FormatError, OSError, SyntaxError) as e:   # an unreadable page: say so, go on
+        except (W.FormatError, OSError, SyntaxError, ValueError, LookupError, TypeError,
+                AttributeError, ArithmeticError) as e:   # an unreadable page: say so, go on
             questions.append(f"Page {s['name']} cannot be read: {e}")
             skipped["unreadable_page"] += 1
     if not pages:
@@ -1148,9 +1157,17 @@ def write_questions(path, folder, report, questions, skipped, plan):
         f.write("\n".join(z) + "\n")
 
 
+def text_cell(value):
+    """A CSV cell a spreadsheet keeps as text: a value that begins with =, +, -, @ (a WSCAD designator
+    =A1+ST-Q1) or a tab or line break gets an apostrophe in front, as proposed in QElectroTech's issue #1990;
+    otherwise Excel and LibreOffice read it as a formula."""
+    s = "" if value is None else str(value)
+    return "'" + s if s[:1] in ("=", "+", "-", "@", "\t", "\r", "\n") else s
+
+
 def write_lists(P, sym_db, target):
     """Device and connection list (CSV, for spreadsheets) next to the
-    project."""
+    project. Every cell goes through text_cell()."""
     base = os.path.splitext(target)[0]
     articles = P.articles()
     page = {s["id"]: s["name"] for s in P.pages}
@@ -1164,7 +1181,8 @@ def write_lists(P, sym_db, target):
                 continue
             seen.add(t)
             a = articles.get(s["parent"], {}) or articles.get(s["id"], {})
-            w.writerow([t, a.get("article", ""), a.get("manufacturer", ""), page.get(s["page"], "")])
+            w.writerow([text_cell(c) for c in
+                        (t, a.get("article", ""), a.get("manufacturer", ""), page.get(s["page"], ""))])
     pins_db = P.terminals()
 
     def end(sid, pin):
@@ -1175,9 +1193,10 @@ def write_lists(P, sym_db, target):
         w = csv.writer(f, delimiter=";")
         w.writerow(["From", "To", "Potential", "Colour", "Cross section", "Page"])
         for v in P.connections():
-            w.writerow([end(v["SymbolID1"], v["Pin1"]), end(v["SymbolID2"], v["Pin2"]),
-                        v["Potential"] or "", v["Colorcode"] or "", v["Dimension"] or "",
-                        page.get(v["PageID"], "")])
+            w.writerow([text_cell(c) for c in
+                        (end(v["SymbolID1"], v["Pin1"]), end(v["SymbolID2"], v["Pin2"]),
+                         v["Potential"] or "", v["Colorcode"] or "", v["Dimension"] or "",
+                         page.get(v["PageID"], ""))])
 
 
 def safe_name(s):
