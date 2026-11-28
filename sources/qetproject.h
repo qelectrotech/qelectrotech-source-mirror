@@ -593,7 +593,6 @@ class QETProject : public QObject
 		 * unsaved even after being fully undone. */
 		void undoStackChanged (bool /*a*/) {
 			emit projectModified(this, projectWasModified());
-			emit projectInformationsChanged(this);
 		}
 
 	private:

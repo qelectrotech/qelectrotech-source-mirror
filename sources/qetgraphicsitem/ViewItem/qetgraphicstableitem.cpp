@@ -945,7 +945,13 @@ void QetGraphicsTableItem::setUpColumnAndRowMinimumSize()
 		return;
 	}
 
-	QFontMetrics metrics(m_model->data(model()->index(0,0), Qt::FontRole).value<QFont>());
+	QFont font_ = m_model->data(model()->index(0,0), Qt::FontRole).value<QFont>();
+	if (font_ != m_measured_text_font)
+	{
+		m_measured_text_font = font_;
+		m_measured_text_widths.clear();
+	}
+	QFontMetrics metrics(font_);
 	auto margin_ = QETUtils::marginsFromString(model()->index(0,0).data(Qt::UserRole+1).toString());
 		//Set the height of row;
 	m_minimum_row_height = metrics.boundingRect("HEIGHT TEST").height() + margin_.top() + margin_.bottom();
@@ -958,7 +964,14 @@ void QetGraphicsTableItem::setUpColumnAndRowMinimumSize()
 		for(auto col= 0 ; col<m_model->columnCount() ; ++col)
 		{
 			auto index = m_model->index(row, col);
-			auto width = metrics.boundingRect(index.data().toString()).width();
+			const QString text = index.data().toString();
+			int width;
+			if (m_measured_text_widths.contains(text)) {
+				width = m_measured_text_widths.value(text);
+			} else {
+				width = metrics.boundingRect(text).width();
+				m_measured_text_widths.insert(text, width);
+			}
 			m_minimum_column_width.replace(
 						col,
 						std::max(

@@ -2834,7 +2834,11 @@ bool projectDataBase::isReadOnlySelect(const QString &query, QString *error)
 		return false;
 	}
 
-	const int first_space = trimmed.indexOf(QRegularExpression(QStringLiteral("\\s")));
+		//One pattern, compiled once: a QRegularExpression made here would
+		//have PCRE2 compile and JIT it again for every query that reaches
+		//newQuery()
+	static const QRegularExpression space(QStringLiteral("\\s"));
+	const int first_space = trimmed.indexOf(space);
 	const QString first_word = (first_space == -1 ? trimmed : trimmed.left(first_space)).toUpper();
 	if (first_word != QLatin1String("SELECT") && first_word != QLatin1String("WITH")) {
 		if (error) {

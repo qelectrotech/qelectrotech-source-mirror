@@ -412,7 +412,15 @@ void ProjectDBModel::dataBaseUpdated()
 	fillValue();
 	auto new_record = m_record;
 	m_record = original_record;
-	
+
+		//The database is refreshed for changes this table does not show
+		//(a symbol's information, the folios' places...): what its query
+		//reads back is then the same rows, and the tables showing this
+		//model keep the geometry they already have.
+	if (new_record == m_record) {
+		return;
+	}
+
 	if (new_record.size() != m_record.size())
 	{
 		emit beginResetModel();

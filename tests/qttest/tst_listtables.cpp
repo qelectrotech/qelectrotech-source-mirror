@@ -388,6 +388,54 @@ private slots:
 		QCOMPARE(model.rowCount(), 0);
 		QCOMPARE(model.columnCount(), 0);
 	}
+
+		//A database refresh that changes nothing shows nothing new: the
+		//tables keep the geometry they already have, and nothing is
+		//measured again
+	void unchangedDatabaseLeavesTheTableAlone()
+	{
+		QETProject project;
+		Diagram *folio = project.addNewDiagram();
+		QVERIFY(symbol(folio, QStringLiteral("K1")));
+		project.dataBase()->updateDB();
+		QetGraphicsTableItem *t = addList(folio, ListQueryWidget::Device);
+		QVERIFY(t);
+		auto *model = qobject_cast<ProjectDBModel *>(t->model());
+		QVERIFY(model);
+		QSignalSpy changed(model, &QAbstractItemModel::dataChanged);
+		QSignalSpy reset(model, &QAbstractItemModel::modelReset);
+		const QSize before = t->minimumSize();
+		project.dataBase()->updateDB();
+		QCOMPARE(changed.count(), 0);
+		QCOMPARE(reset.count(), 0);
+		QCOMPARE(t->minimumSize(), before);
+	}
+
+		//New texts widen the table as if they were measured for the first
+		//time, and a new font widens what was already measured
+	void changedTextsAreMeasuredAgain()
+	{
+		QETProject project;
+		Diagram *folio = project.addNewDiagram();
+		Element *a = symbol(folio, QStringLiteral("K1"));
+		QVERIFY(a);
+		project.dataBase()->updateDB();
+		QetGraphicsTableItem *t = addList(folio, ListQueryWidget::Device);
+		QVERIFY(t);
+		const int narrow = t->minimumSize().width();
+
+		setLabel(a, QStringLiteral("a label much wider than the first one"));
+		project.dataBase()->updateDB();
+		const int wide = t->minimumSize().width();
+		QVERIFY(wide > narrow);
+
+		auto *model = qobject_cast<ProjectDBModel *>(t->model());
+		QVERIFY(model);
+		QFont big = model->data(model->index(0, 0), Qt::FontRole).value<QFont>();
+		big.setPointSize(qMax(1, big.pointSize()) + 6);
+		model->setData(model->index(0, 0), big, Qt::FontRole);
+		QVERIFY(t->minimumSize().width() > wide);
+	}
 };
 
 QET_APP_TEST_MAIN(tst_listtables)
