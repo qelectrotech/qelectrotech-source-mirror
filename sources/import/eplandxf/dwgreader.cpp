@@ -518,7 +518,7 @@ void DwgReader::readObject(qint64 address, quint64 expected)
 	const qint64 start = head.pos();
 		// the range first: size * 8 of a crafted size would overflow
 	if (size <= 0 || size > data.size() || handlebits < 0 || (start >> 3) + size > data.size()) return;
-	const qint64 databits = size * 8 - handlebits;
+	qint64 databits = size * 8 - handlebits;
 	if (databits <= 0) return;
 	ObjectBits o(data, start, databits, r2007);
 
