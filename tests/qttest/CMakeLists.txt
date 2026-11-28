@@ -559,6 +559,9 @@ qet_add_app_test(tst_documentkind tst_documentkind.cpp)
 qet_add_app_test(tst_revisionlist tst_revisionlist.cpp)
 # The device, wiring, PLC and signal lists as tables on a folio (#1878 B9-B11)
 qet_add_app_test(tst_listtables tst_listtables.cpp)
+# Redoing no work: a text is not written again unchanged, and a clean or
+# dirty turn of the undo stack is not a project information change.
+qet_add_app_test(tst_textrefresh tst_textrefresh.cpp)
 # The project panel lists folios as a tree by folio group and sub-group
 # (#1878 C9); a level shows only where it splits the folios.
 qet_add_app_test(tst_foliotree tst_foliotree.cpp)

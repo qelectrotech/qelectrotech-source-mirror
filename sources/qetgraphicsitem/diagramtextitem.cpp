@@ -344,6 +344,14 @@ void DiagramTextItem::setHtml(const QString &text)
 
 void DiagramTextItem::setPlainText(const QString &text)
 {
+		//The same text is drawn again as it is: rebuilding the document
+		//would cost the text layout again for nothing. A conductor's text
+		//is re-set on every project information change and every clean or
+		//dirty turn of the undo stack, which reaches every text of every
+		//folio built (Conductor::refreshText).
+	if (!m_is_html && text == toPlainText()) {
+		return;
+	}
 	QGraphicsTextItem::setPlainText(text);
 	m_is_html = false;
 }
