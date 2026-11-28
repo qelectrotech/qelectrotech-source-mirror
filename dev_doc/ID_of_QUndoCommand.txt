@@ -4,4 +4,5 @@ ItemResizerCommand = 3
 ChangeShapeStyleCommand = 4
 QetShapeGeometryCommand = 5
 AlignmentTextsGroupCommand = 6
+SetTerminalLabelCommand = 7
 QPropertyUndoCommand = 10 000

@@ -19,7 +19,9 @@
 
 #include <cablelist/cablelistmodel.h>
 #include <cablelist/cablequerywidget.h>
+#include <dataBase/projectdatabase.h>
 #include <dataBase/ui/elementquerywidget.h>
+#include <dataBase/ui/plcquerywidget.h>
 #include <dataBase/ui/summaryquerywidget.h>
 #include <diagram.h>
 #include <undocommand/addgraphicsobjectcommand.h>
@@ -31,7 +33,9 @@
 #include "ui/revisionquerywidget.h"
 #include "ui/listquerywidget.h"
 #include <qetproject.h>
+#include <QApplication>
 #include <QDialog>
+#include <QSqlQuery>
 
 QetGraphicsTableFactory::QetGraphicsTableFactory()
 {
@@ -126,9 +130,14 @@ void QetGraphicsTableFactory::createAndAddCableList(Diagram *diagram)
 void QetGraphicsTableFactory::createAndAddListTable(Diagram *diagram, int kind)
 {
 	const auto list_kind = static_cast<ListQueryWidget::Kind>(kind);
+		//The PLC list is the one list with a content tab of its own:
+		//the columns a person chooses out of qet_plc_list, and pages
+		//broken at the masters rather than row by row
 	QScopedPointer<AddTableDialog> d(
 				new AddTableDialog(
-					new ListQueryWidget(list_kind),
+					list_kind == ListQueryWidget::Plc
+						? static_cast<QWidget *>(new PlcQueryWidget())
+						: static_cast<QWidget *>(new ListQueryWidget(list_kind)),
 					diagram->views().first()));
 	switch (list_kind) {
 		case ListQueryWidget::Device:
@@ -150,7 +159,14 @@ void QetGraphicsTableFactory::createAndAddListTable(Diagram *diagram, int kind)
 	}
 
 	if (d->exec()) {
+			//The sheets the PLC list needs take seconds each on a large
+			//project, and nothing is on screen meanwhile: the cursor says
+			//the program is working. Only the SPS list gets it, the
+			//other lists are as they were merged
+		const bool plc = list_kind == ListQueryWidget::Plc;
+		if (plc) QApplication::setOverrideCursor(Qt::WaitCursor);
 		create(diagram, d.data());
+		if (plc) QApplication::restoreOverrideCursor();
 	}
 }
 
@@ -165,13 +181,92 @@ namespace {
 		diagram->removeItem(table);
 		diagram->undoStack().push(new AddGraphicsObjectCommand(table, diagram, pos));
 	}
+
+		/// The group -- the master -- each row of the table of @p dialog
+		/// belongs to, in the order the table shows them, read with the
+		/// query the content widget builds beside its own. Empty when the
+		/// list is not grouped, when its query was written by hand, or
+		/// when what comes back does not follow the rows of the table:
+		/// then no page is broken at a master and the rows are shared
+		/// out as any other list's are.
+	QVector<QString> groupValues(Diagram *diagram, AddTableDialog *dialog,
+								 const QAbstractItemModel *model)
+	{
+		auto *widget = dynamic_cast<PlcQueryWidget *>(dialog->contentWidget());
+		if (!widget || !diagram || !diagram->project() || !diagram->project()->dataBase()) {
+			return {};
+		}
+		const QString statement = widget->groupQueryStr();
+		if (statement.isEmpty()) {
+			return {};
+		}
+		QString error;
+		QSqlQuery query = diagram->project()->dataBase()->newQuery(statement, &error);
+		if (!error.isEmpty()) {
+			return {};
+		}
+		QVector<QString> groups;
+		while (query.next()) {
+			groups << query.value(0).toString();
+		}
+		if (model && int(groups.size()) != model->rowCount()) {
+			return {};
+		}
+		return groups;
+	}
+
+		/// How many rows @p table takes of a list whose rows are
+		/// grouped: the whole of the master the page starts with, so
+		/// that the next page starts with the next master. Left alone
+		/// when nothing fits or the rows are all shown.
+	void fitToGroupBoundaries(QetGraphicsTableItem *table, const QVector<QString> &groups)
+	{
+		if (groups.isEmpty() || table->displayNRow() <= 0) {
+			return;
+		}
+		const auto previous = table->previousTable();
+		const int start = previous ? previous->displayNRowOffset() : 0;
+		const int rows = QetGraphicsTableFactory::rowsOnPage(groups, start, table->displayNRow());
+		if (rows > 0 && rows != table->displayNRow()) {
+			table->setDisplayNRow(rows);
+		}
+	}
+}
+
+/**
+	@brief QetGraphicsTableFactory::rowsOnPage
+	How many rows a page of a list whose rows are grouped takes: the
+	whole of the group the page starts with, so that a page holds one
+	group's rows and the next page starts with the next group -- a new
+	master begins on a new page, even when the page before it is not
+	full. A group longer than a page takes what fits of it and carries
+	on to the next page, which ends it before the next group starts.
+	@param groups the group of each row, in the order the table shows them
+	@param start the first row of the page
+	@param fit how many rows fit on the page
+	@return how many rows the page takes, 0 when it starts past the end
+*/
+int QetGraphicsTableFactory::rowsOnPage(const QVector<QString> &groups, int start, int fit)
+{
+	if (fit <= 0 || start < 0 || start >= int(groups.size())) {
+		return 0;
+	}
+	int end = start + 1;
+	while (end < int(groups.size()) && groups.at(end) == groups.at(start)) {
+		++end;
+	}
+	const int block = end - start;
+	return block <= fit ? block : fit;
 }
 
 void QetGraphicsTableFactory::create(Diagram *diagram, AddTableDialog *dialog)
 {
 	auto table_ = newTable(diagram, dialog);
+	const QVector<QString> groups = dialog->addNewTableToNewDiagram()
+			? groupValues(diagram, dialog, table_->model()) : QVector<QString>();
 	if (dialog->adjustTableToFolio()) {
 		QetGraphicsTableItem::adjustTableToFolio(table_);
+		fitToGroupBoundaries(table_, groups);
 	}
 	pushAdded(table_);
 
@@ -196,6 +291,7 @@ void QetGraphicsTableFactory::create(Diagram *diagram, AddTableDialog *dialog)
 				//Adjust table
 			if (dialog->adjustTableToFolio()) {
 				QetGraphicsTableItem::adjustTableToFolio(table_);
+				fitToGroupBoundaries(table_, groups);
 			}
 			pushAdded(table_);
 				//Update some variable for the next loop
@@ -230,6 +326,11 @@ QetGraphicsTableItem *QetGraphicsTableFactory::newTable(Diagram *diagram, AddTab
 			db_model->setQuery(query_widget->queryStr());
 			model = db_model;
 		} else if (auto query_widget = dynamic_cast<SummaryQueryWidget *>(dialog->contentWidget())) {
+			auto *db_model = new ProjectDBModel(diagram->project(), diagram->project());
+			db_model->setIdentifier(query_widget->modelIdentifier());
+			db_model->setQuery(query_widget->queryStr());
+			model = db_model;
+		} else if (auto query_widget = dynamic_cast<PlcQueryWidget *>(dialog->contentWidget())) {
 			auto *db_model = new ProjectDBModel(diagram->project(), diagram->project());
 			db_model->setIdentifier(query_widget->modelIdentifier());
 			db_model->setQuery(query_widget->queryStr());

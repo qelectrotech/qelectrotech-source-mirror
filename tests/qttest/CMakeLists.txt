@@ -312,6 +312,13 @@ add_test(NAME tst_autosavemanagedfilepath COMMAND tst_autosavemanagedfilepath)
 target_include_directories(tst_autosavemanagedfilepath PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_autosavemanagedfilepath PRIVATE qelectrotech_objects Qt::Test)
 
+# The 7-Zip reader of the EDZ import keeps every entry inside the folder it
+# extracts to: an absolute name or one that climbs out with ".." is refused.
+add_executable(tst_sevenzipextract tst_sevenzipextract.cpp)
+add_test(NAME tst_sevenzipextract COMMAND tst_sevenzipextract)
+target_include_directories(tst_sevenzipextract PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_sevenzipextract PRIVATE qelectrotech_objects Qt::Test)
+
 # positionorder.h is header-only: the position comparisons behind element
 # renumbering and terminal numbering, as strict weak orderings for std::sort.
 add_executable(tst_positionorder tst_positionorder.cpp)
@@ -565,6 +572,9 @@ qet_add_app_test(tst_renumberwires tst_renumberwires.cpp)
 qet_add_app_test(tst_macrolabels tst_macrolabels.cpp)
 # qet_plc_io: one row per PLC I/O entry, with the slave linked to it.
 qet_add_app_test(tst_plcio tst_plcio.cpp)
+# qet_plc_list: the SPS list, one row per channel of a PLC master, and
+# its pages broken at the masters.
+qet_add_app_test(tst_plclist tst_plclist.cpp)
 # Device types: parts and their ways to be drawn, kept by .qet, .qetdb and
 # the user's library of .qetdt files.
 qet_add_app_test(tst_devicetype tst_devicetype.cpp)
@@ -814,6 +824,10 @@ qet_add_app_test(tst_pointerfreeunlessplacing tst_pointerfreeunlessplacing.cpp)
 qet_add_app_test(tst_tidyeditmenu tst_tidyeditmenu.cpp)
 # Edit > Replace the symbols: place, label and wires kept, one undo step.
 qet_add_app_test(tst_replacesymbols tst_replacesymbols.cpp)
+# The names of a symbol's terminals and how they are drawn belong to the
+# copy they are set on: three copies of one symbol read differently, the
+# definition keeps its own values, and taking the values back shows them
+qet_add_app_test(tst_terminallabels tst_terminallabels.cpp)
 # Edit > Select the same symbols: the folio's symbols drawn from the
 # definition of a selected one, the rest deselected.
 qet_add_app_test(tst_selectsamesymbols tst_selectsamesymbols.cpp)
@@ -1167,6 +1181,17 @@ add_test(NAME tst_customizedialog COMMAND tst_customizedialog)
 set_tests_properties(tst_customizedialog PROPERTIES ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
 target_include_directories(tst_customizedialog PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_customizedialog PRIVATE Qt::Test Qt::Widgets)
+
+# File > Import EPLAN project: the command line of the import program, its
+# output and the manifest of an EPLAN export archive (.epdz).
+add_executable(
+  tst_eplanprojectimport
+  tst_eplanprojectimport.cpp
+  ${QET_DIR}/sources/import/eplanproject/epdzmanifest.cpp
+  ${QET_DIR}/sources/import/eplanproject/eplanprojectimport.cpp)
+add_test(NAME tst_eplanprojectimport COMMAND tst_eplanprojectimport)
+target_include_directories(tst_eplanprojectimport PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_eplanprojectimport PRIVATE Qt::Test Qt::Sql)
 
 # scriptheader.h is header-only: the // ==QETScript== block that turns a
 # stored script into a button; and ShortcutManager::unregisterAction(), which
@@ -1588,6 +1613,29 @@ if(QET_HAS_SCRIPTING)
   target_link_libraries(tst_scriptconductoruuid PRIVATE Qt::Test)
   target_compile_definitions(tst_scriptconductoruuid PRIVATE
     "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
+
+  # qet.setConductorPathBetween(): a conductor through given corners, as an
+  # importer keeps the path its source drawing had.
+  add_executable(
+    tst_scriptconductorpath
+    tst_scriptconductorpath.cpp)
+  add_test(NAME tst_scriptconductorpath COMMAND tst_scriptconductorpath)
+  add_dependencies(tst_scriptconductorpath qelectrotech)
+  target_link_libraries(tst_scriptconductorpath PRIVATE Qt::Test)
+  target_compile_definitions(tst_scriptconductorpath PRIVATE
+    "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
+
+  # The EPLAN import program (tools/eplan_import/eplan_zw1): its tests build
+  # an export archive of their own and import it through this QElectroTech.
+  find_package(Python3 QUIET COMPONENTS Interpreter)
+  if(Python3_Interpreter_FOUND)
+    add_test(NAME tst_epdzimportpython
+      COMMAND ${Python3_EXECUTABLE}
+        ${CMAKE_CURRENT_SOURCE_DIR}/../../tools/eplan_import/eplan_zw1/tests/test_epdz_nach_qet.py)
+    set_tests_properties(tst_epdzimportpython PROPERTIES
+      TIMEOUT ${qet_probe_ctest_timeout}
+      ENVIRONMENT "QET_BINARY=$<TARGET_FILE:qelectrotech>;QET_ENABLE_SCRIPTING=1;QET_LOG_DISABLE=1")
+  endif()
 
   # The saved date, time and path of the title block change only when the
   # project changed, and go into the file that save writes (F124): an

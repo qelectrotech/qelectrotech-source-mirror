@@ -1422,6 +1422,16 @@ bool projectDataBase::populateFromDocument(const QDomDocument &document, QString
 			element.type = known->type;
 			element.sub_type = known->sub_type;
 			element.terminals = known->terminals;
+				//The name this placed symbol gave a terminal: the
+				//definition it shares with every other copy of the symbol
+				//does not have it, so it is read from the element
+			for (const QDomElement &label : QET::findInDomElement(
+					 element_xml, QStringLiteral("terminalLabels"), QStringLiteral("terminalLabel"))) {
+				const QUuid terminal(label.attribute(QStringLiteral("terminal")));
+				auto found = element.terminals.find(terminal);
+				if (!terminal.isNull() && found != element.terminals.end())
+					found->name = label.attribute(QStringLiteral("name"));
+			}
 			element.location = element_xml.attribute(QStringLiteral("type"));
 			element.sequence = elementSequence(element_xml);
 			const QUuid group = ItemGroups::read(element_xml);
@@ -4848,6 +4858,8 @@ bool projectDataBase::createDataBase()
 	createWiringListView();
 	createDrawingItemView();
 	createPublicViews();
+		//After them: it reads qet_devices and qet_folios
+	createPlcListView();
 	prepareQuery();
 
 		//The working copy's one row, for recovering it at the next start:
@@ -5279,6 +5291,94 @@ void projectDataBase::createElementNomenclatureView()
 	query_version.finish();
 	
 	qInfo() << "SQLite version: " << version;
+}
+
+/**
+	@brief projectDataBase::createPlcListView
+	One row per entry of each PLC master's I/O table, the rows the SPS
+	list of a folio shows: the master's own data (its BMK, its place and
+	what is ordered for it) repeated on each of its channels, the
+	channel's number, type, address, function and comment read from the
+	master's table, and -- where a symbol is drawn for the channel --
+	its cross-references and where it stands. An entry no symbol is
+	drawn for is a row too, with those columns empty: qet_plc_io lists
+	them the same way, and a list of the channels of a card is not
+	complete without them.
+
+	Ordered by master, then by the order of the channels in the card,
+	which is the order the card shows them in; the folio table of the
+	SPS list keeps it and starts a new page at a master's first channel.
+*/
+void projectDataBase::createPlcListView()
+{
+	const QString create_view = QStringLiteral(
+		"CREATE VIEW qet_plc_list AS "
+		"WITH io AS (SELECT element_uuid, ord, "
+			"MAX(CASE WHEN name = 'address' THEN value END) AS address, "
+			"MAX(CASE WHEN name = 'type' THEN value END) AS io_type, "
+			"MAX(CASE WHEN name = 'functionText' THEN value END) AS function_text, "
+			"MAX(CASE WHEN name = 'comment' THEN value END) AS comment "
+			"FROM element_value WHERE section = 'plcMasterData/plcIOs/plcIO' "
+			"GROUP BY element_uuid, ord) "
+		"SELECT m.structure_id AS structure_id, m.device_uuid AS plc_uuid, "
+			//The BMK the drawing shows: the master's, the copy the slave
+			//keeps when it was linked, used only if the master has none
+		"COALESCE(NULLIF(m.label, ''), NULLIF(s.label, '')) AS label, "
+			//Where the channel is drawn, else where the card is
+		"COALESCE(NULLIF(s.plant, ''), m.plant) AS plant, "
+		"COALESCE(NULLIF(s.location, ''), m.location) AS location, "
+			//The card itself: what is ordered is the master. A slave
+			//keeps no part data of its own (an auxiliary contact block
+			//that is hardware of its own is a simple symbol, not a PLC
+			//point), so these are the master's on every row
+		"m.manufacturer AS manufacturer, m.article AS manufacturer_reference, "
+		"m.designation AS designation, m.model AS model, "
+		"m.description AS description, m.supplier AS supplier, "
+		"io.ord + 1 AS entry, "
+		"CASE io.io_type WHEN 'entree_digitale' THEN 'DI' WHEN 'sortie_digitale' THEN 'DO' "
+			"WHEN 'entree_analogique' THEN 'AI' WHEN 'sortie_analogique' THEN 'AO' "
+			"WHEN 'entree_universelle' THEN 'UI' WHEN 'sortie_universelle' THEN 'UO' "
+			"ELSE io.io_type END AS plc_type, "
+			//The type written out, as the symbol drawing the channel
+			//keeps it when it is linked -- what the drawing shows too.
+			//The card's own table holds the key (entree_digitale), not
+			//the words, and SQL cannot translate it, so an entry no
+			//symbol is drawn for has nothing to show here
+		"si.plc_type AS plc_type_full, "
+		"io.address AS plc_address, io.function_text AS plc_function, "
+		"io.comment AS plc_comment, "
+			//The cross-reference of the symbol drawn for the channel,
+			//worked out the way the project's own ones are (%F.%c): its
+			//own sheet and its own cell, so that the rows of a card
+			//differ -- the stored one the drawing keeps is made on the
+			//master and reads the same on every row of it. The cells
+			//count from 1, which is what the drawing does unless its
+			//"border-columns_0" setting says otherwise; that setting is
+			//the person's, not the project's, so SQL cannot read it.
+		"CASE WHEN COALESCE(s.folio, s.folio_number, '') = '' THEN '' "
+			"ELSE COALESCE(s.folio, CAST(s.folio_number AS TEXT)) || '.' || "
+			"CASE WHEN COALESCE(s.position, '') GLOB '[A-Za-z][A-Za-z][0-9]*' "
+				"THEN substr(s.position, 3) "
+			"WHEN COALESCE(s.position, '') GLOB '[A-Za-z][0-9]*' "
+				"THEN substr(s.position, 2) "
+			"ELSE COALESCE(s.position, '') END "
+		"END AS plc_crossref, "
+			//The cross-reference the drawing keeps, which points at the
+			//master, and where the symbol stands: empty for an entry no
+			//symbol is drawn for
+		"si.xref AS xref, "
+		"s.position AS position, s.folio_number AS diagram_position, s.folio AS folio, "
+		"s.device_uuid AS slave_uuid "
+		"FROM io JOIN qet_devices m ON m.device_uuid = io.element_uuid "
+		"LEFT JOIN link l ON l.element_uuid = io.element_uuid AND l.group_index = io.ord "
+		"LEFT JOIN qet_devices s ON s.device_uuid = l.linked_uuid "
+		"LEFT JOIN element_info si ON si.element_uuid = s.device_uuid "
+		"ORDER BY m.structure_id, m.device_uuid, io.ord");
+
+	QSqlQuery query(m_data_base);
+	if (!query.exec(create_view)) {
+		qDebug() << query.lastError();
+	}
 }
 
 /**
@@ -6912,7 +7012,8 @@ QList<projectDataBase::ProjectSetting> projectDataBase::elementValueRowsOf(const
 	if (element.attribute(QStringLiteral("shownAsDot")) == QLatin1String("true"))
 		rows.append({section, 0, QStringLiteral("shownAsDot"), QStringLiteral("true")});
 	for (const QString &tag : {QStringLiteral("properties"), QStringLiteral("plcMasterData"),
-							   QStringLiteral("xrefDisplay"), QStringLiteral("potentialSources")}) {
+							   QStringLiteral("xrefDisplay"), QStringLiteral("potentialSources"),
+							   QStringLiteral("terminalLabels")}) {
 		const QDomElement child = element.firstChildElement(tag);
 		if (!child.isNull())
 			xmlRows(child, tag, 0, rows);
@@ -9058,6 +9159,34 @@ void projectDataBase::insertFolioConductorRows(Diagram *diagram)
 }
 
 /**
+	@brief projectDataBase::terminalNameChanged
+	Rewrite the name of the terminal @p terminal of @p element to
+	@p name, the name its symbol's drawing reads now
+	(@see Element::setTerminalLabel()).
+	Nothing while updates are blocked, as every other writer, and nothing
+	heard when no row holds the terminal anyway: a row written later is
+	written from the live terminal, which already reads the new name.
+	@param element uuid of the placed symbol the terminal belongs to
+	@param terminal Terminal::stableUuid() of the terminal
+	@param name the name the terminal reads now
+*/
+void projectDataBase::terminalNameChanged(const QUuid &element, const QUuid &terminal,
+										  const QString &name)
+{
+	if (m_update_blocked || terminal.isNull() || element.isNull())
+		return;
+	m_update_terminal_name_query.bindValue(QStringLiteral(":uuid"), terminal.toString());
+	m_update_terminal_name_query.bindValue(QStringLiteral(":element_uuid"), element.toString());
+	m_update_terminal_name_query.bindValue(QStringLiteral(":name"), name);
+	if (!m_update_terminal_name_query.exec()) {
+		qDebug() << "projectDataBase::terminalNameChanged update error : " << m_update_terminal_name_query.lastError();
+		return;
+	}
+	if (m_update_terminal_name_query.numRowsAffected() > 0)
+		emit dataBaseUpdated();
+}
+
+/**
 	@brief projectDataBase::insertTerminal
 	Insert (or, if already present -- e.g. a junction shared by several
 	conductors -- silently keep) @terminal in the terminal table.
@@ -9235,6 +9364,14 @@ void projectDataBase::prepareQuery()
 		//INSERT TERMINAL
 	m_insert_terminal_query = QSqlQuery(m_data_base);
 	m_insert_terminal_query.prepare("INSERT OR IGNORE INTO terminal (uuid, element_uuid, name, terminal_index) VALUES (:uuid, :element_uuid, :name, :terminal_index)");
+
+		//A terminal row is written when its wire is, and never after, so
+		//the name a placed symbol gives a terminal afterwards reaches the
+		//row where it already is. Scoped to the element: every copy of a
+		//symbol shares its terminals' uuids
+	m_update_terminal_name_query = QSqlQuery(m_data_base);
+	m_update_terminal_name_query.prepare("UPDATE terminal SET name = :name "
+										 "WHERE uuid = :uuid AND element_uuid = :element_uuid");
 
 		//INSERT CONDUCTOR
 	m_insert_conductor_query = QSqlQuery(m_data_base);

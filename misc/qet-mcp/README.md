@@ -667,6 +667,20 @@ Python, plus the hang guard on `addConductor` and the database refresh in
   them, are joined by a straight line however close they are. A
   terminal pointing straight into another symbol has no route, rather
   than one through that symbol.
+- **A wire can be given the path of a source drawing.** `set_conductor_path`
+  takes the conductor joining two terminals (`from`, `from_terminal`, `to`,
+  `to_terminal`, as `add_conductor`) and the corners it runs through,
+  `"corners": "x,y;x,y"` in scene coordinates from the `from` end, as an
+  importer has them. A corner within one unit of the previous point's x or
+  y is put exactly on it. Corners that do not make horizontal and vertical
+  segments leave the path as it was and the op's `note` says so; it is not
+  a failure. Needs `qet.setConductorPathBetween()` in the build.
+- **The collections of a run can be given.** `QET_CUSTOM_ELEMENTS_DIR` and
+  `QET_COMPANY_ELEMENTS_DIR` in the server's environment name the user and
+  company collection the launched QElectroTech uses, before the ones
+  `qet-assistant.json` names: a program that writes the parts it places
+  (the EPLAN import in `tools/eplan_import`) or a test keeps them in a
+  folder of its own.
 - **A terminal can be named by its uuid**: `terminal`, `from_terminal` and
   `to_terminal` take the terminal's uuid (as `qet_element_info` lists it)
   in place of its index, on the op's own element (for `add_conductor`, on
