@@ -814,6 +814,10 @@ qet_add_app_test(tst_pointerfreeunlessplacing tst_pointerfreeunlessplacing.cpp)
 qet_add_app_test(tst_tidyeditmenu tst_tidyeditmenu.cpp)
 # Edit > Replace the symbols: place, label and wires kept, one undo step.
 qet_add_app_test(tst_replacesymbols tst_replacesymbols.cpp)
+# The names of a symbol's terminals and how they are drawn belong to the
+# copy they are set on: three copies of one symbol read differently, the
+# definition keeps its own values, and taking the values back shows them
+qet_add_app_test(tst_terminallabels tst_terminallabels.cpp)
 # Edit > Select the same symbols: the folio's symbols drawn from the
 # definition of a selected one, the rest deselected.
 qet_add_app_test(tst_selectsamesymbols tst_selectsamesymbols.cpp)
