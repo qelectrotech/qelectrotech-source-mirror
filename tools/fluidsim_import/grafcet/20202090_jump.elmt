@@ -1,0 +1,44 @@
+<definition version="0.100" type="element" link_type="simple" width="60" height="30" hotspot_x="10" hotspot_y="20">
+    <uuid uuid="{3f7b61ed-7408-56e9-ae92-f3c2c7b6f9ba}"/>
+    <names>
+        <name lang="ar">القفز</name>
+        <name lang="ca">Saltar</name>
+        <name lang="cs">Skok</name>
+        <name lang="da">Hoppe</name>
+        <name lang="de">Springen</name>
+        <name lang="el">Αλμα</name>
+        <name lang="en">Jump</name>
+        <name lang="es">Saltar</name>
+        <name lang="fi">Hyppy</name>
+        <name lang="fr">Saut</name>
+        <name lang="hr">Skok</name>
+        <name lang="hu">Ugrás</name>
+        <name lang="it">Salto</name>
+        <name lang="ja">ジャンプ</name>
+        <name lang="ko">점프</name>
+        <name lang="mn">Үсрэх</name>
+        <name lang="nb">Hoppe</name>
+        <name lang="nl">Springen</name>
+        <name lang="nl_BE">Brug</name>
+        <name lang="pl">Skok</name>
+        <name lang="pt">Pular</name>
+        <name lang="pt_BR">Pular</name>
+        <name lang="ro">A sari</name>
+        <name lang="ru">Прыгать</name>
+        <name lang="sk">Prepojenie</name>
+        <name lang="sl">Skok</name>
+        <name lang="sr">Скочи</name>
+        <name lang="sv">Hopp</name>
+        <name lang="tr">Zıplamak</name>
+        <name lang="uk">Перемичка</name>
+        <name lang="zh">跳转</name>
+    </names>
+    <informations>Author: The QElectroTech team; redrawn on the 10 grid with named terminals for the FluidSIM import
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line x1="0" y1="-20" x2="0" y2="0" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <polygon x1="0" y1="0" x2="-4" y2="-8" x3="4" y3="-8" closed="true" style="line-style:normal;line-weight:normal;filling:black;color:black" antialias="true"/>
+        <terminal uuid="{c4d4c964-9576-447c-a3b8-e2b00dd44c95}" name="in" x="0" y="-20" orientation="n" type="Generic"/>
+        <dynamic_text x="10" y="-16.5" z="5" text_width="-1" Halignment="AlignLeft" Valignment="AlignVCenter" frame="false" rotation="0" keep_visual_rotation="false" text_from="ElementInfo" uuid="{0e1f6473-ba31-4ea5-b006-329bc9cc8a98}" font="Liberation Sans,8,-1,5,50,0,0,0,0,0,Regular"><text></text><info_name>label</info_name></dynamic_text>
+    </description>
+</definition>

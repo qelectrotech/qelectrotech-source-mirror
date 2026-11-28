@@ -1064,6 +1064,26 @@ add_test(NAME tst_qetstrings COMMAND tst_qetstrings)
 target_include_directories(tst_qetstrings PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_qetstrings PRIVATE Qt::Test Qt::Widgets Qt::Xml pugixml::pugixml)
 
+# File > Import FluidSIM circuit: where the Python program is found, what it
+# is given and how its answer is read.
+add_executable(tst_fluidsimimport tst_fluidsimimport.cpp
+  ${QET_DIR}/sources/import/fluidsim/fluidsimimport.cpp
+  ${QET_DIR}/sources/import/fluidsim/fluidsimimport.h)
+add_test(NAME tst_fluidsimimport COMMAND tst_fluidsimimport)
+set_tests_properties(tst_fluidsimimport PROPERTIES ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
+target_include_directories(tst_fluidsimimport PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_fluidsimimport PRIVATE Qt::Test Qt::Widgets)
+# The import program itself, on circuits the test builds; with QET_BINARY it
+# also writes a project through the qelectrotech of this build.
+find_package(Python3 QUIET COMPONENTS Interpreter)
+if(Python3_Interpreter_FOUND)
+  add_test(NAME tst_fluidsimimport_python
+    COMMAND ${Python3_EXECUTABLE} -m unittest -v test_fluidsim_import
+    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/../../tools/fluidsim_import)
+  set_tests_properties(tst_fluidsimimport_python PROPERTIES TIMEOUT 600
+    ENVIRONMENT "QT_QPA_PLATFORM=offscreen;QET_BINARY=$<TARGET_FILE:qelectrotech>")
+endif()
+
 # CommandSearchPopup: accent-blind matching, ranking, and that Enter runs
 # only the owning window's highlighted, enabled command.
 add_executable(

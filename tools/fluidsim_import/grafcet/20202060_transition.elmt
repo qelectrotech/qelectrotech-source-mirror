@@ -1,0 +1,45 @@
+<definition version="0.100" type="element" link_type="simple" width="130" height="20" hotspot_x="20" hotspot_y="10">
+    <uuid uuid="{10d189dc-9377-5443-bcb4-b69f526b036b}"/>
+    <names>
+        <name lang="ar">انتقال</name>
+        <name lang="ca">transició</name>
+        <name lang="cs">přechod</name>
+        <name lang="da">overgang</name>
+        <name lang="de">Überleitung</name>
+        <name lang="el">μετάβαση</name>
+        <name lang="en">transition</name>
+        <name lang="es">transición</name>
+        <name lang="fi">siirtymä</name>
+        <name lang="fr">passage</name>
+        <name lang="hr">tranzicija</name>
+        <name lang="hu">átmenet</name>
+        <name lang="it">transizione</name>
+        <name lang="ja">遷移</name>
+        <name lang="ko">전이</name>
+        <name lang="mn">шилжилт</name>
+        <name lang="nb">overgang</name>
+        <name lang="nl">overgang</name>
+        <name lang="nl_BE">transitie</name>
+        <name lang="pl">przemiana</name>
+        <name lang="pt">transição</name>
+        <name lang="pt_BR">transição</name>
+        <name lang="ro">tranziție</name>
+        <name lang="ru">переход</name>
+        <name lang="sk">prechod</name>
+        <name lang="sl">prehod</name>
+        <name lang="sr">прелаз</name>
+        <name lang="sv">övergång</name>
+        <name lang="tr">geçiş</name>
+        <name lang="uk">Перехід</name>
+        <name lang="zh">转换</name>
+    </names>
+    <informations>Author: The QElectroTech team; redrawn on the 10 grid with named terminals for the FluidSIM import
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line x1="0" y1="-10" x2="0" y2="10" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <rect x="-12" y="-2" width="24" height="4" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:black;color:black" antialias="false"/>
+        <terminal uuid="{51cb8195-fe7d-4fa6-9d8a-d07da42c9b4a}" name="in" x="0" y="-10" orientation="n" type="Generic"/>
+        <terminal uuid="{bdb11747-9b9c-42c4-87fe-1a81af467dac}" name="out" x="0" y="10" orientation="s" type="Generic"/>
+        <dynamic_text x="18" y="-10.5" z="5" text_width="-1" Halignment="AlignLeft" Valignment="AlignVCenter" frame="false" rotation="0" keep_visual_rotation="false" text_from="ElementInfo" uuid="{7e7ea9af-e72e-43e4-8641-7ae5b28b68a8}" font="Liberation Sans,8,-1,5,50,0,0,0,0,0,Regular"><text></text><info_name>label</info_name></dynamic_text>
+    </description>
+</definition>

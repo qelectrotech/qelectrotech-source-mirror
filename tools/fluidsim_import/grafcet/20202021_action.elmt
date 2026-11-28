@@ -1,0 +1,46 @@
+<definition version="0.100" type="element" link_type="simple" width="150" height="55" hotspot_x="0" hotspot_y="40">
+    <uuid uuid="{049ba732-6cef-51bb-b97d-a8cf26825382}"/>
+    <names>
+        <name lang="ar">العمل الشرطي المستمر</name>
+        <name lang="ca">Acció condicional contínua</name>
+        <name lang="cs">Nepřetržitá podmíněná akce</name>
+        <name lang="da">Kontinuerlig betinget handling</name>
+        <name lang="de">Kontinuierliche Aktion mit Bedingung</name>
+        <name lang="el">Συνεχής υπό όρους δράση</name>
+        <name lang="en">Continuous conditional action</name>
+        <name lang="es">Acción condicional continua</name>
+        <name lang="fi">Jatkuva ehdollinen toiminto</name>
+        <name lang="fr">Action conditionnelle continue</name>
+        <name lang="hr">Kontinuirano uvjetno djelovanje</name>
+        <name lang="hu">Folyamatos feltételes cselekvés</name>
+        <name lang="it">Azione condizionale continua</name>
+        <name lang="ja">継続的な条件付きアクション</name>
+        <name lang="ko">연속 조건부 동작</name>
+        <name lang="mn">Тасралтгүй нөхцөлт үйлдэл</name>
+        <name lang="nb">Kontinuerlig betinget handling</name>
+        <name lang="nl">Continue voorwaardelijke actie</name>
+        <name lang="nl_BE">Continue voorwaardelijke actie</name>
+        <name lang="pl">Ciągłe działanie warunkowe</name>
+        <name lang="pt">Ação condicional contínua</name>
+        <name lang="pt_BR">Ação condicional contínua</name>
+        <name lang="ro">Acțiune condiționată continuă</name>
+        <name lang="ru">Непрерывное условное действие</name>
+        <name lang="sk">Nepretržitá podmienená akcia</name>
+        <name lang="sl">Neprekinjeno pogojno dejanje</name>
+        <name lang="sr">Континуирано условно дејство</name>
+        <name lang="sv">Kontinuerlig villkorad åtgärd</name>
+        <name lang="tr">Sürekli koşullu eylem</name>
+        <name lang="uk">Безперервна умовна дія</name>
+        <name lang="zh">动作_21</name>
+    </names>
+    <informations>Author: The QElectroTech team; redrawn on the 10 grid with named terminals for the FluidSIM import
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line x1="0" y1="0" x2="10" y2="0" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <rect x="10" y="-15" width="140" height="30" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <terminal uuid="{43ca0bca-82ba-46f8-b11d-db89aa6d050c}" name="step" x="0" y="0" orientation="w" type="Generic"/>
+        <dynamic_text x="76" y="-10.5" z="5" text_width="-1" Halignment="AlignHCenter" Valignment="AlignVCenter" frame="false" rotation="0" keep_visual_rotation="false" text_from="ElementInfo" uuid="{179ae3b0-2d95-4eb5-9b0e-d6278d1537ba}" font="Liberation Sans,8,-1,5,50,0,0,0,0,0,Regular"><text></text><info_name>label</info_name></dynamic_text>
+        <line x1="80" y1="-15" x2="80" y2="-25" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <dynamic_text x="84" y="-42.5" z="5" text_width="-1" Halignment="AlignLeft" Valignment="AlignVCenter" frame="false" rotation="0" keep_visual_rotation="false" text_from="UserText" uuid="{acb09215-5978-4f71-97a4-a1c2c90feda4}" font="Liberation Sans,8,-1,5,50,0,0,0,0,0,Regular"><text></text></dynamic_text>
+    </description>
+</definition>

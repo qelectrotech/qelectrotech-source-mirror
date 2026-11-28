@@ -457,6 +457,18 @@ install(DIRECTORY templates   DESTINATION ${QET_DATA_PATH})
 # <prefix>/mcp -> <prefix>/bin.
 install(PROGRAMS misc/qet-mcp/qet_mcp.py DESTINATION ${QET_DATA_PATH}mcp)
 install(FILES misc/qet-mcp/README.md DESTINATION ${QET_DATA_PATH}mcp)
+# The FluidSIM import (File > Import FluidSIM circuit) is a Python 3 program
+# that writes the project through this QElectroTech and the MCP server above;
+# it finds both from <data>/fluidsim_import.
+install(FILES
+  tools/fluidsim_import/fluidsim_import.py
+  tools/fluidsim_import/fluidsim_elements.py
+  tools/fluidsim_import/fluidsim_grafcet.py
+  tools/fluidsim_import/own_graphics.py
+  tools/fluidsim_import/fluidsim_batch.py
+  DESTINATION ${QET_DATA_PATH}fluidsim_import)
+install(DIRECTORY tools/fluidsim_import/grafcet DESTINATION ${QET_DATA_PATH}fluidsim_import
+  FILES_MATCHING PATTERN "*.elmt")
 install(FILES LICENSE ELEMENTS.LICENSE CREDIT README ChangeLog DESTINATION ${QET_LICENSE_PATH})
 if(UNIX AND NOT APPLE)
     install(FILES misc/org.qelectrotech.qelectrotech.desktop DESTINATION ${QET_DESKTOP_PATH})

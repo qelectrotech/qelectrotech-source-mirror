@@ -45,6 +45,7 @@ it the `.qetz` itself, and write one when the output path ends in `.qetz`.
 | `qet_edit` | **change a project** — place, move, rotate, label, wire, number, cross-reference, add text, shapes and images, restyle a symbol's text fields, delete; then diff the result |
 | `qet_element_build` | **author a `.elmt`** — draw a new symbol, with terminals to wire it by |
 | `qet_project_new` | **start from nothing** — an empty project with a title and folios |
+| `qet_fluidsim_import` | **take over a FluidSIM 6 circuit** (`.circ`, or a folder of them) as a new project, every part drawn anew after ISO 1219-1 / IEC 60617, with its wires, links, labels, values and GRAFCET; runs `fluidsim_import/fluidsim_import.py` next to QElectroTech |
 | `qet_element_search` | **find a symbol** in a collection by name (any language), type or terminal count |
 | `qet_check` | **design-rule checks** — duplicate labels, unlabelled masters, unnumbered conductors, empty folios, terminals with more than four wires, folio reports with several wires |
 | `qet_layout_check` | **does the drawing read well?** — a 0–100 score; wires that jog because two symbols are a few pixels out of line, symbols off the grid, wires through symbols, overlaps, crossings, labels over wires, 4-way junction dots, side branches out of line; and the moves that fix them, ready for `qet_edit` |
@@ -197,7 +198,7 @@ clicked, and stop working until it is turned on:
 
 | | |
 |---|---|
-| need `QET_ENABLE_SCRIPTING=1` | `qet_query`, `qet_continuity`, `qet_check`, `qet_layout_check`, `qet_project_new`, `qet_edit`, `qet_script_api`, `qet_script_test`, `qet_script_install`, `qet_script_remove` |
+| need `QET_ENABLE_SCRIPTING=1` | `qet_query`, `qet_continuity`, `qet_check`, `qet_layout_check`, `qet_project_new`, `qet_edit`, `qet_fluidsim_import`, `qet_script_api`, `qet_script_test`, `qet_script_install`, `qet_script_remove` |
 | unaffected | everything else — they read the `.qet` directly, or, in `qet_export`'s case, use a plain CLI flag |
 
 The variable goes in the environment this server is started in, which for an
