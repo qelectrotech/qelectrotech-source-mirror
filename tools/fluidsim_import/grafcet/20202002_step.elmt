@@ -1,0 +1,49 @@
+<definition version="0.100" type="element" link_type="simple" width="40" height="40" hotspot_x="20" hotspot_y="20">
+    <uuid uuid="{5666d788-ee72-5942-b78c-74e25cb17fa7}"/>
+    <names>
+        <name lang="ar">أرفق خطوة</name>
+        <name lang="ca">pas de tancament</name>
+        <name lang="cs">uzavírací krok</name>
+        <name lang="da">omsluttende trin</name>
+        <name lang="de">Einschließender Schritt</name>
+        <name lang="el">κλιμακωτό βήμα</name>
+        <name lang="en">enclosing step</name>
+        <name lang="es">paso envolvente</name>
+        <name lang="fi">sisältävä askel</name>
+        <name lang="fr">étape d'enfermement</name>
+        <name lang="hr">obuhvatni korak</name>
+        <name lang="hu">befoglaló lépés</name>
+        <name lang="it">passo di chiusura</name>
+        <name lang="ja">包囲ステップ</name>
+        <name lang="ko">포함 스텝</name>
+        <name lang="mn">хаалттай алхам</name>
+        <name lang="nb">omsluttende trinn</name>
+        <name lang="nl">omsluitende stap</name>
+        <name lang="nl_BE">omvattende stap</name>
+        <name lang="pl">stopień zamykający</name>
+        <name lang="pt">etapa de fechamento</name>
+        <name lang="pt_BR">etapa de fechamento</name>
+        <name lang="ro">pas de anexare</name>
+        <name lang="ru">ограждающая ступенька</name>
+        <name lang="sk">obklopujúci krok</name>
+        <name lang="sl">zapiralni korak</name>
+        <name lang="sr">оградни корак</name>
+        <name lang="sv">omslutande steg</name>
+        <name lang="tr">çevreleyen adım</name>
+        <name lang="uk">Охоплювальний крок</name>
+        <name lang="zh">步骤_02</name>
+    </names>
+    <informations>Author: The QElectroTech team; redrawn on the 10 grid with named terminals for the FluidSIM import
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <rect x="-20" y="-20" width="40" height="40" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <line x1="-20" y1="-13" x2="-13" y2="-20" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <line x1="13" y1="-20" x2="20" y2="-13" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <line x1="-20" y1="13" x2="-13" y2="20" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <line x1="13" y1="20" x2="20" y2="13" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <terminal uuid="{1b6b5ea4-3c60-4296-b8cf-b614c64d2385}" name="in" x="0" y="-20" orientation="n" type="Generic"/>
+        <terminal uuid="{86667dd5-c45e-441c-a997-9ebeebba7820}" name="out" x="0" y="20" orientation="s" type="Generic"/>
+        <terminal uuid="{3e5a4aba-4637-4235-8ef7-7230bc215023}" name="action" x="20" y="0" orientation="e" type="Generic"/>
+        <dynamic_text x="-4" y="-11" z="5" text_width="-1" Halignment="AlignHCenter" Valignment="AlignVCenter" frame="false" rotation="0" keep_visual_rotation="false" text_from="ElementInfo" uuid="{0e34a6c5-578a-4f38-86d1-7fb3c69a9db5}" font="Liberation Sans,9,-1,5,50,0,0,0,0,0,Regular"><text></text><info_name>label</info_name></dynamic_text>
+    </description>
+</definition>

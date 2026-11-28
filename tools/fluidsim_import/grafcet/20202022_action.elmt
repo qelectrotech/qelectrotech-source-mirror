@@ -1,0 +1,46 @@
+<definition version="0.100" type="element" link_type="simple" width="150" height="45" hotspot_x="0" hotspot_y="30">
+    <uuid uuid="{b9d8b974-bb93-57b7-9923-8e06cb72f1c3}"/>
+    <names>
+        <name lang="ar">الإجراء الذي يحفظ عند تنشيطه</name>
+        <name lang="ca">Acció que desa quan s'activa</name>
+        <name lang="cs">Akce, která se při aktivaci uloží</name>
+        <name lang="da">Handling, der gemmer, når den aktiveres</name>
+        <name lang="de">Speichernd wirkende Aktion bei Aktivierung</name>
+        <name lang="el">Ενέργεια που αποθηκεύει όταν ενεργοποιηθεί</name>
+        <name lang="en">Action that saves when activated</name>
+        <name lang="es">Acción que guarda cuando se activa</name>
+        <name lang="fi">Toiminto, joka tallentuu aktivoitaessa</name>
+        <name lang="fr">Action qui enregistre lorsqu'elle est activée</name>
+        <name lang="hr">Akcija koja sprema kada se aktivira</name>
+        <name lang="hu">Művelet, amely aktiváláskor ment</name>
+        <name lang="it">Azione che salva quando attivata</name>
+        <name lang="ja">起動時に保存するアクション</name>
+        <name lang="ko">활성화 시 저장하는 동작</name>
+        <name lang="mn">Идэвхжүүлсэн үед хадгалдаг үйлдэл</name>
+        <name lang="nb">Handling som lagrer når den er aktivert</name>
+        <name lang="nl">Actie die wordt opgeslagen wanneer geactiveerd</name>
+        <name lang="nl_BE">Actie die opslaat bij activering</name>
+        <name lang="pl">Akcja, która zapisuje się po aktywacji</name>
+        <name lang="pt">Ação que salva quando ativada</name>
+        <name lang="pt_BR">Ação que salva queo ativada</name>
+        <name lang="ro">Acțiune care salvează atunci când este activată</name>
+        <name lang="ru">Действие, которое сохраняется при активации</name>
+        <name lang="sk">Akcia, ktorá sa uloží pri aktivácii</name>
+        <name lang="sl">Dejanje, ki shrani, ko je aktivirano</name>
+        <name lang="sr">Радња која се чува када се активира</name>
+        <name lang="sv">Åtgärd som sparas vid aktivering</name>
+        <name lang="tr">Etkinleştirildiğinde kaydeden eylem</name>
+        <name lang="uk">Дія, що зберігається при активації</name>
+        <name lang="zh">动作_22</name>
+    </names>
+    <informations>Author: The QElectroTech team; redrawn on the 10 grid with named terminals for the FluidSIM import
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line x1="0" y1="0" x2="10" y2="0" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <rect x="10" y="-15" width="140" height="30" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <terminal uuid="{3240f2dd-8705-4e52-8b79-43c811ca4b60}" name="step" x="0" y="0" orientation="w" type="Generic"/>
+        <dynamic_text x="76" y="-10.5" z="5" text_width="-1" Halignment="AlignHCenter" Valignment="AlignVCenter" frame="false" rotation="0" keep_visual_rotation="false" text_from="ElementInfo" uuid="{f46d05c4-ecbc-4145-93ca-05f37eb13058}" font="Liberation Sans,8,-1,5,50,0,0,0,0,0,Regular"><text></text><info_name>label</info_name></dynamic_text>
+        <line x1="22" y1="-15" x2="22" y2="-27" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <polygon x1="22" y1="-29" x2="19" y2="-23" x3="25" y3="-23" closed="true" style="line-style:normal;line-weight:normal;filling:black;color:black" antialias="true"/>
+    </description>
+</definition>

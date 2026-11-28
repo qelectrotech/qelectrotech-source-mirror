@@ -1,0 +1,44 @@
+<definition version="0.100" type="element" link_type="simple" width="150" height="30" hotspot_x="0" hotspot_y="15">
+    <uuid uuid="{7b102eb2-2d13-5a39-b1a9-4cc8fab0f921}"/>
+    <names>
+        <name lang="ar">العمل المستمر</name>
+        <name lang="ca">Acció contínua</name>
+        <name lang="cs">Nepřetržité působení</name>
+        <name lang="da">Kontinuerlig handling</name>
+        <name lang="de">Kontinuierliche Aktion</name>
+        <name lang="el">Συνεχής δράση</name>
+        <name lang="en">Continuous action</name>
+        <name lang="es">Acción continua</name>
+        <name lang="fi">Jatkuva toiminto</name>
+        <name lang="fr">Action continue</name>
+        <name lang="hr">Kontinuirano djelovanje</name>
+        <name lang="hu">Folyamatos cselekvés</name>
+        <name lang="it">Azione continua</name>
+        <name lang="ja">連続行動</name>
+        <name lang="ko">연속 동작</name>
+        <name lang="mn">Тасралтгүй үйлдэл</name>
+        <name lang="nb">Kontinuerlig handling</name>
+        <name lang="nl">Continue actie</name>
+        <name lang="nl_BE">Continue actie</name>
+        <name lang="pl">Ciągłe działanie</name>
+        <name lang="pt">Ação contínua</name>
+        <name lang="pt_BR">Ação contínua</name>
+        <name lang="ro">Acțiune continuă</name>
+        <name lang="ru">Непрерывное действие</name>
+        <name lang="sk">Nepretržitá akcia</name>
+        <name lang="sl">Neprekinjeno delovanje</name>
+        <name lang="sr">Континуирана акција</name>
+        <name lang="sv">Kontinuerlig åtgärd</name>
+        <name lang="tr">Sürekli eylem</name>
+        <name lang="uk">Безперервна дія</name>
+        <name lang="zh">动作_20</name>
+    </names>
+    <informations>Author: The QElectroTech team; redrawn on the 10 grid with named terminals for the FluidSIM import
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line x1="0" y1="0" x2="10" y2="0" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <rect x="10" y="-15" width="140" height="30" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <terminal uuid="{b8f1f20e-9e67-469d-ad0d-8a57d4053615}" name="step" x="0" y="0" orientation="w" type="Generic"/>
+        <dynamic_text x="76" y="-10.5" z="5" text_width="-1" Halignment="AlignHCenter" Valignment="AlignVCenter" frame="false" rotation="0" keep_visual_rotation="false" text_from="ElementInfo" uuid="{79ca79c2-c690-4b46-ae8c-18df0309b718}" font="Liberation Sans,8,-1,5,50,0,0,0,0,0,Regular"><text></text><info_name>label</info_name></dynamic_text>
+    </description>
+</definition>
