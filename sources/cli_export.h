@@ -60,6 +60,7 @@ namespace CLIExport {
 		  qelectrotech --check-elements <element.elmt | directory> [--grid]
 		  qelectrotech --export-library <directory> <output.csv>
 		  qelectrotech --import-eplan   <package.zip | folder | file.dxf | file.edz | file.dwg | file.aasx> <collection_dir> [--category C] [--manufacturer M --type T] [--edz part.edz] [--wspak part.wspak] [--force]
+		  qelectrotech --import-eplan   <collection_dir> --macro-package <zip | folder> (--type T [--type T2 ...] | --all) [--category C]
 		  qelectrotech --resave         <project.qet> <output.qet>
 		  qelectrotech --recover        <damaged.qetz> <output.qet>
 		  qelectrotech --set-titleblock <project.qet> <output.qet> key=value...
@@ -131,6 +132,10 @@ namespace CLIExport {
 		      manufacturer and type in its Digital Nameplate; its STEP
 		      model goes to 3D/ and its documents to manufacturer_data/
 		      next to <collection_dir>.
+		      With --macro-package, articles out of a manufacturer's macro
+		      package (a ZIP of EPLAN macros and article data): by type or
+		      order number, or --all; an article whose type folder exists
+		      already is left as it is.
 		      An element edited since its
 		      import is kept; --force overwrites it.
 		resave: load and rewrite the project XML (round-trip integrity).

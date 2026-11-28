@@ -23,6 +23,8 @@
 #include "container/qetzip.h"
 #include "import/edz/edzpart.h"
 #include "import/elementfingerprint.h"
+#include "import/macropackage/macropackagetree.h"
+#include "import/macropackage/macropackage.h"
 #include "import/aasx/aasxpackage.h"
 #include "import/eplandxf/dwgreader.h"
 #include "import/eplandxf/eplandxfreader.h"
@@ -580,6 +582,91 @@ class TstEplanPartImport : public QObject
 				"{\"submodels\": [{\"idShort\": \"TechnicalData\", \"submodelElements\": []}]}"}}));
 			QVERIFY(!importer.importAasx(bare, QStringLiteral("PLC"), collection));
 			QVERIFY(!importer.errorString().isEmpty());
+		}
+
+		/// A manufacturer's macro package: macros sorted by product family
+		/// and the article data in EPLAN parts management XML. Of an
+		/// article, the generic element from its part data and one element
+		/// per macro variant; its PLC channels from the function definitions
+		void macroPackage()
+		{
+			const QByteArray parts =
+				"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
+				"<partsmanagement type=\"EPLAN.PartsManagement\">\n"
+				" <part P_ARTICLE_PARTNR=\"ACME.AX200\" P_ARTICLE_MANUFACTURER=\"ACME\""
+				" P_ARTICLE_ORDERNR=\"AX200\" P_ARTICLE_TYPENR=\"AX200\""
+				" P_ARTICLE_DESCR1=\"en_US@Input module, 2 channels;\""
+				" P_ARTICLE_GROUPSYMBOLMACRO=\"$(MD_MACROS)\\Acme\\IO\\Input Modules ACME AXxxxx\\AX200.ema\">\n"
+				"  <functiontemplate connectionDesignation=\"1\" connectiondescription=\"DI0\""
+				" functiondefcategory=\"300\" functiondefgroup=\"1\" functiondefid=\"2\" idx1=\"Channel 1\"/>\n"
+				"  <functiontemplate connectionDesignation=\"2\" connectiondescription=\"DI1\""
+				" functiondefcategory=\"300\" functiondefgroup=\"1\" functiondefid=\"2\" idx1=\"Channel 2\"/>\n"
+				" </part>\n"
+				"</partsmanagement>\n";
+			const QString zip = m_dir.filePath(QStringLiteral("macros.zip"));
+			QVERIFY(QetZip::write(zip, {
+				{QStringLiteral("Acme/Article_DB.xml"), parts},
+				{QStringLiteral("Acme/IO/Input Modules ACME AXxxxx/AX200.ema"), smallMacro()},
+				{QStringLiteral("Acme/IO/Input Modules ACME AXxxxx/AX300.ema"), smallMacro()}}));
+
+			MacroPackage package;
+			QVERIFY2(package.open(zip), qPrintable(package.errorString()));
+			QCOMPARE(package.macroCount(), 2);
+				// AX300: a macro no article names, offered by its file name
+			QCOMPARE(package.articles().size(), 2);
+			const MacroPackageArticle *article = package.article(QStringLiteral("ax 200"));
+			QVERIFY(article);
+			QCOMPARE(article->order_number, QStringLiteral("AX200"));
+			QCOMPARE(article->description, QStringLiteral("Input module, 2 channels"));
+			QCOMPARE(article->category, QStringLiteral("Input Modules AXxxxx"));
+			QCOMPARE(package.find(QStringLiteral("input 2 channels")).size(), 1);
+			QVERIFY(!package.macro(*article).isEmpty());
+
+			EplanMacroReader reader;
+			QVERIFY(reader.load(package.macro(*article)));
+			QCOMPARE(reader.variants().size(), 1);
+			QCOMPARE(reader.variants().first().pins, 2);
+			QVERIFY(reader.readVariant(1, 0));
+			QCOMPARE(reader.symbol().pins.size(), 2);
+
+			const QString collection = m_dir.filePath(QStringLiteral("package"));
+			const QString folder = EplanPartImporter::macroPackageFolder(package, *article, QString(), collection);
+			EplanPartImporter importer;
+			QVERIFY2(importer.importMacroPackage(package, {QStringLiteral("AX200")}, QString(), collection),
+				 qPrintable(importer.errorString()));
+			QCOMPARE(importer.importedCount(), 1);
+			QStringList written = importer.writtenPaths();
+			written.sort();
+			QCOMPARE(written, (QStringList{folder + QStringLiteral("/AX200.elmt"),
+						       folder + QStringLiteral("/AX200_Schematic.elmt")}));
+				// the part data names the PLC channels
+			const QDomDocument generic = readXml(folder + QStringLiteral("/AX200.elmt"));
+			QCOMPARE(generic.elementsByTagName(QStringLiteral("plcIO")).size(), 2);
+
+				// what is there stays, a type that is not in the package fails
+			QVERIFY(importer.importMacroPackage(package, {QStringLiteral("AX200"), QStringLiteral("NOPE")},
+							    QString(), collection));
+			QCOMPARE(importer.importedCount(), 0);
+			QCOMPARE(importer.skippedCount(), 1);
+			QCOMPARE(importer.failed().size(), 1);
+
+				//The command line: every article of the package
+			const QString cli = m_dir.filePath(QStringLiteral("package_cli"));
+			QCOMPARE(CLIExport::run({QStringLiteral("--import-eplan"), cli,
+						 QStringLiteral("--macro-package"), zip, QStringLiteral("--all")}), 0);
+			QVERIFY(QFile::exists(EplanPartImporter::macroPackageFolder(package, *article, QString(), cli)
+					      + QStringLiteral("/AX200_Schematic.elmt")));
+			QCOMPARE(CLIExport::run({QStringLiteral("--import-eplan"), cli,
+						 QStringLiteral("--macro-package"), zip}), 2);
+		}
+
+		/// The elements panel has the tab of the macro package
+		void macroPackageTab()
+		{
+			QETDiagramEditor *editor = QetAppTest::editor();
+			QVERIFY(editor);
+			QVERIFY(editor->findChild<MacroPackageTree *>());
+			QVERIFY(editor->findChild<QAction *>(QStringLiteral("import_macro_package")));
 		}
 
 		/// The editor has the menu entry

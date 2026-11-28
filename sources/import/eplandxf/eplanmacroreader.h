@@ -37,6 +37,17 @@
 	Pictures (manufacturer logos) and objects of other kinds are left out and
 	listed in skipped().
 */
+/// One variant of a macro: a representation type (MacroFuncType: 1
+/// multi-line, 2 single-line, 4 overview, 6 panel layout) and its variant
+/// (0 = A, 1 = B ...)
+struct EplanMacroVariant
+{
+	int func_type = 0;
+	int id = 0;
+	QString description;   ///< one language, line breaks as " - "
+	int pins = 0;          ///< connection points
+};
+
 class EplanMacroReader
 {
 	public:
@@ -51,6 +62,18 @@ class EplanMacroReader
 		/// what the read variant shows ("Power Supply", "Rack layout A"),
 		/// from its description; may be empty
 		QString variantName() const { return m_variant_name; }
+		/**
+			A macro with several variants per representation type, as the
+			macro packages of a manufacturer hold them (a PLC card: one
+			variant per channel, one with all channels, the overview):
+			load() it once, then readVariant() each of variants(). Other
+			than read(), this also takes the graphics the macro places
+			(O5 placed by O144, with its scale and rotation), free lines,
+			arcs, rectangles and texts.
+		*/
+		bool load(const QByteArray &macro);
+		QVector<EplanMacroVariant> variants() const;
+		bool readVariant(int func_type, int variant_id);
 		/**
 			Reads the 2D panel layout variant (MacroFuncType 6) instead: the
 			front view the manufacturer draws as sub-objects of a graphic
@@ -69,6 +92,7 @@ class EplanMacroReader
 	private:
 		void addFunction(const QDomElement &function);
 
+		QDomDocument m_doc;   ///< the macro of load()
 		EplanSymbolData m_symbol;
 		QString m_letters;
 		QString m_description;

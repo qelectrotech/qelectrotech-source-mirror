@@ -178,6 +178,17 @@ bool EdzPart::parse(const QString &part_xml_path)
 	return parsePart(doc.documentElement().firstChildElement(QStringLiteral("part")));
 }
 
+bool EdzPart::parse(const QByteArray &part_xml)
+{
+	m_error.clear();
+	QDomDocument doc;
+	if (!doc.setContent(part_xml)) {
+		m_error = QStringLiteral("Malformed part data");
+		return false;
+	}
+	return parsePart(doc.documentElement().firstChildElement(QStringLiteral("part")));
+}
+
 /**
 	Read one <part> of an EPLAN.PartsManagement document.
 */
@@ -240,6 +251,10 @@ bool EdzPart::parsePart(const QDomElement &part)
 			pin.designation = desig;
 			pin.description = k < descrs.size() ? descrs.at(k).trimmed() : QString();
 			pin.group = group;
+			pin.def_category = ft.attribute(QStringLiteral("functiondefcategory")).toInt();
+			pin.def_group = ft.attribute(QStringLiteral("functiondefgroup")).toInt();
+			pin.def_id = ft.attribute(QStringLiteral("functiondefid")).toInt();
+			pin.channel = ft.attribute(QStringLiteral("idx1")).trimmed();
 			m_pins.append(pin);
 		}
 	}

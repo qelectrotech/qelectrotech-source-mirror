@@ -652,3 +652,264 @@ bool EplanMacroReader::readLayout(const QString &path)
 	m_symbol.source = QStringLiteral("Generated from the manufacturer's EPLAN panel layout macro");
 	return true;
 }
+
+namespace {
+	/// every element below @p top, in document order (QDom has no "*")
+	QVector<QDomElement> below(const QDomElement &top)
+	{
+		QVector<QDomElement> all;
+		for (QDomElement e = top.firstChildElement(); !e.isNull();) {
+			all << e;
+			if (!e.firstChildElement().isNull()) {
+				e = e.firstChildElement();
+				continue;
+			}
+			while (!e.isNull() && e != top && e.nextSiblingElement().isNull())
+				e = e.parentNode().toElement();
+			if (e.isNull() || e == top) break;
+			e = e.nextSiblingElement();
+		}
+		return all;
+	}
+
+	/// one language of a text, without the "{{ }}" EPLAN puts around
+	/// text that is not to be translated
+	QString plain(const QString &s)
+	{
+		const QString t = language(s);
+		static const QRegularExpression braces(QStringLiteral("^\\{\\{(.*)\\}\\}$"),
+						       QRegularExpression::DotMatchesEverythingOption);
+		const auto m = braces.match(t);
+		return (m.hasMatch() ? m.captured(1) : t).trimmed();
+	}
+
+	/// a point attribute; one that is left out is the origin
+	QPointF at(const QDomElement &e, const char *attribute)
+	{
+		QPointF p;
+		point(e.attribute(QLatin1String(attribute)), &p);
+		return p;
+	}
+
+	/**
+		Where a function or a graphic is placed: S40x1201 with the position
+		(A762) and S39x761 with scale and rotation, the 2x2 matrix A751..A754
+		column by column -- the macros hold "cos, sin, -sin, cos" of a
+		quarter turn (0/1/-1/0 with cos(pi/2) = 6.1e-17, 0/-1/1/0 with
+		cos(3pi/2) = -1.8e-16), which is the order of QTransform.
+	*/
+	QTransform placement(const QDomElement &e)
+	{
+		const QDomElement where = e.firstChildElement(QStringLiteral("S40x1201"));
+		const QPointF p = at(where, "A762");
+		const QDomElement m = where.firstChildElement(QStringLiteral("S39x761"));
+		auto value = [&m](const char *a, double fallback) {
+			bool ok = false;
+			const double v = m.attribute(QLatin1String(a)).toDouble(&ok);
+			return ok ? v : fallback;
+		};
+		return QTransform(value("A751", 1), value("A752", 0), value("A753", 0), value("A754", 1),
+				  p.x(), p.y());
+	}
+
+	double factor(const QTransform &t) { return std::sqrt(qAbs(t.determinant())); }
+
+	/// the number of a drawing object: "S31x5" (inside a graphic) and "O31"
+	/// (on its own) are both a line
+	int kind(const QString &tag)
+	{
+		return tag.mid(1).section(QLatin1Char('x'), 0, 0).toInt();
+	}
+
+	/**
+		A drawing object, placed by @p t: line (31), arc (32), polyline (34),
+		rectangle (89) or text (30).
+		@return false for any other object
+	*/
+	bool addShape(EplanSymbolData &s, int kind, const QDomElement &e, const QTransform &t)
+	{
+		if (kind == 31) {
+			s.lines << QLineF(t.map(at(e, "A531")), t.map(at(e, "A532")));
+		} else if (kind == 32) {  // start/end angle (rad), centre, radius
+			const QPointF c = at(e, "A555");
+			const double radius = at(e, "A556").x();
+			const double a0 = e.attribute(QStringLiteral("A553")).toDouble();
+			double a1 = e.attribute(QStringLiteral("A554")).toDouble();
+			while (a1 <= a0) a1 += 2 * M_PI;  // counter-clockwise from start to end
+			const bool full = a1 - a0 >= 2 * M_PI - 1e-6;
+			// scaled alike in both directions, a circle stays a circle
+			const double sx = std::hypot(t.m11(), t.m12()), sy = std::hypot(t.m21(), t.m22());
+			if (full && qAbs(sx - sy) < 1e-6 && qAbs(t.m11() * t.m21() + t.m12() * t.m22()) < 1e-6) {
+				s.circles << qMakePair(t.map(c), radius * sx);
+				return true;
+			}
+			const int n = qMax(2, int(std::ceil((a1 - a0) / (M_PI / 18))));  // 10° steps
+			QPointF prev = t.map(QPointF(c.x() + radius * std::cos(a0), c.y() + radius * std::sin(a0)));
+			for (int k = 1; k <= n; ++k) {
+				const double a = a0 + (a1 - a0) * k / n;
+				const QPointF p = t.map(QPointF(c.x() + radius * std::cos(a), c.y() + radius * std::sin(a)));
+				s.lines << QLineF(prev, p);
+				prev = p;
+			}
+		} else if (kind == 34) {  // A623 = 1: closed; an empty point ("13/0;;0/-2") lifts the pen
+			QVector<QPointF> pts;
+			bool broken = false;
+			auto draw = [&]() {
+				for (int k = 1; k < pts.size(); ++k) s.lines << QLineF(pts.at(k - 1), pts.at(k));
+			};
+			QString list = e.attribute(QStringLiteral("A621"));
+			while (list.endsWith(QLatin1Char(';'))) list.chop(1);
+			for (const QString &v : list.split(QLatin1Char(';'))) {
+				QPointF p;
+				if (point(v, &p)) {
+					pts << t.map(p);
+				} else {
+					draw();
+					pts.clear();
+					broken = true;
+				}
+			}
+			draw();
+			if (!broken && pts.size() > 2 && e.attribute(QStringLiteral("A623")) == QLatin1String("1"))
+				s.lines << QLineF(pts.last(), pts.first());
+		} else if (kind == 89) {
+			if (!e.hasAttribute(QStringLiteral("A1652"))) return true;
+			const QPointF a = at(e, "A1651"), b = at(e, "A1652");
+			const bool upright = qFuzzyIsNull(t.m12()) && qFuzzyIsNull(t.m21());
+			if (upright && e.attribute(QStringLiteral("A1656")) == QLatin1String("1")) {
+				s.filled << QRectF(t.map(a), t.map(b)).normalized();
+			} else {
+				const QPointF c(b.x(), a.y()), d(a.x(), b.y());
+				s.lines << QLineF(t.map(a), t.map(c)) << QLineF(t.map(c), t.map(b))
+					<< QLineF(t.map(b), t.map(d)) << QLineF(t.map(d), t.map(a));
+			}
+		} else if (kind == 30) {
+			const QString label = plain(e.attribute(QStringLiteral("A511")));
+			if (label.isEmpty()) return true;
+			EplanDxfText txt = text(label, t.map(at(e, "A501")), 0);
+			// the height, unless the layer gives it ("L")
+			bool ok = false;
+			const double h = e.firstChildElement(QStringLiteral("S54x505"))
+						 .attribute(QStringLiteral("A961")).toDouble(&ok);
+			if (ok && h > 0) txt.height = h * factor(t);
+			s.texts << txt;
+		} else {
+			return false;
+		}
+		return true;
+	}
+
+	/// the objects of a graphic (O5), which may place further graphics (S144x5)
+	void addGraphic(EplanSymbolData &s, const QHash<QString, QDomElement> &graphics, const QString &id,
+			const QTransform &t, int depth, QMap<QString, int> &skipped)
+	{
+		if (depth > 8 || !graphics.contains(id)) return;
+		for (QDomElement c = graphics.value(id).firstChildElement(); !c.isNull(); c = c.nextSiblingElement()) {
+			const QString tag = c.tagName();
+			if (!tag.startsWith(QLatin1Char('S'))) continue;
+			if (tag == QLatin1String("S144x5"))
+				addGraphic(s, graphics, c.attribute(QStringLiteral("R9")), placement(c) * t, depth + 1, skipped);
+			else if (!addShape(s, kind(tag), c, t))
+				++skipped[tag];
+		}
+	}
+}
+
+bool EplanMacroReader::load(const QByteArray &macro)
+{
+	m_error.clear();
+	m_doc = QDomDocument();
+	if (!m_doc.setContent(macro)
+	    || m_doc.documentElement().tagName() != QLatin1String("EplanPxfRoot")) {
+		m_doc = QDomDocument();
+		m_error = QStringLiteral("Not an EPLAN macro");
+		return false;
+	}
+	return true;
+}
+
+QVector<EplanMacroVariant> EplanMacroReader::variants() const
+{
+	QVector<EplanMacroVariant> out;
+	const QDomElement root = m_doc.documentElement();
+	for (QDomElement v = root.firstChildElement(QStringLiteral("MacroVariant")); !v.isNull();
+	     v = v.nextSiblingElement(QStringLiteral("MacroVariant"))) {
+		EplanMacroVariant variant;
+		variant.func_type = v.attribute(QStringLiteral("MacroFuncType")).toInt();
+		variant.id = v.attribute(QStringLiteral("VariantId")).toInt();
+		variant.description = language(v.attribute(QStringLiteral("Description"))).trimmed()
+					      .replace(QLatin1Char('\n'), QStringLiteral(" - "));
+		const QDomNodeList functions = v.elementsByTagName(QStringLiteral("O17"));
+		for (int i = 0; i < functions.size(); ++i) {
+			const QDomElement f = functions.at(i).toElement();
+			if (f.hasAttribute(QStringLiteral("A185")) && f.firstChildElement(QStringLiteral("S89x5")).isNull())
+				++variant.pins;
+		}
+		out << variant;
+	}
+	return out;
+}
+
+bool EplanMacroReader::readVariant(int func_type, int variant_id)
+{
+	m_symbol = EplanSymbolData();
+	m_letters.clear();
+	m_description.clear();
+	m_skipped.clear();
+	m_error.clear();
+
+	const QDomElement root = m_doc.documentElement();
+	QDomElement variant;
+	for (QDomElement v = root.firstChildElement(QStringLiteral("MacroVariant")); !v.isNull();
+	     v = v.nextSiblingElement(QStringLiteral("MacroVariant"))) {
+		if (v.attribute(QStringLiteral("MacroFuncType")).toInt() == func_type
+		    && v.attribute(QStringLiteral("VariantId")).toInt() == variant_id) {
+			variant = v;
+			break;
+		}
+	}
+	if (variant.isNull()) {
+		m_error = QStringLiteral("The macro has no such variant");
+		return false;
+	}
+	m_description = language(variant.attribute(QStringLiteral("Description"),
+						    root.attribute(QStringLiteral("Description"))))
+			.section(QLatin1Char('\n'), 0, 0).trimmed();
+
+	const QVector<QDomElement> all = below(variant);
+	QHash<QString, QDomElement> graphics;
+	for (const QDomElement &e : all)
+		if (e.tagName() == QLatin1String("O5")) graphics.insert(e.attribute(QStringLiteral("A1")), e);
+
+	// containers, settings, the macro box and placeholder texts (path
+	// function text, macro placeholders) rather than drawing objects
+	static const QStringList structural {
+		QStringLiteral("O4"), QStringLiteral("O5"), QStringLiteral("O6"), QStringLiteral("O14"),
+		QStringLiteral("O26"), QStringLiteral("O37"), QStringLiteral("O76"), QStringLiteral("O83"),
+		QStringLiteral("O106"), QStringLiteral("O212")};
+	QMap<QString, int> skipped;
+	for (const QDomElement &e : all) {
+		const QString tag = e.tagName();
+		if (!tag.startsWith(QLatin1Char('O')) || structural.contains(tag)) continue;
+		if (tag == QLatin1String("O144")) {  // a graphic, placed
+			addGraphic(m_symbol, graphics, e.attribute(QStringLiteral("R9")), placement(e), 0, skipped);
+		} else if (tag == QLatin1String("O17")) {
+			// the panel layout is the drawing alone, as readLayout() takes it
+			if (func_type != 6) addFunction(e);
+		} else if (tag == QLatin1String("O91")) {
+			++skipped[QStringLiteral("picture")];
+		} else if (!addShape(m_symbol, kind(tag), e, QTransform())) {
+			++skipped[tag];
+		}
+	}
+	for (auto it = skipped.cbegin(); it != skipped.cend(); ++it)
+		m_skipped << QStringLiteral("%1 x %2").arg(it.value()).arg(it.key());
+
+	if (m_symbol.pins.isEmpty() && m_symbol.lines.isEmpty() && m_symbol.circles.isEmpty()) {
+		m_error = QStringLiteral("The variant holds no drawing");
+		return false;
+	}
+	m_symbol.pin_fields = false;
+	m_symbol.source = QStringLiteral("Generated from the manufacturer's EPLAN macro");
+	return true;
+}

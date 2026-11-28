@@ -68,3 +68,45 @@ any EPLAN-proprietary geometry or symbol data.
 domain — see `lzma/LZMA-SDK-LICENSE.txt`), so a `.edz` can be unpacked without an
 external 7-Zip install. Only 7-Zip-format `.edz` files are supported; zip-format
 packages are detected and reported but not yet handled.
+
+## Manufacturer macro packages (`sources/import/macropackage/`)
+
+Some manufacturers are not in the EPLAN Data Portal and offer all their macros as one download instead.
+Beckhoff: any product page on beckhoff.com > Documentation and downloads > Macros > "EPLAN macros from 2.7"
+(ZIP, 66 MB, myBeckhoff login). The package is not part of this repository. What was found in it (package of
+30 Oct 2026, checked with throw-away scripts; counts in brackets):
+
+- **Layout**: `Beckhoff/<area>/<product family>/<name>.ema`, e.g.
+  `Beckhoff/IO/EtherCAT Coupler BECKHOFF EKxxxx/EK9300.ema` (1923 macros in the areas Embedded PC, IO, IPC,
+  Motion, MX-System, Vision).
+- **Macros** are the window macros an `.edz` carries too: XML with the root `EplanPxfRoot`
+  (`Type="WindowMacro"`, all 1923), one `MacroVariant` per representation type and variant. `MacroFuncType`
+  is 1 = multi-line (8466 variants; the descriptions say "allpolige Darstellung"), 2 = single-line (4249,
+  "einpolige Darstellung"), 4 = overview (3263, "Übersichtsmakro"), 8 (2); there is **no** panel layout
+  (6) in this package. A PLC card has one multi-line variant per channel, often one more with all channels,
+  and the overview (EL3064: A–D = channels 1–4, E = all, overview).
+- **Objects of a variant**: functions `O17` (black box with frame `S89x5`; connection point with designation
+  `A185`, description `A186`, function definition `A1381/A1382/A1383`, channel `P20407`), free lines `O31`,
+  arcs `O32`, texts `O30`, polylines `O34`, rectangles `O89`, and graphics `O5` (sub-objects `S31x5` line,
+  `S32x5` arc, `S34x5` polyline, `S89x5` rectangle, `S30x5` text, `S144x5` a further graphic) placed by
+  `O144` (`R9` = the graphic). A placement is `S40x1201` (`A762` position) with `S39x761` (`A751..A754`, the
+  2x2 matrix column by column; scale and quarter turns occur). In a polyline an empty point lifts the pen.
+- **Article data** is EPLAN parts management XML, the format of the `part.xml` of an `.edz`: root
+  `partsmanagement type="EPLAN.PartsManagement"`, one `<part>` per article with `P_ARTICLE_PARTNR`
+  ("BEC.EK9300"), `P_ARTICLE_ORDERNR`, `P_ARTICLE_TYPENR`, `P_ARTICLE_DESCR1` ("de_DE@…;en_US@…;"),
+  `P_ARTICLE_MANUFACTURER` ("BEC"), `P_ARTICLE_PRODUCTGROUP` (a number), width/height/depth, and
+  `<functiontemplate>` rows (connection designation and description, `functiondefcategory/-group/-id`,
+  channel `idx1`). `Beckhoff/Article_DB.xml` holds 2495 parts; beside most macros lies
+  `<macro>_Article_Data.xml` with the parts that use this macro (1 to 433), in MX-System `<type>.xml`;
+  168 parts are only in those. A part names its macro in
+  `P_ARTICLE_GROUPSYMBOLMACRO="$(MD_MACROS)\Beckhoff\IO\…\EK9300.ema"` (2491 of 2495; all exist);
+  several articles share a macro (1724 macros for 2495 parts), 199 macros are named by no article of the
+  big file.
+
+`MacroPackage` reads this as an index (2694 entries: every part once, and the macros no part names by their
+file name) and keeps it in the cache folder until the ZIP changes. `EplanPartImporter::importMacroPackage()`
+then builds, per article asked for, the generic element from the part data (`EdzElementBuilder`) and one
+element per macro variant (`EplanMacroReader::readVariant()` + `EplanElementBuilder`), and gives a PLC card
+its channel table from the function templates (300.1.x / 300.99.x: 2 DI, 3 DQ, 4 AI, 5 AQ). The collection
+folder is manufacturer / product family / type; the Beckhoff folders have short names in
+`macropackage.cpp` (`FAMILIES`), any other package keeps its folder names.

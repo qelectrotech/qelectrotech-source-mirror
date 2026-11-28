@@ -78,6 +78,7 @@
 #include "elementtextpattern.h"
 #include "elementspanelwidget.h"
 #include "import/eplandxf/eplanimportdialog.h"
+#include "import/macropackage/macropackagedialog.h"
 #include "factory/elementpicturefactory.h"
 #include "factory/qetgraphicstablefactory.h"
 #include "factory/ui/listquerywidget.h"
@@ -2393,6 +2394,15 @@ void QETDiagramEditor::setUpMenu()
 		// dialog still offers a folder or a dropped file
 		QTimer::singleShot(0, &dialog, [&dialog]() { dialog.chooseSource(); });
 		if (dialog.exec() == QDialog::Accepted && m_element_collection_widget)
+			m_element_collection_widget->reload();
+	});
+	// all macros of a manufacturer in one download
+	QAction *import_macro_package = menu_part_import->addAction(tr("From a manufacturer macro package (ZIP)…"));
+	import_macro_package->setObjectName(QStringLiteral("import_macro_package"));
+	connect(import_macro_package, &QAction::triggered, this, [this]() {
+		MacroPackageDialog dialog(this);
+		dialog.exec();
+		if (!dialog.writtenPaths().isEmpty() && m_element_collection_widget)
 			m_element_collection_widget->reload();
 	});
 

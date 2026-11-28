@@ -24,8 +24,10 @@
 #include "../../container/qetzip.h"
 #include "../aasx/aasxpackage.h"
 #include "../edz/edzarchive.h"
+#include "../edz/edzelementbuilder.h"
 #include "../edz/edzimporter.h"
 #include "../edz/edzpart.h"
+#include "../macropackage/macropackage.h"
 #include "dwgreader.h"
 #include "eplandxfreader.h"
 #include "eplanelementbuilder.h"
@@ -38,6 +40,7 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QRegularExpression>
+#include <QSet>
 #include <QStringDecoder>
 #include <QTemporaryDir>
 
@@ -1067,6 +1070,224 @@ EplanPartImporter::Stored EplanPartImporter::store(QDomDocument &doc, const QStr
 	if (!writeElement(doc, path, &m_error, indent)) return Stored::Failed;
 	m_written << path;
 	return Stored::Written;
+}
+
+namespace {
+	/// name of a representation type of a macro (MacroFuncType)
+	const QMap<int, QString> MACRO_REPRESENTATION {
+		{1, QStringLiteral("Schematic")}, {2, QStringLiteral("Single-line")},
+		{4, QStringLiteral("Overview")}, {6, QStringLiteral("Panel layout")}};
+
+	/**
+		The channel table of a PLC card from its part data: every function
+		template that is a PLC connection for a digital or analogue input
+		or output (EPLAN function definition 300.1.x and 300.99.x: 2 DI,
+		3 DQ, 4 AI, 5 AQ) is a channel, named by its connection description
+		("I1"); the other connection points of the same channel (idx1,
+		"Channel 1": its supply or reference) follow the signal terminal.
+		Empty when the designations are not unique, as they are the
+		terminal names of the elements.
+	*/
+	QVector<PlcChannels::Channel> channelsOf(const EdzPart &part)
+	{
+		auto io = [](const EdzPin &p) {
+			return p.def_category == 300 && (p.def_group == 1 || p.def_group == 99)
+			       && p.def_id >= 2 && p.def_id <= 5;
+		};
+		const QList<EdzPin> pins = part.pins();
+		QSet<QString> names;
+		for (const EdzPin &p : pins) {
+			if (names.contains(p.designation)) return {};
+			names.insert(p.designation);
+		}
+		static const QStringList types {
+			QStringLiteral("entree_digitale"), QStringLiteral("sortie_digitale"),
+			QStringLiteral("entree_analogique"), QStringLiteral("sortie_analogique")};
+		static const QRegularExpression digits(QStringLiteral("\\d+"));
+		struct Found { int kind; int number; PlcChannels::Channel channel; };
+		QVector<Found> found;
+		for (const EdzPin &p : pins) {
+			if (!io(p)) continue;
+			PlcChannels::Channel c;
+			c.type = types.at(p.def_id - 2);
+			c.name = p.description.isEmpty() ? p.designation : p.description;
+			c.terminals << p.designation;
+			if (!p.channel.isEmpty()) {
+				for (const EdzPin &other : pins)
+					if (!io(other) && other.channel == p.channel) c.terminals << other.designation;
+			}
+			const auto m = digits.match(c.name);
+			found.append({p.def_id, m.hasMatch() ? m.captured().toInt() : 0, c});
+		}
+		std::stable_sort(found.begin(), found.end(), [](const Found &a, const Found &b) {
+			return a.kind != b.kind ? a.kind < b.kind : a.number < b.number;
+		});
+		QVector<PlcChannels::Channel> out;
+		for (const Found &f : std::as_const(found)) out << f.channel;
+		return out;
+	}
+}
+
+QString EplanPartImporter::macroPackageFolder(const MacroPackage &package, const MacroPackageArticle &article,
+					      const QString &category, const QString &collection_dir)
+{
+	// a folder name as ensureDirs() makes it
+	auto folderName = [](QString name) {
+		return name.replace(QRegularExpression(QStringLiteral("[<>:\"/\\\\|?*]")), QStringLiteral("-"));
+	};
+	QString folder_category = category.isEmpty() ? article.category : category;
+	if (folder_category.isEmpty()) folder_category = QStringLiteral("General");
+	return QDir(collection_dir).filePath(folderName(package.manufacturerName(article)) + QLatin1Char('/')
+					     + folderName(folder_category) + QLatin1Char('/')
+					     + folderName(article.type()));
+}
+
+/**
+	Import articles out of a manufacturer's macro package (see MacroPackage):
+	of each article
+	- a generic element from its part data, as importEdz() builds it, and
+	- every variant of its macro as an element of its own -- multi-line and
+	  single-line schematics, overview, panel layout -- named after the
+	  representation, the connection points and the variant ("EL3064
+	  Schematic I1-GND (A1)"), as importPackage() names the variants of a
+	  Data Portal package.
+	A PLC card gets its channel table from the part data.
+	@param types type or order numbers of the articles
+	@param category folder below the manufacturer; empty: the folder of the
+	macro in the package
+*/
+bool EplanPartImporter::importMacroPackage(MacroPackage &package, const QStringList &types,
+					   const QString &category, const QString &collection_dir,
+					   const std::function<bool(int, int, const QString &)> &progress)
+{
+	m_written.clear();
+	m_messages.clear();
+	m_error.clear();
+	m_imported = 0;
+	m_skipped = 0;
+	m_failed.clear();
+
+	int done = 0;
+	for (const QString &wanted : types) {
+		if (progress && !progress(done++, int(types.size()), wanted)) {
+			m_messages << QStringLiteral("Stopped after %1 of %2 articles").arg(done - 1).arg(types.size());
+			break;
+		}
+		const MacroPackageArticle *found = package.article(wanted);
+		if (!found) {
+			m_failed << QStringLiteral("%1: not in the package").arg(wanted);
+			continue;
+		}
+		const MacroPackageArticle article = *found;
+		const QString type = article.type();
+		const QString manufacturer = package.manufacturerName(article);
+
+		QString folder_category = category.isEmpty() ? article.category : category;
+		if (folder_category.isEmpty()) folder_category = QStringLiteral("General");
+		// what is there stays: elements may have been improved by hand
+		if (QDir(macroPackageFolder(package, article, category, collection_dir)).exists()) {
+			++m_skipped;
+			continue;
+		}
+
+		EdzPart part;
+		const bool has_part = !article.source.isEmpty() && part.parse(package.partXml(article));
+		if (!article.source.isEmpty() && !has_part)
+			m_messages << QStringLiteral("%1: no part data (%2)").arg(type, part.errorString());
+		if (has_part) part.setManufacturer(manufacturer);
+
+		QString folder;
+		if (!ensureDirs(collection_dir, {manufacturer, folder_category, type}, &folder, &m_error)) return false;
+
+		QStringList written;
+		auto write = [&](QDomDocument doc, const QString &name) {
+			const QString out = QDir(folder).filePath(safe(name) + QStringLiteral(".elmt"));
+			// with the fingerprint: an element edited since its import stays
+			const Stored stored = store(doc, out);
+			if (stored == Stored::Failed) return false;
+			if (stored == Stored::Written) written << out;
+			return true;
+		};
+
+		if (has_part && !part.pins().isEmpty()) {
+			if (!write(EdzElementBuilder::build(part), type)) return false;
+			m_messages << QStringLiteral("%1: %2 terminals from the part data").arg(type).arg(part.pins().size());
+		}
+
+		EplanMacroReader reader;
+		const QByteArray macro = package.macro(article);
+		if (macro.isEmpty()) {
+			m_messages << QStringLiteral("%1: the package holds no macro for it").arg(type);
+		} else if (!reader.load(macro)) {
+			m_messages << QStringLiteral("%1: %2").arg(article.macro, reader.errorString());
+		} else {
+			const QVector<EplanMacroVariant> variants = reader.variants();
+			QMap<int, int> per_type;
+			for (const EplanMacroVariant &v : variants) ++per_type[v.func_type];
+			QString description = has_part ? part.names().value(QStringLiteral("de"), part.description())
+						       : QString();
+			for (const EplanMacroVariant &v : variants) {
+				// "A1", "B4": variant and representation, as EPLAN counts them
+				const QString mark = (v.id < 26 ? QString(QChar(char16_t('A' + v.id)))
+							       : QStringLiteral("V%1_").arg(v.id + 1))
+						     + QString::number(v.func_type);
+				if (!MACRO_REPRESENTATION.contains(v.func_type)) {
+					m_messages << QStringLiteral("%1 %2: representation %3 is not imported")
+							      .arg(type, mark).arg(v.func_type);
+					continue;
+				}
+				if (!reader.readVariant(v.func_type, v.id)) {
+					m_messages << QStringLiteral("%1 %2: %3").arg(type, mark, reader.errorString());
+					continue;
+				}
+				EplanSymbolData data = reader.symbol();
+				sortPins(data.pins);
+				QStringList name_parts {type, MACRO_REPRESENTATION.value(v.func_type)};
+				if (per_type.value(v.func_type) > 1) {
+					QStringList funcs;
+					for (const EplanDxfPin &p : std::as_const(data.pins))
+						funcs << (p.function.isEmpty() ? p.name : p.function);
+					if (!funcs.isEmpty())
+						name_parts << (funcs.size() > 1 ? funcs.first() + QLatin1Char('-') + funcs.last()
+										: funcs.first());
+					name_parts << QStringLiteral("(%1)").arg(mark);
+				}
+				const QString name = name_parts.join(QLatin1Char(' '));
+				const QString letters = reader.deviceLetters();
+				QVector<QPair<QString, QString>> info {
+					{QStringLiteral("manufacturer"), manufacturer},
+					{QStringLiteral("manufacturer_reference"), has_part ? part.orderNumber() : type},
+					{QStringLiteral("designation"), type},
+					{QStringLiteral("description"), description.isEmpty() ? reader.description() : description}};
+				if (v.func_type != 6)
+					info << qMakePair(QStringLiteral("label"),
+							  QLatin1Char('-') + (letters.isEmpty() ? QStringLiteral("K") : letters));
+				if (!write(EplanElementBuilder::build(
+						   data, {{QStringLiteral("de"), name}, {QStringLiteral("en"), name}}, info), name))
+					return false;
+				m_messages << QStringLiteral("%1: %2 terminals, %3 lines").arg(name)
+						      .arg(data.pins.size()).arg(data.lines.size());
+				if (!reader.skipped().isEmpty())
+					m_messages << QStringLiteral("  not taken over: %1").arg(reader.skipped().join(QStringLiteral(", ")));
+			}
+		}
+		if (written.isEmpty()) {
+			// the folder was made for this article just now
+			QDir(folder).removeRecursively();
+			m_failed << QStringLiteral("%1: %2").arg(
+				type, m_messages.isEmpty() ? QStringLiteral("neither terminals nor a drawing") : m_messages.last());
+			continue;
+		}
+		++m_imported;
+		// store() has put them into m_written already
+		m_messages << PlcChannels::applyToFolders(written, {}, has_part ? channelsOf(part) : QVector<PlcChannels::Channel>());
+	}
+	if (m_written.isEmpty() && m_skipped == 0) {
+		m_error = m_failed.isEmpty() ? QStringLiteral("No article given")
+					     : QStringLiteral("No element could be built:\n%1").arg(m_failed.join(QLatin1Char('\n')));
+		return false;
+	}
+	return true;
 }
 
 /**

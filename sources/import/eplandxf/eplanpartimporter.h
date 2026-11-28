@@ -23,6 +23,11 @@
 #include <QString>
 #include <QStringList>
 
+#include <functional>
+
+class MacroPackage;
+struct MacroPackageArticle;
+
 /**
 	@brief Imports manufacturer EPLAN DXF data as QET elements.
 
@@ -39,6 +44,8 @@
 	- an AutoCAD DWG drawing (importDwg()), e.g. the "Download DWG" of
 	  WSCAD Universe, with the part data of its .wspak package;
 	- an Asset Administration Shell package (importAasx()).
+	The articles of a manufacturer's macro package (MacroPackage) are
+	imported with importMacroPackage().
 
 	Elements are written to <collection>/<manufacturer>/<category>/<type>/,
 	each folder with a qet_directory file. UI-decoupled like EdzImporter.
@@ -55,6 +62,24 @@ class EplanPartImporter
 		bool importEdz(const QString &edz_path, const QString &manufacturer,
 			       const QString &category, const QString &type,
 			       const QString &collection_dir);
+		/// articles out of a manufacturer's macro package (ZIP or folder
+		/// with EPLAN macros and article data), by type or order number
+		/// An article whose type folder exists already is left as it is
+		/// (skippedCount()), so a newer package only adds what is new.
+		/// @param progress called before each article (done, total, type);
+		/// returning false stops the import
+		bool importMacroPackage(MacroPackage &package, const QStringList &types,
+					const QString &category, const QString &collection_dir,
+					const std::function<bool(int, int, const QString &)> &progress = {});
+		/// the type folder of an article of a macro package in a collection
+		/// (it need not exist); @p category empty: that of the package
+		static QString macroPackageFolder(const MacroPackage &package, const MacroPackageArticle &article,
+						  const QString &category, const QString &collection_dir);
+		/// of the last importMacroPackage(): articles imported, articles
+		/// left as they were, and those nothing could be built from (with the reason)
+		int importedCount() const { return m_imported; }
+		int skippedCount() const { return m_skipped; }
+		QStringList failed() const { return m_failed; }
 		/// an AutoCAD DWG drawing (e.g. WSCAD Universe "Download DWG"); part data from a .wspak
 		bool importDwg(const QString &dwg_path, const QString &wspak_path,
 			       const QString &manufacturer, const QString &category,
@@ -101,6 +126,9 @@ class EplanPartImporter
 		QStringList m_from_macro;	///< elements with the channel table of their EPLAN macro
 		QStringList m_messages;
 		QString m_error;
+		int m_imported = 0;
+		int m_skipped = 0;
+		QStringList m_failed;
 };
 
 #endif // EPLANPARTIMPORTER_H

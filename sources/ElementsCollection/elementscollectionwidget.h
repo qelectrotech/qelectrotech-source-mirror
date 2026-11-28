@@ -59,6 +59,8 @@ struct ElementSearchHit
 	QIcon icon;
 };
 
+class MacroPackageTree;
+
 class ElementsCollectionWidget : public QWidget
 {
 	Q_OBJECT
@@ -106,6 +108,7 @@ class ElementsCollectionWidget : public QWidget
 
 	public slots:
 		void reload();
+		void showCollectionFolder(const QString &folder);
 		void loadingFinished();
 		void insertCurrentElement();
 		void editLocation(const ElementsLocation &location);
@@ -138,6 +141,9 @@ class ElementsCollectionWidget : public QWidget
 		ElementsTreeView *m_tree_view;
 		ElementsTreeView *m_macros_tree_view = nullptr;
 		QTabWidget *m_tab_widget = nullptr;
+		MacroPackageTree *m_package_tree = nullptr;
+			/// folder to show once the collection is read again
+		QString m_folder_after_loading;
 			/// Flat ranked results, shown in place of the tree while searching
 		QListView *m_search_results = nullptr;
 		QStandardItemModel *m_search_model = nullptr;
