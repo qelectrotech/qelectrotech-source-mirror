@@ -162,6 +162,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/import/eplanproject/eplanprojectimport.h
   ${QET_DIR}/sources/import/eplanproject/eplanprojectimportdialog.cpp
   ${QET_DIR}/sources/import/eplanproject/eplanprojectimportdialog.h
+  ${QET_DIR}/sources/import/fluidsim/fluidsimimport.cpp
+  ${QET_DIR}/sources/import/fluidsim/fluidsimimport.h
   ${QET_DIR}/sources/import/aasx/aasxpackage.cpp
   ${QET_DIR}/sources/import/aasx/aasxpackage.h
   ${QET_DIR}/sources/import/elementfingerprint.cpp

@@ -1,0 +1,47 @@
+<definition version="0.100" type="element" link_type="simple" width="40" height="40" hotspot_x="20" hotspot_y="20">
+    <uuid uuid="{46d9dfa1-909c-5357-8956-b5b2f77fe523}"/>
+    <names>
+        <name lang="ar">خطوة ماكرو</name>
+        <name lang="ca">macro pas</name>
+        <name lang="cs">makro krok</name>
+        <name lang="da">makro trin</name>
+        <name lang="de">Makro Schritt</name>
+        <name lang="el">μακροοικονομικό βήμα</name>
+        <name lang="en">macro step</name>
+        <name lang="es">macro paso</name>
+        <name lang="fi">makroaskel</name>
+        <name lang="fr">macro-étape</name>
+        <name lang="hr">makro korak</name>
+        <name lang="hu">makró lépés</name>
+        <name lang="it">macro passo</name>
+        <name lang="ja">マクロステップ</name>
+        <name lang="ko">매크로 스텝</name>
+        <name lang="mn">макро алхам</name>
+        <name lang="nb">makro trinn</name>
+        <name lang="nl">macro stap</name>
+        <name lang="nl_BE">macro-stap</name>
+        <name lang="pl">krok makro</name>
+        <name lang="pt">passo macro</name>
+        <name lang="pt_BR">passo macro</name>
+        <name lang="ro">pas macro</name>
+        <name lang="ru">шаг макроса</name>
+        <name lang="sk">makro krok</name>
+        <name lang="sl">makro korak</name>
+        <name lang="sr">макро корак</name>
+        <name lang="sv">makrosteg</name>
+        <name lang="tr">makro adım</name>
+        <name lang="uk">Макрокрок</name>
+        <name lang="zh">步骤_03</name>
+    </names>
+    <informations>Author: The QElectroTech team; redrawn on the 10 grid with named terminals for the FluidSIM import
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <rect x="-20" y="-20" width="40" height="40" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <line x1="-20" y1="-15" x2="20" y2="-15" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <line x1="-20" y1="15" x2="20" y2="15" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <terminal uuid="{90a452bd-ed0f-40b0-8653-680a6515361d}" name="in" x="0" y="-20" orientation="n" type="Generic"/>
+        <terminal uuid="{84f779a1-bd95-48f6-a1e0-48ba6d59e248}" name="out" x="0" y="20" orientation="s" type="Generic"/>
+        <terminal uuid="{3ec26000-f45c-442c-ae08-460328fb2b62}" name="action" x="20" y="0" orientation="e" type="Generic"/>
+        <dynamic_text x="-4" y="-11" z="5" text_width="-1" Halignment="AlignHCenter" Valignment="AlignVCenter" frame="false" rotation="0" keep_visual_rotation="false" text_from="ElementInfo" uuid="{1587d460-0e6f-41c1-8bde-b55d6d8bc6ec}" font="Liberation Sans,9,-1,5,50,0,0,0,0,0,Regular"><text></text><info_name>label</info_name></dynamic_text>
+    </description>
+</definition>
