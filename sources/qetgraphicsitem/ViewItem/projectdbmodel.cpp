@@ -455,6 +455,10 @@ void ProjectDBModel::setHeaderString()
 			header_name = tr("Position");
 		} else if (field_name == "diagram_position") {
 			header_name = tr("Sheet position");
+		} else if (field_name == "plc_type_full") {
+				//Only the SPS list's own column can carry this name, so
+				//no table that exists today reads any different
+			header_name = tr("Type PLC in full");
 		} else {
 			header_name = QETInformation::translatedInfoKey(field_name);
 			if (header_name.isEmpty()) {

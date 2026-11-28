@@ -20,6 +20,7 @@
 #include "qetapptest.h"
 #include "ElementsCollection/xmlelementcollection.h"
 #include "factory/elementfactory.h"
+#include "properties/terminallabel.h"
 #include "qetgraphicsitem/conductor.h"
 #include "qetgraphicsitem/element.h"
 #include "qetgraphicsitem/terminal.h"
@@ -187,6 +188,39 @@ class tst_replacesymbols : public QObject
 			Element *element = nullptr;
 			for (Element *e : elementsOf(QStringLiteral("three")))
 				if (e->pos() == QPointF(600, 200))
+					element = e;
+			QVERIFY(element);
+			QCOMPARE(named(element, "3")->conductors().size(), 1);
+		}
+
+			//The same, with a name this copy of the symbol was given
+			//afterwards: the name of the definition finds the terminal,
+			//the name of the copy cannot send the matching off
+		void renamedStillMatchedByDefinitionName()
+		{
+			Element *old_element = place(QStringLiteral("two"), QPointF(800, 200));
+			Element *other = place(QStringLiteral("other"), QPointF(800, 100));
+			QVERIFY(old_element && other);
+			auto *c = new Conductor(named(other, "b"), named(old_element, "3"));
+			m_diagram->addItem(c);
+
+			Terminal *renamed = named(old_element, "3");
+			QVERIFY(renamed);
+			TerminalLabel label = renamed->label();
+			label.m_name = QStringLiteral("somewhere else");
+			old_element->setTerminalLabel(renamed->stableUuid(), label);
+			QCOMPARE(renamed->name(), QStringLiteral("somewhere else"));
+
+				//The point of the old 3 is empty on "three", so only a
+				//name can find its terminal
+			const ReplaceSymbols::Result result = ReplaceSymbols::build(
+				m_diagram, {old_element}, location(QStringLiteral("three")));
+			QVERIFY(result.command);
+			QCOMPARE(result.lost_wires, 0);
+			m_diagram->undoStack().push(result.command);
+			Element *element = nullptr;
+			for (Element *e : elementsOf(QStringLiteral("three")))
+				if (e->pos() == QPointF(800, 200))
 					element = e;
 			QVERIFY(element);
 			QCOMPARE(named(element, "3")->conductors().size(), 1);
