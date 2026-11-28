@@ -97,6 +97,21 @@ namespace {
 		return name;
 	}
 
+	/**
+		One folder or file name taken from imported data, made safe for
+		exactly one path level: separators and reserved characters become
+		"-"; empty, "." and ".." (a name of dots only) give an empty string,
+		which the caller refuses.
+	*/
+	QString dataLevel(const QString &name)
+	{
+		static const QRegularExpression reserved(QStringLiteral("[<>:\"/\\\\|?*\\x00-\\x1f]"));
+		static const QRegularExpression dots_only(QStringLiteral("^[.\\s]*$"));
+		QString level = name;
+		level.replace(reserved, QStringLiteral("-"));
+		return dots_only.match(level).hasMatch() ? QString() : level;
+	}
+
 	/// @return whether @p path is @p root or lies below it (both clean, absolute)
 	bool isInside(const QString &path, const QString &root)
 	{
@@ -991,6 +1006,14 @@ bool EplanPartImporter::importAasx(const QString &aasx_path, const QString &cate
 		return false;
 	}
 	const QString key = safe(order.isEmpty() ? type_nr : order);
+		// the manufacturer and the key name folders of the raw and 3D data:
+		// from the package, so "." / ".." and separators are refused
+	const QString maker_folder = dataLevel(maker);
+	if (maker_folder.isEmpty() || dataLevel(key).isEmpty()) {
+		m_error = QStringLiteral("%1: the Digital Nameplate gives no usable folder name (%2 / %3)")
+				  .arg(QFileInfo(aasx_path).fileName(), maker, key);
+		return false;
+	}
 
 		// the files of the package, unpacked: EDZ, DXF, DWG for the element,
 		// STEP for the 3D folder, all of them for the raw folder
@@ -1003,12 +1026,26 @@ bool EplanPartImporter::importAasx(const QString &aasx_path, const QString &cate
 	const QDir beside(QFileInfo(QDir::cleanPath(QDir(collection_dir).absolutePath())).absolutePath());
 	const QString raw_base = beside.filePath(QStringLiteral("manufacturer_data"));
 	const QString model_base = beside.filePath(QStringLiteral("3D"));
-	const QString raw = QDir(raw_base).filePath(maker + QLatin1Char('/') + key);
+	const QString raw = QDir::cleanPath(QDir(raw_base).filePath(maker_folder + QLatin1Char('/') + key));
+	const QString model = QDir::cleanPath(QDir(model_base).filePath(maker_folder + QLatin1Char('/') + key
+									+ QStringLiteral(".stp")));
+	if (!isInside(raw, QDir::cleanPath(raw_base)) || !isInside(model, QDir::cleanPath(model_base))) {
+		m_error = QStringLiteral("%1: the data folder would lie outside %2")
+				  .arg(QFileInfo(aasx_path).fileName(), QDir::toNativeSeparators(beside.path()));
+		return false;
+	}
 	QDir().mkpath(raw);
+	if (!isInside(QFileInfo(raw).canonicalFilePath(), QFileInfo(raw_base).canonicalFilePath())) {
+		m_error = QStringLiteral("%1: the data folder %2 leads outside %3")
+				  .arg(QFileInfo(aasx_path).fileName(), QDir::toNativeSeparators(raw),
+				       QDir::toNativeSeparators(raw_base));
+		return false;
+	}
 	QStringList edz, dxf, dwg, step;
 	QStringList written, messages;
 	for (const QString &name : package.files()) {
-		const QString base = QFileInfo(name).fileName();
+			// the package's own file name, as one folder level: never a path
+		const QString base = dataLevel(QFileInfo(name).fileName());
 		if (base.isEmpty()) continue;
 		const QString ext = QFileInfo(base).suffix().toLower();
 		const QByteArray data = package.file(name);
@@ -1046,7 +1083,6 @@ bool EplanPartImporter::importAasx(const QString &aasx_path, const QString &cate
 					   "the 3D model and the documents were taken");
 
 	if (!step.isEmpty()) {
-		const QString model = QDir(model_base).filePath(maker + QLatin1Char('/') + key + QStringLiteral(".stp"));
 		QDir().mkpath(QFileInfo(model).path());
 		if (m_force || !QFileInfo::exists(model)) {
 			QFile::remove(model);

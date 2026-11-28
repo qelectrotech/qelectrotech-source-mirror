@@ -798,6 +798,33 @@ class TstEplanPartImport : public QObject
 				"{\"submodels\": [{\"idShort\": \"TechnicalData\", \"submodelElements\": []}]}"}}));
 			QVERIFY(!importer.importAasx(bare, QStringLiteral("PLC"), collection));
 			QVERIFY(!importer.errorString().isEmpty());
+
+				//A nameplate whose manufacturer or order number is ".." writes
+				//nothing outside the data folders: it is refused before anything
+			for (const auto &names : {std::pair<const char *, const char *>{"..", "AX-100"},
+						  std::pair<const char *, const char *>{"Acme", ".."}}) {
+				const QByteArray crafted = QByteArray(
+					"{\"submodels\": [{\"idShort\": \"Nameplate\", \"submodelElements\": ["
+					"{\"modelType\": \"Property\", \"idShort\": \"ManufacturerName\", \"value\": \"")
+					+ names.first + "\"},"
+					"{\"modelType\": \"Property\", \"idShort\": \"OrderCodeOfManufacturer\", \"value\": \""
+					+ names.second + "\"}]}]}";
+				const QString root = m_dir.filePath(QStringLiteral("aasx_dots/%1_%2")
+								    .arg(qstrlen(names.first)).arg(qstrlen(names.second)));
+				QVERIFY(QDir().mkpath(root + QStringLiteral("/inner")));
+				const QString evil = root + QStringLiteral("/evil.aasx");
+				QVERIFY(QetZip::write(evil, {
+					{QStringLiteral("aasx/json/content.json"), crafted},
+					{QStringLiteral("aasx/files/AX-100.stp"), "ISO-10303-21;\nEND-ISO-10303-21;\n"},
+					{QStringLiteral("aasx/files/manual.pdf"), "%PDF-1.4\n"}}));
+				const QString inner = root + QStringLiteral("/inner/collection");
+				QVERIFY(!importer.importAasx(evil, QStringLiteral("PLC"), inner));
+				QVERIFY(!importer.errorString().isEmpty());
+				QStringList files;
+				QDirIterator it(root, QDir::Files | QDir::Hidden, QDirIterator::Subdirectories);
+				while (it.hasNext()) files << it.next();
+				QCOMPARE(files, QStringList{evil});
+			}
 		}
 
 		/// The editor has the menu entry
