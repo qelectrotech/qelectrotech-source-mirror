@@ -97,6 +97,7 @@ class EplanProjectImportDialog : public QDialog
 		QString m_pending;	///< output after the last line break
 		QString m_result;
 		bool m_target_edited = false;	///< the user chose the target themself
+		bool m_cancelled = false;		///< Cancel stopped the running import
 };
 
 #endif // EPLANPROJECTIMPORTDIALOG_H

@@ -1,6 +1,7 @@
 """EPLAN export archive (.epdz) -> editable QElectroTech project (parts, conductors, report arrows).
 
     python epdz_nach_qet.py <export.epdz> [target.qet] [--unpacked DIR] [--pdf] [--no-collection]
+                            [--stop-on-eof]
     python epdz_nach_qet.py --check
 
 File > Import EPLAN project in QElectroTech runs this program: it unpacks the archive itself and passes the
@@ -30,11 +31,18 @@ Translation (EPLAN property numbers as in the EPLAN help):
   target of the group.
 - coil / protective device (20188 category 200, 5xx) with the contacts (201 NO, 202 NC, 203/204) of the same
   device tag (20006) as master/slave; EPLAN's cross reference texts stay, QElectroTech's own are off.
+  The same for the report arrows: EPLAN's page text beside an arrow already names its target, so every
+  arrow's own label is left empty (<report label="">).
 - article 20100 ("abbreviation.order number"), order number 20919, designation 20193, function text 20031,
   technical characteristics 20027 as element informations.
 Symbols without terminal and without article (structure and location boxes), connection definition points
-(Id59) and the other page graphics become folio graphics. Beside the project: <target>_devices.csv,
-<target>_connections.csv and <target>_3D (the .e3d installation spaces).
+(Id59) and the other page graphics become folio graphics. Pictures are taken only from inside the
+archive. Beside the project: <target>_devices.csv, <target>_connections.csv, <target>_3D (the .e3d
+installation spaces) and <target>_import_report.txt (what was translated); like the project itself they
+are written anew on every import, replacing what was there. The working folder _epdz_import_<name> is
+removed at the end.
+--stop-on-eof (the import dialog passes it): when standard input closes, stop the QElectroTech runs this
+program started and exit with code 3 -- the dialog's Cancel.
 
 Note: the identifiers inside this module are German (it was written for a fork whose working language is
 German); comments, messages and output are English.
@@ -50,6 +58,7 @@ import shutil
 import sqlite3
 import subprocess
 import sys
+import threading
 import xml.etree.ElementTree as ET
 
 HIER = os.path.dirname(os.path.abspath(__file__))
@@ -1023,13 +1032,64 @@ def _bauteil(se, h, b, rolle, artikel, stat):
     return t, ein
 
 
+def _im_archiv(wurzel, ordner, href):
+    """File of a picture reference @p href of a page in @p ordner, or None when it lies outside the
+    unpacked archive @p wurzel (an absolute path, a drive, "..", a link out of it) or is a URL."""
+    if not href or re.match(r"^[A-Za-z][A-Za-z0-9+.-]+:", href):
+        return None                     # data:, file:, http: ... -- not a file of the archive
+    if os.path.isabs(href) or re.match(r"^[A-Za-z]:", href) or href.startswith(("/", "\\")):
+        return None
+    datei = os.path.realpath(os.path.join(ordner, href))
+    basis = os.path.realpath(wurzel)
+    try:
+        if os.path.commonpath([datei, basis]) != basis:
+            return None
+    except ValueError:                  # another drive
+        return None
+    return datei
+
+
+_KINDER, _AUFRAEUMEN = [], []
+
+
+def _stop_on_eof():
+    """--stop-on-eof: when standard input closes, kill the processes started since (the QElectroTech runs),
+    remove the working folder and exit with code 3."""
+    popen_init = subprocess.Popen.__init__
+
+    def init(self, *a, **k):
+        popen_init(self, *a, **k)
+        _KINDER.append(self)
+    subprocess.Popen.__init__ = init
+
+    def wache():
+        try:
+            while sys.stdin.buffer.read(4096):
+                pass
+        except Exception:
+            pass
+        for p in list(_KINDER):
+            try:
+                p.kill()
+            except Exception:
+                pass
+        for d in _AUFRAEUMEN:
+            shutil.rmtree(d, ignore_errors=True)
+        print("stopped", flush=True)
+        os._exit(3)
+    threading.Thread(target=wache, daemon=True).start()
+
+
 def umsetzen(epdz, ziel_qet, arbeit=None, sammlung=True, entpackt=None):
     """Translate @p epdz into the project @p ziel_qet. sammlung: keep the parts made from the EPLAN symbols in
     the user collection (otherwise they live only in the project); entpackt: the archive already unpacked.
     -> the written project."""
     _fortschritt(2, "read")
     arbeit = arbeit or os.path.join(os.path.dirname(os.path.abspath(ziel_qet)), "_epdz_import")
+    eigene_arbeit = not os.path.isdir(arbeit)
     os.makedirs(arbeit, exist_ok=True)
+    if eigene_arbeit:
+        _AUFRAEUMEN.append(arbeit)
     # where the parts go: QElectroTech finds them there as custom:// for this run
     wurzel = qet_backend.user_collection() if sammlung else None
     if sammlung and not wurzel:
@@ -1067,7 +1127,8 @@ def umsetzen(epdz, ziel_qet, arbeit=None, sammlung=True, entpackt=None):
         formen += _blattgrafik(se.rahmen["linien"], se.rahmen["kreise"])
         texte += _blatttexte(se.rahmen["texte"])
         for href, x0, y0, x1, y1 in se.rahmen["bilder"] + se.frei["bilder"]:
-            bx = G.image_xml(os.path.join(svg_ordner, href), x0, y0, x1, y1)
+            datei = _im_archiv(x, svg_ordner, href)
+            bx = G.image_xml(datei, x0, y0, x1, y1) if datei else None
             if bx:
                 bilder.append(bx)
             else:
@@ -1267,7 +1328,7 @@ def umsetzen(epdz, ziel_qet, arbeit=None, sammlung=True, entpackt=None):
                f"not drawn {dict(nicht)}, report arrows {stat['pfeile']}, arrows without partner {len(plan.open)}, "
                f"master/slave {stat['verknuepft']}, graphics groups {stat['grafik_gruppe']}, articles without a "
                f"part in the collection {stat['artikel_ohne_bauteil']}, failed operations {len(fehl)}")
-    with open(os.path.join(arbeit, "import_report.txt"), "w", encoding="utf-8") as f:
+    with open(os.path.splitext(ziel_qet)[0] + "_import_report.txt", "w", encoding="utf-8") as f:
         f.write(bericht + "\n")
         for o in fehl[:200]:
             f.write(f"failed: {o}\n")
@@ -1276,6 +1337,8 @@ def umsetzen(epdz, ziel_qet, arbeit=None, sammlung=True, entpackt=None):
         print("first failed operation:", fehl[0])
     if not entpackt:
         shutil.rmtree(x, ignore_errors=True)
+    if eigene_arbeit:
+        shutil.rmtree(arbeit, ignore_errors=True)
     return erg
 
 
@@ -1326,6 +1389,8 @@ def main(argv):
         ok, meldung = pruefen()
         print(meldung)
         return 0 if ok else 1
+    if "--stop-on-eof" in argv:
+        _stop_on_eof()
     args, entpackt, i = [], None, 0
     while i < len(argv):
         a = argv[i]

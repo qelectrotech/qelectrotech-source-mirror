@@ -1168,9 +1168,6 @@ set_tests_properties(tst_customizedialog PROPERTIES ENVIRONMENT "QT_QPA_PLATFORM
 target_include_directories(tst_customizedialog PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_customizedialog PRIVATE Qt::Test Qt::Widgets)
 
-# scriptheader.h is header-only: the // ==QETScript== block that turns a
-# stored script into a button; and ShortcutManager::unregisterAction(), which
-# takes a deleted script's command out of the lists again.
 # File > Import EPLAN project: the command line of the import program, its
 # output and the manifest of an EPLAN export archive (.epdz).
 add_executable(
@@ -1182,6 +1179,9 @@ add_test(NAME tst_eplanprojectimport COMMAND tst_eplanprojectimport)
 target_include_directories(tst_eplanprojectimport PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_eplanprojectimport PRIVATE Qt::Test Qt::Sql)
 
+# scriptheader.h is header-only: the // ==QETScript== block that turns a
+# stored script into a button; and ShortcutManager::unregisterAction(), which
+# takes a deleted script's command out of the lists again.
 add_executable(
   tst_scriptheader
   tst_scriptheader.cpp

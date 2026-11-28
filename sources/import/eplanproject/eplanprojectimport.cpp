@@ -65,6 +65,9 @@ QStringList EplanProjectImport::arguments(const QString &script, const QString &
 		args << QStringLiteral("--unpacked") << QDir::toNativeSeparators(unpacked);
 	if (pdf) args << QStringLiteral("--pdf");
 	if (!keep_parts) args << QStringLiteral("--no-collection");
+		// Cancel closes the program's standard input: it then stops the
+		// QElectroTech runs it started, too
+	args << QStringLiteral("--stop-on-eof");
 	return args;
 }
 

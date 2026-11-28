@@ -80,8 +80,12 @@ private slots:
 			"var segs2 = qet.conductorSegments(0, a, 1);\n"
 			"var kept = qet.setConductorPathBetween(0, a, 1, b, 0, (pa.x + 50) + ',' + (pa.y + 50));\n"
 			"var segs3 = qet.conductorSegments(0, a, 1);\n"
+				// the last corner up to one unit off the far terminal's x
+			"var near = [0, 0.3, 0.7, 1.0].map(function (d) {\n"
+			"  return qet.setConductorPathBetween(0, a, 1, b, 0,\n"
+			"    pa.x + ',' + (mid + 40) + ';' + (pb.x + d) + ',' + (mid + 40)); });\n"
 			"qet.log('PROBE ' + JSON.stringify({set: set, segs: segs, mid: mid, reversed: reversed,\n"
-			"  segs2: segs2, kept: kept, segs3: segs3,\n"
+			"  segs2: segs2, kept: kept, segs3: segs3, near: near,\n"
 			"  junk: qet.setConductorPathBetween(0, a, 1, b, 0, 'one,two'),\n"
 			"  none: qet.setConductorPathBetween(0, a, 0, b, 1, '')}));\n"));
 		QVERIFY2(!r.isEmpty(), "the script logged nothing");
@@ -105,6 +109,12 @@ private slots:
 			// a diagonal: the conductor keeps the path it had
 		QCOMPARE(r.value(QStringLiteral("kept")).toString(), QStringLiteral("kept"));
 		QCOMPARE(r.value(QStringLiteral("segs3")).toArray(), r.value(QStringLiteral("segs2")).toArray());
+
+			// a corner a hair off the far terminal is put onto it
+		const QJsonArray near = r.value(QStringLiteral("near")).toArray();
+		QCOMPARE(near.size(), 4);
+		for (const QJsonValue &v : near)
+			QCOMPARE(v.toString(), QStringLiteral("set"));
 
 		QCOMPARE(r.value(QStringLiteral("junk")).toString(), QString());
 		QCOMPARE(r.value(QStringLiteral("none")).toString(), QString());

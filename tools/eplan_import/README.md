@@ -28,7 +28,12 @@ the scripting API (`qet_mcp.tool_project_new` / `tool_edit`), then adds the foli
 file. It prints `PROGRESS <percent> <step>` for each step and `done: <project>` at the end.
 
 Beside the project it writes `<name>_devices.csv`, `<name>_connections.csv`, the folder `<name>_3D` with
-the `.e3d` installation spaces and, in `_epdz_import_<name>/import_report.txt`, what was translated.
+the `.e3d` installation spaces and, in `<name>_import_report.txt`, what was translated. Like the project
+they are written anew on every import, replacing older ones. The working folder `_epdz_import_<name>` is
+removed at the end. Pictures on the pages are taken only from inside the archive. Every report arrow's
+own label is left empty: EPLAN's page text beside the arrow already names its target. Cancel in the
+dialog closes the program's input (`--stop-on-eof`), and the program then stops the QElectroTech runs it
+started.
 
 Requirements: Python 3.9 or later (standard library only), a QElectroTech built with scripting. Optional:
 fontTools and the Tahoma font for exact text widths, PyMuPDF for pictures that are not PNG, 7-Zip when the

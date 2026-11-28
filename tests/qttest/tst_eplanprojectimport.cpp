@@ -140,9 +140,10 @@ private slots:
 															   true, false);
 		QCOMPARE(args.mid(0, 2), (QStringList{QStringLiteral("-u"), QStringLiteral("s.py")}));
 		QCOMPARE(args.mid(4), (QStringList{QStringLiteral("--unpacked"), QStringLiteral("x"),
-										   QStringLiteral("--pdf"), QStringLiteral("--no-collection")}));
+										   QStringLiteral("--pdf"), QStringLiteral("--no-collection"),
+										   QStringLiteral("--stop-on-eof")}));
 		QCOMPARE(EplanProjectImport::arguments(QStringLiteral("s.py"), archive, QStringLiteral("t.qet"),
-											   QString(), false, true).size(), 4);
+											   QString(), false, true).size(), 5);
 	}
 
 	void output()

@@ -320,7 +320,29 @@ class PackedArchive(unittest.TestCase):
             self.assertEqual(code, 0, out.getvalue())
             self.assertTrue(os.path.isfile(os.path.join(base, "packed.qet")), out.getvalue())
             self.assertEqual([n for _, _, fs in os.walk(collection) for n in fs], [])
-            self.assertFalse(os.path.isdir(os.path.join(base, "_epdz_import_packed", "x")))
+            self.assertFalse(os.path.isdir(os.path.join(base, "_epdz_import_packed")))
+            self.assertTrue(os.path.isfile(os.path.join(base, "packed_import_report.txt")))
+
+
+class PictureReferences(unittest.TestCase):
+    """A page's pictures come only from inside the unpacked archive."""
+
+    def test_inside_and_outside(self):
+        with tempfile.TemporaryDirectory() as base:
+            x = os.path.join(base, "x")
+            pages = os.path.join(x, "packages", "pages", "items", "pagesvg")
+            os.makedirs(os.path.join(pages, "img"))
+            with open(os.path.join(pages, "img", "logo.png"), "wb") as f:
+                f.write(b"png")
+            with open(os.path.join(base, "outside.png"), "wb") as f:
+                f.write(b"png")
+            self.assertEqual(E._im_archiv(x, pages, "img/logo.png"),
+                             os.path.realpath(os.path.join(pages, "img", "logo.png")))
+            self.assertIsNotNone(E._im_archiv(x, pages, "../pagesvg/img/logo.png"))
+            for href in (os.path.join(base, "outside.png"), "/etc/passwd", r"\\server\share\a.png",
+                         "C:/a.png", "C:a.png", "../../../../../outside.png", "file:///etc/passwd",
+                         "http://example.com/a.png", "data:image/png;base64,AAAA", ""):
+                self.assertIsNone(E._im_archiv(x, pages, href), href)
 
 
 class CommandLine(unittest.TestCase):

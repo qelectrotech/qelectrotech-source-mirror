@@ -38,12 +38,14 @@
 #include <QMessageBox>
 #include <QMimeData>
 #include <QPlainTextEdit>
+#include <QPointer>
 #include <QProgressBar>
 #include <QPushButton>
 #include <QRegularExpression>
 #include <QSettings>
 #include <QStandardPaths>
 #include <QTemporaryDir>
+#include <QTimer>
 #include <QVBoxLayout>
 
 namespace {
@@ -175,8 +177,11 @@ EplanProjectImportDialog::~EplanProjectImportDialog()
 {
 	if (m_process && m_process->state() != QProcess::NotRunning) {
 		m_process->disconnect(this);
-		m_process->kill();
-		m_process->waitForFinished(3000);
+		m_process->closeWriteChannel();	// --stop-on-eof: the program stops its own runs
+		if (!m_process->waitForFinished(5000)) {
+			m_process->kill();
+			m_process->waitForFinished(3000);
+		}
 	}
 }
 
@@ -509,7 +514,9 @@ void EplanProjectImportDialog::processFinished(int exit_code, QProcess::ExitStat
 		accept();
 		return;
 	}
-	m_status->setText(status == QProcess::CrashExit
+	const bool cancelled = m_cancelled;
+	m_cancelled = false;
+	m_status->setText(status == QProcess::CrashExit || cancelled
 					  ? tr("The import was stopped.")
 					  : tr("The import failed (exit code %1). The reason is in the output below.").arg(exit_code));
 }
@@ -525,7 +532,15 @@ void EplanProjectImportDialog::reject()
 		if (QMessageBox::question(this, windowTitle(), tr("Stop the running import?"))
 			!= QMessageBox::Yes)
 			return;
-		m_process->kill();	// processFinished() tidies up
+			// --stop-on-eof: closing its input makes the program stop the
+			// QElectroTech runs it started and exit; kill it only when it
+			// does not. processFinished() tidies up.
+		m_cancelled = true;
+		m_process->closeWriteChannel();
+		QPointer<QProcess> process = m_process;
+		QTimer::singleShot(5000, this, [process]() {
+			if (process && process->state() != QProcess::NotRunning) process->kill();
+		});
 		return;
 	}
 	QDialog::reject();

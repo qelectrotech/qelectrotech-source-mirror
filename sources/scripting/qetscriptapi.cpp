@@ -1786,9 +1786,11 @@ QString QetScriptApi::setConductorPathBetween(int folioIndex,
 		points << QPointF(x, y);
 	}
 	points << b->dockConductor();
-		//Snap: each point onto the previous one's x or y when within one
-		//unit; the last corner also onto the far terminal
-	for (int i = 1; i < points.size(); ++i) {
+		//Snap: each corner onto the previous point's x or y when within
+		//one unit; the last corner also onto the far terminal. The far
+		//terminal's dock itself never moves: setPathPoints() wants it
+		//exactly there.
+	for (int i = 1; i < points.size() - 1; ++i) {
 		QPointF &p = points[i];
 		const QPointF &q = points.at(i - 1);
 		if (qAbs(p.x() - q.x()) <= 1.0) p.setX(q.x());
