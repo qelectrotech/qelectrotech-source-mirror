@@ -164,6 +164,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/import/eplanproject/eplanprojectimportdialog.h
   ${QET_DIR}/sources/import/fluidsim/fluidsimimport.cpp
   ${QET_DIR}/sources/import/fluidsim/fluidsimimport.h
+  ${QET_DIR}/sources/import/splan/splanimportdialog.cpp
+  ${QET_DIR}/sources/import/splan/splanimportdialog.h
   ${QET_DIR}/sources/diagramevent/macrolabels.cpp
   ${QET_DIR}/sources/diagramevent/macrolabels.h
   ${QET_DIR}/sources/ui/macrolabelsdialog.cpp

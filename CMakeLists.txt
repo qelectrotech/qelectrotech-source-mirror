@@ -474,6 +474,13 @@ install(FILES
   DESTINATION ${QET_DATA_PATH}fluidsim_import)
 install(DIRECTORY tools/fluidsim_import/grafcet DESTINATION ${QET_DATA_PATH}fluidsim_import
   FILES_MATCHING PATTERN "*.elmt")
+# The importers of File > Import (sources/import/splan) are Python programs
+# run beside QElectroTech; they draw through the MCP server above.
+install(DIRECTORY tools/qet_sheet tools/splan_import
+    DESTINATION ${QET_DATA_PATH}import
+    FILES_MATCHING PATTERN "*.py" PATTERN "*.md"
+    PATTERN "test_*.py" EXCLUDE
+    PATTERN "__pycache__" EXCLUDE)
 install(FILES LICENSE ELEMENTS.LICENSE CREDIT README ChangeLog DESTINATION ${QET_LICENSE_PATH})
 if(UNIX AND NOT APPLE)
     install(FILES misc/org.qelectrotech.qelectrotech.desktop DESTINATION ${QET_DESKTOP_PATH})

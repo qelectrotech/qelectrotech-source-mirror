@@ -42,6 +42,7 @@
 #include <QWidgetAction>
 #include <QGridLayout>
 #include "ElementsCollection/elementscollectionwidget.h"
+#include "import/splan/splanimportdialog.h"
 #include "ElementsCollection/elementpickerpopup.h"
 #include "shortcutbarsettings.h"
 #include "diagramtoolbarsettings.h"
@@ -2397,6 +2398,26 @@ void QETDiagramEditor::setUpMenu()
 	menu_fichier->addMenu(recentfile);
 	connect(QETApp::projectsRecentFiles(), &RecentFiles::fileOpeningRequested, this, &QETDiagramEditor::openRecentFile);
 	menu_fichier -> addActions(m_file_actions_group.actions());
+	menu_fichier -> addSeparator();
+		//An sPlan 8 schematic (.spl8, Abacom) drawn anew as a project
+	QAction *import_splan = menu_fichier->addAction(
+		QET::Icons::DocumentOpen, tr("Import sPlan schematic (.spl8)…"));
+	import_splan->setObjectName(QStringLiteral("import_splan"));
+	import_splan->setStatusTip(tr("Reads an sPlan 8 schematic and draws it "
+				      "anew as a QElectroTech project"));
+	connect(import_splan, &QAction::triggered, this, [this]() {
+		SplanImportDialog dialog(this);
+		QTimer::singleShot(0, &dialog, [&dialog]() {
+			dialog.chooseSource();
+		});
+		if (dialog.exec() != QDialog::Accepted
+			|| dialog.resultPath().isEmpty())
+			return;
+			// the import writes its device boxes into the user collection
+		if (m_element_collection_widget)
+			m_element_collection_widget->reload();
+		openAndAddProject(dialog.resultPath());
+	});
 	menu_fichier -> addSeparator();
 	//menu_fichier -> addAction(import_diagram);
 		//An EPLAN export archive (.epdz) as a new QElectroTech project

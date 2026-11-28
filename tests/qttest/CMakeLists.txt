@@ -2833,3 +2833,9 @@ qet_add_app_test(tst_labellistexport tst_labellistexport.cpp)
 target_compile_definitions(tst_labellistexport PRIVATE
   QET_EXAMPLES_DIR="${QET_DIR}/examples"
   QET_FIXTURES_DIR="${CMAKE_CURRENT_SOURCE_DIR}/fixtures")
+# File > Import sPlan schematic: target, command line, progress and result
+# of the import program, and the menu command (tools/splan_import has the
+# tests of the translation itself).
+qet_add_app_test(tst_splanimportdialog tst_splanimportdialog.cpp)
+target_compile_definitions(tst_splanimportdialog PRIVATE
+  QET_SPLAN_SCRIPT="${QET_DIR}/tools/splan_import/splan_to_qet.py")
