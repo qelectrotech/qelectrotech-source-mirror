@@ -52,14 +52,35 @@ namespace {
 		return false;
 	}
 
-	/// segments for an arc so that no chord is more than 0.15 mm off the curve
+	/// at most this many segments per arc, whatever its radius and sweep
+	constexpr int MAX_ARC_STEPS = 360;
+
+	/// Entities and lines a drawing may expand to. Nested INSERTs are
+	/// limited in depth; this limits their fan-out too (a block inserting
+	/// another one many times, on every level).
+	constexpr int MAX_EXPANDED = 500000;
+
+	/// segments for an arc so that no chord is more than 0.15 mm off the
+	/// curve; the sweep is at most a full turn
 	int arcSteps(double sweep_rad, double radius)
 	{
 		const double s = 0.15;
-		if (radius <= s) return 4;
+		if (!std::isfinite(sweep_rad) || !std::isfinite(radius) || radius <= s) return 4;
+		const double sweep = qMin(qAbs(sweep_rad), 2 * M_PI);
 		const double step = 2 * qAcos(1 - s / radius);
-		return qMax(4, int(std::ceil(qAbs(sweep_rad) / step)));
+		if (!(step > 0)) return MAX_ARC_STEPS;
+		return qBound(4, int(std::ceil(sweep / step)), MAX_ARC_STEPS);
 	}
+
+	/// @p degrees in [0, 360)
+	double normalisedAngle(double degrees)
+	{
+		double a = std::fmod(degrees, 360.0);
+		if (a < 0) a += 360;
+		return a;
+	}
+
+	bool finite(const QPointF &p) { return std::isfinite(p.x()) && std::isfinite(p.y()); }
 
 	/// Points of a polyline segment with a DXF bulge (tan of a quarter of
 	/// the included angle).
@@ -132,7 +153,16 @@ bool EplanDxfReader::read(const QByteArray &data)
 		return false;
 	}
 	QVector<QLineF> unused;
-	for (const Entity &e : std::as_const(m_entities)) collect(e, {}, 0, unused);
+	m_expanded = 0;
+	m_too_large = false;
+	for (const Entity &e : std::as_const(m_entities)) {
+		collect(e, {}, 0, unused);
+		if (m_too_large) break;
+	}
+	if (m_too_large) {
+		m_error = QStringLiteral("The DXF expands to more than %1 entities and lines").arg(MAX_EXPANDED);
+		return false;
+	}
 
 	// EPLAN writes the macro's own description under it: the macro file
 	// (".ema"), representation type, variant, date and macro name, one text
@@ -185,6 +215,7 @@ void EplanDxfReader::parse(const QVector<QPair<int, QString>> &codes)
 				else if (c == 10) base.setX(v.toDouble());
 				else if (c == 20) base.setY(v.toDouble());
 			}
+			if (!finite(base)) base = QPointF();
 			m_blocks[block_name].base = base;
 			in_block = true;
 			open_poly = open_insert = -1;
@@ -208,10 +239,16 @@ void EplanDxfReader::parse(const QVector<QPair<int, QString>> &codes)
 		const bool is_text = e.type == QLatin1String("TEXT") || e.type == QLatin1String("ATTRIB") || is_mtext;
 		const bool is_lw = e.type == QLatin1String("LWPOLYLINE");
 		QString subclass;  // an ATTRIB repeats code 72 (as an MTEXT flag) in AcDbAttribute
+		bool not_finite = false;  // a coordinate, size or angle "nan", "inf" or out of range
 		for (++i; i < n && codes.at(i).first != 0; ++i) {
 			const int c = codes.at(i).first;
 			const QString &v = codes.at(i).second;
 			const double d = v.toDouble();
+			// group codes 10..59 are floating-point values
+			if (c >= 10 && c <= 59 && !std::isfinite(d)) {
+				not_finite = true;
+				continue;
+			}
 			switch (c) {
 				case 100: subclass = v; break;
 				case 1: if (is_mtext) e.text += v; else e.text = v; break;
@@ -250,6 +287,13 @@ void EplanDxfReader::parse(const QVector<QPair<int, QString>> &codes)
 			}
 		}
 
+		// such an entity is left out; the attributes and vertices that
+		// follow a left out INSERT or POLYLINE go with it
+		if (not_finite) {
+			if (e.type == QLatin1String("INSERT") || e.type == QLatin1String("POLYLINE"))
+				open_poly = open_insert = -1;
+			continue;
+		}
 		if (e.type == QLatin1String("VERTEX")) {
 			if (open_poly >= 0) {
 				Entity &poly = target()[open_poly];
@@ -276,9 +320,23 @@ void EplanDxfReader::parse(const QVector<QPair<int, QString>> &codes)
 void EplanDxfReader::collect(const Entity &e, const QVector<Transform> &stack,
 			     int depth, QVector<QLineF> &block_lines)
 {
+	// every entity and every line counts against the budget of the drawing
+	auto spend = [&](qsizetype n) {
+		if (m_too_large || n > MAX_EXPANDED - m_expanded) {
+			m_too_large = true;
+			return false;
+		}
+		m_expanded += int(n);
+		return true;
+	};
+	if (!spend(1)) return;
+
 	auto addPolyline = [&](const QVector<QPointF> &pts) {
+		if (!spend(pts.size())) return;
 		for (int k = 1; k < pts.size(); ++k) {
 			const QLineF l(apply(stack, pts.at(k - 1)), apply(stack, pts.at(k)));
+			// a scaled block reference may still overflow
+			if (!finite(l.p1()) || !finite(l.p2())) continue;
 			m_lines.append(l);
 			block_lines.append(l);
 			if (stack.isEmpty()) m_model_lines.append(l);
@@ -292,16 +350,23 @@ void EplanDxfReader::collect(const Entity &e, const QVector<Transform> &stack,
 		QVector<QPointF> pts {e.pts.first()};
 		const int count = e.pts.size();
 		const int segments = e.closed ? count : count - 1;
-		for (int k = 0; k < segments; ++k)
+		for (int k = 0; k < segments; ++k) {
 			pts += bulgeArc(e.pts.at(k), e.pts.at((k + 1) % count), e.bulges.value(k));
+			if (pts.size() > MAX_EXPANDED - m_expanded) {
+				m_too_large = true;
+				return;
+			}
+		}
 		addPolyline(pts);
 	} else if (e.type == QLatin1String("ARC")) {
-		double sweep = e.a2 - e.a1;
+		// angles of any size (1e10) give at most a full turn
+		const double a1 = normalisedAngle(e.a1);
+		double sweep = normalisedAngle(e.a2) - a1;
 		if (sweep <= 0) sweep += 360;
 		const int steps = arcSteps(qDegreesToRadians(sweep), e.r);
 		QVector<QPointF> pts;
 		for (int k = 0; k <= steps; ++k) {
-			const double t = qDegreesToRadians(e.a1 + sweep * k / steps);
+			const double t = qDegreesToRadians(a1 + sweep * k / steps);
 			pts << e.p1 + QPointF(e.r * qCos(t), e.r * qSin(t));
 		}
 		addPolyline(pts);
@@ -310,7 +375,9 @@ void EplanDxfReader::collect(const Entity &e, const QVector<Transform> &stack,
 		if (e.layer == QLatin1String("EPLAN_HIDDEN")) return;
 		double scale = 1;
 		for (const Transform &t : stack) scale *= qAbs(t.sx);
-		m_circles.append({apply(stack, e.p1), e.r * scale});
+		const QPointF centre = apply(stack, e.p1);
+		if (!finite(centre) || !std::isfinite(e.r * scale)) return;
+		m_circles.append({centre, e.r * scale});
 		if (stack.isEmpty()) m_model_circles.append(m_circles.last());
 	} else if (e.type == QLatin1String("TEXT") || e.type == QLatin1String("MTEXT")) {
 		const bool mtext = e.type == QLatin1String("MTEXT");
@@ -336,6 +403,7 @@ void EplanDxfReader::collect(const Entity &e, const QVector<Transform> &stack,
 		t.rotation = rot;
 		t.halign = e.halign;
 		t.valign = e.valign;
+		if (!finite(t.anchor) || !finite(t.insert) || !std::isfinite(t.rotation)) return;
 		m_texts.append(t);
 	} else if (e.type == QLatin1String("INSERT") && depth < 8) {
 		if (!m_blocks.contains(e.block)) return;
@@ -351,12 +419,14 @@ void EplanDxfReader::collect(const Entity &e, const QVector<Transform> &stack,
 		// An EPLAN black-box frame marks one part of a multi-part device; the
 		// importer draws its own (shortened) frame for it.
 		if (e.block.contains(QLatin1String("Symbol14"))) {
+			if (!spend(b.entities.size())) return;
 			double x0 = 1e18, y0 = 1e18, x1 = -1e18, y1 = -1e18;
 			for (const Entity &c : b.entities) {
 				QVector<QPointF> pts = c.pts;
 				if (c.type == QLatin1String("LINE")) pts = {c.p1, c.p2};
 				for (const QPointF &p : pts) {
 					const QPointF q = apply(inner, p);
+					if (!finite(q)) continue;
 					x0 = qMin(x0, q.x()); y0 = qMin(y0, q.y());
 					x1 = qMax(x1, q.x()); y1 = qMax(y1, q.y());
 				}
@@ -401,7 +471,7 @@ void EplanDxfReader::collectAttribs(const Entity &insert, const QVector<Transfor
 		for (const QString &t : PIN_FUNC_TAGS) {
 			if (!by_tag.value(t).text.isEmpty()) { p.function = by_tag.value(t).text.trimmed(); break; }
 		}
-		m_pins.append(p);
+		if (finite(p.pos)) m_pins.append(p);
 	}
 
 	// several connection points in one symbol block (Connection_Name1..n, or
@@ -431,7 +501,7 @@ void EplanDxfReader::collectAttribs(const Entity &insert, const QVector<Transfor
 		p.pos = best;
 		p.name = a.text.isEmpty() ? descr : a.text;
 		p.function = descr.isEmpty() ? by_tag.value(QStringLiteral("Connection_Description")).text : descr;
-		m_pins.append(p);
+		if (finite(p.pos)) m_pins.append(p);
 	}
 
 	for (const Entity &a : insert.attribs) {

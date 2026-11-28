@@ -163,6 +163,8 @@ class EplanDxfReader
 		QVector<QPair<QPointF, double>> m_model_circles;
 		QString m_device_tag;
 		QString m_error;
+		int m_expanded = 0;        ///< entities and lines resolved so far
+		bool m_too_large = false;  ///< the drawing expands beyond the budget
 };
 
 #endif // EPLANDXFREADER_H
