@@ -1734,6 +1734,92 @@ QString QetScriptApi::routeConductorBetween(int folioIndex,
 	return QString();
 }
 
+/**
+	@brief QetScriptApi::setConductorPathBetween
+	Give the conductor joining two terminals the path through @p corners
+	("x,y;x,y;…", scene coordinates, from terminal A's side), as one
+	ChangeConductorCommand through Conductor::setPathPoints() -- the path
+	a hand drag would leave, saved and kept on reload. An importer uses it
+	to draw a wire where the source drawing had it (EPLAN export: the
+	corners of the connection line). A corner within one unit of the
+	previous point's x or y is put exactly on it, so that coordinates
+	rounded on the way still give horizontal and vertical segments.
+	@return "set"; "kept", the conductor keeping its path, when the
+	corners do not make a run of horizontal and vertical segments from one
+	terminal to the other (a note, not a failure: the wire is there); empty
+	when there is no such conductor or a corner is not x,y
+*/
+QString QetScriptApi::setConductorPathBetween(int folioIndex,
+											  const QString &elementUuidA, int terminalIndexA,
+											  const QString &elementUuidB, int terminalIndexB,
+											  const QString &corners)
+{
+	if (!m_project) return QString();
+	const QString caller = QStringLiteral("setConductorPathBetween");
+	if (m_project->isReadOnly()) {
+		log(QStringLiteral("qet.%1: project is read-only").arg(caller));
+		return QString();
+	}
+	Terminal *a = findTerminal(folioIndex, elementUuidA, terminalIndexA, caller);
+	Terminal *b = findTerminal(folioIndex, elementUuidB, terminalIndexB, caller);
+	if (!a || !b) return QString();
+	Conductor *conductor = nullptr;
+	for (Conductor *c : a->conductors()) {
+		if (c->terminal1 == b || c->terminal2 == b) {
+			conductor = c;
+			break;
+		}
+	}
+	if (!conductor) {
+		log(QStringLiteral("qet.%1: no conductor joins those two terminals").arg(caller));
+		return QString();
+	}
+	QList<QPointF> points{a->dockConductor()};
+	for (const QString &pair : corners.split(QLatin1Char(';'), Qt::SkipEmptyParts)) {
+		const QStringList xy = pair.split(QLatin1Char(','));
+		bool okx = false, oky = false;
+		const qreal x = xy.value(0).toDouble(&okx), y = xy.value(1).toDouble(&oky);
+		if (xy.size() != 2 || !okx || !oky || !qIsFinite(x) || !qIsFinite(y)) {
+			log(QStringLiteral("qet.%1: '%2' is not a corner x,y").arg(caller, pair));
+			return QString();
+		}
+		points << QPointF(x, y);
+	}
+	points << b->dockConductor();
+		//Snap: each corner onto the previous point's x or y when within
+		//one unit; the last corner also onto the far terminal. The far
+		//terminal's dock itself never moves: setPathPoints() wants it
+		//exactly there.
+	for (int i = 1; i < points.size() - 1; ++i) {
+		QPointF &p = points[i];
+		const QPointF &q = points.at(i - 1);
+		if (qAbs(p.x() - q.x()) <= 1.0) p.setX(q.x());
+		else if (qAbs(p.y() - q.y()) <= 1.0) p.setY(q.y());
+	}
+	if (points.size() > 2) {
+		QPointF &last = points[points.size() - 2];
+		const QPointF end = points.last();
+		if (qAbs(last.x() - end.x()) <= 1.0) last.setX(end.x());
+		else if (qAbs(last.y() - end.y()) <= 1.0) last.setY(end.y());
+	}
+		//No zero-length steps
+	QList<QPointF> path;
+	for (const QPointF &p : std::as_const(points)) {
+		if (path.isEmpty() || qAbs(path.last().x() - p.x()) > 0.01
+				|| qAbs(path.last().y() - p.y()) > 0.01)
+			path << p;
+	}
+	if (path.size() < 2) path << b->dockConductor();
+	if (conductor->terminal1 != a) std::reverse(path.begin(), path.end());
+	if (!conductor->setPathPoints(path)) {
+		log(QStringLiteral("qet.%1: the corners do not make horizontal and vertical "
+						   "segments from one terminal to the other; the conductor "
+						   "keeps its path").arg(caller));
+		return QStringLiteral("kept");
+	}
+	return QStringLiteral("set");
+}
+
 QString QetScriptApi::elementLinkType(int folioIndex, const QString &elementUuid) const
 {
 	Element *element = findElement(folioIndex, elementUuid);
@@ -1813,8 +1899,13 @@ bool QetScriptApi::linkElements(int folioIndexA, const QString &elementUuidA,
 	// confirmed hanging with the fix below NOT in place, confirmed clean
 	// (no hang, false returned) with it in place. Same reasoning and the
 	// same choice addConductor() already makes about ConductorCreator's
-	// own ambiguous-potential dialog.
-	if (LinkElementCommand::reportLinkNeedsPotentialChoice(a, b)) {
+	// own ambiguous-potential dialog. Only reports ask (the same condition
+	// LinkElementCommand::redo() checks): a coil and its contact, or a
+	// terminal and its bridge, never do, whatever their conductors carry,
+	// and refusing them here left an importer unable to link a master to
+	// a slave whose wires differ in colour or section.
+	if ((a->linkType() & Element::AllReport)
+		&& LinkElementCommand::reportLinkNeedsPotentialChoice(a, b)) {
 		log(QStringLiteral("qet.linkElements: %1 and %2 already carry conductors whose "
 						   "colour, style, text, function or tension protocol disagree -- "
 						   "linking them would open a dialog asking which to keep, and "

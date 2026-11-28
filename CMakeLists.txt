@@ -457,6 +457,12 @@ install(DIRECTORY templates   DESTINATION ${QET_DATA_PATH})
 # <prefix>/mcp -> <prefix>/bin.
 install(PROGRAMS misc/qet-mcp/qet_mcp.py DESTINATION ${QET_DATA_PATH}mcp)
 install(FILES misc/qet-mcp/README.md DESTINATION ${QET_DATA_PATH}mcp)
+# The EPLAN import program (File > Import EPLAN project), run with Python 3:
+# the dialog finds it in <data>/eplan_import/eplan_zw1, and it finds the MCP
+# module beside it in <data>/mcp.
+install(DIRECTORY tools/eplan_import DESTINATION ${QET_DATA_PATH}
+        PATTERN "tests" EXCLUDE
+        PATTERN "__pycache__" EXCLUDE)
 # The importers of File > Import (sources/import/splan) are Python programs
 # run beside QElectroTech; they draw through the MCP server above.
 install(DIRECTORY tools/qet_sheet tools/splan_import tools/wscad_import
