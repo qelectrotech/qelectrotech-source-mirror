@@ -162,6 +162,22 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/import/eplanproject/eplanprojectimport.h
   ${QET_DIR}/sources/import/eplanproject/eplanprojectimportdialog.cpp
   ${QET_DIR}/sources/import/eplanproject/eplanprojectimportdialog.h
+  ${QET_DIR}/sources/import/elementfingerprint.cpp
+  ${QET_DIR}/sources/import/elementfingerprint.h
+  ${QET_DIR}/sources/import/eplandxf/dwgreader.cpp
+  ${QET_DIR}/sources/import/eplandxf/dwgreader.h
+  ${QET_DIR}/sources/import/eplandxf/eplandxfreader.cpp
+  ${QET_DIR}/sources/import/eplandxf/eplandxfreader.h
+  ${QET_DIR}/sources/import/eplandxf/eplanelementbuilder.cpp
+  ${QET_DIR}/sources/import/eplandxf/eplanelementbuilder.h
+  ${QET_DIR}/sources/import/eplandxf/eplanimportdialog.cpp
+  ${QET_DIR}/sources/import/eplandxf/eplanimportdialog.h
+  ${QET_DIR}/sources/import/eplandxf/eplanmacroreader.cpp
+  ${QET_DIR}/sources/import/eplandxf/eplanmacroreader.h
+  ${QET_DIR}/sources/import/eplandxf/eplanpartimporter.cpp
+  ${QET_DIR}/sources/import/eplandxf/eplanpartimporter.h
+  ${QET_DIR}/sources/import/plcchannels.cpp
+  ${QET_DIR}/sources/import/plcchannels.h
   ${QET_DIR}/sources/diagramevent/macrolabels.cpp
   ${QET_DIR}/sources/diagramevent/macrolabels.h
   ${QET_DIR}/sources/ui/macrolabelsdialog.cpp
