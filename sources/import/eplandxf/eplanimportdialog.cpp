@@ -19,6 +19,7 @@
 
 #include "../../qetapp.h"
 #include "../../qetmessagebox.h"
+#include "../aasx/aasxpackage.h"
 #include "../edz/edzarchive.h"
 #include "../edz/edzpart.h"
 #include "eplanpartimporter.h"
@@ -51,7 +52,7 @@ EplanImportDialog::EplanImportDialog(QWidget *parent) :
 
 	m_source = new QLineEdit(this);
 	m_source->setReadOnly(true);
-	m_source->setPlaceholderText(tr("ZIP package, .edz part, DXF or DWG; or drop it here"));
+	m_source->setPlaceholderText(tr("ZIP package, .edz part, DXF, DWG or .aasx; or drop it here"));
 	auto *change = new QPushButton(tr("Change…"), this);
 	connect(change, &QPushButton::clicked, this, &EplanImportDialog::chooseSource);
 	// an unpacked package is a folder, which a file dialog cannot pick
@@ -159,11 +160,12 @@ bool EplanImportDialog::chooseSource()
 	QSettings settings;
 	const QString last = settings.value(QStringLiteral("eplanimport/lastdir")).toString();
 	const QStringList filters {
-		tr("Parts (*.zip *.edz *.dxf *.dwg)"),
+		tr("Parts (*.zip *.edz *.dxf *.dwg *.aasx)"),
 		tr("EPLAN Data Portal DXF package (*.zip)"),
 		tr("EPLAN parts (*.edz)"),
 		tr("DXF drawings (*.dxf)"),
-		tr("DWG drawings, e.g. WSCAD Universe (*.dwg)")};
+		tr("DWG drawings, e.g. WSCAD Universe (*.dwg)"),
+		tr("Asset Administration Shell (*.aasx)")};
 	const QString path = QFileDialog::getOpenFileName(this, tr("Import part"), last,
 							  filters.join(QStringLiteral(";;")));
 	if (path.isEmpty()) return false;
@@ -200,10 +202,11 @@ bool EplanImportDialog::setSource(const QString &path)
 	else if (suffix == QLatin1String("edz")) kind = Source::Edz;
 	else if (suffix == QLatin1String("dxf")) kind = Source::Dxf;
 	else if (suffix == QLatin1String("dwg")) kind = Source::Dwg;
+	else if (suffix == QLatin1String("aasx")) kind = Source::Aasx;
 	else {
 		QET::QetMessageBox::warning(this, tr("Part import"),
 					    tr("%1 is no part file: choose a ZIP package, an .edz "
-					       "part, a DXF, a DWG or the folder of an unpacked package.")
+					       "part, a DXF, a DWG, an .aasx or the folder of an unpacked package.")
 					    .arg(QDir::toNativeSeparators(path)));
 		return false;
 	}
@@ -244,10 +247,22 @@ void EplanImportDialog::sourceChanged()
 {
 	const QString path = QDir::fromNativeSeparators(m_source->text());
 	const bool package = m_kind == Source::Package || m_kind == Source::Folder;
-	// a package names manufacturer and type itself
-	m_manufacturer->setReadOnly(package);
-	m_type->setReadOnly(package);
-	if (package) {
+	// a package names manufacturer and type itself, so does an AASX
+	m_manufacturer->setReadOnly(package || m_kind == Source::Aasx);
+	m_type->setReadOnly(package || m_kind == Source::Aasx);
+	if (m_kind == Source::Aasx) {
+		AasxPackage aasx;
+		if (!aasx.open(path)) {
+			QET::QetMessageBox::warning(this, tr("Part import"),
+						    tr("This is no Asset Administration Shell package:\n%1")
+						    .arg(aasx.errorString()));
+			m_manufacturer->clear();
+			m_type->clear();
+		} else {
+			m_manufacturer->setText(EplanPartImporter::shortManufacturer(aasx.manufacturer()));
+			m_type->setText(aasx.typeNumber().isEmpty() ? aasx.orderNumber() : aasx.typeNumber());
+		}
+	} else if (package) {
 		QString error;
 		const QMap<QString, QString> art = EplanPartImporter::packageInfo(path, &error);
 		if (art.isEmpty()) {
@@ -402,6 +417,9 @@ void EplanImportDialog::runImport()
 		case Source::Dwg:
 			ok = importer.importDwg(source, QDir::fromNativeSeparators(m_edz->text()),
 						manufacturer, category, type, dir);
+			break;
+		case Source::Aasx:
+			ok = importer.importAasx(source, category, dir);
 			break;
 	}
 	QGuiApplication::restoreOverrideCursor();

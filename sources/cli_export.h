@@ -59,7 +59,7 @@ namespace CLIExport {
 		  qelectrotech --info           <project.qet> [output.json]
 		  qelectrotech --check-elements <element.elmt | directory> [--grid]
 		  qelectrotech --export-library <directory> <output.csv>
-		  qelectrotech --import-eplan   <package.zip | folder | file.dxf | file.edz | file.dwg> <collection_dir> [--category C] [--manufacturer M --type T] [--edz part.edz] [--wspak part.wspak] [--force]
+		  qelectrotech --import-eplan   <package.zip | folder | file.dxf | file.edz | file.dwg | file.aasx> <collection_dir> [--category C] [--manufacturer M --type T] [--edz part.edz] [--wspak part.wspak] [--force]
 		  qelectrotech --resave         <project.qet> <output.qet>
 		  qelectrotech --recover        <damaged.qetz> <output.qet>
 		  qelectrotech --set-titleblock <project.qet> <output.qet> key=value...
@@ -127,6 +127,10 @@ namespace CLIExport {
 		      a single DXF its part data. A DWG drawing (e.g. the "Download
 		      DWG" of WSCAD Universe) takes manufacturer and type from
 		      --wspak, a WSCAD Universe package, where they are not given.
+		      An Asset Administration Shell package (.aasx) names
+		      manufacturer and type in its Digital Nameplate; its STEP
+		      model goes to 3D/ and its documents to manufacturer_data/
+		      next to <collection_dir>.
 		      An element edited since its
 		      import is kept; --force overwrites it.
 		resave: load and rewrite the project XML (round-trip integrity).

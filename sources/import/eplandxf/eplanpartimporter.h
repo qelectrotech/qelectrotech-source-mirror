@@ -26,7 +26,7 @@
 /**
 	@brief Imports manufacturer EPLAN DXF data as QET elements.
 
-	Four sources:
+	Five sources:
 	- an EPLAN Data Portal DXF package (MAC_<part>.zip or its unpacked
 	  folder): commercialdata.csv with the part data and one DXF per
 	  variant and representation; every variant becomes an element;
@@ -37,7 +37,8 @@
 	  where the part carries the manufacturer's EPLAN macro, one element
 	  per schematic variant and its panel layout;
 	- an AutoCAD DWG drawing (importDwg()), e.g. the "Download DWG" of
-	  WSCAD Universe, with the part data of its .wspak package.
+	  WSCAD Universe, with the part data of its .wspak package;
+	- an Asset Administration Shell package (importAasx()).
 
 	Elements are written to <collection>/<manufacturer>/<category>/<type>/,
 	each folder with a qet_directory file. UI-decoupled like EdzImporter.
@@ -60,6 +61,12 @@ class EplanPartImporter
 			       const QString &type, const QString &collection_dir);
 		/// manufacturer, order, type and description from a WSCAD Universe package (.wspak)
 		static QMap<QString, QString> wspakPartInfo(const QString &path);
+		/// an Asset Administration Shell package (.aasx): part data, the element
+		/// from its EDZ/DXF/DWG, STEP and documents into folders next to the collection
+		bool importAasx(const QString &aasx_path, const QString &category,
+				const QString &collection_dir);
+		/// "Phoenix Contact GmbH & Co. KG" -> "Phoenix Contact"
+		static QString shortManufacturer(const QString &name);
 		/// display name of a manufacturer ("SIE" -> "Siemens")
 		static QString manufacturerName(const QString &name);
 

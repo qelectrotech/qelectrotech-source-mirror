@@ -23,6 +23,7 @@
 #include "container/qetzip.h"
 #include "import/edz/edzpart.h"
 #include "import/elementfingerprint.h"
+#include "import/aasx/aasxpackage.h"
 #include "import/eplandxf/dwgreader.h"
 #include "import/eplandxf/eplandxfreader.h"
 #include "import/eplandxf/eplanmacroreader.h"
@@ -515,6 +516,70 @@ class TstEplanPartImport : public QObject
 			QCOMPARE(CLIExport::run({QStringLiteral("--import-eplan"), dwg, collection,
 						 QStringLiteral("--manufacturer"), QStringLiteral("Acme"),
 						 QStringLiteral("--type"), QStringLiteral("REL-5")}), 1);
+		}
+
+		/// An Asset Administration Shell package: the Digital Nameplate
+		/// names the part, its DXF becomes the element, its STEP model
+		/// and its documents go into folders next to the collection
+		void aasxPackage()
+		{
+			const QByteArray rels =
+				"<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
+				"<Relationships xmlns=\"http://schemas.openxmlformats.org/package/2006/relationships\">"
+				"<Relationship Type=\"http://www.admin-shell.io/aasx/relationships/aasx-origin\""
+				" Target=\"/aasx/aasx-origin\" Id=\"r1\"/></Relationships>";
+			const QByteArray origin_rels =
+				"<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
+				"<Relationships xmlns=\"http://schemas.openxmlformats.org/package/2006/relationships\">"
+				"<Relationship Type=\"http://www.admin-shell.io/aasx/relationships/aas-spec\""
+				" Target=\"/aasx/json/content.json\" Id=\"r2\"/></Relationships>";
+			const QByteArray content =
+				"{\"submodels\": [{\"idShort\": \"Nameplate\", \"id\": \"urn:example:nameplate\","
+				" \"submodelElements\": ["
+				"{\"modelType\": \"MultiLanguageProperty\", \"idShort\": \"ManufacturerName\","
+				" \"value\": [{\"language\": \"en\", \"text\": \"Acme GmbH\"}]},"
+				"{\"modelType\": \"Property\", \"idShort\": \"OrderCodeOfManufacturer\", \"value\": \"AX-100\"},"
+				"{\"modelType\": \"Property\", \"idShort\": \"ManufacturerProductType\", \"value\": \"AX 100\"},"
+				"{\"modelType\": \"MultiLanguageProperty\", \"idShort\": \"ManufacturerProductDesignation\","
+				" \"value\": [{\"language\": \"en\", \"text\": \"Input module\"}]}]}]}";
+			const QString aasx = m_dir.filePath(QStringLiteral("part.aasx"));
+			QVERIFY(QetZip::write(aasx, {
+				{QStringLiteral("_rels/.rels"), rels},
+				{QStringLiteral("aasx/aasx-origin"), "Intentionally empty."},
+				{QStringLiteral("aasx/_rels/aasx-origin.rels"), origin_rels},
+				{QStringLiteral("aasx/json/content.json"), content},
+				{QStringLiteral("aasx/files/AX-100.dxf"), deviceDxf()},
+				{QStringLiteral("aasx/files/AX-100.stp"), "ISO-10303-21;\nEND-ISO-10303-21;\n"},
+				{QStringLiteral("aasx/files/manual.pdf"), "%PDF-1.4\n"}}));
+
+			AasxPackage package;
+			QVERIFY2(package.open(aasx), qPrintable(package.errorString()));
+			QCOMPARE(package.manufacturer(), QStringLiteral("Acme GmbH"));
+			QCOMPARE(package.orderNumber(), QStringLiteral("AX-100"));
+			QCOMPARE(package.typeNumber(), QStringLiteral("AX 100"));
+			QCOMPARE(EplanPartImporter::shortManufacturer(package.manufacturer()), QStringLiteral("Acme"));
+
+			const QString base = m_dir.filePath(QStringLiteral("aasx"));
+			const QString collection = base + QStringLiteral("/collection");
+			EplanPartImporter importer;
+			QVERIFY2(importer.importAasx(aasx, QStringLiteral("PLC"), collection),
+				 qPrintable(importer.errorString()));
+			const QString element = collection + QStringLiteral("/Acme/PLC/AX 100/AX_100_Inputs_+_Supply.elmt");
+			QVERIFY2(importer.writtenPaths().contains(element), qPrintable(importer.writtenPaths().join('\n')));
+			QCOMPARE(info(readXml(element), QStringLiteral("manufacturer")), QStringLiteral("Acme"));
+			QVERIFY(QFile::exists(base + QStringLiteral("/3D/Acme/AX-100.stp")));
+			QVERIFY(QFile::exists(base + QStringLiteral("/manufacturer_data/Acme/AX-100/manual.pdf")));
+			QVERIFY(QFile::exists(base + QStringLiteral("/manufacturer_data/Acme/AX-100/aasx.json")));
+
+				//The command line does the same; no Digital Nameplate, no import
+			QCOMPARE(CLIExport::run({QStringLiteral("--import-eplan"), aasx,
+						 m_dir.filePath(QStringLiteral("aasx_cli/collection"))}), 0);
+			QVERIFY(QFile::exists(m_dir.filePath(QStringLiteral("aasx_cli/3D/Acme/AX-100.stp"))));
+			const QString bare = m_dir.filePath(QStringLiteral("bare.aasx"));
+			QVERIFY(QetZip::write(bare, {{QStringLiteral("aasx/json/content.json"),
+				"{\"submodels\": [{\"idShort\": \"TechnicalData\", \"submodelElements\": []}]}"}}));
+			QVERIFY(!importer.importAasx(bare, QStringLiteral("PLC"), collection));
+			QVERIFY(!importer.errorString().isEmpty());
 		}
 
 		/// The editor has the menu entry

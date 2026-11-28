@@ -153,6 +153,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/import/edz/edzimporter.h
   ${QET_DIR}/sources/import/edz/edzsevenzip.cpp
   ${QET_DIR}/sources/import/edz/edzsevenzip.h
+  ${QET_DIR}/sources/import/aasx/aasxpackage.cpp
+  ${QET_DIR}/sources/import/aasx/aasxpackage.h
   ${QET_DIR}/sources/import/elementfingerprint.cpp
   ${QET_DIR}/sources/import/elementfingerprint.h
   ${QET_DIR}/sources/import/eplandxf/dwgreader.cpp
