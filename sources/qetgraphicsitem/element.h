@@ -26,6 +26,7 @@
 #include <qet.h>
 #include "qetgraphicsitem.h"
 #include <properties/elementdata.h>
+#include <properties/terminallabel.h>
 
 #include <QHash>
 #include <optional>
@@ -114,6 +115,10 @@ class Element : public QetGraphicsItem
 		void elementInfoChange(
 				DiagramContext old_info,
 				DiagramContext new_info);
+			/// This copy of the symbol gave one of its terminals a name or
+			/// a drawing of its own, or took it back off -- from the
+			/// properties, from an undo or from anywhere else
+		void terminalLabelsChanged();
 		void textAdded(DynamicElementTextItem *deti);
 		void textRemoved(DynamicElementTextItem *deti);
 		void textsGroupAdded(ElementTextItemGroup *group);
@@ -180,6 +185,17 @@ class Element : public QetGraphicsItem
 			/// The same, keyed by the uuid as text, for QPropertyUndoCommand
 		QVariantMap potentialSourcesMap() const;
 		void setPotentialSourcesMap(const QVariantMap &sources);
+			/// The names of this placed symbol's terminals and how they
+			/// are drawn, Terminal::stableUuid() to label: the values of
+			/// this copy only, the definition keeping its own. Saved in
+			/// the project, never in the definition
+		QHash<QUuid, TerminalLabel> terminalLabels() const {return m_terminal_labels;}
+			/// Give the terminal @p terminal, of this placed symbol, the
+			/// name and the drawing of @p label
+		void setTerminalLabel(const QUuid &terminal, const TerminalLabel &label);
+			/// Take back what the definition says about the terminal
+			/// @p terminal of this placed symbol
+		void removeTerminalLabel(const QUuid &terminal);
 		void setMovable(bool movable) override;
 		//@kind_information_ is used to store more information
 		//about the herited class like contactelement for know
@@ -461,6 +477,9 @@ class Element : public QetGraphicsItem
 		bool m_shown_as_dot = false;
 		void drawAsDot(QPainter *painter, const QPointF &meet) const;
 		QHash<QUuid, QString> m_potential_sources;
+			/// The names of the terminals and how they are drawn, as
+			/// this placed symbol gives them (@see terminalLabels())
+		QHash<QUuid, TerminalLabel> m_terminal_labels;
 		QString m_F_str;
 
 	ElementsLocation m_location;
@@ -493,6 +512,10 @@ class Element : public QetGraphicsItem
 		projectDataBase *placedStore() const;
 		void appendTextsXml(QDomDocument &document, QDomElement &element) const;
 		void appendDataXml(QDomDocument &document, QDomElement &element) const;
+		void appendTerminalLabelsXml(QDomDocument &document, QDomElement &element) const;
+			/// Tell the project's database that @p terminal reads the
+			/// name it has now (@see setTerminalLabel())
+		void storeTerminalName(const Terminal *terminal) const;
 		void scheduleTextsStore();
 		void connectTextStore(DynamicElementTextItem *deti);
 		void connectTextStore(ElementTextItemGroup *group);
