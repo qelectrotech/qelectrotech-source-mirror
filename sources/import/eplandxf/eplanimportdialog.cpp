@@ -51,7 +51,7 @@ EplanImportDialog::EplanImportDialog(QWidget *parent) :
 
 	m_source = new QLineEdit(this);
 	m_source->setReadOnly(true);
-	m_source->setPlaceholderText(tr("ZIP package, .edz part or DXF; or drop it here"));
+	m_source->setPlaceholderText(tr("ZIP package, .edz part, DXF or DWG; or drop it here"));
 	auto *change = new QPushButton(tr("Change…"), this);
 	connect(change, &QPushButton::clicked, this, &EplanImportDialog::chooseSource);
 	// an unpacked package is a folder, which a file dialog cannot pick
@@ -106,7 +106,7 @@ EplanImportDialog::EplanImportDialog(QWidget *parent) :
 	form->addRow(tr("Manufacturer:"), m_manufacturer);
 	form->addRow(tr("Category:"), m_category);
 	form->addRow(tr("Type:"), m_type);
-	form->addRow(tr("Part data (.edz):"), edz_row);
+	form->addRow(tr("Part data (.edz, .wspak):"), edz_row);
 	form->addRow(tr("Import into:"), m_target);
 
 	auto *hint = new QLabel(
@@ -159,10 +159,11 @@ bool EplanImportDialog::chooseSource()
 	QSettings settings;
 	const QString last = settings.value(QStringLiteral("eplanimport/lastdir")).toString();
 	const QStringList filters {
-		tr("Parts (*.zip *.edz *.dxf)"),
+		tr("Parts (*.zip *.edz *.dxf *.dwg)"),
 		tr("EPLAN Data Portal DXF package (*.zip)"),
 		tr("EPLAN parts (*.edz)"),
-		tr("DXF drawings (*.dxf)")};
+		tr("DXF drawings (*.dxf)"),
+		tr("DWG drawings, e.g. WSCAD Universe (*.dwg)")};
 	const QString path = QFileDialog::getOpenFileName(this, tr("Import part"), last,
 							  filters.join(QStringLiteral(";;")));
 	if (path.isEmpty()) return false;
@@ -198,10 +199,11 @@ bool EplanImportDialog::setSource(const QString &path)
 	else if (suffix == QLatin1String("zip")) kind = Source::Package;
 	else if (suffix == QLatin1String("edz")) kind = Source::Edz;
 	else if (suffix == QLatin1String("dxf")) kind = Source::Dxf;
+	else if (suffix == QLatin1String("dwg")) kind = Source::Dwg;
 	else {
 		QET::QetMessageBox::warning(this, tr("Part import"),
 					    tr("%1 is no part file: choose a ZIP package, an .edz "
-					       "part, a DXF or the folder of an unpacked package.")
+					       "part, a DXF, a DWG or the folder of an unpacked package.")
 					    .arg(QDir::toNativeSeparators(path)));
 		return false;
 	}
@@ -211,8 +213,8 @@ bool EplanImportDialog::setSource(const QString &path)
 	m_type->clear();
 	m_edz->clear();
 	m_category->setPlaceholderText(QStringLiteral("General"));
-	// a DXF may take its part data from an .edz
-	const bool dxf = m_kind == Source::Dxf;
+	// a DXF takes its part data from an .edz, a DWG from a WSCAD Universe .wspak
+	const bool dxf = m_kind == Source::Dxf || m_kind == Source::Dwg;
 	m_edz->setEnabled(dxf);
 	m_edz_button->setEnabled(dxf);
 	m_source->setText(QDir::toNativeSeparators(path));
@@ -267,6 +269,15 @@ void EplanImportDialog::sourceChanged()
 		m_category->setPlaceholderText(group.isEmpty() ? QStringLiteral("General") : group);
 	} else if (m_kind == Source::Edz) {
 		readEdz(path);
+	} else if (m_kind == Source::Dwg) {
+		// WSCAD Universe hands the DWG out next to its .wspak with the part data
+		const QFileInfoList packs = QFileInfo(path).absoluteDir().entryInfoList(
+			{QStringLiteral("*.wspak")}, QDir::Files, QDir::Time);
+		if (!packs.isEmpty()) {
+			m_edz->setText(QDir::toNativeSeparators(packs.first().absoluteFilePath()));
+			readWspak(packs.first().absoluteFilePath());
+		}
+		if (m_type->text().isEmpty()) m_type->setText(QFileInfo(path).completeBaseName());
 	} else {
 		// a DXF out of an unpacked Data Portal package: its commercialdata.csv
 		// a few folders up names manufacturer and type
@@ -301,10 +312,21 @@ void EplanImportDialog::chooseEdz()
 	const QString path = QFileDialog::getOpenFileName(
 		this, tr("EPLAN part"),
 		settings.value(QStringLiteral("eplanimport/lastdir")).toString(),
-		tr("EPLAN parts (*.edz)"));
+		m_kind == Source::Dwg ? tr("WSCAD Universe packages (*.wspak)") : tr("EPLAN parts (*.edz)"));
 	if (path.isEmpty()) return;
 	m_edz->setText(QDir::toNativeSeparators(path));
-	readEdz(path);
+	if (m_kind == Source::Dwg) readWspak(path);
+	else readEdz(path);
+}
+
+/// manufacturer and type from a WSCAD Universe package
+void EplanImportDialog::readWspak(const QString &path)
+{
+	const QMap<QString, QString> part = EplanPartImporter::wspakPartInfo(path);
+	if (!part.value(QStringLiteral("manufacturer")).isEmpty())
+		m_manufacturer->setText(part.value(QStringLiteral("manufacturer")));
+	if (!part.value(QStringLiteral("type")).isEmpty()) m_type->setText(part.value(QStringLiteral("type")));
+	updateButtons();
 }
 
 /// manufacturer and type from an .edz part, where not yet filled in
@@ -376,6 +398,10 @@ void EplanImportDialog::runImport()
 			break;
 		case Source::Edz:
 			ok = importer.importEdz(source, manufacturer, category, type, dir);
+			break;
+		case Source::Dwg:
+			ok = importer.importDwg(source, QDir::fromNativeSeparators(m_edz->text()),
+						manufacturer, category, type, dir);
 			break;
 	}
 	QGuiApplication::restoreOverrideCursor();

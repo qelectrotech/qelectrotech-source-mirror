@@ -155,6 +155,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/import/edz/edzsevenzip.h
   ${QET_DIR}/sources/import/elementfingerprint.cpp
   ${QET_DIR}/sources/import/elementfingerprint.h
+  ${QET_DIR}/sources/import/eplandxf/dwgreader.cpp
+  ${QET_DIR}/sources/import/eplandxf/dwgreader.h
   ${QET_DIR}/sources/import/eplandxf/eplandxfreader.cpp
   ${QET_DIR}/sources/import/eplandxf/eplandxfreader.h
   ${QET_DIR}/sources/import/eplandxf/eplanelementbuilder.cpp

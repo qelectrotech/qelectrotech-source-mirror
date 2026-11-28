@@ -36,7 +36,7 @@ struct EplanSymbolData
 	QVector<EplanDxfField> fields;   ///< empty: one function field per terminal
 	QVector<QRectF> filled;          ///< solid black areas (transformer windings)
 	bool pin_fields = true;          ///< no fields: a function field per terminal
-	double scale = 2.5;              ///< px per mm: EPLAN 8 mm grid -> 20 px; 2.0 for a 5 mm grid
+	double scale = 2.5;              ///< px per mm: EPLAN 8 mm grid -> 20 px; 2.0 for a 5 mm grid (WSCAD)
 	QString source;                  ///< note for the element, empty: from DXF data
 };
 

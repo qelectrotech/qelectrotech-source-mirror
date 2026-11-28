@@ -2386,7 +2386,7 @@ void QETDiagramEditor::setUpMenu()
 	// one entry for every file kind: the dialog tells it by the file
 	QAction *import_part = menu_part_import->addAction(tr("Import part…"));
 	import_part->setObjectName(QStringLiteral("import_part"));
-	import_part->setStatusTip(tr("Builds elements from an EPLAN Data Portal DXF package, a DXF or an EPLAN part (.edz)"));
+	import_part->setStatusTip(tr("Builds elements from an EPLAN Data Portal DXF package, a DXF, an EPLAN part (.edz) or a DWG"));
 	connect(import_part, &QAction::triggered, this, [this]() {
 		EplanImportDialog dialog(this);
 		// the file dialog over the import dialog: cancelled, the import

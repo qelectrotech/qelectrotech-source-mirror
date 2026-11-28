@@ -30,7 +30,8 @@ class QPushButton;
 
 /**
 	@brief Dialog of the "Part import" menu: imports manufacturer EPLAN data
-	(Data Portal DXF package as ZIP or folder, single DXF, .edz part) into
+	(Data Portal DXF package as ZIP or folder, single DXF, .edz part,
+	DWG drawing) into
 	an element collection, sorted into manufacturer / category / type
 	folders. The kind of source is told by the file itself; a file or
 	folder may also be dropped onto the dialog.
@@ -40,7 +41,7 @@ class EplanImportDialog : public QDialog
 	Q_OBJECT
 
 	public:
-		enum class Source { Package, Folder, Dxf, Edz };
+		enum class Source { Package, Folder, Dxf, Edz, Dwg };
 
 		explicit EplanImportDialog(QWidget *parent = nullptr);
 
@@ -61,6 +62,7 @@ class EplanImportDialog : public QDialog
 		void sourceChanged();
 		void chooseEdz();
 		void readEdz(const QString &path);
+		void readWspak(const QString &path);
 		void updateButtons();
 		void runImport();
 		QString targetDir();

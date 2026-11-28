@@ -9555,6 +9555,36 @@ Mit dem Import dieser Datei bestätigen Sie, dass:
 %1</numerusform>
         </translation>
     </message>
+    <message>
+        <location filename="../sources/import/eplandxf/eplanimportdialog.cpp"/>
+        <source>ZIP package, .edz part, DXF or DWG; or drop it here</source>
+        <translation>ZIP-Paket, .edz-Artikel, DXF oder DWG; oder hier ablegen</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/eplandxf/eplanimportdialog.cpp"/>
+        <source>Part data (.edz, .wspak):</source>
+        <translation>Artikeldaten (.edz, .wspak):</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/eplandxf/eplanimportdialog.cpp"/>
+        <source>Parts (*.zip *.edz *.dxf *.dwg)</source>
+        <translation>Artikel (*.zip *.edz *.dxf *.dwg)</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/eplandxf/eplanimportdialog.cpp"/>
+        <source>DWG drawings, e.g. WSCAD Universe (*.dwg)</source>
+        <translation>DWG-Zeichnungen, z. B. WSCAD Universe (*.dwg)</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/eplandxf/eplanimportdialog.cpp"/>
+        <source>%1 is no part file: choose a ZIP package, an .edz part, a DXF, a DWG or the folder of an unpacked package.</source>
+        <translation>%1 ist keine Artikeldatei: Ein ZIP-Paket, einen .edz-Artikel, eine DXF, eine DWG oder den Ordner eines entpackten Pakets wählen.</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/eplandxf/eplanimportdialog.cpp"/>
+        <source>WSCAD Universe packages (*.wspak)</source>
+        <translation>WSCAD-Universe-Pakete (*.wspak)</translation>
+    </message>
 </context>
 <context>
     <name>ExportConfigPage</name>
@@ -20950,6 +20980,11 @@ Um daraus ein Skript zu machen, bitten Sie Ihren KI-Assistenten: Die Schaltfläc
         <location filename="../sources/qetdiagrameditor.cpp"/>
         <source>Builds elements from an EPLAN Data Portal DXF package, a DXF or an EPLAN part (.edz)</source>
         <translation>Erzeugt Bauteile aus einem EPLAN-Data-Portal-DXF-Paket, einer DXF oder einem EPLAN-Artikel (.edz)</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp"/>
+        <source>Builds elements from an EPLAN Data Portal DXF package, a DXF, an EPLAN part (.edz) or a DWG</source>
+        <translation>Erzeugt Bauteile aus einem EPLAN-Data-Portal-DXF-Paket, einer DXF, einem EPLAN-Artikel (.edz) oder einer DWG</translation>
     </message>
 </context>
 <context>

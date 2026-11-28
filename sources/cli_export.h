@@ -59,7 +59,7 @@ namespace CLIExport {
 		  qelectrotech --info           <project.qet> [output.json]
 		  qelectrotech --check-elements <element.elmt | directory> [--grid]
 		  qelectrotech --export-library <directory> <output.csv>
-		  qelectrotech --import-eplan   <package.zip | folder | file.dxf | file.edz> <collection_dir> [--category C] [--manufacturer M --type T] [--edz part.edz] [--force]
+		  qelectrotech --import-eplan   <package.zip | folder | file.dxf | file.edz | file.dwg> <collection_dir> [--category C] [--manufacturer M --type T] [--edz part.edz] [--wspak part.wspak] [--force]
 		  qelectrotech --resave         <project.qet> <output.qet>
 		  qelectrotech --recover        <damaged.qetz> <output.qet>
 		  qelectrotech --set-titleblock <project.qet> <output.qet> key=value...
@@ -124,7 +124,10 @@ namespace CLIExport {
 		      Data Portal DXF package (ZIP or unpacked folder, manufacturer
 		      and type from its commercialdata.csv), or a single DXF or an
 		      EPLAN part (.edz) with --manufacturer and --type. --edz gives
-		      a single DXF its part data. An element edited since its
+		      a single DXF its part data. A DWG drawing (e.g. the "Download
+		      DWG" of WSCAD Universe) takes manufacturer and type from
+		      --wspak, a WSCAD Universe package, where they are not given.
+		      An element edited since its
 		      import is kept; --force overwrites it.
 		resave: load and rewrite the project XML (round-trip integrity).
 		--ignore-lock: resave and set-titleblock leave a file alone when a lock

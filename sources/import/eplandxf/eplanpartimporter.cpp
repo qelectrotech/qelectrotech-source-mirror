@@ -25,6 +25,7 @@
 #include "../edz/edzarchive.h"
 #include "../edz/edzimporter.h"
 #include "../edz/edzpart.h"
+#include "dwgreader.h"
 #include "eplandxfreader.h"
 #include "eplanelementbuilder.h"
 #include "eplanmacroreader.h"
@@ -33,6 +34,8 @@
 #include <QDirIterator>
 #include <QFile>
 #include <QFileInfo>
+#include <QJsonDocument>
+#include <QJsonObject>
 #include <QRegularExpression>
 #include <QStringDecoder>
 
@@ -288,6 +291,45 @@ namespace {
 			const double ya = round1(a.pos.y()), yb = round1(b.pos.y());
 			return ya != yb ? ya > yb : round1(a.pos.x()) < round1(b.pos.x());
 		});
+	}
+
+	/// part data of a WSCAD Universe package (.wspak: a zip with "ws" in front, Data/part.json);
+	/// its offsets count from the start of the file, prefix included, so it is read as it is
+	QMap<QString, QString> wspakInfo(const QString &path)
+	{
+		QMap<QString, QString> out;
+		QFile f(path);
+		if (!f.open(QIODevice::ReadOnly)) return out;
+		const QByteArray bytes = f.readAll();
+		mz_zip_archive zip;
+		mz_zip_zero_struct(&zip);
+		if (!mz_zip_reader_init_mem(&zip, bytes.constData(), size_t(bytes.size()), 0)) return out;
+		// WSCAD writes the entry names with backslashes ("Data\part.json")
+		size_t size = 0;
+		void *data = nullptr;
+		for (mz_uint i = 0; i < mz_zip_reader_get_num_files(&zip) && !data; ++i) {
+			mz_zip_archive_file_stat stat;
+			if (!mz_zip_reader_file_stat(&zip, i, &stat) || stat.m_is_directory) continue;
+			const QString name = QString::fromUtf8(stat.m_filename).replace(QLatin1Char('\\'), QLatin1Char('/'));
+			if (name.compare(QLatin1String("Data/part.json"), Qt::CaseInsensitive) == 0)
+				data = mz_zip_reader_extract_to_heap(&zip, i, &size, 0);
+		}
+		if (data && size < size_t(QetZip::MaxUncompressedSize)) {
+			const QJsonObject o = QJsonDocument::fromJson(
+				QByteArray(static_cast<const char *>(data), qsizetype(size))).object();
+			out.insert(QStringLiteral("manufacturer"), o.value(QStringLiteral("manufacturerName")).toString());
+			out.insert(QStringLiteral("order"), o.value(QStringLiteral("number")).toString());
+			out.insert(QStringLiteral("type"), o.value(QStringLiteral("typeName")).toString());
+			// the translated name in English, else German, else the first description
+			const QJsonObject names = o.value(QStringLiteral("translateName")).toObject();
+			QString name = names.value(QStringLiteral("En")).toString();
+			if (name.isEmpty()) name = names.value(QStringLiteral("De")).toString();
+			if (name.isEmpty()) name = o.value(QStringLiteral("descriptionOne")).toString();
+			out.insert(QStringLiteral("description"), name);
+		}
+		if (data) mz_free(data);
+		mz_zip_reader_end(&zip);
+		return out;
 	}
 
 	/// EPLAN cross references ("/7.1") and page marks ("1/2") do not belong in a symbol
@@ -617,6 +659,88 @@ bool EplanPartImporter::importDxf(const QString &dxf_path, const QString &edz_pa
 		return false;
 	}
 	return finish();
+}
+
+/**
+	Import an AutoCAD DWG drawing as an element, e.g. the "Download DWG" of
+	WSCAD Universe: the block inserted in model space with its connection
+	stubs as terminals. A drawing without terminals (a panel layout view)
+	is still imported as a graphic.
+	@param wspak_path optional WSCAD Universe package (.wspak) with the part
+	data; manufacturer and type are taken from it where not given
+*/
+bool EplanPartImporter::importDwg(const QString &dwg_path, const QString &wspak_path,
+				  const QString &manufacturer, const QString &category,
+				  const QString &type, const QString &collection_dir)
+{
+	clear();
+
+	QFile f(dwg_path);
+	if (!f.open(QIODevice::ReadOnly)) {
+		m_error = QStringLiteral("Cannot read %1").arg(dwg_path);
+		return false;
+	}
+	DwgReader reader;
+	if (!reader.read(f.readAll())) {
+		m_error = reader.errorString();
+		return false;
+	}
+	const QMap<QString, QString> part = wspak_path.isEmpty() ? QMap<QString, QString>() : wspakInfo(wspak_path);
+	if (!wspak_path.isEmpty() && part.isEmpty())
+		m_messages << QStringLiteral("No part data from %1").arg(QFileInfo(wspak_path).fileName());
+	const QString maker = manufacturer.isEmpty() ? part.value(QStringLiteral("manufacturer")) : manufacturer;
+	const QString type_nr = type.isEmpty() ? part.value(QStringLiteral("type")) : type;
+	if (maker.isEmpty() || type_nr.isEmpty()) {
+		m_error = QStringLiteral("A DWG needs the manufacturer and the type (or a .wspak with the part data)");
+		return false;
+	}
+
+	EplanSymbolData data;
+	data.pins = reader.pins();
+	// a schematic: WSCAD draws on a 5 mm grid, 5 mm -> 10 px keeps the terminals on the QET grid;
+	// a layout view (no terminals): the scale of the EPLAN layout macros, so devices side by side
+	// in a panel layout are true to each other in size
+	data.scale = data.pins.isEmpty() ? 2.5 : 2.0;
+	data.pin_fields = false;                          // the drawing names each terminal's function itself
+	data.lines = reader.lines();
+	data.circles = reader.circles();
+	// the device tag ("-K") is the element label, placeholders ("...") stay empty
+	QString letters = QStringLiteral("A");
+	static const QRegularExpression tag(QStringLiteral("^-([A-Z]{1,3})$"));
+	for (const EplanDxfText &t : reader.texts()) {
+		const QString s = t.text.trimmed();
+		const auto m = tag.match(s);
+		if (m.hasMatch()) { letters = m.captured(1); continue; }
+		if (s == QLatin1String("...") || s == QStringLiteral("…")) continue;
+		data.texts << t;
+	}
+	const QString kind = data.pins.isEmpty() ? QStringLiteral("Panel layout") : QStringLiteral("Schematic");
+	const QString element_name = type_nr + QLatin1Char(' ') + kind;
+	const QString description = part.value(QStringLiteral("description"), reader.blockName());
+	const QVector<QPair<QString, QString>> info {
+		{QStringLiteral("manufacturer"), maker},
+		{QStringLiteral("manufacturer_reference"), part.value(QStringLiteral("order"))},
+		{QStringLiteral("designation"), type_nr},
+		{QStringLiteral("description"), description},
+		{QStringLiteral("label"), QLatin1Char('-') + letters}};
+	data.source = QStringLiteral("DWG %1 (%2)").arg(QFileInfo(dwg_path).fileName(), reader.version());
+
+	QString folder;
+	if (!ensureDirs(collection_dir, {maker, category, type_nr}, &folder, &m_error)) return false;
+	QDomDocument doc = EplanElementBuilder::build(
+		data, {{QStringLiteral("de"), element_name}, {QStringLiteral("en"), element_name}}, info);
+	const QString out = QDir(folder).filePath(safe(element_name) + QStringLiteral(".elmt"));
+	const Stored stored = store(doc, out);
+	if (stored == Stored::Failed) return false;
+	if (stored == Stored::Written)
+		m_messages << QStringLiteral("%1: %2 terminals").arg(element_name).arg(data.pins.size());
+	return finish();
+}
+
+/// part data of a WSCAD Universe package, for the dialog
+QMap<QString, QString> EplanPartImporter::wspakPartInfo(const QString &path)
+{
+	return wspakInfo(path);
 }
 
 bool EplanPartImporter::importEdz(const QString &edz_path, const QString &manufacturer,

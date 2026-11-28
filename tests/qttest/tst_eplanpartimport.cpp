@@ -19,9 +19,11 @@
 #include "qetapptest.h"
 
 #include "cli_export.h"
+#include "container/miniz/miniz.h"
 #include "container/qetzip.h"
 #include "import/edz/edzpart.h"
 #include "import/elementfingerprint.h"
+#include "import/eplandxf/dwgreader.h"
 #include "import/eplandxf/eplandxfreader.h"
 #include "import/eplandxf/eplanmacroreader.h"
 #include "import/eplandxf/eplanpartimporter.h"
@@ -453,6 +455,66 @@ class TstEplanPartImport : public QObject
 				//Not a package
 			QCOMPARE(CLIExport::run({QStringLiteral("--import-eplan"),
 						 m_dir.filePath(QStringLiteral("no_such.zip")), collection}), 1);
+		}
+
+		/// The part data of a WSCAD Universe package (.wspak): "ws" in
+		/// front of a ZIP whose offsets count that prefix in, entry names
+		/// with backslashes
+		void wspakPartData()
+		{
+			const QByteArray json =
+				"{\"manufacturerName\": \"Acme\", \"number\": \"9876\", \"typeName\": \"REL-5\","
+				" \"translateName\": {\"En\": \"Relay\"}, \"descriptionOne\": \"Relay, 1 changeover\"}";
+			mz_zip_archive zip;
+			mz_zip_zero_struct(&zip);
+			QVERIFY(mz_zip_writer_init_heap(&zip, 2, 0));
+			QVERIFY(mz_zip_writer_add_mem(&zip, "Data\\part.json", json.constData(), size_t(json.size()),
+						      MZ_DEFAULT_COMPRESSION));
+			void *data = nullptr;
+			size_t size = 0;
+			QVERIFY(mz_zip_writer_finalize_heap_archive(&zip, &data, &size));
+			QByteArray bytes(static_cast<const char *>(data), qsizetype(size));
+			mz_zip_writer_end(&zip);
+			bytes.replace(0, 2, "ws");
+			const QString wspak = writeFile(QStringLiteral("part.wspak"), bytes);
+			QVERIFY(!wspak.isEmpty());
+			const QMap<QString, QString> part = EplanPartImporter::wspakPartInfo(wspak);
+			QCOMPARE(part.value(QStringLiteral("manufacturer")), QStringLiteral("Acme"));
+			QCOMPARE(part.value(QStringLiteral("order")), QStringLiteral("9876"));
+			QCOMPARE(part.value(QStringLiteral("type")), QStringLiteral("REL-5"));
+			QCOMPARE(part.value(QStringLiteral("description")), QStringLiteral("Relay"));
+			QVERIFY(EplanPartImporter::wspakPartInfo(m_dir.filePath(QStringLiteral("none.wspak"))).isEmpty());
+		}
+
+		/// A DWG of another AutoCAD version, or one cut short, is refused
+		/// with a reason, and so is anything else
+		void dwgRefused()
+		{
+			DwgReader reader;
+			QByteArray r2000("AC1015");
+			r2000.append(QByteArray(200, '\0'));
+			QVERIFY(!reader.read(r2000));
+			QVERIFY(reader.errorString().contains(QStringLiteral("not supported")));
+			QByteArray cut("AC1018");
+			cut.append(QByteArray(40, '\0'));
+			QVERIFY(!reader.read(cut));
+			QVERIFY(!reader.errorString().isEmpty());
+				// noise must not crash the reader
+			QByteArray noise("AC1032");
+			for (int i = 0; i < 4096; ++i) noise.append(char((i * 7919 + 13) % 251));
+			QVERIFY(!reader.read(noise));
+			QVERIFY(!reader.read(QByteArray()));
+
+			const QString dwg = writeFile(QStringLiteral("broken.dwg"), cut);
+			const QString collection = m_dir.filePath(QStringLiteral("dwg"));
+			EplanPartImporter importer;
+			QVERIFY(!importer.importDwg(dwg, QString(), QStringLiteral("Acme"), QStringLiteral("General"),
+						    QStringLiteral("REL-5"), collection));
+			QVERIFY(!importer.errorString().isEmpty());
+			QVERIFY(!QFileInfo::exists(collection));
+			QCOMPARE(CLIExport::run({QStringLiteral("--import-eplan"), dwg, collection,
+						 QStringLiteral("--manufacturer"), QStringLiteral("Acme"),
+						 QStringLiteral("--type"), QStringLiteral("REL-5")}), 1);
 		}
 
 		/// The editor has the menu entry
