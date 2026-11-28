@@ -32,7 +32,8 @@ Translation (EPLAN property numbers as in the EPLAN help):
 - coil / protective device (20188 category 200, 5xx) with the contacts (201 NO, 202 NC, 203/204) of the same
   device tag (20006) as master/slave; EPLAN's cross reference texts stay, QElectroTech's own are off.
   The same for the report arrows: EPLAN's page text beside an arrow already names its target, so every
-  arrow's own label is left empty (<report label="">).
+  arrow's own label is left empty (<report label="">). EPLAN's frame also brings its own column and row
+  numbering, so QElectroTech's column and row headers are switched off on every folio.
 - article 20100 ("abbreviation.order number"), order number 20919, designation 20193, function text 20031,
   technical characteristics 20027 as element informations.
 Symbols without terminal and without article (structure and location boxes), connection definition points
@@ -1064,7 +1065,9 @@ def _stop_on_eof():
 
     def wache():
         try:
-            while sys.stdin.buffer.read(4096):
+            # os.read, not sys.stdin: a thread blocked in the buffered reader holds its lock, and Python
+            # aborts at shutdown when it cannot take it ("_enter_buffered_busy")
+            while os.read(0, 4096):
                 pass
         except Exception:
             pass
@@ -1201,7 +1204,7 @@ def umsetzen(epdz, ziel_qet, arbeit=None, sammlung=True, entpackt=None):
     pfeil_paare_ids = []
     for paar in [list(p) for p in paare] + [[k] for k in pfeile if k not in gepaart]:
         if len(paar) < 2:
-            nicht["pfeil_ohne_partner"] += 1
+            stat["pfeil_einzeln"] += 1          # drawn, but EPLAN gives it no partner
         name = "epdz:" + "|".join(paar)
         if len(paar) == 2:
             pfeil_paare_ids.append(tuple(paar))
@@ -1310,7 +1313,12 @@ def umsetzen(epdz, ziel_qet, arbeit=None, sammlung=True, entpackt=None):
     with open(erg, encoding="utf-8") as f:
         s_qet = f.read()
     with open(erg, "w", encoding="utf-8") as f:
-        f.write(re.sub(r'<report label="[^"]*"', '<report label=""', s_qet))
+        s_qet = re.sub(r'<report label="[^"]*"', '<report label=""', s_qet)
+        # EPLAN's frame, drawn as folio graphics, has its own column and row numbering: QElectroTech's
+        # headers off, or the folio shows both
+        s_qet = re.sub(r'(<diagram\b[^>]*?\b)displaycols="[^"]*"', r'\1displaycols="false"', s_qet)
+        s_qet = re.sub(r'(<diagram\b[^>]*?\b)displayrows="[^"]*"', r'\1displayrows="false"', s_qet)
+        f.write(s_qet)
     einfuegen = {}
     for folio, (formen, texte, bilder) in je_blatt.items():
         shapes, inputs = G.folio_xml(formen)
@@ -1325,7 +1333,7 @@ def umsetzen(epdz, ziel_qet, arbeit=None, sammlung=True, entpackt=None):
                f"{stat['name_liste']}, in order {stat['name_reihenfolge']}, unnamed {stat['name_leer']}), "
                f"conductors {gezeichnet} (from the connection list {stat['verbindungen_aus_liste']}, from the "
                f"drawing {stat['verbindungen_aus_zeichnung']}, with the drawn path {stat['leiterweg']}), "
-               f"not drawn {dict(nicht)}, report arrows {stat['pfeile']}, arrows without partner {len(plan.open)}, "
+               f"not drawn {dict(nicht)}, report arrows {stat['pfeile']}, arrows without partner {stat['pfeil_einzeln'] + len(plan.open)}, "
                f"master/slave {stat['verknuepft']}, graphics groups {stat['grafik_gruppe']}, articles without a "
                f"part in the collection {stat['artikel_ohne_bauteil']}, failed operations {len(fehl)}")
     with open(os.path.splitext(ziel_qet)[0] + "_import_report.txt", "w", encoding="utf-8") as f:

@@ -1,0 +1,46 @@
+<definition version="0.100" type="element" link_type="simple" width="150" height="45" hotspot_x="0" hotspot_y="30">
+    <uuid uuid="{21ed52f6-8605-55f9-a155-a5020aa664fc}"/>
+    <names>
+        <name lang="ar">الإجراء الذي يحفظ عند التعطيل</name>
+        <name lang="ca">Acció que estalvia en la desactivació</name>
+        <name lang="cs">Akce, která ušetří na deaktivaci</name>
+        <name lang="da">Handling, der sparer ved deaktivering</name>
+        <name lang="de">Speichernd wirkende Aktion bei Deaktivierung</name>
+        <name lang="el">Ενέργεια που εξοικονομεί κατά την απενεργοποίηση</name>
+        <name lang="en">Action that saves on deactivation</name>
+        <name lang="es">Acción que ahorra en la desactivación</name>
+        <name lang="fi">Toiminto, joka tallentuu deaktivoitaessa</name>
+        <name lang="fr">Action qui économise sur la désactivation</name>
+        <name lang="hr">Akcija koja štedi na deaktivaciji</name>
+        <name lang="hu">Művelet, amely megtakarítja a deaktiválást</name>
+        <name lang="it">Azione che risparmia alla disattivazione</name>
+        <name lang="ja">非アクティブ化を節約するアクション</name>
+        <name lang="ko">비활성화 시 저장하는 동작</name>
+        <name lang="mn">Идэвхгүй болгоход хэмнэлттэй үйлдэл</name>
+        <name lang="nb">Handling som sparer ved deaktivering</name>
+        <name lang="nl">Actie die bespaart op deactivering</name>
+        <name lang="nl_BE">Actie die opslaat bij deactivering</name>
+        <name lang="pl">Akcja oszczędzająca przy dezaktywacji</name>
+        <name lang="pt">Ação que economiza na desativação</name>
+        <name lang="pt_BR">Ação que economiza na desativação</name>
+        <name lang="ro">Acțiune care economisește la dezactivare</name>
+        <name lang="ru">Действие, экономящее на деактивации</name>
+        <name lang="sk">Akcia, ktorá sa uloží pri deaktivácii</name>
+        <name lang="sl">Ukrep, ki prihrani pri deaktivaciji</name>
+        <name lang="sr">Радња која штеди на деактивацији</name>
+        <name lang="sv">Åtgärd som sparas vid avaktivering</name>
+        <name lang="tr">Devre dışı bırakmada tasarruf sağlayan eylem</name>
+        <name lang="uk">Дія, що зберігається при деактивації</name>
+        <name lang="zh">动作_23</name>
+    </names>
+    <informations>Author: The QElectroTech team; redrawn on the 10 grid with named terminals for the FluidSIM import
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line x1="0" y1="0" x2="10" y2="0" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <rect x="10" y="-15" width="140" height="30" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <terminal uuid="{2767ad5c-a7e5-4ea3-8684-9c21085c485a}" name="step" x="0" y="0" orientation="w" type="Generic"/>
+        <dynamic_text x="76" y="-10.5" z="5" text_width="-1" Halignment="AlignHCenter" Valignment="AlignVCenter" frame="false" rotation="0" keep_visual_rotation="false" text_from="ElementInfo" uuid="{b6dc6a9a-0ee9-4b58-8b4a-f9100fdaa20e}" font="Liberation Sans,8,-1,5,50,0,0,0,0,0,Regular"><text></text><info_name>label</info_name></dynamic_text>
+        <line x1="22" y1="-27" x2="22" y2="-19" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <polygon x1="22" y1="-15" x2="19" y2="-21" x3="25" y3="-21" closed="true" style="line-style:normal;line-weight:normal;filling:black;color:black" antialias="true"/>
+    </description>
+</definition>
