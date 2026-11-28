@@ -506,8 +506,8 @@ bool SplanImportDialog::pythonRuns(const QString &python,
 	const QString code = QStringLiteral(
 				"import sys; assert sys.version_info >= (3, 10), "
 				"'Python 3.10 or newer is needed'; "
-				"sys.path[:0] = [r'%1']; import %2%3")
-			.arg(QDir::toNativeSeparators(dir), module,
+				"sys.path[:0] = [sys.argv[1]]; import %1%2")
+			.arg(module,
 			     m_kind == Kind::Wscad
 			     ? QStringLiteral("; import importlib.util as u; "
 					      "assert u.find_spec('cryptography') "
@@ -519,7 +519,9 @@ bool SplanImportDialog::pythonRuns(const QString &python,
 	p.setProcessEnvironment(importEnvironment());
 	p.setWorkingDirectory(dir);
 	p.setProcessChannelMode(QProcess::MergedChannels);
-	p.start(python, {QStringLiteral("-c"), code});
+		// the folder as an argument, not inside the code: any character
+		// (a ' in the path) stays as it is
+	p.start(python, {QStringLiteral("-c"), code, QDir::toNativeSeparators(dir)});
 	if (!p.waitForStarted(10000)) {
 		if (error) *error = tr("%1 does not start.").arg(python);
 		return false;

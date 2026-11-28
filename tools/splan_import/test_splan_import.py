@@ -248,5 +248,32 @@ class Layout(unittest.TestCase):
             self.assertTrue(os.path.isfile(lines[-1][len("done: "):]))
 
 
+
+class DeviceBoxText(unittest.TestCase):
+    """sPlan text in the attributes of a written element: a " stays inside its attribute, and a broken file from
+    an earlier run is written anew."""
+
+    def test_quote_in_terminal_name(self):
+        import xml.etree.ElementTree as ET
+        from qet_sheet import symbol_builder as SB
+        path = SB.device_box("Test/quote_box.elmt", 'Box "A"', [('1"', 'in "x"')], [("2", "")],
+                             description='a "quoted" part')
+        target = os.path.join(_CUSTOM.name, *path[len("custom://"):].split("/"))
+        root = ET.parse(target).getroot()
+        names = [t.get("name") for t in root.iter("terminal")]
+        self.assertIn('1"', names)
+
+    def test_broken_file_is_replaced(self):
+        import xml.etree.ElementTree as ET
+        from qet_sheet import symbol_builder as SB
+        rel = "Test/broken_box.elmt"
+        target = os.path.join(_CUSTOM.name, *(SB.IMPORT_FOLDER + "/" + rel).split("/"))
+        os.makedirs(os.path.dirname(target), exist_ok=True)
+        with open(target, "w", encoding="utf-8") as f:
+            f.write('<definition><terminal name="1""/></definition>')
+        SB.device_box(rel, "Box", [("1", "")], [])
+        ET.parse(target)        # readable again
+
+
 if __name__ == "__main__":
     unittest.main()

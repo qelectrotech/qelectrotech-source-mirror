@@ -48,8 +48,10 @@ class TestSplanImportDialog : public QObject
 		void targetAndArguments()
 		{
 			using D = SplanImportDialog;
-			QCOMPARE(D::defaultTarget(QStringLiteral("C:/x/a b.spl8")),
-				 QStringLiteral("C:/x/QET/a_b.qet"));
+				// an absolute path on every system, under the test folder
+			const QDir dir(m_dir.path());
+			QCOMPARE(D::defaultTarget(dir.filePath(QStringLiteral("a b.spl8"))),
+				 dir.filePath(QStringLiteral("QET/a_b.qet")));
 			QVERIFY(D::defaultTarget(QString()).isEmpty());
 
 			const QString target = D::defaultTarget(m_schematic);

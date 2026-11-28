@@ -11,6 +11,7 @@ Environment (the import dialog of QElectroTech sets the first two):
   QET_COMPANY_ELEMENTS_DIR  the collections the elements come from
   QET_MCP                   qet_mcp.py, when it is not found next to this file
 """
+import atexit
 import importlib.util
 import json
 import os
@@ -65,6 +66,14 @@ def _prepare():
         with os.fdopen(fd, "w", encoding="utf-8") as f:
             json.dump({"folders": folders}, f)
         os.environ["QET_MCP_INFO_FILE"] = path
+        atexit.register(_remove, path)
+
+
+def _remove(path):
+    try:
+        os.remove(path)
+    except OSError:
+        pass
 
 
 def binary():

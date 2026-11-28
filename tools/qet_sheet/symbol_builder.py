@@ -11,7 +11,8 @@ QElectroTech embeds them into the project like any element.
 """
 import os
 import uuid
-from xml.sax.saxutils import escape
+import xml.etree.ElementTree as ET
+from xml.sax.saxutils import escape as _escape
 
 from . import symbols as S
 
@@ -20,13 +21,28 @@ STYLE = 'style="line-style:normal;line-weight:normal;filling:none;color:black" a
 _NS = uuid.UUID("6f1b8a52-3c1e-4d0b-9a57-2f6c1e0d4b11")
 
 
+def escape(text):
+    """@p text for an XML attribute or element: &, <, > and also " (a terminal named 1" stays one attribute)."""
+    return _escape(str(text), {'"': "&quot;"})
+
+
+def _readable(path):
+    """Whether @p path is a well-formed XML file."""
+    try:
+        ET.parse(path)
+        return True
+    except (ET.ParseError, OSError):
+        return False
+
+
 def _write(rel, xml, overwrite=False):
-    """Writes custom://IMPORT_FOLDER/rel unless it exists; returns its path."""
+    """Writes custom://IMPORT_FOLDER/rel unless it exists as a readable element (a broken file from an
+    earlier run is replaced); returns its path."""
     if not S.CUSTOM:
         raise FileNotFoundError("the user collection is not set (QET_CUSTOM_ELEMENTS_DIR)")
     rel = f"{IMPORT_FOLDER}/{rel}"
     target = os.path.join(S.CUSTOM, *rel.split("/"))
-    if overwrite or not os.path.exists(target):
+    if overwrite or not os.path.exists(target) or not _readable(target):
         os.makedirs(os.path.dirname(target), exist_ok=True)
         with open(target, "w", encoding="utf-8", newline="\n") as f:
             f.write(xml)
@@ -94,7 +110,7 @@ def device_box(rel, kind, top, bottom, manufacturer="", reference="", descriptio
 
 
 def _terminal(key, name, x, y, orientation):
-    return (f'<terminal uuid="{_uuid(key, name)}" name="{name}" x="{x}" y="{y}" '
+    return (f'<terminal uuid="{_uuid(key, name)}" name="{escape(name)}" x="{x}" y="{y}" '
             f'orientation="{orientation}" type="Generic"/>')
 
 
