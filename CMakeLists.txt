@@ -459,7 +459,7 @@ install(PROGRAMS misc/qet-mcp/qet_mcp.py DESTINATION ${QET_DATA_PATH}mcp)
 install(FILES misc/qet-mcp/README.md DESTINATION ${QET_DATA_PATH}mcp)
 # The importers of File > Import (sources/import/splan) are Python programs
 # run beside QElectroTech; they draw through the MCP server above.
-install(DIRECTORY tools/qet_sheet tools/splan_import
+install(DIRECTORY tools/qet_sheet tools/splan_import tools/wscad_import
     DESTINATION ${QET_DATA_PATH}import
     FILES_MATCHING PATTERN "*.py" PATTERN "*.md"
     PATTERN "test_*.py" EXCLUDE

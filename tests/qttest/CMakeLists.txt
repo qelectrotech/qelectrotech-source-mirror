@@ -2771,3 +2771,8 @@ target_compile_definitions(tst_labellistexport PRIVATE
 qet_add_app_test(tst_splanimportdialog tst_splanimportdialog.cpp)
 target_compile_definitions(tst_splanimportdialog PRIVATE
   QET_SPLAN_SCRIPT="${QET_DIR}/tools/splan_import/splan_to_qet.py")
+# File > Import WSCAD project: the sPlan import dialog in its WSCAD kind
+# (project folder, target, arguments, progress, menu command).
+qet_add_app_test(tst_wscadimportdialog tst_wscadimportdialog.cpp)
+target_compile_definitions(tst_wscadimportdialog PRIVATE
+  QET_WSCAD_SCRIPT="${QET_DIR}/tools/wscad_import/wscad_to_qet.py")

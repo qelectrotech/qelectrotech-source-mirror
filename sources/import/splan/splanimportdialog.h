@@ -31,22 +31,31 @@ class QProgressBar;
 class QPushButton;
 
 /**
-	@brief Dialog of "File > Import sPlan schematic": turns an sPlan 8
-	schematic (.spl8, Abacom) into a QElectroTech project that is drawn
-	anew: the same devices and connections, laid out on the grid.
+	@brief Dialog of the imports that a Python program translates:
+	- "File > Import sPlan schematic": an sPlan 8 schematic (.spl8,
+	  Abacom) drawn anew as a QElectroTech project: the same devices and
+	  connections, laid out on the grid
+	  (tools/splan_import/splan_to_qet.py);
+	- "File > Import WSCAD project": a WSCAD project folder
+	  (Database/WSCAD6.db and the .wsELD schematic pages, WSCAD ELECTRIX /
+	  SUITE 6.x and later) as an editable QElectroTech project with the
+	  same pages, symbols, wires and cross references
+	  (tools/wscad_import/wscad_to_qet.py).
 
-	The translation is the Python program
-	tools/splan_import/splan_to_qet.py; the dialog finds it and a Python
-	that can run it, starts it as a QProcess, moves the progress bar with
-	its PROGRESS lines and hands back the written .qet, which the editor
-	then opens.
+	The dialog finds the program and a Python that can run it, starts it
+	as a QProcess, moves the progress bar with its PROGRESS lines and
+	hands back the written .qet, which the editor then opens.
 */
 class SplanImportDialog : public QDialog
 {
 	Q_OBJECT
 
 	public:
-		explicit SplanImportDialog(QWidget *parent = nullptr);
+		/// what is imported
+		enum class Kind { Splan, Wscad };
+
+		explicit SplanImportDialog(QWidget *parent = nullptr,
+					   Kind kind = Kind::Splan);
 		~SplanImportDialog() override;
 
 		/// asks for the schematic; false when the user cancels
@@ -56,21 +65,30 @@ class SplanImportDialog : public QDialog
 		/// the .qet the last import wrote, empty while there is none
 		QString resultPath() const { return m_result; }
 
-		/// splan_to_qet.py, or empty when it is nowhere to be found
-		static QString findScript(const QString &application_dir);
-		/// <folder of the schematic>/QET/<name>.qet, as the program names it
-		static QString defaultTarget(const QString &source);
+		/// the import program, or empty when it is nowhere to be found
+		static QString findScript(const QString &application_dir,
+					  Kind kind = Kind::Splan);
+		/// <folder of the schematic>/QET/<name>.qet (sPlan) or
+		/// <project folder>/QET/<folder name>.qet (WSCAD), as the
+		/// programs name it
+		static QString defaultTarget(const QString &source,
+					     Kind kind = Kind::Splan);
+		/// the WSCAD project folder of @p path (the folder, a page in
+		/// it, its Database folder or Database/WSCAD6.db), or empty
+		static QString wscadProjectFolder(const QString &path);
 		/// the command line for the program
 		static QStringList arguments(const QString &script,
 					     const QString &source,
 					     const QString &target,
-					     bool pdf);
+					     bool pdf,
+					     Kind kind = Kind::Splan);
 		/// the path after "done: " in the program's output, or empty
 		static QString resultFromOutput(const QString &output);
 		/// the text for a progress line "PROGRESS <percent> <step>" of the
 		/// program, in the language of QElectroTech; @p percent gets the
 		/// percentage. Empty when @p line is no progress line.
-		static QString progressText(const QString &line, int *percent);
+		static QString progressText(const QString &line, int *percent,
+					    Kind kind = Kind::Splan);
 
 	protected:
 		void reject() override;
@@ -90,6 +108,7 @@ class SplanImportDialog : public QDialog
 				const QString &script,
 				QString *error);
 
+		Kind m_kind;
 		QLineEdit *m_source = nullptr;
 		QLineEdit *m_target = nullptr;
 		QLineEdit *m_script = nullptr;
